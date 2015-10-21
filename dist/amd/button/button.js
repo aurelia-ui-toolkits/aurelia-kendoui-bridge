@@ -20,7 +20,24 @@ define(['exports', 'aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'
         var _instanceInitializers = {};
 
         _createDecoratedClass(AuKendoButton, [{
+            key: 'enable',
+            decorators: [_aureliaFramework.bindable],
+            initializer: function initializer() {
+                return true;
+            },
+            enumerable: true
+        }, {
             key: 'icon',
+            decorators: [_aureliaFramework.bindable],
+            initializer: null,
+            enumerable: true
+        }, {
+            key: 'imageUrl',
+            decorators: [_aureliaFramework.bindable],
+            initializer: null,
+            enumerable: true
+        }, {
+            key: 'spriteCssClass',
             decorators: [_aureliaFramework.bindable],
             initializer: null,
             enumerable: true
@@ -29,21 +46,20 @@ define(['exports', 'aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'
             decorators: [_aureliaFramework.bindable],
             initializer: null,
             enumerable: true
-        }, {
-            key: 'enable',
-            decorators: [_aureliaFramework.bindable],
-            initializer: null,
-            enumerable: true
         }], null, _instanceInitializers);
 
         function AuKendoButton(element) {
             _classCallCheck(this, _AuKendoButton);
 
+            _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers);
+
             _defineDecoratedPropertyDescriptor(this, 'icon', _instanceInitializers);
 
-            _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+            _defineDecoratedPropertyDescriptor(this, 'imageUrl', _instanceInitializers);
 
-            _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers);
+            _defineDecoratedPropertyDescriptor(this, 'spriteCssClass', _instanceInitializers);
+
+            _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
             this.element = element;
             this.options = {};
@@ -62,7 +78,12 @@ define(['exports', 'aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'
         }, {
             key: 'getOptions',
             value: function getOptions() {
-                return Object.assign({}, this.options, { icon: this.icon });
+                return Object.assign({}, this.options, {
+                    icon: this.icon,
+                    enable: this.enable,
+                    imageUrl: this.imageUrl,
+                    spriteCssClass: this.spriteCssClass
+                });
             }
         }, {
             key: 'enableChanged',

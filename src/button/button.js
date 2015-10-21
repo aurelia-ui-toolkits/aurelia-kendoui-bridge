@@ -8,7 +8,7 @@ export class AuKendoButton {
 
     _component;
 
-    @bindable enable;
+    @bindable enable = true;
     @bindable icon;
     @bindable imageUrl;
     @bindable spriteCssClass;
