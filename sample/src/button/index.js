@@ -1,5 +1,4 @@
 import {useView} from 'aurelia-framework';
-import 'kendo-ui/src/styles/web/kendo.bootstrap.css!';
 
 @useView("/src/shared/showcase.html")
 export class Index {

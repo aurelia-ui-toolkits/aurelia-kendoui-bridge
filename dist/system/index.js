@@ -1,11 +1,11 @@
-System.register(["kendo-ui/src/styles/web/kendo.common.core.css!"], function (_export) {
-	"use strict";
+System.register(['kendo-ui/src/styles/web/kendo.common.core.css!'], function (_export) {
+	'use strict';
 
-	_export("configure", configure);
+	_export('configure', configure);
 
 	function configure(aurelia) {
 
-		var resources = ["button/button"];
+		var resources = ['button/button', 'autocomplete/autocomplete'];
 
 		aurelia.globalResources(resources);
 	}
