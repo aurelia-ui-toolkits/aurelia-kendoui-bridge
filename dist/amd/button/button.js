@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button', 'kendo-ui/src/styles/web/kendo.bootstrap.css!'], function (exports, _aureliaFramework, _jquery, _kendoUiSrcJsKendoButton, _kendoUiSrcStylesWebKendoBootstrapCss) {
+define(['exports', 'aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'], function (exports, _aureliaFramework, _jquery, _kendoUiSrcJsKendoButton) {
     'use strict';
 
     Object.defineProperty(exports, '__esModule', {
@@ -29,6 +29,11 @@ define(['exports', 'aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'
             decorators: [_aureliaFramework.bindable],
             initializer: null,
             enumerable: true
+        }, {
+            key: 'enable',
+            decorators: [_aureliaFramework.bindable],
+            initializer: null,
+            enumerable: true
         }], null, _instanceInitializers);
 
         function AuKendoButton(element) {
@@ -38,13 +43,16 @@ define(['exports', 'aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'
 
             _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
+            _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers);
+
             this.element = element;
+            this.options = {};
         }
 
         _createDecoratedClass(AuKendoButton, [{
             key: 'attached',
             value: function attached() {
-                this._component = (0, _$['default'])(this.element).kendoButton(this.options).data('kendoButton');
+                this._component = (0, _$['default'])(this.element).kendoButton(this.getOptions()).data('kendoButton');
             }
         }, {
             key: 'detached',
@@ -52,8 +60,15 @@ define(['exports', 'aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'
                 if (this._component) this._component.destroy();
             }
         }, {
-            key: 'iconChanged',
-            value: function iconChanged() {}
+            key: 'getOptions',
+            value: function getOptions() {
+                return Object.assign({}, this.options, { icon: this.icon });
+            }
+        }, {
+            key: 'enableChanged',
+            value: function enableChanged(newValue) {
+                if (this._component) this._component.enable(newValue);
+            }
         }], null, _instanceInitializers);
 
         var _AuKendoButton = AuKendoButton;
