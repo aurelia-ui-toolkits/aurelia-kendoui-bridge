@@ -157,3 +157,12 @@ div.au-stagger {
 .hljs {
   background: inherit !important;
 }
+
+.panel-hover:hover {
+  cursor: pointer;
+}
+
+.panel-hover:hover strong {
+  text-decoration: underline !important;
+  cursor: pointer;
+}
