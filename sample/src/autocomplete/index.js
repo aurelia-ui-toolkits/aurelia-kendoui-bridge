@@ -6,8 +6,8 @@ export class Index {
 	configureRouter(config, router){
 	    config.title = 'Autocomplete';
 	    config.map([
-	      { route: ['','page1'],  moduleId: './page1',      nav: true, title:'Page1' },
-	      { route: 'page2',  moduleId: './page2',      nav: true, title:'Page2' },
+	      { route: ['','basic-use'],  moduleId: './basic-use',      nav: true, title:'Basic Use' },
+	      { route: 'remote-data',  moduleId: './remote-data',      nav: true, title:'Remote Data' },
 	  	]);
 
 	    this.router = router;

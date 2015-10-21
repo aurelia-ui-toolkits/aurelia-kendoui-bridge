@@ -5,8 +5,10 @@ export class CollapsePanel {
 	@bindable footer;
 	@bindable allowCollapse = true;
 	@bindable collapsed = false;
+	@bindable panelClass = "default";
 
 	toggle() {
-		this.collapsed = !this.collapsed;
+		if(this.allowCollapse)
+			this.collapsed = !this.collapsed;
 	}
 }

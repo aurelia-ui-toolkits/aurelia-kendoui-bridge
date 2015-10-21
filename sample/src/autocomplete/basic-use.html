@@ -1,0 +1,11 @@
+<template>
+    <section>
+        <collapse-panel title="Basic Use" allow-collapse.bind="false" footer="Current value: ${value}">
+            <p><strong>People:</strong></p>
+            <p>
+                <input au-kendo-autocomplete="data-source.bind: items;" value.bind="value"></input>
+            </p>
+            <p class="text-muted">Type a name, available values in the list are: ${ items } </p>
+        </collapse-panel>
+    </section>
+</template>

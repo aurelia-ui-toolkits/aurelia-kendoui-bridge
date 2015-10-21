@@ -153,3 +153,7 @@ div.au-stagger {
     font-size:50pt;
     transform: translate(-50%, -50%);
 }
+
+.hljs {
+  background: inherit !important;
+}
