@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="panel ${ 'panel-' + panelClass }">
-            <div class="panel-heading" click.delegate="toggle()">
+            <div class="panel-heading ${ allowCollapse ? 'panel-hover' : '' }" click.delegate="toggle()">
                 <span class="glyphicon glyphicon-chevron-down" if.bind="!collapsed && allowCollapse"></span>
                 <span class="glyphicon glyphicon-chevron-up" if.bind="collapsed && allowCollapse"></span>
                 <strong>${title}</strong>
