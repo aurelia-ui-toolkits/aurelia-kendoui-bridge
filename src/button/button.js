@@ -8,7 +8,11 @@ export class AuKendoButton {
 
     _component;
 
+    @bindable enable;
     @bindable icon;
+    @bindable imageUrl;
+    @bindable spriteCssClass;
+
     @bindable options;
 
     constructor(element) {
@@ -26,6 +30,16 @@ export class AuKendoButton {
     }
 
     getOptions() {
-    	return Object.assign({}, this.options, { icon: this.icon })
+    	return Object.assign({}, this.options, { 
+    		icon: this.icon,
+    		enable: this.enable,
+    		imageUrl: this.imageUrl,
+    		spriteCssClass: this.spriteCssClass
+    	});
+    }
+
+    enableChanged(newValue) {
+    	if(this._component)
+    		this._component.enable(newValue);
     }
 }

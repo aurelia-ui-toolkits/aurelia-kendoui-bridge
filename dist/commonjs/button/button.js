@@ -20,8 +20,6 @@ var _jquery2 = _interopRequireDefault(_jquery);
 
 require('kendo-ui/src/js/kendo.button');
 
-require('kendo-ui/src/styles/web/kendo.bootstrap.css!');
-
 var AuKendoButton = (function () {
     var _instanceInitializers = {};
     var _instanceInitializers = {};
@@ -36,6 +34,11 @@ var AuKendoButton = (function () {
         decorators: [_aureliaFramework.bindable],
         initializer: null,
         enumerable: true
+    }, {
+        key: 'enable',
+        decorators: [_aureliaFramework.bindable],
+        initializer: null,
+        enumerable: true
     }], null, _instanceInitializers);
 
     function AuKendoButton(element) {
@@ -45,13 +48,16 @@ var AuKendoButton = (function () {
 
         _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
+        _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers);
+
         this.element = element;
+        this.options = {};
     }
 
     _createDecoratedClass(AuKendoButton, [{
         key: 'attached',
         value: function attached() {
-            this._component = (0, _jquery2['default'])(this.element).kendoButton(this.options).data('kendoButton');
+            this._component = (0, _jquery2['default'])(this.element).kendoButton(this.getOptions()).data('kendoButton');
         }
     }, {
         key: 'detached',
@@ -59,8 +65,15 @@ var AuKendoButton = (function () {
             if (this._component) this._component.destroy();
         }
     }, {
-        key: 'iconChanged',
-        value: function iconChanged() {}
+        key: 'getOptions',
+        value: function getOptions() {
+            return Object.assign({}, this.options, { icon: this.icon });
+        }
+    }, {
+        key: 'enableChanged',
+        value: function enableChanged(newValue) {
+            if (this._component) this._component.enable(newValue);
+        }
     }], null, _instanceInitializers);
 
     var _AuKendoButton = AuKendoButton;

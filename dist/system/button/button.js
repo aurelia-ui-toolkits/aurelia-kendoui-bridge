@@ -23,7 +23,22 @@ System.register(['aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'],
                 var _instanceInitializers = {};
 
                 _createDecoratedClass(AuKendoButton, [{
+                    key: 'enable',
+                    decorators: [bindable],
+                    initializer: null,
+                    enumerable: true
+                }, {
                     key: 'icon',
+                    decorators: [bindable],
+                    initializer: null,
+                    enumerable: true
+                }, {
+                    key: 'imageUrl',
+                    decorators: [bindable],
+                    initializer: null,
+                    enumerable: true
+                }, {
+                    key: 'spriteCssClass',
                     decorators: [bindable],
                     initializer: null,
                     enumerable: true
@@ -37,7 +52,13 @@ System.register(['aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'],
                 function AuKendoButton(element) {
                     _classCallCheck(this, _AuKendoButton);
 
+                    _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers);
+
                     _defineDecoratedPropertyDescriptor(this, 'icon', _instanceInitializers);
+
+                    _defineDecoratedPropertyDescriptor(this, 'imageUrl', _instanceInitializers);
+
+                    _defineDecoratedPropertyDescriptor(this, 'spriteCssClass', _instanceInitializers);
 
                     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
@@ -58,7 +79,17 @@ System.register(['aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'],
                 }, {
                     key: 'getOptions',
                     value: function getOptions() {
-                        return Object.assign({}, this.options, { icon: this.icon });
+                        return Object.assign({}, this.options, {
+                            icon: this.icon,
+                            enable: this.enable,
+                            imageUrl: this.imageUrl,
+                            spriteCssClass: this.spriteCssClass
+                        });
+                    }
+                }, {
+                    key: 'enableChanged',
+                    value: function enableChanged(newValue) {
+                        if (this._component) this._component.enable(newValue);
                     }
                 }], null, _instanceInitializers);
 
