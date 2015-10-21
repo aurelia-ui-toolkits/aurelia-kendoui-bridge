@@ -25,7 +25,9 @@ System.register(['aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'],
                 _createDecoratedClass(AuKendoButton, [{
                     key: 'enable',
                     decorators: [bindable],
-                    initializer: null,
+                    initializer: function initializer() {
+                        return true;
+                    },
                     enumerable: true
                 }, {
                     key: 'icon',
