@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'common/events', 'jquery', 'kendo-ui/src/js/kendo.autocomplete'], function (exports, _aureliaFramework, _commonEvents, _jquery, _kendoUiSrcJsKendoAutocomplete) {
+define(['exports', 'aurelia-framework', '../common/events', '../common/options', 'jquery', 'kendo-ui/src/js/kendo.autocomplete'], function (exports, _aureliaFramework, _commonEvents, _commonOptions, _jquery, _kendoUiSrcJsKendoAutocomplete) {
     'use strict';
 
     Object.defineProperty(exports, '__esModule', {
@@ -39,12 +39,16 @@ define(['exports', 'aurelia-framework', 'common/events', 'jquery', 'kendo-ui/src
         }, {
             key: 'dataTextField',
             decorators: [_aureliaFramework.bindable],
-            initializer: null,
+            initializer: function initializer() {
+                return null;
+            },
             enumerable: true
         }, {
             key: 'delay',
             decorators: [_aureliaFramework.bindable],
-            initializer: null,
+            initializer: function initializer() {
+                return 200;
+            },
             enumerable: true
         }, {
             key: 'enable',
@@ -56,7 +60,9 @@ define(['exports', 'aurelia-framework', 'common/events', 'jquery', 'kendo-ui/src
         }, {
             key: 'filter',
             decorators: [_aureliaFramework.bindable],
-            initializer: null,
+            initializer: function initializer() {
+                return "startswith";
+            },
             enumerable: true
         }, {
             key: 'fixedGroupTemplate',
@@ -102,7 +108,7 @@ define(['exports', 'aurelia-framework', 'common/events', 'jquery', 'kendo-ui/src
             key: 'separator',
             decorators: [_aureliaFramework.bindable],
             initializer: function initializer() {
-                return ',';
+                return "";
             },
             enumerable: true
         }, {
@@ -134,11 +140,6 @@ define(['exports', 'aurelia-framework', 'common/events', 'jquery', 'kendo-ui/src
             enumerable: true
         }, {
             key: 'value',
-            decorators: [_aureliaFramework.bindable],
-            initializer: null,
-            enumerable: true
-        }, {
-            key: 'selectedItem',
             decorators: [_aureliaFramework.bindable],
             initializer: null,
             enumerable: true
@@ -191,8 +192,6 @@ define(['exports', 'aurelia-framework', 'common/events', 'jquery', 'kendo-ui/src
 
             _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers);
 
-            _defineDecoratedPropertyDescriptor(this, 'selectedItem', _instanceInitializers);
-
             this.element = element;
         }
 
@@ -204,25 +203,27 @@ define(['exports', 'aurelia-framework', 'common/events', 'jquery', 'kendo-ui/src
                 this._component = (0, _$['default'])(this.element).kendoAutoComplete(this.getOptions()).data("kendoAutoComplete");
 
                 this._component.bind('change', function (event) {
-                    var textfield = _this.options.dataTextField;
+                    _this.value = event.sender.value();
 
-                    var newValue = event.sender.value();
-                    var selected = textfield !== null && textfield !== undefined ? _this.dataSource.filter(function (value) {
-                        return value[textfield] === newValue;
-                    }) : _this.dataSource.filter(function (value) {
-                        return value === newValue;
-                    });
+                    (0, _commonEvents.fireEvent)(_this.element, 'input');
+                });
 
-                    _this.value = selected.length ? selected[0] : textfield;
+                this._component.bind('select', function (event) {
+                    _this.value = event.sender.value();
 
                     (0, _commonEvents.fireEvent)(_this.element, 'input');
                 });
             }
         }, {
+            key: 'detached',
+            value: function detached() {
+                this._component.destroy();
+            }
+        }, {
             key: 'getOptions',
             value: function getOptions() {
-
-                var options = {
+                var options = (0, _commonOptions.pruneOptions)({
+                    animation: this.animation,
                     dataSource: this.dataSource,
                     dataTextField: this.dataTextField,
                     delay: this.delay,
@@ -242,16 +243,14 @@ define(['exports', 'aurelia-framework', 'common/events', 'jquery', 'kendo-ui/src
                     template: this.template,
                     valuePrimitive: this.valuePrimitive,
                     virtual: this.virtual
-                };
-
-                if (this.animation) options['animation'] = this.animation;
+                });
 
                 return Object.assign({}, this.options, options);
             }
         }, {
-            key: 'detached',
-            value: function detached() {
-                this._component.destroy();
+            key: 'enableChanged',
+            value: function enableChanged(newValue) {
+                if (this._component) this._component.enable(newValue);
             }
         }], null, _instanceInitializers);
 

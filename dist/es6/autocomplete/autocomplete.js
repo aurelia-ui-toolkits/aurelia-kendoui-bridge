@@ -1,5 +1,6 @@
 import {customAttribute, bindable, bindingMode, inject} from 'aurelia-framework';
-import {fireEvent} from 'common/events';
+import {fireEvent} from '../common/events';
+import {pruneOptions} from '../common/options';
 import $ from 'jquery';
 import 'kendo-ui/src/js/kendo.autocomplete';
 
@@ -14,16 +15,16 @@ export class AuKendoAutoComplete {
     element;
 
     // Autocomplete API
-    // Full options object
+    // Full options object if you want to set options that way
     @bindable options = {};
 
-    // Individual properties
+    // Individual properties - default values need setting
     @bindable animation;
     @bindable dataSource;
-    @bindable dataTextField;
-    @bindable delay;
+    @bindable dataTextField = null;
+    @bindable delay = 200;
     @bindable enable = true;
-    @bindable filter;
+    @bindable filter = "startswith";
     @bindable fixedGroupTemplate;
     @bindable groupTemplate;
     @bindable height;
@@ -32,17 +33,15 @@ export class AuKendoAutoComplete {
     @bindable minLength;
     @bindable placeholder;
     @bindable popup;
-    @bindable separator = ',';
+    @bindable separator = "";
     @bindable suggest = true;
     @bindable headerTemplate;
     @bindable template;
     @bindable valuePrimitive;
     @bindable virtual;
 
-
     // Aurelia value-added API
     @bindable value;
-    @bindable selectedItem;
 
     constructor(element) {
         this.element = element;
@@ -52,37 +51,27 @@ export class AuKendoAutoComplete {
         this._component = $(this.element).kendoAutoComplete(this.getOptions()).data("kendoAutoComplete");
 
         this._component.bind('change', (event) => {
-            let textfield = this.options.dataTextField;
+            this.value = event.sender.value();
 
-            let newValue = event.sender.value();
-            let selected = textfield !== null && textfield !== undefined ? this.dataSource.filter((value) => value[textfield] === newValue) : this.dataSource.filter((value) => value === newValue);
-
-            // Since autocomplete allows freeform input as well, we assign the freeform value if necessary.
-            this.value = selected.length ? selected[0] : textfield;
-            // {
-            //     [textfield.toString()]: newValue
-            // };
-            
+            // Update the kendo binding
             fireEvent(this.element, 'input');
-
         });
 
-        // this._component.bind('change', (event) => {
-        //     // Kendo autocomplete doesn't provide the dataSource value back, so we have to handle this here.
-        //     let textfield = (this.options || {}).dataTextField;
-        //     let newValue = event.sender.value();
-        //     let selected = textfield !== null && textfield !== undefined ? this.data.filter((value) => value[textfield] === newValue) : this.data.filter((value) => value === newValue);
+        this._component.bind('select', (event) => {
+            this.value = event.sender.value();
 
-        //     // Since autocomplete allows freeform input as well, we assign the freeform value if necessary.
-        //     this.value = selected.length ? selected[0] : {
-        //         [textfield.toString()]: newValue
-        //     };
-        // });
+            // Update the kendo binding
+            fireEvent(this.element, 'input');
+        });
     }
 
+    detached() {
+        this._component.destroy();
+    }
+    
     getOptions() {
-
-        var options = {
+        var options = pruneOptions({
+            animation: this.animation,
             dataSource: this.dataSource,
             dataTextField: this.dataTextField,
             delay: this.delay,
@@ -102,17 +91,14 @@ export class AuKendoAutoComplete {
             template: this.template,
             valuePrimitive: this.valuePrimitive,
             virtual: this.virtual
-        };
-
-        if (this.animation)
-            options['animation'] = this.animation;
-
+        });
 
         return Object.assign({}, this.options, options);
     }
 
-    detached() {
-        this._component.destroy();
+    enableChanged(newValue) {
+        if (this._component)
+            this._component.enable(newValue);
     }
 }
 
