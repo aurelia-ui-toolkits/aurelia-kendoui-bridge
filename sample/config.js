@@ -29,9 +29,10 @@ System.config({
     "core-js": "npm:core-js@1.2.0",
     "css": "github:systemjs/plugin-css@0.1.17",
     "font-awesome": "npm:font-awesome@4.4.0",
-    "gooy/aurelia-markdown": "github:gooy/aurelia-markdown@0.0.3",
+    "isagalaev/highlight.js": "github:isagalaev/highlight.js@8.9.1",
     "json": "github:systemjs/plugin-json@0.1.0",
     "kendo-ui": "github:kendo-labs/bower-kendo-ui@2015.2.813",
+    "showdownjs/showdown": "github:showdownjs/showdown@1.3.0",
     "systemjs/plugin-css": "github:systemjs/plugin-css@0.1.17",
     "twbs/bootstrap": "github:twbs/bootstrap@3.3.5",
     "github:aurelia/binding@0.9.1": {
@@ -142,10 +143,6 @@ System.config({
       "aurelia-path": "github:aurelia/path@0.9.0",
       "aurelia-task-queue": "github:aurelia/task-queue@0.7.0",
       "core-js": "npm:core-js@0.9.18"
-    },
-    "github:gooy/aurelia-markdown@0.0.3": {
-      "prism": "github:PrismJS/prism@master",
-      "showdown": "github:showdownjs/showdown@1.3.0"
     },
     "github:jspm/nodelibs-process@0.1.1": {
       "process": "npm:process@0.10.1"

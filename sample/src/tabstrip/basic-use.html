@@ -1,0 +1,45 @@
+<template>
+    <section>
+        <collapse-panel title="Basic Use" allow-collapse.bind="false">
+            <div au-kendo-tabstrip>
+			    <ul>
+			        <li class="k-state-active">This is tab 1</li>
+			        <li>This is tab 2</li>
+			    </ul>
+			    <div>This is some content for tab 1</div>
+			    <div>This is some more content for tab 2</div>
+			</div>
+        </collapse-panel>
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+                <div>
+                    <textarea au-markdown>
+```
+<div au-kendo-tabstrip>
+	<ul>
+		<li class="k-state-active">This is tab 1</li>
+		<li>This is tab 2</li>
+	</ul>
+	<div>This is some content for tab 1</div>
+	<div>This is some more content for tab 2</div>
+</div>
+```
+                    </textarea>
+                </div>
+                <div>
+                    <textarea au-markdown>
+```
+export class BasicUse {
+	
+}
+```
+                    </textarea>
+                </div>
+            </div>
+        </collapse-panel>
+    </section>
+</template>

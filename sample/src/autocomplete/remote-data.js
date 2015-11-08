@@ -1,7 +1,3 @@
-import {inject} from 'aurelia-framework';
-import {HttpClient} from 'aurelia-http-client';
-
-@inject(HttpClient)
 export class RemoteData {
 	datasource;
 
@@ -14,12 +10,4 @@ export class RemoteData {
                             }
                         };
 	}	
-
-	attached() {
-		$(document).ready(function() {
-		  $('code').each(function(i, block) {
-		    hljs.highlightBlock(block);
-		  });
-		});   
-	}
 }

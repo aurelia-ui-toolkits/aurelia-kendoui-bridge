@@ -8,6 +8,7 @@ export function configure(aurelia) {
 
 
     aurelia.use.globalResources('shared/collapse-panel');
+ 	aurelia.use.globalResources('shared/markdown');
 
     aurelia.start().then(a => a.setRoot('app'));
 }

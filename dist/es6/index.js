@@ -5,7 +5,8 @@ export function configure(aurelia){
 
 	var resources = [
 		'button/button',
-		'autocomplete/autocomplete'
+		'autocomplete/autocomplete',
+		'tabstrip/tabstrip'
 	];
 	
 	aurelia.globalResources(resources);
