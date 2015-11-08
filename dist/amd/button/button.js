@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'], function (exports, _aureliaFramework, _jquery, _kendoUiSrcJsKendoButton) {
+define(['exports', 'aurelia-framework', '../common/options', 'jquery', 'kendo-ui/src/js/kendo.button'], function (exports, _aureliaFramework, _commonOptions, _jquery, _kendoUiSrcJsKendoButton) {
     'use strict';
 
     Object.defineProperty(exports, '__esModule', {
@@ -78,12 +78,15 @@ define(['exports', 'aurelia-framework', 'jquery', 'kendo-ui/src/js/kendo.button'
         }, {
             key: 'getOptions',
             value: function getOptions() {
-                return Object.assign({}, this.options, {
+
+                var options = (0, _commonOptions.pruneOptions)({
                     icon: this.icon,
                     enable: this.enable,
                     imageUrl: this.imageUrl,
                     spriteCssClass: this.spriteCssClass
                 });
+
+                return Object.assign({}, this.options, options);
             }
         }, {
             key: 'enableChanged',

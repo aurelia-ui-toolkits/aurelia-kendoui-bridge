@@ -14,6 +14,8 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaFramework = require('aurelia-framework');
 
+var _commonOptions = require('../common/options');
+
 var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
@@ -83,12 +85,15 @@ var AuKendoButton = (function () {
     }, {
         key: 'getOptions',
         value: function getOptions() {
-            return Object.assign({}, this.options, {
+
+            var options = (0, _commonOptions.pruneOptions)({
                 icon: this.icon,
                 enable: this.enable,
                 imageUrl: this.imageUrl,
                 spriteCssClass: this.spriteCssClass
             });
+
+            return Object.assign({}, this.options, options);
         }
     }, {
         key: 'enableChanged',
