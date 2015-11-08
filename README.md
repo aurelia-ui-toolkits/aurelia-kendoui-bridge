@@ -4,7 +4,7 @@
 
 
 ## Introduction
-This is the home of the Aurelia Kendo UI Plugin repo. Since the internal organization of this repository is slightly more complex than what one would expect (see below, which shows that both the plugin itself and the sample Aurelia application that "consumes" this plugin in order to demo the KendoUI controls) :
+This is the Aurelia Kendo UI Plugin repository. Since the internal organization of this repository is slightly more complex than what one would expect (see below, which shows that both the plugin itself and the sample Aurelia application that "consumes" this plugin in order to demo the KendoUI controls) :
 
 <p align=center>
   <img src="http://i.imgur.com/mS8X0tT.png"></img>
