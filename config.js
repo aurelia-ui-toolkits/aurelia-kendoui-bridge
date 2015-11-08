@@ -25,6 +25,7 @@ System.config({
     "core-js": "npm:core-js@0.9.18",
     "css": "github:systemjs/plugin-css@0.1.16",
     "kendo-ui": "github:kendo-labs/bower-kendo-ui@2015.2.813",
+    "telerik/kendo-ui-core": "github:telerik/kendo-ui-core@2015.3.930",
     "traceur": "github:jmcriffey/bower-traceur@0.0.91",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91",
     "github:aurelia/binding@0.9.1": {
