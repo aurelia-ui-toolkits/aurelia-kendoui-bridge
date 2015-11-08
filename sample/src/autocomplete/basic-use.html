@@ -7,5 +7,41 @@
             </p>
             <p class="text-muted">Type a name, available values in the list are: ${ items } </p>
         </collapse-panel>
+                <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+                <div>
+                    <textarea au-markdown>
+```
+<input au-kendo-autocomplete="data-source.bind: items;" value.bind="value"></input>
+```
+                    </textarea>
+                </div>
+                <div>
+                    <textarea au-markdown>
+```
+export class BasicUse {
+    items = [
+        "Charles",
+        "Jedd",
+        "Nikolaj",
+        "David",
+        "Rob",
+        "Matt",
+        "Patrick",
+        "Jason",
+        "Martin",
+        "Fredrick",
+        "Alex"
+    ]
+}
+```
+                    </textarea>
+                </div>
+            </div>
+        </collapse-panel>
     </section>
 </template>

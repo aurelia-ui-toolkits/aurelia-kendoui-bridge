@@ -1,37 +1,55 @@
 <template>
-    <require from="gooy/aurelia-markdown"></require>;
     <section>
         <collapse-panel title="Remote Data" allow-collapse.bind="false" footer="Current value: ${value}">
             <p><strong>People:</strong></p>
             <p>
                 <input au-kendo-autocomplete="data-source.bind: datasource;
-                							  data-text-field: ProductName;
-                							  filter: contains;
-                							  min-length: 3" value.bind="value" style="width: 300px"></input>
+                                data-text-field: ProductName;
+                                filter: contains;
+                                min-length: 3" 
+                        value.bind="value" 
+                        style="width: 300px"></input>
             </p>
             <p class="text-muted">Hint: type "che"</p>
         </collapse-panel>
-        <!-- TODO: Make markup automatically initialised -->
-        <collapse-panel title="Code Preview" collapsed.bind="true">
-          <markdown>
-            ```
-            <input au-kendo-autocomplete="data-source.bind: datasource;
-                                          data-text-field: ProductName;
-                                          filter: contains;
-                                          min-length: 3" 
-                                          value.bind="value" 
-                                          style="width: 300px" />
-            ```
-          </markdown>
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+                <div>
+                    <textarea au-markdown>
+```
+<input au-kendo-autocomplete="data-source.bind: datasource;
+      data-text-field: ProductName;
+      filter: contains;
+      min-length: 3" 
+      value.bind="value" 
+      style="width: 300px" /> 
+```
+                    </textarea>
+                </div>
+                <div>
+                    <textarea au-markdown>
+```
+export class RemoteData {
+  datasource;
 
-            <!-- <pre><code class="html">&lt;input au-kendo-autocomplete=&quot;data-source.bind: datasource;
-                              data-text-field: ProductName;
-                              filter: contains;
-                              min-length: 3&quot; 
-       value.bind=&quot;value&quot; 
-       style=&quot;width: 300px&quot; /&gt;</code></pre> -->
+  constructor() {
+    this.datasource = {
+      type: "odata",
+      serverFiltering: true,
+      transport: {
+        read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Products"
+      }
+    };
+  } 
+}
+```
+                    </textarea>
+                </div>
+            </div>
         </collapse-panel>
-
-        
     </section>
 </template>

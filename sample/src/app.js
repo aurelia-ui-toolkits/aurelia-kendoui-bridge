@@ -23,7 +23,12 @@ export class App {
             moduleId: 'autocomplete/index',
             nav: true,
             title: 'Autocomplete'
-        }, ]);
+        }, {
+            route: 'tabstrip',
+            moduleId: 'tabstrip/index',
+            nav: true,
+            title: 'TabStrip'
+        },]);
 
         this.router = router;
     }
