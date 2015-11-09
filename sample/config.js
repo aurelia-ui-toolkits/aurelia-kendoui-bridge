@@ -29,7 +29,6 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.17",
     "font-awesome": "npm:font-awesome@4.4.0",
-    "isagalaev/highlight.js": "github:isagalaev/highlight.js@8.9.1",
     "json": "github:systemjs/plugin-json@0.1.0",
     "kendo-ui": "github:kendo-labs/bower-kendo-ui@2015.2.813",
     "showdownjs/showdown": "github:showdownjs/showdown@1.3.0",
