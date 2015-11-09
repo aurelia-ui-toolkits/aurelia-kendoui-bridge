@@ -1,7 +1,5 @@
 import { inject, bindable, customAttribute } from 'aurelia-framework';
 import showdown from 'github:showdownjs/showdown@1.3.0';
-import * as highlight from 'isagalaev/highlight.js/build/highlight.min';
-import 'isagalaev/highlight.js/src/styles/github.css!';
 
 @customAttribute("au-markdown")
 @inject(Element)
@@ -22,7 +20,7 @@ export class AuMarkdown {
 	    this.block = span;
 	}
 
-	attached() {  	
+	attached() {
 	    hljs.highlightBlock(this.block);
 	}
 }

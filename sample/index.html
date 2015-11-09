@@ -3,7 +3,10 @@
   <head>
     <title>Aurelia</title>
     <link rel="stylesheet" href="jspm_packages/npm/font-awesome@4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
     <link rel="stylesheet" href="styles.css">
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body aurelia-app="main">
@@ -14,10 +17,10 @@
 
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
-    <script> 
+    <script>
       System.import('aurelia-bootstrapper');
 
-      // Load the package.json from the root to get the package name      
+      // Load the package.json from the root to get the package name
       System.import("root/package.json!").then(function(m) {
         var cfg = {
            packages: {}
@@ -27,9 +30,9 @@
         cfg.packages[m.name] = {
             "main": "index",
               "dependencies": {
-                "aurelia-binding": "github:aurelia/binding@^0.9.1",
-                "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.10.1",
-                "aurelia-templating": "github:aurelia/templating@^0.15.3"
+                "aurelia-binding": "github:aurelia/binding@^0.10.2",
+                "aurelia-dependency-injection": "github:aurelia/dependency-injection@^0.11.2",
+                "aurelia-templating": "github:aurelia/templating@^0.16.0"
               }
             };
 
