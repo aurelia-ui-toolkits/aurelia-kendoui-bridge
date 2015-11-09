@@ -17,22 +17,12 @@ System.config({
   },
 
   map: {
-<<<<<<< HEAD
-    "aurelia-binding": "github:aurelia/binding@0.9.1",
-    "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.17.0",
-    "aurelia-framework": "github:aurelia/framework@0.16.0",
-    "aurelia-http-client": "github:aurelia/http-client@0.11.0",
-    "aurelia-logging": "github:aurelia/logging@0.8.0",
-    "aurelia-metadata": "github:aurelia/metadata@0.8.0",
-    "aurelia-templating": "github:aurelia/templating@0.15.3",
-=======
     "aurelia-binding": "github:aurelia/binding@0.10.2",
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.18.0",
     "aurelia-framework": "github:aurelia/framework@0.17.0",
     "aurelia-http-client": "github:aurelia/http-client@0.12.0",
     "aurelia-metadata": "github:aurelia/metadata@0.9.0",
     "aurelia-templating": "github:aurelia/templating@0.16.0",
->>>>>>> 874d77e9983f6a8c501d16c3571ace3c7515c48f
     "babel": "npm:babel-core@5.8.23",
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "bootstrap": "github:twbs/bootstrap@3.3.5",

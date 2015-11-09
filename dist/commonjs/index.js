@@ -7,9 +7,19 @@ exports.configure = configure;
 
 require('kendo-ui/src/styles/web/kendo.common.core.css!');
 
-function configure(aurelia) {
+function configure(aurelia, configCallback) {
 
-	var resources = ['button/button', 'autocomplete/autocomplete', 'tabstrip/tabstrip', 'grid/grid'];
+	var resources = [];
+
+	if (configCallback !== undefined && typeof configCallback === 'function') {
+		resources = configCallback();
+	}
+
+	if (typeof resources === "string") resources = [resources];
+
+	resources = resources.map(function (r) {
+		return r + "/" + r;
+	});
 
 	aurelia.globalResources(resources);
 }
