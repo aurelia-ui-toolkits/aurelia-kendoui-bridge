@@ -6,8 +6,8 @@ export class Index {
 	configureRouter(config, router){
 	    config.title = 'Grid';
 	    config.map([
-	      { route: ['','page1'],  moduleId: './page1',      nav: true, title:'Page1' },
-	      { route: 'page2',  moduleId: './page2',      nav: true, title:'Page2' },
+	      { route: ['','basic-use'],  moduleId: './basic-use',      nav: true, title:'Basic Use' },
+	      { route: 'html-config',  moduleId: './html-config',      nav: true, title:'HTML Configuration' },
 	  	]);
 
 	    this.router = router;

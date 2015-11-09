@@ -4,7 +4,7 @@ export function configure(aurelia) {
     aurelia.use
         .standardConfiguration()
         .developmentLogging()
-        .plugin('aurelia-kendoui-plugin');
+        .plugin('aurelia-kendoui-plugin', () => ['autocomplete', 'button', 'tabstrip']);
 
 
     aurelia.use.globalResources('shared/collapse-panel');

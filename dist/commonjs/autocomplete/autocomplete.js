@@ -226,7 +226,7 @@ var AuKendoAutoComplete = (function () {
     }, {
         key: 'detached',
         value: function detached() {
-            this._component.destroy();
+            if (this._component) this._component.destroy();
         }
     }, {
         key: 'getOptions',

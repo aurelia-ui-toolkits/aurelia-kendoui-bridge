@@ -9,7 +9,7 @@ require('kendo-ui/src/styles/web/kendo.common.core.css!');
 
 function configure(aurelia) {
 
-	var resources = ['button/button', 'autocomplete/autocomplete', 'tabstrip/tabstrip'];
+	var resources = ['button/button', 'autocomplete/autocomplete', 'tabstrip/tabstrip', 'grid/grid'];
 
 	aurelia.globalResources(resources);
 }

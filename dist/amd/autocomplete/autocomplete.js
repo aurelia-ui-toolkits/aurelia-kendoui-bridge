@@ -217,7 +217,7 @@ define(['exports', 'aurelia-framework', '../common/events', '../common/options',
         }, {
             key: 'detached',
             value: function detached() {
-                this._component.destroy();
+                if (this._component) this._component.destroy();
             }
         }, {
             key: 'getOptions',

@@ -66,7 +66,8 @@ export class AuKendoAutoComplete {
     }
 
     detached() {
-        this._component.destroy();
+        if(this._component)
+            this._component.destroy();
     }
     
     getOptions() {

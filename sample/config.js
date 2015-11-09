@@ -21,6 +21,7 @@ System.config({
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.17.0",
     "aurelia-framework": "github:aurelia/framework@0.16.0",
     "aurelia-http-client": "github:aurelia/http-client@0.11.0",
+    "aurelia-logging": "github:aurelia/logging@0.8.0",
     "aurelia-metadata": "github:aurelia/metadata@0.8.0",
     "aurelia-templating": "github:aurelia/templating@0.15.3",
     "babel": "npm:babel-core@5.8.23",

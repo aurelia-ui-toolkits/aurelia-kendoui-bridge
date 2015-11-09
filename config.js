@@ -9,14 +9,15 @@ System.config({
   },
   paths: {
     "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*"
+    "npm:*": "jspm_packages/npm/*",
+    "bower:*": "jspm_packages/bower/*"
   },
 
   map: {
     "aurelia-binding": "github:aurelia/binding@0.9.1",
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.17.0",
     "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.10.1",
-    "aurelia-logging": "github:aurelia/logging@0.7.0",
+    "aurelia-logging": "github:aurelia/logging@0.8.0",
     "aurelia-metadata": "github:aurelia/metadata@0.8.0",
     "aurelia-templating": "github:aurelia/templating@0.15.3",
     "babel": "npm:babel-core@5.8.22",
@@ -24,10 +25,14 @@ System.config({
     "charlespockert/aurelia-compiler": "github:charlespockert/aurelia-compiler@0.0.7",
     "core-js": "npm:core-js@0.9.18",
     "css": "github:systemjs/plugin-css@0.1.16",
+    "kendo": "bower:https://bower.telerik.com/bower-kendo-ui.git@2015.2.813",
     "kendo-ui": "github:kendo-labs/bower-kendo-ui@2015.2.813",
     "showdown": "github:showdownjs/showdown@1.3.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.91",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91",
+    "bower:https://bower.telerik.com/bower-kendo-ui.git@2015.2.813": {
+      "jquery": "bower:jquery@2.1.1"
+    },
     "github:aurelia/binding@0.9.1": {
       "aurelia-dependency-injection": "github:aurelia/dependency-injection@0.10.1",
       "aurelia-metadata": "github:aurelia/metadata@0.8.0",
