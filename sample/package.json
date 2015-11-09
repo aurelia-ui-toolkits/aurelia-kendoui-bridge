@@ -1,14 +1,13 @@
 {
   "jspm": {
     "dependencies": {
-      "aurelia-binding": "github:aurelia/binding@^0.9.1",
-      "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.17.0",
-      "aurelia-framework": "github:aurelia/framework@^0.16.0",
-      "aurelia-http-client": "github:aurelia/http-client@^0.11.0",
-      "aurelia-metadata": "github:aurelia/metadata@^0.8.0",
-      "aurelia-templating": "github:aurelia/templating@^0.15.3",
+      "aurelia-binding": "github:aurelia/binding@^0.10.2",
+      "aurelia-bootstrapper": "github:aurelia/bootstrapper@^0.18.0",
+      "aurelia-framework": "github:aurelia/framework@^0.17.0",
+      "aurelia-http-client": "github:aurelia/http-client@^0.12.0",
+      "aurelia-metadata": "github:aurelia/metadata@^0.9.0",
+      "aurelia-templating": "github:aurelia/templating@^0.16.0",
       "font-awesome": "npm:font-awesome@^4.4.0",
-      "isagalaev/highlight.js": "github:isagalaev/highlight.js@^8.9.1",
       "json": "github:systemjs/plugin-json@^0.1.0",
       "kendo-ui": "github:kendo-labs/bower-kendo-ui@2015.2.813",
       "showdownjs/showdown": "github:showdownjs/showdown@^1.3.0",
@@ -18,7 +17,7 @@
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.22",
       "babel-runtime": "npm:babel-runtime@^5.8.20",
-      "core-js": "npm:core-js@^1.1.0"
+      "core-js": "npm:core-js@^1.2.6"
     }
   },
   "devDependencies": {
