@@ -1,3 +1,3 @@
-export class Page1 {
+export class BasicUse {
 	
 }

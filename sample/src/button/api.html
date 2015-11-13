@@ -7,5 +7,43 @@
             <button au-kendo-button click.delegate="disable()">Disable</button>
             <button au-kendo-button click.delegate="enable()">Enable</button>
         </div>
+
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+                <div>
+                    <textarea au-markdown>
+```
+<button au-kendo-button disabled.bind="disabled" class="k-primary" click.delegate="test()">Click me</button>
+```
+                    </textarea>
+                </div>
+                <div>
+                    <textarea au-markdown>
+```
+export class Api {
+    disabled = false;
+
+    disable() {
+        this.disabled = true;
+    }
+
+    enable() {
+        this.disabled = false;
+    }
+
+    test() {
+        console.log("You clicked me");
+    }
+}
+```
+                    </textarea>
+                </div>
+            </div>
+        </collapse-panel>
+
     </section>
 </template>

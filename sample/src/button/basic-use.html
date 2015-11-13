@@ -4,8 +4,31 @@
             <button au-kendo-button class="k-primary">Primary Button</button>
             <button au-kendo-button>Button</button>
         </collapse-panel>
-       <p>
-       	TODO: Add code samples section - we ideally need some sort of markdown support (code formatting etc)
-       </p>
+
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+                <div>
+                    <textarea au-markdown>
+```
+<button au-kendo-button class="k-primary">Primary Button</button>
+<button au-kendo-button>Button</button>
+```
+                    </textarea>
+                </div>
+                <div>
+                    <textarea au-markdown>
+```
+export class BasicUse {
+    
+}
+```
+                    </textarea>
+                </div>
+            </div>
+        </collapse-panel>
     </section>
 </template>
