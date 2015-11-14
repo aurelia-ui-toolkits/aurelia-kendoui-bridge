@@ -19,6 +19,11 @@ export class App {
             nav: true,
             title: 'Button'
         },  {
+            route: 'comboboc',
+            moduleId: 'combobox/index',
+            nav: true,
+            title: 'Combobox'
+        },  {
             route: 'autocomplete',
             moduleId: 'autocomplete/index',
             nav: true,
