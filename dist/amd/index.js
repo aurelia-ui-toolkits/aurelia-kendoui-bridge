@@ -9,9 +9,17 @@ define(['exports', 'kendo-ui/src/styles/web/kendo.common.core.css!'], function (
 	function configure(aurelia, configCallback) {
 
 		var resources = [];
+		var kendo = {
+			core: function core() {
+				return ['button', 'tabstrip'];
+			},
+			pro: function pro() {
+				return ['autocomplete', 'button', 'tabstrip'];
+			}
+		};
 
 		if (configCallback !== undefined && typeof configCallback === 'function') {
-			resources = configCallback();
+			resources = configCallback(kendo);
 		}
 
 		if (typeof resources === "string") resources = [resources];

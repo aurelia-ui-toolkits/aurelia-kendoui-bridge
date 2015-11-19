@@ -4,9 +4,13 @@ import 'kendo-ui/src/styles/web/kendo.common.core.css!';
 export function configure(aurelia, configCallback) {
 
 	var resources = [];
+	var kendo = {
+		core: () => ['button', 'tabstrip'],
+		pro: () => ['autocomplete', 'button', 'tabstrip']
+	};
 
 	if (configCallback !== undefined && typeof(configCallback) === 'function') {
-   		resources = configCallback();
+   		resources = configCallback(kendo);
 	}
 
 	if(typeof resources === "string")
