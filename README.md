@@ -54,3 +54,5 @@ If you have a Kendo UI Pro licence you can use the full Kendo suite. First follo
 5. Run the following command to overwite the core version of Kendo with the PRO version
 
   `jspm install kendo-ui=kendo:bower-kendo-ui`
+
+6. When prompted, enter your Telerik account credentials
