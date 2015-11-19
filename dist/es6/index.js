@@ -3,22 +3,56 @@ import 'kendo-ui/src/styles/web/kendo.common.core.css!';
 
 export function configure(aurelia, configCallback) {
 
-	var resources = [];
-	var kendo = {
-		core: () => ['button', 'tabstrip'],
-		pro: () => ['autocomplete', 'button', 'tabstrip']
-	};
+    var builder = new kendoConfigBuilder();
 
-	if (configCallback !== undefined && typeof(configCallback) === 'function') {
-   		resources = configCallback(kendo);
+    if (configCallback !== undefined && typeof(configCallback) === 'function') {
+        configCallback(builder);
+    }
+
+    // Provide core if nothing was specified
+    if (builder.resources.length === 0) {
+        console.warn("Nothing specified for kendo configuration - using defaults for Kendo Core");
+        builder.core();
+    }
+
+    // Pull the data off the builder
+    var resources = builder.resources;
+
+    // Convert the resource names to paths
+    resources = resources.map(r => r + "/" + r);
+
+    aurelia.globalResources(resources);
+}
+
+class kendoConfigBuilder {
+
+	resources = [];
+
+	core() {
+		this.kendoButton()
+			.kendoTabStrip();
+		return this;
 	}
 
-	if(typeof resources === "string")
-		resources = [resources];
-	
-	// Resources are located in e.g. button/button but we don't want the user passing that
-	// they should just specify 'button' so map each control name to it's folder 
-	resources = resources.map(r => r + "/" + r);
+	pro() {
+		this.core()
+			.kendoAutoComplete();
+		return this;
+	}
 
-	aurelia.globalResources(resources);
+	kendoButton() {
+		this.resources.push("button");
+	    return this;
+	}
+
+	kendoTabStrip() {
+		this.resources.push("tabstrip");
+		return this;
+	}
+
+	kendoAutoComplete() {
+	    this.resources.push("autocomplete");
+	    return this;
+	}
 }
+

@@ -1,25 +1,28 @@
 System.register(['kendo-ui/src/styles/web/kendo.common.core.css!'], function (_export) {
 	'use strict';
 
+	var kendoConfigBuilder;
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
 	_export('configure', configure);
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	function configure(aurelia, configCallback) {
 
-		var resources = [];
-		var kendo = {
-			core: function core() {
-				return ['button', 'tabstrip'];
-			},
-			pro: function pro() {
-				return ['autocomplete', 'button', 'tabstrip'];
-			}
-		};
+		var builder = new kendoConfigBuilder();
 
 		if (configCallback !== undefined && typeof configCallback === 'function') {
-			resources = configCallback(kendo);
+			configCallback(builder);
 		}
 
-		if (typeof resources === "string") resources = [resources];
+		if (builder.resources.length === 0) {
+			console.warn("Nothing specified for kendo configuration - using defaults for Kendo Core");
+			builder.core();
+		}
+
+		var resources = builder.resources;
 
 		resources = resources.map(function (r) {
 			return r + "/" + r;
@@ -30,6 +33,48 @@ System.register(['kendo-ui/src/styles/web/kendo.common.core.css!'], function (_e
 
 	return {
 		setters: [function (_kendoUiSrcStylesWebKendoCommonCoreCss) {}],
-		execute: function () {}
+		execute: function () {
+			kendoConfigBuilder = (function () {
+				function kendoConfigBuilder() {
+					_classCallCheck(this, kendoConfigBuilder);
+
+					this.resources = [];
+				}
+
+				_createClass(kendoConfigBuilder, [{
+					key: 'core',
+					value: function core() {
+						this.kendoButton().kendoTabStrip();
+						return this;
+					}
+				}, {
+					key: 'pro',
+					value: function pro() {
+						this.core().kendoAutoComplete();
+						return this;
+					}
+				}, {
+					key: 'kendoButton',
+					value: function kendoButton() {
+						this.resources.push("button");
+						return this;
+					}
+				}, {
+					key: 'kendoTabStrip',
+					value: function kendoTabStrip() {
+						this.resources.push("tabstrip");
+						return this;
+					}
+				}, {
+					key: 'kendoAutoComplete',
+					value: function kendoAutoComplete() {
+						this.resources.push("autocomplete");
+						return this;
+					}
+				}]);
+
+				return kendoConfigBuilder;
+			})();
+		}
 	};
 });
