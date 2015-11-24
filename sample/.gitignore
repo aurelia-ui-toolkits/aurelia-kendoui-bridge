@@ -1,1 +1,3 @@
-vendors/kendo.*.js
+vendors/*.js
+vendors/*.css
+vendors/Bootstrap

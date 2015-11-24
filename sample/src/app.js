@@ -1,6 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/css/bootstrap.css!';
-import 'kendo-ui/src/styles/web/kendo.bootstrap.css!';
+import 'kendo-ui-css-core!css';
+import 'kendo-ui-css-bootstrap!css';
 
 export class App {
     configureRouter(config, router) {

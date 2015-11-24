@@ -14,7 +14,9 @@ System.config({
     "*": "src/*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "kendo-ui": "vendors/kendo/kendo.all.min.js"
+    "kendo-ui-css-bootstrap": "vendors/kendo.bootstrap.min.css",
+    "kendo-ui-css-core": "vendors/kendo.common.core.min.css",
+    "kendo-ui": "vendors/kendo.all.min.js"
   },
 
   map: {
