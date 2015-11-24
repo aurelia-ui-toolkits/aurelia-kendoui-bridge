@@ -9,8 +9,7 @@ System.config({
   },
   paths: {
     "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*",
-    "kendo:*": "jspm_packages/kendo/*"
+    "npm:*": "jspm_packages/npm/*"
   },
 
   map: {
@@ -26,7 +25,6 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.16",
-    "kendo-ui": "kendo:bower-kendo-ui@2015.2.813",
     "showdown": "github:showdownjs/showdown@1.3.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.91",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91",
