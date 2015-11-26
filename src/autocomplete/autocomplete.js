@@ -2,7 +2,7 @@ import {customAttribute, bindable, bindingMode, inject} from 'aurelia-framework'
 import {fireEvent} from '../common/events';
 import {pruneOptions} from '../common/options';
 import $ from 'jquery';
-import 'kendo-ui/src/js/kendo.autocomplete';
+import 'kendo-ui';
 
 @customAttribute('au-kendo-autocomplete')
 //@bindable({ name: 'value', changeHandler: 'valueChanged', defaultValue: [], defaultBindingMode: bindingMode.twoWay })

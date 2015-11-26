@@ -14,14 +14,18 @@ System.config({
     "*": "src/*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "kendo:*": "jspm_packages/kendo/*"
+    "kendo-ui-css-bootstrap": "vendors/kendo.bootstrap.min.css",
+    "kendo-ui-css-core": "vendors/kendo.common.core.min.css",
+    "kendo-ui": "vendors/kendo.all.min.js"
   },
 
   map: {
     "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.0.1",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
+    "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1",
     "aurelia-http-client": "npm:aurelia-http-client@1.0.0-beta.1",
+    "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1",
     "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1",
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1",
     "babel": "npm:babel-core@5.8.23",
@@ -31,7 +35,7 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.17",
     "font-awesome": "npm:font-awesome@4.4.0",
     "json": "github:systemjs/plugin-json@0.1.0",
-    "kendo-ui": "kendo:bower-kendo-ui@2015.2.813",
+    "showdown": "github:showdownjs/showdown@1.3.0",
     "showdownjs/showdown": "github:showdownjs/showdown@1.3.0",
     "systemjs/plugin-css": "github:systemjs/plugin-css@0.1.17",
     "twbs/bootstrap": "github:twbs/bootstrap@3.3.5",
