@@ -6,7 +6,7 @@ System.config({
       "runtime",
       "optimisation.modules.system",
       "es7.decorators",
-      "es7.classProperties"      
+      "es7.classProperties"
     ]
   },
   paths: {
@@ -26,7 +26,6 @@ System.config({
     "babel": "npm:babel-core@5.8.22",
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@1.2.6",
-    "css": "github:systemjs/plugin-css@0.1.16",
     "showdown": "github:showdownjs/showdown@1.3.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.91",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91",
