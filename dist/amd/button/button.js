@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/options', 'jquery', 'kendo-ui/src/js/kendo.button'], function (exports, _aureliaFramework, _commonOptions, _jquery, _kendoUiSrcJsKendoButton) {
+define(['exports', 'aurelia-framework', '../common/options', 'jquery', 'kendo-ui'], function (exports, _aureliaFramework, _commonOptions, _jquery, _kendoUi) {
     'use strict';
 
     Object.defineProperty(exports, '__esModule', {

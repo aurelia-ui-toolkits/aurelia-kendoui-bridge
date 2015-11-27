@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/events', '../common/options', 'jquery', 'kendo-ui/src/js/kendo.autocomplete'], function (_export) {
+System.register(['aurelia-framework', '../common/events', '../common/options', 'jquery', 'kendo-ui'], function (_export) {
     'use strict';
 
     var customAttribute, bindable, bindingMode, inject, fireEvent, pruneOptions, $, AuKendoAutoComplete;
@@ -21,7 +21,7 @@ System.register(['aurelia-framework', '../common/events', '../common/options', '
             pruneOptions = _commonOptions.pruneOptions;
         }, function (_jquery) {
             $ = _jquery['default'];
-        }, function (_kendoUiSrcJsKendoAutocomplete) {}],
+        }, function (_kendoUi) {}],
         execute: function () {
             AuKendoAutoComplete = (function () {
                 var _instanceInitializers = {};

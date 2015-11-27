@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui/src/js/kendo.tabstrip'], function (_export) {
+System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui'], function (_export) {
     'use strict';
 
     var customAttribute, bindable, inject, pruneOptions, $, TabStrip;
@@ -18,7 +18,7 @@ System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui/s
             pruneOptions = _commonOptions.pruneOptions;
         }, function (_jquery) {
             $ = _jquery['default'];
-        }, function (_kendoUiSrcJsKendoTabstrip) {}],
+        }, function (_kendoUi) {}],
         execute: function () {
             TabStrip = (function () {
                 var _instanceInitializers = {};

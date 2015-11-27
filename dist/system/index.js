@@ -1,13 +1,13 @@
-System.register(['kendo-ui/src/styles/web/kendo.common.core.css!'], function (_export) {
-	'use strict';
+System.register([], function (_export) {
+	"use strict";
 
 	var kendoConfigBuilder;
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	_export('configure', configure);
+	_export("configure", configure);
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 	function configure(aurelia, configCallback) {
 
@@ -32,7 +32,7 @@ System.register(['kendo-ui/src/styles/web/kendo.common.core.css!'], function (_e
 	}
 
 	return {
-		setters: [function (_kendoUiSrcStylesWebKendoCommonCoreCss) {}],
+		setters: [],
 		execute: function () {
 			kendoConfigBuilder = (function () {
 				function kendoConfigBuilder() {
@@ -42,31 +42,31 @@ System.register(['kendo-ui/src/styles/web/kendo.common.core.css!'], function (_e
 				}
 
 				_createClass(kendoConfigBuilder, [{
-					key: 'core',
+					key: "core",
 					value: function core() {
 						this.kendoButton().kendoTabStrip();
 						return this;
 					}
 				}, {
-					key: 'pro',
+					key: "pro",
 					value: function pro() {
 						this.core().kendoAutoComplete();
 						return this;
 					}
 				}, {
-					key: 'kendoButton',
+					key: "kendoButton",
 					value: function kendoButton() {
 						this.resources.push("button");
 						return this;
 					}
 				}, {
-					key: 'kendoTabStrip',
+					key: "kendoTabStrip",
 					value: function kendoTabStrip() {
 						this.resources.push("tabstrip");
 						return this;
 					}
 				}, {
-					key: 'kendoAutoComplete',
+					key: "kendoAutoComplete",
 					value: function kendoAutoComplete() {
 						this.resources.push("autocomplete");
 						return this;

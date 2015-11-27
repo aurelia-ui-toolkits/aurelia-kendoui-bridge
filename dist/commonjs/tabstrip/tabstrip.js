@@ -20,7 +20,7 @@ var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-require('kendo-ui/src/js/kendo.tabstrip');
+require('kendo-ui');
 
 var TabStrip = (function () {
     var _instanceInitializers = {};
