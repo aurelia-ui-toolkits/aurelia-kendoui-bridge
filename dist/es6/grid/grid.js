@@ -3,7 +3,7 @@ import {getLogger} from 'aurelia-logging';
 import {fireEvent} from '../common/events';
 import {pruneOptions} from '../common/options';
 import $ from 'jquery';
-import 'kendo-ui/src/js/kendo.grid';
+import 'kendo-ui';
 
 @customElement("au-kendo-grid")
 @inject(Element)

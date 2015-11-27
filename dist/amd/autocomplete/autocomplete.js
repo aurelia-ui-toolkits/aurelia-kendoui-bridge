@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/events', '../common/options', 'jquery', 'kendo-ui/src/js/kendo.autocomplete'], function (exports, _aureliaFramework, _commonEvents, _commonOptions, _jquery, _kendoUiSrcJsKendoAutocomplete) {
+define(['exports', 'aurelia-framework', '../common/events', '../common/options', 'jquery', 'kendo-ui'], function (exports, _aureliaFramework, _commonEvents, _commonOptions, _jquery, _kendoUi) {
     'use strict';
 
     Object.defineProperty(exports, '__esModule', {
