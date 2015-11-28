@@ -1,7 +1,7 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
 import {pruneOptions} from '../common/options';
 import $ from 'jquery';
-import 'kendo-ui';
+import 'kendo-ui/js/kendo.button.min';
 
 @customAttribute('au-kendo-button')
 @inject(Element)
@@ -31,7 +31,7 @@ export class AuKendoButton {
     }
 
     getOptions() {
-        
+
         var options = pruneOptions({
             icon: this.icon,
             enable: this.enable,

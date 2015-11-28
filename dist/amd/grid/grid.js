@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'aurelia-logging', '../common/events', '../common/options', 'jquery', 'kendo-ui'], function (exports, _aureliaFramework, _aureliaLogging, _commonEvents, _commonOptions, _jquery, _kendoUi) {
+define(['exports', 'aurelia-framework', 'aurelia-logging', '../common/events', '../common/options', 'jquery', 'kendo-ui/js/kendo.grid.min'], function (exports, _aureliaFramework, _aureliaLogging, _commonEvents, _commonOptions, _jquery, _kendoUiJsKendoGridMin) {
   'use strict';
 
   Object.defineProperty(exports, '__esModule', {

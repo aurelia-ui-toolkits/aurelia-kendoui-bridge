@@ -22,7 +22,7 @@ var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-require('kendo-ui');
+require('kendo-ui/js/kendo.grid.min');
 
 var Grid = (function () {
   function Grid() {

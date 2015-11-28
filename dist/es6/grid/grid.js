@@ -3,7 +3,7 @@ import {getLogger} from 'aurelia-logging';
 import {fireEvent} from '../common/events';
 import {pruneOptions} from '../common/options';
 import $ from 'jquery';
-import 'kendo-ui';
+import 'kendo-ui/js/kendo.grid.min';
 
 @customElement("au-kendo-grid")
 @inject(Element)
@@ -13,12 +13,12 @@ export class Grid {
 	_component;
 
 	constructor() {
-		
+
 		var logger = getLogger('aurelia-kendoui');
 
 		if (!Kendo.ui.Grid) {
 			logger.error('Kendo.ui.Grid is not defined. Ensure that the professional version of Kendo UI is installed.');
-			
+
 			return;
 		}
 

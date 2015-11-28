@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui'], function (_export) {
+System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui/js/kendo.button.min'], function (_export) {
     'use strict';
 
     var customAttribute, bindable, inject, pruneOptions, $, AuKendoButton;
@@ -18,7 +18,7 @@ System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui']
             pruneOptions = _commonOptions.pruneOptions;
         }, function (_jquery) {
             $ = _jquery['default'];
-        }, function (_kendoUi) {}],
+        }, function (_kendoUiJsKendoButtonMin) {}],
         execute: function () {
             AuKendoButton = (function () {
                 var _instanceInitializers = {};

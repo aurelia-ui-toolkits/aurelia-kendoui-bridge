@@ -20,7 +20,7 @@ var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-require('kendo-ui');
+require('kendo-ui/js/kendo.button.min');
 
 var AuKendoButton = (function () {
     var _instanceInitializers = {};

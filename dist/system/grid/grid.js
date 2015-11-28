@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', 'aurelia-logging', '../common/events', '../common/options', 'jquery', 'kendo-ui'], function (_export) {
+System.register(['aurelia-framework', 'aurelia-logging', '../common/events', '../common/options', 'jquery', 'kendo-ui/js/kendo.grid.min'], function (_export) {
   'use strict';
 
   var customElement, bindable, inject, getLogger, fireEvent, pruneOptions, $, Grid;
@@ -20,7 +20,7 @@ System.register(['aurelia-framework', 'aurelia-logging', '../common/events', '..
       pruneOptions = _commonOptions.pruneOptions;
     }, function (_jquery) {
       $ = _jquery['default'];
-    }, function (_kendoUi) {}],
+    }, function (_kendoUiJsKendoGridMin) {}],
     execute: function () {
       Grid = (function () {
         function Grid() {

@@ -1,12 +1,12 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
 import {pruneOptions} from '../common/options';
 import $ from 'jquery';
-import 'kendo-ui';
+import 'kendo-ui/js/kendo.tabstrip.min';
 
 @customAttribute('au-kendo-tabstrip')
 @inject(Element)
 export class TabStrip {
-	
+
 	_component;
 
 	@bindable animation;

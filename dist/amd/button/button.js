@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/options', 'jquery', 'kendo-ui'], function (exports, _aureliaFramework, _commonOptions, _jquery, _kendoUi) {
+define(['exports', 'aurelia-framework', '../common/options', 'jquery', 'kendo-ui/js/kendo.button.min'], function (exports, _aureliaFramework, _commonOptions, _jquery, _kendoUiJsKendoButtonMin) {
     'use strict';
 
     Object.defineProperty(exports, '__esModule', {

@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/events', '../common/options', 'jquery', 'kendo-ui'], function (exports, _aureliaFramework, _commonEvents, _commonOptions, _jquery, _kendoUi) {
+define(['exports', 'aurelia-framework', '../common/events', '../common/options', 'jquery', 'kendo-ui/js/kendo.autocomplete.min'], function (exports, _aureliaFramework, _commonEvents, _commonOptions, _jquery, _kendoUiJsKendoAutocompleteMin) {
     'use strict';
 
     Object.defineProperty(exports, '__esModule', {

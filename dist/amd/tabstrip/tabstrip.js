@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/options', 'jquery', 'kendo-ui'], function (exports, _aureliaFramework, _commonOptions, _jquery, _kendoUi) {
+define(['exports', 'aurelia-framework', '../common/options', 'jquery', 'kendo-ui/js/kendo.tabstrip.min'], function (exports, _aureliaFramework, _commonOptions, _jquery, _kendoUiJsKendoTabstripMin) {
     'use strict';
 
     Object.defineProperty(exports, '__esModule', {
