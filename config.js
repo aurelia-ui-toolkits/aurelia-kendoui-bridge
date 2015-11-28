@@ -26,6 +26,7 @@ System.config({
     "babel": "npm:babel-core@5.8.22",
     "babel-runtime": "npm:babel-runtime@5.8.20",
     "core-js": "npm:core-js@1.2.6",
+    "jquery": "github:components/jquery@2.1.4",
     "showdown": "github:showdownjs/showdown@1.3.0",
     "traceur": "github:jmcriffey/bower-traceur@0.0.91",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91",
