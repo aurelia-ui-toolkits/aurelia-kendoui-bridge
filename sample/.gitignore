@@ -1,3 +1,2 @@
-vendors/*.js
-vendors/*.css
-vendors/Bootstrap
+!vendors/files to place here.txt
+vendors/*

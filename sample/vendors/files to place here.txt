@@ -1,4 +1,2 @@
-kendo.all.min.js
-kendo.bootstrap.min.css
-kendo.common.core.min.css
-Bootstrap folder (can be found in styles folder)
+'js' folder
+'styles' folder
