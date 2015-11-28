@@ -14,7 +14,7 @@ The steps here assume you are using JSPM for package management
 
   `jspm install aurelia-kendoui-plugin`
 
-2. Register the plugin with Aurelia in your `main.js` or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Core or Pro by calling the `core()` or `pro()` method respectively 
+2. Register the plugin with Aurelia in your `main.js` or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Core or Pro by calling the `core()` or `pro()` method respectively
 
   ```
   export function configure(aurelia) {
@@ -35,13 +35,13 @@ Visit the docs or sample application for more information
 
 If you have a Kendo UI Pro licence you can use the full Kendo suite. First follow the installation instructions above and then follow the steps below to install Kendo from Telerik's private Bower repo:
 
-1. Install the JSPM git endpoint plugin 
-  
+1. Install the JSPM git endpoint plugin
+
   `npm install -g jspm-git`
   or
   `npm install jspm-git --save-dev` for a local install
 
-2. Create a new endpoint instance and point it to the Telerik git server 
+2. Create a new endpoint instance and point it to the Telerik git server
 
   `jspm registry create kendo jspm-git`
 

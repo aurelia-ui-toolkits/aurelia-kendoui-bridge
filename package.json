@@ -33,8 +33,8 @@
       "aurelia-logging": "npm:aurelia-logging@^1.0.0-beta.1",
       "aurelia-metadata": "npm:aurelia-metadata@^1.0.0-beta.1",
       "aurelia-templating": "npm:aurelia-templating@^1.0.0-beta.1",
-      "showdown": "github:showdownjs/showdown@1.3.0",
-      "kendo-ui": "github:kendo-labs/bower-kendo-ui"
+      "kendo-ui": "github:kendo-labs/bower-kendo-ui@^2015.2.813",
+      "showdown": "github:showdownjs/showdown@1.3.0"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.22",
