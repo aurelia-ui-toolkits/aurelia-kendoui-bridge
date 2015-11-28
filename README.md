@@ -12,7 +12,7 @@ The steps here assume you are using JSPM for package management
 
 1. Install the plugin
 
-  `jspm install github:aurelia-ui-toolkits/aurelia-kendoui-plugin`
+  `jspm install aurelia-kendoui-plugin`
 
 2. Register the plugin with Aurelia in your `main.js` or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Core or Pro by calling the `core()` or `pro()` method respectively 
 
