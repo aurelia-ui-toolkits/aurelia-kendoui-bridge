@@ -1,4 +1,4 @@
-import 'github:twbs/bootstrap@3.3.6';
+import 'bootstrap';
 
 export function configure(aurelia) {
     aurelia.use
