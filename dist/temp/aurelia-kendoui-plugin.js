@@ -8,17 +8,17 @@ exports.configure = configure;
 exports.fireEvent = fireEvent;
 exports.pruneOptions = pruneOptions;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
+require('kendo-ui/js/kendo.autocomplete.min');
+
 var _jquery = require('jquery');
 
-var _jquery2 = _interopRequireDefault(_jquery);
-
-require('kendo-ui/js/kendo.autocomplete.min');
+var $ = _interopRequireWildcard(_jquery);
 
 require('kendo-ui/js/kendo.button.min');
 
@@ -269,7 +269,7 @@ var AuKendoAutoComplete = (function () {
     AuKendoAutoComplete.prototype.attached = function attached() {
         var _this = this;
 
-        this._component = _jquery2['default'](this.element).kendoAutoComplete(this.getOptions()).data("kendoAutoComplete");
+        this._component = $(this.element).kendoAutoComplete(this.getOptions()).data("kendoAutoComplete");
 
         this._component.bind('change', function (event) {
             _this.value = event.sender.value();
@@ -377,7 +377,7 @@ var AuKendoButton = (function () {
     }
 
     AuKendoButton.prototype.attached = function attached() {
-        this._component = _jquery2['default'](this.element).kendoButton(this.getOptions()).data('kendoButton');
+        this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
     };
 
     AuKendoButton.prototype.detached = function detached() {
@@ -448,7 +448,7 @@ var Grid = (function () {
     }
 
     Grid.prototype.attached = function attached() {
-        this._component = _jquery2['default'](this.host).kendoGrid(this.getOptions()).data("kendoGrid");
+        this._component = $(this.host).kendoGrid(this.getOptions()).data("kendoGrid");
     };
 
     Grid.prototype.detached = function detached() {
@@ -605,7 +605,7 @@ var TabStrip = (function () {
     }
 
     TabStrip.prototype.attached = function attached() {
-        this._component = _jquery2['default'](this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
+        this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
     };
 
     TabStrip.prototype.detached = function detached() {

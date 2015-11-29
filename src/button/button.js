@@ -1,6 +1,6 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
 import {pruneOptions} from '../common/options';
-import $ from 'jquery';
+import * as $ from 'jquery';
 import 'kendo-ui/js/kendo.button.min';
 
 @customAttribute('au-kendo-button')

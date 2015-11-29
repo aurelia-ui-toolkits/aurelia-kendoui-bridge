@@ -17,7 +17,7 @@ System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui/j
         }, function (_commonOptions) {
             pruneOptions = _commonOptions.pruneOptions;
         }, function (_jquery) {
-            $ = _jquery['default'];
+            $ = _jquery;
         }, function (_kendoUiJsKendoButtonMin) {}],
         execute: function () {
             AuKendoButton = (function () {

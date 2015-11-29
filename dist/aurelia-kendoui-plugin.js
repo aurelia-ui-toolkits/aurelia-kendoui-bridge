@@ -1,5 +1,5 @@
-import $ from 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
+import * as $ from 'jquery';
 import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.grid.min';
 import 'kendo-ui/js/kendo.tabstrip.min';

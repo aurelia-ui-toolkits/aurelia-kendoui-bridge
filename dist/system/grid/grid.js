@@ -17,7 +17,7 @@ System.register(['aurelia-framework', 'aurelia-logging', '../common/events', '..
     }, function (_commonOptions) {
       pruneOptions = _commonOptions.pruneOptions;
     }, function (_jquery) {
-      $ = _jquery['default'];
+      $ = _jquery;
     }, function (_kendoUiJsKendoGridMin) {}],
     execute: function () {
       Grid = (function () {

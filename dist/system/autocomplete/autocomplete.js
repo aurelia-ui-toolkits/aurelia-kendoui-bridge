@@ -20,7 +20,7 @@ System.register(['aurelia-framework', '../common/events', '../common/options', '
         }, function (_commonOptions) {
             pruneOptions = _commonOptions.pruneOptions;
         }, function (_jquery) {
-            $ = _jquery['default'];
+            $ = _jquery;
         }, function (_kendoUiJsKendoAutocompleteMin) {}],
         execute: function () {
             AuKendoAutoComplete = (function () {
