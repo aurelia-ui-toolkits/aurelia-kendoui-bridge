@@ -8,7 +8,14 @@ export class App {
         config.title = 'Kendo UI Samples';
         config.map([{
             route: '',
-            redirect: 'grid'
+            redirect: '#/installation/begin'
+        }, {
+          route: 'installation/:page',
+          moduleId: './installation-wizard/wizard',
+          name: 'install',
+          href: '#/installation/begin',
+          nav: true,
+          title:'Installation wizard'
         }, {
             route: 'grid',
             moduleId: 'grid/index',

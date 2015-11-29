@@ -1,0 +1,29 @@
+<template>
+  <p>Would you like to use Kendo Core or Kendo-PRO?</p>
+
+  <form>
+    <div class="form-group">
+      <a href="http://www.telerik.com/kendo-ui/comparison" target="_blank" class="btn btn-default">
+        What's the difference?
+      </a>
+    </div>
+
+    <div class="form-group">
+
+      <p>I would like to use:</p>
+
+      <button click.delegate="select('core')"
+              class="btn ${wizardConfig.version == 'core' ? 'btn-primary' : 'btn-default'}">
+        Core
+      </button>
+
+      <button click.delegate="select('pro')"
+              class="btn ${wizardConfig.version == 'pro' ? 'btn-primary' : 'btn-default'}">
+        Pro
+      </button>
+    </div>
+  </form>
+
+  <require from="installation-wizard/navigation"></require>
+  <navigation previous="welcome" next.bind="next"></navigation>
+</template>

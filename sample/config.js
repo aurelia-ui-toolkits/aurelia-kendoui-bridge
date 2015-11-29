@@ -28,7 +28,7 @@ System.config({
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1",
     "babel": "npm:babel-core@5.8.23",
     "babel-runtime": "npm:babel-runtime@5.8.20",
-    "bootstrap": "github:twbs/bootstrap@3.3.5",
+    "bootstrap": "github:twbs/bootstrap@3.3.6",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.17",
     "font-awesome": "npm:font-awesome@4.4.0",
@@ -50,6 +50,9 @@ System.config({
       "util": "npm:util@0.10.3"
     },
     "github:twbs/bootstrap@3.3.5": {
+      "jquery": "github:components/jquery@2.1.4"
+    },
+    "github:twbs/bootstrap@3.3.6": {
       "jquery": "github:components/jquery@2.1.4"
     },
     "npm:assert@1.3.0": {

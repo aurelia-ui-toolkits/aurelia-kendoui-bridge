@@ -1,0 +1,20 @@
+<template>
+  <p>Do you have telerik credentials?</p>
+
+  <form>
+    <div class="form-group">
+      <button click.delegate="select(true)"
+              class="btn ${wizardConfig.hasCredentials === true ? 'btn-primary' : 'btn-default'}">
+        Yes
+      </button>
+
+      <button click.delegate="select(false)"
+              class="btn ${wizardConfig.hasCredentials === false ? 'btn-primary' : 'btn-default'}">
+        No
+      </button>
+    </div>
+  </form>
+
+  <require from="installation-wizard/navigation"></require>
+  <navigation previous="version" next="instructions"></navigation>
+</template>

@@ -1,4 +1,4 @@
-import 'github:twbs/bootstrap@3.3.5';
+import 'github:twbs/bootstrap@3.3.6';
 
 export function configure(aurelia) {
     aurelia.use
@@ -8,7 +8,7 @@ export function configure(aurelia) {
 
 
     aurelia.use.globalResources('shared/collapse-panel');
- 	aurelia.use.globalResources('shared/markdown');
+ 	  aurelia.use.globalResources('shared/markdown');
 
     aurelia.start().then(a => a.setRoot('app'));
 }
