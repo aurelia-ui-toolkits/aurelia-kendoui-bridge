@@ -4,10 +4,10 @@ declare module 'aurelia-kendoui-plugin' {
   import 'kendo-ui/js/kendo.button.min';
   import 'kendo-ui/js/kendo.grid.min';
   import 'kendo-ui/js/kendo.tabstrip.min';
-  import { customAttribute, bindable, bindingMode, inject, customElement }  from 'aurelia-framework';
+  import { customAttribute, bindable, inject, customElement }  from 'aurelia-framework';
   import { getLogger }  from 'aurelia-logging';
   export function configure(aurelia: any, configCallback: any): any;
-  class kendoConfigBuilder {
+  class KendoConfigBuilder {
     resources: any;
     core(): any;
     pro(): any;
@@ -15,11 +15,6 @@ declare module 'aurelia-kendoui-plugin' {
     kendoTabStrip(): any;
     kendoAutoComplete(): any;
   }
-  
-  // @bindable({ name: 'value', changeHandler: 'valueChanged', defaultValue: [], defaultBindingMode: bindingMode.twoWay })
-  // @bindable({ name: 'data', changeHandler: 'dataChanged', defaultValue: [], defaultBindingMode: bindingMode.oneWay })
-  // @bindable({ name: 'options', changeHandler: 'optionsChanged', defaultValue: {}, defaultBindingMode: bindingMode.oneWay })
-  // @bindable({ name: 'class', defaultValue: '', defaultBindingMode: bindingMode.oneWay })
   export class AuKendoAutoComplete {
     element: any;
     options: any;
@@ -50,26 +45,6 @@ declare module 'aurelia-kendoui-plugin' {
     getOptions(): any;
     enableChanged(newValue: any): any;
   }
-  
-  //  Handlers
-  //  AuKendoAutoComplete.prototype.valueChanged = function(value) {
-  //      if (this._dataComponent) {
-  //          let textfield = (this.options || {}).dataTextField;
-  //          this._dataComponent.value(textfield !== null ? value[textfield] : value);
-  //      }
-  //  };
-  //  AuKendoAutoComplete.prototype.dataChanged = function(value) {
-  //      if (this._dataComponent) {
-  //          this._dataComponent.setDataSource(new Kendo.data.DataSource({
-  //              data: value
-  //          }));
-  //      }
-  //  };
-  //  AuKendoAutoComplete.prototype.optionsChanged = function(value) {
-  //      if (this._dataComponent) {
-  //          this._dataComponent.setOptions(value);
-  //      }
-  //  };
   export class AuKendoButton {
     enable: any;
     icon: any;

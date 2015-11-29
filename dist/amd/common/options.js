@@ -1,19 +1,19 @@
 define(["exports"], function (exports) {
-	"use strict";
+  "use strict";
 
-	exports.__esModule = true;
-	exports.pruneOptions = pruneOptions;
+  exports.__esModule = true;
+  exports.pruneOptions = pruneOptions;
 
-	function pruneOptions(options) {
+  function pruneOptions(options) {
 
-		var returnOptions = {};
+    var returnOptions = {};
 
-		for (var prop in options) {
-			if (options.hasOwnProperty(prop) && options[prop] !== null) {
-				returnOptions[prop] = options[prop];
-			}
-		}
+    for (var prop in options) {
+      if (options.hasOwnProperty(prop) && options[prop] !== null) {
+        returnOptions[prop] = options[prop];
+      }
+    }
 
-		return returnOptions;
-	}
+    return returnOptions;
+  }
 });

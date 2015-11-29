@@ -10,8 +10,6 @@ var _aureliaFramework = require('aurelia-framework');
 
 var _aureliaLogging = require('aurelia-logging');
 
-var _commonEvents = require('../common/events');
-
 var _commonOptions = require('../common/options');
 
 var _jquery = require('jquery');
@@ -28,7 +26,6 @@ var Grid = (function () {
 
     if (!Kendo.ui.Grid) {
       logger.error('Kendo.ui.Grid is not defined. Ensure that the professional version of Kendo UI is installed.');
-
       return;
     }
 
@@ -36,11 +33,13 @@ var Grid = (function () {
   }
 
   Grid.prototype.attached = function attached() {
-    this._component = $(this.host).kendoGrid(this.getOptions()).data("kendoGrid");
+    this._component = $(this.host).kendoGrid(this.getOptions()).data('kendoGrid');
   };
 
   Grid.prototype.detached = function detached() {
-    if (this._component) this._component.destroy();
+    if (this._component) {
+      this._component.destroy();
+    }
   };
 
   Grid.prototype.getOptions = function getOptions() {
@@ -71,12 +70,14 @@ var Grid = (function () {
   };
 
   Grid.prototype.enableChanged = function enableChanged(newValue) {
-    if (this._component) this._component.enable(newValue);
+    if (this._component) {
+      this._component.enable(newValue);
+    }
   };
 
   var _Grid = Grid;
   Grid = _aureliaFramework.inject(Element)(Grid) || Grid;
-  Grid = _aureliaFramework.customElement("au-kendo-grid")(Grid) || Grid;
+  Grid = _aureliaFramework.customElement('au-kendo-grid')(Grid) || Grid;
   return Grid;
 })();
 
