@@ -1,320 +1,298 @@
+import * as LogManager from 'aurelia-logging';
+import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
-import * as $ from 'jquery';
 import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.grid.min';
 import 'kendo-ui/js/kendo.tabstrip.min';
-import {customAttribute,bindable,bindingMode,inject,customElement} from 'aurelia-framework';
+import {customAttribute,bindable,inject,customElement} from 'aurelia-framework';
 import {getLogger} from 'aurelia-logging';
 
+let logger = LogManager.getLogger('aurelia-kendoui-plugin');
+
 export function configure(aurelia, configCallback) {
+  let builder = new KendoConfigBuilder();
 
-    var builder = new kendoConfigBuilder();
-
-    if (configCallback !== undefined && typeof(configCallback) === 'function') {
-        configCallback(builder);
-    }
+  if (configCallback !== undefined && typeof(configCallback) === 'function') {
+    configCallback(builder);
+  }
 
     // Provide core if nothing was specified
-    if (builder.resources.length === 0) {
-        console.warn("Nothing specified for kendo configuration - using defaults for Kendo Core");
-        builder.core();
-    }
+  if (builder.resources.length === 0) {
+    logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
+    builder.core();
+  }
 
     // Pull the data off the builder
-    var resources = builder.resources;
+  let resources = builder.resources;
 
     // Convert the resource names to paths
-    resources = resources.map(r => r + "/" + r);
+  resources = resources.map(r => r + '/' + r);
 
-    aurelia.globalResources(resources);
+  aurelia.globalResources(resources);
 }
 
-class kendoConfigBuilder {
+class KendoConfigBuilder {
 
 	resources = [];
 
-	core() {
-		this.kendoButton()
+  core() {
+    this.kendoButton()
 			.kendoTabStrip();
-		return this;
-	}
+    return this;
+  }
 
-	pro() {
-		this.core()
+  pro() {
+    this.core()
 			.kendoAutoComplete();
-		return this;
-	}
+    return this;
+  }
 
-	kendoButton() {
-		this.resources.push("button");
-	    return this;
-	}
+  kendoButton() {
+    this.resources.push('button');
+    return this;
+  }
 
-	kendoTabStrip() {
-		this.resources.push("tabstrip");
-		return this;
-	}
+  kendoTabStrip() {
+    this.resources.push('tabstrip');
+    return this;
+  }
 
-	kendoAutoComplete() {
-	    this.resources.push("autocomplete");
-	    return this;
-	}
+  kendoAutoComplete() {
+    this.resources.push('autocomplete');
+    return this;
+  }
 }
 
-
 @customAttribute('au-kendo-autocomplete')
-//@bindable({ name: 'value', changeHandler: 'valueChanged', defaultValue: [], defaultBindingMode: bindingMode.twoWay })
-//@bindable({ name: 'data', changeHandler: 'dataChanged', defaultValue: [], defaultBindingMode: bindingMode.oneWay })
-//@bindable({ name: 'options', changeHandler: 'optionsChanged', defaultValue: {}, defaultBindingMode: bindingMode.oneWay })
-//@bindable({ name: 'class', defaultValue: '', defaultBindingMode: bindingMode.oneWay })
 @inject(Element)
 export class AuKendoAutoComplete {
 
-    element;
+  element;
 
-    // Autocomplete API
-    // Full options object if you want to set options that way
-    @bindable options = {};
+  // Autocomplete API
+  // Full options object if you want to set options that way
+  @bindable options = {};
 
-    // Individual properties - default values need setting
-    @bindable animation;
-    @bindable dataSource;
-    @bindable dataTextField = null;
-    @bindable delay = 200;
-    @bindable enable = true;
-    @bindable filter = "startswith";
-    @bindable fixedGroupTemplate;
-    @bindable groupTemplate;
-    @bindable height;
-    @bindable highlightFirst;
-    @bindable ignoreCase;
-    @bindable minLength;
-    @bindable placeholder;
-    @bindable popup;
-    @bindable separator = "";
-    @bindable suggest = true;
-    @bindable headerTemplate;
-    @bindable template;
-    @bindable valuePrimitive;
-    @bindable virtual;
+  // Individual properties - default values need setting
+  @bindable animation;
+  @bindable dataSource;
+  @bindable dataTextField = null;
+  @bindable delay = 200;
+  @bindable enable = true;
+  @bindable filter = 'startswith';
+  @bindable fixedGroupTemplate;
+  @bindable groupTemplate;
+  @bindable height;
+  @bindable highlightFirst;
+  @bindable ignoreCase;
+  @bindable minLength;
+  @bindable placeholder;
+  @bindable popup;
+  @bindable separator = '';
+  @bindable suggest = true;
+  @bindable headerTemplate;
+  @bindable template;
+  @bindable valuePrimitive;
+  @bindable virtual;
 
-    // Aurelia value-added API
-    @bindable value;
+  // Aurelia value-added API
+  @bindable value;
 
-    constructor(element) {
-        this.element = element;
+  constructor(element) {
+    this.element = element;
+  }
+
+  attached() {
+    this._component = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
+
+    this._component.bind('change', (event) => {
+      this.value = event.sender.value();
+
+      // Update the kendo binding
+      fireEvent(this.element, 'input');
+    });
+
+    this._component.bind('select', (event) => {
+      this.value = event.sender.value();
+
+      // Update the kendo binding
+      fireEvent(this.element, 'input');
+    });
+  }
+
+  detached() {
+    if (this._component) {
+      this._component.destroy();
     }
+  }
 
-    attached() {
-        this._component = $(this.element).kendoAutoComplete(this.getOptions()).data("kendoAutoComplete");
+  getOptions() {
+    let options = pruneOptions({
+      animation: this.animation,
+      dataSource: this.dataSource,
+      dataTextField: this.dataTextField,
+      delay: this.delay,
+      enable: this.enable,
+      filter: this.filter,
+      fixedGroupTemplate: this.fixedGroupTemplate,
+      groupTemplate: this.groupTemplate,
+      height: this.height,
+      highlightFirst: this.highlightFirst,
+      ignoreCase: this.ignoreCase,
+      minLength: this.minLength,
+      placeholder: this.placeholder,
+      popup: this.popup,
+      separator: this.separator,
+      suggest: this.suggest,
+      headerTemplate: this.headerTemplate,
+      template: this.template,
+      valuePrimitive: this.valuePrimitive,
+      virtual: this.virtual
+    });
 
-        this._component.bind('change', (event) => {
-            this.value = event.sender.value();
+    return Object.assign({}, this.options, options);
+  }
 
-            // Update the kendo binding
-            fireEvent(this.element, 'input');
-        });
-
-        this._component.bind('select', (event) => {
-            this.value = event.sender.value();
-
-            // Update the kendo binding
-            fireEvent(this.element, 'input');
-        });
+  enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
     }
-
-    detached() {
-        if(this._component)
-            this._component.destroy();
-    }
-
-    getOptions() {
-        var options = pruneOptions({
-            animation: this.animation,
-            dataSource: this.dataSource,
-            dataTextField: this.dataTextField,
-            delay: this.delay,
-            enable: this.enable,
-            filter: this.filter,
-            fixedGroupTemplate: this.fixedGroupTemplate,
-            groupTemplate: this.groupTemplate,
-            height: this.height,
-            highlightFirst: this.highlightFirst,
-            ignoreCase: this.ignoreCase,
-            minLength: this.minLength,
-            placeholder: this.placeholder,
-            popup: this.popup,
-            separator: this.separator,
-            suggest: this.suggest,
-            headerTemplate: this.headerTemplate,
-            template: this.template,
-            valuePrimitive: this.valuePrimitive,
-            virtual: this.virtual
-        });
-
-        return Object.assign({}, this.options, options);
-    }
-
-    enableChanged(newValue) {
-        if (this._component)
-            this._component.enable(newValue);
-    }
+  }
 }
-
-
-// Handlers
-
-// AuKendoAutoComplete.prototype.valueChanged = function(value) {
-//     if (this._dataComponent) {
-//         let textfield = (this.options || {}).dataTextField;
-//         this._dataComponent.value(textfield !== null ? value[textfield] : value);
-//     }
-// };
-
-// AuKendoAutoComplete.prototype.dataChanged = function(value) {
-//     if (this._dataComponent) {
-//         this._dataComponent.setDataSource(new Kendo.data.DataSource({
-//             data: value
-//         }));
-//     }
-// };
-
-// AuKendoAutoComplete.prototype.optionsChanged = function(value) {
-//     if (this._dataComponent) {
-//         this._dataComponent.setOptions(value);
-//     }
-// };
 
 @customAttribute('au-kendo-button')
 @inject(Element)
 export class AuKendoButton {
 
-    _component;
+  _component;
 
-    @bindable enable = true;
-    @bindable icon;
-    @bindable imageUrl;
-    @bindable spriteCssClass;
+  @bindable enable = true;
+  @bindable icon;
+  @bindable imageUrl;
+  @bindable spriteCssClass;
 
-    @bindable options;
+  @bindable options;
 
-    constructor(element) {
-        this.element = element;
-        this.options = {};
+  constructor(element) {
+    this.element = element;
+    this.options = {};
+  }
+
+  attached() {
+    this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+  }
+
+  detached() {
+    if (this._component) {
+      this._component.destroy();
     }
+  }
 
-    attached() {
-        this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+  getOptions() {
+    let options = pruneOptions({
+      icon: this.icon,
+      enable: this.enable,
+      imageUrl: this.imageUrl,
+      spriteCssClass: this.spriteCssClass
+    });
+
+    return Object.assign({}, this.options, options);
+  }
+
+  enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
     }
-
-    detached() {
-    	if(this._component)
-	        this._component.destroy();
-    }
-
-    getOptions() {
-
-        var options = pruneOptions({
-            icon: this.icon,
-            enable: this.enable,
-            imageUrl: this.imageUrl,
-            spriteCssClass: this.spriteCssClass
-        });
-
-        return Object.assign({}, this.options, options);
-    }
-
-    enableChanged(newValue) {
-    	if(this._component)
-    		this._component.enable(newValue);
-    }
+  }
 }
 
-function createEvent(name) {  
-  var event = document.createEvent('Event');
+function createEvent(name) {
+  let event = document.createEvent('Event');
   event.initEvent(name, true, true);
   return event;
 }
 
-export function fireEvent(element, name) {  
-  var event = createEvent(name);
+export function fireEvent(element, name) {
+  let event = createEvent(name);
   element.dispatchEvent(event);
 }
+
 export function pruneOptions(options) {
 	// Implicitly setting options to "undefined" for a kendo control can break things.
-	// this function prunes the supplied options object and removes values that 
+	// this function prunes the supplied options object and removes values that
 	// aren't set to something explicit (i.e. not null)
 
-	var returnOptions = {};
+  let returnOptions = {};
 
-	for(var prop in options) {
-		if(options.hasOwnProperty(prop) && options[prop] !== null) {
-			returnOptions[prop] = options[prop];
-		}
-	}
+  for (let prop in options) {
+    if (options.hasOwnProperty(prop) && options[prop] !== null) {
+      returnOptions[prop] = options[prop];
+    }
+  }
 
-	return returnOptions;	
+  return returnOptions;
 }
-@customElement("au-kendo-grid")
+
+@customElement('au-kendo-grid')
 @inject(Element)
 export class Grid {
 
 	host;
 	_component;
 
-	constructor() {
+  constructor() {
+    let logger = getLogger('aurelia-kendoui');
 
-		var logger = getLogger('aurelia-kendoui');
-
-		if (!Kendo.ui.Grid) {
-			logger.error('Kendo.ui.Grid is not defined. Ensure that the professional version of Kendo UI is installed.');
-
-			return;
-		}
-
-		this.logger = logger;
-	}
-
-	attached () {
-		this._component = $(this.host).kendoGrid(this.getOptions()).data("kendoGrid");
-	}
-
-	detached () {
-		if(this._component)
-			this._component.destroy();
-	}
-
-	getOptions() {
-        var options = pruneOptions({
-            animation: this.animation,
-            dataSource: this.dataSource,
-            dataTextField: this.dataTextField,
-            delay: this.delay,
-            enable: this.enable,
-            filter: this.filter,
-            fixedGroupTemplate: this.fixedGroupTemplate,
-            groupTemplate: this.groupTemplate,
-            height: this.height,
-            highlightFirst: this.highlightFirst,
-            ignoreCase: this.ignoreCase,
-            minLength: this.minLength,
-            placeholder: this.placeholder,
-            popup: this.popup,
-            separator: this.separator,
-            suggest: this.suggest,
-            headerTemplate: this.headerTemplate,
-            template: this.template,
-            valuePrimitive: this.valuePrimitive,
-            virtual: this.virtual
-        });
-
-        return Object.assign({}, this.options, options);
+    if (!Kendo.ui.Grid) {
+      logger.error('Kendo.ui.Grid is not defined. Ensure that the professional version of Kendo UI is installed.');
+      return;
     }
 
-    enableChanged(newValue) {
-        if (this._component)
-            this._component.enable(newValue);
+    this.logger = logger;
+  }
+
+  attached() {
+    this._component = $(this.host).kendoGrid(this.getOptions()).data('kendoGrid');
+  }
+
+  detached() {
+    if (this._component) {
+      this._component.destroy();
     }
+  }
+
+  getOptions() {
+    let options = pruneOptions({
+      animation: this.animation,
+      dataSource: this.dataSource,
+      dataTextField: this.dataTextField,
+      delay: this.delay,
+      enable: this.enable,
+      filter: this.filter,
+      fixedGroupTemplate: this.fixedGroupTemplate,
+      groupTemplate: this.groupTemplate,
+      height: this.height,
+      highlightFirst: this.highlightFirst,
+      ignoreCase: this.ignoreCase,
+      minLength: this.minLength,
+      placeholder: this.placeholder,
+      popup: this.popup,
+      separator: this.separator,
+      suggest: this.suggest,
+      headerTemplate: this.headerTemplate,
+      template: this.template,
+      valuePrimitive: this.valuePrimitive,
+      virtual: this.virtual
+    });
+
+    return Object.assign({}, this.options, options);
+  }
+
+  enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
+  }
 }
 
 @customAttribute('au-kendo-tabstrip')
@@ -340,40 +318,42 @@ export class TabStrip {
     @bindable options;
 
     constructor(element) {
-        this.element = element;
-        this.options = {};
+      this.element = element;
+      this.options = {};
     }
 
     attached() {
-        this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
+      this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
     }
 
     detached() {
-    	if(this._component)
-	        this._component.destroy();
+      if (this._component) {
+        this._component.destroy();
+      }
     }
 
     getOptions() {
-        var options = pruneOptions({
-        	animation: this.animation,
-    	    collapsible: this.collapsible,
-    	    contentUrls: this.contentUrls,
-    	    dataContentField: this.dataContentField,
-    	    dataContentUrlField: this.dataContentUrlField,
-    	    dataSpriteCssClass: this.dataSpriteCssClass,
-    	    dataTextField: this.dataTextField,
-    	    dataUrlField: this.dataUrlField,
-    	    navigatable: this.navigatable,
-    	    scrollable: this.scrollable,
-    	    tabPosition: this.tabPosition,
-    	    value: this.value
-        });
+      let options = pruneOptions({
+        animation: this.animation,
+        collapsible: this.collapsible,
+        contentUrls: this.contentUrls,
+        dataContentField: this.dataContentField,
+        dataContentUrlField: this.dataContentUrlField,
+        dataSpriteCssClass: this.dataSpriteCssClass,
+        dataTextField: this.dataTextField,
+        dataUrlField: this.dataUrlField,
+        navigatable: this.navigatable,
+        scrollable: this.scrollable,
+        tabPosition: this.tabPosition,
+        value: this.value
+      });
 
-        return Object.assign({}, this.options, options);
+      return Object.assign({}, this.options, options);
     }
 
     enableChanged(newValue) {
-    	if(this._component)
-    		this._component.enable(newValue);
+      if (this._component) {
+        this._component.enable(newValue);
+      }
     }
 }
