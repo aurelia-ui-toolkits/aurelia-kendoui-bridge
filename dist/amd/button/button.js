@@ -59,7 +59,7 @@ define(['exports', 'aurelia-framework', '../common/options', 'jquery', 'kendo-ui
     }
 
     AuKendoButton.prototype.attached = function attached() {
-      this._component = _jquery(this.element).kendoButton(this.getOptions()).data('kendoButton');
+      this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
     };
 
     AuKendoButton.prototype.detached = function detached() {

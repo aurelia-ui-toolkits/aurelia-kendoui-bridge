@@ -14,11 +14,13 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
+var _aureliaLogging = require('aurelia-logging');
+
+var LogManager = _interopRequireWildcard(_aureliaLogging);
+
+require('jquery');
+
 require('kendo-ui/js/kendo.autocomplete.min');
-
-var _jquery = require('jquery');
-
-var $ = _interopRequireWildcard(_jquery);
 
 require('kendo-ui/js/kendo.button.min');
 
@@ -28,7 +30,7 @@ require('kendo-ui/js/kendo.tabstrip.min');
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _aureliaLogging = require('aurelia-logging');
+var logger = LogManager.getLogger('aurelia-kendoui-plugin');
 
 function configure(aurelia, configCallback) {
   var builder = new KendoConfigBuilder();
@@ -38,7 +40,7 @@ function configure(aurelia, configCallback) {
   }
 
   if (builder.resources.length === 0) {
-    console.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
+    logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
     builder.core();
   }
 

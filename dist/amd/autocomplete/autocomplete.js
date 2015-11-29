@@ -191,7 +191,7 @@ define(['exports', 'aurelia-framework', '../common/events', '../common/options',
     AuKendoAutoComplete.prototype.attached = function attached() {
       var _this = this;
 
-      this._component = _jquery(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
+      this._component = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
 
       this._component.bind('change', function (event) {
         _this.value = event.sender.value();

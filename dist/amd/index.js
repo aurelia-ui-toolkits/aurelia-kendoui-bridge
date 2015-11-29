@@ -1,10 +1,12 @@
-define(['exports'], function (exports) {
+define(['exports', 'aurelia-logging'], function (exports, _aureliaLogging) {
   'use strict';
 
   exports.__esModule = true;
   exports.configure = configure;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+  var logger = _aureliaLogging.getLogger('aurelia-kendoui-plugin');
 
   function configure(aurelia, configCallback) {
     var builder = new KendoConfigBuilder();
@@ -14,7 +16,7 @@ define(['exports'], function (exports) {
     }
 
     if (builder.resources.length === 0) {
-      console.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
+      logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
       builder.core();
     }
 

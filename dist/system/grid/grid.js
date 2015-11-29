@@ -1,7 +1,7 @@
 System.register(['aurelia-framework', 'aurelia-logging', '../common/options', 'jquery', 'kendo-ui/js/kendo.grid.min'], function (_export) {
   'use strict';
 
-  var customElement, inject, getLogger, pruneOptions, $, Grid;
+  var customElement, inject, getLogger, pruneOptions, Grid;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -13,9 +13,7 @@ System.register(['aurelia-framework', 'aurelia-logging', '../common/options', 'j
       getLogger = _aureliaLogging.getLogger;
     }, function (_commonOptions) {
       pruneOptions = _commonOptions.pruneOptions;
-    }, function (_jquery) {
-      $ = _jquery;
-    }, function (_kendoUiJsKendoGridMin) {}],
+    }, function (_jquery) {}, function (_kendoUiJsKendoGridMin) {}],
     execute: function () {
       Grid = (function () {
         function Grid() {

@@ -1,7 +1,7 @@
 import {customElement, inject} from 'aurelia-framework';
 import {getLogger} from 'aurelia-logging';
 import {pruneOptions} from '../common/options';
-import * as $ from 'jquery';
+import 'jquery';
 import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('au-kendo-grid')

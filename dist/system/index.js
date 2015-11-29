@@ -1,7 +1,7 @@
-System.register([], function (_export) {
+System.register(['aurelia-logging'], function (_export) {
   'use strict';
 
-  var KendoConfigBuilder;
+  var LogManager, logger, KendoConfigBuilder;
 
   _export('configure', configure);
 
@@ -15,7 +15,7 @@ System.register([], function (_export) {
     }
 
     if (builder.resources.length === 0) {
-      console.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
+      logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
       builder.core();
     }
 
@@ -29,8 +29,12 @@ System.register([], function (_export) {
   }
 
   return {
-    setters: [],
+    setters: [function (_aureliaLogging) {
+      LogManager = _aureliaLogging;
+    }],
     execute: function () {
+      logger = LogManager.getLogger('aurelia-kendoui-plugin');
+
       KendoConfigBuilder = (function () {
         function KendoConfigBuilder() {
           _classCallCheck(this, KendoConfigBuilder);

@@ -1,3 +1,6 @@
+import * as LogManager from 'aurelia-logging';
+let logger = LogManager.getLogger('aurelia-kendoui-plugin');
+
 export function configure(aurelia, configCallback) {
   let builder = new KendoConfigBuilder();
 
@@ -7,7 +10,7 @@ export function configure(aurelia, configCallback) {
 
     // Provide core if nothing was specified
   if (builder.resources.length === 0) {
-    console.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
+    logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
     builder.core();
   }
 

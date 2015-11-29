@@ -1,10 +1,13 @@
+import * as LogManager from 'aurelia-logging';
+import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
-import * as $ from 'jquery';
 import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.grid.min';
 import 'kendo-ui/js/kendo.tabstrip.min';
 import {customAttribute,bindable,inject,customElement} from 'aurelia-framework';
 import {getLogger} from 'aurelia-logging';
+
+let logger = LogManager.getLogger('aurelia-kendoui-plugin');
 
 export function configure(aurelia, configCallback) {
   let builder = new KendoConfigBuilder();
@@ -15,7 +18,7 @@ export function configure(aurelia, configCallback) {
 
     // Provide core if nothing was specified
   if (builder.resources.length === 0) {
-    console.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
+    logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
     builder.core();
   }
 
