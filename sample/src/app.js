@@ -6,15 +6,16 @@ import 'kendo-ui/styles/kendo.bootstrap.min.css!';
 export class App {
     configureRouter(config, router) {
         config.title = 'Kendo UI Samples';
-        config.map([{
+        config.map([
+        {
             route: '',
-            redirect: 'grid'
+            redirect: 'autocomplete'
         }, {
-            route: 'grid',
-            moduleId: 'grid/index',
+            route: 'autocomplete',
+            moduleId: 'autocomplete/index',
             nav: true,
-            title: 'Grid'
-        }, {
+            title: 'Autocomplete'
+        },  {
             route: 'button',
             moduleId: 'button/index',
             nav: true,
@@ -25,10 +26,15 @@ export class App {
             nav: true,
             title: 'Combobox'
         },  {
-            route: 'autocomplete',
-            moduleId: 'autocomplete/index',
+            route: 'dropdownlist',
+            moduleId: 'dropdownlist/index',
             nav: true,
-            title: 'Autocomplete'
+            title: 'DropDownList'
+        },  {
+            route: 'grid',
+            moduleId: 'grid/index',
+            nav: true,
+            title: 'Grid'
         }, {
             route: 'tabstrip',
             moduleId: 'tabstrip/index',
