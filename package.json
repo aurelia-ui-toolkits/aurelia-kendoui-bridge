@@ -45,8 +45,8 @@
     }
   },
   "devDependencies": {
-    "aurelia-tools": "^0.1.12",
-    "babel-dts-generator": "^0.2.11",
+    "aurelia-tools": "git://github.com/aurelia-ui-toolkits/tools.git#master",
+    "babel-dts-generator": "^0.2.17",
     "babel-eslint": "^4.1.1",
     "browser-sync": "^2.9.3",
     "conventional-changelog": "0.0.11",
