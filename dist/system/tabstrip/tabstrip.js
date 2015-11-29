@@ -17,11 +17,10 @@ System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui/j
         }, function (_commonOptions) {
             pruneOptions = _commonOptions.pruneOptions;
         }, function (_jquery) {
-            $ = _jquery['default'];
+            $ = _jquery;
         }, function (_kendoUiJsKendoTabstripMin) {}],
         execute: function () {
             TabStrip = (function () {
-                var _instanceInitializers = {};
                 var _instanceInitializers = {};
 
                 _createDecoratedClass(TabStrip, [{
@@ -131,42 +130,36 @@ System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui/j
                     this.options = {};
                 }
 
-                _createDecoratedClass(TabStrip, [{
-                    key: 'attached',
-                    value: function attached() {
-                        this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
-                    }
-                }, {
-                    key: 'detached',
-                    value: function detached() {
-                        if (this._component) this._component.destroy();
-                    }
-                }, {
-                    key: 'getOptions',
-                    value: function getOptions() {
-                        var options = pruneOptions({
-                            animation: this.animation,
-                            collapsible: this.collapsible,
-                            contentUrls: this.contentUrls,
-                            dataContentField: this.dataContentField,
-                            dataContentUrlField: this.dataContentUrlField,
-                            dataSpriteCssClass: this.dataSpriteCssClass,
-                            dataTextField: this.dataTextField,
-                            dataUrlField: this.dataUrlField,
-                            navigatable: this.navigatable,
-                            scrollable: this.scrollable,
-                            tabPosition: this.tabPosition,
-                            value: this.value
-                        });
+                TabStrip.prototype.attached = function attached() {
+                    this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
+                };
 
-                        return Object.assign({}, this.options, options);
-                    }
-                }, {
-                    key: 'enableChanged',
-                    value: function enableChanged(newValue) {
-                        if (this._component) this._component.enable(newValue);
-                    }
-                }], null, _instanceInitializers);
+                TabStrip.prototype.detached = function detached() {
+                    if (this._component) this._component.destroy();
+                };
+
+                TabStrip.prototype.getOptions = function getOptions() {
+                    var options = pruneOptions({
+                        animation: this.animation,
+                        collapsible: this.collapsible,
+                        contentUrls: this.contentUrls,
+                        dataContentField: this.dataContentField,
+                        dataContentUrlField: this.dataContentUrlField,
+                        dataSpriteCssClass: this.dataSpriteCssClass,
+                        dataTextField: this.dataTextField,
+                        dataUrlField: this.dataUrlField,
+                        navigatable: this.navigatable,
+                        scrollable: this.scrollable,
+                        tabPosition: this.tabPosition,
+                        value: this.value
+                    });
+
+                    return Object.assign({}, this.options, options);
+                };
+
+                TabStrip.prototype.enableChanged = function enableChanged(newValue) {
+                    if (this._component) this._component.enable(newValue);
+                };
 
                 var _TabStrip = TabStrip;
                 TabStrip = inject(Element)(TabStrip) || TabStrip;
