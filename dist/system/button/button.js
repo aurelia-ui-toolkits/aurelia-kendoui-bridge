@@ -17,11 +17,10 @@ System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui/j
         }, function (_commonOptions) {
             pruneOptions = _commonOptions.pruneOptions;
         }, function (_jquery) {
-            $ = _jquery['default'];
+            $ = _jquery;
         }, function (_kendoUiJsKendoButtonMin) {}],
         execute: function () {
             AuKendoButton = (function () {
-                var _instanceInitializers = {};
                 var _instanceInitializers = {};
 
                 _createDecoratedClass(AuKendoButton, [{
@@ -70,35 +69,29 @@ System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui/j
                     this.options = {};
                 }
 
-                _createDecoratedClass(AuKendoButton, [{
-                    key: 'attached',
-                    value: function attached() {
-                        this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
-                    }
-                }, {
-                    key: 'detached',
-                    value: function detached() {
-                        if (this._component) this._component.destroy();
-                    }
-                }, {
-                    key: 'getOptions',
-                    value: function getOptions() {
+                AuKendoButton.prototype.attached = function attached() {
+                    this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+                };
 
-                        var options = pruneOptions({
-                            icon: this.icon,
-                            enable: this.enable,
-                            imageUrl: this.imageUrl,
-                            spriteCssClass: this.spriteCssClass
-                        });
+                AuKendoButton.prototype.detached = function detached() {
+                    if (this._component) this._component.destroy();
+                };
 
-                        return Object.assign({}, this.options, options);
-                    }
-                }, {
-                    key: 'enableChanged',
-                    value: function enableChanged(newValue) {
-                        if (this._component) this._component.enable(newValue);
-                    }
-                }], null, _instanceInitializers);
+                AuKendoButton.prototype.getOptions = function getOptions() {
+
+                    var options = pruneOptions({
+                        icon: this.icon,
+                        enable: this.enable,
+                        imageUrl: this.imageUrl,
+                        spriteCssClass: this.spriteCssClass
+                    });
+
+                    return Object.assign({}, this.options, options);
+                };
+
+                AuKendoButton.prototype.enableChanged = function enableChanged(newValue) {
+                    if (this._component) this._component.enable(newValue);
+                };
 
                 var _AuKendoButton = AuKendoButton;
                 AuKendoButton = inject(Element)(AuKendoButton) || AuKendoButton;

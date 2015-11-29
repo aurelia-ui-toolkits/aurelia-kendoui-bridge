@@ -17,8 +17,7 @@ var jsName = paths.packageName + '.js';
 gulp.task('build-index', function(){
   var importsToAdd = [];
 
-  return gulp.src([paths.root + '*.js', '!' + paths.root + 'index.js'])
-    .pipe(tools.sortFiles())
+  return gulp.src(paths.source)
     .pipe(through2.obj(function(file, enc, callback) {
       file.contents = new Buffer(tools.extractImports(file.contents.toString("utf8"), importsToAdd));
       this.push(file);
@@ -28,7 +27,14 @@ gulp.task('build-index', function(){
     .pipe(insert.transform(function(contents) {
       return tools.createImportBlock(importsToAdd) + contents;
     }))
-    .pipe(to5(assign({}, compilerOptions, {modules:'common'})));
+    .pipe(gulp.dest(paths.output));
+});
+
+
+gulp.task('build-es6-temp', function () {
+    return gulp.src(paths.output + jsName)
+      .pipe(to5(assign({}, compilerOptions, {modules:'common'})))
+      .pipe(gulp.dest(paths.output + 'temp'));
 });
 
 gulp.task('build-es6', function () {
@@ -38,25 +44,24 @@ gulp.task('build-es6', function () {
 
 gulp.task('build-commonjs', function () {
   return gulp.src(paths.source)
-    .pipe(to5(assign({}, compilerOptions, {modules:'common'}, {plugins: []})))
+    .pipe(to5(assign({}, compilerOptions, {modules:'common', plugins: []})))
     .pipe(gulp.dest(paths.output + 'commonjs'));
 });
 
 gulp.task('build-amd', function () {
   return gulp.src(paths.source)
-    .pipe(to5(assign({}, compilerOptions, {modules:'amd'}, {plugins: []})))
+    .pipe(to5(assign({}, compilerOptions, {modules:'amd', plugins: []})))
     .pipe(gulp.dest(paths.output + 'amd'));
 });
 
 gulp.task('build-system', function () {
   return gulp.src(paths.source)
-    .pipe(to5(assign({}, compilerOptions, {modules:'system'}, {plugins: []})))
+    .pipe(to5(assign({}, compilerOptions, {modules:'system', plugins: []})))
     .pipe(gulp.dest(paths.output + 'system'));
 });
 
 gulp.task('build-dts', function(){
-  var tdsPath = paths.output + paths.packageName + '/' + paths.packageName + '.d.ts';
-  return gulp.src(tdsPath)
+  return gulp.src(paths.output + paths.packageName + '.d.ts')
       .pipe(rename(paths.packageName + '.d.ts'))
       .pipe(gulp.dest(paths.output + 'es6'))
       .pipe(gulp.dest(paths.output + 'commonjs'))
@@ -70,7 +75,7 @@ gulp.task('copy-html', function() {
   .pipe(gulp.dest(paths.output + 'commonjs'))
   .pipe(gulp.dest(paths.output + 'amd'))
   .pipe(gulp.dest(paths.output + 'system'));
- 
+
 });
 
 gulp.task('copy-css', function() {
@@ -79,23 +84,17 @@ gulp.task('copy-css', function() {
   .pipe(gulp.dest(paths.output + 'commonjs'))
   .pipe(gulp.dest(paths.output + 'amd'))
   .pipe(gulp.dest(paths.output + 'system'));
- 
+
 });
 
-gulp.task('remove-dts-folder', function() {
-    var tdsFolder = paths.output + paths.packageName;
-    return gulp.src([tdsFolder])
-      .pipe(vinylPaths(del));
-});
 
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
-    ['build-es6', 'build-commonjs', 'build-amd', 'build-system'],
-    ['copy-html', 'copy-css'],
     'build-index',
+    ['build-es6-temp', 'build-es6', 'build-commonjs', 'build-amd', 'build-system'],
+    ['copy-html', 'copy-css'],
     'build-dts',
-    'remove-dts-folder',
     callback
   );
 });

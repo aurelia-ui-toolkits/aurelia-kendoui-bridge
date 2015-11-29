@@ -1,12 +1,10 @@
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -18,12 +16,11 @@ var _commonOptions = require('../common/options');
 
 var _jquery = require('jquery');
 
-var _jquery2 = _interopRequireDefault(_jquery);
+var $ = _interopRequireWildcard(_jquery);
 
 require('kendo-ui/js/kendo.tabstrip.min');
 
 var TabStrip = (function () {
-    var _instanceInitializers = {};
     var _instanceInitializers = {};
 
     _createDecoratedClass(TabStrip, [{
@@ -133,46 +130,40 @@ var TabStrip = (function () {
         this.options = {};
     }
 
-    _createDecoratedClass(TabStrip, [{
-        key: 'attached',
-        value: function attached() {
-            this._component = (0, _jquery2['default'])(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
-        }
-    }, {
-        key: 'detached',
-        value: function detached() {
-            if (this._component) this._component.destroy();
-        }
-    }, {
-        key: 'getOptions',
-        value: function getOptions() {
-            var options = (0, _commonOptions.pruneOptions)({
-                animation: this.animation,
-                collapsible: this.collapsible,
-                contentUrls: this.contentUrls,
-                dataContentField: this.dataContentField,
-                dataContentUrlField: this.dataContentUrlField,
-                dataSpriteCssClass: this.dataSpriteCssClass,
-                dataTextField: this.dataTextField,
-                dataUrlField: this.dataUrlField,
-                navigatable: this.navigatable,
-                scrollable: this.scrollable,
-                tabPosition: this.tabPosition,
-                value: this.value
-            });
+    TabStrip.prototype.attached = function attached() {
+        this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
+    };
 
-            return Object.assign({}, this.options, options);
-        }
-    }, {
-        key: 'enableChanged',
-        value: function enableChanged(newValue) {
-            if (this._component) this._component.enable(newValue);
-        }
-    }], null, _instanceInitializers);
+    TabStrip.prototype.detached = function detached() {
+        if (this._component) this._component.destroy();
+    };
+
+    TabStrip.prototype.getOptions = function getOptions() {
+        var options = _commonOptions.pruneOptions({
+            animation: this.animation,
+            collapsible: this.collapsible,
+            contentUrls: this.contentUrls,
+            dataContentField: this.dataContentField,
+            dataContentUrlField: this.dataContentUrlField,
+            dataSpriteCssClass: this.dataSpriteCssClass,
+            dataTextField: this.dataTextField,
+            dataUrlField: this.dataUrlField,
+            navigatable: this.navigatable,
+            scrollable: this.scrollable,
+            tabPosition: this.tabPosition,
+            value: this.value
+        });
+
+        return Object.assign({}, this.options, options);
+    };
+
+    TabStrip.prototype.enableChanged = function enableChanged(newValue) {
+        if (this._component) this._component.enable(newValue);
+    };
 
     var _TabStrip = TabStrip;
-    TabStrip = (0, _aureliaFramework.inject)(Element)(TabStrip) || TabStrip;
-    TabStrip = (0, _aureliaFramework.customAttribute)('au-kendo-tabstrip')(TabStrip) || TabStrip;
+    TabStrip = _aureliaFramework.inject(Element)(TabStrip) || TabStrip;
+    TabStrip = _aureliaFramework.customAttribute('au-kendo-tabstrip')(TabStrip) || TabStrip;
     return TabStrip;
 })();
 

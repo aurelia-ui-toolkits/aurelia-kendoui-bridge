@@ -20,11 +20,10 @@ System.register(['aurelia-framework', '../common/events', '../common/options', '
         }, function (_commonOptions) {
             pruneOptions = _commonOptions.pruneOptions;
         }, function (_jquery) {
-            $ = _jquery['default'];
+            $ = _jquery;
         }, function (_kendoUiJsKendoAutocompleteMin) {}],
         execute: function () {
             AuKendoAutoComplete = (function () {
-                var _instanceInitializers = {};
                 var _instanceInitializers = {};
 
                 _createDecoratedClass(AuKendoAutoComplete, [{
@@ -203,64 +202,58 @@ System.register(['aurelia-framework', '../common/events', '../common/options', '
                     this.element = element;
                 }
 
-                _createDecoratedClass(AuKendoAutoComplete, [{
-                    key: 'attached',
-                    value: function attached() {
-                        var _this = this;
+                AuKendoAutoComplete.prototype.attached = function attached() {
+                    var _this = this;
 
-                        this._component = $(this.element).kendoAutoComplete(this.getOptions()).data("kendoAutoComplete");
+                    this._component = $(this.element).kendoAutoComplete(this.getOptions()).data("kendoAutoComplete");
 
-                        this._component.bind('change', function (event) {
-                            _this.value = event.sender.value();
+                    this._component.bind('change', function (event) {
+                        _this.value = event.sender.value();
 
-                            fireEvent(_this.element, 'input');
-                        });
+                        fireEvent(_this.element, 'input');
+                    });
 
-                        this._component.bind('select', function (event) {
-                            _this.value = event.sender.value();
+                    this._component.bind('select', function (event) {
+                        _this.value = event.sender.value();
 
-                            fireEvent(_this.element, 'input');
-                        });
-                    }
-                }, {
-                    key: 'detached',
-                    value: function detached() {
-                        if (this._component) this._component.destroy();
-                    }
-                }, {
-                    key: 'getOptions',
-                    value: function getOptions() {
-                        var options = pruneOptions({
-                            animation: this.animation,
-                            dataSource: this.dataSource,
-                            dataTextField: this.dataTextField,
-                            delay: this.delay,
-                            enable: this.enable,
-                            filter: this.filter,
-                            fixedGroupTemplate: this.fixedGroupTemplate,
-                            groupTemplate: this.groupTemplate,
-                            height: this.height,
-                            highlightFirst: this.highlightFirst,
-                            ignoreCase: this.ignoreCase,
-                            minLength: this.minLength,
-                            placeholder: this.placeholder,
-                            popup: this.popup,
-                            separator: this.separator,
-                            suggest: this.suggest,
-                            headerTemplate: this.headerTemplate,
-                            template: this.template,
-                            valuePrimitive: this.valuePrimitive,
-                            virtual: this.virtual
-                        });
+                        fireEvent(_this.element, 'input');
+                    });
+                };
 
-                        return Object.assign({}, this.options, options);
-                    }
-                }, {
-                    key: 'enableChanged',
-                    value: function enableChanged(newValue) {
-                        if (this._component) this._component.enable(newValue);
-                    }
-                }], null, _instanceInitializers);
+                AuKendoAutoComplete.prototype.detached = function detached() {
+                    if (this._component) this._component.destroy();
+                };
+
+                AuKendoAutoComplete.prototype.getOptions = function getOptions() {
+                    var options = pruneOptions({
+                        animation: this.animation,
+                        dataSource: this.dataSource,
+                        dataTextField: this.dataTextField,
+                        delay: this.delay,
+                        enable: this.enable,
+                        filter: this.filter,
+                        fixedGroupTemplate: this.fixedGroupTemplate,
+                        groupTemplate: this.groupTemplate,
+                        height: this.height,
+                        highlightFirst: this.highlightFirst,
+                        ignoreCase: this.ignoreCase,
+                        minLength: this.minLength,
+                        placeholder: this.placeholder,
+                        popup: this.popup,
+                        separator: this.separator,
+                        suggest: this.suggest,
+                        headerTemplate: this.headerTemplate,
+                        template: this.template,
+                        valuePrimitive: this.valuePrimitive,
+                        virtual: this.virtual
+                    });
+
+                    return Object.assign({}, this.options, options);
+                };
+
+                AuKendoAutoComplete.prototype.enableChanged = function enableChanged(newValue) {
+                    if (this._component) this._component.enable(newValue);
+                };
 
                 var _AuKendoAutoComplete = AuKendoAutoComplete;
                 AuKendoAutoComplete = inject(Element)(AuKendoAutoComplete) || AuKendoAutoComplete;
