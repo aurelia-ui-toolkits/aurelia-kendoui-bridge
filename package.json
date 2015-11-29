@@ -14,9 +14,13 @@
     "url": "https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues"
   },
   "license": "MIT",
-  "author": "Charles Pockert <charles.pockert@googlemail.com>",
+  "author": "aurelia-ui-toolkits",
   "directories": {
     "lib": "dist/system"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin"
   },
   "jspm": {
     "main": "index",
