@@ -17,3 +17,8 @@ A set of [Aurelia](http://aurelia.io) wrappers for [Kendo UI](http://www.telerik
 
 #### Via vendors folder
 
+## Running tests
+1. `npm install`
+2. `jspm install`
+3. `karma start`
+
