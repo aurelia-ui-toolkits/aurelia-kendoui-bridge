@@ -12,11 +12,28 @@ export class Instructions {
     }
   }
 
+  get lastStep() {
+    if(this.wizardConfig.version == "core") return 2;
+
+    if(this.wizardConfig.hasCredentials) {
+      return 4;
+    }
+
+    if(!this.wizardConfig.hasCredentials) {
+      return 6;
+    }
+  }
+
   constructor(wizardConfig) {
     this.wizardConfig = wizardConfig;
   }
 
   activate() {
-    this.wizardConfig.title = 'Instructions';
+
+    if(!this.wizardConfig.version) {
+      return Promise.reject(this.wizardConfig.reset());
+    }
+
+    this.wizardConfig.title = 'Thanks! Now, let\'s install this plugin!';
   }
 }

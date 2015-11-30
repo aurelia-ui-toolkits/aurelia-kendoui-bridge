@@ -207,7 +207,6 @@ export class AuKendoButton {
 }
 
 
-
 function createEvent(name) {
   let event = document.createEvent('Event');
   event.initEvent(name, true, true);
@@ -234,6 +233,7 @@ export function pruneOptions(options) {
 
   return returnOptions;
 }
+
 
 @customElement('au-kendo-grid')
 @inject(Element)
