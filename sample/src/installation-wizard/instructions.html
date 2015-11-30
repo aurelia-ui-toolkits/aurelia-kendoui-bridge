@@ -1,0 +1,25 @@
+<template>
+
+  <h2>Thanks! Now let's install this plugin!</h2>
+
+  <p>You have selected to install Kendo-${wizardConfig.version}</p>
+
+  <p show.bind="wizardConfig.version == 'core'">
+    You can install Kendo-core by running this command:
+
+    jspm install kendo-ui
+  </p>
+
+  <div show.bind="wizardConfig.version == 'pro'">
+    <p show.bind="wizardConfig.hasCredentials">
+      jspm-git approach
+    </p>
+
+    <p show.bind="!wizardConfig.hasCredentials">
+      vendors approach
+    </p>
+  </div>
+
+  <require from="installation-wizard/navigation"></require>
+  <navigation previous.bind="previous" next.bind="false"></navigation>
+</template>

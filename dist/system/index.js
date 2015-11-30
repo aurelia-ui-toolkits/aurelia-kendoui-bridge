@@ -1,80 +1,74 @@
-System.register([], function (_export) {
-	"use strict";
+System.register(['aurelia-logging'], function (_export) {
+  'use strict';
 
-	var kendoConfigBuilder;
+  var LogManager, logger, KendoConfigBuilder;
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  _export('configure', configure);
 
-	_export("configure", configure);
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function configure(aurelia, configCallback) {
+    var builder = new KendoConfigBuilder();
 
-	function configure(aurelia, configCallback) {
+    if (configCallback !== undefined && typeof configCallback === 'function') {
+      configCallback(builder);
+    }
 
-		var builder = new kendoConfigBuilder();
+    if (builder.resources.length === 0) {
+      logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
+      builder.core();
+    }
 
-		if (configCallback !== undefined && typeof configCallback === 'function') {
-			configCallback(builder);
-		}
+    var resources = builder.resources;
 
-		if (builder.resources.length === 0) {
-			console.warn("Nothing specified for kendo configuration - using defaults for Kendo Core");
-			builder.core();
-		}
+    resources = resources.map(function (r) {
+      return r + '/' + r;
+    });
 
-		var resources = builder.resources;
+    aurelia.globalResources(resources);
+  }
 
-		resources = resources.map(function (r) {
-			return r + "/" + r;
-		});
+  return {
+    setters: [function (_aureliaLogging) {
+      LogManager = _aureliaLogging;
+    }],
+    execute: function () {
+      logger = LogManager.getLogger('aurelia-kendoui-plugin');
 
-		aurelia.globalResources(resources);
-	}
+      KendoConfigBuilder = (function () {
+        function KendoConfigBuilder() {
+          _classCallCheck(this, KendoConfigBuilder);
 
-	return {
-		setters: [],
-		execute: function () {
-			kendoConfigBuilder = (function () {
-				function kendoConfigBuilder() {
-					_classCallCheck(this, kendoConfigBuilder);
+          this.resources = [];
+        }
 
-					this.resources = [];
-				}
+        KendoConfigBuilder.prototype.core = function core() {
+          this.kendoButton().kendoTabStrip();
+          return this;
+        };
 
-				_createClass(kendoConfigBuilder, [{
-					key: "core",
-					value: function core() {
-						this.kendoButton().kendoTabStrip();
-						return this;
-					}
-				}, {
-					key: "pro",
-					value: function pro() {
-						this.core().kendoAutoComplete();
-						return this;
-					}
-				}, {
-					key: "kendoButton",
-					value: function kendoButton() {
-						this.resources.push("button");
-						return this;
-					}
-				}, {
-					key: "kendoTabStrip",
-					value: function kendoTabStrip() {
-						this.resources.push("tabstrip");
-						return this;
-					}
-				}, {
-					key: "kendoAutoComplete",
-					value: function kendoAutoComplete() {
-						this.resources.push("autocomplete");
-						return this;
-					}
-				}]);
+        KendoConfigBuilder.prototype.pro = function pro() {
+          this.core().kendoAutoComplete();
+          return this;
+        };
 
-				return kendoConfigBuilder;
-			})();
-		}
-	};
+        KendoConfigBuilder.prototype.kendoButton = function kendoButton() {
+          this.resources.push('button');
+          return this;
+        };
+
+        KendoConfigBuilder.prototype.kendoTabStrip = function kendoTabStrip() {
+          this.resources.push('tabstrip');
+          return this;
+        };
+
+        KendoConfigBuilder.prototype.kendoAutoComplete = function kendoAutoComplete() {
+          this.resources.push('autocomplete');
+          return this;
+        };
+
+        return KendoConfigBuilder;
+      })();
+    }
+  };
 });

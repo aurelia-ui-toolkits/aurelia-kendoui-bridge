@@ -1,75 +1,70 @@
-"use strict";
+'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
+exports.__esModule = true;
 exports.configure = configure;
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var _aureliaLogging = require('aurelia-logging');
+
+var LogManager = _interopRequireWildcard(_aureliaLogging);
+
+var logger = LogManager.getLogger('aurelia-kendoui-plugin');
 
 function configure(aurelia, configCallback) {
+  var builder = new KendoConfigBuilder();
 
-	var builder = new kendoConfigBuilder();
+  if (configCallback !== undefined && typeof configCallback === 'function') {
+    configCallback(builder);
+  }
 
-	if (configCallback !== undefined && typeof configCallback === 'function') {
-		configCallback(builder);
-	}
+  if (builder.resources.length === 0) {
+    logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
+    builder.core();
+  }
 
-	if (builder.resources.length === 0) {
-		console.warn("Nothing specified for kendo configuration - using defaults for Kendo Core");
-		builder.core();
-	}
+  var resources = builder.resources;
 
-	var resources = builder.resources;
+  resources = resources.map(function (r) {
+    return r + '/' + r;
+  });
 
-	resources = resources.map(function (r) {
-		return r + "/" + r;
-	});
-
-	aurelia.globalResources(resources);
+  aurelia.globalResources(resources);
 }
 
-var kendoConfigBuilder = (function () {
-	function kendoConfigBuilder() {
-		_classCallCheck(this, kendoConfigBuilder);
+var KendoConfigBuilder = (function () {
+  function KendoConfigBuilder() {
+    _classCallCheck(this, KendoConfigBuilder);
 
-		this.resources = [];
-	}
+    this.resources = [];
+  }
 
-	_createClass(kendoConfigBuilder, [{
-		key: "core",
-		value: function core() {
-			this.kendoButton().kendoTabStrip();
-			return this;
-		}
-	}, {
-		key: "pro",
-		value: function pro() {
-			this.core().kendoAutoComplete();
-			return this;
-		}
-	}, {
-		key: "kendoButton",
-		value: function kendoButton() {
-			this.resources.push("button");
-			return this;
-		}
-	}, {
-		key: "kendoTabStrip",
-		value: function kendoTabStrip() {
-			this.resources.push("tabstrip");
-			return this;
-		}
-	}, {
-		key: "kendoAutoComplete",
-		value: function kendoAutoComplete() {
-			this.resources.push("autocomplete");
-			return this;
-		}
-	}]);
+  KendoConfigBuilder.prototype.core = function core() {
+    this.kendoButton().kendoTabStrip();
+    return this;
+  };
 
-	return kendoConfigBuilder;
+  KendoConfigBuilder.prototype.pro = function pro() {
+    this.core().kendoAutoComplete();
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoButton = function kendoButton() {
+    this.resources.push('button');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoTabStrip = function kendoTabStrip() {
+    this.resources.push('tabstrip');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoAutoComplete = function kendoAutoComplete() {
+    this.resources.push('autocomplete');
+    return this;
+  };
+
+  return KendoConfigBuilder;
 })();

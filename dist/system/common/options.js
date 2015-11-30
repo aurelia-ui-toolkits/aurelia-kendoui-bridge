@@ -1,23 +1,23 @@
 System.register([], function (_export) {
-	"use strict";
+  "use strict";
 
-	_export("pruneOptions", pruneOptions);
+  _export("pruneOptions", pruneOptions);
 
-	function pruneOptions(options) {
+  function pruneOptions(options) {
 
-		var returnOptions = {};
+    var returnOptions = {};
 
-		for (var prop in options) {
-			if (options.hasOwnProperty(prop) && options[prop] !== null) {
-				returnOptions[prop] = options[prop];
-			}
-		}
+    for (var prop in options) {
+      if (options.hasOwnProperty(prop) && options[prop] !== null) {
+        returnOptions[prop] = options[prop];
+      }
+    }
 
-		return returnOptions;
-	}
+    return returnOptions;
+  }
 
-	return {
-		setters: [],
-		execute: function () {}
-	};
+  return {
+    setters: [],
+    execute: function () {}
+  };
 });

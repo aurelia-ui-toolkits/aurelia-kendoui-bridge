@@ -1,9 +1,7 @@
 define(['exports'], function (exports) {
   'use strict';
 
-  Object.defineProperty(exports, '__esModule', {
-    value: true
-  });
+  exports.__esModule = true;
   exports.fireEvent = fireEvent;
   function createEvent(name) {
     var event = document.createEvent('Event');

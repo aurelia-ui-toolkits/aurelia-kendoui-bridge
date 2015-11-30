@@ -1,19 +1,17 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
+exports.__esModule = true;
 exports.pruneOptions = pruneOptions;
 
 function pruneOptions(options) {
 
-	var returnOptions = {};
+  var returnOptions = {};
 
-	for (var prop in options) {
-		if (options.hasOwnProperty(prop) && options[prop] !== null) {
-			returnOptions[prop] = options[prop];
-		}
-	}
+  for (var prop in options) {
+    if (options.hasOwnProperty(prop) && options[prop] !== null) {
+      returnOptions[prop] = options[prop];
+    }
+  }
 
-	return returnOptions;
+  return returnOptions;
 }
