@@ -65,7 +65,7 @@ var AuKendoButton = (function () {
     this.options = {};
   }
 
-  AuKendoButton.prototype.attached = function attached() {
+  AuKendoButton.prototype.bind = function bind() {
     this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
   };
 

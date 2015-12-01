@@ -26,9 +26,9 @@ require('kendo-ui/js/kendo.button.min');
 
 require('kendo-ui/js/kendo.grid.min');
 
-require('kendo-ui/js/kendo.scheduler.min');
-
 require('kendo-ui/js/kendo.tabstrip.min');
+
+require('kendo-ui/js/kendo.scheduler.min');
 
 require('kendo-ui/js/kendo.toolbar.min');
 
@@ -296,7 +296,7 @@ var AuKendoAutoComplete = (function () {
     this.element = element;
   }
 
-  AuKendoAutoComplete.prototype.attached = function attached() {
+  AuKendoAutoComplete.prototype.bind = function bind() {
     var _this = this;
 
     this._component = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
@@ -410,7 +410,7 @@ var AuKendoButton = (function () {
     this.options = {};
   }
 
-  AuKendoButton.prototype.attached = function attached() {
+  AuKendoButton.prototype.bind = function bind() {
     this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
   };
 
@@ -483,7 +483,7 @@ var Grid = (function () {
     this.logger = logger;
   }
 
-  Grid.prototype.attached = function attached() {
+  Grid.prototype.bind = function bind() {
     this._component = $(this.host).kendoGrid(this.getOptions()).data('kendoGrid');
   };
 
@@ -534,54 +534,8 @@ var Grid = (function () {
 
 exports.Grid = Grid;
 
-var AuScheduler = (function () {
-  var _instanceInitializers3 = {};
-
-  _createDecoratedClass(AuScheduler, [{
-    key: 'options',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers3);
-
-  function AuScheduler(element) {
-    _classCallCheck(this, _AuScheduler);
-
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers3);
-
-    this.element = element;
-    this.options = {};
-  }
-
-  AuScheduler.prototype.attached = function attached() {};
-
-  AuScheduler.prototype.detached = function detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
-  };
-
-  AuScheduler.prototype.getOptions = function getOptions() {
-    var options = pruneOptions({});
-
-    return Object.assign({}, this.options, options);
-  };
-
-  AuScheduler.prototype.enableChanged = function enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
-    }
-  };
-
-  var _AuScheduler = AuScheduler;
-  AuScheduler = _aureliaFramework.inject(Element)(AuScheduler) || AuScheduler;
-  return AuScheduler;
-})();
-
-exports.AuScheduler = AuScheduler;
-
 var TabStrip = (function () {
-  var _instanceInitializers4 = {};
+  var _instanceInitializers3 = {};
 
   _createDecoratedClass(TabStrip, [{
     key: 'animation',
@@ -653,44 +607,44 @@ var TabStrip = (function () {
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers4);
+  }], null, _instanceInitializers3);
 
   function TabStrip(element) {
     _classCallCheck(this, _TabStrip);
 
-    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'collapsible', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'collapsible', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'contentUrls', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'contentUrls', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataContentField', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'dataContentField', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataContentUrlField', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'dataContentUrlField', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSpriteCssClass', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'dataSpriteCssClass', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataTextField', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'dataTextField', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataUrlField', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'dataUrlField', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'tabPosition', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'tabPosition', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers3);
 
     this.element = element;
     this.options = {};
   }
 
-  TabStrip.prototype.attached = function attached() {
+  TabStrip.prototype.bind = function bind() {
     this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
   };
 
@@ -733,6 +687,52 @@ var TabStrip = (function () {
 
 exports.TabStrip = TabStrip;
 
+var AuScheduler = (function () {
+  var _instanceInitializers4 = {};
+
+  _createDecoratedClass(AuScheduler, [{
+    key: 'options',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers4);
+
+  function AuScheduler(element) {
+    _classCallCheck(this, _AuScheduler);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
+
+    this.element = element;
+    this.options = {};
+  }
+
+  AuScheduler.prototype.bind = function bind() {};
+
+  AuScheduler.prototype.detached = function detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  };
+
+  AuScheduler.prototype.getOptions = function getOptions() {
+    var options = pruneOptions({});
+
+    return Object.assign({}, this.options, options);
+  };
+
+  AuScheduler.prototype.enableChanged = function enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
+  };
+
+  var _AuScheduler = AuScheduler;
+  AuScheduler = _aureliaFramework.inject(Element)(AuScheduler) || AuScheduler;
+  return AuScheduler;
+})();
+
+exports.AuScheduler = AuScheduler;
+
 var AuToolbar = (function () {
   var _instanceInitializers5 = {};
 
@@ -752,7 +752,7 @@ var AuToolbar = (function () {
     this.options = {};
   }
 
-  AuToolbar.prototype.attached = function attached() {};
+  AuToolbar.prototype.bind = function bind() {};
 
   AuToolbar.prototype.detached = function detached() {
     if (this._component) {

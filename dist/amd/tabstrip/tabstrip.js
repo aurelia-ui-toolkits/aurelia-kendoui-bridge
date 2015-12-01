@@ -119,7 +119,7 @@ define(['exports', 'aurelia-framework', '../common/options', 'jquery', 'kendo-ui
       this.options = {};
     }
 
-    TabStrip.prototype.attached = function attached() {
+    TabStrip.prototype.bind = function bind() {
       this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
     };
 

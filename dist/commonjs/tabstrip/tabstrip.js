@@ -126,7 +126,7 @@ var TabStrip = (function () {
     this.options = {};
   }
 
-  TabStrip.prototype.attached = function attached() {
+  TabStrip.prototype.bind = function bind() {
     this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
   };
 

@@ -21,7 +21,7 @@ export class AuScheduler {
     this.options = {};
   }
 
-  attached() {
+  bind() {
     //this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
   }
 

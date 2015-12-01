@@ -37,7 +37,7 @@ System.register(['aurelia-framework', '../common/options', 'jquery', 'kendo-ui/j
           this.options = {};
         }
 
-        AuScheduler.prototype.attached = function attached() {};
+        AuScheduler.prototype.bind = function bind() {};
 
         AuScheduler.prototype.detached = function detached() {
           if (this._component) {

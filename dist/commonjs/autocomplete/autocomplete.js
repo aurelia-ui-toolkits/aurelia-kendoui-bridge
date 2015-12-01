@@ -197,7 +197,7 @@ var AuKendoAutoComplete = (function () {
     this.element = element;
   }
 
-  AuKendoAutoComplete.prototype.attached = function attached() {
+  AuKendoAutoComplete.prototype.bind = function bind() {
     var _this = this;
 
     this._component = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');

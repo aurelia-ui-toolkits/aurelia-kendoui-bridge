@@ -19,7 +19,7 @@ define(['exports', 'aurelia-framework', 'aurelia-logging', '../common/options', 
       this.logger = logger;
     }
 
-    Grid.prototype.attached = function attached() {
+    Grid.prototype.bind = function bind() {
       this._component = $(this.host).kendoGrid(this.getOptions()).data('kendoGrid');
     };
 

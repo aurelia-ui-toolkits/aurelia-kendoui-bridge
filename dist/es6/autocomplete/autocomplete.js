@@ -43,7 +43,7 @@ export class AuKendoAutoComplete {
     this.element = element;
   }
 
-  attached() {
+  bind() {
     this._component = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
 
     this._component.bind('change', (event) => {

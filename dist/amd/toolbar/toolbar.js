@@ -28,7 +28,7 @@ define(['exports', 'aurelia-framework', '../common/options', 'jquery', 'kendo-ui
       this.options = {};
     }
 
-    AuToolbar.prototype.attached = function attached() {};
+    AuToolbar.prototype.bind = function bind() {};
 
     AuToolbar.prototype.detached = function detached() {
       if (this._component) {
