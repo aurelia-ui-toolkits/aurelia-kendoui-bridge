@@ -36,7 +36,6 @@ System.config({
     "showdown": "github:showdownjs/showdown@1.3.0",
     "showdownjs/showdown": "github:showdownjs/showdown@1.3.0",
     "systemjs/plugin-css": "github:systemjs/plugin-css@0.1.20",
-    "twbs/bootstrap": "github:twbs/bootstrap@3.3.5",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },
@@ -48,9 +47,6 @@ System.config({
     },
     "github:jspm/nodelibs-util@0.1.0": {
       "util": "npm:util@0.10.3"
-    },
-    "github:twbs/bootstrap@3.3.5": {
-      "jquery": "github:components/jquery@2.1.4"
     },
     "github:twbs/bootstrap@3.3.6": {
       "jquery": "github:components/jquery@2.1.4"
