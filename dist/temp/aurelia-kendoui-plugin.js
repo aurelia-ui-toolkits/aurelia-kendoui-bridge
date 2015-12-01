@@ -26,7 +26,11 @@ require('kendo-ui/js/kendo.button.min');
 
 require('kendo-ui/js/kendo.grid.min');
 
+require('kendo-ui/js/kendo.scheduler.min');
+
 require('kendo-ui/js/kendo.tabstrip.min');
+
+require('kendo-ui/js/kendo.toolbar.min');
 
 var _aureliaFramework = require('aurelia-framework');
 
@@ -70,8 +74,33 @@ var KendoConfigBuilder = (function () {
     return this;
   };
 
+  KendoConfigBuilder.prototype.kendoAutoComplete = function kendoAutoComplete() {
+    this.resources.push('autocomplete');
+    return this;
+  };
+
   KendoConfigBuilder.prototype.kendoButton = function kendoButton() {
     this.resources.push('button');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoCombobox = function kendoCombobox() {
+    this.resources.push('combobox');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoDropDownList = function kendoDropDownList() {
+    this.resources.push('dropdownlist');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoGrid = function kendoGrid() {
+    this.resources.push('grid');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoScheduler = function kendoScheduler() {
+    this.resources.push('scheduler');
     return this;
   };
 
@@ -80,8 +109,8 @@ var KendoConfigBuilder = (function () {
     return this;
   };
 
-  KendoConfigBuilder.prototype.kendoAutoComplete = function kendoAutoComplete() {
-    this.resources.push('autocomplete');
+  KendoConfigBuilder.prototype.kendoToolbar = function kendoToolbar() {
+    this.resources.push('toolbar');
     return this;
   };
 
@@ -505,8 +534,54 @@ var Grid = (function () {
 
 exports.Grid = Grid;
 
-var TabStrip = (function () {
+var AuScheduler = (function () {
   var _instanceInitializers3 = {};
+
+  _createDecoratedClass(AuScheduler, [{
+    key: 'options',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers3);
+
+  function AuScheduler(element) {
+    _classCallCheck(this, _AuScheduler);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers3);
+
+    this.element = element;
+    this.options = {};
+  }
+
+  AuScheduler.prototype.attached = function attached() {};
+
+  AuScheduler.prototype.detached = function detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  };
+
+  AuScheduler.prototype.getOptions = function getOptions() {
+    var options = pruneOptions({});
+
+    return Object.assign({}, this.options, options);
+  };
+
+  AuScheduler.prototype.enableChanged = function enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
+  };
+
+  var _AuScheduler = AuScheduler;
+  AuScheduler = _aureliaFramework.inject(Element)(AuScheduler) || AuScheduler;
+  return AuScheduler;
+})();
+
+exports.AuScheduler = AuScheduler;
+
+var TabStrip = (function () {
+  var _instanceInitializers4 = {};
 
   _createDecoratedClass(TabStrip, [{
     key: 'animation',
@@ -578,38 +653,38 @@ var TabStrip = (function () {
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers3);
+  }], null, _instanceInitializers4);
 
   function TabStrip(element) {
     _classCallCheck(this, _TabStrip);
 
-    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'collapsible', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'collapsible', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'contentUrls', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'contentUrls', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataContentField', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'dataContentField', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataContentUrlField', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'dataContentUrlField', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSpriteCssClass', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'dataSpriteCssClass', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataTextField', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'dataTextField', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataUrlField', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'dataUrlField', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'tabPosition', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'tabPosition', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
 
     this.element = element;
     this.options = {};
@@ -657,3 +732,49 @@ var TabStrip = (function () {
 })();
 
 exports.TabStrip = TabStrip;
+
+var AuToolbar = (function () {
+  var _instanceInitializers5 = {};
+
+  _createDecoratedClass(AuToolbar, [{
+    key: 'options',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers5);
+
+  function AuToolbar(element) {
+    _classCallCheck(this, _AuToolbar);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers5);
+
+    this.element = element;
+    this.options = {};
+  }
+
+  AuToolbar.prototype.attached = function attached() {};
+
+  AuToolbar.prototype.detached = function detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  };
+
+  AuToolbar.prototype.getOptions = function getOptions() {
+    var options = pruneOptions({});
+
+    return Object.assign({}, this.options, options);
+  };
+
+  AuToolbar.prototype.enableChanged = function enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
+  };
+
+  var _AuToolbar = AuToolbar;
+  AuToolbar = _aureliaFramework.inject(Element)(AuToolbar) || AuToolbar;
+  return AuToolbar;
+})();
+
+exports.AuToolbar = AuToolbar;

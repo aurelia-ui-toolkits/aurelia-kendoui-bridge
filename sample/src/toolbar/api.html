@@ -1,0 +1,31 @@
+<template>
+    <section>
+        <collapse-panel title="API" allow-collapse.bind="false" >
+ 
+        </collapse-panel>
+ 
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+                <div>
+                    <textarea au-markdown>
+```
+
+```
+                   </textarea>
+                </div>
+                <div>
+                    <textarea au-markdown>
+```
+
+```
+                   </textarea>
+                </div>
+            </div>
+        </collapse-panel>
+
+    </section>
+</template>

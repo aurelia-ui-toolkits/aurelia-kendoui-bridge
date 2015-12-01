@@ -40,12 +40,23 @@ export class App {
             moduleId: 'grid/index',
             nav: true,
             title: 'Grid'
-        }, {
+        },  {
+            route: 'scheduler',
+            moduleId: 'scheduler/index',
+            nav: true,
+            title: 'Scheduler'
+        },  {
             route: 'tabstrip',
             moduleId: 'tabstrip/index',
             nav: true,
             title: 'TabStrip'
-        },]);
+        },  {
+            route: 'toolbar',
+            moduleId: 'toolbar/index',
+            nav: true,
+            title: 'Toolbar'
+        }
+        ]);
 
         this.router = router;
     }

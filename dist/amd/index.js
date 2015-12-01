@@ -46,8 +46,33 @@ define(['exports', 'aurelia-logging'], function (exports, _aureliaLogging) {
       return this;
     };
 
+    KendoConfigBuilder.prototype.kendoAutoComplete = function kendoAutoComplete() {
+      this.resources.push('autocomplete');
+      return this;
+    };
+
     KendoConfigBuilder.prototype.kendoButton = function kendoButton() {
       this.resources.push('button');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoCombobox = function kendoCombobox() {
+      this.resources.push('combobox');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoDropDownList = function kendoDropDownList() {
+      this.resources.push('dropdownlist');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoGrid = function kendoGrid() {
+      this.resources.push('grid');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoScheduler = function kendoScheduler() {
+      this.resources.push('scheduler');
       return this;
     };
 
@@ -56,8 +81,8 @@ define(['exports', 'aurelia-logging'], function (exports, _aureliaLogging) {
       return this;
     };
 
-    KendoConfigBuilder.prototype.kendoAutoComplete = function kendoAutoComplete() {
-      this.resources.push('autocomplete');
+    KendoConfigBuilder.prototype.kendoToolbar = function kendoToolbar() {
+      this.resources.push('toolbar');
       return this;
     };
 

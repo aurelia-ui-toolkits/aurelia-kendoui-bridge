@@ -31,7 +31,7 @@ System.config({
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
-    "font-awesome": "npm:font-awesome@4.4.0",
+    "font-awesome": "npm:font-awesome@4.5.0",
     "json": "github:systemjs/plugin-json@0.1.0",
     "showdown": "github:showdownjs/showdown@1.3.0",
     "showdownjs/showdown": "github:showdownjs/showdown@1.3.0",
@@ -192,7 +192,7 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
-    "npm:font-awesome@4.4.0": {
+    "npm:font-awesome@4.5.0": {
       "css": "github:systemjs/plugin-css@0.1.20"
     },
     "npm:inherits@2.0.1": {

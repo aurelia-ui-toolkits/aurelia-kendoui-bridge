@@ -39,8 +39,33 @@ class KendoConfigBuilder {
     return this;
   }
 
+  kendoAutoComplete() {
+    this.resources.push('autocomplete');
+    return this;
+  }
+
   kendoButton() {
     this.resources.push('button');
+    return this;
+  }
+
+  kendoCombobox() {
+    this.resources.push('combobox');
+    return this;
+  }
+
+  kendoDropDownList() {
+    this.resources.push('dropdownlist');
+    return this;
+  }
+
+  kendoGrid() {
+    this.resources.push('grid');
+    return this;
+  }
+
+  kendoScheduler() {
+    this.resources.push('scheduler');
     return this;
   }
 
@@ -49,8 +74,8 @@ class KendoConfigBuilder {
     return this;
   }
 
-  kendoAutoComplete() {
-    this.resources.push('autocomplete');
+  kendoToolbar() {
+    this.resources.push('toolbar');
     return this;
   }
 }

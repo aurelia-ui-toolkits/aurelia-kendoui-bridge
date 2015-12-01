@@ -3,7 +3,9 @@ import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.grid.min';
+import 'kendo-ui/js/kendo.scheduler.min';
 import 'kendo-ui/js/kendo.tabstrip.min';
+import 'kendo-ui/js/kendo.toolbar.min';
 import {customAttribute,bindable,inject,customElement} from 'aurelia-framework';
 import {getLogger} from 'aurelia-logging';
 
@@ -47,8 +49,33 @@ class KendoConfigBuilder {
     return this;
   }
 
+  kendoAutoComplete() {
+    this.resources.push('autocomplete');
+    return this;
+  }
+
   kendoButton() {
     this.resources.push('button');
+    return this;
+  }
+
+  kendoCombobox() {
+    this.resources.push('combobox');
+    return this;
+  }
+
+  kendoDropDownList() {
+    this.resources.push('dropdownlist');
+    return this;
+  }
+
+  kendoGrid() {
+    this.resources.push('grid');
+    return this;
+  }
+
+  kendoScheduler() {
+    this.resources.push('scheduler');
     return this;
   }
 
@@ -57,8 +84,8 @@ class KendoConfigBuilder {
     return this;
   }
 
-  kendoAutoComplete() {
-    this.resources.push('autocomplete');
+  kendoToolbar() {
+    this.resources.push('toolbar');
     return this;
   }
 }
@@ -207,7 +234,6 @@ export class AuKendoButton {
 }
 
 
-
 function createEvent(name) {
   let event = document.createEvent('Event');
   event.initEvent(name, true, true);
@@ -234,6 +260,7 @@ export function pruneOptions(options) {
 
   return returnOptions;
 }
+
 
 @customElement('au-kendo-grid')
 @inject(Element)
@@ -285,6 +312,52 @@ export class Grid {
       template: this.template,
       valuePrimitive: this.valuePrimitive,
       virtual: this.virtual
+    });
+
+    return Object.assign({}, this.options, options);
+  }
+
+  enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
+  }
+}
+
+// @customAttribute('au-kendo-button')
+@inject(Element)
+export class AuScheduler {
+
+  _component;
+
+  // @bindable enable = true;
+  // @bindable icon;
+  // @bindable imageUrl;
+  // @bindable spriteCssClass;
+
+  @bindable options;
+
+  constructor(element) {
+    this.element = element;
+    this.options = {};
+  }
+
+  attached() {
+    //this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+  }
+
+  detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  }
+
+  getOptions() {
+    let options = pruneOptions({
+      // icon: this.icon,
+      // enable: this.enable,
+      // imageUrl: this.imageUrl,
+      // spriteCssClass: this.spriteCssClass
     });
 
     return Object.assign({}, this.options, options);
@@ -358,4 +431,50 @@ export class TabStrip {
         this._component.enable(newValue);
       }
     }
+}
+
+// @customAttribute('au-kendo-button')
+@inject(Element)
+export class AuToolbar {
+
+  _component;
+
+  // @bindable enable = true;
+  // @bindable icon;
+  // @bindable imageUrl;
+  // @bindable spriteCssClass;
+
+  @bindable options;
+
+  constructor(element) {
+    this.element = element;
+    this.options = {};
+  }
+
+  attached() {
+    //this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+  }
+
+  detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  }
+
+  getOptions() {
+    let options = pruneOptions({
+      // icon: this.icon,
+      // enable: this.enable,
+      // imageUrl: this.imageUrl,
+      // spriteCssClass: this.spriteCssClass
+    });
+
+    return Object.assign({}, this.options, options);
+  }
+
+  enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
+  }
 }

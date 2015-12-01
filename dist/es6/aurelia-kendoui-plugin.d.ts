@@ -4,7 +4,9 @@ declare module 'aurelia-kendoui-plugin' {
   import 'kendo-ui/js/kendo.autocomplete.min';
   import 'kendo-ui/js/kendo.button.min';
   import 'kendo-ui/js/kendo.grid.min';
+  import 'kendo-ui/js/kendo.scheduler.min';
   import 'kendo-ui/js/kendo.tabstrip.min';
+  import 'kendo-ui/js/kendo.toolbar.min';
   import { customAttribute, bindable, inject, customElement }  from 'aurelia-framework';
   import { getLogger }  from 'aurelia-logging';
   export function configure(aurelia: any, configCallback: any): any;
@@ -12,9 +14,14 @@ declare module 'aurelia-kendoui-plugin' {
     resources: any;
     core(): any;
     pro(): any;
-    kendoButton(): any;
-    kendoTabStrip(): any;
     kendoAutoComplete(): any;
+    kendoButton(): any;
+    kendoCombobox(): any;
+    kendoDropDownList(): any;
+    kendoGrid(): any;
+    kendoScheduler(): any;
+    kendoTabStrip(): any;
+    kendoToolbar(): any;
   }
   export class AuKendoAutoComplete {
     element: any;
@@ -68,6 +75,18 @@ declare module 'aurelia-kendoui-plugin' {
     getOptions(): any;
     enableChanged(newValue: any): any;
   }
+  
+  //  @customAttribute('au-kendo-button')
+  export class AuScheduler {
+    options: any;
+    constructor(element: any);
+    attached(): any;
+    
+    // this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+    detached(): any;
+    getOptions(): any;
+    enableChanged(newValue: any): any;
+  }
   export class TabStrip {
     animation: any;
     collapsible: any;
@@ -85,6 +104,18 @@ declare module 'aurelia-kendoui-plugin' {
     options: any;
     constructor(element: any);
     attached(): any;
+    detached(): any;
+    getOptions(): any;
+    enableChanged(newValue: any): any;
+  }
+  
+  //  @customAttribute('au-kendo-button')
+  export class AuToolbar {
+    options: any;
+    constructor(element: any);
+    attached(): any;
+    
+    // this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
     detached(): any;
     getOptions(): any;
     enableChanged(newValue: any): any;
