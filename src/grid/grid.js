@@ -22,7 +22,7 @@ export class Grid {
     this.logger = logger;
   }
 
-  attached() {
+  bind() {
     this._component = $(this.host).kendoGrid(this.getOptions()).data('kendoGrid');
   }
 
