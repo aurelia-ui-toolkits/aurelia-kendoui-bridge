@@ -1,13 +1,11 @@
 import {inject} from 'aurelia-framework';
-import {Router} from 'aurelia-router';
 import {WizardConfig} from 'installation-wizard/wizard-config';
 
-@inject(Router, WizardConfig)
+@inject(WizardConfig)
 export class Wizard {
 
-  constructor(router, wizardConfig) {
+  constructor(wizardConfig) {
     this.wizardConfig = wizardConfig;
-    this.router = router;
   }
 
   activate(params, route) {

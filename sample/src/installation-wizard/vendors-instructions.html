@@ -1,0 +1,39 @@
+<template>
+  <p>1. Create a "vendors" folder in the root (on the same level as src or dist)</p>
+  <p>2. Download Kendo UI Pro from the Telerik website</p>
+  <p>3. Extract the "js" and "styles" folder into the "vendors" folder</p>
+  <p>4. Open "config.js" and add a path mapping from "kendo-ui/*" to "vendors/*" </p>
+
+  <textarea au-markdown>
+```
+paths: {
+"*": "dist/*",
+"github:*": "jspm_packages/github/*",
+"npm:*": "jspm_packages/npm/*",
+"kendo-ui/*": "vendors/*"
+}
+```
+  </textarea>
+
+
+  <p>5. Install the plugin</p>
+  <textarea au-markdown>
+`jspm install aurelia-kendoui-plugin`
+  </textarea>
+
+  <p>6. Register the plugin</p>
+  <p>
+    Now we're going to register the plugin with Aurelia in your "main.js" or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Pro by calling the "pro()" method
+  </p>
+
+  <textarea au-markdown>
+```
+export function configure(aurelia) {
+  aurelia.use
+    .standardConfiguration()
+    .developmentLogging()
+    .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
+}
+```
+  </textarea>
+</template>

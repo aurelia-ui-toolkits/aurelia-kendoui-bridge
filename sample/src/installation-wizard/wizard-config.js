@@ -14,10 +14,12 @@ export class WizardConfig {
   reset() {
     this.currentPage = 'welcome';
     this.nextPage = 'version';
+
+    return this._goToStep(this.currentPage);
   }
 
   _goToStep(page) {
-      this.router.navigateToRoute('install', {
+      return this.router.navigateToRoute('install', {
         page: page
       });
   }

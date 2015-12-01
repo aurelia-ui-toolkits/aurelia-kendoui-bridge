@@ -12,7 +12,7 @@ export class AuMarkdown {
 	    this.parent = element.parentNode;
 	    this.text = element.value;
 	    var span = document.createElement("span");
-	    this.parent.appendChild(span);
+	    element.parentNode.insertBefore(span, element.nextSibling);
 
 	    this.converter = new showdown.Converter();
 	  	span.innerHTML = this.converter.makeHtml(this.text);
