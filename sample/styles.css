@@ -133,7 +133,7 @@ div.au-stagger {
 .overlay
 {
     position: absolute;
- 
+
     left: 0;
     top: 0;
     min-width:100%;
@@ -165,4 +165,12 @@ div.au-stagger {
 .panel-hover:hover strong {
   text-decoration: underline !important;
   cursor: pointer;
+}
+
+.k-content > .row > *,
+.k-content > .row > *::before,
+.k-content > .row > *::after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
