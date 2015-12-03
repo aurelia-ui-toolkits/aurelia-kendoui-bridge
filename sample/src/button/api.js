@@ -1,15 +1,15 @@
 export class Api {
-    disabled = false;
+    enabled = true;
 
     disable() {
-        this.disabled = true;
+        this.enabled = false;
     }
 
     enable() {
-        this.disabled = false;
+        this.enabled = true;
     }
 
     test() {
-    	console.log("You clicked me");
+    	alert("You clicked me");
     }
 }
