@@ -3,8 +3,8 @@ import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.grid.min';
-import 'kendo-ui/js/kendo.tabstrip.min';
 import 'kendo-ui/js/kendo.scheduler.min';
+import 'kendo-ui/js/kendo.tabstrip.min';
 import 'kendo-ui/js/kendo.toolbar.min';
 import {customAttribute,bindable,inject,customElement} from 'aurelia-framework';
 import {getLogger} from 'aurelia-logging';
@@ -261,6 +261,7 @@ export function pruneOptions(options) {
 }
 
 
+
 @customElement('au-kendo-grid')
 @inject(Element)
 export class Grid {
@@ -323,6 +324,51 @@ export class Grid {
   }
 }
 
+// @customAttribute('au-kendo-button')
+@inject(Element)
+export class AuScheduler {
+
+  _component;
+
+  // @bindable enable = true;
+  // @bindable icon;
+  // @bindable imageUrl;
+  // @bindable spriteCssClass;
+
+  @bindable options;
+
+  constructor(element) {
+    this.element = element;
+    this.options = {};
+  }
+
+  bind() {
+    //this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+  }
+
+  detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  }
+
+  getOptions() {
+    let options = pruneOptions({
+      // icon: this.icon,
+      // enable: this.enable,
+      // imageUrl: this.imageUrl,
+      // spriteCssClass: this.spriteCssClass
+    });
+
+    return Object.assign({}, this.options, options);
+  }
+
+  enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
+  }
+}
 
 @customAttribute('au-kendo-tabstrip')
 @inject(Element)
@@ -375,52 +421,6 @@ export class TabStrip {
       scrollable: this.scrollable,
       tabPosition: this.tabPosition,
       value: this.value
-    });
-
-    return Object.assign({}, this.options, options);
-  }
-
-  enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
-    }
-  }
-}
-
-// @customAttribute('au-kendo-button')
-@inject(Element)
-export class AuScheduler {
-
-  _component;
-
-  // @bindable enable = true;
-  // @bindable icon;
-  // @bindable imageUrl;
-  // @bindable spriteCssClass;
-
-  @bindable options;
-
-  constructor(element) {
-    this.element = element;
-    this.options = {};
-  }
-
-  bind() {
-    //this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
-  }
-
-  detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
-  }
-
-  getOptions() {
-    let options = pruneOptions({
-      // icon: this.icon,
-      // enable: this.enable,
-      // imageUrl: this.imageUrl,
-      // spriteCssClass: this.spriteCssClass
     });
 
     return Object.assign({}, this.options, options);
