@@ -1,0 +1,8 @@
+<template>
+  <au-kendo-grid data-source.bind="datasource" auto-bind.bind="false" pageable.bind="true" sortable.bind="true">
+    <au-kendo-grid-col title="Name" field="Name"></au-kendo-grid-col>
+    <au-kendo-grid-col title="Id" field="Id">
+    This is a template ${ $item.Id }
+    </au-kendo-grid-col>
+  </au-kendo-grid>
+</template>

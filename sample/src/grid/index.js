@@ -8,6 +8,7 @@ export class Index {
 	    config.map([
 	      { route: ['','basic-use'],  moduleId: './basic-use',      nav: true, title:'Basic use' },
 	      { route: 'html-config',  moduleId: './html-config',      nav: true, title:'HTML configuration' },
+	      { route: 'templating-issue',  moduleId: './templating-issue',      nav: true, title:'Templating issue' }
 	  	]);
 
 	    this.router = router;
