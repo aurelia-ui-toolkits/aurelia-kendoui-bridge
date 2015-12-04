@@ -89,9 +89,11 @@ export class Grid {
           let cellctx = { $item: ctx, $parent: this.$parent };
           // Replace any switched out html
           row.innerHTML = row.innerHTML.replace(/!{/g, '${');
-          let view = this.compiler.compile(row, cellctx);
+
+          let view = this.compiler.compile(row);
           let viewSlot = new ViewSlot(row, false);
           viewSlot.add(view);
+          viewSlot.bind(cellctx);
           viewSlot.attached();
           // Remove the original row
           row.parentNode.removeChild(row);
