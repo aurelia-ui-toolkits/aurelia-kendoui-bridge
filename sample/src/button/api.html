@@ -15,32 +15,29 @@
                     <li>Code</li>
                 </ul>
                 <div>
-                    <textarea au-markdown>
-```
-<button au-kendo-button enable.bind="enabled" class="k-primary" click.delegate="test()">Click me</button>
-```
-                    </textarea>
+                    <au-code language="markup">
+                        <button au-kendo-button="enable.bind: enabled" class="k-primary" click.delegate="test()">Click me</button>
+                    </au-code>
                 </div>
+
                 <div>
-                    <textarea au-markdown>
-```
-export class Api {
-    enabled = true;
+                    <au-code language="javascript">
+                        export class Api {
+                            enabled = true;
 
-    disable() {
-        this.enabled = false;
-    }
+                            disable() {
+                                this.enabled = false;
+                            }
 
-    enable() {
-        this.enabled = true;
-    }
+                            enable() {
+                                this.enabled = true;
+                            }
 
-    test() {
-        alert("You clicked me");
-    }
-}
-```
-                    </textarea>
+                            test() {
+                                alert("You clicked me");
+                            }
+                        }
+                    </au-code>
                 </div>
             </div>
         </collapse-panel>

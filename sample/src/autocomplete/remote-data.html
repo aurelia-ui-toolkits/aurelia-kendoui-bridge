@@ -6,12 +6,13 @@
                 <input au-kendo-autocomplete="data-source.bind: datasource;
                                 data-text-field: ProductName;
                                 filter: contains;
-                                min-length: 3" 
-                        value.bind="value" 
+                                min-length: 3"
+                        value.bind="value"
                         style="width: 300px"></input>
             </p>
             <p class="text-muted">Hint: type "che"</p>
         </collapse-panel>
+
         <collapse-panel title="Code Preview">
             <div au-kendo-tabstrip>
                 <ul>
@@ -19,35 +20,33 @@
                     <li>Code</li>
                 </ul>
                 <div>
-                    <textarea au-markdown>
-```
-<input au-kendo-autocomplete="data-source.bind: datasource;
-      data-text-field: ProductName;
-      filter: contains;
-      min-length: 3" 
-      value.bind="value" 
-      style="width: 300px" /> 
-```
-                    </textarea>
+                  <au-code language="markup">
+                    <input au-kendo-autocomplete="data-source.bind: datasource;
+                      data-text-field: ProductName;
+                      filter: contains;
+                      min-length: 3"
+                      value.bind="value"
+                      style="width: 300px">
+                    </input>
+                  </au-code>
                 </div>
-                <div>
-                    <textarea au-markdown>
-```
-export class RemoteData {
-  datasource;
 
-  constructor() {
-    this.datasource = {
-      type: "odata",
-      serverFiltering: true,
-      transport: {
-        read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Products"
-      }
-    };
-  } 
-}
-```
-                    </textarea>
+                <div>
+                  <au-code language="javascript">
+                    export class RemoteData {
+                      datasource;
+
+                      constructor() {
+                        this.datasource = {
+                          type: "odata",
+                          serverFiltering: true,
+                          transport: {
+                            read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Products"
+                          }
+                        };
+                      }
+                    }
+                  </au-code>
                 </div>
             </div>
         </collapse-panel>

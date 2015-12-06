@@ -4,11 +4,11 @@ import {useView} from 'aurelia-framework';
 export class Index {
 
     configureRouter(config, router){
-        config.title = 'Grid - templating branch';
+        config.title = 'Grid';
         config.map([
           { route: ['','basic-use'],    moduleId: './basic-use',         nav: true, title:'Basic use' },
           { route: 'html-config',       moduleId: './html-config',       nav: true, title:'HTML configuration' },
-          { route: 'templating-issue',  moduleId: './templating-issue',  nav: true, title:'Templating issue' }
+
           ]);
 
         this.router = router;

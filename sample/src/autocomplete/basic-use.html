@@ -14,32 +14,28 @@
                     <li>Code</li>
                 </ul>
                 <div>
-                    <textarea au-markdown>
-```
-<input au-kendo-autocomplete="data-source.bind: items;" value.bind="value"></input>
-```
-                    </textarea>
+                    <au-code language="markup">
+                        <input au-kendo-autocomplete="data-source.bind: items;" value.bind="value"></input>
+                    </au-code>
                 </div>
                 <div>
-                    <textarea au-markdown>
-```
-export class BasicUse {
-    items = [
-        "Charles",
-        "Jedd",
-        "Nikolaj",
-        "David",
-        "Rob",
-        "Matt",
-        "Patrick",
-        "Jason",
-        "Martin",
-        "Fredrick",
-        "Alex"
-    ]
-}
-```
-                    </textarea>
+                    <au-code language="javascript">
+                        export class BasicUse {
+                            items = [
+                                "Charles",
+                                "Jedd",
+                                "Nikolaj",
+                                "David",
+                                "Rob",
+                                "Matt",
+                                "Patrick",
+                                "Jason",
+                                "Martin",
+                                "Fredrick",
+                                "Alex"
+                            ]
+                        }
+                    </au-code>
                 </div>
             </div>
         </collapse-panel>
