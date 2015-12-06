@@ -1,4 +1,44 @@
 <template>
-    <au-kendo-grid>
-	</au-kendo-grid>
+    <section>
+        <collapse-panel title="Basic use" allow-collapse.bind="false">
+            <au-kendo-grid data-source.bind="datasource" auto-bind.bind="false" pageable.bind="true" sortable.bind="true">
+            </au-kendo-grid>
+        </collapse-panel>
+
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+                <div>
+                    <textarea au-markdown>
+```html
+<au-kendo-grid data-source.bind="datasource" auto-bind.bind="false" pageable.bind="true" sortable.bind="true">
+</au-kendo-grid>
+```
+                    </textarea>
+                </div>
+                <div>
+                    <textarea au-markdown>
+```javascript
+export class BasicUse {
+  datasource;
+
+  constructor() {
+    this.datasource = {
+      type: "odata",
+      serverFiltering: true,
+      transport: {
+        read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+      }
+    };
+  }
+}
+```
+                    </textarea>
+                </div>
+            </div>
+        </collapse-panel>
+    </section>
 </template>
