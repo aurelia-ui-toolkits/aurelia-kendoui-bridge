@@ -2,6 +2,14 @@
     <section>
         <collapse-panel title="Basic use" allow-collapse.bind="false">
             <au-kendo-grid data-source.bind="datasource" auto-bind.bind="false" pageable.bind="true" sortable.bind="true">
+              <au-kendo-grid-col title="Contact Name" field="ContactName">
+                <div class='customer-photo' css="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${$item.CustomerID}.jpg);"></div>
+                <div class='customer-name'>${ContactName}</div>
+              </au-kendo-grid-col>
+              <au-kendo-grid-col title="Contact Name" field="ContactName"></au-kendo-grid-col>
+              <au-kendo-grid-col title="Contact Title" field="ContactTitle"></au-kendo-grid-col>
+              <au-kendo-grid-col title="Company Name" field="CompanyName"></au-kendo-grid-col>
+              <au-kendo-grid-col field="Country"></au-kendo-grid-col>
             </au-kendo-grid>
         </collapse-panel>
 
@@ -41,4 +49,26 @@ export class BasicUse {
             </div>
         </collapse-panel>
     </section>
+
+    <style type="text/css">
+        .customer-photo {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-size: 32px 35px;
+            background-position: center center;
+            vertical-align: middle;
+            line-height: 32px;
+            box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+            margin-left: 5px;
+        }
+
+        .customer-name {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 32px;
+            padding-left: 3px;
+        }
+    </style>
 </template>
