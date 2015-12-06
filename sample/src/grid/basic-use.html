@@ -20,31 +20,35 @@
                     <li>Code</li>
                 </ul>
                 <div>
-                    <textarea au-markdown>
-```html
-<au-kendo-grid data-source.bind="datasource" auto-bind.bind="false" pageable.bind="true" sortable.bind="true">
-</au-kendo-grid>
-```
-                    </textarea>
+                  <au-code language="markup">
+                    <au-kendo-grid data-source.bind="datasource" auto-bind.bind="false" pageable.bind="true" sortable.bind="true">
+                      <au-kendo-grid-col title="Contact Name" field="ContactName">
+                        <div class='customer-photo' css="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${$item.CustomerID}.jpg);"></div>
+                        <div class='customer-name'>${ContactName}</div>
+                      </au-kendo-grid-col>
+                      <au-kendo-grid-col title="Contact Name" field="ContactName"></au-kendo-grid-col>
+                      <au-kendo-grid-col title="Contact Title" field="ContactTitle"></au-kendo-grid-col>
+                      <au-kendo-grid-col title="Company Name" field="CompanyName"></au-kendo-grid-col>
+                      <au-kendo-grid-col field="Country"></au-kendo-grid-col>
+                    </au-kendo-grid>
+                  </au-code>
                 </div>
                 <div>
-                    <textarea au-markdown>
-```javascript
-export class BasicUse {
-  datasource;
+                    <au-code language="javascript">
+                      export class BasicUse {
+                        datasource;
 
-  constructor() {
-    this.datasource = {
-      type: "odata",
-      serverFiltering: true,
-      transport: {
-        read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
-      }
-    };
-  }
-}
-```
-                    </textarea>
+                        constructor() {
+                          this.datasource = {
+                            type: "odata",
+                            serverFiltering: true,
+                            transport: {
+                              read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+                            }
+                          };
+                        }
+                      }
+                    </au-code>
                 </div>
             </div>
         </collapse-panel>

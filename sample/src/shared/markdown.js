@@ -1,26 +1,46 @@
-import { inject, bindable, customAttribute } from 'aurelia-framework';
-import showdown from 'github:showdownjs/showdown@1.3.0';
+import {bindable,noView,customElement,processContent} from 'aurelia-framework';
+import showdown from 'showdown';
 
-@customAttribute("au-markdown")
-@inject(Element)
+@processContent(false)
+@customElement("au-markdown")
+@noView
 export class AuMarkdown {
 
-	block;
-	@bindable value;
+  @bindable model = null;
 
-	constructor(element){
-	    this.parent = element.parentNode;
-	    this.text = element.value;
-	    var span = document.createElement("span");
-	    element.parentNode.insertBefore(span, element.nextSibling);
+  static inject = [Element];
+  constructor(element){
+    this.element = element;
+    this.converter = new showdown.Converter();
+  }
 
-	    this.converter = new showdown.Converter();
-	  	span.innerHTML = this.converter.makeHtml(this.text);
-	    this.parent.removeChild(element);
-	    this.block = span;
-	}
+  attached(){
+    this.root = this.element.shadowRoot || this.element;
+    if(!this.model) {
+      this.valueChanged(this.element.innerHTML);
+    }else{
+      this.valueChanged(this.model);
+    }
+  }
 
-	attached() {
-	    hljs.highlightBlock(this.block);
-	}
+  modelChanged(){
+    this.valueChanged(this.model);
+  }
+
+  valueChanged(newValue){
+    if(!this.root) return;
+    this.root.innerHTML = this.converter.makeHtml(dedent(newValue));
+  }
+}
+
+function dedent(str){
+  var match = str.match(/^[ \t]*(?=\S)/gm);
+  if (!match) return str;
+
+  var indent = Math.min.apply(Math, match.map(function (el) {
+    return el.length;
+  }));
+
+  var re = new RegExp('^[ \\t]{' + indent + '}', 'gm');
+  return indent > 0 ? str.replace(re, '') : str;
 }
