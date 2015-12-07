@@ -51,6 +51,11 @@ export class App {
             nav: true,
             title: 'TabStrip'
         },  {
+            route: 'menu',
+            moduleId: 'menu/index',
+            nav: true,
+            title: 'Menu'
+        },  {
             route: 'toolbar',
             moduleId: 'toolbar/index',
             nav: true,

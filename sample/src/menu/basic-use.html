@@ -1,0 +1,176 @@
+<template>
+    <section>
+        <collapse-panel title="Basic use" allow-collapse.bind="false">
+          <au-kendo-menu>
+            <div id="megaStore">
+              <ul>
+                <li>
+                    Products
+                    <ul>
+                        <li>
+                            Furniture
+                            <ul> <!-- moving the UL to the next line will cause an IE7 problem -->
+                                <li>Tables & Chairs</li>
+                                <li>Sofas</li>
+                                <li>Occasional Furniture</li>
+                                <li>Children's Furniture</li>
+                                <li>Beds</li>
+                            </ul>
+
+
+                        </li>
+                        <li>
+                            Decor
+                            <ul> <!-- moving the UL to the next line will cause an IE7 problem -->
+                                <li>Bed Linen</li>
+                                <li>Throws</li>
+                                <li>Curtains & Blinds</li>
+                                <li>Rugs</li>
+                                <li>Carpets</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Storage
+                            <ul> <!-- moving the UL to the next line will cause an IE7 problem -->
+                                <li>Wall Shelving</li>
+                                <li>Kids Storage</li>
+                                <li>Baskets</li>
+                                <li>Multimedia Storage</li>
+                                <li>Floor Shelving</li>
+                                <li>Toilet Roll Holders</li>
+                                <li>Storage Jars</li>
+                                <li>Drawers</li>
+                                <li>Boxes</li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            Lights
+                            <ul> <!-- moving the UL to the next line will cause an IE7 problem -->
+                                <li>Ceiling</li>
+                                <li>Table</li>
+                                <li>Floor</li>
+                                <li>Shades</li>
+                                <li>Wall Lights</li>
+                                <li>Spotlights</li>
+                                <li>Push Light</li>
+                                <li>String Lights</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Stores
+                    <ul>
+                        <li>
+                            <div id="template" style="padding: 10px;">
+                                <h2>Around the Globe</h2>
+                                <ol>
+                                    <li>United States</li>
+                                    <li>Europe</li>
+                                    <li>Canada</li>
+                                    <li>Australia</li>
+                                </ol>
+                                <img src="http://demos.telerik.com/kendo-ui/content/web/menu/map.png" alt="Stores Around the Globe" />
+                                <button class="k-button">See full list</button>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Blog
+                </li>
+                <li>
+                    Company
+                </li>
+                <li>
+                    Events
+                </li>
+                <li disabled="disabled">
+                    News
+                </li>
+              </ul>
+            </div>
+          </au-kendo-menu>
+        </collapse-panel>
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+
+                <div>
+                  <au-code language="markup">
+                    <au-kendo-menu>
+                      <div id="megaStore">
+                        <ul>
+                          <li>
+                            Products
+                            <ul>
+                            <li>
+                              Furniture
+                              <ul>
+                                <li>Tables & Chairs</li>
+                                <li>Sofas</li>
+                                <li>Occasional Furniture</li>
+                                <li>Children's Furniture</li>
+                                <li>Beds</li>
+                              </ul>
+                            </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </au-kendo-menu>
+                  </au-code>
+                </div>
+
+                <div>
+                  <au-code language="javascript">
+                    export class BasicUse {
+                    }
+                  </au-code>
+                </div>
+            </div>
+        </collapse-panel>
+
+        <style>
+          #megaStore {
+              max-width: 600px;
+              margin: 30px auto;
+              padding-top: 120px;
+              background: url('http://demos.telerik.com/kendo-ui/content/web/menu/header.jpg') no-repeat center 0;
+          }
+          #menu h2 {
+              font-size: 1em;
+              text-transform: uppercase;
+              padding: 5px 10px;
+          }
+          #template img {
+              margin: 5px 20px 0 0;
+              float: left;
+          }
+          #template {
+              width: 380px;
+          }
+          #template ol {
+              float: left;
+              margin: 0 0 0 30px;
+              padding: 10px 10px 0 10px;
+          }
+          #template:after {
+              content: ".";
+              display: block;
+              height: 0;
+              clear: both;
+              visibility: hidden;
+          }
+          #template .k-button {
+              float: left;
+              clear: left;
+              margin: 5px 0 5px 12px;
+          }
+        </style>
+    </section>
+</template>

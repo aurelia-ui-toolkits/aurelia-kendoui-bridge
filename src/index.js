@@ -29,7 +29,8 @@ class KendoConfigBuilder {
 
   core() {
     this.kendoButton()
-			.kendoTabStrip();
+			.kendoTabStrip()
+      .kendoMenu();
     return this;
   }
 
@@ -47,6 +48,11 @@ class KendoConfigBuilder {
 
   kendoButton() {
     this.resources.push('button');
+    return this;
+  }
+
+  kendoMenu() {
+    this.resources.push('menu');
     return this;
   }
 
