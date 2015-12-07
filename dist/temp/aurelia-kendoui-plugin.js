@@ -28,11 +28,13 @@ require('kendo-ui/js/kendo.grid.min');
 
 require('kendo-ui/js/kendo.scheduler.min');
 
-require('kendo-ui/js/kendo.toolbar.min');
-
 require('kendo-ui/js/kendo.tabstrip.min');
 
+require('kendo-ui/js/kendo.toolbar.min');
+
 var _aureliaFramework = require('aurelia-framework');
+
+var _aureliaTemplating = require('aurelia-templating');
 
 var logger = LogManager.getLogger('aurelia-kendoui-plugin');
 
@@ -70,7 +72,7 @@ var KendoConfigBuilder = (function () {
   };
 
   KendoConfigBuilder.prototype.pro = function pro() {
-    this.core().kendoAutoComplete();
+    this.core().kendoGrid().kendoAutoComplete();
     return this;
   };
 
@@ -445,6 +447,27 @@ var AuKendoButton = (function () {
 
 exports.AuKendoButton = AuKendoButton;
 
+var Compiler = (function () {
+  function Compiler(viewCompiler, resources, container) {
+    _classCallCheck(this, _Compiler);
+
+    this.viewCompiler = viewCompiler;
+    this.resources = resources;
+  }
+
+  Compiler.prototype.compile = function compile(templateOrFragment) {
+    var view = this.viewCompiler.compile(templateOrFragment, this.resources).create();
+
+    return view;
+  };
+
+  var _Compiler = Compiler;
+  Compiler = _aureliaFramework.inject(_aureliaFramework.ViewCompiler, _aureliaFramework.ViewResources, _aureliaFramework.Container)(Compiler) || Compiler;
+  return Compiler;
+})();
+
+exports.Compiler = Compiler;
+
 function createEvent(name) {
   var event = document.createEvent('Event');
   event.initEvent(name, true, true);
@@ -470,21 +493,147 @@ function pruneOptions(options) {
 }
 
 var Grid = (function () {
-  function Grid() {
+  var _instanceInitializers3 = {};
+
+  _createDecoratedClass(Grid, [{
+    key: 'selectable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'filterable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'pageable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'sortable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'pageSize',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return 10;
+    },
+    enumerable: true
+  }, {
+    key: 'page',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return 1;
+    },
+    enumerable: true
+  }, {
+    key: 'selectedItem',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'selectedItems',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'autoBind',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return true;
+    },
+    enumerable: true
+  }, {
+    key: 'resizable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return true;
+    },
+    enumerable: true
+  }, {
+    key: 'reorderable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return true;
+    },
+    enumerable: true
+  }, {
+    key: 'editable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'sort',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'group',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'dataSource',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'groupable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return true;
+    },
+    enumerable: true
+  }], null, _instanceInitializers3);
+
+  function Grid(element, compiler, targetInstruction) {
     _classCallCheck(this, _Grid);
 
-    var logger = _aureliaLogging.getLogger('aurelia-kendoui');
+    this.columns = null;
 
-    if (!Kendo.ui.Grid) {
-      logger.error('Kendo.ui.Grid is not defined. Ensure that the professional version of Kendo UI is installed.');
-      return;
-    }
+    _defineDecoratedPropertyDescriptor(this, 'selectable', _instanceInitializers3);
 
-    this.logger = logger;
+    _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'pageable', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'pageSize', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'page', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'selectedItem', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'selectedItems', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'autoBind', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'resizable', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'reorderable', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'editable', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'sort', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'group', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers3);
+
+    this.element = element;
+    this.compiler = compiler;
+    this.columns = targetInstruction.behaviorInstructions[0].kendoGridColumns;
   }
 
-  Grid.prototype.bind = function bind() {
-    this._component = $(this.host).kendoGrid(this.getOptions()).data('kendoGrid');
+  Grid.prototype.bind = function bind(ctx) {
+    this._component = $(this.element).kendoGrid(this.getOptions()).data('kendoGrid');
+    this.$parent = ctx;
   };
 
   Grid.prototype.detached = function detached() {
@@ -494,10 +643,13 @@ var Grid = (function () {
   };
 
   Grid.prototype.getOptions = function getOptions() {
+    var _this2 = this;
+
     var options = pruneOptions({
       animation: this.animation,
       dataSource: this.dataSource,
       dataTextField: this.dataTextField,
+      columns: this.columns,
       delay: this.delay,
       enable: this.enable,
       filter: this.filter,
@@ -511,10 +663,37 @@ var Grid = (function () {
       popup: this.popup,
       separator: this.separator,
       suggest: this.suggest,
+      sortable: this.sortable,
+      groupable: this.groupable,
       headerTemplate: this.headerTemplate,
       template: this.template,
       valuePrimitive: this.valuePrimitive,
-      virtual: this.virtual
+      virtual: this.virtual,
+      dataBound: function dataBound(e) {
+        var tbody = e.sender.tbody[0];
+        var rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
+
+        rows.forEach(function (row) {
+          var uid = row.getAttribute('data-uid');
+          var data = e.sender.dataSource.data();
+
+          var ctx = find(data, function (item) {
+            return item.uid === uid;
+          }, _this2);
+          var cellctx = { $item: ctx, $parent: _this2.$parent };
+
+          row.innerHTML = row.innerHTML.replace(/!{/g, '${');
+
+          var view = _this2.compiler.compile(row);
+          var viewSlot = new _aureliaTemplating.ViewSlot(row, false);
+          viewSlot.add(view);
+          viewSlot.bind(cellctx);
+          viewSlot.attached();
+
+          row.parentNode.removeChild(row);
+          return viewSlot;
+        });
+      }
     });
 
     return Object.assign({}, this.options, options);
@@ -527,27 +706,65 @@ var Grid = (function () {
   };
 
   var _Grid = Grid;
-  Grid = _aureliaFramework.inject(Element)(Grid) || Grid;
+  Grid = _aureliaFramework.inject(Element, Compiler, _aureliaFramework.TargetInstruction)(Grid) || Grid;
+  Grid = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
+    parseUserTemplate(element, resources, instruction);
+    return true;
+  })(Grid) || Grid;
   Grid = _aureliaFramework.customElement('au-kendo-grid')(Grid) || Grid;
   return Grid;
 })();
 
 exports.Grid = Grid;
 
+function find(arr, test, ctx) {
+  var result = null;
+  arr.some(function (el, i) {
+    return test.call(ctx, el, i, arr) ? (result = el, true) : false;
+  });
+  return result;
+}
+
+function parseUserTemplate(element, resources, instruction) {
+  var columns = Array.prototype.slice.call(element.querySelectorAll('au-kendo-grid-col'));
+  var colSpecs = columns.map(function (col) {
+    var obj = {};
+
+    for (var i = col.attributes.length - 1; i >= 0; i--) {
+      var attr = col.attributes.item(i);
+      obj[attr.name] = attr.value;
+    }
+
+    parseCellTemplate(col, obj);
+
+    return obj;
+  });
+
+  element.innerHTML = '';
+
+  instruction.kendoGridColumns = colSpecs;
+}
+
+function parseCellTemplate(element, spec) {
+  if (element.childNodes.length > 0) {
+    spec.template = element.innerHTML.replace(/\${/g, '!{');
+  }
+}
+
 var AuScheduler = (function () {
-  var _instanceInitializers3 = {};
+  var _instanceInitializers4 = {};
 
   _createDecoratedClass(AuScheduler, [{
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers3);
+  }], null, _instanceInitializers4);
 
   function AuScheduler(element) {
     _classCallCheck(this, _AuScheduler);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
 
     this.element = element;
     this.options = {};
@@ -579,52 +796,6 @@ var AuScheduler = (function () {
 })();
 
 exports.AuScheduler = AuScheduler;
-
-var AuToolbar = (function () {
-  var _instanceInitializers4 = {};
-
-  _createDecoratedClass(AuToolbar, [{
-    key: 'options',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers4);
-
-  function AuToolbar(element) {
-    _classCallCheck(this, _AuToolbar);
-
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
-
-    this.element = element;
-    this.options = {};
-  }
-
-  AuToolbar.prototype.bind = function bind() {};
-
-  AuToolbar.prototype.detached = function detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
-  };
-
-  AuToolbar.prototype.getOptions = function getOptions() {
-    var options = pruneOptions({});
-
-    return Object.assign({}, this.options, options);
-  };
-
-  AuToolbar.prototype.enableChanged = function enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
-    }
-  };
-
-  var _AuToolbar = AuToolbar;
-  AuToolbar = _aureliaFramework.inject(Element)(AuToolbar) || AuToolbar;
-  return AuToolbar;
-})();
-
-exports.AuToolbar = AuToolbar;
 
 var TabStrip = (function () {
   var _instanceInitializers5 = {};
@@ -778,3 +949,49 @@ var TabStrip = (function () {
 })();
 
 exports.TabStrip = TabStrip;
+
+var AuToolbar = (function () {
+  var _instanceInitializers6 = {};
+
+  _createDecoratedClass(AuToolbar, [{
+    key: 'options',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers6);
+
+  function AuToolbar(element) {
+    _classCallCheck(this, _AuToolbar);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers6);
+
+    this.element = element;
+    this.options = {};
+  }
+
+  AuToolbar.prototype.bind = function bind() {};
+
+  AuToolbar.prototype.detached = function detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  };
+
+  AuToolbar.prototype.getOptions = function getOptions() {
+    var options = pruneOptions({});
+
+    return Object.assign({}, this.options, options);
+  };
+
+  AuToolbar.prototype.enableChanged = function enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
+  };
+
+  var _AuToolbar = AuToolbar;
+  AuToolbar = _aureliaFramework.inject(Element)(AuToolbar) || AuToolbar;
+  return AuToolbar;
+})();
+
+exports.AuToolbar = AuToolbar;

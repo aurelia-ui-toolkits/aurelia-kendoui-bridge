@@ -1,9 +1,9 @@
 <template>
     <section>
         <collapse-panel title="API" allow-collapse.bind="false" >
- 
+
         </collapse-panel>
- 
+
         <collapse-panel title="Code Preview">
             <div au-kendo-tabstrip>
                 <ul>
@@ -11,19 +11,15 @@
                     <li>Code</li>
                 </ul>
                 <div>
-                    <textarea au-markdown>
-```
-
-```
-                   </textarea>
+                    <au-code language="markup">
+                    </au-code>
                 </div>
+
                 <div>
-                    <textarea au-markdown>
-```
-
-```
-                   </textarea>
+                    <au-code language="javascript">
+                    </au-code>
                 </div>
+
             </div>
         </collapse-panel>
 

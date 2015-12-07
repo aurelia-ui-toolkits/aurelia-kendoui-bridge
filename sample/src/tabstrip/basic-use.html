@@ -17,28 +17,26 @@
                     <li>Code</li>
                 </ul>
                 <div>
-                    <textarea au-markdown>
-```
-<div au-kendo-tabstrip>
-	<ul>
-		<li class="k-state-active">This is tab 1</li>
-		<li>This is tab 2</li>
-	</ul>
-	<div>This is some content for tab 1</div>
-	<div>This is some more content for tab 2</div>
-</div>
-```
-                    </textarea>
+                    <au-code language="markup">
+                       <div au-kendo-tabstrip>
+                            <ul>
+                                <li class="k-state-active">This is tab 1</li>
+                                <li>This is tab 2</li>
+                            </ul>
+                            <div>This is some content for tab 1</div>
+                            <div>This is some more content for tab 2</div>
+                        </div>
+                    </au-code>
                 </div>
-                <div>
-                    <textarea au-markdown>
-```
-export class BasicUse {
 
-}
-```
-                    </textarea>
+                <div>
+                    <au-code language="javascript">
+                        export class BasicUse {
+
+                        }
+                    </au-code>
                 </div>
+
             </div>
         </collapse-panel>
     </section>

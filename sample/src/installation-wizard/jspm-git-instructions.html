@@ -1,13 +1,13 @@
 <template>
   <p>1. Install the JSPM git endpoint plugin</p>
-  <textarea au-markdown>
+  <au-markdown>
 `npm install jspm-git --save-dev`
-  </textarea>
+  </au-markdown>
 
   <p>2. Register the endpoint and use the following settings</p>
-  <textarea au-markdown>
+  <au-markdown>
 `jspm registry create kendo jspm-git`
-  </textarea>
+  </au-markdown>
 
   <ul>
     <li>base URL: <span style="font-weight: bold">https://bower.telerik.com</span></li>
@@ -19,23 +19,21 @@
   </ul>
 
   <p>3. Run the following command to install the PRO version of kendo and the aurelia-kendoui plugin</p>
-  <textarea au-markdown>
+  <au-markdown>
 `jspm install aurelia-kendoui-plugin kendo-ui=kendo:bower-kendo-ui`
-  </textarea>
+  </au-markdown>
 
   <p>4. Register the plugin</p>
   <p>
     Now we're going to register the plugin with Aurelia in your "main.js" or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Pro by calling the "pro()" method
   </p>
 
-  <textarea au-markdown>
-```
+  <au-code language="javascript">
 export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging()
     .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
 }
-```
-  </textarea>
+  </au-code>
 </template>

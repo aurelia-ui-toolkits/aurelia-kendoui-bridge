@@ -11,23 +11,23 @@
                     <li class="k-state-active">HTML</li>
                     <li>Code</li>
                 </ul>
-                <div>
-                    <textarea au-markdown>
-```
-<button au-kendo-button="icon: funnel">Image Button</button>
-```
-                    </textarea>
-                </div>
-                <div>
-                    <textarea au-markdown>
-```
-export class Images {
 
-}
-```
-                    </textarea>
+                <div>
+                    <au-code language="markup">
+                       <button au-kendo-button="icon: funnel">Image Button</button>
+                       <button au-kendo-button="spriteCssClass: (k-icon netherlandsFlag)">Sprite Icon Button</button>
+                    </au-code>
                 </div>
+
+                <div>
+                    <au-code language="javascript">
+                        export class Images {
+
+                        }
+                    </au-code>
+                </div>
+
             </div>
-        </collapse-panel>        
+        </collapse-panel>
     </section>
 </template>

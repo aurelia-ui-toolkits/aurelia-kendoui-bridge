@@ -35,6 +35,7 @@ class KendoConfigBuilder {
 
   pro() {
     this.core()
+      .kendoGrid()
 			.kendoAutoComplete();
     return this;
   }
