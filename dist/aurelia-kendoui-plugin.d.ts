@@ -1,11 +1,11 @@
 declare module 'aurelia-kendoui-plugin' {
   import * as LogManager from 'aurelia-logging';
   import 'jquery';
-  import 'kendo-ui/js/kendo.autocomplete.min';
   import 'kendo-ui/js/kendo.button.min';
+  import 'kendo-ui/js/kendo.autocomplete.min';
   import 'kendo-ui/js/kendo.grid.min';
-  import 'kendo-ui/js/kendo.menu.min';
   import 'kendo-ui/js/kendo.scheduler.min';
+  import 'kendo-ui/js/kendo.menu.min';
   import 'kendo-ui/js/kendo.tabstrip.min';
   import 'kendo-ui/js/kendo.toolbar.min';
   import { customAttribute, bindable, inject, ViewCompiler, ViewResources, Container, customElement, processContent, TargetInstruction }  from 'aurelia-framework';
@@ -24,6 +24,18 @@ declare module 'aurelia-kendoui-plugin' {
     kendoScheduler(): any;
     kendoTabStrip(): any;
     kendoToolbar(): any;
+  }
+  export class AuKendoButton {
+    enable: any;
+    icon: any;
+    imageUrl: any;
+    spriteCssClass: any;
+    options: any;
+    constructor(element: any);
+    bind(): any;
+    detached(): any;
+    getOptions(): any;
+    enableChanged(newValue: any): any;
   }
   export class AuKendoAutoComplete {
     element: any;
@@ -49,18 +61,6 @@ declare module 'aurelia-kendoui-plugin' {
     valuePrimitive: any;
     virtual: any;
     value: any;
-    constructor(element: any);
-    bind(): any;
-    detached(): any;
-    getOptions(): any;
-    enableChanged(newValue: any): any;
-  }
-  export class AuKendoButton {
-    enable: any;
-    icon: any;
-    imageUrl: any;
-    spriteCssClass: any;
-    options: any;
     constructor(element: any);
     bind(): any;
     detached(): any;
@@ -103,6 +103,18 @@ declare module 'aurelia-kendoui-plugin' {
     getOptions(): any;
     enableChanged(newValue: any): any;
   }
+  
+  //  @customAttribute('au-kendo-button')
+  export class AuScheduler {
+    options: any;
+    constructor(element: any);
+    bind(): any;
+    
+    // this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+    detached(): any;
+    getOptions(): any;
+    enableChanged(newValue: any): any;
+  }
   export class Menu {
     options: any;
     dataSource: any;
@@ -116,18 +128,6 @@ declare module 'aurelia-kendoui-plugin' {
     bind(): any;
     detached(): any;
     getOptions(): any;
-  }
-  
-  //  @customAttribute('au-kendo-button')
-  export class AuScheduler {
-    options: any;
-    constructor(element: any);
-    bind(): any;
-    
-    // this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
-    detached(): any;
-    getOptions(): any;
-    enableChanged(newValue: any): any;
   }
   export class TabStrip {
     animation: any;
