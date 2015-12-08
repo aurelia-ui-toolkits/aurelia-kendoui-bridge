@@ -26,6 +26,8 @@ require('kendo-ui/js/kendo.button.min');
 
 require('kendo-ui/js/kendo.grid.min');
 
+require('kendo-ui/js/kendo.menu.min');
+
 require('kendo-ui/js/kendo.scheduler.min');
 
 require('kendo-ui/js/kendo.tabstrip.min');
@@ -67,7 +69,7 @@ var KendoConfigBuilder = (function () {
   }
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoButton().kendoTabStrip();
+    this.kendoButton().kendoTabStrip().kendoMenu();
     return this;
   };
 
@@ -83,6 +85,11 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoButton = function kendoButton() {
     this.resources.push('button');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoMenu = function kendoMenu() {
+    this.resources.push('menu');
     return this;
   };
 
@@ -468,14 +475,10 @@ var Compiler = (function () {
 
 exports.Compiler = Compiler;
 
-function createEvent(name) {
-  var event = document.createEvent('Event');
-  event.initEvent(name, true, true);
-  return event;
-}
-
 function fireEvent(element, name) {
-  var event = createEvent(name);
+  var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+
+  var event = new CustomEvent(name, { 'detail': data });
   element.dispatchEvent(event);
 }
 
@@ -751,20 +754,145 @@ function parseCellTemplate(element, spec) {
   }
 }
 
-var AuScheduler = (function () {
+var Menu = (function () {
   var _instanceInitializers4 = {};
+
+  _createDecoratedClass(Menu, [{
+    key: 'options',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'dataSource',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'closeOnClick',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'animation',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'direction',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'hoverDelay',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'orientation',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'popupCollision',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers4);
+
+  function Menu(element) {
+    _classCallCheck(this, _Menu);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'closeOnClick', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'direction', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'hoverDelay', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'orientation', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'popupCollision', _instanceInitializers4);
+
+    this.element = element;
+    this.options = {};
+  }
+
+  Menu.prototype.bind = function bind() {
+    var target = undefined;
+    var ul = $(this.element).find('ul');
+    if (ul.has()) {
+      target = $(this.element).find('ul').first();
+    } else {
+      target = $(this.element).appendChild('<ul></ul>');
+    }
+
+    this._component = target.kendoMenu(this.getOptions()).data('kendoMenu');
+  };
+
+  Menu.prototype.detached = function detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  };
+
+  Menu.prototype.getOptions = function getOptions() {
+    var _this3 = this;
+
+    var options = pruneOptions({
+      dataSource: this.dataSource,
+      closeOnClick: this.closeOnClick,
+      animation: this.animation,
+      direction: this.direction,
+      hoverDelay: this.hoverDelay,
+      orientation: this.orientation,
+      popupCollision: this.popupCollision,
+      close: function close(e) {
+        return fireEvent(_this3.element, 'close', e);
+      },
+      open: function open(e) {
+        return fireEvent(_this3.element, 'open', e);
+      },
+      activate: function activate(e) {
+        return fireEvent(_this3.element, 'activate', e);
+      },
+      deactivate: function deactivate(e) {
+        return fireEvent(_this3.element, 'deactivate', e);
+      },
+      select: function select(e) {
+        return fireEvent(_this3.element, 'select', e);
+      }
+    });
+
+    return Object.assign({}, this.options, options);
+  };
+
+  var _Menu = Menu;
+  Menu = _aureliaFramework.inject(Element)(Menu) || Menu;
+  Menu = _aureliaFramework.customElement('au-kendo-menu')(Menu) || Menu;
+  return Menu;
+})();
+
+exports.Menu = Menu;
+
+var AuScheduler = (function () {
+  var _instanceInitializers5 = {};
 
   _createDecoratedClass(AuScheduler, [{
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers4);
+  }], null, _instanceInitializers5);
 
   function AuScheduler(element) {
     _classCallCheck(this, _AuScheduler);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers5);
 
     this.element = element;
     this.options = {};
@@ -798,7 +926,7 @@ var AuScheduler = (function () {
 exports.AuScheduler = AuScheduler;
 
 var TabStrip = (function () {
-  var _instanceInitializers5 = {};
+  var _instanceInitializers6 = {};
 
   _createDecoratedClass(TabStrip, [{
     key: 'animation',
@@ -870,38 +998,38 @@ var TabStrip = (function () {
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers5);
+  }], null, _instanceInitializers6);
 
   function TabStrip(element) {
     _classCallCheck(this, _TabStrip);
 
-    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'collapsible', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'collapsible', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'contentUrls', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'contentUrls', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataContentField', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'dataContentField', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataContentUrlField', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'dataContentUrlField', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSpriteCssClass', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'dataSpriteCssClass', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataTextField', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'dataTextField', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataUrlField', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'dataUrlField', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'tabPosition', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'tabPosition', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers6);
 
     this.element = element;
     this.options = {};
@@ -951,19 +1079,19 @@ var TabStrip = (function () {
 exports.TabStrip = TabStrip;
 
 var AuToolbar = (function () {
-  var _instanceInitializers6 = {};
+  var _instanceInitializers7 = {};
 
   _createDecoratedClass(AuToolbar, [{
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers6);
+  }], null, _instanceInitializers7);
 
   function AuToolbar(element) {
     _classCallCheck(this, _AuToolbar);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers6);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers7);
 
     this.element = element;
     this.options = {};

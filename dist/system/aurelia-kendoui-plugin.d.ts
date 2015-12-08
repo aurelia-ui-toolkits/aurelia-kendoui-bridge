@@ -4,6 +4,7 @@ declare module 'aurelia-kendoui-plugin' {
   import 'kendo-ui/js/kendo.autocomplete.min';
   import 'kendo-ui/js/kendo.button.min';
   import 'kendo-ui/js/kendo.grid.min';
+  import 'kendo-ui/js/kendo.menu.min';
   import 'kendo-ui/js/kendo.scheduler.min';
   import 'kendo-ui/js/kendo.tabstrip.min';
   import 'kendo-ui/js/kendo.toolbar.min';
@@ -16,6 +17,7 @@ declare module 'aurelia-kendoui-plugin' {
     pro(): any;
     kendoAutoComplete(): any;
     kendoButton(): any;
+    kendoMenu(): any;
     kendoCombobox(): any;
     kendoDropDownList(): any;
     kendoGrid(): any;
@@ -75,7 +77,7 @@ declare module 'aurelia-kendoui-plugin' {
     constructor(viewCompiler: any, resources: any, container: any);
     compile(templateOrFragment: any): any;
   }
-  export function fireEvent(element: any, name: any): any;
+  export function fireEvent(element: any, name: any, data?: any): any;
   export function pruneOptions(options: any): any;
   export class Grid {
     columns: any;
@@ -100,6 +102,20 @@ declare module 'aurelia-kendoui-plugin' {
     detached(): any;
     getOptions(): any;
     enableChanged(newValue: any): any;
+  }
+  export class Menu {
+    options: any;
+    dataSource: any;
+    closeOnClick: any;
+    animation: any;
+    direction: any;
+    hoverDelay: any;
+    orientation: any;
+    popupCollision: any;
+    constructor(element: any);
+    bind(): any;
+    detached(): any;
+    getOptions(): any;
   }
   
   //  @customAttribute('au-kendo-button')

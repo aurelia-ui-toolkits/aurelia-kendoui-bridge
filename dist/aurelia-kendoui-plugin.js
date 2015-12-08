@@ -3,6 +3,7 @@ import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.grid.min';
+import 'kendo-ui/js/kendo.menu.min';
 import 'kendo-ui/js/kendo.scheduler.min';
 import 'kendo-ui/js/kendo.tabstrip.min';
 import 'kendo-ui/js/kendo.toolbar.min';
@@ -39,7 +40,8 @@ class KendoConfigBuilder {
 
   core() {
     this.kendoButton()
-			.kendoTabStrip();
+			.kendoTabStrip()
+      .kendoMenu();
     return this;
   }
 
@@ -57,6 +59,11 @@ class KendoConfigBuilder {
 
   kendoButton() {
     this.resources.push('button');
+    return this;
+  }
+
+  kendoMenu() {
+    this.resources.push('menu');
     return this;
   }
 
@@ -234,7 +241,6 @@ export class AuKendoButton {
   }
 }
 
-
 /**
 * Compiler service
 *
@@ -255,14 +261,8 @@ export class Compiler {
   }
 }
 
-function createEvent(name) {
-  let event = document.createEvent('Event');
-  event.initEvent(name, true, true);
-  return event;
-}
-
-export function fireEvent(element, name) {
-  let event = createEvent(name);
+export function fireEvent(element, name, data = {}) {
+  let event = new CustomEvent(name, { 'detail': data});
   element.dispatchEvent(event);
 }
 
@@ -281,6 +281,7 @@ export function pruneOptions(options) {
 
   return returnOptions;
 }
+
 
 
 @customElement('au-kendo-grid')
@@ -431,6 +432,64 @@ function parseCellTemplate(element, spec) {
   // Hack to avoid kendo hijacking Aurelia interpolations - need a good workaround for this
   if (element.childNodes.length > 0) {
     spec.template = element.innerHTML.replace(/\${/g, '!{');
+  }
+}
+
+@customElement('au-kendo-menu')
+@inject(Element)
+export class Menu {
+
+	_component;
+
+  @bindable options;
+  @bindable dataSource;
+  @bindable closeOnClick;
+  @bindable animation;
+  @bindable direction;
+  @bindable hoverDelay;
+  @bindable orientation;
+  @bindable popupCollision;
+
+  constructor(element) {
+    this.element = element;
+    this.options = {};
+  }
+
+  bind() {
+    let target;
+    let ul = $(this.element).find('ul');
+    if (ul.has()) {
+      target = $(this.element).find('ul').first();
+    } else {
+      target = $(this.element).appendChild('<ul></ul>');
+    }
+
+    this._component = target.kendoMenu(this.getOptions()).data('kendoMenu');
+  }
+
+  detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  }
+
+  getOptions() {
+    let options = pruneOptions({
+      dataSource: this.dataSource,
+      closeOnClick: this.closeOnClick,
+      animation: this.animation,
+      direction: this.direction,
+      hoverDelay: this.hoverDelay,
+      orientation: this.orientation,
+      popupCollision: this.popupCollision,
+      close: (e) => fireEvent(this.element, 'close', e),
+      open: (e) => fireEvent(this.element, 'open', e),
+      activate: (e) => fireEvent(this.element, 'activate', e),
+      deactivate: (e) => fireEvent(this.element, 'deactivate', e),
+      select: (e) => fireEvent(this.element, 'select', e)
+    });
+
+    return Object.assign({}, this.options, options);
   }
 }
 
