@@ -34,14 +34,14 @@ export class Grid {
 
   constructor(element, templateCompiler, targetInstruction) {
     this.element = element;
+    this.templateCompiler = templateCompiler;
     this.columns = targetInstruction.behaviorInstructions[0].kendoGridColumns;
-
-    templateCompiler.initialize();
   }
 
   bind(ctx) {
+    this.templateCompiler.initialize(ctx);
+
     this._component = $(this.element).kendoGrid(this.getOptions()).data('kendoGrid');
-    this.$parent = ctx;
   }
 
   detached() {

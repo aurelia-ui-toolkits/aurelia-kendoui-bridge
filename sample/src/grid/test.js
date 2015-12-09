@@ -10,4 +10,8 @@ export class Test {
       }
     };
   }
+
+  test() {
+    console.log("IT WORKS!!");
+  }
 }

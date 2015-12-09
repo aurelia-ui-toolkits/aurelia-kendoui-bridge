@@ -8,7 +8,11 @@ export class TemplateCompiler {
     this.templatingEngine = templatingEngine;
   }
 
-  initialize() {
+  initialize($parent) {
+    // store the parent view-model so we can pass this as the
+    // overrideContext when we call bind() on all compiled Views
+    this.$parent = $parent;
+
     // almost all controls derive from kendo.ui.Widget
     // override the angular property on these objects, and point it towards handleTemplateEvents
     kendo.ui.Widget.prototype.angular = (_event, _args) => this.handleTemplateEvents(_event, _args);
@@ -58,12 +62,8 @@ export class TemplateCompiler {
   // uses the ehance function of Aurelia's TemplatingEngine
   // to "compile" the existing DOM element
   enhanceView(element, ctx) {
-    if (ctx) {
-      ctx.$parent = this.$parent;
-    }
-
     let view = this.templatingEngine.enhance(element);
-    view.bind(ctx); // call the bind() function on the view with the dataItem we got from Kendo
+    view.bind(ctx, this.$parent); // call the bind() function on the view with the dataItem we got from Kendo
     view.attached(); // attach it to the DOM
 
     // when we do cleanup, we need to get the view instance
