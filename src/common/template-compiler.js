@@ -54,7 +54,7 @@ export class TemplateCompiler {
       let element = elements[i];
       let ctx;
 
-      if (data) {
+      if (data && data[i]) {
         let _data = data[i];
         ctx = _data.dataItem;
       }

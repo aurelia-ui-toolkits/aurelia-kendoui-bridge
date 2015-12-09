@@ -6,8 +6,11 @@ import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('au-kendo-grid')
 @processContent((compiler, resources, element, instruction) => {
-  parseUserTemplate(element, resources, instruction);
-  return true;
+  let initFromTable = isInitFromTable(element);
+  if (!initFromTable) {
+    parseUserTemplate(element, resources, instruction);
+  }
+  return initFromTable;
 })
 @inject(Element, TemplateCompiler, TargetInstruction)
 export class Grid {
@@ -42,7 +45,11 @@ export class Grid {
   bind(ctx) {
     this.templateCompiler.initialize(ctx);
 
-    this._component = $(this.element).kendoGrid(this.getOptions()).data('kendoGrid');
+    // init grid on the <table> tag if initialization is from table
+    // else, just use the root element
+    let target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+
+    this._component = $(target).kendoGrid(this.getOptions()).data('kendoGrid');
   }
 
   detached() {
@@ -120,4 +127,11 @@ function parseCellTemplate(element, spec) {
   if (element.childNodes.length > 0) {
     spec.template = element.innerHTML;
   }
+}
+
+// if the first child node is a table tag
+// then the user wants to initialize the Kendo Grid from an
+// existing table
+function isInitFromTable(element) {
+  return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
 }
