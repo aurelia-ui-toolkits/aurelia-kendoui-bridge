@@ -1,6 +1,13 @@
 <template>
     <section>
         <collapse-panel title="Binding to remote data" allow-collapse.bind="false">
+          <au-kendo-grid data-source.bind="datasource" pageable.bind="true" filterable.bind="true" sortable.bind="true" height.bind="550">
+            <au-kendo-grid-col title="OrderId" field="OrderID"></au-kendo-grid-col>
+            <au-kendo-grid-col field="Freight"></au-kendo-grid-col>
+            <au-kendo-grid-col title="Order Date" field="OrderDate" format="{0:MM/dd/yyyy}"></au-kendo-grid-col>
+            <au-kendo-grid-col title="Ship Name" field="ShipName"></au-kendo-grid-col>
+            <au-kendo-grid-col title="Ship City" field="ShipCity"></au-kendo-grid-col>
+          </au-kendo-grid>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">
@@ -11,11 +18,43 @@
                 </ul>
                  <div>
                     <au-code language="markup">
+                      <au-kendo-grid data-source.bind="datasource" pageable.bind="true" filterable.bind="true" sortable.bind="true" height.bind="550">
+                        <au-kendo-grid-col title="OrderId" field="OrderID"></au-kendo-grid-col>
+                        <au-kendo-grid-col field="Freight"></au-kendo-grid-col>
+                        <au-kendo-grid-col title="Order Date" field="OrderDate" format="{0:MM/dd/yyyy}"></au-kendo-grid-col>
+                        <au-kendo-grid-col title="Ship Name" field="ShipName"></au-kendo-grid-col>
+                        <au-kendo-grid-col title="Ship City" field="ShipCity"></au-kendo-grid-col>
+                      </au-kendo-grid>
                     </au-code>
                 </div>
 
                 <div>
                     <au-code language="javascript">
+                      export class BindingToRemoteData {
+                        constructor() {
+                          this.datasource = {
+                            type: "odata",
+                            transport: {
+                                read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+                            },
+                            schema: {
+                                model: {
+                                    fields: {
+                                        OrderID: { type: "number" },
+                                        Freight: { type: "number" },
+                                        ShipName: { type: "string" },
+                                        OrderDate: { type: "date" },
+                                        ShipCity: { type: "string" }
+                                    }
+                                }
+                            },
+                            pageSize: 20,
+                            serverPaging: true,
+                            serverFiltering: true,
+                            serverSorting: true
+                          };
+                        }
+                      }
                     </au-code>
                 </div>
             </div>

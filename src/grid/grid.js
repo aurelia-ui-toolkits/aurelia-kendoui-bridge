@@ -67,6 +67,7 @@ export class Grid {
       delay: this.delay,
       enable: this.enable,
       filter: this.filter,
+      filterable: this.filterable,
       fixedGroupTemplate: this.fixedGroupTemplate,
       groupTemplate: this.groupTemplate,
       height: this.height,
