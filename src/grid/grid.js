@@ -100,16 +100,16 @@ export class Grid {
 
 function parseUserTemplate(element, resources, instruction) {
   // Pull all of the attributes off the kendo-grid-col element
-  let columns = Array.prototype.slice.call(element.querySelectorAll('au-kendo-grid-col'));
-  let colSpecs = columns.map(col => {
+  let columns = Array.prototype.slice.call(element.querySelectorAll('au-col'));
+  let colSpecs = columns.map(column => {
     let obj = {};
 
-    for (let i = col.attributes.length - 1; i >= 0; i--) {
-      let attr = col.attributes.item(i);
+    for (let i = column.attributes.length - 1; i >= 0; i--) {
+      let attr = column.attributes.item(i);
       obj[attr.name] = attr.value;
     }
 
-    parseCellTemplate(col, obj);
+    parseCellTemplate(column, obj);
 
     return obj;
   });
