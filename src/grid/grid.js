@@ -1,7 +1,6 @@
 import {inject, customElement, processContent, bindable, TargetInstruction} from 'aurelia-framework';
-import {ViewSlot, TemplatingEngine} from 'aurelia-templating';
-import {Compiler} from '../common/compiler';
 import {pruneOptions} from '../common/options';
+import {TemplateCompiler} from '../common/template-compiler';
 import 'jquery';
 import 'kendo-ui/js/kendo.grid.min';
 
@@ -10,7 +9,7 @@ import 'kendo-ui/js/kendo.grid.min';
   parseUserTemplate(element, resources, instruction);
   return true;
 })
-@inject(Element, Compiler, TargetInstruction, TemplatingEngine)
+@inject(Element, TemplateCompiler, TargetInstruction)
 export class Grid {
 
   columns = null;
@@ -33,11 +32,11 @@ export class Grid {
 
   @bindable groupable = true;
 
-  constructor(element, compiler, targetInstruction, templatingEngine) {
+  constructor(element, templateCompiler, targetInstruction) {
     this.element = element;
-    this.compiler = compiler;
-    this.templatingEngine = templatingEngine;
     this.columns = targetInstruction.behaviorInstructions[0].kendoGridColumns;
+
+    templateCompiler.initialize();
   }
 
   bind(ctx) {
@@ -52,45 +51,6 @@ export class Grid {
   }
 
   getOptions() {
-    kendo.ui.Widget.prototype.angular = (_event, _args) => {
-      if (_event === 'compile') {
-        let args = _args();
-        let data = args.data;
-        let elements = args.elements;
-
-        for (let i = 0; i < data.length; i++) {
-          let element = elements[i];
-          let _data = data[i];
-          let ctx = _data.dataItem;
-          if (ctx) {
-            ctx.$parent = this.$parent;
-          }
-
-          let view = this.templatingEngine.enhance(element);
-          view.bind(ctx);
-          view.attached();
-
-          $(element).data('viewInstance', view);
-        }
-      }
-
-      if (_event === 'cleanup') {
-        let args = _args();
-        let elements = args.elements;
-
-        if (elements) {
-          for (let i = 0; i < elements.length; i++) {
-            let element = elements[i];
-            let view = $(element).data('viewInstance');
-            if (view) {
-              view.detached();
-              view.unbind();
-            }
-          }
-        }
-      }
-    };
-
     let options = pruneOptions({
       animation: this.animation,
       dataSource: this.dataSource,
