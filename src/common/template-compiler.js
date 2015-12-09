@@ -50,10 +50,14 @@ export class TemplateCompiler {
   // loops through each element, and find the matching dataitem
   // and calls enhanceView(element, dataItem) for each element there is
   compile(elements, data) {
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
-      let _data = data[i];
-      let ctx = _data.dataItem;
+      let ctx;
+
+      if (data) {
+        let _data = data[i];
+        ctx = _data.dataItem;
+      }
 
       this.enhanceView(element, ctx);
     }
