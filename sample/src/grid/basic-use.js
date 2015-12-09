@@ -3,7 +3,7 @@ export class BasicUse {
   pageable = {
     refresh: true,
     pageSizes: true,
-    buttonCount: 5
+    buttonCount: 10
   };
 
   constructor() {
@@ -12,7 +12,7 @@ export class BasicUse {
       transport: {
           read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
       },
-      pageSize: 20
+      pageSize: 5
     };
   }
 }

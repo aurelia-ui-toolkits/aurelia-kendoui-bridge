@@ -1,15 +1,15 @@
 declare module 'aurelia-kendoui-plugin' {
   import * as LogManager from 'aurelia-logging';
   import 'jquery';
-  import 'kendo-ui/js/kendo.button.min';
   import 'kendo-ui/js/kendo.autocomplete.min';
+  import 'kendo-ui/js/kendo.button.min';
   import 'kendo-ui/js/kendo.grid.min';
-  import 'kendo-ui/js/kendo.scheduler.min';
   import 'kendo-ui/js/kendo.menu.min';
+  import 'kendo-ui/js/kendo.scheduler.min';
   import 'kendo-ui/js/kendo.tabstrip.min';
   import 'kendo-ui/js/kendo.toolbar.min';
-  import { customAttribute, bindable, inject, ViewCompiler, ViewResources, Container, customElement, processContent, TargetInstruction }  from 'aurelia-framework';
-  import { ViewSlot }  from 'aurelia-templating';
+  import { customAttribute, bindable, inject, customElement, processContent, TargetInstruction }  from 'aurelia-framework';
+  import { TemplatingEngine }  from 'aurelia-templating';
   export function configure(aurelia: any, configCallback: any): any;
   class KendoConfigBuilder {
     resources: any;
@@ -24,18 +24,6 @@ declare module 'aurelia-kendoui-plugin' {
     kendoScheduler(): any;
     kendoTabStrip(): any;
     kendoToolbar(): any;
-  }
-  export class AuKendoButton {
-    enable: any;
-    icon: any;
-    imageUrl: any;
-    spriteCssClass: any;
-    options: any;
-    constructor(element: any);
-    bind(): any;
-    detached(): any;
-    getOptions(): any;
-    enableChanged(newValue: any): any;
   }
   export class AuKendoAutoComplete {
     element: any;
@@ -67,18 +55,43 @@ declare module 'aurelia-kendoui-plugin' {
     getOptions(): any;
     enableChanged(newValue: any): any;
   }
-  
-  /**
-  * Compiler service
-  *
-  * compiles an HTML element with aurelia
-  */
-  export class Compiler {
-    constructor(viewCompiler: any, resources: any, container: any);
-    compile(templateOrFragment: any): any;
+  export class AuKendoButton {
+    enable: any;
+    icon: any;
+    imageUrl: any;
+    spriteCssClass: any;
+    options: any;
+    constructor(element: any);
+    bind(): any;
+    detached(): any;
+    getOptions(): any;
+    enableChanged(newValue: any): any;
   }
   export function fireEvent(element: any, name: any, data?: any): any;
   export function pruneOptions(options: any): any;
+  export class TemplateCompiler {
+    constructor(templatingEngine: any);
+    initialize($parent: any): any;
+    
+    //  this function filters out compile and cleanup events
+    //  and calls the compile or cleanup function with the needed arguments
+    handleTemplateEvents(_event: any, _args: any): any;
+    
+    //  loops through each element, and find the matching dataitem
+    //  and calls enhanceView(element, dataItem) for each element there is
+    compile(elements: any, data: any): any;
+    
+    //  uses the ehance function of Aurelia's TemplatingEngine
+    //  to "compile" the existing DOM element
+    enhanceView(element: any, ctx: any): any;
+    
+    //  loops through each element kendo asks us to clean up
+    //  calls cleanupView() for each element
+    cleanup(elements: any): any;
+    
+    //  cleans up the view kendo has asked us to clean up
+    cleanupView(element: any): any;
+  }
   export class Grid {
     columns: any;
     selectable: any;
@@ -96,21 +109,10 @@ declare module 'aurelia-kendoui-plugin' {
     sort: any;
     group: any;
     dataSource: any;
+    scrollable: any;
     groupable: any;
-    constructor(element: any, compiler: any, targetInstruction: any);
+    constructor(element: any, templateCompiler: any, targetInstruction: any);
     bind(ctx: any): any;
-    detached(): any;
-    getOptions(): any;
-    enableChanged(newValue: any): any;
-  }
-  
-  //  @customAttribute('au-kendo-button')
-  export class AuScheduler {
-    options: any;
-    constructor(element: any);
-    bind(): any;
-    
-    // this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
     detached(): any;
     getOptions(): any;
     enableChanged(newValue: any): any;
@@ -128,6 +130,18 @@ declare module 'aurelia-kendoui-plugin' {
     bind(): any;
     detached(): any;
     getOptions(): any;
+  }
+  
+  //  @customAttribute('au-kendo-button')
+  export class AuScheduler {
+    options: any;
+    constructor(element: any);
+    bind(): any;
+    
+    // this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+    detached(): any;
+    getOptions(): any;
+    enableChanged(newValue: any): any;
   }
   export class TabStrip {
     animation: any;

@@ -1,14 +1,14 @@
 import * as LogManager from 'aurelia-logging';
 import 'jquery';
-import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.autocomplete.min';
+import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.grid.min';
-import 'kendo-ui/js/kendo.scheduler.min';
 import 'kendo-ui/js/kendo.menu.min';
+import 'kendo-ui/js/kendo.scheduler.min';
 import 'kendo-ui/js/kendo.tabstrip.min';
 import 'kendo-ui/js/kendo.toolbar.min';
-import {customAttribute,bindable,inject,ViewCompiler,ViewResources,Container,customElement,processContent,TargetInstruction} from 'aurelia-framework';
-import {ViewSlot} from 'aurelia-templating';
+import {customAttribute,bindable,inject,customElement,processContent,TargetInstruction} from 'aurelia-framework';
+import {TemplatingEngine} from 'aurelia-templating';
 
 let logger = LogManager.getLogger('aurelia-kendoui-plugin');
 
@@ -95,52 +95,6 @@ class KendoConfigBuilder {
   kendoToolbar() {
     this.resources.push('toolbar');
     return this;
-  }
-}
-
-@customAttribute('au-kendo-button')
-@inject(Element)
-export class AuKendoButton {
-
-  _component;
-
-  @bindable enable = true;
-  @bindable icon;
-  @bindable imageUrl;
-  @bindable spriteCssClass;
-
-  @bindable options;
-
-  constructor(element) {
-    this.element = element;
-    this.options = {};
-  }
-
-  bind() {
-    this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
-  }
-
-  detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
-  }
-
-  getOptions() {
-    let options = pruneOptions({
-      icon: this.icon,
-      enable: this.enable,
-      imageUrl: this.imageUrl,
-      spriteCssClass: this.spriteCssClass
-    });
-
-    return Object.assign({}, this.options, options);
-  }
-
-  enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
-    }
   }
 }
 
@@ -241,23 +195,49 @@ export class AuKendoAutoComplete {
   }
 }
 
-/**
-* Compiler service
-*
-* compiles an HTML element with aurelia
-*/
-@inject(ViewCompiler, ViewResources, Container)
-export class Compiler {
+@customAttribute('au-kendo-button')
+@inject(Element)
+export class AuKendoButton {
 
-  constructor(viewCompiler, resources, container) {
-    this.viewCompiler = viewCompiler;
-    this.resources = resources;
+  _component;
+
+  @bindable enable = true;
+  @bindable icon;
+  @bindable imageUrl;
+  @bindable spriteCssClass;
+
+  @bindable options;
+
+  constructor(element) {
+    this.element = element;
+    this.options = {};
   }
 
-  compile(templateOrFragment):any {
-    let view = this.viewCompiler.compile(templateOrFragment, this.resources).create();
+  bind() {
+    this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+  }
 
-    return view;
+  detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  }
+
+  getOptions() {
+    let options = pruneOptions({
+      icon: this.icon,
+      enable: this.enable,
+      imageUrl: this.imageUrl,
+      spriteCssClass: this.spriteCssClass
+    });
+
+    return Object.assign({}, this.options, options);
+  }
+
+  enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
   }
 }
 
@@ -282,14 +262,115 @@ export function pruneOptions(options) {
   return returnOptions;
 }
 
+@inject(TemplatingEngine)
+export class TemplateCompiler {
+
+  constructor(templatingEngine) {
+    this.templatingEngine = templatingEngine;
+  }
+
+  initialize($parent) {
+    // store the parent view-model so we can pass this as the
+    // overrideContext when we call bind() on all compiled Views
+    this.$parent = $parent;
+
+    // almost all controls derive from kendo.ui.Widget
+    // override the angular property on these objects, and point it towards handleTemplateEvents
+    kendo.ui.Widget.prototype.angular = (_event, _args) => this.handleTemplateEvents(_event, _args);
+    kendo.mobile.ui.Widget.prototype.angular = (_event, _args) => this.handleTemplateEvents(_event, _args);
+  }
+
+  // this function filters out compile and cleanup events
+  // and calls the compile or cleanup function with the needed arguments
+  handleTemplateEvents(_event, _args) {
+    if (_event !== 'compile' && _event !== 'cleanup') return;
+
+    let args = _args();
+    let elements = args.elements; // extract elements from the args
+    let data = args.data; // extract the dataitems from the args
+
+    switch (_event) {
+    case 'compile':
+      // we need to pass elements and data to compile
+      // so that AUrelia can enhance this elements with the correct
+      // binding context
+      this.compile(elements, data);
+      break;
+
+    case 'cleanup':
+      // we don't care about dataitems when we do the cleanup
+      // so we just pass in the DOM elements
+      this.cleanup(elements);
+      break;
+
+    default:
+      break;
+    }
+  }
+
+  // loops through each element, and find the matching dataitem
+  // and calls enhanceView(element, dataItem) for each element there is
+  compile(elements, data) {
+    for (let i = 0; i < elements.length; i++) {
+      let element = elements[i];
+      let ctx;
+
+      if (data && data[i]) {
+        let _data = data[i];
+        ctx = _data.dataItem;
+      }
+
+      this.enhanceView(element, ctx);
+    }
+  }
+
+  // uses the ehance function of Aurelia's TemplatingEngine
+  // to "compile" the existing DOM element
+  enhanceView(element, ctx) {
+    let view = this.templatingEngine.enhance(element);
+    view.bind(ctx, this.$parent); // call the bind() function on the view with the dataItem we got from Kendo
+    view.attached(); // attach it to the DOM
+
+    // when we do cleanup, we need to get the view instance
+    // so we can call detached/unbund
+    // so we store this view instance in the DOM element using JQuery.data
+    $(element).data('viewInstance', view);
+  }
+
+  // loops through each element kendo asks us to clean up
+  // calls cleanupView() for each element
+  cleanup(elements) {
+    if (!elements) return;
+
+    for (let i = 0; i < elements.length; i++) {
+      let element = elements[i];
+      this.cleanupView(element);
+    }
+  }
+
+  // cleans up the view kendo has asked us to clean up
+  cleanupView(element) {
+    // extract Aurelia's View instance from the element
+    // we stored this in the enhanceView function
+    let view = $(element).data('viewInstance');
+    if (!view) return;
+
+    // unbind and detach the view
+    view.detached();
+    view.unbind();
+  }
+}
 
 
 @customElement('au-kendo-grid')
 @processContent((compiler, resources, element, instruction) => {
-  parseUserTemplate(element, resources, instruction);
-  return true;
+  let initFromTable = isInitFromTable(element);
+  if (!initFromTable) {
+    parseUserTemplate(element, resources, instruction);
+  }
+  return initFromTable;
 })
-@inject(Element, Compiler, TargetInstruction)
+@inject(Element, TemplateCompiler, TargetInstruction)
 export class Grid {
 
   columns = null;
@@ -309,18 +390,24 @@ export class Grid {
   @bindable sort;
   @bindable group;
   @bindable dataSource;
+  @bindable scrollable;
 
   @bindable groupable = true;
 
-  constructor(element, compiler, targetInstruction) {
+  constructor(element, templateCompiler, targetInstruction) {
     this.element = element;
-    this.compiler = compiler;
+    this.templateCompiler = templateCompiler;
     this.columns = targetInstruction.behaviorInstructions[0].kendoGridColumns;
   }
 
   bind(ctx) {
-    this._component = $(this.element).kendoGrid(this.getOptions()).data('kendoGrid');
-    this.$parent = ctx;
+    this.templateCompiler.initialize(ctx);
+
+    // init grid on the <table> tag if initialization is from table
+    // else, just use the root element
+    let target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+
+    this._component = $(target).kendoGrid(this.getOptions()).data('kendoGrid');
   }
 
   detached() {
@@ -338,9 +425,12 @@ export class Grid {
       delay: this.delay,
       enable: this.enable,
       filter: this.filter,
+      filterable: this.filterable,
       fixedGroupTemplate: this.fixedGroupTemplate,
       groupTemplate: this.groupTemplate,
       height: this.height,
+      pageable: this.pageable,
+      scrollable: this.scrollable,
       highlightFirst: this.highlightFirst,
       ignoreCase: this.ignoreCase,
       minLength: this.minLength,
@@ -353,32 +443,7 @@ export class Grid {
       headerTemplate: this.headerTemplate,
       template: this.template,
       valuePrimitive: this.valuePrimitive,
-      virtual: this.virtual,
-      dataBound: (e) => {
-        // After data binding we need to find the rows and the associated
-        // data context using the row UID
-        let tbody = e.sender.tbody[0];
-        let rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
-
-        rows.forEach(row => {
-          let uid = row.getAttribute('data-uid');
-          let data = e.sender.dataSource.data();
-          // Get the row...
-          let ctx = find(data, (item) => { return item.uid === uid; }, this);
-          let cellctx = { $item: ctx, $parent: this.$parent };
-          // Replace any switched out html
-          row.innerHTML = row.innerHTML.replace(/!{/g, '${');
-
-          let view = this.compiler.compile(row);
-          let viewSlot = new ViewSlot(row, false);
-          viewSlot.add(view);
-          viewSlot.bind(cellctx);
-          viewSlot.attached();
-          // Remove the original row
-          row.parentNode.removeChild(row);
-          return viewSlot;
-        });
-      }
+      virtual: this.virtual
     });
 
     return Object.assign({}, this.options, options);
@@ -391,33 +456,18 @@ export class Grid {
   }
 }
 
-
-// these functions are not inside the kendo grid class because @processContent needs to call parseUserTemplate
-// consider them 'static' functions
-function find(arr, test, ctx) {
-  let result = null;
-  arr.some(function(el, i) {
-    return test.call(ctx, el, i, arr) ? ((result = el), true) : false;
-  });
-  return result;
-}
-
 function parseUserTemplate(element, resources, instruction) {
   // Pull all of the attributes off the kendo-grid-col element
-  let columns = Array.prototype.slice.call(element.querySelectorAll('au-kendo-grid-col'));
-  let colSpecs = columns.map(col => {
+  let columns = Array.prototype.slice.call(element.querySelectorAll('au-col'));
+  let colSpecs = columns.map(column => {
     let obj = {};
 
-    for (let i = col.attributes.length - 1; i >= 0; i--) {
-      let attr = col.attributes.item(i);
+    for (let i = column.attributes.length - 1; i >= 0; i--) {
+      let attr = column.attributes.item(i);
       obj[attr.name] = attr.value;
     }
 
-    // if (obj.field) {
-    //   obj.template = col.innerHTML;
-    // }
-
-    parseCellTemplate(col, obj);
+    parseCellTemplate(column, obj);
 
     return obj;
   });
@@ -425,61 +475,26 @@ function parseUserTemplate(element, resources, instruction) {
   // Remove any inner HTML from the element - we don't want it in the DOM
   element.innerHTML = '';
 
+  // set the column definitions object on the instruction, so it can be retreived
+  // from within the Grid view-model
   instruction.kendoGridColumns = colSpecs;
 }
 
+// checks if there are HTML tags inside of au-kendo-grid-col
+// and sets this content as the "template" of the column specification
 function parseCellTemplate(element, spec) {
-  // Hack to avoid kendo hijacking Aurelia interpolations - need a good workaround for this
   if (element.childNodes.length > 0) {
-    spec.template = element.innerHTML.replace(/\${/g, '!{');
+    spec.template = element.innerHTML;
   }
 }
 
-// @customAttribute('au-kendo-button')
-@inject(Element)
-export class AuScheduler {
-
-  _component;
-
-  // @bindable enable = true;
-  // @bindable icon;
-  // @bindable imageUrl;
-  // @bindable spriteCssClass;
-
-  @bindable options;
-
-  constructor(element) {
-    this.element = element;
-    this.options = {};
-  }
-
-  bind() {
-    //this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
-  }
-
-  detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
-  }
-
-  getOptions() {
-    let options = pruneOptions({
-      // icon: this.icon,
-      // enable: this.enable,
-      // imageUrl: this.imageUrl,
-      // spriteCssClass: this.spriteCssClass
-    });
-
-    return Object.assign({}, this.options, options);
-  }
-
-  enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
-    }
-  }
+// if the first child node is a table tag
+// then the user wants to initialize the Kendo Grid from an
+// existing table
+function isInitFromTable(element) {
+  return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
 }
+
 
 @customElement('au-kendo-menu')
 @inject(Element)
@@ -536,6 +551,52 @@ export class Menu {
     });
 
     return Object.assign({}, this.options, options);
+  }
+}
+
+// @customAttribute('au-kendo-button')
+@inject(Element)
+export class AuScheduler {
+
+  _component;
+
+  // @bindable enable = true;
+  // @bindable icon;
+  // @bindable imageUrl;
+  // @bindable spriteCssClass;
+
+  @bindable options;
+
+  constructor(element) {
+    this.element = element;
+    this.options = {};
+  }
+
+  bind() {
+    //this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+  }
+
+  detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  }
+
+  getOptions() {
+    let options = pruneOptions({
+      // icon: this.icon,
+      // enable: this.enable,
+      // imageUrl: this.imageUrl,
+      // spriteCssClass: this.spriteCssClass
+    });
+
+    return Object.assign({}, this.options, options);
+  }
+
+  enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
   }
 }
 
