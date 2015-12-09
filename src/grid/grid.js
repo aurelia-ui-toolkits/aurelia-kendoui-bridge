@@ -1,5 +1,5 @@
 import {inject, customElement, processContent, bindable, TargetInstruction} from 'aurelia-framework';
-import {ViewSlot} from 'aurelia-templating';
+import {ViewSlot, TemplatingEngine} from 'aurelia-templating';
 import {Compiler} from '../common/compiler';
 import {pruneOptions} from '../common/options';
 import 'jquery';
@@ -10,7 +10,7 @@ import 'kendo-ui/js/kendo.grid.min';
   parseUserTemplate(element, resources, instruction);
   return true;
 })
-@inject(Element, Compiler, TargetInstruction)
+@inject(Element, Compiler, TargetInstruction, TemplatingEngine)
 export class Grid {
 
   columns = null;
@@ -33,9 +33,10 @@ export class Grid {
 
   @bindable groupable = true;
 
-  constructor(element, compiler, targetInstruction) {
+  constructor(element, compiler, targetInstruction, templatingEngine) {
     this.element = element;
     this.compiler = compiler;
+    this.templatingEngine = templatingEngine;
     this.columns = targetInstruction.behaviorInstructions[0].kendoGridColumns;
   }
 
@@ -51,6 +52,45 @@ export class Grid {
   }
 
   getOptions() {
+    kendo.ui.Widget.prototype.angular = (_event, _args) => {
+      if (_event === 'compile') {
+        let args = _args();
+        let data = args.data;
+        let elements = args.elements;
+
+        for (let i = 0; i < data.length; i++) {
+          let element = elements[i];
+          let _data = data[i];
+          let ctx = _data.dataItem;
+          if (ctx) {
+            ctx.$parent = this.$parent;
+          }
+
+          let view = this.templatingEngine.enhance(element);
+          view.bind(ctx);
+          view.attached();
+
+          $(element).data('viewInstance', view);
+        }
+      }
+
+      if (_event === 'cleanup') {
+        let args = _args();
+        let elements = args.elements;
+
+        if (elements) {
+          for (let i = 0; i < elements.length; i++) {
+            let element = elements[i];
+            let view = $(element).data('viewInstance');
+            if (view) {
+              view.detached();
+              view.unbind();
+            }
+          }
+        }
+      }
+    };
+
     let options = pruneOptions({
       animation: this.animation,
       dataSource: this.dataSource,
@@ -74,32 +114,7 @@ export class Grid {
       headerTemplate: this.headerTemplate,
       template: this.template,
       valuePrimitive: this.valuePrimitive,
-      virtual: this.virtual,
-      dataBound: (e) => {
-        // After data binding we need to find the rows and the associated
-        // data context using the row UID
-        let tbody = e.sender.tbody[0];
-        let rows = Array.prototype.slice.call(tbody.querySelectorAll('tr'));
-
-        rows.forEach(row => {
-          let uid = row.getAttribute('data-uid');
-          let data = e.sender.dataSource.data();
-          // Get the row...
-          let ctx = find(data, (item) => { return item.uid === uid; }, this);
-          let cellctx = { $item: ctx, $parent: this.$parent };
-          // Replace any switched out html
-          row.innerHTML = row.innerHTML.replace(/!{/g, '${');
-
-          let view = this.compiler.compile(row);
-          let viewSlot = new ViewSlot(row, false);
-          viewSlot.add(view);
-          viewSlot.bind(cellctx);
-          viewSlot.attached();
-          // Remove the original row
-          row.parentNode.removeChild(row);
-          return viewSlot;
-        });
-      }
+      virtual: this.virtual
     });
 
     return Object.assign({}, this.options, options);
@@ -110,17 +125,6 @@ export class Grid {
       this._component.enable(newValue);
     }
   }
-}
-
-
-// these functions are not inside the kendo grid class because @processContent needs to call parseUserTemplate
-// consider them 'static' functions
-function find(arr, test, ctx) {
-  let result = null;
-  arr.some(function(el, i) {
-    return test.call(ctx, el, i, arr) ? ((result = el), true) : false;
-  });
-  return result;
 }
 
 function parseUserTemplate(element, resources, instruction) {
@@ -134,10 +138,6 @@ function parseUserTemplate(element, resources, instruction) {
       obj[attr.name] = attr.value;
     }
 
-    // if (obj.field) {
-    //   obj.template = col.innerHTML;
-    // }
-
     parseCellTemplate(col, obj);
 
     return obj;
@@ -146,12 +146,15 @@ function parseUserTemplate(element, resources, instruction) {
   // Remove any inner HTML from the element - we don't want it in the DOM
   element.innerHTML = '';
 
+  // set the column definitions object on the instruction, so it can be retreived
+  // from within the Grid view-model
   instruction.kendoGridColumns = colSpecs;
 }
 
+// checks if there are HTML tags inside of au-kendo-grid-col
+// and sets this content as the "template" of the column specification
 function parseCellTemplate(element, spec) {
-  // Hack to avoid kendo hijacking Aurelia interpolations - need a good workaround for this
   if (element.childNodes.length > 0) {
-    spec.template = element.innerHTML.replace(/\${/g, '!{');
+    spec.template = element.innerHTML;
   }
 }
