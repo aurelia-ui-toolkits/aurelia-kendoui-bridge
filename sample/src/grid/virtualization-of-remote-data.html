@@ -5,15 +5,15 @@
           <button class="btn btn-primary" click.delegate="disablePageScroll()">Disable page scroll</button>
 
           <au-kendo-grid data-source.bind="datasource" sortable.bind="true" scrollable.bind="{virtual:true}">
-            <au-kendo-grid-col title="Order ID" field="OrderID" width="110"></au-kendo-grid-col>
-            <au-kendo-grid-col title="Customer ID" field="CustomerID" width="130"></au-kendo-grid-col>
-            <au-kendo-grid-col title="Ship Name" field="ShipName" width="280"></au-kendo-grid-col>
-            <au-kendo-grid-col title="Ship Address" field="ShipAddress"></au-kendo-grid-col>
-            <au-kendo-grid-col title="Ship City" field="ShipCity" width="160"></au-kendo-grid-col>
-            <au-kendo-grid-col title="Ship Country" field="ShipCountry" width="160"></au-kendo-grid-col>
-            <au-kendo-grid-col title="Test">
+            <au-col title="Order ID" field="OrderID" width="110"></au-col>
+            <au-col title="Customer ID" field="CustomerID" width="130"></au-col>
+            <au-col title="Ship Name" field="ShipName" width="280"></au-col>
+            <au-col title="Ship Address" field="ShipAddress"></au-col>
+            <au-col title="Ship City" field="ShipCity" width="160"></au-col>
+            <au-col title="Ship Country" field="ShipCountry" width="160"></au-col>
+            <au-col title="Test">
               <button au-kendo-button class="k-primary">Enable</button>
-            </au-kendo-grid-col>
+            </au-col>
           </au-kendo-grid>
         </collapse-panel>
 
@@ -26,15 +26,15 @@
                  <div>
                     <au-code language="markup">
                       <au-kendo-grid data-source.bind="datasource" sortable.bind="true" scrollable.bind="{virtual:true}">
-                        <au-kendo-grid-col title="Order ID" field="OrderID" width="110"></au-kendo-grid-col>
-                        <au-kendo-grid-col title="Customer ID" field="CustomerID" width="130"></au-kendo-grid-col>
-                        <au-kendo-grid-col title="Ship Name" field="ShipName" width="280"></au-kendo-grid-col>
-                        <au-kendo-grid-col title="Ship Address" field="ShipAddress"></au-kendo-grid-col>
-                        <au-kendo-grid-col title="Ship City" field="ShipCity" width="160"></au-kendo-grid-col>
-                        <au-kendo-grid-col title="Ship Country" field="ShipCountry" width="160"></au-kendo-grid-col>
-                        <au-kendo-grid-col title="Test">
+                        <au-col title="Order ID" field="OrderID" width="110"></au-col>
+                        <au-col title="Customer ID" field="CustomerID" width="130"></au-col>
+                        <au-col title="Ship Name" field="ShipName" width="280"></au-col>
+                        <au-col title="Ship Address" field="ShipAddress"></au-col>
+                        <au-col title="Ship City" field="ShipCity" width="160"></au-col>
+                        <au-col title="Ship Country" field="ShipCountry" width="160"></au-col>
+                        <au-col title="Test">
                           <button au-kendo-button class="k-primary">Enable</button>
-                        </au-kendo-grid-col>
+                        </au-col>
                       </au-kendo-grid>
                     </au-code>
                 </div>
