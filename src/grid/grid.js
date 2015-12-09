@@ -29,6 +29,7 @@ export class Grid {
   @bindable sort;
   @bindable group;
   @bindable dataSource;
+  @bindable scrollable;
 
   @bindable groupable = true;
 
@@ -63,6 +64,7 @@ export class Grid {
       groupTemplate: this.groupTemplate,
       height: this.height,
       pageable: this.pageable,
+      scrollable: this.scrollable,
       highlightFirst: this.highlightFirst,
       ignoreCase: this.ignoreCase,
       minLength: this.minLength,

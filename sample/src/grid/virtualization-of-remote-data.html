@@ -1,6 +1,17 @@
 <template>
     <section>
         <collapse-panel title="Virtualization of remote data" allow-collapse.bind="false">
+          <au-kendo-grid data-source.bind="datasource" sortable.bind="true" scrollable.bind="{virtual:true}">
+            <au-kendo-grid-col title="Order ID" field="OrderID" width="110"></au-kendo-grid-col>
+            <au-kendo-grid-col title="Customer ID" field="CustomerID" width="130"></au-kendo-grid-col>
+            <au-kendo-grid-col title="Ship Name" field="ShipName" width="280"></au-kendo-grid-col>
+            <au-kendo-grid-col title="Ship Address" field="ShipAddress"></au-kendo-grid-col>
+            <au-kendo-grid-col title="Ship City" field="ShipCity" width="160"></au-kendo-grid-col>
+            <au-kendo-grid-col title="Ship Country" field="ShipCountry" width="160"></au-kendo-grid-col>
+            <au-kendo-grid-col title="Test">
+              <button au-kendo-button class="k-primary">Enable</button>
+            </au-kendo-grid-col>
+          </au-kendo-grid>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">
@@ -11,11 +22,35 @@
                 </ul>
                  <div>
                     <au-code language="markup">
+                      <au-kendo-grid data-source.bind="datasource" sortable.bind="true" scrollable.bind="{virtual:true}">
+                        <au-kendo-grid-col title="Order ID" field="OrderID" width="110"></au-kendo-grid-col>
+                        <au-kendo-grid-col title="Customer ID" field="CustomerID" width="130"></au-kendo-grid-col>
+                        <au-kendo-grid-col title="Ship Name" field="ShipName" width="280"></au-kendo-grid-col>
+                        <au-kendo-grid-col title="Ship Address" field="ShipAddress"></au-kendo-grid-col>
+                        <au-kendo-grid-col title="Ship City" field="ShipCity" width="160"></au-kendo-grid-col>
+                        <au-kendo-grid-col title="Ship Country" field="ShipCountry" width="160"></au-kendo-grid-col>
+                        <au-kendo-grid-col title="Test">
+                          <button au-kendo-button class="k-primary">Enable</button>
+                        </au-kendo-grid-col>
+                      </au-kendo-grid>
                     </au-code>
                 </div>
 
                 <div>
                     <au-code language="javascript">
+                      export class VirtualizationOfRemoteData {
+                        constructor() {
+                          this.datasource = {
+                            type: "odata",
+                            serverPaging: true,
+                            serverSorting: true,
+                            pageSize: 100,
+                            transport: {
+                                read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+                            }
+                          };
+                        }
+                      }
                     </au-code>
                 </div>
             </div>
