@@ -62,6 +62,7 @@ export class Grid {
       fixedGroupTemplate: this.fixedGroupTemplate,
       groupTemplate: this.groupTemplate,
       height: this.height,
+      pageable: this.pageable,
       highlightFirst: this.highlightFirst,
       ignoreCase: this.ignoreCase,
       minLength: this.minLength,
