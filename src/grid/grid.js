@@ -33,6 +33,7 @@ export class Grid {
   @bindable group;
   @bindable dataSource;
   @bindable scrollable;
+  @bindable toolbar;
 
   @bindable groupable = true;
 
@@ -85,7 +86,8 @@ export class Grid {
       headerTemplate: this.headerTemplate,
       template: this.template,
       valuePrimitive: this.valuePrimitive,
-      virtual: this.virtual
+      virtual: this.virtual,
+      toolbar: this.toolbar
     });
 
     return Object.assign({}, this.options, options);
