@@ -21,6 +21,7 @@ export class Index {
           { route: 'editing-custom.editor',          moduleId: './editing-custom.editor',          nav: true,  title:'Editing custom editor' },
           { route: 'virtualization-of-local-data',   moduleId: './virtualization-of-local-data',   nav: true,  title:'Virtualization of local data' },
           { route: 'virtualization-of-remote-data',  moduleId: './virtualization-of-remote-data',  nav: true,  title:'Virtualization of remote data' },
+          { route: 'virtualization-of-remote-data-without-button',  moduleId: './virtualization-of-remote-data-without-button',  nav: true,  title:'Virtualization of remote data without button' },
           { route: 'frozen-columns',                 moduleId: './frozen-columns',                   nav: true,  title:'Frozen columns' }
           //{ route: '',       moduleId: '',       nav: true, title:'' },
 
