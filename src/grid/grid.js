@@ -32,7 +32,7 @@ export class Grid {
   @bindable scrollable;
   @bindable toolbar;
   @bindable navigatable;
-
+  @bindable columnMenu;
   @bindable groupable = true;
 
   constructor(element, templateCompiler, targetInstruction) {
@@ -87,7 +87,10 @@ export class Grid {
       valuePrimitive: this.valuePrimitive,
       virtual: this.virtual,
       toolbar: this.toolbar,
-      navigatable: this.navigatable
+      navigatable: this.navigatable,
+      reorderable: this.reorderable,
+      resizable: this.resizable,
+      columnMenu: this.columnMenu
     });
 
     return Object.assign({}, this.options, options);
