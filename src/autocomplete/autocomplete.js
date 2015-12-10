@@ -1,6 +1,5 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {fireEvent} from '../common/events';
-import {pruneOptions} from '../common/options';
+import {fireEvent, pruneOptions} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
 

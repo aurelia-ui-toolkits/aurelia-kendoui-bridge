@@ -1,6 +1,5 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-import {pruneOptions} from '../common/options';
-import {fireEvent} from '../common/events';
+import {pruneOptions, fireEvent} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.menu.min';
 

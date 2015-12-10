@@ -1,6 +1,5 @@
 import {inject, customElement, processContent, bindable, TargetInstruction} from 'aurelia-framework';
 import {pruneOptions, TemplateCompiler, parseChildren} from '../common/index';
-import {} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.grid.min';
 
