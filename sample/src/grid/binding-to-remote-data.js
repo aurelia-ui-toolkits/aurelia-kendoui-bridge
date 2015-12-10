@@ -16,7 +16,7 @@ export class BindingToRemoteData {
               }
           }
       },
-      pageSize: 20,
+      pageSize: 8,
       serverPaging: true,
       serverFiltering: true,
       serverSorting: true

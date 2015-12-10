@@ -11,7 +11,7 @@ export class Index {
           { route: 'initialization-from-table',      moduleId: './initialization-from-table',      nav: true,  title:'Initialization from table' },
           { route: 'binding-to-local-data',          moduleId: './binding-to-local-data',          nav: true,  title:'Binding to local data' },
           { route: 'binding-to-remote-data',         moduleId: './binding-to-remote-data',         nav: true,  title:'Binding to remote data' },
-          { route: 'binding-to-signalr',             moduleId: './binding-to-signalr',             nav: true,  title:'Binding to SignalR' },
+          //{ route: 'binding-to-signalr',             moduleId: './binding-to-signalr',             nav: true,  title:'Binding to SignalR' },
           { route: 'binding-to-websocket',           moduleId: './binding-to-websocket',           nav: true,  title:'Binding to websocket' },
           { route: 'working-offline',                moduleId: './working-offline',                nav: true,  title:'Working offline' },
           { route: 'batch-editing',                  moduleId: './batch-editing',                  nav: true,  title:'Batch editing' },

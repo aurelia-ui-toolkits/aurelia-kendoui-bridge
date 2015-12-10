@@ -1,4 +1,10 @@
 export class BindingToLocalData {
+
+  pageable = {
+    refresh: true,
+    pageSizes: true
+  };
+
   constructor() {
     this.datasource = {
         data: this.products,
@@ -12,14 +18,9 @@ export class BindingToLocalData {
                 }
             }
         },
-        pageSize: 20
+        pageSize: 10
     };
   }
-
-
-
-
-
 
 products = [{
     ProductID : 1,

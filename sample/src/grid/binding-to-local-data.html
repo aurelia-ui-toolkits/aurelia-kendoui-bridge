@@ -29,20 +29,31 @@
 
                 <div>
                     <au-code language="javascript">
-                      this.datasource = {
-                          data: this.products,
-                          schema: {
-                              model: {
-                                  fields: {
-                                      ProductName: { type: "string" },
-                                      UnitPrice: { type: "number" },
-                                      UnitsInStock: { type: "number" },
-                                      Discontinued: { type: "boolean" }
-                                  }
-                              }
-                          },
-                          pageSize: 20
-                      };
+                      // The data for this sample are provided in the "Data Service tab"
+                      export class BindingToLocalData {
+
+                          pageable = {
+                            refresh: true,
+                            pageSizes: true
+                          };
+
+                          constructor() {
+                            this.datasource = {
+                                data: this.products,
+                                schema: {
+                                    model: {
+                                        fields: {
+                                            ProductName: { type: "string" },
+                                            UnitPrice: { type: "number" },
+                                            UnitsInStock: { type: "number" },
+                                            Discontinued: { type: "boolean" }
+                                        }
+                                    }
+                                },
+                                pageSize: 10
+                            };
+                          }
+                        }
                     </au-code>
                 </div>
 
