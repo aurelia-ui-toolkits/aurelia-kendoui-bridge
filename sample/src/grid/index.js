@@ -7,7 +7,6 @@ export class Index {
         config.title = 'Grid';
         config.map([
           { route: ['','basic-use'],                 moduleId: './basic-use',                      nav: true,  title:'Basic use' },
-          { route: 'html-config',                    moduleId: './html-config',                    nav: true,  title:'HTML configuration' },
           { route: 'initialization-from-table',      moduleId: './initialization-from-table',      nav: true,  title:'Initialization from table' },
           { route: 'binding-to-local-data',          moduleId: './binding-to-local-data',          nav: true,  title:'Binding to local data' },
           { route: 'binding-to-remote-data',         moduleId: './binding-to-remote-data',         nav: true,  title:'Binding to remote data' },
