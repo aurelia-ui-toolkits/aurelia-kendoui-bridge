@@ -25,41 +25,41 @@ export class App {
             moduleId: 'button/index',
             nav: true,
             title: 'Button'
-        },  {
-            route: 'combobox',
-            moduleId: 'combobox/index',
-            nav: true,
-            title: 'Combobox'
-        },  {
-            route: 'dropdownlist',
-            moduleId: 'dropdownlist/index',
-            nav: true,
-            title: 'DropDownList'
+        // },  {
+        //     route: 'combobox',
+        //     moduleId: 'combobox/index',
+        //     nav: true,
+        //     title: 'Combobox'
+        // },  {
+        //     route: 'dropdownlist',
+        //     moduleId: 'dropdownlist/index',
+        //     nav: true,
+        //     title: 'DropDownList'
         },  {
             route: 'grid',
             moduleId: 'grid/index',
             nav: true,
             title: 'Grid'
-        },  {
-            route: 'scheduler',
-            moduleId: 'scheduler/index',
-            nav: true,
-            title: 'Scheduler'
-        },  {
-            route: 'tabstrip',
-            moduleId: 'tabstrip/index',
-            nav: true,
-            title: 'TabStrip'
+        // },  {
+        //     route: 'scheduler',
+        //     moduleId: 'scheduler/index',
+        //     nav: true,
+        //     title: 'Scheduler'
+        // },  {
+        //     route: 'tabstrip',
+        //     moduleId: 'tabstrip/index',
+        //     nav: true,
+        //     title: 'TabStrip'
         },  {
             route: 'menu',
             moduleId: 'menu/index',
             nav: true,
             title: 'Menu'
-        },  {
-            route: 'toolbar',
-            moduleId: 'toolbar/index',
-            nav: true,
-            title: 'Toolbar'
+        // },  {
+        //     route: 'toolbar',
+        //     moduleId: 'toolbar/index',
+        //     nav: true,
+        //     title: 'Toolbar'
         }
         ]);
 
