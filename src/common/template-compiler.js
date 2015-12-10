@@ -13,7 +13,7 @@ export class TemplateCompiler {
     // overrideContext when we call bind() on all compiled Views
     this.$parent = $parent;
 
-    // almost all controls derive from kendo.ui.Widget
+    // all controls derive from kendo.ui.Widget
     // override the angular property on these objects, and point it towards handleTemplateEvents
     kendo.ui.Widget.prototype.angular = (_event, _args) => this.handleTemplateEvents(_event, _args);
     kendo.mobile.ui.Widget.prototype.angular = (_event, _args) => this.handleTemplateEvents(_event, _args);
@@ -31,7 +31,7 @@ export class TemplateCompiler {
     switch (_event) {
     case 'compile':
       // we need to pass elements and data to compile
-      // so that AUrelia can enhance this elements with the correct
+      // so that Aurelia can enhance this elements with the correct
       // binding context
       this.compile(elements, data);
       break;
@@ -71,7 +71,7 @@ export class TemplateCompiler {
     view.attached(); // attach it to the DOM
 
     // when we do cleanup, we need to get the view instance
-    // so we can call detached/unbund
+    // so we can call detached/unbound
     // so we store this view instance in the DOM element using JQuery.data
     $(element).data('viewInstance', view);
   }
