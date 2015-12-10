@@ -1,0 +1,106 @@
+import {customAttribute, bindable, inject} from 'aurelia-framework';
+import {fireEvent, TemplateCompiler, pruneOptions} from '../common/index';
+import 'jquery';
+import 'kendo-ui/js/kendo.autocomplete.min';
+
+@customAttribute('au-kendo-autocomplete')
+@inject(Element, TemplateCompiler)
+export class AuKendoAutoComplete {
+
+  element;
+
+  // Autocomplete API
+  // Full options object if you want to set options that way
+  @bindable options = {};
+
+  // Individual properties - default values need setting
+  @bindable animation;
+  @bindable dataSource;
+  @bindable dataTextField = null;
+  @bindable delay = 200;
+  @bindable enable = true;
+  @bindable filter = 'startswith';
+  @bindable fixedGroupTemplate;
+  @bindable groupTemplate;
+  @bindable height;
+  @bindable highlightFirst = false;
+  @bindable ignoreCase = true;
+  @bindable minLength = 1;
+  @bindable placeholder = '';
+  @bindable popup;
+
+  // prevent weird suggestion bug
+  // https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/11
+  @bindable separator = null;
+
+  @bindable suggest = false;
+  @bindable headerTemplate;
+  @bindable template;
+  @bindable valuePrimitive;
+  @bindable virtual;
+
+  // Aurelia value-added API
+  @bindable value;
+
+  constructor(element, templateCompiler) {
+    this.element = element;
+    this.templateCompiler = templateCompiler;
+  }
+
+  bind(ctx) {
+    this.templateCompiler.initialize(ctx);
+
+    this._component = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
+
+    this._component.bind('change', (event) => {
+      this.value = event.sender.value();
+
+      // Update the kendo binding
+      fireEvent(this.element, 'input');
+    });
+
+    this._component.bind('select', (event) => {
+      this.value = event.sender.value();
+
+      // Update the kendo binding
+      fireEvent(this.element, 'input');
+    });
+  }
+
+  detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  }
+
+  getOptions() {
+    let options = pruneOptions({
+      animation: this.animation,
+      dataSource: this.dataSource,
+      dataTextField: this.dataTextField,
+      delay: this.delay,
+      enable: this.enable,
+      filter: this.filter,
+      fixedGroupTemplate: this.fixedGroupTemplate,
+      groupTemplate: this.groupTemplate,
+      height: this.height,
+      highlightFirst: this.highlightFirst,
+      ignoreCase: this.ignoreCase,
+      minLength: this.minLength,
+      placeholder: this.placeholder,
+      popup: this.popup,
+      separator: this.separator,
+      template: this.template,
+      headerTemplate: this.headerTemplate,
+      suggest: this.suggest
+    });
+
+    return Object.assign({}, this.options, options);
+  }
+
+  enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
+  }
+}

@@ -5,8 +5,13 @@ exports.__esModule = true;
 var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
 exports.configure = configure;
+exports.parseChildren = parseChildren;
 exports.fireEvent = fireEvent;
 exports.pruneOptions = pruneOptions;
+
+function _interopExportWildcard(obj, defaults) { var newObj = defaults({}, obj); delete newObj['default']; return newObj; }
+
+function _defaults(obj, defaults) { var keys = Object.getOwnPropertyNames(defaults); for (var i = 0; i < keys.length; i++) { var key = keys[i]; var value = Object.getOwnPropertyDescriptor(defaults, key); if (value && value.configurable && obj[key] === undefined) { Object.defineProperty(obj, key, value); } } return obj; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
@@ -28,9 +33,9 @@ require('kendo-ui/js/kendo.grid.min');
 
 require('kendo-ui/js/kendo.menu.min');
 
-require('kendo-ui/js/kendo.tabstrip.min');
-
 require('kendo-ui/js/kendo.scheduler.min');
+
+require('kendo-ui/js/kendo.tabstrip.min');
 
 require('kendo-ui/js/kendo.toolbar.min');
 
@@ -192,22 +197,30 @@ var AuKendoAutoComplete = (function () {
   }, {
     key: 'highlightFirst',
     decorators: [_aureliaFramework.bindable],
-    initializer: null,
+    initializer: function initializer() {
+      return false;
+    },
     enumerable: true
   }, {
     key: 'ignoreCase',
     decorators: [_aureliaFramework.bindable],
-    initializer: null,
+    initializer: function initializer() {
+      return true;
+    },
     enumerable: true
   }, {
     key: 'minLength',
     decorators: [_aureliaFramework.bindable],
-    initializer: null,
+    initializer: function initializer() {
+      return 1;
+    },
     enumerable: true
   }, {
     key: 'placeholder',
     decorators: [_aureliaFramework.bindable],
-    initializer: null,
+    initializer: function initializer() {
+      return '';
+    },
     enumerable: true
   }, {
     key: 'popup',
@@ -218,14 +231,14 @@ var AuKendoAutoComplete = (function () {
     key: 'separator',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
-      return '';
+      return null;
     },
     enumerable: true
   }, {
     key: 'suggest',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
-      return true;
+      return false;
     },
     enumerable: true
   }, {
@@ -255,7 +268,7 @@ var AuKendoAutoComplete = (function () {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function AuKendoAutoComplete(element) {
+  function AuKendoAutoComplete(element, templateCompiler) {
     _classCallCheck(this, _AuKendoAutoComplete);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
@@ -303,10 +316,13 @@ var AuKendoAutoComplete = (function () {
     _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers);
 
     this.element = element;
+    this.templateCompiler = templateCompiler;
   }
 
-  AuKendoAutoComplete.prototype.bind = function bind() {
+  AuKendoAutoComplete.prototype.bind = function bind(ctx) {
     var _this = this;
+
+    this.templateCompiler.initialize(ctx);
 
     this._component = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
 
@@ -346,11 +362,9 @@ var AuKendoAutoComplete = (function () {
       placeholder: this.placeholder,
       popup: this.popup,
       separator: this.separator,
-      suggest: this.suggest,
-      headerTemplate: this.headerTemplate,
       template: this.template,
-      valuePrimitive: this.valuePrimitive,
-      virtual: this.virtual
+      headerTemplate: this.headerTemplate,
+      suggest: this.suggest
     });
 
     return Object.assign({}, this.options, options);
@@ -363,7 +377,7 @@ var AuKendoAutoComplete = (function () {
   };
 
   var _AuKendoAutoComplete = AuKendoAutoComplete;
-  AuKendoAutoComplete = _aureliaFramework.inject(Element)(AuKendoAutoComplete) || AuKendoAutoComplete;
+  AuKendoAutoComplete = _aureliaFramework.inject(Element, TemplateCompiler)(AuKendoAutoComplete) || AuKendoAutoComplete;
   AuKendoAutoComplete = _aureliaFramework.customAttribute('au-kendo-autocomplete')(AuKendoAutoComplete) || AuKendoAutoComplete;
   return AuKendoAutoComplete;
 })();
@@ -454,12 +468,52 @@ var AuKendoButton = (function () {
 
 exports.AuKendoButton = AuKendoButton;
 
+function parseChildren(cssSelector, element, instruction) {
+  var matchedElements = Array.prototype.slice.call(element.querySelectorAll(cssSelector));
+  var objects = matchedElements.map(function (matchedElement) {
+    var obj = {};
+
+    for (var i = matchedElement.attributes.length - 1; i >= 0; i--) {
+      var attr = matchedElement.attributes.item(i);
+      obj[attr.name] = attr.value;
+    }
+
+    if (matchedElement.childNodes.length > 0) {
+      obj.template = matchedElement.innerHTML;
+    }
+
+    return obj;
+  });
+
+  matchedElements.forEach(function (i) {
+    return element.removeChild(i);
+  });
+
+  instruction.children = objects;
+}
+
 function fireEvent(element, name) {
   var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
   var event = new CustomEvent(name, { 'detail': data });
   element.dispatchEvent(event);
 }
+
+var _events = require('./events');
+
+_defaults(exports, _interopExportWildcard(_events, _defaults));
+
+var _options = require('./options');
+
+_defaults(exports, _interopExportWildcard(_options, _defaults));
+
+var _templateCompiler = require('./template-compiler');
+
+_defaults(exports, _interopExportWildcard(_templateCompiler, _defaults));
+
+var _childrenParser = require('./children-parser');
+
+_defaults(exports, _interopExportWildcard(_childrenParser, _defaults));
 
 function pruneOptions(options) {
 
@@ -659,6 +713,16 @@ var Grid = (function () {
     initializer: null,
     enumerable: true
   }, {
+    key: 'navigatable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'columnMenu',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
     key: 'groupable',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -706,11 +770,15 @@ var Grid = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'toolbar', _instanceInitializers3);
 
+    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'columnMenu', _instanceInitializers3);
+
     _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers3);
 
     this.element = element;
     this.templateCompiler = templateCompiler;
-    this.columns = targetInstruction.behaviorInstructions[0].kendoGridColumns;
+    this.columns = targetInstruction.elementInstruction.children;
   }
 
   Grid.prototype.bind = function bind(ctx) {
@@ -733,6 +801,7 @@ var Grid = (function () {
       dataSource: this.dataSource,
       dataTextField: this.dataTextField,
       columns: this.columns,
+      editable: this.editable,
       delay: this.delay,
       enable: this.enable,
       filter: this.filter,
@@ -755,7 +824,11 @@ var Grid = (function () {
       template: this.template,
       valuePrimitive: this.valuePrimitive,
       virtual: this.virtual,
-      toolbar: this.toolbar
+      toolbar: this.toolbar,
+      navigatable: this.navigatable,
+      reorderable: this.reorderable,
+      resizable: this.resizable,
+      columnMenu: this.columnMenu
     });
 
     return Object.assign({}, this.options, options);
@@ -770,43 +843,15 @@ var Grid = (function () {
   var _Grid = Grid;
   Grid = _aureliaFramework.inject(Element, TemplateCompiler, _aureliaFramework.TargetInstruction)(Grid) || Grid;
   Grid = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
-    var initFromTable = isInitFromTable(element);
-    if (!initFromTable) {
-      parseUserTemplate(element, resources, instruction);
-    }
-    return initFromTable;
+    parseChildren('au-col', element, instruction);
+
+    return isInitFromTable(element);
   })(Grid) || Grid;
   Grid = _aureliaFramework.customElement('au-kendo-grid')(Grid) || Grid;
   return Grid;
 })();
 
 exports.Grid = Grid;
-
-function parseUserTemplate(element, resources, instruction) {
-  var columns = Array.prototype.slice.call(element.querySelectorAll('au-col'));
-  var colSpecs = columns.map(function (column) {
-    var obj = {};
-
-    for (var i = column.attributes.length - 1; i >= 0; i--) {
-      var attr = column.attributes.item(i);
-      obj[attr.name] = attr.value;
-    }
-
-    parseCellTemplate(column, obj);
-
-    return obj;
-  });
-
-  element.innerHTML = '';
-
-  instruction.kendoGridColumns = colSpecs;
-}
-
-function parseCellTemplate(element, spec) {
-  if (element.childNodes.length > 0) {
-    spec.template = element.innerHTML;
-  }
-}
 
 function isInitFromTable(element) {
   return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
@@ -937,8 +982,54 @@ var Menu = (function () {
 
 exports.Menu = Menu;
 
-var TabStrip = (function () {
+var AuScheduler = (function () {
   var _instanceInitializers5 = {};
+
+  _createDecoratedClass(AuScheduler, [{
+    key: 'options',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers5);
+
+  function AuScheduler(element) {
+    _classCallCheck(this, _AuScheduler);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers5);
+
+    this.element = element;
+    this.options = {};
+  }
+
+  AuScheduler.prototype.bind = function bind() {};
+
+  AuScheduler.prototype.detached = function detached() {
+    if (this._component) {
+      this._component.destroy();
+    }
+  };
+
+  AuScheduler.prototype.getOptions = function getOptions() {
+    var options = pruneOptions({});
+
+    return Object.assign({}, this.options, options);
+  };
+
+  AuScheduler.prototype.enableChanged = function enableChanged(newValue) {
+    if (this._component) {
+      this._component.enable(newValue);
+    }
+  };
+
+  var _AuScheduler = AuScheduler;
+  AuScheduler = _aureliaFramework.inject(Element)(AuScheduler) || AuScheduler;
+  return AuScheduler;
+})();
+
+exports.AuScheduler = AuScheduler;
+
+var TabStrip = (function () {
+  var _instanceInitializers6 = {};
 
   _createDecoratedClass(TabStrip, [{
     key: 'animation',
@@ -1010,38 +1101,38 @@ var TabStrip = (function () {
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers5);
+  }], null, _instanceInitializers6);
 
   function TabStrip(element) {
     _classCallCheck(this, _TabStrip);
 
-    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'collapsible', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'collapsible', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'contentUrls', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'contentUrls', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataContentField', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'dataContentField', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataContentUrlField', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'dataContentUrlField', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSpriteCssClass', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'dataSpriteCssClass', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataTextField', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'dataTextField', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataUrlField', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'dataUrlField', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'tabPosition', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'tabPosition', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers6);
 
     this.element = element;
     this.options = {};
@@ -1089,52 +1180,6 @@ var TabStrip = (function () {
 })();
 
 exports.TabStrip = TabStrip;
-
-var AuScheduler = (function () {
-  var _instanceInitializers6 = {};
-
-  _createDecoratedClass(AuScheduler, [{
-    key: 'options',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers6);
-
-  function AuScheduler(element) {
-    _classCallCheck(this, _AuScheduler);
-
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers6);
-
-    this.element = element;
-    this.options = {};
-  }
-
-  AuScheduler.prototype.bind = function bind() {};
-
-  AuScheduler.prototype.detached = function detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
-  };
-
-  AuScheduler.prototype.getOptions = function getOptions() {
-    var options = pruneOptions({});
-
-    return Object.assign({}, this.options, options);
-  };
-
-  AuScheduler.prototype.enableChanged = function enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
-    }
-  };
-
-  var _AuScheduler = AuScheduler;
-  AuScheduler = _aureliaFramework.inject(Element)(AuScheduler) || AuScheduler;
-  return AuScheduler;
-})();
-
-exports.AuScheduler = AuScheduler;
 
 var AuToolbar = (function () {
   var _instanceInitializers7 = {};
