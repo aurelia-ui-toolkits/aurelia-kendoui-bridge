@@ -1,6 +1,16 @@
 <template>
     <section>
         <collapse-panel title="Customizing templates" allow-collapse.bind="false">
+          <p><strong>Customers:</strong></p>
+          <p>
+              <input au-kendo-autocomplete="data-source.bind: datasource;
+                                            height: 400;
+                                            min-length: 1;
+                                            header-template.bind: headerTemplate;
+                                            template.bind: template;
+                                            data-text-field: ContactName" value.bind="value" style="width: 400px" id="customers">
+          </p>
+          <p class="text-muted">Start typing to find a customer. E.g. "Ann" </p>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">
@@ -8,16 +18,190 @@
                 <ul>
                     <li class="k-state-active">HTML</li>
                     <li>Code</li>
+                    <li>CSS</li>
+                    <li>Notes</li>
                 </ul>
                 <div>
                     <au-code language="markup">
+                      <p><strong>Customers:</strong></p>
+                      <p>
+                          <input au-kendo-autocomplete="data-source.bind: datasource;
+                                                        height: 400;
+                                                        min-length: 1;
+                                                        header-template.bind: headerTemplate;
+                                                        template.bind: template;
+                                                        data-text-field: ContactName" value.bind="value" style="width: 400px" id="customers">
+                      </p>
+                      <p class="text-muted">Start typing to find a customer. E.g. "Ann" </p>
                     </au-code>
                 </div>
                 <div>
                     <au-code language="javascript">
+                      export class CustomizingTemplates {
+
+                        template = '<span class="k-state-default" style="background-image: url(\'http://demos.telerik.com/kendo-ui/content/web/Customers/${data.CustomerID}.jpg\')"></span>' +
+                                    '<span class="k-state-default"><h3>${data.ContactName}</h3><p>${data.CompanyName}</p></span>';
+
+                        headerTemplate = '<div class="dropdown-header k-widget k-header">' +
+                                              '<span>Photo</span>' +
+                                              '<span>Contact info</span>' +
+                                          '</div>';
+
+                        constructor() {
+                          this.datasource = {
+                            transport: {
+                              read:{
+                                dataType: "jsonp",
+                                url: "//demos.telerik.com/kendo-ui/service/Customers"
+                              }
+                            }
+                          };
+                        }
+                      }
                     </au-code>
+                </div>
+                <div>
+                    <au-code language="css">
+                      .dropdown-header {
+                          border-width: 0 0 1px 0;
+                          text-transform: uppercase;
+                      }
+
+                      .dropdown-header > span {
+                          display: inline-block;
+                          padding: 10px;
+                      }
+
+                      .dropdown-header > span:first-child {
+                          width: 50px;
+                      }
+
+                      #customers-list .k-item {
+                          line-height: 1em;
+                          min-width: 300px;
+                      }
+
+                      /* Material Theme padding adjustment*/
+
+                      .k-material #customers-list .k-item,
+                      .k-material #customers-list .k-item.k-state-hover,
+                      .k-materialblack #customers-list .k-item,
+                      .k-materialblack #customers-list .k-item.k-state-hover {
+                          padding-left: 5px;
+                          border-left: 0;
+                      }
+
+                      #customers-list .k-item > span {
+                          -webkit-box-sizing: border-box;
+                          -moz-box-sizing: border-box;
+                          box-sizing: border-box;
+                          display: inline-block;
+                          vertical-align: top;
+                          margin: 20px 10px 10px 5px;
+                      }
+
+                      #customers-list .k-item > span:first-child {
+                          -moz-box-shadow: inset 0 0 30px rgba(0,0,0,.3);
+                          -webkit-box-shadow: inset 0 0 30px rgba(0,0,0,.3);
+                          box-shadow: inset 0 0 30px rgba(0,0,0,.3);
+                          margin: 10px;
+                          width: 50px;
+                          height: 50px;
+                          border-radius: 50%;
+                          background-size: 100%;
+                          background-repeat: no-repeat;
+                      }
+
+                      #customers-list h3 {
+                          font-size: 1.2em;
+                          font-weight: normal;
+                          margin: 0 0 1px 0;
+                          padding: 0;
+                      }
+
+                      #customers-list p {
+                          margin: 0;
+                          padding: 0;
+                          font-size: .8em;
+                      }
+                    </au-code>
+                </div>
+                <div>
+                    <au-markdown>
+                      ### How the CSS works
+
+                      On the input tag, there is an `id` property: `id="customers"`. Kendo Autocomplete takes this `id` and adds `-list` to the end of it.
+                      After that, `#customers-list .k-item > span` can be used to style each individual list item
+                    </au-markdown>
                 </div>
             </div>
         </collapse-panel>
     </section>
+
+    <style>
+
+        .dropdown-header {
+            border-width: 0 0 1px 0;
+            text-transform: uppercase;
+        }
+
+        .dropdown-header > span {
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .dropdown-header > span:first-child {
+            width: 50px;
+        }
+
+        #customers-list .k-item {
+            line-height: 1em;
+            min-width: 300px;
+        }
+
+        /* Material Theme padding adjustment*/
+
+        .k-material #customers-list .k-item,
+        .k-material #customers-list .k-item.k-state-hover,
+        .k-materialblack #customers-list .k-item,
+        .k-materialblack #customers-list .k-item.k-state-hover {
+            padding-left: 5px;
+            border-left: 0;
+        }
+
+        #customers-list .k-item > span {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            display: inline-block;
+            vertical-align: top;
+            margin: 20px 10px 10px 5px;
+        }
+
+        #customers-list .k-item > span:first-child {
+            -moz-box-shadow: inset 0 0 30px rgba(0,0,0,.3);
+            -webkit-box-shadow: inset 0 0 30px rgba(0,0,0,.3);
+            box-shadow: inset 0 0 30px rgba(0,0,0,.3);
+            margin: 10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+
+        #customers-list h3 {
+            font-size: 1.2em;
+            font-weight: normal;
+            margin: 0 0 1px 0;
+            padding: 0;
+        }
+
+        #customers-list p {
+            margin: 0;
+            padding: 0;
+            font-size: .8em;
+        }
+
+    </style>
 </template>
