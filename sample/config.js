@@ -35,7 +35,6 @@ System.config({
     "font-awesome": "npm:font-awesome@4.5.0",
     "json": "github:systemjs/plugin-json@0.1.0",
     "showdown": "github:showdownjs/showdown@1.3.0",
-    "systemjs/plugin-css": "github:systemjs/plugin-css@0.1.20",
     "github:JeroenVinke/aurelia-prism-plugin@1.0.2": {
       "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.3",
       "prism": "github:PrismJS/prism@1.3.0"
