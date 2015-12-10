@@ -62,6 +62,7 @@ export class Grid {
       dataSource: this.dataSource,
       dataTextField: this.dataTextField,
       columns: this.columns,
+      editable: this.editable,
       delay: this.delay,
       enable: this.enable,
       filter: this.filter,
