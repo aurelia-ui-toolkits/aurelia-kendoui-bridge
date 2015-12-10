@@ -1,16 +1,14 @@
 import {inject, customElement, processContent, bindable, TargetInstruction} from 'aurelia-framework';
-import {pruneOptions} from '../common/options';
-import {TemplateCompiler} from '../common/template-compiler';
+import {pruneOptions, TemplateCompiler, parseChildren} from '../common/index';
+import {} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('au-kendo-grid')
 @processContent((compiler, resources, element, instruction) => {
-  let initFromTable = isInitFromTable(element);
-  if (!initFromTable) {
-    parseUserTemplate(element, resources, instruction);
-  }
-  return initFromTable;
+  parseChildren('au-col', element, instruction);
+
+  return isInitFromTable(element);
 })
 @inject(Element, TemplateCompiler, TargetInstruction)
 export class Grid {
@@ -40,7 +38,7 @@ export class Grid {
   constructor(element, templateCompiler, targetInstruction) {
     this.element = element;
     this.templateCompiler = templateCompiler;
-    this.columns = targetInstruction.behaviorInstructions[0].kendoGridColumns;
+    this.columns = targetInstruction.elementInstruction.children;
   }
 
   bind(ctx) {
@@ -97,38 +95,6 @@ export class Grid {
     if (this._component) {
       this._component.enable(newValue);
     }
-  }
-}
-
-function parseUserTemplate(element, resources, instruction) {
-  // Pull all of the attributes off the kendo-grid-col element
-  let columns = Array.prototype.slice.call(element.querySelectorAll('au-col'));
-  let colSpecs = columns.map(column => {
-    let obj = {};
-
-    for (let i = column.attributes.length - 1; i >= 0; i--) {
-      let attr = column.attributes.item(i);
-      obj[attr.name] = attr.value;
-    }
-
-    parseCellTemplate(column, obj);
-
-    return obj;
-  });
-
-  // Remove any inner HTML from the element - we don't want it in the DOM
-  element.innerHTML = '';
-
-  // set the column definitions object on the instruction, so it can be retreived
-  // from within the Grid view-model
-  instruction.kendoGridColumns = colSpecs;
-}
-
-// checks if there are HTML tags inside of au-kendo-grid-col
-// and sets this content as the "template" of the column specification
-function parseCellTemplate(element, spec) {
-  if (element.childNodes.length > 0) {
-    spec.template = element.innerHTML;
   }
 }
 
