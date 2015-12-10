@@ -1,8 +1,9 @@
 <template>
     <section>
         <collapse-panel title="Basic use" allow-collapse.bind="false">
-            <button au-kendo-button class="k-primary">Primary Button</button>
-            <button au-kendo-button>Button</button>
+            <button au-kendo-button="sprite-css-class: k-icon netherlandsFlag">Sprite icon</button>
+            <button au-kendo-button="icon: funnel">Kendo UI sprite icon</button>
+            <button au-kendo-button="image-url: http://demos.telerik.com/kendo-ui/content/shared/icons/sports/snowboarding.png">Image icon</button>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">
@@ -10,11 +11,13 @@
                 <ul>
                     <li class="k-state-active">HTML</li>
                     <li>Code</li>
+                    <li>CSS</li>
                 </ul>
                 <div>
                     <au-code language="markup">
-                        <button au-kendo-button class="k-primary">Primary Button</button>
-                        <button au-kendo-button>Button</button>
+                      <button au-kendo-button="sprite-css-class: k-icon netherlandsFlag">Sprite icon</button>
+                      <button au-kendo-button="icon: funnel">Kendo UI sprite icon</button>
+                      <button au-kendo-button="image-url: http://demos.telerik.com/kendo-ui/content/shared/icons/sports/snowboarding.png">Image icon</button>
                     </au-code>
                 </div>
 
@@ -25,7 +28,41 @@
                         }
                     </au-code>
                 </div>
+
+                <div>
+                    <au-code language="css">
+                      .demo-section {
+                          line-height: 4em;
+                      }
+                      .demo-section .k-button {
+                          margin-right: 10px;
+                      }
+                      .k-button .k-image {
+                          height: 16px;
+                      }
+                      .netherlandsFlag {
+                          background-image: url("http://demos.telerik.com/kendo-ui/content/shared/styles/flags.png");
+                          background-position: 0 -64px;
+                      }
+                    </au-code>
+                  </div>
             </div>
         </collapse-panel>
     </section>
+
+    <style>
+      .demo-section {
+          line-height: 4em;
+      }
+      .demo-section .k-button {
+          margin-right: 10px;
+      }
+      .k-button .k-image {
+          height: 16px;
+      }
+      .netherlandsFlag {
+          background-image: url("http://demos.telerik.com/kendo-ui/content/shared/styles/flags.png");
+          background-position: 0 -64px;
+      }
+    </style>
 </template>
