@@ -28,7 +28,11 @@ export class AuKendoAutoComplete {
   @bindable minLength = 1;
   @bindable placeholder = '';
   @bindable popup;
-  @bindable separator;
+
+  // prevent weird suggestion bug
+  // https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/11
+  @bindable separator = null;
+
   @bindable suggest = false;
   @bindable headerTemplate;
   @bindable template;
