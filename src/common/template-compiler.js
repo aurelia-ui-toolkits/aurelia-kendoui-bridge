@@ -71,7 +71,7 @@ export class TemplateCompiler {
     view.attached(); // attach it to the DOM
 
     // when we do cleanup, we need to get the view instance
-    // so we can call detached/unbound
+    // so we can call detached/unbind
     // so we store this view instance in the DOM element using JQuery.data
     $(element).data('viewInstance', view);
   }
