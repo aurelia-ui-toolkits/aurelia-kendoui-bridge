@@ -23,13 +23,13 @@ export class AuKendoAutoComplete {
   @bindable fixedGroupTemplate;
   @bindable groupTemplate;
   @bindable height;
-  @bindable highlightFirst;
-  @bindable ignoreCase;
-  @bindable minLength;
-  @bindable placeholder;
+  @bindable highlightFirst = false;
+  @bindable ignoreCase = true;
+  @bindable minLength = 1;
+  @bindable placeholder = '';
   @bindable popup;
-  @bindable separator = '';
-  @bindable suggest = true;
+  @bindable separator;
+  @bindable suggest = false;
   @bindable headerTemplate;
   @bindable template;
   @bindable valuePrimitive;
@@ -83,11 +83,7 @@ export class AuKendoAutoComplete {
       placeholder: this.placeholder,
       popup: this.popup,
       separator: this.separator,
-      suggest: this.suggest,
-      headerTemplate: this.headerTemplate,
-      template: this.template,
-      valuePrimitive: this.valuePrimitive,
-      virtual: this.virtual
+      suggest: this.suggest
     });
 
     return Object.assign({}, this.options, options);
