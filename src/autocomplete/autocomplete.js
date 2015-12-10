@@ -1,10 +1,10 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {fireEvent, pruneOptions} from '../common/index';
+import {fireEvent, TemplateCompiler, pruneOptions} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
 
 @customAttribute('au-kendo-autocomplete')
-@inject(Element)
+@inject(Element, TemplateCompiler)
 export class AuKendoAutoComplete {
 
   element;
@@ -42,11 +42,14 @@ export class AuKendoAutoComplete {
   // Aurelia value-added API
   @bindable value;
 
-  constructor(element) {
+  constructor(element, templateCompiler) {
     this.element = element;
+    this.templateCompiler = templateCompiler;
   }
 
-  bind() {
+  bind(ctx) {
+    this.templateCompiler.initialize(ctx);
+
     this._component = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
 
     this._component.bind('change', (event) => {
@@ -87,6 +90,8 @@ export class AuKendoAutoComplete {
       placeholder: this.placeholder,
       popup: this.popup,
       separator: this.separator,
+      template: this.template,
+      headerTemplate: this.headerTemplate,
       suggest: this.suggest
     });
 
