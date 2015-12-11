@@ -1,18 +1,18 @@
-import {inject, customElement, processContent, bindable, TargetInstruction} from 'aurelia-framework';
+import {inject, children, customElement, processContent, bindable, TargetInstruction} from 'aurelia-framework';
 import {pruneOptions, TemplateCompiler, parseChildren} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('au-kendo-grid')
-@processContent((compiler, resources, element, instruction) => {
-  parseChildren('au-col', element, instruction);
-
-  return isInitFromTable(element);
-})
+// @processContent((compiler, resources, element, instruction) => {
+//   parseChildren('au-col', element, instruction);
+//
+//   return isInitFromTable(element);
+// })
 @inject(Element, TemplateCompiler, TargetInstruction)
 export class Grid {
 
-  columns = null;
+  @children('au-col') columns;
 
   @bindable selectable;
   @bindable filterable;
@@ -38,7 +38,7 @@ export class Grid {
   constructor(element, templateCompiler, targetInstruction) {
     this.element = element;
     this.templateCompiler = templateCompiler;
-    this.columns = targetInstruction.elementInstruction.children;
+    // this.columns = targetInstruction.elementInstruction.children;
   }
 
   bind(ctx) {
