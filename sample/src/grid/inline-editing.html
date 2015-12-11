@@ -23,8 +23,7 @@
                         <au-col field="UnitPrice" title="Unit Price" format="{0:c}" width="120px"></au-col>
                         <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>
                         <au-col field="Discontinued" width="120px"></au-col>
-                        <au-col command="edit" title="&nbsp;" width="100px"></au-col>
-                        <au-col command="destroy" title="&nbsp;" width="100px"></au-col>
+                        <au-col command.bind="['edit', 'destroy']" title="&nbsp;" width="250px"></au-col>
                       </au-kendo-grid>
                     </au-code>
                 </div>

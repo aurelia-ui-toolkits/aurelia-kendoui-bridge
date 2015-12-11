@@ -1,15 +1,10 @@
-import {inject, children, customElement, processContent, bindable, TargetInstruction} from 'aurelia-framework';
-import {pruneOptions, TemplateCompiler, parseChildren} from '../common/index';
+import {inject, children, customElement, bindable} from 'aurelia-framework';
+import {pruneOptions, TemplateCompiler} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('au-kendo-grid')
-// @processContent((compiler, resources, element, instruction) => {
-//   parseChildren('au-col', element, instruction);
-//
-//   return isInitFromTable(element);
-// })
-@inject(Element, TemplateCompiler, TargetInstruction)
+@inject(Element, TemplateCompiler)
 export class Grid {
 
   @children('au-col') columns;
@@ -35,15 +30,16 @@ export class Grid {
   @bindable columnMenu;
   @bindable groupable = true;
 
-  constructor(element, templateCompiler, targetInstruction) {
+  constructor(element, templateCompiler) {
     this.element = element;
     this.templateCompiler = templateCompiler;
-    // this.columns = targetInstruction.elementInstruction.children;
   }
 
   bind(ctx) {
     this.templateCompiler.initialize(ctx);
+  }
 
+  attached() {
     // init grid on the <table> tag if initialization is from table
     // else, just use the root element
     let target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
