@@ -102,7 +102,8 @@ export class Grid {
       dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e),
       detailCollapse: (e) => fireKendoEvent(this.element, 'detail-collapse', e),
       detailExpand: (e) => fireKendoEvent(this.element, 'detail-expand', e),
-      detailInit: (e) => fireKendoEvent(this.element, 'detail-init', e),
+      // disabled until https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/133
+      // detailInit: (e) => fireKendoEvent(this.element, 'detail-init', e),
       edit: (e) => fireKendoEvent(this.element, 'edit', e),
       excelExport: (e) => fireKendoEvent(this.element, 'excel-export', e),
       pdfExport: (e) => fireKendoEvent(this.element, 'pdf-export', e),
