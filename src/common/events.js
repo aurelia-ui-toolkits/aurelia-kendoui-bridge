@@ -4,5 +4,6 @@ export function fireEvent(element, name, data = {}) {
 }
 
 export function fireKendoEvent(element, name, data = {}) {
-  return fireEvent(element, `kendo-${name}`, data);
+  fireEvent(element, `kendo-${name}`, data);
+  return true;
 }

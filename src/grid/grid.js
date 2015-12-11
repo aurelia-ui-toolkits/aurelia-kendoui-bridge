@@ -1,5 +1,5 @@
 import {inject, children, customElement, bindable} from 'aurelia-framework';
-import {pruneOptions, TemplateCompiler} from '../common/index';
+import {pruneOptions, TemplateCompiler, fireKendoEvent} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.grid.min';
 
@@ -39,18 +39,22 @@ export class Grid {
     this.templateCompiler.initialize(ctx);
   }
 
+  // initialization in bind() is giving issues in some scenarios
+  // so, attached() is used for this control
   attached() {
+    this._initialize();
+  }
+
+  recreate() {
+    this._initialize();
+  }
+
+  _initialize() {
     // init grid on the <table> tag if initialization is from table
     // else, just use the root element
     let target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
-    this._component = $(target).kendoGrid(this.getOptions()).data('kendoGrid');
-  }
-
-  detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
+    this.widget = $(target).kendoGrid(this.getOptions()).data('kendoGrid');
   }
 
   getOptions() {
@@ -86,15 +90,43 @@ export class Grid {
       navigatable: this.navigatable,
       reorderable: this.reorderable,
       resizable: this.resizable,
-      columnMenu: this.columnMenu
+      columnMenu: this.columnMenu,
+      cancel: (e) => fireKendoEvent(this.element, 'cancel', e),
+      change: (e) => fireKendoEvent(this.element, 'change', e),
+      columnHide: (e) => fireKendoEvent(this.element, 'column-hide', e),
+      columnMenuInit: (e) => fireKendoEvent(this.element, 'column-menu-init', e),
+      columnReorder: (e) => fireKendoEvent(this.element, 'column-reorder', e),
+      columnResize: (e) => fireKendoEvent(this.element, 'column-resize', e),
+      columnShow: (e) => fireKendoEvent(this.element, 'column-show', e),
+      dataBinding: (e) => fireKendoEvent(this.element, 'data-binding', e),
+      dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e),
+      detailCollapse: (e) => fireKendoEvent(this.element, 'detail-collapse', e),
+      detailExpand: (e) => fireKendoEvent(this.element, 'detail-expand', e),
+      detailInit: (e) => fireKendoEvent(this.element, 'detail-init', e),
+      edit: (e) => fireKendoEvent(this.element, 'edit', e),
+      excelExport: (e) => fireKendoEvent(this.element, 'excel-export', e),
+      pdfExport: (e) => fireKendoEvent(this.element, 'pdf-export', e),
+      filterMenuInit: (e) => fireKendoEvent(this.element, 'filter-menu-init', e),
+      remove: (e) => fireKendoEvent(this.element, 'remove', e),
+      save: (e) => fireKendoEvent(this.element, 'save', e),
+      saveChanges: (e) => fireKendoEvent(this.element, 'save-changes', e),
+      columnLock: (e) => fireKendoEvent(this.element, 'column-lock', e),
+      columnUnlock: (e) => fireKendoEvent(this.element, 'column-unlock', e),
+      navigate: (e) => fireKendoEvent(this.element, 'navigate', e)
     });
 
     return Object.assign({}, this.options, options);
   }
 
   enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  }
+
+  detached() {
+    if (this.widget) {
+      this.widget.destroy();
     }
   }
 }

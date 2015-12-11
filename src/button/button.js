@@ -7,8 +7,6 @@ import 'kendo-ui/js/kendo.button.min';
 @inject(Element)
 export class AuKendoButton {
 
-  _component;
-
   @bindable enable = true;
   @bindable icon;
   @bindable imageUrl;
@@ -22,13 +20,15 @@ export class AuKendoButton {
   }
 
   bind() {
-    this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+    this._initialize();
   }
 
-  detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
+  recreate() {
+    this._initialize();
+  }
+
+  _initialize() {
+    this.widget = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
   }
 
   getOptions() {
@@ -44,8 +44,14 @@ export class AuKendoButton {
   }
 
   enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  }
+
+  detached() {
+    if (this.widget) {
+      this.widget.destroy();
     }
   }
 }

@@ -7,8 +7,6 @@ import 'kendo-ui/js/kendo.tabstrip.min';
 @inject(Element)
 export class TabStrip {
 
-	_component;
-
 	@bindable animation;
   @bindable collapsible;
   @bindable contentUrls;
@@ -31,13 +29,15 @@ export class TabStrip {
   }
 
   bind() {
-    this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
+    this._initialize();
   }
 
-  detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
+  recreate() {
+    this._initialize();
+  }
+
+  _initialize() {
+    this.widget = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
   }
 
   getOptions() {
@@ -60,8 +60,14 @@ export class TabStrip {
   }
 
   enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  }
+
+  detached() {
+    if (this.widget) {
+      this.widget.destroy();
     }
   }
 }
