@@ -1,5 +1,5 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-import {pruneOptions, fireEvent} from '../common/index';
+import {pruneOptions, fireKendoEvent} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.menu.min';
 
@@ -50,11 +50,11 @@ export class Menu {
       hoverDelay: this.hoverDelay,
       orientation: this.orientation,
       popupCollision: this.popupCollision,
-      close: (e) => fireEvent(this.element, 'close', e),
-      open: (e) => fireEvent(this.element, 'open', e),
-      activate: (e) => fireEvent(this.element, 'activate', e),
-      deactivate: (e) => fireEvent(this.element, 'deactivate', e),
-      select: (e) => fireEvent(this.element, 'select', e)
+      close: (e) => fireKendoEvent(this.element, 'close', e),
+      open: (e) => fireKendoEvent(this.element, 'open', e),
+      activate: (e) => fireKendoEvent(this.element, 'activate', e),
+      deactivate: (e) => fireKendoEvent(this.element, 'deactivate', e),
+      select: (e) => fireKendoEvent(this.element, 'select', e)
     });
 
     return Object.assign({}, this.options, options);

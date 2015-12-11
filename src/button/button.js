@@ -1,5 +1,5 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {pruneOptions} from '../common/index';
+import {pruneOptions, fireKendoEvent} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.button.min';
 
@@ -36,7 +36,8 @@ export class AuKendoButton {
       icon: this.icon,
       enable: this.enable,
       imageUrl: this.imageUrl,
-      spriteCssClass: this.spriteCssClass
+      spriteCssClass: this.spriteCssClass,
+      click: (e) => fireKendoEvent(this.element, 'click', e)
     });
 
     return Object.assign({}, this.options, options);

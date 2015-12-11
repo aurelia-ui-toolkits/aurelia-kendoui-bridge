@@ -1,7 +1,7 @@
 <template>
     <section>
         <collapse-panel title="API" allow-collapse.bind="false" footer="Click the buttons below to enable/disable me">
-            <button au-kendo-button="enable.bind: enabled" class="k-primary" click.delegate="test()">Click me</button>
+            <button au-kendo-button="enable.bind: enabled" class="k-primary" kendo-click.trigger="test()">Click me</button>
         </collapse-panel>
         <div class="well panel panel-default">
             <button au-kendo-button click.delegate="disable()">Disable</button>
@@ -16,7 +16,7 @@
                 </ul>
                 <div>
                   <au-code language="markup">
-                      <button au-kendo-button="enable.bind: enabled" class="k-primary" click.delegate="test()">Click me</button>
+                      <button au-kendo-button="enable.bind: enabled" class="k-primary" kendo-click.trigger="test()">Click me</button>
                   </au-code>
                 </div>
 
