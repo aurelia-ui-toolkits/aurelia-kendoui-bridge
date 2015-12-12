@@ -3,7 +3,8 @@
         <collapse-panel title="Virtualization of remote data" allow-collapse.bind="false">
 
           <button class="btn btn-primary" click.delegate="disablePageScroll()">Disable page scroll</button>
-
+          <br>
+          <br>
           <au-kendo-grid data-source.bind="datasource" sortable.bind="true" scrollable.bind="{virtual:true}">
             <au-col title="Order ID" field="OrderID" width="110"></au-col>
             <au-col title="Customer ID" field="CustomerID" width="130"></au-col>

@@ -1,13 +1,11 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {fireEvent, TemplateCompiler, pruneOptions} from '../common/index';
+import {fireEvent, TemplateCompiler, pruneOptions, fireKendoEvent} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
 
 @customAttribute('au-kendo-autocomplete')
 @inject(Element, TemplateCompiler)
 export class AuKendoAutoComplete {
-
-  element;
 
   // Autocomplete API
   // Full options object if you want to set options that way
@@ -50,27 +48,31 @@ export class AuKendoAutoComplete {
   bind(ctx) {
     this.templateCompiler.initialize(ctx);
 
-    this._component = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
-
-    this._component.bind('change', (event) => {
-      this.value = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
-
-    this._component.bind('select', (event) => {
-      this.value = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
+    this._initialize();
   }
 
-  detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
+  recreate() {
+    this._initialize();
+  }
+
+  _initialize() {
+    this.widget = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
+
+    // without these change and select handlers, when you select an options
+    // the value binding is not updated
+    this.widget.bind('change', (event) => {
+      this.value = event.sender.value();
+
+      // Update the kendo binding
+      fireEvent(this.element, 'input');
+    });
+
+    this.widget.bind('select', (event) => {
+      this.value = event.sender.value();
+
+      // Update the kendo binding
+      fireEvent(this.element, 'input');
+    });
   }
 
   getOptions() {
@@ -92,15 +94,27 @@ export class AuKendoAutoComplete {
       separator: this.separator,
       template: this.template,
       headerTemplate: this.headerTemplate,
-      suggest: this.suggest
+      suggest: this.suggest,
+      change: (e) => fireKendoEvent(this.element, 'change', e),
+      close: (e) => fireKendoEvent(this.element, 'close', e),
+      dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e),
+      filtering: (e) => fireKendoEvent(this.element, 'filtering', e),
+      open: (e) => fireKendoEvent(this.element, 'open', e),
+      select: (e) => fireKendoEvent(this.element, 'select', e)
     });
 
     return Object.assign({}, this.options, options);
   }
 
   enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  }
+
+  detached() {
+    if (this.widget) {
+      this.widget.destroy();
     }
   }
 }

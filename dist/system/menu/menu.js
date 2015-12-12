@@ -1,7 +1,7 @@
 System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.menu.min'], function (_export) {
   'use strict';
 
-  var customElement, bindable, inject, pruneOptions, fireEvent, Menu;
+  var customElement, bindable, inject, pruneOptions, fireKendoEvent, Menu;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -16,7 +16,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
       inject = _aureliaFramework.inject;
     }, function (_commonIndex) {
       pruneOptions = _commonIndex.pruneOptions;
-      fireEvent = _commonIndex.fireEvent;
+      fireKendoEvent = _commonIndex.fireKendoEvent;
     }, function (_jquery) {}, function (_kendoUiJsKendoMenuMin) {}],
     execute: function () {
       Menu = (function () {
@@ -88,6 +88,14 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
         }
 
         Menu.prototype.bind = function bind() {
+          this._initialize();
+        };
+
+        Menu.prototype.recreate = function recreate() {
+          this._initialize();
+        };
+
+        Menu.prototype._initialize = function _initialize() {
           var target = undefined;
           var ul = $(this.element).find('ul');
           if (ul.has()) {
@@ -96,13 +104,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
             target = $(this.element).appendChild('<ul></ul>');
           }
 
-          this._component = target.kendoMenu(this.getOptions()).data('kendoMenu');
-        };
-
-        Menu.prototype.detached = function detached() {
-          if (this._component) {
-            this._component.destroy();
-          }
+          this.widget = target.kendoMenu(this.getOptions()).data('kendoMenu');
         };
 
         Menu.prototype.getOptions = function getOptions() {
@@ -117,23 +119,29 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
             orientation: this.orientation,
             popupCollision: this.popupCollision,
             close: function close(e) {
-              return fireEvent(_this.element, 'close', e);
+              return fireKendoEvent(_this.element, 'close', e);
             },
             open: function open(e) {
-              return fireEvent(_this.element, 'open', e);
+              return fireKendoEvent(_this.element, 'open', e);
             },
             activate: function activate(e) {
-              return fireEvent(_this.element, 'activate', e);
+              return fireKendoEvent(_this.element, 'activate', e);
             },
             deactivate: function deactivate(e) {
-              return fireEvent(_this.element, 'deactivate', e);
+              return fireKendoEvent(_this.element, 'deactivate', e);
             },
             select: function select(e) {
-              return fireEvent(_this.element, 'select', e);
+              return fireKendoEvent(_this.element, 'select', e);
             }
           });
 
           return Object.assign({}, this.options, options);
+        };
+
+        Menu.prototype.detached = function detached() {
+          if (this.widget) {
+            this.widget.destroy();
+          }
         };
 
         var _Menu = Menu;

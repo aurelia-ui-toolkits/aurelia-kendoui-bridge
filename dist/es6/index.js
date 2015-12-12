@@ -17,9 +17,6 @@ export function configure(aurelia, configCallback) {
     // Pull the data off the builder
   let resources = builder.resources;
 
-    // Convert the resource names to paths
-  resources = resources.map(r => r + '/' + r);
-
   aurelia.globalResources(resources);
 }
 
@@ -42,47 +39,48 @@ class KendoConfigBuilder {
   }
 
   kendoAutoComplete() {
-    this.resources.push('autocomplete');
+    this.resources.push('autocomplete/autocomplete');
     return this;
   }
 
   kendoButton() {
-    this.resources.push('button');
+    this.resources.push('button/button');
     return this;
   }
 
   kendoMenu() {
-    this.resources.push('menu');
+    this.resources.push('menu/menu');
     return this;
   }
 
   kendoCombobox() {
-    this.resources.push('combobox');
+    this.resources.push('combobox/combobox');
     return this;
   }
 
   kendoDropDownList() {
-    this.resources.push('dropdownlist');
+    this.resources.push('dropdownlist/dropdownlist');
     return this;
   }
 
   kendoGrid() {
-    this.resources.push('grid');
+    this.resources.push('grid/grid');
+    this.resources.push('grid/au-col');
     return this;
   }
 
   kendoScheduler() {
-    this.resources.push('scheduler');
+    this.resources.push('scheduler/scheduler');
     return this;
   }
 
   kendoTabStrip() {
-    this.resources.push('tabstrip');
+    this.resources.push('tabstrip/tabstrip');
     return this;
   }
 
   kendoToolbar() {
-    this.resources.push('toolbar');
+    this.resources.push('toolbar/toolbar');
     return this;
   }
 }

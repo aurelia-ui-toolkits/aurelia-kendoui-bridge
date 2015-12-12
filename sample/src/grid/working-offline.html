@@ -4,7 +4,8 @@
 
           <button au-kendo-button class="k-primary" click.delegate="online()">Go online</button>
           <button au-kendo-button class="k-primary" click.delegate="offline()">Go offline</button>
-
+          <br>
+          <br>
           <au-kendo-grid data-source.bind="datasource" pageable.bind="{refresh: true}" height="450" toolbar.bind="['create']" editable="inline">
             <au-col field="ProductName"></au-col>
             <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>

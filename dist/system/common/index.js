@@ -1,4 +1,4 @@
-System.register(['./events', './options', './template-compiler', './children-parser'], function (_export) {
+System.register(['./events', './options', './template-compiler'], function (_export) {
   'use strict';
 
   return {
@@ -13,10 +13,6 @@ System.register(['./events', './options', './template-compiler', './children-par
     }, function (_templateCompiler) {
       for (var _key3 in _templateCompiler) {
         if (_key3 !== 'default') _export(_key3, _templateCompiler[_key3]);
-      }
-    }, function (_childrenParser) {
-      for (var _key4 in _childrenParser) {
-        if (_key4 !== 'default') _export(_key4, _childrenParser[_key4]);
       }
     }],
     execute: function () {}

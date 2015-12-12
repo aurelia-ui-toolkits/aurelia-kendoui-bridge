@@ -78,6 +78,14 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
     }
 
     Menu.prototype.bind = function bind() {
+      this._initialize();
+    };
+
+    Menu.prototype.recreate = function recreate() {
+      this._initialize();
+    };
+
+    Menu.prototype._initialize = function _initialize() {
       var target = undefined;
       var ul = $(this.element).find('ul');
       if (ul.has()) {
@@ -86,13 +94,7 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
         target = $(this.element).appendChild('<ul></ul>');
       }
 
-      this._component = target.kendoMenu(this.getOptions()).data('kendoMenu');
-    };
-
-    Menu.prototype.detached = function detached() {
-      if (this._component) {
-        this._component.destroy();
-      }
+      this.widget = target.kendoMenu(this.getOptions()).data('kendoMenu');
     };
 
     Menu.prototype.getOptions = function getOptions() {
@@ -107,23 +109,29 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
         orientation: this.orientation,
         popupCollision: this.popupCollision,
         close: function close(e) {
-          return _commonIndex.fireEvent(_this.element, 'close', e);
+          return _commonIndex.fireKendoEvent(_this.element, 'close', e);
         },
         open: function open(e) {
-          return _commonIndex.fireEvent(_this.element, 'open', e);
+          return _commonIndex.fireKendoEvent(_this.element, 'open', e);
         },
         activate: function activate(e) {
-          return _commonIndex.fireEvent(_this.element, 'activate', e);
+          return _commonIndex.fireKendoEvent(_this.element, 'activate', e);
         },
         deactivate: function deactivate(e) {
-          return _commonIndex.fireEvent(_this.element, 'deactivate', e);
+          return _commonIndex.fireKendoEvent(_this.element, 'deactivate', e);
         },
         select: function select(e) {
-          return _commonIndex.fireEvent(_this.element, 'select', e);
+          return _commonIndex.fireKendoEvent(_this.element, 'select', e);
         }
       });
 
       return Object.assign({}, this.options, options);
+    };
+
+    Menu.prototype.detached = function detached() {
+      if (this.widget) {
+        this.widget.destroy();
+      }
     };
 
     var _Menu = Menu;

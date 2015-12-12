@@ -198,32 +198,36 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
     }
 
     AuKendoAutoComplete.prototype.bind = function bind(ctx) {
-      var _this = this;
-
       this.templateCompiler.initialize(ctx);
 
-      this._component = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
-
-      this._component.bind('change', function (event) {
-        _this.value = event.sender.value();
-
-        _commonIndex.fireEvent(_this.element, 'input');
-      });
-
-      this._component.bind('select', function (event) {
-        _this.value = event.sender.value();
-
-        _commonIndex.fireEvent(_this.element, 'input');
-      });
+      this._initialize();
     };
 
-    AuKendoAutoComplete.prototype.detached = function detached() {
-      if (this._component) {
-        this._component.destroy();
-      }
+    AuKendoAutoComplete.prototype.recreate = function recreate() {
+      this._initialize();
+    };
+
+    AuKendoAutoComplete.prototype._initialize = function _initialize() {
+      var _this = this;
+
+      this.widget = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
+
+      this.widget.bind('change', function (event) {
+        _this.value = event.sender.value();
+
+        _commonIndex.fireEvent(_this.element, 'input');
+      });
+
+      this.widget.bind('select', function (event) {
+        _this.value = event.sender.value();
+
+        _commonIndex.fireEvent(_this.element, 'input');
+      });
     };
 
     AuKendoAutoComplete.prototype.getOptions = function getOptions() {
+      var _this2 = this;
+
       var options = _commonIndex.pruneOptions({
         animation: this.animation,
         dataSource: this.dataSource,
@@ -242,15 +246,39 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
         separator: this.separator,
         template: this.template,
         headerTemplate: this.headerTemplate,
-        suggest: this.suggest
+        suggest: this.suggest,
+        change: function change(e) {
+          return _commonIndex.fireKendoEvent(_this2.element, 'change', e);
+        },
+        close: function close(e) {
+          return _commonIndex.fireKendoEvent(_this2.element, 'close', e);
+        },
+        dataBound: function dataBound(e) {
+          return _commonIndex.fireKendoEvent(_this2.element, 'data-bound', e);
+        },
+        filtering: function filtering(e) {
+          return _commonIndex.fireKendoEvent(_this2.element, 'filtering', e);
+        },
+        open: function open(e) {
+          return _commonIndex.fireKendoEvent(_this2.element, 'open', e);
+        },
+        select: function select(e) {
+          return _commonIndex.fireKendoEvent(_this2.element, 'select', e);
+        }
       });
 
       return Object.assign({}, this.options, options);
     };
 
     AuKendoAutoComplete.prototype.enableChanged = function enableChanged(newValue) {
-      if (this._component) {
-        this._component.enable(newValue);
+      if (this.widget) {
+        this.widget.enable(newValue);
+      }
+    };
+
+    AuKendoAutoComplete.prototype.detached = function detached() {
+      if (this.widget) {
+        this.widget.destroy();
       }
     };
 

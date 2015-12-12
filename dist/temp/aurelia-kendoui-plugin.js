@@ -5,8 +5,8 @@ exports.__esModule = true;
 var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
 exports.configure = configure;
-exports.parseChildren = parseChildren;
 exports.fireEvent = fireEvent;
+exports.fireKendoEvent = fireKendoEvent;
 exports.pruneOptions = pruneOptions;
 
 function _interopExportWildcard(obj, defaults) { var newObj = defaults({}, obj); delete newObj['default']; return newObj; }
@@ -33,11 +33,7 @@ require('kendo-ui/js/kendo.grid.min');
 
 require('kendo-ui/js/kendo.menu.min');
 
-require('kendo-ui/js/kendo.scheduler.min');
-
 require('kendo-ui/js/kendo.tabstrip.min');
-
-require('kendo-ui/js/kendo.toolbar.min');
 
 var _aureliaFramework = require('aurelia-framework');
 
@@ -58,10 +54,6 @@ function configure(aurelia, configCallback) {
   }
 
   var resources = builder.resources;
-
-  resources = resources.map(function (r) {
-    return r + '/' + r;
-  });
 
   aurelia.globalResources(resources);
 }
@@ -84,47 +76,48 @@ var KendoConfigBuilder = (function () {
   };
 
   KendoConfigBuilder.prototype.kendoAutoComplete = function kendoAutoComplete() {
-    this.resources.push('autocomplete');
+    this.resources.push('autocomplete/autocomplete');
     return this;
   };
 
   KendoConfigBuilder.prototype.kendoButton = function kendoButton() {
-    this.resources.push('button');
+    this.resources.push('button/button');
     return this;
   };
 
   KendoConfigBuilder.prototype.kendoMenu = function kendoMenu() {
-    this.resources.push('menu');
+    this.resources.push('menu/menu');
     return this;
   };
 
   KendoConfigBuilder.prototype.kendoCombobox = function kendoCombobox() {
-    this.resources.push('combobox');
+    this.resources.push('combobox/combobox');
     return this;
   };
 
   KendoConfigBuilder.prototype.kendoDropDownList = function kendoDropDownList() {
-    this.resources.push('dropdownlist');
+    this.resources.push('dropdownlist/dropdownlist');
     return this;
   };
 
   KendoConfigBuilder.prototype.kendoGrid = function kendoGrid() {
-    this.resources.push('grid');
+    this.resources.push('grid/grid');
+    this.resources.push('grid/au-col');
     return this;
   };
 
   KendoConfigBuilder.prototype.kendoScheduler = function kendoScheduler() {
-    this.resources.push('scheduler');
+    this.resources.push('scheduler/scheduler');
     return this;
   };
 
   KendoConfigBuilder.prototype.kendoTabStrip = function kendoTabStrip() {
-    this.resources.push('tabstrip');
+    this.resources.push('tabstrip/tabstrip');
     return this;
   };
 
   KendoConfigBuilder.prototype.kendoToolbar = function kendoToolbar() {
-    this.resources.push('toolbar');
+    this.resources.push('toolbar/toolbar');
     return this;
   };
 
@@ -320,32 +313,36 @@ var AuKendoAutoComplete = (function () {
   }
 
   AuKendoAutoComplete.prototype.bind = function bind(ctx) {
-    var _this = this;
-
     this.templateCompiler.initialize(ctx);
 
-    this._component = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
-
-    this._component.bind('change', function (event) {
-      _this.value = event.sender.value();
-
-      fireEvent(_this.element, 'input');
-    });
-
-    this._component.bind('select', function (event) {
-      _this.value = event.sender.value();
-
-      fireEvent(_this.element, 'input');
-    });
+    this._initialize();
   };
 
-  AuKendoAutoComplete.prototype.detached = function detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
+  AuKendoAutoComplete.prototype.recreate = function recreate() {
+    this._initialize();
+  };
+
+  AuKendoAutoComplete.prototype._initialize = function _initialize() {
+    var _this = this;
+
+    this.widget = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
+
+    this.widget.bind('change', function (event) {
+      _this.value = event.sender.value();
+
+      fireEvent(_this.element, 'input');
+    });
+
+    this.widget.bind('select', function (event) {
+      _this.value = event.sender.value();
+
+      fireEvent(_this.element, 'input');
+    });
   };
 
   AuKendoAutoComplete.prototype.getOptions = function getOptions() {
+    var _this2 = this;
+
     var options = pruneOptions({
       animation: this.animation,
       dataSource: this.dataSource,
@@ -364,15 +361,39 @@ var AuKendoAutoComplete = (function () {
       separator: this.separator,
       template: this.template,
       headerTemplate: this.headerTemplate,
-      suggest: this.suggest
+      suggest: this.suggest,
+      change: function change(e) {
+        return fireKendoEvent(_this2.element, 'change', e);
+      },
+      close: function close(e) {
+        return fireKendoEvent(_this2.element, 'close', e);
+      },
+      dataBound: function dataBound(e) {
+        return fireKendoEvent(_this2.element, 'data-bound', e);
+      },
+      filtering: function filtering(e) {
+        return fireKendoEvent(_this2.element, 'filtering', e);
+      },
+      open: function open(e) {
+        return fireKendoEvent(_this2.element, 'open', e);
+      },
+      select: function select(e) {
+        return fireKendoEvent(_this2.element, 'select', e);
+      }
     });
 
     return Object.assign({}, this.options, options);
   };
 
   AuKendoAutoComplete.prototype.enableChanged = function enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  };
+
+  AuKendoAutoComplete.prototype.detached = function detached() {
+    if (this.widget) {
+      this.widget.destroy();
     }
   };
 
@@ -434,29 +455,42 @@ var AuKendoButton = (function () {
   }
 
   AuKendoButton.prototype.bind = function bind() {
-    this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+    this._initialize();
   };
 
-  AuKendoButton.prototype.detached = function detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
+  AuKendoButton.prototype.recreate = function recreate() {
+    this._initialize();
+  };
+
+  AuKendoButton.prototype._initialize = function _initialize() {
+    this.widget = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
   };
 
   AuKendoButton.prototype.getOptions = function getOptions() {
+    var _this3 = this;
+
     var options = pruneOptions({
       icon: this.icon,
       enable: this.enable,
       imageUrl: this.imageUrl,
-      spriteCssClass: this.spriteCssClass
+      spriteCssClass: this.spriteCssClass,
+      click: function click(e) {
+        return fireKendoEvent(_this3.element, 'click', e);
+      }
     });
 
     return Object.assign({}, this.options, options);
   };
 
   AuKendoButton.prototype.enableChanged = function enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  };
+
+  AuKendoButton.prototype.detached = function detached() {
+    if (this.widget) {
+      this.widget.destroy();
     }
   };
 
@@ -468,35 +502,18 @@ var AuKendoButton = (function () {
 
 exports.AuKendoButton = AuKendoButton;
 
-function parseChildren(cssSelector, element, instruction) {
-  var matchedElements = Array.prototype.slice.call(element.querySelectorAll(cssSelector));
-  var objects = matchedElements.map(function (matchedElement) {
-    var obj = {};
-
-    for (var i = matchedElement.attributes.length - 1; i >= 0; i--) {
-      var attr = matchedElement.attributes.item(i);
-      obj[attr.name] = attr.value;
-    }
-
-    if (matchedElement.childNodes.length > 0) {
-      obj.template = matchedElement.innerHTML;
-    }
-
-    return obj;
-  });
-
-  matchedElements.forEach(function (i) {
-    return element.removeChild(i);
-  });
-
-  instruction.children = objects;
-}
-
 function fireEvent(element, name) {
   var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
   var event = new CustomEvent(name, { 'detail': data });
   element.dispatchEvent(event);
+}
+
+function fireKendoEvent(element, name) {
+  var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+
+  fireEvent(element, 'kendo-' + name, data);
+  return true;
 }
 
 var _events = require('./events');
@@ -510,10 +527,6 @@ _defaults(exports, _interopExportWildcard(_options, _defaults));
 var _templateCompiler = require('./template-compiler');
 
 _defaults(exports, _interopExportWildcard(_templateCompiler, _defaults));
-
-var _childrenParser = require('./children-parser');
-
-_defaults(exports, _interopExportWildcard(_childrenParser, _defaults));
 
 function pruneOptions(options) {
 
@@ -536,15 +549,15 @@ var TemplateCompiler = (function () {
   }
 
   TemplateCompiler.prototype.initialize = function initialize($parent) {
-    var _this2 = this;
+    var _this4 = this;
 
     this.$parent = $parent;
 
     kendo.ui.Widget.prototype.angular = function (_event, _args) {
-      return _this2.handleTemplateEvents(_event, _args);
+      return _this4.handleTemplateEvents(_event, _args);
     };
     kendo.mobile.ui.Widget.prototype.angular = function (_event, _args) {
-      return _this2.handleTemplateEvents(_event, _args);
+      return _this4.handleTemplateEvents(_event, _args);
     };
   };
 
@@ -614,10 +627,91 @@ var TemplateCompiler = (function () {
 
 exports.TemplateCompiler = TemplateCompiler;
 
-var Grid = (function () {
+var AuCol = (function () {
   var _instanceInitializers3 = {};
 
+  _createDecoratedClass(AuCol, [{
+    key: 'title',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'field',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'format',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'command',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'width',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'lockable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'locked',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers3);
+
+  function AuCol(targetInstruction) {
+    _classCallCheck(this, _AuCol);
+
+    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'command', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'lockable', _instanceInitializers3);
+
+    _defineDecoratedPropertyDescriptor(this, 'locked', _instanceInitializers3);
+
+    this.template = targetInstruction.elementInstruction.template;
+  }
+
+  var _AuCol = AuCol;
+  AuCol = _aureliaFramework.inject(_aureliaFramework.TargetInstruction)(AuCol) || AuCol;
+  AuCol = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
+    var html = element.innerHTML;
+    if (html !== '') {
+      instruction.template = html;
+    }
+
+    return true;
+  })(AuCol) || AuCol;
+  AuCol = _aureliaFramework.noView(AuCol) || AuCol;
+  return AuCol;
+})();
+
+exports.AuCol = AuCol;
+
+var Grid = (function () {
+  var _instanceInitializers4 = {};
+
   _createDecoratedClass(Grid, [{
+    key: 'columns',
+    decorators: [_aureliaFramework.children('au-col')],
+    initializer: null,
+    enumerable: true
+  }, {
     key: 'selectable',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
@@ -729,73 +823,78 @@ var Grid = (function () {
       return true;
     },
     enumerable: true
-  }], null, _instanceInitializers3);
+  }], null, _instanceInitializers4);
 
-  function Grid(element, templateCompiler, targetInstruction) {
+  function Grid(element, templateCompiler) {
     _classCallCheck(this, _Grid);
 
-    this.columns = null;
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'selectable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'selectable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'pageable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'pageable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'pageSize', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'pageSize', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'page', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'page', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'selectedItem', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'selectedItem', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'selectedItems', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'selectedItems', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'autoBind', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'autoBind', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'resizable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'resizable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'reorderable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'reorderable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'editable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'editable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'sort', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'sort', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'group', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'group', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'toolbar', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'toolbar', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'columnMenu', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'columnMenu', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers4);
 
     this.element = element;
     this.templateCompiler = templateCompiler;
-    this.columns = targetInstruction.elementInstruction.children;
   }
 
   Grid.prototype.bind = function bind(ctx) {
     this.templateCompiler.initialize(ctx);
-
-    var target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
-
-    this._component = $(target).kendoGrid(this.getOptions()).data('kendoGrid');
   };
 
-  Grid.prototype.detached = function detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
+  Grid.prototype.attached = function attached() {
+    this._initialize();
+  };
+
+  Grid.prototype.recreate = function recreate() {
+    this._initialize();
+  };
+
+  Grid.prototype._initialize = function _initialize() {
+    var target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+
+    this.widget = $(target).kendoGrid(this.getOptions()).data('kendoGrid');
   };
 
   Grid.prototype.getOptions = function getOptions() {
+    var _this5 = this;
+
     var options = pruneOptions({
       animation: this.animation,
       dataSource: this.dataSource,
@@ -828,25 +927,90 @@ var Grid = (function () {
       navigatable: this.navigatable,
       reorderable: this.reorderable,
       resizable: this.resizable,
-      columnMenu: this.columnMenu
+      columnMenu: this.columnMenu,
+      cancel: function cancel(e) {
+        return fireKendoEvent(_this5.element, 'cancel', e);
+      },
+      change: function change(e) {
+        return fireKendoEvent(_this5.element, 'change', e);
+      },
+      columnHide: function columnHide(e) {
+        return fireKendoEvent(_this5.element, 'column-hide', e);
+      },
+      columnMenuInit: function columnMenuInit(e) {
+        return fireKendoEvent(_this5.element, 'column-menu-init', e);
+      },
+      columnReorder: function columnReorder(e) {
+        return fireKendoEvent(_this5.element, 'column-reorder', e);
+      },
+      columnResize: function columnResize(e) {
+        return fireKendoEvent(_this5.element, 'column-resize', e);
+      },
+      columnShow: function columnShow(e) {
+        return fireKendoEvent(_this5.element, 'column-show', e);
+      },
+      dataBinding: function dataBinding(e) {
+        return fireKendoEvent(_this5.element, 'data-binding', e);
+      },
+      dataBound: function dataBound(e) {
+        return fireKendoEvent(_this5.element, 'data-bound', e);
+      },
+      detailCollapse: function detailCollapse(e) {
+        return fireKendoEvent(_this5.element, 'detail-collapse', e);
+      },
+      detailExpand: function detailExpand(e) {
+        return fireKendoEvent(_this5.element, 'detail-expand', e);
+      },
+
+      edit: function edit(e) {
+        return fireKendoEvent(_this5.element, 'edit', e);
+      },
+      excelExport: function excelExport(e) {
+        return fireKendoEvent(_this5.element, 'excel-export', e);
+      },
+      pdfExport: function pdfExport(e) {
+        return fireKendoEvent(_this5.element, 'pdf-export', e);
+      },
+      filterMenuInit: function filterMenuInit(e) {
+        return fireKendoEvent(_this5.element, 'filter-menu-init', e);
+      },
+      remove: function remove(e) {
+        return fireKendoEvent(_this5.element, 'remove', e);
+      },
+      save: function save(e) {
+        return fireKendoEvent(_this5.element, 'save', e);
+      },
+      saveChanges: function saveChanges(e) {
+        return fireKendoEvent(_this5.element, 'save-changes', e);
+      },
+      columnLock: function columnLock(e) {
+        return fireKendoEvent(_this5.element, 'column-lock', e);
+      },
+      columnUnlock: function columnUnlock(e) {
+        return fireKendoEvent(_this5.element, 'column-unlock', e);
+      },
+      navigate: function navigate(e) {
+        return fireKendoEvent(_this5.element, 'navigate', e);
+      }
     });
 
     return Object.assign({}, this.options, options);
   };
 
   Grid.prototype.enableChanged = function enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  };
+
+  Grid.prototype.detached = function detached() {
+    if (this.widget) {
+      this.widget.destroy();
     }
   };
 
   var _Grid = Grid;
-  Grid = _aureliaFramework.inject(Element, TemplateCompiler, _aureliaFramework.TargetInstruction)(Grid) || Grid;
-  Grid = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
-    parseChildren('au-col', element, instruction);
-
-    return isInitFromTable(element);
-  })(Grid) || Grid;
+  Grid = _aureliaFramework.inject(Element, TemplateCompiler)(Grid) || Grid;
   Grid = _aureliaFramework.customElement('au-kendo-grid')(Grid) || Grid;
   return Grid;
 })();
@@ -858,7 +1022,7 @@ function isInitFromTable(element) {
 }
 
 var Menu = (function () {
-  var _instanceInitializers4 = {};
+  var _instanceInitializers5 = {};
 
   _createDecoratedClass(Menu, [{
     key: 'options',
@@ -900,32 +1064,40 @@ var Menu = (function () {
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers4);
+  }], null, _instanceInitializers5);
 
   function Menu(element) {
     _classCallCheck(this, _Menu);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers5);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers5);
 
-    _defineDecoratedPropertyDescriptor(this, 'closeOnClick', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'closeOnClick', _instanceInitializers5);
 
-    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers5);
 
-    _defineDecoratedPropertyDescriptor(this, 'direction', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'direction', _instanceInitializers5);
 
-    _defineDecoratedPropertyDescriptor(this, 'hoverDelay', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'hoverDelay', _instanceInitializers5);
 
-    _defineDecoratedPropertyDescriptor(this, 'orientation', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'orientation', _instanceInitializers5);
 
-    _defineDecoratedPropertyDescriptor(this, 'popupCollision', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'popupCollision', _instanceInitializers5);
 
     this.element = element;
     this.options = {};
   }
 
   Menu.prototype.bind = function bind() {
+    this._initialize();
+  };
+
+  Menu.prototype.recreate = function recreate() {
+    this._initialize();
+  };
+
+  Menu.prototype._initialize = function _initialize() {
     var target = undefined;
     var ul = $(this.element).find('ul');
     if (ul.has()) {
@@ -934,17 +1106,11 @@ var Menu = (function () {
       target = $(this.element).appendChild('<ul></ul>');
     }
 
-    this._component = target.kendoMenu(this.getOptions()).data('kendoMenu');
-  };
-
-  Menu.prototype.detached = function detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
+    this.widget = target.kendoMenu(this.getOptions()).data('kendoMenu');
   };
 
   Menu.prototype.getOptions = function getOptions() {
-    var _this3 = this;
+    var _this6 = this;
 
     var options = pruneOptions({
       dataSource: this.dataSource,
@@ -955,23 +1121,29 @@ var Menu = (function () {
       orientation: this.orientation,
       popupCollision: this.popupCollision,
       close: function close(e) {
-        return fireEvent(_this3.element, 'close', e);
+        return fireKendoEvent(_this6.element, 'close', e);
       },
       open: function open(e) {
-        return fireEvent(_this3.element, 'open', e);
+        return fireKendoEvent(_this6.element, 'open', e);
       },
       activate: function activate(e) {
-        return fireEvent(_this3.element, 'activate', e);
+        return fireKendoEvent(_this6.element, 'activate', e);
       },
       deactivate: function deactivate(e) {
-        return fireEvent(_this3.element, 'deactivate', e);
+        return fireKendoEvent(_this6.element, 'deactivate', e);
       },
       select: function select(e) {
-        return fireEvent(_this3.element, 'select', e);
+        return fireKendoEvent(_this6.element, 'select', e);
       }
     });
 
     return Object.assign({}, this.options, options);
+  };
+
+  Menu.prototype.detached = function detached() {
+    if (this.widget) {
+      this.widget.destroy();
+    }
   };
 
   var _Menu = Menu;
@@ -982,49 +1154,9 @@ var Menu = (function () {
 
 exports.Menu = Menu;
 
-var AuScheduler = (function () {
-  var _instanceInitializers5 = {};
-
-  _createDecoratedClass(AuScheduler, [{
-    key: 'options',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers5);
-
-  function AuScheduler(element) {
-    _classCallCheck(this, _AuScheduler);
-
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers5);
-
-    this.element = element;
-    this.options = {};
-  }
-
-  AuScheduler.prototype.bind = function bind() {};
-
-  AuScheduler.prototype.detached = function detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
-  };
-
-  AuScheduler.prototype.getOptions = function getOptions() {
-    var options = pruneOptions({});
-
-    return Object.assign({}, this.options, options);
-  };
-
-  AuScheduler.prototype.enableChanged = function enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
-    }
-  };
-
-  var _AuScheduler = AuScheduler;
-  AuScheduler = _aureliaFramework.inject(Element)(AuScheduler) || AuScheduler;
-  return AuScheduler;
-})();
+var AuScheduler = function AuScheduler() {
+  _classCallCheck(this, AuScheduler);
+};
 
 exports.AuScheduler = AuScheduler;
 
@@ -1139,13 +1271,15 @@ var TabStrip = (function () {
   }
 
   TabStrip.prototype.bind = function bind() {
-    this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
+    this._initialize();
   };
 
-  TabStrip.prototype.detached = function detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
+  TabStrip.prototype.recreate = function recreate() {
+    this._initialize();
+  };
+
+  TabStrip.prototype._initialize = function _initialize() {
+    this.widget = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
   };
 
   TabStrip.prototype.getOptions = function getOptions() {
@@ -1168,8 +1302,14 @@ var TabStrip = (function () {
   };
 
   TabStrip.prototype.enableChanged = function enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  };
+
+  TabStrip.prototype.detached = function detached() {
+    if (this.widget) {
+      this.widget.destroy();
     }
   };
 
@@ -1181,48 +1321,8 @@ var TabStrip = (function () {
 
 exports.TabStrip = TabStrip;
 
-var AuToolbar = (function () {
-  var _instanceInitializers7 = {};
-
-  _createDecoratedClass(AuToolbar, [{
-    key: 'options',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers7);
-
-  function AuToolbar(element) {
-    _classCallCheck(this, _AuToolbar);
-
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers7);
-
-    this.element = element;
-    this.options = {};
-  }
-
-  AuToolbar.prototype.bind = function bind() {};
-
-  AuToolbar.prototype.detached = function detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
-  };
-
-  AuToolbar.prototype.getOptions = function getOptions() {
-    var options = pruneOptions({});
-
-    return Object.assign({}, this.options, options);
-  };
-
-  AuToolbar.prototype.enableChanged = function enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
-    }
-  };
-
-  var _AuToolbar = AuToolbar;
-  AuToolbar = _aureliaFramework.inject(Element)(AuToolbar) || AuToolbar;
-  return AuToolbar;
-})();
+var AuToolbar = function AuToolbar() {
+  _classCallCheck(this, AuToolbar);
+};
 
 exports.AuToolbar = AuToolbar;

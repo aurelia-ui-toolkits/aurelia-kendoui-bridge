@@ -1,7 +1,7 @@
 System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.button.min'], function (_export) {
   'use strict';
 
-  var customAttribute, bindable, inject, pruneOptions, AuKendoButton;
+  var customAttribute, bindable, inject, pruneOptions, fireKendoEvent, AuKendoButton;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -16,6 +16,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
       inject = _aureliaFramework.inject;
     }, function (_commonIndex) {
       pruneOptions = _commonIndex.pruneOptions;
+      fireKendoEvent = _commonIndex.fireKendoEvent;
     }, function (_jquery) {}, function (_kendoUiJsKendoButtonMin) {}],
     execute: function () {
       AuKendoButton = (function () {
@@ -68,29 +69,42 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
         }
 
         AuKendoButton.prototype.bind = function bind() {
-          this._component = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+          this._initialize();
         };
 
-        AuKendoButton.prototype.detached = function detached() {
-          if (this._component) {
-            this._component.destroy();
-          }
+        AuKendoButton.prototype.recreate = function recreate() {
+          this._initialize();
+        };
+
+        AuKendoButton.prototype._initialize = function _initialize() {
+          this.widget = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
         };
 
         AuKendoButton.prototype.getOptions = function getOptions() {
+          var _this = this;
+
           var options = pruneOptions({
             icon: this.icon,
             enable: this.enable,
             imageUrl: this.imageUrl,
-            spriteCssClass: this.spriteCssClass
+            spriteCssClass: this.spriteCssClass,
+            click: function click(e) {
+              return fireKendoEvent(_this.element, 'click', e);
+            }
           });
 
           return Object.assign({}, this.options, options);
         };
 
         AuKendoButton.prototype.enableChanged = function enableChanged(newValue) {
-          if (this._component) {
-            this._component.enable(newValue);
+          if (this.widget) {
+            this.widget.enable(newValue);
+          }
+        };
+
+        AuKendoButton.prototype.detached = function detached() {
+          if (this.widget) {
+            this.widget.destroy();
           }
         };
 

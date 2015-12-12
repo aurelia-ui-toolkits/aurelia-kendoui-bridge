@@ -1,13 +1,11 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-import {pruneOptions, fireEvent} from '../common/index';
+import {pruneOptions, fireKendoEvent} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.menu.min';
 
 @customElement('au-kendo-menu')
 @inject(Element)
 export class Menu {
-
-	_component;
 
   @bindable options;
   @bindable dataSource;
@@ -24,6 +22,14 @@ export class Menu {
   }
 
   bind() {
+    this._initialize();
+  }
+
+  recreate() {
+    this._initialize();
+  }
+
+  _initialize() {
     let target;
     let ul = $(this.element).find('ul');
     if (ul.has()) {
@@ -32,13 +38,7 @@ export class Menu {
       target = $(this.element).appendChild('<ul></ul>');
     }
 
-    this._component = target.kendoMenu(this.getOptions()).data('kendoMenu');
-  }
-
-  detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
+    this.widget = target.kendoMenu(this.getOptions()).data('kendoMenu');
   }
 
   getOptions() {
@@ -50,13 +50,19 @@ export class Menu {
       hoverDelay: this.hoverDelay,
       orientation: this.orientation,
       popupCollision: this.popupCollision,
-      close: (e) => fireEvent(this.element, 'close', e),
-      open: (e) => fireEvent(this.element, 'open', e),
-      activate: (e) => fireEvent(this.element, 'activate', e),
-      deactivate: (e) => fireEvent(this.element, 'deactivate', e),
-      select: (e) => fireEvent(this.element, 'select', e)
+      close: (e) => fireKendoEvent(this.element, 'close', e),
+      open: (e) => fireKendoEvent(this.element, 'open', e),
+      activate: (e) => fireKendoEvent(this.element, 'activate', e),
+      deactivate: (e) => fireKendoEvent(this.element, 'deactivate', e),
+      select: (e) => fireKendoEvent(this.element, 'select', e)
     });
 
     return Object.assign({}, this.options, options);
+  }
+
+  detached() {
+    if (this.widget) {
+      this.widget.destroy();
+    }
   }
 }

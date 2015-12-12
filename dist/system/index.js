@@ -21,10 +21,6 @@ System.register(['aurelia-logging'], function (_export) {
 
     var resources = builder.resources;
 
-    resources = resources.map(function (r) {
-      return r + '/' + r;
-    });
-
     aurelia.globalResources(resources);
   }
 
@@ -53,47 +49,48 @@ System.register(['aurelia-logging'], function (_export) {
         };
 
         KendoConfigBuilder.prototype.kendoAutoComplete = function kendoAutoComplete() {
-          this.resources.push('autocomplete');
+          this.resources.push('autocomplete/autocomplete');
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoButton = function kendoButton() {
-          this.resources.push('button');
+          this.resources.push('button/button');
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoMenu = function kendoMenu() {
-          this.resources.push('menu');
+          this.resources.push('menu/menu');
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoCombobox = function kendoCombobox() {
-          this.resources.push('combobox');
+          this.resources.push('combobox/combobox');
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoDropDownList = function kendoDropDownList() {
-          this.resources.push('dropdownlist');
+          this.resources.push('dropdownlist/dropdownlist');
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoGrid = function kendoGrid() {
-          this.resources.push('grid');
+          this.resources.push('grid/grid');
+          this.resources.push('grid/au-col');
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoScheduler = function kendoScheduler() {
-          this.resources.push('scheduler');
+          this.resources.push('scheduler/scheduler');
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoTabStrip = function kendoTabStrip() {
-          this.resources.push('tabstrip');
+          this.resources.push('tabstrip/tabstrip');
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoToolbar = function kendoToolbar() {
-          this.resources.push('toolbar');
+          this.resources.push('toolbar/toolbar');
           return this;
         };
 

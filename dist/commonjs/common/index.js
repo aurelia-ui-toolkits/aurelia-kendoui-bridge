@@ -17,7 +17,3 @@ _defaults(exports, _interopExportWildcard(_options, _defaults));
 var _templateCompiler = require('./template-compiler');
 
 _defaults(exports, _interopExportWildcard(_templateCompiler, _defaults));
-
-var _childrenParser = require('./children-parser');
-
-_defaults(exports, _interopExportWildcard(_childrenParser, _defaults));

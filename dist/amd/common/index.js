@@ -1,4 +1,4 @@
-define(['exports', './events', './options', './template-compiler', './children-parser'], function (exports, _events, _options, _templateCompiler, _childrenParser) {
+define(['exports', './events', './options', './template-compiler'], function (exports, _events, _options, _templateCompiler) {
   'use strict';
 
   exports.__esModule = true;
@@ -12,6 +12,4 @@ define(['exports', './events', './options', './template-compiler', './children-p
   _defaults(exports, _interopExportWildcard(_options, _defaults));
 
   _defaults(exports, _interopExportWildcard(_templateCompiler, _defaults));
-
-  _defaults(exports, _interopExportWildcard(_childrenParser, _defaults));
 });

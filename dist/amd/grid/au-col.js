@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.button.min'], function (exports, _aureliaFramework, _commonIndex, _jquery, _kendoUiJsKendoButtonMin) {
+define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
   'use strict';
 
   exports.__esModule = true;
@@ -9,100 +9,79 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
 
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-  var AuKendoButton = (function () {
+  var AuCol = (function () {
     var _instanceInitializers = {};
 
-    _createDecoratedClass(AuKendoButton, [{
-      key: 'enable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return true;
-      },
-      enumerable: true
-    }, {
-      key: 'icon',
+    _createDecoratedClass(AuCol, [{
+      key: 'title',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
     }, {
-      key: 'imageUrl',
+      key: 'field',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
     }, {
-      key: 'spriteCssClass',
+      key: 'format',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
     }, {
-      key: 'options',
+      key: 'command',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'width',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'lockable',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'locked',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
 
-    function AuKendoButton(element) {
-      _classCallCheck(this, _AuKendoButton);
+    function AuCol(targetInstruction) {
+      _classCallCheck(this, _AuCol);
 
-      _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'icon', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'imageUrl', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'spriteCssClass', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'command', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers);
 
-      this.element = element;
-      this.options = {};
+      _defineDecoratedPropertyDescriptor(this, 'lockable', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'locked', _instanceInitializers);
+
+      this.template = targetInstruction.elementInstruction.template;
     }
 
-    AuKendoButton.prototype.bind = function bind() {
-      this._initialize();
-    };
-
-    AuKendoButton.prototype.recreate = function recreate() {
-      this._initialize();
-    };
-
-    AuKendoButton.prototype._initialize = function _initialize() {
-      this.widget = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
-    };
-
-    AuKendoButton.prototype.getOptions = function getOptions() {
-      var _this = this;
-
-      var options = _commonIndex.pruneOptions({
-        icon: this.icon,
-        enable: this.enable,
-        imageUrl: this.imageUrl,
-        spriteCssClass: this.spriteCssClass,
-        click: function click(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'click', e);
-        }
-      });
-
-      return Object.assign({}, this.options, options);
-    };
-
-    AuKendoButton.prototype.enableChanged = function enableChanged(newValue) {
-      if (this.widget) {
-        this.widget.enable(newValue);
+    var _AuCol = AuCol;
+    AuCol = _aureliaFramework.inject(_aureliaFramework.TargetInstruction)(AuCol) || AuCol;
+    AuCol = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
+      var html = element.innerHTML;
+      if (html !== '') {
+        instruction.template = html;
       }
-    };
 
-    AuKendoButton.prototype.detached = function detached() {
-      if (this.widget) {
-        this.widget.destroy();
-      }
-    };
-
-    var _AuKendoButton = AuKendoButton;
-    AuKendoButton = _aureliaFramework.inject(Element)(AuKendoButton) || AuKendoButton;
-    AuKendoButton = _aureliaFramework.customAttribute('au-kendo-button')(AuKendoButton) || AuKendoButton;
-    return AuKendoButton;
+      return true;
+    })(AuCol) || AuCol;
+    AuCol = _aureliaFramework.noView(AuCol) || AuCol;
+    return AuCol;
   })();
 
-  exports.AuKendoButton = AuKendoButton;
+  exports.AuCol = AuCol;
 });

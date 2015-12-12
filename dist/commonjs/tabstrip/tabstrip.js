@@ -127,13 +127,15 @@ var TabStrip = (function () {
   }
 
   TabStrip.prototype.bind = function bind() {
-    this._component = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
+    this._initialize();
   };
 
-  TabStrip.prototype.detached = function detached() {
-    if (this._component) {
-      this._component.destroy();
-    }
+  TabStrip.prototype.recreate = function recreate() {
+    this._initialize();
+  };
+
+  TabStrip.prototype._initialize = function _initialize() {
+    this.widget = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
   };
 
   TabStrip.prototype.getOptions = function getOptions() {
@@ -156,8 +158,14 @@ var TabStrip = (function () {
   };
 
   TabStrip.prototype.enableChanged = function enableChanged(newValue) {
-    if (this._component) {
-      this._component.enable(newValue);
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  };
+
+  TabStrip.prototype.detached = function detached() {
+    if (this.widget) {
+      this.widget.destroy();
     }
   };
 

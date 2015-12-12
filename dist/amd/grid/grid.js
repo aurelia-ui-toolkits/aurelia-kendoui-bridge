@@ -13,6 +13,11 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
     var _instanceInitializers = {};
 
     _createDecoratedClass(Grid, [{
+      key: 'columns',
+      decorators: [_aureliaFramework.children('au-col')],
+      initializer: null,
+      enumerable: true
+    }, {
       key: 'selectable',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
@@ -126,10 +131,10 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
       enumerable: true
     }], null, _instanceInitializers);
 
-    function Grid(element, templateCompiler, targetInstruction) {
+    function Grid(element, templateCompiler) {
       _classCallCheck(this, _Grid);
 
-      this.columns = null;
+      _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'selectable', _instanceInitializers);
 
@@ -173,24 +178,29 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
 
       this.element = element;
       this.templateCompiler = templateCompiler;
-      this.columns = targetInstruction.elementInstruction.children;
     }
 
     Grid.prototype.bind = function bind(ctx) {
       this.templateCompiler.initialize(ctx);
-
-      var target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
-
-      this._component = $(target).kendoGrid(this.getOptions()).data('kendoGrid');
     };
 
-    Grid.prototype.detached = function detached() {
-      if (this._component) {
-        this._component.destroy();
-      }
+    Grid.prototype.attached = function attached() {
+      this._initialize();
+    };
+
+    Grid.prototype.recreate = function recreate() {
+      this._initialize();
+    };
+
+    Grid.prototype._initialize = function _initialize() {
+      var target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+
+      this.widget = $(target).kendoGrid(this.getOptions()).data('kendoGrid');
     };
 
     Grid.prototype.getOptions = function getOptions() {
+      var _this = this;
+
       var options = _commonIndex.pruneOptions({
         animation: this.animation,
         dataSource: this.dataSource,
@@ -223,25 +233,90 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
         navigatable: this.navigatable,
         reorderable: this.reorderable,
         resizable: this.resizable,
-        columnMenu: this.columnMenu
+        columnMenu: this.columnMenu,
+        cancel: function cancel(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'cancel', e);
+        },
+        change: function change(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'change', e);
+        },
+        columnHide: function columnHide(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'column-hide', e);
+        },
+        columnMenuInit: function columnMenuInit(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'column-menu-init', e);
+        },
+        columnReorder: function columnReorder(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'column-reorder', e);
+        },
+        columnResize: function columnResize(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'column-resize', e);
+        },
+        columnShow: function columnShow(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'column-show', e);
+        },
+        dataBinding: function dataBinding(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'data-binding', e);
+        },
+        dataBound: function dataBound(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'data-bound', e);
+        },
+        detailCollapse: function detailCollapse(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'detail-collapse', e);
+        },
+        detailExpand: function detailExpand(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'detail-expand', e);
+        },
+
+        edit: function edit(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'edit', e);
+        },
+        excelExport: function excelExport(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'excel-export', e);
+        },
+        pdfExport: function pdfExport(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'pdf-export', e);
+        },
+        filterMenuInit: function filterMenuInit(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'filter-menu-init', e);
+        },
+        remove: function remove(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'remove', e);
+        },
+        save: function save(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'save', e);
+        },
+        saveChanges: function saveChanges(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'save-changes', e);
+        },
+        columnLock: function columnLock(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'column-lock', e);
+        },
+        columnUnlock: function columnUnlock(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'column-unlock', e);
+        },
+        navigate: function navigate(e) {
+          return _commonIndex.fireKendoEvent(_this.element, 'navigate', e);
+        }
       });
 
       return Object.assign({}, this.options, options);
     };
 
     Grid.prototype.enableChanged = function enableChanged(newValue) {
-      if (this._component) {
-        this._component.enable(newValue);
+      if (this.widget) {
+        this.widget.enable(newValue);
+      }
+    };
+
+    Grid.prototype.detached = function detached() {
+      if (this.widget) {
+        this.widget.destroy();
       }
     };
 
     var _Grid = Grid;
-    Grid = _aureliaFramework.inject(Element, _commonIndex.TemplateCompiler, _aureliaFramework.TargetInstruction)(Grid) || Grid;
-    Grid = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
-      _commonIndex.parseChildren('au-col', element, instruction);
-
-      return isInitFromTable(element);
-    })(Grid) || Grid;
+    Grid = _aureliaFramework.inject(Element, _commonIndex.TemplateCompiler)(Grid) || Grid;
     Grid = _aureliaFramework.customElement('au-kendo-grid')(Grid) || Grid;
     return Grid;
   })();
