@@ -34,7 +34,9 @@ System.register(['aurelia-framework'], function (_export) {
         }, {
           key: 'format',
           decorators: [bindable],
-          initializer: null,
+          initializer: function initializer() {
+            return '';
+          },
           enumerable: true
         }, {
           key: 'command',

@@ -1,7 +1,7 @@
 import * as LogManager from 'aurelia-logging';
 import 'jquery';
-import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.button.min';
+import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.grid.min';
 import 'kendo-ui/js/kendo.menu.min';
 import 'kendo-ui/js/kendo.tabstrip.min';
@@ -91,6 +91,59 @@ class KendoConfigBuilder {
   kendoToolbar() {
     this.resources.push('toolbar/toolbar');
     return this;
+  }
+}
+
+@customAttribute('au-kendo-button')
+@inject(Element)
+export class AuKendoButton {
+
+  @bindable enable = true;
+  @bindable icon;
+  @bindable imageUrl;
+  @bindable spriteCssClass;
+
+  @bindable options;
+
+  constructor(element) {
+    this.element = element;
+    this.options = {};
+  }
+
+  bind() {
+    this._initialize();
+  }
+
+  recreate() {
+    this._initialize();
+  }
+
+  _initialize() {
+    this.widget = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
+  }
+
+  getOptions() {
+    let options = pruneOptions({
+      icon: this.icon,
+      enable: this.enable,
+      imageUrl: this.imageUrl,
+      spriteCssClass: this.spriteCssClass,
+      click: (e) => fireKendoEvent(this.element, 'click', e)
+    });
+
+    return Object.assign({}, this.options, options);
+  }
+
+  enableChanged(newValue) {
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  }
+
+  detached() {
+    if (this.widget) {
+      this.widget.destroy();
+    }
   }
 }
 
@@ -210,58 +263,6 @@ export class AuKendoAutoComplete {
   }
 }
 
-@customAttribute('au-kendo-button')
-@inject(Element)
-export class AuKendoButton {
-
-  @bindable enable = true;
-  @bindable icon;
-  @bindable imageUrl;
-  @bindable spriteCssClass;
-
-  @bindable options;
-
-  constructor(element) {
-    this.element = element;
-    this.options = {};
-  }
-
-  bind() {
-    this._initialize();
-  }
-
-  recreate() {
-    this._initialize();
-  }
-
-  _initialize() {
-    this.widget = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
-  }
-
-  getOptions() {
-    let options = pruneOptions({
-      icon: this.icon,
-      enable: this.enable,
-      imageUrl: this.imageUrl,
-      spriteCssClass: this.spriteCssClass,
-      click: (e) => fireKendoEvent(this.element, 'click', e)
-    });
-
-    return Object.assign({}, this.options, options);
-  }
-
-  enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  }
-}
 
 export function fireEvent(element, name, data = {}) {
   let event = new CustomEvent(name, { 'detail': data});
@@ -351,7 +352,11 @@ export class TemplateCompiler {
         ctx = _data.dataItem;
       }
 
-      this.enhanceView(element, ctx);
+      if (element instanceof jQuery) {
+        element.each((index, elem) => this.enhanceView(elem, ctx));
+      } else {
+        this.enhanceView(element, ctx);
+      }
     }
   }
 
@@ -393,7 +398,6 @@ export class TemplateCompiler {
 }
 
 
-
 @noView
 @processContent((compiler, resources, element, instruction) => {
   let html = element.innerHTML;
@@ -407,7 +411,7 @@ export class TemplateCompiler {
 export class AuCol {
   @bindable title;
   @bindable field;
-  @bindable format;
+  @bindable format = '';
   @bindable command;
   @bindable width;
   @bindable lockable;

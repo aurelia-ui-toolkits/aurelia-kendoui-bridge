@@ -59,7 +59,11 @@ export class TemplateCompiler {
         ctx = _data.dataItem;
       }
 
-      this.enhanceView(element, ctx);
+      if (element instanceof jQuery) {
+        element.each((index, elem) => this.enhanceView(elem, ctx));
+      } else {
+        this.enhanceView(element, ctx);
+      }
     }
   }
 

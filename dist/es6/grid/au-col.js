@@ -13,7 +13,7 @@ import {inject, noView, processContent, bindable, TargetInstruction} from 'aurel
 export class AuCol {
   @bindable title;
   @bindable field;
-  @bindable format;
+  @bindable format = '';
   @bindable command;
   @bindable width;
   @bindable lockable;

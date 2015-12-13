@@ -54,7 +54,9 @@ System.register(['aurelia-framework', 'aurelia-templating'], function (_export) 
         };
 
         TemplateCompiler.prototype.compile = function compile(elements, data) {
-          for (var i = 0; i < elements.length; i++) {
+          var _this2 = this;
+
+          var _loop = function (i) {
             var element = elements[i];
             var ctx = undefined;
 
@@ -63,7 +65,17 @@ System.register(['aurelia-framework', 'aurelia-templating'], function (_export) 
               ctx = _data.dataItem;
             }
 
-            this.enhanceView(element, ctx);
+            if (element instanceof jQuery) {
+              element.each(function (index, elem) {
+                return _this2.enhanceView(elem, ctx);
+              });
+            } else {
+              _this2.enhanceView(element, ctx);
+            }
+          };
+
+          for (var i = 0; i < elements.length; i++) {
+            _loop(i);
           }
         };
 

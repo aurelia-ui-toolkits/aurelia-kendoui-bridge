@@ -25,7 +25,9 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
     }, {
       key: 'format',
       decorators: [_aureliaFramework.bindable],
-      initializer: null,
+      initializer: function initializer() {
+        return '';
+      },
       enumerable: true
     }, {
       key: 'command',

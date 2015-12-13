@@ -1,8 +1,8 @@
 declare module 'aurelia-kendoui-plugin' {
   import * as LogManager from 'aurelia-logging';
   import 'jquery';
-  import 'kendo-ui/js/kendo.autocomplete.min';
   import 'kendo-ui/js/kendo.button.min';
+  import 'kendo-ui/js/kendo.autocomplete.min';
   import 'kendo-ui/js/kendo.grid.min';
   import 'kendo-ui/js/kendo.menu.min';
   import 'kendo-ui/js/kendo.tabstrip.min';
@@ -22,6 +22,19 @@ declare module 'aurelia-kendoui-plugin' {
     kendoScheduler(): any;
     kendoTabStrip(): any;
     kendoToolbar(): any;
+  }
+  export class AuKendoButton {
+    enable: any;
+    icon: any;
+    imageUrl: any;
+    spriteCssClass: any;
+    options: any;
+    constructor(element: any);
+    bind(): any;
+    recreate(): any;
+    getOptions(): any;
+    enableChanged(newValue: any): any;
+    detached(): any;
   }
   export class AuKendoAutoComplete {
     options: any;
@@ -48,19 +61,6 @@ declare module 'aurelia-kendoui-plugin' {
     value: any;
     constructor(element: any, templateCompiler: any);
     bind(ctx: any): any;
-    recreate(): any;
-    getOptions(): any;
-    enableChanged(newValue: any): any;
-    detached(): any;
-  }
-  export class AuKendoButton {
-    enable: any;
-    icon: any;
-    imageUrl: any;
-    spriteCssClass: any;
-    options: any;
-    constructor(element: any);
-    bind(): any;
     recreate(): any;
     getOptions(): any;
     enableChanged(newValue: any): any;
