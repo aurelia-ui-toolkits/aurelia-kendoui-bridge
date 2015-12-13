@@ -25,16 +25,15 @@ class KendoConfigBuilder {
 	resources = [];
 
   core() {
-    this.kendoButton()
-			.kendoTabStrip()
-      .kendoMenu();
+    this.kendoButton();
     return this;
   }
 
   pro() {
     this.core()
       .kendoGrid()
-			.kendoAutoComplete();
+			.kendoAutoComplete()
+      .kendoChart();
     return this;
   }
 
@@ -81,6 +80,11 @@ class KendoConfigBuilder {
 
   kendoToolbar() {
     this.resources.push('toolbar/toolbar');
+    return this;
+  }
+
+  kendoChart() {
+    this.resources.push('chart/chart');
     return this;
   }
 }
