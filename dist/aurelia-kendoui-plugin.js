@@ -393,6 +393,7 @@ export class TemplateCompiler {
 }
 
 
+
 @noView
 @processContent((compiler, resources, element, instruction) => {
   let html = element.innerHTML;
@@ -424,26 +425,27 @@ export class Grid {
 
   @children('au-col') columns;
 
-  @bindable selectable;
+  @bindable autoBind = true;
+  @bindable columnMenu;
+  @bindable dataSource;
+  @bindable editable;
   @bindable filterable;
+  @bindable group;
+  @bindable groupable = true;
+  @bindable height;
+  @bindable navigatable;
+  @bindable page = 1;
   @bindable pageable;
   @bindable sortable;
   @bindable pageSize = 10;
-  @bindable page = 1;
-  @bindable selectedItem;
-  @bindable selectedItems
-  @bindable autoBind = true;
-  @bindable resizable = true;
-  @bindable reorderable = true;
-  @bindable editable;
-  @bindable sort;
-  @bindable group;
-  @bindable dataSource;
   @bindable scrollable;
+  @bindable selectable;
+  @bindable selectedItem;
+  @bindable selectedItems;
+  @bindable sort;
+  @bindable reorderable = true;
+  @bindable resizable = true;
   @bindable toolbar;
-  @bindable navigatable;
-  @bindable columnMenu;
-  @bindable groupable = true;
 
   constructor(element, templateCompiler) {
     this.element = element;
@@ -475,40 +477,43 @@ export class Grid {
   getOptions() {
     let options = pruneOptions({
       animation: this.animation,
+      columns: this.columns,
+      columnMenu: this.columnMenu,
       dataSource: this.dataSource,
       dataTextField: this.dataTextField,
-      columns: this.columns,
-      editable: this.editable,
       delay: this.delay,
       enable: this.enable,
+      editable: this.editable,
       filter: this.filter,
       filterable: this.filterable,
       fixedGroupTemplate: this.fixedGroupTemplate,
       groupTemplate: this.groupTemplate,
+      groupable: this.groupable,
+      headerTemplate: this.headerTemplate,
       height: this.height,
-      pageable: this.pageable,
-      scrollable: this.scrollable,
       highlightFirst: this.highlightFirst,
       ignoreCase: this.ignoreCase,
       minLength: this.minLength,
+      navigatable: this.navigatable,
+      pageable: this.pageable,
       placeholder: this.placeholder,
       popup: this.popup,
-      separator: this.separator,
-      suggest: this.suggest,
-      sortable: this.sortable,
-      groupable: this.groupable,
-      headerTemplate: this.headerTemplate,
-      template: this.template,
-      valuePrimitive: this.valuePrimitive,
-      virtual: this.virtual,
-      toolbar: this.toolbar,
-      navigatable: this.navigatable,
       reorderable: this.reorderable,
       resizable: this.resizable,
-      columnMenu: this.columnMenu,
+      separator: this.separator,
+      scrollable: this.scrollable,
+      sortable: this.sortable,
+      suggest: this.suggest,
+      template: this.template,
+      toolbar: this.toolbar,
+      valuePrimitive: this.valuePrimitive,
+      virtual: this.virtual,
+
       cancel: (e) => fireKendoEvent(this.element, 'cancel', e),
       change: (e) => fireKendoEvent(this.element, 'change', e),
       columnHide: (e) => fireKendoEvent(this.element, 'column-hide', e),
+      columnLock: (e) => fireKendoEvent(this.element, 'column-lock', e),
+      columnUnlock: (e) => fireKendoEvent(this.element, 'column-unlock', e),
       columnMenuInit: (e) => fireKendoEvent(this.element, 'column-menu-init', e),
       columnReorder: (e) => fireKendoEvent(this.element, 'column-reorder', e),
       columnResize: (e) => fireKendoEvent(this.element, 'column-resize', e),
@@ -516,19 +521,17 @@ export class Grid {
       dataBinding: (e) => fireKendoEvent(this.element, 'data-binding', e),
       dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e),
       detailCollapse: (e) => fireKendoEvent(this.element, 'detail-collapse', e),
-      detailExpand: (e) => fireKendoEvent(this.element, 'detail-expand', e),
       // disabled until https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/133
       // detailInit: (e) => fireKendoEvent(this.element, 'detail-init', e),
+      detailExpand: (e) => fireKendoEvent(this.element, 'detail-expand', e),
       edit: (e) => fireKendoEvent(this.element, 'edit', e),
       excelExport: (e) => fireKendoEvent(this.element, 'excel-export', e),
-      pdfExport: (e) => fireKendoEvent(this.element, 'pdf-export', e),
       filterMenuInit: (e) => fireKendoEvent(this.element, 'filter-menu-init', e),
+      navigate: (e) => fireKendoEvent(this.element, 'navigate', e),
+      pdfExport: (e) => fireKendoEvent(this.element, 'pdf-export', e),
       remove: (e) => fireKendoEvent(this.element, 'remove', e),
       save: (e) => fireKendoEvent(this.element, 'save', e),
-      saveChanges: (e) => fireKendoEvent(this.element, 'save-changes', e),
-      columnLock: (e) => fireKendoEvent(this.element, 'column-lock', e),
-      columnUnlock: (e) => fireKendoEvent(this.element, 'column-unlock', e),
-      navigate: (e) => fireKendoEvent(this.element, 'navigate', e)
+      saveChanges: (e) => fireKendoEvent(this.element, 'save-changes', e)
     });
 
     return Object.assign({}, this.options, options);
@@ -553,7 +556,6 @@ export class Grid {
 function isInitFromTable(element) {
   return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
 }
-
 
 @customElement('au-kendo-menu')
 @inject(Element)

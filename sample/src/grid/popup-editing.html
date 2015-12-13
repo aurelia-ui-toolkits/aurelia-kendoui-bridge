@@ -1,6 +1,13 @@
 <template>
     <section>
         <collapse-panel title="Popup editing" allow-collapse.bind="false">
+          <au-kendo-grid data-source.bind="datasource" height="420" pageable.bind="true" toolbar.bind="['create']" editable="inline">
+            <au-col field="ProductName"></au-col>
+            <au-col field="UnitPrice" title="Unit Price" format="{0:c}" width="120px"></au-col>
+            <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>
+            <au-col field="Discontinued" width="120px"></au-col>
+            <au-col command.bind="['edit', 'destroy']" title="&nbsp;" width="250px"></au-col>
+          </au-kendo-grid>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">
@@ -11,11 +18,62 @@
                 </ul>
                  <div>
                     <au-code language="markup">
+                      <au-kendo-grid data-source.bind="datasource" height="550" pageable.bind="true" toolbar.bind="['create']" editable="inline">
+                        <au-col field="ProductName"></au-col>
+                        <au-col field="UnitPrice" title="Unit Price" format="{0:c}" width="120px"></au-col>
+                        <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>
+                        <au-col field="Discontinued" width="120px"></au-col>
+                        <au-col command.bind="['edit', 'destroy']" title="&nbsp;" width="250px"></au-col>
+                      </au-kendo-grid>
                     </au-code>
                 </div>
 
                 <div>
                     <au-code language="javascript">
+                      export class InlineEditing {
+                        constructor() {
+                          let crudServiceBaseUrl = "//demos.telerik.com/kendo-ui/service";
+                          this.datasource = new kendo.data.DataSource({
+                            transport: {
+                                read:  {
+                                    url: crudServiceBaseUrl + "/Products",
+                                    dataType: "jsonp"
+                                },
+                                update: {
+                                    url: crudServiceBaseUrl + "/Products/Update",
+                                    dataType: "jsonp"
+                                },
+                                destroy: {
+                                    url: crudServiceBaseUrl + "/Products/Destroy",
+                                    dataType: "jsonp"
+                                },
+                                create: {
+                                    url: crudServiceBaseUrl + "/Products/Create",
+                                    dataType: "jsonp"
+                                },
+                                parameterMap: function(options, operation) {
+                                    if (operation !== "read" && options.models) {
+                                        return {models: kendo.stringify(options.models)};
+                                    }
+                                }
+                            },
+                            batch: true,
+                            pageSize: 20,
+                            schema: {
+                                model: {
+                                    id: "ProductID",
+                                    fields: {
+                                        ProductID: { editable: false, nullable: true },
+                                        ProductName: { validation: { required: true } },
+                                        UnitPrice: { type: "number", validation: { required: true, min: 1} },
+                                        Discontinued: { type: "boolean" },
+                                        UnitsInStock: { type: "number", validation: { min: 0, required: true } }
+                                    }
+                                }
+                            }
+                        });
+                        }
+                      }
                     </au-code>
                 </div>
             </div>

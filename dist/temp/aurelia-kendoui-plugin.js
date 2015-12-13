@@ -712,7 +712,24 @@ var Grid = (function () {
     initializer: null,
     enumerable: true
   }, {
-    key: 'selectable',
+    key: 'autoBind',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return true;
+    },
+    enumerable: true
+  }, {
+    key: 'columnMenu',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'dataSource',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'editable',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -720,6 +737,35 @@ var Grid = (function () {
     key: 'filterable',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
+    enumerable: true
+  }, {
+    key: 'group',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'groupable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return true;
+    },
+    enumerable: true
+  }, {
+    key: 'height',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'navigatable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'page',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return 1;
+    },
     enumerable: true
   }, {
     key: 'pageable',
@@ -739,11 +785,14 @@ var Grid = (function () {
     },
     enumerable: true
   }, {
-    key: 'page',
+    key: 'scrollable',
     decorators: [_aureliaFramework.bindable],
-    initializer: function initializer() {
-      return 1;
-    },
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'selectable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
     enumerable: true
   }, {
     key: 'selectedItem',
@@ -756,7 +805,12 @@ var Grid = (function () {
     initializer: null,
     enumerable: true
   }, {
-    key: 'autoBind',
+    key: 'sort',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'reorderable',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
       return true;
@@ -770,58 +824,9 @@ var Grid = (function () {
     },
     enumerable: true
   }, {
-    key: 'reorderable',
-    decorators: [_aureliaFramework.bindable],
-    initializer: function initializer() {
-      return true;
-    },
-    enumerable: true
-  }, {
-    key: 'editable',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'sort',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'group',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'dataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'scrollable',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'toolbar',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
-    enumerable: true
-  }, {
-    key: 'navigatable',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'columnMenu',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'groupable',
-    decorators: [_aureliaFramework.bindable],
-    initializer: function initializer() {
-      return true;
-    },
     enumerable: true
   }], null, _instanceInitializers4);
 
@@ -830,9 +835,25 @@ var Grid = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'selectable', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'autoBind', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'columnMenu', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'editable', _instanceInitializers4);
 
     _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'group', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'height', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'page', _instanceInitializers4);
 
     _defineDecoratedPropertyDescriptor(this, 'pageable', _instanceInitializers4);
 
@@ -840,35 +861,21 @@ var Grid = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'pageSize', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'page', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers4);
+
+    _defineDecoratedPropertyDescriptor(this, 'selectable', _instanceInitializers4);
 
     _defineDecoratedPropertyDescriptor(this, 'selectedItem', _instanceInitializers4);
 
     _defineDecoratedPropertyDescriptor(this, 'selectedItems', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'autoBind', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'resizable', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'sort', _instanceInitializers4);
 
     _defineDecoratedPropertyDescriptor(this, 'reorderable', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'editable', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'sort', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'group', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'resizable', _instanceInitializers4);
 
     _defineDecoratedPropertyDescriptor(this, 'toolbar', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'columnMenu', _instanceInitializers4);
-
-    _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers4);
 
     this.element = element;
     this.templateCompiler = templateCompiler;
@@ -897,37 +904,38 @@ var Grid = (function () {
 
     var options = pruneOptions({
       animation: this.animation,
+      columns: this.columns,
+      columnMenu: this.columnMenu,
       dataSource: this.dataSource,
       dataTextField: this.dataTextField,
-      columns: this.columns,
-      editable: this.editable,
       delay: this.delay,
       enable: this.enable,
+      editable: this.editable,
       filter: this.filter,
       filterable: this.filterable,
       fixedGroupTemplate: this.fixedGroupTemplate,
       groupTemplate: this.groupTemplate,
+      groupable: this.groupable,
+      headerTemplate: this.headerTemplate,
       height: this.height,
-      pageable: this.pageable,
-      scrollable: this.scrollable,
       highlightFirst: this.highlightFirst,
       ignoreCase: this.ignoreCase,
       minLength: this.minLength,
+      navigatable: this.navigatable,
+      pageable: this.pageable,
       placeholder: this.placeholder,
       popup: this.popup,
-      separator: this.separator,
-      suggest: this.suggest,
-      sortable: this.sortable,
-      groupable: this.groupable,
-      headerTemplate: this.headerTemplate,
-      template: this.template,
-      valuePrimitive: this.valuePrimitive,
-      virtual: this.virtual,
-      toolbar: this.toolbar,
-      navigatable: this.navigatable,
       reorderable: this.reorderable,
       resizable: this.resizable,
-      columnMenu: this.columnMenu,
+      separator: this.separator,
+      scrollable: this.scrollable,
+      sortable: this.sortable,
+      suggest: this.suggest,
+      template: this.template,
+      toolbar: this.toolbar,
+      valuePrimitive: this.valuePrimitive,
+      virtual: this.virtual,
+
       cancel: function cancel(e) {
         return fireKendoEvent(_this5.element, 'cancel', e);
       },
@@ -936,6 +944,12 @@ var Grid = (function () {
       },
       columnHide: function columnHide(e) {
         return fireKendoEvent(_this5.element, 'column-hide', e);
+      },
+      columnLock: function columnLock(e) {
+        return fireKendoEvent(_this5.element, 'column-lock', e);
+      },
+      columnUnlock: function columnUnlock(e) {
+        return fireKendoEvent(_this5.element, 'column-unlock', e);
       },
       columnMenuInit: function columnMenuInit(e) {
         return fireKendoEvent(_this5.element, 'column-menu-init', e);
@@ -958,21 +972,24 @@ var Grid = (function () {
       detailCollapse: function detailCollapse(e) {
         return fireKendoEvent(_this5.element, 'detail-collapse', e);
       },
+
       detailExpand: function detailExpand(e) {
         return fireKendoEvent(_this5.element, 'detail-expand', e);
       },
-
       edit: function edit(e) {
         return fireKendoEvent(_this5.element, 'edit', e);
       },
       excelExport: function excelExport(e) {
         return fireKendoEvent(_this5.element, 'excel-export', e);
       },
-      pdfExport: function pdfExport(e) {
-        return fireKendoEvent(_this5.element, 'pdf-export', e);
-      },
       filterMenuInit: function filterMenuInit(e) {
         return fireKendoEvent(_this5.element, 'filter-menu-init', e);
+      },
+      navigate: function navigate(e) {
+        return fireKendoEvent(_this5.element, 'navigate', e);
+      },
+      pdfExport: function pdfExport(e) {
+        return fireKendoEvent(_this5.element, 'pdf-export', e);
       },
       remove: function remove(e) {
         return fireKendoEvent(_this5.element, 'remove', e);
@@ -982,15 +999,6 @@ var Grid = (function () {
       },
       saveChanges: function saveChanges(e) {
         return fireKendoEvent(_this5.element, 'save-changes', e);
-      },
-      columnLock: function columnLock(e) {
-        return fireKendoEvent(_this5.element, 'column-lock', e);
-      },
-      columnUnlock: function columnUnlock(e) {
-        return fireKendoEvent(_this5.element, 'column-unlock', e);
-      },
-      navigate: function navigate(e) {
-        return fireKendoEvent(_this5.element, 'navigate', e);
       }
     });
 

@@ -108,26 +108,27 @@ declare module 'aurelia-kendoui-plugin' {
   }
   export class Grid {
     columns: any;
-    selectable: any;
+    autoBind: any;
+    columnMenu: any;
+    dataSource: any;
+    editable: any;
     filterable: any;
+    group: any;
+    groupable: any;
+    height: any;
+    navigatable: any;
+    page: any;
     pageable: any;
     sortable: any;
     pageSize: any;
-    page: any;
+    scrollable: any;
+    selectable: any;
     selectedItem: any;
     selectedItems: any;
-    autoBind: any;
-    resizable: any;
-    reorderable: any;
-    editable: any;
     sort: any;
-    group: any;
-    dataSource: any;
-    scrollable: any;
+    reorderable: any;
+    resizable: any;
     toolbar: any;
-    navigatable: any;
-    columnMenu: any;
-    groupable: any;
     constructor(element: any, templateCompiler: any);
     bind(ctx: any): any;
     
