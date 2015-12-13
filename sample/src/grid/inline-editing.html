@@ -1,7 +1,7 @@
 <template>
     <section>
         <collapse-panel title="Inline editing" allow-collapse.bind="false">
-          <au-kendo-grid data-source.bind="datasource" height="460" pageable.bind="true" toolbar.bind="['create']" editable="inline">
+          <au-kendo-grid data-source.bind="datasource" height="420" pageable.bind="true" toolbar.bind="['create']" editable="inline">
             <au-col field="ProductName"></au-col>
             <au-col field="UnitPrice" title="Unit Price" format="{0:c}" width="120px"></au-col>
             <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>
