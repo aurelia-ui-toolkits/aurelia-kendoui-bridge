@@ -1,18 +1,12 @@
 <template>
     <section>
         <collapse-panel title="Frozen columns" allow-collapse.bind="false">
-
-          <au-markdown>
-            # NOTE
-            this sample does not work due to [this issue](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/125)
-          </au-markdown>
-
           <au-kendo-grid data-source.bind="datasource" height="420" sortable.bind="true" reorderable.bind="true" groupable.bind="true" resizable.bind="true" filterable.bind="true" column-menu.bind="true" pageable.bind="true">
-            <au-col field="OrderID" title="Order ID" locked="true" lockable="false" width="150"></au-col>
-            <au-col field="ShipCountry" title="Ship Country" width="300"></au-col>
-            <au-col field="ShipCity" title="Ship City" width="300"></au-col>
-            <au-col field="ShipName" title="Ship Name" locked="true" width="300"></au-col>
-            <au-col field="ShipAddress" lockable="false" width="400"></au-col>
+            <au-col field="OrderID" title="Order ID" locked.bind="true" lockable.bind="false" width.bind="150"></au-col>
+            <au-col field="ShipCountry" title="Ship Country" width.bind="300"></au-col>
+            <au-col field="ShipCity" title="Ship City" width.bind="300"></au-col>
+            <au-col field="ShipName" title="Ship Name" locked.bind="true" width.bind="300"></au-col>
+            <au-col field="ShipAddress" lockable.bind="false" width.bind="400"></au-col>
           </au-kendo-grid>
         </collapse-panel>
 
@@ -24,12 +18,12 @@
                 </ul>
                  <div>
                     <au-code language="markup">
-                      <au-kendo-grid data-source.bind="datasource" height="540" sortable.bind="true" reorderable.bind="true" groupable.bind="true" resizable.bind="true" filterable.bind="true" column-menu.bind="true" pageable.bind="true">
-                        <au-col field="OrderID" title="Order ID" locked="true" lockable="false" width="150"></au-col>
-                        <au-col field="ShipCountry" title="Ship Country" width="300"></au-col>
-                        <au-col field="ShipCity" title="Ship City" width="300"></au-col>
-                        <au-col field="ShipName" title="Ship Name" locked="true" width="300"></au-col>
-                        <au-col field="ShipAddress" lockable="false" width="400"></au-col>
+                      <au-kendo-grid data-source.bind="datasource" height="420" sortable.bind="true" reorderable.bind="true" groupable.bind="true" resizable.bind="true" filterable.bind="true" column-menu.bind="true" pageable.bind="true">
+                        <au-col field="OrderID" title="Order ID" locked.bind="true" lockable.bind="false" width.bind="150"></au-col>
+                        <au-col field="ShipCountry" title="Ship Country" width.bind="300"></au-col>
+                        <au-col field="ShipCity" title="Ship City" width.bind="300"></au-col>
+                        <au-col field="ShipName" title="Ship Name" locked.bind="true" width.bind="300"></au-col>
+                        <au-col field="ShipAddress" lockable.bind="false" width.bind="400"></au-col>
                       </au-kendo-grid>
                     </au-code>
                 </div>

@@ -26,8 +26,8 @@
 
                       <au-kendo-grid data-source.bind="datasource" pageable.bind="{refresh: true}" height="450" toolbar.bind="['create']" editable="inline">
                         <au-col field="ProductName"></au-col>
-                        <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>
-                        <au-col command.bind="['edit', 'destroy']" title="&nbsp;" width="250px"></au-col>
+                        <au-col field="UnitsInStock" title="Units In Stock" width.bind="120px"></au-col>
+                        <au-col command.bind="['edit', 'destroy']" title="&nbsp;" width.bind="250px"></au-col>
                       </au-kendo-grid>
                     </au-code>
                 </div>

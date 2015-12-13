@@ -2,7 +2,6 @@ export class PupupEditing {
 
   constructor() {
     let crudServiceBaseUrl = "//demos.telerik.com/kendo-ui/service";
-    this.editable = "popup";
     this.datasource = new kendo.data.DataSource({
       transport: {
           read:  {
