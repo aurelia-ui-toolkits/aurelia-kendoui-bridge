@@ -1,4 +1,3 @@
 export class TabPosition {
-
-    this.tabPosition = "left"
+    tabPosition = "left"
 }

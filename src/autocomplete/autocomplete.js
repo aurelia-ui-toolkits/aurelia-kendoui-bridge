@@ -2,6 +2,7 @@ import {customAttribute, bindable, inject} from 'aurelia-framework';
 import {fireEvent, TemplateCompiler, pruneOptions, fireKendoEvent} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
+import 'kendo-ui/js/kendo.virtuallist.min';
 
 @customAttribute('au-kendo-autocomplete')
 @inject(Element, TemplateCompiler)
@@ -93,6 +94,7 @@ export class AuKendoAutoComplete {
       popup: this.popup,
       separator: this.separator,
       template: this.template,
+      virtual: this.virtual,
       headerTemplate: this.headerTemplate,
       suggest: this.suggest,
       change: (e) => fireKendoEvent(this.element, 'change', e),
@@ -109,6 +111,25 @@ export class AuKendoAutoComplete {
   enableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
+    }
+  }
+
+  setValue(newValue) {
+    if (this.widget) {
+      this.widget.value(newValue);
+      this.widget.trigger('change');
+    }
+  }
+
+  getValue(newValue) {
+    if (this.widget) {
+      return this.widget.value();
+    }
+  }
+
+  search(value) {
+    if (this.widget) {
+      this.widget.search(value);
     }
   }
 
