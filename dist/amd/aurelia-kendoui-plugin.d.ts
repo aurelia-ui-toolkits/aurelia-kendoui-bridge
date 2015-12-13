@@ -155,6 +155,8 @@ declare module 'aurelia-kendoui-plugin' {
     getOptions(): any;
     detached(): any;
   }
+  export class AuScheduler {
+  }
   export class TabStrip {
     animation: any;
     collapsible: any;
@@ -176,8 +178,6 @@ declare module 'aurelia-kendoui-plugin' {
     getOptions(): any;
     enableChanged(newValue: any): any;
     detached(): any;
-  }
-  export class AuScheduler {
   }
   export class AuToolbar {
   }

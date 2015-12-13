@@ -1162,6 +1162,12 @@ var Menu = (function () {
 
 exports.Menu = Menu;
 
+var AuScheduler = function AuScheduler() {
+  _classCallCheck(this, AuScheduler);
+};
+
+exports.AuScheduler = AuScheduler;
+
 var TabStrip = (function () {
   var _instanceInitializers6 = {};
 
@@ -1322,12 +1328,6 @@ var TabStrip = (function () {
 })();
 
 exports.TabStrip = TabStrip;
-
-var AuScheduler = function AuScheduler() {
-  _classCallCheck(this, AuScheduler);
-};
-
-exports.AuScheduler = AuScheduler;
 
 var AuToolbar = function AuToolbar() {
   _classCallCheck(this, AuToolbar);

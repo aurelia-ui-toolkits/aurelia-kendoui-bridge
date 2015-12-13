@@ -393,6 +393,7 @@ export class TemplateCompiler {
 }
 
 
+
 @noView
 @processContent((compiler, resources, element, instruction) => {
   let html = element.innerHTML;
@@ -556,7 +557,6 @@ function isInitFromTable(element) {
   return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
 }
 
-
 @customElement('au-kendo-menu')
 @inject(Element)
 export class Menu {
@@ -619,6 +619,10 @@ export class Menu {
       this.widget.destroy();
     }
   }
+}
+
+export class AuScheduler {
+
 }
 
 @customAttribute('au-kendo-tabstrip')
@@ -688,10 +692,6 @@ export class TabStrip {
       this.widget.destroy();
     }
   }
-}
-
-export class AuScheduler {
-
 }
 
 export class AuToolbar {
