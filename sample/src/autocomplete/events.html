@@ -4,23 +4,18 @@
             <p><strong>Select a state in USA:</strong></p>
             <p>
                 <input au-kendo-autocomplete="data-source.bind: items;"
-                       kendo-open.trigger="log('open')"
-                       kendo-close.trigger="log('close')"
-                       kendo-change.trigger="log('change')"
-                       kendo-select.trigger="log('select')"
-                       kendo-data-bound.trigger="log('dataBound')"
-                       kendo-filtering.trigger="log('filtering')">
+                       kendo-open.trigger="logger.logger.log('open')"
+                       kendo-close.trigger="logger.log('close')"
+                       kendo-change.trigger="logger.log('change')"
+                       kendo-select.trigger="logger.log('select')"
+                       kendo-data-bound.trigger="logger.log('dataBound')"
+                       kendo-filtering.trigger="logger.log('filtering')">
             </p>
             <p class="text-muted">Hint: type "m"</p>
 
             <div class="box">
                 <h4>Console log</h4>
-
-                <div>
-                  <div repeat.for="log of logs">
-                    ${log}
-                  </div>
-                </div>
+                <logger view-model.ref="logger"></logger>
             </div>
         </collapse-panel>
         <collapse-panel title="Code Preview">
