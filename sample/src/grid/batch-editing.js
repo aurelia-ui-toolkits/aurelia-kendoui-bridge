@@ -26,7 +26,7 @@ export class BatchEditing {
           }
       },
       batch: true,
-      pageSize: 20,
+      pageSize: 8,
       schema: {
           model: {
               id: "ProductID",
