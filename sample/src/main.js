@@ -10,6 +10,7 @@ export function configure(aurelia) {
 
     aurelia.use.globalResources('shared/collapse-panel');
  	  aurelia.use.globalResources('shared/markdown');
+ 	  aurelia.use.globalResources('shared/logger');
 
     aurelia.start().then(a => a.setRoot('app'));
 }

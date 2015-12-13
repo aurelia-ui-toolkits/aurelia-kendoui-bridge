@@ -59,8 +59,4 @@ export class Events {
     "Wisconsin",
     "Wyoming"
   ];
-
-  log(msg) {
-    this.logs.push(msg);
-  }
 }

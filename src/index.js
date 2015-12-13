@@ -25,7 +25,8 @@ class KendoConfigBuilder {
 	resources = [];
 
   core() {
-    this.kendoButton();
+    this.kendoButton()
+      .kendoTabStrip();
     return this;
   }
 
