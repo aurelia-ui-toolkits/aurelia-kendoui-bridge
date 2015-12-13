@@ -14,7 +14,7 @@ export class AuKendoChart {
   @bindable dataSource;
   @bindable legend;
   @bindable panes;
-  @bindable pannable;
+  @bindable pannable = false;
   @bindable pdf;
   @bindable plotArea;
   @bindable renderAs;
@@ -24,11 +24,11 @@ export class AuKendoChart {
   @bindable theme;
   @bindable title;
   @bindable tooltip;
-  @bindable transitions;
+  @bindable transitions = true;
   @bindable valueAxis;
   @bindable xAxis;
   @bindable yAxis;
-  @bindable zoomable;
+  @bindable zoomable = false;
 
 
   @bindable options;
