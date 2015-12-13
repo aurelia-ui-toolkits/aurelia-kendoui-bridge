@@ -6,7 +6,7 @@ export class Index {
   configureRouter(config, router){
       config.title = 'Area Chart';
       config.map([
-            { route: ['','basic-usage'],          moduleId: './basic-usage',               nav: true,    title:'Basic usage' },
+            { route: ['','basic-use'],            moduleId: './basic-use',                 nav: true,    title:'Basic use' },
             { route: 'stacked-area',              moduleId: './stacked-area',              nav: true,    title:'Stacked area' },
             { route: 'stepped-area',              moduleId: './stepped-area',              nav: true,    title:'Stepped area' },
             { route: 'smooth-area',               moduleId: './smooth-area',               nav: true,    title:'Smooth area' },
