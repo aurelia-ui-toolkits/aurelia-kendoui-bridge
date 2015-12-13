@@ -25,6 +25,12 @@ export class App {
             moduleId: 'button/index',
             nav: true,
             title: 'Button'
+        },  {
+            route: 'Area Chart',
+            moduleId: 'area-chart/index',
+            nav: true,
+            title: 'Area Chart'
+        },
         // },  {
         //     route: 'combobox',
         //     moduleId: 'combobox/index',
@@ -35,7 +41,7 @@ export class App {
         //     moduleId: 'dropdownlist/index',
         //     nav: true,
         //     title: 'DropDownList'
-        },  {
+           {
             route: 'grid',
             moduleId: 'grid/index',
             nav: true,
@@ -50,11 +56,11 @@ export class App {
         //     moduleId: 'tabstrip/index',
         //     nav: true,
         //     title: 'TabStrip'
-        },  {
-            route: 'menu',
-            moduleId: 'menu/index',
-            nav: true,
-            title: 'Menu'
+        // },  {
+        //     route: 'menu',
+        //     moduleId: 'menu/index',
+        //     nav: true,
+        //     title: 'Menu'
         // },  {
         //     route: 'toolbar',
         //     moduleId: 'toolbar/index',
