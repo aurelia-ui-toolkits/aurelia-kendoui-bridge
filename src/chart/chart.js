@@ -1,11 +1,11 @@
-import {customAttribute, bindable, inject} from 'aurelia-framework';
+import {customElement, bindable, inject} from 'aurelia-framework';
 import {pruneOptions, fireKendoEvent} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.chart.min';
 
-@customAttribute('au-kendo-chart')
+@customElement('au-kendo-chart')
 @inject(Element)
-export class AuKendoChart {
+export class Chart {
 
   @bindable autoBind = true;
   @bindable axisDefaults;
@@ -26,6 +26,8 @@ export class AuKendoChart {
   @bindable tooltip;
   @bindable transitions = true;
   @bindable valueAxis;
+  @bindable width = '100%';
+  @bindable height = 400;
   @bindable xAxis;
   @bindable yAxis;
   @bindable zoomable = false;
@@ -38,7 +40,7 @@ export class AuKendoChart {
     this.options = {};
   }
 
-  bind() {
+  attached() {
     this._initialize();
   }
 
@@ -47,52 +49,54 @@ export class AuKendoChart {
   }
 
   _initialize() {
-    this.widget = $(this.element).kendoChart(this.getOptions()).data('kendoChart');
+    this.widget = $(this.target).kendoChart(this.getOptions()).data('kendoChart');
   }
 
   getOptions() {
     let options = pruneOptions({
-        autoBind: this.autoBind,
-        axisDefaults: this.axisDefaults,
-        categoryAxis: this.categoryAxis,
-        chartArea: this.chartArea,
-        dataSource: this.dataSource,
-        legend: this.legend,
-        panes: this.panes,
-        pannable: this.pannable,
-        pdf: this.pdf,
-        plotArea: this.plotArea,
-        renderAs: this.renderAs,
-        series: this.series,
-        seriesColors: this.seriesColors,
-        seriesDefaults: this.seriesDefaults,
-        theme: this.theme,
-        title: this.title,
-        tooltip: this.tooltip,
-        transitions: this.transitions,
-        valueAxis: this.valueAxis,
-        xAxis: this.xAxis,
-        yAxis: this.yAxis,
-        zoomable: this.zoomable,
-        axisLabelClick: (e) => fireKendoEvent(this.element, 'axis-label-click', e),
-        legendItemClick: (e) => fireKendoEvent(this.element, 'legend-item-click', e),
-        legendItemHover: (e) => fireKendoEvent(this.element, 'legend-item-hover', e),
-        dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e),
-        drag: (e) => fireKendoEvent(this.element, 'drag', e),
-        dragEnd: (e) => fireKendoEvent(this.element, 'drag-end', e),
-        dragStart: (e) => fireKendoEvent(this.element, 'drag-start', e),
-        noteClick: (e) => fireKendoEvent(this.element, 'note-click', e),
-        noteHover: (e) => fireKendoEvent(this.element, 'note-hover', e),
-        plotAreaClick: (e) => fireKendoEvent(this.element, 'plot-area-click', e),
-        render: (e) => fireKendoEvent(this.element, 'render', e),
-        select: (e) => fireKendoEvent(this.element, 'select', e),
-        selectEnd: (e) => fireKendoEvent(this.element, 'select-end', e),
-        selectStart: (e) => fireKendoEvent(this.element, 'select-start', e),
-        seriesClick: (e) => fireKendoEvent(this.element, 'series-click', e),
-        seriesHover: (e) => fireKendoEvent(this.element, 'series-hover', e),
-        zoom: (e) => fireKendoEvent(this.element, 'zoom', e),
-        zoomEnd: (e) => fireKendoEvent(this.element, 'zoom-end', e),
-        zoomStart: (e) => fireKendoEvent(this.element, 'zoom-start', e)
+      autoBind: this.autoBind,
+      axisDefaults: this.axisDefaults,
+      categoryAxis: this.categoryAxis,
+      chartArea: this.chartArea,
+      dataSource: this.dataSource,
+      height: this.height,
+      legend: this.legend,
+      panes: this.panes,
+      pannable: this.pannable,
+      pdf: this.pdf,
+      plotArea: this.plotArea,
+      renderAs: this.renderAs,
+      series: this.series,
+      seriesColors: this.seriesColors,
+      seriesDefaults: this.seriesDefaults,
+      theme: this.theme,
+      title: this.title,
+      tooltip: this.tooltip,
+      transitions: this.transitions,
+      valueAxis: this.valueAxis,
+      width: this.width,
+      xAxis: this.xAxis,
+      yAxis: this.yAxis,
+      zoomable: this.zoomable,
+      axisLabelClick: (e) => fireKendoEvent(this.element, 'axis-label-click', e),
+      legendItemClick: (e) => fireKendoEvent(this.element, 'legend-item-click', e),
+      legendItemHover: (e) => fireKendoEvent(this.element, 'legend-item-hover', e),
+      dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e),
+      drag: (e) => fireKendoEvent(this.element, 'drag', e),
+      dragEnd: (e) => fireKendoEvent(this.element, 'drag-end', e),
+      dragStart: (e) => fireKendoEvent(this.element, 'drag-start', e),
+      noteClick: (e) => fireKendoEvent(this.element, 'note-click', e),
+      noteHover: (e) => fireKendoEvent(this.element, 'note-hover', e),
+      plotAreaClick: (e) => fireKendoEvent(this.element, 'plot-area-click', e),
+      render: (e) => fireKendoEvent(this.element, 'render', e),
+      select: (e) => fireKendoEvent(this.element, 'select', e),
+      selectEnd: (e) => fireKendoEvent(this.element, 'select-end', e),
+      selectStart: (e) => fireKendoEvent(this.element, 'select-start', e),
+      seriesClick: (e) => fireKendoEvent(this.element, 'series-click', e),
+      seriesHover: (e) => fireKendoEvent(this.element, 'series-hover', e),
+      zoom: (e) => fireKendoEvent(this.element, 'zoom', e),
+      zoomEnd: (e) => fireKendoEvent(this.element, 'zoom-end', e),
+      zoomStart: (e) => fireKendoEvent(this.element, 'zoom-start', e)
     });
 
     return Object.assign({}, this.options, options);
