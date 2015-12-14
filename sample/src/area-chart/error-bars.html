@@ -1,6 +1,14 @@
 <template>
     <section>
         <collapse-panel title="Error bars" allow-collapse.bind="false">
+          <au-kendo-chart title.bind="{text: 'GDP growth and standard deviation'}"
+                          legend.bind="{visible: false}"
+                          series-defaults.bind="{type: 'area'}"
+                          series.bind="series"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis"
+                          tooltip.bind="tooltip">
+          </au-kendo-chart>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">

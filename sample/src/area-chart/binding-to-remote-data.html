@@ -1,6 +1,15 @@
 <template>
     <section>
         <collapse-panel title="Binding to remote data" allow-collapse.bind="false">
+          <au-kendo-chart title.bind="{text: 'Spain electricity production (GWh)'}"
+                          data-source.bind="datasource"
+                          legend.bind="{position: 'top'}"
+                          series.bind="series"
+                          series-defaults.bind="{type: 'area'}"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis"
+                          tooltip.bind="tooltip">
+          </au-kendo-chart>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">

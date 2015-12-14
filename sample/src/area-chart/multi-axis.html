@@ -1,6 +1,12 @@
 <template>
     <section>
         <collapse-panel title="Multi-axis" allow-collapse.bind="false">
+          <au-kendo-chart title.bind="{text: 'Hybrid car mileage report'}"
+                          legend.bind="{position: 'top'}"
+                          series.bind="series"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis">
+          </au-kendo-chart>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">

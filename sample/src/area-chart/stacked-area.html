@@ -1,6 +1,14 @@
 <template>
     <section>
         <collapse-panel title="Stacked area" allow-collapse.bind="false">
+          <au-kendo-chart title.bind="{text: 'Browser Usage Trends'}"
+                          legend.bind="{position: 'bottom'}"
+                          series-defaults.bind="{type: 'area', stack: true}"
+                          series.bind="series"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis"
+                          tooltip.bind="tooltip">
+          </au-kendo-chart>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">

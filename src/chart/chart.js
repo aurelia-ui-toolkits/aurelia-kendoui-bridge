@@ -33,11 +33,12 @@ export class Chart {
   @bindable zoomable = false;
 
 
-  @bindable options;
+  get options() {
+    return this.widget && this.widget.options;
+  }
 
   constructor(element) {
     this.element = element;
-    this.options = {};
   }
 
   attached() {
@@ -99,7 +100,7 @@ export class Chart {
       zoomStart: (e) => fireKendoEvent(this.element, 'zoom-start', e)
     });
 
-    return Object.assign({}, this.options, options);
+    return options;
   }
 
   exportImage(options) {

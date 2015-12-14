@@ -1,6 +1,12 @@
 <template>
     <section>
         <collapse-panel title="Smooth area" allow-collapse.bind="false">
+          <au-kendo-chart title.bind="{text: 'A digital signal'}"
+                          legend.bind="{visible: false}"
+                          series.bind="series"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis">
+          </au-kendo-chart>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">
