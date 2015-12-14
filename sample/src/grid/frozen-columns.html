@@ -1,7 +1,7 @@
 <template>
     <section>
         <collapse-panel title="Frozen columns" allow-collapse.bind="false">
-          <au-kendo-grid data-source.bind="datasource" height="420" sortable.bind="true" reorderable.bind="true" groupable.bind="true" resizable.bind="true" filterable.bind="true" column-menu.bind="true" pageable.bind="true">
+          <au-kendo-grid data-source.bind="datasource" sortable.bind="true" reorderable.bind="true" groupable.bind="true" resizable.bind="true" filterable.bind="true" column-menu.bind="true" pageable.bind="true">
             <au-col field="OrderID" title="Order ID" locked.bind="true" lockable.bind="false" width.bind="150"></au-col>
             <au-col field="ShipCountry" title="Ship Country" width.bind="300"></au-col>
             <au-col field="ShipCity" title="Ship City" width.bind="300"></au-col>
@@ -18,7 +18,7 @@
                 </ul>
                  <div>
                     <au-code language="markup">
-                      <au-kendo-grid data-source.bind="datasource" height="420" sortable.bind="true" reorderable.bind="true" groupable.bind="true" resizable.bind="true" filterable.bind="true" column-menu.bind="true" pageable.bind="true">
+                      <au-kendo-grid data-source.bind="datasource" sortable.bind="true" reorderable.bind="true" groupable.bind="true" resizable.bind="true" filterable.bind="true" column-menu.bind="true" pageable.bind="true">
                         <au-col field="OrderID" title="Order ID" locked.bind="true" lockable.bind="false" width.bind="150"></au-col>
                         <au-col field="ShipCountry" title="Ship Country" width.bind="300"></au-col>
                         <au-col field="ShipCity" title="Ship City" width.bind="300"></au-col>
