@@ -1,9 +1,14 @@
 <template>
     <section>
         <collapse-panel title="Basic use" allow-collapse.bind="false">
-            <au-au-kendo-chart >
-
-            </au-au-kendo-chart>
+          <au-kendo-chart title.bind="{text: 'Gross Domestic product growth \n /GRP annual %/'}"
+                          legend.bind="{position: 'bottom'}"
+                          series-defaults.bind="seriesDefaults"
+                          series.bind="series"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis"
+                          tooltip.bind="tooltip">
+          </au-kendo-chart>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">
