@@ -1,15 +1,15 @@
 <template>
     <section>
-        <collapse-panel title="Logarithmic axis" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'Spain electricity production (GWh)'}"
-                          data-source.bind="datasource"
-                          legend.bind="{position: 'top'}"
-                          series-defaults.bind="{type: 'area'}"
-                          series.bind="series"
-                          value-axis.bind="valueAxis"
-                          category-axis.bind="categoryAxis"
-                          tooltip.bind="tooltip">
-          </au-kendo-chart>
+        <collapse-panel title="Binding to remote data" allow-collapse.bind="false">
+<au-kendo-chart title.bind="{text: 'Spain electricity production (GWh)'}"
+                data-source.bind="datasource"
+                legend.bind="{position: 'top'}"
+                series.bind="series"
+                series-defaults.bind="{type: 'area'}"
+                value-axis.bind="valueAxis"
+                category-axis.bind="categoryAxis"
+                tooltip.bind="tooltip">
+</au-kendo-chart>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">
@@ -23,8 +23,8 @@
                       <au-kendo-chart title.bind="{text: 'Spain electricity production (GWh)'}"
                                       data-source.bind="datasource"
                                       legend.bind="{position: 'top'}"
-                                      series-defaults.bind="{type: 'area'}"
                                       series.bind="series"
+                                      series-defaults.bind="{type: 'area'}"
                                       value-axis.bind="valueAxis"
                                       category-axis.bind="categoryAxis"
                                       tooltip.bind="tooltip">
@@ -34,12 +34,11 @@
 
                 <div>
                     <au-code language="javascript">
-                      export class LogarithmicAxis {
-
+                      export class BindingToRemoteData {
                         datasource = new kendo.data.DataSource({
                           transport: {
                             read: function(options) {
-                              return System.import('area-charts/json/spain-electricity.json!json')
+                              return System.import('charts/area-charts/json/spain-electricity.json!json')
                               .then(data => options.success(data));
                             }
                           },
@@ -50,15 +49,22 @@
                         });
 
                         series = [{
-                            field: "nuclear",
-                            name: "Nuclear"
-                        }, {
-                            field: "hydro",
-                            name: "Hydro"
-                        }, {
-                            field: "wind",
-                            name: "Wind"
+                              field: "nuclear",
+                              name: "Nuclear"
+                          }, {
+                              field: "hydro",
+                              name: "Hydro"
+                          }, {
+                              field: "wind",
+                              name: "Wind"
                         }];
+
+                        valueAxis = {
+                            labels: {
+                                format: "N0"
+                            },
+                            majorUnit: 10000
+                        };
 
                         categoryAxis = {
                             field: "year",
@@ -70,20 +76,12 @@
                             }
                         };
 
-                        valueAxis = {
-                            type: "log",
-                            labels: {
-                                format: "N0"
-                            }
-                        };
-
                         tooltip = {
                             visible: true,
                             shared: true,
                             format: "N0"
-                        }
+                        };
                       }
-
                     </au-code>
                 </div
             </div>

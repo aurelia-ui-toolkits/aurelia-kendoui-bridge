@@ -2,7 +2,7 @@ export class BindingToGroupedArea {
   datasource = new kendo.data.DataSource({
     transport: {
       read: function(options) {
-        return System.import('line-charts/json/stock-data-2011.json!json')
+        return System.import('charts/area-charts/json/stock-data-2011.json!json')
         .then(data => options.success(data));
       }
     },
@@ -28,7 +28,7 @@ export class BindingToGroupedArea {
   });
 
   series = [{
-      type: "line",
+      type: "area",
       field: "close",
       name: "${group.value} (close)"
   }];

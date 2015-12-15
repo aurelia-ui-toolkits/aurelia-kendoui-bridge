@@ -26,12 +26,12 @@ export class App {
         },  {
             name: 'area-charts',
             route: 'area-charts',
-            moduleId: 'area-charts/index',
+            moduleId: 'charts/area-charts/index',
             title: 'Area Charts'
         },  {
             name: 'line-charts',
             route: 'line-charts',
-            moduleId: 'line-charts/index',
+            moduleId: 'charts/line-charts/index',
             title: 'Line Charts'
         },  {
             name: 'grid',
