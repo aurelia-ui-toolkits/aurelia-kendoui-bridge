@@ -26,15 +26,15 @@ export class App {
             nav: true,
             title: 'Button'
         },  {
-            route: 'line-charts',
-            moduleId: 'line-charts/index',
-            nav: true,
-            title: 'Line Charts'
-        },  {
             route: 'area-charts',
             moduleId: 'area-charts/index',
             nav: true,
             title: 'Area Charts'
+        },  {
+            route: 'line-charts',
+            moduleId: 'line-charts/index',
+            nav: true,
+            title: 'Line Charts'
         },
         // },  {
         //     route: 'combobox',
