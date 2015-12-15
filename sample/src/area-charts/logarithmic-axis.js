@@ -1,8 +1,9 @@
-export class BindingToRemoteData {
+export class LogarithmicAxis {
+
   datasource = new kendo.data.DataSource({
     transport: {
       read: function(options) {
-        return System.import('area-chart/json/spain-electricity.json!json')
+        return System.import('area-charts/json/spain-electricity.json!json')
         .then(data => options.success(data));
       }
     },
@@ -13,22 +14,15 @@ export class BindingToRemoteData {
   });
 
   series = [{
-        field: "nuclear",
-        name: "Nuclear"
-    }, {
-        field: "hydro",
-        name: "Hydro"
-    }, {
-        field: "wind",
-        name: "Wind"
+      field: "nuclear",
+      name: "Nuclear"
+  }, {
+      field: "hydro",
+      name: "Hydro"
+  }, {
+      field: "wind",
+      name: "Wind"
   }];
-
-  valueAxis = {
-      labels: {
-          format: "N0"
-      },
-      majorUnit: 10000
-  };
 
   categoryAxis = {
       field: "year",
@@ -40,9 +34,16 @@ export class BindingToRemoteData {
       }
   };
 
+  valueAxis = {
+      type: "log",
+      labels: {
+          format: "N0"
+      }
+  };
+
   tooltip = {
       visible: true,
       shared: true,
       format: "N0"
-  };
+  }
 }

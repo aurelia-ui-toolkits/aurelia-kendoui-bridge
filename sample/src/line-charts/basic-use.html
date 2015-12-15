@@ -1,7 +1,7 @@
 <template>
     <section>
         <collapse-panel title="Basic use" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'Gross Domestic product growth \n /GRP annual %/'}"
+          <au-kendo-chart title.bind="{text: 'Gross Domestic product growth \n /GDP annual %/'}"
                           legend.bind="{position: 'bottom'}"
                           series-defaults.bind="seriesDefaults"
                           series.bind="series"
@@ -36,8 +36,8 @@
                       export class BasicUse {
 
                         seriesDefaults = {
-                          type: "area",
-                          area: {
+                          type: "line",
+                          line: {
                             line: {
                               style: "smooth"
                             }

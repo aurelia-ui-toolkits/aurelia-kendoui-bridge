@@ -1,0 +1,68 @@
+<template>
+    <section>
+        <collapse-panel title="Stepped line" allow-collapse.bind="false">
+          <au-kendo-chart title.bind="{text: 'A digital signal'}"
+                          legend.bind="{visible: false}"
+                          series.bind="series"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis">
+          </au-kendo-chart>
+        </collapse-panel>
+
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+                <div>
+                    <au-code language="markup">
+                       <au-kendo-chart title.bind="{text: 'A digital signal'}"
+                                        legend.bind="{visible: false}"
+                                        series.bind="series"
+                                        value-axis.bind="valueAxis"
+                                        category-axis.bind="categoryAxis">
+                        </au-kendo-chart>
+                    </au-code>
+                </div>
+
+                <div>
+                    <au-code language="javascript">
+                      export class SteppedArea {
+                        series = [{
+                            type: "line",
+                            data: [20, 1, 18, 3, 15, 5, 10, 6, 9, 6, 10, 5, 13, 3, 16, 1, 19, 1, 20, 2, 18, 5, 12, 7, 10, 8],
+                            line: {
+                                style: "step"
+                            }
+                        }];
+
+                        categoryAxis = {
+                            title: {
+                                text: "time"
+                            },
+                            majorGridLines: {
+                                visible: false
+                            },
+                            majorTicks: {
+                                visible: false
+                            }
+                        };
+
+                        valueAxis = {
+                            max: 22,
+                            title: {
+                                text: "voltage"
+                            },
+                            majorGridLines: {
+                                visible: false
+                            },
+                            visible: false
+                        };
+                      }
+                    </au-code>
+                </div
+            </div>
+        </collapse-panel>
+    </section>
+</template>

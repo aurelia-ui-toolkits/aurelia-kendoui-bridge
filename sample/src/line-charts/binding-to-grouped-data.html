@@ -1,0 +1,106 @@
+<template>
+    <section>
+        <collapse-panel title="Binding to grouped data" allow-collapse.bind="false">
+          <au-kendo-chart title.bind="{text: 'Stock Prices'}"
+                          data-source.bind="datasource"
+                          legend.bind="{position: 'bottom'}"
+                          series.bind="series"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis"
+                          tooltip.bind="tooltip">
+          </au-kendo-chart>
+        </collapse-panel>
+
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+                <div>
+                    <au-code language="markup">
+                      <au-kendo-chart title.bind="{text: 'Stock Prices'}"
+                                      data-source.bind="datasource"
+                                      legend.bind="{position: 'bottom'}"
+                                      series.bind="series"
+                                      value-axis.bind="valueAxis"
+                                      category-axis.bind="categoryAxis"
+                                      tooltip.bind="tooltip">
+                      </au-kendo-chart>
+                    </au-code>
+                </div>
+
+                <div>
+                    <au-code language="javascript">
+                      export class BindingToGroupedArea {
+                        datasource = new kendo.data.DataSource({
+                          transport: {
+                            read: function(options) {
+                              return System.import('line-charts/json/stock-data-2011.json!json')
+                              .then(data => options.success(data));
+                            }
+                          },
+
+                          group: {
+                            field: "symbol"
+                          },
+
+                          sort: {
+                            field: "date",
+                            dir: "asc"
+                          },
+
+                          schema: {
+                            model: {
+                              fields: {
+                                date: {
+                                  type: "date"
+                                }
+                              }
+                            }
+                          }
+                        });
+
+                        series = [{
+                            type: "line",
+                            field: "close",
+                            name: "${group.value} (close)"
+                        }];
+
+                        valueAxis = {
+                            labels: {
+                                format: "${0}",
+                                skip: 2,
+                                step: 2
+                            },
+                            line: {
+                                visible: false
+                            },
+                            max: 700
+                        };
+
+                        categoryAxis = {
+                            field: "date",
+                            labels: {
+                                format: "MMM"
+                            },
+                            line: {
+                                visible: false
+                            },
+                            majorGridLines: {
+                                visible: false
+                            }
+                        };
+
+                        tooltip = {
+                            visible: true,
+                            format: "{0}%",
+                            template: "${series.name} - ${value}%"
+                        };
+                      }
+                    </au-code>
+                </div
+            </div>
+        </collapse-panel>
+    </section>
+</template>

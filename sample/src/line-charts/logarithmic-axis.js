@@ -3,7 +3,7 @@ export class LogarithmicAxis {
   datasource = new kendo.data.DataSource({
     transport: {
       read: function(options) {
-        return System.import('area-chart/json/spain-electricity.json!json')
+        return System.import('line-charts/json/spain-electricity.json!json')
         .then(data => options.success(data));
       }
     },

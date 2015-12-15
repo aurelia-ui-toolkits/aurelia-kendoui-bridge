@@ -21,7 +21,7 @@ export class DateAxis {
   };
 
   series = [{
-      type: "area",
+      type: "line",
       aggregate: "avg",
       field: "value",
       categoryField: "date"

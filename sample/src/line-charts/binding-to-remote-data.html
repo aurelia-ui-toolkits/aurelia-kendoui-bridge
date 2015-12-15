@@ -1,15 +1,15 @@
 <template>
     <section>
         <collapse-panel title="Binding to remote data" allow-collapse.bind="false">
-<au-kendo-chart title.bind="{text: 'Spain electricity production (GWh)'}"
-                data-source.bind="datasource"
-                legend.bind="{position: 'top'}"
-                series.bind="series"
-                series-defaults.bind="{type: 'area'}"
-                value-axis.bind="valueAxis"
-                category-axis.bind="categoryAxis"
-                tooltip.bind="tooltip">
-</au-kendo-chart>
+          <au-kendo-chart title.bind="{text: 'Spain electricity production (GWh)'}"
+                          data-source.bind="datasource"
+                          legend.bind="{position: 'top'}"
+                          series.bind="series"
+                          series-defaults.bind="{type: 'line'}"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis"
+                          tooltip.bind="tooltip">
+          </au-kendo-chart>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">
@@ -24,7 +24,7 @@
                                       data-source.bind="datasource"
                                       legend.bind="{position: 'top'}"
                                       series.bind="series"
-                                      series-defaults.bind="{type: 'area'}"
+                                      series-defaults.bind="{type: 'line'}"
                                       value-axis.bind="valueAxis"
                                       category-axis.bind="categoryAxis"
                                       tooltip.bind="tooltip">
@@ -38,7 +38,7 @@
                         datasource = new kendo.data.DataSource({
                           transport: {
                             read: function(options) {
-                              return System.import('area-chart/json/spain-electricity.json!json')
+                              return System.import('line-chart/json/spain-electricity.json!json')
                               .then(data => options.success(data));
                             }
                           },
