@@ -1,4 +1,5 @@
 <template>
+  <require from="./route-highlight"></require>
   <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -15,8 +16,35 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-          <a data-toggle="collapse" data-target="#bs-example-navbar-collapse-1.in" href.bind="row.href">${row.title}</a>
+        <li route-highlight="routes: about">
+          <a route-href="route: about">About</a>
+        </li>
+
+        <li route-highlight="routes: install">
+          <a route-href="route: install; params.bind: { page: 'begin' }">Installation Wizard</a>
+        </li>
+
+        <li route-highlight="routes: autocomplete">
+          <a route-href="route: autocomplete">Autocomplete</a>
+        </li>
+
+        <li route-highlight="routes: button">
+          <a route-href="route: button">Button</a>
+        </li>
+
+        <li class="dropdown" route-highlight="routes.bind: chartRoutes">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Charts
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a route-href="route: area-charts">Area charts</a></li>
+            <li><a route-href="route: line-charts">Line charts</a></li>
+          </ul>
+        </li>
+
+        <li route-highlight="routes: grid">
+          <a route-href="route: grid">Grid</a>
         </li>
       </ul>
 
