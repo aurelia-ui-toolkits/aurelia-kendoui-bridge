@@ -1,0 +1,91 @@
+<template>
+    <section>
+        <collapse-panel title="Basic use" allow-collapse.bind="false">
+          <au-kendo-chart title.bind="{text: 'Site Visitors Stats \n /thousands/'}"
+                          legend.bind="{position: 'bottom'}"
+                          series-defaults.bind="seriesDefaults"
+                          series.bind="series"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis"
+                          tooltip.bind="tooltip">
+          </au-kendo-chart>
+        </collapse-panel>
+
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                    <li>Description</li>
+                </ul>
+                <div>
+                    <au-code language="markup">
+                       <au-kendo-chart title.bind="{text: 'Site Visitors Stats \n /thousands/'}"
+                                        legend.bind="{position: 'bottom'}"
+                                        series-defaults.bind="seriesDefaults"
+                                        series.bind="series"
+                                        value-axis.bind="valueAxis"
+                                        category-axis.bind="categoryAxis"
+                                        tooltip.bind="tooltip">
+                        </au-kendo-chart>
+                    </au-code>
+                </div>
+
+                <div>
+                    <au-code language="javascript">
+                      export class BasicUse {
+
+                        seriesDefaults = {
+                          type: "bar"
+                        };
+
+                        series = [{
+                            name: "Total Visits",
+                            data: [56000, 63000, 74000, 91000, 117000, 138000]
+                        }, {
+                            name: "Unique visitors",
+                            data: [52000, 34000, 23000, 48000, 67000, 83000]
+                        }];
+
+                        valueAxis = {
+                          max: 140000,
+                          line: {
+                              visible: false
+                          },
+                          minorGridLines: {
+                              visible: true
+                          },
+                          labels: {
+                              rotation: "auto"
+                          }
+                        };
+
+                        categoryAxis = {
+                            categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+                            majorGridLines: {
+                                visible: false
+                            }
+                        };
+
+                        tooltip = {
+                            visible: true,
+                            template: "${series.name} ${value}"
+                        }
+                      }
+
+                    </au-code>
+                </div>
+
+                <div>
+                    <au-markdown>
+                        The Kendo UI chart is a data visualization widget which allows you to output a graphical representation of your data. It is useful when you would like to utilize modern browser technologies such as SVG or Canvas for interactive data visualizations. The chart supports various chart types such as area, bar, line, scatter, pie and donut, etc. as well as stock (OHLC).
+
+                        To instantiate a Kendo UI chart, you need to specify an empty div with an id on the page, select this div with a jQuery selector and invoke the kendoChart() function. As a result, the chart is registered as a standard jQuery plugin.
+
+                        The chart can fetch data for its series from either local or remote data source. It can also use the Kendo UI DataSource as a mediator for processing data.
+                    </au-markdown>
+                </div>
+            </div>
+        </collapse-panel>
+    </section>
+</template>

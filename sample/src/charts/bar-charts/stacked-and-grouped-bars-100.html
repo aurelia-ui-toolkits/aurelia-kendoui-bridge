@@ -1,0 +1,34 @@
+<template>
+    <section>
+        <collapse-panel title="100 percent stacked and grouped bars" allow-collapse.bind="false">
+ <!--          <au-kendo-chart title.bind="{text: 'Browser Usage Trends'}"
+                          legend.bind="{position: 'bottom'}"
+                          series-defaults.bind="{type: 'line', stack: true}"
+                          series.bind="series"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis"
+                          tooltip.bind="tooltip">
+          </au-kendo-chart> -->
+        </collapse-panel>
+
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+                <div>
+                    <au-code language="markup">
+
+                    </au-code>
+                </div>
+
+                <div>
+                    <au-code language="javascript">
+
+                    </au-code>
+                </div
+            </div>
+        </collapse-panel>
+    </section>
+</template>

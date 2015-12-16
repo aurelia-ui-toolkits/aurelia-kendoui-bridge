@@ -9,7 +9,7 @@ export class App {
             title: 'About'
         },  {
             route: 'installation/:page',
-            moduleId: './installation-wizard/wizard',
+            moduleId: 'installation-wizard/wizard',
             name: 'install',
             href: '#/installation/begin',
             title:'Installation wizard'
@@ -29,16 +29,56 @@ export class App {
             moduleId: 'charts/area-charts/index',
             title: 'Area Charts'
         },  {
+            name: 'bar-charts',
+            route: 'bar-charts',
+            moduleId: 'charts/bar-charts/index',
+            title: 'Bar Charts'
+        },
+        //   {
+        //     name: 'box-plot-charts',
+        //     route: 'box-plot-charts',
+        //     moduleId: 'charts/box-plot-charts/index',
+        //     title: 'Box Plot Charts'
+        // },  {
+        //     name: 'bubble-charts',
+        //     route: 'bubble-charts',
+        //     moduleId: 'charts/bubble-charts/index',
+        //     title: 'Bubble Charts'
+        // },  {
+        //     name: 'bullet-charts',
+        //     route: 'bullet-charts',
+        //     moduleId: 'charts/bullet-charts/index',
+        //     title: 'Bullet Charts'
+        // },  {
+        //     name: 'donut-charts',
+        //     route: 'donut-charts',
+        //     moduleId: 'charts/donut-charts/index',
+        //     title: 'Donut Charts'
+        // },  {
+        //     name: 'funnel-charts',
+        //     route: 'funnel-charts',
+        //     moduleId: 'charts/funnel-charts/index',
+        //     title: 'Funnel Charts'
+        // },
+        {
             name: 'line-charts',
             route: 'line-charts',
             moduleId: 'charts/line-charts/index',
             title: 'Line Charts'
-        },  {
+        },
+        // {
+        //     name: 'pie-charts',
+        //     route: 'pie-charts',
+        //     moduleId: 'charts/pie-charts/index',
+        //     title: 'Pie Charts'
+        // },
+        {
             name: 'grid',
             route: 'grid',
             moduleId: 'grid/index',
             title: 'Grid'
-        }]);
+        }
+        ]);
 
         this.router = router;
     }
