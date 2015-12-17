@@ -33,13 +33,12 @@ export class App {
             route: 'bar-charts',
             moduleId: 'charts/bar-charts/index',
             title: 'Bar Charts'
+        },  {
+            name: 'box-plot-charts',
+            route: 'box-plot-charts',
+            moduleId: 'charts/box-plot-charts/index',
+            title: 'Box Plot Charts'
         },
-        //   {
-        //     name: 'box-plot-charts',
-        //     route: 'box-plot-charts',
-        //     moduleId: 'charts/box-plot-charts/index',
-        //     title: 'Box Plot Charts'
-        // },  {
         //     name: 'bubble-charts',
         //     route: 'bubble-charts',
         //     moduleId: 'charts/bubble-charts/index',
