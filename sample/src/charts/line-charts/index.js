@@ -4,7 +4,7 @@ import {useView} from 'aurelia-framework';
 export class Index {
 
   configureRouter(config, router){
-      config.title = 'Line Chart';
+      config.title = 'Line Charts';
       config.map([
             { route: ['','basic-use'],            moduleId: './basic-use',                 nav: true,    title:'Basic use' },
             { route: 'stacked-line',              moduleId: './stacked-line',              nav: true,    title:'Stacked Line' },
