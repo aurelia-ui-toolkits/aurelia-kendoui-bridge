@@ -1,32 +1,32 @@
 export class GapAndSpacing {
-  // series = [{
-  //     type: "line",
-  //     data: [20, 1, 18, 3, 15, 5, 10, 6, 9, 6, 10, 5, 13, 3, 16, 1, 19, 1, 20, 2, 18, 5, 12, 7, 10, 8],
-  //     line: {
-  //         style: "step"
-  //     }
-  // }];
 
-  // categoryAxis = {
-  //     title: {
-  //         text: "time"
-  //     },
-  //     majorGridLines: {
-  //         visible: false
-  //     },
-  //     majorTicks: {
-  //         visible: false
-  //     }
-  // };
+  seriesDefaults = {
+    type: "column"
+  };
 
-  // valueAxis = {
-  //     max: 22,
-  //     title: {
-  //         text: "voltage"
-  //     },
-  //     majorGridLines: {
-  //         visible: false
-  //     },
-  //     visible: false
-  // };
+  series = [{
+      name: "Total Visits",
+      data: [56000, 63000, 74000, 91000, 117000, 138000]
+  }, {
+      name: "Unique visitors",
+      data: [52000, 34000, 23000, 48000, 67000, 83000]
+  }];
+
+  valueAxis = {
+      line: {
+          visible: false
+      }
+  };
+
+  categoryAxis = {
+      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      majorGridLines: {
+          visible: false
+      }
+  };
+
+  tooltip = {
+      visible: true,
+      template: "${series.name} ${value}"
+  }
 }

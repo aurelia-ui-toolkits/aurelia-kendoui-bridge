@@ -1,7 +1,15 @@
 <template>
     <section>
         <collapse-panel title="Custom visuals" allow-collapse.bind="false">
-
+            <au-kendo-chart title.bind="{text: 'Site Visitors Stats /thousands/'}"
+                          legend.bind="{position: 'bottom'}"
+                          series-defaults.bind="seriesDefaults"
+                          series.bind="series"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis"
+                          tooltip.bind="tooltip"
+                          panes.bind="panes">
+            </au-kendo-chart>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">
@@ -9,6 +17,7 @@
                 <ul>
                     <li class="k-state-active">HTML</li>
                     <li>Code</li>
+                    <li>Description</li>
                 </ul>
                 <div>
                     <au-code language="markup">
@@ -20,7 +29,17 @@
                     <au-code language="javascript">
 
                     </au-code>
-                </div
+                </div>
+
+                <div>
+                    <au-markdown>
+                    You can implement custom visualizations for the Bar/Column chart legend items, axis titles, labels, markers and series by utilizing the [Kendo Drawing API](http://docs.telerik.com/kendo-ui/api/javascript/drawing). This can be done by assigning a JavaScript function which creates these custom shapes to the seriesDefaults -> visual attribute of the chart.
+
+                    Context information is available through the function argument fields, including rect (the [kendo.geometry.Rect](http://docs.telerik.com/kendo-ui/api/javascript/geometry/rect) that defines where the visual should be rendered) and options (different options depending on the item type).
+
+                    You can read more about it in the [Kendo UI JavaScript API reference](http://docs.telerik.com/kendo-ui/api/javascript/drawing).
+                    </au-markdown>
+                </div>
             </div>
         </collapse-panel>
     </section>

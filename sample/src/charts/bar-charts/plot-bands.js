@@ -1,33 +1,62 @@
 export class PlotBands {
-  // series = [{
-  //     type: "line",
-  //     data: [20, 1, 18, 3, 15, 5, 10, 6, 9, 6, 10, 5, 13, 3, 16, 1, 19, 1, 20, 2, 18, 5, 12, 7, 10, 8],
-  //     style: "smooth",
-  //     markers: {
-  //         visible: false
-  //     }
-  // }];
+  datasource = new kendo.data.DataSource({
+    transport: {
+      read: function(options) {
+        return System.import('charts/bar-charts/json/spain-electricity.json!json')
+        .then(data => options.success(data));
+      }
+    },
+    sort: {
+        field: "year",
+        dir: "asc"
+    }
+  });
 
-  // categoryAxis = {
-  //     title: {
-  //         text: "time"
-  //     },
-  //     majorGridLines: {
-  //         visible: false
-  //     },
-  //     majorTicks: {
-  //         visible: false
-  //     }
-  // };
+  series = [{
+        field: "nuclear",
+        name: "Nuclear"
+    }, {
+        field: "hydro",
+        name: "Hydro"
+    }, {
+        field: "wind",
+        name: "Wind"
+  }];
 
-  // valueAxis = {
-  //     max: 22,
-  //     title: {
-  //         text: "voltage"
-  //     },
-  //     majorGridLines: {
-  //         visible: false
-  //     },
-  //     visible: false
-  // };
+  valueAxis = {
+      labels: {
+          format: "N0"
+      },
+      majorUnit: 10000,
+      plotBands: [{
+          from: 10000,
+          to: 30000,
+          color: "#c00",
+          opacity: 0.3
+      }, {
+          from: 30000,
+          to: 30500,
+          color: "#c00",
+          opacity: 0.8
+      }],
+      max: 70000,
+      line: {
+          visible: false
+      }
+  };
+
+  categoryAxis = {
+      field: "year",
+      labels: {
+          rotation: -90
+      },
+      crosshair: {
+          visible: true
+      }
+  };
+
+  tooltip = {
+      visible: true,
+      format: "N0"
+  };
 }

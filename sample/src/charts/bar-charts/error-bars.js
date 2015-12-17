@@ -1,31 +1,41 @@
 export class ErrorBars {
-  // series = [{
-  //     data: [7.943, 7.848, 9.284, 9.263, 9.801, 3.890, 8.238, 9.552],
-  //     errorBars: {
-  //         value: "stddev"
-  //     }
-  // }];
+  legend = {
+      visible: false
+  };
 
-  // valueAxis = {
-  //     labels: {
-  //         format: "{0}%"
-  //     },
-  //     line: {
-  //         visible: false
-  //     },
-  //     axisCrossingValue: 0
-  // };
+  seriesDefaults = {
+      type: "column"
+  };
 
-  // categoryAxis = {
-  //     categories: [2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010],
-  //     line: {
-  //         visible: false
-  //     }
-  // };
+  series = [{
+      data: [4.743, 7.295, 7.175, 6.376, 8.153, 8.535, 5.247, -7.832, 4.3, 4.3],
+      errorBars: {
+          value: "stderr"
+      }
+  }];
 
-  // tooltip = {
-  //     visible: true,
-  //     format: "{0}%",
-  //     template: "${value} (σ = ${kendo.toString(high - low, 'N2')})"
-  // }
+  valueAxis = {
+      labels: {
+          format: "{0}%"
+      },
+      line: {
+          visible: false
+      },
+      axisCrossingValue: 0
+  };
+
+  categoryAxis = {
+      categories: [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011],
+      line: {
+          visible: false
+      },
+      labels: {
+          padding: { top: 160 }
+      }
+  };
+
+  tooltip = {
+      visible: true,
+      format: "{0}%"
+  }
 }

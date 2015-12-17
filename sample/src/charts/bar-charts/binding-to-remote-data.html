@@ -1,15 +1,15 @@
 <template>
     <section>
         <collapse-panel title="Binding to remote data" allow-collapse.bind="false">
- <!--          <au-kendo-chart title.bind="{text: 'Spain electricity production (GWh)'}"
+          <au-kendo-chart title.bind="{text: 'Spain electricity production (GWh)'}"
                           data-source.bind="datasource"
                           legend.bind="{position: 'top'}"
                           series.bind="series"
-                          series-defaults.bind="{type: 'line'}"
+                          series-defaults.bind="{type: 'column'}"
                           value-axis.bind="valueAxis"
                           category-axis.bind="categoryAxis"
                           tooltip.bind="tooltip">
-          </au-kendo-chart> -->
+          </au-kendo-chart>
         </collapse-panel>
 
         <collapse-panel title="Code Preview">
@@ -17,17 +17,86 @@
                 <ul>
                     <li class="k-state-active">HTML</li>
                     <li>Code</li>
+                    <li>Description</li>
                 </ul>
                 <div>
                     <au-code language="markup">
-
+                        <au-kendo-chart title.bind="{text: 'Spain electricity production (GWh)'}"
+                                        data-source.bind="datasource"
+                                        legend.bind="{position: 'top'}"
+                                        series.bind="series"
+                                        series-defaults.bind="{type: 'column'}"
+                                        value-axis.bind="valueAxis"
+                                        category-axis.bind="categoryAxis"
+                                        tooltip.bind="tooltip">
+                        </au-kendo-chart>
                     </au-code>
                 </div>
 
                 <div>
                     <au-code language="javascript">
+                      export class BindingToRemoteData {
+                        datasource = new kendo.data.DataSource({
+                          transport: {
+                            read: function(options) {
+                              return System.import('charts/bar-charts/json/spain-electricity.json!json')
+                              .then(data => options.success(data));
+                            }
+                          },
+                          sort: {
+                              field: "year",
+                              dir: "asc"
+                          }
+                        });
 
+                        series = [{
+                              field: "nuclear",
+                              name: "Nuclear"
+                          }, {
+                              field: "hydro",
+                              name: "Hydro"
+                          }, {
+                              field: "wind",
+                              name: "Wind"
+                        }];
+
+                        valueAxis = {
+                            labels: {
+                                format: "N0"
+                            },
+                            majorUnit: 10000
+                        };
+
+                        categoryAxis = {
+                            field: "year",
+                            labels: {
+                                rotation: -90
+                            },
+                            crosshair: {
+                                visible: true
+                            }
+                        };
+
+                        tooltip = {
+                            visible: true,
+                            shared: true,
+                            format: "N0"
+                        };
+                      }
                     </au-code>
+                   <div>
+                        <au-markdown>
+                        The Kendo UI chart supports binding to remote data via RESTful services.
+
+                        For remote data binding you need to specify a remote endpoint or a web service returning data in JSON/JSONP format and utilize the DataSource in-between the chart and the underlying data. To make the connection to the remote endpoint and process the data properly, the data source needs information about the web service URL(s), the request type, the response data type, and the structure (schema) of the response, in case it is more complex than a plain array of objects.
+
+                        In this example the Kendo UI Bar chart is bound to remote data by configuring the DataSource transport which defines how the DataSource interacts with remote data.
+
+                        You can find more information about the data-binding capabilities of the Kendo UI chart in this [help article](http://docs.telerik.com/kendo-ui/dataviz/chart/data-binding).
+                        </au-markdown>
+                    </div>
+
+
                 </div
             </div>
         </collapse-panel>

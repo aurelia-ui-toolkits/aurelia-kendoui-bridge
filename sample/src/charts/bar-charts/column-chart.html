@@ -1,7 +1,7 @@
 <template>
     <section>
         <collapse-panel title="Column chart" allow-collapse.bind="false">
-            <au-kendo-chart title.bind="{text: 'Gross domestic product growth /GDP annual %'}"
+            <au-kendo-chart title.bind="{text: 'Gross domestic product growth /GDP annual %/'}"
                             legend.bind="{position: 'top'}"
                             series-defaults.bind="seriesDefaults"
                             series.bind="series"
@@ -16,6 +16,7 @@
                 <ul>
                     <li class="k-state-active">HTML</li>
                     <li>Code</li>
+                    <li>Description</li>
                 </ul>
                 <div>
                     <au-code language="markup">
@@ -78,7 +79,18 @@
                           }
                         }
                     </au-code>
-                </div
+                </div>
+
+                <div>
+                    <au-markdown>
+                    The Column chart visualizes data as vertical bars whose heights vary according to their value. It can be useful for presenting a comparison between several sets of data (e.g., snapshots of data across different points in time like the GDP growth shown in this example).
+
+                    Column charts are very similar to Bar charts, with the only difference that bars’ orientation is vertical instead of horizontal.
+
+                    You can define the chart series as horizontal via the seriesDefaults-> type ->= "column"
+                    </au-markdown>
+                </div>
+
             </div>
         </collapse-panel>
     </section>
