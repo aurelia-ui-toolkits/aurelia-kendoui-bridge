@@ -1,4 +1,4 @@
-export class BindingToLocalData {
+export class BindingToRemoteData {
     datasource = new kendo.data.DataSource({
       transport: {
         read: function(options) {
@@ -27,6 +27,4 @@ export class BindingToLocalData {
         meanField: "mean",
         categoryField: "year"
     }];
-
-
 }
