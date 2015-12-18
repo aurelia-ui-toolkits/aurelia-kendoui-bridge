@@ -17,6 +17,7 @@ export class App {
             { name:  'line-charts',      route: 'line-charts',      moduleId: 'charts/line-charts/index',      title: 'Line Charts'},
             // {name: 'pie-charts',        route: 'pie-charts',       moduleId: 'charts/pie-charts/index',       title: 'Pie Charts'},
             { name:  'grid',             route: 'grid',             moduleId: 'grid/index',                    title: 'Grid'}
+
         ]);
 
         this.router = router;
