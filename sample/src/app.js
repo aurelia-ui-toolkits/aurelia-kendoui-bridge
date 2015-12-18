@@ -76,6 +76,11 @@ export class App {
             route: 'polar-charts',
             moduleId: 'charts/polar-charts/index',
             title: 'Polar Charts'
+        },  {
+            name: 'radar-charts',
+            route: 'radar-charts',
+            moduleId: 'charts/radar-charts/index',
+            title: 'Radar Charts'
         },
         {
             name: 'grid',

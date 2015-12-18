@@ -1,0 +1,57 @@
+<template>
+    <section>
+        <collapse-panel title="Smooth radar line" allow-collapse.bind="false">
+          <au-kendo-chart title.bind="{text: 'Budget report'}"
+                          data-source.bind="dataSource"
+                          series-defaults.bind="{type: 'radarLine', style: 'smooth'}"
+                          series.bind="series"
+                          category-axis.bind="{field: 'unit'}"
+                          value-axis.bind="{labels: {template: '$#= value / 1000 #k'}}">
+          </au-kendo-chart>
+        </collapse-panel>
+
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip>
+                <ul>
+                    <li class="k-state-active">HTML</li>
+                    <li>Code</li>
+                </ul>
+                <div>
+                    <au-code language="markup">
+                      <au-kendo-chart title.bind="{text: 'Budget report'}"
+                                      data-source.bind="dataSource"
+                                      series-defaults.bind="{type: 'radarLine', style: 'smooth'}"
+                                      series.bind="series"
+                                      category-axis.bind="{field: 'unit'}"
+                                      value-axis.bind="{labels: {template: '$#= value / 1000 #k'}}">
+                      </au-kendo-chart>
+                    </au-code>
+                </div>
+
+                <div>
+                    <au-code language="javascript">
+                      export class SmoothPolarLine {
+                        dataSource = {
+                          transport: {
+                            read: function(options) {
+                              return System.import('charts/radar-charts/json/budget-report.json!json')
+                              .then(data => options.success(data));
+                            }
+                          }
+                        }
+
+                        series = [{
+                          name: "Budget",
+                          field: "budget"
+                        }, {
+                          name: "Spending",
+                          field: "spending"
+                        }];
+                      }
+
+                    </au-code>
+                </div>
+            </div>
+        </collapse-panel>
+    </section>
+</template>

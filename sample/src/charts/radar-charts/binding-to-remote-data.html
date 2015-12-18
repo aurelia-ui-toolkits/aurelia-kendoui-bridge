@@ -1,10 +1,12 @@
 <template>
     <section>
         <collapse-panel title="Binding to remote data" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'Antenna Gain (dB)'}"
+          <au-kendo-chart title.bind="{text: 'Budget report'}"
                           data-source.bind="dataSource"
                           series.bind="series"
-                          x-axis.bind="{majorUnit: 30}">
+                          category-axis.bind="{field: 'unit'}"
+                          value-axis.bind="{labels: {template: '$#= value / 1000 #k'}}"
+                          series-defaults.bind="{type: 'radarLine'}">
           </au-kendo-chart>
         </collapse-panel>
 
@@ -16,10 +18,12 @@
                 </ul>
                 <div>
                     <au-code language="markup">
-                      <au-kendo-chart title.bind="{text: 'Antenna Gain (dB)'}"
+                      <au-kendo-chart title.bind="{text: 'Budget report'}"
                                       data-source.bind="dataSource"
                                       series.bind="series"
-                                      x-axis.bind="{majorUnit: 30}">
+                                      category-axis.bind="{field: 'unit'}"
+                                      value-axis.bind="{labels: {template: '$#= value / 1000 #k'}}"
+                                      series-defaults.bind="{type: 'radarLine'}">
                       </au-kendo-chart>
                     </au-code>
                 </div>
@@ -30,16 +34,18 @@
                         dataSource = {
                             transport: {
                                 read: function(options) {
-                                  return System.import('charts/polar-charts/json/antenna-gain.json!json')
+                                  return System.import('charts/radar-charts/json/budget-report.json!json')
                                   .then(data => options.success(data));
                                 }
                             }
                         };
 
                         series = [{
-                            type: "polarLine",
-                            xField: "azimuth",
-                            yField: "gain"
+                            name: "Budget",
+                            field: "budget"
+                        }, {
+                            name: "Spending",
+                            field: "spending"
                         }];
                       }
                     </au-code>
