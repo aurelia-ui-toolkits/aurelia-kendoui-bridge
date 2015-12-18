@@ -2,6 +2,7 @@ import {customElement, bindable, inject} from 'aurelia-framework';
 import {pruneOptions, fireKendoEvent} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.chart.min';
+import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
 
 @customElement('au-kendo-chart')
 @inject(Element)

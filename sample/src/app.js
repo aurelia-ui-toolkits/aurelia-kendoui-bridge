@@ -72,6 +72,12 @@ export class App {
         //     title: 'Pie Charts'
         // },
         {
+            name: 'polar-charts',
+            route: 'polar-charts',
+            moduleId: 'charts/polar-charts/index',
+            title: 'Polar Charts'
+        },
+        {
             name: 'grid',
             route: 'grid',
             moduleId: 'grid/index',
