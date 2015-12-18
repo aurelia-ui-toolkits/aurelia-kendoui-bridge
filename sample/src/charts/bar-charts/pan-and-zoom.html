@@ -5,13 +5,12 @@
             <div class="box wide">
                 <p>Use SHIFT + Mouse Drag Region Selection combination on mouse-enabled devices to zoom in data for a specific period of time</p>
             </div>
-            <au-kendo-chart title.bind="title"
-                            dataSource.bind="dataSource"
-                            series.bind="series"
-                            renderAs.bind="renderAs"
-                            pannable.bind="pannable"
-                            zoomable.bind="zoomable"
-                            category-axis.bind="categoryAxis">
+            <au-kendo-chart render-as="canvas"
+                    data-source.bind="{data: data}"
+                    category-axis.bind="categoryAxis"
+                    series.bind="series"
+                    pannable.bind="{lock: 'y'}"
+                    zoomable.bind="zoomable">
             </au-kendo-chart>
         </collapse-panel>
 

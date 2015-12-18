@@ -1,48 +1,36 @@
 export class PanAndZoom {
+  data = [];
 
-    renderAs = "canvas";
+  categoryAxis = {
+      min: 0,
+      max: 10,
+      labels: {
+          rotation: "auto"
+      }
+  };
 
-    dataSource= {
-        data: data
-    };
+  series = [{
+      type: "column",
+      field: "value",
+      categoryField: "category"
+  }];
 
-   categoryAxis= {
-        min: 0,
-        max: 10,
-        labels: {
-            rotation: "auto"
-        }
-    };
+  zoomable = {
+      mousewheel: {
+          lock: "y"
+      },
+      selection: {
+          lock: "y"
+      }
+  };
 
-    series= [{
-        type: "column",
-        field: "value",
-        categoryField: "category"
-    }];
-
-    // pannable= {
-    //     lock: "y"
-    // };
-
-    // zoomable= {
-    //     mousewheel: {
-    //         lock: "y"
-    //     },
-    //     selection: {
-    //         lock: "y"
-    //     }
-    // }
-
-    generateData() {
-        let data = [];
-        for (var i = 0; i < 100; i++) {
-          let val = Math.round(Math.random() * 10);
-          data.push({
-            category: "C" + i,
-            value: val
-          });
-        }
+  constructor() {
+    for (var i = 0; i < 100; i++) {
+      var val = Math.round(Math.random() * 10);
+      this.data.push({
+        category: "C" + i,
+        value: val
+      });
     }
+  }
 }
-
-
