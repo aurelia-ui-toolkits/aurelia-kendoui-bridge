@@ -16,6 +16,7 @@ export class App {
             //{name: 'funnel-charts',      route: 'funnel-charts',      moduleId: 'charts/funnel-charts/index',    title: 'Funnel Charts'},
             { name:  'line-charts',      route: 'line-charts',      moduleId: 'charts/line-charts/index',      title: 'Line Charts'},
             // {name: 'pie-charts',        route: 'pie-charts',       moduleId: 'charts/pie-charts/index',       title: 'Pie Charts'},
+            {name: 'polar-charts',       route: 'polar-charts',     moduleId: 'charts/polar-charts/index',     title: 'Polar Charts'},
             { name:  'grid',             route: 'grid',             moduleId: 'grid/index',                    title: 'Grid'}
 
         ]);
