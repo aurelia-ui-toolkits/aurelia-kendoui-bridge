@@ -18,6 +18,7 @@ export class App {
             // {name: 'pie-charts',        route: 'pie-charts',       moduleId: 'charts/pie-charts/index',       title: 'Pie Charts'},
             { name: 'polar-charts',      route: 'polar-charts',     moduleId: 'charts/polar-charts/index',     title: 'Polar Charts'},
             { name: 'radar-charts',      route: 'radar-charts',     moduleId: 'charts/radar-charts/index',     title: 'Radar Charts'},
+            { name: 'range-charts',      route: 'range-charts',     moduleId: 'charts/range-charts/index',     title: 'Range Charts'},
             { name:  'grid',             route: 'grid',             moduleId: 'grid/index',                    title: 'Grid'}
         ]);
 
