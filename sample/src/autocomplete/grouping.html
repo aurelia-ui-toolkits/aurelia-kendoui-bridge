@@ -15,26 +15,22 @@
                 </ul>
                 <div>
                     <au-code language="markup">
-                        <input au-kendo-autocomplete="data-source.bind: items;" value.bind="value">
+                        <input au-kendo-autocomplete="data-source.bind: datasource; height.bind: 400; data-text-field: ContactName">
                     </au-code>
                 </div>
                 <div>
                     <au-code language="javascript">
-                        export class BasicUse {
-                            items = [
-                                "Charles",
-                                "Jedd",
-                                "Nikolaj",
-                                "David",
-                                "Rob",
-                                "Matt",
-                                "Patrick",
-                                "Jason",
-                                "Martin",
-                                "Fredrick",
-                                "Alex"
-                            ]
-                        }
+                      export class Grouping {
+                      	constructor() {
+                      		this.datasource = {
+                            type: "odata",
+                            transport: {
+                                read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
+                            },
+                            group: { field: "Country" }
+                          };
+                      	}
+                      }
                     </au-code>
                 </div>
             </div>

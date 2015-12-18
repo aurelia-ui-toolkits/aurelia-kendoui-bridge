@@ -1,6 +1,5 @@
 export class Events {
 
-  logs = [];
   items = [
     "Alabama",
     "Alaska",
