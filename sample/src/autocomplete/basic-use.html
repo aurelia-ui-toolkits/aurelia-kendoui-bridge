@@ -1,43 +1,7 @@
 <template>
-    <section>
-        <collapse-panel title="Basic use" allow-collapse.bind="false" footer="Current value: ${value}">
-            <p><strong>People:</strong></p>
-            <p>
-                <input au-kendo-autocomplete="data-source.bind: items;" value.bind="value">
-            </p>
-            <p class="text-muted">Type a name, available values in the list are: ${ items } </p>
-        </collapse-panel>
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                    <au-code language="markup">
-                        <input au-kendo-autocomplete="data-source.bind: items;" value.bind="value">
-                    </au-code>
-                </div>
-                <div>
-                    <au-code language="javascript">
-                        export class BasicUse {
-                            items = [
-                                "Charles",
-                                "Jedd",
-                                "Nikolaj",
-                                "David",
-                                "Rob",
-                                "Matt",
-                                "Patrick",
-                                "Jason",
-                                "Martin",
-                                "Fredrick",
-                                "Alex"
-                            ]
-                        }
-                    </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <p><strong>People:</strong></p>
+  <p>
+      <input au-kendo-autocomplete="data-source.bind: items;" value.bind="value">
+  </p>
+  <p class="text-muted">Type a name, available values in the list are: ${ items } </p>
 </template>

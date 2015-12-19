@@ -1,0 +1,14 @@
+{
+  "title": "Menu",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "animation-effects": {},
+    "api": {},
+    "context-menu": {},
+    "direction": {},
+    "images": {},
+    "orientation": {}
+  }
+}

@@ -1,27 +1,18 @@
-import {useView} from 'aurelia-framework';
+import {useView, inject} from 'aurelia-framework';
+import {Registry} from 'shared/registry';
 
 @useView("shared/showcase.html")
+@inject(Registry)
 export class Index {
 
-    configureRouter(config, router) {
-        config.title = 'Button';
-        config.map([{
-            route: ['', 'basic-use'],
-            moduleId: './basic-use',
-            nav: true,
-            title: 'Basic use'
-        }, {
-            route: 'images',
-            moduleId: './images',
-            nav: true,
-            title: 'Images'
-        }, {
-            route: 'api',
-            moduleId: './api',
-            nav: true,
-            title: 'API'
-        }, ]);
+  constructor(registry) {
+    this.registry = registry;
+  }
 
-        this.router = router;
-    }
+	configureRouter(config, router){
+
+    this.router = router;
+
+    return this.registry.load(config, "button");
+	}
 }

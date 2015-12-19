@@ -1,0 +1,60 @@
+{
+  "title": "Bar charts",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    },
+    "binding-to-grouped-data": {
+      "files": ["js", "html", "md"]
+    },
+    "binding-to-local-data": {
+      "files": ["js", "html", "md"]
+    },
+    "binding-to-remote-data": {
+      "files": ["js", "html", "md"]
+    },
+    "column-chart": {
+      "files": ["js", "html", "md"]
+    },
+    "custom-pan-and-zoom": {
+      "files": ["js", "html", "md"]
+    },
+    "custom-visuals": {
+    },
+    "date-axis": {
+      "files": ["js", "html", "md"]
+    },
+    "error-bars": {
+      "files": ["js", "html", "md"]
+    },
+    "gap-and-spacing": {
+      "files": ["js", "html", "md"]
+    },
+    "logarithmic-axis": {
+      "files": ["js", "html", "md"]
+    },
+    "multi-axis": {
+      "files": ["js", "html", "md"]
+    },
+    "pan-and-zoom": {
+      "files": ["js", "html", "md"]
+    },
+    "plot-bands": {
+      "files": ["js", "html", "md"]
+    },
+    "stacked-and-grouped-bars-100": {
+      "title": "Stacked and grouped bars 100%",
+      "files": ["js", "html", "md"]
+    },
+    "stacked-and-grouped-bars": {
+      "files": ["js", "html", "md"]
+    },
+    "stacked-bars-100": {
+      "title": "Stacked bars 100%"
+    },
+    "stacked-bars": {
+      "files": ["js", "html", "md"]
+    }
+  }
+}

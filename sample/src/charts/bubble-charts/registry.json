@@ -1,0 +1,18 @@
+{
+  "title": "Bubble charts",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js", "md"]
+    },
+    "binding-to-grouped-data": {
+      "files": ["html", "js", "md"]
+    },
+    "binding-to-local-data": {
+      "files": ["html", "js", "md"]
+    },
+    "binding-to-remote-data": {
+      "files": ["html", "js", "md"]
+    }
+  }
+}

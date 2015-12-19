@@ -1,20 +1,18 @@
-import {useView} from 'aurelia-framework';
+import {useView, inject} from 'aurelia-framework';
+import {Registry} from 'shared/registry';
 
 @useView("shared/showcase.html")
+@inject(Registry)
 export class Index {
 
-	configureRouter(config, router){
-	    config.title = 'Autocomplete';
-	    config.map([
-            { route: ['','basic-use'],         moduleId: './basic-use',              nav: true, title:'Basic use' },
-            { route: 'remote-data',            moduleId: './remote-data',            nav: true, title:'Remote data' },
-            { route: 'customizing-templates',  moduleId: './customizing-templates',  nav: true, title:'Customizing templates' },
-            { route: 'api',                    moduleId: './api',                    nav: true, title:'API' },
-            { route: 'events',                 moduleId: './events',                 nav: true, title:'Events' },
-            { route: 'grouping',               moduleId: './grouping',               nav: true, title:'Grouping' },
-            { route: 'virtualization',         moduleId: './virtualization',         nav: true, title:'Virtualization' },
-	  	]);
+  constructor(registry) {
+    this.registry = registry;
+  }
 
-	    this.router = router;
+	configureRouter(config, router){
+
+    this.router = router;
+
+    return this.registry.load(config, "autocomplete");
 	}
 }

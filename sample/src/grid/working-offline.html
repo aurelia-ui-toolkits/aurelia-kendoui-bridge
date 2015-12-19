@@ -1,105 +1,11 @@
 <template>
-    <section>
-        <collapse-panel title="Working offline" allow-collapse.bind="false">
-
-          <button au-kendo-button class="k-primary" click.delegate="online()">Go online</button>
-          <button au-kendo-button class="k-primary" click.delegate="offline()">Go offline</button>
-          <br>
-          <br>
-          <au-kendo-grid data-source.bind="datasource" pageable.bind="{refresh: true}" toolbar.bind="['create']" editable="inline">
-            <au-col field="ProductName"></au-col>
-            <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>
-            <au-col command.bind="['edit', 'destroy']" title="&nbsp;" width="250px"></au-col>
-          </au-kendo-grid>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                 <div>
-                    <au-code language="markup">
-                      <button au-kendo-button class="k-primary" click.delegate="online()">Go online</button>
-                      <button au-kendo-button class="k-primary" click.delegate="offline()">Go offline</button>
-
-                      <au-kendo-grid data-source.bind="datasource" pageable.bind="{refresh: true}" toolbar.bind="['create']" editable="inline">
-                        <au-col field="ProductName"></au-col>
-                        <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>
-                        <au-col command.bind="['edit', 'destroy']" title="&nbsp;" width="250px"></au-col>
-                      </au-kendo-grid>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                      export class WorkingOffLine {
-                        constructor() {
-                          this.datasource = new kendo.data.DataSource({
-                            offlineStorage: "offline-kendo-demo",
-                            transport: {
-                                read:  {
-                                    url: "//demos.telerik.com/kendo-ui/service/products",
-                                    dataType: "jsonp"
-                                },
-                                update: {
-                                    url: "//demos.telerik.com/kendo-ui/service/products/update",
-                                    dataType: "jsonp"
-                                },
-                                destroy: {
-                                    url: "//demos.telerik.com/kendo-ui/service/products/destroy",
-                                    dataType: "jsonp"
-                                },
-                                create: {
-                                    url: "//demos.telerik.com/kendo-ui/service/products/create",
-                                    dataType: "jsonp"
-                                },
-                                parameterMap: function(options, operation) {
-                                    if (operation !== "read" && options.models) {
-                                        return {models: kendo.stringify(options.models)};
-                                    }
-                                }
-                            },
-                            requestStart: function(e) {
-                                if (e.type != "read") {
-                                    console.log(kendo.format("Request start ({0})", e.type));
-                                }
-                            },
-                            requestEnd: function(e) {
-                                if (e.type != "read") {
-                                    console.log(kendo.format("Request end ({0})", e.type));
-                                }
-                            },
-                            batch: true,
-                            pageSize: 20,
-                            schema: {
-                                model: {
-                                    id: "ProductID",
-                                    fields: {
-                                        ProductID: { editable: false, nullable: true },
-                                        UnitPrice: { type: "number", validation: { min: 1} },
-                                        Discontinued: { type: "boolean" },
-                                        UnitsInStock: { type: "number", validation: { min: 0, required: true } }
-                                    }
-                                }
-                            }
-                          });
-                        }
-
-                        online() {
-                          this.datasource.online(true);
-                          alert("datasource is now online")
-                        }
-
-                        offline() {
-                          this.datasource.online(false);
-                          alert("datasource is now offline");
-                        }
-                      }
-                    </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <button au-kendo-button class="k-primary" click.delegate="online()">Go online</button>
+  <button au-kendo-button class="k-primary" click.delegate="offline()">Go offline</button>
+  <br>
+  <br>
+  <au-kendo-grid data-source.bind="datasource" pageable.bind="{refresh: true}" toolbar.bind="['create']" editable="inline">
+    <au-col field="ProductName"></au-col>
+    <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>
+    <au-col command.bind="['edit', 'destroy']" title="&nbsp;" width="250px"></au-col>
+  </au-kendo-grid>
 </template>

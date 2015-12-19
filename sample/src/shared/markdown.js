@@ -1,46 +1,28 @@
-import {bindable,noView,customElement,processContent} from 'aurelia-framework';
+import {bindable, noView, inject, customElement} from 'aurelia-framework';
 import showdown from 'showdown';
+import {Loader}  from 'aurelia-loader';
 
-@processContent(false)
 @customElement("au-markdown")
 @noView
+@inject(Element, Loader)
 export class AuMarkdown {
 
-  @bindable model = null;
+  @bindable url;
 
-  static inject = [Element];
-  constructor(element){
+  constructor(element, loader){
     this.element = element;
+    this.loader = loader;
     this.converter = new showdown.Converter();
   }
 
-  attached(){
-    this.root = this.element.shadowRoot || this.element;
-    if(!this.model) {
-      this.valueChanged(this.element.innerHTML);
-    }else{
-      this.valueChanged(this.model);
+  urlChanged(){
+    if(this.url) {
+      this.loader.loadText(this.url)
+      .then(text => {
+        this.element.innerHTML = this.converter.makeHtml(text);
+      });
+    } else {
+      this.element.innerHTML = '';
     }
   }
-
-  modelChanged(){
-    this.valueChanged(this.model);
-  }
-
-  valueChanged(newValue){
-    if(!this.root) return;
-    this.root.innerHTML = this.converter.makeHtml(dedent(newValue));
-  }
-}
-
-function dedent(str){
-  var match = str.match(/^[ \t]*(?=\S)/gm);
-  if (!match) return str;
-
-  var indent = Math.min.apply(Math, match.map(function (el) {
-    return el.length;
-  }));
-
-  var re = new RegExp('^[ \\t]{' + indent + '}', 'gm');
-  return indent > 0 ? str.replace(re, '') : str;
 }

@@ -1,83 +1,11 @@
 <template>
-    <section>
-        <collapse-panel title="Binding to remote data" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'Ozone Concentration (ppm)'}"
-                          legend.bind="legend"
-                          data-source.bind="datasource"
-                          series-defaults.bind="seriesDefaults"
-                          series.bind="series"
-                          value-axis.bind="valueAxis"
-                          category-axis.bind="categoryAxis"
-                          tooltip.bind="tooltip">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                    <!-- <li>Description</li> -->
-                </ul>
-                <div>
-                    <au-code language="markup">
-                      <au-kendo-chart title.bind="{text: 'Ozone Concentration (ppm)'}"
-                                      legend.bind="legend"
-                                      data-source.bind="datasource"
-                                      series-defaults.bind="seriesDefaults"
-                                      series.bind="series"
-                                      value-axis.bind="valueAxis"
-                                      category-axis.bind="categoryAxis"
-                                      tooltip.bind="tooltip">
-                      </au-kendo-chart>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                      export class BindingToRemotelData {
-                          datasource = new kendo.data.DataSource({
-                            transport: {
-                              read: function(options) {
-                                return System.import('charts/box-plot-charts/json/ozone.json!json')
-                                .then(data => options.success(data));
-                              }
-                            },
-                            sort: {
-                                field: "year",
-                                dir: "asc"
-                            }
-                          });
-
-                          legend = {
-                              visible: false
-                          };
-
-                          series = [{
-                            type: "boxPlot",
-                              lowerField: "lower",
-                              q1Field: "q1",
-                              medianField: "median",
-                              q3Field: "q3",
-                              upperField: "upper",
-                              outliersField: "outliers",
-                              meanField: "mean",
-                              categoryField: "year"
-                          }];
-                      }
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-markdown>
-                    The Kendo UI chart supports binding to remote data via RESTful services.
-
-                    For remote data binding you need to specify a remote endpoint or web service returning data in JSON/JSONP format and utilize the DataSource in-between the chart and the underlying data. To make the connection to the remote endpoint and process the data properly, the data source needs information about the web service URL(s), the request type, the response data type, and the structure (schema) of the response, in case it is more complex than a plain array of objects.
-
-                    In this example the chart fetches its data from a remote endpoint assigned via the DataSource read configuration. You can find more information about the data-binding capabilities of the Kendo UI chart in this [help article](http://docs.telerik.com/kendo-ui/dataviz/chart/data-binding).
-                    </au-markdown>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart title.bind="{text: 'Ozone Concentration (ppm)'}"
+                  legend.bind="legend"
+                  data-source.bind="datasource"
+                  series-defaults.bind="seriesDefaults"
+                  series.bind="series"
+                  value-axis.bind="valueAxis"
+                  category-axis.bind="categoryAxis"
+                  tooltip.bind="tooltip">
+  </au-kendo-chart>
 </template>

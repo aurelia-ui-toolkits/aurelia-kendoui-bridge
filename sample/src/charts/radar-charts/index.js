@@ -1,20 +1,18 @@
-import {useView} from 'aurelia-framework';
+import {useView, inject} from 'aurelia-framework';
+import {Registry} from 'shared/registry';
 
 @useView("shared/showcase.html")
+@inject(Registry)
 export class Index {
 
-  configureRouter(config, router){
-      config.title = 'Radar Chart';
-      config.map([
-            { route: ['','radar-line'],         moduleId: './radar-line',             nav: true,    title:'Radar line' },
-            { route: ['smooth-radar-line'],     moduleId: './smooth-radar-line',      nav: true,    title:'Smooth radar line' },
-            { route: ['radar-area'],            moduleId: './radar-area',             nav: true,    title:'Radar area' },
-            { route: ['radar-column'],          moduleId: './radar-column',           nav: true,    title:'Radar column' },
-            { route: 'binding-to-remote-data',  moduleId: './binding-to-remote-data', nav: true,    title:'Binding to remote data' },
-            { route: 'binding-to-local-data',   moduleId: './binding-to-local-data',  nav: true,    title:'Binding to local data' },
-            { route: 'binding-to-grouped-data',   moduleId: './binding-to-grouped-data',  nav: true,    title:'Binding to grouped data' }
-      ]);
-
-      this.router = router;
+  constructor(registry) {
+    this.registry = registry;
   }
+
+	configureRouter(config, router){
+
+    this.router = router;
+
+    return this.registry.load(config, "charts/radar-charts");
+	}
 }

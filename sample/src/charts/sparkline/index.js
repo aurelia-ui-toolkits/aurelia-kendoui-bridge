@@ -1,15 +1,18 @@
-import {useView} from 'aurelia-framework';
+import {useView, inject} from 'aurelia-framework';
+import {Registry} from 'shared/registry';
 
 @useView("shared/showcase.html")
+@inject(Registry)
 export class Index {
 
-  configureRouter(config, router){
-      config.title = 'Sparkline';
-      config.map([
-            { route: ['','basic-use'],            moduleId: './basic-use',                 nav: true,    title:'Basic use' },
-            { route: 'aurelia',                   moduleId: './aurelia',                   nav: true,    title:'Aurelia' }
-      ]);
-
-      this.router = router;
+  constructor(registry) {
+    this.registry = registry;
   }
+
+	configureRouter(config, router){
+
+    this.router = router;
+
+    return this.registry.load(config, "charts/sparkline");
+	}
 }

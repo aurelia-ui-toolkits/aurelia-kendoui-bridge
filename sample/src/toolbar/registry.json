@@ -1,0 +1,10 @@
+{
+  "title": "Toolbar",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "customizing-with-editors": {},
+    "api": {}
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Waterfall charts",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "binding-to-local-data": {},
+    "binding-to-remote-data": {},
+    "horizontal-waterfall": {}
+  }
+}

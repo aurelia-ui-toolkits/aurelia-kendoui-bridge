@@ -1,18 +1,18 @@
-import {useView} from 'aurelia-framework';
+import {useView, inject} from 'aurelia-framework';
+import {Registry} from 'shared/registry';
 
 @useView("shared/showcase.html")
+@inject(Registry)
 export class Index {
 
-  configureRouter(config, router){
-      config.title = 'Box Plot Charts';
-      config.map([
-            { route: ['','basic-use'],            moduleId: './basic-use',                 nav: true,    title:'Basic use' },
-            { route: 'binding-to-remote-data',    moduleId: './binding-to-remote-data',    nav: true,    title:'Binding to remote data' },
-            { route: 'binding-to-local-data',     moduleId: './binding-to-local-data',     nav: true,    title:'Binding to local data' }
-            //{ route: '',            moduleId: '',            nav: true, title:'' },
-
-      ]);
-
-      this.router = router;
+  constructor(registry) {
+    this.registry = registry;
   }
+
+	configureRouter(config, router){
+
+    this.router = router;
+
+    return this.registry.load(config, "charts/box-plot-charts");
+	}
 }

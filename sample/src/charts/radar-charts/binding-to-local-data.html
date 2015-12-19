@@ -1,100 +1,10 @@
 <template>
-    <section>
-        <collapse-panel title="Binding to local data" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'Protein quality, Apple raw'}"
-                          data-source.bind="{data: proteinData}"
-                          series.bind="series"
-                          category-axis.bind="{field: 'abbr'}"
-                          value-axis.bind="{visible: false}"
-                          tooltip.bind="{visible: true}"
-                          legend.bind="{visible: false}">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                    <au-code language="markup">
-                      <au-kendo-chart title.bind="{text: 'Protein quality, Apple raw'}"
-                                      data-source.bind="{data: proteinData}"
-                                      series.bind="series"
-                                      category-axis.bind="{field: 'abbr'}"
-                                      value-axis.bind="{visible: false}"
-                                      tooltip.bind="{visible: true}"
-                                      legend.bind="{visible: false}">
-                      </au-kendo-chart>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                      export class BindingToLocalData {
-                        proteinData = [{
-                            name: "Tryptophan",
-                            abbr: "Trp",
-                            score: 3
-                        }, {
-                            name: "Threonine",
-                            abbr: "Thr",
-                            score: 4
-                        }, {
-                            name: "Isoleucine",
-                            abbr: "Iso",
-                            score: 5
-                        }, {
-                            name: "Leucine",
-                            abbr: "Leu",
-                            score: 5
-                        }, {
-                            name: "Lysine",
-                            abbr: "Lys",
-                            score: 5
-                        }, {
-                            name: "Methionine + Cystine",
-                            abbr: "M+C",
-                            score: 2
-                        }, {
-                            name: "Phenylalanine + Tyrosine",
-                            abbr: "p+T",
-                            score: 3
-                        }, {
-                            name: "Valine",
-                            abbr: "Val",
-                            score: 5
-                        }, {
-                            name: "Histidine",
-                            abbr: "Hys",
-                            score: 4
-                        }];
-
-                        series = [{
-                            name: "Proteins",
-                            type: "radarColumn",
-                            field: "score"
-                        }];
-                      }
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-markdown>
-                        The Kendo UI chart is a data visualization widget which allows you to output a graphical representation of your data. It is useful when you would like to utilize modern browser technologies such as SVG or Canvas  for interactive data visualizations. The chart supports various chart types such as area, bar, line, scatter, pie and donut, etc. as well as stock (OHLC).
-
-
-                        Area chart type is suitable for displaying quantitative data as continuous lines that pass through points defined by their items' values. The portion of the graph beneath the lines is filled with a particular color for each series. The different colors in an Area chart are useful for emphasizing changes in values from several sets of similar data.
-
-
-                        To instantiate a Kendo UI chart, you need to specify an empty div with an id on the page, select this div with a jQuery selector and invoke the kendoChart() function. As a result, the chart is registered as a standard jQuery plugin.
-
-
-                        The chart can fetch data for its series from either local or remote data source. It can also use the Kendo UI DataSource as a mediator for processing data.
-                    </au-markdown>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart title.bind="{text: 'Protein quality, Apple raw'}"
+                  data-source.bind="{data: proteinData}"
+                  series.bind="series"
+                  category-axis.bind="{field: 'abbr'}"
+                  value-axis.bind="{visible: false}"
+                  tooltip.bind="{visible: true}"
+                  legend.bind="{visible: false}">
+  </au-kendo-chart>
 </template>

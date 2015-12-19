@@ -1,0 +1,12 @@
+{
+  "title": "Button",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "api": {},
+    "images": {
+      "files": ["html", "js", "css"]
+    }
+  }
+}

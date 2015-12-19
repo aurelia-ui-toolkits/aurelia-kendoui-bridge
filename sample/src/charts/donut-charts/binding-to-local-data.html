@@ -1,79 +1,9 @@
 <template>
-    <section>
-        <collapse-panel title="Binding to local data" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'Break-up of Spain Electricity Production for 2008'}"
-                          data-source.bind="{data: hydroData}"
-                          legend.bind="legend"
-                          series.bind="series"
-                          series-colors.bind="seriesColors"
-                          tooltip.bind="tooltip">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                    <!-- <li>Description</li> -->
-                </ul>
-                <div>
-                    <au-code language="markup">
-                       <au-kendo-chart title.bind="{text: 'Break-up of Spain Electricity Production for 2008'}"
-                                        data-source.bind="{data: hydroData}"
-                                        legend.bind="legend"
-                                        series.bind="series"
-                                        series-colors.bind="seriesColors"
-                                        tooltip.bind="tooltip">
-                        </au-kendo-chart>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                      export class BindingToLocalData {
-                          hydroData = [{
-                                  "source": "Hydro",
-                                  "percentage": 22,
-                                  "explode": true
-                              }, {
-                                  "source": "Solar",
-                                  "percentage": 2
-                              }, {
-                                  "source": "Nuclear",
-                                  "percentage": 49
-                              }, {
-                                  "source": "Wind",
-                                  "percentage": 27
-                          }];
-
-                          legend = {
-                              position: "bottom"
-                          }
-
-                          series = [{
-                              type: "donut",
-                              field: "percentage",
-                              categoryField: "source",
-                              explodeField: "explode"
-                          }];
-
-                          seriesColors= ["#42a7ff", "#666666", "#999999", "#cccccc"];
-
-                          tooltip = {
-                              visible: true,
-                              template: "${ category } - ${ value }%"
-                          }
-                      }
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-markdown>
-
-                    </au-markdown>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart title.bind="{text: 'Break-up of Spain Electricity Production for 2008'}"
+                  data-source.bind="{data: hydroData}"
+                  legend.bind="legend"
+                  series.bind="series"
+                  series-colors.bind="seriesColors"
+                  tooltip.bind="tooltip">
+  </au-kendo-chart>
 </template>

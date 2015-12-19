@@ -1,51 +1,12 @@
 <template>
-    <section>
-        <collapse-panel title="Remote data" allow-collapse.bind="false" footer="Current value: ${value}">
-            <p><strong>People:</strong></p>
-            <p>
-                <input au-kendo-autocomplete="data-source.bind: datasource;
-                                data-text-field: ProductName;
-                                filter: contains;
-                                min-length: 3"
-                        value.bind="value"
-                        style="width: 300px"></input>
-            </p>
-            <p class="text-muted">Hint: type "che"</p>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                  <au-code language="markup">
-                    <input au-kendo-autocomplete="data-source.bind: datasource;
-                                    data-text-field: ProductName;
-                                    filter: contains;
-                                    min-length: 3"
-                            value.bind="value"
-                            style="width: 300px"></input>
-                  </au-code>
-                </div>
-
-                <div>
-                  <au-code language="javascript">
-                    export class RemoteData {
-                    	constructor() {
-                    		this.datasource = {
-                            type: "odata",
-                            serverFiltering: true,
-                            transport: {
-                                read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Products"
-                            }
-                        };
-                    	}
-                    }
-                  </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <p><strong>People:</strong></p>
+  <p>
+      <input au-kendo-autocomplete="data-source.bind: datasource;
+                      data-text-field: ProductName;
+                      filter: contains;
+                      min-length: 3"
+              value.bind="value"
+              style="width: 300px"></input>
+  </p>
+  <p class="text-muted">Hint: type "che"</p>
 </template>

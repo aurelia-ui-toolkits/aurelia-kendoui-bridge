@@ -1,75 +1,10 @@
 <template>
-    <section>
-        <collapse-panel title="Pan and zoom" allow-collapse.bind="false">
-          <au-kendo-chart render-as="canvas"
-                          data-source.bind="{data: data}"
-                          x-axis.bind="xAxis"
-                          y-axis.bind="yAxis"
-                          series.bind="series"
-                          pannable.bind="true"
-                          zoomable.bind="true">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                    <au-code language="markup">
-                      <au-kendo-chart render-as="canvas"
-                                      data-source.bind="{data: data}"
-                                      x-axis.bind="xAxis"
-                                      y-axis.bind="yAxis"
-                                      series.bind="series"
-                                      pannable.bind="true"
-                                      zoomable.bind="true">
-                      </au-kendo-chart>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                      export class PanAndZoom {
-
-                        data = [];
-
-                        xAxis = {
-                            min: -2,
-                            max: 2,
-                            labels: {
-                                format: "{0:n1}"
-                            }
-                        };
-
-                        yAxis = {
-                            labels: {
-                                format: "{0:n2}"
-                            }
-                        };
-
-                        series = [{
-                            type: "scatterLine",
-                            xField: "x",
-                            yField: "y",
-                            style: "smooth",
-                            markers: {
-                                visible: false
-                            }
-                        }];
-
-                        constructor() {
-                          var step = Math.PI / 4;
-                          for (var x = -50; x < 50; x += step) {
-                              this.data.push({ x: x, y: Math.sin(x) });
-                          }
-                        }
-                      }
-                    </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart render-as="canvas"
+                  data-source.bind="{data: data}"
+                  x-axis.bind="xAxis"
+                  y-axis.bind="yAxis"
+                  series.bind="series"
+                  pannable.bind="true"
+                  zoomable.bind="true">
+  </au-kendo-chart>
 </template>

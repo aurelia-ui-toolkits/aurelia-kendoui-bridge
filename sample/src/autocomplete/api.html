@@ -1,144 +1,36 @@
 <template>
-    <section>
-        <collapse-panel title="API" allow-collapse.bind="false">
-            <p><strong>Pick a color:</strong></p>
-            <p>
-                <input au-kendo-autocomplete="data-source.bind: items;" au-kendo-autocomplete.ref="autocomplete">
-            </p>
-            <p class="text-muted">Hint: type "red"</p>
 
-            <hr>
+  <require from="./api.css"></require>
 
-            <div class="box wide">
-                <div class="box-col">
-                    <h4>Set / Get Value</h4>
-                    <ul class="options">
-                        <li>
-                            <input id="value" type="text" class="k-textbox" ref="setGetInput"/>
-                            <button id="set" class="k-button" click.delegate="autocomplete.setValue(setGetInput.value)">Set value</button>
-                        </li>
-                        <li style="text-align: right;">
-                            <button id="get" class="k-button" click.delegate="getValue()">Get value</button>
-                        </li>
-                    </ul>
-                </div>
-                <div class="box-col">
-                    <h4>Find item</h4>
-                    <ul class="options">
-                        <li>
-                            <input id="word" value="B" class="k-textbox" ref="searchInput"/>
-                            <button id="search" class="k-button" click.delegate="autocomplete.search(searchInput.value)">Search</button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </collapse-panel>
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                    <li>CSS</li>
-                </ul>
-                <div>
-                    <au-code language="markup">
-                      <p><strong>Pick a color:</strong></p>
-                      <p>
-                          <input au-kendo-autocomplete="data-source.bind: items;" au-kendo-autocomplete.ref="autocomplete">
-                      </p>
-                      <p class="text-muted">Hint: type "red"</p>
+  <p><strong>Pick a color:</strong></p>
+  <p>
+      <input au-kendo-autocomplete="data-source.bind: items;" au-kendo-autocomplete.ref="autocomplete">
+  </p>
+  <p class="text-muted">Hint: type "red"</p>
 
-                      <hr>
+  <hr>
 
-                      <div class="box wide">
-                          <div class="box-col">
-                              <h4>Set / Get Value</h4>
-                              <ul class="options">
-                                  <li>
-                                      <input id="value" type="text" class="k-textbox" ref="setGetInput"/>
-                                      <button id="set" class="k-button" click.delegate="autocomplete.setValue(setGetInput.value)">Set value</button>
-                                  </li>
-                                  <li style="text-align: right;">
-                                      <button id="get" class="k-button" click.delegate="getValue()">Get value</button>
-                                  </li>
-                              </ul>
-                          </div>
-                          <div class="box-col">
-                              <h4>Find item</h4>
-                              <ul class="options">
-                                  <li>
-                                      <input id="word" value="B" class="k-textbox" ref="searchInput"/>
-                                      <button id="search" class="k-button" click.delegate="autocomplete.search(searchInput.value)">Search</button>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                    </au-code>
-                </div>
-                <div>
-                    <au-code language="javascript">
-                      export class API {
-                        items = [
-                          "Red-violet",
-                          "Red",
-                          "Red-orange",
-                          "Orange",
-                          "Yellow-orange",
-                          "Yellow",
-                          "Yellow-green",
-                          "Green",
-                          "Blue-green",
-                          "Blue",
-                          "Blue-violet",
-                          "Violet"
-                        ];
-
-                        getValue() {
-                          alert(this.autocomplete.getValue());
-                        }
-                      }
-                    </au-code>
-                </div>
-                <div>
-                    <au-code language="css">
-                      .box .k-textbox {
-                          width: 80px;
-                      }
-                      .box .k-button {
-                          min-width: 80px;
-                      }
-                      li {
-                        margin: 0;
-                        padding: 0;
-                        list-style: none;
-                      }
-                      .box-col {
-                        display: block;
-                        float: left;
-                        padding: 0 3em 1.667em 0;
-                      }
-                    </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
-
-    <style>
-        .box .k-textbox {
-            width: 80px;
-        }
-        .box .k-button {
-            min-width: 80px;
-        }
-        li {
-          margin: 0;
-          padding: 0;
-          list-style: none;
-        }
-        .box-col {
-          display: block;
-          float: left;
-          padding: 0 3em 1.667em 0;
-        }
-    </style>
+  <div class="box wide">
+      <div class="box-col">
+          <h4>Set / Get Value</h4>
+          <ul class="options">
+              <li>
+                  <input id="value" type="text" class="k-textbox" ref="setGetInput"/>
+                  <button id="set" class="k-button" click.delegate="autocomplete.setValue(setGetInput.value)">Set value</button>
+              </li>
+              <li style="text-align: right;">
+                  <button id="get" class="k-button" click.delegate="getValue()">Get value</button>
+              </li>
+          </ul>
+      </div>
+      <div class="box-col">
+          <h4>Find item</h4>
+          <ul class="options">
+              <li>
+                  <input id="word" value="B" class="k-textbox" ref="searchInput"/>
+                  <button id="search" class="k-button" click.delegate="autocomplete.search(searchInput.value)">Search</button>
+              </li>
+          </ul>
+      </div>
+  </div>
 </template>

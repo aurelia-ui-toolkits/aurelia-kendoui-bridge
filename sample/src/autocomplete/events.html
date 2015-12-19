@@ -1,106 +1,18 @@
 <template>
-    <section>
-        <collapse-panel title="Events" allow-collapse.bind="false">
-            <p><strong>Select a state in USA:</strong></p>
-            <p>
-                <input au-kendo-autocomplete="data-source.bind: items;"
-                       kendo-open.trigger="logger.logger.log('open')"
-                       kendo-close.trigger="logger.log('close')"
-                       kendo-change.trigger="logger.log('change')"
-                       kendo-select.trigger="logger.log('select')"
-                       kendo-data-bound.trigger="logger.log('dataBound')"
-                       kendo-filtering.trigger="logger.log('filtering')">
-            </p>
-            <p class="text-muted">Hint: type "m"</p>
+  <p><strong>Select a state in USA:</strong></p>
+  <p>
+      <input au-kendo-autocomplete="data-source.bind: items;"
+             kendo-open.trigger="logger.logger.log('open')"
+             kendo-close.trigger="logger.log('close')"
+             kendo-change.trigger="logger.log('change')"
+             kendo-select.trigger="logger.log('select')"
+             kendo-data-bound.trigger="logger.log('dataBound')"
+             kendo-filtering.trigger="logger.log('filtering')">
+  </p>
+  <p class="text-muted">Hint: type "m"</p>
 
-            <div class="box">
-                <h4>Console log</h4>
-                <logger view-model.ref="logger"></logger>
-            </div>
-        </collapse-panel>
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                    <au-code language="markup">
-                      <input au-kendo-autocomplete="data-source.bind: items;"
-                             kendo-open.trigger="logger.logger.log('open')"
-                             kendo-close.trigger="logger.log('close')"
-                             kendo-change.trigger="logger.log('change')"
-                             kendo-select.trigger="logger.log('select')"
-                             kendo-data-bound.trigger="logger.log('dataBound')"
-                             kendo-filtering.trigger="logger.log('filtering')">
-                    </au-code>
-                </div>
-                <div>
-                    <au-code language="javascript">
-                      export class Events {
-
-                        items = [
-                          "Alabama",
-                          "Alaska",
-                          "American Samoa",
-                          "Arizona",
-                          "Arkansas",
-                          "California",
-                          "Colorado",
-                          "Connecticut",
-                          "Delaware",
-                          "District of Columbia",
-                          "Florida",
-                          "Georgia",
-                          "Guam",
-                          "Hawaii",
-                          "Idaho",
-                          "Illinois",
-                          "Indiana",
-                          "Iowa",
-                          "Kansas",
-                          "Kentucky",
-                          "Louisiana",
-                          "Maine",
-                          "Maryland",
-                          "Massachusetts",
-                          "Michigan",
-                          "Minnesota",
-                          "Mississippi",
-                          "Missouri",
-                          "Montana",
-                          "Nebraska",
-                          "Nevada",
-                          "New Hampshire",
-                          "New Jersey",
-                          "New Mexico",
-                          "New York",
-                          "North Carolina",
-                          "North Dakota",
-                          "Northern Marianas Islands",
-                          "Ohio",
-                          "Oklahoma",
-                          "Oregon",
-                          "Pennsylvania",
-                          "Puerto Rico",
-                          "Rhode Island",
-                          "South Carolina",
-                          "South Dakota",
-                          "Tennessee",
-                          "Texas",
-                          "Utah",
-                          "Vermont",
-                          "Virginia",
-                          "Virgin Islands",
-                          "Washington",
-                          "West Virginia",
-                          "Wisconsin",
-                          "Wyoming"
-                        ];
-                      }
-                    </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <div class="box">
+      <h4>Console log</h4>
+      <logger view-model.ref="logger"></logger>
+  </div>
 </template>

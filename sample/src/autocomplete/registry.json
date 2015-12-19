@@ -1,0 +1,18 @@
+{
+  "title": "Autocomplete",
+  "samples": {
+    "api": {
+      "title": "API",
+      "files": ["html", "js", "css"]
+    },
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "customizing-templates": {
+      "files": ["html", "js", "css", "md"]
+    },
+    "events": {},
+    "remote-data": {},
+    "virtualization": {}
+  }
+}
