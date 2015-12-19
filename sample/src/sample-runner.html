@@ -1,0 +1,11 @@
+<template>
+    <section>
+        <collapse-panel title.bind="sample.title">
+          <compose view-model.bind="sample.path"></compose>
+        </collapse-panel>
+        <collapse-panel title="Code Preview">
+            <div au-kendo-tabstrip au-kendo-tabstrip.ref="tabstrip">
+            </div>
+        </collapse-panel>
+    </section>
+</template>

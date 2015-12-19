@@ -23,6 +23,7 @@ System.config({
     "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.5",
     "aurelia-http-client": "npm:aurelia-http-client@1.0.0-beta.1",
+    "aurelia-loader": "npm:aurelia-loader@1.0.0-beta.1",
     "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1",
     "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1",
     "aurelia-prism-plugin": "github:JeroenVinke/aurelia-prism-plugin@1.0.2",
