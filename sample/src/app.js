@@ -20,6 +20,7 @@ export class App {
             { name:  'radar-charts',     route: 'radar-charts',     moduleId: 'charts/radar-charts/index',     title: 'Radar Charts'},
             { name:  'range-charts',     route: 'range-charts',     moduleId: 'charts/range-charts/index',     title: 'Range Charts'},
             { name:  'scatter-charts',   route: 'scatter-charts',   moduleId: 'charts/scatter-charts/index',   title: 'Scatter charts'},
+            { name:  'sparkline',        route: 'sparkline',        moduleId: 'charts/sparkline/index',        title: 'Sparkline'},
             { name:  'waterfall-charts', route: 'waterfall-charts', moduleId: 'charts/waterfall-charts/index', title: 'Waterfall Charts'},
             { name:  'grid',             route: 'grid',             moduleId: 'grid/index',                    title: 'Grid'}
         ]);

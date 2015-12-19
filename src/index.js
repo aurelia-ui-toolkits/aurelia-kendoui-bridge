@@ -86,6 +86,7 @@ class KendoConfigBuilder {
 
   kendoChart() {
     this.resources.push('chart/chart');
+    this.resources.push('chart/sparkline');
     return this;
   }
 }
