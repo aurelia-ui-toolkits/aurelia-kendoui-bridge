@@ -1,48 +1,39 @@
 export class BindingToRemoteData {
-  datasource = new kendo.data.DataSource({
-    transport: {
-      read: function(options) {
-        return System.import('charts/line-charts/json/spain-electricity.json!json')
-        .then(data => options.success(data));
-      }
-    },
-    sort: {
-        field: "year",
-        dir: "asc"
+    seriesDefaults = {
+        type: ""
+    };
+
+    legend = {
+        visible: false
     }
-  });
 
-  series = [{
-        field: "nuclear",
-        name: "Nuclear"
-    }, {
-        field: "hydro",
-        name: "Hydro"
-    }, {
-        field: "wind",
-        name: "Wind"
-  }];
+    series = [{
 
-  valueAxis = {
-      labels: {
-          format: "N0"
-      },
-      majorUnit: 10000
-  };
+    }];
 
-  categoryAxis = {
-      field: "year",
-      labels: {
-          rotation: -90
-      },
-      crosshair: {
-          visible: true
-      }
-  };
+    valueAxis = {
+        labels: {
+            format: "{0}%"
+        },
+        line: {
+            visible: false
+        },
+        axisCrossingValue: 0
+    };
 
-  tooltip = {
+    categoryAxis = {
+        categories: [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011],
+        line: {
+            visible: false
+        },
+        labels: {
+            padding: {top: 135}
+        }
+    };
+
+    tooltip = {
       visible: true,
-      shared: true,
-      format: "N0"
-  };
+      format: "{0}%",
+      template: "${series.name} ${value}"
+    }
 }

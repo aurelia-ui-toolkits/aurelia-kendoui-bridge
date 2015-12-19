@@ -4,7 +4,7 @@ import {useView} from 'aurelia-framework';
 export class Index {
 
   configureRouter(config, router){
-      config.title = 'Range Chart';
+      config.title = 'Scatter Charts';
       config.map([
             { route: ['','basic-use'],            moduleId: './basic-use',                 nav: true,    title:'Basic use' },
 

@@ -1,48 +1,113 @@
 export class BasicUse {
 
-  seriesDefaults = {
-    type: "line",
-    line: {
-      line: {
-        style: "smooth"
-      }
-    }
-  };
+    height = 120;
 
-  series = [{
-      name: "India",
-      data: [3.907, 7.943, 7.848, 9.284, 9.263, 9.801, 3.890, 8.238, 9.552, 6.855]
-  }, {
-      name: "World",
-      data: [1.988, 2.733, 3.994, 3.464, 4.001, 3.939, 1.333, -2.245, 4.339, 2.727]
-  }, {
-      name: "Haiti",
-      data: [-0.253, 0.362, -3.519, 1.799, 2.252, 3.343, 0.843, 2.877, -5.416, 5.590]
-  }];
+    legend = {
+        visible: false
+    };
 
-  valueAxis = {
-      labels: {
-          format: "{0}%"
-      },
-      line: {
-          visible: false
-      },
-      axisCrossingValue: -10
-  };
+    series_mmHg = [{
+        type: "bullet",
+        data: [[750, 762.5]]
+    }];
 
-  categoryAxis = {
-      categories: [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011],
-      majorGridLines: {
-          visible: false
-      },
-      labels: {
-          rotation: "auto"
-      }
-  };
+    series_hPa = [{
+        type: "bullet",
+        data: [[1001, 1017]]
+    }];
 
-  tooltip = {
+   series_hum = [{
+        type: "bullet",
+        data: [[45, 60]]
+    }];
+
+   series_temp = [{
+        type: "bullet",
+        data: [[25, 22]]
+    }];
+
+    chartArea = {
+        margin: {
+            left: 0
+        }
+    };
+
+    categoryAxis = {
+       majorGridLines: {
+            visible: false
+        },
+        majorTicks: {
+            visible: false
+        }
+    };
+
+   valueAxis_mmHg = {
+       plotBands: [{
+            from: 715, to: 752, color: "#ccc", opacity: .6
+        }, {
+            from: 752, to: 772, color: "#ccc", opacity: .3
+        }],
+        majorGridLines: {
+            visible: false
+        },
+        min: 715,
+        max: 795,
+        minorTicks: {
+            visible: true
+        }
+    };
+
+   valueAxis_hPa = {
+       plotBands: [{
+            from: 715, to: 752, color: "#ccc", opacity: .6
+        }, {
+            from: 752, to: 772, color: "#ccc", opacity: .3
+        }],
+        majorGridLines: {
+            visible: false
+        },
+        min: 715,
+        max: 795,
+        minorTicks: {
+            visible: true
+        }
+    };
+
+   valueAxis_hum = {
+       plotBands: [{
+            from: 715, to: 752, color: "#ccc", opacity: .6
+        }, {
+            from: 752, to: 772, color: "#ccc", opacity: .3
+        }],
+        majorGridLines: {
+            visible: false
+        },
+        min: 715,
+        max: 795,
+        minorTicks: {
+            visible: true
+        }
+    };
+
+   valueAxis_temp = {
+       plotBands: [{
+            from: 715, to: 752, color: "#ccc", opacity: .6
+        }, {
+            from: 752, to: 772, color: "#ccc", opacity: .3
+        }],
+        majorGridLines: {
+            visible: false
+        },
+        min: 715,
+        max: 795,
+        minorTicks: {
+            visible: true
+        }
+    };
+
+    tooltip_mmHg = {
       visible: true,
       format: "{0}%",
       template: "${series.name} ${value}"
-  }
+    }
 }
