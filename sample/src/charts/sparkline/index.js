@@ -7,8 +7,7 @@ export class Index {
       config.title = 'Sparkline';
       config.map([
             { route: ['','basic-use'],            moduleId: './basic-use',                 nav: true,    title:'Basic use' },
-            { route: 'binding-to-remote-data',    moduleId: './binding-to-remote-data',    nav: true,    title:'Binding to remote data' },
-            { route: 'binding-to-local-data',     moduleId: './binding-to-local-data',     nav: true,    title:'Binding to local data' }
+            { route: 'aurelia',                   moduleId: './aurelia',                   nav: true,    title:'Aurelia' }
       ]);
 
       this.router = router;
