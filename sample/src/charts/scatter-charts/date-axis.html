@@ -1,77 +1,9 @@
 <template>
-    <section>
-        <collapse-panel title="Date axis" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'Closing stock prices'}"
-                          data-source.bind="stocksDataSource"
-                          series-defaults.bind="seriesDefaults"
-                          series.bind="[{xField: 'date', yField: 'close'}]"
-                          y-axis.bind="{labels: {format: '${0}', skip: 1}}"
-                          tooltip.bind="tooltip">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                    <au-code language="markup">
-                      <au-kendo-chart title.bind="{text: 'Closing stock prices'}"
-                                      data-source.bind="stocksDataSource"
-                                      series-defaults.bind="seriesDefaults"
-                                      series.bind="[{xField: 'date', yField: 'close'}]"
-                                      y-axis.bind="{labels: {format: '${0}', skip: 1}}"
-                                      tooltip.bind="tooltip">
-                      </au-kendo-chart>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                      export class DateAxis {
-
-                        stocksDataSource = new kendo.data.DataSource({
-                            transport: {
-                              read: function(options) {
-                                return System.import('charts/scatter-charts/json/stock-data-2011.json!json')
-                                .then(data => options.success(data));
-                              }
-                            },
-                            group: {
-                                field: "symbol"
-                            },
-                            sort: {
-                                field: "date",
-                                dir: "asc"
-                            },
-                            schema: {
-                                model: {
-                                    fields: {
-                                        date: {
-                                            type: "date"
-                                        }
-                                    }
-                                }
-                            }
-                        });
-
-                        seriesDefaults = {
-                            type: "scatterLine",
-                            markers: {
-                                size: 6
-                            }
-                        };
-
-                        tooltip: {
-                            visible: true,
-                            format: "{0:d}, ${1}"
-                        };
-                      }
-                    </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart title.bind="{text: 'Closing stock prices'}"
+                  data-source.bind="stocksDataSource"
+                  series-defaults.bind="seriesDefaults"
+                  series.bind="[{xField: 'date', yField: 'close'}]"
+                  y-axis.bind="{labels: {format: '${0}', skip: 1}}"
+                  tooltip.bind="tooltip">
+  </au-kendo-chart>
 </template>

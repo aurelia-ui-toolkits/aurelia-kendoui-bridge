@@ -1,0 +1,15 @@
+{
+  "title": "Button",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "api": {},
+    "binding-to-remote-data": {},
+    "cascading-dropdownlist": {},
+    "customizing-templates": {},
+    "grouping": {},
+    "server-filtering": {},
+    "virtualization": {}
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Donut charts",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "binding-to-local-data": {},
+    "binding-to-remote-data": {}
+  }
+}

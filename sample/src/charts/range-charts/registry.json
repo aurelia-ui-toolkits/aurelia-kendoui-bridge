@@ -1,0 +1,11 @@
+{
+  "title": "Range charts",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["js", "html", "md"]
+    },
+    "binding-to-local-data": {},
+    "binding-to-remote-data": {}
+  }
+}

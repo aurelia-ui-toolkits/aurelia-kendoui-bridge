@@ -1,60 +1,9 @@
 <template>
-    <section>
-        <collapse-panel title="Radar area" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'Employment candidate review'}"
-                          legend.bind="{position: 'bottom'}"
-                          series-defaults.bind="{type: 'radarArea'}"
-                          series.bind="series"
-                          category-axis.bind="categoryAxis"
-                          value-axis.bind="{labels: {format: '{0}%'}, line: {visible: false}}">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                    <au-code language="markup">
-                      <au-kendo-chart title.bind="{text: 'Employment candidate review'}"
-                                      legend.bind="{position: 'bottom'}"
-                                      series-defaults.bind="{type: 'radarArea'}"
-                                      series.bind="series"
-                                      category-axis.bind="categoryAxis"
-                                      value-axis.bind="{labels: {format: '{0}%'}, line: {visible: false}}">
-                      </au-kendo-chart>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                      export class RadarArea {
-                        series = [{
-                             name: "Andrew Dodsworth",
-                             data: [10, 3, 3, 10, 2, 10]
-                         }, {
-                             name: "Margaret Peacock",
-                             data: [9, 7, 7, 9, 6, 7]
-                         }, {
-                             name: "Nancy Callahan",
-                             data: [4, 10, 10, 5, 5, 4]
-                         }];
-
-                         categoryAxis = {
-                             categories: [
-                                 "Experience", "Communication", "Friendliness",
-                                 "Subject knowledge", "Presentation", "Education"
-                             ],
-                             majorGridLines: {
-                                 visible: false
-                             }
-                         };
-                      }
-                    </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart title.bind="{text: 'Employment candidate review'}"
+                  legend.bind="{position: 'bottom'}"
+                  series-defaults.bind="{type: 'radarArea'}"
+                  series.bind="series"
+                  category-axis.bind="categoryAxis"
+                  value-axis.bind="{labels: {format: '{0}%'}, line: {visible: false}}">
+  </au-kendo-chart>
 </template>

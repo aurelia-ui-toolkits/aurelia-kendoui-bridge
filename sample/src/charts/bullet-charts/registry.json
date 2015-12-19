@@ -1,0 +1,12 @@
+{
+  "title": "Bullet charts",
+  "samples": {
+    "basic-use": {
+      "title": "Basic use",
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    },
+    "binding-to-local-data": {},
+    "binding-to-remote-data": {}
+  }
+}

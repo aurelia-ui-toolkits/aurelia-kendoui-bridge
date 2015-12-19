@@ -1,92 +1,10 @@
 <template>
-    <section>
-        <collapse-panel title="Binding to remote data" allow-collapse.bind="false">
-          <au-kendo-chart data-source.bind="datasource"
-                          legend.bind="legend"
-                          series-defaults.bind="seriesDefaults"
-                          series.bind="series"
-                          x-axis.bind="xAxis"
-                          y-axis.bind="yAxis"
-                          tooltip.bind="tooltip">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                    <au-code language="markup">
-                     <au-kendo-chart data-source.bind="datasource"
-                                      legend.bind="legend"
-                                      series-defaults.bind="seriesDefaults"
-                                      series.bind="series"
-                                      xAxis.bind="xAxis"
-                                      yAxis.bind="yAxis"
-                                      tooltip.bind="tooltip">
-                      </au-kendo-chart>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                      export class BindingToRemoteData {
-                        datasource = new kendo.data.DataSource({
-                          transport: {
-                            read: function(options) {
-                              return System.import('charts/bubble-charts/json/crime-stats.json!json')
-                              .then(data => options.success(data));
-                            }
-                          },
-                        });
-
-                        series = [{
-                          type: "bubble",
-                          xField: "murder",
-                          yField: "burglary",
-                          sizeField: "population",
-                          categoryField: "state"
-                        }];
-
-                        xAxis = {
-                              labels: {
-                                  format: "{0:N0}"
-                              },
-                              title: {
-                                  text: "Murders per 100,000 population"
-                              }
-                          };
-
-                          yAxis = {
-                              labels: {
-                                  format: "{0:N0}"
-                              },
-                              title: {
-                                  text: "Burglaries per 100,000 population"
-                              }
-                          };
-
-                        tooltip = {
-                          visible: true,
-                          format: "{3}: Population {2:N0}"
-                        };
-                      }
-                    </au-code>
-                </div>
-
-               <div>
-                    <au-markdown>
-                    The Kendo UI chart supports binding to remote data via RESTful services.
-
-                    For remote data binding you need to specify a remote endpoint or a web service returning data in JSON/JSONP format and utilize the DataSource in-between the chart and the underlying data. To make the connection to the remote endpoint and process the data properly, the data source needs information about the web service URL(s), the request type, the response data type, and the structure (schema) of the response, in case it is more complex than a plain array of objects.
-
-                    In this example the chart fetches its data from a remote service via the DataSource read configuration. You can find more information about the data-binding capabilities of the Kendo UI chart in this [help article](http://docs.telerik.com/kendo-ui/dataviz/chart/data-binding).
-                    </au-markdown>
-                </div>
-
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart data-source.bind="datasource"
+                  legend.bind="legend"
+                  series-defaults.bind="seriesDefaults"
+                  series.bind="series"
+                  x-axis.bind="xAxis"
+                  y-axis.bind="yAxis"
+                  tooltip.bind="tooltip">
+  </au-kendo-chart>
 </template>

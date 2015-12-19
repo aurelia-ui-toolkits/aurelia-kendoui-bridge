@@ -1,71 +1,10 @@
 <template>
-    <section>
-        <collapse-panel title="Error bars" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'GDP growth and standard deviation'}"
-                          legend.bind="{visible: false}"
-                          series-defaults.bind="{type: 'area'}"
-                          series.bind="series"
-                          value-axis.bind="valueAxis"
-                          category-axis.bind="categoryAxis"
-                          tooltip.bind="tooltip">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                    <au-code language="markup">
-                      <au-kendo-chart title.bind="{text: 'GDP growth and standard deviation'}"
-                                      legend.bind="{visible: false}"
-                                      series-defaults.bind="{type: 'area'}"
-                                      series.bind="series"
-                                      value-axis.bind="valueAxis"
-                                      category-axis.bind="categoryAxis"
-                                      tooltip.bind="tooltip">
-                      </au-kendo-chart>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                      export class ErrorBars {
-                        series = [{
-                            data: [7.943, 7.848, 9.284, 9.263, 9.801, 3.890, 8.238, 9.552],
-                            errorBars: {
-                                value: "stddev"
-                            }
-                        }];
-
-                        valueAxis = {
-                            labels: {
-                                format: "{0}%"
-                            },
-                            line: {
-                                visible: false
-                            },
-                            axisCrossingValue: 0
-                        };
-
-                        categoryAxis = {
-                            categories: [2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010],
-                            line: {
-                                visible: false
-                            }
-                        };
-
-                        tooltip = {
-                            visible: true,
-                            format: "{0}%",
-                            template: "${value} (σ = ${kendo.toString(high - low, 'N2')})"
-                        }
-                      }
-                    </au-code>
-                </div
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart title.bind="{text: 'GDP growth and standard deviation'}"
+                  legend.bind="{visible: false}"
+                  series-defaults.bind="{type: 'area'}"
+                  series.bind="series"
+                  value-axis.bind="valueAxis"
+                  category-axis.bind="categoryAxis"
+                  tooltip.bind="tooltip">
+  </au-kendo-chart>
 </template>

@@ -1,0 +1,13 @@
+{
+  "title": "Scheduler",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+    },
+    "api": {},
+    "horizontal-grouping": {},
+    "resources": {},
+    "timeline-view": {},
+    "vertical-grouping": {}
+  }
+}

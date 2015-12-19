@@ -1,49 +1,8 @@
 <template>
-    <section>
-        <collapse-panel title="API" allow-collapse.bind="false" footer="Click the buttons below to enable/disable me">
-            <button au-kendo-button="enable.bind: enabled" class="k-primary" kendo-click.trigger="test()">Click me</button>
-        </collapse-panel>
-        <div class="well panel panel-default">
-            <button au-kendo-button click.delegate="disable()">Disable</button>
-            <button au-kendo-button click.delegate="enable()">Enable</button>
-        </div>
+  <button au-kendo-button="enable.bind: enabled" class="k-primary" kendo-click.trigger="test()">Click me</button>
 
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                  <au-code language="markup">
-                      <button au-kendo-button="enable.bind: enabled" class="k-primary" kendo-click.trigger="test()">Click me</button>
-
-                      <button au-kendo-button click.delegate="disable()">Disable</button>
-                      <button au-kendo-button click.delegate="enable()">Enable</button>
-                  </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                        export class Api {
-                            enabled = true;
-
-                            disable() {
-                                this.enabled = false;
-                            }
-
-                            enable() {
-                                this.enabled = true;
-                            }
-
-                            test() {
-                                alert("You clicked me");
-                            }
-                        }
-                    </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-
-    </section>
+  <div class="well panel panel-default">
+      <button au-kendo-button click.delegate="disable()">Disable</button>
+      <button au-kendo-button click.delegate="enable()">Enable</button>
+  </div>
 </template>

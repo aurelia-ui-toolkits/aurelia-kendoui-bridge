@@ -1,110 +1,14 @@
 <template>
-    <section>
-        <collapse-panel title="Basic use" allow-collapse.bind="false">
-          <au-kendo-grid data-source.bind="datasource" auto-bind.bind="false" pageable.bind="pageable" sortable.bind="true">
-            <au-col title="Contact Name" field="ContactName">
-              <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
-              <div class='customer-name'>${ContactName}</div>
-            </au-col>
-            <au-col title="Contact Name" field="ContactName"></au-col>
-            <au-col title="Contact Title" field="ContactTitle"></au-col>
-            <au-col title="Company Name" field="CompanyName"></au-col>
-            <au-col field="Country"></au-col>
-          </au-kendo-grid>
-        </collapse-panel>
+    <require from="./basic-use.css"></require>
 
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                    <li>CSS</li>
-                </ul>
-                <div>
-                  <au-code language="markup">
-                    <au-kendo-grid data-source.bind="datasource" auto-bind.bind="false" pageable.bind="pageable" sortable.bind="true">
-                      <au-col title="Contact Name" field="ContactName">
-                        <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
-                        <div class='customer-name'>${ContactName}</div>
-                      </au-col>
-                      <au-col title="Contact Name" field="ContactName"></au-col>
-                      <au-col title="Contact Title" field="ContactTitle"></au-col>
-                      <au-col title="Company Name" field="CompanyName"></au-col>
-                      <au-col field="Country"></au-col>
-                    </au-kendo-grid>
-                  </au-code>
-                </div>
-                <div>
-                    <au-code language="javascript">
-                      export class BasicUse {
-
-                        pageable = {
-                          refresh: true,
-                          pageSizes: true,
-                          buttonCount: 5
-                        };
-
-                        constructor() {
-                          this.datasource = {
-                            type: "odata",
-                            transport: {
-                                read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers"
-                            },
-                            pageSize: 20
-                          };
-                        }
-                      }
-                    </au-code>
-                </div>
-
-                <div>
-                  <au-code language="css">
-                    <style type="text/css">
-                        .customer-photo {
-                            display: inline-block;
-                            width: 32px;
-                            height: 32px;
-                            border-radius: 50%;
-                            background-size: 32px 35px;
-                            background-position: center center;
-                            vertical-align: middle;
-                            line-height: 32px;
-                            box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
-                            margin-left: 5px;
-                        }
-
-                        .customer-name {
-                            display: inline-block;
-                            vertical-align: middle;
-                            line-height: 32px;
-                            padding-left: 3px;
-                        }
-                    </style>
-                  </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
-
-    <style type="text/css">
-        .customer-photo {
-            display: inline-block;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background-size: 32px 35px;
-            background-position: center center;
-            vertical-align: middle;
-            line-height: 32px;
-            box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
-            margin-left: 5px;
-        }
-
-        .customer-name {
-            display: inline-block;
-            vertical-align: middle;
-            line-height: 32px;
-            padding-left: 3px;
-        }
-    </style>
+    <au-kendo-grid data-source.bind="datasource" auto-bind.bind="false" pageable.bind="pageable" sortable.bind="true">
+      <au-col title="Contact Name" field="ContactName">
+        <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+        <div class='customer-name'>${ContactName}</div>
+      </au-col>
+      <au-col title="Contact Name" field="ContactName"></au-col>
+      <au-col title="Contact Title" field="ContactTitle"></au-col>
+      <au-col title="Company Name" field="CompanyName"></au-col>
+      <au-col field="Country"></au-col>
+    </au-kendo-grid>
 </template>

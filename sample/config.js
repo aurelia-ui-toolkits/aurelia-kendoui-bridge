@@ -26,7 +26,6 @@ System.config({
     "aurelia-loader": "npm:aurelia-loader@1.0.0-beta.1",
     "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1",
     "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1",
-    "aurelia-prism-plugin": "github:JeroenVinke/aurelia-prism-plugin@1.0.2",
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.0.2",
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
@@ -36,10 +35,7 @@ System.config({
     "font-awesome": "npm:font-awesome@4.5.0",
     "json": "github:systemjs/plugin-json@0.1.0",
     "showdown": "github:showdownjs/showdown@1.3.0",
-    "github:JeroenVinke/aurelia-prism-plugin@1.0.2": {
-      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.5",
-      "prism": "github:PrismJS/prism@1.3.0"
-    },
+    "prism": "github:PrismJS/prism@1.3.0",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },

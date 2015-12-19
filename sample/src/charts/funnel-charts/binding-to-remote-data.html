@@ -1,41 +1,10 @@
 <template>
-    <section>
-        <collapse-panel title="Bining to remote data" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: ''}"
-                          legend.bind="legend"
-                          series-defaults.bind="seriesDefaults"
-                          series.bind="series"
-                          value-axis.bind="valueAxis"
-                          category-axis.bind="categoryAxis"
-                          tooltip.bind="tooltip">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                    <!-- <li>Description</li> -->
-                </ul>
-                <div>
-                    <au-code language="markup">
-
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-markdown>
-
-                    </au-markdown>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart title.bind="{text: ''}"
+                  legend.bind="legend"
+                  series-defaults.bind="seriesDefaults"
+                  series.bind="series"
+                  value-axis.bind="valueAxis"
+                  category-axis.bind="categoryAxis"
+                  tooltip.bind="tooltip">
+  </au-kendo-chart>
 </template>

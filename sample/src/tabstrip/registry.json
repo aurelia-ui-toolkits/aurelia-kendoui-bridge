@@ -1,0 +1,13 @@
+{
+  "title": "Tabstrip",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+    },
+    "images": {},
+    "api": {},
+    "scrollable-tabs": {},
+    "tab-position": {},
+    "animation-effects": {}
+  }
+}

@@ -1,47 +1,18 @@
-import {useView} from 'aurelia-framework';
+import {useView, inject} from 'aurelia-framework';
+import {Registry} from 'shared/registry';
 
 @useView("shared/showcase.html")
+@inject(Registry)
 export class Index {
 
-    configureRouter(config, router) {
-        config.title = 'Combobox';
-        config.map([{
-            route: ['', 'basic-use'],
-            moduleId: './basic-use',
-            nav: true,
-            title: 'Basic use'
-        }, {
-            route: 'server-filtering',
-            moduleId: './server-filtering',
-            nav: true,
-            title: 'Server filtering'
-        },  {
-            route: 'virtualization',
-            moduleId: './virtualization',
-            nav: true,
-            title: 'Virtualization'
-        },  {
-            route: 'grouping',
-            moduleId: './grouping',
-            nav: true,
-            title: 'Grouping'
-        },  {
-            route: 'customizing-templates',
-            moduleId: './customizing-templates',
-            nav: true,
-            title: 'Customizing templates'
-        },  {
-            route: 'cascading-combobox',
-            moduleId: './cascading-combobox',
-            nav: true,
-            title: 'Cascading combobox'
-        },  {
-            route: 'api',
-            moduleId: './api',
-            nav: true,
-            title: 'API'
-        }]);
+  constructor(registry) {
+    this.registry = registry;
+  }
 
-        this.router = router;
-    }
+	configureRouter(config, router){
+
+    this.router = router;
+
+    return this.registry.load(config, "combobox");
+	}
 }

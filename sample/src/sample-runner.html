@@ -5,6 +5,28 @@
         </collapse-panel>
         <collapse-panel title="Code Preview">
             <div au-kendo-tabstrip au-kendo-tabstrip.ref="tabstrip">
+                <ul>
+                    <li class="k-state-active" show.bind="sample.html">HTML</li>
+                    <li show.bind="sample.js">Javascript</li>
+                    <li show.bind="sample.css">CSS</li>
+                    <li show.bind="sample.md">Documentation</li>
+                </ul>
+                <div>
+                    <au-code language="markup" url.bind="sample.html">
+                    </au-code>
+                </div>
+                <div>
+                    <au-code language="javascript" url.bind="sample.js">
+                    </au-code>
+                </div>
+                <div>
+                    <au-code language="css" url.bind="sample.css">
+                    </au-code>
+                </div>
+                <div>
+                    <au-markdown url.bind="sample.md">
+                    </au-markdown>
+                </div>
             </div>
         </collapse-panel>
     </section>

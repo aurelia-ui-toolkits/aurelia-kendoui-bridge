@@ -1,50 +1,7 @@
 <template>
-    <section>
-        <collapse-panel title="Binding to remote data" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'Antenna Gain (dB)'}"
-                          data-source.bind="dataSource"
-                          series.bind="series"
-                          x-axis.bind="{majorUnit: 30}">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                    <au-code language="markup">
-                      <au-kendo-chart title.bind="{text: 'Antenna Gain (dB)'}"
-                                      data-source.bind="dataSource"
-                                      series.bind="series"
-                                      x-axis.bind="{majorUnit: 30}">
-                      </au-kendo-chart>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                      export class BindingToRemoteData {
-                        dataSource = {
-                            transport: {
-                                read: function(options) {
-                                  return System.import('charts/polar-charts/json/antenna-gain.json!json')
-                                  .then(data => options.success(data));
-                                }
-                            }
-                        };
-
-                        series = [{
-                            type: "polarLine",
-                            xField: "azimuth",
-                            yField: "gain"
-                        }];
-                      }
-                    </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart title.bind="{text: 'Antenna Gain (dB)'}"
+                  data-source.bind="dataSource"
+                  series.bind="series"
+                  x-axis.bind="{majorUnit: 30}">
+  </au-kendo-chart>
 </template>

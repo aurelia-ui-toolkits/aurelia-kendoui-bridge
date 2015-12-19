@@ -5,12 +5,13 @@ export function configure(aurelia) {
         .standardConfiguration()
         .developmentLogging()
         .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro())
-        .plugin('aurelia-prism-plugin');
+        // .plugin('aurelia-prism-plugin');
 
 
     aurelia.use.globalResources('shared/collapse-panel');
  	aurelia.use.globalResources('shared/markdown');
  	aurelia.use.globalResources('shared/logger');
+ 	aurelia.use.globalResources('shared/au-code');
 
     aurelia.start().then(a => a.setRoot('app'));
 }

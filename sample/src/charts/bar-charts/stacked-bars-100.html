@@ -1,97 +1,10 @@
 <template>
-    <section>
-        <collapse-panel title="100 percent stacked bars" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'Olympic Medals won by USA'}"
-                          legend.bind="legend"
-                          series-defaults.bind="seriesDefaults"
-                          series.bind="series"
-                          value-axis.bind="valueAxis"
-                          category-axis.bind="categoryAxis"
-                          tooltip.bind="tooltip">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                     <!-- <li>Description</li> -->
-               </ul>
-                <div>
-                    <au-code language="markup">
-                      <au-kendo-chart title.bind="{text: 'Olympic Medals won by USA'}"
-                                      legend.bind="legend"
-                                      series-defaults.bind="seriesDefaults"
-                                      series.bind="series"
-                                      value-axis.bind="valueAxis"
-                                      category-axis.bind="categoryAxis"
-                                      tooltip.bind="tooltip">
-                      </au-kendo-chart>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                        export class StackedBars100 {
-
-                          legend= {
-                              visible: false
-                          };
-
-                          seriesDefaults= {
-                              type: "bar",
-                              stack: {
-                                type: "100%"
-                              }
-                          };
-
-                          series = [{
-                              name: "Gold Medals",
-                              data: [40, 32, 34, 36, 45, 33, 34, 83, 36, 37, 44, 37, 35, 36, 46],
-                              color: "#f3ac32"
-                          }, {
-                              name: "Silver Medals",
-                              data: [19, 25, 21, 26, 28, 31, 35, 60, 31, 34, 32, 24, 40, 38, 29],
-                              color: "#b8b8b8"
-                          }, {
-                              name: "Bronze Medals",
-                              data: [17, 17, 16, 28, 34, 30, 25, 30, 27, 37, 25, 33, 26, 36, 29],
-                              color: "#bb6e36"
-                          }];
-
-                          valueAxis = {
-                              line: {
-                                  visible: false
-                              },
-                              minorGridLines: {
-                                  visible: true
-                              }
-                          };
-
-                          categoryAxis = {
-                            categories: [1952, 1956, 1960, 1964, 1968, 1972, 1976, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012],
-                            majorGridLines: {
-                                visible: false
-                            }
-                          };
-
-                          tooltip = {
-                              visible: true,
-                              template: "#= series.name #: #= value #%"
-                          }
-                        }
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-markdown>
-                    The Bar chart type supports 100% stacking, where the stacked series values are rescaled in a way they add up to 100%.
-                    You can enable the 100% stack feature through the seriesDefaults-> stack -> type chart attribute.
-                    For more information inspect the [seriesDefaults](http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart#configuration-seriesDefaults) option in the documentation.
-                    </au-markdown>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart title.bind="{text: 'Olympic Medals won by USA'}"
+                  legend.bind="legend"
+                  series-defaults.bind="seriesDefaults"
+                  series.bind="series"
+                  value-axis.bind="valueAxis"
+                  category-axis.bind="categoryAxis"
+                  tooltip.bind="tooltip">
+  </au-kendo-chart>
 </template>

@@ -1,48 +1,12 @@
 <template>
-    <section>
-        <collapse-panel title="Pan and zoom" allow-collapse.bind="false">
-
-            <div class="box wide">
-                <p>Use SHIFT + Mouse Drag Region Selection combination on mouse-enabled devices to zoom in data for a specific period of time</p>
-            </div>
-            <au-kendo-chart render-as="canvas"
-                    data-source.bind="{data: data}"
-                    category-axis.bind="categoryAxis"
-                    series.bind="series"
-                    pannable.bind="{lock: 'y'}"
-                    zoomable.bind="zoomable">
-            </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                     <!-- <li>Description</li> -->
-               </ul>
-                <div>
-                    <au-code language="markup">
-
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-markdown>
-                    The Pan and Zoom features allow you to navigate through and zoom in/out the Telerik Kendo UI Bar Chart.
-
-                    You can enable the pan feature through the pannable setting as well as to lock either the X or Y axis using the nested lock attribute.
-
-                    To enable the zoom set the zoomable configuration option. You can also fine tune the mouse wheel and selection zooming through the available mousewheel and selection nested properties.
-                    </au-markdown>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <div class="box wide">
+      <p>Use SHIFT + Mouse Drag Region Selection combination on mouse-enabled devices to zoom in data for a specific period of time</p>
+  </div>
+  <au-kendo-chart render-as="canvas"
+          data-source.bind="{data: data}"
+          category-axis.bind="categoryAxis"
+          series.bind="series"
+          pannable.bind="{lock: 'y'}"
+          zoomable.bind="zoomable">
+  </au-kendo-chart>
 </template>

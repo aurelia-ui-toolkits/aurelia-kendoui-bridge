@@ -1,0 +1,14 @@
+{
+  "title": "Button",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "api": {},
+    "cascading-combobox": {},
+    "customizing-templates": {},
+    "grouping": {},
+    "server-filtering": {},
+    "virtualization": {}
+  }
+}

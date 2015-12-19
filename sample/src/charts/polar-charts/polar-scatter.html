@@ -1,49 +1,8 @@
 <template>
-    <section>
-        <collapse-panel title="Polar scatter" allow-collapse.bind="false">
-          <au-kendo-chart title.bind="{text: 'Buck spread'}"
-                          legend.bind="{position: 'bottom'}"
-                          series-defaults.bind="{type: 'polarScatter'}"
-                          series.bind="series"
-                          y-axis.bind="{max: 10}">
-          </au-kendo-chart>
-        </collapse-panel>
-
-        <collapse-panel title="Code Preview">
-            <div au-kendo-tabstrip>
-                <ul>
-                    <li class="k-state-active">HTML</li>
-                    <li>Code</li>
-                </ul>
-                <div>
-                    <au-code language="markup">
-                      <au-kendo-chart title.bind="{text: 'Buck spread'}"
-                                      legend.bind="{position: 'bottom'}"
-                                      series-defaults.bind="{type: 'polarScatter'}"
-                                      series.bind="series"
-                                      y-axis.bind="{max: 10}">
-                      </au-kendo-chart>
-                    </au-code>
-                </div>
-
-                <div>
-                    <au-code language="javascript">
-                      export class PolarScatter {
-                        series = [{
-                            name: "at 3 ft",
-                            data: [
-                                [150, 3], [150, 3.1], [152, 3.2], [152, 3.1], [151, 3.2], [153, 3.3], [149, 3]
-                            ]
-                        }, {
-                            name: "at 7 ft",
-                            data: [
-                                [270, 5], [250, 7], [259, 4], [270, 7], [265, 5], [250, 7], [263, 8], [261, 5]
-                            ]
-                        }];
-                      }
-                    </au-code>
-                </div>
-            </div>
-        </collapse-panel>
-    </section>
+  <au-kendo-chart title.bind="{text: 'Buck spread'}"
+                  legend.bind="{position: 'bottom'}"
+                  series-defaults.bind="{type: 'polarScatter'}"
+                  series.bind="series"
+                  y-axis.bind="{max: 10}">
+  </au-kendo-chart>
 </template>
