@@ -1,10 +1,12 @@
 <template>
-  <au-kendo-chart title.bind="{text: ''}"
-                  legend.bind="legend"
-                  series-defaults.bind="seriesDefaults"
-                  series.bind="series"
-                  value-axis.bind="valueAxis"
-                  category-axis.bind="categoryAxis"
-                  tooltip.bind="tooltip">
-  </au-kendo-chart>
+    <au-kendo-chart
+                    title.bind="{text: 'April sales per day'}"
+                    height.bind='120'
+                    data-source.bind="datasource"
+                    series.bind="series"
+                    chart-area.bind="chartArea"
+                    category-axis.bind="categoryAxis"
+                    value-axis.bind="valueAxis"
+                    tooltip.bind="tooltip">
+    </au-kendo-chart>
 </template>

@@ -41,7 +41,7 @@ export class BasicUse {
         }
     };
 
-   valueAxis_mmHg = {
+   valueAxis_mmHg = [{
        plotBands: [{
             from: 715, to: 752, color: "#ccc", opacity: .6
         }, {
@@ -55,55 +55,57 @@ export class BasicUse {
         minorTicks: {
             visible: true
         }
-    };
+    }];
 
-   valueAxis_hPa = {
+   valueAxis_hPa = [{
        plotBands: [{
-            from: 715, to: 752, color: "#ccc", opacity: .6
+            from: 955, to: 1002, color: "#ccc", opacity: .6
         }, {
-            from: 752, to: 772, color: "#ccc", opacity: .3
+            from: 1002, to: 1027, color: "#ccc", opacity: .3
         }],
         majorGridLines: {
             visible: false
         },
-        min: 715,
-        max: 795,
+        min: 955,
+        max: 1055,
         minorTicks: {
             visible: true
         }
-    };
+    }];
 
-   valueAxis_hum = {
-       plotBands: [{
-            from: 715, to: 752, color: "#ccc", opacity: .6
+   valueAxis_hum = [{
+        plotBands: [{
+            from: 0, to: 33, color: "#ccc", opacity: .6
         }, {
-            from: 752, to: 772, color: "#ccc", opacity: .3
+            from: 33, to: 66, color: "#ccc", opacity: .3
         }],
         majorGridLines: {
             visible: false
         },
-        min: 715,
-        max: 795,
+        min: 0,
+        max: 100,
         minorTicks: {
             visible: true
         }
-    };
+    }];
 
-   valueAxis_temp = {
-       plotBands: [{
-            from: 715, to: 752, color: "#ccc", opacity: .6
+   valueAxis_temp = [{
+        plotBands: [{
+            from: 0, to: 10, color: "yellow", opacity: .3
         }, {
-            from: 752, to: 772, color: "#ccc", opacity: .3
+            from: 10, to: 20, color: "orange", opacity: .3
+        }, {
+            from: 20, to: 30, color: "red", opacity: .3
         }],
         majorGridLines: {
             visible: false
         },
-        min: 715,
-        max: 795,
+        min: 0,
+        max: 30,
         minorTicks: {
             visible: true
         }
-    };
+    }];
 
     tooltip_mmHg = {
       visible: true,

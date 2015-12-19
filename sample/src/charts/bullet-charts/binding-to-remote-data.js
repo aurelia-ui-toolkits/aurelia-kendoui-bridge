@@ -1,39 +1,56 @@
 export class BindingToRemoteData {
-    seriesDefaults = {
-        type: ""
-    };
+    datasource = new kendo.data.DataSource({
+        transport: {
+          read: function(options) {
+            return System.import('charts/area-charts/json/april-sales.json!json')
+            .then(data => options.success(data));
+          }
+        }
+    });
 
     legend = {
         visible: false
     }
 
     series = [{
-
+        type: "verticalBullet",
+        currentField: "current",
+        targetField: "target",
+        target: {
+            color: "#aaaaaa"
+        },
+        gap: 4
     }];
 
-    valueAxis = {
-        labels: {
-            format: "{0}%"
-        },
-        line: {
+   categoryAxis = {
+       majorGridLines: {
             visible: false
         },
-        axisCrossingValue: 0
+        field: "category"
     };
 
-    categoryAxis = {
-        categories: [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011],
-        line: {
+    valueAxis = {
+        min: 2000,
+        max: 11000,
+        majorGridLines: {
             visible: false
         },
-        labels: {
-            padding: {top: 135}
-        }
+        minorTicks: {
+            visible: true
+        },
+        plotBands: [{
+            from: 1000, to: 3000, color: "#aaaaaa", opacity: 0.55
+        }, {
+            from: 3000, to: 5000, color: "#aaaaaa", opacity: 0.4
+        }, {
+            from: 5000, to: 8000, color: "#aaaaaa", opacity: 0.25
+        }, {
+            from: 8000, to: 11000, color: "#aaaaaa", opacity: 0.1
+        }]
     };
 
     tooltip = {
-      visible: true,
-      format: "{0}%",
-      template: "${series.name} ${value}"
+        visible: true,
+        template: "Target: #= value.target # items<br /> Actual: #= value.current # items"
     }
 }

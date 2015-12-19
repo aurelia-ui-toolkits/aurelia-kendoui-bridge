@@ -1,27 +1,66 @@
 <template>
-  <au-kendo-chart
-                  height.bind='120'
-                  legend.bind="legend"
-                  series.bind="series_mmHg"
-                  chart-area.bind="chartArea"
-                  category-axis.bind="categoryAxis_mmHg"
-                  value-axis.bind="valueAxis_mmHg"
-                  tooltip.bind="tooltip">
-  </au-kendo-chart>
 
-  <br>
-  <br>
+  <table class="history">
+            <tr>
+                <td class="item">mmHg</td>
+                <td>
+                  <au-kendo-chart
+                                  height.bind='120'
+                                  series.bind="series_mmHg"
+                                  chart-area.bind="chartArea"
+                                  category-axis.bind="categoryAxis_mmHg"
+                                  value-axis.bind="valueAxis_mmHg"
+                                  tooltip.bind="tooltip">
+                  </au-kendo-chart>
+                    <br>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td class="item">hPa</td>
+                <td>
+                  <au-kendo-chart
+                                height.bind='120'
+                                series.bind="series_hPa"
+                                chart-area.bind="chartArea"
+                                category-axis.bind="categoryAxis_hPa"
+                                value-axis.bind="valueAxis_hPa"
+                                tooltip.bind="tooltip">
+                  </au-kendo-chart>
+                    <br>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td class="item">hum</td>
+                <td>
+                  <au-kendo-chart
+                                height.bind='120'
+                                series.bind="series_hum"
+                                chart-area.bind="chartArea"
+                                category-axis.bind="categoryAxis_hum"
+                                value-axis.bind="valueAxis_hum"
+                                tooltip.bind="tooltip">
+                  </au-kendo-chart>
+                    <br>
+                    <br>
+                </td>
+            </tr>
+            <tr>
+                <td class="item">temp</td>
+                <td>
+                  <au-kendo-chart
+                                height.bind='120'
+                                series.bind="series_temp"
+                                chart-area.bind="chartArea"
+                                category-axis.bind="categoryAxis_temp"
+                                value-axis.bind="valueAxis_temp"
+                                tooltip.bind="tooltip">
+                  </au-kendo-chart>
+                    <br>
+                    <br>
+                </td>
+            </tr>
+  </table>
 
-  <au-kendo-chart
-                height.bind='120'
-                legend.bind="legend"
-                series.bind="series_hPa"
-                chart-area.bind="chartArea"
-                category-axis.bind="categoryAxis_hPa"
-                value-axis.bind="valueAxis_hPa"
-                tooltip.bind="tooltip">
-  </au-kendo-chart>
-
-  <br>
-  <br>
 </template>

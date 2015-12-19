@@ -1,10 +1,30 @@
 <template>
-  <au-kendo-chart title.bind="{text: ''}"
-                  legend.bind="legend"
-                  series-defaults.bind="seriesDefaults"
-                  series.bind="series"
-                  value-axis.bind="valueAxis"
-                  category-axis.bind="categoryAxis"
-                  tooltip.bind="tooltip">
-  </au-kendo-chart>
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-6">
+            <au-kendo-chart
+                          height.bind='120'
+                          data-source.bind="mmhgData"
+                          series.bind="series_mmHg"
+                          chart-area.bind="chartArea"
+                          category-axis.bind="categoryAxis_mmHg"
+                          value-axis.bind="valueAxis_mmHg"
+                          tooltip.bind="tooltip">
+            </au-kendo-chart>
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+            <au-kendo-chart
+                            height.bind='120'
+                            data-source.bind="hPaData"
+                            series.bind="series_hPa"
+                            chart-area.bind="chartArea"
+                            category-axis.bind="categoryAxis_hPa"
+                            value-axis.bind="valueAxis_hPa"
+                            tooltip.bind="tooltip">
+            </au-kendo-chart>
+        </div>
+
+    </div>
+
 </template>
