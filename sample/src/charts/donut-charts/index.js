@@ -4,7 +4,7 @@ import {useView} from 'aurelia-framework';
 export class Index {
 
   configureRouter(config, router){
-      config.title = 'Pie Charts';
+      config.title = 'Donut Charts';
       config.map([
             { route: ['','basic-use'],            moduleId: './basic-use',                 nav: true,    title:'Basic use' },
             { route: 'binding-to-remote-data',    moduleId: './binding-to-remote-data',    nav: true,    title:'Binding to remote data' },
