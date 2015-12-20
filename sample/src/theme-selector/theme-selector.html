@@ -1,0 +1,17 @@
+<template>
+  <div class="tc-theme-list">
+      <div class="tc-column">
+        <h4>Themes</h4>
+        <ul class="themes-grid" ref="listView"></ul>
+      </div>
+  </div>
+
+  <script ref="template" type="text/x-kendo-template">
+      <li class="tc-item">
+          # for (var i = 0; i < colors.length; i++) { #
+              <span class="tc-color" style="background-color: #= colors[i] #"></span>
+          # } #
+          <span class="tc-name">#: name #</span>
+      </li>
+  </script>
+</template>

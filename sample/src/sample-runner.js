@@ -1,12 +1,14 @@
 import {inject} from 'aurelia-framework';
-import {activationStrategy} from 'aurelia-router';
-import {Loader}  from 'aurelia-loader';
+import {activationStrategy, Router} from 'aurelia-router';
+import {EventAggregator} from 'aurelia-event-aggregator';
+import {TaskQueue} from 'aurelia-framework';
 
-@inject(Loader)
+@inject(EventAggregator, TaskQueue)
 export class SampleRunner {
 
-  constructor(loader) {
-    this.loader = loader;
+  constructor(ea, taskQueue) {
+    this.taskQueue = taskQueue;
+    this.ea = ea;
   }
 
   activate(params, route) {
@@ -15,6 +17,20 @@ export class SampleRunner {
     if(!sample) throw new Error("Route does not contain a 'sample' property");
 
     this.sample = sample;
+
+    this.unsubscribe = this.ea.subscribe("kendo:skinChange", () => this.restart())
+  }
+
+  restart() {
+    let old = this.sample;
+    this.sample = undefined;
+    this.taskQueue.queueTask(() => {
+      this.sample = old;
+    });
+  }
+
+  detached() {
+    this.unsubscribe.dispose();
   }
 
   determineActivationStrategy(){
