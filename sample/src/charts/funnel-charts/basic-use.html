@@ -3,32 +3,29 @@
     <h4>Sales statistics</h4>
     <div class="row">
         <div class="col-xs-12 col-sm-4">
-            <au-kendo-chart title.bind="{text: ''}"
+            <au-kendo-chart title.bind="{text: 'October'}"
+                              data-source.bind="octData"
                               legend.bind="legend"
                               series-defaults.bind="seriesDefaults"
-                              series.bind="series"
-                              value-axis.bind="valueAxis"
-                              category-axis.bind="categoryAxis"
+                              series.bind="seriesOct"
                               tooltip.bind="tooltip">
               </au-kendo-chart>
         </div>
         <div class="col-xs-12 col-sm-4">
-            <au-kendo-chart title.bind="{text: ''}"
+            <au-kendo-chart title.bind="{text: 'November'}"
+                              data-source.bind="novData"
                               legend.bind="legend"
                               series-defaults.bind="seriesDefaults"
-                              series.bind="series"
-                              value-axis.bind="valueAxis"
-                              category-axis.bind="categoryAxis"
+                              series.bind="seriesNov"
                               tooltip.bind="tooltip">
               </au-kendo-chart>
         </div>
         <div class="col-xs-12 col-sm-4">
-            <au-kendo-chart title.bind="{text: ''}"
+            <au-kendo-chart title.bind="{text: 'December'}"
+                              data-source.bind="decData"
                               legend.bind="legend"
                               series-defaults.bind="seriesDefaults"
-                              series.bind="series"
-                              value-axis.bind="valueAxis"
-                              category-axis.bind="categoryAxis"
+                              series.bind="seriesDec"
                               tooltip.bind="tooltip">
               </au-kendo-chart>
         </div>
