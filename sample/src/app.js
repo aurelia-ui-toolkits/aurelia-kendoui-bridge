@@ -6,6 +6,7 @@ export class App {
             { name:  'about',            route: ['','about'],       moduleId: 'about/about',                   title: 'About' },
             { route: 'installation/:page',moduleId: 'installation-wizard/wizard',name: 'install',href: '#/installation/begin',title:'Installation wizard'},
             { name:  'sample-selector',  route: 'sample-selector',  moduleId: 'sample-selector/selector',      title: 'Sample Selector'},
+            { name:  'style-selector',   route: 'style-selector',   moduleId: 'style-selector/selector',       title: 'Style Selector'},
             { name:  'autocomplete',     route: 'autocomplete',     moduleId: 'autocomplete/index',            title: 'Autocomplete'},
             { name:  'button',           route: 'button',           moduleId: 'button/index',                  title: 'Button'},
             { name:  'area-charts',      route: 'area-charts',      moduleId: 'charts/area-charts/index',      title: 'Area Charts'},

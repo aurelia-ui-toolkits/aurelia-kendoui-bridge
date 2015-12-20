@@ -1,11 +1,32 @@
 <template>
-  <au-kendo-chart title.bind="{text: 'Internet Users in United States'}"
-                  data-source.bind="{data: internetUsers}"
-                  legend.bind="{ visible: false }"
-                  series-defaults.bind="seriesDefaults"
-                  series.bind="series"
-                  value-axis.bind="valueAxis"
-                  category-axis.bind="categoryAxis"
-                  tooltip.bind="tooltip">
-  </au-kendo-chart>
+
+    <div class="demo-section k-content wide">
+    <h4>Website optimization stats</h4>
+        <div id="before"></div>
+        <div id="after"></div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <au-kendo-chart title.bind="{text: 'Before optimization'}"
+                              data-source.bind="{data: internetUsers}"
+                              legend.bind="{ visible: false }"
+                              series-defaults.bind="seriesDefaults"
+                              series.bind="series"
+                              value-axis.bind="valueAxis"
+                              category-axis.bind="categoryAxis"
+                              tooltip.bind="tooltip">
+                </au-kendo-chart>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+            <au-kendo-chart title.bind="{text: 'After optimization'}"
+                          data-source.bind="{data: internetUsers}"
+                          legend.bind="{ visible: false }"
+                          series-defaults.bind="seriesDefaults"
+                          series.bind="series"
+                          value-axis.bind="valueAxis"
+                          category-axis.bind="categoryAxis"
+                          tooltip.bind="tooltip">
+            </au-kendo-chart>
+            </div>
+        </div>
+      </div>
 </template>

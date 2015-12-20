@@ -3,9 +3,10 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "files": ["js", "html", "md"]
+      "files": ["js", "html"]
     },
-    "binding-to-local-data": {},
-    "binding-to-remote-data": {}
+    "pie-labels": {},
+    "binding-to-remote-data": {},
+    "binding-to-local-data": {}
   }
 }

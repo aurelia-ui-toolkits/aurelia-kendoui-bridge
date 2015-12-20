@@ -4,7 +4,9 @@
     "basic-use": {
       "route": ["", "basic-use"]
     },
-    "binding-to-local-data": {},
-    "binding-to-remote-data": {}
+    "funnel-labels": {},
+    "binding-to-remote-data": {},
+    "binding-to-local-data": {}
+
   }
 }

@@ -12,37 +12,27 @@ export class BindingToRemoteData {
     }
   });
 
-  series = [{
-        field: "nuclear",
-        name: "Nuclear"
-    }, {
-        field: "hydro",
-        name: "Hydro"
-    }, {
-        field: "wind",
-        name: "Wind"
-  }];
+    seriesDefaults = {
 
-  valueAxis = {
-      labels: {
-          format: "N0"
-      },
-      majorUnit: 10000
-  };
+    };
 
-  categoryAxis = {
-      field: "year",
-      labels: {
-          rotation: -90
-      },
-      crosshair: {
-          visible: true
-      }
-  };
+    legend = {
+        visible: false
+    }
 
-  tooltip = {
-      visible: true,
-      shared: true,
-      format: "N0"
-  };
+    series = [{
+
+    }];
+
+    valueAxis = {
+
+    };
+
+    categoryAxis = {
+
+    };
+
+    tooltip = {
+
+    }
 }
