@@ -36,8 +36,8 @@ export class ThemeManager {
   }
 
   deleteFromSystemJS(normalizedPath) {
-    if (System.has(name)) {
-      System.delete(name);
+    if (System.has(normalizedPath)) {
+      System.delete(normalizedPath);
     }
   }
 
