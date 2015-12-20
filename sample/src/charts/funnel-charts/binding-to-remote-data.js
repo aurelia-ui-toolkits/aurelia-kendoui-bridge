@@ -27,13 +27,9 @@ export class BindingToRemoteData {
     }
 
     series = [{
-        type: "funnel",
-        dynamicSlope: true,
-        dynamicHeight: false,
-        labels: {
-            visible: true,
-            template: "#= dataItem.year #"
-        }
+      field: "wind",
+      categoryField: "year",
+      segmentSpacing: 2
     }];
 
     tooltip = {

@@ -3,6 +3,7 @@ import {pruneOptions, fireKendoEvent} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.chart.min';
 import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
+import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
 
 @customElement('au-kendo-chart')
 @inject(Element)
