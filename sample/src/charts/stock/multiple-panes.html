@@ -1,0 +1,14 @@
+<template>
+  <require from="./multiple-panes.css"></require>
+  <div id="stock-chart">
+    <au-kendo-stock data-source.bind="dataSource"
+                    title.bind="{text: 'The Boeing Company\nNYSE:BA'}"
+                    date-field="Date"
+                    panes.bind="panes"
+                    series.bind="series"
+                    category-axis.bind="{pane: 'volumePane'}"
+                    value-axis.bind="valueAxis"
+                    navigator.bind="navigator">
+    </au-kendo-stock>
+  </div>
+</template>

@@ -1,4 +1,6 @@
 import * as LogManager from 'aurelia-logging';
+import 'kendo-ui/js/kendo.pdf.min';
+import 'kendo-ui/js/jszip.min';
 let logger = LogManager.getLogger('aurelia-kendoui-plugin');
 
 export function configure(aurelia, configCallback) {
@@ -87,6 +89,8 @@ class KendoConfigBuilder {
   kendoChart() {
     this.resources.push('chart/chart');
     this.resources.push('chart/sparkline');
+    this.resources.push('chart/stock');
+    this.resources.push('chart/treemap');
     return this;
   }
 }

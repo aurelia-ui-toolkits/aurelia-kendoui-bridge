@@ -1,0 +1,12 @@
+<template>
+  <au-kendo-treemap data-source.bind="dataSource"
+                    value-field="value"
+                    text-field="name"
+                    kendo-data-bound.trigger="logger.log('Data bound')"
+                    kendo-item-created.trigger="logger.log('Item is created')"></au-kendo-treemap>
+
+  <div class="box">
+      <h4>Console log</h4>
+      <logger view-model.ref="logger"></logger>
+  </div>
+</template>

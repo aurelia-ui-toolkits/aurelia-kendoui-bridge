@@ -1,5 +1,5 @@
 {
-  "title": "Button",
+  "title": "Sparkline",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
