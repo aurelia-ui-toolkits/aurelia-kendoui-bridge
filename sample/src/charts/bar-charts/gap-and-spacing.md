@@ -1,2 +1,0 @@
-The Bar chart component allows you to control the distance between its categories as well as between series points within a category. This can be done through the [series.gap](http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart#configuration-series.gap) and [series.spacing](http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart#configuration-series.spacing) client-side settings of the chart.
-In this demo, you can play with the provided GAP and SPACING dropdowns to change the values of the above properties.

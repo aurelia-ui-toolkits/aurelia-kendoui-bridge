@@ -2,9 +2,7 @@
   "title": "Bullet charts",
   "samples": {
     "basic-use": {
-      "title": "Basic use",
-      "route": ["", "basic-use"],
-      "files": ["html", "js"]
+      "route": ["", "basic-use"]
     },
     "binding-to-local-data": {},
     "binding-to-remote-data": {}

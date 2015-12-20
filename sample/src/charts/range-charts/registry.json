@@ -2,8 +2,7 @@
   "title": "Range charts",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"],
-      "files": ["js", "html", "md"]
+      "route": ["", "basic-use"]
     },
     "binding-to-local-data": {},
     "binding-to-remote-data": {}

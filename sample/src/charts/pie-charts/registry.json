@@ -2,8 +2,7 @@
   "title": "Pie charts",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"],
-      "files": ["js", "html"]
+      "route": ["", "basic-use"]
     },
     "pie-labels": {},
     "binding-to-remote-data": {},

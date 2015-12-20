@@ -9,7 +9,7 @@
       "route": ["", "basic-use"]
     },
     "customizing-templates": {
-      "files": ["html", "js", "css", "md"]
+      "files": ["html", "js", "css"]
     },
     "events": {},
     "remote-data": {},

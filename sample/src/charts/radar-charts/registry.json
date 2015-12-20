@@ -1,15 +1,13 @@
 {
   "title": "Radar charts",
   "samples": {
-    "binding-to-local-data": {
-      "files": ["js", "html", "md"]
-    },
-    "binding-to-remote-data": {},
-    "binding-to-grouped-data": {},
-    "radar-area": {},
     "radar-line": {
       "route": ["", "radar-line"]
     },
+    "binding-to-local-data": {},
+    "binding-to-remote-data": {},
+    "binding-to-grouped-data": {},
+    "radar-area": {},
     "smooth-radar-line": {},
   }
 }

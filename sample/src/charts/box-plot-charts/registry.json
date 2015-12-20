@@ -2,14 +2,9 @@
   "title": "Boxplot charts",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"],
-      "files": ["html", "js", "md"]
+      "route": ["", "basic-use"]
     },
-    "binding-to-local-data": {
-      "files": ["html", "js", "md"]
-    },
-    "binding-to-remote-data": {
-      "files": ["html", "js", "md"]
-    }
+    "binding-to-local-data": {},
+    "binding-to-remote-data": {}
   }
 }
