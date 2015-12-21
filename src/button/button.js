@@ -1,22 +1,21 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {pruneOptions, fireKendoEvent} from '../common/index';
+import {WidgetBase} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.button.min';
 
 @customAttribute('au-kendo-button')
 @inject(Element)
-export class AuKendoButton {
+export class AuKendoButton extends WidgetBase {
+
+  @bindable options = {};
 
   @bindable enable = true;
   @bindable icon;
   @bindable imageUrl;
-  @bindable spriteCssClass;
-
-  @bindable options;
+  @bindable spriteCssClass
 
   constructor(element) {
-    this.element = element;
-    this.options = {};
+    super('kendoButton', element);
   }
 
   bind() {
@@ -27,20 +26,13 @@ export class AuKendoButton {
     this._initialize();
   }
 
-  _initialize() {
-    this.widget = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
-  }
-
   getOptions() {
-    let options = pruneOptions({
+    return {
       icon: this.icon,
       enable: this.enable,
       imageUrl: this.imageUrl,
-      spriteCssClass: this.spriteCssClass,
-      click: (e) => fireKendoEvent(this.element, 'click', e)
-    });
-
-    return Object.assign({}, this.options, options);
+      spriteCssClass: this.spriteCssClass
+    };
   }
 
   enableChanged(newValue) {

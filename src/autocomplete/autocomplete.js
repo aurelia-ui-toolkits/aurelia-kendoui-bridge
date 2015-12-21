@@ -1,18 +1,15 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {fireEvent, TemplateCompiler, pruneOptions, fireKendoEvent} from '../common/index';
+import {fireEvent, TemplateCompiler, WidgetBase} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
 @customAttribute('au-kendo-autocomplete')
 @inject(Element, TemplateCompiler)
-export class AuKendoAutoComplete {
+export class AutoComplete extends WidgetBase {
 
-  // Autocomplete API
-  // Full options object if you want to set options that way
   @bindable options = {};
 
-  // Individual properties - default values need setting
   @bindable animation;
   @bindable dataSource;
   @bindable dataTextField = null;
@@ -42,7 +39,8 @@ export class AuKendoAutoComplete {
   @bindable value;
 
   constructor(element, templateCompiler) {
-    this.element = element;
+    super('kendoAutoComplete', element);
+
     this.templateCompiler = templateCompiler;
   }
 
@@ -57,7 +55,7 @@ export class AuKendoAutoComplete {
   }
 
   _initialize() {
-    this.widget = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
+    super._initialize();
 
     // without these change and select handlers, when you select an options
     // the value binding is not updated
@@ -77,7 +75,7 @@ export class AuKendoAutoComplete {
   }
 
   getOptions() {
-    let options = pruneOptions({
+    return {
       animation: this.animation,
       dataSource: this.dataSource,
       dataTextField: this.dataTextField,
@@ -96,16 +94,8 @@ export class AuKendoAutoComplete {
       template: this.template,
       virtual: this.virtual,
       headerTemplate: this.headerTemplate,
-      suggest: this.suggest,
-      change: (e) => fireKendoEvent(this.element, 'change', e),
-      close: (e) => fireKendoEvent(this.element, 'close', e),
-      dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e),
-      filtering: (e) => fireKendoEvent(this.element, 'filtering', e),
-      open: (e) => fireKendoEvent(this.element, 'open', e),
-      select: (e) => fireKendoEvent(this.element, 'select', e)
-    });
-
-    return Object.assign({}, this.options, options);
+      suggest: this.suggest
+    };
   }
 
   enableChanged(newValue) {

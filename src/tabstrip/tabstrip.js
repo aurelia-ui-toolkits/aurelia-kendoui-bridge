@@ -1,11 +1,13 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {pruneOptions} from '../common/index';
+import {WidgetBase} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.tabstrip.min';
 
 @customAttribute('au-kendo-tabstrip')
 @inject(Element)
-export class TabStrip {
+export class TabStrip extends WidgetBase {
+
+  @bindable options = {};
 
 	@bindable animation;
   @bindable collapsible;
@@ -21,11 +23,8 @@ export class TabStrip {
   @bindable value;
   @bindable enable;
 
-  @bindable options;
-
   constructor(element) {
-    this.element = element;
-    this.options = {};
+    super('kendoTabStrip', element);
   }
 
   bind() {
@@ -36,12 +35,8 @@ export class TabStrip {
     this._initialize();
   }
 
-  _initialize() {
-    this.widget = $(this.element).kendoTabStrip(this.getOptions()).data('kendoTabStrip');
-  }
-
   getOptions() {
-    let options = pruneOptions({
+    return {
       animation: this.animation,
       collapsible: this.collapsible,
       contentUrls: this.contentUrls,
@@ -54,9 +49,7 @@ export class TabStrip {
       scrollable: this.scrollable,
       tabPosition: this.tabPosition,
       value: this.value
-    });
-
-    return Object.assign({}, this.options, options);
+    };
   }
 
   enableChanged(newValue) {

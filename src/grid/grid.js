@@ -1,13 +1,15 @@
 import {inject, children, customElement, bindable} from 'aurelia-framework';
-import {pruneOptions, TemplateCompiler, fireKendoEvent} from '../common/index';
+import {WidgetBase, TemplateCompiler} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('au-kendo-grid')
 @inject(Element, TemplateCompiler)
-export class Grid {
+export class Grid extends WidgetBase {
 
   @children('au-col') columns;
+
+  @bindable options = {};
 
   @bindable autoBind = true;
   @bindable columnMenu;
@@ -32,7 +34,8 @@ export class Grid {
   @bindable toolbar;
 
   constructor(element, templateCompiler) {
-    this.element = element;
+    super('kendoGrid', element);
+
     this.templateCompiler = templateCompiler;
   }
 
@@ -53,13 +56,13 @@ export class Grid {
   _initialize() {
     // init grid on the <table> tag if initialization is from table
     // else, just use the root element
-    let target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+    this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
-    this.widget = $(target).kendoGrid(this.getOptions()).data('kendoGrid');
+    super._initialize();
   }
 
   getOptions() {
-    let options = pruneOptions({
+    return {
       animation: this.animation,
       columns: this.columns,
       columnMenu: this.columnMenu,
@@ -91,34 +94,8 @@ export class Grid {
       template: this.template,
       toolbar: this.toolbar,
       valuePrimitive: this.valuePrimitive,
-      virtual: this.virtual,
-
-      cancel: (e) => fireKendoEvent(this.element, 'cancel', e),
-      change: (e) => fireKendoEvent(this.element, 'change', e),
-      columnHide: (e) => fireKendoEvent(this.element, 'column-hide', e),
-      columnLock: (e) => fireKendoEvent(this.element, 'column-lock', e),
-      columnUnlock: (e) => fireKendoEvent(this.element, 'column-unlock', e),
-      columnMenuInit: (e) => fireKendoEvent(this.element, 'column-menu-init', e),
-      columnReorder: (e) => fireKendoEvent(this.element, 'column-reorder', e),
-      columnResize: (e) => fireKendoEvent(this.element, 'column-resize', e),
-      columnShow: (e) => fireKendoEvent(this.element, 'column-show', e),
-      dataBinding: (e) => fireKendoEvent(this.element, 'data-binding', e),
-      dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e),
-      detailCollapse: (e) => fireKendoEvent(this.element, 'detail-collapse', e),
-      // disabled until https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/133
-      // detailInit: (e) => fireKendoEvent(this.element, 'detail-init', e),
-      detailExpand: (e) => fireKendoEvent(this.element, 'detail-expand', e),
-      edit: (e) => fireKendoEvent(this.element, 'edit', e),
-      excelExport: (e) => fireKendoEvent(this.element, 'excel-export', e),
-      filterMenuInit: (e) => fireKendoEvent(this.element, 'filter-menu-init', e),
-      navigate: (e) => fireKendoEvent(this.element, 'navigate', e),
-      pdfExport: (e) => fireKendoEvent(this.element, 'pdf-export', e),
-      remove: (e) => fireKendoEvent(this.element, 'remove', e),
-      save: (e) => fireKendoEvent(this.element, 'save', e),
-      saveChanges: (e) => fireKendoEvent(this.element, 'save-changes', e)
-    });
-
-    return Object.assign({}, this.options, options);
+      virtual: this.virtual
+    };
   }
 
   enableChanged(newValue) {

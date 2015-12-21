@@ -1,11 +1,13 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-import {pruneOptions, fireKendoEvent} from '../common/index';
+import {WidgetBase} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.treemap.min';
 
 @customElement('au-kendo-treemap')
 @inject(Element)
-export class TreeMap {
+export class TreeMap extends WidgetBase {
+
+  @bindable options = {};
 
   @bindable autoBind = true;
   @bindable dataSource;
@@ -17,12 +19,8 @@ export class TreeMap {
   @bindable template;
   @bindable colors;
 
-  get options() {
-    return this.widget && this.widget.options;
-  }
-
   constructor(element) {
-    this.element = element;
+    super('kendoTreeMap', element);
   }
 
   attached() {
@@ -33,12 +31,8 @@ export class TreeMap {
     this._initialize();
   }
 
-  _initialize() {
-    this.widget = $(this.element).kendoTreeMap(this.getOptions()).data('kendoTreeMap');
-  }
-
   getOptions() {
-    let options = pruneOptions({
+    return {
       autoBind: this.autoBind,
       dataSource: this.dataSource,
       type: this.type,
@@ -47,12 +41,8 @@ export class TreeMap {
       colorField: this.colorField,
       textField: this.textField,
       template: this.template,
-      colors: this.colors,
-      itemCreated: (e) => fireKendoEvent(this.element, 'item-created', e),
-      dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e)
-    });
-
-    return options;
+      colors: this.colors
+    };
   }
 
   detached() {

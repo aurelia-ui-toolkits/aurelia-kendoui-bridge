@@ -1,12 +1,14 @@
 import {customElement, noView, bindable, inject} from 'aurelia-framework';
-import {pruneOptions, fireKendoEvent} from '../common/index';
+import {WidgetBase} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.sparkline.min';
 
 @customElement('au-kendo-sparkline')
 @noView
 @inject(Element)
-export class Sparkline {
+export class Sparkline extends WidgetBase {
+
+  @bindable options = {};
 
   @bindable autoBind = true;
   @bindable axisDefaults;
@@ -26,12 +28,8 @@ export class Sparkline {
   @bindable type = 'line';
   @bindable valueAxis;
 
-  get options() {
-    return this.widget && this.widget.options;
-  }
-
   constructor(element) {
-    this.element = element;
+    super('kendoSparkline', element);
   }
 
   attached() {
@@ -42,12 +40,8 @@ export class Sparkline {
     this._initialize();
   }
 
-  _initialize() {
-    this.widget = $(this.element).kendoSparkline(this.getOptions()).data('kendoSparkline');
-  }
-
   getOptions() {
-    let options = pruneOptions({
+    return {
       autoBind: this.autoBind,
       axisDefaults: this.axisDefaults,
       categoryAxis: this.categoryAxis,
@@ -64,21 +58,8 @@ export class Sparkline {
       tooltip: this.tooltip,
       transitions: this.transitions,
       type: this.type,
-      valueAxis: this.valueAxis,
-      axisLabelClick: (e) => fireKendoEvent(this.element, 'axis-label-click', e),
-      dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e),
-      drag: (e) => fireKendoEvent(this.element, 'drag', e),
-      dragEnd: (e) => fireKendoEvent(this.element, 'drag-end', e),
-      dragStart: (e) => fireKendoEvent(this.element, 'drag-start', e),
-      plotAreaClick: (e) => fireKendoEvent(this.element, 'plot-area-click', e),
-      seriesClick: (e) => fireKendoEvent(this.element, 'series-click', e),
-      seriesHover: (e) => fireKendoEvent(this.element, 'series-hover', e),
-      zoom: (e) => fireKendoEvent(this.element, 'zoom', e),
-      zoomEnd: (e) => fireKendoEvent(this.element, 'zoom-end', e),
-      zoomStart: (e) => fireKendoEvent(this.element, 'zoom-start', e)
-    });
-
-    return options;
+      valueAxis: this.valueAxis
+    };
   }
 
   detached() {

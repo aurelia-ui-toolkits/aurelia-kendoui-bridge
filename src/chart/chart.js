@@ -1,5 +1,5 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-import {pruneOptions, fireKendoEvent} from '../common/index';
+import {WidgetBase} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.chart.min';
 import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
@@ -7,7 +7,9 @@ import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
 
 @customElement('au-kendo-chart')
 @inject(Element)
-export class Chart {
+export class Chart extends WidgetBase {
+
+  @bindable options = {};
 
   @bindable autoBind = true;
   @bindable axisDefaults;
@@ -34,13 +36,8 @@ export class Chart {
   @bindable yAxis;
   @bindable zoomable = false;
 
-
-  get options() {
-    return this.widget && this.widget.options;
-  }
-
   constructor(element) {
-    this.element = element;
+    super('kendoChart', element);
   }
 
   attached() {
@@ -51,12 +48,8 @@ export class Chart {
     this._initialize();
   }
 
-  _initialize() {
-    this.widget = $(this.element).kendoChart(this.getOptions()).data('kendoChart');
-  }
-
   getOptions() {
-    let options = pruneOptions({
+    return {
       autoBind: this.autoBind,
       axisDefaults: this.axisDefaults,
       categoryAxis: this.categoryAxis,
@@ -80,29 +73,8 @@ export class Chart {
       width: this.width,
       xAxis: this.xAxis,
       yAxis: this.yAxis,
-      zoomable: this.zoomable,
-      axisLabelClick: (e) => fireKendoEvent(this.element, 'axis-label-click', e),
-      legendItemClick: (e) => fireKendoEvent(this.element, 'legend-item-click', e),
-      legendItemHover: (e) => fireKendoEvent(this.element, 'legend-item-hover', e),
-      dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e),
-      drag: (e) => fireKendoEvent(this.element, 'drag', e),
-      dragEnd: (e) => fireKendoEvent(this.element, 'drag-end', e),
-      dragStart: (e) => fireKendoEvent(this.element, 'drag-start', e),
-      noteClick: (e) => fireKendoEvent(this.element, 'note-click', e),
-      noteHover: (e) => fireKendoEvent(this.element, 'note-hover', e),
-      plotAreaClick: (e) => fireKendoEvent(this.element, 'plot-area-click', e),
-      render: (e) => fireKendoEvent(this.element, 'render', e),
-      select: (e) => fireKendoEvent(this.element, 'select', e),
-      selectEnd: (e) => fireKendoEvent(this.element, 'select-end', e),
-      selectStart: (e) => fireKendoEvent(this.element, 'select-start', e),
-      seriesClick: (e) => fireKendoEvent(this.element, 'series-click', e),
-      seriesHover: (e) => fireKendoEvent(this.element, 'series-hover', e),
-      zoom: (e) => fireKendoEvent(this.element, 'zoom', e),
-      zoomEnd: (e) => fireKendoEvent(this.element, 'zoom-end', e),
-      zoomStart: (e) => fireKendoEvent(this.element, 'zoom-start', e)
-    });
-
-    return options;
+      zoomable: this.zoomable
+    };
   }
 
   exportImage(options) {
