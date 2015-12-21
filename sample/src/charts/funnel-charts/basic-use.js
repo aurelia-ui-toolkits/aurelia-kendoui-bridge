@@ -91,16 +91,16 @@ export class BasicUse {
         visible: false
     }
 
-    seriesOct = [{
-        type: "funnel",
+    series_oct = [{
+        type: "funnel"
     }];
 
-    seriesNov = [{
-        type: "funnel",
+    series_nov = [{
+        type: "funnel"
     }];
 
-    seriesDec = [{
-        type: "funnel",
+    series_dec = [{
+        type: "funnel"
     }];
 
     tooltip = {
