@@ -1,23 +1,15 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-import {WidgetBase} from '../common/index';
+import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.treemap.min';
 
 @customElement('au-kendo-treemap')
+@generateBindables('kendoTreeMap')
 @inject(Element)
 export class TreeMap extends WidgetBase {
 
   @bindable options = {};
-
-  @bindable autoBind = true;
   @bindable dataSource;
-  @bindable type = 'squarified';
-  @bindable theme = 'default';
-  @bindable valueField = 'value';
-  @bindable colorField = 'color';
-  @bindable textField = 'text';
-  @bindable template;
-  @bindable colors;
 
   constructor(element) {
     super('kendoTreeMap', element);

@@ -1,46 +1,20 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {fireEvent, TemplateCompiler, WidgetBase} from '../common/index';
+import {fireEvent, TemplateCompiler, WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
 @customAttribute('au-kendo-autocomplete')
 @inject(Element, TemplateCompiler)
+@generateBindables('kendoAutoComplete')
 export class AutoComplete extends WidgetBase {
 
   @bindable options = {};
-
-  @bindable animation;
   @bindable dataSource;
-  @bindable dataTextField = null;
-  @bindable delay = 200;
-  @bindable enable = true;
-  @bindable filter = 'startswith';
-  @bindable fixedGroupTemplate;
-  @bindable groupTemplate;
-  @bindable height;
-  @bindable highlightFirst = false;
-  @bindable ignoreCase = true;
-  @bindable minLength = 1;
-  @bindable placeholder = '';
-  @bindable popup;
-
-  // prevent weird suggestion bug
-  // https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/11
-  @bindable separator = null;
-
-  @bindable suggest = false;
-  @bindable headerTemplate;
-  @bindable template;
-  @bindable valuePrimitive;
-  @bindable virtual;
-
-  // Aurelia value-added API
   @bindable value;
 
   constructor(element, templateCompiler) {
     super('kendoAutoComplete', element);
-
     this.templateCompiler = templateCompiler;
   }
 

@@ -1,21 +1,15 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-import {WidgetBase} from '../common/index';
+import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.menu.min';
 
 @customElement('au-kendo-menu')
+@generateBindables('kendoMenu')
 @inject(Element)
 export class Menu extends WidgetBase {
 
   @bindable options = {};
-
-  @bindable animation;
-  @bindable closeOnClick;
   @bindable dataSource;
-  @bindable direction;
-  @bindable hoverDelay;
-  @bindable orientation;
-  @bindable popupCollision;
 
   constructor(element) {
     super('kendoMenu', element);

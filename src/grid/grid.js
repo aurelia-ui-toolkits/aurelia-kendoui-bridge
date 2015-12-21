@@ -1,37 +1,17 @@
 import {inject, children, customElement, bindable} from 'aurelia-framework';
-import {WidgetBase, TemplateCompiler} from '../common/index';
+import {WidgetBase, TemplateCompiler, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('au-kendo-grid')
+@generateBindables('kendoGrid')
 @inject(Element, TemplateCompiler)
 export class Grid extends WidgetBase {
 
   @children('au-col') columns;
 
   @bindable options = {};
-
-  @bindable autoBind = true;
-  @bindable columnMenu;
   @bindable dataSource;
-  @bindable editable;
-  @bindable filterable;
-  @bindable group;
-  @bindable groupable = true;
-  @bindable height;
-  @bindable navigatable;
-  @bindable page = 1;
-  @bindable pageable;
-  @bindable sortable;
-  @bindable pageSize = 10;
-  @bindable scrollable;
-  @bindable selectable;
-  @bindable selectedItem;
-  @bindable selectedItems;
-  @bindable sort;
-  @bindable reorderable = true;
-  @bindable resizable = true;
-  @bindable toolbar;
 
   constructor(element, templateCompiler) {
     super('kendoGrid', element);

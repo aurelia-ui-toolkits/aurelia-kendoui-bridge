@@ -1,27 +1,14 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {WidgetBase} from '../common/index';
+import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.tabstrip.min';
 
 @customAttribute('au-kendo-tabstrip')
+@generateBindables('kendoTabStrip')
 @inject(Element)
 export class TabStrip extends WidgetBase {
 
   @bindable options = {};
-
-	@bindable animation;
-  @bindable collapsible;
-  @bindable contentUrls;
-  @bindable dataContentField;
-  @bindable dataContentUrlField;
-  @bindable dataSpriteCssClass;
-  @bindable dataTextField;
-  @bindable dataUrlField;
-  @bindable navigatable;
-  @bindable scrollable;
-  @bindable tabPosition;
-  @bindable value;
-  @bindable enable;
 
   constructor(element) {
     super('kendoTabStrip', element);

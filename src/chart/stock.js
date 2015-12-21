@@ -1,33 +1,15 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-import {WidgetBase} from '../common/index';
+import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.stock.min';
 
 @customElement('au-kendo-stock')
+@generateBindables('kendoStockChart')
 @inject(Element)
 export class Stock extends WidgetBase {
 
   @bindable options = {};
-
-  @bindable autoBind = true;
-  @bindable axisDefaults;
-  @bindable categoryAxis;
-  @bindable chartArea;
   @bindable dataSource;
-  @bindable dateField = 'date';
-  @bindable legend;
-  @bindable navigator;
-  @bindable panes;
-  @bindable pdf;
-  @bindable plotArea;
-  @bindable renderAs;
-  @bindable series;
-  @bindable seriesDefaults;
-  @bindable theme;
-  @bindable title;
-  @bindable tooltip;
-  @bindable transitions = true;
-  @bindable valueAxis;
 
   constructor(element) {
     super('kendoStockChart', element);

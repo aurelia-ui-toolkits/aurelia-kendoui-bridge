@@ -1,32 +1,16 @@
 import {customElement, noView, bindable, inject} from 'aurelia-framework';
-import {WidgetBase} from '../common/index';
+import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.sparkline.min';
 
 @customElement('au-kendo-sparkline')
 @noView
+@generateBindables('kendoSparkline')
 @inject(Element)
 export class Sparkline extends WidgetBase {
 
   @bindable options = {};
-
-  @bindable autoBind = true;
-  @bindable axisDefaults;
-  @bindable categoryAxis;
-  @bindable chartArea;
-  @bindable data;
   @bindable dataSource;
-  @bindable plotArea;
-  @bindable pointWidth = 5;
-  @bindable renderAs;
-  @bindable series;
-  @bindable seriesColors;
-  @bindable seriesDefaults;
-  @bindable theme;
-  @bindable tooltip
-  @bindable transitions = false;
-  @bindable type = 'line';
-  @bindable valueAxis;
 
   constructor(element) {
     super('kendoSparkline', element);

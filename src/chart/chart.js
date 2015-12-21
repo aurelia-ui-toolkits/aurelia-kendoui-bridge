@@ -1,40 +1,17 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-import {WidgetBase} from '../common/index';
+import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.chart.min';
 import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
 import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
 
 @customElement('au-kendo-chart')
+@generateBindables('kendoChart')
 @inject(Element)
 export class Chart extends WidgetBase {
 
   @bindable options = {};
-
-  @bindable autoBind = true;
-  @bindable axisDefaults;
-  @bindable categoryAxis;
-  @bindable chartArea;
   @bindable dataSource;
-  @bindable legend;
-  @bindable panes;
-  @bindable pannable = false;
-  @bindable pdf;
-  @bindable plotArea;
-  @bindable renderAs;
-  @bindable series;
-  @bindable seriesColors;
-  @bindable seriesDefaults;
-  @bindable theme;
-  @bindable title;
-  @bindable tooltip;
-  @bindable transitions = true;
-  @bindable valueAxis;
-  @bindable width = '100%';
-  @bindable height = 400;
-  @bindable xAxis;
-  @bindable yAxis;
-  @bindable zoomable = false;
 
   constructor(element) {
     super('kendoChart', element);

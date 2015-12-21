@@ -1,4 +1,4 @@
-import {AuKendoButton as Widget} from 'src/button/button';
+import {Button as Widget} from 'src/button/button';
 import {initialize} from 'aurelia-pal-browser';
 import {DOM} from 'aurelia-pal';
 import {Container} from 'aurelia-dependency-injection';

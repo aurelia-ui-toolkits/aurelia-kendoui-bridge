@@ -1,18 +1,14 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {WidgetBase} from '../common/index';
+import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.button.min';
 
 @customAttribute('au-kendo-button')
+@generateBindables('kendoButton')
 @inject(Element)
-export class AuKendoButton extends WidgetBase {
+export class Button extends WidgetBase {
 
   @bindable options = {};
-
-  @bindable enable = true;
-  @bindable icon;
-  @bindable imageUrl;
-  @bindable spriteCssClass
 
   constructor(element) {
     super('kendoButton', element);
