@@ -1,4 +1,9 @@
+import {bindable} from 'aurelia-framework';
+
 export class BasicUse {
+
+  @bindable type = 'squarified';
+
   dataSource = {
       transport: {
           read: function(options) {
@@ -13,13 +18,9 @@ export class BasicUse {
       }
   };
 
-  attached() {
-    $(".options").bind("change", () => this.refresh());
-  }
-
-  refresh() {
+  typeChanged() {
     this.treemap.widget.setOptions({
-      type: $("input[name=type]:checked").val()
+      type: this.type
     });
   }
 }
