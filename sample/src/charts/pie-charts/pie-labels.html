@@ -1,0 +1,29 @@
+<template>
+    <au-kendo-chart title.bind="{text: 'What is you favourite sport?'}"
+                    legend.bind="legend"
+                    series-defaults.bind="seriesDefaults"
+                    series.bind="series"
+                    tooltip.bind="tooltip">
+    </au-kendo-chart>
+
+    <div class="box wide">
+    <div class="box-col">
+        <h4>Labels Configuration</h4>
+        <ul class="options">
+            <li>
+                <input id="labels" checked="checked" type="checkbox" autocomplete="off" />
+                <label for="labels">Show labels</label>
+            </li>
+            <li>
+                <input id="alignCircle" name="alignType" type="radio"
+                       value="circle" checked="checked" autocomplete="off" />
+                <label for="alignCircle">Aligned in circle</label>
+            </li>
+            <li>
+                <input id="alignColumn" name="alignType" type="radio"
+                       value="column" autocomplete="off" />
+                <label for="alignColumn">Aligned in columns</label>
+            </li>
+        </ul>
+    </div>
+</template>

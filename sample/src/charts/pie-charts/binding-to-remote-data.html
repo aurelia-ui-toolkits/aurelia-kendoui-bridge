@@ -1,10 +1,9 @@
 <template>
-    <au-kendo-chart title.bind="{text: ''}"
+     <au-kendo-chart title.bind="title"
+                      data-source.bind="dataSource"
                       legend.bind="legend"
                       series-defaults.bind="seriesDefaults"
                       series.bind="series"
-                      value-axis.bind="valueAxis"
-                      category-axis.bind="categoryAxis"
                       tooltip.bind="tooltip">
       </au-kendo-chart>
 </template>
