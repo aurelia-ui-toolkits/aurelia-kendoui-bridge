@@ -23,20 +23,6 @@ export class TreeMap extends WidgetBase {
     this._initialize();
   }
 
-  getOptions() {
-    return {
-      autoBind: this.autoBind,
-      dataSource: this.dataSource,
-      type: this.type,
-      theme: this.theme,
-      valueField: this.valueField,
-      colorField: this.colorField,
-      textField: this.textField,
-      template: this.template,
-      colors: this.colors
-    };
-  }
-
   detached() {
     if (this.widget) {
       this.widget.destroy();

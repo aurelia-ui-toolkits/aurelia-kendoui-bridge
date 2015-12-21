@@ -23,30 +23,6 @@ export class Stock extends WidgetBase {
     this._initialize();
   }
 
-  getOptions() {
-    return {
-      autoBind: this.autoBind,
-      dateField: this.dateField,
-      navigator: this.navigator,
-      axisDefaults: this.axisDefaults,
-      categoryAxis: this.categoryAxis,
-      chartArea: this.chartArea,
-      dataSource: this.dataSource,
-      legend: this.legend,
-      panes: this.panes,
-      pdf: this.pdf,
-      plotArea: this.plotArea,
-      renderAs: this.renderAs,
-      series: this.series,
-      seriesDefaults: this.seriesDefaults,
-      theme: this.theme,
-      title: this.title,
-      tooltip: this.tooltip,
-      transitions: this.transitions,
-      valueAxis: this.valueAxis
-    };
-  }
-
   detached() {
     if (this.widget) {
       this.widget.destroy();

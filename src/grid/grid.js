@@ -41,43 +41,6 @@ export class Grid extends WidgetBase {
     super._initialize();
   }
 
-  getOptions() {
-    return {
-      animation: this.animation,
-      columns: this.columns,
-      columnMenu: this.columnMenu,
-      dataSource: this.dataSource,
-      dataTextField: this.dataTextField,
-      delay: this.delay,
-      enable: this.enable,
-      editable: this.editable,
-      filter: this.filter,
-      filterable: this.filterable,
-      fixedGroupTemplate: this.fixedGroupTemplate,
-      groupTemplate: this.groupTemplate,
-      groupable: this.groupable,
-      headerTemplate: this.headerTemplate,
-      height: this.height,
-      highlightFirst: this.highlightFirst,
-      ignoreCase: this.ignoreCase,
-      minLength: this.minLength,
-      navigatable: this.navigatable,
-      pageable: this.pageable,
-      placeholder: this.placeholder,
-      popup: this.popup,
-      reorderable: this.reorderable,
-      resizable: this.resizable,
-      separator: this.separator,
-      scrollable: this.scrollable,
-      sortable: this.sortable,
-      suggest: this.suggest,
-      template: this.template,
-      toolbar: this.toolbar,
-      valuePrimitive: this.valuePrimitive,
-      virtual: this.virtual
-    };
-  }
-
   enableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);

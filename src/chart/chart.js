@@ -25,35 +25,6 @@ export class Chart extends WidgetBase {
     this._initialize();
   }
 
-  getOptions() {
-    return {
-      autoBind: this.autoBind,
-      axisDefaults: this.axisDefaults,
-      categoryAxis: this.categoryAxis,
-      chartArea: this.chartArea,
-      dataSource: this.dataSource,
-      height: this.height,
-      legend: this.legend,
-      panes: this.panes,
-      pannable: this.pannable,
-      pdf: this.pdf,
-      plotArea: this.plotArea,
-      renderAs: this.renderAs,
-      series: this.series,
-      seriesColors: this.seriesColors,
-      seriesDefaults: this.seriesDefaults,
-      theme: this.theme,
-      title: this.title,
-      tooltip: this.tooltip,
-      transitions: this.transitions,
-      valueAxis: this.valueAxis,
-      width: this.width,
-      xAxis: this.xAxis,
-      yAxis: this.yAxis,
-      zoomable: this.zoomable
-    };
-  }
-
   exportImage(options) {
     if (this.widget) {
       return this.widget.exportImage(options);

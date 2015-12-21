@@ -48,30 +48,6 @@ export class AutoComplete extends WidgetBase {
     });
   }
 
-  getOptions() {
-    return {
-      animation: this.animation,
-      dataSource: this.dataSource,
-      dataTextField: this.dataTextField,
-      delay: this.delay,
-      enable: this.enable,
-      filter: this.filter,
-      fixedGroupTemplate: this.fixedGroupTemplate,
-      groupTemplate: this.groupTemplate,
-      height: this.height,
-      highlightFirst: this.highlightFirst,
-      ignoreCase: this.ignoreCase,
-      minLength: this.minLength,
-      placeholder: this.placeholder,
-      popup: this.popup,
-      separator: this.separator,
-      template: this.template,
-      virtual: this.virtual,
-      headerTemplate: this.headerTemplate,
-      suggest: this.suggest
-    };
-  }
-
   enableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);

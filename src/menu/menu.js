@@ -34,18 +34,6 @@ export class Menu extends WidgetBase {
     super._initialize();
   }
 
-  getOptions() {
-    return {
-      dataSource: this.dataSource,
-      closeOnClick: this.closeOnClick,
-      animation: this.animation,
-      direction: this.direction,
-      hoverDelay: this.hoverDelay,
-      orientation: this.orientation,
-      popupCollision: this.popupCollision
-    };
-  }
-
   detached() {
     if (this.widget) {
       this.widget.destroy();
