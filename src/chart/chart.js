@@ -52,7 +52,7 @@ export class Chart {
   }
 
   _initialize() {
-    this.widget = $(this.target).kendoChart(this.getOptions()).data('kendoChart');
+    this.widget = $(this.element).kendoChart(this.getOptions()).data('kendoChart');
   }
 
   getOptions() {

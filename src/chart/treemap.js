@@ -34,7 +34,7 @@ export class TreeMap {
   }
 
   _initialize() {
-    this.widget = $(this.target).kendoTreeMap(this.getOptions()).data('kendoTreeMap');
+    this.widget = $(this.element).kendoTreeMap(this.getOptions()).data('kendoTreeMap');
   }
 
   getOptions() {

@@ -44,7 +44,7 @@ export class Stock {
   }
 
   _initialize() {
-    this.widget = $(this.target).kendoStockChart(this.getOptions()).data('kendoStockChart');
+    this.widget = $(this.element).kendoStockChart(this.getOptions()).data('kendoStockChart');
   }
 
   getOptions() {
