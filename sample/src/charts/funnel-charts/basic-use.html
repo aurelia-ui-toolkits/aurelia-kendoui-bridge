@@ -1,33 +1,37 @@
 <template>
     <div class="demo-section k-content wide">
     <h4>Sales statistics</h4>
+
     <div class="row">
         <div class="col-xs-12 col-sm-4">
             <au-kendo-chart title.bind="{text: 'October'}"
+                              style="height: 256px; width: 174px"
                               data-source.bind="octData"
                               legend.bind="legend"
                               series-defaults.bind="seriesDefaults"
                               series.bind="series_oct"
                               tooltip.bind="tooltip">
-              </au-kendo-chart>
+            </au-kendo-chart>
         </div>
         <div class="col-xs-12 col-sm-4">
             <au-kendo-chart title.bind="{text: 'November'}"
+                              style="height: 256px; width: 174px"
                               data-source.bind="novData"
                               legend.bind="legend"
                               series-defaults.bind="seriesDefaults"
                               series.bind="series_nov"
                               tooltip.bind="tooltip">
-              </au-kendo-chart>
+            </au-kendo-chart>
         </div>
         <div class="col-xs-12 col-sm-4">
             <au-kendo-chart title.bind="{text: 'December'}"
+                              style="height: 256px; width: 174px"
                               data-source.bind="decData"
                               legend.bind="legend"
                               series-defaults.bind="seriesDefaults"
                               series.bind="series_dec"
                               tooltip.bind="tooltip">
-              </au-kendo-chart>
+            </au-kendo-chart>
         </div>
     </div>
 

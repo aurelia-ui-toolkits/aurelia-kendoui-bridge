@@ -31,16 +31,4 @@ export class PieLabels {
             value: 10
         }]
     }];
-
-    valueAxis = {
-
-    };
-
-    categoryAxis = {
-
-    };
-
-    tooltip = {
-
-    }
 }

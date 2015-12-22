@@ -4,10 +4,6 @@ export class BasicUse {
         text: "Share of Internet Population Growth"
     };
 
-    chartArea =  {
-        background: ""
-    };
-
     seriesDefaults = {
         type: "donut",
         startAngle: 150
@@ -15,7 +11,11 @@ export class BasicUse {
 
     legend = {
         visible: false
-    }
+    };
+
+    chartArea =  {
+    background: ""
+    };
 
     series = [{
         name: "2011",

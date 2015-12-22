@@ -72,6 +72,23 @@ export class BasicUse {
         }
     ];
 
+    constructor() {
+       this.series_oct = [{
+            data: this.octData,
+            type: "funnel"
+        }];
+
+        this.series_nov = [{
+            data: this.novData,
+            type: "funnel"
+        }];
+
+        this.series_dec = [{
+            data: this.decData,
+            type: "funnel"
+        }];
+    }
+
     seriesDefaults = {
         labels: {
             visible: true,
@@ -91,17 +108,6 @@ export class BasicUse {
         visible: false
     }
 
-    series_oct = [{
-        type: "funnel"
-    }];
-
-    series_nov = [{
-        type: "funnel"
-    }];
-
-    series_dec = [{
-        type: "funnel"
-    }];
 
     tooltip = {
         visible: true,

@@ -7,23 +7,19 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6">
                 <au-kendo-chart title.bind="{text: 'Before optimization'}"
-                              data-source.bind="{data: internetUsers}"
-                              legend.bind="{ visible: false }"
-                              series-defaults.bind="seriesDefaults"
-                              series.bind="series"
-                              value-axis.bind="valueAxis"
-                              category-axis.bind="categoryAxis"
+                              style="height: 256px"
+                              data-source.bind="dataBefore""
+                              legend.bind="legend"
+                              series.bind="seriesBefore"
                               tooltip.bind="tooltip">
                 </au-kendo-chart>
             </div>
             <div class="col-xs-12 col-sm-6">
             <au-kendo-chart title.bind="{text: 'After optimization'}"
-                          data-source.bind="{data: internetUsers}"
-                          legend.bind="{ visible: false }"
-                          series-defaults.bind="seriesDefaults"
-                          series.bind="series"
-                          value-axis.bind="valueAxis"
-                          category-axis.bind="categoryAxis"
+                          style="height: 256px"
+                          data-source.bind="dataAfter"
+                          legend.bind="legend"
+                          series.bind="seriesAfter"
                           tooltip.bind="tooltip">
             </au-kendo-chart>
             </div>
