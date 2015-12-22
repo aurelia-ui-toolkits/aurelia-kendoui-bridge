@@ -9,7 +9,7 @@ import 'kendo-ui/js/kendo.slider.min';
 export class AuKendoSlider extends WidgetBase {
 
   @bindable options = {};
-  
+
   constructor(element) {
     super('kendoSlider', element);
 
@@ -17,7 +17,7 @@ export class AuKendoSlider extends WidgetBase {
     this.options = {};
   }
 
-  bind() {
+  attached() {
     this._initialize();
   }
 
