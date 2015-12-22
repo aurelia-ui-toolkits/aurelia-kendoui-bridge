@@ -40,8 +40,14 @@ export class WidgetBase {
 
     // instantiate the Kendo control, pass in the target and the options
     this.widget = ctor.call(target, options).data(this.controlName);
+
+    this._initialized();
   }
 
+  _initialized() {
+
+  }
+  
   _getOptions(ctor) {
     let options = this.getOptionsFromBindables();
     let eventOptions = this.getEventOptions(ctor);
