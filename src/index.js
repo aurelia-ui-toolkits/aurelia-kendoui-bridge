@@ -28,7 +28,10 @@ class KendoConfigBuilder {
 
   core() {
     this.kendoButton()
-      .kendoTabStrip();
+      .kendoTabStrip()
+      .kendoProgressBar()
+      .kendoSlider()
+      .kendoDropDownList();
     return this;
   }
 
@@ -91,6 +94,16 @@ class KendoConfigBuilder {
     this.resources.push('chart/sparkline');
     this.resources.push('chart/stock');
     this.resources.push('chart/treemap');
+    return this;
+  }
+
+  kendoProgressBar() {
+    this.resources.push('progressbar/progressbar');
+    return this;
+  }
+
+  kendoSlider() {
+    this.resources.push('slider/slider');
     return this;
   }
 }
