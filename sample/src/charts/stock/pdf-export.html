@@ -1,4 +1,6 @@
 <template>
+  <require from="./pdf-export.css"></require>
+
   <div class="box wide">
       <h4>Export Stock Chart</h4>
       <div class="box-col">
@@ -6,7 +8,8 @@
       </div>
   </div>
 
-  <au-kendo-stock data-source.bind="dataSource"
+  <au-kendo-stock id="stock-chart"
+                  data-source.bind="dataSource"
                   pdf.bind="pdf",
                   title.bind="{text: 'The Boeing Company\nNYSE:BA'}"
                   date-field="Date"

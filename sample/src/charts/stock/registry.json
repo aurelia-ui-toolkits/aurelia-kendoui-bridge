@@ -8,7 +8,8 @@
       "files": ["js", "html", "css"]
     },
     "virtualization": {},
-    "pdf-export": {},
-    "stock-history": {}
+    "pdf-export": {
+      "files": ["js", "html", "css"]
+    }
   }
 }
