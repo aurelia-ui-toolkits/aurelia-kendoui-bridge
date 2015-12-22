@@ -11,7 +11,7 @@ export class BasicUse {
     }];
 
     onChange() {
-    	var value = this.capColor.widget.value();
+    	var value = this.capColor.value;
     
         $("#cap")
         	.toggleClass("black-cap", value == 1)
@@ -20,6 +20,6 @@ export class BasicUse {
 	}
 
     buyCap() {
-		alert('Thank you! Your Choice is:\n\nColor ID: ' + this.capColor.widget.value() + ' and Size: ' + this.capSize.widget.value());
+		alert('Thank you! Your Choice is:\n\nColor ID: ' + this.capColor.value + ' and Size: ' + this.capSize.value);
 	}
 }
