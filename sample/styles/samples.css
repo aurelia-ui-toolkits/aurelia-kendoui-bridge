@@ -2088,7 +2088,7 @@ a.footer-links:hover,
 }
 
 #exampleWrap {
-    margin: 4.583em 6.429em 5.000em 6.429em;
+    margin: 0 6.429em 5.000em 6.429em;
 }
 
 #exampleWrap .mobileExample {
@@ -2702,9 +2702,10 @@ h5 {
 }
 
 .demo-section {
-    margin: 0 auto 4.5em;
+    /*margin: 0 auto 4.5em;*/
+    margin: 0 auto;
     padding: 3em;
-    border: 1px solid rgba(20,53,80,0.14);
+    /*border: 1px solid rgba(20,53,80,0.14);*/
 }
 
 .demo-section:not(.wide),

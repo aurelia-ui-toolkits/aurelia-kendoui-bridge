@@ -1,0 +1,115 @@
+<template>
+    <div id="example">
+        <div class="demo-section k-content">
+            <h2>What are your favourite recent movies?</h2>
+            <ul class="forms">
+                <li>
+                    <label>First favourite</label>
+                    <select au-kendo-drop-down-list ref="favouriteMovie1" style="width: 100%;">
+                        <option value="fastAndFurious">Fast and Furious 6</option>
+                        <option value="nowYouSeeMe">Now you see me</option>
+                        <option value="theHelp">The Help</option>
+                        <option value="theInternship" selected>The Internship</option>
+                        <option value="thePerks">The Perks of Being a Wallflower</option>
+                    </select>
+                </li>
+                <li>
+                    <label>Second favourite</label>
+                    <select au-kendo-drop-down-list ref="favouriteMovie2" style="width: 100%;">
+                        <option value="fastAndFurious" selected>Fast and Furious 6</option>
+                        <option value="nowYouSeeMe">Now you see me</option>
+                        <option value="theHelp">The Help</option>
+                        <option value="theInternship">The Internship</option>
+                        <option value="thePerks">The Perks of Being a Wallflower</option>
+                    </select>
+                </li>
+                <li>
+                    <label>Third favourite</label>
+                    <select au-kendo-drop-down-list ref="favouriteMovie3" style="width: 100%;">
+                        <option value="fastAndFurious">Fast and Furious 6</option>
+                        <option value="nowYouSeeMe" selected>Now you see me</option>
+                        <option value="theHelp">The Help</option>
+                        <option value="theInternship">The Internship</option>
+                        <option value="thePerks">The Perks of Being a Wallflower</option>
+                    </select>
+                </li>
+                <li>
+                    <button click.delegate="castVote()" class="k-button k-primary">Vote</button>
+                </li>
+            </ul>
+        </div>
+        <div class="demo-section k-content">
+            <h2>Poll results</h2>
+            <ul class="poll-results">
+                <li>
+                    <h4>Fast and Furious 6</h4>
+                    <div au-kendo-progress-bar.ref="fastAndFurious" au-kendo-progress-bar="type: percent; animation.bind: { duration: 600 }"></div>
+                </li>
+                <li>
+                    <h4>Now you see me</h4>
+                    <div au-kendo-progress-bar.ref="nowYouSeeMe" au-kendo-progress-bar="type: percent; animation.bind: { duration: 600 }"></div>
+                </li>
+                <li>
+                    <h4>The Help</h4>
+                    <div au-kendo-progress-bar.ref="theHelp" au-kendo-progress-bar="type: percent; animation.bind: { duration: 600 }"></div>
+                </li>
+                <li>
+                    <h4>The Internship</h4>
+                    <div au-kendo-progress-bar.ref="theInternship" au-kendo-progress-bar="type: percent; animation.bind: { duration: 600 }"></div>
+                </li>
+                <li>
+                    <h4>The Perks of Being a Wallflower</h4>
+                    <div au-kendo-progress-bar.ref="thePerks" au-kendo-progress-bar="type: percent; animation.bind: { duration: 600 }"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <style>
+    .demo-section h2 {
+        font-weight: normal;
+        margin-bottom: 15px;
+    }
+    
+    .forms {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .forms label {
+        display: block;
+        font-size: 12px;
+        line-height: 1em;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 1em;
+    }
+    
+    .forms li {
+        margin-bottom: 1.5em;
+    }
+    
+    #voteButton {
+        width: 100%;
+    }
+    
+    .poll-results {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .poll-results li:after {
+        content: "";
+        display: block;
+        clear: both;
+        height: 3px;
+        line-height: 0;
+    }
+    
+    .poll-results .k-progressbar {
+        margin-bottom: 1.5em;
+        width: 100%;
+    }
+    </style>
+</template>

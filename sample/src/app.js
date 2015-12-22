@@ -25,7 +25,10 @@ export class App {
             { name:  'stock',            route: 'stock',            moduleId: 'charts/stock/index',            title: 'Stock'},
             { name:  'treemap',          route: 'treemap',          moduleId: 'charts/treemap/index',          title: 'Treemap'},
             { name:  'waterfall-charts', route: 'waterfall-charts', moduleId: 'charts/waterfall-charts/index', title: 'Waterfall Charts'},
-            { name:  'grid',             route: 'grid',             moduleId: 'grid/index',                    title: 'Grid'}
+            { name:  'grid',             route: 'grid',             moduleId: 'grid/index',                    title: 'Grid'},
+            { name:  'progressbar',      route: 'progressbar',      moduleId: 'progressbar/index',             title: 'Progress Bar'},
+            { name:  'slider',           route: 'slider',           moduleId: 'slider/index',                  title: 'Slider'},
+            { name:  'dropdownlist',     route: 'dropdownlist',     moduleId: 'dropdownlist/index',            title: 'Drop Down List'}
         ]);
 
         this.router = router;

@@ -1,9 +1,16 @@
 import {pruneOptions} from './options';
 import {fireKendoEvent} from './events';
 import {getEventsFromAttributes, _hyphenate} from './util';
+import {TaskQueue} from 'aurelia-framework';
+import {Container} from 'aurelia-dependency-injection';
 
 export class WidgetBase {
   constructor(controlName, element) {
+
+    // access root container
+    let container = Container.instance;
+    this.taskQueue = container.get(TaskQueue);
+
     this.element = element;
 
     // the target is the element we're going to
@@ -33,8 +40,14 @@ export class WidgetBase {
 
     // instantiate the Kendo control, pass in the target and the options
     this.widget = ctor.call(target, options).data(this.controlName);
+
+    this._initialized();
   }
 
+  _initialized() {
+
+  }
+  
   _getOptions(ctor) {
     let options = this.getOptionsFromBindables();
     let eventOptions = this.getEventOptions(ctor);
@@ -86,7 +99,11 @@ export class WidgetBase {
       }
 
       // add an event handler 'proxy' to the options object
-      options[event] = e => fireKendoEvent(this.target, _hyphenate(event), e);
+      options[event] = e => {
+        this.taskQueue.queueMicroTask(() => {
+          fireKendoEvent(this.target, _hyphenate(event), e);
+        });
+      }
     });
 
     return options;

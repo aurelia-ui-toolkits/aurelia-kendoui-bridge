@@ -1,10 +1,12 @@
 {
-  "title": "Button",
+  "title": "Drop Down List",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]
     },
-    "api": {},
+    "api": {
+      "title": "API",
+    },
     "binding-to-remote-data": {},
     "cascading-dropdownlist": {},
     "customizing-templates": {},
