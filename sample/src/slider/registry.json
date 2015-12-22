@@ -1,0 +1,10 @@
+{
+  "title": "Slider",
+  "samples": {
+    "basic-use": {
+      "title": "Basic use",
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    }
+  }
+}
