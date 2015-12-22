@@ -32,23 +32,23 @@ export class Api {
     }];
 
     getValue() {
-        alert(this.movies.widget.value());
+        alert(this.movies.value);
     }
 
     getText() {
-        alert(this.movies.widget.text());
+        alert(this.movies.text);
     }
 
     setValue(val) {
-        this.movies.widget.value(val);
+        this.movies.value = val;
     }
 
     setIndex(val) {
         var index = parseInt(val);
-        this.movies.widget.select(index);
+        this.movies.select(index);
     }
 
     setSearch(val) {
-        this.movies.widget.search(val);
+        this.movies.search(val);
     }
 }
