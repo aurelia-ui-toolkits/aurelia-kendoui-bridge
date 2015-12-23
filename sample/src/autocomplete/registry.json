@@ -1,18 +1,19 @@
 {
   "title": "Autocomplete",
   "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
     "api": {
       "title": "API",
       "files": ["html", "js", "css"]
-    },
-    "basic-use": {
-      "route": ["", "basic-use"]
     },
     "customizing-templates": {
       "files": ["html", "js", "css"]
     },
     "events": {},
     "remote-data": {},
-    "virtualization": {}
+    "virtualization": {},
+    "grouping": {}
   }
 }
