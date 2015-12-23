@@ -1,8 +1,8 @@
 <template>
-  <au-kendo-chart title.bind="{text: 'Sun position at equinox'}"
+  <k-chart title.bind="{text: 'Sun position at equinox'}"
                   data-source.bind="{data: sunPos}"
                   series.bind="series"
                   x-axis.bind="{startAngle: -90, majorUnit: 30}"
                   y-axis.bind="{labels: {visible: false}}">
-  </au-kendo-chart>
+  </k-chart>
 </template>

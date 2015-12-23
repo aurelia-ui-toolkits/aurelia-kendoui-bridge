@@ -4,7 +4,7 @@ import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
-@customAttribute('au-kendo-autocomplete')
+@customAttribute('k-autocomplete')
 @inject(Element, TemplateCompiler)
 @generateBindables('kendoAutoComplete')
 export class AutoComplete extends WidgetBase {

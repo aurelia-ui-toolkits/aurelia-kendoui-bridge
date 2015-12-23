@@ -1,9 +1,9 @@
 <template>
-  <au-kendo-chart title.bind="{text: 'Budget report'}"
+  <k-chart title.bind="{text: 'Budget report'}"
                   data-source.bind="dataSource"
                   series.bind="series"
                   category-axis.bind="{field: 'unit'}"
                   value-axis.bind="{labels: {template: '$#= value / 1000 #k'}}"
                   series-defaults.bind="{type: 'radarLine'}">
-  </au-kendo-chart>
+  </k-chart>
 </template>

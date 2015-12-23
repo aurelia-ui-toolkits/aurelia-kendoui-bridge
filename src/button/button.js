@@ -4,7 +4,7 @@ import {DOM} from 'aurelia-pal';
 import 'jquery';
 import 'kendo-ui/js/kendo.button.min';
 
-@customAttribute('au-kendo-button')
+@customAttribute('k-button')
 @generateBindables('kendoButton')
 @inject(Element)
 export class Button extends WidgetBase {

@@ -3,10 +3,10 @@ import {WidgetBase, TemplateCompiler, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.progressbar.min';
 
-@customAttribute('au-kendo-progress-bar')
+@customAttribute('k-progress-bar')
 @generateBindables('kendoProgressBar')
 @inject(Element)
-export class AuKendoProgressBar extends WidgetBase {
+export class ProgressBar extends WidgetBase {
 
   @bindable options = {};
 

@@ -3,10 +3,10 @@ import {WidgetBase, TemplateCompiler, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.slider.min';
 
-@customAttribute('au-kendo-slider')
+@customAttribute('k-slider')
 @generateBindables('kendoSlider')
 @inject(Element)
-export class AuKendoSlider extends WidgetBase {
+export class Slider extends WidgetBase {
 
   @bindable options = {};
 

@@ -1,7 +1,7 @@
 <template>
     <require from="./basic-use.css"></require>
 
-    <au-kendo-grid data-source.bind="datasource" pageable.bind="pageable" sortable.bind="true">
+    <k-grid data-source.bind="datasource" pageable.bind="pageable" sortable.bind="true">
       <au-col title="Contact Name" field="ContactName">
         <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
         <div class='customer-name'>${ContactName}</div>
@@ -10,5 +10,5 @@
       <au-col title="Contact Title" field="ContactTitle"></au-col>
       <au-col title="Company Name" field="CompanyName"></au-col>
       <au-col field="Country"></au-col>
-    </au-kendo-grid>
+    </k-grid>
 </template>

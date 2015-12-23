@@ -3,7 +3,7 @@ import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.stock.min';
 
-@customElement('au-kendo-stock')
+@customElement('k-stock')
 @generateBindables('kendoStockChart')
 @inject(Element)
 export class Stock extends WidgetBase {

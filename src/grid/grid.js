@@ -3,7 +3,7 @@ import {WidgetBase, TemplateCompiler, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.grid.min';
 
-@customElement('au-kendo-grid')
+@customElement('k-grid')
 @generateBindables('kendoGrid')
 @inject(Element, TemplateCompiler)
 export class Grid extends WidgetBase {

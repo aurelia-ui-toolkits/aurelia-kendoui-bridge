@@ -4,10 +4,10 @@ import 'jquery';
 import 'kendo-ui/js/kendo.dropdownlist.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
-@customAttribute('au-kendo-drop-down-list')
+@customAttribute('k-drop-down-list')
 @inject(Element, TemplateCompiler)
 @generateBindables('kendoDropDownList')
-export class AuKendoDropDownList extends WidgetBase {
+export class DropDownList extends WidgetBase {
 
   @bindable options = {};
   @bindable dataSource;

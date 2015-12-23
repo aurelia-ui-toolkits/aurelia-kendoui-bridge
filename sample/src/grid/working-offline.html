@@ -1,11 +1,11 @@
 <template>
-  <button au-kendo-button class="k-primary" click.delegate="online()">Go online</button>
-  <button au-kendo-button class="k-primary" click.delegate="offline()">Go offline</button>
+  <button k-button class="k-primary" click.delegate="online()">Go online</button>
+  <button k-button class="k-primary" click.delegate="offline()">Go offline</button>
   <br>
   <br>
-  <au-kendo-grid data-source.bind="datasource" pageable.bind="{refresh: true}" toolbar.bind="['create']" editable="inline">
+  <k-grid data-source.bind="datasource" pageable.bind="{refresh: true}" toolbar.bind="['create']" editable="inline">
     <au-col field="ProductName"></au-col>
     <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>
     <au-col command.bind="['edit', 'destroy']" title="&nbsp;" width="250px"></au-col>
-  </au-kendo-grid>
+  </k-grid>
 </template>

@@ -6,22 +6,22 @@
         <div id="after"></div>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <au-kendo-chart title.bind="{text: 'Before optimization'}"
+                <k-chart title.bind="{text: 'Before optimization'}"
                               style="height: 256px"
                               data-source.bind="dataBefore""
                               legend.bind="legend"
                               series.bind="seriesBefore"
                               tooltip.bind="tooltip">
-                </au-kendo-chart>
+                </k-chart>
             </div>
             <div class="col-xs-12 col-sm-6">
-            <au-kendo-chart title.bind="{text: 'After optimization'}"
+            <k-chart title.bind="{text: 'After optimization'}"
                           style="height: 256px"
                           data-source.bind="dataAfter"
                           legend.bind="legend"
                           series.bind="seriesAfter"
                           tooltip.bind="tooltip">
-            </au-kendo-chart>
+            </k-chart>
             </div>
         </div>
       </div>

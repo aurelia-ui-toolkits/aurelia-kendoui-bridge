@@ -1,5 +1,5 @@
 <template>
-  <au-kendo-chart title.bind="{text: 'Dyno run results'}"
+  <k-chart title.bind="{text: 'Dyno run results'}"
                   legend.bind="{visible: false}"
                   data-source.bind="{data: enginePerformance}"
                   series-defaults.bind="seriesDefaults"
@@ -7,5 +7,5 @@
                   x-axis.bind="xAxis"
                   y-axis.bind="yAxis"
                   tooltip.bind="{visible: true}">
-  </au-kendo-chart>
+  </k-chart>
 </template>

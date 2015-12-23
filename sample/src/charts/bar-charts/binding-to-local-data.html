@@ -1,5 +1,5 @@
 <template>
-  <au-kendo-chart title.bind="{text: 'Comments per day', align: 'left'}"
+  <k-chart title.bind="{text: 'Comments per day', align: 'left'}"
                   data-source.bind="{data: blogComments}"
                   legend.bind="{ visible: false }"
                   series-defaults.bind="seriesDefaults"
@@ -7,5 +7,5 @@
                   value-axis.bind="valueAxis"
                   category-axis.bind="categoryAxis"
                   tooltip.bind="tooltip">
-  </au-kendo-chart>
+  </k-chart>
 </template>

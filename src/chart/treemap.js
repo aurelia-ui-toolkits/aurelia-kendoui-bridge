@@ -3,7 +3,7 @@ import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.treemap.min';
 
-@customElement('au-kendo-treemap')
+@customElement('k-treemap')
 @generateBindables('kendoTreeMap')
 @inject(Element)
 export class TreeMap extends WidgetBase {

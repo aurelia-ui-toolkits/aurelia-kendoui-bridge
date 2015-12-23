@@ -2,7 +2,7 @@
     <div class="row">
 
         <div class="col-xs-12 col-sm-6">
-            <au-kendo-chart
+            <k-chart
                           height.bind='120'
                           data-source.bind="mmhgData"
                           series.bind="series_mmHg"
@@ -10,11 +10,11 @@
                           category-axis.bind="categoryAxis_mmHg"
                           value-axis.bind="valueAxis_mmHg"
                           tooltip.bind="tooltip">
-            </au-kendo-chart>
+            </k-chart>
         </div>
 
         <div class="col-xs-12 col-sm-6">
-            <au-kendo-chart
+            <k-chart
                             height.bind='120'
                             data-source.bind="hPaData"
                             series.bind="series_hPa"
@@ -22,7 +22,7 @@
                             category-axis.bind="categoryAxis_hPa"
                             value-axis.bind="valueAxis_hPa"
                             tooltip.bind="tooltip">
-            </au-kendo-chart>
+            </k-chart>
         </div>
 
     </div>

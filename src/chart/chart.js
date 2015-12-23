@@ -5,7 +5,7 @@ import 'kendo-ui/js/kendo.dataviz.chart.min';
 import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
 import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
 
-@customElement('au-kendo-chart')
+@customElement('k-chart')
 @generateBindables('kendoChart')
 @inject(Element)
 export class Chart extends WidgetBase {

@@ -3,7 +3,7 @@ import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.menu.min';
 
-@customElement('au-kendo-menu')
+@customElement('k-menu')
 @generateBindables('kendoMenu')
 @inject(Element)
 export class Menu extends WidgetBase {

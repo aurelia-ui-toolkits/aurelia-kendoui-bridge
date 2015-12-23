@@ -1,10 +1,10 @@
 <template>
-  <au-kendo-chart render-as="canvas"
+  <k-chart render-as="canvas"
                   data-source.bind="{data: data}"
                   x-axis.bind="xAxis"
                   series.bind="series"
                   transitions.bind="false"
                   kendo-drag.trigger="setRange($event)"
                   kendo-zoom.trigger="setRange($event)">
-  </au-kendo-chart>
+  </k-chart>
 </template>

@@ -3,7 +3,7 @@ import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.sparkline.min';
 
-@customElement('au-kendo-sparkline')
+@customElement('k-sparkline')
 @noView
 @generateBindables('kendoSparkline')
 @inject(Element)

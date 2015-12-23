@@ -1,8 +1,8 @@
 <template>
-  <au-kendo-grid data-source.bind="datasource" pageable.bind="true" navigatable.bind="true" toolbar.bind="['create', 'save', 'cancel']" editable.bind="true">
+  <k-grid data-source.bind="datasource" pageable.bind="true" navigatable.bind="true" toolbar.bind="['create', 'save', 'cancel']" editable.bind="true">
     <au-col field="UnitPrice" title="Unit Price" format="{0:c}" width.bind="120"></au-col>
     <au-col field="UnitsInStock" title="Units In Stock" width.bind="120"></au-col>
     <au-col field="Discontinued" width.bind="120"></au-col>
     <au-col command="destroy" title="&nbsp;" width.bind="150"></au-col>
-  </au-kendo-grid>
+  </k-grid>
 </template>

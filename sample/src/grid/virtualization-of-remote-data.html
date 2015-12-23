@@ -2,7 +2,7 @@
   <button class="btn btn-primary" click.delegate="disablePageScroll()">Disable page scroll</button>
   <br>
   <br>
-  <au-kendo-grid data-source.bind="datasource" sortable.bind="true" scrollable.bind="{virtual:true}">
+  <k-grid data-source.bind="datasource" sortable.bind="true" scrollable.bind="{virtual:true}">
     <au-col title="Order ID" field="OrderID" width.bind="110"></au-col>
     <au-col title="Customer ID" field="CustomerID" width.bind="130"></au-col>
     <au-col title="Ship Name" field="ShipName" width.bind="280"></au-col>
@@ -10,7 +10,7 @@
     <au-col title="Ship City" field="ShipCity" width.bind="160"></au-col>
     <au-col title="Ship Country" field="ShipCountry" width.bind="160"></au-col>
     <au-col title="Test">
-      <button au-kendo-button class="k-primary">Enable</button>
+      <button k-button class="k-primary">Enable</button>
     </au-col>
-  </au-kendo-grid>
+  </k-grid>
 </template>

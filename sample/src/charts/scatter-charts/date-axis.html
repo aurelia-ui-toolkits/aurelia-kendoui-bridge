@@ -1,9 +1,9 @@
 <template>
-  <au-kendo-chart title.bind="{text: 'Closing stock prices'}"
+  <k-chart title.bind="{text: 'Closing stock prices'}"
                   data-source.bind="stocksDataSource"
                   series-defaults.bind="seriesDefaults"
                   series.bind="[{xField: 'date', yField: 'close'}]"
                   y-axis.bind="{labels: {format: '${0}', skip: 1}}"
                   tooltip.bind="tooltip">
-  </au-kendo-chart>
+  </k-chart>
 </template>

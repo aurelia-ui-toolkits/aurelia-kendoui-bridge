@@ -2,7 +2,7 @@
   <div class="demo-section k-content">
     <div>
         <h4>Hover some series</h4>
-        <au-kendo-sparkline tooltip.bind="{visible: false, shared: false}"
+        <k-sparkline tooltip.bind="{visible: false, shared: false}"
                             data-source.bind="weather"
                             kendo-series-hover.trigger="onSeriesHover($event)"
                             style="height: 30px;"
@@ -11,7 +11,7 @@
                                  field: 'TMax',
                                  color: '#ff0000',
                                  negativeColor: '#0099ff' }]">
-        </au-kendo-sparkline>
+        </k-sparkline>
     </div>
     <div style="padding-top: 1em;">
       <h4>Console log</h4>

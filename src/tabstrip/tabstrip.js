@@ -3,7 +3,7 @@ import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.tabstrip.min';
 
-@customAttribute('au-kendo-tabstrip')
+@customAttribute('k-tabstrip')
 @generateBindables('kendoTabStrip')
 @inject(Element)
 export class TabStrip extends WidgetBase {

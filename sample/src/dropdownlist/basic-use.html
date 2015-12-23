@@ -4,14 +4,14 @@
             <h4>Customize your Kendo Cap</h4>
             <div id="cap" class="black-cap"></div>
             <h4>Cap Color</h4>
-            <input au-kendo-drop-down-list.ref="capColor" 
-            		au-kendo-drop-down-list="data-text-field: text;
+            <input k-drop-down-list.ref="capColor" 
+            		k-drop-down-list="data-text-field: text;
                         					data-value-field: value;
                         					data-source.bind: data;
                         					index.bind: 0;" kendo-change.trigger="onChange()" value="1" style="width: 100%;" />
             <h4 style="margin-top: 2em;">Cap Size</h4>
-            <select au-kendo-drop-down-list.ref="capSize" 
-            		au-kendo-drop-down-list id="size" style="width: 100%;">
+            <select k-drop-down-list.ref="capSize" 
+            		k-drop-down-list id="size" style="width: 100%;">
                 <option>S - 6 3/4"</option>
                 <option>M - 7 1/4"</option>
                 <option>L - 7 1/8"</option>

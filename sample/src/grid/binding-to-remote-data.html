@@ -1,9 +1,9 @@
 <template>
-  <au-kendo-grid data-source.bind="datasource" pageable.bind="true" filterable.bind="true" sortable.bind="true">
+  <k-grid data-source.bind="datasource" pageable.bind="true" filterable.bind="true" sortable.bind="true">
     <au-col title="OrderId" field="OrderID"></au-col>
     <au-col field="Freight"></au-col>
     <au-col title="Order Date" field="OrderDate" format="{0:MM/dd/yyyy}"></au-col>
     <au-col title="Ship Name" field="ShipName"></au-col>
     <au-col title="Ship City" field="ShipCity"></au-col>
-  </au-kendo-grid>
+  </k-grid>
 </template>
