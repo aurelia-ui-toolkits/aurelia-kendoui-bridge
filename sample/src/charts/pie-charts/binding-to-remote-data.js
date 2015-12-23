@@ -1,10 +1,5 @@
 export class BindingToRemoteData {
 
-    title = {
-        text: 2000
-    };
-
-
     seriesDefaults = {
         type: "pie"
     };
