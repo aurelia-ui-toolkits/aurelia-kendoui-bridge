@@ -11,6 +11,10 @@ var _aureliaLogging = require('aurelia-logging');
 
 var LogManager = _interopRequireWildcard(_aureliaLogging);
 
+require('kendo-ui/js/kendo.pdf.min');
+
+require('kendo-ui/js/jszip.min');
+
 var logger = LogManager.getLogger('aurelia-kendoui-plugin');
 
 function configure(aurelia, configCallback) {
@@ -38,12 +42,12 @@ var KendoConfigBuilder = (function () {
   }
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoButton().kendoTabStrip().kendoMenu();
+    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoDropDownList();
     return this;
   };
 
   KendoConfigBuilder.prototype.pro = function pro() {
-    this.core().kendoGrid().kendoAutoComplete();
+    this.core().kendoGrid().kendoAutoComplete().kendoChart();
     return this;
   };
 
@@ -90,6 +94,24 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoToolbar = function kendoToolbar() {
     this.resources.push('toolbar/toolbar');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoChart = function kendoChart() {
+    this.resources.push('chart/chart');
+    this.resources.push('chart/sparkline');
+    this.resources.push('chart/stock');
+    this.resources.push('chart/treemap');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoProgressBar = function kendoProgressBar() {
+    this.resources.push('progressbar/progressbar');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoSlider = function kendoSlider() {
+    this.resources.push('slider/slider');
     return this;
   };
 

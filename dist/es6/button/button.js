@@ -1,22 +1,18 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {pruneOptions, fireKendoEvent} from '../common/index';
+import {WidgetBase, generateBindables} from '../common/index';
+import {DOM} from 'aurelia-pal';
 import 'jquery';
 import 'kendo-ui/js/kendo.button.min';
 
-@customAttribute('au-kendo-button')
+@customAttribute('k-button')
+@generateBindables('kendoButton')
 @inject(Element)
-export class AuKendoButton {
+export class Button extends WidgetBase {
 
-  @bindable enable = true;
-  @bindable icon;
-  @bindable imageUrl;
-  @bindable spriteCssClass;
-
-  @bindable options;
+  @bindable options = {};
 
   constructor(element) {
-    this.element = element;
-    this.options = {};
+    super('kendoButton', element);
   }
 
   bind() {
@@ -27,31 +23,18 @@ export class AuKendoButton {
     this._initialize();
   }
 
-  _initialize() {
-    this.widget = $(this.element).kendoButton(this.getOptions()).data('kendoButton');
-  }
-
   getOptions() {
-    let options = pruneOptions({
+    return {
       icon: this.icon,
       enable: this.enable,
       imageUrl: this.imageUrl,
-      spriteCssClass: this.spriteCssClass,
-      click: (e) => fireKendoEvent(this.element, 'click', e)
-    });
-
-    return Object.assign({}, this.options, options);
+      spriteCssClass: this.spriteCssClass
+    };
   }
 
   enableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
-    }
-  }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
     }
   }
 }

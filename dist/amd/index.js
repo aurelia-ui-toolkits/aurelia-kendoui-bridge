@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-logging'], function (exports, _aureliaLogging) {
+define(['exports', 'aurelia-logging', 'kendo-ui/js/kendo.pdf.min', 'kendo-ui/js/jszip.min'], function (exports, _aureliaLogging, _kendoUiJsKendoPdfMin, _kendoUiJsJszipMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -33,12 +33,12 @@ define(['exports', 'aurelia-logging'], function (exports, _aureliaLogging) {
     }
 
     KendoConfigBuilder.prototype.core = function core() {
-      this.kendoButton().kendoTabStrip().kendoMenu();
+      this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoDropDownList();
       return this;
     };
 
     KendoConfigBuilder.prototype.pro = function pro() {
-      this.core().kendoGrid().kendoAutoComplete();
+      this.core().kendoGrid().kendoAutoComplete().kendoChart();
       return this;
     };
 
@@ -85,6 +85,24 @@ define(['exports', 'aurelia-logging'], function (exports, _aureliaLogging) {
 
     KendoConfigBuilder.prototype.kendoToolbar = function kendoToolbar() {
       this.resources.push('toolbar/toolbar');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoChart = function kendoChart() {
+      this.resources.push('chart/chart');
+      this.resources.push('chart/sparkline');
+      this.resources.push('chart/stock');
+      this.resources.push('chart/treemap');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoProgressBar = function kendoProgressBar() {
+      this.resources.push('progressbar/progressbar');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoSlider = function kendoSlider() {
+      this.resources.push('slider/slider');
       return this;
     };
 

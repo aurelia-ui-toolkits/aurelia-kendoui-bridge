@@ -1,38 +1,21 @@
 import {inject, children, customElement, bindable} from 'aurelia-framework';
-import {pruneOptions, TemplateCompiler, fireKendoEvent} from '../common/index';
+import {WidgetBase, TemplateCompiler, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.grid.min';
 
-@customElement('au-kendo-grid')
+@customElement('k-grid')
+@generateBindables('kendoGrid')
 @inject(Element, TemplateCompiler)
-export class Grid {
+export class Grid extends WidgetBase {
 
   @children('au-col') columns;
 
-  @bindable autoBind = true;
-  @bindable columnMenu;
+  @bindable options = {};
   @bindable dataSource;
-  @bindable editable;
-  @bindable filterable;
-  @bindable group;
-  @bindable groupable = true;
-  @bindable height;
-  @bindable navigatable;
-  @bindable page = 1;
-  @bindable pageable;
-  @bindable sortable;
-  @bindable pageSize = 10;
-  @bindable scrollable;
-  @bindable selectable;
-  @bindable selectedItem;
-  @bindable selectedItems;
-  @bindable sort;
-  @bindable reorderable = true;
-  @bindable resizable = true;
-  @bindable toolbar;
 
   constructor(element, templateCompiler) {
-    this.element = element;
+    super('kendoGrid', element);
+
     this.templateCompiler = templateCompiler;
   }
 
@@ -53,83 +36,14 @@ export class Grid {
   _initialize() {
     // init grid on the <table> tag if initialization is from table
     // else, just use the root element
-    let target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+    this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
-    this.widget = $(target).kendoGrid(this.getOptions()).data('kendoGrid');
-  }
-
-  getOptions() {
-    let options = pruneOptions({
-      animation: this.animation,
-      columns: this.columns,
-      columnMenu: this.columnMenu,
-      dataSource: this.dataSource,
-      dataTextField: this.dataTextField,
-      delay: this.delay,
-      enable: this.enable,
-      editable: this.editable,
-      filter: this.filter,
-      filterable: this.filterable,
-      fixedGroupTemplate: this.fixedGroupTemplate,
-      groupTemplate: this.groupTemplate,
-      groupable: this.groupable,
-      headerTemplate: this.headerTemplate,
-      height: this.height,
-      highlightFirst: this.highlightFirst,
-      ignoreCase: this.ignoreCase,
-      minLength: this.minLength,
-      navigatable: this.navigatable,
-      pageable: this.pageable,
-      placeholder: this.placeholder,
-      popup: this.popup,
-      reorderable: this.reorderable,
-      resizable: this.resizable,
-      separator: this.separator,
-      scrollable: this.scrollable,
-      sortable: this.sortable,
-      suggest: this.suggest,
-      template: this.template,
-      toolbar: this.toolbar,
-      valuePrimitive: this.valuePrimitive,
-      virtual: this.virtual,
-
-      cancel: (e) => fireKendoEvent(this.element, 'cancel', e),
-      change: (e) => fireKendoEvent(this.element, 'change', e),
-      columnHide: (e) => fireKendoEvent(this.element, 'column-hide', e),
-      columnLock: (e) => fireKendoEvent(this.element, 'column-lock', e),
-      columnUnlock: (e) => fireKendoEvent(this.element, 'column-unlock', e),
-      columnMenuInit: (e) => fireKendoEvent(this.element, 'column-menu-init', e),
-      columnReorder: (e) => fireKendoEvent(this.element, 'column-reorder', e),
-      columnResize: (e) => fireKendoEvent(this.element, 'column-resize', e),
-      columnShow: (e) => fireKendoEvent(this.element, 'column-show', e),
-      dataBinding: (e) => fireKendoEvent(this.element, 'data-binding', e),
-      dataBound: (e) => fireKendoEvent(this.element, 'data-bound', e),
-      detailCollapse: (e) => fireKendoEvent(this.element, 'detail-collapse', e),
-      // disabled until https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/133
-      // detailInit: (e) => fireKendoEvent(this.element, 'detail-init', e),
-      detailExpand: (e) => fireKendoEvent(this.element, 'detail-expand', e),
-      edit: (e) => fireKendoEvent(this.element, 'edit', e),
-      excelExport: (e) => fireKendoEvent(this.element, 'excel-export', e),
-      filterMenuInit: (e) => fireKendoEvent(this.element, 'filter-menu-init', e),
-      navigate: (e) => fireKendoEvent(this.element, 'navigate', e),
-      pdfExport: (e) => fireKendoEvent(this.element, 'pdf-export', e),
-      remove: (e) => fireKendoEvent(this.element, 'remove', e),
-      save: (e) => fireKendoEvent(this.element, 'save', e),
-      saveChanges: (e) => fireKendoEvent(this.element, 'save-changes', e)
-    });
-
-    return Object.assign({}, this.options, options);
+    super._initialize();
   }
 
   enableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
-    }
-  }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
     }
   }
 }

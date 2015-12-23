@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.autocomplete.min'], function (exports, _aureliaFramework, _commonIndex, _jquery, _kendoUiJsKendoAutocompleteMin) {
+define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.autocomplete.min', 'kendo-ui/js/kendo.virtuallist.min'], function (exports, _aureliaFramework, _commonIndex, _jquery, _kendoUiJsKendoAutocompleteMin, _kendoUiJsKendoVirtuallistMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -7,12 +7,16 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-  var AuKendoAutoComplete = (function () {
+  var AutoComplete = (function (_WidgetBase) {
     var _instanceInitializers = {};
 
-    _createDecoratedClass(AuKendoAutoComplete, [{
+    _inherits(AutoComplete, _WidgetBase);
+
+    _createDecoratedClass(AutoComplete, [{
       key: 'options',
       decorators: [_aureliaFramework.bindable],
       initializer: function initializer() {
@@ -20,122 +24,7 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
       },
       enumerable: true
     }, {
-      key: 'animation',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
       key: 'dataSource',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'dataTextField',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return null;
-      },
-      enumerable: true
-    }, {
-      key: 'delay',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return 200;
-      },
-      enumerable: true
-    }, {
-      key: 'enable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return true;
-      },
-      enumerable: true
-    }, {
-      key: 'filter',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return 'startswith';
-      },
-      enumerable: true
-    }, {
-      key: 'fixedGroupTemplate',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'groupTemplate',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'height',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'highlightFirst',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return false;
-      },
-      enumerable: true
-    }, {
-      key: 'ignoreCase',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return true;
-      },
-      enumerable: true
-    }, {
-      key: 'minLength',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return 1;
-      },
-      enumerable: true
-    }, {
-      key: 'placeholder',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return '';
-      },
-      enumerable: true
-    }, {
-      key: 'popup',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'separator',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return null;
-      },
-      enumerable: true
-    }, {
-      key: 'suggest',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return false;
-      },
-      enumerable: true
-    }, {
-      key: 'headerTemplate',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'template',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'valuePrimitive',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'virtual',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
@@ -146,71 +35,34 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
       enumerable: true
     }], null, _instanceInitializers);
 
-    function AuKendoAutoComplete(element, templateCompiler) {
-      _classCallCheck(this, _AuKendoAutoComplete);
+    function AutoComplete(element, templateCompiler) {
+      _classCallCheck(this, _AutoComplete);
+
+      _WidgetBase.call(this, 'kendoAutoComplete', element);
 
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers);
-
       _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'dataTextField', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'delay', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'enable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'filter', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'fixedGroupTemplate', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'groupTemplate', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'height', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'highlightFirst', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'ignoreCase', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'minLength', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'placeholder', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'popup', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'separator', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'suggest', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'headerTemplate', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'valuePrimitive', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'virtual', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers);
 
-      this.element = element;
       this.templateCompiler = templateCompiler;
     }
 
-    AuKendoAutoComplete.prototype.bind = function bind(ctx) {
+    AutoComplete.prototype.bind = function bind(ctx) {
       this.templateCompiler.initialize(ctx);
 
       this._initialize();
     };
 
-    AuKendoAutoComplete.prototype.recreate = function recreate() {
+    AutoComplete.prototype.recreate = function recreate() {
       this._initialize();
     };
 
-    AuKendoAutoComplete.prototype._initialize = function _initialize() {
+    AutoComplete.prototype._initialize = function _initialize() {
       var _this = this;
 
-      this.widget = $(this.element).kendoAutoComplete(this.getOptions()).data('kendoAutoComplete');
+      _WidgetBase.prototype._initialize.call(this);
 
       this.widget.bind('change', function (event) {
         _this.value = event.sender.value();
@@ -225,68 +77,37 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
       });
     };
 
-    AuKendoAutoComplete.prototype.getOptions = function getOptions() {
-      var _this2 = this;
-
-      var options = _commonIndex.pruneOptions({
-        animation: this.animation,
-        dataSource: this.dataSource,
-        dataTextField: this.dataTextField,
-        delay: this.delay,
-        enable: this.enable,
-        filter: this.filter,
-        fixedGroupTemplate: this.fixedGroupTemplate,
-        groupTemplate: this.groupTemplate,
-        height: this.height,
-        highlightFirst: this.highlightFirst,
-        ignoreCase: this.ignoreCase,
-        minLength: this.minLength,
-        placeholder: this.placeholder,
-        popup: this.popup,
-        separator: this.separator,
-        template: this.template,
-        headerTemplate: this.headerTemplate,
-        suggest: this.suggest,
-        change: function change(e) {
-          return _commonIndex.fireKendoEvent(_this2.element, 'change', e);
-        },
-        close: function close(e) {
-          return _commonIndex.fireKendoEvent(_this2.element, 'close', e);
-        },
-        dataBound: function dataBound(e) {
-          return _commonIndex.fireKendoEvent(_this2.element, 'data-bound', e);
-        },
-        filtering: function filtering(e) {
-          return _commonIndex.fireKendoEvent(_this2.element, 'filtering', e);
-        },
-        open: function open(e) {
-          return _commonIndex.fireKendoEvent(_this2.element, 'open', e);
-        },
-        select: function select(e) {
-          return _commonIndex.fireKendoEvent(_this2.element, 'select', e);
-        }
-      });
-
-      return Object.assign({}, this.options, options);
-    };
-
-    AuKendoAutoComplete.prototype.enableChanged = function enableChanged(newValue) {
+    AutoComplete.prototype.enableChanged = function enableChanged(newValue) {
       if (this.widget) {
         this.widget.enable(newValue);
       }
     };
 
-    AuKendoAutoComplete.prototype.detached = function detached() {
+    AutoComplete.prototype.setValue = function setValue(newValue) {
       if (this.widget) {
-        this.widget.destroy();
+        this.widget.value(newValue);
+        this.widget.trigger('change');
       }
     };
 
-    var _AuKendoAutoComplete = AuKendoAutoComplete;
-    AuKendoAutoComplete = _aureliaFramework.inject(Element, _commonIndex.TemplateCompiler)(AuKendoAutoComplete) || AuKendoAutoComplete;
-    AuKendoAutoComplete = _aureliaFramework.customAttribute('au-kendo-autocomplete')(AuKendoAutoComplete) || AuKendoAutoComplete;
-    return AuKendoAutoComplete;
-  })();
+    AutoComplete.prototype.getValue = function getValue(newValue) {
+      if (this.widget) {
+        return this.widget.value();
+      }
+    };
 
-  exports.AuKendoAutoComplete = AuKendoAutoComplete;
+    AutoComplete.prototype.search = function search(value) {
+      if (this.widget) {
+        this.widget.search(value);
+      }
+    };
+
+    var _AutoComplete = AutoComplete;
+    AutoComplete = _commonIndex.generateBindables('kendoAutoComplete')(AutoComplete) || AutoComplete;
+    AutoComplete = _aureliaFramework.inject(Element, _commonIndex.TemplateCompiler)(AutoComplete) || AutoComplete;
+    AutoComplete = _aureliaFramework.customAttribute('k-autocomplete')(AutoComplete) || AutoComplete;
+    return AutoComplete;
+  })(_commonIndex.WidgetBase);
+
+  exports.AutoComplete = AutoComplete;
 });

@@ -1,5 +1,7 @@
-System.register([], function (_export) {
+System.register(['./constants'], function (_export) {
   'use strict';
+
+  var constants;
 
   _export('fireEvent', fireEvent);
 
@@ -15,12 +17,14 @@ System.register([], function (_export) {
   function fireKendoEvent(element, name) {
     var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
-    fireEvent(element, 'kendo-' + name, data);
+    fireEvent(element, '' + constants.eventPrefix + name, data);
     return true;
   }
 
   return {
-    setters: [],
+    setters: [function (_constants) {
+      constants = _constants.constants;
+    }],
     execute: function () {}
   };
 });

@@ -6,6 +6,8 @@ var _createDecoratedClass = (function () { function defineProperties(target, des
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
 var _aureliaFramework = require('aurelia-framework');
@@ -16,147 +18,33 @@ require('jquery');
 
 require('kendo-ui/js/kendo.dataviz.sparkline.min');
 
-var Sparkline = (function () {
+var Sparkline = (function (_WidgetBase) {
   var _instanceInitializers = {};
 
+  _inherits(Sparkline, _WidgetBase);
+
   _createDecoratedClass(Sparkline, [{
-    key: 'autoBind',
+    key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
-      return true;
+      return {};
     },
-    enumerable: true
-  }, {
-    key: 'axisDefaults',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'categoryAxis',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'chartArea',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'data',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
     enumerable: true
   }, {
     key: 'dataSource',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }, {
-    key: 'plotArea',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'pointWidth',
-    decorators: [_aureliaFramework.bindable],
-    initializer: function initializer() {
-      return 5;
-    },
-    enumerable: true
-  }, {
-    key: 'renderAs',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'series',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'seriesColors',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'seriesDefaults',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'theme',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'tooltip',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'transitions',
-    decorators: [_aureliaFramework.bindable],
-    initializer: function initializer() {
-      return false;
-    },
-    enumerable: true
-  }, {
-    key: 'type',
-    decorators: [_aureliaFramework.bindable],
-    initializer: function initializer() {
-      return 'line';
-    },
-    enumerable: true
-  }, {
-    key: 'valueAxis',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'options',
-    get: function get() {
-      return this.widget && this.widget.options;
-    }
   }], null, _instanceInitializers);
 
   function Sparkline(element) {
     _classCallCheck(this, _Sparkline);
 
-    _defineDecoratedPropertyDescriptor(this, 'autoBind', _instanceInitializers);
+    _WidgetBase.call(this, 'kendoSparkline', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'axisDefaults', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'categoryAxis', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'chartArea', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'data', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'plotArea', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'pointWidth', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'renderAs', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'series', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'seriesColors', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'seriesDefaults', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'theme', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'tooltip', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'transitions', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'type', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'valueAxis', _instanceInitializers);
-
-    this.element = element;
   }
 
   Sparkline.prototype.attached = function attached() {
@@ -167,80 +55,12 @@ var Sparkline = (function () {
     this._initialize();
   };
 
-  Sparkline.prototype._initialize = function _initialize() {
-    this.widget = $(this.element).kendoSparkline(this.getOptions()).data('kendoSparkline');
-  };
-
-  Sparkline.prototype.getOptions = function getOptions() {
-    var _this = this;
-
-    var options = _commonIndex.pruneOptions({
-      autoBind: this.autoBind,
-      axisDefaults: this.axisDefaults,
-      categoryAxis: this.categoryAxis,
-      chartArea: this.chartArea,
-      data: this.data,
-      dataSource: this.dataSource,
-      plotArea: this.plotArea,
-      pointWidth: this.pointWidth,
-      renderAs: this.renderAs,
-      series: this.series,
-      seriesColors: this.seriesColors,
-      seriesDefaults: this.seriesDefaults,
-      theme: this.theme,
-      tooltip: this.tooltip,
-      transitions: this.transitions,
-      type: this.type,
-      valueAxis: this.valueAxis,
-      axisLabelClick: function axisLabelClick(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'axis-label-click', e);
-      },
-      dataBound: function dataBound(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'data-bound', e);
-      },
-      drag: function drag(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'drag', e);
-      },
-      dragEnd: function dragEnd(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'drag-end', e);
-      },
-      dragStart: function dragStart(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'drag-start', e);
-      },
-      plotAreaClick: function plotAreaClick(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'plot-area-click', e);
-      },
-      seriesClick: function seriesClick(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'series-click', e);
-      },
-      seriesHover: function seriesHover(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'series-hover', e);
-      },
-      zoom: function zoom(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'zoom', e);
-      },
-      zoomEnd: function zoomEnd(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'zoom-end', e);
-      },
-      zoomStart: function zoomStart(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'zoom-start', e);
-      }
-    });
-
-    return options;
-  };
-
-  Sparkline.prototype.detached = function detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  };
-
   var _Sparkline = Sparkline;
   Sparkline = _aureliaFramework.inject(Element)(Sparkline) || Sparkline;
+  Sparkline = _commonIndex.generateBindables('kendoSparkline')(Sparkline) || Sparkline;
   Sparkline = _aureliaFramework.noView(Sparkline) || Sparkline;
-  Sparkline = _aureliaFramework.customElement('au-kendo-sparkline')(Sparkline) || Sparkline;
+  Sparkline = _aureliaFramework.customElement('k-sparkline')(Sparkline) || Sparkline;
   return Sparkline;
-})();
+})(_commonIndex.WidgetBase);
 
 exports.Sparkline = Sparkline;

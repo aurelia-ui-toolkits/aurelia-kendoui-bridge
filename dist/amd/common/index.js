@@ -1,4 +1,4 @@
-define(['exports', './events', './options', './template-compiler'], function (exports, _events, _options, _templateCompiler) {
+define(['exports', './events', './options', './template-compiler', './widget-base', './decorators'], function (exports, _events, _options, _templateCompiler, _widgetBase, _decorators) {
   'use strict';
 
   exports.__esModule = true;
@@ -12,4 +12,8 @@ define(['exports', './events', './options', './template-compiler'], function (ex
   _defaults(exports, _interopExportWildcard(_options, _defaults));
 
   _defaults(exports, _interopExportWildcard(_templateCompiler, _defaults));
+
+  _defaults(exports, _interopExportWildcard(_widgetBase, _defaults));
+
+  _defaults(exports, _interopExportWildcard(_decorators, _defaults));
 });

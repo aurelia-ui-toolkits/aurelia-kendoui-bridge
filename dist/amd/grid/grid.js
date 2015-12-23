@@ -7,10 +7,14 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
+  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-  var Grid = (function () {
+  var Grid = (function (_WidgetBase) {
     var _instanceInitializers = {};
+
+    _inherits(Grid, _WidgetBase);
 
     _createDecoratedClass(Grid, [{
       key: 'columns',
@@ -18,119 +22,14 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
       initializer: null,
       enumerable: true
     }, {
-      key: 'autoBind',
+      key: 'options',
       decorators: [_aureliaFramework.bindable],
       initializer: function initializer() {
-        return true;
+        return {};
       },
-      enumerable: true
-    }, {
-      key: 'columnMenu',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
       enumerable: true
     }, {
       key: 'dataSource',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'editable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'filterable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'group',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'groupable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return true;
-      },
-      enumerable: true
-    }, {
-      key: 'height',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'navigatable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'page',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return 1;
-      },
-      enumerable: true
-    }, {
-      key: 'pageable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'sortable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'pageSize',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return 10;
-      },
-      enumerable: true
-    }, {
-      key: 'scrollable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'selectable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'selectedItem',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'selectedItems',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'sort',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'reorderable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return true;
-      },
-      enumerable: true
-    }, {
-      key: 'resizable',
-      decorators: [_aureliaFramework.bindable],
-      initializer: function initializer() {
-        return true;
-      },
-      enumerable: true
-    }, {
-      key: 'toolbar',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
@@ -139,51 +38,14 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
     function Grid(element, templateCompiler) {
       _classCallCheck(this, _Grid);
 
+      _WidgetBase.call(this, 'kendoGrid', element);
+
       _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'autoBind', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'columnMenu', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'editable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'group', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'height', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'navigatable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'page', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'pageable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'pageSize', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'scrollable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'selectable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'selectedItem', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'selectedItems', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'sort', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'reorderable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'resizable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'toolbar', _instanceInitializers);
-
-      this.element = element;
       this.templateCompiler = templateCompiler;
     }
 
@@ -200,115 +62,9 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
     };
 
     Grid.prototype._initialize = function _initialize() {
-      var target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+      this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
-      this.widget = $(target).kendoGrid(this.getOptions()).data('kendoGrid');
-    };
-
-    Grid.prototype.getOptions = function getOptions() {
-      var _this = this;
-
-      var options = _commonIndex.pruneOptions({
-        animation: this.animation,
-        columns: this.columns,
-        columnMenu: this.columnMenu,
-        dataSource: this.dataSource,
-        dataTextField: this.dataTextField,
-        delay: this.delay,
-        enable: this.enable,
-        editable: this.editable,
-        filter: this.filter,
-        filterable: this.filterable,
-        fixedGroupTemplate: this.fixedGroupTemplate,
-        groupTemplate: this.groupTemplate,
-        groupable: this.groupable,
-        headerTemplate: this.headerTemplate,
-        height: this.height,
-        highlightFirst: this.highlightFirst,
-        ignoreCase: this.ignoreCase,
-        minLength: this.minLength,
-        navigatable: this.navigatable,
-        pageable: this.pageable,
-        placeholder: this.placeholder,
-        popup: this.popup,
-        reorderable: this.reorderable,
-        resizable: this.resizable,
-        separator: this.separator,
-        scrollable: this.scrollable,
-        sortable: this.sortable,
-        suggest: this.suggest,
-        template: this.template,
-        toolbar: this.toolbar,
-        valuePrimitive: this.valuePrimitive,
-        virtual: this.virtual,
-
-        cancel: function cancel(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'cancel', e);
-        },
-        change: function change(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'change', e);
-        },
-        columnHide: function columnHide(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'column-hide', e);
-        },
-        columnLock: function columnLock(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'column-lock', e);
-        },
-        columnUnlock: function columnUnlock(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'column-unlock', e);
-        },
-        columnMenuInit: function columnMenuInit(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'column-menu-init', e);
-        },
-        columnReorder: function columnReorder(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'column-reorder', e);
-        },
-        columnResize: function columnResize(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'column-resize', e);
-        },
-        columnShow: function columnShow(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'column-show', e);
-        },
-        dataBinding: function dataBinding(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'data-binding', e);
-        },
-        dataBound: function dataBound(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'data-bound', e);
-        },
-        detailCollapse: function detailCollapse(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'detail-collapse', e);
-        },
-
-        detailExpand: function detailExpand(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'detail-expand', e);
-        },
-        edit: function edit(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'edit', e);
-        },
-        excelExport: function excelExport(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'excel-export', e);
-        },
-        filterMenuInit: function filterMenuInit(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'filter-menu-init', e);
-        },
-        navigate: function navigate(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'navigate', e);
-        },
-        pdfExport: function pdfExport(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'pdf-export', e);
-        },
-        remove: function remove(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'remove', e);
-        },
-        save: function save(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'save', e);
-        },
-        saveChanges: function saveChanges(e) {
-          return _commonIndex.fireKendoEvent(_this.element, 'save-changes', e);
-        }
-      });
-
-      return Object.assign({}, this.options, options);
+      _WidgetBase.prototype._initialize.call(this);
     };
 
     Grid.prototype.enableChanged = function enableChanged(newValue) {
@@ -317,17 +73,12 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
       }
     };
 
-    Grid.prototype.detached = function detached() {
-      if (this.widget) {
-        this.widget.destroy();
-      }
-    };
-
     var _Grid = Grid;
     Grid = _aureliaFramework.inject(Element, _commonIndex.TemplateCompiler)(Grid) || Grid;
-    Grid = _aureliaFramework.customElement('au-kendo-grid')(Grid) || Grid;
+    Grid = _commonIndex.generateBindables('kendoGrid')(Grid) || Grid;
+    Grid = _aureliaFramework.customElement('k-grid')(Grid) || Grid;
     return Grid;
-  })();
+  })(_commonIndex.WidgetBase);
 
   exports.Grid = Grid;
 
