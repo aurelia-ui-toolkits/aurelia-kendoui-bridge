@@ -4,9 +4,8 @@ import {DOM} from 'aurelia-pal';
 import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 
-let element = document.createElement('div');
-
 describe('Button', () => {
+  let element;
   let widget;
   let container;
   let templatingEngine;
@@ -14,9 +13,10 @@ describe('Button', () => {
   beforeEach(() => {
     initialize();
     container = new Container();
+    Container.instance = container;
+    element = DOM.createElement('div');
     container.registerInstance(DOM.Element, element);
     templatingEngine = container.get(TemplatingEngine);
-
     widget = templatingEngine.createViewModelForUnitTest(Widget);
   });
 

@@ -47,14 +47,17 @@
       "babel-runtime": "npm:babel-runtime@^5.8.20",
       "core-js": "npm:core-js@^1.2.6",
       "kendo-ui": "kendo:bower-kendo-ui@^2015.2.813",
+      "polymer/mutationobservers": "github:polymer/mutationobservers@^0.4.2",
       "traceur": "github:jmcriffey/bower-traceur@0.0.91",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91"
     }
   },
   "devDependencies": {
     "aurelia-tools": "git://github.com/aurelia-ui-toolkits/tools.git#master",
+    "babel": "^5.8.22",
     "babel-dts-generator": "^0.2.17",
     "babel-eslint": "^4.1.1",
+    "babel-runtime": "^5.8.20",
     "browser-sync": "^2.9.3",
     "conventional-changelog": "0.0.11",
     "del": "^1.1.0",
@@ -77,6 +80,7 @@
     "karma-jasmine": "^0.1.6",
     "karma-jspm": "^2.0.2",
     "object.assign": "^1.0.3",
+    "phantomjs-polyfill": "0.0.1",
     "require-dir": "^0.1.0",
     "run-sequence": "^1.0.2",
     "through2": "^2.0.0",

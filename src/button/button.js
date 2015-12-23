@@ -1,5 +1,6 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
 import {WidgetBase, generateBindables} from '../common/index';
+import {DOM} from 'aurelia-pal';
 import 'jquery';
 import 'kendo-ui/js/kendo.button.min';
 

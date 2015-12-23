@@ -1,8 +1,13 @@
 import {getEventsFromAttributes} from 'src/common/util';
 import {constants} from 'src/common/constants';
+import {initialize} from 'aurelia-pal-browser';
 import {DOM} from 'aurelia-pal';
 
 describe('Util', () => {
+  beforeEach(() => {
+    initialize();
+  });
+
   it('getEventsFromAttributes ignores non-kendo attributes', () => {
     let element = DOM.createElement('div');
     element.setAttribute('id', '');
