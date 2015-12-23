@@ -9,7 +9,7 @@ import 'kendo-ui/js/kendo.progressbar.min';
 export class AuKendoProgressBar extends WidgetBase {
 
   @bindable options = {};
-  
+
   constructor(element) {
     super('kendoProgressBar', element);
 
@@ -29,11 +29,5 @@ export class AuKendoProgressBar extends WidgetBase {
 
   valueChanged(newValue) {
     this.widget.value(newValue);
-  }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
   }
 }

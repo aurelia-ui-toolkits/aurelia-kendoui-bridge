@@ -37,10 +37,4 @@ export class Button extends WidgetBase {
       this.widget.enable(newValue);
     }
   }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  }
 }

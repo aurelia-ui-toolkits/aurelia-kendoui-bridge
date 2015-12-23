@@ -72,10 +72,4 @@ export class AutoComplete extends WidgetBase {
       this.widget.search(value);
     }
   }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  }
 }

@@ -33,10 +33,4 @@ export class Menu extends WidgetBase {
 
     super._initialize();
   }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  }
 }

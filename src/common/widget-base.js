@@ -47,7 +47,7 @@ export class WidgetBase {
   _initialized() {
 
   }
-  
+
   _getOptions(ctor) {
     let options = this.getOptionsFromBindables();
     let eventOptions = this.getEventOptions(ctor);
@@ -107,5 +107,11 @@ export class WidgetBase {
     });
 
     return options;
+  }
+
+  detached() {
+    if (this.widget) {
+      this.widget.destroy();
+    }
   }
 }

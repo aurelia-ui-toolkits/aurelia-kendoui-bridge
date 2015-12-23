@@ -46,12 +46,6 @@ export class Grid extends WidgetBase {
       this.widget.enable(newValue);
     }
   }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  }
 }
 
 // if the first child node is a table tag

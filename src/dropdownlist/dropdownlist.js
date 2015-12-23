@@ -18,7 +18,7 @@ export class AuKendoDropDownList extends WidgetBase {
 
     this.templateCompiler = templateCompiler;
   }
- 
+
   bind(ctx) {
     this.templateCompiler.initialize(ctx);
 
@@ -78,12 +78,6 @@ export class AuKendoDropDownList extends WidgetBase {
       this.widget.search(value);
       // Need to make sure the kendo binding stays up to date
 	  this.widget.trigger('change');
-    }
-  }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
     }
   }
 }

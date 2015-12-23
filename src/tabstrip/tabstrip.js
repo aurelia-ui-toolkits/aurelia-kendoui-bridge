@@ -27,10 +27,4 @@ export class TabStrip extends WidgetBase {
       this.widget.enable(newValue);
     }
   }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  }
 }

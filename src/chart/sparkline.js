@@ -23,10 +23,4 @@ export class Sparkline extends WidgetBase {
   recreate() {
     this._initialize();
   }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  }
 }

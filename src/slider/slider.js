@@ -30,10 +30,4 @@ export class AuKendoSlider extends WidgetBase {
   // valueChanged(newValue) {
     // this.widget.value(newValue);
   // }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  }
 }

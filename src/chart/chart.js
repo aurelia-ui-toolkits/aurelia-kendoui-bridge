@@ -78,10 +78,4 @@ export class Chart extends WidgetBase {
       return this.widget.setDataSource(dataSource);
     }
   }
-
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  }
 }
