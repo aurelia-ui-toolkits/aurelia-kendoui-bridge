@@ -2,13 +2,17 @@
     <section>
         <h2>Aurelia-KendoUI Bridge Help</h2>
 
-          <div au-kendo-tabstrip>
+          <div au-kendo-tabstrip kendo-select.trigger="tabSelected($event.detail)">
             <ul>
                 <li class="k-state-active">Docs</li>
                 <li>Gitter Chat</li>
             </ul>
             <div>This is some content for tab 1</div>
-            <div>This is some more content for tab 2</div>
+            <div style="height: 500px;">
+              <require from="../shared/gitter-sidecar"></require>
+              <gitter-sidecar room="adriatic/Aurelia-KendoUI" view-model.ref="gitter">
+              </gitter-sidecar>
+            </div>
           </div>
     </section>
 </template>
