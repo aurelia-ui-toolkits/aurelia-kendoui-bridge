@@ -4,12 +4,12 @@
       <p><strong>Select a state in USA:</strong></p>
       <p>
           <input k-autocomplete="data-source.bind: items;"
-                 kendo-open.trigger="logger.log('open')"
-                 kendo-close.trigger="logger.log('close')"
-                 kendo-change.trigger="logger.log('change')"
-                 kendo-select.trigger="logger.log('select')"
-                 kendo-data-bound.trigger="logger.log('dataBound')"
-                 kendo-filtering.trigger="logger.log('filtering')"
+                 k-on-open.trigger="logger.log('open')"
+                 k-on-close.trigger="logger.log('close')"
+                 k-on-change.trigger="logger.log('change')"
+                 k-on-select.trigger="logger.log('select')"
+                 k-on-data-bound.trigger="logger.log('dataBound')"
+                 k-on-filtering.trigger="logger.log('filtering')"
                  style="width: 100%;">
       </p>
       <p class="demo-hint">Hint: type "m"</p>

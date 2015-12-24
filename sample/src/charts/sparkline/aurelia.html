@@ -4,7 +4,7 @@
         <h4>Hover some series</h4>
         <k-sparkline  tooltip.bind="{visible: false, shared: false}"
                       data-source.bind="weather"
-                      kendo-series-hover.trigger="onSeriesHover($event)"
+                      k-on-series-hover.trigger="onSeriesHover($event)"
                       style="height: 30px;"
                       series.bind="[{
                            type: 'column',

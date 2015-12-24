@@ -4,13 +4,13 @@
             <h4>Customize your Kendo Cap</h4>
             <div id="cap" class="black-cap"></div>
             <h4>Cap Color</h4>
-            <input k-drop-down-list.ref="capColor" 
+            <input k-drop-down-list.ref="capColor"
             		k-drop-down-list="data-text-field: text;
                         					data-value-field: value;
                         					data-source.bind: data;
-                        					index.bind: 0;" kendo-change.trigger="onChange()" value="1" style="width: 100%;" />
+                        					index.bind: 0;" k-on-change.trigger="onChange()" value="1" style="width: 100%;" />
             <h4 style="margin-top: 2em;">Cap Size</h4>
-            <select k-drop-down-list.ref="capSize" 
+            <select k-drop-down-list.ref="capSize"
             		k-drop-down-list id="size" style="width: 100%;">
                 <option>S - 6 3/4"</option>
                 <option>M - 7 1/4"</option>
@@ -29,15 +29,15 @@
             background-repeat: no-repeat;
             background-color: transparent;
         }
-        
+
         .black-cap {
             background-position: 0 0;
         }
-        
+
         .grey-cap {
             background-position: 0 -225px;
         }
-        
+
         .orange-cap {
             background-position: 0 -450px;
         }
