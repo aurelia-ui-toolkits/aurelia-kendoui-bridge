@@ -11,6 +11,7 @@ module.exports = {
   style: appRoot + '**/*.css',
   output: 'dist/',
   sample: 'sample',
+  sampleSrc: './sample/src/**/*.js',
   doc:'./doc',
   unit: 'test/unit/**/*.js',
   e2eSpecsSrc: 'test/e2e/src/*.js',

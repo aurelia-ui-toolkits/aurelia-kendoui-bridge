@@ -17,6 +17,6 @@ export class FrozenColumns {
         }
       },
       pageSize: 30
-    }
+    };
   }
 }

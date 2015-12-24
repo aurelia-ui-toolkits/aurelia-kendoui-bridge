@@ -9,8 +9,7 @@ export class Index {
     this.registry = registry;
   }
 
-  configureRouter(config, router){
-
+  configureRouter(config, router) {
     this.router = router;
 
     return this.registry.load(config, 'charts/donut-charts');

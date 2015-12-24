@@ -8,7 +8,7 @@ export class Version {
     let version = this.wizardConfig.version;
 
     if (version) {
-      if(version == 'pro') {
+      if (version === 'pro') {
         return 'pro';
       } else {
         return 'instructions';

@@ -25,16 +25,6 @@ export class WorkingOffLine {
           }
         }
       },
-      requestStart: function(e) {
-        if (e.type !== 'read') {
-          console.log(kendo.format('Request start ({0})', e.type));
-        }
-      },
-      requestEnd: function(e) {
-        if (e.type !== 'read') {
-          console.log(kendo.format('Request end ({0})', e.type));
-        }
-      },
       batch: true,
       pageSize: 8,
       schema: {

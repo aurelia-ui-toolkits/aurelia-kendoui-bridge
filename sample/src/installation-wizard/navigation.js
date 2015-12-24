@@ -12,13 +12,13 @@ export class Navigation {
   }
 
   goNext() {
-    if(!this.next) return;
+    if (!this.next) return;
 
     this.wizardConfig._goToStep(this.next);
   }
 
   goBack() {
-    if(!this.previous) return;
+    if (!this.previous) return;
 
     this.wizardConfig._goToStep(this.previous);
   }

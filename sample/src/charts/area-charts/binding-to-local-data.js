@@ -112,7 +112,7 @@ export class BindingToLocalData {
       visible: false
     }
   };
-  
+
   categoryAxis = {
     field: 'year',
     majorGridLines: {

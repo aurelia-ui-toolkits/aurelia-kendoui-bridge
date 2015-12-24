@@ -19,8 +19,8 @@ export class WizardConfig {
   }
 
   _goToStep(page) {
-      return this.router.navigateToRoute('install', {
-        page: page
-      });
+    return this.router.navigateToRoute('install', {
+      page: page
+    });
   }
 }
