@@ -1,3 +1,1 @@
-export class BindingToSignalR {
-
-}
+export class BindingToSignalR {}

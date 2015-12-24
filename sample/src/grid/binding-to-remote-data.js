@@ -1,20 +1,20 @@
 export class BindingToRemoteData {
   constructor() {
     this.datasource = {
-      type: "odata",
+      type: 'odata',
       transport: {
-          read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+        read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Orders'
       },
       schema: {
-          model: {
-              fields: {
-                  OrderID: { type: "number" },
-                  Freight: { type: "number" },
-                  ShipName: { type: "string" },
-                  OrderDate: { type: "date" },
-                  ShipCity: { type: "string" }
-              }
+        model: {
+          fields: {
+            OrderID: { type: 'number' },
+            Freight: { type: 'number' },
+            ShipName: { type: 'string' },
+            OrderDate: { type: 'date' },
+            ShipCity: { type: 'string' }
           }
+        }
       },
       pageSize: 9,
       serverPaging: true,

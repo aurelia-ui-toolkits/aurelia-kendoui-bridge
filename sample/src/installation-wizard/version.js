@@ -7,11 +7,11 @@ export class Version {
   get next() {
     let version = this.wizardConfig.version;
 
-    if(version) {
-      if(version == "pro") {
-        return "pro";
+    if (version) {
+      if(version == 'pro') {
+        return 'pro';
       } else {
-        return "instructions";
+        return 'instructions';
       }
     }
 

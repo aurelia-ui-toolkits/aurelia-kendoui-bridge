@@ -5,21 +5,21 @@ import {WizardConfig} from 'installation-wizard/wizard-config';
 export class Instructions {
 
   get previous() {
-    if(this.wizardConfig.version == "pro") {
-      return "pro";
+    if (this.wizardConfig.version === 'pro') {
+      return 'pro';
     } else {
-      return "version";
+      return 'version';
     }
   }
 
   get lastStep() {
-    if(this.wizardConfig.version == "core") return 2;
+    if (this.wizardConfig.version === 'core') return 2;
 
-    if(this.wizardConfig.hasCredentials) {
+    if (this.wizardConfig.hasCredentials) {
       return 4;
     }
 
-    if(!this.wizardConfig.hasCredentials) {
+    if (!this.wizardConfig.hasCredentials) {
       return 6;
     }
   }
@@ -29,8 +29,7 @@ export class Instructions {
   }
 
   activate() {
-
-    if(!this.wizardConfig.version) {
+    if (!this.wizardConfig.version) {
       return Promise.reject(this.wizardConfig.reset());
     }
 

@@ -11,7 +11,7 @@ export class Wizard {
   activate(params, route) {
     let page = params.page;
 
-    if(page == 'begin') {
+    if (page === 'begin') {
       this.wizardConfig.reset();
     } else {
       this.wizardConfig.currentPage = page;

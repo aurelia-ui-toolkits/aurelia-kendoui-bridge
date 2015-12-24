@@ -1,3 +1,1 @@
-export class EditingCustomEditor {
-
-}
+export class EditingCustomEditor {}

@@ -1,3 +1,1 @@
-export class VirtualizationOfLocalData {
-
-}
+export class VirtualizationOfLocalData {}

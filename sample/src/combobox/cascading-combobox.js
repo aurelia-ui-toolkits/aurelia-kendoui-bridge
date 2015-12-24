@@ -1,3 +1,1 @@
-export class CascadingCombobox {
-    
-}
+export class CascadingCombobox {}

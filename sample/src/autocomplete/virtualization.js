@@ -1,18 +1,18 @@
 export class Virtualization {
   constructor() {
     this.datasource = {
-      type: "odata",
+      type: 'odata',
       transport: {
-        read: "//demos.telerik.com/kendo-ui/service/Northwind.svc/Orders"
+        read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Orders'
       },
       schema: {
         model: {
           fields: {
-            OrderID: { type: "number" },
-            Freight: { type: "number" },
-            ShipName: { type: "string" },
-            OrderDate: { type: "date" },
-            ShipCity: { type: "string" }
+            OrderID: { type: 'number' },
+            Freight: { type: 'number' },
+            ShipName: { type: 'string' },
+            OrderDate: { type: 'date' },
+            ShipCity: { type: 'string' }
           }
         }
       },
@@ -25,27 +25,27 @@ export class Virtualization {
       itemHeight: 26,
       valueMapper: (options) => {
         $.ajax({
-          url: "//demos.telerik.com/kendo-ui/service/Orders/ValueMapper",
-          type: "GET",
-          dataType: "jsonp",
+          url: '//demos.telerik.com/kendo-ui/service/Orders/ValueMapper',
+          type: 'GET',
+          dataType: 'jsonp',
           data: this.convertValues(options.value),
-          success: function (data) {
+          success: function(data) {
             options.success(data);
           }
-        })
+        });
       }
-    }
+    };
 
     this.template = '<span class="order-id">${OrderID}</span> ${ShipName}, ${ShipCountry}';
   }
 
   convertValues(value) {
-    var data = {};
+    let data = {};
 
     value = $.isArray(value) ? value : [value];
 
-    for (var idx = 0; idx < value.length; idx++) {
-      data["values[" + idx + "]"] = value[idx];
+    for (let idx = 0; idx < value.length; idx++) {
+      data['values[' + idx + ']'] = value[idx];
     }
 
     return data;

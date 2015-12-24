@@ -4,8 +4,4 @@ export class InitializationFromTable {
     pageSizes: true,
     buttonCount: 5
   };
-
-  constructor() {
-      pageSize: 5
-  }
 }

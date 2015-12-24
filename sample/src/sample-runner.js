@@ -14,11 +14,11 @@ export class SampleRunner {
   activate(params, route) {
     let sample = route.navModel.config.sample;
 
-    if(!sample) throw new Error("Route does not contain a 'sample' property");
+    if (!sample) throw new Error('Route does not contain a \'sample\' property');
 
     this.sample = sample;
 
-    this.unsubscribe = this.ea.subscribe("kendo:skinChange", () => this.restart())
+    this.unsubscribe = this.ea.subscribe('kendo:skinChange', () => this.restart());
   }
 
   restart() {
@@ -33,7 +33,7 @@ export class SampleRunner {
     this.unsubscribe.dispose();
   }
 
-  determineActivationStrategy(){
+  determineActivationStrategy() {
     return activationStrategy.replace;
   }
 }

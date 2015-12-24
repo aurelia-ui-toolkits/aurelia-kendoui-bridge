@@ -1,2 +1,9 @@
 build
-sample
+sample/images
+sample/jspm_packages
+sample/node_modules
+sample/styles
+sample/vendors
+sample/config.js
+sample/package.json
+sample/system.js

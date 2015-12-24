@@ -1,3 +1,1 @@
-export class ServerFiltering {
-    
-}
+export class ServerFiltering {}

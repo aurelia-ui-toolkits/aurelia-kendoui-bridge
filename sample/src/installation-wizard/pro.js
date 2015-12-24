@@ -1,5 +1,4 @@
 import {inject} from 'aurelia-framework';
-import {Redirect} from 'aurelia-router';
 import {WizardConfig} from 'installation-wizard/wizard-config';
 
 @inject(WizardConfig)
@@ -10,8 +9,7 @@ export class Pro {
   }
 
   activate() {
-
-    if(!this.wizardConfig.version) {
+    if (!this.wizardConfig.version) {
       return Promise.reject(this.wizardConfig.reset());
     }
 

@@ -1,3 +1,1 @@
-export class Grouping {
-    
-}
+export class Grouping {}
