@@ -12,7 +12,7 @@ describe('Util', () => {
     let element = DOM.createElement('div');
     element.setAttribute('id', '');
     element.setAttribute('name', '');
-    element.setAttribute('kendo-my-event.trigger', '');
+    element.setAttribute(`${constants.eventPrefix}my-event.trigger`, '');
 
     let response = getEventsFromAttributes(element);
     expect(response.includes('id')).toBe(false);
@@ -30,8 +30,8 @@ describe('Util', () => {
 
   it('getEventsFromAttributes unhyphenates and camelcases', () => {
     let element = DOM.createElement('div');
-    element.setAttribute('kendo-my-event', '');
-    element.setAttribute('kendo-my-long-event-name', '');
+    element.setAttribute(`${constants.eventPrefix}my-event`, '');
+    element.setAttribute(`${constants.eventPrefix}my-long-event-name`, '');
 
     let response = getEventsFromAttributes(element);
     expect(response.includes('myEvent')).toBe(true);
@@ -40,8 +40,8 @@ describe('Util', () => {
 
   it('getEventsFromAttributes removes trigger or delegates from the name', () => {
     let element = DOM.createElement('div');
-    element.setAttribute('kendo-my-event.trigger', '');
-    element.setAttribute('kendo-other-event.delegate', '');
+    element.setAttribute(`${constants.eventPrefix}my-event.trigger`, '');
+    element.setAttribute(`${constants.eventPrefix}other-event.delegate`, '');
 
     let response = getEventsFromAttributes(element);
     expect(response.includes('myEvent')).toBe(true);
