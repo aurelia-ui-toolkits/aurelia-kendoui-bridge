@@ -28,11 +28,11 @@ System.config({
     "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1",
     "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1",
     "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.0.1",
-    "aurelia-prism-plugin": "github:JeroenVinke/aurelia-prism-plugin@1.0.2",
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.0.2",
     "babel": "npm:babel-core@5.8.34",
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
+    "clean-css": "npm:clean-css@3.4.8",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
@@ -40,10 +40,7 @@ System.config({
     "json": "github:systemjs/plugin-json@0.1.0",
     "prism": "github:PrismJS/prism@1.3.0",
     "showdown": "github:showdownjs/showdown@1.3.0",
-    "github:JeroenVinke/aurelia-prism-plugin@1.0.2": {
-      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.5",
-      "prism": "github:PrismJS/prism@1.3.0"
-    },
+    "text": "github:systemjs/plugin-text@0.0.4",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
     },

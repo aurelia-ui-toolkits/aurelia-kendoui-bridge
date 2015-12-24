@@ -33,6 +33,7 @@ System.config({
     "kendo-ui": "kendo:bower-kendo-ui@2015.3.1214",
     "polymer/mutationobservers": "github:polymer/mutationobservers@0.4.2",
     "showdown": "github:showdownjs/showdown@1.3.0",
+    "text": "github:systemjs/plugin-text@0.0.4",
     "traceur": "github:jmcriffey/bower-traceur@0.0.91",
     "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91",
     "github:jspm/nodelibs-assert@0.1.0": {
