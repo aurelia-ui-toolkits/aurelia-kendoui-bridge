@@ -1,12 +1,12 @@
 <template>
-  <k-chart render-as="canvas"
-          data-source.bind="dataSource"
-          category-axis.bind="{field: 'category'}"
-          value-axis.bind="{min: 0, max: 12}"
-          series.bind="[{type: 'column', field: 'val'}]"
-          transitions.bind="false"
-          kendo-drag.trigger="onDrag($event)"
-          kendo-drag-end.trigger="onDragEnd($event)"
-          kendo-zoom.trigger="onZoom($event)">
-  </k-chart>
+    <k-chart  render-as="canvas"
+              data-source.bind="dataSource"
+              category-axis.bind="{field: 'category'}"
+              value-axis.bind="{min: 0, max: 12}"
+              series.bind="[{type: 'column', field: 'val'}]"
+              transitions.bind="false"
+              kendo-drag.trigger="onDrag($event)"
+              kendo-drag-end.trigger="onDragEnd($event)"
+              kendo-zoom.trigger="onZoom($event)">
+    </k-chart>
 </template>

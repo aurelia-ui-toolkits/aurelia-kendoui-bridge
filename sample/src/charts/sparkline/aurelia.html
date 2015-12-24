@@ -2,15 +2,15 @@
   <div class="demo-section k-content">
     <div>
         <h4>Hover some series</h4>
-        <k-sparkline tooltip.bind="{visible: false, shared: false}"
-                            data-source.bind="weather"
-                            kendo-series-hover.trigger="onSeriesHover($event)"
-                            style="height: 30px;"
-                            series.bind="[{
-                                 type: 'column',
-                                 field: 'TMax',
-                                 color: '#ff0000',
-                                 negativeColor: '#0099ff' }]">
+        <k-sparkline  tooltip.bind="{visible: false, shared: false}"
+                      data-source.bind="weather"
+                      kendo-series-hover.trigger="onSeriesHover($event)"
+                      style="height: 30px;"
+                      series.bind="[{
+                           type: 'column',
+                           field: 'TMax',
+                           color: '#ff0000',
+                           negativeColor: '#0099ff' }]">
         </k-sparkline>
     </div>
     <div style="padding-top: 1em;">
