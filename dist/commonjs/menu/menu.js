@@ -6,6 +6,8 @@ var _createDecoratedClass = (function () { function defineProperties(target, des
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
 var _aureliaFramework = require('aurelia-framework');
@@ -16,46 +18,20 @@ require('jquery');
 
 require('kendo-ui/js/kendo.menu.min');
 
-var Menu = (function () {
+var Menu = (function (_WidgetBase) {
   var _instanceInitializers = {};
+
+  _inherits(Menu, _WidgetBase);
 
   _createDecoratedClass(Menu, [{
     key: 'options',
     decorators: [_aureliaFramework.bindable],
-    initializer: null,
+    initializer: function initializer() {
+      return {};
+    },
     enumerable: true
   }, {
     key: 'dataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'closeOnClick',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'animation',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'direction',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'hoverDelay',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'orientation',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'popupCollision',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -64,24 +40,11 @@ var Menu = (function () {
   function Menu(element) {
     _classCallCheck(this, _Menu);
 
+    _WidgetBase.call(this, 'kendoMenu', element);
+
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'closeOnClick', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'animation', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'direction', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'hoverDelay', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'orientation', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'popupCollision', _instanceInitializers);
-
-    this.element = element;
-    this.options = {};
   }
 
   Menu.prototype.bind = function bind() {
@@ -93,58 +56,21 @@ var Menu = (function () {
   };
 
   Menu.prototype._initialize = function _initialize() {
-    var target = undefined;
     var ul = $(this.element).find('ul');
     if (ul.has()) {
-      target = $(this.element).find('ul').first();
+      this.target = $(this.element).find('ul').first();
     } else {
-      target = $(this.element).appendChild('<ul></ul>');
+      this.target = $(this.element).appendChild('<ul></ul>');
     }
 
-    this.widget = target.kendoMenu(this.getOptions()).data('kendoMenu');
-  };
-
-  Menu.prototype.getOptions = function getOptions() {
-    var _this = this;
-
-    var options = _commonIndex.pruneOptions({
-      dataSource: this.dataSource,
-      closeOnClick: this.closeOnClick,
-      animation: this.animation,
-      direction: this.direction,
-      hoverDelay: this.hoverDelay,
-      orientation: this.orientation,
-      popupCollision: this.popupCollision,
-      close: function close(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'close', e);
-      },
-      open: function open(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'open', e);
-      },
-      activate: function activate(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'activate', e);
-      },
-      deactivate: function deactivate(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'deactivate', e);
-      },
-      select: function select(e) {
-        return _commonIndex.fireKendoEvent(_this.element, 'select', e);
-      }
-    });
-
-    return Object.assign({}, this.options, options);
-  };
-
-  Menu.prototype.detached = function detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
+    _WidgetBase.prototype._initialize.call(this);
   };
 
   var _Menu = Menu;
   Menu = _aureliaFramework.inject(Element)(Menu) || Menu;
-  Menu = _aureliaFramework.customElement('au-kendo-menu')(Menu) || Menu;
+  Menu = _commonIndex.generateBindables('kendoMenu')(Menu) || Menu;
+  Menu = _aureliaFramework.customElement('k-menu')(Menu) || Menu;
   return Menu;
-})();
+})(_commonIndex.WidgetBase);
 
 exports.Menu = Menu;

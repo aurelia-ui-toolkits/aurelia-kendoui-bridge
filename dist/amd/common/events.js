@@ -1,4 +1,4 @@
-define(['exports'], function (exports) {
+define(['exports', './constants'], function (exports, _constants) {
   'use strict';
 
   exports.__esModule = true;
@@ -15,7 +15,7 @@ define(['exports'], function (exports) {
   function fireKendoEvent(element, name) {
     var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
-    fireEvent(element, 'kendo-' + name, data);
+    fireEvent(element, '' + _constants.constants.eventPrefix + name, data);
     return true;
   }
 });

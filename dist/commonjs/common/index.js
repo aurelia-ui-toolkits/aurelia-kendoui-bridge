@@ -17,3 +17,11 @@ _defaults(exports, _interopExportWildcard(_options, _defaults));
 var _templateCompiler = require('./template-compiler');
 
 _defaults(exports, _interopExportWildcard(_templateCompiler, _defaults));
+
+var _widgetBase = require('./widget-base');
+
+_defaults(exports, _interopExportWildcard(_widgetBase, _defaults));
+
+var _decorators = require('./decorators');
+
+_defaults(exports, _interopExportWildcard(_decorators, _defaults));

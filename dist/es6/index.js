@@ -1,4 +1,6 @@
 import * as LogManager from 'aurelia-logging';
+import 'kendo-ui/js/kendo.pdf.min';
+import 'kendo-ui/js/jszip.min';
 let logger = LogManager.getLogger('aurelia-kendoui-plugin');
 
 export function configure(aurelia, configCallback) {
@@ -26,15 +28,18 @@ class KendoConfigBuilder {
 
   core() {
     this.kendoButton()
-			.kendoTabStrip()
-      .kendoMenu();
+      .kendoTabStrip()
+      .kendoProgressBar()
+      .kendoSlider()
+      .kendoDropDownList();
     return this;
   }
 
   pro() {
     this.core()
       .kendoGrid()
-			.kendoAutoComplete();
+			.kendoAutoComplete()
+      .kendoChart();
     return this;
   }
 
@@ -81,6 +86,24 @@ class KendoConfigBuilder {
 
   kendoToolbar() {
     this.resources.push('toolbar/toolbar');
+    return this;
+  }
+
+  kendoChart() {
+    this.resources.push('chart/chart');
+    this.resources.push('chart/sparkline');
+    this.resources.push('chart/stock');
+    this.resources.push('chart/treemap');
+    return this;
+  }
+
+  kendoProgressBar() {
+    this.resources.push('progressbar/progressbar');
+    return this;
+  }
+
+  kendoSlider() {
+    this.resources.push('slider/slider');
     return this;
   }
 }
