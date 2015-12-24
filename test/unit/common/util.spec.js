@@ -1,4 +1,4 @@
-import {getEventsFromAttributes, getBindablePropertyName} from 'src/common/util';
+import {getEventsFromAttributes, getBindablePropertyName, _hyphenate, _unhyphenate, addHyphenAndLower} from 'src/common/util';
 import {constants} from 'src/common/constants';
 import {initialize} from 'aurelia-pal-browser';
 import {DOM} from 'aurelia-pal';
@@ -60,5 +60,22 @@ describe('Util', () => {
   it('getBindablePropertyName() uppercases second letter', () => {
     let secondLetter = getBindablePropertyName('test')[1];
     expect(secondLetter).toBe(secondLetter.toUpperCase());
+  });
+
+  it('_hyphenate() hyphenates correctly', () => {
+    expect(_hyphenate('kMyProp')).toBe('k-my-prop');
+    expect(_hyphenate('abcdMyProp')).toBe('abcd-my-prop');
+    expect(_hyphenate('myProp')).toBe('my-prop');
+  });
+
+  it('_unhyphenate() unhyphenates correctly', () => {
+    expect(_unhyphenate('k-my-prop')).toBe('kMyProp');
+    expect(_unhyphenate('abcd-my-prop')).toBe('abcdMyProp');
+    expect(_unhyphenate('my-prop')).toBe('myProp');
+  });
+
+  it('addHyphenAndLower adds hyphen and lowercases the char', () => {
+    expect(addHyphenAndLower('k')).toBe('-k');
+    expect(addHyphenAndLower('K')).toBe('-k');
   });
 });
