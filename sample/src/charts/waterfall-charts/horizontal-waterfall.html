@@ -1,9 +1,9 @@
 <template>
-  <k-chart title.bind="{text: 'Request latency breakdown'}"
-                  data-source.bind="{data: requestData}"
-                  legend.bind="{visible: false}"
-                  series.bind="series"
-                  axis-defaults.bind="{majorGridLines: {visible: false}}"
-                  value-axis.bind="{labels: {format: '{0} ms'}}">
+  <k-chart  title.bind="{text: 'Request latency breakdown'}"
+            data-source.bind="{data: requestData}"
+            legend.bind="{visible: false}"
+            series.bind="series"
+            axis-defaults.bind="{majorGridLines: {visible: false}}"
+            value-axis.bind="{labels: {format: '{0} ms'}}">
   </k-chart>
 </template>

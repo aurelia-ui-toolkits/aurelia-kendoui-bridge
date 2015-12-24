@@ -1,9 +1,9 @@
 <template>
-  <k-chart title.bind="{text: 'Budget report'}"
-                  data-source.bind="dataSource"
-                  series-defaults.bind="{type: 'radarLine', style: 'smooth'}"
-                  series.bind="series"
-                  category-axis.bind="{field: 'unit'}"
-                  value-axis.bind="{labels: {template: '$#= value / 1000 #k'}}">
+  <k-chart  title.bind="{text: 'Budget report'}"
+            data-source.bind="dataSource"
+            series-defaults.bind="{type: 'radarLine', style: 'smooth'}"
+            series.bind="series"
+            category-axis.bind="{field: 'unit'}"
+            value-axis.bind="{labels: {template: '$#= value / 1000 #k'}}">
   </k-chart>
 </template>

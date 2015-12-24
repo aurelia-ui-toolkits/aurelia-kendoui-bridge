@@ -1,11 +1,11 @@
 <template>
-  <k-chart title.bind="{text: 'Wind Rose'}"
-                  legend.bind="legend"
-                  data-source.bind="dataSource"
-                  series-colors.bind="seriesColors"
-                  series.bind="series"
-                  category-axis.bind="{field: 'dirText'}"
-                  value-axis.bind="{visible: false}"
-                  tooltip.bind="{template: '#= category # (#= dataItem.categoryText # m/s) #= value #%', visible: true}">
+  <k-chart  title.bind="{text: 'Wind Rose'}"
+            legend.bind="legend"
+            data-source.bind="dataSource"
+            series-colors.bind="seriesColors"
+            series.bind="series"
+            category-axis.bind="{field: 'dirText'}"
+            value-axis.bind="{visible: false}"
+            tooltip.bind="{template: '#= category # (#= dataItem.categoryText # m/s) #= value #%', visible: true}">
   </k-chart>
 </template>

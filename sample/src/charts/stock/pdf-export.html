@@ -8,16 +8,16 @@
       </div>
   </div>
 
-  <k-stock id="stock-chart"
-                  data-source.bind="dataSource"
-                  pdf.bind="pdf",
-                  title.bind="{text: 'The Boeing Company\nNYSE:BA'}"
-                  date-field="Date"
-                  panes.bind="panes"
-                  series.bind="series"
-                  category-axis.bind="{pane: 'volumePane'}"
-                  value-axis.bind="valueAxis"
-                  navigator.bind="navigator"
-                  view-model.ref="stock">
+  <k-stock  id="stock-chart"
+            data-source.bind="dataSource"
+            pdf.bind="pdf",
+            title.bind="{text: 'The Boeing Company\nNYSE:BA'}"
+            date-field="Date"
+            panes.bind="panes"
+            series.bind="series"
+            category-axis.bind="{pane: 'volumePane'}"
+            value-axis.bind="valueAxis"
+            navigator.bind="navigator"
+            view-model.ref="stock">
   </k-stock>
 </template>
