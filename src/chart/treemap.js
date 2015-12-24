@@ -9,7 +9,7 @@ import 'kendo-ui/js/kendo.dataviz.treemap.min';
 export class TreeMap extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element) {
     super('kendoTreeMap', element);

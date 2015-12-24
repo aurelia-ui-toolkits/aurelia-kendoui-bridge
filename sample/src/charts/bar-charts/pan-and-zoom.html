@@ -2,11 +2,11 @@
   <div class="box wide">
       <p>Use SHIFT + Mouse Drag Region Selection combination on mouse-enabled devices to zoom in data for a specific period of time</p>
   </div>
-  <k-chart  render-as="canvas"
-            data-source.bind="{data: data}"
-            category-axis.bind="categoryAxis"
-            series.bind="series"
-            pannable.bind="{lock: 'y'}"
-            zoomable.bind="zoomable">
+  <k-chart  k-render-as="canvas"
+            k-data-source.bind="{data: data}"
+            k-category-axis.bind="categoryAxis"
+            k-series.bind="series"
+            k-pannable.bind="{lock: 'y'}"
+            k-zoomable.bind="zoomable">
   </k-chart>
 </template>

@@ -1,5 +1,9 @@
 <template>
-  <k-grid data-source.bind="datasource" pageable.bind="{ input: true, numeric: false}" filterable.bind="true" sortable.bind="true" scrollable.bind="true">
+  <k-grid k-data-source.bind="datasource" 
+          k-pageable.bind="{ input: true, numeric: false}" 
+          k-filterable.bind="true" 
+          k-sortable.bind="true" 
+          k-scrollable.bind="true">
     <au-col title="ProductName" field="ProductName"></au-col>
     <au-col title="Unit Price" field="UnitPrice" format="{0:c}" width="130px"></au-col>
     <au-col title="Units In Stock" field="UnitsInStock" width="130px"></au-col>

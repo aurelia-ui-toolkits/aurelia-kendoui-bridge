@@ -3,12 +3,12 @@
     <div class="row">
         <div class="col-xs-12 col-sm-2" repeat.for="year of years">
             <k-chart  class="pie-chart"
-                      title.bind="{ text: year }"
-                      data-source.bind="getDatasource(year)"
-                      legend.bind="legend"
-                      series-defaults.bind="seriesDefaults"
-                      series.bind="series"
-                      tooltip.bind="tooltip">
+                      k-title.bind="{ text: year }"
+                      k-data-source.bind="getDatasource(year)"
+                      k-legend.bind="legend"
+                      k-series-defaults.bind="seriesDefaults"
+                      k-series.bind="series"
+                      k-tooltip.bind="tooltip">
             </k-chart>
         </div>
     </div>

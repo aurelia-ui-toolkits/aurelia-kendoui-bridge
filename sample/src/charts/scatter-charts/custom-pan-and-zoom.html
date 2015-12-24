@@ -1,9 +1,9 @@
 <template>
-  <k-chart  render-as="canvas"
-            data-source.bind="{data: data}"
-            x-axis.bind="xAxis"
-            series.bind="series"
-            transitions.bind="false"
+  <k-chart  k-render-as="canvas"
+            k-data-source.bind="{data: data}"
+            k-x-axis.bind="xAxis"
+            k-series.bind="series"
+            k-transitions.bind="false"
             k-drag.trigger="setRange($event)"
             k-zoom.trigger="setRange($event)">
   </k-chart>

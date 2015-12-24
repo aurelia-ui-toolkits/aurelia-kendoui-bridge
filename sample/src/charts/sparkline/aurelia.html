@@ -2,11 +2,11 @@
   <div class="demo-section k-content">
     <div>
         <h4>Hover some series</h4>
-        <k-sparkline  tooltip.bind="{visible: false, shared: false}"
-                      data-source.bind="weather"
+        <k-sparkline  k-tooltip.bind="{visible: false, shared: false}"
+                      k-data-source.bind="weather"
                       k-on-series-hover.trigger="onSeriesHover($event)"
                       style="height: 30px;"
-                      series.bind="[{
+                      k-series.bind="[{
                            type: 'column',
                            field: 'TMax',
                            color: '#ff0000',

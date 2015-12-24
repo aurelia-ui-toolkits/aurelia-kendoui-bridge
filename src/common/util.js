@@ -13,6 +13,12 @@ export function _unhyphenate(name) {
   return name.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 }
 
+export function getBindablePropertyName(propertyName) {
+  let name = `${constants.bindablePrefix}${propertyName}`;
+
+  return _unhyphenate(name);
+}
+
 export function getEventsFromAttributes(element) {
   let attributes = Array.prototype.slice.call(element.attributes);
   let events = [];

@@ -3,7 +3,7 @@
   <button k-button class="k-primary" click.delegate="offline()">Go offline</button>
   <br>
   <br>
-  <k-grid data-source.bind="datasource" pageable.bind="{refresh: true}" toolbar.bind="['create']" editable="inline">
+  <k-grid k-data-source.bind="datasource" k-pageable.bind="{refresh: true}" k-toolbar.bind="['create']" k-editable="inline">
     <au-col field="ProductName"></au-col>
     <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>
     <au-col command.bind="['edit', 'destroy']" title="&nbsp;" width="250px"></au-col>

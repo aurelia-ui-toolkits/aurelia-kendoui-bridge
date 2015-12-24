@@ -2,44 +2,44 @@
     <div id="example">
         <div class="demo-section k-content">
             <h4>Balance</h4>
-            <input k-slider="increase-button-title: Right;
-                                    decrease-button-title: Left;
-                                    min.bind: -10;
-                                    max.bind: 10;
-                                    small-step.bind: 2;
-                                    large-step.bind: 1" class="balSlider" value="0" />
+            <input k-slider="k-increase-button-title: Right;
+                                    k-decrease-button-title: Left;
+                                    k-min.bind: -10;
+                                    k-max.bind: 10;
+                                    k-small-step.bind: 2;
+                                    k-large-step.bind: 1" class="balSlider" value="0" />
             <h4 style="padding-top: 2em;">Equalizer</h4>
             <div id="equalizer">
-                <input k-slider="orientation: vertical;
-                                        min.bind: -20;
-                                        max.bind: 20;
-                                        small-step.bind: 1;
-                                        large-step.bind: 20;
-                                        show-buttons.bind: false" class="eqSlider" value="10" />
-                <input k-slider="orientation: vertical;
-                                        min.bind: -20;
-                                        max.bind: 20;
-                                        small-step.bind: 1;
-                                        large-step.bind: 20;
-                                        show-buttons.bind: false" class="eqSlider" value="5" />
-                <input k-slider="orientation: vertical;
-                                        min.bind: -20;
-                                        max.bind: 20;
-                                        small-step.bind: 1;
-                                        large-step.bind: 20;
-                                        show-buttons.bind: false" class="eqSlider" value="0" />
-                <input k-slider="orientation: vertical;
-                                        min.bind: -20;
-                                        max.bind: 20;
-                                        small-step.bind: 1;
-                                        large-step.bind: 20;
-                                        show-buttons.bind: false" class="eqSlider" value="10" />
-                <input k-slider="orientation: vertical;
-                                        min.bind: -20;
-                                        max.bind: 20;
-                                        small-step.bind: 1;
-                                        large-step.bind: 20;
-                                        show-buttons.bind: false" class="eqSlider" value="15" />
+                <input k-slider="k-orientation: vertical;
+                                        k-min.bind: -20;
+                                        k-max.bind: 20;
+                                        k-small-step.bind: 1;
+                                        k-large-step.bind: 20;
+                                        k-show-buttons.bind: false" class="eqSlider" value="10" />
+                <input k-slider="k-orientation: vertical;
+                                        k-min.bind: -20;
+                                        k-max.bind: 20;
+                                        k-small-step.bind: 1;
+                                        k-large-step.bind: 20;
+                                        k-show-buttons.bind: false" class="eqSlider" value="5" />
+                <input k-slider="k-orientation: vertical;
+                                        k-min.bind: -20;
+                                        k-max.bind: 20;
+                                        k-small-step.bind: 1;
+                                        k-large-step.bind: 20;
+                                        k-show-buttons.bind: false" class="eqSlider" value="0" />
+                <input k-slider="k-orientation: vertical;
+                                        k-min.bind: -20;
+                                        k-max.bind: 20;
+                                        k-small-step.bind: 1;
+                                        k-large-step.bind: 20;
+                                        k-show-buttons.bind: false" class="eqSlider" value="10" />
+                <input k-slider="k-orientation: vertical;
+                                        k-min.bind: -20;
+                                        k-max.bind: 20;
+                                        k-small-step.bind: 1;
+                                        k-large-step.bind: 20;
+                                        k-show-buttons.bind: false" class="eqSlider" value="15" />
             </div>
         </div>
     </div>
@@ -47,19 +47,19 @@
     .demo-section {
         text-align: center;
     }
-    
+
     #equalizer {
         padding-right: 15px;
     }
-    
+
     div.balSlider {
         width: 100%;
     }
-    
+
     div.balSlider .k-slider-selection {
         display: none;
     }
-    
+
     div.eqSlider {
         display: inline-block;
         margin: 1em;

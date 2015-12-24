@@ -1,3 +1,4 @@
 export const constants = {
-  eventPrefix: 'k-on-'
+  eventPrefix: 'k-on-',
+  bindablePrefix: 'k-'
 };

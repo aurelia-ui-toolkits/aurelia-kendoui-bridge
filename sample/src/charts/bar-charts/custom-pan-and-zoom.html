@@ -1,10 +1,10 @@
 <template>
-    <k-chart  render-as="canvas"
-              data-source.bind="dataSource"
-              category-axis.bind="{field: 'category'}"
-              value-axis.bind="{min: 0, max: 12}"
-              series.bind="[{type: 'column', field: 'val'}]"
-              transitions.bind="false"
+    <k-chart  k-render-as="canvas"
+              k-data-source.bind="dataSource"
+              k-category-axis.bind="{field: 'category'}"
+              k-value-axis.bind="{min: 0, max: 12}"
+              k-series.bind="[{type: 'column', field: 'val'}]"
+              k-transitions.bind="false"
               k-on-drag.trigger="onDrag($event)"
               k-on-drag-end.trigger="onDragEnd($event)"
               k-on-zoom.trigger="onZoom($event)">

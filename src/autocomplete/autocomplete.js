@@ -10,7 +10,7 @@ import 'kendo-ui/js/kendo.virtuallist.min';
 export class AutoComplete extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
   @bindable value;
 
   constructor(element, templateCompiler) {

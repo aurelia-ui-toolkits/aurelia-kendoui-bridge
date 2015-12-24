@@ -1,10 +1,10 @@
 <template>
-  <k-chart  title.bind="{text: 'Transfer speed Mbit/s'}"
-            data-source.bind="datasource"
-            legend.bind="{position: 'top'}"
-            series.bind="series"
-            series-defaults.bind="{type: 'rangeColumn'}"
-            category-axis.bind="{field: 'day'}"
-            tooltip.bind="tooltip">
+  <k-chart  k-title.bind="{text: 'Transfer speed Mbit/s'}"
+            k-data-source.bind="datasource"
+            k-legend.bind="{position: 'top'}"
+            k-series.bind="series"
+            k-series-defaults.bind="{type: 'rangeColumn'}"
+            k-category-axis.bind="{field: 'day'}"
+            k-tooltip.bind="tooltip">
   </k-chart>
 </template>

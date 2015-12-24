@@ -1,11 +1,11 @@
 <template>
-  <k-chart  title.bind="{text: 'Internet Users in United States'}"
-            legend.bind="{legend: {position: 'top'}}"
-            data-source.bind="{data: taskCompleteness}"
-            series-defaults.bind="{type: 'rangeBar'}"
-            series.bind="series"
-            category-axis.bind="categoryAxis"
-            value-axis.bind="{max: 100}"
-            tooltip.bind="tooltip">
+  <k-chart  k-title.bind="{text: 'Internet Users in United States'}"
+            k-legend.bind="{legend: {position: 'top'}}"
+            k-data-source.bind="{data: taskCompleteness}"
+            k-series-defaults.bind="{type: 'rangeBar'}"
+            k-series.bind="series"
+            k-category-axis.bind="categoryAxis"
+            k-value-axis.bind="{max: 100}"
+            k-tooltip.bind="tooltip">
   </k-chart>
 </template>

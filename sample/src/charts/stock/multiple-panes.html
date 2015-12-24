@@ -1,13 +1,13 @@
 <template>
   <require from="./multiple-panes.css"></require>
   <k-stock  id="stock-chart"
-            data-source.bind="dataSource"
-            title.bind="{text: 'The Boeing Company\nNYSE:BA'}"
-            date-field="Date"
-            panes.bind="panes"
-            series.bind="series"
-            category-axis.bind="{pane: 'volumePane'}"
-            value-axis.bind="valueAxis"
-            navigator.bind="navigator">
+            k-data-source.bind="dataSource"
+            k-title.bind="{text: 'The Boeing Company\nNYSE:BA'}"
+            k-date-field="Date"
+            k-panes.bind="panes"
+            k-series.bind="series"
+            k-category-axis.bind="{pane: 'volumePane'}"
+            k-value-axis.bind="valueAxis"
+            k-navigator.bind="navigator">
   </k-stock>
 </template>

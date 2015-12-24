@@ -17,17 +17,17 @@
                </tr>
                <tr>
                    <td class="spark">
-                     <k-sparkline data.bind="tempLogData"
-                        type="column"
-                        tooltip.bind="{format: '{0} &deg;C'}">
+                     <k-sparkline k-data.bind="tempLogData"
+                        k-type="column"
+                        k-tooltip.bind="{format: '{0} &deg;C'}">
                      </k-sparkline>
                    </td>
                    <td class="value">21<span>&deg;C</span></td>
                </tr>
                <tr>
                    <td class="spark">
-                     <k-sparkline data.bind="humLogData"
-                        type="area"
+                     <k-sparkline k-data.bind="humLogData"
+                        k-type="area"
                         tooltip.bind="{format: '{0} %'}">
                      </k-sparkline>
                    </td>
@@ -40,10 +40,10 @@
                Temperature control
            </h4>
            <div class="stats">
-               <k-sparkline data.bind="[21,23]"
-                            type="bullet"
-                            value-axis.bind="tempRangeValueAxis"
-                            tooltip.bind="{visible: true}">
+               <k-sparkline k-data.bind="[21,23]"
+                            k-type="bullet"
+                            k-value-axis.bind="tempRangeValueAxis"
+                            k-tooltip.bind="{visible: true}">
                </k-sparkline>
            </div>
        </div>
@@ -52,13 +52,13 @@
                Conditioner working time
            </h4>
            <ul class="pie-list stats">
-               <li>MON <k-sparkline id="stats-mon" type="pie" data.bind="[14,10]"/></li>
-               <li>TUE <k-sparkline id="stats-tue" type="pie" data.bind="[8,16]"/></li>
-               <li>WED <k-sparkline id="stats-wed" type="pie" data.bind="[8,16]"/></li>
-               <li>THU <k-sparkline id="stats-thu" type="pie" data.bind="[12,12]"/></li>
-               <li>FRI <k-sparkline id="stats-fri" type="pie" data.bind="[6,18]"/></li>
-               <li>SAT <k-sparkline id="stats-sat" type="pie" data.bind="[1,23]"/></li>
-               <li>SUN <k-sparkline id="stats-sun" type="pie" data.bind="[5,19]"/></li>
+               <li>MON <k-sparkline id="stats-mon" k-type="pie" k-data.bind="[14,10]"/></li>
+               <li>TUE <k-sparkline id="stats-tue" k-type="pie" k-data.bind="[8,16]"/></li>
+               <li>WED <k-sparkline id="stats-wed" k-type="pie" k-data.bind="[8,16]"/></li>
+               <li>THU <k-sparkline id="stats-thu" k-type="pie" k-data.bind="[12,12]"/></li>
+               <li>FRI <k-sparkline id="stats-fri" k-type="pie" k-data.bind="[6,18]"/></li>
+               <li>SAT <k-sparkline id="stats-sat" k-type="pie" k-data.bind="[1,23]"/></li>
+               <li>SUN <k-sparkline id="stats-sun" k-type="pie" k-data.bind="[5,19]"/></li>
            </ul>
        </div>
    </div>

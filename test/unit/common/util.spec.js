@@ -1,4 +1,4 @@
-import {getEventsFromAttributes} from 'src/common/util';
+import {getEventsFromAttributes, getBindablePropertyName} from 'src/common/util';
 import {constants} from 'src/common/constants';
 import {initialize} from 'aurelia-pal-browser';
 import {DOM} from 'aurelia-pal';
@@ -46,5 +46,19 @@ describe('Util', () => {
     let response = getEventsFromAttributes(element);
     expect(response.includes('myEvent')).toBe(true);
     expect(response.includes('otherEvent')).toBe(true);
+  });
+
+  it('getBindablePropertyName() applies prefix', () => {
+    expect(getBindablePropertyName('test').toLowerCase()).toBe(`ktest`);
+  });
+
+  it('getBindablePropertyName() lowercases first letter', () => {
+    let firstLetter = getBindablePropertyName('test')[0];
+    expect(firstLetter).toBe(firstLetter.toLowerCase());
+  });
+
+  it('getBindablePropertyName() uppercases second letter', () => {
+    let secondLetter = getBindablePropertyName('test')[1];
+    expect(secondLetter).toBe(secondLetter.toUpperCase());
   });
 });

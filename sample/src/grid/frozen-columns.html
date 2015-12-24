@@ -1,5 +1,12 @@
 <template>
-  <k-grid data-source.bind="datasource" sortable.bind="true" reorderable.bind="true" groupable.bind="true" resizable.bind="true" filterable.bind="true" column-menu.bind="true" pageable.bind="true">
+  <k-grid k-data-source.bind="datasource"
+          k-sortable.bind="true"
+          k-reorderable.bind="true"
+          k-groupable.bind="true"
+          k-resizable.bind="true"
+          k-filterable.bind="true" 
+          k-column-menu.bind="true"
+          k-pageable.bind="true">
     <au-col field="OrderID" title="Order ID" locked.bind="true" lockable.bind="false" width.bind="150"></au-col>
     <au-col field="ShipCountry" title="Ship Country" width.bind="300"></au-col>
     <au-col field="ShipCity" title="Ship City" width.bind="300"></au-col>

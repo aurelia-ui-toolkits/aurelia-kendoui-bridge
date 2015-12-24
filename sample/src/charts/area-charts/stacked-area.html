@@ -1,10 +1,10 @@
 <template>
-  <k-chart  title.bind="{text: 'Browser Usage Trends'}"
-            legend.bind="{position: 'bottom'}"
-            series-defaults.bind="{type: 'area', stack: true}"
-            series.bind="series"
-            value-axis.bind="valueAxis"
-            category-axis.bind="categoryAxis"
-            tooltip.bind="tooltip">
+  <k-chart  k-title.bind="{text: 'Browser Usage Trends'}"
+            k-legend.bind="{position: 'bottom'}"
+            k-series-defaults.bind="{type: 'area', stack: true}"
+            k-series.bind="series"
+            k-value-axis.bind="valueAxis"
+            k-category-axis.bind="categoryAxis"
+            k-tooltip.bind="tooltip">
   </k-chart>
 </template>

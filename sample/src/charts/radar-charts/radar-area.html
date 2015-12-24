@@ -1,9 +1,9 @@
 <template>
-  <k-chart  title.bind="{text: 'Employment candidate review'}"
-            legend.bind="{position: 'bottom'}"
-            series-defaults.bind="{type: 'radarArea'}"
-            series.bind="series"
-            category-axis.bind="categoryAxis"
-            value-axis.bind="{labels: {format: '{0}%'}, line: {visible: false}}">
+  <k-chart  k-title.bind="{text: 'Employment candidate review'}"
+            k-legend.bind="{position: 'bottom'}"
+            k-series-defaults.bind="{type: 'radarArea'}"
+            k-series.bind="series"
+            k-category-axis.bind="categoryAxis"
+            k-value-axis.bind="{labels: {format: '{0}%'}, line: {visible: false}}">
   </k-chart>
 </template>

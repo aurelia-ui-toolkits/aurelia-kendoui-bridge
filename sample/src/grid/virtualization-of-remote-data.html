@@ -2,7 +2,7 @@
   <button class="btn btn-primary" click.delegate="disablePageScroll()">Disable page scroll</button>
   <br>
   <br>
-  <k-grid data-source.bind="datasource" sortable.bind="true" scrollable.bind="{virtual:true}">
+  <k-grid k-data-source.bind="datasource" k-sortable.bind="true" k-scrollable.bind="{virtual:true}">
     <au-col title="Order ID" field="OrderID" width.bind="110"></au-col>
     <au-col title="Customer ID" field="CustomerID" width.bind="130"></au-col>
     <au-col title="Ship Name" field="ShipName" width.bind="280"></au-col>

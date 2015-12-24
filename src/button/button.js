@@ -32,7 +32,7 @@ export class Button extends WidgetBase {
     };
   }
 
-  enableChanged(newValue) {
+  kEnableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
     }

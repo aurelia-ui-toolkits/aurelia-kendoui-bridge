@@ -1,5 +1,5 @@
 <template>
-  <k-grid data-source.bind="datasource" pageable.bind="true" toolbar.bind="['create']" editable="popup">
+  <k-grid k-data-source.bind="datasource" k-pageable.bind="true" k-toolbar.bind="['create']" k-editable="popup">
     <au-col field="ProductName"></au-col>
     <au-col field="UnitPrice" title="Unit Price" format="{0:c}" width="120px"></au-col>
     <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>

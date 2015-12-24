@@ -1,10 +1,10 @@
 <template>
-  <k-chart  title.bind="{text: 'Protein quality, Apple raw'}"
-            data-source.bind="{data: proteinData}"
-            series.bind="series"
-            category-axis.bind="{field: 'abbr'}"
-            value-axis.bind="{visible: false}"
-            tooltip.bind="{visible: true}"
-            legend.bind="{visible: false}">
+  <k-chart  k-title.bind="{text: 'Protein quality, Apple raw'}"
+            k-data-source.bind="{data: proteinData}"
+            k-series.bind="series"
+            k-category-axis.bind="{field: 'abbr'}"
+            k-value-axis.bind="{visible: false}"
+            k-tooltip.bind="{visible: true}"
+            k-legend.bind="{visible: false}">
   </k-chart>
 </template>

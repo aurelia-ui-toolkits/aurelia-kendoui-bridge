@@ -11,7 +11,7 @@ import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
 export class Chart extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element) {
     super('kendoChart', element);
