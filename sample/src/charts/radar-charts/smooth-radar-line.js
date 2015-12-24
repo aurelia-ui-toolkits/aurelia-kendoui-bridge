@@ -9,10 +9,10 @@ export class SmoothPolarLine {
   }
 
   series = [{
-    name: "Budget",
-    field: "budget"
+    name: 'Budget',
+    field: 'budget'
   }, {
-    name: "Spending",
-    field: "spending"
+    name: 'Spending',
+    field: 'spending'
   }];
 }

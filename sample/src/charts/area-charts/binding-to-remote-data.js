@@ -7,42 +7,42 @@ export class BindingToRemoteData {
       }
     },
     sort: {
-        field: "year",
-        dir: "asc"
+      field: 'year',
+      dir: 'asc'
     }
   });
 
   series = [{
-        field: "nuclear",
-        name: "Nuclear"
-    }, {
-        field: "hydro",
-        name: "Hydro"
-    }, {
-        field: "wind",
-        name: "Wind"
+    field: 'nuclear',
+    name: 'Nuclear'
+  }, {
+    field: 'hydro',
+    name: 'Hydro'
+  }, {
+    field: 'wind',
+    name: 'Wind'
   }];
 
   valueAxis = {
-      labels: {
-          format: "N0"
-      },
-      majorUnit: 10000
+    labels: {
+      format: 'N0'
+    },
+    majorUnit: 10000
   };
 
   categoryAxis = {
-      field: "year",
-      labels: {
-          rotation: -90
-      },
-      crosshair: {
-          visible: true
-      }
+    field: 'year',
+    labels: {
+      rotation: -90
+    },
+    crosshair: {
+      visible: true
+    }
   };
 
   tooltip = {
-      visible: true,
-      shared: true,
-      format: "N0"
+    visible: true,
+    shared: true,
+    format: 'N0'
   };
 }

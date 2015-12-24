@@ -1,14 +1,12 @@
 export class Registry {
   load(config, control) {
-
     return System.import(`${control}/registry.json!json`)
     .then(registry => {
-
       config.title = registry.title;
 
       let map = [];
 
-      for(let _sample of Object.keys(registry.samples)) {
+      for (let _sample of Object.keys(registry.samples)) {
         let sample = registry.samples[_sample];
 
         sample.path = `${control}/${_sample}`;
@@ -16,7 +14,7 @@ export class Registry {
         sample.title = sample.title || this.getTitleFromRoute(_sample);
         sample.moduleId = sample.moduleId || 'sample-runner';
         sample.nav = sample.nav || true;
-        sample.files = sample.files || ["html","js"];
+        sample.files = sample.files || ['html', 'js'];
         sample.files.forEach(extension => {
           sample[extension] = `${sample.path}.${extension}`;
         });

@@ -59,9 +59,9 @@ export class DropDownList extends WidgetBase {
   }
 
   valueChanged(newValue) {
-  	if(this.widget) {
-  	  this.widget.value(newValue);
-	    this.widget.trigger('change');
+    if (this.widget) {
+      this.widget.value(newValue);
+      this.widget.trigger('change');
     }
   }
 

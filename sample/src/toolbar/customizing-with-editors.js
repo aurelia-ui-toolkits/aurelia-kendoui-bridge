@@ -1,3 +1,1 @@
-export class CustomizingWithEditors {
-
-}
+export class CustomizingWithEditors {}

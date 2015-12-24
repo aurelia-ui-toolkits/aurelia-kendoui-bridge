@@ -22,7 +22,7 @@ export class AuCode {
   }
 
   urlChanged() {
-    if(this.url) {
+    if (this.url) {
       this.loader.loadText(this.url)
       .then(text => {
         this.html = text;

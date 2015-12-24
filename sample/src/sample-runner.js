@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-framework';
-import {activationStrategy, Router} from 'aurelia-router';
+import {activationStrategy} from 'aurelia-router';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {TaskQueue} from 'aurelia-framework';
 

@@ -9,26 +9,26 @@ export class BindingToRemoteData {
   });
 
   series = [{
-      type: "waterfall",
-      field: "value",
-      summaryField: "summary",
-      categoryField: "name",
-      labels: {
-          visible: true,
-          position: "outsideEnd",
-          format: "C"
-      },
-      color: function(point) {
-          var summary = point.dataItem.summary;
-          if (summary) {
-              return summary == "total" ? "#555" : "gray";
-          }
-
-          if (point.value > 0) {
-              return "green";
-          } else {
-              return "red";
-          }
+    type: 'waterfall',
+    field: 'value',
+    summaryField: 'summary',
+    categoryField: 'name',
+    labels: {
+      visible: true,
+      position: 'outsideEnd',
+      format: 'C'
+    },
+    color: function(point) {
+      let summary = point.dataItem.summary;
+      if (summary) {
+        return summary === 'total' ? '#555' : 'gray';
       }
+
+      if (point.value > 0) {
+        return 'green';
+      } else {
+        return 'red';
+      }
+    }
   }];
 }

@@ -18,21 +18,20 @@ export class ThemeManager {
 
     return System.import(path)
     .then(() => {
-
-      let themable = ["Chart", "TreeMap", "Diagram", "StockChart", "Sparkline", "RadialGauge", "LinearGauge"];
+      let themable = ['Chart', 'TreeMap', 'Diagram', 'StockChart', 'Sparkline', 'RadialGauge', 'LinearGauge'];
 
       if (kendo.dataviz && theme) {
         for (let i = 0; i < themable.length; i++) {
           let widget = kendo.dataviz.ui[themable[i]];
 
           if (widget) {
-              widget.fn.options.theme = theme;
+            widget.fn.options.theme = theme;
           }
         }
       }
 
-      this.ea.publish("kendo:skinChange", theme);
-    })
+      this.ea.publish('kendo:skinChange', theme);
+    });
   }
 
   deleteFromSystemJS(normalizedPath) {
@@ -46,8 +45,8 @@ export class ThemeManager {
   }
 
   removeOldThemes() {
-    jQuery("head > link").each(function() {
-      if(this.href.includes('styles/kendo.') && !this.href.includes('kendo.common.min')) {
+    jQuery('head > link').each(function() {
+      if (this.href.includes('styles/kendo.') && !this.href.includes('kendo.common.min')) {
         DOM.removeNode(this);
       }
     });

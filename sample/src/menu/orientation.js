@@ -1,2 +1,1 @@
-export class Orientation {
-}
+export class Orientation {}

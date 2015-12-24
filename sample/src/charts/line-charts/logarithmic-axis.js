@@ -8,42 +8,42 @@ export class LogarithmicAxis {
       }
     },
     sort: {
-        field: "year",
-        dir: "asc"
+      field: 'year',
+      dir: 'asc'
     }
   });
 
   series = [{
-      field: "nuclear",
-      name: "Nuclear"
+    field: 'nuclear',
+    name: 'Nuclear'
   }, {
-      field: "hydro",
-      name: "Hydro"
+    field: 'hydro',
+    name: 'Hydro'
   }, {
-      field: "wind",
-      name: "Wind"
+    field: 'wind',
+    name: 'Wind'
   }];
 
   categoryAxis = {
-      field: "year",
-      labels: {
-          rotation: -90
-      },
-      crosshair: {
-          visible: true
-      }
+    field: 'year',
+    labels: {
+      rotation: -90
+    },
+    crosshair: {
+      visible: true
+    }
   };
 
   valueAxis = {
-      type: "log",
-      labels: {
-          format: "N0"
-      }
+    type: 'log',
+    labels: {
+      format: 'N0'
+    }
   };
 
   tooltip = {
-      visible: true,
-      shared: true,
-      format: "N0"
+    visible: true,
+    shared: true,
+    format: 'N0'
   }
 }

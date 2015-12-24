@@ -7,23 +7,23 @@ export class BindingToRemoteData {
       }
     },
     sort: {
-        field: "year",
-        dir: "asc"
+      field: 'year',
+      dir: 'asc'
     }
   });
 
   series = [{
-      fromField: "WiFiFrom",
-      toField: "WiFiTo",
-      name: "WiFi"
+    fromField: 'WiFiFrom',
+    toField: 'WiFiTo',
+    name: 'WiFi'
   }, {
-      fromField: "OpticalFrom",
-      toField: "OpticalTo",
-      name: "Optical"
+    fromField: 'OpticalFrom',
+    toField: 'OpticalTo',
+    name: 'Optical'
   }];
 
   tooltip = {
-      visible: true,
-      template: "#= value.from # - #= value.to #"
+    visible: true,
+    template: '#= value.from # - #= value.to #'
   };
 }

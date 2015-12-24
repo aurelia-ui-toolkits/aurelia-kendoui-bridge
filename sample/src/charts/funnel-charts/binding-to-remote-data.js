@@ -1,39 +1,39 @@
 export class BindingToRemoteData {
-    datasource = new kendo.data.DataSource({
-      transport: {
-        read: function(options) {
-          return System.import('charts/funnel-charts/json/spain-electricity.json!json')
-          .then(data => options.success(data));
-        }
-      },
-      sort: {
-          field: "year",
-          dir: "desc"
+  datasource = new kendo.data.DataSource({
+    transport: {
+      read: function(options) {
+        return System.import('charts/funnel-charts/json/spain-electricity.json!json')
+        .then(data => options.success(data));
       }
-    });
-
-    seriesDefaults = {
-        type: "funnel",
-        dynamicSlope: true,
-        dynamicHeight: false,
-        labels: {
-            visible: true,
-            template: "#= dataItem.year #"
-        }
-    };
-
-    legend = {
-        visible: false
+    },
+    sort: {
+      field: 'year',
+      dir: 'desc'
     }
+  });
 
-    series = [{
-      field: "wind",
-      categoryField: "year",
-      segmentSpacing: 2
-    }];
-
-    tooltip = {
-        visible: true,
-        template: "#= category # - #= value # GWh"
+  seriesDefaults = {
+    type: 'funnel',
+    dynamicSlope: true,
+    dynamicHeight: false,
+    labels: {
+      visible: true,
+      template: '#= dataItem.year #'
     }
+  };
+
+  legend = {
+    visible: false
+  }
+
+  series = [{
+    field: 'wind',
+    categoryField: 'year',
+    segmentSpacing: 2
+  }];
+
+  tooltip = {
+    visible: true,
+    template: '#= category # - #= value # GWh'
+  }
 }

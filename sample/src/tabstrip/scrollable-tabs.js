@@ -1,3 +1,1 @@
-export class ScrollableTabs {
-    
-}
+export class ScrollableTabs {}

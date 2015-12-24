@@ -1,2 +1,1 @@
-export class Api {
-}
+export class Api {}

@@ -4,7 +4,7 @@ export class CustomPanAndZoom {
   MAX_SIZE = 20;
 
   // Optional sort expression
-  // var SORT = { field: "val", dir: "asc" };
+  // var SORT = { field: 'val', dir: 'asc' };
   SORT = {};
 
   // Minimum distance in px to start dragging
@@ -19,10 +19,10 @@ export class CustomPanAndZoom {
   newStart;
 
   constructor() {
-    for (var i = 0; i < 100; i++) {
-      var val = Math.round(Math.random() * 10);
+    for (let i = 0; i < 100; i++) {
+      let val = Math.round(Math.random() * 10);
       this.data.push({
-        category: "C" + i,
+        category: 'C' + i,
         val: val
       });
     }
@@ -31,50 +31,50 @@ export class CustomPanAndZoom {
       data: this.data,
       pageSize: this.viewSize,
       page: 0,
-      sort: { field: "val", dir: "desc" }
+      sort: { field: 'val', dir: 'desc' }
     };
   }
 
 
   // Drag handler
   onDrag(e) {
-      // get kendo's event args
-      let kEvent = e.detail;
-      var chart = kEvent.sender;
-      var ds = chart.dataSource;
-      var delta = Math.round(kEvent.originalEvent.x.initialDelta / this.DRAG_THR);
+    // get kendo's event args
+    let kEvent = e.detail;
+    let chart = kEvent.sender;
+    let ds = chart.dataSource;
+    let delta = Math.round(kEvent.originalEvent.x.initialDelta / this.DRAG_THR);
 
-      if (delta != 0) {
-        this.newStart = Math.max(0, this.viewStart - delta);
-        this.newStart = Math.min(this.data.length - this.viewSize, this.newStart);
-        ds.query({
-            skip: this.newStart,
-            page: 0,
-            pageSize: this.viewSize,
-            sort: this.SORT
-        });
-      }
+    if (delta !== 0) {
+      this.newStart = Math.max(0, this.viewStart - delta);
+      this.newStart = Math.min(this.data.length - this.viewSize, this.newStart);
+      ds.query({
+        skip: this.newStart,
+        page: 0,
+        pageSize: this.viewSize,
+        sort: this.SORT
+      });
+    }
   }
 
   onDragEnd() {
-      this.viewStart = this.newStart;
+    this.viewStart = this.newStart;
   }
 
   // Zoom handler
   onZoom(e) {
-      // get kendo's event args
-      let kEvent = e.detail;
-      var chart = kEvent.sender;
-      var ds = chart.dataSource;
-      this.viewSize = Math.min(Math.max(this.viewSize + kEvent.delta, this.MIN_SIZE), this.MAX_SIZE);
-      ds.query({
-          skip: this.viewStart,
-          page: 0,
-          pageSize: this.viewSize,
-          sort: this.SORT
-      });
+    // get kendo's event args
+    let kEvent = e.detail;
+    let chart = kEvent.sender;
+    let ds = chart.dataSource;
+    this.viewSize = Math.min(Math.max(this.viewSize + kEvent.delta, this.MIN_SIZE), this.MAX_SIZE);
+    ds.query({
+      skip: this.viewStart,
+      page: 0,
+      pageSize: this.viewSize,
+      sort: this.SORT
+    });
 
-      // Prevent document scrolling
-      kEvent.originalEvent.preventDefault();
+    // Prevent document scrolling
+    kEvent.originalEvent.preventDefault();
   }
 }

@@ -1,2 +1,1 @@
-export class Direction {
-}
+export class Direction {}

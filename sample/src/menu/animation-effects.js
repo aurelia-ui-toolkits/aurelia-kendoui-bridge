@@ -1,2 +1,1 @@
-export class AnimationEffects {
-}
+export class AnimationEffects {}

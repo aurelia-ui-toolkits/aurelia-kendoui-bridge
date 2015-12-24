@@ -1,2 +1,1 @@
-export class ContextMenu {
-}
+export class ContextMenu {}

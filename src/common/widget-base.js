@@ -6,7 +6,6 @@ import {Container} from 'aurelia-dependency-injection';
 
 export class WidgetBase {
   constructor(controlName, element) {
-
     // access root container
     let container = Container.instance;
     this.taskQueue = container.get(TaskQueue);
@@ -103,7 +102,7 @@ export class WidgetBase {
         this.taskQueue.queueMicroTask(() => {
           fireKendoEvent(this.target, _hyphenate(event), e);
         });
-      }
+      };
     });
 
     return options;

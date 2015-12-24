@@ -1,39 +1,39 @@
 export class BasicUse {
 
   seriesDefaults = {
-    type: "bar"
+    type: 'bar'
   };
 
   series = [{
-      name: "Total Visits",
-      data: [56000, 63000, 74000, 91000, 117000, 138000]
+    name: 'Total Visits',
+    data: [56000, 63000, 74000, 91000, 117000, 138000]
   }, {
-      name: "Unique visitors",
-      data: [52000, 34000, 23000, 48000, 67000, 83000]
+    name: 'Unique visitors',
+    data: [52000, 34000, 23000, 48000, 67000, 83000]
   }];
 
   valueAxis = {
     max: 140000,
     line: {
-        visible: false
+      visible: false
     },
     minorGridLines: {
-        visible: true
+      visible: true
     },
     labels: {
-        rotation: "auto"
+      rotation: 'auto'
     }
   };
 
   categoryAxis = {
-      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-      majorGridLines: {
-          visible: false
-      }
+    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    majorGridLines: {
+      visible: false
+    }
   };
 
   tooltip = {
-      visible: true,
-      template: "${series.name} ${value}"
+    visible: true,
+    template: '${series.name} ${value}'
   }
 }

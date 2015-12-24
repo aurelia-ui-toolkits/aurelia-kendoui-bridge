@@ -1,3 +1,1 @@
-export class SampleSelector {
-
-}
+export class SampleSelector {}

@@ -1,3 +1,1 @@
-export class VerticalGrouping {
-
-}
+export class VerticalGrouping {}

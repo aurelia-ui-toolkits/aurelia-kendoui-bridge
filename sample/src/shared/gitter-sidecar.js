@@ -12,7 +12,7 @@ export class GitterSidecar {
   }
 
   attached() {
-    if(!window.gitter) {
+    if (!window.gitter) {
       throw new Error('Gitter sidecar is not loaded');
     }
 
@@ -25,13 +25,13 @@ export class GitterSidecar {
       targetElement: this.element
     });
 
-    if(this.autoLoad === true) {
+    if (this.autoLoad === true) {
       this.toggleChat(true);
     }
   }
 
   toggleChat(bool) {
-    if(!this.chat) {
+    if (!this.chat) {
       throw new Error('Chat is not initialized');
     }
 
