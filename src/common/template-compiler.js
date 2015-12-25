@@ -95,9 +95,7 @@ export class TemplateCompiler {
     // extract Aurelia's View instance from the element
     // we stored this in the enhanceView function
     let view = $(element).data('viewInstance');
-    if (!view) {
-      throw new Error('viewInstance does not exist on this element');
-    }
+    if (!view) return;
 
     // unbind and detach the view
     view.detached();

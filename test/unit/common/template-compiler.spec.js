@@ -156,12 +156,6 @@ describe('TemplateCompiler', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('throws error when cleaning up a view without stored viewInstance', () => {
-    let element = DOM.createElement('div');
-    let call = () => sut.cleanupView(element);
-    expect(call).toThrow(new Error('viewInstance does not exist on this element'));
-  });
-
   it('calls detached and unbind', () => {
     let element = DOM.createElement('div');
     let viewFake = {
