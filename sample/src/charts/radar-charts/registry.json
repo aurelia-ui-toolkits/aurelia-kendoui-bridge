@@ -4,7 +4,9 @@
     "radar-line": {
       "route": ["", "radar-line"]
     },
-    "binding-to-local-data": {},
+    "binding-to-local-data": {
+      "files": ["html", "js", "json"]
+    },
     "binding-to-remote-data": {},
     "binding-to-grouped-data": {},
     "radar-area": {},

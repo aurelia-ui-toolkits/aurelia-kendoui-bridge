@@ -7,7 +7,9 @@
     },
     "scatter-line-chart": {},
     "smooth-scatter-line": {},
-    "binding-to-local-data": {},
+    "binding-to-local-data": {
+      "files": ["html", "js", "json"]
+    },
     "binding-to-remote-data": {},
     "binding-to-grouped-data": {},
     "custom-pan-and-zoom": {},

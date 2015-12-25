@@ -1,6 +1,6 @@
 <template>
   <k-chart  k-title.bind="{text: 'Comments per day', align: 'left'}"
-            k-data-source.bind="{data: blogComments}"
+            k-data-source.bind="{data: json.blogComments}"
             k-legend.bind="{ visible: false }"
             k-series-defaults.bind="seriesDefaults"
             k-series.bind="series"

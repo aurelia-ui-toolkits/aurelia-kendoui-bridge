@@ -2,12 +2,13 @@
   "title": "Grid",
   "samples": {
     "basic-use": {
-      "title": "Basic use",
       "route": ["", "basic-use"],
       "files": ["html", "js", "css"]
     },
     "batch-editing": {},
-    "binding-to-local-data": {},
+    "binding-to-local-data": {
+      "files": ["html", "js", "json"]
+    },
     "binding-to-remote-data": {},
     "binding-to-signalr": {},
     "binding-to-websocket": {},

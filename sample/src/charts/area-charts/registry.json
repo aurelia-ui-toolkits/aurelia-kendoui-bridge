@@ -5,7 +5,9 @@
       "route": ["", "basic-use"]
     },
     "binding-to-grouped-data": {},
-    "binding-to-local-data": {},
+    "binding-to-local-data": {
+      "files": ["html", "js", "json"]
+    },
     "binding-to-remote-data": {},
     "date-axis": {},
     "error-bars": {},

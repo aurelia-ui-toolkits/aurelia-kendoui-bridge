@@ -1,4 +1,4 @@
-import products from './json/products.json!';
+import products from './binding-to-local-data.json!';
 
 export class BindingToLocalData {
 
