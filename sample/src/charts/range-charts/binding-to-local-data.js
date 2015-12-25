@@ -1,4 +1,27 @@
 export class BindingToLocalData {
+
+  series = [{
+    name: 'Task A',
+    fromField: 'fromA',
+    toField: 'toA'
+  }, {
+    name: 'Task B',
+    fromField: 'fromB',
+    toField: 'toB'
+  }];
+
+  categoryAxis = {
+    field: 'day',
+    majorGridLines: {
+      visible: false
+    }
+  };
+
+  tooltip = {
+    visible: true,
+    template: '#= value.from # - #= value.to #'
+  };
+
   taskCompleteness = [{
     'fromA': 0,
     'toA': 10,
@@ -30,26 +53,4 @@ export class BindingToLocalData {
     'toB': 100,
     'day': 'Friday'
   }];
-
-  series = [{
-    name: 'Task A',
-    fromField: 'fromA',
-    toField: 'toA'
-  }, {
-    name: 'Task B',
-    fromField: 'fromB',
-    toField: 'toB'
-  }];
-
-  categoryAxis = {
-    field: 'day',
-    majorGridLines: {
-      visible: false
-    }
-  };
-
-  tooltip = {
-    visible: true,
-    template: '#= value.from # - #= value.to #'
-  };
 }

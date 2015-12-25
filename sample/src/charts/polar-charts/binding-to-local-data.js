@@ -1,4 +1,15 @@
 export class BindingToLocalData {
+  series = [{
+    type: 'polarLine',
+    xField: 'azimuth',
+    yField: 'altitude',
+    labels: {
+      template: '#= dataItem.time.substring(0,2) #h',
+      position: 'below',
+      visible: true
+    }
+  }];
+
   sunPos = [
     {'time': '08:00', 'altitude': 4.9, 'azimuth': 92.7},
     {'time': '09:00', 'altitude': 17.6, 'azimuth': 100.6},
@@ -13,15 +24,4 @@ export class BindingToLocalData {
     {'time': '18:00', 'altitude': 21.2, 'azimuth': 257.2},
     {'time': '19:00', 'altitude': 8.4, 'azimuth': 265.3}
   ];
-
-  series = [{
-    type: 'polarLine',
-    xField: 'azimuth',
-    yField: 'altitude',
-    labels: {
-      template: '#= dataItem.time.substring(0,2) #h',
-      position: 'below',
-      visible: true
-    }
-  }];
 }
