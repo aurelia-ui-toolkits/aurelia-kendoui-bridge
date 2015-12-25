@@ -83,20 +83,29 @@ var TemplateCompiler = (function () {
   };
 
   TemplateCompiler.prototype.cleanup = function cleanup(elements) {
-    var _this3 = this;
-
     if (!elements) return;
 
-    elements.forEach(function (element) {
-      _this3.cleanupView(element);
-    });
+    for (var _iterator = elements, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
+      var _ref;
+
+      if (_isArray) {
+        if (_i >= _iterator.length) break;
+        _ref = _iterator[_i++];
+      } else {
+        _i = _iterator.next();
+        if (_i.done) break;
+        _ref = _i.value;
+      }
+
+      var element = _ref;
+
+      this.cleanupView(element);
+    }
   };
 
   TemplateCompiler.prototype.cleanupView = function cleanupView(element) {
     var view = $(element).data('viewInstance');
-    if (!view) {
-      throw new Error('viewInstance does not exist on this element');
-    }
+    if (!view) return;
 
     view.detached();
     view.unbind();

@@ -722,20 +722,29 @@ var TemplateCompiler = (function () {
   };
 
   TemplateCompiler.prototype.cleanup = function cleanup(elements) {
-    var _this4 = this;
-
     if (!elements) return;
 
-    elements.forEach(function (element) {
-      _this4.cleanupView(element);
-    });
+    for (var _iterator2 = elements, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
+      var _ref2;
+
+      if (_isArray2) {
+        if (_i2 >= _iterator2.length) break;
+        _ref2 = _iterator2[_i2++];
+      } else {
+        _i2 = _iterator2.next();
+        if (_i2.done) break;
+        _ref2 = _i2.value;
+      }
+
+      var element = _ref2;
+
+      this.cleanupView(element);
+    }
   };
 
   TemplateCompiler.prototype.cleanupView = function cleanupView(element) {
     var view = $(element).data('viewInstance');
-    if (!view) {
-      throw new Error('viewInstance does not exist on this element');
-    }
+    if (!view) return;
 
     view.detached();
     view.unbind();
@@ -774,19 +783,19 @@ function getEventsFromAttributes(element) {
   var attributes = Array.prototype.slice.call(element.attributes);
   var events = [];
 
-  for (var _iterator2 = attributes, _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
-    var _ref2;
+  for (var _iterator3 = attributes, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+    var _ref3;
 
-    if (_isArray2) {
-      if (_i2 >= _iterator2.length) break;
-      _ref2 = _iterator2[_i2++];
+    if (_isArray3) {
+      if (_i3 >= _iterator3.length) break;
+      _ref3 = _iterator3[_i3++];
     } else {
-      _i2 = _iterator2.next();
-      if (_i2.done) break;
-      _ref2 = _i2.value;
+      _i3 = _iterator3.next();
+      if (_i3.done) break;
+      _ref3 = _i3.value;
     }
 
-    var attribute = _ref2;
+    var attribute = _ref3;
 
     var attributeName = attribute.name;
     if (!attributeName.startsWith(constants.eventPrefix)) continue;
@@ -844,33 +853,6 @@ var WidgetBase = (function () {
     var props = jQuery.fn[this.controlName].widget.prototype.options;
     var options = {};
 
-    for (var _iterator3 = Object.keys(props), _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
-      var _ref3;
-
-      if (_isArray3) {
-        if (_i3 >= _iterator3.length) break;
-        _ref3 = _iterator3[_i3++];
-      } else {
-        _i3 = _iterator3.next();
-        if (_i3.done) break;
-        _ref3 = _i3.value;
-      }
-
-      var prop = _ref3;
-
-      options[prop] = this[getBindablePropertyName(prop)];
-    }
-
-    if (this.kDataSource) {
-      options.dataSource = this.kDataSource;
-    }
-
-    return options;
-  };
-
-  WidgetBase.prototype.setDefaultBindableValues = function setDefaultBindableValues() {
-    var props = jQuery.fn[this.controlName].widget.prototype.options;
-
     for (var _iterator4 = Object.keys(props), _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
       var _ref4;
 
@@ -885,12 +867,39 @@ var WidgetBase = (function () {
 
       var prop = _ref4;
 
+      options[prop] = this[getBindablePropertyName(prop)];
+    }
+
+    if (this.kDataSource) {
+      options.dataSource = this.kDataSource;
+    }
+
+    return options;
+  };
+
+  WidgetBase.prototype.setDefaultBindableValues = function setDefaultBindableValues() {
+    var props = jQuery.fn[this.controlName].widget.prototype.options;
+
+    for (var _iterator5 = Object.keys(props), _isArray5 = Array.isArray(_iterator5), _i5 = 0, _iterator5 = _isArray5 ? _iterator5 : _iterator5[Symbol.iterator]();;) {
+      var _ref5;
+
+      if (_isArray5) {
+        if (_i5 >= _iterator5.length) break;
+        _ref5 = _iterator5[_i5++];
+      } else {
+        _i5 = _iterator5.next();
+        if (_i5.done) break;
+        _ref5 = _i5.value;
+      }
+
+      var prop = _ref5;
+
       this[getBindablePropertyName(prop)] = props[prop];
     }
   };
 
   WidgetBase.prototype.getEventOptions = function getEventOptions(ctor) {
-    var _this5 = this;
+    var _this4 = this;
 
     var options = {};
     var allowedEvents = ctor.widget.prototype.events;
@@ -899,12 +908,12 @@ var WidgetBase = (function () {
 
     events.forEach(function (event) {
       if (!allowedEvents.includes(event)) {
-        throw new Error(event + ' is not an event on the ' + _this5.controlName + ' control');
+        throw new Error(event + ' is not an event on the ' + _this4.controlName + ' control');
       }
 
       options[event] = function (e) {
-        _this5.taskQueue.queueMicroTask(function () {
-          fireKendoEvent(_this5.target, _hyphenate(event), e);
+        _this4.taskQueue.queueMicroTask(function () {
+          fireKendoEvent(_this4.target, _hyphenate(event), e);
         });
       };
     });
@@ -972,20 +981,20 @@ var DropDownList = (function (_WidgetBase7) {
   };
 
   DropDownList.prototype._initialized = function _initialized() {
-    var _this6 = this;
+    var _this5 = this;
 
     this.widget.bind('change', function (event) {
-      _this6.kValue = event.sender.value();
-      _this6.kText = event.sender.text();
+      _this5.kValue = event.sender.value();
+      _this5.kText = event.sender.text();
 
-      fireEvent(_this6.element, 'input');
+      fireEvent(_this5.element, 'input');
     });
 
     this.widget.bind('select', function (event) {
-      _this6.kValue = event.sender.value();
-      _this6.kText = event.sender.text();
+      _this5.kValue = event.sender.value();
+      _this5.kText = event.sender.text();
 
-      fireEvent(_this6.element, 'input');
+      fireEvent(_this5.element, 'input');
     });
 
     this.widget.trigger('change');

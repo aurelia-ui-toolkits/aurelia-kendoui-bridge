@@ -109,9 +109,7 @@ System.register(['aurelia-framework', 'aurelia-templating'], function (_export) 
 
         TemplateCompiler.prototype.cleanupView = function cleanupView(element) {
           var view = $(element).data('viewInstance');
-          if (!view) {
-            throw new Error('viewInstance does not exist on this element');
-          }
+          if (!view) return;
 
           view.detached();
           view.unbind();
