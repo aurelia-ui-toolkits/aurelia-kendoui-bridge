@@ -29,14 +29,8 @@
           <a route-href="route: sample-selector">Sample Selector</a>
         </li>
 
-        <li class="dropdown dropdown-large">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Theme <b class="caret"></b></a>
-
-          <ul class="dropdown-menu dropdown-menu-large row">
-            <li>
-              <theme-selector></theme-selector>
-            </li>
-          </ul>
+        <li click.delegate="showThemeDialog()">
+          <a href="#">Theme</a>
         </li>
 
         <li route-highlight="routes: autocomplete">
@@ -90,4 +84,6 @@
       </ul>
     </div>
   </nav>
+
+  <theme-selector ref="themeSelector"></theme-selector>
 </template>

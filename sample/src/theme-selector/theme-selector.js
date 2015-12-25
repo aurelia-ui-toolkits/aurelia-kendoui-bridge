@@ -37,9 +37,11 @@ export class ThemeSelector {
         data: this.themes
       },
       selectable: true,
-      template: template,
-      change: () => this.selectionChanged()
+      template: template
     }).data('kendoListView');
+
+    this.widget.select(this.themes.find(i => i.value === 'bootstrap'));
+    this.widget.bind('change', () => this.selectionChanged());
   }
 
   selectionChanged() {

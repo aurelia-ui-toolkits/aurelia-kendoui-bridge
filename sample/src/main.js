@@ -13,10 +13,9 @@ export function configure(aurelia) {
   aurelia.use.globalResources('shared/au-code');
 
   aurelia.start()
+  .then(au => au.setRoot('app'))
   .then(au => {
     let manager = au.container.get(ThemeManager);
     return manager.loadTheme('bootstrap')
-    .then(() => au);
-  })
-  .then(au => au.setRoot('app'));
+  });
 }

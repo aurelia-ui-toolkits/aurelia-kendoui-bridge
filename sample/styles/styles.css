@@ -197,3 +197,13 @@ div.au-stagger {
 .gitter-open-chat-button {
   display: none;
 }
+
+.theme-window {
+  background-color: #ebeef0;
+}
+
+.tc-theme-list {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
