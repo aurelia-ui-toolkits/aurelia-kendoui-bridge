@@ -42,9 +42,9 @@
       "babel": "npm:babel-core@^5.8.22",
       "babel-runtime": "npm:babel-runtime@^5.8.20",
       "core-js": "npm:core-js@^1.2.6",
-      "text": "github:systemjs/plugin-text@^0.0.4",
       "kendo-ui": "kendo:bower-kendo-ui@^2015.2.813",
       "polymer/mutationobservers": "github:polymer/mutationobservers@^0.4.2",
+      "text": "github:systemjs/plugin-text@^0.0.4",
       "traceur": "github:jmcriffey/bower-traceur@0.0.91",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91"
     }
