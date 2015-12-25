@@ -1,7 +1,5 @@
 import {inject} from 'aurelia-framework';
 import {ThemeManager} from 'shared/theme-manager';
-import 'jquery';
-import 'kendo-ui/js/kendo.listview.min';
 
 @inject(ThemeManager)
 export class ThemeSelector {
@@ -29,24 +27,7 @@ export class ThemeSelector {
     this.themeManager = themeManager;
   }
 
-  attached() {
-    let template = kendo.template(jQuery(this.template).html());
-
-    this.widget = $(this.listView).kendoListView({
-      dataSource: {
-        data: this.themes
-      },
-      selectable: true,
-      template: template
-    }).data('kendoListView');
-
-    this.widget.select(this.themes.find(i => i.value === 'bootstrap'));
-    this.widget.bind('change', () => this.selectionChanged());
-  }
-
-  selectionChanged() {
-    let index = this.widget.select().index();
-    let selectedStyle = this.themes[index].value;
-    this.themeManager.loadTheme(selectedStyle);
+  selectTheme(theme) {
+    this.themeManager.loadTheme(theme.value);
   }
 }
