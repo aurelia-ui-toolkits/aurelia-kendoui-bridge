@@ -8,10 +8,10 @@ import 'kendo-ui/js/kendo.grid.min';
 @inject(Element, TemplateCompiler)
 export class Grid extends WidgetBase {
 
-  @children('au-col') columns;
+  @children('au-col') kColumns;
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element, templateCompiler) {
     super('kendoGrid', element);

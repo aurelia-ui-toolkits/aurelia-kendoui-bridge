@@ -1,7 +1,7 @@
-System.register(['aurelia-templating', 'aurelia-metadata'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-metadata', './util'], function (_export) {
   'use strict';
 
-  var BindableProperty, HtmlBehaviorResource, metadata;
+  var BindableProperty, HtmlBehaviorResource, metadata, getBindablePropertyName;
 
   _export('generateBindables', generateBindables);
 
@@ -28,7 +28,7 @@ System.register(['aurelia-templating', 'aurelia-metadata'], function (_export) {
         var option = _ref;
 
         var nameOrConfigOrTarget = {
-          name: option
+          name: getBindablePropertyName(option)
         };
 
         var prop = new BindableProperty(nameOrConfigOrTarget);
@@ -43,6 +43,8 @@ System.register(['aurelia-templating', 'aurelia-metadata'], function (_export) {
       HtmlBehaviorResource = _aureliaTemplating.HtmlBehaviorResource;
     }, function (_aureliaMetadata) {
       metadata = _aureliaMetadata.metadata;
+    }, function (_util) {
+      getBindablePropertyName = _util.getBindablePropertyName;
     }],
     execute: function () {}
   };

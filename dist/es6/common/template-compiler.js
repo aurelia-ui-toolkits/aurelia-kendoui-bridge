@@ -85,10 +85,9 @@ export class TemplateCompiler {
   cleanup(elements) {
     if (!elements) return;
 
-    for (let i = 0; i < elements.length; i++) {
-      let element = elements[i];
+    elements.forEach(element => {
       this.cleanupView(element);
-    }
+    });
   }
 
   // cleans up the view kendo has asked us to clean up
@@ -96,7 +95,9 @@ export class TemplateCompiler {
     // extract Aurelia's View instance from the element
     // we stored this in the enhanceView function
     let view = $(element).data('viewInstance');
-    if (!view) return;
+    if (!view) {
+      throw new Error('viewInstance does not exist on this element');
+    }
 
     // unbind and detach the view
     view.detached();

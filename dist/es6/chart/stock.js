@@ -9,7 +9,7 @@ import 'kendo-ui/js/kendo.dataviz.stock.min';
 export class Stock extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element) {
     super('kendoStockChart', element);

@@ -83,17 +83,20 @@ var TemplateCompiler = (function () {
   };
 
   TemplateCompiler.prototype.cleanup = function cleanup(elements) {
+    var _this3 = this;
+
     if (!elements) return;
 
-    for (var i = 0; i < elements.length; i++) {
-      var element = elements[i];
-      this.cleanupView(element);
-    }
+    elements.forEach(function (element) {
+      _this3.cleanupView(element);
+    });
   };
 
   TemplateCompiler.prototype.cleanupView = function cleanupView(element) {
     var view = $(element).data('viewInstance');
-    if (!view) return;
+    if (!view) {
+      throw new Error('viewInstance does not exist on this element');
+    }
 
     view.detached();
     view.unbind();

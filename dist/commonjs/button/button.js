@@ -14,8 +14,6 @@ var _aureliaFramework = require('aurelia-framework');
 
 var _commonIndex = require('../common/index');
 
-var _aureliaPal = require('aurelia-pal');
-
 require('jquery');
 
 require('kendo-ui/js/kendo.button.min');
@@ -50,16 +48,7 @@ var Button = (function (_WidgetBase) {
     this._initialize();
   };
 
-  Button.prototype.getOptions = function getOptions() {
-    return {
-      icon: this.icon,
-      enable: this.enable,
-      imageUrl: this.imageUrl,
-      spriteCssClass: this.spriteCssClass
-    };
-  };
-
-  Button.prototype.enableChanged = function enableChanged(newValue) {
+  Button.prototype.kEnableChanged = function kEnableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
     }

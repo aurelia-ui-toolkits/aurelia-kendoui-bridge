@@ -12,6 +12,7 @@ exports.pruneOptions = pruneOptions;
 exports.addHyphenAndLower = addHyphenAndLower;
 exports._hyphenate = _hyphenate;
 exports._unhyphenate = _unhyphenate;
+exports.getBindablePropertyName = getBindablePropertyName;
 exports.getEventsFromAttributes = getEventsFromAttributes;
 
 function _interopExportWildcard(obj, defaults) { var newObj = defaults({}, obj); delete newObj['default']; return newObj; }
@@ -67,8 +68,6 @@ require('kendo-ui/js/kendo.slider.min');
 require('kendo-ui/js/kendo.tabstrip.min');
 
 var _aureliaFramework = require('aurelia-framework');
-
-var _aureliaPal = require('aurelia-pal');
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -192,7 +191,7 @@ var AutoComplete = (function (_WidgetBase) {
     },
     enumerable: true
   }, {
-    key: 'dataSource',
+    key: 'kDataSource',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -210,7 +209,7 @@ var AutoComplete = (function (_WidgetBase) {
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers);
 
@@ -309,16 +308,7 @@ var Button = (function (_WidgetBase2) {
     this._initialize();
   };
 
-  Button.prototype.getOptions = function getOptions() {
-    return {
-      icon: this.icon,
-      enable: this.enable,
-      imageUrl: this.imageUrl,
-      spriteCssClass: this.spriteCssClass
-    };
-  };
-
-  Button.prototype.enableChanged = function enableChanged(newValue) {
+  Button.prototype.kEnableChanged = function kEnableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
     }
@@ -346,7 +336,7 @@ var Chart = (function (_WidgetBase3) {
     },
     enumerable: true
   }, {
-    key: 'dataSource',
+    key: 'kDataSource',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -359,7 +349,7 @@ var Chart = (function (_WidgetBase3) {
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers3);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers3);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers3);
   }
 
   Chart.prototype.attached = function attached() {
@@ -446,7 +436,7 @@ var Sparkline = (function (_WidgetBase4) {
     },
     enumerable: true
   }, {
-    key: 'dataSource',
+    key: 'kDataSource',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -459,7 +449,7 @@ var Sparkline = (function (_WidgetBase4) {
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers4);
   }
 
   Sparkline.prototype.attached = function attached() {
@@ -493,7 +483,7 @@ var Stock = (function (_WidgetBase5) {
     },
     enumerable: true
   }, {
-    key: 'dataSource',
+    key: 'kDataSource',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -506,7 +496,7 @@ var Stock = (function (_WidgetBase5) {
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers5);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers5);
   }
 
   Stock.prototype.attached = function attached() {
@@ -539,7 +529,7 @@ var TreeMap = (function (_WidgetBase6) {
     },
     enumerable: true
   }, {
-    key: 'dataSource',
+    key: 'kDataSource',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -552,7 +542,7 @@ var TreeMap = (function (_WidgetBase6) {
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers6);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers6);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers6);
   }
 
   TreeMap.prototype.attached = function attached() {
@@ -572,7 +562,8 @@ var TreeMap = (function (_WidgetBase6) {
 
 exports.TreeMap = TreeMap;
 var constants = {
-  eventPrefix: 'kendo-'
+  eventPrefix: 'k-on-',
+  bindablePrefix: 'k-'
 };
 
 exports.constants = constants;
@@ -600,7 +591,7 @@ function generateBindables(controlName) {
       var option = _ref;
 
       var nameOrConfigOrTarget = {
-        name: option
+        name: getBindablePropertyName(option)
       };
 
       var prop = new _aureliaTemplating.BindableProperty(nameOrConfigOrTarget);
@@ -731,17 +722,20 @@ var TemplateCompiler = (function () {
   };
 
   TemplateCompiler.prototype.cleanup = function cleanup(elements) {
+    var _this4 = this;
+
     if (!elements) return;
 
-    for (var i = 0; i < elements.length; i++) {
-      var element = elements[i];
-      this.cleanupView(element);
-    }
+    elements.forEach(function (element) {
+      _this4.cleanupView(element);
+    });
   };
 
   TemplateCompiler.prototype.cleanupView = function cleanupView(element) {
     var view = $(element).data('viewInstance');
-    if (!view) return;
+    if (!view) {
+      throw new Error('viewInstance does not exist on this element');
+    }
 
     view.detached();
     view.unbind();
@@ -768,6 +762,12 @@ function _unhyphenate(name) {
   return name.replace(/-([a-z])/g, function (g) {
     return g[1].toUpperCase();
   });
+}
+
+function getBindablePropertyName(propertyName) {
+  var name = '' + constants.bindablePrefix + propertyName;
+
+  return _unhyphenate(name);
 }
 
 function getEventsFromAttributes(element) {
@@ -858,11 +858,11 @@ var WidgetBase = (function () {
 
       var prop = _ref3;
 
-      options[prop] = this[prop];
+      options[prop] = this[getBindablePropertyName(prop)];
     }
 
-    if (this.dataSource) {
-      options.dataSource = this.dataSource;
+    if (this.kDataSource) {
+      options.dataSource = this.kDataSource;
     }
 
     return options;
@@ -885,12 +885,12 @@ var WidgetBase = (function () {
 
       var prop = _ref4;
 
-      this[prop] = props[prop];
+      this[getBindablePropertyName(prop)] = props[prop];
     }
   };
 
   WidgetBase.prototype.getEventOptions = function getEventOptions(ctor) {
-    var _this4 = this;
+    var _this5 = this;
 
     var options = {};
     var allowedEvents = ctor.widget.prototype.events;
@@ -899,12 +899,12 @@ var WidgetBase = (function () {
 
     events.forEach(function (event) {
       if (!allowedEvents.includes(event)) {
-        throw new Error(event + ' is not an event on the ' + _this4.controlName + ' control');
+        throw new Error(event + ' is not an event on the ' + _this5.controlName + ' control');
       }
 
       options[event] = function (e) {
-        _this4.taskQueue.queueMicroTask(function () {
-          fireKendoEvent(_this4.target, _hyphenate(event), e);
+        _this5.taskQueue.queueMicroTask(function () {
+          fireKendoEvent(_this5.target, _hyphenate(event), e);
         });
       };
     });
@@ -936,12 +936,12 @@ var DropDownList = (function (_WidgetBase7) {
     },
     enumerable: true
   }, {
-    key: 'dataSource',
+    key: 'kDataSource',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
   }, {
-    key: 'value',
+    key: 'kValue',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -954,9 +954,9 @@ var DropDownList = (function (_WidgetBase7) {
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers7);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers7);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers7);
 
-    _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers7);
+    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers7);
 
     this.templateCompiler = templateCompiler;
   }
@@ -972,20 +972,20 @@ var DropDownList = (function (_WidgetBase7) {
   };
 
   DropDownList.prototype._initialized = function _initialized() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.widget.bind('change', function (event) {
-      _this5.value = event.sender.value();
-      _this5.text = event.sender.text();
+      _this6.kValue = event.sender.value();
+      _this6.kText = event.sender.text();
 
-      fireEvent(_this5.element, 'input');
+      fireEvent(_this6.element, 'input');
     });
 
     this.widget.bind('select', function (event) {
-      _this5.value = event.sender.value();
-      _this5.text = event.sender.text();
+      _this6.kValue = event.sender.value();
+      _this6.kText = event.sender.text();
 
-      fireEvent(_this5.element, 'input');
+      fireEvent(_this6.element, 'input');
     });
 
     this.widget.trigger('change');
@@ -1113,7 +1113,7 @@ var Grid = (function (_WidgetBase8) {
   _inherits(Grid, _WidgetBase8);
 
   _createDecoratedClass(Grid, [{
-    key: 'columns',
+    key: 'kColumns',
     decorators: [_aureliaFramework.children('au-col')],
     initializer: null,
     enumerable: true
@@ -1125,7 +1125,7 @@ var Grid = (function (_WidgetBase8) {
     },
     enumerable: true
   }, {
-    key: 'dataSource',
+    key: 'kDataSource',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -1136,11 +1136,11 @@ var Grid = (function (_WidgetBase8) {
 
     _WidgetBase8.call(this, 'kendoGrid', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers9);
+    _defineDecoratedPropertyDescriptor(this, 'kColumns', _instanceInitializers9);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers9);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers9);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers9);
 
     this.templateCompiler = templateCompiler;
   }
@@ -1195,7 +1195,7 @@ var Menu = (function (_WidgetBase9) {
     },
     enumerable: true
   }, {
-    key: 'dataSource',
+    key: 'kDataSource',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -1208,7 +1208,7 @@ var Menu = (function (_WidgetBase9) {
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers10);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers10);
   }
 
   Menu.prototype.bind = function bind() {

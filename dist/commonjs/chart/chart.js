@@ -35,7 +35,7 @@ var Chart = (function (_WidgetBase) {
     },
     enumerable: true
   }, {
-    key: 'dataSource',
+    key: 'kDataSource',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -48,7 +48,7 @@ var Chart = (function (_WidgetBase) {
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
   }
 
   Chart.prototype.attached = function attached() {

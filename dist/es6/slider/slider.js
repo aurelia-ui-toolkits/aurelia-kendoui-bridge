@@ -1,5 +1,5 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {WidgetBase, TemplateCompiler, generateBindables} from '../common/index';
+import {WidgetBase, generateBindables} from '../common/index';
 import 'jquery';
 import 'kendo-ui/js/kendo.slider.min';
 

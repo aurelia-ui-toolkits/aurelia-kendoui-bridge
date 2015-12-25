@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'aurelia-pal', 'jquery', 'kendo-ui/js/kendo.button.min'], function (exports, _aureliaFramework, _commonIndex, _aureliaPal, _jquery, _kendoUiJsKendoButtonMin) {
+define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.button.min'], function (exports, _aureliaFramework, _commonIndex, _jquery, _kendoUiJsKendoButtonMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -41,16 +41,7 @@ define(['exports', 'aurelia-framework', '../common/index', 'aurelia-pal', 'jquer
       this._initialize();
     };
 
-    Button.prototype.getOptions = function getOptions() {
-      return {
-        icon: this.icon,
-        enable: this.enable,
-        imageUrl: this.imageUrl,
-        spriteCssClass: this.spriteCssClass
-      };
-    };
-
-    Button.prototype.enableChanged = function enableChanged(newValue) {
+    Button.prototype.kEnableChanged = function kEnableChanged(newValue) {
       if (this.widget) {
         this.widget.enable(newValue);
       }

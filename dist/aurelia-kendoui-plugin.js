@@ -18,7 +18,6 @@ import 'kendo-ui/js/kendo.progressbar.min';
 import 'kendo-ui/js/kendo.slider.min';
 import 'kendo-ui/js/kendo.tabstrip.min';
 import {customAttribute,bindable,inject,customElement,noView,TaskQueue,processContent,TargetInstruction,children} from 'aurelia-framework';
-import {DOM} from 'aurelia-pal';
 import {BindableProperty,HtmlBehaviorResource,TemplatingEngine} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {Container} from 'aurelia-dependency-injection';
@@ -136,7 +135,7 @@ class KendoConfigBuilder {
 export class AutoComplete extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
   @bindable value;
 
   constructor(element, templateCompiler) {
@@ -219,16 +218,7 @@ export class Button extends WidgetBase {
     this._initialize();
   }
 
-  getOptions() {
-    return {
-      icon: this.icon,
-      enable: this.enable,
-      imageUrl: this.imageUrl,
-      spriteCssClass: this.spriteCssClass
-    };
-  }
-
-  enableChanged(newValue) {
+  kEnableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
     }
@@ -241,7 +231,7 @@ export class Button extends WidgetBase {
 export class Chart extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element) {
     super('kendoChart', element);
@@ -317,7 +307,7 @@ export class Chart extends WidgetBase {
 export class Sparkline extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element) {
     super('kendoSparkline', element);
@@ -338,7 +328,7 @@ export class Sparkline extends WidgetBase {
 export class Stock extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element) {
     super('kendoStockChart', element);
@@ -359,7 +349,7 @@ export class Stock extends WidgetBase {
 export class TreeMap extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element) {
     super('kendoTreeMap', element);
@@ -376,7 +366,8 @@ export class TreeMap extends WidgetBase {
 
 
 export const constants = {
-  eventPrefix: 'kendo-'
+  eventPrefix: 'k-on-',
+  bindablePrefix: 'k-'
 };
 
 // creates a BindableProperty for every option defined
@@ -395,7 +386,7 @@ export function generateBindables(controlName) {
     for (let option of optionKeys) {
       // set the name of the bindable property to the option
       let nameOrConfigOrTarget = {
-        name: option
+        name: getBindablePropertyName(option)
       };
 
       let prop = new BindableProperty(nameOrConfigOrTarget);
@@ -520,10 +511,9 @@ export class TemplateCompiler {
   cleanup(elements) {
     if (!elements) return;
 
-    for (let i = 0; i < elements.length; i++) {
-      let element = elements[i];
+    elements.forEach(element => {
       this.cleanupView(element);
-    }
+    });
   }
 
   // cleans up the view kendo has asked us to clean up
@@ -531,7 +521,9 @@ export class TemplateCompiler {
     // extract Aurelia's View instance from the element
     // we stored this in the enhanceView function
     let view = $(element).data('viewInstance');
-    if (!view) return;
+    if (!view) {
+      throw new Error('viewInstance does not exist on this element');
+    }
 
     // unbind and detach the view
     view.detached();
@@ -550,6 +542,12 @@ export function _hyphenate(name) {
 
 export function _unhyphenate(name) {
   return name.replace(/-([a-z])/g, (g) => g[1].toUpperCase());
+}
+
+export function getBindablePropertyName(propertyName) {
+  let name = `${constants.bindablePrefix}${propertyName}`;
+
+  return _unhyphenate(name);
 }
 
 export function getEventsFromAttributes(element) {
@@ -577,7 +575,6 @@ export function getEventsFromAttributes(element) {
 
 export class WidgetBase {
   constructor(controlName, element) {
-
     // access root container
     let container = Container.instance;
     this.taskQueue = container.get(TaskQueue);
@@ -635,11 +632,11 @@ export class WidgetBase {
     let options = {};
 
     for (let prop of Object.keys(props)) {
-      options[prop] = this[prop];
+      options[prop] = this[getBindablePropertyName(prop)];
     }
 
-    if (this.dataSource) {
-      options.dataSource = this.dataSource;
+    if (this.kDataSource) {
+      options.dataSource = this.kDataSource;
     }
 
     return options;
@@ -651,7 +648,7 @@ export class WidgetBase {
     let props = jQuery.fn[this.controlName].widget.prototype.options;
 
     for (let prop of Object.keys(props)) {
-      this[prop] = props[prop];
+      this[getBindablePropertyName(prop)] = props[prop];
     }
   }
 
@@ -674,7 +671,7 @@ export class WidgetBase {
         this.taskQueue.queueMicroTask(() => {
           fireKendoEvent(this.target, _hyphenate(event), e);
         });
-      }
+      };
     });
 
     return options;
@@ -693,8 +690,8 @@ export class WidgetBase {
 export class DropDownList extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
-  @bindable value;
+  @bindable kDataSource;
+  @bindable kValue;
 
   constructor(element, templateCompiler) {
     super('kendoDropDownList', element);
@@ -716,23 +713,23 @@ export class DropDownList extends WidgetBase {
 	// without these change and select handlers, when you select an options
     // the value binding is not updated
     this.widget.bind('change', (event) => {
-      this.value = event.sender.value();
-      this.text = event.sender.text();
+      this.kValue = event.sender.value();
+      this.kText = event.sender.text();
 
       // Update the kendo binding
       fireEvent(this.element, 'input');
     });
 
     this.widget.bind('select', (event) => {
-      this.value = event.sender.value();
-      this.text = event.sender.text();
+      this.kValue = event.sender.value();
+      this.kText = event.sender.text();
 
       // Update the kendo binding
       fireEvent(this.element, 'input');
     });
 
     // Ensure the dropdown has an initial value/text
-	this.widget.trigger('change');
+    this.widget.trigger('change');
   }
 
   enableChanged(newValue) {
@@ -742,9 +739,9 @@ export class DropDownList extends WidgetBase {
   }
 
   valueChanged(newValue) {
-  	if(this.widget) {
-	  	this.widget.value(newValue);
-		this.widget.trigger('change');
+    if (this.widget) {
+      this.widget.value(newValue);
+      this.widget.trigger('change');
     }
   }
 
@@ -753,14 +750,14 @@ export class DropDownList extends WidgetBase {
       this.widget.select(index);
       // Need to make sure the kendo binding stays up to date
       this.widget.trigger('change');
-	}
+    }
   }
 
   search(value) {
     if (this.widget) {
       this.widget.search(value);
       // Need to make sure the kendo binding stays up to date
-	  this.widget.trigger('change');
+      this.widget.trigger('change');
     }
   }
 }
@@ -795,10 +792,10 @@ export class AuCol {
 @inject(Element, TemplateCompiler)
 export class Grid extends WidgetBase {
 
-  @children('au-col') columns;
+  @children('au-col') kColumns;
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element, templateCompiler) {
     super('kendoGrid', element);
@@ -848,7 +845,7 @@ function isInitFromTable(element) {
 export class Menu extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element) {
     super('kendoMenu', element);

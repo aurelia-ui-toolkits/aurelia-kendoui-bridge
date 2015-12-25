@@ -1,3 +1,4 @@
 export const constants = {
-  eventPrefix: 'kendo-'
+  eventPrefix: 'k-on-',
+  bindablePrefix: 'k-'
 };

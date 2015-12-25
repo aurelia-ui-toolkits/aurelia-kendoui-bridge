@@ -9,6 +9,8 @@ System.register(['./constants'], function (_export) {
 
   _export('_unhyphenate', _unhyphenate);
 
+  _export('getBindablePropertyName', getBindablePropertyName);
+
   _export('getEventsFromAttributes', getEventsFromAttributes);
 
   function addHyphenAndLower(char) {
@@ -23,6 +25,12 @@ System.register(['./constants'], function (_export) {
     return name.replace(/-([a-z])/g, function (g) {
       return g[1].toUpperCase();
     });
+  }
+
+  function getBindablePropertyName(propertyName) {
+    var name = '' + constants.bindablePrefix + propertyName;
+
+    return _unhyphenate(name);
   }
 
   function getEventsFromAttributes(element) {

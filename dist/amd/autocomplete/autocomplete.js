@@ -24,7 +24,7 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
       },
       enumerable: true
     }, {
-      key: 'dataSource',
+      key: 'kDataSource',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
@@ -42,7 +42,7 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
 
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers);
 

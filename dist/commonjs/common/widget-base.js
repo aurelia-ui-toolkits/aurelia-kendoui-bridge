@@ -69,11 +69,11 @@ var WidgetBase = (function () {
 
       var prop = _ref;
 
-      options[prop] = this[prop];
+      options[prop] = this[_util.getBindablePropertyName(prop)];
     }
 
-    if (this.dataSource) {
-      options.dataSource = this.dataSource;
+    if (this.kDataSource) {
+      options.dataSource = this.kDataSource;
     }
 
     return options;
@@ -96,7 +96,7 @@ var WidgetBase = (function () {
 
       var prop = _ref2;
 
-      this[prop] = props[prop];
+      this[_util.getBindablePropertyName(prop)] = props[prop];
     }
   };
 

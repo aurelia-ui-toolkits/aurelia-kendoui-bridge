@@ -1,7 +1,7 @@
 System.register(['./options', './events', './util', 'aurelia-framework', 'aurelia-dependency-injection'], function (_export) {
   'use strict';
 
-  var pruneOptions, fireKendoEvent, getEventsFromAttributes, _hyphenate, TaskQueue, Container, WidgetBase;
+  var pruneOptions, fireKendoEvent, getEventsFromAttributes, _hyphenate, getBindablePropertyName, TaskQueue, Container, WidgetBase;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -13,6 +13,7 @@ System.register(['./options', './events', './util', 'aurelia-framework', 'aureli
     }, function (_util) {
       getEventsFromAttributes = _util.getEventsFromAttributes;
       _hyphenate = _util._hyphenate;
+      getBindablePropertyName = _util.getBindablePropertyName;
     }, function (_aureliaFramework) {
       TaskQueue = _aureliaFramework.TaskQueue;
     }, function (_aureliaDependencyInjection) {
@@ -74,11 +75,11 @@ System.register(['./options', './events', './util', 'aurelia-framework', 'aureli
 
             var prop = _ref;
 
-            options[prop] = this[prop];
+            options[prop] = this[getBindablePropertyName(prop)];
           }
 
-          if (this.dataSource) {
-            options.dataSource = this.dataSource;
+          if (this.kDataSource) {
+            options.dataSource = this.kDataSource;
           }
 
           return options;
@@ -101,7 +102,7 @@ System.register(['./options', './events', './util', 'aurelia-framework', 'aureli
 
             var prop = _ref2;
 
-            this[prop] = props[prop];
+            this[getBindablePropertyName(prop)] = props[prop];
           }
         };
 

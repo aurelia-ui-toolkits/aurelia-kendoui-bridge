@@ -7,6 +7,8 @@ var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaMetadata = require('aurelia-metadata');
 
+var _util = require('./util');
+
 function generateBindables(controlName) {
   return function (target, key, descriptor) {
     var options = jQuery.fn[controlName].widget.prototype.options;
@@ -30,7 +32,7 @@ function generateBindables(controlName) {
       var option = _ref;
 
       var nameOrConfigOrTarget = {
-        name: option
+        name: _util.getBindablePropertyName(option)
       };
 
       var prop = new _aureliaTemplating.BindableProperty(nameOrConfigOrTarget);

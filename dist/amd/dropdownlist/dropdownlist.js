@@ -24,12 +24,12 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
       },
       enumerable: true
     }, {
-      key: 'dataSource',
+      key: 'kDataSource',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
     }, {
-      key: 'value',
+      key: 'kValue',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
@@ -42,9 +42,9 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
 
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
 
       this.templateCompiler = templateCompiler;
     }
@@ -63,15 +63,15 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
       var _this = this;
 
       this.widget.bind('change', function (event) {
-        _this.value = event.sender.value();
-        _this.text = event.sender.text();
+        _this.kValue = event.sender.value();
+        _this.kText = event.sender.text();
 
         _commonIndex.fireEvent(_this.element, 'input');
       });
 
       this.widget.bind('select', function (event) {
-        _this.value = event.sender.value();
-        _this.text = event.sender.text();
+        _this.kValue = event.sender.value();
+        _this.kText = event.sender.text();
 
         _commonIndex.fireEvent(_this.element, 'input');
       });

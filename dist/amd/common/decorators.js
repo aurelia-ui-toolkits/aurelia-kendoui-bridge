@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-metadata'], function (exports, _aureliaTemplating, _aureliaMetadata) {
+define(['exports', 'aurelia-templating', 'aurelia-metadata', './util'], function (exports, _aureliaTemplating, _aureliaMetadata, _util) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,7 +27,7 @@ define(['exports', 'aurelia-templating', 'aurelia-metadata'], function (exports,
         var option = _ref;
 
         var nameOrConfigOrTarget = {
-          name: option
+          name: _util.getBindablePropertyName(option)
         };
 
         var prop = new _aureliaTemplating.BindableProperty(nameOrConfigOrTarget);

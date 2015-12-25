@@ -19,7 +19,6 @@ declare module 'aurelia-kendoui-plugin' {
   import 'kendo-ui/js/kendo.slider.min';
   import 'kendo-ui/js/kendo.tabstrip.min';
   import { customAttribute, bindable, inject, customElement, noView, TaskQueue, processContent, TargetInstruction, children }  from 'aurelia-framework';
-  import { DOM }  from 'aurelia-pal';
   import { BindableProperty, HtmlBehaviorResource, TemplatingEngine }  from 'aurelia-templating';
   import { metadata }  from 'aurelia-metadata';
   import { Container }  from 'aurelia-dependency-injection';
@@ -43,7 +42,7 @@ declare module 'aurelia-kendoui-plugin' {
   }
   export class AutoComplete extends WidgetBase {
     options: any;
-    dataSource: any;
+    kDataSource: any;
     value: any;
     constructor(element: any, templateCompiler: any);
     bind(ctx: any): any;
@@ -58,12 +57,11 @@ declare module 'aurelia-kendoui-plugin' {
     constructor(element: any);
     bind(): any;
     recreate(): any;
-    getOptions(): any;
-    enableChanged(newValue: any): any;
+    kEnableChanged(newValue: any): any;
   }
   export class Chart extends WidgetBase {
     options: any;
-    dataSource: any;
+    kDataSource: any;
     constructor(element: any);
     attached(): any;
     recreate(): any;
@@ -79,21 +77,21 @@ declare module 'aurelia-kendoui-plugin' {
   }
   export class Sparkline extends WidgetBase {
     options: any;
-    dataSource: any;
+    kDataSource: any;
     constructor(element: any);
     attached(): any;
     recreate(): any;
   }
   export class Stock extends WidgetBase {
     options: any;
-    dataSource: any;
+    kDataSource: any;
     constructor(element: any);
     attached(): any;
     recreate(): any;
   }
   export class TreeMap extends WidgetBase {
     options: any;
-    dataSource: any;
+    kDataSource: any;
     constructor(element: any);
     attached(): any;
     recreate(): any;
@@ -135,6 +133,7 @@ declare module 'aurelia-kendoui-plugin' {
     cleanupView(element: any): any;
   }
   export function addHyphenAndLower(char: any): any;
+  export function getBindablePropertyName(propertyName: any): any;
   export function getEventsFromAttributes(element: any): any;
   export class WidgetBase {
     constructor(controlName: any, element: any);
@@ -148,8 +147,8 @@ declare module 'aurelia-kendoui-plugin' {
   }
   export class DropDownList extends WidgetBase {
     options: any;
-    dataSource: any;
-    value: any;
+    kDataSource: any;
+    kValue: any;
     constructor(element: any, templateCompiler: any);
     bind(ctx: any): any;
     recreate(): any;
@@ -170,9 +169,9 @@ declare module 'aurelia-kendoui-plugin' {
     constructor(targetInstruction: any);
   }
   export class Grid extends WidgetBase {
-    columns: any;
+    kColumns: any;
     options: any;
-    dataSource: any;
+    kDataSource: any;
     constructor(element: any, templateCompiler: any);
     bind(ctx: any): any;
     
@@ -184,7 +183,7 @@ declare module 'aurelia-kendoui-plugin' {
   }
   export class Menu extends WidgetBase {
     options: any;
-    dataSource: any;
+    kDataSource: any;
     constructor(element: any);
     bind(): any;
     recreate(): any;

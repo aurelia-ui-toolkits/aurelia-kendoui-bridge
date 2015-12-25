@@ -1,6 +1,6 @@
 import {BindableProperty, HtmlBehaviorResource} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
-
+import {getBindablePropertyName} from './util';
 
 // creates a BindableProperty for every option defined
 // in the option property of a Kendo control
@@ -18,7 +18,7 @@ export function generateBindables(controlName) {
     for (let option of optionKeys) {
       // set the name of the bindable property to the option
       let nameOrConfigOrTarget = {
-        name: option
+        name: getBindablePropertyName(option)
       };
 
       let prop = new BindableProperty(nameOrConfigOrTarget);

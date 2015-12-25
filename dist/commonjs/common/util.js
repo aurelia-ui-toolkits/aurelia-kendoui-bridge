@@ -4,6 +4,7 @@ exports.__esModule = true;
 exports.addHyphenAndLower = addHyphenAndLower;
 exports._hyphenate = _hyphenate;
 exports._unhyphenate = _unhyphenate;
+exports.getBindablePropertyName = getBindablePropertyName;
 exports.getEventsFromAttributes = getEventsFromAttributes;
 
 var _constants = require('./constants');
@@ -22,6 +23,12 @@ function _unhyphenate(name) {
   return name.replace(/-([a-z])/g, function (g) {
     return g[1].toUpperCase();
   });
+}
+
+function getBindablePropertyName(propertyName) {
+  var name = '' + _constants.constants.bindablePrefix + propertyName;
+
+  return _unhyphenate(name);
 }
 
 function getEventsFromAttributes(element) {

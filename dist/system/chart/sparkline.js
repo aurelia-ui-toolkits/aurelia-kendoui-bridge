@@ -35,7 +35,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
           },
           enumerable: true
         }, {
-          key: 'dataSource',
+          key: 'kDataSource',
           decorators: [bindable],
           initializer: null,
           enumerable: true
@@ -48,7 +48,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
 
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-          _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
         }
 
         Sparkline.prototype.attached = function attached() {

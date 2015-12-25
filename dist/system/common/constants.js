@@ -6,7 +6,8 @@ System.register([], function (_export) {
     setters: [],
     execute: function () {
       constants = {
-        eventPrefix: 'kendo-'
+        eventPrefix: 'k-on-',
+        bindablePrefix: 'k-'
       };
 
       _export('constants', constants);

@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 var constants = {
-  eventPrefix: 'kendo-'
+  eventPrefix: 'k-on-',
+  bindablePrefix: 'k-'
 };
 exports.constants = constants;

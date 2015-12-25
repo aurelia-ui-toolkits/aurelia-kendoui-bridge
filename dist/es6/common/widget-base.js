@@ -1,12 +1,11 @@
 import {pruneOptions} from './options';
 import {fireKendoEvent} from './events';
-import {getEventsFromAttributes, _hyphenate} from './util';
+import {getEventsFromAttributes, _hyphenate, getBindablePropertyName} from './util';
 import {TaskQueue} from 'aurelia-framework';
 import {Container} from 'aurelia-dependency-injection';
 
 export class WidgetBase {
   constructor(controlName, element) {
-
     // access root container
     let container = Container.instance;
     this.taskQueue = container.get(TaskQueue);
@@ -64,11 +63,11 @@ export class WidgetBase {
     let options = {};
 
     for (let prop of Object.keys(props)) {
-      options[prop] = this[prop];
+      options[prop] = this[getBindablePropertyName(prop)];
     }
 
-    if (this.dataSource) {
-      options.dataSource = this.dataSource;
+    if (this.kDataSource) {
+      options.dataSource = this.kDataSource;
     }
 
     return options;
@@ -80,7 +79,7 @@ export class WidgetBase {
     let props = jQuery.fn[this.controlName].widget.prototype.options;
 
     for (let prop of Object.keys(props)) {
-      this[prop] = props[prop];
+      this[getBindablePropertyName(prop)] = props[prop];
     }
   }
 
@@ -103,7 +102,7 @@ export class WidgetBase {
         this.taskQueue.queueMicroTask(() => {
           fireKendoEvent(this.target, _hyphenate(event), e);
         });
-      }
+      };
     });
 
     return options;

@@ -32,7 +32,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
         _inherits(Grid, _WidgetBase);
 
         _createDecoratedClass(Grid, [{
-          key: 'columns',
+          key: 'kColumns',
           decorators: [children('au-col')],
           initializer: null,
           enumerable: true
@@ -44,7 +44,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
           },
           enumerable: true
         }, {
-          key: 'dataSource',
+          key: 'kDataSource',
           decorators: [bindable],
           initializer: null,
           enumerable: true
@@ -55,11 +55,11 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
 
           _WidgetBase.call(this, 'kendoGrid', element);
 
-          _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kColumns', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-          _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
 
           this.templateCompiler = templateCompiler;
         }

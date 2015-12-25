@@ -1,6 +1,5 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
 import {WidgetBase, generateBindables} from '../common/index';
-import {DOM} from 'aurelia-pal';
 import 'jquery';
 import 'kendo-ui/js/kendo.button.min';
 
@@ -23,16 +22,7 @@ export class Button extends WidgetBase {
     this._initialize();
   }
 
-  getOptions() {
-    return {
-      icon: this.icon,
-      enable: this.enable,
-      imageUrl: this.imageUrl,
-      spriteCssClass: this.spriteCssClass
-    };
-  }
-
-  enableChanged(newValue) {
+  kEnableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
     }

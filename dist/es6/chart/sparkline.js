@@ -10,7 +10,7 @@ import 'kendo-ui/js/kendo.dataviz.sparkline.min';
 export class Sparkline extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element) {
     super('kendoSparkline', element);

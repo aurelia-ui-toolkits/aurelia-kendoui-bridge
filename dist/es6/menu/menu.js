@@ -9,7 +9,7 @@ import 'kendo-ui/js/kendo.menu.min';
 export class Menu extends WidgetBase {
 
   @bindable options = {};
-  @bindable dataSource;
+  @bindable kDataSource;
 
   constructor(element) {
     super('kendoMenu', element);

@@ -31,7 +31,7 @@ var Menu = (function (_WidgetBase) {
     },
     enumerable: true
   }, {
-    key: 'dataSource',
+    key: 'kDataSource',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -44,7 +44,7 @@ var Menu = (function (_WidgetBase) {
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'dataSource', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
   }
 
   Menu.prototype.bind = function bind() {
