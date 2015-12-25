@@ -17,12 +17,16 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <li route-highlight="routes: about">
+          <a route-href="route: about">About</a>
+        </li>
+
         <li route-highlight="routes: install">
           <a route-href="route: install; params.bind: { page: 'begin' }">Installation Wizard</a>
         </li>
 
-        <li route-highlight="routes: sample-selector">
-          <a route-href="route: sample-selector">Sample Selector</a>
+        <li route-highlight="routes: project-status">
+          <a route-href="route: project-status">Project status</a>
         </li>
 
         <li click.delegate="showThemeDialog()">

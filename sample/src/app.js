@@ -24,7 +24,7 @@ export class App {
       { name: 'progressbar',      route: 'progressbar',         moduleId: 'progressbar/index',             title: 'Progress Bar'},
       { name: 'radar-charts',     route: 'radar-charts',        moduleId: 'charts/radar-charts/index',     title: 'Radar Charts'},
       { name: 'range-charts',     route: 'range-charts',        moduleId: 'charts/range-charts/index',     title: 'Range Charts'},
-      { name: 'sample-selector',  route: 'sample-selector',     moduleId: 'sample-selector/selector',      title: 'Sample Selector'},
+      { name: 'project-status',   route: 'project-status',      moduleId: 'project-status/controls',       title: 'Project status'},
       { name: 'scatter-charts',   route: 'scatter-charts',      moduleId: 'charts/scatter-charts/index',   title: 'Scatter charts'},
       { name: 'slider',           route: 'slider',              moduleId: 'slider/index',                  title: 'Slider'},
       { name: 'sparkline',        route: 'sparkline',           moduleId: 'charts/sparkline/index',        title: 'Sparkline'},

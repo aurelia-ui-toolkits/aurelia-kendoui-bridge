@@ -1,8 +1,20 @@
 <template>
-  <button k-button="k-enable.bind: enabled" class="k-primary" k-on-click.trigger="test()">Click me</button>
+    <require from="./api.css"></require>
+    <div id="example">
+      <div class="demo-section k-content">
+        <button k-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>
+      </div>
 
-  <div class="well panel panel-default">
-      <button k-button click.delegate="disable()">Disable</button>
-      <button k-button click.delegate="enable()">Enable</button>
-  </div>
+      <div class="box">
+        <div class="box-col">
+          <h4>Button API Functions</h4>
+          <ul class="options">
+            <li>
+                <button k-button click.delegate="disable()">Disable</button>
+                <button k-button click.delegate="enable()">Enable</button>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 </template>

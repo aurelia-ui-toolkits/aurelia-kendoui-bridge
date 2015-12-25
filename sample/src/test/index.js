@@ -11,6 +11,11 @@ export class Index {
       moduleId: './all-controls',
       nav: true,
       title: 'All controls'
+    }, {
+      route: 'virtualization-grid',
+      moduleId: './virtualization-grid',
+      nav: true,
+      title: 'Grid virtualization'
     }]);
   }
 }

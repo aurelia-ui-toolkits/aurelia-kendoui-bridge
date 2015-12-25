@@ -17,9 +17,6 @@
     "initialization-from-table": {},
     "inline-editing": {},
     "popup-editing": {},
-    "virtualization-of-local-data": {},
-    "virtualization-of-remote-data-without-button": {},
-    "virtualization-of-remote-data": {},
     "working-offline": {},
   }
 }
