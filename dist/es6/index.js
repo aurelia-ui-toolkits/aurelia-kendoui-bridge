@@ -31,6 +31,7 @@ class KendoConfigBuilder {
       .kendoTabStrip()
       .kendoProgressBar()
       .kendoSlider()
+      .kendoColorPicker()
       .kendoDropDownList();
     return this;
   }
@@ -104,6 +105,11 @@ class KendoConfigBuilder {
 
   kendoSlider() {
     this.resources.push('slider/slider');
+    return this;
+  }
+
+  kendoColorPicker() {
+    this.resources.push('colorpicker/colorpicker');
     return this;
   }
 }
