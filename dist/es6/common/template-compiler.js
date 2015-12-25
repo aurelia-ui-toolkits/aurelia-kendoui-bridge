@@ -85,7 +85,8 @@ export class TemplateCompiler {
   cleanup(elements) {
     if (!elements) return;
 
-    for (let element of elements) {
+    for (let i = 0; i < elements.length; i++) {
+      let element = elements[i];
       this.cleanupView(element);
     }
   }
