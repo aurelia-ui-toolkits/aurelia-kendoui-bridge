@@ -1,4 +1,12 @@
+import {bindable} from 'aurelia-framework';
+
 export class BindingToLocalData {
+
+  @bindable positionType = 'center';
+  @bindable alignType = 'center';
+  @bindable showBorder = true;
+  @bindable showLabels = true;
+
   seriesDefaults = {
     dynamicHeight: false,
     labels: {
@@ -43,5 +51,35 @@ export class BindingToLocalData {
   tooltip = {
     visible: true,
     template: '#= category # - #= kendo.format("{0:P}", percentage) #'
+  }
+
+
+  propertyChanged(prop) {
+    if (prop !== 'positionType' &&
+    prop !== 'alignType' &&
+    prop !== 'showBorder' &&
+    prop !== 'showLabels') {
+      return;
+    }
+
+    this.refresh();
+  }
+
+  refresh() {
+    let borderOptions = this.showBorder ? {
+      width: 1,
+      dashType: 'dot',
+      color: '#000'
+    } : {
+      width: 0
+    };
+
+    this.seriesDefaults.labels.font = `${this.slider.widget.value()}px sans-serif`;
+    this.seriesDefaults.labels.color = this.colorpicker.widget.value();
+    this.seriesDefaults.labels.align = this.alignType;
+    this.seriesDefaults.labels.position = this.positionType;
+    this.seriesDefaults.labels.visible = this.showLabels;
+    this.seriesDefaults.labels.border = borderOptions;
+    this.funnel.recreate();
   }
 }

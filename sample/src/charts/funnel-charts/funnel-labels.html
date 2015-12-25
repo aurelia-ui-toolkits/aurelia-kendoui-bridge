@@ -6,7 +6,8 @@
                 k-series.bind="series"
                 k-value-axis.bind="valueAxis"
                 k-category-axis.bind="categoryAxis"
-                k-tooltip.bind="tooltip">
+                k-tooltip.bind="tooltip"
+                view-model.ref="funnel">
       </k-chart>
     </div>
 
@@ -19,12 +20,12 @@
             <ul class="options">
                 <li>
                     <label>
-                        <input id="labels" checked="checked" type="checkbox" autocomplete="off" /> Show labels
+                        <input id="labels" checked="checked" type="checkbox" checked.bind="showLabels" /> Show labels
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input id="showBorder" type="checkbox" checked="checked" /> Show border
+                        <input id="showBorder" type="checkbox" checked.bind="showBorder" /> Show border
                     </label>
                 </li>
             </ul>
@@ -35,17 +36,17 @@
             <ul class="options">
                 <li>
                     <label>
-                        <input name="alignType" type="radio" value="center" checked="checked" autocomplete="off" /> Center
+                        <input name="alignType" type="radio" value="center" checked.bind="alignType" /> Center
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input name="alignType" type="radio" value="left" autocomplete="off" /> Left
+                        <input name="alignType" type="radio" value="left" checked.bind="alignType" /> Left
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input name="alignType" type="radio" value="right" autocomplete="off" /> Right
+                        <input name="alignType" type="radio" value="right" checked.bind="alignType" /> Right
                     </label>
                 </li>
             </ul>
@@ -57,17 +58,17 @@
             <ul class="options">
                 <li>
                     <label>
-                        <input name="positionType" type="radio" value="center" checked="checked" autocomplete="off" /> Center
+                        <input name="positionType" type="radio" value="center" checked.bind="positionType" /> Center
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input name="positionType" type="radio" value="top" autocomplete="off" /> Top
+                        <input name="positionType" type="radio" value="top" checked.bind="positionType" /> Top
                     </label>
                 </li>
                 <li>
                     <label>
-                        <input name="positionType" type="radio" value="bottom" autocomplete="off" /> Bottom
+                        <input name="positionType" type="radio" value="bottom" checked.bind="positionType" /> Bottom
                     </label>
                 </li>
             </ul>
@@ -78,13 +79,20 @@
                 <h4>Font color</h4>
                 <ul class="options">
                     <li><label for="color"></label></li>
-                    <li><input id="color" /></li>
+                    <li><input id="color" k-color-picker="k-value: #000; k-buttons.bind: false"
+                                          k-color-picker.ref="colorpicker"
+                                          k-on-change.trigger="refresh()" /></li>
                 </ul>
             </div>
             <div class="row">
                 <h4>Font size</h4>
                 <ul class="options">
-                    <li><input id="sizeSlider" value="15" /></li>
+                    <li><input k-on-change.trigger="refresh()"
+                                          k-slider.ref="slider"
+                                          k-slider="k-min.bind: 1;
+                                                    k-max.bind: 40;
+                                                    k-value.bind: 15;
+                                                    k-show-buttons.bind: false;" /></li>
                 </ul>
             </div>
         </div>
