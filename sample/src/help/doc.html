@@ -1,0 +1,13 @@
+<template>
+  <div class="row k-content">
+    <div class="col-md-2">
+      <button repeat.for="doc of registry.docs" click.delegate="activeDoc = doc.path" class="btn btn-primary btn-block">
+        ${doc.name}
+      </button>
+    </div>
+    <div class="col-md-9 col-sm-offset-1">
+      <au-markdown url.bind="activeDoc">
+      </au-markdown>
+    </div>
+  </div>
+</template>

@@ -167,9 +167,9 @@ div.au-stagger {
   cursor: pointer;
 }
 
-.k-content > .row > *,
-.k-content > .row > *::before,
-.k-content > .row > *::after {
+.k-content .row > *,
+.k-content .row > *::before,
+.k-content .row > *::after {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
