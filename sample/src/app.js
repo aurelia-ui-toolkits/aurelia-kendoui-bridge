@@ -3,7 +3,8 @@ export class App {
     config.title = 'Kendo UI Samples';
 
     config.map([
-      { name: 'about',            route: ['', 'about'],       moduleId: 'about/about',                   title: 'About' },
+      { name: 'about',            route: ['', 'about'],      moduleId: 'about/about',                   title: 'About' },
+      { name: 'test',             route: 'test',             moduleId: 'test/index',                    title: 'Test pages' },
       { name: 'autocomplete',     route: 'autocomplete',     moduleId: 'autocomplete/index',            title: 'Autocomplete'},
       { name: 'area-charts',      route: 'area-charts',      moduleId: 'charts/area-charts/index',      title: 'Area Charts'},
       { name: 'bar-charts',       route: 'bar-charts',       moduleId: 'charts/bar-charts/index',       title: 'Bar Charts'},
@@ -16,7 +17,7 @@ export class App {
       { name: 'funnel-charts',    route: 'funnel-charts',    moduleId: 'charts/funnel-charts/index',    title: 'Funnel Charts'},
       { name: 'grid',             route: 'grid',             moduleId: 'grid/index',                    title: 'Grid'},
       { name: 'help',             route: 'help',             moduleId: 'help/help',                     title: 'Help' },
-      { route: 'installation/:page', moduleId: 'installation-wizard/wizard', name: 'install', href: '#/installation/begin', title: 'Installation wizard' },
+      { name: 'install',          route: 'installation/:page', moduleId: 'installation-wizard/wizard',  title: 'Installation wizard', href: '#/installation/begin' },
       { name: 'line-charts',      route: 'line-charts',      moduleId: 'charts/line-charts/index',      title: 'Line Charts'},
       { name: 'pie-charts',       route: 'pie-charts',       moduleId: 'charts/pie-charts/index',       title: 'Pie Charts'},
       { name: 'polar-charts',     route: 'polar-charts',     moduleId: 'charts/polar-charts/index',     title: 'Polar Charts'},

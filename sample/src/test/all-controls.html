@@ -1,0 +1,8 @@
+<template>
+  <div repeat.for="sample of samples">
+    <h3>${sample.name}</h3>
+    <p>${sample.description}</p>
+    <compose view-model.bind="sample.path"></compose>
+    <hr>
+  </div>
+</template>
