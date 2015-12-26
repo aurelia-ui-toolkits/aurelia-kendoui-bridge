@@ -1,9 +1,14 @@
 <template>
   <div class="row k-content">
     <div class="col-md-2">
-      <button repeat.for="doc of registry.docs" click.delegate="activeDoc = doc.path" class="btn btn-primary btn-block">
-        ${doc.name}
-      </button>
+      <ul ref="panelbar">
+        <li repeat.for="category of categories">
+          ${category.name}
+          <ul>
+            <li repeat.for="file of category.files" click.delegate="activeDoc = file.path">${file.name}</li>
+          </ul>
+        </li>
+      </ul>
     </div>
     <div class="col-md-9 col-sm-offset-1">
       <au-markdown url.bind="activeDoc">

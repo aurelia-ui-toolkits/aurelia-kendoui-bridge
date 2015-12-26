@@ -1,12 +1,14 @@
 {
-  "docs": [
-    {
-      "name": "Test",
-      "path": "help/docs/test.md"
-    },
-    {
-      "name": "Test 2",
-      "path": "help/docs/test2.md"
-    }
-  ]
+  "Test category": [{
+    "name": "Test",
+    "path": "help/docs/test.md"
+  }, {
+    "name": "Test 2",
+    "path": "help/docs/test2.md"
+  }],
+
+  "Other category": [{
+    "name": "Test 3",
+    "path": "help/docs/test.md"
+  }]
 }
