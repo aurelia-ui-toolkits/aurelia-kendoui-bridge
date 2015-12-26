@@ -3,7 +3,7 @@ export class DateAxis {
   stocksDataSource = new kendo.data.DataSource({
     transport: {
       read: function(options) {
-        return System.import('charts/scatter-charts/json/stock-data-2011.json!json')
+        return System.import('samples/charts/scatter-charts/json/stock-data-2011.json!json')
         .then(data => options.success(data));
       }
     },

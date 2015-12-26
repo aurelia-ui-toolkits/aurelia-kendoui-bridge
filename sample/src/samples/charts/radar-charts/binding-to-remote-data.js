@@ -2,7 +2,7 @@ export class BindingToRemoteData {
   dataSource = {
     transport: {
       read: function(options) {
-        return System.import('charts/radar-charts/json/budget-report.json!json')
+        return System.import('samples/charts/radar-charts/json/budget-report.json!json')
         .then(data => options.success(data));
       }
     }

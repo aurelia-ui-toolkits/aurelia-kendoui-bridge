@@ -13,7 +13,7 @@ export class Index {
       title: 'All controls'
     }, {
       route: 'virtualization-grid',
-      moduleId: './virtualization-grid',
+      moduleId: 'samples/grid/virtualization-of-remote-data',
       nav: true,
       title: 'Grid virtualization'
     }]);

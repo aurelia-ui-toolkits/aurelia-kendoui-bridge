@@ -10,8 +10,6 @@
       "files": ["html", "js", "json"]
     },
     "binding-to-remote-data": {},
-    "binding-to-signalr": {},
-    "binding-to-websocket": {},
     "editing-custom-editor": {},
     "frozen-columns": {},
     "initialization-from-table": {},
