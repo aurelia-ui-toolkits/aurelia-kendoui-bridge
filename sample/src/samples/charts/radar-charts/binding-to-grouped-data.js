@@ -9,7 +9,7 @@ export class GroupedData {
   dataSource = {
     transport: {
       read: function(options) {
-        return System.import('charts/radar-charts/json/wind-data.json!json')
+        return System.import('samples/charts/radar-charts/json/wind-data.json!json')
         .then(data => options.success(data));
       }
     },

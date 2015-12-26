@@ -2,7 +2,7 @@ export class Events {
   dataSource = {
     transport: {
       read: function(options) {
-        return System.import('charts/treemap/json/population-usa.json!json')
+        return System.import('samples/charts/treemap/json/population-usa.json!json')
         .then(data => options.success(data));
       }
     },

@@ -2,7 +2,7 @@ export class MultiplePanes {
   dataSource = {
     transport: {
       read: function(options) {
-        return System.import('charts/stock/json/boeing-stock.json!json')
+        return System.import('samples/charts/stock/json/boeing-stock.json!json')
         .then(data => options.success(data));
       }
     },
