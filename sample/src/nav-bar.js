@@ -17,6 +17,8 @@ export class NavBar {
     }).data('kendoWindow');
 
     jQuery(this.themeSelector).parent().addClass('theme-window');
+
+    jQuery(this.menu).kendoMenu();
   }
 
   showThemeDialog() {

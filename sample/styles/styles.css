@@ -36,7 +36,7 @@ body {
     position: absolute;
     left: 0;
     right: 0;
-    top: 50px;
+    top: 33px;
     bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
@@ -214,4 +214,9 @@ div.au-stagger {
 
 .tc-item-selected {
   background-color: #AAA;
+}
+
+menu {
+  margin: 0;
+  padding: 0;
 }

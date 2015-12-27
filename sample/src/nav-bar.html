@@ -1,50 +1,26 @@
 <template>
   <require from="theme-selector/theme-selector"></require>
-  <require from="./route-highlight"></require>
-  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle Navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">
-        <span>Samples</span>
-      </a>
-    </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li route-highlight="routes: about">
-          <a route-href="route: about">About</a>
-        </li>
-
-        <li route-highlight="routes: install">
-          <a route-href="route: install; params.bind: { page: 'begin' }">Installation Wizard</a>
-        </li>
-
-        <li route-highlight="routes: project-status">
-          <a route-href="route: project-status">Project status</a>
-        </li>
-
-        <li click.delegate="showThemeDialog()">
-          <a href="#">Theme</a>
-        </li>
-
-       <li route-highlight="routes: help">
-          <a route-href="route: help">Help</a>
-        </li>
-      </ul>
-
-
-      <ul class="nav navbar-nav navbar-right">
-        <li class="loader" if.bind="router.isNavigating">
-          <i class="fa fa-spinner fa-spin fa-2x"></i>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <ul ref="menu">
+    <li>
+        <a route-href="route: samples">Samples</a>
+    </li>
+    <li>
+        <a route-href="route: about">About</a>
+    </li>
+    <li>
+        <a route-href="route: install; params.bind: { page: 'begin' }">Install wizard</a>
+    </li>
+    <li>
+        <a route-href="route: project-status">Project status</a>
+    </li>
+    <li click.delegate="showThemeDialog()">
+        <a href="#">Theme</a>
+    </li>
+    <li>
+        <a route-href="route: help">Help</a>
+    </li>
+  </ul>
 
   <theme-selector ref="themeSelector"></theme-selector>
 </template>
