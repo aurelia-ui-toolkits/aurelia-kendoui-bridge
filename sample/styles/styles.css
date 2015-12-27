@@ -211,3 +211,7 @@ div.au-stagger {
 .demo-section.k-content {
   box-sizing: content-box;
 }
+
+.tc-item-selected {
+  background-color: #AAA;
+}

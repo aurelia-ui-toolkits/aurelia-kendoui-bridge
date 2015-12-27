@@ -1,7 +1,8 @@
 import {inject} from 'aurelia-framework';
 import {ThemeManager} from 'shared/theme-manager';
+import {Settings} from 'settings';
 
-@inject(ThemeManager)
+@inject(ThemeManager, Settings)
 export class ThemeSelector {
 
   themes = [
@@ -23,11 +24,13 @@ export class ThemeSelector {
      { value: 'uniform', name: 'Uniform', colors: [ '#666', '#ccc', '#fff' ]  }
   ];
 
-  constructor(themeManager) {
+  constructor(themeManager, settings) {
     this.themeManager = themeManager;
+    this.settings = settings;
   }
 
   selectTheme(theme) {
     this.themeManager.loadTheme(theme.value);
+    this.settings.activeTheme = theme.value;
   }
 }
