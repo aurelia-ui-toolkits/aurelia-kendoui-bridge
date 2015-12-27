@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/jquery.min', 'kendo-ui/js/kendo.progressbar.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsJqueryMin, _kendoUiJsKendoProgressbarMin) {
+define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.progressbar.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoProgressbarMin) {
   'use strict';
 
   exports.__esModule = true;

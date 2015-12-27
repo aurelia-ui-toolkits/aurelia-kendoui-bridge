@@ -1,6 +1,5 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
 import {WidgetBase, generateBindables} from '../common/index';
-import 'kendo-ui/js/jquery.min';
 import 'kendo-ui/js/kendo.progressbar.min';
 
 @customAttribute('k-progress-bar')

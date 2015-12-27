@@ -63,8 +63,6 @@ require('kendo-ui/js/kendo.filtercell.min');
 
 require('kendo-ui/js/kendo.grid.min');
 
-require('kendo-ui/js/jquery.min');
-
 require('kendo-ui/js/kendo.menu.min');
 
 require('kendo-ui/js/kendo.progressbar.min');

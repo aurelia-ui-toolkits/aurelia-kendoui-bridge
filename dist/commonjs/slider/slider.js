@@ -14,8 +14,6 @@ var _aureliaFramework = require('aurelia-framework');
 
 var _commonIndex = require('../common/index');
 
-require('kendo-ui/js/jquery.min');
-
 require('kendo-ui/js/kendo.slider.min');
 
 var Slider = (function (_WidgetBase) {

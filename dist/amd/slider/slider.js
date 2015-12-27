@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/jquery.min', 'kendo-ui/js/kendo.slider.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsJqueryMin, _kendoUiJsKendoSliderMin) {
+define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.slider.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoSliderMin) {
   'use strict';
 
   exports.__esModule = true;

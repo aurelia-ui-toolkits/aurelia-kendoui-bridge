@@ -15,7 +15,6 @@ import 'kendo-ui/js/kendo.colorpicker.min';
 import 'kendo-ui/js/kendo.dropdownlist.min';
 import 'kendo-ui/js/kendo.filtercell.min';
 import 'kendo-ui/js/kendo.grid.min';
-import 'kendo-ui/js/jquery.min';
 import 'kendo-ui/js/kendo.menu.min';
 import 'kendo-ui/js/kendo.progressbar.min';
 import 'kendo-ui/js/kendo.slider.min';

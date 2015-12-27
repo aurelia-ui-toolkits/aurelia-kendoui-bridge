@@ -14,8 +14,6 @@ var _aureliaFramework = require('aurelia-framework');
 
 var _commonIndex = require('../common/index');
 
-require('kendo-ui/js/jquery.min');
-
 require('kendo-ui/js/kendo.progressbar.min');
 
 var ProgressBar = (function (_WidgetBase) {

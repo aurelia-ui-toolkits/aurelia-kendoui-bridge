@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/jquery.min', 'kendo-ui/js/kendo.menu.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsJqueryMin, _kendoUiJsKendoMenuMin) {
+define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.menu.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoMenuMin) {
   'use strict';
 
   exports.__esModule = true;
