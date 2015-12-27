@@ -1,6 +1,7 @@
 <template>
   <div class="row k-content">
     <div class="col-md-2">
+      <br>
       <ul ref="panelbar">
         <li repeat.for="category of categories">
           ${category.name}
@@ -10,7 +11,7 @@
         </li>
       </ul>
     </div>
-    <div class="col-md-9 col-sm-offset-1">
+    <div class="col-md-9 col-sm-offset-0">
       <au-markdown url.bind="activeDoc">
       </au-markdown>
     </div>

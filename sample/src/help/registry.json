@@ -1,14 +1,85 @@
 {
-  "Test category": [{
-    "name": "Test",
-    "path": "help/docs/test.md"
-  }, {
-    "name": "Test 2",
-    "path": "help/docs/test2.md"
-  }],
+    "About this application":
+    [
+      {
+        "name": "How to use this application",
+        "path": "help/docs/lorem.md"
+      },
+      {
+        "name": "How to add missing controls",
+        "path": "help/docs/lorem.md"
+      }
+    ],
 
-  "Other category": [{
-    "name": "Test 3",
-    "path": "help/docs/test.md"
-  }]
+    "Introduction to Aurelia":
+    [
+      {
+        "name": "Forward-thinking",
+        "path": "help/docs/intro-to-aurelia/forward-thinking.md"
+      }, {
+        "name": "Modern Architecture",
+        "path": "help/docs/intro-to-aurelia/modern-architecture.md"
+      }, {
+        "name": "Two-Way Databinding",
+        "path": "help/docs/intro-to-aurelia/two-way-data-binding.md"
+      }, {
+        "name": "Extensible HTML",
+        "path": "help/docs/intro-to-aurelia/extensible-html.md"
+      }, {
+        "name": "Routing & UI Composition",
+        "path": "help/docs/intro-to-aurelia/routing-and-ui-composition.md"
+      }, {
+        "name": "MV* with Conventions",
+        "path": "help/docs/intro-to-aurelia/mv-all-with-conventions.md"
+      }, {
+        "name": "Broad Language Support",
+        "path": "help/docs/intro-to-aurelia/broad-language-support.md"
+      }, {
+        "name": "Testable",
+        "path": "help/docs/intro-to-aurelia/testable.md"
+      }, {
+        "name": "",
+        "path": ""
+      }
+    ],
+
+    "Introduction to KendoUI":
+    [
+      {
+        "name": "Lorem ipsum",
+        "path": "help/docs/lorem.md"
+      },
+    ],
+
+    "Basics of writing Aurelia plugins":
+    [
+      {
+        "name": "Lorem ipsum",
+        "path": "help/docs/lorem.md"
+      },
+    ],
+
+    "Writing Aurelia plugin tutorial":
+    [
+      {
+        "name": "Lorem ipsum",
+        "path": "help/docs/lorem.md"
+      },
+    ],
+
+    "How to use Aurelia-KendoUI bridge":
+    [
+      {
+        "name": "Lorem ipsum",
+        "path": "help/docs/lorem.md"
+      },
+    ],
+
+    "Tutorials":
+    [
+      {
+        "name": "Writing a real Aurelia app using Aurelia KendoUI bridge",
+        "path": "help/docs/lorem.md"
+      },
+    ]
 }
