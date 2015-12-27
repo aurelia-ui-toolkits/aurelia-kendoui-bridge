@@ -16,6 +16,6 @@ export function configure(aurelia) {
   .then(au => au.setRoot('app'))
   .then(au => {
     let manager = au.container.get(ThemeManager);
-    return manager.loadTheme('material')
+    return manager.loadTheme('material');
   });
 }
