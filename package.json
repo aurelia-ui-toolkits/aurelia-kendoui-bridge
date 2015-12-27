@@ -19,6 +19,10 @@
   "directories": {
     "lib": "dist/system"
   },
+  "scripts": {
+    "test": "gulp test",
+    "ci": "gulp ci"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin"
