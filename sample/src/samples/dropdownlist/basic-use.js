@@ -20,6 +20,6 @@ export class BasicUse {
   }
 
   buyCap() {
-    alert(`Thank you! Your Choice is:\n\nColor ID: ${this.capColor.value} and Size: ${this.capSize.value}`);
+    alert(`Thank you! Your Choice is:\n\nColor ID: ${this.capColor.kValue} and Size: ${this.capSize.kValue}`);
   }
 }
