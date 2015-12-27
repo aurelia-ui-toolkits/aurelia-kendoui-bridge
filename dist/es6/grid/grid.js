@@ -1,6 +1,6 @@
 import {inject, children, customElement, bindable} from 'aurelia-framework';
 import {WidgetBase, TemplateCompiler, generateBindables} from '../common/index';
-import 'jquery';
+import 'kendo-ui/js/kendo.filtercell.min';
 import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('k-grid')
@@ -8,7 +8,7 @@ import 'kendo-ui/js/kendo.grid.min';
 @inject(Element, TemplateCompiler)
 export class Grid extends WidgetBase {
 
-  @children('au-col') kColumns;
+  @children('au-col') columns;
 
   @bindable options = {};
   @bindable kDataSource;
@@ -39,6 +39,12 @@ export class Grid extends WidgetBase {
     this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
     super._initialize();
+  }
+
+  _beforeInitialize(options) {
+    if (this.columns && this.columns.length > 0) {
+      options.columns = this.columns;
+    }
   }
 
   enableChanged(newValue) {

@@ -11,6 +11,8 @@ var _aureliaLogging = require('aurelia-logging');
 
 var LogManager = _interopRequireWildcard(_aureliaLogging);
 
+require('jquery');
+
 require('kendo-ui/js/kendo.pdf.min');
 
 require('kendo-ui/js/jszip.min');
@@ -42,7 +44,7 @@ var KendoConfigBuilder = (function () {
   }
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoDropDownList();
+    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList();
     return this;
   };
 
@@ -112,6 +114,11 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoSlider = function kendoSlider() {
     this.resources.push('slider/slider');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoColorPicker = function kendoColorPicker() {
+    this.resources.push('colorpicker/colorpicker');
     return this;
   };
 

@@ -1,7 +1,7 @@
 import * as LogManager from 'aurelia-logging';
+import 'jquery';
 import 'kendo-ui/js/kendo.pdf.min';
 import 'kendo-ui/js/jszip.min';
-import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 import 'kendo-ui/js/kendo.button.min';
@@ -11,8 +11,11 @@ import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
 import 'kendo-ui/js/kendo.dataviz.sparkline.min';
 import 'kendo-ui/js/kendo.dataviz.stock.min';
 import 'kendo-ui/js/kendo.dataviz.treemap.min';
+import 'kendo-ui/js/kendo.colorpicker.min';
 import 'kendo-ui/js/kendo.dropdownlist.min';
+import 'kendo-ui/js/kendo.filtercell.min';
 import 'kendo-ui/js/kendo.grid.min';
+import 'kendo-ui/js/jquery.min';
 import 'kendo-ui/js/kendo.menu.min';
 import 'kendo-ui/js/kendo.progressbar.min';
 import 'kendo-ui/js/kendo.slider.min';
@@ -52,6 +55,7 @@ class KendoConfigBuilder {
       .kendoTabStrip()
       .kendoProgressBar()
       .kendoSlider()
+      .kendoColorPicker()
       .kendoDropDownList();
     return this;
   }
@@ -125,6 +129,11 @@ class KendoConfigBuilder {
 
   kendoSlider() {
     this.resources.push('slider/slider');
+    return this;
+  }
+
+  kendoColorPicker() {
+    this.resources.push('colorpicker/colorpicker');
     return this;
   }
 }
@@ -360,6 +369,22 @@ export class TreeMap extends WidgetBase {
   }
 
   recreate() {
+    this._initialize();
+  }
+}
+
+@customAttribute('k-color-picker')
+@generateBindables('kendoColorPicker')
+@inject(Element)
+export class ColorPicker extends WidgetBase {
+
+  @bindable options = {};
+
+  constructor(element) {
+    super('kendoColorPicker', element);
+  }
+
+  bind() {
     this._initialize();
   }
 }
@@ -605,10 +630,18 @@ export class WidgetBase {
     // generate all options, including event handlers
     let options = this._getOptions(ctor);
 
+    // before initialization callback
+    // allows you to modify/add/remove options before the control gets initialized
+    this._beforeInitialize(options);
+
     // instantiate the Kendo control, pass in the target and the options
     this.widget = ctor.call(target, options).data(this.controlName);
 
     this._initialized();
+  }
+
+  _beforeInitialize(options) {
+
   }
 
   _initialized() {
@@ -772,13 +805,31 @@ export class DropDownList extends WidgetBase {
 })
 @inject(TargetInstruction)
 export class AuCol {
-  @bindable title;
-  @bindable field;
-  @bindable format = '';
+  @bindable aggregates;
+  @bindable attributes;
+  @bindable columns;
   @bindable command;
-  @bindable width;
+  @bindable editor;
+  @bindable encoded;
+  @bindable field;
+  @bindable filterable;
+  @bindable footerTemplate;
+  @bindable format = '';
+  @bindable groupable;
+  @bindable groupFooterTemplate;
+  @bindable groupHeaderTemplate;
+  @bindable headerAttributes;
+  @bindable headerTemplate;
+  @bindable hidden;
   @bindable lockable;
   @bindable locked;
+  @bindable menu;
+  @bindable minScreenWidth;
+  @bindable sortable;
+  @bindable template;
+  @bindable title;
+  @bindable values;
+  @bindable width;
   template;
 
   constructor(targetInstruction) {
@@ -791,7 +842,7 @@ export class AuCol {
 @inject(Element, TemplateCompiler)
 export class Grid extends WidgetBase {
 
-  @children('au-col') kColumns;
+  @children('au-col') columns;
 
   @bindable options = {};
   @bindable kDataSource;
@@ -822,6 +873,12 @@ export class Grid extends WidgetBase {
     this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
     super._initialize();
+  }
+
+  _beforeInitialize(options) {
+    if (this.columns && this.columns.length > 0) {
+      options.columns = this.columns;
+    }
   }
 
   enableChanged(newValue) {

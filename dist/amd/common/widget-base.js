@@ -28,10 +28,14 @@ define(['exports', './options', './events', './util', 'aurelia-framework', 'aure
 
       var options = this._getOptions(ctor);
 
+      this._beforeInitialize(options);
+
       this.widget = ctor.call(target, options).data(this.controlName);
 
       this._initialized();
     };
+
+    WidgetBase.prototype._beforeInitialize = function _beforeInitialize(options) {};
 
     WidgetBase.prototype._initialized = function _initialized() {};
 

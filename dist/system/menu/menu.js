@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.menu.min'], function (_export) {
+System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.menu.min'], function (_export) {
   'use strict';
 
   var customElement, bindable, inject, WidgetBase, generateBindables, Menu;
@@ -19,7 +19,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
     }, function (_commonIndex) {
       WidgetBase = _commonIndex.WidgetBase;
       generateBindables = _commonIndex.generateBindables;
-    }, function (_jquery) {}, function (_kendoUiJsKendoMenuMin) {}],
+    }, function (_kendoUiJsKendoMenuMin) {}],
     execute: function () {
       Menu = (function (_WidgetBase) {
         var _instanceInitializers = {};

@@ -31,11 +31,11 @@ var _aureliaLogging = require('aurelia-logging');
 
 var LogManager = _interopRequireWildcard(_aureliaLogging);
 
+require('jquery');
+
 require('kendo-ui/js/kendo.pdf.min');
 
 require('kendo-ui/js/jszip.min');
-
-require('jquery');
 
 require('kendo-ui/js/kendo.autocomplete.min');
 
@@ -55,9 +55,15 @@ require('kendo-ui/js/kendo.dataviz.stock.min');
 
 require('kendo-ui/js/kendo.dataviz.treemap.min');
 
+require('kendo-ui/js/kendo.colorpicker.min');
+
 require('kendo-ui/js/kendo.dropdownlist.min');
 
+require('kendo-ui/js/kendo.filtercell.min');
+
 require('kendo-ui/js/kendo.grid.min');
+
+require('kendo-ui/js/jquery.min');
 
 require('kendo-ui/js/kendo.menu.min');
 
@@ -102,7 +108,7 @@ var KendoConfigBuilder = (function () {
   }
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoDropDownList();
+    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList();
     return this;
   };
 
@@ -172,6 +178,11 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoSlider = function kendoSlider() {
     this.resources.push('slider/slider');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoColorPicker = function kendoColorPicker() {
+    this.resources.push('colorpicker/colorpicker');
     return this;
   };
 
@@ -561,6 +572,41 @@ var TreeMap = (function (_WidgetBase6) {
 })(WidgetBase);
 
 exports.TreeMap = TreeMap;
+
+var ColorPicker = (function (_WidgetBase7) {
+  var _instanceInitializers7 = {};
+
+  _inherits(ColorPicker, _WidgetBase7);
+
+  _createDecoratedClass(ColorPicker, [{
+    key: 'options',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers7);
+
+  function ColorPicker(element) {
+    _classCallCheck(this, _ColorPicker);
+
+    _WidgetBase7.call(this, 'kendoColorPicker', element);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers7);
+  }
+
+  ColorPicker.prototype.bind = function bind() {
+    this._initialize();
+  };
+
+  var _ColorPicker = ColorPicker;
+  ColorPicker = _aureliaFramework.inject(Element)(ColorPicker) || ColorPicker;
+  ColorPicker = generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
+  ColorPicker = _aureliaFramework.customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
+  return ColorPicker;
+})(WidgetBase);
+
+exports.ColorPicker = ColorPicker;
 var constants = {
   eventPrefix: 'k-on-',
   bindablePrefix: 'k-'
@@ -823,10 +869,14 @@ var WidgetBase = (function () {
 
     var options = this._getOptions(ctor);
 
+    this._beforeInitialize(options);
+
     this.widget = ctor.call(target, options).data(this.controlName);
 
     this._initialized();
   };
+
+  WidgetBase.prototype._beforeInitialize = function _beforeInitialize(options) {};
 
   WidgetBase.prototype._initialized = function _initialized() {};
 
@@ -920,10 +970,10 @@ var WidgetBase = (function () {
 
 exports.WidgetBase = WidgetBase;
 
-var DropDownList = (function (_WidgetBase7) {
-  var _instanceInitializers7 = {};
+var DropDownList = (function (_WidgetBase8) {
+  var _instanceInitializers8 = {};
 
-  _inherits(DropDownList, _WidgetBase7);
+  _inherits(DropDownList, _WidgetBase8);
 
   _createDecoratedClass(DropDownList, [{
     key: 'options',
@@ -942,18 +992,18 @@ var DropDownList = (function (_WidgetBase7) {
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers7);
+  }], null, _instanceInitializers8);
 
   function DropDownList(element, templateCompiler) {
     _classCallCheck(this, _DropDownList);
 
-    _WidgetBase7.call(this, 'kendoDropDownList', element);
+    _WidgetBase8.call(this, 'kendoDropDownList', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers7);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers8);
 
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers7);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers8);
 
-    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers7);
+    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers8);
 
     this.templateCompiler = templateCompiler;
   }
@@ -1027,15 +1077,50 @@ var DropDownList = (function (_WidgetBase7) {
 exports.DropDownList = DropDownList;
 
 var AuCol = (function () {
-  var _instanceInitializers8 = {};
+  var _instanceInitializers9 = {};
 
   _createDecoratedClass(AuCol, [{
-    key: 'title',
+    key: 'aggregates',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'attributes',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'columns',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'command',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'editor',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'encoded',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'field',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'filterable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'footerTemplate',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -1047,12 +1132,32 @@ var AuCol = (function () {
     },
     enumerable: true
   }, {
-    key: 'command',
+    key: 'groupable',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
   }, {
-    key: 'width',
+    key: 'groupFooterTemplate',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'groupHeaderTemplate',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'headerAttributes',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'headerTemplate',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'hidden',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
@@ -1066,24 +1171,95 @@ var AuCol = (function () {
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers8);
+  }, {
+    key: 'menu',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'minScreenWidth',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'sortable',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'template',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'title',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'values',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'width',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers9);
 
   function AuCol(targetInstruction) {
     _classCallCheck(this, _AuCol);
 
-    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers8);
+    _defineDecoratedPropertyDescriptor(this, 'aggregates', _instanceInitializers9);
 
-    _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers8);
+    _defineDecoratedPropertyDescriptor(this, 'attributes', _instanceInitializers9);
 
-    _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers8);
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers9);
 
-    _defineDecoratedPropertyDescriptor(this, 'command', _instanceInitializers8);
+    _defineDecoratedPropertyDescriptor(this, 'command', _instanceInitializers9);
 
-    _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers8);
+    _defineDecoratedPropertyDescriptor(this, 'editor', _instanceInitializers9);
 
-    _defineDecoratedPropertyDescriptor(this, 'lockable', _instanceInitializers8);
+    _defineDecoratedPropertyDescriptor(this, 'encoded', _instanceInitializers9);
 
-    _defineDecoratedPropertyDescriptor(this, 'locked', _instanceInitializers8);
+    _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'footerTemplate', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'groupFooterTemplate', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'groupHeaderTemplate', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'headerAttributes', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'headerTemplate', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'hidden', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'lockable', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'locked', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'menu', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'minScreenWidth', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'values', _instanceInitializers9);
+
+    _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers9);
 
     this.template = targetInstruction.elementInstruction.template;
   }
@@ -1104,13 +1280,13 @@ var AuCol = (function () {
 
 exports.AuCol = AuCol;
 
-var Grid = (function (_WidgetBase8) {
-  var _instanceInitializers9 = {};
+var Grid = (function (_WidgetBase9) {
+  var _instanceInitializers10 = {};
 
-  _inherits(Grid, _WidgetBase8);
+  _inherits(Grid, _WidgetBase9);
 
   _createDecoratedClass(Grid, [{
-    key: 'kColumns',
+    key: 'columns',
     decorators: [_aureliaFramework.children('au-col')],
     initializer: null,
     enumerable: true
@@ -1126,18 +1302,18 @@ var Grid = (function (_WidgetBase8) {
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers9);
+  }], null, _instanceInitializers10);
 
   function Grid(element, templateCompiler) {
     _classCallCheck(this, _Grid);
 
-    _WidgetBase8.call(this, 'kendoGrid', element);
+    _WidgetBase9.call(this, 'kendoGrid', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'kColumns', _instanceInitializers9);
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers10);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers9);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers10);
 
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers9);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers10);
 
     this.templateCompiler = templateCompiler;
   }
@@ -1157,7 +1333,13 @@ var Grid = (function (_WidgetBase8) {
   Grid.prototype._initialize = function _initialize() {
     this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
-    _WidgetBase8.prototype._initialize.call(this);
+    _WidgetBase9.prototype._initialize.call(this);
+  };
+
+  Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
+    if (this.columns && this.columns.length > 0) {
+      options.columns = this.columns;
+    }
   };
 
   Grid.prototype.enableChanged = function enableChanged(newValue) {
@@ -1179,10 +1361,10 @@ function isInitFromTable(element) {
   return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
 }
 
-var Menu = (function (_WidgetBase9) {
-  var _instanceInitializers10 = {};
+var Menu = (function (_WidgetBase10) {
+  var _instanceInitializers11 = {};
 
-  _inherits(Menu, _WidgetBase9);
+  _inherits(Menu, _WidgetBase10);
 
   _createDecoratedClass(Menu, [{
     key: 'options',
@@ -1196,16 +1378,16 @@ var Menu = (function (_WidgetBase9) {
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers10);
+  }], null, _instanceInitializers11);
 
   function Menu(element) {
     _classCallCheck(this, _Menu);
 
-    _WidgetBase9.call(this, 'kendoMenu', element);
+    _WidgetBase10.call(this, 'kendoMenu', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers11);
   }
 
   Menu.prototype.bind = function bind() {
@@ -1224,7 +1406,7 @@ var Menu = (function (_WidgetBase9) {
       this.target = $(this.element).appendChild('<ul></ul>');
     }
 
-    _WidgetBase9.prototype._initialize.call(this);
+    _WidgetBase10.prototype._initialize.call(this);
   };
 
   var _Menu = Menu;
@@ -1236,10 +1418,10 @@ var Menu = (function (_WidgetBase9) {
 
 exports.Menu = Menu;
 
-var ProgressBar = (function (_WidgetBase10) {
-  var _instanceInitializers11 = {};
+var ProgressBar = (function (_WidgetBase11) {
+  var _instanceInitializers12 = {};
 
-  _inherits(ProgressBar, _WidgetBase10);
+  _inherits(ProgressBar, _WidgetBase11);
 
   _createDecoratedClass(ProgressBar, [{
     key: 'options',
@@ -1248,14 +1430,14 @@ var ProgressBar = (function (_WidgetBase10) {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers11);
+  }], null, _instanceInitializers12);
 
   function ProgressBar(element) {
     _classCallCheck(this, _ProgressBar);
 
-    _WidgetBase10.call(this, 'kendoProgressBar', element);
+    _WidgetBase11.call(this, 'kendoProgressBar', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers12);
 
     this.element = element;
     this.options = {};
@@ -1290,10 +1472,10 @@ var AuScheduler = function AuScheduler() {
 
 exports.AuScheduler = AuScheduler;
 
-var Slider = (function (_WidgetBase11) {
-  var _instanceInitializers12 = {};
+var Slider = (function (_WidgetBase12) {
+  var _instanceInitializers13 = {};
 
-  _inherits(Slider, _WidgetBase11);
+  _inherits(Slider, _WidgetBase12);
 
   _createDecoratedClass(Slider, [{
     key: 'options',
@@ -1302,14 +1484,14 @@ var Slider = (function (_WidgetBase11) {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers12);
+  }], null, _instanceInitializers13);
 
   function Slider(element) {
     _classCallCheck(this, _Slider);
 
-    _WidgetBase11.call(this, 'kendoSlider', element);
+    _WidgetBase12.call(this, 'kendoSlider', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers12);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers13);
 
     this.element = element;
     this.options = {};
@@ -1334,10 +1516,10 @@ var Slider = (function (_WidgetBase11) {
 
 exports.Slider = Slider;
 
-var TabStrip = (function (_WidgetBase12) {
-  var _instanceInitializers13 = {};
+var TabStrip = (function (_WidgetBase13) {
+  var _instanceInitializers14 = {};
 
-  _inherits(TabStrip, _WidgetBase12);
+  _inherits(TabStrip, _WidgetBase13);
 
   _createDecoratedClass(TabStrip, [{
     key: 'options',
@@ -1346,14 +1528,14 @@ var TabStrip = (function (_WidgetBase12) {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers13);
+  }], null, _instanceInitializers14);
 
   function TabStrip(element) {
     _classCallCheck(this, _TabStrip);
 
-    _WidgetBase12.call(this, 'kendoTabStrip', element);
+    _WidgetBase13.call(this, 'kendoTabStrip', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers13);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers14);
   }
 
   TabStrip.prototype.bind = function bind() {

@@ -14,8 +14,6 @@ var _aureliaFramework = require('aurelia-framework');
 
 var _commonIndex = require('../common/index');
 
-require('jquery');
-
 require('kendo-ui/js/kendo.dataviz.chart.min');
 
 require('kendo-ui/js/kendo.dataviz.chart.polar.min');

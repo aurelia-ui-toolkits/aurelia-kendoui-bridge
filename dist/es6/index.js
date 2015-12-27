@@ -1,4 +1,5 @@
 import * as LogManager from 'aurelia-logging';
+import 'jquery';
 import 'kendo-ui/js/kendo.pdf.min';
 import 'kendo-ui/js/jszip.min';
 let logger = LogManager.getLogger('aurelia-kendoui-plugin');

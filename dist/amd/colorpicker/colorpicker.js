@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.colorpicker.min'], function (exports, _aureliaFramework, _commonIndex, _jquery, _kendoUiJsKendoColorpickerMin) {
+define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.colorpicker.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoColorpickerMin) {
   'use strict';
 
   exports.__esModule = true;

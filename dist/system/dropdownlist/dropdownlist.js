@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.dropdownlist.min', 'kendo-ui/js/kendo.virtuallist.min'], function (_export) {
+System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dropdownlist.min', 'kendo-ui/js/kendo.virtuallist.min'], function (_export) {
   'use strict';
 
   var customAttribute, bindable, inject, fireEvent, WidgetBase, TemplateCompiler, generateBindables, DropDownList;
@@ -21,7 +21,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
       WidgetBase = _commonIndex.WidgetBase;
       TemplateCompiler = _commonIndex.TemplateCompiler;
       generateBindables = _commonIndex.generateBindables;
-    }, function (_jquery) {}, function (_kendoUiJsKendoDropdownlistMin) {}, function (_kendoUiJsKendoVirtuallistMin) {}],
+    }, function (_kendoUiJsKendoDropdownlistMin) {}, function (_kendoUiJsKendoVirtuallistMin) {}],
     execute: function () {
       DropDownList = (function (_WidgetBase) {
         var _instanceInitializers = {};

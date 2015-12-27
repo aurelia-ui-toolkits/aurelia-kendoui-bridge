@@ -1,8 +1,8 @@
 declare module 'aurelia-kendoui-plugin' {
   import * as LogManager from 'aurelia-logging';
+  import 'jquery';
   import 'kendo-ui/js/kendo.pdf.min';
   import 'kendo-ui/js/jszip.min';
-  import 'jquery';
   import 'kendo-ui/js/kendo.autocomplete.min';
   import 'kendo-ui/js/kendo.virtuallist.min';
   import 'kendo-ui/js/kendo.button.min';
@@ -12,8 +12,11 @@ declare module 'aurelia-kendoui-plugin' {
   import 'kendo-ui/js/kendo.dataviz.sparkline.min';
   import 'kendo-ui/js/kendo.dataviz.stock.min';
   import 'kendo-ui/js/kendo.dataviz.treemap.min';
+  import 'kendo-ui/js/kendo.colorpicker.min';
   import 'kendo-ui/js/kendo.dropdownlist.min';
+  import 'kendo-ui/js/kendo.filtercell.min';
   import 'kendo-ui/js/kendo.grid.min';
+  import 'kendo-ui/js/jquery.min';
   import 'kendo-ui/js/kendo.menu.min';
   import 'kendo-ui/js/kendo.progressbar.min';
   import 'kendo-ui/js/kendo.slider.min';
@@ -39,6 +42,7 @@ declare module 'aurelia-kendoui-plugin' {
     kendoChart(): any;
     kendoProgressBar(): any;
     kendoSlider(): any;
+    kendoColorPicker(): any;
   }
   export class AutoComplete extends WidgetBase {
     options: any;
@@ -95,6 +99,11 @@ declare module 'aurelia-kendoui-plugin' {
     constructor(element: any);
     attached(): any;
     recreate(): any;
+  }
+  export class ColorPicker extends WidgetBase {
+    options: any;
+    constructor(element: any);
+    bind(): any;
   }
   export const constants: any;
   
@@ -158,18 +167,36 @@ declare module 'aurelia-kendoui-plugin' {
     search(value: any): any;
   }
   export class AuCol {
-    title: any;
-    field: any;
-    format: any;
+    aggregates: any;
+    attributes: any;
+    columns: any;
     command: any;
-    width: any;
+    editor: any;
+    encoded: any;
+    field: any;
+    filterable: any;
+    footerTemplate: any;
+    format: any;
+    groupable: any;
+    groupFooterTemplate: any;
+    groupHeaderTemplate: any;
+    headerAttributes: any;
+    headerTemplate: any;
+    hidden: any;
     lockable: any;
     locked: any;
+    menu: any;
+    minScreenWidth: any;
+    sortable: any;
+    template: any;
+    title: any;
+    values: any;
+    width: any;
     template: any;
     constructor(targetInstruction: any);
   }
   export class Grid extends WidgetBase {
-    kColumns: any;
+    columns: any;
     options: any;
     kDataSource: any;
     constructor(element: any, templateCompiler: any);

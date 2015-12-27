@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.grid.min'], function (exports, _aureliaFramework, _commonIndex, _jquery, _kendoUiJsKendoGridMin) {
+define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.filtercell.min', 'kendo-ui/js/kendo.grid.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoFiltercellMin, _kendoUiJsKendoGridMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -17,7 +17,7 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
     _inherits(Grid, _WidgetBase);
 
     _createDecoratedClass(Grid, [{
-      key: 'kColumns',
+      key: 'columns',
       decorators: [_aureliaFramework.children('au-col')],
       initializer: null,
       enumerable: true
@@ -40,7 +40,7 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
 
       _WidgetBase.call(this, 'kendoGrid', element);
 
-      _defineDecoratedPropertyDescriptor(this, 'kColumns', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
@@ -65,6 +65,12 @@ define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/j
       this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
       _WidgetBase.prototype._initialize.call(this);
+    };
+
+    Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
+      if (this.columns && this.columns.length > 0) {
+        options.columns = this.columns;
+      }
     };
 
     Grid.prototype.enableChanged = function enableChanged(newValue) {

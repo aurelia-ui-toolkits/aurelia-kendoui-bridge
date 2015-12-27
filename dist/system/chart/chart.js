@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.dataviz.chart.min', 'kendo-ui/js/kendo.dataviz.chart.polar.min', 'kendo-ui/js/kendo.dataviz.chart.funnel.min'], function (_export) {
+System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dataviz.chart.min', 'kendo-ui/js/kendo.dataviz.chart.polar.min', 'kendo-ui/js/kendo.dataviz.chart.funnel.min'], function (_export) {
   'use strict';
 
   var customElement, bindable, inject, WidgetBase, generateBindables, Chart;
@@ -19,7 +19,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
     }, function (_commonIndex) {
       WidgetBase = _commonIndex.WidgetBase;
       generateBindables = _commonIndex.generateBindables;
-    }, function (_jquery) {}, function (_kendoUiJsKendoDatavizChartMin) {}, function (_kendoUiJsKendoDatavizChartPolarMin) {}, function (_kendoUiJsKendoDatavizChartFunnelMin) {}],
+    }, function (_kendoUiJsKendoDatavizChartMin) {}, function (_kendoUiJsKendoDatavizChartPolarMin) {}, function (_kendoUiJsKendoDatavizChartFunnelMin) {}],
     execute: function () {
       Chart = (function (_WidgetBase) {
         var _instanceInitializers = {};

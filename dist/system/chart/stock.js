@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.dataviz.stock.min'], function (_export) {
+System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dataviz.stock.min'], function (_export) {
   'use strict';
 
   var customElement, bindable, inject, WidgetBase, generateBindables, Stock;
@@ -19,7 +19,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
     }, function (_commonIndex) {
       WidgetBase = _commonIndex.WidgetBase;
       generateBindables = _commonIndex.generateBindables;
-    }, function (_jquery) {}, function (_kendoUiJsKendoDatavizStockMin) {}],
+    }, function (_kendoUiJsKendoDatavizStockMin) {}],
     execute: function () {
       Stock = (function (_WidgetBase) {
         var _instanceInitializers = {};

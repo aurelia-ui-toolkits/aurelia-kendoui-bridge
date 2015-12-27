@@ -1,6 +1,5 @@
 import {customElement, noView, bindable, inject} from 'aurelia-framework';
 import {WidgetBase, generateBindables} from '../common/index';
-import 'jquery';
 import 'kendo-ui/js/kendo.dataviz.sparkline.min';
 
 @customElement('k-sparkline')

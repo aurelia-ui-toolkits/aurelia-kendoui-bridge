@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.button.min'], function (_export) {
+System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.button.min'], function (_export) {
   'use strict';
 
   var customAttribute, bindable, inject, WidgetBase, generateBindables, Button;
@@ -19,7 +19,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
     }, function (_commonIndex) {
       WidgetBase = _commonIndex.WidgetBase;
       generateBindables = _commonIndex.generateBindables;
-    }, function (_jquery) {}, function (_kendoUiJsKendoButtonMin) {}],
+    }, function (_kendoUiJsKendoButtonMin) {}],
     execute: function () {
       Button = (function (_WidgetBase) {
         var _instanceInitializers = {};

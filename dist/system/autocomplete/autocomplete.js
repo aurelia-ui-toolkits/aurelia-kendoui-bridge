@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.autocomplete.min', 'kendo-ui/js/kendo.virtuallist.min'], function (_export) {
+System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.autocomplete.min', 'kendo-ui/js/kendo.virtuallist.min'], function (_export) {
   'use strict';
 
   var customAttribute, bindable, inject, fireEvent, TemplateCompiler, WidgetBase, generateBindables, AutoComplete;
@@ -21,7 +21,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
       TemplateCompiler = _commonIndex.TemplateCompiler;
       WidgetBase = _commonIndex.WidgetBase;
       generateBindables = _commonIndex.generateBindables;
-    }, function (_jquery) {}, function (_kendoUiJsKendoAutocompleteMin) {}, function (_kendoUiJsKendoVirtuallistMin) {}],
+    }, function (_kendoUiJsKendoAutocompleteMin) {}, function (_kendoUiJsKendoVirtuallistMin) {}],
     execute: function () {
       AutoComplete = (function (_WidgetBase) {
         var _instanceInitializers = {};

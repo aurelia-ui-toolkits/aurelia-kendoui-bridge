@@ -14,8 +14,6 @@ var _aureliaFramework = require('aurelia-framework');
 
 var _commonIndex = require('../common/index');
 
-require('jquery');
-
 require('kendo-ui/js/kendo.button.min');
 
 var Button = (function (_WidgetBase) {

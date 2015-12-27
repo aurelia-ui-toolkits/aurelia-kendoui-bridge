@@ -37,10 +37,18 @@ export class WidgetBase {
     // generate all options, including event handlers
     let options = this._getOptions(ctor);
 
+    // before initialization callback
+    // allows you to modify/add/remove options before the control gets initialized
+    this._beforeInitialize(options);
+
     // instantiate the Kendo control, pass in the target and the options
     this.widget = ctor.call(target, options).data(this.controlName);
 
     this._initialized();
+  }
+
+  _beforeInitialize(options) {
+
   }
 
   _initialized() {

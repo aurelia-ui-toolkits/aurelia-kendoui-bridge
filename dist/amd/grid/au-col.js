@@ -13,12 +13,47 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
     var _instanceInitializers = {};
 
     _createDecoratedClass(AuCol, [{
-      key: 'title',
+      key: 'aggregates',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'attributes',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'columns',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'command',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'editor',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'encoded',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'field',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'filterable',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'footerTemplate',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
@@ -30,12 +65,32 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
       },
       enumerable: true
     }, {
-      key: 'command',
+      key: 'groupable',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
     }, {
-      key: 'width',
+      key: 'groupFooterTemplate',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'groupHeaderTemplate',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'headerAttributes',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'headerTemplate',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'hidden',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
@@ -49,24 +104,95 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
       decorators: [_aureliaFramework.bindable],
       initializer: null,
       enumerable: true
+    }, {
+      key: 'menu',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'minScreenWidth',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'sortable',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'template',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'title',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'values',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'width',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
     }], null, _instanceInitializers);
 
     function AuCol(targetInstruction) {
       _classCallCheck(this, _AuCol);
 
-      _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'aggregates', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'attributes', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'command', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'editor', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'encoded', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'footerTemplate', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'groupFooterTemplate', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'groupHeaderTemplate', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'headerAttributes', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'headerTemplate', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'hidden', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'lockable', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'locked', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'menu', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'minScreenWidth', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'values', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers);
 
       this.template = targetInstruction.elementInstruction.template;
     }

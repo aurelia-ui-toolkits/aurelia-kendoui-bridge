@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.dataviz.stock.min'], function (exports, _aureliaFramework, _commonIndex, _jquery, _kendoUiJsKendoDatavizStockMin) {
+define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dataviz.stock.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoDatavizStockMin) {
   'use strict';
 
   exports.__esModule = true;

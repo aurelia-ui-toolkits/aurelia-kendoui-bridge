@@ -11,13 +11,31 @@ import {inject, noView, processContent, bindable, TargetInstruction} from 'aurel
 })
 @inject(TargetInstruction)
 export class AuCol {
-  @bindable title;
-  @bindable field;
-  @bindable format = '';
+  @bindable aggregates;
+  @bindable attributes;
+  @bindable columns;
   @bindable command;
-  @bindable width;
+  @bindable editor;
+  @bindable encoded;
+  @bindable field;
+  @bindable filterable;
+  @bindable footerTemplate;
+  @bindable format = '';
+  @bindable groupable;
+  @bindable groupFooterTemplate;
+  @bindable groupHeaderTemplate;
+  @bindable headerAttributes;
+  @bindable headerTemplate;
+  @bindable hidden;
   @bindable lockable;
   @bindable locked;
+  @bindable menu;
+  @bindable minScreenWidth;
+  @bindable sortable;
+  @bindable template;
+  @bindable title;
+  @bindable values;
+  @bindable width;
   template;
 
   constructor(targetInstruction) {

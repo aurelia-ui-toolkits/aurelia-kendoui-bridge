@@ -1,4 +1,4 @@
-System.register(['aurelia-logging', 'kendo-ui/js/kendo.pdf.min', 'kendo-ui/js/jszip.min'], function (_export) {
+System.register(['aurelia-logging', 'jquery', 'kendo-ui/js/kendo.pdf.min', 'kendo-ui/js/jszip.min'], function (_export) {
   'use strict';
 
   var LogManager, logger, KendoConfigBuilder;
@@ -27,7 +27,7 @@ System.register(['aurelia-logging', 'kendo-ui/js/kendo.pdf.min', 'kendo-ui/js/js
   return {
     setters: [function (_aureliaLogging) {
       LogManager = _aureliaLogging;
-    }, function (_kendoUiJsKendoPdfMin) {}, function (_kendoUiJsJszipMin) {}],
+    }, function (_jquery) {}, function (_kendoUiJsKendoPdfMin) {}, function (_kendoUiJsJszipMin) {}],
     execute: function () {
       logger = LogManager.getLogger('aurelia-kendoui-plugin');
 
@@ -39,7 +39,7 @@ System.register(['aurelia-logging', 'kendo-ui/js/kendo.pdf.min', 'kendo-ui/js/js
         }
 
         KendoConfigBuilder.prototype.core = function core() {
-          this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoDropDownList();
+          this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList();
           return this;
         };
 
@@ -109,6 +109,11 @@ System.register(['aurelia-logging', 'kendo-ui/js/kendo.pdf.min', 'kendo-ui/js/js
 
         KendoConfigBuilder.prototype.kendoSlider = function kendoSlider() {
           this.resources.push('slider/slider');
+          return this;
+        };
+
+        KendoConfigBuilder.prototype.kendoColorPicker = function kendoColorPicker() {
+          this.resources.push('colorpicker/colorpicker');
           return this;
         };
 

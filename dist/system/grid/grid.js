@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/kendo.grid.min'], function (_export) {
+System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.filtercell.min', 'kendo-ui/js/kendo.grid.min'], function (_export) {
   'use strict';
 
   var inject, children, customElement, bindable, WidgetBase, TemplateCompiler, generateBindables, Grid;
@@ -24,7 +24,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
       WidgetBase = _commonIndex.WidgetBase;
       TemplateCompiler = _commonIndex.TemplateCompiler;
       generateBindables = _commonIndex.generateBindables;
-    }, function (_jquery) {}, function (_kendoUiJsKendoGridMin) {}],
+    }, function (_kendoUiJsKendoFiltercellMin) {}, function (_kendoUiJsKendoGridMin) {}],
     execute: function () {
       Grid = (function (_WidgetBase) {
         var _instanceInitializers = {};
@@ -32,7 +32,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
         _inherits(Grid, _WidgetBase);
 
         _createDecoratedClass(Grid, [{
-          key: 'kColumns',
+          key: 'columns',
           decorators: [children('au-col')],
           initializer: null,
           enumerable: true
@@ -55,7 +55,7 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
 
           _WidgetBase.call(this, 'kendoGrid', element);
 
-          _defineDecoratedPropertyDescriptor(this, 'kColumns', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
@@ -80,6 +80,12 @@ System.register(['aurelia-framework', '../common/index', 'jquery', 'kendo-ui/js/
           this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
           _WidgetBase.prototype._initialize.call(this);
+        };
+
+        Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
+          if (this.columns && this.columns.length > 0) {
+            options.columns = this.columns;
+          }
         };
 
         Grid.prototype.enableChanged = function enableChanged(newValue) {
