@@ -13,8 +13,7 @@ System.config({
   paths: {
     "*": "src/*",
     "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*",
-    "kendo-ui/*": "vendors/*"
+    "npm:*": "jspm_packages/npm/*"
   },
 
   map: {
@@ -38,6 +37,7 @@ System.config({
     "font-awesome": "npm:font-awesome@4.5.0",
     "jquery": "github:components/jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
+    "kendo-ui": "root/vendors",
     "prism": "github:PrismJS/prism@1.3.0",
     "showdown": "github:showdownjs/showdown@1.3.0",
     "text": "github:systemjs/plugin-text@0.0.4",

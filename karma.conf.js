@@ -14,17 +14,21 @@ module.exports = function(config) {
 
     jspm: {
       // Edit this to your needs
-      loadFiles: ['src/**/*.js', 'test/unit/**/*.js']
+      loadFiles: ['jspm_packages/github/components/jquery@*/jquery.min.js', 'src/**/*.js', 'test/unit/**/*.js']
     },
 
 
     // list of files / patterns to load in the browser
-    files: [],
+    files: [
+      { pattern: 'vendors/**/*.js', watched: false, served: true, included: false }
+    ],
 
 
     // list of files to exclude
     exclude: [
     ],
+
+
 
 
     // preprocess matching files before serving them to the browser

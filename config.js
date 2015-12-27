@@ -12,7 +12,7 @@ System.config({
   paths: {
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "kendo:*": "jspm_packages/kendo/*"
+    "kendo-ui/*": "vendors/*"
   },
 
   map: {
@@ -30,7 +30,6 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "core-js": "npm:core-js@1.2.6",
     "jquery": "github:components/jquery@2.1.4",
-    "kendo-ui": "kendo:bower-kendo-ui@2015.3.1214",
     "polymer/mutationobservers": "github:polymer/mutationobservers@0.4.2",
     "showdown": "github:showdownjs/showdown@1.3.0",
     "text": "github:systemjs/plugin-text@0.0.4",
