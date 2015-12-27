@@ -36,9 +36,6 @@ var ProgressBar = (function (_WidgetBase) {
     _WidgetBase.call(this, 'kendoProgressBar', element);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
-
-    this.element = element;
-    this.options = {};
   }
 
   ProgressBar.prototype.bind = function bind() {

@@ -41,9 +41,6 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.prog
           _WidgetBase.call(this, 'kendoProgressBar', element);
 
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
-
-          this.element = element;
-          this.options = {};
         }
 
         ProgressBar.prototype.bind = function bind() {
