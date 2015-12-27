@@ -19,6 +19,15 @@ export class Registry {
           sample[extension] = `${sample.path}.${extension}`;
         });
 
+        if (sample.default === true) {
+          map.push({
+            title: sample.title,
+            redirect: sample.route,
+            route: '',
+            sample: sample
+          });
+        }
+
         map.push({
           title: sample.title,
           nav: sample.nav,

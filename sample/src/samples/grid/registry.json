@@ -2,7 +2,7 @@
   "title": "Grid",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"],
+      "default": true,
       "files": ["html", "js", "css"]
     },
     "batch-editing": {},
