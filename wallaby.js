@@ -9,7 +9,8 @@ module.exports = function(wallaby) {
       {pattern: 'jspm_packages/system.js', instrument: false},
       {pattern: 'config.js', instrument: false},
       {pattern: 'node_modules/phantomjs-polyfill/bind-polyfill.js', load: true},
-      {pattern: 'src/**/*.js', load: false}
+      {pattern: 'src/**/*.js', load: false},
+      {pattern: 'jspm_packages/github/components/jquery@*/jquery.min.js', load: true}
     ],
 
     tests: [
