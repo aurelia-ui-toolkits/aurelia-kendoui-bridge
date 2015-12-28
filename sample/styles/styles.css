@@ -228,3 +228,12 @@ menu {
 .help-docs .k-header {
   font-size: 18px;
 }
+
+#doc > .col-md-3, #doc > .col-md-8 {
+  height: 790px;
+  overflow-y: scroll;
+}
+
+#doc {
+  margin: 0;
+}
