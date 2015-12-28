@@ -388,7 +388,6 @@ export class ColorPicker extends WidgetBase {
   }
 }
 
-
 export const constants = {
   eventPrefix: 'k-on-',
   bindablePrefix: 'k-'
@@ -714,6 +713,7 @@ export class WidgetBase {
     }
   }
 }
+
 
 @customAttribute('k-drop-down-list')
 @inject(Element, TemplateCompiler)
