@@ -1,3 +1,13 @@
+### Introduction
+
+This article presents the overview of the internal organization of the **[Aurelia-KendoUI-Bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** project developed by the team of Aurelia UI Toolkits organization, dedicated to ensure Aurelia's wide spread adoption it deserves.
+
+Understanding Aurelia-KendoUI-Bridge is the very first prerequuisite on your learning path on **how to use** this bridge in the process of building the state of the art user interface. More about using the bridge can be found in the **Using the KendoUI bridge** section of this collection of help documents.
+
+If your intent is to learn about **Extending KendoUI bridge** - by joining the Aurelia UI Toolkits organization to implement all currently missing controls, check first the **[project status](http://aurelia-ui-toolkits.github.io/demo-kendo/#/project-status)** page where finished controls are tagged blue, and controls under development orange and then proceed by reading the articles in the **Extending KendoUI bridge** section.
+
+* * *
+
 ### Application's internal structure
 
 <a name="anch1"></a>The internal organization of this plugin is slightly different (we believe that it is more convenient) than Aurelia's **[standard plugin](https://github.com/aurelia/skeleton-plugin)**. Image 1 below, shows the overall structure.
@@ -235,7 +245,7 @@ export class AutoComplete extends WidgetBase {
 
 ```
 
-* * * 
+* * *
 <br>
 ### Section 2 Sample Application that acts as the Plugin consumer
 <br>
@@ -247,14 +257,14 @@ As [mentioned before](#anch1) Aurelia-KendoUI plugin project has a special struc
   <br>
   Image 3
 </p>
-##### Color codes: 
+##### Color codes:
 - **yellow**:  application runtime created by running the **`jspm install`** command in the **`aurelia-kendoui-plugin/sample`** folder
 - **orange**: KendoUI controls hosted by this sample app (these controls are the consumers of the Aurelia-KendoUI-plugin)
 - **bluish**: Standard Aurelia application files collection
 - **olive**: Standard Aurelia application configuration/ css / html / js files
 <br><br><br>
 
-#### Sample application showing the KendoUI Autocomplete control: 
+#### Sample application showing the KendoUI Autocomplete control:
 
 
 **Note**: for better visibility this screenshot is rendered using the Moonlight theme
@@ -265,7 +275,7 @@ As [mentioned before](#anch1) Aurelia-KendoUI plugin project has a special struc
   Image 4
 </p>
 
-* * * 
+* * *
 
 
 
