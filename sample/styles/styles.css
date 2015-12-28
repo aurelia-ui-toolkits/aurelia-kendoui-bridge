@@ -220,3 +220,7 @@ menu {
   margin: 0;
   padding: 0;
 }
+
+.k-button:focus:not(.k-state-disabled):not([disabled]), .k-menu .k-item>.k-link:focus {
+  text-decoration: none;
+}
