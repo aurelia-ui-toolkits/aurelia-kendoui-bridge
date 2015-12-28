@@ -224,3 +224,7 @@ menu {
 .k-button:focus:not(.k-state-disabled):not([disabled]), .k-menu .k-item>.k-link:focus {
   text-decoration: none;
 }
+
+.help-docs .k-header {
+  font-size: 18px;
+}
