@@ -161,7 +161,7 @@ declare module 'aurelia-kendoui-plugin' {
     bind(ctx: any): any;
     recreate(): any;
     enableChanged(newValue: any): any;
-    valueChanged(newValue: any): any;
+    kValueChanged(newValue: any): any;
     select(index: any): any;
     search(value: any): any;
   }

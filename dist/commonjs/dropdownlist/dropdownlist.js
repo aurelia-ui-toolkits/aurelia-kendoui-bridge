@@ -92,7 +92,7 @@ var DropDownList = (function (_WidgetBase) {
     }
   };
 
-  DropDownList.prototype.valueChanged = function valueChanged(newValue) {
+  DropDownList.prototype.kValueChanged = function kValueChanged(newValue) {
     if (this.widget) {
       this.widget.value(newValue);
       this.widget.trigger('change');

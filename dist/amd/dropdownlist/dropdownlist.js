@@ -85,7 +85,7 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dr
       }
     };
 
-    DropDownList.prototype.valueChanged = function valueChanged(newValue) {
+    DropDownList.prototype.kValueChanged = function kValueChanged(newValue) {
       if (this.widget) {
         this.widget.value(newValue);
         this.widget.trigger('change');
