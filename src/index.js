@@ -20,12 +20,15 @@ export function configure(aurelia, configCallback) {
     // Pull the data off the builder
   let resources = builder.resources;
 
-  aurelia.globalResources(resources);
+  if (builder.useGlobalResources) {
+    aurelia.globalResources(resources);
+  }
 }
 
 class KendoConfigBuilder {
 
 	resources = [];
+  useGlobalResources = true;
 
   core() {
     this.kendoButton()
@@ -42,6 +45,11 @@ class KendoConfigBuilder {
       .kendoGrid()
 			.kendoAutoComplete()
       .kendoChart();
+    return this;
+  }
+
+  withoutGlobalResources() {
+    this.useGlobalResources = false;
     return this;
   }
 
