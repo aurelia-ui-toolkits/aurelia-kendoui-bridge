@@ -1,0 +1,46 @@
+#progressbar-basic .demo-section h2 {
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+#progressbar-basic .forms {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#progressbar-basic .forms label {
+    display: block;
+    font-size: 12px;
+    line-height: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+#progressbar-basic .forms li {
+    margin-bottom: 1.5em;
+}
+
+#progressbar-basic #voteButton {
+    width: 100%;
+}
+
+#progressbar-basic .poll-results {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#progressbar-basic .poll-results li:after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 3px;
+    line-height: 0;
+}
+
+#progressbar-basic .poll-results .k-progressbar {
+    margin-bottom: 1.5em;
+    width: 100%;
+}

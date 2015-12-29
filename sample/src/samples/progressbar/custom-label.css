@@ -1,0 +1,22 @@
+#custom-label .forms {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#custom-label .forms label {
+    display: block;
+    font-size: 12px;
+    line-height: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+#custom-label .forms li {
+    margin-bottom: 1.5em;
+}
+
+#custom-label #submitButton {
+    width: 100%;
+}

@@ -2,9 +2,18 @@
   "title": "Progress Bar",
   "samples": {
     "basic-use": {
-      "title": "Basic use",
-      "route": ["", "basic-use"],
-      "files": ["html", "js"]
-    }
+      "route": ["", "basic-use"]
+    },
+    "chunk-progressbar": {
+      "files": ["html", "js", "css"]
+    },
+    "vertical-progressbar": {
+      "files": ["html", "js", "css"]
+    },
+    "custom-label": {
+      "files": ["html", "js", "css"]
+    },
+    "events": {},
+    "api": {}
   }
 }

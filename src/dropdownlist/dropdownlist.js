@@ -64,6 +64,12 @@ export class DropDownList extends WidgetBase {
     }
   }
 
+  value(newValue) {
+    if (this.widget) {
+      return this.widget.value(newValue);
+    }
+  }
+
   select(index) {
     if (this.widget) {
       this.widget.select(index);

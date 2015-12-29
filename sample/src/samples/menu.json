@@ -38,8 +38,7 @@
     }
   },
   "Navigation": {
-    "Button": "button",
-    "TabStrip": "tabstrip"
+    "Button": "button"
   },
   "Interactivity & UX": {
     "ProgressBar": "progressbar"
