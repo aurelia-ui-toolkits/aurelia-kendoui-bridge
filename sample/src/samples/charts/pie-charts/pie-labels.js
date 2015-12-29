@@ -1,4 +1,8 @@
 export class PieLabels {
+
+  showLabels = true;
+  align = 'circle';
+
   seriesDefaults = {
     labels: {
       template: '#= category # - #= kendo.format("{0:P}", percentage)#',
@@ -31,4 +35,15 @@ export class PieLabels {
       value: 10
     }]
   }];
+
+  refresh() {
+    let options = this.chart.widget.options;
+    let pieSeries = options.series[0];
+
+    options.transitions = false;
+    pieSeries.labels.visible = this.showLabels;
+    pieSeries.labels.align = this.align;
+
+    this.chart.refresh();
+  }
 }
