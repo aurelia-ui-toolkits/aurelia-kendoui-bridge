@@ -1,0 +1,29 @@
+#vertical-progressbar .demo-section {
+    overflow: auto;
+}
+#vertical-progressbar .k-progressbar
+{
+    width: 8px;
+    height: 100px;
+}
+
+#vertical-progressbar #loadingProgressBar
+{
+    margin-left: 10px;
+}
+
+#vertical-progressbar .loading
+{
+    float: left;
+}
+#vertical-progressbar .loadingInfo
+{
+    float: left;
+    margin: 20px 0 0 30px;
+}
+
+#vertical-progressbar .reloadButton
+{
+    display: none;
+    margin-top: 10px;
+}

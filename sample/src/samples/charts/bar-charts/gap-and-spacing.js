@@ -29,4 +29,21 @@ export class GapAndSpacing {
     visible: true,
     template: '${series.name} ${value}'
   }
+
+  attached() {
+    $(this.gap).kendoNumericTextBox();
+    $(this.spacing).kendoNumericTextBox();
+  }
+
+  getSpacing() {
+    let firstSeries = this.chart.widget.options.series;
+    firstSeries[0].spacing = parseFloat($(this.spacing).val(), 10);
+    this.chart.redraw();
+  }
+
+  getGap() {
+    let firstSeries = this.chart.widget.options.series;
+    firstSeries[0].gap = parseFloat($(this.gap).val(), 10);
+    this.chart.redraw();
+  }
 }

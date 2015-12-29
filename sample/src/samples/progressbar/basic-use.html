@@ -1,11 +1,13 @@
 <template>
+    <require from="./basic-use.css"></require>
     <div id="example">
+      <div id="progressbar-basic">
         <div class="demo-section k-content">
             <h2>What are your favourite recent movies?</h2>
             <ul class="forms">
                 <li>
                     <label>First favourite</label>
-                    <select k-drop-down-list ref="favouriteMovie1" style="width: 100%;">
+                    <select k-drop-down-list k-drop-down-list.ref="favouriteMovie1" style="width: 100%;">
                         <option value="fastAndFurious">Fast and Furious 6</option>
                         <option value="nowYouSeeMe">Now you see me</option>
                         <option value="theHelp">The Help</option>
@@ -15,7 +17,7 @@
                 </li>
                 <li>
                     <label>Second favourite</label>
-                    <select k-drop-down-list ref="favouriteMovie2" style="width: 100%;">
+                    <select k-drop-down-list k-drop-down-list.ref="favouriteMovie2" style="width: 100%;">
                         <option value="fastAndFurious" selected>Fast and Furious 6</option>
                         <option value="nowYouSeeMe">Now you see me</option>
                         <option value="theHelp">The Help</option>
@@ -25,7 +27,7 @@
                 </li>
                 <li>
                     <label>Third favourite</label>
-                    <select k-drop-down-list ref="favouriteMovie3" style="width: 100%;">
+                    <select k-drop-down-list k-drop-down-list.ref="favouriteMovie3" style="width: 100%;">
                         <option value="fastAndFurious">Fast and Furious 6</option>
                         <option value="nowYouSeeMe" selected>Now you see me</option>
                         <option value="theHelp">The Help</option>
@@ -63,53 +65,6 @@
                 </li>
             </ul>
         </div>
+      </div>
     </div>
-    <style>
-    .demo-section h2 {
-        font-weight: normal;
-        margin-bottom: 15px;
-    }
-    
-    .forms {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-    }
-    
-    .forms label {
-        display: block;
-        font-size: 12px;
-        line-height: 1em;
-        font-weight: bold;
-        text-transform: uppercase;
-        margin-bottom: 1em;
-    }
-    
-    .forms li {
-        margin-bottom: 1.5em;
-    }
-    
-    #voteButton {
-        width: 100%;
-    }
-    
-    .poll-results {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-    }
-    
-    .poll-results li:after {
-        content: "";
-        display: block;
-        clear: both;
-        height: 3px;
-        line-height: 0;
-    }
-    
-    .poll-results .k-progressbar {
-        margin-bottom: 1.5em;
-        width: 100%;
-    }
-    </style>
 </template>

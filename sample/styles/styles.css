@@ -237,3 +237,7 @@ menu {
 #doc {
   margin: 0;
 }
+
+.box li {
+  list-style-type: none;
+}

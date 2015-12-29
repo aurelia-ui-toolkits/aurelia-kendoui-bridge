@@ -1,0 +1,29 @@
+<template>
+  <require from="./custom-label.css"></require>
+  <div id="example">
+    <div id="custom-label">
+      <div class="demo-section k-content">
+          <ul class="forms">
+              <li>
+                  <label>New Password</label>
+                  <input id="userPass" type="password" value.bind="password" class="k-textbox" style="width: 100%;" keyup.delegate="onKeyUp()"/>
+              </li>
+              <li>
+                  <label>Password strength</label>
+                  <div k-progress-bar="k-type: value;
+                                       k-max: 9;
+                                       k-animation.bind: false"
+                       k-progress-bar.ref="pb"
+                       k-on-change.trigger="onChange($event.detail)"
+                       style="width: 100%;">
+                  </div>
+              </li>
+              <li>
+                  <label></label>
+                  <button click.delegate="submit()" class="k-button k-primary">Reset Password</button>
+              </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</template>

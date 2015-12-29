@@ -1,0 +1,26 @@
+<template>
+  <require from="./events.css"></require>
+  <div id="example">
+    <div id="slider-events">
+      <div class="demo-section k-content">
+        <ul id="fieldlist">
+          <li>
+            <label>Temperature</label>
+            <input k-slider="k-min.bind: 0;
+                             k-max.bind: 30;
+                             k-small-step.bind: 1;
+                             k-large-step.bind: 10;
+                             k-value.bind: 18"
+                   class="temperature"
+                   k-on-change.trigger="onChange($event.detail)"
+                   k-on-slide.trigger="onSlide($event.detail)" />
+          </li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Console log</h4>
+        <logger view-model.ref="logger"></logger>
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,22 @@
+#chunk-progressbar #profileCompleteness {
+    width: 100%;
+}
+
+#chunk-progressbar .forms {
+    list-style-type: none;
+    padding: 2em 0 0;
+    margin: 0;
+}
+
+#chunk-progressbar .forms label {
+    display: block;
+    font-size: 12px;
+    line-height: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1em;
+}
+
+#chunk-progressbar .forms li {
+    margin-bottom: 1.5em;
+}

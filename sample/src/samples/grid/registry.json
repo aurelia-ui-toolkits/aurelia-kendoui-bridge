@@ -10,7 +10,9 @@
       "files": ["html", "js", "json"]
     },
     "binding-to-remote-data": {},
-    "editing-custom-editor": {},
+    "editing-custom-editor": {
+      "files": ["html", "js", "json"]
+    },
     "frozen-columns": {},
     "initialization-from-table": {},
     "inline-editing": {},

@@ -17,13 +17,27 @@ export class ProgressBar extends WidgetBase {
     this._initialize();
   }
 
-  enableChanged(newValue) {
+  kEnableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
     }
   }
 
-  valueChanged(newValue) {
-    this.widget.value(newValue);
+  kValueChanged(newValue) {
+    if (this.widget) {
+      this.widget.value(newValue);
+    }
+  }
+
+  value(newValue) {
+    if (this.widget) {
+      return this.widget.value(newValue);
+    }
+  }
+
+  enable(newValue) {
+    if (this.widget) {
+      return this.widget.enable(newValue);
+    }
   }
 }

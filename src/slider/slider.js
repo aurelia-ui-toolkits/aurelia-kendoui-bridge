@@ -8,6 +8,7 @@ import 'kendo-ui/js/kendo.slider.min';
 export class Slider extends WidgetBase {
 
   @bindable options = {};
+  @bindable kValue;
 
   constructor(element) {
     super('kendoSlider', element);
@@ -20,13 +21,33 @@ export class Slider extends WidgetBase {
     this._initialize();
   }
 
-  enableChanged(newValue) {
+  _beforeInitialize(options) {
+    if (!options.value && this.kValue) {
+      options.value = this.kValue;
+    }
+  }
+
+  kEnableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
     }
   }
 
-  // valueChanged(newValue) {
-    // this.widget.value(newValue);
-  // }
+  enable(newValue) {
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  }
+
+  value(newValue) {
+    if(this.widget) {
+      return this.widget.value(newValue);
+    }
+  }
+
+  kValueChanged() {
+    if (this.widget) {
+      this.widget.value(this.kValue);
+    }
+  }
 }

@@ -2,9 +2,14 @@
   "title": "Slider",
   "samples": {
     "basic-use": {
-      "title": "Basic use",
       "route": ["", "basic-use"],
-      "files": ["html", "js"]
+      "files": ["html", "js", "css"]
+    },
+    "events": {
+      "files": ["html", "js", "css"]
+    },
+    "api": {
+      "files": ["html", "js", "css"]
     }
   }
 }
