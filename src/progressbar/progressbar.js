@@ -24,14 +24,20 @@ export class ProgressBar extends WidgetBase {
   }
 
   kValueChanged(newValue) {
-    this.widget.value(newValue);
+    if (this.widget) {
+      this.widget.value(newValue);
+    }
   }
 
   value(newValue) {
-    return this.widget.value(newValue);
+    if (this.widget) {
+      return this.widget.value(newValue);
+    }
   }
 
   enable(newValue) {
-    return this.widget.enable(newValue);
+    if (this.widget) {
+      return this.widget.enable(newValue);
+    }
   }
 }

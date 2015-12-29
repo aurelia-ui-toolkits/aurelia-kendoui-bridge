@@ -1,0 +1,22 @@
+#slider-basicuse .demo-section {
+    text-align: center;
+}
+
+#slider-basicuse #equalizer {
+    padding-right: 15px;
+}
+
+#slider-basicuse div.balSlider {
+    width: 100%;
+}
+
+#slider-basicuse div.balSlider .k-slider-selection {
+    display: none;
+}
+
+#slider-basicuse div.eqSlider {
+    display: inline-block;
+    margin: 1em;
+    height: 122px;
+    vertical-align: top;
+}

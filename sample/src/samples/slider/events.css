@@ -1,0 +1,19 @@
+#slider-events #fieldlist {
+  margin: 0 0 -2em;
+  padding: 0;
+  text-align: center;
+}
+
+#slider-events #fieldlist > li {
+  list-style: none;
+  padding-bottom: 2em;
+}
+
+#slider-events #fieldlist label {
+  display: block;
+  padding-bottom: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #444;
+}
