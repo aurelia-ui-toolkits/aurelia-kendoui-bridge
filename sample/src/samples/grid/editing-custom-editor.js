@@ -20,18 +20,17 @@ export class EditingCustomEditor {
     }
   });
 
-  categoryDropDownEditor($event) {
-    console.log($event);
-    // $('<input required data-text-field="CategoryName" data-value-field="CategoryID" data-bind="value:' + options.field + '"/>')
-    // .appendTo(container)
-    // .kendoDropDownList({
-    //   autoBind: false,
-    //   dataSource: {
-    //     type: 'odata',
-    //     transport: {
-    //       read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Categories'
-    //     }
-    //   }
-    // });
+  categoryDropDownEditor(container, options) {
+    $('<input required data-text-field="CategoryName" data-value-field="CategoryID" data-bind="value:' + options.field + '"/>')
+    .appendTo(container)
+    .kendoDropDownList({
+      autoBind: false,
+      dataSource: {
+        type: 'odata',
+        transport: {
+          read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Categories'
+        }
+      }
+    });
   }
 }
