@@ -1,56 +1,68 @@
 <template>
-    <div class="demo-section k-content wide">
-    <h4>Sales statistics</h4>
+  <require from="./basic-use.css"></require>
+  <div id="example">
+    <div id="funnel-basicuse">
+      <div class="demo-section k-content wide">
+        <h4>Sales statistics</h4>
 
-    <div class="row">
-        <div class="col-xs-12 col-sm-4">
-            <k-chart  k-title.bind="{text: 'October'}"
-                      style="height: 256px; width: 174px"
-                      k-data-source.bind="octData"
-                      k-legend.bind="legend"
-                      k-series-defaults.bind="seriesDefaults"
-                      k-series.bind="series_oct"
-                      k-tooltip.bind="tooltip">
-            </k-chart>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                <k-chart  view-model.ref="oct"
+                          k-title.bind="{text: 'October'}"
+                          k-data-source.bind="octData"
+                          k-legend.bind="legend"
+                          k-series-defaults.bind="seriesDefaults"
+                          k-series.bind="series_oct"
+                          k-tooltip.bind="tooltip">
+                </k-chart>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <k-chart  view-model.ref="nov"
+                          k-title.bind="{text: 'November'}"
+                          k-data-source.bind="novData"
+                          k-legend.bind="legend"
+                          k-series-defaults.bind="seriesDefaults"
+                          k-series.bind="series_nov"
+                          k-tooltip.bind="tooltip">
+                </k-chart>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <k-chart  view-model.ref="dec"
+                          k-title.bind="{text: 'December'}"
+                          k-data-source.bind="decData"
+                          k-legend.bind="legend"
+                          k-series-defaults.bind="seriesDefaults"
+                          k-series.bind="series_dec"
+                          k-tooltip.bind="tooltip">
+                </k-chart>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-4">
-            <k-chart  k-title.bind="{text: 'November'}"
-                      style="height: 256px; width: 174px"
-                      k-data-source.bind="novData"
-                      k-legend.bind="legend"
-                      k-series-defaults.bind="seriesDefaults"
-                      k-series.bind="series_nov"
-                      k-tooltip.bind="tooltip">
-            </k-chart>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-            <k-chart  k-title.bind="{text: 'December'}"
-                      style="height: 256px; width: 174px"
-                      k-data-source.bind="decData"
-                      k-legend.bind="legend"
-                      k-series-defaults.bind="seriesDefaults"
-                      k-series.bind="series_dec"
-                      k-tooltip.bind="tooltip">
-            </k-chart>
-        </div>
+      </div>
+      
+      <div class="box wide">
+          <div class="box-col">
+              <h4><input type="checkbox" change.delegate="refresh()" ref="dynamicSlope"/> Dynamic Slope</h4>
+              <i>The slope for each segment depends on the ratio between the current and the next value</i>
+          </div>
+          <div class="box-col">
+              <h4><input type="checkbox" change.delegate="refresh()" ref="dynamicHeight"/> Dynamic Height</h4>
+              <i>The height of the segment is the overall percentage for that dataItem</i>
+          </div>
+          <div class="box-col">
+              <h4>Neck Ratio</h4>
+              <ul class="options">
+                  <li><input k-slider="k-min.bind: 0;
+                                       k-max.bind: 10;
+                                       k-small-step.bind: 0.01;
+                                       k-large-step.bind: 0.1;
+                                       k-show-buttons.bind: false"
+                             value="0.3"
+                             k-on-change.trigger="refresh()"
+                             k-slider.ref="slider"/></li>
+              </ul>
+              <i>The ratio between the bases of the whole funnel element</i>
+          </div>
+      </div>
     </div>
-
-    <div class="row">
-        <div class="col-xs-12 col-sm-4">
-            <h4><input type="checkbox" id="dynamicSlope"/> Dynamic Slope</h4>
-            <i>The slope for each segment depends on the ratio between the current and the next value</i>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-            <h4><input type="checkbox" id="dynamicHeight"/> Dynamic Height</h4>
-            <i>The height of the segment is the overall percentage for that dataItem</i>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-            <h4>Neck Ratio</h4>
-            <ul class="options">
-                <li><input id="neckSlider" value="0.3"/></li>
-            </ul>
-            <i>The ratio between the bases of the whole funnel element</i>
-        </div>
-    </div>
-
+  </div>
 </template>

@@ -1,0 +1,14 @@
+#funnel-basicuse k-chart {
+  display: inline-block;
+  width: 180px;
+  height: 300px;
+  margin: 15px 65px;
+}
+
+#funnel-basicuse .demo-section {
+    text-align: center;
+}
+
+#funnel-basicuse .box-col {
+    width:25%;
+}

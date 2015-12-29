@@ -108,9 +108,33 @@ export class BasicUse {
     visible: false
   }
 
-
   tooltip = {
     visible: true,
     template: '#= category #'
+  }
+
+  refresh() {
+    let chartNames = ['oct', 'nov', 'dec'];
+
+    for (let idx of chartNames) {
+      let chart = this[idx];
+
+      let options = {
+        seriesDefaults: {
+          neckRatio: this.slider.value(),
+          dynamicHeight: this.dynamicHeight.checked,
+          dynamicSlope: this.dynamicSlope.checked,
+          labels: {
+            visible: true,
+            background: 'transparent',
+            color: 'white',
+            format: 'N0'
+          }
+        }
+      };
+
+      chart.widget.setOptions(options);
+      this.slider.enable(!options.seriesDefaults.dynamicSlope);
+    }
   }
 }

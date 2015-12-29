@@ -2,7 +2,8 @@
   "title": "Funnel charts",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "files": ["js", "html", "css"]
     },
     "funnel-labels": {},
     "binding-to-remote-data": {},
