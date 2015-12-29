@@ -229,7 +229,7 @@ menu {
   font-size: 18px;
 }
 
-#doc > .col-md-3, #doc > .col-md-8 {
+#doc > .col-md-3, #doc > .col-md-9 {
   height: 790px;
   overflow-y: scroll;
 }
