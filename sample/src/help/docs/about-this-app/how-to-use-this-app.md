@@ -34,8 +34,20 @@ Now, we want to add one additional page to this application that would show Kend
 </p>
 
 * * * 
-* 
-***The rest this document shows all steps needed to add this page***
+At this point, while following the series of steps described next, it is assumed that you have the KendoUI package already installed on your computer as described in the **vendors** type of installation:
+
+<p align=center>
+  <img src="http://i.imgur.com/eUiqr4e.png"></img>
+ <br><br>
+ Image 3
+</p>
+
+and that you executed all 7 steps (partially) shown on image 3 above.
+
+#### Step 1
+
+
+
 
 
 

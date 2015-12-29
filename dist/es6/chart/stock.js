@@ -1,5 +1,6 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
 import {WidgetBase, generateBindables} from '../common/index';
+import '../pdf/pdf';
 import 'kendo-ui/js/kendo.dataviz.stock.min';
 
 @customElement('k-stock')
