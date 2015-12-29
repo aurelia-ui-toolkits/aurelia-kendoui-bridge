@@ -35,6 +35,8 @@ export class NavBar {
   }
 
   routeChanged() {
+    $(this.menu).find('.k-state-selected').removeClass('k-state-selected');
+
     let route = this.router.currentInstruction;
 
     // prefix hash to the fragment
