@@ -9,7 +9,7 @@
                 <k-chart  k-title.bind="{text: 'Before optimization'}"
                           style="height: 256px"
                           k-data-source.bind="dataBefore"
-                          k-legend.bind="legend"
+                          k-legend.bind="{ visible: false }"
                           k-series.bind="seriesBefore"
                           k-tooltip.bind="tooltip">
                 </k-chart>
@@ -18,7 +18,7 @@
                 <k-chart  k-title.bind="{text: 'After optimization'}"
                           style="height: 256px"
                           k-data-source.bind="dataAfter"
-                          k-legend.bind="legend"
+                          k-legend.bind="{ visible: false }"
                           k-series.bind="seriesAfter"
                           k-tooltip.bind="tooltip">
                 </k-chart>
