@@ -1,5 +1,6 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
 import {WidgetBase, generateBindables} from '../common/index';
+import '../pdf/pdf';
 import 'kendo-ui/js/kendo.dataviz.chart.min';
 import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
 import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
