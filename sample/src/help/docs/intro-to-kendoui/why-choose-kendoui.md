@@ -1,7 +1,7 @@
 ### Why Choose KendoUI
 <br>
 
-***Note: each of the enumerated advantages below have to be augmented by a lost of Aurelia specific added advantages***
+***Note: each of the enumerated advantages below have to be augmented by a lot of Aurelia specific added advantages***
 * * *
 
  <br>

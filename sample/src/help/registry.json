@@ -2,14 +2,14 @@
     "About this application":
     [
       {
-        "name": "How to use this application",
-        "path": "help/docs/about-this-app/how-to-use-this-app.md"
-      }, {
         "name": "Internal structure",
         "path": "help/docs/about-this-app/internal-structure.md"
       }, {
-        "name": "How to add missing controls",
-        "path": "help/docs/about-this-app/how-to-add-missing-controls.md"
+        "name": "How to use this application",
+        "path": "help/docs/about-this-app/how-to-use-this-app.md"
+      }, {
+        "name": "How to extend this application",
+        "path": "help/docs/about-this-app/how-to-extend-this-app.md"
       }
     ],
 
@@ -62,7 +62,7 @@
       }
     ],
 
-    "Basics of writing Aurelia plugins":
+    "Using KendoUI bridge":
     [
       {
         "name": "Lorem ipsum",
@@ -70,26 +70,10 @@
       },
     ],
 
-    "Writing Aurelia plugin tutorial":
+    "Extending KendoUI bridge":
     [
       {
         "name": "Lorem ipsum",
-        "path": "help/docs/lorem.md"
-      },
-    ],
-
-    "How to use Aurelia-KendoUI bridge":
-    [
-      {
-        "name": "Lorem ipsum",
-        "path": "help/docs/lorem.md"
-      },
-    ],
-
-    "Tutorials":
-    [
-      {
-        "name": "Writing a real Aurelia app using Aurelia KendoUI bridge",
         "path": "help/docs/lorem.md"
       },
     ]
