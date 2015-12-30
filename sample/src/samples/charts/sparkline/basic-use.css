@@ -38,13 +38,7 @@
     width: 34px;
     font-size: 10px;
 }
-#stats-mon,
-#stats-tue,
-#stats-wed,
-#stats-thu,
-#stats-fri,
-#stats-sat,
-#stats-sun {
+#sparkline-basicuse .pie-list k-sparkline {
     display: block;
     width: 34px;
     line-height: 30px;
