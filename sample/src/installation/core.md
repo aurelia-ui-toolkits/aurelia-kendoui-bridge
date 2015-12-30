@@ -1,9 +1,9 @@
 ### Core
 
-1. Install Kendo UI Core and the aurelia-kendoui-plugin  
+1. Install Kendo UI Core and the aurelia-kendoui-plugin
 `jspm install kendo-ui aurelia-kendoui-plugin`
 
-2. Register the plugin  
+2. Register the plugin
 Now we're going to register the plugin with Aurelia in your "main.js" or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Core by calling the `core()` method
 
     ```
@@ -12,6 +12,8 @@ Now we're going to register the plugin with Aurelia in your "main.js" or equival
           .standardConfiguration()
           .developmentLogging()
           .plugin('aurelia-kendoui-plugin', (kendo) => kendo.core());
+
+        aurelia.start().then(a => a.setRoot());
       }
     ```
 

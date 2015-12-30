@@ -28,10 +28,13 @@
     }
     ```
 
-5. Install Kendo and the aurelia-kendoui-plugin  
+5. Install Kendo and the aurelia-kendoui-plugin
 `jspm install kendo-ui aurelia-kendoui-plugin`
 
-6. Register the plugin  
+6. Install SystemJS CSS plugin (you will need it to include various KendoUI specific CSS files)
+` jspm install github:systemjs/plugin-css`
+
+7. Register the aurelia-kendoui-plugin plugin
 Now we're going to register the plugin with Aurelia in your "main.js" or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Pro by calling the "pro()" method
 
     ```
@@ -40,10 +43,12 @@ Now we're going to register the plugin with Aurelia in your "main.js" or equival
           .standardConfiguration()
           .developmentLogging()
           .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
+
+        aurelia.start().then(a => a.setRoot());
       }
     ```
 
-7. Now let's open up "app.html" and load Kendo's CSS files
+8. Now let's open up "app.html" and load Kendo's CSS files
 
     ```
     <require from="kendo-ui/styles/kendo.common.core.min.css"></require>
