@@ -315,5 +315,3 @@ As [mentioned before](#anch1) Aurelia-KendoUI plugin project has a special struc
 <p align=center>
   <img src=""></img>
 </p>
-
-

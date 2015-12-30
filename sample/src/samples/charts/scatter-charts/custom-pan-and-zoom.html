@@ -4,7 +4,7 @@
             k-x-axis.bind="xAxis"
             k-series.bind="series"
             k-transitions.bind="false"
-            k-drag.trigger="setRange($event)"
-            k-zoom.trigger="setRange($event)">
+            k-drag.delegate="setRange($event)"
+            k-zoom.delegate="setRange($event)">
   </k-chart>
 </template>

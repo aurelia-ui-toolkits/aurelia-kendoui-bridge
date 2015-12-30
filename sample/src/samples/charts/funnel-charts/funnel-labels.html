@@ -81,13 +81,13 @@
                     <li><label for="color"></label></li>
                     <li><input id="color" k-color-picker="k-value: #000; k-buttons.bind: false"
                                           k-color-picker.ref="colorpicker"
-                                          k-on-change.trigger="refresh()" /></li>
+                                          k-on-change.delegate="refresh()" /></li>
                 </ul>
             </div>
             <div class="row">
                 <h4>Font size</h4>
                 <ul class="options">
-                    <li><input k-on-change.trigger="refresh()"
+                    <li><input k-on-change.delegate="refresh()"
                                           k-slider.ref="slider"
                                           k-slider="k-min.bind: 1;
                                                     k-max.bind: 40;

@@ -1,3 +1,1 @@
-export class Index {
-  
-}
+export class Index {}

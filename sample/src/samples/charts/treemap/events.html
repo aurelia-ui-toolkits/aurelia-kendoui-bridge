@@ -3,8 +3,8 @@
               k-data-source.bind="dataSource"
               k-value-field="value"
               k-text-field="name"
-              k-on-data-bound.trigger="logger.log('Data bound')"
-              k-on-item-created.trigger="logger.log('Item is created')">
+              k-on-data-bound.delegate="logger.log('Data bound')"
+              k-on-item-created.delegate="logger.log('Item is created')">
   </k-treemap>
 
   <div class="box">

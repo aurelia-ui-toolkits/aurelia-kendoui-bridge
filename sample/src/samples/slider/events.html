@@ -12,8 +12,8 @@
                              k-large-step.bind: 10;
                              k-value.bind: 18"
                    class="temperature"
-                   k-on-change.trigger="onChange($event.detail)"
-                   k-on-slide.trigger="onSlide($event.detail)" />
+                   k-on-change.delegate="onChange($event.detail)"
+                   k-on-slide.delegate="onSlide($event.detail)" />
           </li>
         </ul>
       </div>
