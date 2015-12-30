@@ -40,7 +40,7 @@ export class Slider extends WidgetBase {
   }
 
   value(newValue) {
-    if(this.widget) {
+    if (this.widget) {
       return this.widget.value(newValue);
     }
   }
