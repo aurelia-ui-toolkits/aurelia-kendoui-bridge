@@ -5,6 +5,7 @@
       "route": ["", "basic-use"],
       "files": ["html", "js", "css"]
     },
-    "aurelia": {}
+    "aurelia": {},
+    "remote-data": {}
   }
 }
