@@ -42,7 +42,21 @@ At this point, while following the series of steps described next, it is assumed
  Image 3
 </p>
 
-and that you executed all 7 steps (partially) shown on image 3 above.
+and that you executed all 7 steps (partially) shown on image 3 above. While all of them are equally important, at this point verify that your  `main.js` class looks like this:
+
+```javascript
+import 'bootstrap';
+
+export function configure(aurelia) {
+  aurelia.use
+    .standardConfiguration()
+    .developmentLogging()
+    .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
+
+  aurelia.start().then(a => a.setRoot());
+}
+
+```
 
 #### Step 1
 
