@@ -1,2 +1,14 @@
 <template>
+  <k-grid style="margin-bottom: 20px"
+          k-height.bind="550"
+          k-editable.bind="true"
+          k-sortable.bind="true"
+          k-toolbar.bind="['create']"
+          k-data-source.bind="dataSource">
+    <au-col field="UnitPrice"></au-col>
+    <au-col field="ProductName"></au-col>
+    <au-col command="destroy" width.bind="150"></au-col>
+  </k-grid>
+
+  <span ref="notification"></span>
 </template>

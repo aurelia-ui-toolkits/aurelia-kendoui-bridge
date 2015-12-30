@@ -1,6 +1,7 @@
 import {inject, children, customElement, bindable} from 'aurelia-framework';
 import {WidgetBase, TemplateCompiler, generateBindables} from '../common/index';
 import '../pdf/pdf';
+import 'kendo-ui/js/kendo.data.signalr.min';
 import 'kendo-ui/js/kendo.filtercell.min';
 import 'kendo-ui/js/kendo.grid.min';
 

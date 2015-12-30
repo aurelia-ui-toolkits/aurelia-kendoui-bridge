@@ -10,6 +10,7 @@
       "files": ["html", "js", "json"]
     },
     "binding-to-remote-data": {},
+    "binding-to-signalr": {},
     "editing-custom-editor": {
       "files": ["html", "js", "json"]
     },
@@ -17,6 +18,6 @@
     "initialization-from-table": {},
     "inline-editing": {},
     "popup-editing": {},
-    "working-offline": {},
+    "working-offline": {}
   }
 }
