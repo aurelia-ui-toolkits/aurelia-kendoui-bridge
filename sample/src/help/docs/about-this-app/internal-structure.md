@@ -226,7 +226,7 @@ export class AutoComplete extends WidgetBase {
   setValue(newValue) {
     if (this.widget) {
       this.widget.value(newValue);
-      this.widget.delegate('change');
+      this.widget.trigger('change');
     }
   }
 
@@ -315,5 +315,3 @@ As [mentioned before](#anch1) Aurelia-KendoUI plugin project has a special struc
 <p align=center>
   <img src=""></img>
 </p>
-
-
