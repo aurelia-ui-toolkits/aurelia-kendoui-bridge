@@ -5,8 +5,8 @@
               k-value-axis.bind="{min: 0, max: 12}"
               k-series.bind="[{type: 'column', field: 'val'}]"
               k-transitions.bind="false"
-              k-on-drag.trigger="onDrag($event)"
-              k-on-drag-end.trigger="onDragEnd($event)"
-              k-on-zoom.trigger="onZoom($event)">
+              k-on-drag.delegate="onDrag($event)"
+              k-on-drag-end.delegate="onDragEnd($event)"
+              k-on-zoom.delegate="onZoom($event)">
     </k-chart>
 </template>

@@ -226,7 +226,7 @@ export class AutoComplete extends WidgetBase {
   setValue(newValue) {
     if (this.widget) {
       this.widget.value(newValue);
-      this.widget.trigger('change');
+      this.widget.delegate('change');
     }
   }
 

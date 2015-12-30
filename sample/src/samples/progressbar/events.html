@@ -4,8 +4,8 @@
       <h4>ProgressBar</h4>
       <div id="eventsProgressBar"
            k-progress-bar="k-min: 0; k-max: 10; k-type: percent"
-           k-on-change.trigger="onChange($event.detail)"
-           k-on-complete.trigger="onComplete($event.detail)"
+           k-on-change.delegate="onChange($event.detail)"
+           k-on-complete.delegate="onComplete($event.detail)"
         	 k-progress-bar.ref="pb"></div>
       <button click.delegate="start()" disabled.bind="!canStart" class="k-button k-primary">Start progress</button>
     </div>

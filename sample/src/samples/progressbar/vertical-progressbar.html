@@ -10,15 +10,15 @@
                                    k-min: 0;
                                    k-max: 4;
                                    k-orientation: vertical"
-                   k-on-complete.trigger="onTotalComplete()">
+                   k-on-complete.delegate="onTotalComplete()">
               </div>
 
               <div k-progress-bar.ref="pb2"
                    k-progress-bar="k-animation.bind: false;
                                   k-show-status.bind: false;
                                   k-orientation: vertical"
-                   k-on-complete.trigger="onComplete()"
-                   k-on-change.trigger="onChange($event.detail)">
+                   k-on-complete.delegate="onComplete()"
+                   k-on-change.delegate="onChange($event.detail)">
               </div>
           </div>
           <div class="loadingInfo">

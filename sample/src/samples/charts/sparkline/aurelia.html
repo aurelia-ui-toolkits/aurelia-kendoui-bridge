@@ -4,7 +4,7 @@
         <h4>Hover some series</h4>
         <k-sparkline  k-tooltip.bind="{visible: false, shared: false}"
                       k-data-source.bind="weather"
-                      k-on-series-hover.trigger="onSeriesHover($event)"
+                      k-on-series-hover.delegate="onSeriesHover($event)"
                       style="height: 30px;"
                       k-series.bind="[{
                            type: 'column',
