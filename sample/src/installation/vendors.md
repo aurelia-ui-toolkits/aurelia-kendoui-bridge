@@ -38,14 +38,14 @@
 Now we're going to register the plugin with Aurelia in your "main.js" or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Pro by calling the "pro()" method
 
     ```
-      export function configure(aurelia) {
-        aurelia.use
-          .standardConfiguration()
-          .developmentLogging()
-          .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
+    export function configure(aurelia) {
+      aurelia.use
+        .standardConfiguration()
+        .developmentLogging()
+        .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
 
-        aurelia.start().then(a => a.setRoot());
-      }
+      aurelia.start().then(a => a.setRoot());
+    }
     ```
 
 8. Now let's open up "app.html" and load Kendo's CSS files

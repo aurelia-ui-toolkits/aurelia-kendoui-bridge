@@ -14,10 +14,11 @@ export function configure(aurelia) {
   aurelia.use.globalResources('shared/au-code');
 
   aurelia.start()
-  .then(au => au.setRoot('app'))
   .then(au => {
     let manager = au.container.get(ThemeManager);
     let settings = au.container.get(Settings);
-    return manager.loadTheme(settings.defaultTheme);
-  });
+    return manager.loadTheme(settings.defaultTheme)
+           .then(() => au);
+  })
+  .then(au => au.setRoot('app'));
 }
