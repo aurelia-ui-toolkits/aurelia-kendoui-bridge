@@ -12,6 +12,6 @@ export class Index {
   configureRouter(config, router) {
     this.router = router;
 
-    return this.registry.load(config, 'charts/box-plot-charts');
+    return this.registry.load(config, 'chart/box-plot-charts');
   }
 }

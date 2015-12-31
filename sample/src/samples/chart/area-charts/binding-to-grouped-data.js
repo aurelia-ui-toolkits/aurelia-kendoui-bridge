@@ -2,7 +2,7 @@ export class BindingToGroupedArea {
   datasource = new kendo.data.DataSource({
     transport: {
       read: function(options) {
-        return System.import('samples/charts/area-charts/json/stock-data-2011.json!json')
+        return System.import('samples/cart/area-charts/json/stock-data-2011.json!json')
         .then(data => options.success(data));
       }
     },

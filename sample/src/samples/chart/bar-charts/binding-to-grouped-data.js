@@ -2,7 +2,7 @@ export class BindingToGroupedData {
   datasource = new kendo.data.DataSource({
     transport: {
       read: function(options) {
-        return System.import('samples/charts/line-charts/json/stock-data-2011.json!json')
+        return System.import('samples/cart/line-charts/json/stock-data-2011.json!json')
         .then(data => options.success(data));
       }
     },
