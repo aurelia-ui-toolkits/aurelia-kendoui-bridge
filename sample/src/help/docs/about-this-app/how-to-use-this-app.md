@@ -1,8 +1,8 @@
 ## Introduction
 
-This article presents the **overview** of the ways to use **[Aurelia-KendoUI-Plugin](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** project developed by the team of Aurelia UI Toolkits organization, dedicated to ensure Aurelia's wide spread adoption it deserves.
+This article presents the **overview** of the ways to use **[Aurelia-KendoUI-Plugin](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** project developed by the team of Aurelia UI Toolkits organization, dedicated to contribute to Aurelia's wide spread adoption.
 
-You can find more details in the section **Using KendoUI bridge** which is also a part of this documents set
+You can find more details in the section **About KendoUI bridge** which is also a part of this documents set
 
 * * *
 
@@ -35,7 +35,7 @@ Now, we want to add several (four) additional pages to this application that wou
  Image 2
 </p>
 
-* * * 
+* * *
 **Note**: if you do not yet own KendoUI PRO license, you can download the evaluation copy which will give you access to all KendoUI controls.
 
 At this point, while following the series of steps described next, it is assumed that you have the KendoUI package already installed on your computer as described in the **vendors** type of installation:
@@ -73,7 +73,7 @@ The next screenshot depicts the final UI for the application we are about to cre
 
 ### Building the app
 
-The following steps describe the process of building our applicatom starting from the Aurelia Navigation Skeleton shown on **Image 1** 
+The following steps describe the process of building our applicatom starting from the Aurelia Navigation Skeleton shown on **Image 1**
 
 #### Step 1 - Modify the application structure
 
@@ -399,12 +399,74 @@ export function configure(aurelia) {
   aurelia.start().then(a => a.setRoot());
 }
 ```
-### About KendoUI declarative programming 
+* * *
+* * *
 
-#### This section explains the details of the code used to render the four controls defined above
+### About KendoUI declarative programming
 
+###### This section explains the details of the code used to render the four controls defined above
 
+Declarative programming is a programming paradigm consisting of description **what the program needs to accomplish** (in terms of the problem domain) instead of describing **how to accomplish that** as a sequence of programming language primitive and API (**[wikipedia](https://en.wikipedia.org/wiki/Declarative_programming)**).
 
+Aurelia with it's very capable `binding`, `interpolation`, `repeater` ... features provides the ideal environment for the implementation of a "hybrid declarative model" for creation of KendoUI controls. To demonstrate this claim, let's look at the details of the code needed to create the four KendoUI controls (Image 4 above)
+
+#### Autocomplete control
+
+The view is defined as
+
+```html
+<template>
+  <section>
+        <br>
+        <h3>Basic KendoUI Autocomplete sample</h3>
+
+        <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample/src/samples/autocomplete">See KendoUI Bridge autocomplete folder for more details</a>
+        <br>
+        <br>
+
+        <p><strong>People:</strong></p>
+        <input k-autocomplete="k-data-source.bind: items;" style="width: 300px;">
+        <br>
+        <br>
+        <br>
+        <p class="demo-hint" style="word-break: break-all">Type a name, available values in the list are: ${ items } </p>
+  </section>
+</template>
+```
+where the single statement
+
+```html
+<input k-autocomplete="k-data-source.bind: items;" style="width: 300px;">
+```
+is responsible for the instantiation of the autocomplete control (highlighted in the blue rectangle on the Image 6 below):
+
+<p align=center>
+  <img src="http://i.imgur.com/dG1awSb.png"></img>
+ <br><br>
+ Image 6
+</p>
+
+**Observe** that the custom atttribute defined on this single statement (`k-datasource`) coupled with the use of Aurelia `.bind` feature maps the value of the `k-datasource` attribute with the array `items` defined in the matching view model (shown below)
+
+```javascript
+export class BasicUse {
+  items = [
+    'Charles',
+    'Jedd',
+    'Nikolaj',
+    'Jeroen',
+    'David',
+    'Rob',
+    'Matt',
+    'Patrick',
+    'Jason',
+    'Martin',
+    'Fredrick',
+    'Alex'
+  ]
+}
+```
+Finally we were also able to define the **width** of the `k-autocomplete` control using the HTML standard attribute `style` by defining `style="width: 300px;"`
 
 
 

@@ -7,13 +7,18 @@
       }, {
         "name": "How to use this application",
         "path": "help/docs/about-this-app/how-to-use-this-app.md"
-      }, {
-        "name": "How to extend this application",
-        "path": "help/docs/about-this-app/how-to-extend-this-app.md"
       }
     ],
 
-    "Introduction to Aurelia":
+    "About KendoUI bridge":
+    [
+      {
+         "name": "How to extend this application",
+        "path": "help/docs/about-kendoui-bridge/how-to-extend-this-app.md"
+      }
+    ],
+
+    "About Aurelia":
     [
       {
         "name": "Forward-thinking",
@@ -45,7 +50,7 @@
       }
     ],
 
-    "Introduction to KendoUI":
+    "About KendoUI":
     [
      {
         "name": "Integrated with Aurelia",
@@ -60,21 +65,5 @@
         "name": "",
         "path": ""
       }
-    ],
-
-    "Using KendoUI bridge":
-    [
-      {
-        "name": "Lorem ipsum",
-        "path": "help/docs/lorem.md"
-      },
-    ],
-
-    "Extending KendoUI bridge":
-    [
-      {
-        "name": "Lorem ipsum",
-        "path": "help/docs/lorem.md"
-      },
     ]
 }

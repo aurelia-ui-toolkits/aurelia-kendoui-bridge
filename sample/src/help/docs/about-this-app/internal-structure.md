@@ -2,9 +2,9 @@
 
 This article presents the overview of the internal organization of the **[Aurelia-KendoUI-Bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** project developed by the team of Aurelia UI Toolkits organization, dedicated to ensure Aurelia's wide spread adoption it deserves.
 
-Understanding Aurelia-KendoUI-Bridge is the very first prerequuisite on your learning path on **how to use** this bridge in the process of building the state of the art user interface. More about using the bridge can be found in the **Using the KendoUI bridge** section of this collection of help documents.
+Understanding Aurelia-KendoUI-Bridge is the very first prerequisite to your learning path on **how to use** this bridge in the process of building the state of the art user interface. More about using the bridge can be found in the **About KendoUI bridge** section of this collection of help documents.
 
-If your intent is to learn about **Extending KendoUI bridge** - by joining the Aurelia UI Toolkits organization to implement all currently missing controls, check first the **[project status](http://aurelia-ui-toolkits.github.io/demo-kendo/#/project-status)** page where finished controls are tagged blue, and controls under development orange and then proceed by reading the articles in the **Extending KendoUI bridge** section.
+If your intent is to learn about **Extending KendoUI bridge** - by joining the Aurelia UI Toolkits organization to implement all currently missing controls, check first the **[project status](http://aurelia-ui-toolkits.github.io/demo-kendo/#/project-status)** page where finished controls are tagged blue, and controls under development orange and then proceed by reading the articles in the **About KendoUI bridge** section.
 
 * * *
 
