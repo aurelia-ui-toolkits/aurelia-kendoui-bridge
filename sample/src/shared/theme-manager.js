@@ -19,21 +19,17 @@ export class ThemeManager {
   }
 
   loadTheme(theme) {
-    let common = (this.commons.find(i => i.name === theme) || this.commons.find(i => i.name === 'standard')).value;
-    let commonPath = this.getNormalizedThemePath(common);
-    let themePath = this.getNormalizedThemePath(theme);
-
     this.removeOldThemes();
 
-    this.deleteFromSystemJS(themePath);
-    this.deleteFromSystemJS(commonPath);
-
-    return Promise.all([this.common(commonPath), this.theme(themePath)])
+    return Promise.all([this.common(theme), this.theme(theme)])
     .then(() => this.ea.publish('kendo:skinChange', theme));
   }
 
-  theme(path) {
-    return System.import(path)
+  theme(theme) {
+    let themePath = this.getNormalizedThemePath(theme);
+    this.deleteFromSystemJS(themePath);
+
+    return System.import(themePath)
     .then(() => {
       let themable = ['Chart', 'TreeMap', 'Diagram', 'StockChart', 'Sparkline', 'RadialGauge', 'LinearGauge'];
 
@@ -49,8 +45,12 @@ export class ThemeManager {
     });
   }
 
-  common(path) {
-    return System.import(path);
+  common(theme) {
+    let common = (this.commons.find(i => i.name === theme) || this.commons.find(i => i.name === 'standard')).value;
+    let commonPath = this.getNormalizedThemePath(common);
+    this.deleteFromSystemJS(commonPath);
+
+    return System.import(commonPath);
   }
 
   deleteFromSystemJS(normalizedPath) {
