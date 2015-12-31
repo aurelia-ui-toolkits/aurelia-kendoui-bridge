@@ -30,7 +30,10 @@ export class ThemeSelector {
   }
 
   selectTheme(theme) {
-    this.themeManager.loadTheme(theme.value);
-    this.settings.activeTheme = theme.value;
+    jQuery('body').fadeOut(400, () => {
+      this.settings.activeTheme = theme.value;
+      this.themeManager.loadTheme(theme.value)
+      .then(() => jQuery('body').fadeIn());
+    });
   }
 }

@@ -1,15 +1,15 @@
-.box .k-textbox {
+#autocomplete-api .box .k-textbox {
     width: 80px;
 }
-.box .k-button {
+#autocomplete-api .box .k-button {
     min-width: 80px;
 }
-li {
+#autocomplete-api li {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.box-col {
+#autocomplete-api .box-col {
   display: block;
   float: left;
   padding: 0 3em 1.667em 0;

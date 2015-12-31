@@ -33,11 +33,6 @@ body {
 }
 
 .page-host {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 33px;
-    bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -240,4 +235,12 @@ menu {
 
 .box li {
   list-style-type: none;
+}
+
+.k-block>.k-header, .k-window-titlebar {
+  position: relative !important;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+  margin-top: 0 !important;
 }

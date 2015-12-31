@@ -5,18 +5,31 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 @inject(EventAggregator)
 export class ThemeManager {
 
+  commons = [
+      { name: 'standard', value: 'common' },
+      { name: 'bootstrap', value: 'common-bootstrap', relativity: 'larger' },
+      { name: 'material', value: 'common-material', relativity: 'bold' },
+      { name: 'nova', value: 'common-nova', relativity: 'bold' },
+      { name: 'fiori', value: 'common-fiori', relativity: 'larger' },
+      { name: 'office365', value: 'common-office365', relativity: 'bold' }
+  ];
+
   constructor(ea) {
     this.ea = ea;
   }
 
   loadTheme(theme) {
-    let path = this.getNormalizedThemePath(theme);
-
     this.removeOldThemes();
 
-    this.deleteFromSystemJS(path);
+    return Promise.all([this.common(theme), this.theme(theme)])
+    .then(() => this.ea.publish('kendo:skinChange', theme));
+  }
 
-    return System.import(path)
+  theme(theme) {
+    let themePath = this.getNormalizedThemePath(theme);
+    this.deleteFromSystemJS(themePath);
+
+    return System.import(themePath)
     .then(() => {
       let themable = ['Chart', 'TreeMap', 'Diagram', 'StockChart', 'Sparkline', 'RadialGauge', 'LinearGauge'];
 
@@ -29,9 +42,15 @@ export class ThemeManager {
           }
         }
       }
-
-      this.ea.publish('kendo:skinChange', theme);
     });
+  }
+
+  common(theme) {
+    let common = (this.commons.find(i => i.name === theme) || this.commons.find(i => i.name === 'standard')).value;
+    let commonPath = this.getNormalizedThemePath(common);
+    this.deleteFromSystemJS(commonPath);
+
+    return System.import(commonPath);
   }
 
   deleteFromSystemJS(normalizedPath) {
@@ -46,7 +65,7 @@ export class ThemeManager {
 
   removeOldThemes() {
     jQuery('head > link').each(function() {
-      if (this.href.includes('styles/kendo.') && !this.href.includes('kendo.common.min')) {
+      if (this.href.includes('styles/kendo.')) {
         DOM.removeNode(this);
       }
     });
