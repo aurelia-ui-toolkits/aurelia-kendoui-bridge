@@ -2,7 +2,7 @@ export class SmoothPolarLine {
   dataSource = {
     transport: {
       read: function(options) {
-        return System.import('samples/cart/radar-charts/json/budget-report.json!json')
+        return System.import('samples/chart/radar-charts/json/budget-report.json!json')
         .then(data => options.success(data));
       }
     }

@@ -2,7 +2,7 @@ export class BindingToRemoteData {
   datasource = new kendo.data.DataSource({
     transport: {
       read: function(options) {
-        return System.import('samples/cart/bullet-charts/json/april-sales.json!json')
+        return System.import('samples/chart/bullet-charts/json/april-sales.json!json')
         .then(data => options.success(data));
       }
     }

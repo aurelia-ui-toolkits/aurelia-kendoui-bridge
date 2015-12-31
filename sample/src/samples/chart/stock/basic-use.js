@@ -2,7 +2,7 @@ export class BasicUse {
   dataSource = {
     transport: {
       read: function(options) {
-        return System.import('samples/cart/stock/json/boeing-stock.json!json')
+        return System.import('samples/chart/stock/json/boeing-stock.json!json')
         .then(data => options.success(data));
       }
     },

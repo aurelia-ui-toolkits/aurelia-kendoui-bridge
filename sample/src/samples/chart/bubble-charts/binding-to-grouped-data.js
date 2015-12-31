@@ -2,7 +2,7 @@ export class BindingToGroupedData {
   datasource = new kendo.data.DataSource({
     transport: {
       read: function(options) {
-        return System.import('samples/cart/bubble-charts/json/olympics-japan.json!json')
+        return System.import('samples/chart/bubble-charts/json/olympics-japan.json!json')
         .then(data => options.success(data));
       }
     },

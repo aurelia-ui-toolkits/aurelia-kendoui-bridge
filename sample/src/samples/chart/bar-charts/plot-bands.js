@@ -2,7 +2,7 @@ export class PlotBands {
   datasource = new kendo.data.DataSource({
     transport: {
       read: function(options) {
-        return System.import('samples/cart/bar-charts/json/spain-electricity.json!json')
+        return System.import('samples/chart/bar-charts/json/spain-electricity.json!json')
         .then(data => options.success(data));
       }
     },

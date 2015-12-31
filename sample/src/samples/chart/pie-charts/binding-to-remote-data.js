@@ -26,7 +26,7 @@ export class BindingToRemoteData {
     return new kendo.data.DataSource({
       transport: {
         read: function(options) {
-          return System.import('samples/cart/pie-charts/json/screen_resolution.json!json')
+          return System.import('samples/chart/pie-charts/json/screen_resolution.json!json')
           .then(data => options.success(data));
         }
       },

@@ -2,7 +2,7 @@ export class BindingToRemoteData {
   dataSource = {
     transport: {
       read: function(options) {
-        return System.import('samples/cart/polar-charts/json/antenna-gain.json!json')
+        return System.import('samples/chart/polar-charts/json/antenna-gain.json!json')
         .then(data => options.success(data));
       }
     }
