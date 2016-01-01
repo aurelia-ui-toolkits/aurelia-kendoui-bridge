@@ -1,6 +1,7 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-import {WidgetBase, generateBindables} from '../common/index';
-import '../pdf/pdf';
+import {WidgetBase} from '../common/widget-base';
+import {generateBindables} from '../common/decorators';
+import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 import 'kendo-ui/js/kendo.dataviz.stock.min';
 
 @customElement('k-stock')

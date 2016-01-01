@@ -1,5 +1,6 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {WidgetBase, generateBindables} from '../common/index';
+import {WidgetBase} from '../common/widget-base';
+import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.button.min';
 
 @customAttribute('k-button')

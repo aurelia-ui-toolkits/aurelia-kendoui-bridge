@@ -32,7 +32,6 @@ export class AuCol {
   @bindable menu;
   @bindable minScreenWidth;
   @bindable sortable;
-  @bindable template;
   @bindable title;
   @bindable values;
   @bindable width;

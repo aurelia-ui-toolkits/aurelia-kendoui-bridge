@@ -1,4 +1,5 @@
 build
+dist
 sample/images
 sample/jspm_packages
 sample/node_modules

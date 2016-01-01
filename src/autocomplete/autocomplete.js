@@ -1,5 +1,8 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {fireEvent, TemplateCompiler, WidgetBase, generateBindables} from '../common/index';
+import {WidgetBase} from '../common/widget-base';
+import {generateBindables} from '../common/decorators';
+import {TemplateCompiler} from '../common/template-compiler';
+import {fireEvent} from '../common/events';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
