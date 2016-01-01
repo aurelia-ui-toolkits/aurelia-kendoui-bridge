@@ -410,7 +410,9 @@ Declarative programming is a programming paradigm consisting of description **wh
 
 Aurelia with it's very capable `binding`, `interpolation`, `repeater` ... features provides the ideal environment for the implementation of a "hybrid declarative model" for creation of KendoUI controls. To demonstrate this claim, let's look at the details of the code needed to create the four KendoUI controls (Image 4 above)
 
-#### Autocomplete control
+#### 1. Autocomplete control
+
+**Important note**: Autocomplete control is the member of the class of controls with the common property of being "derived" from HTML native <input> type (see **[this](http://www.w3schools.com/html/html_form_input_types.asp)** for more information). All such controls are implemented using Aurelia custom atttributes - see **[this](http://www.sitepoint.com/extending-html-aurelia-io-way/)** for an example of using custom atttributes.
 
 The view is defined as
 
@@ -467,6 +469,75 @@ export class BasicUse {
 }
 ```
 Finally we were also able to define the **width** of the `k-autocomplete` control using the HTML standard attribute `style` by defining `style="width: 300px;"`
+
+* * *
+
+#### 2. Button control
+
+The view is defined as:
+
+```html
+<template>
+    <require from="./k-button.css"></require>
+    <section>
+        <br>
+        <h3>Basic KendoUI Button API sample</h3>
+
+        <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample/src/samples/button">See KendoUI Bridge button folder for more details</a>
+        <br>
+        <br>
+
+        <button k-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>
+        <br>
+        <br>
+        <button k-button click.delegate="disable()">Disable</button>
+        &nbsp;&nbsp
+        <button k-button click.delegate="enable()">Enable</button>
+
+    </section>
+</template>
+```
+
+where just like in the case of the Autocomplete control, the statement 
+
+```html
+<button k-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>
+```
+results with the instantiation of the button:
+
+<p align=center>
+  <img src="http://i.imgur.com/7JVqTSU.png"></img>
+ <br><br>
+ Image 7
+</p>
+
+**Observe** that the button control. just like the autocomplete control are HTML native elements and that KendoUI Aurelia bridge adds several custom attributes (`k-enable`, `k-icon` that are bound to [KendoUI button "matching native properties" ](http://docs.telerik.com/kendo-ui/api/javascript/ui/button). Note also the definition of the event triggers that are activating the code in the view model:
+
+```javascript
+export class ButtonApi {
+    enabled = true;
+
+    disable() {
+      this.enabled = false;
+    }
+
+    enable() {
+      this.enabled = true;
+    }
+
+    test() {
+      alert('You clicked me');
+    }
+}
+
+```
+
+
+#### 3. Chart control
+
+
+
+#### 4. Grid control
 
 
 
