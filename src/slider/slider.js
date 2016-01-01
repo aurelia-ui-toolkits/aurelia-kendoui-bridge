@@ -8,8 +8,8 @@ import 'kendo-ui/js/kendo.slider.min';
 @inject(Element)
 export class Slider extends WidgetBase {
 
-  @bindable options = {};
   @bindable kValue;
+  @bindable options = {};
 
   constructor(element) {
     super('kendoSlider', element);
@@ -19,6 +19,10 @@ export class Slider extends WidgetBase {
   }
 
   attached() {
+    this._initialize();
+  }
+
+  recreate() {
     this._initialize();
   }
 
@@ -43,6 +47,18 @@ export class Slider extends WidgetBase {
   value(newValue) {
     if (this.widget) {
       return this.widget.value(newValue);
+    }
+  }
+
+  destroy() {
+    if (this.widget) {
+      return this.widget.destroy();
+    }
+  }
+
+  resize() {
+    if (this.widget) {
+      return this.widget.resize();
     }
   }
 
