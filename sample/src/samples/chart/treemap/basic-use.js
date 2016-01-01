@@ -19,7 +19,7 @@ export class BasicUse {
   };
 
   typeChanged() {
-    this.treemap.widget.setOptions({
+    this.treemap.setOptions({
       type: this.type
     });
   }

@@ -11,8 +11,8 @@ import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
 @inject(Element)
 export class Chart extends WidgetBase {
 
-  @bindable options = {};
   @bindable kDataSource;
+  @bindable options = {};
 
   constructor(element) {
     super('kendoChart', element);
@@ -77,6 +77,36 @@ export class Chart extends WidgetBase {
   setDataSource(dataSource) {
     if (this.widget) {
       return this.widget.setDataSource(dataSource);
+    }
+  }
+
+  setOptions(value) {
+    if (this.widget) {
+      return this.widget.setOptions(value);
+    }
+  }
+
+  svg() {
+    if (this.widget) {
+      return this.widget.svg();
+    }
+  }
+
+  imageDataURL() {
+    if (this.widget) {
+      return this.widget.imageDataURL();
+    }
+  }
+
+  toggleHighlight(show, options) {
+    if (this.widget) {
+      return this.widget.toggleHighlight(show, options);
+    }
+  }
+
+  destroy() {
+    if (this.widget) {
+      return this.widget.destroy();
     }
   }
 }

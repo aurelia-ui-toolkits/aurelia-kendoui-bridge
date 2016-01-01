@@ -9,8 +9,8 @@ import 'kendo-ui/js/kendo.dataviz.treemap.min';
 @inject(Element)
 export class TreeMap extends WidgetBase {
 
-  @bindable options = {};
   @bindable kDataSource;
+  @bindable options = {};
 
   constructor(element) {
     super('kendoTreeMap', element);
@@ -22,5 +22,41 @@ export class TreeMap extends WidgetBase {
 
   recreate() {
     this._initialize();
+  }
+
+  destroy() {
+    if (this.widget) {
+      return this.widget.destroy();
+    }
+  }
+
+  setDataSource(dataSource) {
+    if (this.widget) {
+      return this.widget.setDataSource(dataSource);
+    }
+  }
+
+  setOptions(value) {
+    if (this.widget) {
+      return this.widget.setOptions(value);
+    }
+  }
+
+  findByUid(text) {
+    if (this.widget) {
+      return this.widget.findByUid(text);
+    }
+  }
+
+  dataItem(tile) {
+    if (this.widget) {
+      return this.widget.dataItem(tile);
+    }
+  }
+
+  resize() {
+    if (this.widget) {
+      return this.widget.resize();
+    }
   }
 }

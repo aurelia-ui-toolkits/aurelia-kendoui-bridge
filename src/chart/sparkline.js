@@ -9,8 +9,8 @@ import 'kendo-ui/js/kendo.dataviz.sparkline.min';
 @inject(Element)
 export class Sparkline extends WidgetBase {
 
-  @bindable options = {};
   @bindable kDataSource;
+  @bindable options = {};
 
   constructor(element) {
     super('kendoSparkline', element);
@@ -22,5 +22,59 @@ export class Sparkline extends WidgetBase {
 
   recreate() {
     this._initialize();
+  }
+
+  destroy() {
+    if (this.widget) {
+      return this.widget.destroy();
+    }
+  }
+
+  exportImage(options) {
+    if (this.widget) {
+      return this.widget.exportImage(options);
+    }
+  }
+
+  exportPDF(options) {
+    if (this.widget) {
+      return this.widget.exportPDF(options);
+    }
+  }
+
+  exportSVG(options) {
+    if (this.widget) {
+      return this.widget.exportSVG(options);
+    }
+  }
+
+  setDataSource(dataSource) {
+    if (this.widget) {
+      return this.widget.setDataSource(dataSource);
+    }
+  }
+
+  setOptions(value) {
+    if (this.widget) {
+      return this.widget.setOptions(value);
+    }
+  }
+
+  svg() {
+    if (this.widget) {
+      return this.widget.svg();
+    }
+  }
+
+  imageDataURL() {
+    if (this.widget) {
+      return this.widget.imageDataURL();
+    }
+  }
+
+  refresh() {
+    if (this.widget) {
+      return this.widget.refresh();
+    }
   }
 }
