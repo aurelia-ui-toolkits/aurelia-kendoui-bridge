@@ -15,6 +15,6 @@ export class API {
   ];
 
   getValue() {
-    alert(this.autocomplete.getValue());
+    alert(this.autocomplete.value());
   }
 }

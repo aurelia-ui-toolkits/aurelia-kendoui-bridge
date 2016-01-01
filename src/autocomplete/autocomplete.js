@@ -10,9 +10,8 @@ import 'kendo-ui/js/kendo.virtuallist.min';
 @generateBindables('kendoAutoComplete')
 export class AutoComplete extends WidgetBase {
 
-  @bindable options = {};
   @bindable kDataSource;
-  @bindable value;
+  @bindable options = {};
 
   constructor(element) {
     super('kendoAutoComplete', element);
@@ -34,42 +33,100 @@ export class AutoComplete extends WidgetBase {
     // without these change and select handlers, when you select an options
     // the value binding is not updated
     this.widget.bind('change', (event) => {
-      this.value = event.sender.value();
+      this.kValue = event.sender.value();
 
       // Update the kendo binding
       fireEvent(this.element, 'input');
     });
 
     this.widget.bind('select', (event) => {
-      this.value = event.sender.value();
+      this.kValue = event.sender.value();
 
       // Update the kendo binding
       fireEvent(this.element, 'input');
     });
   }
 
-  enableChanged(newValue) {
+  kEnableChanged() {
     if (this.widget) {
-      this.widget.enable(newValue);
+      this.widget.enable(this.kEnable);
     }
   }
 
-  setValue(newValue) {
+  enable(newValue) {
     if (this.widget) {
-      this.widget.value(newValue);
-      this.widget.trigger('change');
+      return this.widget.enable(newValue);
     }
   }
 
-  getValue(newValue) {
+  value(newValue) {
     if (this.widget) {
-      return this.widget.value();
+      if (newValue) {
+        this.widget.value(newValue);
+        this.widget.trigger('change');
+      } else {
+        return this.widget.value();
+      }
     }
   }
 
   search(value) {
     if (this.widget) {
       this.widget.search(value);
+    }
+  }
+
+  close(value) {
+    if (this.widget) {
+      return this.widget.close(value);
+    }
+  }
+
+  dataItem(value) {
+    if (this.widget) {
+      return this.widget.dataItem(value);
+    }
+  }
+
+  destroy() {
+    if (this.widget) {
+      return this.widget.destroy();
+    }
+  }
+
+  focus() {
+    if (this.widget) {
+      return this.widget.focus();
+    }
+  }
+
+  readonly(value) {
+    if (this.widget) {
+      return this.widget.readonly(value);
+    }
+  }
+
+  refresh() {
+    if (this.widget) {
+      return this.widget.refresh();
+    }
+  }
+
+  select(value) {
+    if (this.widget) {
+      return this.widget.select(value);
+    }
+  }
+
+  setDataSource(value) {
+    if (this.widget) {
+      return this.widget.setDataSource(value);
+    }
+  }
+
+  suggest(value) {
+    if (this.widget) {
+      return this.widget.suggest(value);
     }
   }
 }
