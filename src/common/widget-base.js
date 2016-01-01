@@ -96,10 +96,10 @@ export class WidgetBase {
     // allows you to modify/add/remove options before the control gets initialized
     this._beforeInitialize(options);
 
-    options._$parent = this.$parent;
-
     // instantiate the Kendo control, pass in the target and the options
     this.widget = ctor.call(target, options).data(this.controlName);
+
+    this.widget._$parent = this.$parent;
 
     this._initialized();
   }

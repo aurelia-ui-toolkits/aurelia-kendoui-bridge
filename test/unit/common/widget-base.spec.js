@@ -91,7 +91,7 @@ describe('WidgetBase', () => {
     sut = new WidgetBase('myControl', target);
     sut.bind({});
 
-    jQuery.fn.myControl = jasmine.createSpy().and.returnValue({data: jasmine.createSpy()});
+    jQuery.fn.myControl = jasmine.createSpy().and.returnValue({data: jasmine.createSpy().and.returnValue({})});
     sut._getOptions = jasmine.createSpy().and.returnValue({});
     sut._beforeInitialize = beforeInitSpy;
     sut._initialized = initializedSpy;
@@ -103,19 +103,19 @@ describe('WidgetBase', () => {
   });
 
 
-  it('sets _$parent on options', () => {
+  it('sets _$parent on widget', () => {
     let target = DOM.createElement('div');
     let $parent = {};
     sut = new WidgetBase('myControl', target);
     sut.bind($parent);
 
-    jQuery.fn.myControl = jasmine.createSpy().and.returnValue({data: jasmine.createSpy()});
+    jQuery.fn.myControl = jasmine.createSpy().and.returnValue({data: jasmine.createSpy().and.returnValue({})});
     let options = {};
     sut._getOptions = jasmine.createSpy().and.returnValue(options);
 
     sut._initialize();
 
-    expect(options._$parent).toBe($parent);
+    expect(sut.widget._$parent).toBe($parent);
   });
 
   it('destroys the Kendo widget on detached', () => {

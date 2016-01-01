@@ -43,7 +43,7 @@ describe('TemplateCompiler', () => {
     };
     let args = () => realArgs;
     let $parent = {};
-    let widget = { options: { _$parent: $parent }};
+    let widget = {  _$parent: $parent };
 
     let compileSpy = spyOn(sut, 'compile');
     let cleanupSpy = spyOn(sut, 'cleanup');

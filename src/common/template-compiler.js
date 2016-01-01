@@ -49,7 +49,7 @@ export class TemplateCompiler {
   handleTemplateEvents(widget, _event: string, _args?) {
     if (_event !== 'compile' && _event !== 'cleanup') return;
 
-    let $parent = widget.options._$parent;
+    let $parent = widget._$parent;
 
     if (!$parent) return;
 
