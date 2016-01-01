@@ -169,4 +169,12 @@ describe('TemplateCompiler', () => {
     expect(detachedSpy).toHaveBeenCalled();
     expect(unbindSpy).toHaveBeenCalled();
   });
+
+  it('only initializes once', () => {
+    sut.initialize();
+    kendo.ui.Widget.prototype.angular = 'test';
+    sut.initialize();
+
+    expect(kendo.ui.Widget.prototype.angular).toBe('test');
+  });
 });
