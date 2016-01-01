@@ -1,18 +1,29 @@
 <template>
     <div id="example">
-      <div class="demo-section k-content">
-        <button type="button" id="textButton" k-button k-on-click.delegate="btnClicked($event.detail)">
-          Text Button
-        </button>
-        <span id="refreshButton" k-button="k-icon: refresh" k-on-click.delegate="btnClicked($event.detail)">Refresh Button</span>
-        <a id="disabledButton" k-button="k-enable.bind: false" k-on-click.delegate="btnClicked($event.detail)">Disabled Button</a>
+      <div id="button-events">
+        <div class="demo-section k-content">
+          <button type="button" id="textButton" k-button k-on-click.delegate="btnClicked($event.detail)">
+            Text Button
+          </button>
+          <span id="refreshButton" k-button="k-icon: refresh" k-on-click.delegate="btnClicked($event.detail)">Refresh Button</span>
+          <a id="disabledButton" k-button="k-enable.bind: false" k-on-click.delegate="btnClicked($event.detail)">Disabled Button</a>
 
-        <p class="demo-hint">The disabled button will not fire click events.</p>
-      </div>
+          <p class="demo-hint">The disabled button will not fire click events.</p>
+        </div>
 
-      <div class="box">
-          <h4>Console log</h4>
-          <logger view-model.ref="logger"></logger>
+        <div class="box">
+            <h4>Console log</h4>
+            <logger view-model.ref="logger"></logger>
+        </div>
       </div>
     </div>
+
+    <style>
+    #button-events .demo-section {
+      line-height: 4em;
+    }
+    #button-events .demo-section .k-button {
+      margin-right: 10px;
+    }
+    </style>
 </template>

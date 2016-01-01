@@ -24,9 +24,15 @@ export class Button extends WidgetBase {
     this._initialize();
   }
 
-  kEnableChanged(newValue) {
+  kEnableChanged() {
     if (this.widget) {
-      this.widget.enable(newValue);
+      this.widget.enable(this.kEnable);
+    }
+  }
+
+  enable(enable) {
+    if (this.widget) {
+      this.widget.enable(enable);
     }
   }
 }
