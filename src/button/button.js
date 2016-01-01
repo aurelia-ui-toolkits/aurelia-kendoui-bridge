@@ -14,7 +14,9 @@ export class Button extends WidgetBase {
     super('kendoButton', element);
   }
 
-  bind() {
+  bind(ctx) {
+    super.bind(ctx);
+
     this._initialize();
   }
 

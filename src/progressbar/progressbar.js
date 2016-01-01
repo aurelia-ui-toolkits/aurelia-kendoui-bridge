@@ -14,7 +14,9 @@ export class ProgressBar extends WidgetBase {
     super('kendoProgressBar', element);
   }
 
-  bind() {
+  bind(ctx) {
+    super.bind(ctx);
+
     this._initialize();
   }
 

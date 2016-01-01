@@ -15,7 +15,9 @@ export class Menu extends WidgetBase {
     super('kendoMenu', element);
   }
 
-  bind() {
+  bind(ctx) {
+    super.bind(ctx);
+
     this._initialize();
   }
 

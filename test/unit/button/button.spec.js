@@ -17,7 +17,7 @@ describe('Button', () => {
     element = DOM.createElement('div');
     container.registerInstance(DOM.Element, element);
     templatingEngine = container.get(TemplatingEngine);
-    widget = templatingEngine.createViewModelForUnitTest(Widget);
+    widget = templatingEngine.createViewModelForUnitTest(Widget, null, {});
   });
 
   it('clears options in constructor', () => {

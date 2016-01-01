@@ -14,7 +14,9 @@ export class ColorPicker extends WidgetBase {
     super('kendoColorPicker', element);
   }
 
-  bind() {
+  bind(ctx) {
+    super.bind(ctx);
+
     this._initialize();
   }
 }

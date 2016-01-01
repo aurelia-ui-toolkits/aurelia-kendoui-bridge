@@ -1,6 +1,7 @@
 import {pruneOptions} from './options';
 import {fireKendoEvent} from './events';
 import {getEventsFromAttributes, _hyphenate, getBindablePropertyName} from './util';
+import {TemplateCompiler} from './template-compiler';
 import {TaskQueue} from 'aurelia-framework';
 import {Container} from 'aurelia-dependency-injection';
 
@@ -37,10 +38,22 @@ export class WidgetBase {
   */
   controlName: string;
 
+  /**
+  * The parent context (used for template compilation)
+  */
+  $parent: any;
+
+  /**
+  * The templating compiler adaptor
+  */
+  templateCompiler: TemplateCompiler;
+
   constructor(controlName: string, element: Element) {
     // access root container
     let container = Container.instance;
     this.taskQueue = container.get(TaskQueue);
+    this.templateCompiler = container.get(TemplateCompiler);
+    this.templateCompiler.initialize();
 
     this.element = element;
 
@@ -54,12 +67,21 @@ export class WidgetBase {
     this.setDefaultBindableValues();
   }
 
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
   /**
   * collects all options objects
   * calls all hooks
   * then initialized the Kendo control as "widget"
   */
   _initialize() {
+    if (!this.$parent) {
+      throw new Error('$parent is not set. Did you call bind(ctx) on the widget base?');
+    }
+
     // get the jQuery selector of the target element
     let target = jQuery(this.target);
 
@@ -73,6 +95,8 @@ export class WidgetBase {
     // before initialization callback
     // allows you to modify/add/remove options before the control gets initialized
     this._beforeInitialize(options);
+
+    options._$parent = this.$parent;
 
     // instantiate the Kendo control, pass in the target and the options
     this.widget = ctor.call(target, options).data(this.controlName);

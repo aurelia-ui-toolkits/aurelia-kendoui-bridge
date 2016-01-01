@@ -14,7 +14,9 @@ export class TabStrip extends WidgetBase {
     super('kendoTabStrip', element);
   }
 
-  bind() {
+  bind(ctx) {
+    super.bind(ctx);
+
     this._initialize();
   }
 

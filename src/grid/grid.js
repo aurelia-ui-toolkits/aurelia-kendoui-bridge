@@ -1,7 +1,6 @@
 import {inject, children, customElement, bindable} from 'aurelia-framework';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import {TemplateCompiler} from '../common/template-compiler';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 import 'kendo-ui/js/kendo.data.signalr.min';
 import 'kendo-ui/js/kendo.filtercell.min';
@@ -9,7 +8,7 @@ import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('k-grid')
 @generateBindables('kendoGrid')
-@inject(Element, TemplateCompiler)
+@inject(Element)
 export class Grid extends WidgetBase {
 
   @children('au-col') columns;
@@ -17,14 +16,8 @@ export class Grid extends WidgetBase {
   @bindable options = {};
   @bindable kDataSource;
 
-  constructor(element, templateCompiler) {
+  constructor(element) {
     super('kendoGrid', element);
-
-    this.templateCompiler = templateCompiler;
-  }
-
-  bind(ctx) {
-    this.templateCompiler.initialize(ctx);
   }
 
   // initialization in bind() is giving issues in some scenarios

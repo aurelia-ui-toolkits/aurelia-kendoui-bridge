@@ -1,13 +1,12 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import {TemplateCompiler} from '../common/template-compiler';
 import {fireEvent} from '../common/events';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
 @customAttribute('k-autocomplete')
-@inject(Element, TemplateCompiler)
+@inject(Element)
 @generateBindables('kendoAutoComplete')
 export class AutoComplete extends WidgetBase {
 
@@ -15,13 +14,12 @@ export class AutoComplete extends WidgetBase {
   @bindable kDataSource;
   @bindable value;
 
-  constructor(element, templateCompiler) {
+  constructor(element) {
     super('kendoAutoComplete', element);
-    this.templateCompiler = templateCompiler;
   }
 
   bind(ctx) {
-    this.templateCompiler.initialize(ctx);
+    super.bind(ctx);
 
     this._initialize();
   }

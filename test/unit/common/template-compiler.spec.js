@@ -18,59 +18,57 @@ describe('TemplateCompiler', () => {
     sut = templatingEngine.createViewModelForUnitTest(TemplateCompiler);
   });
 
-  it('stores the parent context', () => {
-    let context = {};
-    sut.initialize(context);
-
-    expect(sut.$parent).toBe(context);
-  });
-
   it('sets angular property on Kendo prototype', () => {
     let event1 = 'compile';
     let args1 = {};
     let event2 = 'cleanup';
     let args2 = {};
+    let widget1 = {};
+    let widget2 = {};
     let spy = spyOn(sut, 'handleTemplateEvents');
 
-    sut.initialize({});
+    sut.initialize();
 
-    kendo.ui.Widget.prototype.angular(event1, args1);
-    kendo.mobile.ui.Widget.prototype.angular(event2, args2);
+    kendo.ui.Widget.prototype.angular.call(widget1, event1, args1);
+    kendo.mobile.ui.Widget.prototype.angular.call(widget2, event2, args2);
 
-    expect(spy).toHaveBeenCalledWith(event1, args1);
-    expect(spy).toHaveBeenCalledWith(event2, args2);
+    expect(spy).toHaveBeenCalledWith(widget1, event1, args1);
+    expect(spy).toHaveBeenCalledWith(widget2, event2, args2);
   });
 
-  it('handles compile and cleanup angular calls', () => {
+  it('handles compile and cleanup angular calls. pulls off the parent context of the options', () => {
     let realArgs = {
       data: {},
       elements: [{}, {}]
     };
     let args = () => realArgs;
+    let $parent = {};
+    let widget = { options: { _$parent: $parent }};
 
     let compileSpy = spyOn(sut, 'compile');
     let cleanupSpy = spyOn(sut, 'cleanup');
 
-    sut.handleTemplateEvents('compile', args);
-    sut.handleTemplateEvents('cleanup', args);
+    sut.handleTemplateEvents(widget, 'compile', args);
+    sut.handleTemplateEvents(widget, 'cleanup', args);
 
-    expect(compileSpy).toHaveBeenCalledWith(realArgs.elements, realArgs.data);
+    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data);
     expect(cleanupSpy).toHaveBeenCalledWith(realArgs.elements);
   });
 
   it('enhances every element', () => {
     let elements = [];
     let data = [];
+    let $parent = {};
     let spy = spyOn(sut, 'enhanceView');
     for (let i = 0; i < 10; i++) {
       elements.push(DOM.createElement('div'));
       data.push({dataItem: i});
     }
 
-    sut.compile(elements, data);
+    sut.compile($parent, elements, data);
 
     for (let i = 0; i < elements.length; i++) {
-      expect(spy).toHaveBeenCalledWith(elements[i], data[i].dataItem);
+      expect(spy).toHaveBeenCalledWith($parent, elements[i], data[i].dataItem);
     }
   });
 
@@ -78,25 +76,25 @@ describe('TemplateCompiler', () => {
     let spy = spyOn(sut, 'enhanceView');
     let div1 = $('div');
     let div2 = $('div');
+    let $parent = {};
     let selector = jQuery([div1, div2]);
     let data = [{
       dataItem: 1
     }];
 
-    sut.compile([selector], data);
+    sut.compile($parent, [selector], data);
 
     // kendo can pass in a jQuery selector, with a single dataitem
     // but we have to compile each element in the jQuery selector with the single
     // dataitem that kendo passed in
-    expect(spy).toHaveBeenCalledWith(div1, data[0].dataItem);
-    expect(spy).toHaveBeenCalledWith(div2, data[0].dataItem);
+    expect(spy).toHaveBeenCalledWith($parent, div1, data[0].dataItem);
+    expect(spy).toHaveBeenCalledWith($parent, div2, data[0].dataItem);
   });
 
   it('enhances elements and calls lifecycle events', () => {
     let ctx = {};
-    let parentCtx = {};
+    let $parent = {};
     let element = DOM.createElement('div');
-    sut.$parent = parentCtx;
     sut.templatingEngine = {
       enhance: () => {}
     };
@@ -108,18 +106,17 @@ describe('TemplateCompiler', () => {
     let bindSpy = spyOn(fakeView, 'bind');
     let attachedSpy = spyOn(fakeView, 'attached');
 
-    sut.enhanceView(element, ctx);
+    sut.enhanceView($parent, element, ctx);
 
     expect(enhanceSpy).toHaveBeenCalledWith(element);
-    expect(bindSpy).toHaveBeenCalledWith(ctx, parentCtx);
+    expect(bindSpy).toHaveBeenCalledWith(ctx, $parent);
     expect(attachedSpy).toHaveBeenCalled();
   });
 
   it('stores viewInstance on the element', () => {
     let ctx = {};
-    let parentCtx = {};
+    let $parent = {};
     let element = DOM.createElement('div');
-    sut.$parent = parentCtx;
     sut.templatingEngine = {
       enhance: () => {}
     };
@@ -129,7 +126,7 @@ describe('TemplateCompiler', () => {
     };
     spyOn(sut.templatingEngine, 'enhance').and.returnValue(fakeView);
 
-    sut.enhanceView(element, ctx);
+    sut.enhanceView($parent, element, ctx);
 
     expect($(element).data('viewInstance')).toBe(fakeView);
   });
