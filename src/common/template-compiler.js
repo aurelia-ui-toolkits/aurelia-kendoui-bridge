@@ -8,6 +8,10 @@ import {TemplatingEngine} from 'aurelia-templating';
 @inject(TemplatingEngine)
 export class TemplateCompiler {
 
+  /**
+  * We don't need to initialize the TemplateCompiler every time a Kendo controls
+  * is initialized
+  */
   isInitialized = false;
 
   constructor(templatingEngine) {
