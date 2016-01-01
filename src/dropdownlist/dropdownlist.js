@@ -24,10 +24,6 @@ export class DropDownList extends WidgetBase {
     this._initialize();
   }
 
-  recreate() {
-    this._initialize();
-  }
-
   _initialized() {
 	// without these change and select handlers, when you select an options
     // the value binding is not updated

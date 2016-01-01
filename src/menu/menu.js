@@ -21,10 +21,6 @@ export class Menu extends WidgetBase {
     this._initialize();
   }
 
-  recreate() {
-    this._initialize();
-  }
-
   _initialize() {
     let ul = $(this.element).find('ul');
     if (ul.has()) {

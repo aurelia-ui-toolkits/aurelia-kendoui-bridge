@@ -22,10 +22,6 @@ export class Slider extends WidgetBase {
     this._initialize();
   }
 
-  recreate() {
-    this._initialize();
-  }
-
   _beforeInitialize(options) {
     if (!options.value && this.kValue) {
       options.value = this.kValue;

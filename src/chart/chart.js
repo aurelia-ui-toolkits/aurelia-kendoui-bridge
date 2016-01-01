@@ -22,10 +22,6 @@ export class Chart extends WidgetBase {
     this._initialize();
   }
 
-  recreate() {
-    this._initialize();
-  }
-
   exportImage(options) {
     if (this.widget) {
       return this.widget.exportImage(options);

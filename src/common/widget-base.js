@@ -121,6 +121,13 @@ export class WidgetBase {
   }
 
   /**
+  * Re-initializes the control
+  */
+  recreate() {
+    this._initialize();
+  }
+
+  /**
   * combines all options objects and properties into a single options object
   */
   _getOptions(ctor) {

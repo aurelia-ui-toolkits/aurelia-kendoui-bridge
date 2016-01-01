@@ -23,10 +23,6 @@ export class AutoComplete extends WidgetBase {
     this._initialize();
   }
 
-  recreate() {
-    this._initialize();
-  }
-
   _initialize() {
     super._initialize();
 

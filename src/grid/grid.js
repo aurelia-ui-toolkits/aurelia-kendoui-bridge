@@ -26,10 +26,6 @@ export class Grid extends WidgetBase {
     this._initialize();
   }
 
-  recreate() {
-    this._initialize();
-  }
-
   _initialize() {
     // init grid on the <table> tag if initialization is from table
     // else, just use the root element

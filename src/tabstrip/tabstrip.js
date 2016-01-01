@@ -20,10 +20,6 @@ export class TabStrip extends WidgetBase {
     this._initialize();
   }
 
-  recreate() {
-    this._initialize();
-  }
-
   enableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);

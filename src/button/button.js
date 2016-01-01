@@ -20,10 +20,6 @@ export class Button extends WidgetBase {
     this._initialize();
   }
 
-  recreate() {
-    this._initialize();
-  }
-
   kEnableChanged() {
     if (this.widget) {
       this.widget.enable(this.kEnable);

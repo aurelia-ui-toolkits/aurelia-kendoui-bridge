@@ -20,10 +20,6 @@ export class Stock extends WidgetBase {
     this._initialize();
   }
 
-  recreate() {
-    this._initialize();
-  }
-
   destroy() {
     if (this.widget) {
       return this.widget.destroy();
