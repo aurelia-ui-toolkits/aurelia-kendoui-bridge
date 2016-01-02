@@ -1,11 +1,3 @@
-## Introduction
-
-This article presents the **overview** of the ways to use **[Aurelia-KendoUI-Plugin](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** project developed by the team of Aurelia UI Toolkits organization, dedicated to contribute to Aurelia's wide spread adoption.
-
-You can find more details in the section **About KendoUI bridge** which is also a part of this documents set
-
-* * *
-
 ## How to use this application
 
 Most people like explanations that are done in the context of doing what is just being explained - so let's do something very simple as the first step in showing how to use KendoUI bridge to add several interesting pages rendering KendoUI controls to the well known application: **Aurelia Skeleton Navigation**, a starter kit for building a standard navigation-style app with Aurelia. Get it from **[here](https://github.com/aurelia/skeleton-navigation)** and use the Download ZIP method so we do not have to deal with Git issues in this simple context. After downloading this application, extract its content into the folder conveniently named `skeleton-navigation-kendo` and use the instructions to build and run this app as explained in the **[README](https://github.com/aurelia/skeleton-navigation/blob/master/README.md)** file. Specifically, assuming that you already have the NodeJS, jspm and gulp installed, this application should be running after you execute
@@ -402,9 +394,9 @@ export function configure(aurelia) {
 * * *
 * * *
 
-### About KendoUI declarative programming
+### KendoUI declarative programming model.
 
-###### This section explains the details of the code used to render the four controls defined above
+##### This section explains the details of the code used to render the four controls defined above
 
 Declarative programming is a programming paradigm consisting of description **what the program needs to accomplish** (in terms of the problem domain) instead of describing **how to accomplish that** as a sequence of programming language primitive and API (**[wikipedia](https://en.wikipedia.org/wiki/Declarative_programming)**).
 
@@ -498,7 +490,7 @@ The view is defined as:
 </template>
 ```
 
-where just like in the case of the Autocomplete control, the statement 
+where just like in the case of the Autocomplete control, the statement
 
 ```html
 <button k-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>
@@ -531,35 +523,195 @@ export class ButtonApi {
 }
 
 ```
-
+* * *
 
 #### 3. Chart control
 
+Unlike the previous two controls, Chart is represented (by Aurelia KendoUI bridge) as an Aurelia custom element (component) - since chart is non a native HTML element. The specific sample we chose to discuss here is sufficiently  complex, allowing us to glance over the its use in an Aurelia application as well as the relationship between this component, Aurelia KendoUI bridge and the KendoUI native plugin.
 
+
+##### The view is defined as:
+```html
+<template>
+    <section>
+        <br>
+        <h3>Basic KendoUI Button API sample</h3>
+
+        <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample/src/samples/chart">See KendoUI Bridge chart folder for more details</a>
+        <br>
+        <br>
+
+        <k-chart    k-title.bind="{text: 'Gross Domestic product growth \n /GDP annual %/'}"
+                    k-legend.bind="{position: 'bottom'}"
+                    k-series-defaults.bind="seriesDefaults"
+                    k-series.bind="series"
+                    k-value-axis.bind="valueAxis"
+                    k-category-axis.bind="categoryAxis"
+                    k-tooltip.bind="tooltip">
+        </k-chart>
+    </section>
+</template>
+```
+
+Here is this view rendered by the **[application associated with this tutorial](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)**.
+
+<p align=center>
+  <img src="http://i.imgur.com/INr6eDS.png"></img>
+ <br><br>
+Image 8
+</p>
+
+This code is a good demonstration of Aurelia's support for KendoUI's declarative programming - all attributes of the chart are defined here and bound to view model shown next. Note that we chose to define the chart `title` in the view and the values of all other attributes in the view model. 
+
+
+##### Here is the related view model
+
+```javascript
+export class BasicUse {
+
+  seriesDefaults = {
+    type: 'line',
+    line: {
+      line: {
+        style: 'smooth'
+      }
+    }
+  };
+
+  series = [{
+    name: 'India',
+    data: [3.907, 7.943, 7.848, 9.284, 9.263, 9.801, 3.890, 8.238, 9.552, 6.855]
+  }, {
+    name: 'World',
+    data: [1.988, 2.733, 3.994, 3.464, 4.001, 3.939, 1.333, -2.245, 4.339, 2.727]
+  }, {
+    name: 'Haiti',
+    data: [-0.253, 0.362, -3.519, 1.799, 2.252, 3.343, 0.843, 2.877, -5.416, 5.590]
+  }];
+
+  valueAxis = {
+    labels: {
+      format: '{0}%'
+    },
+    line: {
+      visible: false
+    },
+    axisCrossingValue: -10
+  };
+
+  categoryAxis = {
+    categories: [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011],
+    majorGridLines: {
+      visible: false
+    },
+    labels: {
+      rotation: 'auto'
+    }
+  };
+
+  tooltip = {
+    visible: true,
+    format: '{0}%',
+    template: '${series.name} ${value}'
+  }
+}
+
+```
+
+* * *
 
 #### 4. Grid control
 
+##### The view is defined as:
+
+```html
+<template>
+    <require from="./basic-grid.css"></require>
+        <section>
+            <br>
+            <h3>Basic KendoUI Grid sample</h3>
+
+            <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample/src/samples/grid">See KendoUI Bridge grid folder for more details</a>
+            <br>
+            <br>
+            <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">
+                <au-col title="Contact Name" field="ContactName">
+                    <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+                    <div class='customer-name'>${ContactName}</div>
+                </au-col>
+                <au-col title="Contact Name" field="ContactName"></au-col>
+                <au-col title="Contact Title" field="ContactTitle"></au-col>
+                <au-col title="Company Name" field="CompanyName"></au-col>
+                <au-col field="Country"></au-col>
+            </k-grid>
+        </section>
+</template>
+```
+
+Here is this view rendered by the **[application associated with this tutorial](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)**.
+
+
+<p align=center>
+  <img src="http://i.imgur.com/aBj3tod.png"></img>
+ <br><br>
+Image 9
+</p>
+
+**Note** that this sample requires some additional css in order to render the images of the contact people framed in circles.
 
 
 
+##### The view model
 
+In this example the view model defines the grid data to be fetched from Telerik's server where they are stored in odata format:
 
+ `//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers`
 
+and that the grid should show 10 rows per page.
 
+```javascript
+export class BasicUse {
 
+  pageable = {
+    refresh: true,
+    pageSizes: true,
+    buttonCount: 10
+  };
 
+  constructor() {
+    this.datasource = {
+      type: 'odata',
+      transport: {
+        read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers'
+      },
+      pageSize: 10
+    };
+  }
+}
+```
 
+**CSS**
+```css
+.customer-photo {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-size: 32px 35px;
+    background-position: center center;
+    vertical-align: middle;
+    line-height: 32px;
+    box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+    margin-left: 5px;
+}
 
-
-
-
-
-
-
-
-
-
-
+.customer-name {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 32px;
+    padding-left: 3px;
+}
+```
 
 
 
@@ -568,6 +720,6 @@ export class ButtonApi {
 <p align=center>
   <img src=""></img>
  <br><br>
- Image 1
+
 </p>
 

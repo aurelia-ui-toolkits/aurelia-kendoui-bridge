@@ -2,6 +2,10 @@
     "About this application":
     [
       {
+        "name": "Introduction",
+        "path": "help/docs/about-this-app/introduction.md"
+      },
+      {
         "name": "Internal structure",
         "path": "help/docs/about-this-app/internal-structure.md"
       }, {
@@ -13,7 +17,7 @@
     "About KendoUI bridge":
     [
       {
-         "name": "How to extend this application",
+        "name": "KendoUI plugin development",
         "path": "help/docs/about-kendoui-bridge/how-to-extend-this-app.md"
       }
     ],
