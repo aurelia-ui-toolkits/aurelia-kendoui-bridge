@@ -1,5 +1,7 @@
 import {bindable, noView, inject, customElement} from 'aurelia-framework';
-import showdown from 'showdown';
+import 'showdown';
+import 'google/code-prettify/loader/run_prettify';
+import 'showdown-prettify';
 import {Loader}  from 'aurelia-loader';
 
 @customElement('au-markdown')
@@ -12,7 +14,7 @@ export class AuMarkdown {
   constructor(element, loader) {
     this.element = element;
     this.loader = loader;
-    this.converter = new showdown.Converter();
+    this.converter = new showdown.Converter({extensions: ['prettify']});
   }
 
   urlChanged() {
@@ -20,6 +22,7 @@ export class AuMarkdown {
       this.loader.loadText(this.url)
       .then(text => {
         this.element.innerHTML = this.converter.makeHtml(text);
+        PR.prettyPrint();
       });
     } else {
       this.element.innerHTML = '';
