@@ -1,7 +1,9 @@
 import registry from './registry.json!';
+import jQuery from 'jquery';
 import 'kendo-ui/js/kendo.panelbar.min';
 
 export class Doc {
+
   constructor() {
     this.registry = registry;
 
@@ -16,5 +18,9 @@ export class Doc {
 
   attached() {
     $(this.panelbar).kendoPanelBar();
+  }
+
+  scrollToTop() {
+    jQuery(this.markdownCol).animate({ scrollTop: 0 });
   }
 }

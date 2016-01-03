@@ -23,6 +23,11 @@ export class AuMarkdown {
       .then(text => {
         this.element.innerHTML = this.converter.makeHtml(text);
         PR.prettyPrint();
+      }).then(() => {
+        let event = new CustomEvent('loaded', {
+          bubbles: true
+        });
+        this.element.dispatchEvent(event);
       });
     } else {
       this.element.innerHTML = '';

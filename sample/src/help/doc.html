@@ -11,8 +11,8 @@
         </li>
       </ul>
     </div>
-    <div class="col-md-9">
-      <au-markdown url.bind="activeDoc">
+    <div class="col-md-9" ref="markdownCol">
+      <au-markdown url.bind="activeDoc" loaded.delegate="scrollToTop()">
       </au-markdown>
     </div>
   </div>
