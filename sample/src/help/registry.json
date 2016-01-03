@@ -1,5 +1,61 @@
 {
-    "About this application":
+    "About Aurelia":
+    [
+      {
+        "name": "Forward-thinking",
+        "path": "help/docs/about-aurelia/forward-thinking.md"
+      },
+      {
+        "name": "Modern Architecture",
+        "path": "help/docs/about-aurelia/modern-architecture.md"
+      },
+      {
+        "name": "Two-Way Databinding",
+        "path": "help/docs/about-aurelia/two-way-data-binding.md"
+      },
+      {
+        "name": "Extensible HTML",
+        "path": "help/docs/about-aurelia/extensible-html.md"
+      },
+      {
+        "name": "Routing & UI Composition",
+        "path": "help/docs/about-aurelia/routing-and-ui-composition.md"
+      },
+      {
+        "name": "MV* with Conventions",
+        "path": "help/docs/about-aurelia/mv-all-with-conventions.md"
+      },
+      {
+        "name": "Broad Language Support",
+        "path": "help/docs/about-aurelia/broad-language-support.md"
+      },
+      {
+        "name": "Testable",
+        "path": "help/docs/about-aurelia/testable.md"
+      }
+    ],
+
+    "About KendoUI":
+    [
+      {
+        "name": "Integrated with Aurelia",
+        "path": "help/docs/about-kendoui/integrated-with-aurelia.md"
+      },
+      {
+        "name": "Why Choose Kendo UI",
+        "path": "help/docs/about-kendoui/why-choose-kendoui.md"
+      },
+      {
+        "name": "It’s Easy to Get Started",
+        "path": "help/docs/about-kendoui/easy-to-get-started.md"
+      },
+      {
+        "name": "",
+        "path": ""
+      }
+    ],
+
+    "Using KendoUI API":
     [
       {
         "name": "Introduction",
@@ -14,60 +70,11 @@
       }
     ],
 
-    "About KendoUI bridge":
+    "Developing KendoUI API":
     [
       {
         "name": "KendoUI plugin development",
         "path": "help/docs/about-kendoui-bridge/how-to-extend-this-app.md"
-      }
-    ],
-
-    "About Aurelia":
-    [
-      {
-        "name": "Forward-thinking",
-        "path": "help/docs/about-aurelia/forward-thinking.md"
-      }, {
-        "name": "Modern Architecture",
-        "path": "help/docs/about-aurelia/modern-architecture.md"
-      }, {
-        "name": "Two-Way Databinding",
-        "path": "help/docs/about-aurelia/two-way-data-binding.md"
-      }, {
-        "name": "Extensible HTML",
-        "path": "help/docs/about-aurelia/extensible-html.md"
-      }, {
-        "name": "Routing & UI Composition",
-        "path": "help/docs/about-aurelia/routing-and-ui-composition.md"
-      }, {
-        "name": "MV* with Conventions",
-        "path": "help/docs/about-aurelia/mv-all-with-conventions.md"
-      }, {
-        "name": "Broad Language Support",
-        "path": "help/docs/about-aurelia/broad-language-support.md"
-      }, {
-        "name": "Testable",
-        "path": "help/docs/about-aurelia/testable.md"
-      }, {
-        "name": "",
-        "path": ""
-      }
-    ],
-
-    "About KendoUI":
-    [
-     {
-        "name": "Integrated with Aurelia",
-        "path": "help/docs/about-kendoui/integrated-with-aurelia.md"
-      }, {
-        "name": "Why Choose Kendo UI",
-        "path": "help/docs/about-kendoui/why-choose-kendoui.md"
-      }, {
-        "name": "It’s Easy to Get Started",
-        "path": "help/docs/about-kendoui/easy-to-get-started.md"
-      }, {
-        "name": "",
-        "path": ""
       }
     ]
 }

@@ -618,7 +618,9 @@ results with the instantiation of the button:
 </p>
 
 <p>
-**Observe** that the button control. just like the autocomplete control are HTML native elements and that KendoUI Aurelia bridge adds several custom attributes (`k-enable`, `k-icon` that are bound to [KendoUI button "matching native properties" ](http://docs.telerik.com/kendo-ui/api/javascript/ui/button). Note also the definition of the event triggers that are activating the code in the view model:
+
+**Observe** that the button control, just like the autocomplete control are HTML native elements and that KendoUI Aurelia bridge adds several custom attributes (`k-enable`, `k-icon` that are bound to [KendoUI button](http://docs.telerik.com/kendo-ui/api/javascript/ui/button)  "matching native properties" . Note also the definition of the event triggers that are activating the code in the view model:
+
 </p>
 
 <br>
@@ -681,11 +683,11 @@ Unlike the previous two controls, Chart is represented (by Aurelia KendoUI bridg
 <br>
 
 <p>
-Here is this view rendered by the **[application associated with this tutorial](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)**.
+Here is this view rendered by the [application associated with this tutorial](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo).
 </p>
 
 <p align=center>
-  <img src="http://i.imgur.com/INr6eDS.png"></img>
+  <img src="http://i.imgur.com/5Q2qFKS.png"></img>
  <br><br>
 Image 8
 </p>
