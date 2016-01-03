@@ -53,8 +53,8 @@ export class Doc {
     this.params = Object.assign({}, e.instruction.params, e.instruction.queryParams);
 
     // retrieve categoryname and filename from route params
-    let file = this.decode(this.params.file);
-    let cat = this.decode(this.params.category);
+    let file = this.params.file;
+    let cat = this.params.category;
 
     // if a file and category name is in the route, switch to that page
     if (file && cat) {
@@ -70,9 +70,9 @@ export class Doc {
   }
 
   getFileByName(fileName, categoryName) {
-    let cat = this.categories.find(i => i.name.toLowerCase() === categoryName.toLowerCase());
+    let cat = this.categories.find(i => this.encode(i.name) === categoryName.toLowerCase());
     if (cat) {
-      let file = cat.files.find(i => i.name.toLowerCase() === fileName.toLowerCase());
+      let file = cat.files.find(i => this.encode(i.name) === fileName.toLowerCase());
       if (file) {
         return file;
       }
@@ -87,13 +87,13 @@ export class Doc {
 
     $(categoryLis).each((index, element) => {
       let categoryText = $(element).children('span').text().trim().toLowerCase();
-      if (categoryText === categoryName) {
+      if (this.encode(categoryText) === categoryName) {
         this.panelBar.expand($(element));
 
         let fileLis = $(element).find('ul').children('li');
         $(fileLis).each((i, elem) => {
           let fileText = $(elem).children('span').text().trim().toLowerCase();
-          if (fileText === fileName) {
+          if (this.encode(fileText) === fileName) {
             this.panelBar.select($(elem));
           }
         });
@@ -118,11 +118,7 @@ export class Doc {
   }
 
   encode(string) {
-    return string.replace(/\s/g, '_').toLowerCase();
-  }
-
-  decode(string) {
-    return string.replace(/_/g, ' ').toLowerCase();
+    return string.replace(/'|!|@|#|$|%|\^|&|\*|\(|\)|\+|:|"|\?|>|</g, '').replace(/\s/g, '_').toLowerCase();
   }
 
   detached() {
