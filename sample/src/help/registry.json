@@ -26,28 +26,28 @@
     [
       {
         "name": "Forward-thinking",
-        "path": "help/docs/intro-to-aurelia/forward-thinking.md"
+        "path": "help/docs/about-aurelia/forward-thinking.md"
       }, {
         "name": "Modern Architecture",
-        "path": "help/docs/intro-to-aurelia/modern-architecture.md"
+        "path": "help/docs/about-aurelia/modern-architecture.md"
       }, {
         "name": "Two-Way Databinding",
-        "path": "help/docs/intro-to-aurelia/two-way-data-binding.md"
+        "path": "help/docs/about-aurelia/two-way-data-binding.md"
       }, {
         "name": "Extensible HTML",
-        "path": "help/docs/intro-to-aurelia/extensible-html.md"
+        "path": "help/docs/about-aurelia/extensible-html.md"
       }, {
         "name": "Routing & UI Composition",
-        "path": "help/docs/intro-to-aurelia/routing-and-ui-composition.md"
+        "path": "help/docs/about-aurelia/routing-and-ui-composition.md"
       }, {
         "name": "MV* with Conventions",
-        "path": "help/docs/intro-to-aurelia/mv-all-with-conventions.md"
+        "path": "help/docs/about-aurelia/mv-all-with-conventions.md"
       }, {
         "name": "Broad Language Support",
-        "path": "help/docs/intro-to-aurelia/broad-language-support.md"
+        "path": "help/docs/about-aurelia/broad-language-support.md"
       }, {
         "name": "Testable",
-        "path": "help/docs/intro-to-aurelia/testable.md"
+        "path": "help/docs/about-aurelia/testable.md"
       }, {
         "name": "",
         "path": ""
@@ -58,13 +58,13 @@
     [
      {
         "name": "Integrated with Aurelia",
-        "path": "help/docs/intro-to-kendoui/integrated-with-aurelia.md"
+        "path": "help/docs/about-kendoui/integrated-with-aurelia.md"
       }, {
         "name": "Why Choose Kendo UI",
-        "path": "help/docs/intro-to-kendoui/why-choose-kendoui.md"
+        "path": "help/docs/about-kendoui/why-choose-kendoui.md"
       }, {
         "name": "It’s Easy to Get Started",
-        "path": "help/docs/intro-to-kendoui/easy-to-get-started.md"
+        "path": "help/docs/about-kendoui/easy-to-get-started.md"
       }, {
         "name": "",
         "path": ""
