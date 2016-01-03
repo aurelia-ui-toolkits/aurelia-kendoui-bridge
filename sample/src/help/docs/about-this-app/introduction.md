@@ -1,3 +1,5 @@
+[How to use, plan of actions](#/help/docs/about_this_application/how_to_use_this_application?anchor=planofactions)
+
 ## Introduction
 
 The help category named **"About this application"** refers to the **[standalone instance](http://aurelia-ui-toolkits.github.io/demo-kendo)** of the **[embedded sample application](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample)** in the **[Aurelia-KendoUI bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** project.
