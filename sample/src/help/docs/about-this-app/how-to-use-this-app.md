@@ -1,14 +1,20 @@
+<br>
+
 ## How to use this application
 
 Most people like explanations that are done in the context of doing what is just being explained - so let's do something very simple as the first step in showing how to use KendoUI bridge to add several interesting pages rendering KendoUI controls to the well known application: **Aurelia Skeleton Navigation**, a starter kit for building a standard navigation-style app with Aurelia. Get it from **[here](https://github.com/aurelia/skeleton-navigation)** and use the Download ZIP method so we do not have to deal with Git issues in this simple context. After downloading this application, extract its content into the folder conveniently named `skeleton-navigation-kendo` and use the instructions to build and run this app as explained in the **[README](https://github.com/aurelia/skeleton-navigation/blob/master/README.md)** file. Specifically, assuming that you already have the NodeJS, jspm and gulp installed, this application should be running after you execute
+
+<br>
 
 ```
 npm install
 jspm install
 gulp watch
 ```
-
+<br>
 and subsequently browse to http://localhost:9000, resulting with the following:
+<br>
+<br>
 
 <p align=center>
   <img src="http://i.imgur.com/kZ9dCzC.png"></img>
@@ -31,6 +37,8 @@ Now, we want to add several (four) additional pages to this application that wou
 **Note**: if you do not yet own KendoUI PRO license, you can download the evaluation copy which will give you access to all KendoUI controls.
 
 At this point, while following the series of steps described next, it is assumed that you have the KendoUI package already installed on your computer as described in the **vendors** type of installation:
+<br>
+<br>
 
 <p align=center>
   <img src="http://i.imgur.com/eUiqr4e.png"></img>
@@ -38,8 +46,11 @@ At this point, while following the series of steps described next, it is assumed
  Image 3
 </p>
 
-and that you executed all 8 steps (partially) shown on image 3 above. While all of them are equally important, at this point verify that your  `main.js` class looks like this:
+<br>
 
+and that you executed all 8 steps (partially) shown on image 3 above. While all of them are equally important, at this point verify that your  `main.js` class looks like this:
+<br>
+<br>
 ```javascript
 import 'bootstrap';
 
@@ -53,9 +64,17 @@ export function configure(aurelia) {
 }
 
 ```
+
+<br>
+<br>
+
 as this will ensure that the application we are about to augment from its original form, loads the Aurelia KendoUI bridge (named plugin in the above code).
 
+<br>
+
 The next screenshot depicts the final UI for the application we are about to create:
+
+<br>
 
 <p align=center>
   <img src="http://i.imgur.com/q4eQcXP.png"></img>
@@ -63,13 +82,20 @@ The next screenshot depicts the final UI for the application we are about to cre
  Image 4
 </p>
 
+* * *
+
 ### Building the app
 
 The following steps describe the process of building our applicatom starting from the Aurelia Navigation Skeleton shown on **Image 1**
 
+<br>
+<br>
+
 #### Step 1 - Modify the application structure
 
 In order to clearly separate the added code from the original Aurelia Navigation Skeleton, the original project structure is changed to this:
+
+<br>
 
 <p align=center>
   <img src="http://i.imgur.com/CRnYzV0.png"></img>
@@ -77,11 +103,19 @@ In order to clearly separate the added code from the original Aurelia Navigation
  Image 5
 </p>
 
+<br>
+
 The following steps are describing the code for the added KendoUI controls defined as Aurelia components, consisting of two files each (the view - HTML file and the view model - Javascript file)
+
+<br>
+<br>
 
 #### Step 2 Add the KendoUI autocomplete control
 
+<br>
+
 ##### File k-autocomplete.html
+
 
 ```html
 <template>
@@ -102,6 +136,8 @@ The following steps are describing the code for the added KendoUI controls defin
   </section>
 </template>
 ```
+<br>
+<br>
 
 ##### File k-autocomplete.js
 
@@ -124,8 +160,13 @@ export class BasicUse {
 }
 ```
 
+<br>
+<br>
+
 
 #### Step 3 Add the KendoUI button control
+
+<br>
 
 ##### File k-button.html
 
@@ -151,6 +192,8 @@ export class BasicUse {
 </template>
 ```
 
+<br>
+
 ##### File k-button.js
 
 ```javascript
@@ -171,6 +214,9 @@ export class ButtonApi {
 }
 ```
 
+<br>
+
+
 ##### File k-button.css
 
 ```
@@ -183,8 +229,12 @@ export class ButtonApi {
 }
 ```
 
+<br>
+<br>
 
 #### Step 4 Add the KendoUI chart control
+
+<br>
 
 ##### File k-chart.html
 
@@ -192,7 +242,7 @@ export class ButtonApi {
 <template>
     <section>
         <br>
-        <h3>Basic KendoUI Button API sample</h3>
+        <h3>Basic KendoUI Chart sample</h3>
 
         <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample/src/samples/chart">See KendoUI Bridge chart folder for more details</a>
         <br>
@@ -209,6 +259,8 @@ export class ButtonApi {
     </section>
 </template>
 ```
+<br>
+
 
 ##### File k-chart.js
 
@@ -262,8 +314,12 @@ export class BasicUse {
   }
 }
 ```
+<br>
+<br>
 
 #### Step 5 Add the KendoUI grid control
+
+<br>
 
 ##### File k-grid.html
 
@@ -290,6 +346,7 @@ export class BasicUse {
         </section>
 </template>
 ```
+<br>
 
 ##### File k-grid.js
 
@@ -314,6 +371,7 @@ export class BasicUse {
 }
 
 ```
+<br>
 
 ##### File basic-grid.css
 
@@ -338,8 +396,12 @@ export class BasicUse {
     padding-left: 3px;
 }
 ```
+<br>
+<br>
 
 #### Step 6 Modify the app.html file
+
+<br>
 
 ```html
 <template>
@@ -356,7 +418,13 @@ export class BasicUse {
 </template>
 
 ```
+
+<br>
+<br>
+
 #### Step 7 Modify the app.js file
+
+<br>
 
 ```javascript
 export class App {
@@ -377,7 +445,13 @@ export class App {
 }
 
 ```
+
+<br>
+<br>
+
 #### Step 8 Modify the main.js file
+
+<br>
 
 ```
 import 'bootstrap';
@@ -391,6 +465,9 @@ export function configure(aurelia) {
   aurelia.start().then(a => a.setRoot());
 }
 ```
+<br>
+<br>
+
 * * *
 * * *
 
@@ -398,13 +475,18 @@ export function configure(aurelia) {
 
 ##### This section explains the details of the code used to render the four controls defined above
 
+<br>
+
 Declarative programming is a programming paradigm consisting of description **what the program needs to accomplish** (in terms of the problem domain) instead of describing **how to accomplish that** as a sequence of programming language primitive and API (**[wikipedia](https://en.wikipedia.org/wiki/Declarative_programming)**).
 
 Aurelia with it's very capable `binding`, `interpolation`, `repeater` ... features provides the ideal environment for the implementation of a "hybrid declarative model" for creation of KendoUI controls. To demonstrate this claim, let's look at the details of the code needed to create the four KendoUI controls (Image 4 above)
 
+<br>
+<br>
+
 #### 1. Autocomplete control
 
-**Important note**: Autocomplete control is the member of the class of controls with the common property of being "derived" from HTML native <input> type (see **[this](http://www.w3schools.com/html/html_form_input_types.asp)** for more information). All such controls are implemented using Aurelia custom atttributes - see **[this](http://www.sitepoint.com/extending-html-aurelia-io-way/)** for an example of using custom atttributes.
+**Important note**: Autocomplete control is the member of the class of controls with the common property of being "derived" from HTML native `input` type (see **[this](http://www.w3schools.com/html/html_form_input_types.asp)** for more information). All such controls are implemented using Aurelia custom atttributes - see **[this](http://www.sitepoint.com/extending-html-aurelia-io-way/)** for an example of using custom atttributes.
 
 The view is defined as
 
@@ -427,18 +509,31 @@ The view is defined as
   </section>
 </template>
 ```
+<br>
+
 where the single statement
+
+<br>
 
 ```html
 <input k-autocomplete="k-data-source.bind: items;" style="width: 300px;">
 ```
+
+<br>
+
 is responsible for the instantiation of the autocomplete control (highlighted in the blue rectangle on the Image 6 below):
+
+<br>
 
 <p align=center>
   <img src="http://i.imgur.com/dG1awSb.png"></img>
  <br><br>
  Image 6
 </p>
+
+<br>
+<br>
+
 
 **Observe** that the custom atttribute defined on this single statement (`k-datasource`) coupled with the use of Aurelia `.bind` feature maps the value of the `k-datasource` attribute with the array `items` defined in the matching view model (shown below)
 
@@ -460,13 +555,23 @@ export class BasicUse {
   ]
 }
 ```
+
+<br>
+<br>
+
 Finally we were also able to define the **width** of the `k-autocomplete` control using the HTML standard attribute `style` by defining `style="width: 300px;"`
 
 * * *
+<br>
+<br>
 
 #### 2. Button control
 
+<br>
+
 The view is defined as:
+
+<br>
 
 ```html
 <template>
@@ -490,11 +595,20 @@ The view is defined as:
 </template>
 ```
 
+<br>
+
+
 where just like in the case of the Autocomplete control, the statement
+
+<br>
 
 ```html
 <button k-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>
 ```
+
+<br>
+
+
 results with the instantiation of the button:
 
 <p align=center>
@@ -503,7 +617,11 @@ results with the instantiation of the button:
  Image 7
 </p>
 
+<p>
 **Observe** that the button control. just like the autocomplete control are HTML native elements and that KendoUI Aurelia bridge adds several custom attributes (`k-enable`, `k-icon` that are bound to [KendoUI button "matching native properties" ](http://docs.telerik.com/kendo-ui/api/javascript/ui/button). Note also the definition of the event triggers that are activating the code in the view model:
+</p>
+
+<br>
 
 ```javascript
 export class ButtonApi {
@@ -523,19 +641,26 @@ export class ButtonApi {
 }
 
 ```
+
+<br>
+<br>
+
 * * *
 
 #### 3. Chart control
 
+<p>
 Unlike the previous two controls, Chart is represented (by Aurelia KendoUI bridge) as an Aurelia custom element (component) - since chart is non a native HTML element. The specific sample we chose to discuss here is sufficiently  complex, allowing us to glance over the its use in an Aurelia application as well as the relationship between this component, Aurelia KendoUI bridge and the KendoUI native plugin.
+</p>
 
 
 ##### The view is defined as:
+<br>
 ```html
 <template>
     <section>
         <br>
-        <h3>Basic KendoUI Button API sample</h3>
+        <h3>Basic KendoUI Chart sample</h3>
 
         <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample/src/samples/chart">See KendoUI Bridge chart folder for more details</a>
         <br>
@@ -552,8 +677,12 @@ Unlike the previous two controls, Chart is represented (by Aurelia KendoUI bridg
     </section>
 </template>
 ```
+<br>
+<br>
 
+<p>
 Here is this view rendered by the **[application associated with this tutorial](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)**.
+</p>
 
 <p align=center>
   <img src="http://i.imgur.com/INr6eDS.png"></img>
@@ -561,10 +690,14 @@ Here is this view rendered by the **[application associated with this tutorial](
 Image 8
 </p>
 
-This code is a good demonstration of Aurelia's support for KendoUI's declarative programming - all attributes of the chart are defined here and bound to view model shown next. Note that we chose to define the chart `title` in the view and the values of all other attributes in the view model. 
+<p>
+This code is a good demonstration of Aurelia's support for KendoUI's declarative programming - all attributes of the chart are defined here and bound to view model shown next. Note that we chose to define the chart `title` in the view and the values of all other attributes in the view model.
+</p>
 
 
 ##### Here is the related view model
+
+<br>
 
 ```javascript
 export class BasicUse {
@@ -617,12 +750,19 @@ export class BasicUse {
 }
 
 ```
+<br>
+<br>
 
 * * *
 
 #### 4. Grid control
 
+<br>
+<br>
+
 ##### The view is defined as:
+
+<br>
 
 ```html
 <template>
@@ -648,7 +788,9 @@ export class BasicUse {
 </template>
 ```
 
+<p>
 Here is this view rendered by the **[application associated with this tutorial](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)**.
+</p>
 
 
 <p align=center>
@@ -657,17 +799,24 @@ Here is this view rendered by the **[application associated with this tutorial](
 Image 9
 </p>
 
+<br>
+<br>
+
 **Note** that this sample requires some additional css in order to render the images of the contact people framed in circles.
 
 
 
 ##### The view model
 
+<p>
 In this example the view model defines the grid data to be fetched from Telerik's server where they are stored in odata format:
+</p>
 
  `//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers`
 
+<p>
 and that the grid should show 10 rows per page.
+</p>
 
 ```javascript
 export class BasicUse {
@@ -689,6 +838,7 @@ export class BasicUse {
   }
 }
 ```
+<br>
 
 **CSS**
 ```css
