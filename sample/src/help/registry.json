@@ -61,16 +61,64 @@
     "App developers tutorials":
     [
       {
-        "name": "Introduction",
+        "name": "1. Introduction",
         "path": "help/docs/app-developers-tutorials/introduction.md"
+      },
+      {
+        "name": "2. Setup",
+        "path": "help/docs/app-developers-tutorials/setup.md"
+      },
+      {
+        "name": "3. Autocomplete component",
+        "path": "help/docs/app-developers-tutorials/autocomplete.md"
+      },
+      {
+        "name": "4. Button component",
+        "path": "help/docs/app-developers-tutorials/button.md"
+      },
+      {
+        "name": "5. Chart component",
+        "path": "help/docs/app-developers-tutorials/chart.md"
+      },
+      {
+        "name": "6. Grid component",
+        "path": "help/docs/app-developers-tutorials/grid.md"
+      },
+      {
+        "name": "7. Next actions",
+        "path": "help/docs/app-developers-tutorials/next-actions.md"
       },
     ],
 
     "Bridge developers tutorials":
     [
       {
-        "name": "KendoUI plugin development",
+        "name": "1. Introduction",
         "path": "help/docs/bridge-developers-tutorials/introduction.md"
+      },
+      {
+        "name": "2. Setup",
+        "path": "help/docs/bridge-developers-tutorials/setup.md"
+      },
+      {
+        "name": "3. Autocomplete component",
+        "path": "help/docs/bridge-developers-tutorials/autocomplete.md"
+      },
+      {
+        "name": "4. Button component",
+        "path": "help/docs/bridge-developers-tutorials/button.md"
+      },
+      {
+        "name": "5. Chart component",
+        "path": "help/docs/bridge-developers-tutorials/chart.md"
+      },
+      {
+        "name": "6. Grid component",
+        "path": "help/docs/bridge-developers-tutorials/grid.md"
+      },
+      {
+        "name": "7. Next actions",
+        "path": "help/docs/bridge-developers-tutorials/next-actions.md"
       }
     ]
 }
