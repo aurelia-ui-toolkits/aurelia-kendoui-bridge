@@ -1,16 +1,10 @@
-### Introduction
+<br>
 
-This article presents the overview of the internal organization of the **[Aurelia-KendoUI-Bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** project developed by the team of Aurelia UI Toolkits organization, dedicated to ensure Aurelia's wide spread adoption it deserves.
+## 3. Application's internal structure
 
-Understanding Aurelia-KendoUI-Bridge is the very first prerequisite to your learning path on **how to use** this bridge in the process of building the state of the art user interface. More about using the bridge can be found in the **About KendoUI bridge** section of this collection of help documents.
+<a name="anch1"></a>This article presents the overview of the internal organization of the **[Aurelia-KendoUI-Bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** project developed by the team of Aurelia UI Toolkits organization, dedicated to help  Aurelia's wide spread adoption .
 
-If your intent is to learn about **Extending KendoUI bridge** - by joining the Aurelia UI Toolkits organization to implement all currently missing controls, check first the **[project status](http://aurelia-ui-toolkits.github.io/demo-kendo/#/project-status)** page where finished controls are tagged blue, and controls under development orange and then proceed by reading the articles in the **About KendoUI bridge** section.
-
-* * *
-
-### Application's internal structure
-
-<a name="anch1"></a>The internal organization of this plugin is slightly different (we believe that it is more convenient) than Aurelia's **[standard plugin](https://github.com/aurelia/skeleton-plugin)**. Image 1 below, shows the overall structure.
+The internal organization of this plugin is slightly different (we believe that it is more convenient) than Aurelia's **[standard plugin](https://github.com/aurelia/skeleton-plugin)**. Image 1 below, shows the overall structure.
 <br>
 
 <p align=center>
@@ -22,9 +16,9 @@ If your intent is to learn about **Extending KendoUI bridge** - by joining the A
 The following three sections describe the details of the plugin structure and building process
 
 
-----------
+* * *
 
-#### Section 1 - Plugin code
+### 3.1 Plugin code
 
 <p align=center>
   <img src="http://i.imgur.com/wTke9cT.png"></img>
@@ -247,7 +241,7 @@ export class AutoComplete extends WidgetBase {
 
 * * *
 <br>
-### Section 2 Sample Application that acts as the Plugin consumer
+### 3.2 Sample Application that acts as the Plugin consumer
 <br>
 
 As [mentioned before](#anch1) Aurelia-KendoUI plugin project has a special structure, with the plugin consumer application being a part of the same project (see the content of the blue rectangle on the image 3 below)
@@ -275,7 +269,6 @@ As [mentioned before](#anch1) Aurelia-KendoUI plugin project has a special struc
   Image 4
 </p>
 
-* * *
 
 
 
