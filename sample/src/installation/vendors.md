@@ -1,7 +1,7 @@
 ### Vendors
 
 1. Create a `vendors` folder in the root (at the same level as src or dist)
-2. Download Kendo UI Pro from the Telerik website
+2. Download KendoUI Pro from the Telerik website
 3. Extract the `js` and `styles` folder into the `vendors` folder
 4. Open `config.js` and add a path mapping
   You can do this in two ways, in the `map` and the `paths` section:
@@ -16,7 +16,7 @@
       "kendo-ui": "/vendors",
     }
     ```
-
+    <br>
     Paths:
 
     ```
@@ -27,7 +27,7 @@
       "kendo-ui/*": "vendors/*"
     }
     ```
-
+    <br>
 5. Install Kendo and the aurelia-kendoui-plugin
 `jspm install kendo-ui aurelia-kendoui-plugin`
 
@@ -47,13 +47,13 @@ Now we're going to register the plugin with Aurelia in your "main.js" or equival
       aurelia.start().then(a => a.setRoot());
     }
     ```
-
+    <br>
 8. Now let's open up "app.html" and load Kendo's CSS files
 
     ```
     <require from="kendo-ui/styles/kendo.common.core.min.css!"></require>
     <require from="kendo-ui/styles/kendo.bootstrap.min.css!"></require>
     ```
-
+    <br>
 ### You are done!
 It is now possible to drop some custom-elements into your DOM. See the other pages on this website for detailed information on how to do this.

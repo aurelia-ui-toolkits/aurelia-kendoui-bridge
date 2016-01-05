@@ -1,11 +1,13 @@
-### Core
+<br>
 
-1. Install Kendo UI Core and the aurelia-kendoui-plugin
+### KendoUI Core
+
+1. Install KendoUI Core and the aurelia-kendoui-plugin by issuing the command:
 `jspm install kendo-ui aurelia-kendoui-plugin`
 
 2. Register the plugin
 Now we're going to register the plugin with Aurelia in your "main.js" or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Core by calling the `core()` method
-
+<br>
     ```
     export function configure(aurelia) {
       aurelia.use
@@ -16,6 +18,7 @@ Now we're going to register the plugin with Aurelia in your "main.js" or equival
       aurelia.start().then(a => a.setRoot());
     }
     ```
+<br><br>
 
 3. Now let's open up "app.html" and load Kendo's CSS files
 
@@ -24,6 +27,6 @@ Now we're going to register the plugin with Aurelia in your "main.js" or equival
     <require from="kendo-ui/styles/kendo.bootstrap.min.css!"></require>
     ```
 
-
+<br>
 ### You are done!
 It is now possible to drop some custom-elements into your DOM. See the other pages on this website for detailed information on how to do this.
