@@ -3,7 +3,7 @@
 ### 4. Button
 <br>
 
-##### File k-button.html
+##### View: k-button.html
 
 ```html
 <template>
@@ -26,10 +26,34 @@
     </section>
 </template>
 ```
+<br>
+
+Just like in the case of the Autocomplete control, the statement
+
+<br>
+&nbsp; &nbsp; &nbsp; &nbsp; `<button k-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>`
 
 <br>
 
-##### File k-button.js
+
+results with the instantiation of the button:
+<br>
+<br>
+
+<p align=center>
+  <img src="http://i.imgur.com/7JVqTSU.png"></img>
+ <br><br>
+ Image 1
+</p>
+
+<br>
+
+**Observe** that the button control, just like the autocomplete control are HTML native elements and that KendoUI Aurelia bridge adds several custom attributes (`k-enable`, `k-icon` that are bound to [KendoUI button](http://docs.telerik.com/kendo-ui/api/javascript/ui/button)  "matching native properties" . Note also the definition of the event triggers that are activating the code in the view model:
+
+
+<br>
+
+##### View model:  k-button.js
 
 ```javascript
 export class ButtonApi {
@@ -67,5 +91,6 @@ export class ButtonApi {
 <br>
 * * *
 <br>
-#### Next page: [Chart component](http://localhost:3000/#/help/docs/app_developers_tutorials/5._chart_component)
+#### More details: [Components catalog](http://aurelia-ui-toolkits.github.io/demo-kendo/#/samples/button)
+#### Next page: &nbsp;&nbsp; [Chart component tutorial](http://localhost:3000/#/help/docs/app_developers_tutorials/5._chart_component)
 

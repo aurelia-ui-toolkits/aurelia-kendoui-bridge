@@ -3,9 +3,8 @@
 ### 6. Grid
 <br>
 
-<br>
 
-##### File k-grid.html
+##### View: k-grid.html
 
 ```html
 <template>
@@ -32,7 +31,33 @@
 ```
 <br>
 
-##### File k-grid.js
+Here is this view rendered by the **[application associated with this tutorial](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)**.
+<br>
+
+<p align=center>
+  <img src="http://i.imgur.com/aBj3tod.png"></img>
+ <br><br>
+Image 1
+</p>
+
+<br>
+
+**Note**: This sample grid requires some additional css in order to render the images of the contact people framed in circles.
+
+<br>
+
+
+**Note**: This view model defines the grid data to be fetched from Telerik's server where they are stored in odata format:
+
+
+&nbsp; &nbsp; &nbsp; &nbsp; `//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers`
+
+
+and that the grid should show 10 rows per page.
+<br>
+<br>
+
+##### View model:  k-grid.js
 
 ```javascript
 export class BasicUse {
@@ -57,7 +82,7 @@ export class BasicUse {
 ```
 <br>
 
-##### File basic-grid.css
+##### View model: basic-grid.css
 
 ```
 .customer-photo {
@@ -83,29 +108,9 @@ export class BasicUse {
 <br>
 <br>
 
-#### Step 6 Modify the app.html file
 
-<br>
-
-```html
-<template>
-  <require from="nav-bar.html"></require>
-  <require from="bootstrap/css/bootstrap.css"></require>
-  <require from="kendo-ui/styles/kendo.common.min.css"></require>
-  <require from="kendo-ui/styles/kendo.bootstrap.min.css"></require>
-
-  <nav-bar router.bind="router"></nav-bar>
-
-  <div class="page-host">
-    <router-view></router-view>
-  </div>
-</template>
-
-```
-
-<br>
-<br>
 * * *
 <br>
-#### Next page: [Next actions](http://localhost:3000/#/help/docs/app_developers_tutorials/7._next_actions)
+#### More details: [Components catalog](http://aurelia-ui-toolkits.github.io/demo-kendo/#/samples/grid)
+#### Next page: &nbsp;&nbsp; [Next actions](http://localhost:3000/#/help/docs/app_developers_tutorials/7._next_actions)
 

@@ -97,6 +97,76 @@ In order to clearly separate the added code from the original Aurelia Navigation
 
 <br>
 
+As the last actions in this **Setup** section of the tutorial, you need to make the following changes, that are indicated in the **Modified code** section of Image 5 above
+
+<br>
+##### File `app.html`
+<br>
+```html
+<template>
+  <require from="nav-bar.html"></require>
+  <require from="bootstrap/css/bootstrap.css"></require>
+  <require from="kendo-ui/styles/kendo.common.min.css"></require>
+  <require from="kendo-ui/styles/kendo.bootstrap.min.css"></require>
+
+  <nav-bar router.bind="router"></nav-bar>
+
+  <div class="page-host">
+    <router-view></router-view>
+  </div>
+</template>
+
+```
+
+<br>
+<br>
+
+##### File `app.js`
+
+<br>
+
+```javascript
+export class App {
+  configureRouter(config, router) {
+    config.title = 'Aurelia';
+    config.map([
+      { route: ['', 'welcome'],   name: 'welcome',      moduleId: 'welcome',                              nav: true, title: 'Welcome' },
+      { route: 'users',           name: 'users',        moduleId: 'users',                                nav: true, title: 'Github Users' },
+      { route: 'k-autocomplete',  name: 'k-button',     moduleId: 'kendoui/autocomplete/k-autocomplete',  nav: true, title: 'KendoUI autocomplete' },
+      { route: 'k-button',        name: 'k-button',     moduleId: 'kendoui/button/k-button',              nav: true, title: 'KendoUI button' },
+      { route: 'k-chart',         name: 'k-chart',      moduleId: 'kendoui/chart/k-chart',                nav: true, title: 'KendoUI chart' },
+      { route: 'k-grid',          name: 'k-grid',       moduleId: 'kendoui/grid/k-grid',                  nav: true, title: 'KendoUI grid' },
+      { route: 'child-router',    name: 'child-router', moduleId: 'child-router',                         nav: true, title: 'Child Router' }
+    ]);
+
+    this.router = router;
+  }
+}
+
+```
+
+<br>
+<br>
+
+##### File `main.js`
+
+<br>
+
+```
+import 'bootstrap';
+
+export function configure(aurelia) {
+  aurelia.use
+    .standardConfiguration()
+    .developmentLogging()
+    .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
+
+  aurelia.start().then(a => a.setRoot());
+}
+```
+<br>
+<br>
+
 * * *
 <br>
 #### Next page: [Autocomplete component](http://localhost:3000/#/help/docs/app_developers_tutorials/3._autocomplete_component)

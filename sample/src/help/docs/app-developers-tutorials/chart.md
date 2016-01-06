@@ -2,8 +2,10 @@
 
 ### 5. Chart
 <br>
+Unlike the previous two controls, Chart is represented (by Aurelia KendoUI bridge) as an Aurelia custom element (component) - since chart is non a native HTML element. The specific sample we chose to discuss here is sufficiently  complex, allowing us to glance over the its use in an Aurelia application as well as the relationship between this component, Aurelia KendoUI bridge and the KendoUI native plugin.
+<br>
 
-##### File k-chart.html
+##### View: k-chart.html
 
 ```html
 <template>
@@ -27,9 +29,22 @@
 </template>
 ```
 <br>
+<br>
+Here is this view rendered by the [application associated with this tutorial](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo).
+<br>
+<br>
+<p align=center>
+  <img src="http://i.imgur.com/5Q2qFKS.png"></img>
+ <br><br>
+Image 1
+</p>
 
+<br>
+The HTML code in the view is a good demonstration of Aurelia's support for KendoUI's declarative programming - all attributes of the chart are declared there and bound to view model shown next. Note that we chose to define the chart `title` in the view and the **values** of all other attributes in the view model.
 
-##### File k-chart.js
+<br>
+
+##### View model: k-chart.js
 
 ```javascript
 export class BasicUse {
@@ -84,5 +99,6 @@ export class BasicUse {
 <br>
 * * *
 <br>
-#### Next page: [Grid component](http://localhost:3000/#/help/docs/app_developers_tutorials/6._grid_component)
+#### More details: [Components catalog](http://aurelia-ui-toolkits.github.io/demo-kendo/#/samples/chart)
+#### Next page: &nbsp;&nbsp; [Grid component tutorial](http://localhost:3000/#/help/docs/app_developers_tutorials/6._grid_component)
 
