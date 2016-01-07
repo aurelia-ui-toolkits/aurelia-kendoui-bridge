@@ -25,12 +25,16 @@ The following three sections describe the details of the plugin structure and bu
 <br>
 Image 2
 </p>
+<br>
 
-The plugin's **`src`** folder contains the **`common`**  subfolder with utilities used by more than one KendoUI controls "wrapped" by this plugin. In addition to the just described utility of the **`common`** folder, the **`src`** folder contains a subfolder for each of the KendoUI control that is wrapped (componentized) by this plugin. The above screenshot indicates that the current version of the plugin wraps KendoUI **autocomplete**, **button**, **chart**, **colorpicker**, **combobox**, **dropdownlist**, **grid**, **menu**, **progressbar**, **scheduler**, **slider**, **tabstrip** and **toolbar** controls.
+The plugin's **`src`** folder contains the **`common`**  subfolder with utilities used by more than one KendoUI controls "wrapped" by this plugin. In addition to the just described utility of the **`common`** folder, the **`src`** folder contains a subfolder for each of the KendoUI control that is wrapped (componentized) by this plugin. The above screenshot indicates that the version of the plugin shown on the Image 2 wraps KendoUI **autocomplete**, **button**, **chart**, **colorpicker**, **combobox**, **dropdownlist**, **grid**, **menu**, **progressbar**, **scheduler**, **slider**, **tabstrip** and **toolbar** controls.
+<br>
 
 **Note:** The existence of the **scheduler** folder in the plugin's **src** folder on Image 2 does not imply that the **[KendoUI scheduler controler](http://demos.telerik.com/kendo-ui/scheduler/index)** is already implemented (in this specific case it indicates that the skeleton sets of files is created in anticipation of the implementation start date).
+<br><br>
 
-The code in the plugin (which is the JavaScript equivalent of the more general concept of **[dynamic linker](https://en.wikipedia.org/wiki/Dynamic_linker)** defines its content via the `index.js` file
+The code in the plugin (which is the JavaScript equivalent of the more general concept of **[dynamic linker](https://en.wikipedia.org/wiki/Dynamic_linker))** defines its content via the `index.js` file
+<br>
 
 ##### File `index.js`
 
@@ -152,6 +156,7 @@ class KendoConfigBuilder {
   }
 }
 ```
+<br>
 
 **Note** that this file defines the controls that are really available to Aurelia developers.
 
@@ -248,21 +253,28 @@ As [mentioned before](#anch1) Aurelia-KendoUI plugin project has a special struc
 
 <p align=center>
   <img src="http://i.imgur.com/EYwwqhY.png"></img>
-  <br>
+  <br><br>
   Image 3
 </p>
-##### Color codes:
-- **yellow**:  application runtime created by running the **`jspm install`** command in the **`aurelia-kendoui-plugin/sample`** folder
-- **orange**: KendoUI controls hosted by this sample app (these controls are the consumers of the Aurelia-KendoUI-plugin)
-- **bluish**: Standard Aurelia application files collection
-- **olive**: Standard Aurelia application configuration/ css / html / js files
+<br>
+
+#### Color codes:
+&nbsp; &nbsp; &nbsp; - **yellow**:  application runtime created by running the **`jspm install`** command in the **`aurelia-kendoui-plugin/sample`** folder
+
+&nbsp; &nbsp; &nbsp; - **orange**: KendoUI controls hosted by this sample app (these controls are the consumers of the Aurelia-KendoUI-plugin)
+
+&nbsp; &nbsp; &nbsp; - **bluish**: Standard Aurelia application files collection
+
+&nbsp; &nbsp; &nbsp; - **olive**: Standard Aurelia application configuration/ css / html / js files
+
 <br><br><br>
 
 #### Sample application showing the KendoUI Autocomplete control:
 
 
 **Note**: for better visibility this screenshot is rendered using the Moonlight theme
-
+<br>
+<br>
 <p align=center>
   <img src="http://i.imgur.com/No27AA9.png"></img>
   <br>

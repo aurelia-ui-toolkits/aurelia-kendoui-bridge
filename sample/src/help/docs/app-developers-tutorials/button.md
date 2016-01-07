@@ -48,7 +48,7 @@ results with the instantiation of the button:
 
 <br>
 
-**Observe** that the button control, just like the autocomplete control are HTML native elements and that KendoUI Aurelia bridge adds several custom attributes (`k-enable`, `k-icon` that are bound to [KendoUI button](http://docs.telerik.com/kendo-ui/api/javascript/ui/button)  "matching native properties" . Note also the definition of the event triggers that are activating the code in the view model:
+**Observe** that the button control, just like the autocomplete control are HTML native elements and that KendoUI Aurelia bridge adds several custom attributes (`k-enable`, `k-icon` that are bound to [KendoUI button](http://docs.telerik.com/kendo-ui/api/javascript/ui/button))  "matching native properties" . Note also the definition of the event triggers that are activating the code in the view model:
 
 
 <br>

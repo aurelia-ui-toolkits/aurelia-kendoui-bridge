@@ -34,12 +34,12 @@ Now, we want to add several (four) additional pages to this application that wou
 
 * * *
 
-At this point, while following the series of steps described next, it is assumed that you have the KendoUI package already installed on your computer as described in the **vendors** type of installation:
+At this point, while following the series of steps described next, it is assumed that you have the KendoUI package already installed on your computer as described in the HAVING KENDOUI ALREADY: VENDORS type of installation (Image 3 below):
 <br>
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/eUiqr4e.png"></img>
+  <img src="http://i.imgur.com/GAWgTsM.png"></img>
  <br><br>
  Image 3
 </p>

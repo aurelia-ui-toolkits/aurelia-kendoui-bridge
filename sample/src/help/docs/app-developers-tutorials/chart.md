@@ -2,7 +2,7 @@
 
 ### 5. Chart
 <br>
-Unlike the previous two controls, Chart is represented (by Aurelia KendoUI bridge) as an Aurelia custom element (component) - since chart is non a native HTML element. The specific sample we chose to discuss here is sufficiently  complex, allowing us to glance over the its use in an Aurelia application as well as the relationship between this component, Aurelia KendoUI bridge and the KendoUI native plugin.
+Unlike the previous two controls, Chart is represented (by Aurelia KendoUI bridge) as an Aurelia custom element (component) - since chart is not a native HTML element. The specific sample we chose to discuss here is sufficiently  complex, allowing us to glance over the its use in an Aurelia application as well as the relationship between this component, Aurelia KendoUI bridge and the KendoUI native plugin.
 <br>
 
 ##### View: k-chart.html
