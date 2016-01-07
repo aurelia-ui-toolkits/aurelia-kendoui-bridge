@@ -111,6 +111,6 @@ export class BasicUse {
 
 * * *
 <br>
-#### More details: [Components catalog](http://aurelia-ui-toolkits.github.io/demo-kendo/#/samples/grid)
-#### Next page: &nbsp;&nbsp; [Next actions](http://localhost:3000/#/help/docs/app_developers_tutorials/7._next_actions)
+#### More details: [Components catalog](#/samples/grid)
+#### Next page: &nbsp;&nbsp; [Next actions](#/help/docs/app_developers_tutorials/7._next_actions)
 

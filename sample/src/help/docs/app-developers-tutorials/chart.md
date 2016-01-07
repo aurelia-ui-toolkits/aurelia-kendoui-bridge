@@ -99,6 +99,6 @@ export class BasicUse {
 <br>
 * * *
 <br>
-#### More details: [Components catalog](http://aurelia-ui-toolkits.github.io/demo-kendo/#/samples/chart)
-#### Next page: &nbsp;&nbsp; [Grid component tutorial](http://localhost:3000/#/help/docs/app_developers_tutorials/6._grid_component)
+#### More details: [Components catalog](#/samples/chart)
+#### Next page: &nbsp;&nbsp; [Grid component tutorial](#/help/docs/app_developers_tutorials/6._grid_component)
 

@@ -111,6 +111,10 @@
       {
         "name": "7. Next actions",
         "path": "help/docs/bridge-developers-tutorials/next-actions.md"
+      },
+      {
+        "name": "8. Bridge utilities",
+        "path": "help/docs/bridge-developers-tutorials/bridge-utilities.md"
       }
     ]
 }

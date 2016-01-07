@@ -169,5 +169,5 @@ export function configure(aurelia) {
 
 * * *
 <br>
-#### Next page: [Autocomplete component](http://localhost:3000/#/help/docs/app_developers_tutorials/3._autocomplete_component)
+#### Next page: [Autocomplete component](#/help/docs/app_developers_tutorials/3._autocomplete_component)
 

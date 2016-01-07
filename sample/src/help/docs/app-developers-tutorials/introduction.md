@@ -27,4 +27,4 @@ All subsequent tutorials assume that you used the **HAVING KENDOUI ALREADY: VEND
 
 * * *
 <br>
-#### Next page: [Setup](http://localhost:3000/#/help/docs/app_developers_tutorials/2._setup)
+#### Next page: [Setup](#/help/docs/app_developers_tutorials/2._setup)

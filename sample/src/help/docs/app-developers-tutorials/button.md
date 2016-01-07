@@ -91,6 +91,6 @@ export class ButtonApi {
 <br>
 * * *
 <br>
-#### More details: [Components catalog](http://aurelia-ui-toolkits.github.io/demo-kendo/#/samples/button)
-#### Next page: &nbsp;&nbsp; [Chart component tutorial](http://localhost:3000/#/help/docs/app_developers_tutorials/5._chart_component)
+#### More details: [Components catalog](#/samples/button)
+#### Next page: &nbsp;&nbsp; [Chart component tutorial](#/help/docs/app_developers_tutorials/5._chart_component)
 
