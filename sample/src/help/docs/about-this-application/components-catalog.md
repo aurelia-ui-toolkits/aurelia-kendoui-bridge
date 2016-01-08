@@ -1,17 +1,16 @@
 <br>
-## 2 Catalog of KendoUI controls as Aurelia components.
+### 2. Catalog of KendoUI controls as Aurelia components.
 <br>
 This is the most likely fashion this application is being used. Invoked via URL: <a href="http://aurelia-ui-toolkits.github.io/demo-kendo">http://aurelia-ui-toolkits.github.io/demo-kendo</a> the application renders the view shown below, which shows the likely most interesting control **grid** by default.
 
 <br>
-
 <p align=center>
-  <img src="http://i.imgur.com/fIcawRu.png"></img>
+  <img src="http://i.imgur.com/WEdRlxo.png"></img>
+<br>
   Image 1
 </p>
 
-### 2.1 Browsing the catalog
-
+#### 2.1 Browsing the catalog
 
 The click on **Samples** menu item (as shown on Image 1 above) results with the Aurelia KendoUI Controls Catalog "landing" (default) page which depicts the KendoUI basic grid sample (again as shown on Image 1 above). In addition to rendering the grid, the Aurelia KendoUI Controls Catalog also shows the **Samples Toolbar**, which shows all categories of controls, with the **MOST POPULAR** category being select as default. At the moment, this category has only grid control selected as its own default - which explains why is the click on that category results with the same view as it is rendered initially
 <br>
@@ -42,13 +41,13 @@ Finally, selecting the **STOCK CHARTS** toolbar item, results with the the view 
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/3hCxY7H.png"></img>
+  <img src="http://i.imgur.com/f3FjA60.png"></img>
  <br><br>
 Image 4
 </p>
 
 * * *
-### 2.2 Browsing the catalog's code sections
+#### 2.2 Browsing the catalog's code sections
 <br>
 Each of the page showing a KendoUI control converted to an Aurelia component, has the section that shows the component's **view** and **view model**. Here are three consecutive screen-shots showing that information for the Sample grid control on **Image 1** above.
 <br>

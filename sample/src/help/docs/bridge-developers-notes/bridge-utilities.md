@@ -2,31 +2,39 @@
 
 <a name="top"></a>
 ### 2. Bridge utilities
+
 <br>
 
 This document describes the use of several utilities added by Aurelia UI Toolkits team to make the task of creating an Aurelia plugin simpler.
+<br><br>
 
-
-[[`constants.js`](#constants)]  
+[[`constants.js`](#constants)]
 In order to make the plugin a bit more maintainable, we use the [`constants.js`](#constants) file throughout the entire plugin. Currently, this file contains the conventions we use for the plugin. More specifically, the `k-on-` events and `k-` property conventions.
+<br><br>
 
-[[`decorators.js`](#decorators)]  
+[[`decorators.js`](#decorators)]
 The [`decorators.js`](#decorators) file contains decorators used within multiple wrappers. Currently, this file contains the `generateBindables` decorator, used to create `@bindable` properties for a particular Kendo control.
+<br><br>
 
-[[`events.js`](#decorators)]  
+[[`events.js`](#decorators)]
 In several parts of the `aurelia-kendoui-plugin` codebase, events are dispatched. In order to keep the logic of dispatching events in one place, we have put these functions in the [`events.js`](#decorators) file.
+<br><br>
 
-[[`options.js`](#options)]  
+[[`options.js`](#options)]
 Kendo can act up when `options` objects are used with properties that are `undefined`. We use the `pruneOptions` function in [`options.js`](#options) to prevent these issues.
+<br><br>
 
-[[`template-compiler.js`](#template-compiler)]  
+[[`template-compiler.js`](#template-compiler)]
 The `TemplateCompiler` (found in the [`template-compiler.js`](#template-compiler) file) is responsible for compiling and cleaning up views requested by Kendo. It uses the `enhance` capability of Aurelia and hooks into Kendo with the `angular` callback.
+<br><br>
 
-[[`util.js`](#utils)]  
+[[`util.js`](#utils)]
 The [`util.js`](#utils) file contains useful functions that are used in various parts of the codebase. For example, it contains functions to hyphenate and unhyphenate strings.
+<br><br>
 
-[[`widget-base.js`](#widget-base)]  
+[[`widget-base.js`](#widget-base)]
 The `WidgetBase` is the base class from which all wrappers inherit. The purpose of the `WidgetBase` is to extract common logic from  the wrappers.
+<br><br>
 
 * * *
 

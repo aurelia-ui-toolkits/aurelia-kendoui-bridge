@@ -3,7 +3,6 @@
 ### 6. Grid
 <br>
 
-
 ##### View: k-grid.html
 
 ```html
