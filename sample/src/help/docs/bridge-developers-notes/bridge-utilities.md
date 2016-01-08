@@ -1,7 +1,7 @@
 <br>
 
 <a name="top"></a>
-### Bridge utilities
+### 2. Bridge utilities
 <br>
 
 This document describes the use of several utilities added by Aurelia UI Toolkits team to make the task of creating an Aurelia plugin simpler.

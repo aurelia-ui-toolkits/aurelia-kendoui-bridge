@@ -112,9 +112,26 @@
         "name": "7. Next actions",
         "path": "help/docs/bridge-developers-tutorials/next-actions.md"
       },
+
+    ],
+
+    "Bridge developers notes":
+    [
       {
-        "name": "8. Bridge utilities",
-        "path": "help/docs/bridge-developers-tutorials/bridge-utilities.md"
-      }
+        "name": "1. Generation of 'Bindables'",
+        "path": "help/docs/bridge-developers-notes/bindables.md"
+      },
+      {
+        "name": "2. Bridge utilities",
+        "path": "help/docs/bridge-developers-notes/bridge-utilities.md"
+      },
+      {
+        "name": "3. Babel DTS generator",
+        "path": "help/docs/bridge-developers-notes/babel-dts-generator.md"
+      },
+      {
+        "name": "4. On bundling",
+        "path": "help/docs/bridge-developers-notes/bundling.md"
+      },
     ]
 }
