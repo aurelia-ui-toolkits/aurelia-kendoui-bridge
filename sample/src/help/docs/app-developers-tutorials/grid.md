@@ -31,10 +31,11 @@
 <br>
 
 Here is this view rendered by the **[application associated with this tutorial](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)**.
-<br>
+<br><br>
+
 
 <p align=center>
-  <img src="http://i.imgur.com/aBj3tod.png"></img>
+  <img src="http://i.imgur.com/lZunvna.png"></img>
  <br><br>
 Image 1
 </p>
