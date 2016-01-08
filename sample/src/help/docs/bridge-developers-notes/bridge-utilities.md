@@ -7,27 +7,27 @@
 This document describes the use of several utilities added by Aurelia UI Toolkits team to make the task of creating an Aurelia plugin simpler.
 
 
-1. [File `constants.js`](#constants)
-Lorem ipsum dolor sit amet, etiam praesent sodales nullam viverra vehicula. Lacinia varius, aenean et ad elit sed aenean duis, elit wisi tortor quia pulvinar, aliquam et in ullam convallis. Habitant aliquam eu eleifend non, leo tincidunt, mollis quis facilisi. Turpis eu penatibus eget et, at eu nam velit suspendisse, lorem nec urna morbi a, vehicula consequat sagittis ut, ipsum sapien. Sodales erat id sed bibendum felis, velit dui ab libero quis, elementum lacus mauris tristique nulla sem id. Luctus facilisis, cursus nonummy taciti tempor eget convallis integer, congue etiam mauris vel faucibus.
-<br><br>
-2. [File `decorators.js`](#decorators)
-Odio habitant turpis, fusce purus dolor, donec dapibus purus facilisi. Vitae velit odio convallis malesuada, ut interdum suspendisse vestibulum ornare, nec justo nostrum fugit consequat quam vestibulum, lacus nam pharetra ultrices sodales. Quis quam tristique venenatis, nonummy id vulputate in at, orci laoreet facere vitae ornare. Sed vestibulum aliquet potenti lectus rutrum, sed per, aliquam ligula dolor dapibus bibendum mi, nascetur rhoncus dictum phasellus. Nec ac nonummy, erat pharetra lorem justo, mauris tempor fermentum, et in proin magna mi elit, cursus eleifend justo luctus. Euismod nonummy, elit velit sit erat, eros per morbi id dapibus cras, tempor wisi eleifend lobortis, mauris neque nulla.
-<br><br>
-3. [File `events.js`](#decorators)
-Montes eu adipiscing ultricies elit maecenas diam, scelerisque leo imperdiet ut sollicitudin malesuada. Lacus praesent purus dolor laoreet donec. Ultrices sodales eget et sit, wisi eleifend justo vestibulum nisl, quis tortor sem tellus urna ut. Convallis omnis ante orci vitae. Sed tellus officia suspendisse eu dolor, aenean et vehicula neque et suscipit aliquam, nunc nam non sed orci, wisi eu.
-<br><br>
-4. [File `options.js`](#options)
-Nec suspendisse vulputate dolor augue vulputate amet, est nunc wisi ipsum, vestibulum habitasse elit proin ultrices. Curabitur tincidunt fringilla neque, sit laoreet urna lorem felis amet. Vitae morbi nibh mollis in nec eros, nullam et, mollis quisque mattis magnis vehicula arcu wisi, a aenean sapien feugiat integer at, ipsum vel accumsan vestibulum donec suspendisse nec. Enim eum nunc eget cursus ipsum nec, justo lacus, sapien suspendisse dui elementum, orci et laoreet placerat, massa aliquam et quis. Lorem pellentesque id quam praesent venenatis lacinia, nascetur nonummy. Lectus nam nulla mattis nibh, vitae dolor velit lorem wisi pellentesque magnis, leo porttitor curabitur velit lobortis at.
-<br><br>
-5. [File `template-compiler.js`](#template-compiler)
-Cras risus malesuada accumsan laoreet fringilla. Pellentesque ullamcorper non orci, nulla commodo blandit praesent, volutpat nunc ultrices sit ac aliquam amet, proin nulla dictumst vestibulum nulla lorem, nam porttitor arcu auctor sapien. Commodo nisl gravida vestibulum est, odio enim, vehicula nostra, per tristique orci velit consectetuer cras. Arcu dolores nec sed nec, eros nam varius sapien aliquam eu, aliquet elementum donec sed nibh morbi urna, porta nec vitae, pede amet aliquam ad libero. Et pharetra semper hendrerit tellus eget vestibulum, sed non.
-<br><br>
-6. [File `utils.js`](#utils)
-Ut fusce est convallis neque aenean consequat, sit suspendisse mi, posuere erat vitae magna convallis ultricies. Nonummy nibh vestibulum nullam, nunc dignissim praesent ac arcu, est volutpat feugiat dui, aliquet accumsan rutrum rutrum rhoncus, sed eget neque. Vel eros libero arcu orci, suspendisse mauris sodales et interdum lacus iaculis, consequat tortor magna neque, mattis adipiscing quis curae non suspendisse, in ultricies et venenatis mauris dui. Eu quis quam eros sapien nisl enim, ultrices mus consequat aenean donec, non arcu donec neque fermentum quam libero, laoreet eget et in, consectetuer volutpat neque maecenas. Mattis nunc luctus sapien quis eros dapibus, ac massa at consequat feugiat imperdiet, odio vestibulum.
-<br><br>
-7. [File `widget-base.js`](#widget-base)
-Per ad integer tellus nisl quae, vivamus egestas eu. Duis quisque nec vel at, magnis enim vestibulum, molestie et deserunt, odio aliquam vitae sed magnis nec tincidunt. Rutrum etiam eu laoreet, sed proin amet. Eu accumsan fames, eros eros lorem aliquam. Urna commodo, nibh egestas commodo leo nec, donec per suscipit mauris, vivamus pharetra rhoncus phasellus eu torquent euismod, nemo eu sapien consequat.
-<br><br>
+[[`constants.js`](#constants)]  
+In order to make the plugin a bit more maintainable, we use the [`constants.js`](#constants) file throughout the entire plugin. Currently, this file contains the conventions we use for the plugin. More specifically, the `k-on-` events and `k-` property conventions.
+
+[[`decorators.js`](#decorators)]  
+The [`decorators.js`](#decorators) file contains decorators used within multiple wrappers. Currently, this file contains the `generateBindables` decorator, used to create `@bindable` properties for a particular Kendo control.
+
+[[`events.js`](#decorators)]  
+In several parts of the `aurelia-kendoui-plugin` codebase, events are dispatched. In order to keep the logic of dispatching events in one place, we have put these functions in the [`events.js`](#decorators) file.
+
+[[`options.js`](#options)]  
+Kendo can act up when `options` objects are used with properties that are `undefined`. We use the `pruneOptions` function in [`options.js`](#options) to prevent these issues.
+
+[[`template-compiler.js`](#template-compiler)]  
+The `TemplateCompiler` (found in the [`template-compiler.js`](#template-compiler) file) is responsible for compiling and cleaning up views requested by Kendo. It uses the `enhance` capability of Aurelia and hooks into Kendo with the `angular` callback.
+
+[[`util.js`](#utils)]  
+The [`util.js`](#utils) file contains useful functions that are used in various parts of the codebase. For example, it contains functions to hyphenate and unhyphenate strings.
+
+[[`widget-base.js`](#widget-base)]  
+The `WidgetBase` is the base class from which all wrappers inherit. The purpose of the `WidgetBase` is to extract common logic from  the wrappers.
+
 * * *
 
 <br><br>
