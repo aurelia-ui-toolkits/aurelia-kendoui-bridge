@@ -1,6 +1,6 @@
 <br>
 
-### 3. Application's internal structure
+### 4. Application's internal structure
 
 <a name="anch1"></a>This article presents the overview of the internal organization of the **[Aurelia-KendoUI-Bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** project developed by the team of Aurelia UI Toolkits organization, dedicated to help  Aurelia's wide spread adoption .
 

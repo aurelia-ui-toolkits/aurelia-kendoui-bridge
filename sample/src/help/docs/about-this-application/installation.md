@@ -1,5 +1,5 @@
 <br>
-### 4. Installation
+### 5. Installation
 <br>
 
 The **[Installation page](http://aurelia-ui-toolkits.github.io/demo-kendo/#/installation)** contains very detailed description of all three installation variants which depend on how do you plan to get **[KendoUI product](http://www.telerik.com/kendo-ui)** from Telerik.

@@ -1,5 +1,5 @@
 <br>
-### 2. Catalog of KendoUI controls as Aurelia components.
+### 3. Catalog of KendoUI controls as Aurelia components.
 <br>
 This is the most likely fashion this application is being used. Invoked via URL: <a href="http://aurelia-ui-toolkits.github.io/demo-kendo">http://aurelia-ui-toolkits.github.io/demo-kendo</a> the application renders the view shown below, which shows the likely most interesting control **grid** by default.
 
