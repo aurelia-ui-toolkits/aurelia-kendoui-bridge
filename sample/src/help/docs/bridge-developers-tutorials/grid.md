@@ -3,6 +3,9 @@
 ### 6. Grid
 <br>
 
+This wrapper encapsulates the KendoUI module `kendo.grid.min.js`, ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/help/docs/app_developers_tutorials/6._grid_component)** and **[here](#/samples/grid)**.
+<br>
+
 File `grid.js`
 <br>
 ```javascript

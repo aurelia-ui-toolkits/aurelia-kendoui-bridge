@@ -3,6 +3,9 @@
 ### 3. Autocomplete
 <br>
 
+This wrapper encapsulates the KendoUI module `kendo.autocomplete.min.js`, ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/help/docs/app_developers_tutorials/3._autocomplete_component)** and **[here](#/samples/autocomplete)**.
+<br>
+
 File `autocomplete.js`
 <br>
 ```javascript

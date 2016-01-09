@@ -3,6 +3,9 @@
 ### 4. Button
 <br>
 
+This wrapper encapsulates the KendoUI module `kendo.button.min.js`, ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/help/docs/app_developers_tutorials/4._button_component)** and **[here](#/samples/button)**.
+<br>
+
 File `button.js`
 <br>
 ```javascript

@@ -3,6 +3,9 @@
 ### 5. Chart
 <br>
 
+This wrapper encapsulates the KendoUI module `kendo.chart.min.js`, ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/help/docs/app_developers_tutorials/5._chart_component)** and **[here](#/samples/chart)**.
+<br>
+
 File `chart.js`
 <br>
 ```javascript

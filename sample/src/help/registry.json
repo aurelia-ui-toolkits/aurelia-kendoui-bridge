@@ -121,19 +121,23 @@
     "Bridge developers notes":
     [
       {
-        "name": "1. Generation of 'Bindables'",
-        "path": "help/docs/bridge-developers-notes/bindables.md"
+        "name": "1. Introduction",
+        "path": "help/docs/bridge-developers-notes/introduction.md"
       },
       {
         "name": "2. Bridge utilities",
         "path": "help/docs/bridge-developers-notes/bridge-utilities.md"
       },
       {
-        "name": "3. Babel DTS generator",
+        "name": "3. Generation of 'Bindables'",
+        "path": "help/docs/bridge-developers-notes/bindables.md"
+      },
+      {
+        "name": "4. Babel DTS generator",
         "path": "help/docs/bridge-developers-notes/babel-dts-generator.md"
       },
       {
-        "name": "4. On bundling",
+        "name": "5. On bundling",
         "path": "help/docs/bridge-developers-notes/bundling.md"
       },
     ]
