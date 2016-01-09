@@ -1,6 +1,6 @@
 <br>
 
-## 3. Application's internal structure
+### 4. Application's internal structure
 
 <a name="anch1"></a>This article presents the overview of the internal organization of the **[Aurelia-KendoUI-Bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** project developed by the team of Aurelia UI Toolkits organization, dedicated to help  Aurelia's wide spread adoption .
 
@@ -18,7 +18,7 @@ The following three sections describe the details of the plugin structure and bu
 
 * * *
 
-### 3.1 Plugin code
+#### 3.1 Plugin code
 
 <p align=center>
   <img src="http://i.imgur.com/wTke9cT.png"></img>
@@ -246,7 +246,7 @@ export class AutoComplete extends WidgetBase {
 
 * * *
 <br>
-### 3.2 Sample Application that acts as the Plugin consumer
+#### 3.2 Sample Application that acts as the Plugin consumer
 <br>
 
 As [mentioned before](#anch1) Aurelia-KendoUI plugin project has a special structure, with the plugin consumer application being a part of the same project (see the content of the blue rectangle on the image 3 below)

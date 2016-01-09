@@ -31,10 +31,10 @@ Unlike the previous two controls, Chart is represented (by Aurelia KendoUI bridg
 <br>
 <br>
 Here is this view rendered by the [application associated with this tutorial](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo).
-<br>
-<br>
+<br><br>
+
 <p align=center>
-  <img src="http://i.imgur.com/5Q2qFKS.png"></img>
+  <img src="http://i.imgur.com/f4H5ZJO.png"></img>
  <br><br>
 Image 1
 </p>

@@ -1,10 +1,12 @@
-### Why Choose KendoUI
+<br>
+
+### 2. Why Choose KendoUI
 <br>
 
 ***Note: each of the enumerated advantages below have to be augmented by a lot of Aurelia specific added advantages***
 * * *
 
- <br>
+<br>
 #### Ultimate Performance with Minimum Resources
 
 Fast and light. Every Kendo UI widget is rendered with the fastest possible mark-up to deliver ultimate JavaScript performance.

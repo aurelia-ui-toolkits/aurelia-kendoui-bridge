@@ -6,27 +6,30 @@
         "path": "help/docs/about-this-application/introduction.md"
       },
       {
-        "name": "2. Components catalog",
+        "name": "2. Navigation guide",
+        "path": "help/docs/about-this-application/navigation.md"
+      },
+      {
+        "name": "3. Components catalog",
         "path": "help/docs/about-this-application/components-catalog.md"
       },
       {
-        "name": "3. Internal structure",
+        "name": "4. Internal structure",
         "path": "help/docs/about-this-application/internal-structure.md"
       },
       {
-        "name": "4. Installation",
+        "name": "5. Installation",
         "path": "help/docs/about-this-application/installation.md"
       },
 
       {
-        "name": "5. Project status",
+        "name": "6. Project status",
         "path": "help/docs/about-this-application/project-status.md"
       },
       {
-        "name": "6. Themes selector",
+        "name": "7. Themes selector",
         "path": "help/docs/about-this-application/themes-selector.md"
       },
-
     ],
 
     "About Aurelia":

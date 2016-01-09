@@ -1,6 +1,6 @@
 <br>
 
-### Introduction
+### 1. Introduction
 
 In this set of tutorials we are focusing on the Aurelia plugin components of this application (explained with more details in the **[About this application - Introduction page](http://aurelia-ui-toolkits.github.io/demo-kendo/#/help/docs/about_this_application/1._introduction)**). Starting with the standard **[Aurelia Skeleton plugin](https://github.com/aurelia/skeleton-plugin)** project, we will follow the same "story" that starts in the **[Application developers tutorials](http://aurelia-ui-toolkits.github.io/demo-kendo/#//#/help/docs/app_developers_tutorials/1._introduction)** from a ***different prospective*** - a viewpoint of the Aurelia plugin developer.
 <br>

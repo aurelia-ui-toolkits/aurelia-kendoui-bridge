@@ -1,9 +1,9 @@
 <br>
 
-### Introduction
+### 1. Introduction
 <br>
 
-This collection of articles contained in the App developers tutorials help category presents several short tutorials on using the **[KendoUI components](http://aurelia-ui-toolkits.github.io/demo-kendo/#/help/docs/about_this_application/2._components_catalog)** from **[Aurelia-KendoUI bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** Aurelia plugin. Starting with one of the most simple components -  Autocomplete, we will show how can this component be added to the well known **[Aurelia Skeleton Navigation](https://github.com/aurelia/skeleton-navigation)** app and then add several additional components (Button, Chart and Grid). By the end of the tutorial we will have completed the **[Skeleton Navigation KendoUI](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)** shown below:
+This collection of articles contained in the App developers tutorials help category presents several short tutorials on using the **[KendoUI components](http://aurelia-ui-toolkits.github.io/demo-kendo/#/help/docs/about_this_application/2._components_catalog)** from **[Aurelia-KendoUI bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** Aurelia plugin. Starting with one of the most simple components -  Autocomplete, we will show how can this component be added to the well known **[Aurelia Skeleton Navigation](https://github.com/aurelia/skeleton-navigation/tree/master/skeleton-es2016)** app and then add several additional components (Button, Chart and Grid). By the end of the tutorial we will have completed the **[Skeleton Navigation KendoUI](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)** shown below:
 <br>
 <br>
 <p align=center>

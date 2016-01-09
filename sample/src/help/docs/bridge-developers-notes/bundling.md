@@ -17,11 +17,11 @@ Combined scripts are:
 
  &nbsp; &nbsp; &nbsp; - kendo.ui.core.min.js (only in the CORE version of KendoUI)
 
- &nbsp; &nbsp; &nbsp; - kendo.all.m
+ &nbsp; &nbsp; &nbsp; - kendo.all.min.js
 
- &nbsp; &nbsp; &nbsp; - kendo.web.m
+ &nbsp; &nbsp; &nbsp; - kendo.web.min.js
 
- &nbsp; &nbsp; &nbsp; - kendo.dataviz.m
+ &nbsp; &nbsp; &nbsp; - kendo.dataviz.min.js
 
  &nbsp; &nbsp; &nbsp; - kendo.mobile.min.js
 <br>
