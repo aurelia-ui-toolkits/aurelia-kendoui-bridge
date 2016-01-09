@@ -133,5 +133,13 @@
         "name": "4. On bundling",
         "path": "help/docs/bridge-developers-notes/bundling.md"
       },
+      {
+        "name": "5. HTML API of Grid",
+        "path": "help/docs/bridge-developers-notes/html-api-of-kendo-grid.md"
+      },
+      {
+        "name": "5. Template compilation",
+        "path": "help/docs/bridge-developers-notes/template-compilation.md"
+      },
     ]
 }
