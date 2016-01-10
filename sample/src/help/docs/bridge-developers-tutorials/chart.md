@@ -96,6 +96,4 @@ File `chart.html`
 
 <br>
 * * *
-#### Next page: &nbsp;&nbsp; [Grid component](http://localhost:3000/#/help/docs/bridge_developers_tutorials/6._grid_component)
-
-
+#### Next page: &nbsp;&nbsp; [Grid component](#/help/docs/bridge_developers_tutorials/6._grid_component)
