@@ -1,7 +1,7 @@
 <br>
 ### 3. Catalog of KendoUI controls as Aurelia components.
 <br>
-This is the most likely fashion this application is being used. Invoked via URL: <a href="http://aurelia-ui-toolkits.github.io/demo-kendo">http://aurelia-ui-toolkits.github.io/demo-kendo</a> the application renders the view shown below, which shows the likely most interesting control **grid** by default.
+This is the most likely fashion this application is being used. Invoked via URL: **<a href="http://aurelia-ui-toolkits.github.io/demo-kendo">http://aurelia-ui-toolkits.github.io/demo-kendo</a>** the application renders the view shown below, which shows the likely most interesting control **grid** by default.
 
 <br>
 <p align=center>
@@ -29,7 +29,7 @@ Selecting other items from the Samples Toolbar will result with the appearance o
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/8Elw376.png"></img>
+  <img src="http://i.imgur.com/DrIe47y.png"></img>
  <br>
 Image 3
 </p>
