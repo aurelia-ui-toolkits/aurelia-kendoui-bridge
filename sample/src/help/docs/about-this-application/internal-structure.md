@@ -39,13 +39,13 @@ The code in the plugin (which is the JavaScript equivalent of the more general c
 ##### File `index.js`
 
 ```javascript
+import {Aurelia} from 'aurelia-framework';
 import * as LogManager from 'aurelia-logging';
-import 'jquery';
-import 'kendo-ui/js/kendo.pdf.min';
-import 'kendo-ui/js/jszip.min';
 let logger = LogManager.getLogger('aurelia-kendoui-plugin');
+import {KendoConfigBuilder} from './config-builder';
+import 'jquery';
 
-export function configure(aurelia, configCallback) {
+export function configure(aurelia: Aurelia, configCallback?: (builder: KendoConfigBuilder) => void) {
   let builder = new KendoConfigBuilder();
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
@@ -61,14 +61,23 @@ export function configure(aurelia, configCallback) {
     // Pull the data off the builder
   let resources = builder.resources;
 
-  aurelia.globalResources(resources);
+  if (builder.useGlobalResources) {
+    aurelia.globalResources(resources);
+  }
 }
 
-class KendoConfigBuilder {
+/**
+* Configure the Aurelia-KendoUI-plugin
+*/
+export class KendoConfigBuilder {
 
-	resources = [];
+	resources: string[] = [];
+  useGlobalResources: boolean = true;
 
-  core() {
+  /**
+  * Globally register all Kendo Core wrappers
+  */
+  core(): KendoConfigBuilder {
     this.kendoButton()
       .kendoTabStrip()
       .kendoProgressBar()
@@ -78,7 +87,10 @@ class KendoConfigBuilder {
     return this;
   }
 
-  pro() {
+  /**
+  * Globally register all Kendo Core and Kendo Pro wrappers
+  */
+  pro(): KendoConfigBuilder {
     this.core()
       .kendoGrid()
 			.kendoAutoComplete()
@@ -86,53 +98,62 @@ class KendoConfigBuilder {
     return this;
   }
 
-  kendoAutoComplete() {
+  /**
+  * Don't globalize any resources
+  * Allows you to import wrappers yourself via <require></require>
+  */
+  withoutGlobalResources(): KendoConfigBuilder {
+    this.useGlobalResources = false;
+    return this;
+  }
+
+  kendoAutoComplete(): KendoConfigBuilder {
     this.resources.push('autocomplete/autocomplete');
     return this;
   }
 
-  kendoButton() {
+  kendoButton(): KendoConfigBuilder {
     this.resources.push('button/button');
     return this;
   }
 
-  kendoMenu() {
+  kendoMenu(): KendoConfigBuilder {
     this.resources.push('menu/menu');
     return this;
   }
 
-  kendoCombobox() {
+  kendoCombobox(): KendoConfigBuilder {
     this.resources.push('combobox/combobox');
     return this;
   }
 
-  kendoDropDownList() {
+  kendoDropDownList(): KendoConfigBuilder {
     this.resources.push('dropdownlist/dropdownlist');
     return this;
   }
 
-  kendoGrid() {
+  kendoGrid(): KendoConfigBuilder {
     this.resources.push('grid/grid');
     this.resources.push('grid/au-col');
     return this;
   }
 
-  kendoScheduler() {
+  kendoScheduler(): KendoConfigBuilder {
     this.resources.push('scheduler/scheduler');
     return this;
   }
 
-  kendoTabStrip() {
+  kendoTabStrip(): KendoConfigBuilder {
     this.resources.push('tabstrip/tabstrip');
     return this;
   }
 
-  kendoToolbar() {
+  kendoToolbar(): KendoConfigBuilder {
     this.resources.push('toolbar/toolbar');
     return this;
   }
 
-  kendoChart() {
+  kendoChart(): KendoConfigBuilder {
     this.resources.push('chart/chart');
     this.resources.push('chart/sparkline');
     this.resources.push('chart/stock');
@@ -140,17 +161,17 @@ class KendoConfigBuilder {
     return this;
   }
 
-  kendoProgressBar() {
+  kendoProgressBar(): KendoConfigBuilder {
     this.resources.push('progressbar/progressbar');
     return this;
   }
 
-  kendoSlider() {
+  kendoSlider(): KendoConfigBuilder {
     this.resources.push('slider/slider');
     return this;
   }
 
-  kendoColorPicker() {
+  kendoColorPicker(): KendoConfigBuilder {
     this.resources.push('colorpicker/colorpicker');
     return this;
   }
@@ -168,31 +189,27 @@ Let's also show the actual Aurelia plugin implementation of one of the simplest 
 
 ```javascript
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {fireEvent, TemplateCompiler, WidgetBase, generateBindables} from '../common/index';
+import {WidgetBase} from '../common/widget-base';
+import {generateBindables} from '../common/decorators';
+import {fireEvent} from '../common/events';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
 @customAttribute('k-autocomplete')
-@inject(Element, TemplateCompiler)
+@inject(Element)
 @generateBindables('kendoAutoComplete')
 export class AutoComplete extends WidgetBase {
 
-  @bindable options = {};
   @bindable kDataSource;
-  @bindable value;
+  @bindable options = {};
 
-  constructor(element, templateCompiler) {
+  constructor(element) {
     super('kendoAutoComplete', element);
-    this.templateCompiler = templateCompiler;
   }
 
   bind(ctx) {
-    this.templateCompiler.initialize(ctx);
+    super.bind(ctx);
 
-    this._initialize();
-  }
-
-  recreate() {
     this._initialize();
   }
 
@@ -202,42 +219,100 @@ export class AutoComplete extends WidgetBase {
     // without these change and select handlers, when you select an options
     // the value binding is not updated
     this.widget.bind('change', (event) => {
-      this.value = event.sender.value();
+      this.kValue = event.sender.value();
 
       // Update the kendo binding
       fireEvent(this.element, 'input');
     });
 
     this.widget.bind('select', (event) => {
-      this.value = event.sender.value();
+      this.kValue = event.sender.value();
 
       // Update the kendo binding
       fireEvent(this.element, 'input');
     });
   }
 
-  enableChanged(newValue) {
+  kEnableChanged() {
     if (this.widget) {
-      this.widget.enable(newValue);
+      this.widget.enable(this.kEnable);
     }
   }
 
-  setValue(newValue) {
+  enable(newValue) {
     if (this.widget) {
-      this.widget.value(newValue);
-      this.widget.trigger('change');
+      return this.widget.enable(newValue);
     }
   }
 
-  getValue(newValue) {
+  value(newValue) {
     if (this.widget) {
-      return this.widget.value();
+      if (newValue) {
+        this.widget.value(newValue);
+        this.widget.trigger('change');
+      } else {
+        return this.widget.value();
+      }
     }
   }
 
   search(value) {
     if (this.widget) {
       this.widget.search(value);
+    }
+  }
+
+  close(value) {
+    if (this.widget) {
+      return this.widget.close(value);
+    }
+  }
+
+  dataItem(value) {
+    if (this.widget) {
+      return this.widget.dataItem(value);
+    }
+  }
+
+  destroy() {
+    if (this.widget) {
+      return this.widget.destroy();
+    }
+  }
+
+  focus() {
+    if (this.widget) {
+      return this.widget.focus();
+    }
+  }
+
+  readonly(value) {
+    if (this.widget) {
+      return this.widget.readonly(value);
+    }
+  }
+
+  refresh() {
+    if (this.widget) {
+      return this.widget.refresh();
+    }
+  }
+
+  select(value) {
+    if (this.widget) {
+      return this.widget.select(value);
+    }
+  }
+
+  setDataSource(value) {
+    if (this.widget) {
+      return this.widget.setDataSource(value);
+    }
+  }
+
+  suggest(value) {
+    if (this.widget) {
+      return this.widget.suggest(value);
     }
   }
 }

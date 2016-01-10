@@ -6,7 +6,7 @@ Similarly to the **[Setup page](#/help/docs/app_developers_tutorials/2._setup)**
 <br>
 <br>
 #### 2.1 Plan of actions (stated as "steps" below)
-In order to simplify this set of tutorials we will take a slight tack away from the "embedded application" approach described in **[introduction section](http://localhost:3000/#/help/docs/about_this_application/1._introduction)** of the About this application help page. In order to verify the correctness of our wrappers code, we will use the **[application](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)** developed in the **[App developers tutorials](#/help/docs/app_developers_tutorials/1._introduction)**, to act in the role of the "consumer" of our newly created wrappers. Here is how to we do this:
+In order to simplify this set of tutorials we will take a slight tack away from the "embedded application" approach described in **[introduction section](#/help/docs/about_this_application/1._introduction)** of the About this application help page. In order to verify the correctness of our wrappers code, we will use the **[application](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)** developed in the **[App developers tutorials](#/help/docs/app_developers_tutorials/1._introduction)**, to act in the role of the "consumer" of our newly created wrappers. Here is how to we do this:
 <br>
 
 
@@ -167,7 +167,7 @@ export class KendoConfigBuilder {
 ```
 <br><br>
 #### Step 5
-This is not an action step - it is rather a reminder that the document **[Bridge utilities](#/help/docs/bridge_developers_tutorials/8._bridge_utilities)** has the explanations and the code for all functionality that Aurelia UI Toolkits team created to simplify the process of building this bridge.
+This is not an action step - it is rather a reminder that the document **[Bridge utilities](#/help/docs/bridge_developers_notes/2._bridge_utilities)** has the explanations and the code for all functionality that Aurelia UI Toolkits team created to simplify the process of building this bridge.
 <br>
 * * *
 <br>
