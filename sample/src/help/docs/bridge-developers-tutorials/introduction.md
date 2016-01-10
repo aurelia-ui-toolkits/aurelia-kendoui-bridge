@@ -17,7 +17,7 @@ The note **[Bridge utilities](#/help/docs/bridge_developers_notes/2._bridge_util
 
 #### Important note
 
-All subsequent tutorials assume that you used the **HAVING KENDOUI ALREADY: VENDORS** approach described  on the **[Help on Installation](#/help/docs/about_this_application/4._installation)** page.
+All subsequent tutorials assume that you used the **HAVING KENDOUI ALREADY: VENDORS** approach described  on the **[Help on Installation](#/help/docs/about_this_application/5._installation)** page.
 
 * * *
 <br>

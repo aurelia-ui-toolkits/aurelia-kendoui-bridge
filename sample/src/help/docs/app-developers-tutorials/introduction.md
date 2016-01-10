@@ -23,7 +23,7 @@ KendoUI SDK supports the [declarative programming model](http://docs.telerik.com
 
 #### Important note
 
-All subsequent tutorials assume that you used the **HAVING KENDOUI ALREADY: VENDORS** approach described  on the **[Help on Installation](http://aurelia-ui-toolkits.github.io/demo-kendo/#/help/docs/about_this_application/4._installation)** page.
+All subsequent tutorials assume that you used the **HAVING KENDOUI ALREADY: VENDORS** approach described  on the **[Help on Installation](#/help/docs/about_this_application/5._installation)** page.
 
 * * *
 <br>
