@@ -15,9 +15,12 @@ The note **[Bridge utilities](#/help/docs/bridge_developers_notes/2._bridge_util
 * * *
 
 
-#### Important note
+#### Important notes
 
 All subsequent tutorials assume that you used the **HAVING KENDOUI ALREADY: VENDORS** approach described  on the **[Help on Installation](#/help/docs/about_this_application/5._installation)** page.
+<br>
+
+The whole section named **Bridge developers tutorials** is intended solely to new bridge projects contributors - a lot narrower class than people interested **App developers tutorials** dedicated to all Aurelia application developers that want to use KendoUI components provided by the Aurelia-KendoUI bridge.
 
 * * *
 <br>
