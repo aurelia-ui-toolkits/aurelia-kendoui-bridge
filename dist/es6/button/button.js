@@ -1,5 +1,6 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {WidgetBase, generateBindables} from '../common/index';
+import {WidgetBase} from '../common/widget-base';
+import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.button.min';
 
 @customAttribute('k-button')
@@ -13,17 +14,21 @@ export class Button extends WidgetBase {
     super('kendoButton', element);
   }
 
-  bind() {
+  bind(ctx) {
+    super.bind(ctx);
+
     this._initialize();
   }
 
-  recreate() {
-    this._initialize();
-  }
-
-  kEnableChanged(newValue) {
+  kEnableChanged() {
     if (this.widget) {
-      this.widget.enable(newValue);
+      this.widget.enable(this.kEnable);
+    }
+  }
+
+  enable(enable) {
+    if (this.widget) {
+      this.widget.enable(enable);
     }
   }
 }

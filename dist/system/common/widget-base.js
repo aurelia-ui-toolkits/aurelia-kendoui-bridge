@@ -1,7 +1,7 @@
-System.register(['./options', './events', './util', 'aurelia-framework', 'aurelia-dependency-injection'], function (_export) {
+System.register(['./options', './events', './util', './template-compiler', 'aurelia-framework', 'aurelia-dependency-injection'], function (_export) {
   'use strict';
 
-  var pruneOptions, fireKendoEvent, getEventsFromAttributes, _hyphenate, getBindablePropertyName, TaskQueue, Container, WidgetBase;
+  var pruneOptions, fireKendoEvent, getEventsFromAttributes, _hyphenate, getBindablePropertyName, TemplateCompiler, TaskQueue, Container, WidgetBase;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -14,6 +14,8 @@ System.register(['./options', './events', './util', 'aurelia-framework', 'aureli
       getEventsFromAttributes = _util.getEventsFromAttributes;
       _hyphenate = _util._hyphenate;
       getBindablePropertyName = _util.getBindablePropertyName;
+    }, function (_templateCompiler) {
+      TemplateCompiler = _templateCompiler.TemplateCompiler;
     }, function (_aureliaFramework) {
       TaskQueue = _aureliaFramework.TaskQueue;
     }, function (_aureliaDependencyInjection) {
@@ -26,6 +28,8 @@ System.register(['./options', './events', './util', 'aurelia-framework', 'aureli
 
           var container = Container.instance;
           this.taskQueue = container.get(TaskQueue);
+          this.templateCompiler = container.get(TemplateCompiler);
+          this.templateCompiler.initialize();
 
           this.element = element;
 
@@ -36,7 +40,15 @@ System.register(['./options', './events', './util', 'aurelia-framework', 'aureli
           this.setDefaultBindableValues();
         }
 
+        WidgetBase.prototype.bind = function bind(ctx) {
+          this.$parent = ctx;
+        };
+
         WidgetBase.prototype._initialize = function _initialize() {
+          if (!this.$parent) {
+            throw new Error('$parent is not set. Did you call bind(ctx) on the widget base?');
+          }
+
           var target = jQuery(this.target);
 
           var ctor = target[this.controlName];
@@ -47,12 +59,18 @@ System.register(['./options', './events', './util', 'aurelia-framework', 'aureli
 
           this.widget = ctor.call(target, options).data(this.controlName);
 
+          this.widget._$parent = this.$parent;
+
           this._initialized();
         };
 
         WidgetBase.prototype._beforeInitialize = function _beforeInitialize(options) {};
 
         WidgetBase.prototype._initialized = function _initialized() {};
+
+        WidgetBase.prototype.recreate = function recreate() {
+          this._initialize();
+        };
 
         WidgetBase.prototype._getOptions = function _getOptions(ctor) {
           var options = this.getOptionsFromBindables();

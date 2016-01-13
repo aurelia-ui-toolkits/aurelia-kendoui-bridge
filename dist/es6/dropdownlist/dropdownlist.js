@@ -1,10 +1,12 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {fireEvent, WidgetBase, TemplateCompiler, generateBindables} from '../common/index';
+import {WidgetBase} from '../common/widget-base';
+import {generateBindables} from '../common/decorators';
+import {fireEvent} from '../common/events';
 import 'kendo-ui/js/kendo.dropdownlist.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
 @customAttribute('k-drop-down-list')
-@inject(Element, TemplateCompiler)
+@inject(Element)
 @generateBindables('kendoDropDownList')
 export class DropDownList extends WidgetBase {
 
@@ -12,19 +14,13 @@ export class DropDownList extends WidgetBase {
   @bindable kDataSource;
   @bindable kValue;
 
-  constructor(element, templateCompiler) {
+  constructor(element) {
     super('kendoDropDownList', element);
-
-    this.templateCompiler = templateCompiler;
   }
 
   bind(ctx) {
-    this.templateCompiler.initialize(ctx);
+    super.bind(ctx);
 
-    this._initialize();
-  }
-
-  recreate() {
     this._initialize();
   }
 
@@ -61,6 +57,12 @@ export class DropDownList extends WidgetBase {
     if (this.widget) {
       this.widget.value(newValue);
       this.widget.trigger('change');
+    }
+  }
+
+  value(newValue) {
+    if (this.widget) {
+      return this.widget.value(newValue);
     }
   }
 

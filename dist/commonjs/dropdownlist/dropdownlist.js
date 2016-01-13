@@ -12,7 +12,11 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _commonIndex = require('../common/index');
+var _commonWidgetBase = require('../common/widget-base');
+
+var _commonDecorators = require('../common/decorators');
+
+var _commonEvents = require('../common/events');
 
 require('kendo-ui/js/kendo.dropdownlist.min');
 
@@ -42,7 +46,7 @@ var DropDownList = (function (_WidgetBase) {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function DropDownList(element, templateCompiler) {
+  function DropDownList(element) {
     _classCallCheck(this, _DropDownList);
 
     _WidgetBase.call(this, 'kendoDropDownList', element);
@@ -52,17 +56,11 @@ var DropDownList = (function (_WidgetBase) {
     _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
-
-    this.templateCompiler = templateCompiler;
   }
 
   DropDownList.prototype.bind = function bind(ctx) {
-    this.templateCompiler.initialize(ctx);
+    _WidgetBase.prototype.bind.call(this, ctx);
 
-    this._initialize();
-  };
-
-  DropDownList.prototype.recreate = function recreate() {
     this._initialize();
   };
 
@@ -73,14 +71,14 @@ var DropDownList = (function (_WidgetBase) {
       _this.kValue = event.sender.value();
       _this.kText = event.sender.text();
 
-      _commonIndex.fireEvent(_this.element, 'input');
+      _commonEvents.fireEvent(_this.element, 'input');
     });
 
     this.widget.bind('select', function (event) {
       _this.kValue = event.sender.value();
       _this.kText = event.sender.text();
 
-      _commonIndex.fireEvent(_this.element, 'input');
+      _commonEvents.fireEvent(_this.element, 'input');
     });
 
     this.widget.trigger('change');
@@ -96,6 +94,12 @@ var DropDownList = (function (_WidgetBase) {
     if (this.widget) {
       this.widget.value(newValue);
       this.widget.trigger('change');
+    }
+  };
+
+  DropDownList.prototype.value = function value(newValue) {
+    if (this.widget) {
+      return this.widget.value(newValue);
     }
   };
 
@@ -116,10 +120,10 @@ var DropDownList = (function (_WidgetBase) {
   };
 
   var _DropDownList = DropDownList;
-  DropDownList = _commonIndex.generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
-  DropDownList = _aureliaFramework.inject(Element, _commonIndex.TemplateCompiler)(DropDownList) || DropDownList;
+  DropDownList = _commonDecorators.generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
+  DropDownList = _aureliaFramework.inject(Element)(DropDownList) || DropDownList;
   DropDownList = _aureliaFramework.customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
   return DropDownList;
-})(_commonIndex.WidgetBase);
+})(_commonWidgetBase.WidgetBase);
 
 exports.DropDownList = DropDownList;

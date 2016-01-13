@@ -9,24 +9,31 @@ define(['exports', 'aurelia-framework', 'aurelia-templating'], function (exports
     function TemplateCompiler(templatingEngine) {
       _classCallCheck(this, _TemplateCompiler);
 
+      this.isInitialized = false;
+
       this.templatingEngine = templatingEngine;
     }
 
-    TemplateCompiler.prototype.initialize = function initialize($parent) {
+    TemplateCompiler.prototype.initialize = function initialize() {
+      if (this.isInitialized) return;
+
       var _this = this;
-
-      this.$parent = $parent;
-
       kendo.ui.Widget.prototype.angular = function (_event, _args) {
-        return _this.handleTemplateEvents(_event, _args);
+        _this.handleTemplateEvents(this, _event, _args);
       };
       kendo.mobile.ui.Widget.prototype.angular = function (_event, _args) {
-        return _this.handleTemplateEvents(_event, _args);
+        _this.handleTemplateEvents(this, _event, _args);
       };
+
+      this.isInitialized = true;
     };
 
-    TemplateCompiler.prototype.handleTemplateEvents = function handleTemplateEvents(_event, _args) {
+    TemplateCompiler.prototype.handleTemplateEvents = function handleTemplateEvents(widget, _event, _args) {
       if (_event !== 'compile' && _event !== 'cleanup') return;
+
+      var $parent = widget._$parent;
+
+      if (!$parent) return;
 
       var args = _args();
       var elements = args.elements;
@@ -34,7 +41,7 @@ define(['exports', 'aurelia-framework', 'aurelia-templating'], function (exports
 
       switch (_event) {
         case 'compile':
-          this.compile(elements, data);
+          this.compile($parent, elements, data);
           break;
 
         case 'cleanup':
@@ -46,7 +53,7 @@ define(['exports', 'aurelia-framework', 'aurelia-templating'], function (exports
       }
     };
 
-    TemplateCompiler.prototype.compile = function compile(elements, data) {
+    TemplateCompiler.prototype.compile = function compile($parent, elements, data) {
       var _this2 = this;
 
       var _loop = function (i) {
@@ -60,10 +67,10 @@ define(['exports', 'aurelia-framework', 'aurelia-templating'], function (exports
 
         if (element instanceof jQuery) {
           element.each(function (index, elem) {
-            return _this2.enhanceView(elem, ctx);
+            return _this2.enhanceView($parent, elem, ctx);
           });
         } else {
-          _this2.enhanceView(element, ctx);
+          _this2.enhanceView($parent, element, ctx);
         }
       };
 
@@ -72,9 +79,10 @@ define(['exports', 'aurelia-framework', 'aurelia-templating'], function (exports
       }
     };
 
-    TemplateCompiler.prototype.enhanceView = function enhanceView(element, ctx) {
+    TemplateCompiler.prototype.enhanceView = function enhanceView($parent, element, ctx) {
       var view = this.templatingEngine.enhance(element);
-      view.bind(ctx, this.$parent);
+
+      view.bind(ctx, $parent);
       view.attached();
       $(element).data('viewInstance', view);
     };

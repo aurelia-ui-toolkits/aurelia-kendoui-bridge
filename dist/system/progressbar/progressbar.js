@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.progressbar.min'], function (_export) {
+System.register(['aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.progressbar.min'], function (_export) {
   'use strict';
 
   var customAttribute, bindable, inject, WidgetBase, generateBindables, ProgressBar;
@@ -16,9 +16,10 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.prog
       customAttribute = _aureliaFramework.customAttribute;
       bindable = _aureliaFramework.bindable;
       inject = _aureliaFramework.inject;
-    }, function (_commonIndex) {
-      WidgetBase = _commonIndex.WidgetBase;
-      generateBindables = _commonIndex.generateBindables;
+    }, function (_commonWidgetBase) {
+      WidgetBase = _commonWidgetBase.WidgetBase;
+    }, function (_commonDecorators) {
+      generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoProgressbarMin) {}],
     execute: function () {
       ProgressBar = (function (_WidgetBase) {
@@ -43,18 +44,34 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.prog
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
         }
 
-        ProgressBar.prototype.bind = function bind() {
+        ProgressBar.prototype.bind = function bind(ctx) {
+          _WidgetBase.prototype.bind.call(this, ctx);
+
           this._initialize();
         };
 
-        ProgressBar.prototype.enableChanged = function enableChanged(newValue) {
+        ProgressBar.prototype.kEnableChanged = function kEnableChanged(newValue) {
           if (this.widget) {
             this.widget.enable(newValue);
           }
         };
 
-        ProgressBar.prototype.valueChanged = function valueChanged(newValue) {
-          this.widget.value(newValue);
+        ProgressBar.prototype.kValueChanged = function kValueChanged(newValue) {
+          if (this.widget) {
+            this.widget.value(newValue);
+          }
+        };
+
+        ProgressBar.prototype.value = function value(newValue) {
+          if (this.widget) {
+            return this.widget.value(newValue);
+          }
+        };
+
+        ProgressBar.prototype.enable = function enable(newValue) {
+          if (this.widget) {
+            return this.widget.enable(newValue);
+          }
         };
 
         var _ProgressBar = ProgressBar;

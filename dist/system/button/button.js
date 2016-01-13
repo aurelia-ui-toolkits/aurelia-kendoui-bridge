@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.button.min'], function (_export) {
+System.register(['aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.button.min'], function (_export) {
   'use strict';
 
   var customAttribute, bindable, inject, WidgetBase, generateBindables, Button;
@@ -16,9 +16,10 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.butt
       customAttribute = _aureliaFramework.customAttribute;
       bindable = _aureliaFramework.bindable;
       inject = _aureliaFramework.inject;
-    }, function (_commonIndex) {
-      WidgetBase = _commonIndex.WidgetBase;
-      generateBindables = _commonIndex.generateBindables;
+    }, function (_commonWidgetBase) {
+      WidgetBase = _commonWidgetBase.WidgetBase;
+    }, function (_commonDecorators) {
+      generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoButtonMin) {}],
     execute: function () {
       Button = (function (_WidgetBase) {
@@ -43,17 +44,21 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.butt
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
         }
 
-        Button.prototype.bind = function bind() {
+        Button.prototype.bind = function bind(ctx) {
+          _WidgetBase.prototype.bind.call(this, ctx);
+
           this._initialize();
         };
 
-        Button.prototype.recreate = function recreate() {
-          this._initialize();
-        };
-
-        Button.prototype.kEnableChanged = function kEnableChanged(newValue) {
+        Button.prototype.kEnableChanged = function kEnableChanged() {
           if (this.widget) {
-            this.widget.enable(newValue);
+            this.widget.enable(this.kEnable);
+          }
+        };
+
+        Button.prototype.enable = function enable(_enable) {
+          if (this.widget) {
+            this.widget.enable(_enable);
           }
         };
 

@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.autocomplete.min', 'kendo-ui/js/kendo.virtuallist.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoAutocompleteMin, _kendoUiJsKendoVirtuallistMin) {
+define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', '../common/events', 'kendo-ui/js/kendo.autocomplete.min', 'kendo-ui/js/kendo.virtuallist.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _commonEvents, _kendoUiJsKendoAutocompleteMin, _kendoUiJsKendoVirtuallistMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -17,45 +17,32 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.au
     _inherits(AutoComplete, _WidgetBase);
 
     _createDecoratedClass(AutoComplete, [{
+      key: 'kDataSource',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
       key: 'options',
       decorators: [_aureliaFramework.bindable],
       initializer: function initializer() {
         return {};
       },
       enumerable: true
-    }, {
-      key: 'kDataSource',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'value',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
     }], null, _instanceInitializers);
 
-    function AutoComplete(element, templateCompiler) {
+    function AutoComplete(element) {
       _classCallCheck(this, _AutoComplete);
 
       _WidgetBase.call(this, 'kendoAutoComplete', element);
 
-      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
-
       _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'value', _instanceInitializers);
-
-      this.templateCompiler = templateCompiler;
+      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
     }
 
     AutoComplete.prototype.bind = function bind(ctx) {
-      this.templateCompiler.initialize(ctx);
+      _WidgetBase.prototype.bind.call(this, ctx);
 
-      this._initialize();
-    };
-
-    AutoComplete.prototype.recreate = function recreate() {
       this._initialize();
     };
 
@@ -65,34 +52,38 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.au
       _WidgetBase.prototype._initialize.call(this);
 
       this.widget.bind('change', function (event) {
-        _this.value = event.sender.value();
+        _this.kValue = event.sender.value();
 
-        _commonIndex.fireEvent(_this.element, 'input');
+        _commonEvents.fireEvent(_this.element, 'input');
       });
 
       this.widget.bind('select', function (event) {
-        _this.value = event.sender.value();
+        _this.kValue = event.sender.value();
 
-        _commonIndex.fireEvent(_this.element, 'input');
+        _commonEvents.fireEvent(_this.element, 'input');
       });
     };
 
-    AutoComplete.prototype.enableChanged = function enableChanged(newValue) {
+    AutoComplete.prototype.kEnableChanged = function kEnableChanged() {
       if (this.widget) {
-        this.widget.enable(newValue);
+        this.widget.enable(this.kEnable);
       }
     };
 
-    AutoComplete.prototype.setValue = function setValue(newValue) {
+    AutoComplete.prototype.enable = function enable(newValue) {
       if (this.widget) {
-        this.widget.value(newValue);
-        this.widget.trigger('change');
+        return this.widget.enable(newValue);
       }
     };
 
-    AutoComplete.prototype.getValue = function getValue(newValue) {
+    AutoComplete.prototype.value = function value(newValue) {
       if (this.widget) {
-        return this.widget.value();
+        if (newValue) {
+          this.widget.value(newValue);
+          this.widget.trigger('change');
+        } else {
+          return this.widget.value();
+        }
       }
     };
 
@@ -102,12 +93,66 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.au
       }
     };
 
+    AutoComplete.prototype.close = function close(value) {
+      if (this.widget) {
+        return this.widget.close(value);
+      }
+    };
+
+    AutoComplete.prototype.dataItem = function dataItem(value) {
+      if (this.widget) {
+        return this.widget.dataItem(value);
+      }
+    };
+
+    AutoComplete.prototype.destroy = function destroy() {
+      if (this.widget) {
+        return this.widget.destroy();
+      }
+    };
+
+    AutoComplete.prototype.focus = function focus() {
+      if (this.widget) {
+        return this.widget.focus();
+      }
+    };
+
+    AutoComplete.prototype.readonly = function readonly(value) {
+      if (this.widget) {
+        return this.widget.readonly(value);
+      }
+    };
+
+    AutoComplete.prototype.refresh = function refresh() {
+      if (this.widget) {
+        return this.widget.refresh();
+      }
+    };
+
+    AutoComplete.prototype.select = function select(value) {
+      if (this.widget) {
+        return this.widget.select(value);
+      }
+    };
+
+    AutoComplete.prototype.setDataSource = function setDataSource(value) {
+      if (this.widget) {
+        return this.widget.setDataSource(value);
+      }
+    };
+
+    AutoComplete.prototype.suggest = function suggest(value) {
+      if (this.widget) {
+        return this.widget.suggest(value);
+      }
+    };
+
     var _AutoComplete = AutoComplete;
-    AutoComplete = _commonIndex.generateBindables('kendoAutoComplete')(AutoComplete) || AutoComplete;
-    AutoComplete = _aureliaFramework.inject(Element, _commonIndex.TemplateCompiler)(AutoComplete) || AutoComplete;
+    AutoComplete = _commonDecorators.generateBindables('kendoAutoComplete')(AutoComplete) || AutoComplete;
+    AutoComplete = _aureliaFramework.inject(Element)(AutoComplete) || AutoComplete;
     AutoComplete = _aureliaFramework.customAttribute('k-autocomplete')(AutoComplete) || AutoComplete;
     return AutoComplete;
-  })(_commonIndex.WidgetBase);
+  })(_commonWidgetBase.WidgetBase);
 
   exports.AutoComplete = AutoComplete;
 });

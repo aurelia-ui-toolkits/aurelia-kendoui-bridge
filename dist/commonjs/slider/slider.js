@@ -12,7 +12,9 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _commonIndex = require('../common/index');
+var _commonWidgetBase = require('../common/widget-base');
+
+var _commonDecorators = require('../common/decorators');
 
 require('kendo-ui/js/kendo.slider.min');
 
@@ -22,6 +24,11 @@ var Slider = (function (_WidgetBase) {
   _inherits(Slider, _WidgetBase);
 
   _createDecoratedClass(Slider, [{
+    key: 'kValue',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -35,6 +42,8 @@ var Slider = (function (_WidgetBase) {
 
     _WidgetBase.call(this, 'kendoSlider', element);
 
+    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
+
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
@@ -45,17 +54,53 @@ var Slider = (function (_WidgetBase) {
     this._initialize();
   };
 
-  Slider.prototype.enableChanged = function enableChanged(newValue) {
+  Slider.prototype._beforeInitialize = function _beforeInitialize(options) {
+    if (!options.value && this.kValue) {
+      options.value = this.kValue;
+    }
+  };
+
+  Slider.prototype.kEnableChanged = function kEnableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
     }
   };
 
+  Slider.prototype.enable = function enable(newValue) {
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  };
+
+  Slider.prototype.value = function value(newValue) {
+    if (this.widget) {
+      return this.widget.value(newValue);
+    }
+  };
+
+  Slider.prototype.destroy = function destroy() {
+    if (this.widget) {
+      return this.widget.destroy();
+    }
+  };
+
+  Slider.prototype.resize = function resize() {
+    if (this.widget) {
+      return this.widget.resize();
+    }
+  };
+
+  Slider.prototype.kValueChanged = function kValueChanged() {
+    if (this.widget) {
+      this.widget.value(this.kValue);
+    }
+  };
+
   var _Slider = Slider;
   Slider = _aureliaFramework.inject(Element)(Slider) || Slider;
-  Slider = _commonIndex.generateBindables('kendoSlider')(Slider) || Slider;
+  Slider = _commonDecorators.generateBindables('kendoSlider')(Slider) || Slider;
   Slider = _aureliaFramework.customAttribute('k-slider')(Slider) || Slider;
   return Slider;
-})(_commonIndex.WidgetBase);
+})(_commonWidgetBase.WidgetBase);
 
 exports.Slider = Slider;

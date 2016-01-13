@@ -10,6 +10,8 @@ var _events = require('./events');
 
 var _util = require('./util');
 
+var _templateCompiler = require('./template-compiler');
+
 var _aureliaFramework = require('aurelia-framework');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
@@ -20,6 +22,8 @@ var WidgetBase = (function () {
 
     var container = _aureliaDependencyInjection.Container.instance;
     this.taskQueue = container.get(_aureliaFramework.TaskQueue);
+    this.templateCompiler = container.get(_templateCompiler.TemplateCompiler);
+    this.templateCompiler.initialize();
 
     this.element = element;
 
@@ -30,7 +34,15 @@ var WidgetBase = (function () {
     this.setDefaultBindableValues();
   }
 
+  WidgetBase.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
   WidgetBase.prototype._initialize = function _initialize() {
+    if (!this.$parent) {
+      throw new Error('$parent is not set. Did you call bind(ctx) on the widget base?');
+    }
+
     var target = jQuery(this.target);
 
     var ctor = target[this.controlName];
@@ -41,12 +53,18 @@ var WidgetBase = (function () {
 
     this.widget = ctor.call(target, options).data(this.controlName);
 
+    this.widget._$parent = this.$parent;
+
     this._initialized();
   };
 
   WidgetBase.prototype._beforeInitialize = function _beforeInitialize(options) {};
 
   WidgetBase.prototype._initialized = function _initialized() {};
+
+  WidgetBase.prototype.recreate = function recreate() {
+    this._initialize();
+  };
 
   WidgetBase.prototype._getOptions = function _getOptions(ctor) {
     var options = this.getOptionsFromBindables();

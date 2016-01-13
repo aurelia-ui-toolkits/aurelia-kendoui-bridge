@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.menu.min'], function (_export) {
+System.register(['aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.menu.min'], function (_export) {
   'use strict';
 
   var customElement, bindable, inject, WidgetBase, generateBindables, Menu;
@@ -16,9 +16,10 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.menu
       customElement = _aureliaFramework.customElement;
       bindable = _aureliaFramework.bindable;
       inject = _aureliaFramework.inject;
-    }, function (_commonIndex) {
-      WidgetBase = _commonIndex.WidgetBase;
-      generateBindables = _commonIndex.generateBindables;
+    }, function (_commonWidgetBase) {
+      WidgetBase = _commonWidgetBase.WidgetBase;
+    }, function (_commonDecorators) {
+      generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoMenuMin) {}],
     execute: function () {
       Menu = (function (_WidgetBase) {
@@ -50,11 +51,9 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.menu
           _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
         }
 
-        Menu.prototype.bind = function bind() {
-          this._initialize();
-        };
+        Menu.prototype.bind = function bind(ctx) {
+          _WidgetBase.prototype.bind.call(this, ctx);
 
-        Menu.prototype.recreate = function recreate() {
           this._initialize();
         };
 

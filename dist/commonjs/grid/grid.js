@@ -12,7 +12,13 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _commonIndex = require('../common/index');
+var _commonWidgetBase = require('../common/widget-base');
+
+var _commonDecorators = require('../common/decorators');
+
+var _pdfPdf = require('../pdf/pdf');
+
+require('kendo-ui/js/kendo.data.signalr.min');
 
 require('kendo-ui/js/kendo.filtercell.min');
 
@@ -29,42 +35,32 @@ var Grid = (function (_WidgetBase) {
     initializer: null,
     enumerable: true
   }, {
+    key: 'kDataSource',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
       return {};
     },
     enumerable: true
-  }, {
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
   }], null, _instanceInitializers);
 
-  function Grid(element, templateCompiler) {
+  function Grid(element) {
     _classCallCheck(this, _Grid);
 
     _WidgetBase.call(this, 'kendoGrid', element);
 
     _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
-
     _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
 
-    this.templateCompiler = templateCompiler;
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
   }
 
-  Grid.prototype.bind = function bind(ctx) {
-    this.templateCompiler.initialize(ctx);
-  };
-
   Grid.prototype.attached = function attached() {
-    this._initialize();
-  };
-
-  Grid.prototype.recreate = function recreate() {
     this._initialize();
   };
 
@@ -86,12 +82,198 @@ var Grid = (function (_WidgetBase) {
     }
   };
 
+  Grid.prototype.addRow = function addRow() {
+    if (this.widget) {
+      this.widget.addRow();
+    }
+  };
+
+  Grid.prototype.autoFitColumn = function autoFitColumn(value) {
+    if (this.widget) {
+      this.widget.autoFitColumn(value);
+    }
+  };
+
+  Grid.prototype.cancelChanges = function cancelChanges() {
+    if (this.widget) {
+      this.widget.cancelChanges();
+    }
+  };
+
+  Grid.prototype.cancelRow = function cancelRow() {
+    if (this.widget) {
+      this.widget.cancelRow();
+    }
+  };
+
+  Grid.prototype.cellIndex = function cellIndex(cell) {
+    if (this.widget) {
+      return this.widget.cellIndex(cell);
+    }
+  };
+
+  Grid.prototype.clearSelection = function clearSelection() {
+    if (this.widget) {
+      this.widget.clearSelection();
+    }
+  };
+
+  Grid.prototype.closeCell = function closeCell() {
+    if (this.widget) {
+      this.widget.closeCell();
+    }
+  };
+
+  Grid.prototype.collapseGroup = function collapseGroup(group) {
+    if (this.widget) {
+      this.widget.collapseGroup(group);
+    }
+  };
+
+  Grid.prototype.collapseRow = function collapseRow(row) {
+    if (this.widget) {
+      this.widget.collapseRow(row);
+    }
+  };
+
+  Grid.prototype.current = function current(cell) {
+    if (this.widget) {
+      return this.widget.current(cell);
+    }
+  };
+
+  Grid.prototype.dataItem = function dataItem(row) {
+    if (this.widget) {
+      return this.widget.dataItem(row);
+    }
+  };
+
+  Grid.prototype.destroy = function destroy() {
+    if (this.widget) {
+      this.widget.destroy();
+    }
+  };
+
+  Grid.prototype.editCell = function editCell(cell) {
+    if (this.widget) {
+      this.widget.editCell(cell);
+    }
+  };
+
+  Grid.prototype.editRow = function editRow(row) {
+    if (this.widget) {
+      this.widget.editRow(row);
+    }
+  };
+
+  Grid.prototype.expandGroup = function expandGroup(row) {
+    if (this.widget) {
+      this.widget.expandGroup(row);
+    }
+  };
+
+  Grid.prototype.expandRow = function expandRow(row) {
+    if (this.widget) {
+      this.widget.expandRow(row);
+    }
+  };
+
+  Grid.prototype.getOptions = function getOptions() {
+    if (this.widget) {
+      return this.widget.getOptions();
+    }
+  };
+
+  Grid.prototype.hideColumn = function hideColumn(column) {
+    if (this.widget) {
+      this.widget.hideColumn(column);
+    }
+  };
+
+  Grid.prototype.lockColumn = function lockColumn(column) {
+    if (this.widget) {
+      this.widget.lockColumn(column);
+    }
+  };
+
+  Grid.prototype.refresh = function refresh() {
+    if (this.widget) {
+      this.widget.refresh();
+    }
+  };
+
+  Grid.prototype.removeRow = function removeRow(row) {
+    if (this.widget) {
+      this.widget.removeRow(row);
+    }
+  };
+
+  Grid.prototype.reorderColumn = function reorderColumn(destIndex, column) {
+    if (this.widget) {
+      this.widget.reorderColumn(destIndex, column);
+    }
+  };
+
+  Grid.prototype.saveAsExcel = function saveAsExcel() {
+    if (this.widget) {
+      this.widget.saveAsExcel();
+    }
+  };
+
+  Grid.prototype.saveAsPDF = function saveAsPDF() {
+    if (this.widget) {
+      this.widget.saveAsPDF();
+    }
+  };
+
+  Grid.prototype.saveChanges = function saveChanges() {
+    if (this.widget) {
+      this.widget.saveChanges();
+    }
+  };
+
+  Grid.prototype.saveRow = function saveRow() {
+    if (this.widget) {
+      this.widget.saveRow();
+    }
+  };
+
+  Grid.prototype.select = function select(rows) {
+    if (this.widget) {
+      return this.widget.select(rows);
+    }
+  };
+
+  Grid.prototype.setDataSource = function setDataSource(dataSource) {
+    if (this.widget) {
+      this.widget.setDataSource(dataSource);
+    }
+  };
+
+  Grid.prototype.setOptions = function setOptions(options) {
+    if (this.widget) {
+      this.widget.setOptions(options);
+    }
+  };
+
+  Grid.prototype.showColumn = function showColumn(column) {
+    if (this.widget) {
+      this.widget.showColumn(column);
+    }
+  };
+
+  Grid.prototype.unlockColumn = function unlockColumn(column) {
+    if (this.widget) {
+      this.widget.unlockColumn(column);
+    }
+  };
+
   var _Grid = Grid;
-  Grid = _aureliaFramework.inject(Element, _commonIndex.TemplateCompiler)(Grid) || Grid;
-  Grid = _commonIndex.generateBindables('kendoGrid')(Grid) || Grid;
+  Grid = _aureliaFramework.inject(Element)(Grid) || Grid;
+  Grid = _commonDecorators.generateBindables('kendoGrid')(Grid) || Grid;
   Grid = _aureliaFramework.customElement('k-grid')(Grid) || Grid;
   return Grid;
-})(_commonIndex.WidgetBase);
+})(_commonWidgetBase.WidgetBase);
 
 exports.Grid = Grid;
 

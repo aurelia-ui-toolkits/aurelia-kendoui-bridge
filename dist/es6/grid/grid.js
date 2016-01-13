@@ -1,36 +1,28 @@
 import {inject, children, customElement, bindable} from 'aurelia-framework';
-import {WidgetBase, TemplateCompiler, generateBindables} from '../common/index';
-import '../pdf/pdf';
+import {WidgetBase} from '../common/widget-base';
+import {generateBindables} from '../common/decorators';
+import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
+import 'kendo-ui/js/kendo.data.signalr.min';
 import 'kendo-ui/js/kendo.filtercell.min';
 import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('k-grid')
 @generateBindables('kendoGrid')
-@inject(Element, TemplateCompiler)
+@inject(Element)
 export class Grid extends WidgetBase {
 
   @children('au-col') columns;
 
-  @bindable options = {};
   @bindable kDataSource;
+  @bindable options = {};
 
-  constructor(element, templateCompiler) {
+  constructor(element) {
     super('kendoGrid', element);
-
-    this.templateCompiler = templateCompiler;
-  }
-
-  bind(ctx) {
-    this.templateCompiler.initialize(ctx);
   }
 
   // initialization in bind() is giving issues in some scenarios
   // so, attached() is used for this control
   attached() {
-    this._initialize();
-  }
-
-  recreate() {
     this._initialize();
   }
 
@@ -43,6 +35,7 @@ export class Grid extends WidgetBase {
   }
 
   _beforeInitialize(options) {
+    // allow for both column definitions via HTML and via an array of columns
     if (this.columns && this.columns.length > 0) {
       options.columns = this.columns;
     }
@@ -51,6 +44,192 @@ export class Grid extends WidgetBase {
   enableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
+    }
+  }
+
+  addRow() {
+    if (this.widget) {
+      this.widget.addRow();
+    }
+  }
+
+  autoFitColumn(value) {
+    if (this.widget) {
+      this.widget.autoFitColumn(value);
+    }
+  }
+
+  cancelChanges() {
+    if (this.widget) {
+      this.widget.cancelChanges();
+    }
+  }
+
+  cancelRow() {
+    if (this.widget) {
+      this.widget.cancelRow();
+    }
+  }
+
+  cellIndex(cell) {
+    if (this.widget) {
+      return this.widget.cellIndex(cell);
+    }
+  }
+
+  clearSelection() {
+    if (this.widget) {
+      this.widget.clearSelection();
+    }
+  }
+
+  closeCell() {
+    if (this.widget) {
+      this.widget.closeCell();
+    }
+  }
+
+  collapseGroup(group) {
+    if (this.widget) {
+      this.widget.collapseGroup(group);
+    }
+  }
+
+  collapseRow(row) {
+    if (this.widget) {
+      this.widget.collapseRow(row);
+    }
+  }
+
+  current(cell) {
+    if (this.widget) {
+      return this.widget.current(cell);
+    }
+  }
+
+  dataItem(row) {
+    if (this.widget) {
+      return this.widget.dataItem(row);
+    }
+  }
+
+  destroy() {
+    if (this.widget) {
+      this.widget.destroy();
+    }
+  }
+
+  editCell(cell) {
+    if (this.widget) {
+      this.widget.editCell(cell);
+    }
+  }
+
+  editRow(row) {
+    if (this.widget) {
+      this.widget.editRow(row);
+    }
+  }
+
+  expandGroup(row) {
+    if (this.widget) {
+      this.widget.expandGroup(row);
+    }
+  }
+
+  expandRow(row) {
+    if (this.widget) {
+      this.widget.expandRow(row);
+    }
+  }
+
+  getOptions() {
+    if (this.widget) {
+      return this.widget.getOptions();
+    }
+  }
+
+  hideColumn(column) {
+    if (this.widget) {
+      this.widget.hideColumn(column);
+    }
+  }
+
+  lockColumn(column) {
+    if (this.widget) {
+      this.widget.lockColumn(column);
+    }
+  }
+
+  refresh() {
+    if (this.widget) {
+      this.widget.refresh();
+    }
+  }
+
+  removeRow(row) {
+    if (this.widget) {
+      this.widget.removeRow(row);
+    }
+  }
+
+  reorderColumn(destIndex, column) {
+    if (this.widget) {
+      this.widget.reorderColumn(destIndex, column);
+    }
+  }
+
+  saveAsExcel() {
+    if (this.widget) {
+      this.widget.saveAsExcel();
+    }
+  }
+
+  saveAsPDF() {
+    if (this.widget) {
+      this.widget.saveAsPDF();
+    }
+  }
+
+  saveChanges() {
+    if (this.widget) {
+      this.widget.saveChanges();
+    }
+  }
+
+  saveRow() {
+    if (this.widget) {
+      this.widget.saveRow();
+    }
+  }
+
+  select(rows) {
+    if (this.widget) {
+      return this.widget.select(rows);
+    }
+  }
+
+  setDataSource(dataSource) {
+    if (this.widget) {
+      this.widget.setDataSource(dataSource);
+    }
+  }
+
+  setOptions(options) {
+    if (this.widget) {
+      this.widget.setOptions(options);
+    }
+  }
+
+  showColumn(column) {
+    if (this.widget) {
+      this.widget.showColumn(column);
+    }
+  }
+
+  unlockColumn(column) {
+    if (this.widget) {
+      this.widget.unlockColumn(column);
     }
   }
 }

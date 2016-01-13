@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.slider.min'], function (_export) {
+System.register(['aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.slider.min'], function (_export) {
   'use strict';
 
   var customAttribute, bindable, inject, WidgetBase, generateBindables, Slider;
@@ -16,9 +16,10 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.slid
       customAttribute = _aureliaFramework.customAttribute;
       bindable = _aureliaFramework.bindable;
       inject = _aureliaFramework.inject;
-    }, function (_commonIndex) {
-      WidgetBase = _commonIndex.WidgetBase;
-      generateBindables = _commonIndex.generateBindables;
+    }, function (_commonWidgetBase) {
+      WidgetBase = _commonWidgetBase.WidgetBase;
+    }, function (_commonDecorators) {
+      generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoSliderMin) {}],
     execute: function () {
       Slider = (function (_WidgetBase) {
@@ -27,6 +28,11 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.slid
         _inherits(Slider, _WidgetBase);
 
         _createDecoratedClass(Slider, [{
+          key: 'kValue',
+          decorators: [bindable],
+          initializer: null,
+          enumerable: true
+        }, {
           key: 'options',
           decorators: [bindable],
           initializer: function initializer() {
@@ -40,6 +46,8 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.slid
 
           _WidgetBase.call(this, 'kendoSlider', element);
 
+          _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
+
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
           this.element = element;
@@ -50,9 +58,45 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.slid
           this._initialize();
         };
 
-        Slider.prototype.enableChanged = function enableChanged(newValue) {
+        Slider.prototype._beforeInitialize = function _beforeInitialize(options) {
+          if (!options.value && this.kValue) {
+            options.value = this.kValue;
+          }
+        };
+
+        Slider.prototype.kEnableChanged = function kEnableChanged(newValue) {
           if (this.widget) {
             this.widget.enable(newValue);
+          }
+        };
+
+        Slider.prototype.enable = function enable(newValue) {
+          if (this.widget) {
+            this.widget.enable(newValue);
+          }
+        };
+
+        Slider.prototype.value = function value(newValue) {
+          if (this.widget) {
+            return this.widget.value(newValue);
+          }
+        };
+
+        Slider.prototype.destroy = function destroy() {
+          if (this.widget) {
+            return this.widget.destroy();
+          }
+        };
+
+        Slider.prototype.resize = function resize() {
+          if (this.widget) {
+            return this.widget.resize();
+          }
+        };
+
+        Slider.prototype.kValueChanged = function kValueChanged() {
+          if (this.widget) {
+            this.widget.value(this.kValue);
           }
         };
 

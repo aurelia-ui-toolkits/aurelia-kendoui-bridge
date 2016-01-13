@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dataviz.chart.min', 'kendo-ui/js/kendo.dataviz.chart.polar.min', 'kendo-ui/js/kendo.dataviz.chart.funnel.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoDatavizChartMin, _kendoUiJsKendoDatavizChartPolarMin, _kendoUiJsKendoDatavizChartFunnelMin) {
+define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.chart.min', 'kendo-ui/js/kendo.dataviz.chart.polar.min', 'kendo-ui/js/kendo.dataviz.chart.funnel.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _pdfPdf, _kendoUiJsKendoDatavizChartMin, _kendoUiJsKendoDatavizChartPolarMin, _kendoUiJsKendoDatavizChartFunnelMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -17,16 +17,16 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.da
     _inherits(Chart, _WidgetBase);
 
     _createDecoratedClass(Chart, [{
+      key: 'kDataSource',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
       key: 'options',
       decorators: [_aureliaFramework.bindable],
       initializer: function initializer() {
         return {};
       },
-      enumerable: true
-    }, {
-      key: 'kDataSource',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
 
@@ -35,16 +35,12 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.da
 
       _WidgetBase.call(this, 'kendoChart', element);
 
-      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
-
       _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
     }
 
     Chart.prototype.attached = function attached() {
-      this._initialize();
-    };
-
-    Chart.prototype.recreate = function recreate() {
       this._initialize();
     };
 
@@ -102,12 +98,42 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.da
       }
     };
 
+    Chart.prototype.setOptions = function setOptions(value) {
+      if (this.widget) {
+        return this.widget.setOptions(value);
+      }
+    };
+
+    Chart.prototype.svg = function svg() {
+      if (this.widget) {
+        return this.widget.svg();
+      }
+    };
+
+    Chart.prototype.imageDataURL = function imageDataURL() {
+      if (this.widget) {
+        return this.widget.imageDataURL();
+      }
+    };
+
+    Chart.prototype.toggleHighlight = function toggleHighlight(show, options) {
+      if (this.widget) {
+        return this.widget.toggleHighlight(show, options);
+      }
+    };
+
+    Chart.prototype.destroy = function destroy() {
+      if (this.widget) {
+        return this.widget.destroy();
+      }
+    };
+
     var _Chart = Chart;
     Chart = _aureliaFramework.inject(Element)(Chart) || Chart;
-    Chart = _commonIndex.generateBindables('kendoChart')(Chart) || Chart;
+    Chart = _commonDecorators.generateBindables('kendoChart')(Chart) || Chart;
     Chart = _aureliaFramework.customElement('k-chart')(Chart) || Chart;
     return Chart;
-  })(_commonIndex.WidgetBase);
+  })(_commonWidgetBase.WidgetBase);
 
   exports.Chart = Chart;
 });

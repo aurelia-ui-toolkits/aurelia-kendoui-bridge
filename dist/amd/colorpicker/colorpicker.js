@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.colorpicker.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoColorpickerMin) {
+define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.colorpicker.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoColorpickerMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -33,16 +33,18 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.co
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
     }
 
-    ColorPicker.prototype.bind = function bind() {
+    ColorPicker.prototype.bind = function bind(ctx) {
+      _WidgetBase.prototype.bind.call(this, ctx);
+
       this._initialize();
     };
 
     var _ColorPicker = ColorPicker;
     ColorPicker = _aureliaFramework.inject(Element)(ColorPicker) || ColorPicker;
-    ColorPicker = _commonIndex.generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
+    ColorPicker = _commonDecorators.generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
     ColorPicker = _aureliaFramework.customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
     return ColorPicker;
-  })(_commonIndex.WidgetBase);
+  })(_commonWidgetBase.WidgetBase);
 
   exports.ColorPicker = ColorPicker;
 });

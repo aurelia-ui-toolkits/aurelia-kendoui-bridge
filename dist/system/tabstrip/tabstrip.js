@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.tabstrip.min'], function (_export) {
+System.register(['aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.tabstrip.min'], function (_export) {
   'use strict';
 
   var customAttribute, bindable, inject, WidgetBase, generateBindables, TabStrip;
@@ -16,9 +16,10 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.tabs
       customAttribute = _aureliaFramework.customAttribute;
       bindable = _aureliaFramework.bindable;
       inject = _aureliaFramework.inject;
-    }, function (_commonIndex) {
-      WidgetBase = _commonIndex.WidgetBase;
-      generateBindables = _commonIndex.generateBindables;
+    }, function (_commonWidgetBase) {
+      WidgetBase = _commonWidgetBase.WidgetBase;
+    }, function (_commonDecorators) {
+      generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoTabstripMin) {}],
     execute: function () {
       TabStrip = (function (_WidgetBase) {
@@ -43,11 +44,9 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.tabs
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
         }
 
-        TabStrip.prototype.bind = function bind() {
-          this._initialize();
-        };
+        TabStrip.prototype.bind = function bind(ctx) {
+          _WidgetBase.prototype.bind.call(this, ctx);
 
-        TabStrip.prototype.recreate = function recreate() {
           this._initialize();
         };
 

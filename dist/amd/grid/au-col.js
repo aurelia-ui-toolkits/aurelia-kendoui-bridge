@@ -120,11 +120,6 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
       initializer: null,
       enumerable: true
     }, {
-      key: 'template',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
       key: 'title',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
@@ -185,8 +180,6 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
       _defineDecoratedPropertyDescriptor(this, 'minScreenWidth', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers);
 

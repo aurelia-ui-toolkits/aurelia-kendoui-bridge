@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dataviz.stock.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoDatavizStockMin) {
+define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.stock.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _pdfPdf, _kendoUiJsKendoDatavizStockMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -17,16 +17,16 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.da
     _inherits(Stock, _WidgetBase);
 
     _createDecoratedClass(Stock, [{
+      key: 'kDataSource',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
       key: 'options',
       decorators: [_aureliaFramework.bindable],
       initializer: function initializer() {
         return {};
       },
-      enumerable: true
-    }, {
-      key: 'kDataSource',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
 
@@ -35,25 +35,81 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.da
 
       _WidgetBase.call(this, 'kendoStockChart', element);
 
-      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
-
       _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
     }
 
     Stock.prototype.attached = function attached() {
       this._initialize();
     };
 
-    Stock.prototype.recreate = function recreate() {
-      this._initialize();
+    Stock.prototype.destroy = function destroy() {
+      if (this.widget) {
+        return this.widget.destroy();
+      }
+    };
+
+    Stock.prototype.exportImage = function exportImage(options) {
+      if (this.widget) {
+        return this.widget.exportImage(options);
+      }
+    };
+
+    Stock.prototype.exportPDF = function exportPDF(options) {
+      if (this.widget) {
+        return this.widget.exportPDF(options);
+      }
+    };
+
+    Stock.prototype.exportSVG = function exportSVG(options) {
+      if (this.widget) {
+        return this.widget.exportSVG(options);
+      }
+    };
+
+    Stock.prototype.redraw = function redraw() {
+      if (this.widget) {
+        return this.widget.redraw();
+      }
+    };
+
+    Stock.prototype.refresh = function refresh() {
+      if (this.widget) {
+        return this.widget.refresh();
+      }
+    };
+
+    Stock.prototype.resize = function resize() {
+      if (this.widget) {
+        return this.widget.resize();
+      }
+    };
+
+    Stock.prototype.setDataSource = function setDataSource(dataSource) {
+      if (this.widget) {
+        return this.widget.setDataSource(dataSource);
+      }
+    };
+
+    Stock.prototype.svg = function svg() {
+      if (this.widget) {
+        return this.widget.svg();
+      }
+    };
+
+    Stock.prototype.imageDataURL = function imageDataURL() {
+      if (this.widget) {
+        return this.widget.imageDataURL();
+      }
     };
 
     var _Stock = Stock;
     Stock = _aureliaFramework.inject(Element)(Stock) || Stock;
-    Stock = _commonIndex.generateBindables('kendoStockChart')(Stock) || Stock;
+    Stock = _commonDecorators.generateBindables('kendoStockChart')(Stock) || Stock;
     Stock = _aureliaFramework.customElement('k-stock')(Stock) || Stock;
     return Stock;
-  })(_commonIndex.WidgetBase);
+  })(_commonWidgetBase.WidgetBase);
 
   exports.Stock = Stock;
 });

@@ -1,5 +1,6 @@
 import {customElement, bindable, inject} from 'aurelia-framework';
-import {WidgetBase, generateBindables} from '../common/index';
+import {WidgetBase} from '../common/widget-base';
+import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.menu.min';
 
 @customElement('k-menu')
@@ -14,11 +15,9 @@ export class Menu extends WidgetBase {
     super('kendoMenu', element);
   }
 
-  bind() {
-    this._initialize();
-  }
+  bind(ctx) {
+    super.bind(ctx);
 
-  recreate() {
     this._initialize();
   }
 

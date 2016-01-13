@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.slider.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoSliderMin) {
+define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.slider.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoSliderMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -17,6 +17,11 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.sl
     _inherits(Slider, _WidgetBase);
 
     _createDecoratedClass(Slider, [{
+      key: 'kValue',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
       key: 'options',
       decorators: [_aureliaFramework.bindable],
       initializer: function initializer() {
@@ -30,6 +35,8 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.sl
 
       _WidgetBase.call(this, 'kendoSlider', element);
 
+      _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
+
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
@@ -40,18 +47,54 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.sl
       this._initialize();
     };
 
-    Slider.prototype.enableChanged = function enableChanged(newValue) {
+    Slider.prototype._beforeInitialize = function _beforeInitialize(options) {
+      if (!options.value && this.kValue) {
+        options.value = this.kValue;
+      }
+    };
+
+    Slider.prototype.kEnableChanged = function kEnableChanged(newValue) {
       if (this.widget) {
         this.widget.enable(newValue);
       }
     };
 
+    Slider.prototype.enable = function enable(newValue) {
+      if (this.widget) {
+        this.widget.enable(newValue);
+      }
+    };
+
+    Slider.prototype.value = function value(newValue) {
+      if (this.widget) {
+        return this.widget.value(newValue);
+      }
+    };
+
+    Slider.prototype.destroy = function destroy() {
+      if (this.widget) {
+        return this.widget.destroy();
+      }
+    };
+
+    Slider.prototype.resize = function resize() {
+      if (this.widget) {
+        return this.widget.resize();
+      }
+    };
+
+    Slider.prototype.kValueChanged = function kValueChanged() {
+      if (this.widget) {
+        this.widget.value(this.kValue);
+      }
+    };
+
     var _Slider = Slider;
     Slider = _aureliaFramework.inject(Element)(Slider) || Slider;
-    Slider = _commonIndex.generateBindables('kendoSlider')(Slider) || Slider;
+    Slider = _commonDecorators.generateBindables('kendoSlider')(Slider) || Slider;
     Slider = _aureliaFramework.customAttribute('k-slider')(Slider) || Slider;
     return Slider;
-  })(_commonIndex.WidgetBase);
+  })(_commonWidgetBase.WidgetBase);
 
   exports.Slider = Slider;
 });

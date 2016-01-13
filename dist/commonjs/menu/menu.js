@@ -12,7 +12,9 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _commonIndex = require('../common/index');
+var _commonWidgetBase = require('../common/widget-base');
+
+var _commonDecorators = require('../common/decorators');
 
 require('kendo-ui/js/kendo.menu.min');
 
@@ -45,11 +47,9 @@ var Menu = (function (_WidgetBase) {
     _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
   }
 
-  Menu.prototype.bind = function bind() {
-    this._initialize();
-  };
+  Menu.prototype.bind = function bind(ctx) {
+    _WidgetBase.prototype.bind.call(this, ctx);
 
-  Menu.prototype.recreate = function recreate() {
     this._initialize();
   };
 
@@ -66,9 +66,9 @@ var Menu = (function (_WidgetBase) {
 
   var _Menu = Menu;
   Menu = _aureliaFramework.inject(Element)(Menu) || Menu;
-  Menu = _commonIndex.generateBindables('kendoMenu')(Menu) || Menu;
+  Menu = _commonDecorators.generateBindables('kendoMenu')(Menu) || Menu;
   Menu = _aureliaFramework.customElement('k-menu')(Menu) || Menu;
   return Menu;
-})(_commonIndex.WidgetBase);
+})(_commonWidgetBase.WidgetBase);
 
 exports.Menu = Menu;

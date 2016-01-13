@@ -12,7 +12,9 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _commonIndex = require('../common/index');
+var _commonWidgetBase = require('../common/widget-base');
+
+var _commonDecorators = require('../common/decorators');
 
 require('kendo-ui/js/kendo.tabstrip.min');
 
@@ -38,11 +40,9 @@ var TabStrip = (function (_WidgetBase) {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
   }
 
-  TabStrip.prototype.bind = function bind() {
-    this._initialize();
-  };
+  TabStrip.prototype.bind = function bind(ctx) {
+    _WidgetBase.prototype.bind.call(this, ctx);
 
-  TabStrip.prototype.recreate = function recreate() {
     this._initialize();
   };
 
@@ -54,9 +54,9 @@ var TabStrip = (function (_WidgetBase) {
 
   var _TabStrip = TabStrip;
   TabStrip = _aureliaFramework.inject(Element)(TabStrip) || TabStrip;
-  TabStrip = _commonIndex.generateBindables('kendoTabStrip')(TabStrip) || TabStrip;
+  TabStrip = _commonDecorators.generateBindables('kendoTabStrip')(TabStrip) || TabStrip;
   TabStrip = _aureliaFramework.customAttribute('k-tabstrip')(TabStrip) || TabStrip;
   return TabStrip;
-})(_commonIndex.WidgetBase);
+})(_commonWidgetBase.WidgetBase);
 
 exports.TabStrip = TabStrip;

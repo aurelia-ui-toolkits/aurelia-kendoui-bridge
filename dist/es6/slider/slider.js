@@ -1,5 +1,6 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {WidgetBase, generateBindables} from '../common/index';
+import {WidgetBase} from '../common/widget-base';
+import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.slider.min';
 
 @customAttribute('k-slider')
@@ -7,6 +8,7 @@ import 'kendo-ui/js/kendo.slider.min';
 @inject(Element)
 export class Slider extends WidgetBase {
 
+  @bindable kValue;
   @bindable options = {};
 
   constructor(element) {
@@ -20,13 +22,45 @@ export class Slider extends WidgetBase {
     this._initialize();
   }
 
-  enableChanged(newValue) {
+  _beforeInitialize(options) {
+    if (!options.value && this.kValue) {
+      options.value = this.kValue;
+    }
+  }
+
+  kEnableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
     }
   }
 
-  // valueChanged(newValue) {
-    // this.widget.value(newValue);
-  // }
+  enable(newValue) {
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  }
+
+  value(newValue) {
+    if (this.widget) {
+      return this.widget.value(newValue);
+    }
+  }
+
+  destroy() {
+    if (this.widget) {
+      return this.widget.destroy();
+    }
+  }
+
+  resize() {
+    if (this.widget) {
+      return this.widget.resize();
+    }
+  }
+
+  kValueChanged() {
+    if (this.widget) {
+      this.widget.value(this.kValue);
+    }
+  }
 }

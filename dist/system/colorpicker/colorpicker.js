@@ -1,4 +1,4 @@
-System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.colorpicker.min'], function (_export) {
+System.register(['aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.colorpicker.min'], function (_export) {
   'use strict';
 
   var customAttribute, bindable, inject, WidgetBase, generateBindables, ColorPicker;
@@ -16,9 +16,10 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.colo
       customAttribute = _aureliaFramework.customAttribute;
       bindable = _aureliaFramework.bindable;
       inject = _aureliaFramework.inject;
-    }, function (_commonIndex) {
-      WidgetBase = _commonIndex.WidgetBase;
-      generateBindables = _commonIndex.generateBindables;
+    }, function (_commonWidgetBase) {
+      WidgetBase = _commonWidgetBase.WidgetBase;
+    }, function (_commonDecorators) {
+      generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoColorpickerMin) {}],
     execute: function () {
       ColorPicker = (function (_WidgetBase) {
@@ -43,7 +44,9 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.colo
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
         }
 
-        ColorPicker.prototype.bind = function bind() {
+        ColorPicker.prototype.bind = function bind(ctx) {
+          _WidgetBase.prototype.bind.call(this, ctx);
+
           this._initialize();
         };
 

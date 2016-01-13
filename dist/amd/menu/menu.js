@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.menu.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoMenuMin) {
+define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.menu.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoMenuMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -40,11 +40,9 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.me
       _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
     }
 
-    Menu.prototype.bind = function bind() {
-      this._initialize();
-    };
+    Menu.prototype.bind = function bind(ctx) {
+      _WidgetBase.prototype.bind.call(this, ctx);
 
-    Menu.prototype.recreate = function recreate() {
       this._initialize();
     };
 
@@ -61,10 +59,10 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.me
 
     var _Menu = Menu;
     Menu = _aureliaFramework.inject(Element)(Menu) || Menu;
-    Menu = _commonIndex.generateBindables('kendoMenu')(Menu) || Menu;
+    Menu = _commonDecorators.generateBindables('kendoMenu')(Menu) || Menu;
     Menu = _aureliaFramework.customElement('k-menu')(Menu) || Menu;
     return Menu;
-  })(_commonIndex.WidgetBase);
+  })(_commonWidgetBase.WidgetBase);
 
   exports.Menu = Menu;
 });

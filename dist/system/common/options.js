@@ -4,7 +4,6 @@ System.register([], function (_export) {
   _export("pruneOptions", pruneOptions);
 
   function pruneOptions(options) {
-
     var returnOptions = {};
 
     for (var prop in options) {

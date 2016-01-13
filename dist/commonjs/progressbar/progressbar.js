@@ -12,7 +12,9 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _commonIndex = require('../common/index');
+var _commonWidgetBase = require('../common/widget-base');
+
+var _commonDecorators = require('../common/decorators');
 
 require('kendo-ui/js/kendo.progressbar.min');
 
@@ -38,25 +40,41 @@ var ProgressBar = (function (_WidgetBase) {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
   }
 
-  ProgressBar.prototype.bind = function bind() {
+  ProgressBar.prototype.bind = function bind(ctx) {
+    _WidgetBase.prototype.bind.call(this, ctx);
+
     this._initialize();
   };
 
-  ProgressBar.prototype.enableChanged = function enableChanged(newValue) {
+  ProgressBar.prototype.kEnableChanged = function kEnableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
     }
   };
 
-  ProgressBar.prototype.valueChanged = function valueChanged(newValue) {
-    this.widget.value(newValue);
+  ProgressBar.prototype.kValueChanged = function kValueChanged(newValue) {
+    if (this.widget) {
+      this.widget.value(newValue);
+    }
+  };
+
+  ProgressBar.prototype.value = function value(newValue) {
+    if (this.widget) {
+      return this.widget.value(newValue);
+    }
+  };
+
+  ProgressBar.prototype.enable = function enable(newValue) {
+    if (this.widget) {
+      return this.widget.enable(newValue);
+    }
   };
 
   var _ProgressBar = ProgressBar;
   ProgressBar = _aureliaFramework.inject(Element)(ProgressBar) || ProgressBar;
-  ProgressBar = _commonIndex.generateBindables('kendoProgressBar')(ProgressBar) || ProgressBar;
+  ProgressBar = _commonDecorators.generateBindables('kendoProgressBar')(ProgressBar) || ProgressBar;
   ProgressBar = _aureliaFramework.customAttribute('k-progress-bar')(ProgressBar) || ProgressBar;
   return ProgressBar;
-})(_commonIndex.WidgetBase);
+})(_commonWidgetBase.WidgetBase);
 
 exports.ProgressBar = ProgressBar;

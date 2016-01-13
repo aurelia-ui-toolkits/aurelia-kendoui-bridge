@@ -1,5 +1,6 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {WidgetBase, generateBindables} from '../common/index';
+import {WidgetBase} from '../common/widget-base';
+import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.progressbar.min';
 
 @customAttribute('k-progress-bar')
@@ -13,17 +14,33 @@ export class ProgressBar extends WidgetBase {
     super('kendoProgressBar', element);
   }
 
-  bind() {
+  bind(ctx) {
+    super.bind(ctx);
+
     this._initialize();
   }
 
-  enableChanged(newValue) {
+  kEnableChanged(newValue) {
     if (this.widget) {
       this.widget.enable(newValue);
     }
   }
 
-  valueChanged(newValue) {
-    this.widget.value(newValue);
+  kValueChanged(newValue) {
+    if (this.widget) {
+      this.widget.value(newValue);
+    }
+  }
+
+  value(newValue) {
+    if (this.widget) {
+      return this.widget.value(newValue);
+    }
+  }
+
+  enable(newValue) {
+    if (this.widget) {
+      return this.widget.enable(newValue);
+    }
   }
 }

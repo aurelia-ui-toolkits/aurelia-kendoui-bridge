@@ -12,7 +12,9 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaFramework = require('aurelia-framework');
 
-var _commonIndex = require('../common/index');
+var _commonWidgetBase = require('../common/widget-base');
+
+var _commonDecorators = require('../common/decorators');
 
 require('kendo-ui/js/kendo.colorpicker.min');
 
@@ -38,15 +40,17 @@ var ColorPicker = (function (_WidgetBase) {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
   }
 
-  ColorPicker.prototype.bind = function bind() {
+  ColorPicker.prototype.bind = function bind(ctx) {
+    _WidgetBase.prototype.bind.call(this, ctx);
+
     this._initialize();
   };
 
   var _ColorPicker = ColorPicker;
   ColorPicker = _aureliaFramework.inject(Element)(ColorPicker) || ColorPicker;
-  ColorPicker = _commonIndex.generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
+  ColorPicker = _commonDecorators.generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
   ColorPicker = _aureliaFramework.customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
   return ColorPicker;
-})(_commonIndex.WidgetBase);
+})(_commonWidgetBase.WidgetBase);
 
 exports.ColorPicker = ColorPicker;

@@ -2,9 +2,12 @@ import {BindableProperty, HtmlBehaviorResource} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {getBindablePropertyName} from './util';
 
-// creates a BindableProperty for every option defined
-// in the option property of a Kendo control
-export function generateBindables(controlName) {
+/**
+* Creates a BindableProperty for every option defined in a Kendo control
+* in the option property of a Kendo control
+* @param controlName The Kendo control of which the options should be converted into bindable properties
+*/
+export function generateBindables(controlName: string) {
   return function(target, key, descriptor) {
     // get all options defined in the Kendo control
     let options = jQuery.fn[controlName].widget.prototype.options;

@@ -10,15 +10,19 @@ System.register(['./constants'], function (_export) {
   function fireEvent(element, name) {
     var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
-    var event = new CustomEvent(name, { 'detail': data });
+    var event = new CustomEvent(name, {
+      detail: data,
+      bubbles: true
+    });
     element.dispatchEvent(event);
+
+    return event;
   }
 
   function fireKendoEvent(element, name) {
     var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
-    fireEvent(element, '' + constants.eventPrefix + name, data);
-    return true;
+    return fireEvent(element, '' + constants.eventPrefix + name, data);
   }
 
   return {

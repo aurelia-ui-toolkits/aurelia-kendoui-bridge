@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dropdownlist.min', 'kendo-ui/js/kendo.virtuallist.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoDropdownlistMin, _kendoUiJsKendoVirtuallistMin) {
+define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', '../common/events', 'kendo-ui/js/kendo.dropdownlist.min', 'kendo-ui/js/kendo.virtuallist.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _commonEvents, _kendoUiJsKendoDropdownlistMin, _kendoUiJsKendoVirtuallistMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -35,7 +35,7 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dr
       enumerable: true
     }], null, _instanceInitializers);
 
-    function DropDownList(element, templateCompiler) {
+    function DropDownList(element) {
       _classCallCheck(this, _DropDownList);
 
       _WidgetBase.call(this, 'kendoDropDownList', element);
@@ -45,17 +45,11 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dr
       _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
-
-      this.templateCompiler = templateCompiler;
     }
 
     DropDownList.prototype.bind = function bind(ctx) {
-      this.templateCompiler.initialize(ctx);
+      _WidgetBase.prototype.bind.call(this, ctx);
 
-      this._initialize();
-    };
-
-    DropDownList.prototype.recreate = function recreate() {
       this._initialize();
     };
 
@@ -66,14 +60,14 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dr
         _this.kValue = event.sender.value();
         _this.kText = event.sender.text();
 
-        _commonIndex.fireEvent(_this.element, 'input');
+        _commonEvents.fireEvent(_this.element, 'input');
       });
 
       this.widget.bind('select', function (event) {
         _this.kValue = event.sender.value();
         _this.kText = event.sender.text();
 
-        _commonIndex.fireEvent(_this.element, 'input');
+        _commonEvents.fireEvent(_this.element, 'input');
       });
 
       this.widget.trigger('change');
@@ -89,6 +83,12 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dr
       if (this.widget) {
         this.widget.value(newValue);
         this.widget.trigger('change');
+      }
+    };
+
+    DropDownList.prototype.value = function value(newValue) {
+      if (this.widget) {
+        return this.widget.value(newValue);
       }
     };
 
@@ -109,11 +109,11 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dr
     };
 
     var _DropDownList = DropDownList;
-    DropDownList = _commonIndex.generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
-    DropDownList = _aureliaFramework.inject(Element, _commonIndex.TemplateCompiler)(DropDownList) || DropDownList;
+    DropDownList = _commonDecorators.generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
+    DropDownList = _aureliaFramework.inject(Element)(DropDownList) || DropDownList;
     DropDownList = _aureliaFramework.customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
     return DropDownList;
-  })(_commonIndex.WidgetBase);
+  })(_commonWidgetBase.WidgetBase);
 
   exports.DropDownList = DropDownList;
 });

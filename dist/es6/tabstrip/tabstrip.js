@@ -1,5 +1,6 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
-import {WidgetBase, generateBindables} from '../common/index';
+import {WidgetBase} from '../common/widget-base';
+import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.tabstrip.min';
 
 @customAttribute('k-tabstrip')
@@ -13,11 +14,9 @@ export class TabStrip extends WidgetBase {
     super('kendoTabStrip', element);
   }
 
-  bind() {
-    this._initialize();
-  }
+  bind(ctx) {
+    super.bind(ctx);
 
-  recreate() {
     this._initialize();
   }
 

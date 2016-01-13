@@ -5,7 +5,6 @@ define(["exports"], function (exports) {
   exports.pruneOptions = pruneOptions;
 
   function pruneOptions(options) {
-
     var returnOptions = {};
 
     for (var prop in options) {

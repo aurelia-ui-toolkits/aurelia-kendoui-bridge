@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dataviz.treemap.min'], function (exports, _aureliaFramework, _commonIndex, _kendoUiJsKendoDatavizTreemapMin) {
+define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.treemap.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _pdfPdf, _kendoUiJsKendoDatavizTreemapMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -17,16 +17,16 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.da
     _inherits(TreeMap, _WidgetBase);
 
     _createDecoratedClass(TreeMap, [{
+      key: 'kDataSource',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
       key: 'options',
       decorators: [_aureliaFramework.bindable],
       initializer: function initializer() {
         return {};
       },
-      enumerable: true
-    }, {
-      key: 'kDataSource',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
 
@@ -35,25 +35,57 @@ define(['exports', 'aurelia-framework', '../common/index', 'kendo-ui/js/kendo.da
 
       _WidgetBase.call(this, 'kendoTreeMap', element);
 
-      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
-
       _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
     }
 
     TreeMap.prototype.attached = function attached() {
       this._initialize();
     };
 
-    TreeMap.prototype.recreate = function recreate() {
-      this._initialize();
+    TreeMap.prototype.destroy = function destroy() {
+      if (this.widget) {
+        return this.widget.destroy();
+      }
+    };
+
+    TreeMap.prototype.setDataSource = function setDataSource(dataSource) {
+      if (this.widget) {
+        return this.widget.setDataSource(dataSource);
+      }
+    };
+
+    TreeMap.prototype.setOptions = function setOptions(value) {
+      if (this.widget) {
+        return this.widget.setOptions(value);
+      }
+    };
+
+    TreeMap.prototype.findByUid = function findByUid(text) {
+      if (this.widget) {
+        return this.widget.findByUid(text);
+      }
+    };
+
+    TreeMap.prototype.dataItem = function dataItem(tile) {
+      if (this.widget) {
+        return this.widget.dataItem(tile);
+      }
+    };
+
+    TreeMap.prototype.resize = function resize() {
+      if (this.widget) {
+        return this.widget.resize();
+      }
     };
 
     var _TreeMap = TreeMap;
     TreeMap = _aureliaFramework.inject(Element)(TreeMap) || TreeMap;
-    TreeMap = _commonIndex.generateBindables('kendoTreeMap')(TreeMap) || TreeMap;
+    TreeMap = _commonDecorators.generateBindables('kendoTreeMap')(TreeMap) || TreeMap;
     TreeMap = _aureliaFramework.customElement('k-treemap')(TreeMap) || TreeMap;
     return TreeMap;
-  })(_commonIndex.WidgetBase);
+  })(_commonWidgetBase.WidgetBase);
 
   exports.TreeMap = TreeMap;
 });

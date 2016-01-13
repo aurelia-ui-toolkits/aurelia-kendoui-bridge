@@ -121,11 +121,6 @@ var AuCol = (function () {
     initializer: null,
     enumerable: true
   }, {
-    key: 'template',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'title',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
@@ -186,8 +181,6 @@ var AuCol = (function () {
     _defineDecoratedPropertyDescriptor(this, 'minScreenWidth', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers);
 

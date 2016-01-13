@@ -1,7 +1,7 @@
-System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.dropdownlist.min', 'kendo-ui/js/kendo.virtuallist.min'], function (_export) {
+System.register(['aurelia-framework', '../common/widget-base', '../common/decorators', '../common/events', 'kendo-ui/js/kendo.dropdownlist.min', 'kendo-ui/js/kendo.virtuallist.min'], function (_export) {
   'use strict';
 
-  var customAttribute, bindable, inject, fireEvent, WidgetBase, TemplateCompiler, generateBindables, DropDownList;
+  var customAttribute, bindable, inject, WidgetBase, generateBindables, fireEvent, DropDownList;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -16,11 +16,12 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.drop
       customAttribute = _aureliaFramework.customAttribute;
       bindable = _aureliaFramework.bindable;
       inject = _aureliaFramework.inject;
-    }, function (_commonIndex) {
-      fireEvent = _commonIndex.fireEvent;
-      WidgetBase = _commonIndex.WidgetBase;
-      TemplateCompiler = _commonIndex.TemplateCompiler;
-      generateBindables = _commonIndex.generateBindables;
+    }, function (_commonWidgetBase) {
+      WidgetBase = _commonWidgetBase.WidgetBase;
+    }, function (_commonDecorators) {
+      generateBindables = _commonDecorators.generateBindables;
+    }, function (_commonEvents) {
+      fireEvent = _commonEvents.fireEvent;
     }, function (_kendoUiJsKendoDropdownlistMin) {}, function (_kendoUiJsKendoVirtuallistMin) {}],
     execute: function () {
       DropDownList = (function (_WidgetBase) {
@@ -47,7 +48,7 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.drop
           enumerable: true
         }], null, _instanceInitializers);
 
-        function DropDownList(element, templateCompiler) {
+        function DropDownList(element) {
           _classCallCheck(this, _DropDownList);
 
           _WidgetBase.call(this, 'kendoDropDownList', element);
@@ -57,17 +58,11 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.drop
           _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
-
-          this.templateCompiler = templateCompiler;
         }
 
         DropDownList.prototype.bind = function bind(ctx) {
-          this.templateCompiler.initialize(ctx);
+          _WidgetBase.prototype.bind.call(this, ctx);
 
-          this._initialize();
-        };
-
-        DropDownList.prototype.recreate = function recreate() {
           this._initialize();
         };
 
@@ -104,6 +99,12 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.drop
           }
         };
 
+        DropDownList.prototype.value = function value(newValue) {
+          if (this.widget) {
+            return this.widget.value(newValue);
+          }
+        };
+
         DropDownList.prototype.select = function select(index) {
           if (this.widget) {
             this.widget.select(index);
@@ -122,7 +123,7 @@ System.register(['aurelia-framework', '../common/index', 'kendo-ui/js/kendo.drop
 
         var _DropDownList = DropDownList;
         DropDownList = generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
-        DropDownList = inject(Element, TemplateCompiler)(DropDownList) || DropDownList;
+        DropDownList = inject(Element)(DropDownList) || DropDownList;
         DropDownList = customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
         return DropDownList;
       })(WidgetBase);
