@@ -35,7 +35,7 @@ export class AuCol {
   @bindable title;
   @bindable values;
   @bindable width;
-  template;
+  @bindable template;
 
   constructor(targetInstruction) {
     this.template = targetInstruction.elementInstruction.template;
