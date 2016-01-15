@@ -2,15 +2,15 @@
   <section>
       <h3>Aurelia-KendoUI bridge installation</h3>
 
-        <div k-tabstrip>
+        <div k-tabstrip k-on-select.delegate="tabChanged($event.detail)" k-tabstrip.ref="tabstrip">
           <ul>
-              <li class="k-state-active">Installation</li>
-              <li>New from Github: Kendo Core</li>
-              <li>New from Telerik: JSPM-git</li>
-              <li>Having KendoUI already: Vendors</li>
+              <li ref="installation" data-type="installation" class="k-state-active">Installation</li>
+              <li ref="core" data-type="core">New from Github: Kendo Core</li>
+              <li ref="jspmGit" data-type="jspmGit">New from Telerik: JSPM-git</li>
+              <li ref="vendors" data-type="vendors">Having KendoUI already: Vendors</li>
           </ul>
           <div>
-            <au-markdown url="installation/description.md"></au-markdown>
+            <au-markdown url="installation/installation.md"></au-markdown>
           </div>
           <div>
             <au-markdown url="installation/core.md"></au-markdown>
