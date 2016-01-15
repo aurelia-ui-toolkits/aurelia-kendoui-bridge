@@ -29,7 +29,7 @@
     ```
     <br>
 5. Install Kendo and the aurelia-kendoui-plugin
-`jspm install kendo-ui aurelia-kendoui-plugin`
+`jspm install aurelia-kendoui-plugin`
 
 6. Install SystemJS CSS plugin (you will need it to include various KendoUI specific CSS files)
 ` jspm install github:systemjs/plugin-css`
