@@ -98,3 +98,16 @@ gulp.task('build', function(callback) {
     callback
   );
 });
+
+gulp.task('build-release', function(callback) {
+  paths.output = paths.releaseOutput;
+  
+  return runSequence(
+    'clean',
+    'build-index',
+    ['build-es6-temp', 'build-es6', 'build-commonjs', 'build-amd', 'build-system'],
+    ['copy-html', 'copy-css'],
+    'build-dts',
+    callback
+  );
+});
