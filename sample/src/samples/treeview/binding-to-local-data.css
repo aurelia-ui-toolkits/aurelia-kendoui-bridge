@@ -1,0 +1,9 @@
+#example {
+    text-align: center;
+}
+.demo-section {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
+    margin: 0 2em;
+}
