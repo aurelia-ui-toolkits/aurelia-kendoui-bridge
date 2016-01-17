@@ -1,9 +1,73 @@
 {
-  "title": "Treeview",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "files": ["html", "js", "css"]
+    "title": "Treeview",
+    "samples": {
+        "basic-use": {
+            "route": [
+                "",
+                "basic-use"
+            ],
+            "files": [
+                "html",
+                "js",
+                "css"
+            ]
+        },
+        "drag-drop": {
+            "route": [
+                "drag-drop"
+            ],
+            "files": [
+                "html",
+                "js"
+            ]
+        },
+        "images": {
+            "route": [
+                "images"
+            ],
+            "files": [
+                "html",
+                "js",
+                "css"
+            ]
+        },
+        "checkboxes": {
+            "route": [
+                "checkboxes"
+            ],
+            "files": [
+                "html",
+                "js",
+                "css"
+            ]
+        },
+        "binding-to-local-data": {
+            "route": [
+                "binding-to-local-data"
+            ],
+            "files": [
+                "html",
+                "js",
+                "css"
+            ]
+        },
+        "binding-to-remote-data": {
+            "route": [
+                "binding-to-remote-data"
+            ],
+            "files": [
+                "html",
+                "js"
+            ]
+        },
+        "api": {
+            "route": [
+                "api"
+            ],
+            "files": [
+                "html",
+                "js"
+            ]
+        }
     }
-  }
 }
