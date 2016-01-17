@@ -9,7 +9,6 @@ import 'kendo-ui/js/kendo.datepicker.min';
 @generateBindables('kendoDatePicker')
 export class DatePicker extends WidgetBase {
 
-
   @bindable options = {};
 
   constructor(element) {
