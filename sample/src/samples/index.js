@@ -15,6 +15,7 @@ export class Index {
       { name: 'default',          route: '',                    redirect: 'grid' },
       { name: 'grid',             route: 'grid',                moduleId: './grid/index',                    title: 'Grid'},
       { name: 'autocomplete',     route: 'autocomplete',        moduleId: './autocomplete/index',            title: 'Autocomplete'},
+      { name: 'treeview',         route: 'treeview',            moduleId: './treeview/index',               title: 'Treeview'},
       { name: 'area-charts',      route: 'area-charts',         moduleId: './chart/area-charts/index',      title: 'Area Charts'},
       { name: 'bar-charts',       route: 'bar-charts',          moduleId: './chart/bar-charts/index',       title: 'Bar Charts'},
       { name: 'box-plot-charts',  route: 'box-plot-charts',     moduleId: './chart/box-plot-charts/index',  title: 'Box Plot Charts'},

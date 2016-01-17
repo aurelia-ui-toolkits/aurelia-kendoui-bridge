@@ -25,8 +25,9 @@ export class KendoConfigBuilder {
   pro(): KendoConfigBuilder {
     this.core()
       .kendoGrid()
-			.kendoAutoComplete()
-      .kendoChart();
+	  .kendoAutoComplete()
+      .kendoChart()
+      .kendoTreeView();;
     return this;
   }
 
@@ -105,6 +106,11 @@ export class KendoConfigBuilder {
 
   kendoColorPicker(): KendoConfigBuilder {
     this.resources.push('colorpicker/colorpicker');
+    return this;
+  }
+  
+  kendoTreeView(): KendoConfigBuilder {
+    this.resources.push('treeview/treeview');
     return this;
   }
 }
