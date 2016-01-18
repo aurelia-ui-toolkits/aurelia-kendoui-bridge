@@ -114,7 +114,7 @@ export class KendoConfigBuilder {
     this.resources.push('treeview/treeview');
     return this;
   }
-  
+
   kendoDatePicker(): KendoConfigBuilder {
     this.resources.push('datepicker/datepicker');
     return this;

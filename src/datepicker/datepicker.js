@@ -1,7 +1,6 @@
 import {customAttribute, bindable, inject} from 'aurelia-framework';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import {fireEvent} from '../common/events';
 import 'kendo-ui/js/kendo.datepicker.min';
 
 @customAttribute('k-datepicker')
@@ -9,6 +8,8 @@ import 'kendo-ui/js/kendo.datepicker.min';
 @generateBindables('kendoDatePicker')
 export class DatePicker extends WidgetBase {
 
+  @bindable kValue;
+  @bindable kDisableDates;
   @bindable options = {};
 
   constructor(element) {
@@ -21,24 +22,12 @@ export class DatePicker extends WidgetBase {
     this._initialize();
   }
 
+  _beforeInitialize(options) {
+    return Object.assign({}, options, { disableDates: this.kDisableDates });
+  }
+
   _initialize() {
     super._initialize();
-
-    // without these change and select handlers, when you select an options
-    // the value binding is not updated
-    this.widget.bind('change', (event) => {
-      this.kValue = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
-
-    this.widget.bind('select', (event) => {
-      this.kValue = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
   }
 
   close(value) {
@@ -50,12 +39,6 @@ export class DatePicker extends WidgetBase {
   destroy() {
     if (this.widget) {
       return this.widget.destroy();
-    }
-  }
-
-  kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
     }
   }
 
@@ -99,10 +82,15 @@ export class DatePicker extends WidgetBase {
     if (this.widget) {
       if (newValue) {
         this.widget.value(newValue);
-        this.widget.trigger('change');
       } else {
         return this.widget.value();
       }
+    }
+  }
+
+  kValueChanged() {
+    if (this.widget) {
+      this.widget.value(this.kValue);
     }
   }
 }

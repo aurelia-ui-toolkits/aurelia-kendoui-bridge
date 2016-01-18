@@ -29,15 +29,6 @@
                 "js"
             ]
         },
-        "disable-dates": {
-            "route": [
-                "disable-dates"
-            ],
-            "files": [
-                "html",
-                "js"
-            ]
-        },
         "api": {
             "route": [
                 "api"

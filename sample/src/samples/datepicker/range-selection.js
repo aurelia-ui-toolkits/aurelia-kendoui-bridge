@@ -1,8 +1,8 @@
 export class RangeSelection {
     constructor() {
-        
+
     }
-    
+
     startChange() {
       let startDate = this.startDatePicker.value();
       let endDate = this.endDatePicker.value();
@@ -16,10 +16,10 @@ export class RangeSelection {
       } else {
         endDate = new Date();
         this.startDatePicker.max(endDate);
-        this.endDatePicker.min(endDate);                
+        this.endDatePicker.min(endDate);
       }
     }
-    
+
     endChange() {
       let endDate = this.endDatePicker.value();
       let startDate = this.startDatePicker.value();
@@ -36,9 +36,9 @@ export class RangeSelection {
         this.endDatePicker.min(endDate);
       }
     }
-    
-    attached(){
+
+    attached() {
       this.startDatePicker.max(this.endDatePicker.value());
-      this.endDatePicker.min(this.startDatePicker.value()); 
+      this.endDatePicker.min(this.startDatePicker.value());
     }
 }
