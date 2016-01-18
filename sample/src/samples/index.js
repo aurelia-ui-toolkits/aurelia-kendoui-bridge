@@ -34,6 +34,7 @@ export class Index {
       { name: 'scatter-charts',   route: 'scatter-charts',      moduleId: './chart/scatter-charts/index',   title: 'Scatter charts'},
       { name: 'slider',           route: 'slider',              moduleId: './slider/index',                  title: 'Slider'},
       { name: 'datepicker',       route: 'datepicker',          moduleId: './datepicker/index',             title: 'DatePicker'},
+      { name: 'numerictextbox',   route: 'numerictextbox',      moduleId: './numerictextbox/index',         title: 'NumericTextBox'},
       { name: 'sparkline',        route: 'sparkline',           moduleId: './chart/sparkline/index',        title: 'Sparkline'},
       { name: 'stock',            route: 'stock',               moduleId: './chart/stock/index',            title: 'Stock'},
       { name: 'tabstrip',         route: 'tabstrip',            moduleId: './tabstrip/index',                title: 'Tabstrip'},

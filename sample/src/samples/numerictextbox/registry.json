@@ -1,0 +1,34 @@
+{
+    "title": "Treeview",
+    "samples": {
+        "basic-usage": {
+            "route": [
+                "",
+                "basic-usage"
+            ],
+            "files": [
+                "html",
+                "js",
+                "css"
+            ]
+        },
+        "events": {
+            "route": [
+                "events"
+            ],
+            "files": [
+                "html",
+                "js"
+            ]
+        },
+        "api": {
+            "route": [
+                "api"
+            ],
+            "files": [
+                "html",
+                "js"
+            ]
+        }
+    }
+}
