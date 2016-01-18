@@ -143,6 +143,11 @@ System.register(['aurelia-framework'], function (_export) {
           decorators: [bindable],
           initializer: null,
           enumerable: true
+        }, {
+          key: 'template',
+          decorators: [bindable],
+          initializer: null,
+          enumerable: true
         }], null, _instanceInitializers);
 
         function AuCol(targetInstruction) {
@@ -195,6 +200,8 @@ System.register(['aurelia-framework'], function (_export) {
           _defineDecoratedPropertyDescriptor(this, 'values', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers);
+
+          _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
 
           this.template = targetInstruction.elementInstruction.template;
         }

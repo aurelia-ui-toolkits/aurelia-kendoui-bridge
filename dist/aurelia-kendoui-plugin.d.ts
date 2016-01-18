@@ -11,6 +11,7 @@ declare module 'aurelia-kendoui-plugin' {
   import 'kendo-ui/js/kendo.dataviz.stock.min';
   import 'kendo-ui/js/kendo.dataviz.treemap.min';
   import 'kendo-ui/js/kendo.colorpicker.min';
+  import 'kendo-ui/js/kendo.datepicker.min';
   import 'kendo-ui/js/kendo.dropdownlist.min';
   import 'kendo-ui/js/kendo.data.signalr.min';
   import 'kendo-ui/js/kendo.filtercell.min';
@@ -21,6 +22,7 @@ declare module 'aurelia-kendoui-plugin' {
   import 'kendo-ui/js/kendo.progressbar.min';
   import 'kendo-ui/js/kendo.slider.min';
   import 'kendo-ui/js/kendo.tabstrip.min';
+  import 'kendo-ui/js/kendo.treeview.min';
   import { Aurelia, customAttribute, bindable, inject, customElement, TaskQueue, noView, processContent, TargetInstruction, children }  from 'aurelia-framework';
   import { BindableProperty, HtmlBehaviorResource, TemplatingEngine }  from 'aurelia-templating';
   import { metadata }  from 'aurelia-metadata';
@@ -61,6 +63,7 @@ declare module 'aurelia-kendoui-plugin' {
     kendoProgressBar(): KendoConfigBuilder;
     kendoSlider(): KendoConfigBuilder;
     kendoColorPicker(): KendoConfigBuilder;
+    kendoTreeView(): KendoConfigBuilder;
   }
   export function configure(aurelia: Aurelia, configCallback?: ((builder: KendoConfigBuilder) => void)): any;
   export class AutoComplete extends WidgetBase {
@@ -348,6 +351,21 @@ declare module 'aurelia-kendoui-plugin' {
       */
     detached(): any;
   }
+  export class DatePicker extends WidgetBase {
+    options: any;
+    constructor(element: any);
+    bind(ctx: any): any;
+    close(value: any): any;
+    destroy(): any;
+    kEnableChanged(): any;
+    enable(newValue: any): any;
+    readonly(value: any): any;
+    max(value: any): any;
+    min(value: any): any;
+    open(): any;
+    setOptions(options: any): any;
+    value(newValue: any): any;
+  }
   export class DropDownList extends WidgetBase {
     options: any;
     kDataSource: any;
@@ -470,5 +488,31 @@ declare module 'aurelia-kendoui-plugin' {
     enableChanged(newValue: any): any;
   }
   export class AuToolbar {
+  }
+  export class TreeView extends WidgetBase {
+    kDataSource: any;
+    options: any;
+    constructor(element: any);
+    bind(ctx: any): any;
+    append(nodeData: any, parentNode: any, success: any): any;
+    collapse(nodes: any): any;
+    dataItem(node: any): any;
+    destroy(): any;
+    detach(node: any): any;
+    enable(nodes: any, enable: any): any;
+    expand(nodes: any): any;
+    expandPath(path: any, complete: any): any;
+    expandTo(targetNode: any): any;
+    findByText(text: any): any;
+    findByUid(text: any): any;
+    insertAfter(nodeData: any, referenceNode: any): any;
+    insertBefore(nodeData: any, referenceNode: any): any;
+    parent(node: any): any;
+    remove(node: any): any;
+    select(node: any): any;
+    setDataSource(dataSource: any): any;
+    text(node: any, newText: any): any;
+    toggle(node: any): any;
+    updateIndeterminate(node: any): any;
   }
 }

@@ -10,6 +10,7 @@ import 'kendo-ui/js/kendo.dataviz.sparkline.min';
 import 'kendo-ui/js/kendo.dataviz.stock.min';
 import 'kendo-ui/js/kendo.dataviz.treemap.min';
 import 'kendo-ui/js/kendo.colorpicker.min';
+import 'kendo-ui/js/kendo.datepicker.min';
 import 'kendo-ui/js/kendo.dropdownlist.min';
 import 'kendo-ui/js/kendo.data.signalr.min';
 import 'kendo-ui/js/kendo.filtercell.min';
@@ -20,6 +21,7 @@ import 'kendo-ui/js/jszip.min';
 import 'kendo-ui/js/kendo.progressbar.min';
 import 'kendo-ui/js/kendo.slider.min';
 import 'kendo-ui/js/kendo.tabstrip.min';
+import 'kendo-ui/js/kendo.treeview.min';
 import {Aurelia,customAttribute,bindable,inject,customElement,TaskQueue,noView,processContent,TargetInstruction,children} from 'aurelia-framework';
 import {BindableProperty,HtmlBehaviorResource,TemplatingEngine} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
@@ -52,8 +54,9 @@ export class KendoConfigBuilder {
   pro(): KendoConfigBuilder {
     this.core()
       .kendoGrid()
-			.kendoAutoComplete()
-      .kendoChart();
+	  .kendoAutoComplete()
+      .kendoChart()
+      .kendoTreeView();
     return this;
   }
 
@@ -132,6 +135,11 @@ export class KendoConfigBuilder {
 
   kendoColorPicker(): KendoConfigBuilder {
     this.resources.push('colorpicker/colorpicker');
+    return this;
+  }
+
+  kendoTreeView(): KendoConfigBuilder {
+    this.resources.push('treeview/treeview');
     return this;
   }
 }
@@ -1128,6 +1136,110 @@ export class WidgetBase {
   }
 }
 
+@customAttribute('k-datepicker')
+@inject(Element)
+@generateBindables('kendoDatePicker')
+export class DatePicker extends WidgetBase {
+
+
+  @bindable options = {};
+
+  constructor(element) {
+    super('kendoDatePicker', element);
+  }
+
+  bind(ctx) {
+    super.bind(ctx);
+
+    this._initialize();
+  }
+
+  _initialize() {
+    super._initialize();
+
+    // without these change and select handlers, when you select an options
+    // the value binding is not updated
+    this.widget.bind('change', (event) => {
+      this.kValue = event.sender.value();
+
+      // Update the kendo binding
+      fireEvent(this.element, 'input');
+    });
+
+    this.widget.bind('select', (event) => {
+      this.kValue = event.sender.value();
+
+      // Update the kendo binding
+      fireEvent(this.element, 'input');
+    });
+  }
+
+  close(value) {
+    if (this.widget) {
+      return this.widget.close(value);
+    }
+  }
+
+  destroy() {
+    if (this.widget) {
+      return this.widget.destroy();
+    }
+  }
+
+  kEnableChanged() {
+    if (this.widget) {
+      this.widget.enable(this.kEnable);
+    }
+  }
+
+  enable(newValue) {
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  }
+
+  readonly(value) {
+    if (this.widget) {
+      this.widget.readonly(value);
+    }
+  }
+
+  max(value) {
+    if (this.widget) {
+      return this.widget.max(value);
+    }
+  }
+
+  min(value) {
+    if (this.widget) {
+      return this.widget.min(value);
+    }
+  }
+
+  open() {
+    if (this.widget) {
+      this.widget.open();
+    }
+  }
+
+  setOptions(options) {
+    if (this.widget) {
+      this.widget.setOptions(options);
+    }
+  }
+
+  value(newValue) {
+    if (this.widget) {
+      if (newValue) {
+        this.widget.value(newValue);
+        this.widget.trigger('change');
+      } else {
+        return this.widget.value();
+      }
+    }
+  }
+}
+
 @customAttribute('k-drop-down-list')
 @inject(Element)
 @generateBindables('kendoDropDownList')
@@ -1241,7 +1353,7 @@ export class AuCol {
   @bindable title;
   @bindable values;
   @bindable width;
-  template;
+  @bindable template;
 
   constructor(targetInstruction) {
     this.template = targetInstruction.elementInstruction.template;
@@ -1650,4 +1762,153 @@ export class TabStrip extends WidgetBase {
 
 export class AuToolbar {
 
+}
+
+@customAttribute('k-treeview')
+@inject(Element)
+@generateBindables('kendoTreeView')
+export class TreeView extends WidgetBase {
+
+    @bindable kDataSource;
+    @bindable options = {};
+
+    constructor(element) {
+      super('kendoTreeView', element);
+
+      // kendo tree view has a wrong default value for the dataSource
+      this.kDataSource = undefined;
+    }
+
+    bind(ctx) {
+      super.bind(ctx);
+
+      this._initialize();
+    }
+
+
+    append(nodeData, parentNode, success) {
+      if (this.widget) {
+        return this.widget.append(nodeData, parentNode, success);
+      }
+    }
+
+    collapse(nodes) {
+      if (this.widget) {
+        this.widget.collapse(nodes);
+      }
+    }
+
+    dataItem(node) {
+      if (this.widget) {
+        return this.widget.dataItem(node);
+      }
+    }
+
+    destroy() {
+      if (this.widget) {
+        this.widget.destroy();
+      }
+    }
+
+    detach(node) {
+      if (this.widget) {
+        return this.widget.detach(node);
+      }
+    }
+
+    enable(nodes, enable) {
+      if (this.widget) {
+        return this.widget.enable(nodes, enable === undefined ? true : enable);
+      }
+    }
+
+    expand(nodes) {
+      if (this.widget) {
+        this.widget.expand(nodes);
+      }
+    }
+
+    expandPath(path, complete) {
+      if (this.widget) {
+        this.widget.expandPath(path, complete);
+      }
+    }
+
+    expandTo(targetNode) {
+      if (this.widget) {
+        this.widget.expandTo(targetNode);
+      }
+    }
+
+    findByText(text) {
+      if (this.widget) {
+        return this.widget.findByText(text);
+      }
+    }
+
+    findByUid(text) {
+      if (this.widget) {
+        return this.widget.findByUid(text);
+      }
+    }
+
+    insertAfter(nodeData, referenceNode) {
+      if (this.widget) {
+        this.widget.insertAfter(nodeData, referenceNode);
+      }
+    }
+
+    insertBefore(nodeData, referenceNode) {
+      if (this.widget) {
+        this.widget.insertBefore(nodeData, referenceNode);
+      }
+    }
+
+
+    parent(node) {
+      if (this.widget) {
+        return this.widget.parent(node);
+      }
+    }
+
+    remove(node) {
+      if (this.widget) {
+        this.widget.remove(node);
+      }
+    }
+
+    select(node) {
+      if (this.widget) {
+        if (node === undefined) {
+          return this.widget.select();
+        }
+        return this.widget.select(node);
+      }
+    }
+
+    setDataSource(dataSource) {
+      if (this.widget) {
+        this.widget.setDataSource(dataSource);
+      }
+    }
+
+    text(node, newText) {
+      if (this.widget) {
+        return this.widget.text(node, newText);
+      }
+    }
+
+
+    toggle(node) {
+      if (this.widget) {
+        this.widget.toggle(node);
+      }
+    }
+
+
+    updateIndeterminate(node) {
+      if (this.widget) {
+        this.widget.updateIndeterminate(node);
+      }
+    }
 }

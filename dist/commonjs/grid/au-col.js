@@ -135,6 +135,11 @@ var AuCol = (function () {
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
+  }, {
+    key: 'template',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
   }], null, _instanceInitializers);
 
   function AuCol(targetInstruction) {
@@ -187,6 +192,8 @@ var AuCol = (function () {
     _defineDecoratedPropertyDescriptor(this, 'values', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
 
     this.template = targetInstruction.elementInstruction.template;
   }

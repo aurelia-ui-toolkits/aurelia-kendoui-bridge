@@ -18,7 +18,7 @@ var KendoConfigBuilder = (function () {
   };
 
   KendoConfigBuilder.prototype.pro = function pro() {
-    this.core().kendoGrid().kendoAutoComplete().kendoChart();
+    this.core().kendoGrid().kendoAutoComplete().kendoChart().kendoTreeView();
     return this;
   };
 
@@ -93,6 +93,11 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoColorPicker = function kendoColorPicker() {
     this.resources.push('colorpicker/colorpicker');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoTreeView = function kendoTreeView() {
+    this.resources.push('treeview/treeview');
     return this;
   };
 
