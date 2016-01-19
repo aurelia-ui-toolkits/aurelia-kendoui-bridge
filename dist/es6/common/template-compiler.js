@@ -49,7 +49,11 @@ export class TemplateCompiler {
   handleTemplateEvents(widget, _event: string, _args?) {
     if (_event !== 'compile' && _event !== 'cleanup') return;
 
-    let $parent = widget._$parent;
+    // pull the parent context of the widget, or of the options
+    // in some cases, templates are compiled when a Kendo control's constructor is called
+    // in these cases we get the parent context of the options instead of the
+    // widget
+    let $parent = widget._$parent || widget.options._$parent;
 
     if (!$parent) return;
 

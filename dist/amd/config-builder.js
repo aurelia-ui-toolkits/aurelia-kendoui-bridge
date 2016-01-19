@@ -14,7 +14,7 @@ define(['exports'], function (exports) {
     }
 
     KendoConfigBuilder.prototype.core = function core() {
-      this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList();
+      this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList().kendoDatePicker();
       return this;
     };
 
@@ -99,6 +99,11 @@ define(['exports'], function (exports) {
 
     KendoConfigBuilder.prototype.kendoTreeView = function kendoTreeView() {
       this.resources.push('treeview/treeview');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoDatePicker = function kendoDatePicker() {
+      this.resources.push('datepicker/datepicker');
       return this;
     };
 

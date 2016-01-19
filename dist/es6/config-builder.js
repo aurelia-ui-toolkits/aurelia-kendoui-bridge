@@ -15,7 +15,8 @@ export class KendoConfigBuilder {
       .kendoProgressBar()
       .kendoSlider()
       .kendoColorPicker()
-      .kendoDropDownList();
+      .kendoDropDownList()
+      .kendoDatePicker();
     return this;
   }
 
@@ -111,6 +112,11 @@ export class KendoConfigBuilder {
 
   kendoTreeView(): KendoConfigBuilder {
     this.resources.push('treeview/treeview');
+    return this;
+  }
+
+  kendoDatePicker(): KendoConfigBuilder {
+    this.resources.push('datepicker/datepicker');
     return this;
   }
 }

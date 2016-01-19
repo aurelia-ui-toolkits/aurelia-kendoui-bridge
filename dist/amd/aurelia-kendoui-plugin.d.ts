@@ -64,6 +64,7 @@ declare module 'aurelia-kendoui-plugin' {
     kendoSlider(): KendoConfigBuilder;
     kendoColorPicker(): KendoConfigBuilder;
     kendoTreeView(): KendoConfigBuilder;
+    kendoDatePicker(): KendoConfigBuilder;
   }
   export function configure(aurelia: Aurelia, configCallback?: ((builder: KendoConfigBuilder) => void)): any;
   export class AutoComplete extends WidgetBase {
@@ -352,12 +353,13 @@ declare module 'aurelia-kendoui-plugin' {
     detached(): any;
   }
   export class DatePicker extends WidgetBase {
+    kValue: any;
+    kDisableDates: any;
     options: any;
     constructor(element: any);
     bind(ctx: any): any;
     close(value: any): any;
     destroy(): any;
-    kEnableChanged(): any;
     enable(newValue: any): any;
     readonly(value: any): any;
     max(value: any): any;
@@ -365,6 +367,7 @@ declare module 'aurelia-kendoui-plugin' {
     open(): any;
     setOptions(options: any): any;
     value(newValue: any): any;
+    kValueChanged(): any;
   }
   export class DropDownList extends WidgetBase {
     options: any;

@@ -90,7 +90,7 @@ var KendoConfigBuilder = (function () {
   }
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList();
+    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList().kendoDatePicker();
     return this;
   };
 
@@ -175,6 +175,11 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoTreeView = function kendoTreeView() {
     this.resources.push('treeview/treeview');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoDatePicker = function kendoDatePicker() {
+    this.resources.push('datepicker/datepicker');
     return this;
   };
 
@@ -931,7 +936,7 @@ var TemplateCompiler = (function () {
   TemplateCompiler.prototype.handleTemplateEvents = function handleTemplateEvents(widget, _event, _args) {
     if (_event !== 'compile' && _event !== 'cleanup') return;
 
-    var $parent = widget._$parent;
+    var $parent = widget._$parent || widget.options._$parent;
 
     if (!$parent) return;
 
@@ -1101,6 +1106,8 @@ var WidgetBase = (function () {
 
     this._beforeInitialize(options);
 
+    Object.assign(options, { _$parent: this.$parent });
+
     this.widget = ctor.call(target, options).data(this.controlName);
 
     this.widget._$parent = this.$parent;
@@ -1212,6 +1219,16 @@ var DatePicker = (function (_WidgetBase8) {
   _inherits(DatePicker, _WidgetBase8);
 
   _createDecoratedClass(DatePicker, [{
+    key: 'kValue',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'kDisableDates',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -1225,6 +1242,10 @@ var DatePicker = (function (_WidgetBase8) {
 
     _WidgetBase8.call(this, 'kendoDatePicker', element);
 
+    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers8);
+
+    _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers8);
+
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers8);
   }
 
@@ -1234,22 +1255,12 @@ var DatePicker = (function (_WidgetBase8) {
     this._initialize();
   };
 
+  DatePicker.prototype._beforeInitialize = function _beforeInitialize(options) {
+    return Object.assign({}, options, { disableDates: this.kDisableDates });
+  };
+
   DatePicker.prototype._initialize = function _initialize() {
-    var _this5 = this;
-
     _WidgetBase8.prototype._initialize.call(this);
-
-    this.widget.bind('change', function (event) {
-      _this5.kValue = event.sender.value();
-
-      fireEvent(_this5.element, 'input');
-    });
-
-    this.widget.bind('select', function (event) {
-      _this5.kValue = event.sender.value();
-
-      fireEvent(_this5.element, 'input');
-    });
   };
 
   DatePicker.prototype.close = function close(value) {
@@ -1261,12 +1272,6 @@ var DatePicker = (function (_WidgetBase8) {
   DatePicker.prototype.destroy = function destroy() {
     if (this.widget) {
       return this.widget.destroy();
-    }
-  };
-
-  DatePicker.prototype.kEnableChanged = function kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
     }
   };
 
@@ -1310,10 +1315,15 @@ var DatePicker = (function (_WidgetBase8) {
     if (this.widget) {
       if (newValue) {
         this.widget.value(newValue);
-        this.widget.trigger('change');
       } else {
         return this.widget.value();
       }
+    }
+  };
+
+  DatePicker.prototype.kValueChanged = function kValueChanged() {
+    if (this.widget) {
+      this.widget.value(this.kValue);
     }
   };
 
@@ -1369,20 +1379,20 @@ var DropDownList = (function (_WidgetBase9) {
   };
 
   DropDownList.prototype._initialized = function _initialized() {
-    var _this6 = this;
+    var _this5 = this;
 
     this.widget.bind('change', function (event) {
-      _this6.kValue = event.sender.value();
-      _this6.kText = event.sender.text();
+      _this5.kValue = event.sender.value();
+      _this5.kText = event.sender.text();
 
-      fireEvent(_this6.element, 'input');
+      fireEvent(_this5.element, 'input');
     });
 
     this.widget.bind('select', function (event) {
-      _this6.kValue = event.sender.value();
-      _this6.kText = event.sender.text();
+      _this5.kValue = event.sender.value();
+      _this5.kText = event.sender.text();
 
-      fireEvent(_this6.element, 'input');
+      fireEvent(_this5.element, 'input');
     });
 
     this.widget.trigger('change');

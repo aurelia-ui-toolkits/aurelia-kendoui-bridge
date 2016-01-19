@@ -44,7 +44,8 @@ export class KendoConfigBuilder {
       .kendoProgressBar()
       .kendoSlider()
       .kendoColorPicker()
-      .kendoDropDownList();
+      .kendoDropDownList()
+      .kendoDatePicker();
     return this;
   }
 
@@ -140,6 +141,11 @@ export class KendoConfigBuilder {
 
   kendoTreeView(): KendoConfigBuilder {
     this.resources.push('treeview/treeview');
+    return this;
+  }
+
+  kendoDatePicker(): KendoConfigBuilder {
+    this.resources.push('datepicker/datepicker');
     return this;
   }
 }
@@ -768,7 +774,11 @@ export class TemplateCompiler {
   handleTemplateEvents(widget, _event: string, _args?) {
     if (_event !== 'compile' && _event !== 'cleanup') return;
 
-    let $parent = widget._$parent;
+    // pull the parent context of the widget, or of the options
+    // in some cases, templates are compiled when a Kendo control's constructor is called
+    // in these cases we get the parent context of the options instead of the
+    // widget
+    let $parent = widget._$parent || widget.options._$parent;
 
     if (!$parent) return;
 
@@ -1020,9 +1030,14 @@ export class WidgetBase {
     // allows you to modify/add/remove options before the control gets initialized
     this._beforeInitialize(options);
 
+    // add parent context to options
+    Object.assign(options, { _$parent: this.$parent });
+
     // instantiate the Kendo control, pass in the target and the options
     this.widget = ctor.call(target, options).data(this.controlName);
 
+    // set parent context on the widget (in case the parent context is removed
+    // from the options object by the Kendo control)
     this.widget._$parent = this.$parent;
 
     this._initialized();
@@ -1141,7 +1156,8 @@ export class WidgetBase {
 @generateBindables('kendoDatePicker')
 export class DatePicker extends WidgetBase {
 
-
+  @bindable kValue;
+  @bindable kDisableDates;
   @bindable options = {};
 
   constructor(element) {
@@ -1154,24 +1170,12 @@ export class DatePicker extends WidgetBase {
     this._initialize();
   }
 
+  _beforeInitialize(options) {
+    return Object.assign({}, options, { disableDates: this.kDisableDates });
+  }
+
   _initialize() {
     super._initialize();
-
-    // without these change and select handlers, when you select an options
-    // the value binding is not updated
-    this.widget.bind('change', (event) => {
-      this.kValue = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
-
-    this.widget.bind('select', (event) => {
-      this.kValue = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
   }
 
   close(value) {
@@ -1183,12 +1187,6 @@ export class DatePicker extends WidgetBase {
   destroy() {
     if (this.widget) {
       return this.widget.destroy();
-    }
-  }
-
-  kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
     }
   }
 
@@ -1232,10 +1230,15 @@ export class DatePicker extends WidgetBase {
     if (this.widget) {
       if (newValue) {
         this.widget.value(newValue);
-        this.widget.trigger('change');
       } else {
         return this.widget.value();
       }
+    }
+  }
+
+  kValueChanged() {
+    if (this.widget) {
+      this.widget.value(this.kValue);
     }
   }
 }

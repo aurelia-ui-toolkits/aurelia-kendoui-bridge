@@ -34,7 +34,7 @@ var TemplateCompiler = (function () {
   TemplateCompiler.prototype.handleTemplateEvents = function handleTemplateEvents(widget, _event, _args) {
     if (_event !== 'compile' && _event !== 'cleanup') return;
 
-    var $parent = widget._$parent;
+    var $parent = widget._$parent || widget.options._$parent;
 
     if (!$parent) return;
 
