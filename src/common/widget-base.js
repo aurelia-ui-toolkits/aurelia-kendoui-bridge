@@ -2,7 +2,7 @@ import {pruneOptions} from './options';
 import {fireKendoEvent} from './events';
 import {getEventsFromAttributes, _hyphenate, getBindablePropertyName} from './util';
 import {TemplateCompiler} from './template-compiler';
-import {TaskQueue} from 'aurelia-framework';
+import {bindable,TaskQueue} from 'aurelia-framework';
 import {Container} from 'aurelia-dependency-injection';
 
 /**
@@ -48,23 +48,39 @@ export class WidgetBase {
   */
   templateCompiler: TemplateCompiler;
 
-  constructor(controlName: string, element: Element) {
-    // access root container
+  /**
+  * The widgets parent viewmodel (this is the object instance the user will bind to)
+  */
+  viewModel: any;
+
+  linkViewModel(viewModel:any, element, controlName) {
+  // access root container
     let container = Container.instance;
     this.taskQueue = container.get(TaskQueue);
     this.templateCompiler = container.get(TemplateCompiler);
     this.templateCompiler.initialize();
 
-    this.element = element;
-
-    this.target = this.element;
-
     this.controlName = controlName;
+    this.viewModel = viewModel;
+    this.element = element;
+    this.target = element;
+    this.viewModel.element = element;
+
+    // Hook up interceptors to the interesting Aurelia methods so we get a call 
+    // to WidgetBase for anything important (since we are not using inheritance)
+    interceptAureliaMethods(this.viewModel, this);
 
     // the BindableProperty's are created by the generateBindables decorator
     // but the values of the bindables can only be set now the class has been
     // instantiated
     this.setDefaultBindableValues();
+
+    this.viewModel["widgetBase"] = this;
+  }
+
+  createWidget() {
+    this._initialize();
+    return this.widget;
   }
 
 
@@ -110,14 +126,18 @@ export class WidgetBase {
   * @param options the options object that a wrapper can modify
   */
   _beforeInitialize(options) {
-
+    if(typeof this.viewModel["_beforeInitialize"] === "function") {
+      this.viewModel["_beforeInitialize"](options);
+    }
   }
 
   /**
   * hook that allows a wrapper to take actions after the widget is initialized
   */
   _initialized() {
-
+    if(typeof this.viewModel["_initialized"] === "function") {
+      this.viewModel["_initialized"]();
+    }
   }
 
   /**
@@ -150,11 +170,11 @@ export class WidgetBase {
     let options = {};
 
     for (let prop of Object.keys(props)) {
-      options[prop] = this[getBindablePropertyName(prop)];
+      options[prop] = this.viewModel[getBindablePropertyName(prop)];
     }
 
-    if (this.kDataSource) {
-      options.dataSource = this.kDataSource;
+    if (this.viewModel.kDataSource) {
+      options.dataSource = this.viewModel.kDataSource;
     }
 
     return options;
@@ -168,7 +188,7 @@ export class WidgetBase {
     let props = jQuery.fn[this.controlName].widget.prototype.options;
 
     for (let prop of Object.keys(props)) {
-      this[getBindablePropertyName(prop)] = props[prop];
+      this.viewModel[getBindablePropertyName(prop)] = props[prop];
     }
   }
 
@@ -208,6 +228,30 @@ export class WidgetBase {
   detached() {
     if (this.widget) {
       this.widget.destroy();
+    }
+  }
+
+ 
+}
+
+function interceptAureliaMethods(vm, interceptor) {
+
+  if(!vm)
+    throw new Error("Widget initialized without ViewModel");
+
+  intercept(vm, interceptor, "attached");
+  intercept(vm, interceptor, "detached");
+  intercept(vm, interceptor, "bind");
+}
+
+function intercept(vm, interceptor, name) {
+ if(typeof vm[name] === "function" && typeof interceptor[name] === "function") {
+    var impl = vm[name];
+    var method = interceptor[name];
+
+    vm[name] = function(...args) {
+      method.apply(interceptor, args);
+      impl.apply(vm, args);
     }
   }
 }

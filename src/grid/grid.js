@@ -8,30 +8,27 @@ import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('k-grid')
 @generateBindables('kendoGrid')
-@inject(Element)
-export class Grid extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Grid  {
 
   @children('au-col') columns;
 
   @bindable kDataSource;
   @bindable options = {};
+  @bindable widget;
 
-  constructor(element) {
-    super('kendoGrid', element);
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoGrid');
   }
 
   // initialization in bind() is giving issues in some scenarios
   // so, attached() is used for this control
   attached() {
-    this._initialize();
-  }
-
-  _initialize() {
     // init grid on the <table> tag if initialization is from table
     // else, just use the root element
     this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
-    super._initialize();
+    this.widget = this.widgetBase.createWidget();
   }
 
   _beforeInitialize(options) {
