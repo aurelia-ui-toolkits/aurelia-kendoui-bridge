@@ -1,8 +1,8 @@
 import * as LogManager from 'aurelia-logging';
 import 'jquery';
+import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
-import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.dataviz.chart.min';
 import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
 import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
@@ -16,6 +16,7 @@ import 'kendo-ui/js/kendo.data.signalr.min';
 import 'kendo-ui/js/kendo.filtercell.min';
 import 'kendo-ui/js/kendo.grid.min';
 import 'kendo-ui/js/kendo.menu.min';
+import 'kendo-ui/js/kendo.numerictextbox.min';
 import 'kendo-ui/js/kendo.pdf.min';
 import 'kendo-ui/js/jszip.min';
 import 'kendo-ui/js/kendo.progressbar.min';
@@ -45,7 +46,8 @@ export class KendoConfigBuilder {
       .kendoSlider()
       .kendoColorPicker()
       .kendoDropDownList()
-      .kendoDatePicker();
+      .kendoDatePicker()
+      .kendoNumericTextBox();
     return this;
   }
 
@@ -148,6 +150,11 @@ export class KendoConfigBuilder {
     this.resources.push('datepicker/datepicker');
     return this;
   }
+
+  kendoNumericTextBox(): KendoConfigBuilder {
+    this.resources.push('numerictextbox/numerictextbox');
+    return this;
+  }
 }
 
 let logger = LogManager.getLogger('aurelia-kendoui-plugin');
@@ -169,6 +176,36 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: KendoConf
 
   if (builder.useGlobalResources) {
     aurelia.globalResources(resources);
+  }
+}
+
+@customAttribute('k-button')
+@generateBindables('kendoButton')
+@inject(Element)
+export class Button extends WidgetBase {
+
+  @bindable options = {};
+
+  constructor(element) {
+    super('kendoButton', element);
+  }
+
+  bind(ctx) {
+    super.bind(ctx);
+
+    this._initialize();
+  }
+
+  kEnableChanged() {
+    if (this.widget) {
+      this.widget.enable(this.kEnable);
+    }
+  }
+
+  enable(enable) {
+    if (this.widget) {
+      this.widget.enable(enable);
+    }
   }
 }
 
@@ -290,36 +327,6 @@ export class AutoComplete extends WidgetBase {
   suggest(value) {
     if (this.widget) {
       return this.widget.suggest(value);
-    }
-  }
-}
-
-@customAttribute('k-button')
-@generateBindables('kendoButton')
-@inject(Element)
-export class Button extends WidgetBase {
-
-  @bindable options = {};
-
-  constructor(element) {
-    super('kendoButton', element);
-  }
-
-  bind(ctx) {
-    super.bind(ctx);
-
-    this._initialize();
-  }
-
-  kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
-    }
-  }
-
-  enable(enable) {
-    if (this.widget) {
-      this.widget.enable(enable);
     }
   }
 }
@@ -1627,6 +1634,83 @@ export class Menu extends WidgetBase {
 
     super._initialize();
   }
+}
+
+@customAttribute('k-numerictextbox')
+@inject(Element)
+@generateBindables('kendoNumericTextBox')
+export class NumericTextBox extends WidgetBase {
+
+    @bindable kValue;
+    @bindable options = {};
+
+    constructor(element) {
+      super('kendoNumericTextBox', element);
+    }
+
+    bind(ctx) {
+      super.bind(ctx);
+
+      this._initialize();
+    }
+
+    destroy() {
+      if (this.widget) {
+        return this.widget.destroy();
+      }
+    }
+
+    enable(newValue) {
+      if (this.widget) {
+        this.widget.enable(newValue);
+      }
+    }
+
+    readonly(value) {
+      if (this.widget) {
+        this.widget.readonly(value);
+      }
+    }
+
+    focus() {
+      if (this.widget) {
+        this.widget.focus();
+      }
+    }
+
+    max(value) {
+      if (this.widget) {
+        return this.widget.max(value);
+      }
+    }
+
+    min(value) {
+      if (this.widget) {
+        return this.widget.min(value);
+      }
+    }
+
+    step(value) {
+      if (this.widget) {
+        return this.widget.step(value);
+      }
+    }
+
+    value(newValue) {
+      if (this.widget) {
+        if (newValue) {
+          this.widget.value(newValue);
+        } else {
+          return this.widget.value();
+        }
+      }
+    }
+
+    kValueChanged() {
+      if (this.widget) {
+        this.widget.value(this.kValue);
+      }
+    }
 }
 
 export class PDF {}

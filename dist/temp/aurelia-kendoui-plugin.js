@@ -29,11 +29,11 @@ var LogManager = _interopRequireWildcard(_aureliaLogging);
 
 require('jquery');
 
+require('kendo-ui/js/kendo.button.min');
+
 require('kendo-ui/js/kendo.autocomplete.min');
 
 require('kendo-ui/js/kendo.virtuallist.min');
-
-require('kendo-ui/js/kendo.button.min');
 
 require('kendo-ui/js/kendo.dataviz.chart.min');
 
@@ -60,6 +60,8 @@ require('kendo-ui/js/kendo.filtercell.min');
 require('kendo-ui/js/kendo.grid.min');
 
 require('kendo-ui/js/kendo.menu.min');
+
+require('kendo-ui/js/kendo.numerictextbox.min');
 
 require('kendo-ui/js/kendo.pdf.min');
 
@@ -90,7 +92,7 @@ var KendoConfigBuilder = (function () {
   }
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList().kendoDatePicker();
+    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList().kendoDatePicker().kendoNumericTextBox();
     return this;
   };
 
@@ -183,6 +185,11 @@ var KendoConfigBuilder = (function () {
     return this;
   };
 
+  KendoConfigBuilder.prototype.kendoNumericTextBox = function kendoNumericTextBox() {
+    this.resources.push('numerictextbox/numerictextbox');
+    return this;
+  };
+
   return KendoConfigBuilder;
 })();
 
@@ -209,10 +216,59 @@ function configure(aurelia, configCallback) {
   }
 }
 
-var AutoComplete = (function (_WidgetBase) {
+var Button = (function (_WidgetBase) {
   var _instanceInitializers = {};
 
-  _inherits(AutoComplete, _WidgetBase);
+  _inherits(Button, _WidgetBase);
+
+  _createDecoratedClass(Button, [{
+    key: 'options',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers);
+
+  function Button(element) {
+    _classCallCheck(this, _Button);
+
+    _WidgetBase.call(this, 'kendoButton', element);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+  }
+
+  Button.prototype.bind = function bind(ctx) {
+    _WidgetBase.prototype.bind.call(this, ctx);
+
+    this._initialize();
+  };
+
+  Button.prototype.kEnableChanged = function kEnableChanged() {
+    if (this.widget) {
+      this.widget.enable(this.kEnable);
+    }
+  };
+
+  Button.prototype.enable = function enable(_enable) {
+    if (this.widget) {
+      this.widget.enable(_enable);
+    }
+  };
+
+  var _Button = Button;
+  Button = _aureliaFramework.inject(Element)(Button) || Button;
+  Button = generateBindables('kendoButton')(Button) || Button;
+  Button = _aureliaFramework.customAttribute('k-button')(Button) || Button;
+  return Button;
+})(WidgetBase);
+
+exports.Button = Button;
+
+var AutoComplete = (function (_WidgetBase2) {
+  var _instanceInitializers2 = {};
+
+  _inherits(AutoComplete, _WidgetBase2);
 
   _createDecoratedClass(AutoComplete, [{
     key: 'kDataSource',
@@ -226,20 +282,20 @@ var AutoComplete = (function (_WidgetBase) {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers);
+  }], null, _instanceInitializers2);
 
   function AutoComplete(element) {
     _classCallCheck(this, _AutoComplete);
 
-    _WidgetBase.call(this, 'kendoAutoComplete', element);
+    _WidgetBase2.call(this, 'kendoAutoComplete', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers2);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers2);
   }
 
   AutoComplete.prototype.bind = function bind(ctx) {
-    _WidgetBase.prototype.bind.call(this, ctx);
+    _WidgetBase2.prototype.bind.call(this, ctx);
 
     this._initialize();
   };
@@ -247,7 +303,7 @@ var AutoComplete = (function (_WidgetBase) {
   AutoComplete.prototype._initialize = function _initialize() {
     var _this2 = this;
 
-    _WidgetBase.prototype._initialize.call(this);
+    _WidgetBase2.prototype._initialize.call(this);
 
     this.widget.bind('change', function (event) {
       _this2.kValue = event.sender.value();
@@ -353,55 +409,6 @@ var AutoComplete = (function (_WidgetBase) {
 })(WidgetBase);
 
 exports.AutoComplete = AutoComplete;
-
-var Button = (function (_WidgetBase2) {
-  var _instanceInitializers2 = {};
-
-  _inherits(Button, _WidgetBase2);
-
-  _createDecoratedClass(Button, [{
-    key: 'options',
-    decorators: [_aureliaFramework.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }], null, _instanceInitializers2);
-
-  function Button(element) {
-    _classCallCheck(this, _Button);
-
-    _WidgetBase2.call(this, 'kendoButton', element);
-
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers2);
-  }
-
-  Button.prototype.bind = function bind(ctx) {
-    _WidgetBase2.prototype.bind.call(this, ctx);
-
-    this._initialize();
-  };
-
-  Button.prototype.kEnableChanged = function kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
-    }
-  };
-
-  Button.prototype.enable = function enable(_enable) {
-    if (this.widget) {
-      this.widget.enable(_enable);
-    }
-  };
-
-  var _Button = Button;
-  Button = _aureliaFramework.inject(Element)(Button) || Button;
-  Button = generateBindables('kendoButton')(Button) || Button;
-  Button = _aureliaFramework.customAttribute('k-button')(Button) || Button;
-  return Button;
-})(WidgetBase);
-
-exports.Button = Button;
 
 var Chart = (function (_WidgetBase3) {
   var _instanceInitializers3 = {};
@@ -1958,18 +1965,17 @@ var Menu = (function (_WidgetBase11) {
 
 exports.Menu = Menu;
 
-var PDF = function PDF() {
-  _classCallCheck(this, PDF);
-};
-
-exports.PDF = PDF;
-
-var ProgressBar = (function (_WidgetBase12) {
+var NumericTextBox = (function (_WidgetBase12) {
   var _instanceInitializers13 = {};
 
-  _inherits(ProgressBar, _WidgetBase12);
+  _inherits(NumericTextBox, _WidgetBase12);
 
-  _createDecoratedClass(ProgressBar, [{
+  _createDecoratedClass(NumericTextBox, [{
+    key: 'kValue',
+    decorators: [_aureliaFramework.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -1978,16 +1984,119 @@ var ProgressBar = (function (_WidgetBase12) {
     enumerable: true
   }], null, _instanceInitializers13);
 
-  function ProgressBar(element) {
-    _classCallCheck(this, _ProgressBar);
+  function NumericTextBox(element) {
+    _classCallCheck(this, _NumericTextBox);
 
-    _WidgetBase12.call(this, 'kendoProgressBar', element);
+    _WidgetBase12.call(this, 'kendoNumericTextBox', element);
+
+    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers13);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers13);
   }
 
-  ProgressBar.prototype.bind = function bind(ctx) {
+  NumericTextBox.prototype.bind = function bind(ctx) {
     _WidgetBase12.prototype.bind.call(this, ctx);
+
+    this._initialize();
+  };
+
+  NumericTextBox.prototype.destroy = function destroy() {
+    if (this.widget) {
+      return this.widget.destroy();
+    }
+  };
+
+  NumericTextBox.prototype.enable = function enable(newValue) {
+    if (this.widget) {
+      this.widget.enable(newValue);
+    }
+  };
+
+  NumericTextBox.prototype.readonly = function readonly(value) {
+    if (this.widget) {
+      this.widget.readonly(value);
+    }
+  };
+
+  NumericTextBox.prototype.focus = function focus() {
+    if (this.widget) {
+      this.widget.focus();
+    }
+  };
+
+  NumericTextBox.prototype.max = function max(value) {
+    if (this.widget) {
+      return this.widget.max(value);
+    }
+  };
+
+  NumericTextBox.prototype.min = function min(value) {
+    if (this.widget) {
+      return this.widget.min(value);
+    }
+  };
+
+  NumericTextBox.prototype.step = function step(value) {
+    if (this.widget) {
+      return this.widget.step(value);
+    }
+  };
+
+  NumericTextBox.prototype.value = function value(newValue) {
+    if (this.widget) {
+      if (newValue) {
+        this.widget.value(newValue);
+      } else {
+        return this.widget.value();
+      }
+    }
+  };
+
+  NumericTextBox.prototype.kValueChanged = function kValueChanged() {
+    if (this.widget) {
+      this.widget.value(this.kValue);
+    }
+  };
+
+  var _NumericTextBox = NumericTextBox;
+  NumericTextBox = generateBindables('kendoNumericTextBox')(NumericTextBox) || NumericTextBox;
+  NumericTextBox = _aureliaFramework.inject(Element)(NumericTextBox) || NumericTextBox;
+  NumericTextBox = _aureliaFramework.customAttribute('k-numerictextbox')(NumericTextBox) || NumericTextBox;
+  return NumericTextBox;
+})(WidgetBase);
+
+exports.NumericTextBox = NumericTextBox;
+
+var PDF = function PDF() {
+  _classCallCheck(this, PDF);
+};
+
+exports.PDF = PDF;
+
+var ProgressBar = (function (_WidgetBase13) {
+  var _instanceInitializers14 = {};
+
+  _inherits(ProgressBar, _WidgetBase13);
+
+  _createDecoratedClass(ProgressBar, [{
+    key: 'options',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers14);
+
+  function ProgressBar(element) {
+    _classCallCheck(this, _ProgressBar);
+
+    _WidgetBase13.call(this, 'kendoProgressBar', element);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers14);
+  }
+
+  ProgressBar.prototype.bind = function bind(ctx) {
+    _WidgetBase13.prototype.bind.call(this, ctx);
 
     this._initialize();
   };
@@ -2031,10 +2140,10 @@ var AuScheduler = function AuScheduler() {
 
 exports.AuScheduler = AuScheduler;
 
-var Slider = (function (_WidgetBase13) {
-  var _instanceInitializers14 = {};
+var Slider = (function (_WidgetBase14) {
+  var _instanceInitializers15 = {};
 
-  _inherits(Slider, _WidgetBase13);
+  _inherits(Slider, _WidgetBase14);
 
   _createDecoratedClass(Slider, [{
     key: 'kValue',
@@ -2048,16 +2157,16 @@ var Slider = (function (_WidgetBase13) {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers14);
+  }], null, _instanceInitializers15);
 
   function Slider(element) {
     _classCallCheck(this, _Slider);
 
-    _WidgetBase13.call(this, 'kendoSlider', element);
+    _WidgetBase14.call(this, 'kendoSlider', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers14);
+    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers14);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers15);
 
     this.element = element;
     this.options = {};
@@ -2118,10 +2227,10 @@ var Slider = (function (_WidgetBase13) {
 
 exports.Slider = Slider;
 
-var TabStrip = (function (_WidgetBase14) {
-  var _instanceInitializers15 = {};
+var TabStrip = (function (_WidgetBase15) {
+  var _instanceInitializers16 = {};
 
-  _inherits(TabStrip, _WidgetBase14);
+  _inherits(TabStrip, _WidgetBase15);
 
   _createDecoratedClass(TabStrip, [{
     key: 'options',
@@ -2130,18 +2239,18 @@ var TabStrip = (function (_WidgetBase14) {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers15);
+  }], null, _instanceInitializers16);
 
   function TabStrip(element) {
     _classCallCheck(this, _TabStrip);
 
-    _WidgetBase14.call(this, 'kendoTabStrip', element);
+    _WidgetBase15.call(this, 'kendoTabStrip', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers15);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers16);
   }
 
   TabStrip.prototype.bind = function bind(ctx) {
-    _WidgetBase14.prototype.bind.call(this, ctx);
+    _WidgetBase15.prototype.bind.call(this, ctx);
 
     this._initialize();
   };
@@ -2167,10 +2276,10 @@ var AuToolbar = function AuToolbar() {
 
 exports.AuToolbar = AuToolbar;
 
-var TreeView = (function (_WidgetBase15) {
-  var _instanceInitializers16 = {};
+var TreeView = (function (_WidgetBase16) {
+  var _instanceInitializers17 = {};
 
-  _inherits(TreeView, _WidgetBase15);
+  _inherits(TreeView, _WidgetBase16);
 
   _createDecoratedClass(TreeView, [{
     key: 'kDataSource',
@@ -2184,22 +2293,22 @@ var TreeView = (function (_WidgetBase15) {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers16);
+  }], null, _instanceInitializers17);
 
   function TreeView(element) {
     _classCallCheck(this, _TreeView);
 
-    _WidgetBase15.call(this, 'kendoTreeView', element);
+    _WidgetBase16.call(this, 'kendoTreeView', element);
 
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers16);
+    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers17);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers16);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers17);
 
     this.kDataSource = undefined;
   }
 
   TreeView.prototype.bind = function bind(ctx) {
-    _WidgetBase15.prototype.bind.call(this, ctx);
+    _WidgetBase16.prototype.bind.call(this, ctx);
 
     this._initialize();
   };
