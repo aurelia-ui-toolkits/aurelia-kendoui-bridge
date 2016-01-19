@@ -1,0 +1,30 @@
+#add-product .demo-section {
+    padding: 0;
+}
+
+#add-product .title {
+    font-size: 16px;
+    color: #fff;
+    background-color: #1e88e5;
+    padding: 20px 30px;
+    margin: 0;
+}
+
+#add-product #fieldlist {
+    margin: 0 0 -1.5em;
+    padding: 30px;
+}
+
+#add-product #fieldlist li {
+    list-style: none;
+    padding-bottom: 1.5em;
+}
+
+#add-product #fieldlist label {
+    display: block;
+    padding-bottom: .6em;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #444;
+}

@@ -1,0 +1,28 @@
+<template>
+    <require from="./basic-usage.css"></require>
+    <div id="example">
+        <div id="add-product" class="demo-section k-content">
+            <p class="title">Add new product</p>
+            <ul id="fieldlist">
+                <li>
+                    <label for="currency">Price:</label>
+                    <input id="currency" type="number" k-numerictextbox="k-value.bind :30; k-min.bind:0; k-max.bind:100; k-format.bind:'c'; k-decimals.bind:3; " style="width: 100%;"
+                    />
+                </li>
+                <li>
+                    <label for="percentage">Price Discount:</label>
+                    <input id="percentage" k-numerictextbox="k-value.bind :0.05;k-format.bind: 'p0'; k-min.bind:0; k-max.bind:0.1;k-step.bind:0.01;" style="width: 100%;" />
+                </li>
+                <li>
+                    <label for="custom">Weight:</label>
+                    <input id="custom" k-numerictextbox="k-value.bind : 2; k-format.bind: '#.00kg'" style="width: 100%;" />
+                </li>
+                <li>
+                    <label for="numeric">Currently in stock:</label>
+                    <input id="numeric" type="number" k-numerictextbox="k-value.bind :17; k-min.bind:0;k-max.bind:100;k-step.bind:1" style="width: 100%;"
+                    />
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>
