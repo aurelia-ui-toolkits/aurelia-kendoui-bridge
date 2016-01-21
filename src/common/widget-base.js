@@ -106,7 +106,9 @@ export class WidgetBase {
     }
 
     // add parent context to options
-    Object.assign(allOptions, { _$parent: options.parentCtx });
+    // deepExtend in kendo.core will fail with stack
+    // overflow if we don't put it in an array :-\
+    Object.assign(allOptions, { _$parent: [options.parentCtx] });
 
     // instantiate the Kendo control
     let widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
