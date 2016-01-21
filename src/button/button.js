@@ -5,19 +5,17 @@ import 'kendo-ui/js/kendo.button.min';
 
 @customAttribute('k-button')
 @generateBindables('kendoButton')
-@inject(Element)
-export class Button extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Button {
 
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoButton', element);
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoButton');
   }
 
   bind(ctx) {
-    super.bind(ctx);
-
-    this._initialize();
+    this.widgetBase.createWidget(this.element);
   }
 
   kEnableChanged() {

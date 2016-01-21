@@ -6,18 +6,17 @@ import 'kendo-ui/js/kendo.dataviz.stock.min';
 
 @customElement('k-stock')
 @generateBindables('kendoStockChart')
-@inject(Element)
-export class Stock extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Stock {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoStockChart', element);
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoStockChart');
   }
 
   attached() {
-    this._initialize();
+    this.widgetBase.createWidget(this.element);
   }
 
   destroy() {

@@ -6,18 +6,17 @@ import 'kendo-ui/js/kendo.dataviz.treemap.min';
 
 @customElement('k-treemap')
 @generateBindables('kendoTreeMap')
-@inject(Element)
-export class TreeMap extends WidgetBase {
+@inject(Element, WidgetBase)
+export class TreeMap {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoTreeMap', element);
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoTreeMap');
   }
 
   attached() {
-    this._initialize();
+    this.widgetBase.createWidget(this.element);
   }
 
   destroy() {

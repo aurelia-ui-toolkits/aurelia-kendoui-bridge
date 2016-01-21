@@ -4,26 +4,22 @@ import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.treeview.min';
 
 @customAttribute('k-treeview')
-@inject(Element)
 @generateBindables('kendoTreeView')
-export class TreeView extends WidgetBase {
+@inject(Element, WidgetBase)
+export class TreeView {
 
-    @bindable kDataSource;
     @bindable options = {};
 
-    constructor(element) {
-      super('kendoTreeView', element);
+    constructor(element, widgetBase) {
+      widgetBase.linkViewModel(this, element, 'kendoTreeView');
 
       // kendo tree view has a wrong default value for the dataSource
       this.kDataSource = undefined;
     }
 
-    bind(ctx) {
-      super.bind(ctx);
-
-      this._initialize();
+    bind() {
+      this.widgetBase.createWidget(this.element);
     }
-
 
     append(nodeData, parentNode, success) {
       if (this.widget) {

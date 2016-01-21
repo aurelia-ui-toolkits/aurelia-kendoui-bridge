@@ -8,18 +8,17 @@ import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
 
 @customElement('k-chart')
 @generateBindables('kendoChart')
-@inject(Element)
-export class Chart extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Chart {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoChart', element);
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoChart');
   }
 
   attached() {
-    this._initialize();
+    this.widgetBase.createWidget(this.element);
   }
 
   exportImage(options) {

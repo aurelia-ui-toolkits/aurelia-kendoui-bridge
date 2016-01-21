@@ -6,22 +6,19 @@ import 'kendo-ui/js/kendo.dropdownlist.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
 @customAttribute('k-drop-down-list')
-@inject(Element)
 @generateBindables('kendoDropDownList')
-export class DropDownList extends WidgetBase {
+@inject(Element, WidgetBase)
+export class DropDownList {
 
   @bindable options = {};
-  @bindable kDataSource;
   @bindable kValue;
 
-  constructor(element) {
-    super('kendoDropDownList', element);
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoDropDownList');
   }
 
   bind(ctx) {
-    super.bind(ctx);
-
-    this._initialize();
+    this.widgetBase.createWidget(this.element);
   }
 
   _initialized() {

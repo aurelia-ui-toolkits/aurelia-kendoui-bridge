@@ -6,18 +6,17 @@ import 'kendo-ui/js/kendo.dataviz.sparkline.min';
 
 @customElement('k-sparkline')
 @generateBindables('kendoSparkline')
-@inject(Element)
-export class Sparkline extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Sparkline {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoSparkline', element);
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoSparkline');
   }
 
   attached() {
-    this._initialize();
+    this.widgetBase.createWidget(this.element);
   }
 
   destroy() {

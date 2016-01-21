@@ -2,18 +2,14 @@ import {pruneOptions} from './options';
 import {fireKendoEvent} from './events';
 import {getEventsFromAttributes, _hyphenate, getBindablePropertyName} from './util';
 import {TemplateCompiler} from './template-compiler';
-import {bindable,TaskQueue} from 'aurelia-framework';
-import {Container} from 'aurelia-dependency-injection';
+import {inject, TaskQueue, transient} from 'aurelia-framework';
 
 /**
 * Abstraction of commonly used code across wrappers
 */
+@transient()
+@inject(TaskQueue, TemplateCompiler)
 export class WidgetBase {
-
-  /**
-  * the Kendo widget after initialization
-  */
-  widget: any;
 
   /**
   * The element of the custom element, or the element on which a custom attribute
@@ -44,29 +40,23 @@ export class WidgetBase {
   $parent: any;
 
   /**
-  * The templating compiler adaptor
-  */
-  templateCompiler: TemplateCompiler;
-
-  /**
   * The widgets parent viewmodel (this is the object instance the user will bind to)
   */
   viewModel: any;
 
-  linkViewModel(viewModel:any, element, controlName) {
-  // access root container
-    let container = Container.instance;
-    this.taskQueue = container.get(TaskQueue);
-    this.templateCompiler = container.get(TemplateCompiler);
-    this.templateCompiler.initialize();
+  constructor(taskQueue, templateCompiler) {
+    this.taskQueue = taskQueue;
+    templateCompiler.initialize();
+  }
 
+  linkViewModel(viewModel:any, element, controlName) {
     this.controlName = controlName;
     this.viewModel = viewModel;
     this.element = element;
     this.target = element;
     this.viewModel.element = element;
 
-    // Hook up interceptors to the interesting Aurelia methods so we get a call 
+    // Hook up interceptors to the interesting Aurelia methods so we get a call
     // to WidgetBase for anything important (since we are not using inheritance)
     interceptAureliaMethods(this.viewModel, this);
 
@@ -75,14 +65,8 @@ export class WidgetBase {
     // instantiated
     this.setDefaultBindableValues();
 
-    this.viewModel["widgetBase"] = this;
+    this.viewModel.widgetBase = this;
   }
-
-  createWidget() {
-    this._initialize();
-    return this.widget;
-  }
-
 
   bind(ctx) {
     this.$parent = ctx;
@@ -93,13 +77,13 @@ export class WidgetBase {
   * calls all hooks
   * then initialized the Kendo control as "widget"
   */
-  _initialize() {
+  createWidget(element) {
     if (!this.$parent) {
       throw new Error('$parent is not set. Did you call bind(ctx) on the widget base?');
     }
 
     // get the jQuery selector of the target element
-    let target = jQuery(this.target);
+    let target = jQuery(element);
 
     // get the constructor of the Kendo control
     // equivalent to jQuery("<div>").kendoChart
@@ -113,9 +97,9 @@ export class WidgetBase {
     this._beforeInitialize(options);
 
     // instantiate the Kendo control, pass in the target and the options
-    this.widget = ctor.call(target, options).data(this.controlName);
+    this.viewModel.kWidget = ctor.call(target, options).data(this.controlName);
 
-    this.widget._$parent = this.$parent;
+    this.viewModel.kWidget._$parent = this.$parent;
 
     this._initialized();
   }
@@ -126,8 +110,8 @@ export class WidgetBase {
   * @param options the options object that a wrapper can modify
   */
   _beforeInitialize(options) {
-    if(typeof this.viewModel["_beforeInitialize"] === "function") {
-      this.viewModel["_beforeInitialize"](options);
+    if (typeof this.viewModel._beforeInitialize === 'function') {
+      this.viewModel._beforeInitialize(options);
     }
   }
 
@@ -135,8 +119,8 @@ export class WidgetBase {
   * hook that allows a wrapper to take actions after the widget is initialized
   */
   _initialized() {
-    if(typeof this.viewModel["_initialized"] === "function") {
-      this.viewModel["_initialized"]();
+    if (typeof this.viewModel._initialized === 'function') {
+      this.viewModel._initialized();
     }
   }
 
@@ -226,32 +210,32 @@ export class WidgetBase {
   * destroys the widget when the view gets detached
   */
   detached() {
-    if (this.widget) {
-      this.widget.destroy();
+    if (this.viewModel.kWidget) {
+      this.viewModel.kWidget.destroy();
     }
   }
-
- 
 }
 
 function interceptAureliaMethods(vm, interceptor) {
+  if (!vm) {
+    throw new Error('Widget initialized without ViewModel');
+  }
 
-  if(!vm)
-    throw new Error("Widget initialized without ViewModel");
-
-  intercept(vm, interceptor, "attached");
-  intercept(vm, interceptor, "detached");
-  intercept(vm, interceptor, "bind");
+  intercept(vm, interceptor, 'attached');
+  intercept(vm, interceptor, 'detached');
+  intercept(vm, interceptor, 'bind');
 }
 
 function intercept(vm, interceptor, name) {
- if(typeof vm[name] === "function" && typeof interceptor[name] === "function") {
-    var impl = vm[name];
-    var method = interceptor[name];
+  if (typeof interceptor[name] !== 'function') return;
 
-    vm[name] = function(...args) {
-      method.apply(interceptor, args);
+  let impl = vm[name];
+  let method = interceptor[name];
+
+  vm[name] = function(...args) {
+    method.apply(interceptor, args);
+    if (impl) {
       impl.apply(vm, args);
     }
-  }
+  };
 }

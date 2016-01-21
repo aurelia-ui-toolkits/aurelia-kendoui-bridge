@@ -9,19 +9,12 @@ import 'kendo-ui/js/kendo.tabstrip.min';
 export class TabStrip {
 
   @bindable options = {};
-  @bindable widget;
 
   constructor(element, widgetBase) {
     widgetBase.linkViewModel(this, element, 'kendoTabStrip');
   }
 
   bind(ctx) {
-    this.widget = this.widgetBase.createWidget();
-  }
-
-  enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
+    this.widgetBase.createWidget(this.element);
   }
 }

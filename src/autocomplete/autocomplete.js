@@ -6,36 +6,33 @@ import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
 @customAttribute('k-autocomplete')
-@inject(Element)
 @generateBindables('kendoAutoComplete')
-export class AutoComplete extends WidgetBase {
+@inject(Element, WidgetBase)
+export class AutoComplete {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoAutoComplete', element);
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoAutoComplete');
   }
 
   bind(ctx) {
-    super.bind(ctx);
-
     this._initialize();
   }
 
   _initialize() {
-    super._initialize();
+    this.widgetBase.createWidget(this.element);
 
     // without these change and select handlers, when you select an options
     // the value binding is not updated
-    this.widget.bind('change', (event) => {
+    this.kWidget.bind('change', (event) => {
       this.kValue = event.sender.value();
 
       // Update the kendo binding
       fireEvent(this.element, 'input');
     });
 
-    this.widget.bind('select', (event) => {
+    this.kWidget.bind('select', (event) => {
       this.kValue = event.sender.value();
 
       // Update the kendo binding

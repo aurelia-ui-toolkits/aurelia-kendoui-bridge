@@ -17,6 +17,7 @@ export function generateBindables(controlName: string) {
     let behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
     let optionKeys = Object.keys(options);
     optionKeys.push('dataSource');
+    optionKeys.push('widget');
 
     for (let option of optionKeys) {
       // set the name of the bindable property to the option

@@ -4,22 +4,20 @@ import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.datepicker.min';
 
 @customAttribute('k-datepicker')
-@inject(Element)
 @generateBindables('kendoDatePicker')
-export class DatePicker extends WidgetBase {
+@inject(Element, WidgetBase)
+export class DatePicker {
 
   @bindable kValue;
   @bindable kDisableDates;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoDatePicker', element);
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoDatePicker');
   }
 
   bind(ctx) {
-    super.bind(ctx);
-
-    this._initialize();
+    this.widgetBase.createWidget(this.element);
   }
 
   _beforeInitialize(options) {

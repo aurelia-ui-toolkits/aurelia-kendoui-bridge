@@ -5,18 +5,16 @@ import 'kendo-ui/js/kendo.colorpicker.min';
 
 @customAttribute('k-color-picker')
 @generateBindables('kendoColorPicker')
-@inject(Element)
-export class ColorPicker extends WidgetBase {
+@inject(Element, WidgetBase)
+export class ColorPicker {
 
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoColorPicker', element);
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoColorPicker');
   }
 
   bind(ctx) {
-    super.bind(ctx);
-
-    this._initialize();
+    this.widgetBase.createWidget(this.element);
   }
 }

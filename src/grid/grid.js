@@ -12,10 +12,7 @@ import 'kendo-ui/js/kendo.grid.min';
 export class Grid  {
 
   @children('au-col') columns;
-
-  @bindable kDataSource;
   @bindable options = {};
-  @bindable widget;
 
   constructor(element, widgetBase) {
     widgetBase.linkViewModel(this, element, 'kendoGrid');
@@ -26,9 +23,9 @@ export class Grid  {
   attached() {
     // init grid on the <table> tag if initialization is from table
     // else, just use the root element
-    this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+    let element = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
-    this.widget = this.widgetBase.createWidget();
+    this.widgetBase.createWidget(element);
   }
 
   _beforeInitialize(options) {

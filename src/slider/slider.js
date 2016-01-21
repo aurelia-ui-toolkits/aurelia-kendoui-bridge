@@ -5,21 +5,18 @@ import 'kendo-ui/js/kendo.slider.min';
 
 @customAttribute('k-slider')
 @generateBindables('kendoSlider')
-@inject(Element)
-export class Slider extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Slider {
 
   @bindable kValue;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoSlider', element);
-
-    this.element = element;
-    this.options = {};
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoSlider');
   }
 
   attached() {
-    this._initialize();
+    this.widgetBase.createWidget(this.element);
   }
 
   _beforeInitialize(options) {

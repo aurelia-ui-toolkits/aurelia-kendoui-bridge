@@ -5,19 +5,17 @@ import 'kendo-ui/js/kendo.progressbar.min';
 
 @customAttribute('k-progress-bar')
 @generateBindables('kendoProgressBar')
-@inject(Element)
-export class ProgressBar extends WidgetBase {
+@inject(Element, WidgetBase)
+export class ProgressBar {
 
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoProgressBar', element);
+  constructor(element, widgetBase) {
+    widgetBase.linkViewModel(this, element, 'kendoProgressBar');
   }
 
   bind(ctx) {
-    super.bind(ctx);
-
-    this._initialize();
+    this.widgetBase.createWidget(this.element);
   }
 
   kEnableChanged(newValue) {
