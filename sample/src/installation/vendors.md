@@ -3,31 +3,24 @@
 1. Create a `vendors` folder in the root (at the same level as src or dist)
 2. Download KendoUI Pro from the Telerik website
 3. Extract the `js` and `styles` folder into the `vendors` folder
-4. Open `config.js` and add a path mapping
-  You can do this in two ways, in the `map` and the `paths` section:
-
-  Map (recommended):
-
-    ```
-    "map": {
-      "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
-      "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
-      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
-      "kendo-ui": "/vendors",
-    }
-    ```
-    <br>
-    Paths:
+4. Open `config.js` and add a couple of path mappings:
 
     ```
     paths: {
       "*": "dist/*",
       "github:*": "jspm_packages/github/*",
       "npm:*": "jspm_packages/npm/*",
-      "kendo-ui/*": "vendors/*"
+ +    "kendo.*": "vendors/js/kendo.*.js"        <----
+    },
+    "map": {
+      "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
+      "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
+      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
+      "jquery": "npm:jquery@2.2.0",
+      "kendo-ui": "/vendors",                   <----
+ +    "jquery.min": "npm:jquery@2.2.0"          <----
     }
     ```
-    <br>
 5. Install Kendo and the aurelia-kendoui-plugin
 `jspm install aurelia-kendoui-plugin`
 
