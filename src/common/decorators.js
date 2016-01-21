@@ -1,5 +1,6 @@
 import {BindableProperty, HtmlBehaviorResource} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
+import {bindingMode} from 'aurelia-binding';
 import {getBindablePropertyName} from './util';
 
 /**
@@ -22,7 +23,8 @@ export function generateBindables(controlName: string) {
     for (let option of optionKeys) {
       // set the name of the bindable property to the option
       let nameOrConfigOrTarget = {
-        name: getBindablePropertyName(option)
+        name: getBindablePropertyName(option),
+        defaultBindingMode: (option === 'widget') ? bindingMode.twoWay : bindingMode.oneWay
       };
 
       let prop = new BindableProperty(nameOrConfigOrTarget);
