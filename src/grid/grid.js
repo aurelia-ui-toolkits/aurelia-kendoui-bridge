@@ -34,7 +34,6 @@ export class Grid  {
     let element = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
     this.kWidget = this.widgetBase.createWidget({
-      controlName: 'kendoGrid',
       element: element,
       parentCtx: this.$parent,
       beforeInitialize: (o) => this._beforeInitialize(o)
