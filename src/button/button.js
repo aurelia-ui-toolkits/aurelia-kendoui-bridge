@@ -19,9 +19,19 @@ export class Button {
   }
 
   bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
+  }
+
+  recreate() {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
-      parentCtx: ctx
+      parentCtx: this.$parent
     });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

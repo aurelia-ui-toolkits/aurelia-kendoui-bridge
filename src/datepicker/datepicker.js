@@ -21,13 +21,23 @@ export class DatePicker {
   }
 
   bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
+  }
+
+  recreate() {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
-      parentCtx: ctx
+      parentCtx: this.$parent
     });
   }
 
   _beforeInitialize(options) {
     return Object.assign({}, options, { disableDates: this.kDisableDates });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

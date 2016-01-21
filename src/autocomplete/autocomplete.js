@@ -23,10 +23,10 @@ export class AutoComplete {
   bind(ctx) {
     this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   }
 
-  _initialize() {
+  recreate() {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent
@@ -47,5 +47,9 @@ export class AutoComplete {
       // Update the kendo binding
       fireEvent(this.element, 'input');
     });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

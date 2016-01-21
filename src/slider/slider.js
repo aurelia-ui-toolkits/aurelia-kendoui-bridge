@@ -24,6 +24,10 @@ export class Slider {
   }
 
   attached() {
+    this.recreate();
+  }
+
+  recreate() {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent,
@@ -35,5 +39,9 @@ export class Slider {
     if (!options.value && this.kValue) {
       options.value = this.kValue;
     }
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

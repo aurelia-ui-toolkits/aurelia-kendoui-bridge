@@ -29,6 +29,10 @@ export class Grid  {
   // initialization in bind() is giving issues in some scenarios
   // so, attached() is used for this control
   attached() {
+    this.recreate();
+  }
+
+  recreate() {
     // init grid on the <table> tag if initialization is from table
     // else, just use the root element
     let element = isInitFromTable(this.element) ? this.element.children[0] : this.element;

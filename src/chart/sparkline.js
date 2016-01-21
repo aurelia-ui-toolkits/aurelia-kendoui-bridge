@@ -24,9 +24,17 @@ export class Sparkline {
   }
 
   attached() {
+    this.recreate();
+  }
+
+  recreate() {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent
     });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

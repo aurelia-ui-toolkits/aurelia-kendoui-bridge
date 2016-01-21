@@ -12,7 +12,8 @@
   "Editors": {
     "Autocomplete": "autocomplete",
     "Slider": "slider",
-    "DatePicker": "datepicker"
+    "DatePicker": "datepicker",
+    "NumericTextBox": "numerictextbox"
   },
   "Charts": {
     "Charts 1": {

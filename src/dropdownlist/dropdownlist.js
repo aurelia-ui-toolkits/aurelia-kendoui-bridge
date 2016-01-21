@@ -24,10 +24,10 @@ export class DropDownList {
   bind(ctx) {
     this.$parent = ctx;
 
-    this.initialize();
+    this.recreate();
   }
 
-  initialize() {
+  recreate() {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent
@@ -53,5 +53,9 @@ export class DropDownList {
 
     // Ensure the dropdown has an initial value/text
     this.kWidget.trigger('change');
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

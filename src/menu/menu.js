@@ -21,10 +21,10 @@ export class Menu {
   bind(ctx) {
     this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   }
 
-  _initialize() {
+  recreate() {
     let element;
     let ul = $(this.element).find('ul');
     if (ul.has()) {
@@ -37,5 +37,9 @@ export class Menu {
       element: element,
       parentCtx: this.$parent
     });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
