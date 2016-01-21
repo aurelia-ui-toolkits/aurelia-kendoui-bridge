@@ -44,32 +44,38 @@ export class WidgetBase {
   */
   viewModel: any;
 
+  /**
+  * The constructor of a Kendo control
+  */
+  ctor: any;
+
   constructor(taskQueue, templateCompiler) {
     this.taskQueue = taskQueue;
     templateCompiler.initialize();
   }
 
-  linkViewModel(viewModel:any, element, controlName) {
+  control(controlName) {
+    if (!controlName || !jQuery.fn[controlName]) {
+      throw new Error('controlName is invalid or not set');
+    }
+
     this.controlName = controlName;
-    this.viewModel = viewModel;
-    this.element = element;
-    this.target = element;
-    this.viewModel.element = element;
 
-    // Hook up interceptors to the interesting Aurelia methods so we get a call
-    // to WidgetBase for anything important (since we are not using inheritance)
-    interceptAureliaMethods(this.viewModel, this);
+    let ctor = jQuery.fn[this.controlName];
+    this.kendoOptions = ctor.widget.prototype.options;
+    this.kendoEvents = ctor.widget.prototype.events;
 
-    // the BindableProperty's are created by the generateBindables decorator
-    // but the values of the bindables can only be set now the class has been
-    // instantiated
-    this.setDefaultBindableValues();
-
-    this.viewModel.widgetBase = this;
+    return this;
   }
 
-  bind(ctx) {
-    this.$parent = ctx;
+  linkViewModel(viewModel) {
+    if (!viewModel) {
+      throw new Error('viewModel is not set');
+    }
+
+    this.viewModel = viewModel;
+
+    return this;
   }
 
   /**
@@ -77,52 +83,43 @@ export class WidgetBase {
   * calls all hooks
   * then initialized the Kendo control as "widget"
   */
-  createWidget(element) {
-    if (!this.$parent) {
-      throw new Error('$parent is not set. Did you call bind(ctx) on the widget base?');
+  createWidget(options) {
+    if (!options) {
+      throw new Error('the createWidget() function needs to be called with an object');
     }
 
-    // get the jQuery selector of the target element
-    let target = jQuery(element);
+    if (!options.element) {
+      throw new Error('element is not set');
+    }
 
-    // get the constructor of the Kendo control
-    // equivalent to jQuery("<div>").kendoChart
-    let ctor = target[this.controlName];
+    if (!options.parentCtx) {
+      throw new Error('parentCtx is not set');
+    }
 
     // generate all options, including event handlers
-    let options = this._getOptions(ctor);
+    let allOptions = this._getOptions(options.element);
 
     // before initialization callback
     // allows you to modify/add/remove options before the control gets initialized
-    this._beforeInitialize(options);
-
-    // instantiate the Kendo control, pass in the target and the options
-    this.viewModel.kWidget = ctor.call(target, options).data(this.controlName);
-
-    this.viewModel.kWidget._$parent = this.$parent;
-
-    this._initialized();
-  }
-
-  /**
-  * hook that allows a wrapper to modify options before
-  * the Kendo control is initialized
-  * @param options the options object that a wrapper can modify
-  */
-  _beforeInitialize(options) {
-    if (typeof this.viewModel._beforeInitialize === 'function') {
-      this.viewModel._beforeInitialize(options);
+    if (options.beforeInitialize) {
+      options.beforeInitialize(allOptions);
     }
+
+    // add parent context to options
+    Object.assign(allOptions, { _$parent: options.parentCtx });
+
+    // instantiate the Kendo control
+    let widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
+
+    widget._$parent = options.parentCtx;
+
+    if (options.afterInitialize) {
+      options.afterInitialize();
+    }
+
+    return widget;
   }
 
-  /**
-  * hook that allows a wrapper to take actions after the widget is initialized
-  */
-  _initialized() {
-    if (typeof this.viewModel._initialized === 'function') {
-      this.viewModel._initialized();
-    }
-  }
 
   /**
   * Re-initializes the control
@@ -134,15 +131,15 @@ export class WidgetBase {
   /**
   * combines all options objects and properties into a single options object
   */
-  _getOptions(ctor) {
+  _getOptions(element) {
     let options = this.getOptionsFromBindables();
-    let eventOptions = this.getEventOptions(ctor);
+    let eventOptions = this.getEventOptions(element);
 
     // merge all option objects together
-    // - options property on the wrapper
+    // - options on the wrapper
     // - options compiled from all the bindable properties
     // - event handler options
-    return Object.assign({}, this.options, pruneOptions(options), eventOptions);
+    return Object.assign({}, this.viewModel.options, pruneOptions(options), eventOptions);
   }
 
   /**
@@ -150,7 +147,7 @@ export class WidgetBase {
   * and puts all these values in a single options object
   */
   getOptionsFromBindables() {
-    let props = jQuery.fn[this.controlName].widget.prototype.options;
+    let props = this.kendoOptions;
     let options = {};
 
     for (let prop of Object.keys(props)) {
@@ -169,11 +166,17 @@ export class WidgetBase {
   *  gets the value from the options object in the Kendo control itself
   */
   setDefaultBindableValues() {
-    let props = jQuery.fn[this.controlName].widget.prototype.options;
+    if (!this.viewModel) {
+      throw new Error('viewModel is not set');
+    }
+
+    let props = this.kendoOptions;
 
     for (let prop of Object.keys(props)) {
       this.viewModel[getBindablePropertyName(prop)] = props[prop];
     }
+
+    return this;
   }
 
   /**
@@ -181,13 +184,13 @@ export class WidgetBase {
   * These events are then subscribed to, which when called
   * calls the fireKendoEvent function to raise a DOM event
   */
-  getEventOptions(ctor) {
+  getEventOptions(element) {
     let options = {};
-    let allowedEvents = ctor.widget.prototype.events;
+    let allowedEvents = this.kendoEvents;
 
     // iterate all attributes on the custom elements
     // and only return the normalized kendo event's (dataBound etc)
-    let events = getEventsFromAttributes(this.element);
+    let events = getEventsFromAttributes(element);
 
     events.forEach(event => {
       // throw error if this event is not defined on the Kendo control
@@ -198,7 +201,7 @@ export class WidgetBase {
       // add an event handler 'proxy' to the options object
       options[event] = e => {
         this.taskQueue.queueMicroTask(() => {
-          fireKendoEvent(this.target, _hyphenate(event), e);
+          fireKendoEvent(element, _hyphenate(event), e);
         });
       };
     });
@@ -207,35 +210,9 @@ export class WidgetBase {
   }
 
   /**
-  * destroys the widget when the view gets detached
+  * destroys the widget
   */
-  detached() {
-    if (this.viewModel.kWidget) {
-      this.viewModel.kWidget.destroy();
-    }
+  destroy(widget) {
+    widget.destroy();
   }
-}
-
-function interceptAureliaMethods(vm, interceptor) {
-  if (!vm) {
-    throw new Error('Widget initialized without ViewModel');
-  }
-
-  intercept(vm, interceptor, 'attached');
-  intercept(vm, interceptor, 'detached');
-  intercept(vm, interceptor, 'bind');
-}
-
-function intercept(vm, interceptor, name) {
-  if (typeof interceptor[name] !== 'function') return;
-
-  let impl = vm[name];
-  let method = interceptor[name];
-
-  vm[name] = function(...args) {
-    method.apply(interceptor, args);
-    if (impl) {
-      impl.apply(vm, args);
-    }
-  };
 }

@@ -15,7 +15,15 @@ export class Grid  {
   @bindable options = {};
 
   constructor(element, widgetBase) {
-    widgetBase.linkViewModel(this, element, 'kendoGrid');
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoGrid')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   // initialization in bind() is giving issues in some scenarios
@@ -25,7 +33,12 @@ export class Grid  {
     // else, just use the root element
     let element = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
-    this.widgetBase.createWidget(element);
+    this.kWidget = this.widgetBase.createWidget({
+      controlName: 'kendoGrid',
+      element: element,
+      parentCtx: this.$parent,
+      beforeInitialize: (o) => this._beforeInitialize(o)
+    });
   }
 
   _beforeInitialize(options) {
@@ -33,6 +46,10 @@ export class Grid  {
     if (this.columns && this.columns.length > 0) {
       options.columns = this.columns;
     }
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 
   enableChanged(newValue) {

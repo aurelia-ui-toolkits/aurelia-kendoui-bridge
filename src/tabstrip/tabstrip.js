@@ -11,10 +11,21 @@ export class TabStrip {
   @bindable options = {};
 
   constructor(element, widgetBase) {
-    widgetBase.linkViewModel(this, element, 'kendoTabStrip');
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoTabStrip')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues(this);
   }
 
   bind(ctx) {
-    this.widgetBase.createWidget(this.element);
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: ctx
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
