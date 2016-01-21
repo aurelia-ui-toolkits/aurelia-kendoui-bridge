@@ -1,6 +1,6 @@
 export class CustomLabel {
   attached() {
-    this.pb.widget.progressStatus.text('Empty');
+    this.pb.progressStatus.text('Empty');
   }
 
   onKeyUp() {
@@ -8,13 +8,13 @@ export class CustomLabel {
   }
 
   submit() {
-    let strength = this.pb.widget.progressStatus.first().text();
+    let strength = this.pb.progressStatus.first().text();
     alert(`${strength} password!`);
   }
 
   onChange(e) {
-    let progressWrapper = this.pb.widget.progressWrapper;
-    let progressStatus = this.pb.widget.progressStatus;
+    let progressWrapper = this.pb.progressWrapper;
+    let progressStatus = this.pb.progressStatus;
 
     progressWrapper.css({
       'background-image': 'none',

@@ -7,7 +7,7 @@
 
         <div class="row">
             <div class="col-xs-12 col-sm-4">
-                <k-chart  view-model.ref="oct"
+                <k-chart  k-widget.bind="oct"
                           k-title.bind="{text: 'October'}"
                           k-data-source.bind="octData"
                           k-legend.bind="legend"
@@ -17,7 +17,7 @@
                 </k-chart>
             </div>
             <div class="col-xs-12 col-sm-4">
-                <k-chart  view-model.ref="nov"
+                <k-chart  k-widget.bind="nov"
                           k-title.bind="{text: 'November'}"
                           k-data-source.bind="novData"
                           k-legend.bind="legend"
@@ -27,7 +27,7 @@
                 </k-chart>
             </div>
             <div class="col-xs-12 col-sm-4">
-                <k-chart  view-model.ref="dec"
+                <k-chart  k-widget.bind="dec"
                           k-title.bind="{text: 'December'}"
                           k-data-source.bind="decData"
                           k-legend.bind="legend"
@@ -38,7 +38,7 @@
             </div>
         </div>
       </div>
-      
+
       <div class="box wide">
           <div class="box-col">
               <h4><input type="checkbox" change.delegate="refresh()" ref="dynamicSlope"/> Dynamic Slope</h4>
@@ -55,10 +55,10 @@
                                        k-max.bind: 10;
                                        k-small-step.bind: 0.01;
                                        k-large-step.bind: 0.1;
-                                       k-show-buttons.bind: false"
+                                       k-show-buttons.bind: false;
+                                       k-widget.two-way: slider"
                              value="0.3"
-                             k-on-change.delegate="refresh()"
-                             k-slider.ref="slider"/></li>
+                             k-on-change.delegate="refresh()"/></li>
               </ul>
               <i>The ratio between the bases of the whole funnel element</i>
           </div>

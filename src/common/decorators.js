@@ -23,9 +23,12 @@ export function generateBindables(controlName: string) {
     for (let option of optionKeys) {
       // set the name of the bindable property to the option
       let nameOrConfigOrTarget = {
-        name: getBindablePropertyName(option),
-        defaultBindingMode: (option === 'widget') ? bindingMode.twoWay : bindingMode.oneWay
+        name: getBindablePropertyName(option)
       };
+
+      if (option === 'widget') {
+        nameOrConfigOrTarget.defaultBindingMode = bindingMode.twoWay;
+      }
 
       let prop = new BindableProperty(nameOrConfigOrTarget);
       prop.registerWith(target, behaviorResource, descriptor);

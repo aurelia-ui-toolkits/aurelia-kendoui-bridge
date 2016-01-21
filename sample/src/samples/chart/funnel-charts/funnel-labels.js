@@ -74,8 +74,8 @@ export class BindingToLocalData {
       width: 0
     };
 
-    this.seriesDefaults.labels.font = `${this.slider.widget.value()}px sans-serif`;
-    this.seriesDefaults.labels.color = this.colorpicker.widget.value();
+    this.seriesDefaults.labels.font = `${this.slider.value()}px sans-serif`;
+    this.seriesDefaults.labels.color = this.colorpicker.value();
     this.seriesDefaults.labels.align = this.alignType;
     this.seriesDefaults.labels.position = this.positionType;
     this.seriesDefaults.labels.visible = this.showLabels;

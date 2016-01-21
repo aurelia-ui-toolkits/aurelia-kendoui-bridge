@@ -36,14 +36,14 @@ export class GapAndSpacing {
   }
 
   getSpacing() {
-    let firstSeries = this.chart.widget.options.series;
+    let firstSeries = this.widget.options.series;
     firstSeries[0].spacing = parseFloat($(this.spacing).val(), 10);
-    this.chart.redraw();
+    this.widget.redraw();
   }
 
   getGap() {
-    let firstSeries = this.chart.widget.options.series;
+    let firstSeries = this.widget.options.series;
     firstSeries[0].gap = parseFloat($(this.gap).val(), 10);
-    this.chart.redraw();
+    this.widget.redraw();
   }
 }

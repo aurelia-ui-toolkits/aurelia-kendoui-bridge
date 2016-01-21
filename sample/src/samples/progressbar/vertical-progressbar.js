@@ -3,7 +3,7 @@ export class VerticalProgressbar {
   itemsToLoad = ['styles', 'scripts', 'images', 'fonts'];
 
   attached() {
-    this.load();
+    setTimeout(() => this.load());
   }
 
   onChange(e) {
@@ -15,7 +15,7 @@ export class VerticalProgressbar {
     total ++;
     this.pb1.value(total);
 
-    if (total < this.pb1.widget.options.max) {
+    if (total < this.pb1.options.max) {
       $('.chunkStatus').text(total + 1);
       $('.loadingInfo h2').text(`Loading ${this.itemsToLoad[total]}`);
 
@@ -36,7 +36,7 @@ export class VerticalProgressbar {
       if (this.pb2.value() < 100) {
         this.pb2.value(this.pb2.value() + 1);
       } else {
-        clearInterval(interval);
+        clearInterval(this.interval);
       }
     }, 30);
   }

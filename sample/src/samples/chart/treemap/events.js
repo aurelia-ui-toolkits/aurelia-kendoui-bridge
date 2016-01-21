@@ -16,10 +16,4 @@ export class Events {
   attached() {
     $('.options').bind('change', () => this.refresh());
   }
-
-  refresh() {
-    this.treemap.widget.setOptions({
-      type: $('input[name=type]:checked').val()
-    });
-  }
 }

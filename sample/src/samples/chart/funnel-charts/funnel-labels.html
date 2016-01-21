@@ -79,8 +79,9 @@
                 <h4>Font color</h4>
                 <ul class="options">
                     <li><label for="color"></label></li>
-                    <li><input id="color" k-color-picker="k-value: #000; k-buttons.bind: false"
-                                          k-color-picker.ref="colorpicker"
+                    <li><input id="color" k-color-picker="k-value: #000;
+                                                          k-buttons.bind: false;
+                                                          k-widget.two-way: colorpicker"
                                           k-on-change.delegate="refresh()" /></li>
                 </ul>
             </div>
@@ -88,11 +89,11 @@
                 <h4>Font size</h4>
                 <ul class="options">
                     <li><input k-on-change.delegate="refresh()"
-                                          k-slider.ref="slider"
                                           k-slider="k-min.bind: 1;
                                                     k-max.bind: 40;
                                                     k-value.bind: 15;
-                                                    k-show-buttons.bind: false;" /></li>
+                                                    k-show-buttons.bind: false;
+                                                    k-widget.two-way: slider" /></li>
                 </ul>
             </div>
         </div>
