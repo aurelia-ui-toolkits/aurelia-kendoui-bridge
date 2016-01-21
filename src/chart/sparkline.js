@@ -12,64 +12,21 @@ export class Sparkline {
   @bindable options = {};
 
   constructor(element, widgetBase) {
-    widgetBase.linkViewModel(this, element, 'kendoSparkline');
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoSparkline')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this.widgetBase.createWidget(this.element);
-  }
-
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  }
-
-  exportImage(options) {
-    if (this.widget) {
-      return this.widget.exportImage(options);
-    }
-  }
-
-  exportPDF(options) {
-    if (this.widget) {
-      return this.widget.exportPDF(options);
-    }
-  }
-
-  exportSVG(options) {
-    if (this.widget) {
-      return this.widget.exportSVG(options);
-    }
-  }
-
-  setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  }
-
-  setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  }
-
-  svg() {
-    if (this.widget) {
-      return this.widget.svg();
-    }
-  }
-
-  imageDataURL() {
-    if (this.widget) {
-      return this.widget.imageDataURL();
-    }
-  }
-
-  refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 }

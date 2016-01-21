@@ -12,46 +12,21 @@ export class TreeMap {
   @bindable options = {};
 
   constructor(element, widgetBase) {
-    widgetBase.linkViewModel(this, element, 'kendoTreeMap');
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoTreeMap')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this.widgetBase.createWidget(this.element);
-  }
-
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  }
-
-  setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  }
-
-  setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  }
-
-  findByUid(text) {
-    if (this.widget) {
-      return this.widget.findByUid(text);
-    }
-  }
-
-  dataItem(tile) {
-    if (this.widget) {
-      return this.widget.dataItem(tile);
-    }
-  }
-
-  resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 }

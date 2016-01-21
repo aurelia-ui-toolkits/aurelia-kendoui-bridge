@@ -12,52 +12,28 @@ export class Slider {
   @bindable options = {};
 
   constructor(element, widgetBase) {
-    widgetBase.linkViewModel(this, element, 'kendoSlider');
+    this.element = element;
+    this.widgetBase = widgetBase
+                    .control('kendoSlider')
+                    .linkViewModel(this)
+                    .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this.widgetBase.createWidget(this.element);
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent,
+      beforeInitialize: (o) => this._beforeInitialize(o)
+    });
   }
 
   _beforeInitialize(options) {
     if (!options.value && this.kValue) {
       options.value = this.kValue;
-    }
-  }
-
-  kEnableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  enable(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  }
-
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  }
-
-  resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
-  }
-
-  kValueChanged() {
-    if (this.widget) {
-      this.widget.value(this.kValue);
     }
   }
 }

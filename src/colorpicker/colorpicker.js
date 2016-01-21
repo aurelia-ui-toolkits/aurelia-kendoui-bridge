@@ -11,10 +11,17 @@ export class ColorPicker {
   @bindable options = {};
 
   constructor(element, widgetBase) {
-    widgetBase.linkViewModel(this, element, 'kendoColorPicker');
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoColorPicker')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    this.widgetBase.createWidget(this.element);
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: ctx
+    });
   }
 }

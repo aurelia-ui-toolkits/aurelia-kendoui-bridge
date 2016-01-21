@@ -11,10 +11,16 @@ export class Menu {
   @bindable options = {};
 
   constructor(element, widgetBase) {
-    widgetBase.linkViewModel(this, element, 'kendoMenu');
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoMenu')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
+    this.$parent = ctx;
+
     this._initialize();
   }
 
@@ -27,6 +33,9 @@ export class Menu {
       element = $(this.element).appendChild('<ul></ul>');
     }
 
-    this.widgetBase.createWidget(element);
+    this.kWidget = this.widgetBase.createWidget({
+      element: element,
+      parentCtx: this.$parent
+    });
   }
 }

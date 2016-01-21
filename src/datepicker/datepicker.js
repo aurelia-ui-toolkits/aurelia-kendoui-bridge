@@ -13,82 +13,21 @@ export class DatePicker {
   @bindable options = {};
 
   constructor(element, widgetBase) {
-    widgetBase.linkViewModel(this, element, 'kendoDatePicker');
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoDatePicker')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    this.widgetBase.createWidget(this.element);
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: ctx
+    });
   }
 
   _beforeInitialize(options) {
     return Object.assign({}, options, { disableDates: this.kDisableDates });
-  }
-
-  _initialize() {
-    super._initialize();
-  }
-
-  close(value) {
-    if (this.widget) {
-      return this.widget.close(value);
-    }
-  }
-
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  }
-
-  enable(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  readonly(value) {
-    if (this.widget) {
-      this.widget.readonly(value);
-    }
-  }
-
-  max(value) {
-    if (this.widget) {
-      return this.widget.max(value);
-    }
-  }
-
-  min(value) {
-    if (this.widget) {
-      return this.widget.min(value);
-    }
-  }
-
-  open() {
-    if (this.widget) {
-      this.widget.open();
-    }
-  }
-
-  setOptions(options) {
-    if (this.widget) {
-      this.widget.setOptions(options);
-    }
-  }
-
-  value(newValue) {
-    if (this.widget) {
-      if (newValue) {
-        this.widget.value(newValue);
-      } else {
-        return this.widget.value();
-      }
-    }
-  }
-
-  kValueChanged() {
-    if (this.widget) {
-      this.widget.value(this.kValue);
-    }
   }
 }

@@ -11,34 +11,17 @@ export class ProgressBar {
   @bindable options = {};
 
   constructor(element, widgetBase) {
-    widgetBase.linkViewModel(this, element, 'kendoProgressBar');
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoProgressBar')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    this.widgetBase.createWidget(this.element);
-  }
-
-  kEnableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  kValueChanged(newValue) {
-    if (this.widget) {
-      this.widget.value(newValue);
-    }
-  }
-
-  value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  }
-
-  enable(newValue) {
-    if (this.widget) {
-      return this.widget.enable(newValue);
-    }
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: ctx
+    });
   }
 }

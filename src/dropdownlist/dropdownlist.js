@@ -14,15 +14,24 @@ export class DropDownList {
   @bindable kValue;
 
   constructor(element, widgetBase) {
-    widgetBase.linkViewModel(this, element, 'kendoDropDownList');
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoDropDownList')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    this.widgetBase.createWidget(this.element);
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: ctx
+    });
+
+    this._initialized();
   }
 
   _initialized() {
-	// without these change and select handlers, when you select an options
+	   // without these change and select handlers, when you select an options
     // the value binding is not updated
     this.widget.bind('change', (event) => {
       this.kValue = event.sender.value();
@@ -42,40 +51,5 @@ export class DropDownList {
 
     // Ensure the dropdown has an initial value/text
     this.widget.trigger('change');
-  }
-
-  enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  kValueChanged(newValue) {
-    if (this.widget) {
-      this.widget.value(newValue);
-      this.widget.trigger('change');
-    }
-  }
-
-  value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  }
-
-  select(index) {
-    if (this.widget) {
-      this.widget.select(index);
-      // Need to make sure the kendo binding stays up to date
-      this.widget.trigger('change');
-    }
-  }
-
-  search(value) {
-    if (this.widget) {
-      this.widget.search(value);
-      // Need to make sure the kendo binding stays up to date
-      this.widget.trigger('change');
-    }
   }
 }

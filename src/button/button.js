@@ -11,22 +11,17 @@ export class Button {
   @bindable options = {};
 
   constructor(element, widgetBase) {
-    widgetBase.linkViewModel(this, element, 'kendoButton');
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoButton')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    this.widgetBase.createWidget(this.element);
-  }
-
-  kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
-    }
-  }
-
-  enable(enable) {
-    if (this.widget) {
-      this.widget.enable(enable);
-    }
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: ctx
+    });
   }
 }
