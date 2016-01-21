@@ -32,15 +32,15 @@ export class Api {
   }];
 
   getValue() {
-    alert(this.movies.kValue);
+    alert(this.movies.value());
   }
 
   getText() {
-    alert(this.movies.kText);
+    alert(this.movies.text());
   }
 
   setValue(val) {
-    this.movies.kValue = val;
+    this.movies.value(val);
   }
 
   setIndex(val) {

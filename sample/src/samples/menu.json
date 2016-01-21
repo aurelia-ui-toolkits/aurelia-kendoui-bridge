@@ -2,7 +2,6 @@
   "Most popular": {
     "Grid": "grid",
     "Bar Charts": "bar-charts",
-    "Dropdown list": "dropdownlist",
     "Line Charts": "line-charts",
     "Stock Charts": "stock",
     "TreeView": "treeview"
@@ -12,7 +11,6 @@
   },
   "Editors": {
     "Autocomplete": "autocomplete",
-    "Dropdown list": "dropdownlist",
     "Slider": "slider",
     "DatePicker": "datepicker"
   },

@@ -22,18 +22,20 @@ export class DropDownList {
   }
 
   bind(ctx) {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: ctx
-    });
+    this.$parent = ctx;
 
-    this._initialized();
+    this.initialize();
   }
 
-  _initialized() {
+  initialize() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+
 	   // without these change and select handlers, when you select an options
     // the value binding is not updated
-    this.widget.bind('change', (event) => {
+    this.kWidget.bind('change', (event) => {
       this.kValue = event.sender.value();
       this.kText = event.sender.text();
 
@@ -41,7 +43,7 @@ export class DropDownList {
       fireEvent(this.element, 'input');
     });
 
-    this.widget.bind('select', (event) => {
+    this.kWidget.bind('select', (event) => {
       this.kValue = event.sender.value();
       this.kText = event.sender.text();
 
@@ -50,6 +52,6 @@ export class DropDownList {
     });
 
     // Ensure the dropdown has an initial value/text
-    this.widget.trigger('change');
+    this.kWidget.trigger('change');
   }
 }

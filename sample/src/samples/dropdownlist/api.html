@@ -6,7 +6,8 @@
                 <input k-drop-down-list="k-data-text-field: text;
                                       			k-data-value-field: value;
                                       			k-data-source.bind: data;
-                                      			k-height.bind: 100" k-drop-down-list.ref="movies"
+                                      			k-height.bind: 100;
+                                            k-widget.two-way: movies"
                                       			style="width: 100%;" />
             </div>
 
@@ -15,15 +16,15 @@
                 <h4>API Functions</h4>
                 <ul class="options">
                     <li>
-                        <button click.delegate="movies.widget.enable()" class="k-button">Enable</button>
-                        <button click.delegate="movies.widget.enable(false)" class="k-button">Disable</button>
+                        <button click.delegate="movies.enable()" class="k-button">Enable</button>
+                        <button click.delegate="movies.enable(false)" class="k-button">Disable</button>
                     </li>
                     <li>
-                        <button click.delegate="movies.widget.readonly()" class="k-button">Readonly</button>
+                        <button click.delegate="movies.readonly()" class="k-button">Readonly</button>
                     </li>
                     <li>
-                        <button click.delegate="movies.widget.open()" class="k-button">Open</button>
-                        <button click.delegate="movies.widget.close()" class="k-button">Close</button>
+                        <button click.delegate="movies.open()" class="k-button">Open</button>
+                        <button click.delegate="movies.close()" class="k-button">Close</button>
                     </li>
                     <li>
                         <button click.delegate="getValue()" class="k-button">Get value</button>
