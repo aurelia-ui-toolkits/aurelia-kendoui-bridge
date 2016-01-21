@@ -10,7 +10,7 @@
       "*": "dist/*",
       "github:*": "jspm_packages/github/*",
       "npm:*": "jspm_packages/npm/*",
- +    "kendo.*": "vendors/js/kendo.*.js"        <----
+      "kendo.*": "vendors/js/kendo.*.js"        <----
     },
     "map": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
@@ -18,7 +18,7 @@
       "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
       "jquery": "npm:jquery@2.2.0",
       "kendo-ui": "/vendors",                   <----
- +    "jquery.min": "npm:jquery@2.2.0"          <----
+      "jquery.min": "npm:jquery@2.2.0"          <----
     }
     ```
 5. Install Kendo and the aurelia-kendoui-plugin
