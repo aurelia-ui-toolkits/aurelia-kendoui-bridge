@@ -1,5 +1,6 @@
 export class CustomLabel {
   attached() {
+    this.pb = this.pbWrapper.kWidget;
     this.pb.progressStatus.text('Empty');
   }
 

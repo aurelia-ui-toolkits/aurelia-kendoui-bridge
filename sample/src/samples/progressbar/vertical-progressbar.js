@@ -3,7 +3,7 @@ export class VerticalProgressbar {
   itemsToLoad = ['styles', 'scripts', 'images', 'fonts'];
 
   attached() {
-    setTimeout(() => this.load());
+    this.load();
   }
 
   onChange(e) {
@@ -11,11 +11,17 @@ export class VerticalProgressbar {
   }
 
   onComplete() {
-    let total = +this.pb1.value();
-    total ++;
-    this.pb1.value(total);
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
 
-    if (total < this.pb1.options.max) {
+    let pb1 = this.pb1.kWidget;
+
+    let total = +pb1.value();
+    total ++;
+    pb1.value(total);
+
+    if (total < pb1.options.max) {
       $('.chunkStatus').text(total + 1);
       $('.loadingInfo h2').text(`Loading ${this.itemsToLoad[total]}`);
 
@@ -30,11 +36,12 @@ export class VerticalProgressbar {
   }
 
   load() {
-    this.pb2.value(0);
+    let pb2 = this.pb2.kWidget;
+    pb2.value(0);
 
     this.interval = setInterval(() => {
-      if (this.pb2.value() < 100) {
-        this.pb2.value(this.pb2.value() + 1);
+      if (pb2.value() < 100) {
+        pb2.value(pb2.value() + 1);
       } else {
         clearInterval(this.interval);
       }
@@ -42,11 +49,14 @@ export class VerticalProgressbar {
   }
 
   reload() {
+    let pb1 = this.pb1.kWidget;
+    let pb2 = this.pb2.kWidget;
+
     $(this.reloadButton).hide();
     $('.statusContainer').show();
 
-    this.pb1.value(0);
-    this.pb2.value(0);
+    pb1.value(0);
+    pb2.value(0);
     $('.loadingInfo h2').text(`Loading ${this.itemsToLoad[0]}`);
     $('.chunkStatus').text(1);
 
