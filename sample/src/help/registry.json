@@ -80,7 +80,11 @@
         "path": "help/docs/app-developers-tutorials/grid.md"
       },
       {
-        "name": "7. Next actions",
+        "name": "7. What you need to know",
+        "path": "help/docs/app-developers-tutorials/what-you-need-to-know.md"
+      },
+      {
+        "name": "8. Next actions",
         "path": "help/docs/app-developers-tutorials/next-actions.md"
       },
     ],

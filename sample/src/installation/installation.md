@@ -2,6 +2,8 @@
 
 ### Installation
 To get you started, we have come up with three different installation methods for KendoUI. Below, we will explain these method, so you can decide which installation method to use.
+
+**We recommend that you read [these instructions](#/help/docs/app_developers_tutorials/7._what_you_need_to_know) in order to get started**
 <br><br>
 
 #### Core

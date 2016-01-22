@@ -16,36 +16,39 @@ import 'kendo-ui/js/kendo.button.min';
 
 @customAttribute('k-button')
 @generateBindables('kendoButton')
-@inject(Element)
-export class Button extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Button {
 
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoButton', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoButton')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   }
 
-  kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  enable(enable) {
-    if (this.widget) {
-      this.widget.enable(enable);
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
+
 ```
 
 <br>
 * * *
 #### Next page: &nbsp;&nbsp; [Chart component](#/help/docs/bridge_developers_tutorials/5._chart_component)
-
