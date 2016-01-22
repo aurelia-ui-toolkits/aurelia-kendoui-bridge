@@ -2,8 +2,7 @@
 
 A set of [Aurelia](http://aurelia.io) wrappers for [Kendo UI](http://www.telerik.com/kendo-ui)
 
-#### NOTE: This plugin is currently in development. Please wait for our [first release](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/releases) before using the plugin
-
+**NOTE: This plugin is in active development and would like to hear your feedback**
 
 [![Live demo](http://dabuttonfactory.com/button.png?t=Live+demo&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)](http://aurelia-ui-toolkits.github.io/demo-kendo/)
 [![Plunker](http://dabuttonfactory.com/button.png?t=Plunker&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)](http://plnkr.co/edit/rno7rR?p=preview)
