@@ -3,8 +3,7 @@
 
         <div class="demo-section k-content">
             <h4>Set value</h4>
-            <input id="numerictextbox" k-numerictextbox
-                                       k-numerictextbox.ref="numerictextbox" 
+            <input id="numerictextbox" k-numerictextbox="k-widget.two-way: numerictextbox"
                                        style="width: 100%" />
         </div>
 
@@ -17,8 +16,7 @@
                         <button id="focus" class="k-button" click.delegate="focus()">Focus</button>
                     </li>
                     <li>
-                        <input id="value" k-numerictextbox="k-value.bind:10"
-                                          k-numerictextbox.ref="valueNumerictextbox"
+                        <input id="value" k-numerictextbox="k-value.bind: 10; k-widget.two-way: valueNumerictextbox"
                                           k-on-change.delegate="setValue()" style="float:none" />
                         <button id="set" class="k-button" click.delegate="setValue()">Set value</button>
                     </li>

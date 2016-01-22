@@ -4,78 +4,34 @@ import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.numerictextbox.min';
 
 @customAttribute('k-numerictextbox')
-@inject(Element)
 @generateBindables('kendoNumericTextBox')
-export class NumericTextBox extends WidgetBase {
+@inject(Element, WidgetBase)
+export class NumericTextBox {
 
-    @bindable kValue;
-    @bindable options = {};
+  @bindable options = {};
 
-    constructor(element) {
-      super('kendoNumericTextBox', element);
-    }
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoNumericTextBox')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
 
-    bind(ctx) {
-      super.bind(ctx);
+  bind(ctx) {
+    this.$parent = ctx;
 
-      this._initialize();
-    }
+    this.recreate();
+  }
 
-    destroy() {
-      if (this.widget) {
-        return this.widget.destroy();
-      }
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
 
-    enable(newValue) {
-      if (this.widget) {
-        this.widget.enable(newValue);
-      }
-    }
-
-    readonly(value) {
-      if (this.widget) {
-        this.widget.readonly(value);
-      }
-    }
-
-    focus() {
-      if (this.widget) {
-        this.widget.focus();
-      }
-    }
-
-    max(value) {
-      if (this.widget) {
-        return this.widget.max(value);
-      }
-    }
-
-    min(value) {
-      if (this.widget) {
-        return this.widget.min(value);
-      }
-    }
-
-    step(value) {
-      if (this.widget) {
-        return this.widget.step(value);
-      }
-    }
-
-    value(newValue) {
-      if (this.widget) {
-        if (newValue) {
-          this.widget.value(newValue);
-        } else {
-          return this.widget.value();
-        }
-      }
-    }
-
-    kValueChanged() {
-      if (this.widget) {
-        this.widget.value(this.kValue);
-      }
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
 }
