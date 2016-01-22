@@ -71,7 +71,7 @@ You can then use the `autocomplete` variable to communicate with the original Ke
 <br>
 <br>
 ### Current limitations
-- Inside `<au-col>` templates, using value converters results in an error: [tracked here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/268).
-- Custom attributes and elements can only be used inside `<au-col>` templates when they are registered via `globalResources`: [tracked here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/269)
+- Inside `<au-col>` templates, using value converters results in an error: [tracked here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/268).
+- Custom attributes and elements can only be used inside `<au-col>` templates when they are registered via `globalResources`: [tracked here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/269)
 - `k-widget` binding only works with explicit two-way databinding on input controls: [tracked here](https://github.com/aurelia/templating/issues/253)
-- binding of value properties is not reliable and often out of sync: [tracked here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/263) and [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/253). Recommendation is to use the `value()` functions to read the current value
+- binding of value properties is not reliable and often out of sync: [tracked here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/263) and [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/253). Recommendation is to use the `value()` functions to read the current value

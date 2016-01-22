@@ -17,7 +17,7 @@ __We recommend this installation method if you have a Kendo PRO license and have
 <br><br>
 
 #### Vendors
-If you do not have Telerik credentials, but do have a license and the files of KendoUI PRO, you can install KendoUI via the "Vendors" method. Essentially, this is a folder named `vendors` containing `js` and `styles` folders from KendoUI PRO distribution, located at the root of your installation. With a JSPM configuration option, you tell the aurelia-kendoui-plugin to access the Kendo files from this `vendors` folder - as shown in [this configuration map entry](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/blob/master/sample/config.js#L47).
+If you do not have Telerik credentials, but do have a license and the files of KendoUI PRO, you can install KendoUI via the "Vendors" method. Essentially, this is a folder named `vendors` containing `js` and `styles` folders from KendoUI PRO distribution, located at the root of your installation. With a JSPM configuration option, you tell the aurelia-kendoui-bridge to access the Kendo files from this `vendors` folder - as shown in [this configuration map entry](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/sample/config.js#L47).
 
 
 __We recommend this method if you have Kendo PRO files, have a license, but don't have Telerik credentials or if you have an evaluation copy of KendoUI PRO__.

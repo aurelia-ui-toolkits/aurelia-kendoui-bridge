@@ -50,7 +50,7 @@ This `au-col` has three properties: **`title`**, **`field`** and **`template`**,
 
 #### How does the au-col extract the template?
 
-Let's take a look at the code of the [au-col custom element](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/blob/master/src/grid/au-col.js).
+Let's take a look at the code of the [au-col custom element](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/src/grid/au-col.js).
 <br>
 
 We use the `@bindable` properties, to configure them via attributes on the custom element. If we use `<au-col title="Contact Name" field="ContactName">`, then Aurelia sets the `title` property on the `au-col` view-model to "Contact Name" and the `field` property to "ContactName".

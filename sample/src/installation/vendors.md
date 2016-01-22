@@ -22,14 +22,14 @@
     }
     ```
   
-  **Note:** you may have to update the version of Kendo when adding these mappings. Improvements are tracked [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/272)
-5. Install Kendo and the aurelia-kendoui-plugin
-`jspm install aurelia-kendoui-plugin`
+  **Note:** you may have to update the version of Kendo when adding these mappings. Improvements are tracked [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/272)
+5. Install Kendo and the aurelia-kendoui-bridge
+`jspm install aurelia-kendoui-bridge`
 
 6. Install SystemJS CSS plugin (you will need it to include various KendoUI specific CSS files)
 ` jspm install github:systemjs/plugin-css`
 
-7. Register the aurelia-kendoui-plugin plugin
+7. Register the aurelia-kendoui-bridge plugin
 Now we're going to register the plugin with Aurelia in your "main.js" or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Pro by calling the "pro()" method
 
     ```
@@ -37,7 +37,7 @@ Now we're going to register the plugin with Aurelia in your "main.js" or equival
       aurelia.use
         .standardConfiguration()
         .developmentLogging()
-        .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
+        .plugin('aurelia-kendoui-bridge', (kendo) => kendo.pro());
 
       aurelia.start().then(a => a.setRoot());
     }

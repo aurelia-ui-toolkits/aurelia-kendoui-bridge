@@ -2,7 +2,7 @@
 
 ### 4. Application's internal structure
 
-<a name="anch1"></a>This article presents the overview of the internal organization of the **[Aurelia-KendoUI-Bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** project developed by the team of Aurelia UI Toolkits organization, dedicated to help  Aurelia's wide spread adoption .
+<a name="anch1"></a>This article presents the overview of the internal organization of the **[Aurelia-KendoUI-Bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge)** project developed by the team of Aurelia UI Toolkits organization, dedicated to help  Aurelia's wide spread adoption .
 
 The internal organization of this plugin is slightly different (we believe that it is more convenient) than Aurelia's **[standard plugin](https://github.com/aurelia/skeleton-plugin)**. Image 1 below, shows the overall structure.
 <br>
@@ -41,7 +41,7 @@ The code in the plugin (which is the JavaScript equivalent of the more general c
 ```javascript
 import {Aurelia} from 'aurelia-framework';
 import * as LogManager from 'aurelia-logging';
-let logger = LogManager.getLogger('aurelia-kendoui-plugin');
+let logger = LogManager.getLogger('aurelia-kendoui-bridge');
 import {KendoConfigBuilder} from './config-builder';
 import 'jquery';
 
@@ -67,7 +67,7 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: KendoConf
 }
 
 /**
-* Configure the Aurelia-KendoUI-plugin
+* Configure the Aurelia-KendoUI-bridge
 */
 export class KendoConfigBuilder {
 
@@ -261,9 +261,9 @@ As [mentioned before](#anch1) Aurelia-KendoUI plugin project has a special struc
 <br>
 
 #### Color codes:
-&nbsp; &nbsp; &nbsp; - **yellow**:  application runtime created by running the **`jspm install`** command in the **`aurelia-kendoui-plugin/sample`** folder
+&nbsp; &nbsp; &nbsp; - **yellow**:  application runtime created by running the **`jspm install`** command in the **`aurelia-kendoui-bridge/sample`** folder
 
-&nbsp; &nbsp; &nbsp; - **orange**: KendoUI controls hosted by this sample app (these controls are the consumers of the Aurelia-KendoUI-plugin)
+&nbsp; &nbsp; &nbsp; - **orange**: KendoUI controls hosted by this sample app (these controls are the consumers of the Aurelia-KendoUI-bridge)
 
 &nbsp; &nbsp; &nbsp; - **bluish**: Standard Aurelia application files collection
 

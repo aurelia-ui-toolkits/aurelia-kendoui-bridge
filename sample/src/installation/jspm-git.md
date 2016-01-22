@@ -20,7 +20,7 @@ and use the following responses to the prompts you will get:
 <br>
 
 3. Run the following command to install the PRO version of kendo and the aurelia-kendoui plugin:
-`jspm install aurelia-kendoui-plugin kendo-ui=kendo:bower-kendo-ui`
+`jspm install aurelia-kendoui-bridge kendo-ui=kendo:bower-kendo-ui`
 <br>
 
 4. Open `config.js` and add a couple of path mappings:
@@ -43,7 +43,7 @@ and use the following responses to the prompts you will get:
   }
   ```
 
-  **Note:** you may have to update the version of Kendo when adding these mappings. Improvements are tracked [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/272)
+  **Note:** you may have to update the version of Kendo when adding these mappings. Improvements are tracked [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/272)
 
 5. Register the plugin
 Now we're going to register the plugin with Aurelia in your "main.js" or equivalent. The configuration function will be passed a builder object that you can use to configure which KendoUI controls you wish to use. You can use all controls in KendoUI Pro by calling the "pro()" method
@@ -53,7 +53,7 @@ Now we're going to register the plugin with Aurelia in your "main.js" or equival
       aurelia.use
         .standardConfiguration()
         .developmentLogging()
-        .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
+        .plugin('aurelia-kendoui-bridge', (kendo) => kendo.pro());
 
       aurelia.start().then(a => a.setRoot());
     }

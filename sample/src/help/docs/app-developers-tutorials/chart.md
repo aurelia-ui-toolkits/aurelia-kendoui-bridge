@@ -13,7 +13,7 @@ Unlike the previous two controls, Chart is represented (by Aurelia KendoUI bridg
         <br>
         <h3>Basic KendoUI Chart sample</h3>
 
-        <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample/src/samples/chart">See KendoUI Bridge chart folder for more details</a>
+        <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/tree/master/sample/src/samples/chart">See KendoUI Bridge chart folder for more details</a>
         <br>
         <br>
 

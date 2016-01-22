@@ -1,5 +1,5 @@
 /**
-* Configure the Aurelia-KendoUI-plugin
+* Configure the Aurelia-KendoUI-bridge
 */
 export class KendoConfigBuilder {
 

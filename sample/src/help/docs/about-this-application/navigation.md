@@ -38,7 +38,7 @@ This section is provided as a help to developers that are familiar with **[Kendo
 
 #### About KendoUI
 
-This section is provided as a help to developers that are familiar with **[Aurelia framework](http://aurelia.io/)** and would like find out more about **[KendoUI toolkit](http://www.telerik.com/kendo-ui)** in order to be able to use **[Aurelia KendoUI bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** to develop the user interface for their Aurelia applications.
+This section is provided as a help to developers that are familiar with **[Aurelia framework](http://aurelia.io/)** and would like find out more about **[KendoUI toolkit](http://www.telerik.com/kendo-ui)** in order to be able to use **[Aurelia KendoUI bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge)** to develop the user interface for their Aurelia applications.
 <br><br>
 
 #### App developers tutorials
@@ -53,6 +53,6 @@ This section starts with the (practically empty) **[Aurelia Skeleton plugin](htt
 
 #### Bridge developers notes
 
-Due to relative complexity of some of **[Aurelia KendoUI bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** components, this section contains the selected collection of notes that are useful to developers that want to contribute to the future development of **[Aurelia KendoUI bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)**
+Due to relative complexity of some of **[Aurelia KendoUI bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge)** components, this section contains the selected collection of notes that are useful to developers that want to contribute to the future development of **[Aurelia KendoUI bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge)**
 <br><br>
 

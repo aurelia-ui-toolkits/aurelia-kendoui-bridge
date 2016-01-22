@@ -1,5 +1,5 @@
 {
-  "name": "aurelia-kendoui-plugin",
+  "name": "aurelia-kendoui-bridge",
   "version": "0.0.4",
   "registry": "github",
   "description": "A set of Telerik KendoUI wrappers for Aurelia allowing developers to easily use KendoUI components in their Aurelia application.",
@@ -10,9 +10,9 @@
     "kendoui",
     "telerik"
   ],
-  "homepage": "https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin",
+  "homepage": "https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge",
   "bugs": {
-    "url": "https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues"
+    "url": "https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues"
   },
   "license": "MIT",
   "author": "aurelia-ui-toolkits",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin"
+    "url": "https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge"
   },
   "jspm": {
     "main": "index",
