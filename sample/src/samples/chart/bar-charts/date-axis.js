@@ -33,15 +33,14 @@ export class DateAxis {
   };
 
   refresh() {
-    let widget = this.chart.widget;
     let baseUnitInputs = $('input:radio[name=baseUnit]');
     let aggregateInputs = $('input:radio[name=aggregate]');
 
-    for (let i = 0, length = widget.options.series.length; i < length; i++) {
-      widget.options.series[i].aggregate = aggregateInputs.filter(':checked').val();
+    for (let i = 0, length = this.chart.options.series.length; i < length; i++) {
+      this.chart.options.series[i].aggregate = aggregateInputs.filter(':checked').val();
     }
 
-    widget.options.categoryAxis.baseUnit = baseUnitInputs.filter(':checked').val();
+    this.chart.options.categoryAxis.baseUnit = baseUnitInputs.filter(':checked').val();
 
     this.chart.refresh();
   }

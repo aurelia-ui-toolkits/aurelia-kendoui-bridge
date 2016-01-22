@@ -2,7 +2,7 @@
     <require from="./api.css"></require>
     <div id="example">
       <div class="demo-section k-content">
-        <button k-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.delegate="test()">Kendo UI Button</button>
+        <button k-button="k-icon: ungroup; k-widget.bind: button" k-on-click.delegate="test()">Kendo UI Button</button>
       </div>
 
       <div class="box">
@@ -10,8 +10,8 @@
           <h4>Button API Functions</h4>
           <ul class="options">
             <li>
-                <button k-button click.delegate="disable()">Disable</button>
-                <button k-button click.delegate="enable()">Enable</button>
+                <button k-button click.delegate="button.enable(false)">Disable</button>
+                <button k-button click.delegate="button.enable(true)">Enable</button>
               </li>
           </ul>
         </div>

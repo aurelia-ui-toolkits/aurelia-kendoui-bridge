@@ -2,11 +2,10 @@
     <div id="example">
         <div class="demo-section k-content">
             <h4>Select date</h4>
-            <input id="datepicker" k-datepicker 
+            <input id="datepicker" k-datepicker="k-widget.two-way: datepicker"
                                    k-on-open.delegate="onOpen()"
-                                   k-on-close.delegate="onClose()" 
+                                   k-on-close.delegate="onClose()"
                                    k-on-change.delegate="onChange()"
-                                   k-datepicker.ref="datepicker"
                                    style="width: 100%" />
         </div>
         <div class="box">
