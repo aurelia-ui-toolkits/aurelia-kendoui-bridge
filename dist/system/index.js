@@ -33,7 +33,7 @@ System.register(['aurelia-framework', 'aurelia-logging', './config-builder', 'jq
       KendoConfigBuilder = _configBuilder.KendoConfigBuilder;
     }, function (_jquery) {}],
     execute: function () {
-      logger = LogManager.getLogger('aurelia-kendoui-plugin');
+      logger = LogManager.getLogger('aurelia-kendoui-bridge');
     }
   };
 });

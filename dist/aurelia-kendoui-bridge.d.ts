@@ -1,4 +1,4 @@
-declare module 'aurelia-kendoui-plugin' {
+declare module 'aurelia-kendoui-bridge' {
   import * as LogManager from 'aurelia-logging';
   import 'jquery';
   import 'kendo-ui/js/kendo.autocomplete.min';
@@ -30,7 +30,7 @@ declare module 'aurelia-kendoui-plugin' {
   import { bindingMode }  from 'aurelia-binding';
   
   /**
-  * Configure the Aurelia-KendoUI-plugin
+  * Configure the Aurelia-KendoUI-bridge
   */
   export class KendoConfigBuilder {
     resources: string[];

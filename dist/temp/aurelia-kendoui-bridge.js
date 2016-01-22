@@ -193,7 +193,7 @@ var KendoConfigBuilder = (function () {
 
 exports.KendoConfigBuilder = KendoConfigBuilder;
 
-var logger = LogManager.getLogger('aurelia-kendoui-plugin');
+var logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
 function configure(aurelia, configCallback) {
   var builder = new KendoConfigBuilder();

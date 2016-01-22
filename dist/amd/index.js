@@ -4,7 +4,7 @@ define(['exports', 'aurelia-framework', 'aurelia-logging', './config-builder', '
   exports.__esModule = true;
   exports.configure = configure;
 
-  var logger = _aureliaLogging.getLogger('aurelia-kendoui-plugin');
+  var logger = _aureliaLogging.getLogger('aurelia-kendoui-bridge');
 
   function configure(aurelia, configCallback) {
     var builder = new _configBuilder.KendoConfigBuilder();

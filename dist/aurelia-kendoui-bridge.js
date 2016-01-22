@@ -29,7 +29,7 @@ import {metadata} from 'aurelia-metadata';
 import {bindingMode} from 'aurelia-binding';
 
 /**
-* Configure the Aurelia-KendoUI-plugin
+* Configure the Aurelia-KendoUI-bridge
 */
 export class KendoConfigBuilder {
 
@@ -157,7 +157,7 @@ export class KendoConfigBuilder {
   }
 }
 
-let logger = LogManager.getLogger('aurelia-kendoui-plugin');
+let logger = LogManager.getLogger('aurelia-kendoui-bridge');
 export function configure(aurelia: Aurelia, configCallback?: (builder: KendoConfigBuilder) => void) {
   let builder = new KendoConfigBuilder();
 

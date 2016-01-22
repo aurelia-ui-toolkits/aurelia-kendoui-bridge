@@ -15,7 +15,7 @@ var _configBuilder = require('./config-builder');
 
 require('jquery');
 
-var logger = LogManager.getLogger('aurelia-kendoui-plugin');
+var logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
 function configure(aurelia, configCallback) {
   var builder = new _configBuilder.KendoConfigBuilder();
