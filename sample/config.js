@@ -13,7 +13,8 @@ System.config({
   paths: {
     "*": "src/*",
     "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*"
+    "npm:*": "jspm_packages/npm/*",
+    "kendo.*": "src/root/vendors/js/kendo.*.js"
   },
 
   meta: {
@@ -43,6 +44,7 @@ System.config({
     "font-awesome": "npm:font-awesome@4.5.0",
     "google/code-prettify": "github:google/code-prettify@master",
     "jquery": "github:components/jquery@2.1.4",
+    "jquery.min": "github:components/jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
     "kendo-ui": "root/vendors",
     "prettify": "npm:prettify@0.1.7",
@@ -240,7 +242,7 @@ System.config({
     "npm:code-point-at@1.0.0": {
       "number-is-nan": "npm:number-is-nan@1.0.0"
     },
-    "npm:config-chain@1.1.9": {
+    "npm:config-chain@1.1.10": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0",
       "events": "github:jspm/nodelibs-events@0.1.1",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
@@ -276,7 +278,7 @@ System.config({
       "number-is-nan": "npm:number-is-nan@1.0.0"
     },
     "npm:js-prettify@1.4.0": {
-      "config-chain": "npm:config-chain@1.1.9",
+      "config-chain": "npm:config-chain@1.1.10",
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "mkdirp": "npm:mkdirp@0.3.5",
       "nopt": "npm:nopt@2.1.2",
@@ -340,7 +342,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0",
-      "yargs": "npm:yargs@3.31.0"
+      "yargs": "npm:yargs@3.32.0"
     },
     "npm:stream-browserify@1.0.0": {
       "events": "github:jspm/nodelibs-events@0.1.1",
@@ -380,7 +382,7 @@ System.config({
       "path": "github:jspm/nodelibs-path@0.1.0",
       "util": "github:jspm/nodelibs-util@0.1.0"
     },
-    "npm:yargs@3.31.0": {
+    "npm:yargs@3.32.0": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",
       "camelcase": "npm:camelcase@2.0.1",
       "cliui": "npm:cliui@3.1.0",

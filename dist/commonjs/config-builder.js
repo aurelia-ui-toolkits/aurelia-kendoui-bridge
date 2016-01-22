@@ -13,7 +13,7 @@ var KendoConfigBuilder = (function () {
   }
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList();
+    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList().kendoDatePicker().kendoNumericTextBox();
     return this;
   };
 
@@ -98,6 +98,16 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoTreeView = function kendoTreeView() {
     this.resources.push('treeview/treeview');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoDatePicker = function kendoDatePicker() {
+    this.resources.push('datepicker/datepicker');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoNumericTextBox = function kendoNumericTextBox() {
+    this.resources.push('numerictextbox/numerictextbox');
     return this;
   };
 

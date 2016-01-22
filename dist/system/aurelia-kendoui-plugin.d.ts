@@ -1,9 +1,9 @@
 declare module 'aurelia-kendoui-plugin' {
   import * as LogManager from 'aurelia-logging';
   import 'jquery';
+  import 'kendo-ui/js/kendo.button.min';
   import 'kendo-ui/js/kendo.autocomplete.min';
   import 'kendo-ui/js/kendo.virtuallist.min';
-  import 'kendo-ui/js/kendo.button.min';
   import 'kendo-ui/js/kendo.dataviz.chart.min';
   import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
   import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
@@ -17,6 +17,7 @@ declare module 'aurelia-kendoui-plugin' {
   import 'kendo-ui/js/kendo.filtercell.min';
   import 'kendo-ui/js/kendo.grid.min';
   import 'kendo-ui/js/kendo.menu.min';
+  import 'kendo-ui/js/kendo.numerictextbox.min';
   import 'kendo-ui/js/kendo.pdf.min';
   import 'kendo-ui/js/jszip.min';
   import 'kendo-ui/js/kendo.progressbar.min';
@@ -64,8 +65,17 @@ declare module 'aurelia-kendoui-plugin' {
     kendoSlider(): KendoConfigBuilder;
     kendoColorPicker(): KendoConfigBuilder;
     kendoTreeView(): KendoConfigBuilder;
+    kendoDatePicker(): KendoConfigBuilder;
+    kendoNumericTextBox(): KendoConfigBuilder;
   }
   export function configure(aurelia: Aurelia, configCallback?: ((builder: KendoConfigBuilder) => void)): any;
+  export class Button extends WidgetBase {
+    options: any;
+    constructor(element: any);
+    bind(ctx: any): any;
+    kEnableChanged(): any;
+    enable(enable: any): any;
+  }
   export class AutoComplete extends WidgetBase {
     kDataSource: any;
     options: any;
@@ -84,13 +94,6 @@ declare module 'aurelia-kendoui-plugin' {
     select(value: any): any;
     setDataSource(value: any): any;
     suggest(value: any): any;
-  }
-  export class Button extends WidgetBase {
-    options: any;
-    constructor(element: any);
-    bind(ctx: any): any;
-    kEnableChanged(): any;
-    enable(enable: any): any;
   }
   
   // eslint-disable-line no-unused-vars
@@ -352,12 +355,13 @@ declare module 'aurelia-kendoui-plugin' {
     detached(): any;
   }
   export class DatePicker extends WidgetBase {
+    kValue: any;
+    kDisableDates: any;
     options: any;
     constructor(element: any);
     bind(ctx: any): any;
     close(value: any): any;
     destroy(): any;
-    kEnableChanged(): any;
     enable(newValue: any): any;
     readonly(value: any): any;
     max(value: any): any;
@@ -365,6 +369,7 @@ declare module 'aurelia-kendoui-plugin' {
     open(): any;
     setOptions(options: any): any;
     value(newValue: any): any;
+    kValueChanged(): any;
   }
   export class DropDownList extends WidgetBase {
     options: any;
@@ -455,6 +460,21 @@ declare module 'aurelia-kendoui-plugin' {
     kDataSource: any;
     constructor(element: any);
     bind(ctx: any): any;
+  }
+  export class NumericTextBox extends WidgetBase {
+    kValue: any;
+    options: any;
+    constructor(element: any);
+    bind(ctx: any): any;
+    destroy(): any;
+    enable(newValue: any): any;
+    readonly(value: any): any;
+    focus(): any;
+    max(value: any): any;
+    min(value: any): any;
+    step(value: any): any;
+    value(newValue: any): any;
+    kValueChanged(): any;
   }
   export class PDF {
   }

@@ -17,7 +17,7 @@ System.register([], function (_export) {
         }
 
         KendoConfigBuilder.prototype.core = function core() {
-          this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList();
+          this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList().kendoDatePicker().kendoNumericTextBox();
           return this;
         };
 
@@ -102,6 +102,16 @@ System.register([], function (_export) {
 
         KendoConfigBuilder.prototype.kendoTreeView = function kendoTreeView() {
           this.resources.push('treeview/treeview');
+          return this;
+        };
+
+        KendoConfigBuilder.prototype.kendoDatePicker = function kendoDatePicker() {
+          this.resources.push('datepicker/datepicker');
+          return this;
+        };
+
+        KendoConfigBuilder.prototype.kendoNumericTextBox = function kendoNumericTextBox() {
+          this.resources.push('numerictextbox/numerictextbox');
           return this;
         };
 

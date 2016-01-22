@@ -36,7 +36,7 @@ describe('TemplateCompiler', () => {
     expect(spy).toHaveBeenCalledWith(widget2, event2, args2);
   });
 
-  it('handles compile and cleanup angular calls. pulls off the parent context of the options', () => {
+  it('handles compile and cleanup angular calls. pulls off the parent context of the widget', () => {
     let realArgs = {
       data: {},
       elements: [{}, {}]
@@ -53,6 +53,23 @@ describe('TemplateCompiler', () => {
 
     expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data);
     expect(cleanupSpy).toHaveBeenCalledWith(realArgs.elements);
+  });
+
+
+  it('pulls off the parent context of the options if it is not on the widget itself', () => {
+    let realArgs = {
+      data: {},
+      elements: [{}, {}]
+    };
+    let args = () => realArgs;
+    let $parent = {};
+    let widget = { options: { _$parent: $parent }};
+
+    let compileSpy = spyOn(sut, 'compile');
+
+    sut.handleTemplateEvents(widget, 'compile', args);
+
+    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data);
   });
 
   it('enhances every element', () => {

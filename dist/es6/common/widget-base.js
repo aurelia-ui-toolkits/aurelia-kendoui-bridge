@@ -96,9 +96,14 @@ export class WidgetBase {
     // allows you to modify/add/remove options before the control gets initialized
     this._beforeInitialize(options);
 
+    // add parent context to options
+    Object.assign(options, { _$parent: this.$parent });
+
     // instantiate the Kendo control, pass in the target and the options
     this.widget = ctor.call(target, options).data(this.controlName);
 
+    // set parent context on the widget (in case the parent context is removed
+    // from the options object by the Kendo control)
     this.widget._$parent = this.$parent;
 
     this._initialized();

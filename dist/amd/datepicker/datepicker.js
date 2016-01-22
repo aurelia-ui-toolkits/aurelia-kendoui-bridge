@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', '../common/events', 'kendo-ui/js/kendo.datepicker.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _commonEvents, _kendoUiJsKendoDatepickerMin) {
+define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.datepicker.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoDatepickerMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -17,6 +17,16 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
     _inherits(DatePicker, _WidgetBase);
 
     _createDecoratedClass(DatePicker, [{
+      key: 'kValue',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'kDisableDates',
+      decorators: [_aureliaFramework.bindable],
+      initializer: null,
+      enumerable: true
+    }, {
       key: 'options',
       decorators: [_aureliaFramework.bindable],
       initializer: function initializer() {
@@ -30,6 +40,10 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
 
       _WidgetBase.call(this, 'kendoDatePicker', element);
 
+      _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers);
+
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
     }
 
@@ -39,22 +53,12 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
       this._initialize();
     };
 
+    DatePicker.prototype._beforeInitialize = function _beforeInitialize(options) {
+      return Object.assign({}, options, { disableDates: this.kDisableDates });
+    };
+
     DatePicker.prototype._initialize = function _initialize() {
-      var _this = this;
-
       _WidgetBase.prototype._initialize.call(this);
-
-      this.widget.bind('change', function (event) {
-        _this.kValue = event.sender.value();
-
-        _commonEvents.fireEvent(_this.element, 'input');
-      });
-
-      this.widget.bind('select', function (event) {
-        _this.kValue = event.sender.value();
-
-        _commonEvents.fireEvent(_this.element, 'input');
-      });
     };
 
     DatePicker.prototype.close = function close(value) {
@@ -66,12 +70,6 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
     DatePicker.prototype.destroy = function destroy() {
       if (this.widget) {
         return this.widget.destroy();
-      }
-    };
-
-    DatePicker.prototype.kEnableChanged = function kEnableChanged() {
-      if (this.widget) {
-        this.widget.enable(this.kEnable);
       }
     };
 
@@ -115,10 +113,15 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
       if (this.widget) {
         if (newValue) {
           this.widget.value(newValue);
-          this.widget.trigger('change');
         } else {
           return this.widget.value();
         }
+      }
+    };
+
+    DatePicker.prototype.kValueChanged = function kValueChanged() {
+      if (this.widget) {
+        this.widget.value(this.kValue);
       }
     };
 

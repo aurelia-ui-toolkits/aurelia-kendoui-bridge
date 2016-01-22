@@ -51,6 +51,8 @@ var WidgetBase = (function () {
 
     this._beforeInitialize(options);
 
+    Object.assign(options, { _$parent: this.$parent });
+
     this.widget = ctor.call(target, options).data(this.controlName);
 
     this.widget._$parent = this.$parent;
