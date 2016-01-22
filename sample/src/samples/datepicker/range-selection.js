@@ -4,7 +4,6 @@ export class RangeSelection {
     }
 
     startChange() {
-      debugger;
       let startDate = this.startDatePicker.value();
       let endDate = this.endDatePicker.value();
 
