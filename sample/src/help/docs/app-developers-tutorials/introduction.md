@@ -3,7 +3,7 @@
 ### 1. Introduction
 <br>
 
-The collection of articles contained in the **App developers tutorials** help category, _which begins with this article you are reading now_,  presents several short tutorials on using the **[KendoUI components](http://aurelia-ui-toolkits.github.io/demo-kendo/#/help/docs/about_this_application/2._components_catalog)** from **[Aurelia-KendoUI bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin)** Aurelia plugin.
+The collection of articles contained in the **App developers tutorials** help category, _which begins with this article you are reading now_,  presents several short tutorials on using the **[KendoUI components](http://aurelia-ui-toolkits.github.io/demo-kendo/#/help/docs/about_this_application/2._components_catalog)** from **[Aurelia-KendoUI-bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge)** Aurelia plugin.
 <br>
 
 You need to have KendoUI bits on your machine in order to be able to follow the App developers tutorials
@@ -11,7 +11,7 @@ section. Specifically that means how you will develop the app which "hosts" the 
 <br>
 
 #### Important note
-The whole section named **Bridge developers tutorials** is intended solely to new bridge projects contributors - a lot narrower class than people interested **App developers tutorials** dedicated to all Aurelia application developers that want to use KendoUI components provided by the Aurelia-KendoUI bridge.
+The whole section named **Bridge developers tutorials** is intended solely to new bridge projects contributors - a lot narrower class than people interested **App developers tutorials** dedicated to all Aurelia application developers that want to use KendoUI components provided by the Aurelia-KendoUI-bridge.
 
 
 * * *

@@ -71,10 +71,10 @@ Kendo controls which support template customization invoke "Angular interface" t
 The Angular function is called with two parameters: the command and an object with additional data such as a collection of HTML elements and a collection of dataItems. We'll explain more about how it is called in the next chapter.
 <br>
 
-We made a class that is responsible for patching this Angular function, and handle any function call made by a Kendo control. This is our **[Template Compiler](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/blob/163e89fd042a1382a44c746d4494e38026379b24/src/common/template-compiler.js)** being discussed in this note.
+We made a class that is responsible for patching this Angular function, and handle any function call made by a Kendo control. This is our **[Template Compiler](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/163e89fd042a1382a44c746d4494e38026379b24/src/common/template-compiler.js)** being discussed in this note.
 <br>
 
-This **[code section](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/blob/163e89fd042a1382a44c746d4494e38026379b24/src/common/template-compiler.js#L33-L38)**, replicated below for reader's convenience, shows how the Angular function is patched.
+This **[code section](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/163e89fd042a1382a44c746d4494e38026379b24/src/common/template-compiler.js#L33-L38)**, replicated below for reader's convenience, shows how the Angular function is patched.
 <br>
 
 ```javascript

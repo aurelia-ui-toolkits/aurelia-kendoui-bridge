@@ -71,7 +71,7 @@ Add the the following code to define the (so far empty) file `index.js` - this i
 ```javascript
 import {Aurelia} from 'aurelia-framework';
 import * as LogManager from 'aurelia-logging';
-let logger = LogManager.getLogger('aurelia-kendoui-plugin');
+let logger = LogManager.getLogger('aurelia-kendoui-bridge');
 import {KendoConfigBuilder} from './config-builder';
 import 'jquery';
 
@@ -102,7 +102,7 @@ Add the the following code to define the (so far empty) file `config-builder.js`
 <br>
 ```javascript
 /**
-* Configure the Aurelia-KendoUI-plugin
+* Configure the Aurelia-KendoUI-bridge
 */
 export class KendoConfigBuilder {
 

@@ -2,27 +2,29 @@
 
 ### KendoUI Core
 
-1. Install KendoUI Core and the aurelia-kendoui-plugin by issuing the command:
-`jspm install kendo-ui aurelia-kendoui-plugin`
+1. Install KendoUI Core and the aurelia-kendoui-bridge by issuing the command:
+`jspm install kendo-ui aurelia-kendoui-bridge`
 
 
 2. Open `config.js` and add a couple of path mappings:
 
-```
-paths: {
-  "*": "dist/*",
-  "github:*": "jspm_packages/github/*",
-  "npm:*": "jspm_packages/npm/*",
-  "kendo.*": "jspm_packages/kendo/bower-kendo-ui@2016.1.120/js/kendo.*.js"    <----
-},
-"map": {
-  "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
-  "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
-  "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
-  "jquery": "npm:jquery@2.2.0",
-  "jquery.min": "npm:jquery@2.2.0"          <----
-}
-```
+  ```
+  paths: {
+    "*": "dist/*",
+    "github:*": "jspm_packages/github/*",
+    "npm:*": "jspm_packages/npm/*",
+    "kendo.*": "jspm_packages/github/kendo-labs/bower-kendo-ui@2016.1.120/js/kendo.*.js"    <----
+  },
+  "map": {
+    "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
+    "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
+    "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
+    "jquery": "npm:jquery@2.2.0",             <----
+    "jquery.min": "npm:jquery@2.2.0"          <----
+  }
+  ```
+
+  **Note:** you may have to update the version of Kendo when adding these mappings. Improvements are tracked [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/272)
 
 3. Register the plugin
 Now we're going to register the plugin with Aurelia in your "main.js" or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Core by calling the `core()` method
@@ -32,7 +34,7 @@ Now we're going to register the plugin with Aurelia in your "main.js" or equival
       aurelia.use
         .standardConfiguration()
         .developmentLogging()
-        .plugin('aurelia-kendoui-plugin', (kendo) => kendo.core());
+        .plugin('aurelia-kendoui-bridge', (kendo) => kendo.core());
 
       aurelia.start().then(a => a.setRoot());
     }

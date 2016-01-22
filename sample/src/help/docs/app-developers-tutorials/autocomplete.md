@@ -17,7 +17,7 @@ To create a UI component, you need only create two files, one for each of the co
         <br>
         <h3>Basic KendoUI Autocomplete sample</h3>
 
-        <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample/src/samples/autocomplete">See KendoUI Bridge autocomplete folder for more details</a>
+        <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/tree/master/sample/src/samples/autocomplete">See KendoUI Bridge autocomplete folder for more details</a>
         <br>
         <br>
 

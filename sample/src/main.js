@@ -6,7 +6,7 @@ export function configure(aurelia) {
   aurelia.use
     .standardConfiguration()
     .developmentLogging()
-    .plugin('aurelia-kendoui-plugin', (kendo) => kendo.pro());
+    .plugin('aurelia-kendoui-bridge', (kendo) => kendo.pro());
 
   aurelia.use.globalResources('shared/collapse-panel');
   aurelia.use.globalResources('shared/markdown');

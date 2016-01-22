@@ -1,6 +1,6 @@
 import {Aurelia} from 'aurelia-framework';
 import * as LogManager from 'aurelia-logging';
-let logger = LogManager.getLogger('aurelia-kendoui-plugin');
+let logger = LogManager.getLogger('aurelia-kendoui-bridge');
 import {KendoConfigBuilder} from './config-builder';
 import 'jquery';
 

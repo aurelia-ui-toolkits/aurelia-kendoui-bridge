@@ -14,7 +14,7 @@ Consider this source, the `index.js` file (note the `js` extension, not the `ts`
 ```
 import {Aurelia} from 'aurelia-framework';
 import * as LogManager from 'aurelia-logging';
-let logger = LogManager.getLogger('aurelia-kendoui-plugin');
+let logger = LogManager.getLogger('aurelia-kendoui-bridge');
 import {KendoConfigBuilder} from './config-builder';
 import 'jquery';
 
@@ -77,7 +77,7 @@ export function configure(aurelia: any, configCallback: any): any;
 The one thing the `babel-dts-generator` is having trouble with is extracting typescript definitions from a set of files. So, the solution is to concatenate all these files into a single output file, and then extract the typescript definitions from it.
 <br>
 
-The concatenation process happens in the [build-index function](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/blob/f24e34411b60376d7bf12367f1b2ab247d821d38/build/tasks/build.js#L17-L31). A sub-step of this process is to fix import statements. This means two things: Removing local imports (relative paths), and removing duplicate import statements.
+The concatenation process happens in the [build-index function](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/f24e34411b60376d7bf12367f1b2ab247d821d38/build/tasks/build.js#L17-L31). A sub-step of this process is to fix import statements. This means two things: Removing local imports (relative paths), and removing duplicate import statements.
 
 Consider the following:
 
@@ -133,7 +133,7 @@ export class C {}
 
 #### Calling of `babel-dts-generator`
 
-Like mentioned above, the `babel-dts-generator` is a babel plugin. So whenever a file is processed by Babel, the `babel-dts-generator` plugin is called. For example, this happens [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/blob/f24e34411b60376d7bf12367f1b2ab247d821d38/build/tasks/build.js#L36). The `babel-dts-generator` is configured in the [build.js file](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/blob/f24e34411b60376d7bf12367f1b2ab247d821d38/build/babel-options.js#L23-L34). By default, the `babel-dts-generator` outputs the `d.ts` file next to the Javascript file from which it extracted the definitions.
+Like mentioned above, the `babel-dts-generator` is a babel plugin. So whenever a file is processed by Babel, the `babel-dts-generator` plugin is called. For example, this happens [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/f24e34411b60376d7bf12367f1b2ab247d821d38/build/tasks/build.js#L36). The `babel-dts-generator` is configured in the [build.js file](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/f24e34411b60376d7bf12367f1b2ab247d821d38/build/babel-options.js#L23-L34). By default, the `babel-dts-generator` outputs the `d.ts` file next to the Javascript file from which it extracted the definitions.
 <br><br>
 
 #### Typescript definitions without distributing a concatenated output file

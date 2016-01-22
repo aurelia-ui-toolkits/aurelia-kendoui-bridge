@@ -12,7 +12,7 @@
             <br>
             <h3>Basic KendoUI Grid sample</h3>
 
-            <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample/src/samples/grid">See KendoUI Bridge grid folder for more details</a>
+            <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/tree/master/sample/src/samples/grid">See KendoUI Bridge grid folder for more details</a>
             <br>
             <br>
             <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">

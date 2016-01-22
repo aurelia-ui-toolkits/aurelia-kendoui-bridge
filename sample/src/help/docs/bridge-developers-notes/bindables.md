@@ -161,7 +161,7 @@ export class AuKendoButton {
 ```
 <br>
 
-Note, the `@bindable` property declarations are gone, and the `@generateBindables()` decorator is used instead. Our full implementation of this decorator can be found [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/blob/master/src/common/decorators.js).
+Note, the `@bindable` property declarations are gone, and the `@generateBindables()` decorator is used instead. Our full implementation of this decorator can be found [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/src/common/decorators.js).
 <br>
 
 We came to the conclusion that it was not possible to set the default value of a bindable property from the `generateBindables` decorator, because the instance of the actual wrapper was not available. We decided to set these default values from the constructor of each wrapper. Because that would lead to duplicate code, we extracted this into a base class, the `WidgetBase`. The `WidgetBase`'s implementation of this process looks like this:

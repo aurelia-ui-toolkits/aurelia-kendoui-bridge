@@ -17,7 +17,7 @@ The [`decorators.js`](#decorators) file contains decorators used within multiple
 <br><br>
 
 [[`events.js`](#decorators)]
-In several parts of the `aurelia-kendoui-plugin` codebase, events are dispatched. In order to keep the logic of dispatching events in one place, we have put these functions in the [`events.js`](#decorators) file.
+In several parts of the `aurelia-kendoui-bridge` codebase, events are dispatched. In order to keep the logic of dispatching events in one place, we have put these functions in the [`events.js`](#decorators) file.
 <br><br>
 
 [[`options.js`](#options)]

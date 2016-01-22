@@ -3,7 +3,7 @@
 ### 4. Bundling KendoUI
 <br>
 
-The Aurelia-KendoUI-plugin is designed to offer you - as end-user - flexibility. The wrappers include only the Kendo files they need for that particular control to work. These files exist (in minified state) in the `js` folder of KendoUI distribution.
+The Aurelia-KendoUI-bridge is designed to offer you - as end-user - flexibility. The wrappers include only the Kendo files they need for that particular control to work. These files exist (in minified state) in the `js` folder of KendoUI distribution.
 <br>
 
 If you're reading this, then you may be wondering how to bundle these files. There are currently three options for you to consider, so let's explain a few things first.
@@ -40,9 +40,9 @@ If your app bundle configuration looks like this:
     "src/app-build": {
       "includes": [
         "*",
-        "aurelia-kendoui-plugin",
-        "aurelia-kendoui-plugin/**/*",
-        "aurelia-kendoui-plugin/**/*.html!text",
+        "aurelia-kendoui-bridge",
+        "aurelia-kendoui-bridge/**/*",
+        "aurelia-kendoui-bridge/**/*.html!text",
       ]
     },
 ```
@@ -55,9 +55,9 @@ then you can change it to this:
     "src/app-build": {
       "includes": [
         "[*]",
-        "[aurelia-kendoui-plugin]",
-        "[aurelia-kendoui-plugin/**/*]",
-        "aurelia-kendoui-plugin/**/*.html!text",
+        "[aurelia-kendoui-bridge]",
+        "[aurelia-kendoui-bridge/**/*]",
+        "aurelia-kendoui-bridge/**/*.html!text",
       ]
     },
 ```
@@ -80,9 +80,9 @@ To prevent the JSPM bundler from bundling any Kendo files, you can change your i
     "src/app-build": {
       "includes": [
         "[*]",
-        "[aurelia-kendoui-plugin]",
-        "[aurelia-kendoui-plugin/**/*]",
-        "aurelia-kendoui-plugin/**/*.html!text",
+        "[aurelia-kendoui-bridge]",
+        "[aurelia-kendoui-bridge/**/*]",
+        "aurelia-kendoui-bridge/**/*.html!text",
       ]
     },
 ```
@@ -154,7 +154,7 @@ In your config.js, you can map Kendo files to `kendo.all.min.js`. If you do this
 <br>
 
 ```
-    "github:aurelia-ui-toolkits/aurelia-kendoui-plugin@master": {
+    "github:aurelia-ui-toolkits/aurelia-kendoui-bridge@master": {
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1",
       "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.6",
       "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1",
