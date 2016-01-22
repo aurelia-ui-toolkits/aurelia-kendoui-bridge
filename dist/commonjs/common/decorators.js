@@ -7,6 +7,8 @@ var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaMetadata = require('aurelia-metadata');
 
+var _aureliaBinding = require('aurelia-binding');
+
 var _util = require('./util');
 
 function generateBindables(controlName) {
@@ -16,6 +18,7 @@ function generateBindables(controlName) {
     var behaviorResource = _aureliaMetadata.metadata.getOrCreateOwn(_aureliaMetadata.metadata.resource, _aureliaTemplating.HtmlBehaviorResource, target);
     var optionKeys = Object.keys(options);
     optionKeys.push('dataSource');
+    optionKeys.push('widget');
 
     for (var _iterator = optionKeys, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
       var _ref;
@@ -34,6 +37,10 @@ function generateBindables(controlName) {
       var nameOrConfigOrTarget = {
         name: _util.getBindablePropertyName(option)
       };
+
+      if (option === 'widget') {
+        nameOrConfigOrTarget.defaultBindingMode = _aureliaBinding.bindingMode.twoWay;
+      }
 
       var prop = new _aureliaTemplating.BindableProperty(nameOrConfigOrTarget);
       prop.registerWith(target, behaviorResource, descriptor);

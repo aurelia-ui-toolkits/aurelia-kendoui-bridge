@@ -5,42 +5,33 @@ import 'kendo-ui/js/kendo.progressbar.min';
 
 @customAttribute('k-progress-bar')
 @generateBindables('kendoProgressBar')
-@inject(Element)
-export class ProgressBar extends WidgetBase {
+@inject(Element, WidgetBase)
+export class ProgressBar {
 
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoProgressBar', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoProgressBar')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   }
 
-  kEnableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  kValueChanged(newValue) {
-    if (this.widget) {
-      this.widget.value(newValue);
-    }
-  }
-
-  value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  }
-
-  enable(newValue) {
-    if (this.widget) {
-      return this.widget.enable(newValue);
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

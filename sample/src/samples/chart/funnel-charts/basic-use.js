@@ -133,7 +133,7 @@ export class BasicUse {
         }
       };
 
-      chart.widget.setOptions(options);
+      chart.setOptions(options);
       this.slider.enable(!options.seriesDefaults.dynamicSlope);
     }
   }

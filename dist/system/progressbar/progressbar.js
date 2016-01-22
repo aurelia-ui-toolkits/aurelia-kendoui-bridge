@@ -7,8 +7,6 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
   return {
@@ -22,10 +20,8 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
       generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoProgressbarMin) {}],
     execute: function () {
-      ProgressBar = (function (_WidgetBase) {
+      ProgressBar = (function () {
         var _instanceInitializers = {};
-
-        _inherits(ProgressBar, _WidgetBase);
 
         _createDecoratedClass(ProgressBar, [{
           key: 'options',
@@ -36,50 +32,38 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
           enumerable: true
         }], null, _instanceInitializers);
 
-        function ProgressBar(element) {
+        function ProgressBar(element, widgetBase) {
           _classCallCheck(this, _ProgressBar);
 
-          _WidgetBase.call(this, 'kendoProgressBar', element);
-
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+
+          this.element = element;
+          this.widgetBase = widgetBase.control('kendoProgressBar').linkViewModel(this).setDefaultBindableValues();
         }
 
         ProgressBar.prototype.bind = function bind(ctx) {
-          _WidgetBase.prototype.bind.call(this, ctx);
+          this.$parent = ctx;
 
-          this._initialize();
+          this.recreate();
         };
 
-        ProgressBar.prototype.kEnableChanged = function kEnableChanged(newValue) {
-          if (this.widget) {
-            this.widget.enable(newValue);
-          }
+        ProgressBar.prototype.recreate = function recreate() {
+          this.kWidget = this.widgetBase.createWidget({
+            element: this.element,
+            parentCtx: this.$parent
+          });
         };
 
-        ProgressBar.prototype.kValueChanged = function kValueChanged(newValue) {
-          if (this.widget) {
-            this.widget.value(newValue);
-          }
-        };
-
-        ProgressBar.prototype.value = function value(newValue) {
-          if (this.widget) {
-            return this.widget.value(newValue);
-          }
-        };
-
-        ProgressBar.prototype.enable = function enable(newValue) {
-          if (this.widget) {
-            return this.widget.enable(newValue);
-          }
+        ProgressBar.prototype.detached = function detached() {
+          this.widgetBase.destroy(this.kWidget);
         };
 
         var _ProgressBar = ProgressBar;
-        ProgressBar = inject(Element)(ProgressBar) || ProgressBar;
+        ProgressBar = inject(Element, WidgetBase)(ProgressBar) || ProgressBar;
         ProgressBar = generateBindables('kendoProgressBar')(ProgressBar) || ProgressBar;
         ProgressBar = customAttribute('k-progress-bar')(ProgressBar) || ProgressBar;
         return ProgressBar;
-      })(WidgetBase);
+      })();
 
       _export('ProgressBar', ProgressBar);
     }

@@ -7,7 +7,7 @@
             <ul class="forms">
                 <li>
                     <label>First favourite</label>
-                    <select k-drop-down-list k-drop-down-list.ref="favouriteMovie1" style="width: 100%;">
+                    <select k-drop-down-list="k-widget.two-way: favouriteMovie1" style="width: 100%;">
                         <option value="fastAndFurious">Fast and Furious 6</option>
                         <option value="nowYouSeeMe">Now you see me</option>
                         <option value="theHelp">The Help</option>
@@ -17,7 +17,7 @@
                 </li>
                 <li>
                     <label>Second favourite</label>
-                    <select k-drop-down-list k-drop-down-list.ref="favouriteMovie2" style="width: 100%;">
+                    <select k-drop-down-list="k-widget.two-way: favouriteMovie2" style="width: 100%;">
                         <option value="fastAndFurious" selected>Fast and Furious 6</option>
                         <option value="nowYouSeeMe">Now you see me</option>
                         <option value="theHelp">The Help</option>
@@ -27,7 +27,7 @@
                 </li>
                 <li>
                     <label>Third favourite</label>
-                    <select k-drop-down-list k-drop-down-list.ref="favouriteMovie3" style="width: 100%;">
+                    <select k-drop-down-list="k-widget.two-way: favouriteMovie3" style="width: 100%;">
                         <option value="fastAndFurious">Fast and Furious 6</option>
                         <option value="nowYouSeeMe" selected>Now you see me</option>
                         <option value="theHelp">The Help</option>
@@ -45,23 +45,23 @@
             <ul class="poll-results">
                 <li>
                     <h4>Fast and Furious 6</h4>
-                    <div k-progress-bar.ref="fastAndFurious" k-progress-bar="type: percent; animation.bind: { duration: 600 }"></div>
+                    <div k-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: fastAndFurious"></div>
                 </li>
                 <li>
                     <h4>Now you see me</h4>
-                    <div k-progress-bar.ref="nowYouSeeMe" k-progress-bar="type: percent; animation.bind: { duration: 600 }"></div>
+                    <div k-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: nowYouSeeMe"></div>
                 </li>
                 <li>
                     <h4>The Help</h4>
-                    <div k-progress-bar.ref="theHelp" k-progress-bar="type: percent; animation.bind: { duration: 600 }"></div>
+                    <div k-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: theHelp"></div>
                 </li>
                 <li>
                     <h4>The Internship</h4>
-                    <div k-progress-bar.ref="theInternship" k-progress-bar="type: percent; animation.bind: { duration: 600 }"></div>
+                    <div k-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: theInternship"></div>
                 </li>
                 <li>
                     <h4>The Perks of Being a Wallflower</h4>
-                    <div k-progress-bar.ref="thePerks" k-progress-bar="type: percent; animation.bind: { duration: 600 }"></div>
+                    <div k-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: thePerks"></div>
                 </li>
             </ul>
         </div>

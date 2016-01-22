@@ -37,7 +37,7 @@ export class PieLabels {
   }];
 
   refresh() {
-    let options = this.chart.widget.options;
+    let options = this.chart.options;
     let pieSeries = options.series[0];
 
     options.transitions = false;

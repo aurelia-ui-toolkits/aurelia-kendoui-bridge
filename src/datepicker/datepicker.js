@@ -4,93 +4,40 @@ import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.datepicker.min';
 
 @customAttribute('k-datepicker')
-@inject(Element)
 @generateBindables('kendoDatePicker')
-export class DatePicker extends WidgetBase {
+@inject(Element, WidgetBase)
+export class DatePicker {
 
   @bindable kValue;
   @bindable kDisableDates;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoDatePicker', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoDatePicker')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
   _beforeInitialize(options) {
     return Object.assign({}, options, { disableDates: this.kDisableDates });
   }
 
-  _initialize() {
-    super._initialize();
-  }
-
-  close(value) {
-    if (this.widget) {
-      return this.widget.close(value);
-    }
-  }
-
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  }
-
-  enable(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  readonly(value) {
-    if (this.widget) {
-      this.widget.readonly(value);
-    }
-  }
-
-  max(value) {
-    if (this.widget) {
-      return this.widget.max(value);
-    }
-  }
-
-  min(value) {
-    if (this.widget) {
-      return this.widget.min(value);
-    }
-  }
-
-  open() {
-    if (this.widget) {
-      this.widget.open();
-    }
-  }
-
-  setOptions(options) {
-    if (this.widget) {
-      this.widget.setOptions(options);
-    }
-  }
-
-  value(newValue) {
-    if (this.widget) {
-      if (newValue) {
-        this.widget.value(newValue);
-      } else {
-        return this.widget.value();
-      }
-    }
-  }
-
-  kValueChanged() {
-    if (this.widget) {
-      this.widget.value(this.kValue);
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

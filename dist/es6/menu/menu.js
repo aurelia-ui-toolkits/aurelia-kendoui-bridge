@@ -5,30 +5,41 @@ import 'kendo-ui/js/kendo.menu.min';
 
 @customElement('k-menu')
 @generateBindables('kendoMenu')
-@inject(Element)
-export class Menu extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Menu {
 
   @bindable options = {};
-  @bindable kDataSource;
 
-  constructor(element) {
-    super('kendoMenu', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoMenu')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   }
 
-  _initialize() {
+  recreate() {
+    let element;
     let ul = $(this.element).find('ul');
     if (ul.has()) {
-      this.target = $(this.element).find('ul').first();
+      element = $(this.element).find('ul').first();
     } else {
-      this.target = $(this.element).appendChild('<ul></ul>');
+      element = $(this.element).appendChild('<ul></ul>');
     }
 
-    super._initialize();
+    this.kWidget = this.widgetBase.createWidget({
+      element: element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

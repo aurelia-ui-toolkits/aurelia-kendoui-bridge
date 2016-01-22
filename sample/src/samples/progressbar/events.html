@@ -3,10 +3,12 @@
     <div class="demo-section k-content">
       <h4>ProgressBar</h4>
       <div id="eventsProgressBar"
-           k-progress-bar="k-min: 0; k-max: 10; k-type: percent"
+           k-progress-bar="k-min: 0;
+                           k-max: 10;
+                           k-type: percent;
+                           k-widget.bind: pb"
            k-on-change.delegate="onChange($event.detail)"
-           k-on-complete.delegate="onComplete($event.detail)"
-        	 k-progress-bar.ref="pb"></div>
+           k-on-complete.delegate="onComplete($event.detail)"></div>
       <button click.delegate="start()" disabled.bind="!canStart" class="k-button k-primary">Start progress</button>
     </div>
     <div class="box">

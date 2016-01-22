@@ -5,7 +5,12 @@
         <div class="demo-section k-content">
             <div>
                 <h4>Check nodes</h4>
-                <div k-treeview="k-data-source.bind: data; k-checkboxes.bind: { checkChildren : true};" k-on-check.delegate="onCheck()" id="treeview" k-treeview.ref="treeview" ></div>
+                <div k-treeview="k-data-source.bind: data;
+                                 k-checkboxes.bind: { checkChildren : true};
+                                 k-widget.bind: treeview" 
+                     k-on-check.delegate="onCheck()"
+                     id="treeview" >
+                </div>
             </div>
             <div style="padding-top: 2em;">
                 <h4>Status</h4>

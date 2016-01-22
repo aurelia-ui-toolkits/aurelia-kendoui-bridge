@@ -1,7 +1,7 @@
-System.register(['./options', './events', './util', './template-compiler', 'aurelia-framework', 'aurelia-dependency-injection'], function (_export) {
+System.register(['./options', './events', './util', './template-compiler', 'aurelia-framework'], function (_export) {
   'use strict';
 
-  var pruneOptions, fireKendoEvent, getEventsFromAttributes, _hyphenate, getBindablePropertyName, TemplateCompiler, TaskQueue, Container, WidgetBase;
+  var pruneOptions, fireKendoEvent, getEventsFromAttributes, _hyphenate, getBindablePropertyName, TemplateCompiler, inject, TaskQueue, transient, WidgetBase;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -17,72 +17,84 @@ System.register(['./options', './events', './util', './template-compiler', 'aure
     }, function (_templateCompiler) {
       TemplateCompiler = _templateCompiler.TemplateCompiler;
     }, function (_aureliaFramework) {
+      inject = _aureliaFramework.inject;
       TaskQueue = _aureliaFramework.TaskQueue;
-    }, function (_aureliaDependencyInjection) {
-      Container = _aureliaDependencyInjection.Container;
+      transient = _aureliaFramework.transient;
     }],
     execute: function () {
       WidgetBase = (function () {
-        function WidgetBase(controlName, element) {
-          _classCallCheck(this, WidgetBase);
+        function WidgetBase(taskQueue, templateCompiler) {
+          _classCallCheck(this, _WidgetBase);
 
-          var container = Container.instance;
-          this.taskQueue = container.get(TaskQueue);
-          this.templateCompiler = container.get(TemplateCompiler);
-          this.templateCompiler.initialize();
+          this.taskQueue = taskQueue;
+          templateCompiler.initialize();
+        }
 
-          this.element = element;
-
-          this.target = this.element;
+        WidgetBase.prototype.control = function control(controlName) {
+          if (!controlName || !jQuery.fn[controlName]) {
+            throw new Error('The name of control ' + controlName + ' is invalid or not set');
+          }
 
           this.controlName = controlName;
 
-          this.setDefaultBindableValues();
-        }
+          var ctor = jQuery.fn[this.controlName];
+          this.kendoOptions = ctor.widget.prototype.options;
+          this.kendoEvents = ctor.widget.prototype.events;
 
-        WidgetBase.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+          return this;
         };
 
-        WidgetBase.prototype._initialize = function _initialize() {
-          if (!this.$parent) {
-            throw new Error('$parent is not set. Did you call bind(ctx) on the widget base?');
+        WidgetBase.prototype.linkViewModel = function linkViewModel(viewModel) {
+          if (!viewModel) {
+            throw new Error('viewModel is not set');
           }
 
-          var target = jQuery(this.target);
+          this.viewModel = viewModel;
 
-          var ctor = target[this.controlName];
-
-          var options = this._getOptions(ctor);
-
-          this._beforeInitialize(options);
-
-          Object.assign(options, { _$parent: this.$parent });
-
-          this.widget = ctor.call(target, options).data(this.controlName);
-
-          this.widget._$parent = this.$parent;
-
-          this._initialized();
+          return this;
         };
 
-        WidgetBase.prototype._beforeInitialize = function _beforeInitialize(options) {};
+        WidgetBase.prototype.createWidget = function createWidget(options) {
+          if (!options) {
+            throw new Error('the createWidget() function needs to be called with an object');
+          }
 
-        WidgetBase.prototype._initialized = function _initialized() {};
+          if (!options.element) {
+            throw new Error('element is not set');
+          }
 
-        WidgetBase.prototype.recreate = function recreate() {
-          this._initialize();
+          if (!options.parentCtx) {
+            throw new Error('parentCtx is not set');
+          }
+
+          var allOptions = this._getOptions(options.element);
+
+          if (options.beforeInitialize) {
+            options.beforeInitialize(allOptions);
+          }
+
+          Object.assign(allOptions, { _$parent: [options.parentCtx] });
+
+          var widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
+
+          widget._$parent = options.parentCtx;
+
+          if (options.afterInitialize) {
+            options.afterInitialize();
+          }
+
+          return widget;
         };
 
-        WidgetBase.prototype._getOptions = function _getOptions(ctor) {
+        WidgetBase.prototype._getOptions = function _getOptions(element) {
           var options = this.getOptionsFromBindables();
-          var eventOptions = this.getEventOptions(ctor);
+          var eventOptions = this.getEventOptions(element);
 
-          return Object.assign({}, this.options, pruneOptions(options), eventOptions);
+          return Object.assign({}, this.viewModel.options, pruneOptions(options), eventOptions);
         };
 
         WidgetBase.prototype.getOptionsFromBindables = function getOptionsFromBindables() {
-          var props = jQuery.fn[this.controlName].widget.prototype.options;
+          var props = this.kendoOptions;
           var options = {};
 
           for (var _iterator = Object.keys(props), _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
@@ -99,18 +111,22 @@ System.register(['./options', './events', './util', './template-compiler', 'aure
 
             var prop = _ref;
 
-            options[prop] = this[getBindablePropertyName(prop)];
+            options[prop] = this.viewModel[getBindablePropertyName(prop)];
           }
 
-          if (this.kDataSource) {
-            options.dataSource = this.kDataSource;
+          if (this.viewModel.kDataSource) {
+            options.dataSource = this.viewModel.kDataSource;
           }
 
           return options;
         };
 
         WidgetBase.prototype.setDefaultBindableValues = function setDefaultBindableValues() {
-          var props = jQuery.fn[this.controlName].widget.prototype.options;
+          if (!this.viewModel) {
+            throw new Error('viewModel is not set');
+          }
+
+          var props = this.kendoOptions;
 
           for (var _iterator2 = Object.keys(props), _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
             var _ref2;
@@ -126,17 +142,19 @@ System.register(['./options', './events', './util', './template-compiler', 'aure
 
             var prop = _ref2;
 
-            this[getBindablePropertyName(prop)] = props[prop];
+            this.viewModel[getBindablePropertyName(prop)] = props[prop];
           }
+
+          return this;
         };
 
-        WidgetBase.prototype.getEventOptions = function getEventOptions(ctor) {
+        WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
           var _this = this;
 
           var options = {};
-          var allowedEvents = ctor.widget.prototype.events;
+          var allowedEvents = this.kendoEvents;
 
-          var events = getEventsFromAttributes(this.element);
+          var events = getEventsFromAttributes(element);
 
           events.forEach(function (event) {
             if (!allowedEvents.includes(event)) {
@@ -145,7 +163,7 @@ System.register(['./options', './events', './util', './template-compiler', 'aure
 
             options[event] = function (e) {
               _this.taskQueue.queueMicroTask(function () {
-                fireKendoEvent(_this.target, _hyphenate(event), e);
+                fireKendoEvent(element, _hyphenate(event), e);
               });
             };
           });
@@ -153,12 +171,13 @@ System.register(['./options', './events', './util', './template-compiler', 'aure
           return options;
         };
 
-        WidgetBase.prototype.detached = function detached() {
-          if (this.widget) {
-            this.widget.destroy();
-          }
+        WidgetBase.prototype.destroy = function destroy(widget) {
+          widget.destroy();
         };
 
+        var _WidgetBase = WidgetBase;
+        WidgetBase = inject(TaskQueue, TemplateCompiler)(WidgetBase) || WidgetBase;
+        WidgetBase = transient()(WidgetBase) || WidgetBase;
         return WidgetBase;
       })();
 

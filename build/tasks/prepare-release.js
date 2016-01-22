@@ -25,6 +25,8 @@ gulp.task('changelog', function(callback) {
 });
 
 gulp.task('prepare-release', function(callback){
+  paths.output = paths.releaseOutput;
+
   return runSequence(
     'build',
     'lint',

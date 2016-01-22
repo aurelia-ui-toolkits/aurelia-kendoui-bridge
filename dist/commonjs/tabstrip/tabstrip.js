@@ -6,8 +6,6 @@ var _createDecoratedClass = (function () { function defineProperties(target, des
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
 var _aureliaFramework = require('aurelia-framework');
@@ -18,10 +16,8 @@ var _commonDecorators = require('../common/decorators');
 
 require('kendo-ui/js/kendo.tabstrip.min');
 
-var TabStrip = (function (_WidgetBase) {
+var TabStrip = (function () {
   var _instanceInitializers = {};
-
-  _inherits(TabStrip, _WidgetBase);
 
   _createDecoratedClass(TabStrip, [{
     key: 'options',
@@ -32,31 +28,37 @@ var TabStrip = (function (_WidgetBase) {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function TabStrip(element) {
+  function TabStrip(element, widgetBase) {
     _classCallCheck(this, _TabStrip);
 
-    _WidgetBase.call(this, 'kendoTabStrip', element);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoTabStrip').linkViewModel(this).setDefaultBindableValues(this);
   }
 
   TabStrip.prototype.bind = function bind(ctx) {
-    _WidgetBase.prototype.bind.call(this, ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   };
 
-  TabStrip.prototype.enableChanged = function enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
+  TabStrip.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  TabStrip.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _TabStrip = TabStrip;
-  TabStrip = _aureliaFramework.inject(Element)(TabStrip) || TabStrip;
+  TabStrip = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(TabStrip) || TabStrip;
   TabStrip = _commonDecorators.generateBindables('kendoTabStrip')(TabStrip) || TabStrip;
   TabStrip = _aureliaFramework.customAttribute('k-tabstrip')(TabStrip) || TabStrip;
   return TabStrip;
-})(_commonWidgetBase.WidgetBase);
+})();
 
 exports.TabStrip = TabStrip;

@@ -1,7 +1,7 @@
-System.register(['aurelia-templating', 'aurelia-metadata', './util'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-metadata', 'aurelia-binding', './util'], function (_export) {
   'use strict';
 
-  var BindableProperty, HtmlBehaviorResource, metadata, getBindablePropertyName;
+  var BindableProperty, HtmlBehaviorResource, metadata, bindingMode, getBindablePropertyName;
 
   _export('generateBindables', generateBindables);
 
@@ -12,6 +12,7 @@ System.register(['aurelia-templating', 'aurelia-metadata', './util'], function (
       var behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
       var optionKeys = Object.keys(options);
       optionKeys.push('dataSource');
+      optionKeys.push('widget');
 
       for (var _iterator = optionKeys, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
         var _ref;
@@ -31,6 +32,10 @@ System.register(['aurelia-templating', 'aurelia-metadata', './util'], function (
           name: getBindablePropertyName(option)
         };
 
+        if (option === 'widget') {
+          nameOrConfigOrTarget.defaultBindingMode = bindingMode.twoWay;
+        }
+
         var prop = new BindableProperty(nameOrConfigOrTarget);
         prop.registerWith(target, behaviorResource, descriptor);
       }
@@ -43,6 +48,8 @@ System.register(['aurelia-templating', 'aurelia-metadata', './util'], function (
       HtmlBehaviorResource = _aureliaTemplating.HtmlBehaviorResource;
     }, function (_aureliaMetadata) {
       metadata = _aureliaMetadata.metadata;
+    }, function (_aureliaBinding) {
+      bindingMode = _aureliaBinding.bindingMode;
     }, function (_util) {
       getBindablePropertyName = _util.getBindablePropertyName;
     }],

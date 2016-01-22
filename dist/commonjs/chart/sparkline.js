@@ -6,8 +6,6 @@ var _createDecoratedClass = (function () { function defineProperties(target, des
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
 var _aureliaFramework = require('aurelia-framework');
@@ -20,17 +18,10 @@ var _pdfPdf = require('../pdf/pdf');
 
 require('kendo-ui/js/kendo.dataviz.sparkline.min');
 
-var Sparkline = (function (_WidgetBase) {
+var Sparkline = (function () {
   var _instanceInitializers = {};
 
-  _inherits(Sparkline, _WidgetBase);
-
   _createDecoratedClass(Sparkline, [{
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -39,79 +30,39 @@ var Sparkline = (function (_WidgetBase) {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function Sparkline(element) {
+  function Sparkline(element, widgetBase) {
     _classCallCheck(this, _Sparkline);
 
-    _WidgetBase.call(this, 'kendoSparkline', element);
-
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoSparkline').linkViewModel(this).setDefaultBindableValues();
   }
 
+  Sparkline.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
   Sparkline.prototype.attached = function attached() {
-    this._initialize();
+    this.recreate();
   };
 
-  Sparkline.prototype.destroy = function destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  Sparkline.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   };
 
-  Sparkline.prototype.exportImage = function exportImage(options) {
-    if (this.widget) {
-      return this.widget.exportImage(options);
-    }
-  };
-
-  Sparkline.prototype.exportPDF = function exportPDF(options) {
-    if (this.widget) {
-      return this.widget.exportPDF(options);
-    }
-  };
-
-  Sparkline.prototype.exportSVG = function exportSVG(options) {
-    if (this.widget) {
-      return this.widget.exportSVG(options);
-    }
-  };
-
-  Sparkline.prototype.setDataSource = function setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  };
-
-  Sparkline.prototype.setOptions = function setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  };
-
-  Sparkline.prototype.svg = function svg() {
-    if (this.widget) {
-      return this.widget.svg();
-    }
-  };
-
-  Sparkline.prototype.imageDataURL = function imageDataURL() {
-    if (this.widget) {
-      return this.widget.imageDataURL();
-    }
-  };
-
-  Sparkline.prototype.refresh = function refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
+  Sparkline.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _Sparkline = Sparkline;
-  Sparkline = _aureliaFramework.inject(Element)(Sparkline) || Sparkline;
+  Sparkline = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(Sparkline) || Sparkline;
   Sparkline = _commonDecorators.generateBindables('kendoSparkline')(Sparkline) || Sparkline;
   Sparkline = _aureliaFramework.customElement('k-sparkline')(Sparkline) || Sparkline;
   return Sparkline;
-})(_commonWidgetBase.WidgetBase);
+})();
 
 exports.Sparkline = Sparkline;

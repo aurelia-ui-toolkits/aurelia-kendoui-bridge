@@ -66,6 +66,6 @@ export class PdfExport {
   }
 
   exportPDF() {
-    this.stock.widget.saveAsPDF();
+    this.stock.saveAsPDF();
   }
 }

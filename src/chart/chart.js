@@ -8,101 +8,35 @@ import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
 
 @customElement('k-chart')
 @generateBindables('kendoChart')
-@inject(Element)
-export class Chart extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Chart {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoChart', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoChart')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this._initialize();
+    this.recreate();
   }
 
-  exportImage(options) {
-    if (this.widget) {
-      return this.widget.exportImage(options);
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  exportPDF(options) {
-    if (this.widget) {
-      return this.widget.exportPDF(options);
-    }
-  }
-
-  exportSVG(options) {
-    if (this.widget) {
-      return this.widget.exportSVG(options);
-    }
-  }
-
-  getAxis(name) {
-    if (this.widget) {
-      return this.widget.getAxis(name);
-    }
-  }
-
-  redraw() {
-    if (this.widget) {
-      return this.widget.redraw();
-    }
-  }
-
-  refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
-  }
-
-  resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
-  }
-
-  saveAsPDF() {
-    if (this.widget) {
-      return this.widget.saveAsPDF();
-    }
-  }
-
-  setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  }
-
-  setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  }
-
-  svg() {
-    if (this.widget) {
-      return this.widget.svg();
-    }
-  }
-
-  imageDataURL() {
-    if (this.widget) {
-      return this.widget.imageDataURL();
-    }
-  }
-
-  toggleHighlight(show, options) {
-    if (this.widget) {
-      return this.widget.toggleHighlight(show, options);
-    }
-  }
-
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

@@ -17,8 +17,6 @@ exports.getEventsFromAttributes = getEventsFromAttributes;
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
@@ -29,11 +27,11 @@ var LogManager = _interopRequireWildcard(_aureliaLogging);
 
 require('jquery');
 
-require('kendo-ui/js/kendo.button.min');
-
 require('kendo-ui/js/kendo.autocomplete.min');
 
 require('kendo-ui/js/kendo.virtuallist.min');
+
+require('kendo-ui/js/kendo.button.min');
 
 require('kendo-ui/js/kendo.dataviz.chart.min');
 
@@ -81,7 +79,7 @@ var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaMetadata = require('aurelia-metadata');
 
-var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+var _aureliaBinding = require('aurelia-binding');
 
 var KendoConfigBuilder = (function () {
   function KendoConfigBuilder() {
@@ -216,12 +214,10 @@ function configure(aurelia, configCallback) {
   }
 }
 
-var Button = (function (_WidgetBase) {
+var AutoComplete = (function () {
   var _instanceInitializers = {};
 
-  _inherits(Button, _WidgetBase);
-
-  _createDecoratedClass(Button, [{
+  _createDecoratedClass(AutoComplete, [{
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -230,52 +226,59 @@ var Button = (function (_WidgetBase) {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function Button(element) {
-    _classCallCheck(this, _Button);
-
-    _WidgetBase.call(this, 'kendoButton', element);
+  function AutoComplete(element, widgetBase) {
+    _classCallCheck(this, _AutoComplete);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).setDefaultBindableValues();
   }
 
-  Button.prototype.bind = function bind(ctx) {
-    _WidgetBase.prototype.bind.call(this, ctx);
+  AutoComplete.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   };
 
-  Button.prototype.kEnableChanged = function kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
-    }
+  AutoComplete.prototype.recreate = function recreate() {
+    var _this2 = this;
+
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+
+    this.kWidget.bind('change', function (event) {
+      _this2.kValue = event.sender.value();
+
+      fireEvent(_this2.element, 'input');
+    });
+
+    this.kWidget.bind('select', function (event) {
+      _this2.kValue = event.sender.value();
+
+      fireEvent(_this2.element, 'input');
+    });
   };
 
-  Button.prototype.enable = function enable(_enable) {
-    if (this.widget) {
-      this.widget.enable(_enable);
-    }
+  AutoComplete.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
-  var _Button = Button;
-  Button = _aureliaFramework.inject(Element)(Button) || Button;
-  Button = generateBindables('kendoButton')(Button) || Button;
-  Button = _aureliaFramework.customAttribute('k-button')(Button) || Button;
-  return Button;
-})(WidgetBase);
+  var _AutoComplete = AutoComplete;
+  AutoComplete = _aureliaFramework.inject(Element, WidgetBase)(AutoComplete) || AutoComplete;
+  AutoComplete = generateBindables('kendoAutoComplete')(AutoComplete) || AutoComplete;
+  AutoComplete = _aureliaFramework.customAttribute('k-autocomplete')(AutoComplete) || AutoComplete;
+  return AutoComplete;
+})();
 
-exports.Button = Button;
+exports.AutoComplete = AutoComplete;
 
-var AutoComplete = (function (_WidgetBase2) {
+var Button = (function () {
   var _instanceInitializers2 = {};
 
-  _inherits(AutoComplete, _WidgetBase2);
-
-  _createDecoratedClass(AutoComplete, [{
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
+  _createDecoratedClass(Button, [{
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -284,143 +287,45 @@ var AutoComplete = (function (_WidgetBase2) {
     enumerable: true
   }], null, _instanceInitializers2);
 
-  function AutoComplete(element) {
-    _classCallCheck(this, _AutoComplete);
-
-    _WidgetBase2.call(this, 'kendoAutoComplete', element);
-
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers2);
+  function Button(element, widgetBase) {
+    _classCallCheck(this, _Button);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers2);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoButton').linkViewModel(this).setDefaultBindableValues();
   }
 
-  AutoComplete.prototype.bind = function bind(ctx) {
-    _WidgetBase2.prototype.bind.call(this, ctx);
+  Button.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   };
 
-  AutoComplete.prototype._initialize = function _initialize() {
-    var _this2 = this;
-
-    _WidgetBase2.prototype._initialize.call(this);
-
-    this.widget.bind('change', function (event) {
-      _this2.kValue = event.sender.value();
-
-      fireEvent(_this2.element, 'input');
-    });
-
-    this.widget.bind('select', function (event) {
-      _this2.kValue = event.sender.value();
-
-      fireEvent(_this2.element, 'input');
+  Button.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
     });
   };
 
-  AutoComplete.prototype.kEnableChanged = function kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
-    }
+  Button.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
-  AutoComplete.prototype.enable = function enable(newValue) {
-    if (this.widget) {
-      return this.widget.enable(newValue);
-    }
-  };
+  var _Button = Button;
+  Button = _aureliaFramework.inject(Element, WidgetBase)(Button) || Button;
+  Button = generateBindables('kendoButton')(Button) || Button;
+  Button = _aureliaFramework.customAttribute('k-button')(Button) || Button;
+  return Button;
+})();
 
-  AutoComplete.prototype.value = function value(newValue) {
-    if (this.widget) {
-      if (newValue) {
-        this.widget.value(newValue);
-        this.widget.trigger('change');
-      } else {
-        return this.widget.value();
-      }
-    }
-  };
+exports.Button = Button;
 
-  AutoComplete.prototype.search = function search(value) {
-    if (this.widget) {
-      this.widget.search(value);
-    }
-  };
-
-  AutoComplete.prototype.close = function close(value) {
-    if (this.widget) {
-      return this.widget.close(value);
-    }
-  };
-
-  AutoComplete.prototype.dataItem = function dataItem(value) {
-    if (this.widget) {
-      return this.widget.dataItem(value);
-    }
-  };
-
-  AutoComplete.prototype.destroy = function destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  };
-
-  AutoComplete.prototype.focus = function focus() {
-    if (this.widget) {
-      return this.widget.focus();
-    }
-  };
-
-  AutoComplete.prototype.readonly = function readonly(value) {
-    if (this.widget) {
-      return this.widget.readonly(value);
-    }
-  };
-
-  AutoComplete.prototype.refresh = function refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
-  };
-
-  AutoComplete.prototype.select = function select(value) {
-    if (this.widget) {
-      return this.widget.select(value);
-    }
-  };
-
-  AutoComplete.prototype.setDataSource = function setDataSource(value) {
-    if (this.widget) {
-      return this.widget.setDataSource(value);
-    }
-  };
-
-  AutoComplete.prototype.suggest = function suggest(value) {
-    if (this.widget) {
-      return this.widget.suggest(value);
-    }
-  };
-
-  var _AutoComplete = AutoComplete;
-  AutoComplete = generateBindables('kendoAutoComplete')(AutoComplete) || AutoComplete;
-  AutoComplete = _aureliaFramework.inject(Element)(AutoComplete) || AutoComplete;
-  AutoComplete = _aureliaFramework.customAttribute('k-autocomplete')(AutoComplete) || AutoComplete;
-  return AutoComplete;
-})(WidgetBase);
-
-exports.AutoComplete = AutoComplete;
-
-var Chart = (function (_WidgetBase3) {
+var Chart = (function () {
   var _instanceInitializers3 = {};
 
-  _inherits(Chart, _WidgetBase3);
-
   _createDecoratedClass(Chart, [{
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -429,124 +334,47 @@ var Chart = (function (_WidgetBase3) {
     enumerable: true
   }], null, _instanceInitializers3);
 
-  function Chart(element) {
+  function Chart(element, widgetBase) {
     _classCallCheck(this, _Chart);
 
-    _WidgetBase3.call(this, 'kendoChart', element);
-
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers3);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers3);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this).setDefaultBindableValues();
   }
 
+  Chart.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
   Chart.prototype.attached = function attached() {
-    this._initialize();
+    this.recreate();
   };
 
-  Chart.prototype.exportImage = function exportImage(options) {
-    if (this.widget) {
-      return this.widget.exportImage(options);
-    }
+  Chart.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   };
 
-  Chart.prototype.exportPDF = function exportPDF(options) {
-    if (this.widget) {
-      return this.widget.exportPDF(options);
-    }
-  };
-
-  Chart.prototype.exportSVG = function exportSVG(options) {
-    if (this.widget) {
-      return this.widget.exportSVG(options);
-    }
-  };
-
-  Chart.prototype.getAxis = function getAxis(name) {
-    if (this.widget) {
-      return this.widget.getAxis(name);
-    }
-  };
-
-  Chart.prototype.redraw = function redraw() {
-    if (this.widget) {
-      return this.widget.redraw();
-    }
-  };
-
-  Chart.prototype.refresh = function refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
-  };
-
-  Chart.prototype.resize = function resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
-  };
-
-  Chart.prototype.saveAsPDF = function saveAsPDF() {
-    if (this.widget) {
-      return this.widget.saveAsPDF();
-    }
-  };
-
-  Chart.prototype.setDataSource = function setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  };
-
-  Chart.prototype.setOptions = function setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  };
-
-  Chart.prototype.svg = function svg() {
-    if (this.widget) {
-      return this.widget.svg();
-    }
-  };
-
-  Chart.prototype.imageDataURL = function imageDataURL() {
-    if (this.widget) {
-      return this.widget.imageDataURL();
-    }
-  };
-
-  Chart.prototype.toggleHighlight = function toggleHighlight(show, options) {
-    if (this.widget) {
-      return this.widget.toggleHighlight(show, options);
-    }
-  };
-
-  Chart.prototype.destroy = function destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  Chart.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _Chart = Chart;
-  Chart = _aureliaFramework.inject(Element)(Chart) || Chart;
+  Chart = _aureliaFramework.inject(Element, WidgetBase)(Chart) || Chart;
   Chart = generateBindables('kendoChart')(Chart) || Chart;
   Chart = _aureliaFramework.customElement('k-chart')(Chart) || Chart;
   return Chart;
-})(WidgetBase);
+})();
 
 exports.Chart = Chart;
 
-var Sparkline = (function (_WidgetBase4) {
+var Sparkline = (function () {
   var _instanceInitializers4 = {};
 
-  _inherits(Sparkline, _WidgetBase4);
-
   _createDecoratedClass(Sparkline, [{
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -555,94 +383,47 @@ var Sparkline = (function (_WidgetBase4) {
     enumerable: true
   }], null, _instanceInitializers4);
 
-  function Sparkline(element) {
+  function Sparkline(element, widgetBase) {
     _classCallCheck(this, _Sparkline);
 
-    _WidgetBase4.call(this, 'kendoSparkline', element);
-
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers4);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoSparkline').linkViewModel(this).setDefaultBindableValues();
   }
 
+  Sparkline.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
   Sparkline.prototype.attached = function attached() {
-    this._initialize();
+    this.recreate();
   };
 
-  Sparkline.prototype.destroy = function destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  Sparkline.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   };
 
-  Sparkline.prototype.exportImage = function exportImage(options) {
-    if (this.widget) {
-      return this.widget.exportImage(options);
-    }
-  };
-
-  Sparkline.prototype.exportPDF = function exportPDF(options) {
-    if (this.widget) {
-      return this.widget.exportPDF(options);
-    }
-  };
-
-  Sparkline.prototype.exportSVG = function exportSVG(options) {
-    if (this.widget) {
-      return this.widget.exportSVG(options);
-    }
-  };
-
-  Sparkline.prototype.setDataSource = function setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  };
-
-  Sparkline.prototype.setOptions = function setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  };
-
-  Sparkline.prototype.svg = function svg() {
-    if (this.widget) {
-      return this.widget.svg();
-    }
-  };
-
-  Sparkline.prototype.imageDataURL = function imageDataURL() {
-    if (this.widget) {
-      return this.widget.imageDataURL();
-    }
-  };
-
-  Sparkline.prototype.refresh = function refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
+  Sparkline.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _Sparkline = Sparkline;
-  Sparkline = _aureliaFramework.inject(Element)(Sparkline) || Sparkline;
+  Sparkline = _aureliaFramework.inject(Element, WidgetBase)(Sparkline) || Sparkline;
   Sparkline = generateBindables('kendoSparkline')(Sparkline) || Sparkline;
   Sparkline = _aureliaFramework.customElement('k-sparkline')(Sparkline) || Sparkline;
   return Sparkline;
-})(WidgetBase);
+})();
 
 exports.Sparkline = Sparkline;
 
-var Stock = (function (_WidgetBase5) {
+var Stock = (function () {
   var _instanceInitializers5 = {};
 
-  _inherits(Stock, _WidgetBase5);
-
   _createDecoratedClass(Stock, [{
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -651,100 +432,47 @@ var Stock = (function (_WidgetBase5) {
     enumerable: true
   }], null, _instanceInitializers5);
 
-  function Stock(element) {
+  function Stock(element, widgetBase) {
     _classCallCheck(this, _Stock);
 
-    _WidgetBase5.call(this, 'kendoStockChart', element);
-
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers5);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers5);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoStockChart').linkViewModel(this).setDefaultBindableValues();
   }
 
+  Stock.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
   Stock.prototype.attached = function attached() {
-    this._initialize();
+    this.recreate();
   };
 
-  Stock.prototype.destroy = function destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  Stock.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   };
 
-  Stock.prototype.exportImage = function exportImage(options) {
-    if (this.widget) {
-      return this.widget.exportImage(options);
-    }
-  };
-
-  Stock.prototype.exportPDF = function exportPDF(options) {
-    if (this.widget) {
-      return this.widget.exportPDF(options);
-    }
-  };
-
-  Stock.prototype.exportSVG = function exportSVG(options) {
-    if (this.widget) {
-      return this.widget.exportSVG(options);
-    }
-  };
-
-  Stock.prototype.redraw = function redraw() {
-    if (this.widget) {
-      return this.widget.redraw();
-    }
-  };
-
-  Stock.prototype.refresh = function refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
-  };
-
-  Stock.prototype.resize = function resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
-  };
-
-  Stock.prototype.setDataSource = function setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  };
-
-  Stock.prototype.svg = function svg() {
-    if (this.widget) {
-      return this.widget.svg();
-    }
-  };
-
-  Stock.prototype.imageDataURL = function imageDataURL() {
-    if (this.widget) {
-      return this.widget.imageDataURL();
-    }
+  Stock.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _Stock = Stock;
-  Stock = _aureliaFramework.inject(Element)(Stock) || Stock;
+  Stock = _aureliaFramework.inject(Element, WidgetBase)(Stock) || Stock;
   Stock = generateBindables('kendoStockChart')(Stock) || Stock;
   Stock = _aureliaFramework.customElement('k-stock')(Stock) || Stock;
   return Stock;
-})(WidgetBase);
+})();
 
 exports.Stock = Stock;
 
-var TreeMap = (function (_WidgetBase6) {
+var TreeMap = (function () {
   var _instanceInitializers6 = {};
 
-  _inherits(TreeMap, _WidgetBase6);
-
   _createDecoratedClass(TreeMap, [{
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -753,69 +481,45 @@ var TreeMap = (function (_WidgetBase6) {
     enumerable: true
   }], null, _instanceInitializers6);
 
-  function TreeMap(element) {
+  function TreeMap(element, widgetBase) {
     _classCallCheck(this, _TreeMap);
 
-    _WidgetBase6.call(this, 'kendoTreeMap', element);
-
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers6);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers6);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoTreeMap').linkViewModel(this).setDefaultBindableValues();
   }
 
+  TreeMap.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
   TreeMap.prototype.attached = function attached() {
-    this._initialize();
+    this.recreate();
   };
 
-  TreeMap.prototype.destroy = function destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  TreeMap.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   };
 
-  TreeMap.prototype.setDataSource = function setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  };
-
-  TreeMap.prototype.setOptions = function setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  };
-
-  TreeMap.prototype.findByUid = function findByUid(text) {
-    if (this.widget) {
-      return this.widget.findByUid(text);
-    }
-  };
-
-  TreeMap.prototype.dataItem = function dataItem(tile) {
-    if (this.widget) {
-      return this.widget.dataItem(tile);
-    }
-  };
-
-  TreeMap.prototype.resize = function resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
+  TreeMap.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _TreeMap = TreeMap;
-  TreeMap = _aureliaFramework.inject(Element)(TreeMap) || TreeMap;
+  TreeMap = _aureliaFramework.inject(Element, WidgetBase)(TreeMap) || TreeMap;
   TreeMap = generateBindables('kendoTreeMap')(TreeMap) || TreeMap;
   TreeMap = _aureliaFramework.customElement('k-treemap')(TreeMap) || TreeMap;
   return TreeMap;
-})(WidgetBase);
+})();
 
 exports.TreeMap = TreeMap;
 
-var ColorPicker = (function (_WidgetBase7) {
+var ColorPicker = (function () {
   var _instanceInitializers7 = {};
-
-  _inherits(ColorPicker, _WidgetBase7);
 
   _createDecoratedClass(ColorPicker, [{
     key: 'options',
@@ -826,26 +530,38 @@ var ColorPicker = (function (_WidgetBase7) {
     enumerable: true
   }], null, _instanceInitializers7);
 
-  function ColorPicker(element) {
+  function ColorPicker(element, widgetBase) {
     _classCallCheck(this, _ColorPicker);
 
-    _WidgetBase7.call(this, 'kendoColorPicker', element);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers7);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this).setDefaultBindableValues();
   }
 
   ColorPicker.prototype.bind = function bind(ctx) {
-    _WidgetBase7.prototype.bind.call(this, ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
+  };
+
+  ColorPicker.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  ColorPicker.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _ColorPicker = ColorPicker;
-  ColorPicker = _aureliaFramework.inject(Element)(ColorPicker) || ColorPicker;
+  ColorPicker = _aureliaFramework.inject(Element, WidgetBase)(ColorPicker) || ColorPicker;
   ColorPicker = generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
   ColorPicker = _aureliaFramework.customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
   return ColorPicker;
-})(WidgetBase);
+})();
 
 exports.ColorPicker = ColorPicker;
 var constants = {
@@ -862,6 +578,7 @@ function generateBindables(controlName) {
     var behaviorResource = _aureliaMetadata.metadata.getOrCreateOwn(_aureliaMetadata.metadata.resource, _aureliaTemplating.HtmlBehaviorResource, target);
     var optionKeys = Object.keys(options);
     optionKeys.push('dataSource');
+    optionKeys.push('widget');
 
     for (var _iterator = optionKeys, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
       var _ref;
@@ -880,6 +597,10 @@ function generateBindables(controlName) {
       var nameOrConfigOrTarget = {
         name: getBindablePropertyName(option)
       };
+
+      if (option === 'widget') {
+        nameOrConfigOrTarget.defaultBindingMode = _aureliaBinding.bindingMode.twoWay;
+      }
 
       var prop = new _aureliaTemplating.BindableProperty(nameOrConfigOrTarget);
       prop.registerWith(target, behaviorResource, descriptor);
@@ -943,7 +664,7 @@ var TemplateCompiler = (function () {
   TemplateCompiler.prototype.handleTemplateEvents = function handleTemplateEvents(widget, _event, _args) {
     if (_event !== 'compile' && _event !== 'cleanup') return;
 
-    var $parent = widget._$parent || widget.options._$parent;
+    var $parent = widget._$parent || (widget.options._$parent ? widget.options._$parent[0] : undefined);
 
     if (!$parent) return;
 
@@ -1079,66 +800,78 @@ function getEventsFromAttributes(element) {
 }
 
 var WidgetBase = (function () {
-  function WidgetBase(controlName, element) {
-    _classCallCheck(this, WidgetBase);
+  function WidgetBase(taskQueue, templateCompiler) {
+    _classCallCheck(this, _WidgetBase);
 
-    var container = _aureliaDependencyInjection.Container.instance;
-    this.taskQueue = container.get(_aureliaFramework.TaskQueue);
-    this.templateCompiler = container.get(TemplateCompiler);
-    this.templateCompiler.initialize();
+    this.taskQueue = taskQueue;
+    templateCompiler.initialize();
+  }
 
-    this.element = element;
-
-    this.target = this.element;
+  WidgetBase.prototype.control = function control(controlName) {
+    if (!controlName || !jQuery.fn[controlName]) {
+      throw new Error('The name of control ' + controlName + ' is invalid or not set');
+    }
 
     this.controlName = controlName;
 
-    this.setDefaultBindableValues();
-  }
+    var ctor = jQuery.fn[this.controlName];
+    this.kendoOptions = ctor.widget.prototype.options;
+    this.kendoEvents = ctor.widget.prototype.events;
 
-  WidgetBase.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+    return this;
   };
 
-  WidgetBase.prototype._initialize = function _initialize() {
-    if (!this.$parent) {
-      throw new Error('$parent is not set. Did you call bind(ctx) on the widget base?');
+  WidgetBase.prototype.linkViewModel = function linkViewModel(viewModel) {
+    if (!viewModel) {
+      throw new Error('viewModel is not set');
     }
 
-    var target = jQuery(this.target);
+    this.viewModel = viewModel;
 
-    var ctor = target[this.controlName];
-
-    var options = this._getOptions(ctor);
-
-    this._beforeInitialize(options);
-
-    Object.assign(options, { _$parent: this.$parent });
-
-    this.widget = ctor.call(target, options).data(this.controlName);
-
-    this.widget._$parent = this.$parent;
-
-    this._initialized();
+    return this;
   };
 
-  WidgetBase.prototype._beforeInitialize = function _beforeInitialize(options) {};
+  WidgetBase.prototype.createWidget = function createWidget(options) {
+    if (!options) {
+      throw new Error('the createWidget() function needs to be called with an object');
+    }
 
-  WidgetBase.prototype._initialized = function _initialized() {};
+    if (!options.element) {
+      throw new Error('element is not set');
+    }
 
-  WidgetBase.prototype.recreate = function recreate() {
-    this._initialize();
+    if (!options.parentCtx) {
+      throw new Error('parentCtx is not set');
+    }
+
+    var allOptions = this._getOptions(options.element);
+
+    if (options.beforeInitialize) {
+      options.beforeInitialize(allOptions);
+    }
+
+    Object.assign(allOptions, { _$parent: [options.parentCtx] });
+
+    var widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
+
+    widget._$parent = options.parentCtx;
+
+    if (options.afterInitialize) {
+      options.afterInitialize();
+    }
+
+    return widget;
   };
 
-  WidgetBase.prototype._getOptions = function _getOptions(ctor) {
+  WidgetBase.prototype._getOptions = function _getOptions(element) {
     var options = this.getOptionsFromBindables();
-    var eventOptions = this.getEventOptions(ctor);
+    var eventOptions = this.getEventOptions(element);
 
-    return Object.assign({}, this.options, pruneOptions(options), eventOptions);
+    return Object.assign({}, this.viewModel.options, pruneOptions(options), eventOptions);
   };
 
   WidgetBase.prototype.getOptionsFromBindables = function getOptionsFromBindables() {
-    var props = jQuery.fn[this.controlName].widget.prototype.options;
+    var props = this.kendoOptions;
     var options = {};
 
     for (var _iterator3 = Object.keys(props), _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
@@ -1155,18 +888,22 @@ var WidgetBase = (function () {
 
       var prop = _ref3;
 
-      options[prop] = this[getBindablePropertyName(prop)];
+      options[prop] = this.viewModel[getBindablePropertyName(prop)];
     }
 
-    if (this.kDataSource) {
-      options.dataSource = this.kDataSource;
+    if (this.viewModel.kDataSource) {
+      options.dataSource = this.viewModel.kDataSource;
     }
 
     return options;
   };
 
   WidgetBase.prototype.setDefaultBindableValues = function setDefaultBindableValues() {
-    var props = jQuery.fn[this.controlName].widget.prototype.options;
+    if (!this.viewModel) {
+      throw new Error('viewModel is not set');
+    }
+
+    var props = this.kendoOptions;
 
     for (var _iterator4 = Object.keys(props), _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
       var _ref4;
@@ -1182,17 +919,19 @@ var WidgetBase = (function () {
 
       var prop = _ref4;
 
-      this[getBindablePropertyName(prop)] = props[prop];
+      this.viewModel[getBindablePropertyName(prop)] = props[prop];
     }
+
+    return this;
   };
 
-  WidgetBase.prototype.getEventOptions = function getEventOptions(ctor) {
+  WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
     var _this4 = this;
 
     var options = {};
-    var allowedEvents = ctor.widget.prototype.events;
+    var allowedEvents = this.kendoEvents;
 
-    var events = getEventsFromAttributes(this.element);
+    var events = getEventsFromAttributes(element);
 
     events.forEach(function (event) {
       if (!allowedEvents.includes(event)) {
@@ -1201,7 +940,7 @@ var WidgetBase = (function () {
 
       options[event] = function (e) {
         _this4.taskQueue.queueMicroTask(function () {
-          fireKendoEvent(_this4.target, _hyphenate(event), e);
+          fireKendoEvent(element, _hyphenate(event), e);
         });
       };
     });
@@ -1209,21 +948,20 @@ var WidgetBase = (function () {
     return options;
   };
 
-  WidgetBase.prototype.detached = function detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
+  WidgetBase.prototype.destroy = function destroy(widget) {
+    widget.destroy();
   };
 
+  var _WidgetBase = WidgetBase;
+  WidgetBase = _aureliaFramework.inject(_aureliaFramework.TaskQueue, TemplateCompiler)(WidgetBase) || WidgetBase;
+  WidgetBase = _aureliaFramework.transient()(WidgetBase) || WidgetBase;
   return WidgetBase;
 })();
 
 exports.WidgetBase = WidgetBase;
 
-var DatePicker = (function (_WidgetBase8) {
+var DatePicker = (function () {
   var _instanceInitializers8 = {};
-
-  _inherits(DatePicker, _WidgetBase8);
 
   _createDecoratedClass(DatePicker, [{
     key: 'kValue',
@@ -1244,109 +982,51 @@ var DatePicker = (function (_WidgetBase8) {
     enumerable: true
   }], null, _instanceInitializers8);
 
-  function DatePicker(element) {
+  function DatePicker(element, widgetBase) {
     _classCallCheck(this, _DatePicker);
-
-    _WidgetBase8.call(this, 'kendoDatePicker', element);
 
     _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers8);
 
     _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers8);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers8);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).setDefaultBindableValues();
   }
 
   DatePicker.prototype.bind = function bind(ctx) {
-    _WidgetBase8.prototype.bind.call(this, ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
+  };
+
+  DatePicker.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   };
 
   DatePicker.prototype._beforeInitialize = function _beforeInitialize(options) {
     return Object.assign({}, options, { disableDates: this.kDisableDates });
   };
 
-  DatePicker.prototype._initialize = function _initialize() {
-    _WidgetBase8.prototype._initialize.call(this);
-  };
-
-  DatePicker.prototype.close = function close(value) {
-    if (this.widget) {
-      return this.widget.close(value);
-    }
-  };
-
-  DatePicker.prototype.destroy = function destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  };
-
-  DatePicker.prototype.enable = function enable(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  };
-
-  DatePicker.prototype.readonly = function readonly(value) {
-    if (this.widget) {
-      this.widget.readonly(value);
-    }
-  };
-
-  DatePicker.prototype.max = function max(value) {
-    if (this.widget) {
-      return this.widget.max(value);
-    }
-  };
-
-  DatePicker.prototype.min = function min(value) {
-    if (this.widget) {
-      return this.widget.min(value);
-    }
-  };
-
-  DatePicker.prototype.open = function open() {
-    if (this.widget) {
-      this.widget.open();
-    }
-  };
-
-  DatePicker.prototype.setOptions = function setOptions(options) {
-    if (this.widget) {
-      this.widget.setOptions(options);
-    }
-  };
-
-  DatePicker.prototype.value = function value(newValue) {
-    if (this.widget) {
-      if (newValue) {
-        this.widget.value(newValue);
-      } else {
-        return this.widget.value();
-      }
-    }
-  };
-
-  DatePicker.prototype.kValueChanged = function kValueChanged() {
-    if (this.widget) {
-      this.widget.value(this.kValue);
-    }
+  DatePicker.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _DatePicker = DatePicker;
+  DatePicker = _aureliaFramework.inject(Element, WidgetBase)(DatePicker) || DatePicker;
   DatePicker = generateBindables('kendoDatePicker')(DatePicker) || DatePicker;
-  DatePicker = _aureliaFramework.inject(Element)(DatePicker) || DatePicker;
   DatePicker = _aureliaFramework.customAttribute('k-datepicker')(DatePicker) || DatePicker;
   return DatePicker;
-})(WidgetBase);
+})();
 
 exports.DatePicker = DatePicker;
 
-var DropDownList = (function (_WidgetBase9) {
+var DropDownList = (function () {
   var _instanceInitializers9 = {};
-
-  _inherits(DropDownList, _WidgetBase9);
 
   _createDecoratedClass(DropDownList, [{
     key: 'options',
@@ -1356,96 +1036,64 @@ var DropDownList = (function (_WidgetBase9) {
     },
     enumerable: true
   }, {
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'kValue',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
   }], null, _instanceInitializers9);
 
-  function DropDownList(element) {
+  function DropDownList(element, widgetBase) {
     _classCallCheck(this, _DropDownList);
-
-    _WidgetBase9.call(this, 'kendoDropDownList', element);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers9);
 
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers9);
-
     _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers9);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).setDefaultBindableValues();
   }
 
   DropDownList.prototype.bind = function bind(ctx) {
-    _WidgetBase9.prototype.bind.call(this, ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   };
 
-  DropDownList.prototype._initialized = function _initialized() {
+  DropDownList.prototype.recreate = function recreate() {
     var _this5 = this;
 
-    this.widget.bind('change', function (event) {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+
+    this.kWidget.bind('change', function (event) {
       _this5.kValue = event.sender.value();
       _this5.kText = event.sender.text();
 
       fireEvent(_this5.element, 'input');
     });
 
-    this.widget.bind('select', function (event) {
+    this.kWidget.bind('select', function (event) {
       _this5.kValue = event.sender.value();
       _this5.kText = event.sender.text();
 
       fireEvent(_this5.element, 'input');
     });
 
-    this.widget.trigger('change');
+    this.kWidget.trigger('change');
   };
 
-  DropDownList.prototype.enableChanged = function enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  };
-
-  DropDownList.prototype.kValueChanged = function kValueChanged(newValue) {
-    if (this.widget) {
-      this.widget.value(newValue);
-      this.widget.trigger('change');
-    }
-  };
-
-  DropDownList.prototype.value = function value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  };
-
-  DropDownList.prototype.select = function select(index) {
-    if (this.widget) {
-      this.widget.select(index);
-
-      this.widget.trigger('change');
-    }
-  };
-
-  DropDownList.prototype.search = function search(value) {
-    if (this.widget) {
-      this.widget.search(value);
-
-      this.widget.trigger('change');
-    }
+  DropDownList.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _DropDownList = DropDownList;
+  DropDownList = _aureliaFramework.inject(Element, WidgetBase)(DropDownList) || DropDownList;
   DropDownList = generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
-  DropDownList = _aureliaFramework.inject(Element)(DropDownList) || DropDownList;
   DropDownList = _aureliaFramework.customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
   return DropDownList;
-})(WidgetBase);
+})();
 
 exports.DropDownList = DropDownList;
 
@@ -1653,19 +1301,12 @@ var AuCol = (function () {
 
 exports.AuCol = AuCol;
 
-var Grid = (function (_WidgetBase10) {
+var Grid = (function () {
   var _instanceInitializers11 = {};
-
-  _inherits(Grid, _WidgetBase10);
 
   _createDecoratedClass(Grid, [{
     key: 'columns',
     decorators: [_aureliaFramework.children('au-col')],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
   }, {
@@ -1677,26 +1318,37 @@ var Grid = (function (_WidgetBase10) {
     enumerable: true
   }], null, _instanceInitializers11);
 
-  function Grid(element) {
+  function Grid(element, widgetBase) {
     _classCallCheck(this, _Grid);
-
-    _WidgetBase10.call(this, 'kendoGrid', element);
 
     _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers11);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers11);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).setDefaultBindableValues();
   }
 
-  Grid.prototype.attached = function attached() {
-    this._initialize();
+  Grid.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
   };
 
-  Grid.prototype._initialize = function _initialize() {
-    this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+  Grid.prototype.attached = function attached() {
+    this.recreate();
+  };
 
-    _WidgetBase10.prototype._initialize.call(this);
+  Grid.prototype.recreate = function recreate() {
+    var _this6 = this;
+
+    var element = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+
+    this.kWidget = this.widgetBase.createWidget({
+      element: element,
+      parentCtx: this.$parent,
+      beforeInitialize: function beforeInitialize(o) {
+        return _this6._beforeInitialize(o);
+      }
+    });
   };
 
   Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
@@ -1705,204 +1357,16 @@ var Grid = (function (_WidgetBase10) {
     }
   };
 
-  Grid.prototype.enableChanged = function enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  };
-
-  Grid.prototype.addRow = function addRow() {
-    if (this.widget) {
-      this.widget.addRow();
-    }
-  };
-
-  Grid.prototype.autoFitColumn = function autoFitColumn(value) {
-    if (this.widget) {
-      this.widget.autoFitColumn(value);
-    }
-  };
-
-  Grid.prototype.cancelChanges = function cancelChanges() {
-    if (this.widget) {
-      this.widget.cancelChanges();
-    }
-  };
-
-  Grid.prototype.cancelRow = function cancelRow() {
-    if (this.widget) {
-      this.widget.cancelRow();
-    }
-  };
-
-  Grid.prototype.cellIndex = function cellIndex(cell) {
-    if (this.widget) {
-      return this.widget.cellIndex(cell);
-    }
-  };
-
-  Grid.prototype.clearSelection = function clearSelection() {
-    if (this.widget) {
-      this.widget.clearSelection();
-    }
-  };
-
-  Grid.prototype.closeCell = function closeCell() {
-    if (this.widget) {
-      this.widget.closeCell();
-    }
-  };
-
-  Grid.prototype.collapseGroup = function collapseGroup(group) {
-    if (this.widget) {
-      this.widget.collapseGroup(group);
-    }
-  };
-
-  Grid.prototype.collapseRow = function collapseRow(row) {
-    if (this.widget) {
-      this.widget.collapseRow(row);
-    }
-  };
-
-  Grid.prototype.current = function current(cell) {
-    if (this.widget) {
-      return this.widget.current(cell);
-    }
-  };
-
-  Grid.prototype.dataItem = function dataItem(row) {
-    if (this.widget) {
-      return this.widget.dataItem(row);
-    }
-  };
-
-  Grid.prototype.destroy = function destroy() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  };
-
-  Grid.prototype.editCell = function editCell(cell) {
-    if (this.widget) {
-      this.widget.editCell(cell);
-    }
-  };
-
-  Grid.prototype.editRow = function editRow(row) {
-    if (this.widget) {
-      this.widget.editRow(row);
-    }
-  };
-
-  Grid.prototype.expandGroup = function expandGroup(row) {
-    if (this.widget) {
-      this.widget.expandGroup(row);
-    }
-  };
-
-  Grid.prototype.expandRow = function expandRow(row) {
-    if (this.widget) {
-      this.widget.expandRow(row);
-    }
-  };
-
-  Grid.prototype.getOptions = function getOptions() {
-    if (this.widget) {
-      return this.widget.getOptions();
-    }
-  };
-
-  Grid.prototype.hideColumn = function hideColumn(column) {
-    if (this.widget) {
-      this.widget.hideColumn(column);
-    }
-  };
-
-  Grid.prototype.lockColumn = function lockColumn(column) {
-    if (this.widget) {
-      this.widget.lockColumn(column);
-    }
-  };
-
-  Grid.prototype.refresh = function refresh() {
-    if (this.widget) {
-      this.widget.refresh();
-    }
-  };
-
-  Grid.prototype.removeRow = function removeRow(row) {
-    if (this.widget) {
-      this.widget.removeRow(row);
-    }
-  };
-
-  Grid.prototype.reorderColumn = function reorderColumn(destIndex, column) {
-    if (this.widget) {
-      this.widget.reorderColumn(destIndex, column);
-    }
-  };
-
-  Grid.prototype.saveAsExcel = function saveAsExcel() {
-    if (this.widget) {
-      this.widget.saveAsExcel();
-    }
-  };
-
-  Grid.prototype.saveAsPDF = function saveAsPDF() {
-    if (this.widget) {
-      this.widget.saveAsPDF();
-    }
-  };
-
-  Grid.prototype.saveChanges = function saveChanges() {
-    if (this.widget) {
-      this.widget.saveChanges();
-    }
-  };
-
-  Grid.prototype.saveRow = function saveRow() {
-    if (this.widget) {
-      this.widget.saveRow();
-    }
-  };
-
-  Grid.prototype.select = function select(rows) {
-    if (this.widget) {
-      return this.widget.select(rows);
-    }
-  };
-
-  Grid.prototype.setDataSource = function setDataSource(dataSource) {
-    if (this.widget) {
-      this.widget.setDataSource(dataSource);
-    }
-  };
-
-  Grid.prototype.setOptions = function setOptions(options) {
-    if (this.widget) {
-      this.widget.setOptions(options);
-    }
-  };
-
-  Grid.prototype.showColumn = function showColumn(column) {
-    if (this.widget) {
-      this.widget.showColumn(column);
-    }
-  };
-
-  Grid.prototype.unlockColumn = function unlockColumn(column) {
-    if (this.widget) {
-      this.widget.unlockColumn(column);
-    }
+  Grid.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _Grid = Grid;
-  Grid = _aureliaFramework.inject(Element)(Grid) || Grid;
+  Grid = _aureliaFramework.inject(Element, WidgetBase)(Grid) || Grid;
   Grid = generateBindables('kendoGrid')(Grid) || Grid;
   Grid = _aureliaFramework.customElement('k-grid')(Grid) || Grid;
   return Grid;
-})(WidgetBase);
+})();
 
 exports.Grid = Grid;
 
@@ -1910,10 +1374,8 @@ function isInitFromTable(element) {
   return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
 }
 
-var Menu = (function (_WidgetBase11) {
+var Menu = (function () {
   var _instanceInitializers12 = {};
-
-  _inherits(Menu, _WidgetBase11);
 
   _createDecoratedClass(Menu, [{
     key: 'options',
@@ -1922,60 +1384,55 @@ var Menu = (function (_WidgetBase11) {
       return {};
     },
     enumerable: true
-  }, {
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
   }], null, _instanceInitializers12);
 
-  function Menu(element) {
+  function Menu(element, widgetBase) {
     _classCallCheck(this, _Menu);
-
-    _WidgetBase11.call(this, 'kendoMenu', element);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers12);
 
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers12);
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoMenu').linkViewModel(this).setDefaultBindableValues();
   }
 
   Menu.prototype.bind = function bind(ctx) {
-    _WidgetBase11.prototype.bind.call(this, ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   };
 
-  Menu.prototype._initialize = function _initialize() {
+  Menu.prototype.recreate = function recreate() {
+    var element = undefined;
     var ul = $(this.element).find('ul');
     if (ul.has()) {
-      this.target = $(this.element).find('ul').first();
+      element = $(this.element).find('ul').first();
     } else {
-      this.target = $(this.element).appendChild('<ul></ul>');
+      element = $(this.element).appendChild('<ul></ul>');
     }
 
-    _WidgetBase11.prototype._initialize.call(this);
+    this.kWidget = this.widgetBase.createWidget({
+      element: element,
+      parentCtx: this.$parent
+    });
+  };
+
+  Menu.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _Menu = Menu;
-  Menu = _aureliaFramework.inject(Element)(Menu) || Menu;
+  Menu = _aureliaFramework.inject(Element, WidgetBase)(Menu) || Menu;
   Menu = generateBindables('kendoMenu')(Menu) || Menu;
   Menu = _aureliaFramework.customElement('k-menu')(Menu) || Menu;
   return Menu;
-})(WidgetBase);
+})();
 
 exports.Menu = Menu;
 
-var NumericTextBox = (function (_WidgetBase12) {
+var NumericTextBox = (function () {
   var _instanceInitializers13 = {};
 
-  _inherits(NumericTextBox, _WidgetBase12);
-
   _createDecoratedClass(NumericTextBox, [{
-    key: 'kValue',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -1984,86 +1441,38 @@ var NumericTextBox = (function (_WidgetBase12) {
     enumerable: true
   }], null, _instanceInitializers13);
 
-  function NumericTextBox(element) {
+  function NumericTextBox(element, widgetBase) {
     _classCallCheck(this, _NumericTextBox);
 
-    _WidgetBase12.call(this, 'kendoNumericTextBox', element);
-
-    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers13);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers13);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this).setDefaultBindableValues();
   }
 
   NumericTextBox.prototype.bind = function bind(ctx) {
-    _WidgetBase12.prototype.bind.call(this, ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   };
 
-  NumericTextBox.prototype.destroy = function destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  NumericTextBox.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   };
 
-  NumericTextBox.prototype.enable = function enable(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  };
-
-  NumericTextBox.prototype.readonly = function readonly(value) {
-    if (this.widget) {
-      this.widget.readonly(value);
-    }
-  };
-
-  NumericTextBox.prototype.focus = function focus() {
-    if (this.widget) {
-      this.widget.focus();
-    }
-  };
-
-  NumericTextBox.prototype.max = function max(value) {
-    if (this.widget) {
-      return this.widget.max(value);
-    }
-  };
-
-  NumericTextBox.prototype.min = function min(value) {
-    if (this.widget) {
-      return this.widget.min(value);
-    }
-  };
-
-  NumericTextBox.prototype.step = function step(value) {
-    if (this.widget) {
-      return this.widget.step(value);
-    }
-  };
-
-  NumericTextBox.prototype.value = function value(newValue) {
-    if (this.widget) {
-      if (newValue) {
-        this.widget.value(newValue);
-      } else {
-        return this.widget.value();
-      }
-    }
-  };
-
-  NumericTextBox.prototype.kValueChanged = function kValueChanged() {
-    if (this.widget) {
-      this.widget.value(this.kValue);
-    }
+  NumericTextBox.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _NumericTextBox = NumericTextBox;
+  NumericTextBox = _aureliaFramework.inject(Element, WidgetBase)(NumericTextBox) || NumericTextBox;
   NumericTextBox = generateBindables('kendoNumericTextBox')(NumericTextBox) || NumericTextBox;
-  NumericTextBox = _aureliaFramework.inject(Element)(NumericTextBox) || NumericTextBox;
   NumericTextBox = _aureliaFramework.customAttribute('k-numerictextbox')(NumericTextBox) || NumericTextBox;
   return NumericTextBox;
-})(WidgetBase);
+})();
 
 exports.NumericTextBox = NumericTextBox;
 
@@ -2073,10 +1482,8 @@ var PDF = function PDF() {
 
 exports.PDF = PDF;
 
-var ProgressBar = (function (_WidgetBase13) {
+var ProgressBar = (function () {
   var _instanceInitializers14 = {};
-
-  _inherits(ProgressBar, _WidgetBase13);
 
   _createDecoratedClass(ProgressBar, [{
     key: 'options',
@@ -2087,50 +1494,38 @@ var ProgressBar = (function (_WidgetBase13) {
     enumerable: true
   }], null, _instanceInitializers14);
 
-  function ProgressBar(element) {
+  function ProgressBar(element, widgetBase) {
     _classCallCheck(this, _ProgressBar);
 
-    _WidgetBase13.call(this, 'kendoProgressBar', element);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers14);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoProgressBar').linkViewModel(this).setDefaultBindableValues();
   }
 
   ProgressBar.prototype.bind = function bind(ctx) {
-    _WidgetBase13.prototype.bind.call(this, ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   };
 
-  ProgressBar.prototype.kEnableChanged = function kEnableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
+  ProgressBar.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   };
 
-  ProgressBar.prototype.kValueChanged = function kValueChanged(newValue) {
-    if (this.widget) {
-      this.widget.value(newValue);
-    }
-  };
-
-  ProgressBar.prototype.value = function value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  };
-
-  ProgressBar.prototype.enable = function enable(newValue) {
-    if (this.widget) {
-      return this.widget.enable(newValue);
-    }
+  ProgressBar.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _ProgressBar = ProgressBar;
-  ProgressBar = _aureliaFramework.inject(Element)(ProgressBar) || ProgressBar;
+  ProgressBar = _aureliaFramework.inject(Element, WidgetBase)(ProgressBar) || ProgressBar;
   ProgressBar = generateBindables('kendoProgressBar')(ProgressBar) || ProgressBar;
   ProgressBar = _aureliaFramework.customAttribute('k-progress-bar')(ProgressBar) || ProgressBar;
   return ProgressBar;
-})(WidgetBase);
+})();
 
 exports.ProgressBar = ProgressBar;
 
@@ -2140,10 +1535,8 @@ var AuScheduler = function AuScheduler() {
 
 exports.AuScheduler = AuScheduler;
 
-var Slider = (function (_WidgetBase14) {
+var Slider = (function () {
   var _instanceInitializers15 = {};
-
-  _inherits(Slider, _WidgetBase14);
 
   _createDecoratedClass(Slider, [{
     key: 'kValue',
@@ -2159,21 +1552,35 @@ var Slider = (function (_WidgetBase14) {
     enumerable: true
   }], null, _instanceInitializers15);
 
-  function Slider(element) {
+  function Slider(element, widgetBase) {
     _classCallCheck(this, _Slider);
-
-    _WidgetBase14.call(this, 'kendoSlider', element);
 
     _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers15);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers15);
 
     this.element = element;
-    this.options = {};
+    this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).setDefaultBindableValues();
   }
 
+  Slider.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
   Slider.prototype.attached = function attached() {
-    this._initialize();
+    this.recreate();
+  };
+
+  Slider.prototype.recreate = function recreate() {
+    var _this7 = this;
+
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent,
+      beforeInitialize: function beforeInitialize(o) {
+        return _this7._beforeInitialize(o);
+      }
+    });
   };
 
   Slider.prototype._beforeInitialize = function _beforeInitialize(options) {
@@ -2182,55 +1589,21 @@ var Slider = (function (_WidgetBase14) {
     }
   };
 
-  Slider.prototype.kEnableChanged = function kEnableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  };
-
-  Slider.prototype.enable = function enable(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  };
-
-  Slider.prototype.value = function value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  };
-
-  Slider.prototype.destroy = function destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  };
-
-  Slider.prototype.resize = function resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
-  };
-
-  Slider.prototype.kValueChanged = function kValueChanged() {
-    if (this.widget) {
-      this.widget.value(this.kValue);
-    }
+  Slider.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _Slider = Slider;
-  Slider = _aureliaFramework.inject(Element)(Slider) || Slider;
+  Slider = _aureliaFramework.inject(Element, WidgetBase)(Slider) || Slider;
   Slider = generateBindables('kendoSlider')(Slider) || Slider;
   Slider = _aureliaFramework.customAttribute('k-slider')(Slider) || Slider;
   return Slider;
-})(WidgetBase);
+})();
 
 exports.Slider = Slider;
 
-var TabStrip = (function (_WidgetBase15) {
+var TabStrip = (function () {
   var _instanceInitializers16 = {};
-
-  _inherits(TabStrip, _WidgetBase15);
 
   _createDecoratedClass(TabStrip, [{
     key: 'options',
@@ -2241,32 +1614,38 @@ var TabStrip = (function (_WidgetBase15) {
     enumerable: true
   }], null, _instanceInitializers16);
 
-  function TabStrip(element) {
+  function TabStrip(element, widgetBase) {
     _classCallCheck(this, _TabStrip);
 
-    _WidgetBase15.call(this, 'kendoTabStrip', element);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers16);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoTabStrip').linkViewModel(this).setDefaultBindableValues(this);
   }
 
   TabStrip.prototype.bind = function bind(ctx) {
-    _WidgetBase15.prototype.bind.call(this, ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   };
 
-  TabStrip.prototype.enableChanged = function enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
+  TabStrip.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  TabStrip.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _TabStrip = TabStrip;
-  TabStrip = _aureliaFramework.inject(Element)(TabStrip) || TabStrip;
+  TabStrip = _aureliaFramework.inject(Element, WidgetBase)(TabStrip) || TabStrip;
   TabStrip = generateBindables('kendoTabStrip')(TabStrip) || TabStrip;
   TabStrip = _aureliaFramework.customAttribute('k-tabstrip')(TabStrip) || TabStrip;
   return TabStrip;
-})(WidgetBase);
+})();
 
 exports.TabStrip = TabStrip;
 
@@ -2276,17 +1655,10 @@ var AuToolbar = function AuToolbar() {
 
 exports.AuToolbar = AuToolbar;
 
-var TreeView = (function (_WidgetBase16) {
+var TreeView = (function () {
   var _instanceInitializers17 = {};
 
-  _inherits(TreeView, _WidgetBase16);
-
   _createDecoratedClass(TreeView, [{
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'options',
     decorators: [_aureliaFramework.bindable],
     initializer: function initializer() {
@@ -2295,152 +1667,39 @@ var TreeView = (function (_WidgetBase16) {
     enumerable: true
   }], null, _instanceInitializers17);
 
-  function TreeView(element) {
+  function TreeView(element, widgetBase) {
     _classCallCheck(this, _TreeView);
 
-    _WidgetBase16.call(this, 'kendoTreeView', element);
-
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers17);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers17);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this).setDefaultBindableValues();
 
     this.kDataSource = undefined;
   }
 
   TreeView.prototype.bind = function bind(ctx) {
-    _WidgetBase16.prototype.bind.call(this, ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   };
 
-  TreeView.prototype.append = function append(nodeData, parentNode, success) {
-    if (this.widget) {
-      return this.widget.append(nodeData, parentNode, success);
-    }
+  TreeView.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   };
 
-  TreeView.prototype.collapse = function collapse(nodes) {
-    if (this.widget) {
-      this.widget.collapse(nodes);
-    }
-  };
-
-  TreeView.prototype.dataItem = function dataItem(node) {
-    if (this.widget) {
-      return this.widget.dataItem(node);
-    }
-  };
-
-  TreeView.prototype.destroy = function destroy() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  };
-
-  TreeView.prototype.detach = function detach(node) {
-    if (this.widget) {
-      return this.widget.detach(node);
-    }
-  };
-
-  TreeView.prototype.enable = function enable(nodes, _enable2) {
-    if (this.widget) {
-      return this.widget.enable(nodes, _enable2 === undefined ? true : _enable2);
-    }
-  };
-
-  TreeView.prototype.expand = function expand(nodes) {
-    if (this.widget) {
-      this.widget.expand(nodes);
-    }
-  };
-
-  TreeView.prototype.expandPath = function expandPath(path, complete) {
-    if (this.widget) {
-      this.widget.expandPath(path, complete);
-    }
-  };
-
-  TreeView.prototype.expandTo = function expandTo(targetNode) {
-    if (this.widget) {
-      this.widget.expandTo(targetNode);
-    }
-  };
-
-  TreeView.prototype.findByText = function findByText(text) {
-    if (this.widget) {
-      return this.widget.findByText(text);
-    }
-  };
-
-  TreeView.prototype.findByUid = function findByUid(text) {
-    if (this.widget) {
-      return this.widget.findByUid(text);
-    }
-  };
-
-  TreeView.prototype.insertAfter = function insertAfter(nodeData, referenceNode) {
-    if (this.widget) {
-      this.widget.insertAfter(nodeData, referenceNode);
-    }
-  };
-
-  TreeView.prototype.insertBefore = function insertBefore(nodeData, referenceNode) {
-    if (this.widget) {
-      this.widget.insertBefore(nodeData, referenceNode);
-    }
-  };
-
-  TreeView.prototype.parent = function parent(node) {
-    if (this.widget) {
-      return this.widget.parent(node);
-    }
-  };
-
-  TreeView.prototype.remove = function remove(node) {
-    if (this.widget) {
-      this.widget.remove(node);
-    }
-  };
-
-  TreeView.prototype.select = function select(node) {
-    if (this.widget) {
-      if (node === undefined) {
-        return this.widget.select();
-      }
-      return this.widget.select(node);
-    }
-  };
-
-  TreeView.prototype.setDataSource = function setDataSource(dataSource) {
-    if (this.widget) {
-      this.widget.setDataSource(dataSource);
-    }
-  };
-
-  TreeView.prototype.text = function text(node, newText) {
-    if (this.widget) {
-      return this.widget.text(node, newText);
-    }
-  };
-
-  TreeView.prototype.toggle = function toggle(node) {
-    if (this.widget) {
-      this.widget.toggle(node);
-    }
-  };
-
-  TreeView.prototype.updateIndeterminate = function updateIndeterminate(node) {
-    if (this.widget) {
-      this.widget.updateIndeterminate(node);
-    }
+  TreeView.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _TreeView = TreeView;
+  TreeView = _aureliaFramework.inject(Element, WidgetBase)(TreeView) || TreeView;
   TreeView = generateBindables('kendoTreeView')(TreeView) || TreeView;
-  TreeView = _aureliaFramework.inject(Element)(TreeView) || TreeView;
   TreeView = _aureliaFramework.customAttribute('k-treeview')(TreeView) || TreeView;
   return TreeView;
-})(WidgetBase);
+})();
 
 exports.TreeView = TreeView;

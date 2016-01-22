@@ -6,71 +6,35 @@ import 'kendo-ui/js/kendo.dataviz.sparkline.min';
 
 @customElement('k-sparkline')
 @generateBindables('kendoSparkline')
-@inject(Element)
-export class Sparkline extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Sparkline {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoSparkline', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoSparkline')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this._initialize();
+    this.recreate();
   }
 
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  exportImage(options) {
-    if (this.widget) {
-      return this.widget.exportImage(options);
-    }
-  }
-
-  exportPDF(options) {
-    if (this.widget) {
-      return this.widget.exportPDF(options);
-    }
-  }
-
-  exportSVG(options) {
-    if (this.widget) {
-      return this.widget.exportSVG(options);
-    }
-  }
-
-  setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  }
-
-  setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  }
-
-  svg() {
-    if (this.widget) {
-      return this.widget.svg();
-    }
-  }
-
-  imageDataURL() {
-    if (this.widget) {
-      return this.widget.imageDataURL();
-    }
-  }
-
-  refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

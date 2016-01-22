@@ -57,13 +57,17 @@ describe('TemplateCompiler', () => {
 
 
   it('pulls off the parent context of the options if it is not on the widget itself', () => {
+    // NOTE: the parent context is stored in a single-item array on the optiosn object
+    // due to it otherwise causing a stackoverflow exception
+    // Angular uses the same approach
+
     let realArgs = {
       data: {},
       elements: [{}, {}]
     };
     let args = () => realArgs;
     let $parent = {};
-    let widget = { options: { _$parent: $parent }};
+    let widget = { options: { _$parent: [$parent] }};
 
     let compileSpy = spyOn(sut, 'compile');
 

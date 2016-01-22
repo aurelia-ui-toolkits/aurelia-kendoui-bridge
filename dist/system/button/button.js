@@ -7,8 +7,6 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
   return {
@@ -22,10 +20,8 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
       generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoButtonMin) {}],
     execute: function () {
-      Button = (function (_WidgetBase) {
+      Button = (function () {
         var _instanceInitializers = {};
-
-        _inherits(Button, _WidgetBase);
 
         _createDecoratedClass(Button, [{
           key: 'options',
@@ -36,38 +32,38 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
           enumerable: true
         }], null, _instanceInitializers);
 
-        function Button(element) {
+        function Button(element, widgetBase) {
           _classCallCheck(this, _Button);
 
-          _WidgetBase.call(this, 'kendoButton', element);
-
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+
+          this.element = element;
+          this.widgetBase = widgetBase.control('kendoButton').linkViewModel(this).setDefaultBindableValues();
         }
 
         Button.prototype.bind = function bind(ctx) {
-          _WidgetBase.prototype.bind.call(this, ctx);
+          this.$parent = ctx;
 
-          this._initialize();
+          this.recreate();
         };
 
-        Button.prototype.kEnableChanged = function kEnableChanged() {
-          if (this.widget) {
-            this.widget.enable(this.kEnable);
-          }
+        Button.prototype.recreate = function recreate() {
+          this.kWidget = this.widgetBase.createWidget({
+            element: this.element,
+            parentCtx: this.$parent
+          });
         };
 
-        Button.prototype.enable = function enable(_enable) {
-          if (this.widget) {
-            this.widget.enable(_enable);
-          }
+        Button.prototype.detached = function detached() {
+          this.widgetBase.destroy(this.kWidget);
         };
 
         var _Button = Button;
-        Button = inject(Element)(Button) || Button;
+        Button = inject(Element, WidgetBase)(Button) || Button;
         Button = generateBindables('kendoButton')(Button) || Button;
         Button = customAttribute('k-button')(Button) || Button;
         return Button;
-      })(WidgetBase);
+      })();
 
       _export('Button', Button);
     }

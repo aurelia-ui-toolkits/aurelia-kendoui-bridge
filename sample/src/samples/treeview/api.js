@@ -48,7 +48,7 @@ export class API {
   }
 
   sort() {
-    this.treeview.widget.dataSource.sort({
+    this.treeview.dataSource.sort({
       field: 'text',
       dir: this.ascending ? 'asc' : 'desc'
     });
@@ -58,13 +58,13 @@ export class API {
 
   filterByText() {
     if (this.filterText !== '') {
-      this.treeview.widget.dataSource.filter({
+      this.treeview.dataSource.filter({
         field: 'text',
         operator: 'contains',
         value: this.filterText
       });
     } else {
-      this.treeview.widget.dataSource.filter({});
+      this.treeview.dataSource.filter({});
     }
   }
 }

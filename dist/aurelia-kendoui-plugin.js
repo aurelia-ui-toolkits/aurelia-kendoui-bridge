@@ -1,8 +1,8 @@
 import * as LogManager from 'aurelia-logging';
 import 'jquery';
-import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
+import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.dataviz.chart.min';
 import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
 import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
@@ -23,10 +23,10 @@ import 'kendo-ui/js/kendo.progressbar.min';
 import 'kendo-ui/js/kendo.slider.min';
 import 'kendo-ui/js/kendo.tabstrip.min';
 import 'kendo-ui/js/kendo.treeview.min';
-import {Aurelia,customAttribute,bindable,inject,customElement,TaskQueue,noView,processContent,TargetInstruction,children} from 'aurelia-framework';
+import {Aurelia,customAttribute,bindable,inject,customElement,TaskQueue,transient,noView,processContent,TargetInstruction,children} from 'aurelia-framework';
 import {BindableProperty,HtmlBehaviorResource,TemplatingEngine} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
-import {Container} from 'aurelia-dependency-injection';
+import {bindingMode} from 'aurelia-binding';
 
 /**
 * Configure the Aurelia-KendoUI-plugin
@@ -179,67 +179,43 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: KendoConf
   }
 }
 
-@customAttribute('k-button')
-@generateBindables('kendoButton')
-@inject(Element)
-export class Button extends WidgetBase {
-
-  @bindable options = {};
-
-  constructor(element) {
-    super('kendoButton', element);
-  }
-
-  bind(ctx) {
-    super.bind(ctx);
-
-    this._initialize();
-  }
-
-  kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
-    }
-  }
-
-  enable(enable) {
-    if (this.widget) {
-      this.widget.enable(enable);
-    }
-  }
-}
-
 @customAttribute('k-autocomplete')
-@inject(Element)
 @generateBindables('kendoAutoComplete')
-export class AutoComplete extends WidgetBase {
+@inject(Element, WidgetBase)
+export class AutoComplete {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoAutoComplete', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoAutoComplete')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   }
 
-  _initialize() {
-    super._initialize();
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
 
     // without these change and select handlers, when you select an options
     // the value binding is not updated
-    this.widget.bind('change', (event) => {
+    this.kWidget.bind('change', (event) => {
       this.kValue = event.sender.value();
 
       // Update the kendo binding
       fireEvent(this.element, 'input');
     });
 
-    this.widget.bind('select', (event) => {
+    this.kWidget.bind('select', (event) => {
       this.kValue = event.sender.value();
 
       // Update the kendo binding
@@ -247,411 +223,218 @@ export class AutoComplete extends WidgetBase {
     });
   }
 
-  kEnableChanged() {
-    if (this.widget) {
-      this.widget.enable(this.kEnable);
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+@customAttribute('k-button')
+@generateBindables('kendoButton')
+@inject(Element, WidgetBase)
+export class Button {
+
+  @bindable options = {};
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoButton')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
-  enable(newValue) {
-    if (this.widget) {
-      return this.widget.enable(newValue);
-    }
+  bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
   }
 
-  value(newValue) {
-    if (this.widget) {
-      if (newValue) {
-        this.widget.value(newValue);
-        this.widget.trigger('change');
-      } else {
-        return this.widget.value();
-      }
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  search(value) {
-    if (this.widget) {
-      this.widget.search(value);
-    }
-  }
-
-  close(value) {
-    if (this.widget) {
-      return this.widget.close(value);
-    }
-  }
-
-  dataItem(value) {
-    if (this.widget) {
-      return this.widget.dataItem(value);
-    }
-  }
-
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  }
-
-  focus() {
-    if (this.widget) {
-      return this.widget.focus();
-    }
-  }
-
-  readonly(value) {
-    if (this.widget) {
-      return this.widget.readonly(value);
-    }
-  }
-
-  refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
-  }
-
-  select(value) {
-    if (this.widget) {
-      return this.widget.select(value);
-    }
-  }
-
-  setDataSource(value) {
-    if (this.widget) {
-      return this.widget.setDataSource(value);
-    }
-  }
-
-  suggest(value) {
-    if (this.widget) {
-      return this.widget.suggest(value);
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
 //eslint-disable-line no-unused-vars
 @customElement('k-chart')
 @generateBindables('kendoChart')
-@inject(Element)
-export class Chart extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Chart {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoChart', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoChart')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this._initialize();
+    this.recreate();
   }
 
-  exportImage(options) {
-    if (this.widget) {
-      return this.widget.exportImage(options);
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  exportPDF(options) {
-    if (this.widget) {
-      return this.widget.exportPDF(options);
-    }
-  }
-
-  exportSVG(options) {
-    if (this.widget) {
-      return this.widget.exportSVG(options);
-    }
-  }
-
-  getAxis(name) {
-    if (this.widget) {
-      return this.widget.getAxis(name);
-    }
-  }
-
-  redraw() {
-    if (this.widget) {
-      return this.widget.redraw();
-    }
-  }
-
-  refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
-  }
-
-  resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
-  }
-
-  saveAsPDF() {
-    if (this.widget) {
-      return this.widget.saveAsPDF();
-    }
-  }
-
-  setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  }
-
-  setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  }
-
-  svg() {
-    if (this.widget) {
-      return this.widget.svg();
-    }
-  }
-
-  imageDataURL() {
-    if (this.widget) {
-      return this.widget.imageDataURL();
-    }
-  }
-
-  toggleHighlight(show, options) {
-    if (this.widget) {
-      return this.widget.toggleHighlight(show, options);
-    }
-  }
-
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
 //eslint-disable-line no-unused-vars
 @customElement('k-sparkline')
 @generateBindables('kendoSparkline')
-@inject(Element)
-export class Sparkline extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Sparkline {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoSparkline', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoSparkline')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this._initialize();
+    this.recreate();
   }
 
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  exportImage(options) {
-    if (this.widget) {
-      return this.widget.exportImage(options);
-    }
-  }
-
-  exportPDF(options) {
-    if (this.widget) {
-      return this.widget.exportPDF(options);
-    }
-  }
-
-  exportSVG(options) {
-    if (this.widget) {
-      return this.widget.exportSVG(options);
-    }
-  }
-
-  setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  }
-
-  setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  }
-
-  svg() {
-    if (this.widget) {
-      return this.widget.svg();
-    }
-  }
-
-  imageDataURL() {
-    if (this.widget) {
-      return this.widget.imageDataURL();
-    }
-  }
-
-  refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
 //eslint-disable-line no-unused-vars
 @customElement('k-stock')
 @generateBindables('kendoStockChart')
-@inject(Element)
-export class Stock extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Stock {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoStockChart', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoStockChart')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this._initialize();
+    this.recreate();
   }
 
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  exportImage(options) {
-    if (this.widget) {
-      return this.widget.exportImage(options);
-    }
-  }
-
-  exportPDF(options) {
-    if (this.widget) {
-      return this.widget.exportPDF(options);
-    }
-  }
-
-  exportSVG(options) {
-    if (this.widget) {
-      return this.widget.exportSVG(options);
-    }
-  }
-
-  redraw() {
-    if (this.widget) {
-      return this.widget.redraw();
-    }
-  }
-
-  refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
-  }
-
-  resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
-  }
-
-  setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  }
-
-  svg() {
-    if (this.widget) {
-      return this.widget.svg();
-    }
-  }
-
-  imageDataURL() {
-    if (this.widget) {
-      return this.widget.imageDataURL();
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
 //eslint-disable-line no-unused-vars
 @customElement('k-treemap')
 @generateBindables('kendoTreeMap')
-@inject(Element)
-export class TreeMap extends WidgetBase {
+@inject(Element, WidgetBase)
+export class TreeMap {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoTreeMap', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoTreeMap')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this._initialize();
+    this.recreate();
   }
 
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  }
-
-  setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  }
-
-  findByUid(text) {
-    if (this.widget) {
-      return this.widget.findByUid(text);
-    }
-  }
-
-  dataItem(tile) {
-    if (this.widget) {
-      return this.widget.dataItem(tile);
-    }
-  }
-
-  resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
 @customAttribute('k-color-picker')
 @generateBindables('kendoColorPicker')
-@inject(Element)
-export class ColorPicker extends WidgetBase {
+@inject(Element, WidgetBase)
+export class ColorPicker {
 
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoColorPicker', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoColorPicker')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
@@ -676,12 +459,17 @@ export function generateBindables(controlName: string) {
     let behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
     let optionKeys = Object.keys(options);
     optionKeys.push('dataSource');
+    optionKeys.push('widget');
 
     for (let option of optionKeys) {
       // set the name of the bindable property to the option
       let nameOrConfigOrTarget = {
         name: getBindablePropertyName(option)
       };
+
+      if (option === 'widget') {
+        nameOrConfigOrTarget.defaultBindingMode = bindingMode.twoWay;
+      }
 
       let prop = new BindableProperty(nameOrConfigOrTarget);
       prop.registerWith(target, behaviorResource, descriptor);
@@ -785,7 +573,7 @@ export class TemplateCompiler {
     // in some cases, templates are compiled when a Kendo control's constructor is called
     // in these cases we get the parent context of the options instead of the
     // widget
-    let $parent = widget._$parent || widget.options._$parent;
+    let $parent = widget._$parent || (widget.options._$parent ? widget.options._$parent[0] : undefined);
 
     if (!$parent) return;
 
@@ -949,12 +737,9 @@ export function getEventsFromAttributes(element: Element): string[] {
 /**
 * Abstraction of commonly used code across wrappers
 */
+@transient()
+@inject(TaskQueue, TemplateCompiler)
 export class WidgetBase {
-
-  /**
-  * the Kendo widget after initialization
-  */
-  widget: any;
 
   /**
   * The element of the custom element, or the element on which a custom attribute
@@ -985,32 +770,42 @@ export class WidgetBase {
   $parent: any;
 
   /**
-  * The templating compiler adaptor
+  * The widgets parent viewmodel (this is the object instance the user will bind to)
   */
-  templateCompiler: TemplateCompiler;
+  viewModel: any;
 
-  constructor(controlName: string, element: Element) {
-    // access root container
-    let container = Container.instance;
-    this.taskQueue = container.get(TaskQueue);
-    this.templateCompiler = container.get(TemplateCompiler);
-    this.templateCompiler.initialize();
+  /**
+  * The constructor of a Kendo control
+  */
+  ctor: any;
 
-    this.element = element;
+  constructor(taskQueue, templateCompiler) {
+    this.taskQueue = taskQueue;
+    templateCompiler.initialize();
+  }
 
-    this.target = this.element;
+  control(controlName) {
+    if (!controlName || !jQuery.fn[controlName]) {
+      throw new Error(`The name of control ${controlName} is invalid or not set`);
+    }
 
     this.controlName = controlName;
 
-    // the BindableProperty's are created by the generateBindables decorator
-    // but the values of the bindables can only be set now the class has been
-    // instantiated
-    this.setDefaultBindableValues();
+    let ctor = jQuery.fn[this.controlName];
+    this.kendoOptions = ctor.widget.prototype.options;
+    this.kendoEvents = ctor.widget.prototype.events;
+
+    return this;
   }
 
+  linkViewModel(viewModel) {
+    if (!viewModel) {
+      throw new Error('viewModel is not set');
+    }
 
-  bind(ctx) {
-    this.$parent = ctx;
+    this.viewModel = viewModel;
+
+    return this;
   }
 
   /**
@@ -1018,73 +813,58 @@ export class WidgetBase {
   * calls all hooks
   * then initialized the Kendo control as "widget"
   */
-  _initialize() {
-    if (!this.$parent) {
-      throw new Error('$parent is not set. Did you call bind(ctx) on the widget base?');
+  createWidget(options) {
+    if (!options) {
+      throw new Error('the createWidget() function needs to be called with an object');
     }
 
-    // get the jQuery selector of the target element
-    let target = jQuery(this.target);
+    if (!options.element) {
+      throw new Error('element is not set');
+    }
 
-    // get the constructor of the Kendo control
-    // equivalent to jQuery("<div>").kendoChart
-    let ctor = target[this.controlName];
+    if (!options.parentCtx) {
+      throw new Error('parentCtx is not set');
+    }
 
     // generate all options, including event handlers
-    let options = this._getOptions(ctor);
+    let allOptions = this._getOptions(options.element);
 
     // before initialization callback
     // allows you to modify/add/remove options before the control gets initialized
-    this._beforeInitialize(options);
+    if (options.beforeInitialize) {
+      options.beforeInitialize(allOptions);
+    }
 
     // add parent context to options
-    Object.assign(options, { _$parent: this.$parent });
+    // deepExtend in kendo.core will fail with stack
+    // overflow if we don't put it in an array :-\
+    Object.assign(allOptions, { _$parent: [options.parentCtx] });
 
-    // instantiate the Kendo control, pass in the target and the options
-    this.widget = ctor.call(target, options).data(this.controlName);
+    // instantiate the Kendo control
+    let widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
 
-    // set parent context on the widget (in case the parent context is removed
-    // from the options object by the Kendo control)
-    this.widget._$parent = this.$parent;
+    widget._$parent = options.parentCtx;
 
-    this._initialized();
+    if (options.afterInitialize) {
+      options.afterInitialize();
+    }
+
+    return widget;
   }
 
-  /**
-  * hook that allows a wrapper to modify options before
-  * the Kendo control is initialized
-  * @param options the options object that a wrapper can modify
-  */
-  _beforeInitialize(options) {
-
-  }
-
-  /**
-  * hook that allows a wrapper to take actions after the widget is initialized
-  */
-  _initialized() {
-
-  }
-
-  /**
-  * Re-initializes the control
-  */
-  recreate() {
-    this._initialize();
-  }
 
   /**
   * combines all options objects and properties into a single options object
   */
-  _getOptions(ctor) {
+  _getOptions(element) {
     let options = this.getOptionsFromBindables();
-    let eventOptions = this.getEventOptions(ctor);
+    let eventOptions = this.getEventOptions(element);
 
     // merge all option objects together
-    // - options property on the wrapper
+    // - options on the wrapper
     // - options compiled from all the bindable properties
     // - event handler options
-    return Object.assign({}, this.options, pruneOptions(options), eventOptions);
+    return Object.assign({}, this.viewModel.options, pruneOptions(options), eventOptions);
   }
 
   /**
@@ -1092,15 +872,15 @@ export class WidgetBase {
   * and puts all these values in a single options object
   */
   getOptionsFromBindables() {
-    let props = jQuery.fn[this.controlName].widget.prototype.options;
+    let props = this.kendoOptions;
     let options = {};
 
     for (let prop of Object.keys(props)) {
-      options[prop] = this[getBindablePropertyName(prop)];
+      options[prop] = this.viewModel[getBindablePropertyName(prop)];
     }
 
-    if (this.kDataSource) {
-      options.dataSource = this.kDataSource;
+    if (this.viewModel.kDataSource) {
+      options.dataSource = this.viewModel.kDataSource;
     }
 
     return options;
@@ -1111,11 +891,17 @@ export class WidgetBase {
   *  gets the value from the options object in the Kendo control itself
   */
   setDefaultBindableValues() {
-    let props = jQuery.fn[this.controlName].widget.prototype.options;
+    if (!this.viewModel) {
+      throw new Error('viewModel is not set');
+    }
+
+    let props = this.kendoOptions;
 
     for (let prop of Object.keys(props)) {
-      this[getBindablePropertyName(prop)] = props[prop];
+      this.viewModel[getBindablePropertyName(prop)] = props[prop];
     }
+
+    return this;
   }
 
   /**
@@ -1123,13 +909,13 @@ export class WidgetBase {
   * These events are then subscribed to, which when called
   * calls the fireKendoEvent function to raise a DOM event
   */
-  getEventOptions(ctor) {
+  getEventOptions(element) {
     let options = {};
-    let allowedEvents = ctor.widget.prototype.events;
+    let allowedEvents = this.kendoEvents;
 
     // iterate all attributes on the custom elements
     // and only return the normalized kendo event's (dataBound etc)
-    let events = getEventsFromAttributes(this.element);
+    let events = getEventsFromAttributes(element);
 
     events.forEach(event => {
       // throw error if this event is not defined on the Kendo control
@@ -1140,7 +926,7 @@ export class WidgetBase {
       // add an event handler 'proxy' to the options object
       options[event] = e => {
         this.taskQueue.queueMicroTask(() => {
-          fireKendoEvent(this.target, _hyphenate(event), e);
+          fireKendoEvent(element, _hyphenate(event), e);
         });
       };
     });
@@ -1149,130 +935,83 @@ export class WidgetBase {
   }
 
   /**
-  * destroys the widget when the view gets detached
+  * destroys the widget
   */
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
+  destroy(widget) {
+    widget.destroy();
   }
 }
 
 @customAttribute('k-datepicker')
-@inject(Element)
 @generateBindables('kendoDatePicker')
-export class DatePicker extends WidgetBase {
+@inject(Element, WidgetBase)
+export class DatePicker {
 
   @bindable kValue;
   @bindable kDisableDates;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoDatePicker', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoDatePicker')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
   _beforeInitialize(options) {
     return Object.assign({}, options, { disableDates: this.kDisableDates });
   }
 
-  _initialize() {
-    super._initialize();
-  }
-
-  close(value) {
-    if (this.widget) {
-      return this.widget.close(value);
-    }
-  }
-
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  }
-
-  enable(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  readonly(value) {
-    if (this.widget) {
-      this.widget.readonly(value);
-    }
-  }
-
-  max(value) {
-    if (this.widget) {
-      return this.widget.max(value);
-    }
-  }
-
-  min(value) {
-    if (this.widget) {
-      return this.widget.min(value);
-    }
-  }
-
-  open() {
-    if (this.widget) {
-      this.widget.open();
-    }
-  }
-
-  setOptions(options) {
-    if (this.widget) {
-      this.widget.setOptions(options);
-    }
-  }
-
-  value(newValue) {
-    if (this.widget) {
-      if (newValue) {
-        this.widget.value(newValue);
-      } else {
-        return this.widget.value();
-      }
-    }
-  }
-
-  kValueChanged() {
-    if (this.widget) {
-      this.widget.value(this.kValue);
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
 @customAttribute('k-drop-down-list')
-@inject(Element)
 @generateBindables('kendoDropDownList')
-export class DropDownList extends WidgetBase {
+@inject(Element, WidgetBase)
+export class DropDownList {
 
   @bindable options = {};
-  @bindable kDataSource;
   @bindable kValue;
 
-  constructor(element) {
-    super('kendoDropDownList', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoDropDownList')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   }
 
-  _initialized() {
-	// without these change and select handlers, when you select an options
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+
+	   // without these change and select handlers, when you select an options
     // the value binding is not updated
-    this.widget.bind('change', (event) => {
+    this.kWidget.bind('change', (event) => {
       this.kValue = event.sender.value();
       this.kText = event.sender.text();
 
@@ -1280,7 +1019,7 @@ export class DropDownList extends WidgetBase {
       fireEvent(this.element, 'input');
     });
 
-    this.widget.bind('select', (event) => {
+    this.kWidget.bind('select', (event) => {
       this.kValue = event.sender.value();
       this.kText = event.sender.text();
 
@@ -1289,42 +1028,11 @@ export class DropDownList extends WidgetBase {
     });
 
     // Ensure the dropdown has an initial value/text
-    this.widget.trigger('change');
+    this.kWidget.trigger('change');
   }
 
-  enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  kValueChanged(newValue) {
-    if (this.widget) {
-      this.widget.value(newValue);
-      this.widget.trigger('change');
-    }
-  }
-
-  value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  }
-
-  select(index) {
-    if (this.widget) {
-      this.widget.select(index);
-      // Need to make sure the kendo binding stays up to date
-      this.widget.trigger('change');
-    }
-  }
-
-  search(value) {
-    if (this.widget) {
-      this.widget.search(value);
-      // Need to make sure the kendo binding stays up to date
-      this.widget.trigger('change');
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
@@ -1373,30 +1081,40 @@ export class AuCol {
 //eslint-disable-line no-unused-vars
 @customElement('k-grid')
 @generateBindables('kendoGrid')
-@inject(Element)
-export class Grid extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Grid  {
 
   @children('au-col') columns;
-
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoGrid', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoGrid')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   // initialization in bind() is giving issues in some scenarios
   // so, attached() is used for this control
   attached() {
-    this._initialize();
+    this.recreate();
   }
 
-  _initialize() {
+  recreate() {
     // init grid on the <table> tag if initialization is from table
     // else, just use the root element
-    this.target = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+    let element = isInitFromTable(this.element) ? this.element.children[0] : this.element;
 
-    super._initialize();
+    this.kWidget = this.widgetBase.createWidget({
+      element: element,
+      parentCtx: this.$parent,
+      beforeInitialize: (o) => this._beforeInitialize(o)
+    });
   }
 
   _beforeInitialize(options) {
@@ -1406,196 +1124,8 @@ export class Grid extends WidgetBase {
     }
   }
 
-  enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  addRow() {
-    if (this.widget) {
-      this.widget.addRow();
-    }
-  }
-
-  autoFitColumn(value) {
-    if (this.widget) {
-      this.widget.autoFitColumn(value);
-    }
-  }
-
-  cancelChanges() {
-    if (this.widget) {
-      this.widget.cancelChanges();
-    }
-  }
-
-  cancelRow() {
-    if (this.widget) {
-      this.widget.cancelRow();
-    }
-  }
-
-  cellIndex(cell) {
-    if (this.widget) {
-      return this.widget.cellIndex(cell);
-    }
-  }
-
-  clearSelection() {
-    if (this.widget) {
-      this.widget.clearSelection();
-    }
-  }
-
-  closeCell() {
-    if (this.widget) {
-      this.widget.closeCell();
-    }
-  }
-
-  collapseGroup(group) {
-    if (this.widget) {
-      this.widget.collapseGroup(group);
-    }
-  }
-
-  collapseRow(row) {
-    if (this.widget) {
-      this.widget.collapseRow(row);
-    }
-  }
-
-  current(cell) {
-    if (this.widget) {
-      return this.widget.current(cell);
-    }
-  }
-
-  dataItem(row) {
-    if (this.widget) {
-      return this.widget.dataItem(row);
-    }
-  }
-
-  destroy() {
-    if (this.widget) {
-      this.widget.destroy();
-    }
-  }
-
-  editCell(cell) {
-    if (this.widget) {
-      this.widget.editCell(cell);
-    }
-  }
-
-  editRow(row) {
-    if (this.widget) {
-      this.widget.editRow(row);
-    }
-  }
-
-  expandGroup(row) {
-    if (this.widget) {
-      this.widget.expandGroup(row);
-    }
-  }
-
-  expandRow(row) {
-    if (this.widget) {
-      this.widget.expandRow(row);
-    }
-  }
-
-  getOptions() {
-    if (this.widget) {
-      return this.widget.getOptions();
-    }
-  }
-
-  hideColumn(column) {
-    if (this.widget) {
-      this.widget.hideColumn(column);
-    }
-  }
-
-  lockColumn(column) {
-    if (this.widget) {
-      this.widget.lockColumn(column);
-    }
-  }
-
-  refresh() {
-    if (this.widget) {
-      this.widget.refresh();
-    }
-  }
-
-  removeRow(row) {
-    if (this.widget) {
-      this.widget.removeRow(row);
-    }
-  }
-
-  reorderColumn(destIndex, column) {
-    if (this.widget) {
-      this.widget.reorderColumn(destIndex, column);
-    }
-  }
-
-  saveAsExcel() {
-    if (this.widget) {
-      this.widget.saveAsExcel();
-    }
-  }
-
-  saveAsPDF() {
-    if (this.widget) {
-      this.widget.saveAsPDF();
-    }
-  }
-
-  saveChanges() {
-    if (this.widget) {
-      this.widget.saveChanges();
-    }
-  }
-
-  saveRow() {
-    if (this.widget) {
-      this.widget.saveRow();
-    }
-  }
-
-  select(rows) {
-    if (this.widget) {
-      return this.widget.select(rows);
-    }
-  }
-
-  setDataSource(dataSource) {
-    if (this.widget) {
-      this.widget.setDataSource(dataSource);
-    }
-  }
-
-  setOptions(options) {
-    if (this.widget) {
-      this.widget.setOptions(options);
-    }
-  }
-
-  showColumn(column) {
-    if (this.widget) {
-      this.widget.showColumn(column);
-    }
-  }
-
-  unlockColumn(column) {
-    if (this.widget) {
-      this.widget.unlockColumn(column);
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
@@ -1608,152 +1138,110 @@ function isInitFromTable(element) {
 
 @customElement('k-menu')
 @generateBindables('kendoMenu')
-@inject(Element)
-export class Menu extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Menu {
 
   @bindable options = {};
-  @bindable kDataSource;
 
-  constructor(element) {
-    super('kendoMenu', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoMenu')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   }
 
-  _initialize() {
+  recreate() {
+    let element;
     let ul = $(this.element).find('ul');
     if (ul.has()) {
-      this.target = $(this.element).find('ul').first();
+      element = $(this.element).find('ul').first();
     } else {
-      this.target = $(this.element).appendChild('<ul></ul>');
+      element = $(this.element).appendChild('<ul></ul>');
     }
 
-    super._initialize();
+    this.kWidget = this.widgetBase.createWidget({
+      element: element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
 @customAttribute('k-numerictextbox')
-@inject(Element)
 @generateBindables('kendoNumericTextBox')
-export class NumericTextBox extends WidgetBase {
+@inject(Element, WidgetBase)
+export class NumericTextBox {
 
-    @bindable kValue;
-    @bindable options = {};
+  @bindable options = {};
 
-    constructor(element) {
-      super('kendoNumericTextBox', element);
-    }
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoNumericTextBox')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
 
-    bind(ctx) {
-      super.bind(ctx);
+  bind(ctx) {
+    this.$parent = ctx;
 
-      this._initialize();
-    }
+    this.recreate();
+  }
 
-    destroy() {
-      if (this.widget) {
-        return this.widget.destroy();
-      }
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
 
-    enable(newValue) {
-      if (this.widget) {
-        this.widget.enable(newValue);
-      }
-    }
-
-    readonly(value) {
-      if (this.widget) {
-        this.widget.readonly(value);
-      }
-    }
-
-    focus() {
-      if (this.widget) {
-        this.widget.focus();
-      }
-    }
-
-    max(value) {
-      if (this.widget) {
-        return this.widget.max(value);
-      }
-    }
-
-    min(value) {
-      if (this.widget) {
-        return this.widget.min(value);
-      }
-    }
-
-    step(value) {
-      if (this.widget) {
-        return this.widget.step(value);
-      }
-    }
-
-    value(newValue) {
-      if (this.widget) {
-        if (newValue) {
-          this.widget.value(newValue);
-        } else {
-          return this.widget.value();
-        }
-      }
-    }
-
-    kValueChanged() {
-      if (this.widget) {
-        this.widget.value(this.kValue);
-      }
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
 }
 
 export class PDF {}
 
 @customAttribute('k-progress-bar')
 @generateBindables('kendoProgressBar')
-@inject(Element)
-export class ProgressBar extends WidgetBase {
+@inject(Element, WidgetBase)
+export class ProgressBar {
 
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoProgressBar', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoProgressBar')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   }
 
-  kEnableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  kValueChanged(newValue) {
-    if (this.widget) {
-      this.widget.value(newValue);
-    }
-  }
-
-  value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  }
-
-  enable(newValue) {
-    if (this.widget) {
-      return this.widget.enable(newValue);
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
@@ -1763,21 +1251,34 @@ export class AuScheduler {
 
 @customAttribute('k-slider')
 @generateBindables('kendoSlider')
-@inject(Element)
-export class Slider extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Slider {
 
   @bindable kValue;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoSlider', element);
-
+  constructor(element, widgetBase) {
     this.element = element;
-    this.options = {};
+    this.widgetBase = widgetBase
+                    .control('kendoSlider')
+                    .linkViewModel(this)
+                    .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this._initialize();
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent,
+      beforeInitialize: (o) => this._beforeInitialize(o)
+    });
   }
 
   _beforeInitialize(options) {
@@ -1786,64 +1287,41 @@ export class Slider extends WidgetBase {
     }
   }
 
-  kEnableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  enable(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  }
-
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  }
-
-  resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
-  }
-
-  kValueChanged() {
-    if (this.widget) {
-      this.widget.value(this.kValue);
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
 @customAttribute('k-tabstrip')
 @generateBindables('kendoTabStrip')
-@inject(Element)
-export class TabStrip extends WidgetBase {
+@inject(Element, WidgetBase)
+export class TabStrip {
 
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoTabStrip', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoTabStrip')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues(this);
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   }
 
-  enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
 
@@ -1852,150 +1330,36 @@ export class AuToolbar {
 }
 
 @customAttribute('k-treeview')
-@inject(Element)
 @generateBindables('kendoTreeView')
-export class TreeView extends WidgetBase {
+@inject(Element, WidgetBase)
+export class TreeView {
+  @bindable options = {};
 
-    @bindable kDataSource;
-    @bindable options = {};
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoTreeView')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
 
-    constructor(element) {
-      super('kendoTreeView', element);
+    // kendo tree view has a wrong default value for the dataSource
+    this.kDataSource = undefined;
+  }
 
-      // kendo tree view has a wrong default value for the dataSource
-      this.kDataSource = undefined;
-    }
+  bind(ctx) {
+    this.$parent = ctx;
 
-    bind(ctx) {
-      super.bind(ctx);
+    this.recreate();
+  }
 
-      this._initialize();
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
 
-
-    append(nodeData, parentNode, success) {
-      if (this.widget) {
-        return this.widget.append(nodeData, parentNode, success);
-      }
-    }
-
-    collapse(nodes) {
-      if (this.widget) {
-        this.widget.collapse(nodes);
-      }
-    }
-
-    dataItem(node) {
-      if (this.widget) {
-        return this.widget.dataItem(node);
-      }
-    }
-
-    destroy() {
-      if (this.widget) {
-        this.widget.destroy();
-      }
-    }
-
-    detach(node) {
-      if (this.widget) {
-        return this.widget.detach(node);
-      }
-    }
-
-    enable(nodes, enable) {
-      if (this.widget) {
-        return this.widget.enable(nodes, enable === undefined ? true : enable);
-      }
-    }
-
-    expand(nodes) {
-      if (this.widget) {
-        this.widget.expand(nodes);
-      }
-    }
-
-    expandPath(path, complete) {
-      if (this.widget) {
-        this.widget.expandPath(path, complete);
-      }
-    }
-
-    expandTo(targetNode) {
-      if (this.widget) {
-        this.widget.expandTo(targetNode);
-      }
-    }
-
-    findByText(text) {
-      if (this.widget) {
-        return this.widget.findByText(text);
-      }
-    }
-
-    findByUid(text) {
-      if (this.widget) {
-        return this.widget.findByUid(text);
-      }
-    }
-
-    insertAfter(nodeData, referenceNode) {
-      if (this.widget) {
-        this.widget.insertAfter(nodeData, referenceNode);
-      }
-    }
-
-    insertBefore(nodeData, referenceNode) {
-      if (this.widget) {
-        this.widget.insertBefore(nodeData, referenceNode);
-      }
-    }
-
-
-    parent(node) {
-      if (this.widget) {
-        return this.widget.parent(node);
-      }
-    }
-
-    remove(node) {
-      if (this.widget) {
-        this.widget.remove(node);
-      }
-    }
-
-    select(node) {
-      if (this.widget) {
-        if (node === undefined) {
-          return this.widget.select();
-        }
-        return this.widget.select(node);
-      }
-    }
-
-    setDataSource(dataSource) {
-      if (this.widget) {
-        this.widget.setDataSource(dataSource);
-      }
-    }
-
-    text(node, newText) {
-      if (this.widget) {
-        return this.widget.text(node, newText);
-      }
-    }
-
-
-    toggle(node) {
-      if (this.widget) {
-        this.widget.toggle(node);
-      }
-    }
-
-
-    updateIndeterminate(node) {
-      if (this.widget) {
-        this.widget.updateIndeterminate(node);
-      }
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
 }

@@ -6,77 +6,35 @@ import 'kendo-ui/js/kendo.dataviz.stock.min';
 
 @customElement('k-stock')
 @generateBindables('kendoStockChart')
-@inject(Element)
-export class Stock extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Stock {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoStockChart', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoStockChart')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this._initialize();
+    this.recreate();
   }
 
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  exportImage(options) {
-    if (this.widget) {
-      return this.widget.exportImage(options);
-    }
-  }
-
-  exportPDF(options) {
-    if (this.widget) {
-      return this.widget.exportPDF(options);
-    }
-  }
-
-  exportSVG(options) {
-    if (this.widget) {
-      return this.widget.exportSVG(options);
-    }
-  }
-
-  redraw() {
-    if (this.widget) {
-      return this.widget.redraw();
-    }
-  }
-
-  refresh() {
-    if (this.widget) {
-      return this.widget.refresh();
-    }
-  }
-
-  resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
-  }
-
-  setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  }
-
-  svg() {
-    if (this.widget) {
-      return this.widget.svg();
-    }
-  }
-
-  imageDataURL() {
-    if (this.widget) {
-      return this.widget.imageDataURL();
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

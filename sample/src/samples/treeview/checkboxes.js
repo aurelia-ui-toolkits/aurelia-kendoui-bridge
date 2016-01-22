@@ -44,7 +44,7 @@ export class Checkboxes {
       let checkedNodes = [];
       let message;
 
-      this.checkedNodeIds(this.treeview.widget.dataSource.view(), checkedNodes);
+      this.checkedNodeIds(this.treeview.dataSource.view(), checkedNodes);
 
       if (checkedNodes.length > 0) {
         message = 'IDs of checked nodes: ' + checkedNodes.join(',');

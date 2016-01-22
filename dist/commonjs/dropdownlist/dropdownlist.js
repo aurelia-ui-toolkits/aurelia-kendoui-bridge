@@ -6,8 +6,6 @@ var _createDecoratedClass = (function () { function defineProperties(target, des
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
 var _aureliaFramework = require('aurelia-framework');
@@ -22,10 +20,8 @@ require('kendo-ui/js/kendo.dropdownlist.min');
 
 require('kendo-ui/js/kendo.virtuallist.min');
 
-var DropDownList = (function (_WidgetBase) {
+var DropDownList = (function () {
   var _instanceInitializers = {};
-
-  _inherits(DropDownList, _WidgetBase);
 
   _createDecoratedClass(DropDownList, [{
     key: 'options',
@@ -35,95 +31,63 @@ var DropDownList = (function (_WidgetBase) {
     },
     enumerable: true
   }, {
-    key: 'kDataSource',
-    decorators: [_aureliaFramework.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'kValue',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
   }], null, _instanceInitializers);
 
-  function DropDownList(element) {
+  function DropDownList(element, widgetBase) {
     _classCallCheck(this, _DropDownList);
-
-    _WidgetBase.call(this, 'kendoDropDownList', element);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
-
     _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).setDefaultBindableValues();
   }
 
   DropDownList.prototype.bind = function bind(ctx) {
-    _WidgetBase.prototype.bind.call(this, ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   };
 
-  DropDownList.prototype._initialized = function _initialized() {
+  DropDownList.prototype.recreate = function recreate() {
     var _this = this;
 
-    this.widget.bind('change', function (event) {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+
+    this.kWidget.bind('change', function (event) {
       _this.kValue = event.sender.value();
       _this.kText = event.sender.text();
 
       _commonEvents.fireEvent(_this.element, 'input');
     });
 
-    this.widget.bind('select', function (event) {
+    this.kWidget.bind('select', function (event) {
       _this.kValue = event.sender.value();
       _this.kText = event.sender.text();
 
       _commonEvents.fireEvent(_this.element, 'input');
     });
 
-    this.widget.trigger('change');
+    this.kWidget.trigger('change');
   };
 
-  DropDownList.prototype.enableChanged = function enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  };
-
-  DropDownList.prototype.kValueChanged = function kValueChanged(newValue) {
-    if (this.widget) {
-      this.widget.value(newValue);
-      this.widget.trigger('change');
-    }
-  };
-
-  DropDownList.prototype.value = function value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  };
-
-  DropDownList.prototype.select = function select(index) {
-    if (this.widget) {
-      this.widget.select(index);
-
-      this.widget.trigger('change');
-    }
-  };
-
-  DropDownList.prototype.search = function search(value) {
-    if (this.widget) {
-      this.widget.search(value);
-
-      this.widget.trigger('change');
-    }
+  DropDownList.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _DropDownList = DropDownList;
+  DropDownList = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(DropDownList) || DropDownList;
   DropDownList = _commonDecorators.generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
-  DropDownList = _aureliaFramework.inject(Element)(DropDownList) || DropDownList;
   DropDownList = _aureliaFramework.customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
   return DropDownList;
-})(_commonWidgetBase.WidgetBase);
+})();
 
 exports.DropDownList = DropDownList;

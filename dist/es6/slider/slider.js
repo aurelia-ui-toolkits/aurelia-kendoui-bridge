@@ -5,21 +5,34 @@ import 'kendo-ui/js/kendo.slider.min';
 
 @customAttribute('k-slider')
 @generateBindables('kendoSlider')
-@inject(Element)
-export class Slider extends WidgetBase {
+@inject(Element, WidgetBase)
+export class Slider {
 
   @bindable kValue;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoSlider', element);
-
+  constructor(element, widgetBase) {
     this.element = element;
-    this.options = {};
+    this.widgetBase = widgetBase
+                    .control('kendoSlider')
+                    .linkViewModel(this)
+                    .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this._initialize();
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent,
+      beforeInitialize: (o) => this._beforeInitialize(o)
+    });
   }
 
   _beforeInitialize(options) {
@@ -28,39 +41,7 @@ export class Slider extends WidgetBase {
     }
   }
 
-  kEnableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  enable(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  }
-
-  value(newValue) {
-    if (this.widget) {
-      return this.widget.value(newValue);
-    }
-  }
-
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  }
-
-  resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
-  }
-
-  kValueChanged() {
-    if (this.widget) {
-      this.widget.value(this.kValue);
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }
