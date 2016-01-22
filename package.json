@@ -1,6 +1,6 @@
 {
   "name": "aurelia-kendoui-plugin",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "registry": "github",
   "description": "A set of Telerik KendoUI wrappers for Aurelia allowing developers to easily use KendoUI components in their Aurelia application.",
   "keywords": [
@@ -35,6 +35,7 @@
     },
     "dependencies": {
       "aurelia-binding": "npm:aurelia-binding@^1.0.0-beta.1.0.5",
+      "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1.0.2",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0-beta.1",
       "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1",
       "aurelia-logging": "npm:aurelia-logging@^1.0.0-beta.1",
