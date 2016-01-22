@@ -16,11 +16,13 @@
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
       "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
-      "jquery": "npm:jquery@2.2.0",
+      "jquery": "npm:jquery@2.2.0",             <----
       "kendo-ui": "/vendors",                   <----
       "jquery.min": "npm:jquery@2.2.0"          <----
     }
     ```
+  
+  **Note:** you may have to update the version of Kendo when adding these mappings. Improvements are tracked [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/272)
 5. Install Kendo and the aurelia-kendoui-plugin
 `jspm install aurelia-kendoui-plugin`
 

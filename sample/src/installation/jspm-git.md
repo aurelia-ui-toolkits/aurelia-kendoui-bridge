@@ -25,23 +25,25 @@ and use the following responses to the prompts you will get:
 
 4. Open `config.js` and add a couple of path mappings:
 
-```
-paths: {
-  "*": "dist/*",
-  "github:*": "jspm_packages/github/*",
-  "npm:*": "jspm_packages/npm/*",
-  "kendo:*": "jspm_packages/kendo/*",
-  "kendo.*": "jspm_packages/kendo/bower-kendo-ui@2016.1.120/js/kendo.*.js"    <----
-},
-"map": {
-  "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
-  "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
-  "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
-  "kendo-ui": "kendo:bower-kendo-ui@2016.1.120",
-  "jquery": "npm:jquery@2.2.0",
-  "jquery.min": "npm:jquery@2.2.0"          <----
-}
-```
+  ```
+  paths: {
+    "*": "dist/*",
+    "github:*": "jspm_packages/github/*",
+    "npm:*": "jspm_packages/npm/*",
+    "kendo:*": "jspm_packages/kendo/*",
+    "kendo.*": "jspm_packages/kendo/bower-kendo-ui@2016.1.120/js/kendo.*.js"    <----
+  },
+  "map": {
+    "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
+    "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
+    "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
+    "kendo-ui": "kendo:bower-kendo-ui@2016.1.120",
+    "jquery": "npm:jquery@2.2.0",             <----
+    "jquery.min": "npm:jquery@2.2.0"          <----
+  }
+  ```
+
+  **Note:** you may have to update the version of Kendo when adding these mappings. Improvements are tracked [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/issues/272)
 
 5. Register the plugin
 Now we're going to register the plugin with Aurelia in your "main.js" or equivalent. The configuration function will be passed a builder object that you can use to configure which KendoUI controls you wish to use. You can use all controls in KendoUI Pro by calling the "pro()" method
