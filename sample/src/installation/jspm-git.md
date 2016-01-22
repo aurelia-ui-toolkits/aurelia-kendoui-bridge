@@ -38,8 +38,8 @@ and use the following responses to the prompts you will get:
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
     "kendo-ui": "kendo:bower-kendo-ui@2016.1.120",
-    "jquery": "npm:jquery@2.2.0",             <----
-    "jquery.min": "npm:jquery@2.2.0"          <----
+    "jquery": "github:components/jquery@2.1.4",             <----
+    "jquery.min": "github:components/jquery@2.1.4"          <----
   }
   ```
 
