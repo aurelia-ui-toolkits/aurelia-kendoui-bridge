@@ -27,8 +27,8 @@ System.config({
     "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.0.2",
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.0.0-beta.1.0.3",
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.0.3",
-    "babel": "npm:babel-core@5.8.34",
-    "babel-runtime": "npm:babel-runtime@5.8.34",
+    "babel": "npm:babel-core@5.8.35",
+    "babel-runtime": "npm:babel-runtime@5.8.35",
     "core-js": "npm:core-js@1.2.6",
     "jquery": "github:components/jquery@2.2.0",
     "jquery.min": "github:components/jquery@2.2.0",
@@ -178,7 +178,7 @@ System.config({
       "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.0.1",
       "core-js": "npm:core-js@1.2.6"
     },
-    "npm:babel-runtime@5.8.34": {
+    "npm:babel-runtime@5.8.35": {
       "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:core-js@1.2.6": {
