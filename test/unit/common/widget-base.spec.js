@@ -15,6 +15,10 @@ describe('WidgetBase', () => {
 
   beforeEach(() => {
     initialize();
+
+    // noop angular callback
+    kendo.ui.Widget.prototype.angular = () => {};
+
     templateCompilerFake = {
       initialize: jasmine.createSpy()
     };
