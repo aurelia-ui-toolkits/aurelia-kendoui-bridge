@@ -56,7 +56,7 @@ export class WidgetBase {
 
   control(controlName) {
     if (!controlName || !jQuery.fn[controlName]) {
-      throw new Error('controlName is invalid or not set');
+      throw new Error(`The name of control ${controlName} is invalid or not set`);
     }
 
     this.controlName = controlName;
@@ -122,13 +122,6 @@ export class WidgetBase {
     return widget;
   }
 
-
-  /**
-  * Re-initializes the control
-  */
-  recreate() {
-    this._initialize();
-  }
 
   /**
   * combines all options objects and properties into a single options object

@@ -17,6 +17,7 @@ System.config({
   },
 
   map: {
+    "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.0.5",
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
     "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.0.1",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.8",
