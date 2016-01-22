@@ -6,8 +6,6 @@ var _createDecoratedClass = (function () { function defineProperties(target, des
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
 var _aureliaFramework = require('aurelia-framework');
@@ -18,10 +16,8 @@ var _commonDecorators = require('../common/decorators');
 
 require('kendo-ui/js/kendo.datepicker.min');
 
-var DatePicker = (function (_WidgetBase) {
+var DatePicker = (function () {
   var _instanceInitializers = {};
-
-  _inherits(DatePicker, _WidgetBase);
 
   _createDecoratedClass(DatePicker, [{
     key: 'kValue',
@@ -42,101 +38,45 @@ var DatePicker = (function (_WidgetBase) {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function DatePicker(element) {
+  function DatePicker(element, widgetBase) {
     _classCallCheck(this, _DatePicker);
-
-    _WidgetBase.call(this, 'kendoDatePicker', element);
 
     _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).setDefaultBindableValues();
   }
 
   DatePicker.prototype.bind = function bind(ctx) {
-    _WidgetBase.prototype.bind.call(this, ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
+  };
+
+  DatePicker.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   };
 
   DatePicker.prototype._beforeInitialize = function _beforeInitialize(options) {
     return Object.assign({}, options, { disableDates: this.kDisableDates });
   };
 
-  DatePicker.prototype._initialize = function _initialize() {
-    _WidgetBase.prototype._initialize.call(this);
-  };
-
-  DatePicker.prototype.close = function close(value) {
-    if (this.widget) {
-      return this.widget.close(value);
-    }
-  };
-
-  DatePicker.prototype.destroy = function destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
-  };
-
-  DatePicker.prototype.enable = function enable(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
-  };
-
-  DatePicker.prototype.readonly = function readonly(value) {
-    if (this.widget) {
-      this.widget.readonly(value);
-    }
-  };
-
-  DatePicker.prototype.max = function max(value) {
-    if (this.widget) {
-      return this.widget.max(value);
-    }
-  };
-
-  DatePicker.prototype.min = function min(value) {
-    if (this.widget) {
-      return this.widget.min(value);
-    }
-  };
-
-  DatePicker.prototype.open = function open() {
-    if (this.widget) {
-      this.widget.open();
-    }
-  };
-
-  DatePicker.prototype.setOptions = function setOptions(options) {
-    if (this.widget) {
-      this.widget.setOptions(options);
-    }
-  };
-
-  DatePicker.prototype.value = function value(newValue) {
-    if (this.widget) {
-      if (newValue) {
-        this.widget.value(newValue);
-      } else {
-        return this.widget.value();
-      }
-    }
-  };
-
-  DatePicker.prototype.kValueChanged = function kValueChanged() {
-    if (this.widget) {
-      this.widget.value(this.kValue);
-    }
+  DatePicker.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
   };
 
   var _DatePicker = DatePicker;
+  DatePicker = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(DatePicker) || DatePicker;
   DatePicker = _commonDecorators.generateBindables('kendoDatePicker')(DatePicker) || DatePicker;
-  DatePicker = _aureliaFramework.inject(Element)(DatePicker) || DatePicker;
   DatePicker = _aureliaFramework.customAttribute('k-datepicker')(DatePicker) || DatePicker;
   return DatePicker;
-})(_commonWidgetBase.WidgetBase);
+})();
 
 exports.DatePicker = DatePicker;

@@ -6,53 +6,35 @@ import 'kendo-ui/js/kendo.dataviz.treemap.min';
 
 @customElement('k-treemap')
 @generateBindables('kendoTreeMap')
-@inject(Element)
-export class TreeMap extends WidgetBase {
+@inject(Element, WidgetBase)
+export class TreeMap {
 
-  @bindable kDataSource;
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoTreeMap', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoTreeMap')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
   }
 
   attached() {
-    this._initialize();
+    this.recreate();
   }
 
-  destroy() {
-    if (this.widget) {
-      return this.widget.destroy();
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
-  setDataSource(dataSource) {
-    if (this.widget) {
-      return this.widget.setDataSource(dataSource);
-    }
-  }
-
-  setOptions(value) {
-    if (this.widget) {
-      return this.widget.setOptions(value);
-    }
-  }
-
-  findByUid(text) {
-    if (this.widget) {
-      return this.widget.findByUid(text);
-    }
-  }
-
-  dataItem(tile) {
-    if (this.widget) {
-      return this.widget.dataItem(tile);
-    }
-  }
-
-  resize() {
-    if (this.widget) {
-      return this.widget.resize();
-    }
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

@@ -7,8 +7,6 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
   return {
@@ -22,10 +20,8 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
       generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoSliderMin) {}],
     execute: function () {
-      Slider = (function (_WidgetBase) {
+      Slider = (function () {
         var _instanceInitializers = {};
-
-        _inherits(Slider, _WidgetBase);
 
         _createDecoratedClass(Slider, [{
           key: 'kValue',
@@ -41,21 +37,35 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
           enumerable: true
         }], null, _instanceInitializers);
 
-        function Slider(element) {
+        function Slider(element, widgetBase) {
           _classCallCheck(this, _Slider);
-
-          _WidgetBase.call(this, 'kendoSlider', element);
 
           _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
           this.element = element;
-          this.options = {};
+          this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).setDefaultBindableValues();
         }
 
+        Slider.prototype.bind = function bind(ctx) {
+          this.$parent = ctx;
+        };
+
         Slider.prototype.attached = function attached() {
-          this._initialize();
+          this.recreate();
+        };
+
+        Slider.prototype.recreate = function recreate() {
+          var _this = this;
+
+          this.kWidget = this.widgetBase.createWidget({
+            element: this.element,
+            parentCtx: this.$parent,
+            beforeInitialize: function beforeInitialize(o) {
+              return _this._beforeInitialize(o);
+            }
+          });
         };
 
         Slider.prototype._beforeInitialize = function _beforeInitialize(options) {
@@ -64,48 +74,16 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
           }
         };
 
-        Slider.prototype.kEnableChanged = function kEnableChanged(newValue) {
-          if (this.widget) {
-            this.widget.enable(newValue);
-          }
-        };
-
-        Slider.prototype.enable = function enable(newValue) {
-          if (this.widget) {
-            this.widget.enable(newValue);
-          }
-        };
-
-        Slider.prototype.value = function value(newValue) {
-          if (this.widget) {
-            return this.widget.value(newValue);
-          }
-        };
-
-        Slider.prototype.destroy = function destroy() {
-          if (this.widget) {
-            return this.widget.destroy();
-          }
-        };
-
-        Slider.prototype.resize = function resize() {
-          if (this.widget) {
-            return this.widget.resize();
-          }
-        };
-
-        Slider.prototype.kValueChanged = function kValueChanged() {
-          if (this.widget) {
-            this.widget.value(this.kValue);
-          }
+        Slider.prototype.detached = function detached() {
+          this.widgetBase.destroy(this.kWidget);
         };
 
         var _Slider = Slider;
-        Slider = inject(Element)(Slider) || Slider;
+        Slider = inject(Element, WidgetBase)(Slider) || Slider;
         Slider = generateBindables('kendoSlider')(Slider) || Slider;
         Slider = customAttribute('k-slider')(Slider) || Slider;
         return Slider;
-      })(WidgetBase);
+      })();
 
       _export('Slider', Slider);
     }

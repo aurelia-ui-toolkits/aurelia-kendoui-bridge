@@ -1,9 +1,9 @@
 declare module 'aurelia-kendoui-plugin' {
   import * as LogManager from 'aurelia-logging';
   import 'jquery';
-  import 'kendo-ui/js/kendo.button.min';
   import 'kendo-ui/js/kendo.autocomplete.min';
   import 'kendo-ui/js/kendo.virtuallist.min';
+  import 'kendo-ui/js/kendo.button.min';
   import 'kendo-ui/js/kendo.dataviz.chart.min';
   import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
   import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
@@ -24,10 +24,10 @@ declare module 'aurelia-kendoui-plugin' {
   import 'kendo-ui/js/kendo.slider.min';
   import 'kendo-ui/js/kendo.tabstrip.min';
   import 'kendo-ui/js/kendo.treeview.min';
-  import { Aurelia, customAttribute, bindable, inject, customElement, TaskQueue, noView, processContent, TargetInstruction, children }  from 'aurelia-framework';
+  import { Aurelia, customAttribute, bindable, inject, customElement, TaskQueue, transient, noView, processContent, TargetInstruction, children }  from 'aurelia-framework';
   import { BindableProperty, HtmlBehaviorResource, TemplatingEngine }  from 'aurelia-templating';
   import { metadata }  from 'aurelia-metadata';
-  import { Container }  from 'aurelia-dependency-injection';
+  import { bindingMode }  from 'aurelia-binding';
   
   /**
   * Configure the Aurelia-KendoUI-plugin
@@ -69,107 +69,66 @@ declare module 'aurelia-kendoui-plugin' {
     kendoNumericTextBox(): KendoConfigBuilder;
   }
   export function configure(aurelia: Aurelia, configCallback?: ((builder: KendoConfigBuilder) => void)): any;
-  export class Button extends WidgetBase {
+  export class AutoComplete {
     options: any;
-    constructor(element: any);
+    constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
-    kEnableChanged(): any;
-    enable(enable: any): any;
+    recreate(): any;
+    detached(): any;
   }
-  export class AutoComplete extends WidgetBase {
-    kDataSource: any;
+  export class Button {
     options: any;
-    constructor(element: any);
+    constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
-    kEnableChanged(): any;
-    enable(newValue: any): any;
-    value(newValue: any): any;
-    search(value: any): any;
-    close(value: any): any;
-    dataItem(value: any): any;
-    destroy(): any;
-    focus(): any;
-    readonly(value: any): any;
-    refresh(): any;
-    select(value: any): any;
-    setDataSource(value: any): any;
-    suggest(value: any): any;
+    recreate(): any;
+    detached(): any;
   }
   
   // eslint-disable-line no-unused-vars
-  export class Chart extends WidgetBase {
-    kDataSource: any;
+  export class Chart {
     options: any;
-    constructor(element: any);
-    attached(): any;
-    exportImage(options: any): any;
-    exportPDF(options: any): any;
-    exportSVG(options: any): any;
-    getAxis(name: any): any;
-    redraw(): any;
-    refresh(): any;
-    resize(): any;
-    saveAsPDF(): any;
-    setDataSource(dataSource: any): any;
-    setOptions(value: any): any;
-    svg(): any;
-    imageDataURL(): any;
-    toggleHighlight(show: any, options: any): any;
-    destroy(): any;
-  }
-  
-  // eslint-disable-line no-unused-vars
-  export class Sparkline extends WidgetBase {
-    kDataSource: any;
-    options: any;
-    constructor(element: any);
-    attached(): any;
-    destroy(): any;
-    exportImage(options: any): any;
-    exportPDF(options: any): any;
-    exportSVG(options: any): any;
-    setDataSource(dataSource: any): any;
-    setOptions(value: any): any;
-    svg(): any;
-    imageDataURL(): any;
-    refresh(): any;
-  }
-  
-  // eslint-disable-line no-unused-vars
-  export class Stock extends WidgetBase {
-    kDataSource: any;
-    options: any;
-    constructor(element: any);
-    attached(): any;
-    destroy(): any;
-    exportImage(options: any): any;
-    exportPDF(options: any): any;
-    exportSVG(options: any): any;
-    redraw(): any;
-    refresh(): any;
-    resize(): any;
-    setDataSource(dataSource: any): any;
-    svg(): any;
-    imageDataURL(): any;
-  }
-  
-  // eslint-disable-line no-unused-vars
-  export class TreeMap extends WidgetBase {
-    kDataSource: any;
-    options: any;
-    constructor(element: any);
-    attached(): any;
-    destroy(): any;
-    setDataSource(dataSource: any): any;
-    setOptions(value: any): any;
-    findByUid(text: any): any;
-    dataItem(tile: any): any;
-    resize(): any;
-  }
-  export class ColorPicker extends WidgetBase {
-    options: any;
-    constructor(element: any);
+    constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
+  
+  // eslint-disable-line no-unused-vars
+  export class Sparkline {
+    options: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
+  
+  // eslint-disable-line no-unused-vars
+  export class Stock {
+    options: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
+  
+  // eslint-disable-line no-unused-vars
+  export class TreeMap {
+    options: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
+  export class ColorPicker {
+    options: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    recreate(): any;
+    detached(): any;
   }
   export const constants: any;
   
@@ -286,11 +245,6 @@ declare module 'aurelia-kendoui-plugin' {
   export class WidgetBase {
     
     /**
-      * the Kendo widget after initialization
-      */
-    widget: any;
-    
-    /**
       * The element of the custom element, or the element on which a custom attribute
       * is placed. DOM events will be raised on this element
       */
@@ -319,16 +273,24 @@ declare module 'aurelia-kendoui-plugin' {
     $parent: any;
     
     /**
-      * The templating compiler adaptor
+      * The widgets parent viewmodel (this is the object instance the user will bind to)
       */
-    templateCompiler: TemplateCompiler;
-    constructor(controlName: string, element: Element);
-    bind(ctx: any): any;
+    viewModel: any;
     
     /**
-      * Re-initializes the control
+      * The constructor of a Kendo control
       */
-    recreate(): any;
+    ctor: any;
+    constructor(taskQueue: any, templateCompiler: any);
+    control(controlName: any): any;
+    linkViewModel(viewModel: any): any;
+    
+    /**
+      * collects all options objects
+      * calls all hooks
+      * then initialized the Kendo control as "widget"
+      */
+    createWidget(options: any): any;
     
     /**
       * loops through all bindable properties generated by the @generateBindables decorator
@@ -347,41 +309,29 @@ declare module 'aurelia-kendoui-plugin' {
       * These events are then subscribed to, which when called
       * calls the fireKendoEvent function to raise a DOM event
       */
-    getEventOptions(ctor: any): any;
+    getEventOptions(element: any): any;
     
     /**
-      * destroys the widget when the view gets detached
+      * destroys the widget
       */
-    detached(): any;
+    destroy(widget: any): any;
   }
-  export class DatePicker extends WidgetBase {
+  export class DatePicker {
     kValue: any;
     kDisableDates: any;
     options: any;
-    constructor(element: any);
+    constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
-    close(value: any): any;
-    destroy(): any;
-    enable(newValue: any): any;
-    readonly(value: any): any;
-    max(value: any): any;
-    min(value: any): any;
-    open(): any;
-    setOptions(options: any): any;
-    value(newValue: any): any;
-    kValueChanged(): any;
+    recreate(): any;
+    detached(): any;
   }
-  export class DropDownList extends WidgetBase {
+  export class DropDownList {
     options: any;
-    kDataSource: any;
     kValue: any;
-    constructor(element: any);
+    constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
-    enableChanged(newValue: any): any;
-    kValueChanged(newValue: any): any;
-    value(newValue: any): any;
-    select(index: any): any;
-    search(value: any): any;
+    recreate(): any;
+    detached(): any;
   }
   export class AuCol {
     aggregates: any;
@@ -413,126 +363,66 @@ declare module 'aurelia-kendoui-plugin' {
   }
   
   // eslint-disable-line no-unused-vars
-  export class Grid extends WidgetBase {
+  export class Grid {
     columns: any;
-    kDataSource: any;
     options: any;
-    constructor(element: any);
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
     
     //  initialization in bind() is giving issues in some scenarios
     //  so, attached() is used for this control
     attached(): any;
-    enableChanged(newValue: any): any;
-    addRow(): any;
-    autoFitColumn(value: any): any;
-    cancelChanges(): any;
-    cancelRow(): any;
-    cellIndex(cell: any): any;
-    clearSelection(): any;
-    closeCell(): any;
-    collapseGroup(group: any): any;
-    collapseRow(row: any): any;
-    current(cell: any): any;
-    dataItem(row: any): any;
-    destroy(): any;
-    editCell(cell: any): any;
-    editRow(row: any): any;
-    expandGroup(row: any): any;
-    expandRow(row: any): any;
-    getOptions(): any;
-    hideColumn(column: any): any;
-    lockColumn(column: any): any;
-    refresh(): any;
-    removeRow(row: any): any;
-    reorderColumn(destIndex: any, column: any): any;
-    saveAsExcel(): any;
-    saveAsPDF(): any;
-    saveChanges(): any;
-    saveRow(): any;
-    select(rows: any): any;
-    setDataSource(dataSource: any): any;
-    setOptions(options: any): any;
-    showColumn(column: any): any;
-    unlockColumn(column: any): any;
+    recreate(): any;
+    detached(): any;
   }
-  export class Menu extends WidgetBase {
+  export class Menu {
     options: any;
-    kDataSource: any;
-    constructor(element: any);
+    constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
+    recreate(): any;
+    detached(): any;
   }
-  export class NumericTextBox extends WidgetBase {
-    kValue: any;
+  export class NumericTextBox {
     options: any;
-    constructor(element: any);
+    constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
-    destroy(): any;
-    enable(newValue: any): any;
-    readonly(value: any): any;
-    focus(): any;
-    max(value: any): any;
-    min(value: any): any;
-    step(value: any): any;
-    value(newValue: any): any;
-    kValueChanged(): any;
+    recreate(): any;
+    detached(): any;
   }
   export class PDF {
   }
-  export class ProgressBar extends WidgetBase {
+  export class ProgressBar {
     options: any;
-    constructor(element: any);
+    constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
-    kEnableChanged(newValue: any): any;
-    kValueChanged(newValue: any): any;
-    value(newValue: any): any;
-    enable(newValue: any): any;
+    recreate(): any;
+    detached(): any;
   }
   export class AuScheduler {
   }
-  export class Slider extends WidgetBase {
+  export class Slider {
     kValue: any;
     options: any;
-    constructor(element: any);
-    attached(): any;
-    kEnableChanged(newValue: any): any;
-    enable(newValue: any): any;
-    value(newValue: any): any;
-    destroy(): any;
-    resize(): any;
-    kValueChanged(): any;
-  }
-  export class TabStrip extends WidgetBase {
-    options: any;
-    constructor(element: any);
+    constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
-    enableChanged(newValue: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
+  export class TabStrip {
+    options: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    recreate(): any;
+    detached(): any;
   }
   export class AuToolbar {
   }
-  export class TreeView extends WidgetBase {
-    kDataSource: any;
+  export class TreeView {
     options: any;
-    constructor(element: any);
+    constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
-    append(nodeData: any, parentNode: any, success: any): any;
-    collapse(nodes: any): any;
-    dataItem(node: any): any;
-    destroy(): any;
-    detach(node: any): any;
-    enable(nodes: any, enable: any): any;
-    expand(nodes: any): any;
-    expandPath(path: any, complete: any): any;
-    expandTo(targetNode: any): any;
-    findByText(text: any): any;
-    findByUid(text: any): any;
-    insertAfter(nodeData: any, referenceNode: any): any;
-    insertBefore(nodeData: any, referenceNode: any): any;
-    parent(node: any): any;
-    remove(node: any): any;
-    select(node: any): any;
-    setDataSource(dataSource: any): any;
-    text(node: any, newText: any): any;
-    toggle(node: any): any;
-    updateIndeterminate(node: any): any;
+    recreate(): any;
+    detached(): any;
   }
 }

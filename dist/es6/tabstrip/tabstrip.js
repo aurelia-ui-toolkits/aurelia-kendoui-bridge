@@ -5,24 +5,33 @@ import 'kendo-ui/js/kendo.tabstrip.min';
 
 @customAttribute('k-tabstrip')
 @generateBindables('kendoTabStrip')
-@inject(Element)
-export class TabStrip extends WidgetBase {
+@inject(Element, WidgetBase)
+export class TabStrip {
 
   @bindable options = {};
 
-  constructor(element) {
-    super('kendoTabStrip', element);
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoTabStrip')
+                        .linkViewModel(this)
+                        .setDefaultBindableValues(this);
   }
 
   bind(ctx) {
-    super.bind(ctx);
+    this.$parent = ctx;
 
-    this._initialize();
+    this.recreate();
   }
 
-  enableChanged(newValue) {
-    if (this.widget) {
-      this.widget.enable(newValue);
-    }
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
   }
 }

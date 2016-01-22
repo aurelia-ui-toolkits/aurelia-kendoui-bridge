@@ -7,8 +7,6 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
   return {
@@ -22,10 +20,8 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
       generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoMenuMin) {}],
     execute: function () {
-      Menu = (function (_WidgetBase) {
+      Menu = (function () {
         var _instanceInitializers = {};
-
-        _inherits(Menu, _WidgetBase);
 
         _createDecoratedClass(Menu, [{
           key: 'options',
@@ -34,46 +30,48 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
             return {};
           },
           enumerable: true
-        }, {
-          key: 'kDataSource',
-          decorators: [bindable],
-          initializer: null,
-          enumerable: true
         }], null, _instanceInitializers);
 
-        function Menu(element) {
+        function Menu(element, widgetBase) {
           _classCallCheck(this, _Menu);
-
-          _WidgetBase.call(this, 'kendoMenu', element);
 
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-          _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
+          this.element = element;
+          this.widgetBase = widgetBase.control('kendoMenu').linkViewModel(this).setDefaultBindableValues();
         }
 
         Menu.prototype.bind = function bind(ctx) {
-          _WidgetBase.prototype.bind.call(this, ctx);
+          this.$parent = ctx;
 
-          this._initialize();
+          this.recreate();
         };
 
-        Menu.prototype._initialize = function _initialize() {
+        Menu.prototype.recreate = function recreate() {
+          var element = undefined;
           var ul = $(this.element).find('ul');
           if (ul.has()) {
-            this.target = $(this.element).find('ul').first();
+            element = $(this.element).find('ul').first();
           } else {
-            this.target = $(this.element).appendChild('<ul></ul>');
+            element = $(this.element).appendChild('<ul></ul>');
           }
 
-          _WidgetBase.prototype._initialize.call(this);
+          this.kWidget = this.widgetBase.createWidget({
+            element: element,
+            parentCtx: this.$parent
+          });
+        };
+
+        Menu.prototype.detached = function detached() {
+          this.widgetBase.destroy(this.kWidget);
         };
 
         var _Menu = Menu;
-        Menu = inject(Element)(Menu) || Menu;
+        Menu = inject(Element, WidgetBase)(Menu) || Menu;
         Menu = generateBindables('kendoMenu')(Menu) || Menu;
         Menu = customElement('k-menu')(Menu) || Menu;
         return Menu;
-      })(WidgetBase);
+      })();
 
       _export('Menu', Menu);
     }

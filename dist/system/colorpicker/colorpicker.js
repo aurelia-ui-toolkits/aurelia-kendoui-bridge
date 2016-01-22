@@ -7,8 +7,6 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
   return {
@@ -22,10 +20,8 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
       generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoColorpickerMin) {}],
     execute: function () {
-      ColorPicker = (function (_WidgetBase) {
+      ColorPicker = (function () {
         var _instanceInitializers = {};
-
-        _inherits(ColorPicker, _WidgetBase);
 
         _createDecoratedClass(ColorPicker, [{
           key: 'options',
@@ -36,26 +32,38 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
           enumerable: true
         }], null, _instanceInitializers);
 
-        function ColorPicker(element) {
+        function ColorPicker(element, widgetBase) {
           _classCallCheck(this, _ColorPicker);
 
-          _WidgetBase.call(this, 'kendoColorPicker', element);
-
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+
+          this.element = element;
+          this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this).setDefaultBindableValues();
         }
 
         ColorPicker.prototype.bind = function bind(ctx) {
-          _WidgetBase.prototype.bind.call(this, ctx);
+          this.$parent = ctx;
 
-          this._initialize();
+          this.recreate();
+        };
+
+        ColorPicker.prototype.recreate = function recreate() {
+          this.kWidget = this.widgetBase.createWidget({
+            element: this.element,
+            parentCtx: this.$parent
+          });
+        };
+
+        ColorPicker.prototype.detached = function detached() {
+          this.widgetBase.destroy(this.kWidget);
         };
 
         var _ColorPicker = ColorPicker;
-        ColorPicker = inject(Element)(ColorPicker) || ColorPicker;
+        ColorPicker = inject(Element, WidgetBase)(ColorPicker) || ColorPicker;
         ColorPicker = generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
         ColorPicker = customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
         return ColorPicker;
-      })(WidgetBase);
+      })();
 
       _export('ColorPicker', ColorPicker);
     }

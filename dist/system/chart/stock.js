@@ -7,8 +7,6 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
   return {
@@ -24,17 +22,10 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
       PDF = _pdfPdf.PDF;
     }, function (_kendoUiJsKendoDatavizStockMin) {}],
     execute: function () {
-      Stock = (function (_WidgetBase) {
+      Stock = (function () {
         var _instanceInitializers = {};
 
-        _inherits(Stock, _WidgetBase);
-
         _createDecoratedClass(Stock, [{
-          key: 'kDataSource',
-          decorators: [bindable],
-          initializer: null,
-          enumerable: true
-        }, {
           key: 'options',
           decorators: [bindable],
           initializer: function initializer() {
@@ -43,86 +34,40 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
           enumerable: true
         }], null, _instanceInitializers);
 
-        function Stock(element) {
+        function Stock(element, widgetBase) {
           _classCallCheck(this, _Stock);
 
-          _WidgetBase.call(this, 'kendoStockChart', element);
-
-          _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
-
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+
+          this.element = element;
+          this.widgetBase = widgetBase.control('kendoStockChart').linkViewModel(this).setDefaultBindableValues();
         }
 
+        Stock.prototype.bind = function bind(ctx) {
+          this.$parent = ctx;
+        };
+
         Stock.prototype.attached = function attached() {
-          this._initialize();
+          this.recreate();
         };
 
-        Stock.prototype.destroy = function destroy() {
-          if (this.widget) {
-            return this.widget.destroy();
-          }
+        Stock.prototype.recreate = function recreate() {
+          this.kWidget = this.widgetBase.createWidget({
+            element: this.element,
+            parentCtx: this.$parent
+          });
         };
 
-        Stock.prototype.exportImage = function exportImage(options) {
-          if (this.widget) {
-            return this.widget.exportImage(options);
-          }
-        };
-
-        Stock.prototype.exportPDF = function exportPDF(options) {
-          if (this.widget) {
-            return this.widget.exportPDF(options);
-          }
-        };
-
-        Stock.prototype.exportSVG = function exportSVG(options) {
-          if (this.widget) {
-            return this.widget.exportSVG(options);
-          }
-        };
-
-        Stock.prototype.redraw = function redraw() {
-          if (this.widget) {
-            return this.widget.redraw();
-          }
-        };
-
-        Stock.prototype.refresh = function refresh() {
-          if (this.widget) {
-            return this.widget.refresh();
-          }
-        };
-
-        Stock.prototype.resize = function resize() {
-          if (this.widget) {
-            return this.widget.resize();
-          }
-        };
-
-        Stock.prototype.setDataSource = function setDataSource(dataSource) {
-          if (this.widget) {
-            return this.widget.setDataSource(dataSource);
-          }
-        };
-
-        Stock.prototype.svg = function svg() {
-          if (this.widget) {
-            return this.widget.svg();
-          }
-        };
-
-        Stock.prototype.imageDataURL = function imageDataURL() {
-          if (this.widget) {
-            return this.widget.imageDataURL();
-          }
+        Stock.prototype.detached = function detached() {
+          this.widgetBase.destroy(this.kWidget);
         };
 
         var _Stock = Stock;
-        Stock = inject(Element)(Stock) || Stock;
+        Stock = inject(Element, WidgetBase)(Stock) || Stock;
         Stock = generateBindables('kendoStockChart')(Stock) || Stock;
         Stock = customElement('k-stock')(Stock) || Stock;
         return Stock;
-      })(WidgetBase);
+      })();
 
       _export('Stock', Stock);
     }

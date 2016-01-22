@@ -1,4 +1,4 @@
-define(['exports', './options', './events', './util', './template-compiler', 'aurelia-framework', 'aurelia-dependency-injection'], function (exports, _options, _events, _util, _templateCompiler, _aureliaFramework, _aureliaDependencyInjection) {
+define(['exports', './options', './events', './util', './template-compiler', 'aurelia-framework'], function (exports, _options, _events, _util, _templateCompiler, _aureliaFramework) {
   'use strict';
 
   exports.__esModule = true;
@@ -6,66 +6,78 @@ define(['exports', './options', './events', './util', './template-compiler', 'au
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   var WidgetBase = (function () {
-    function WidgetBase(controlName, element) {
-      _classCallCheck(this, WidgetBase);
+    function WidgetBase(taskQueue, templateCompiler) {
+      _classCallCheck(this, _WidgetBase);
 
-      var container = _aureliaDependencyInjection.Container.instance;
-      this.taskQueue = container.get(_aureliaFramework.TaskQueue);
-      this.templateCompiler = container.get(_templateCompiler.TemplateCompiler);
-      this.templateCompiler.initialize();
+      this.taskQueue = taskQueue;
+      templateCompiler.initialize();
+    }
 
-      this.element = element;
-
-      this.target = this.element;
+    WidgetBase.prototype.control = function control(controlName) {
+      if (!controlName || !jQuery.fn[controlName]) {
+        throw new Error('The name of control ' + controlName + ' is invalid or not set');
+      }
 
       this.controlName = controlName;
 
-      this.setDefaultBindableValues();
-    }
+      var ctor = jQuery.fn[this.controlName];
+      this.kendoOptions = ctor.widget.prototype.options;
+      this.kendoEvents = ctor.widget.prototype.events;
 
-    WidgetBase.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+      return this;
     };
 
-    WidgetBase.prototype._initialize = function _initialize() {
-      if (!this.$parent) {
-        throw new Error('$parent is not set. Did you call bind(ctx) on the widget base?');
+    WidgetBase.prototype.linkViewModel = function linkViewModel(viewModel) {
+      if (!viewModel) {
+        throw new Error('viewModel is not set');
       }
 
-      var target = jQuery(this.target);
+      this.viewModel = viewModel;
 
-      var ctor = target[this.controlName];
-
-      var options = this._getOptions(ctor);
-
-      this._beforeInitialize(options);
-
-      Object.assign(options, { _$parent: this.$parent });
-
-      this.widget = ctor.call(target, options).data(this.controlName);
-
-      this.widget._$parent = this.$parent;
-
-      this._initialized();
+      return this;
     };
 
-    WidgetBase.prototype._beforeInitialize = function _beforeInitialize(options) {};
+    WidgetBase.prototype.createWidget = function createWidget(options) {
+      if (!options) {
+        throw new Error('the createWidget() function needs to be called with an object');
+      }
 
-    WidgetBase.prototype._initialized = function _initialized() {};
+      if (!options.element) {
+        throw new Error('element is not set');
+      }
 
-    WidgetBase.prototype.recreate = function recreate() {
-      this._initialize();
+      if (!options.parentCtx) {
+        throw new Error('parentCtx is not set');
+      }
+
+      var allOptions = this._getOptions(options.element);
+
+      if (options.beforeInitialize) {
+        options.beforeInitialize(allOptions);
+      }
+
+      Object.assign(allOptions, { _$parent: [options.parentCtx] });
+
+      var widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
+
+      widget._$parent = options.parentCtx;
+
+      if (options.afterInitialize) {
+        options.afterInitialize();
+      }
+
+      return widget;
     };
 
-    WidgetBase.prototype._getOptions = function _getOptions(ctor) {
+    WidgetBase.prototype._getOptions = function _getOptions(element) {
       var options = this.getOptionsFromBindables();
-      var eventOptions = this.getEventOptions(ctor);
+      var eventOptions = this.getEventOptions(element);
 
-      return Object.assign({}, this.options, _options.pruneOptions(options), eventOptions);
+      return Object.assign({}, this.viewModel.options, _options.pruneOptions(options), eventOptions);
     };
 
     WidgetBase.prototype.getOptionsFromBindables = function getOptionsFromBindables() {
-      var props = jQuery.fn[this.controlName].widget.prototype.options;
+      var props = this.kendoOptions;
       var options = {};
 
       for (var _iterator = Object.keys(props), _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
@@ -82,18 +94,22 @@ define(['exports', './options', './events', './util', './template-compiler', 'au
 
         var prop = _ref;
 
-        options[prop] = this[_util.getBindablePropertyName(prop)];
+        options[prop] = this.viewModel[_util.getBindablePropertyName(prop)];
       }
 
-      if (this.kDataSource) {
-        options.dataSource = this.kDataSource;
+      if (this.viewModel.kDataSource) {
+        options.dataSource = this.viewModel.kDataSource;
       }
 
       return options;
     };
 
     WidgetBase.prototype.setDefaultBindableValues = function setDefaultBindableValues() {
-      var props = jQuery.fn[this.controlName].widget.prototype.options;
+      if (!this.viewModel) {
+        throw new Error('viewModel is not set');
+      }
+
+      var props = this.kendoOptions;
 
       for (var _iterator2 = Object.keys(props), _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
         var _ref2;
@@ -109,17 +125,19 @@ define(['exports', './options', './events', './util', './template-compiler', 'au
 
         var prop = _ref2;
 
-        this[_util.getBindablePropertyName(prop)] = props[prop];
+        this.viewModel[_util.getBindablePropertyName(prop)] = props[prop];
       }
+
+      return this;
     };
 
-    WidgetBase.prototype.getEventOptions = function getEventOptions(ctor) {
+    WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
       var _this = this;
 
       var options = {};
-      var allowedEvents = ctor.widget.prototype.events;
+      var allowedEvents = this.kendoEvents;
 
-      var events = _util.getEventsFromAttributes(this.element);
+      var events = _util.getEventsFromAttributes(element);
 
       events.forEach(function (event) {
         if (!allowedEvents.includes(event)) {
@@ -128,7 +146,7 @@ define(['exports', './options', './events', './util', './template-compiler', 'au
 
         options[event] = function (e) {
           _this.taskQueue.queueMicroTask(function () {
-            _events.fireKendoEvent(_this.target, _util._hyphenate(event), e);
+            _events.fireKendoEvent(element, _util._hyphenate(event), e);
           });
         };
       });
@@ -136,12 +154,13 @@ define(['exports', './options', './events', './util', './template-compiler', 'au
       return options;
     };
 
-    WidgetBase.prototype.detached = function detached() {
-      if (this.widget) {
-        this.widget.destroy();
-      }
+    WidgetBase.prototype.destroy = function destroy(widget) {
+      widget.destroy();
     };
 
+    var _WidgetBase = WidgetBase;
+    WidgetBase = _aureliaFramework.inject(_aureliaFramework.TaskQueue, _templateCompiler.TemplateCompiler)(WidgetBase) || WidgetBase;
+    WidgetBase = _aureliaFramework.transient()(WidgetBase) || WidgetBase;
     return WidgetBase;
   })();
 

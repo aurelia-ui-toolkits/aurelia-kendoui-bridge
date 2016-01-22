@@ -7,8 +7,6 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
   return {
@@ -22,17 +20,10 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
       generateBindables = _commonDecorators.generateBindables;
     }, function (_kendoUiJsKendoTreeviewMin) {}],
     execute: function () {
-      TreeView = (function (_WidgetBase) {
+      TreeView = (function () {
         var _instanceInitializers = {};
 
-        _inherits(TreeView, _WidgetBase);
-
         _createDecoratedClass(TreeView, [{
-          key: 'kDataSource',
-          decorators: [bindable],
-          initializer: null,
-          enumerable: true
-        }, {
           key: 'options',
           decorators: [bindable],
           initializer: function initializer() {
@@ -41,153 +32,40 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
           enumerable: true
         }], null, _instanceInitializers);
 
-        function TreeView(element) {
+        function TreeView(element, widgetBase) {
           _classCallCheck(this, _TreeView);
 
-          _WidgetBase.call(this, 'kendoTreeView', element);
-
-          _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
-
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+
+          this.element = element;
+          this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this).setDefaultBindableValues();
 
           this.kDataSource = undefined;
         }
 
         TreeView.prototype.bind = function bind(ctx) {
-          _WidgetBase.prototype.bind.call(this, ctx);
+          this.$parent = ctx;
 
-          this._initialize();
+          this.recreate();
         };
 
-        TreeView.prototype.append = function append(nodeData, parentNode, success) {
-          if (this.widget) {
-            return this.widget.append(nodeData, parentNode, success);
-          }
+        TreeView.prototype.recreate = function recreate() {
+          this.kWidget = this.widgetBase.createWidget({
+            element: this.element,
+            parentCtx: this.$parent
+          });
         };
 
-        TreeView.prototype.collapse = function collapse(nodes) {
-          if (this.widget) {
-            this.widget.collapse(nodes);
-          }
-        };
-
-        TreeView.prototype.dataItem = function dataItem(node) {
-          if (this.widget) {
-            return this.widget.dataItem(node);
-          }
-        };
-
-        TreeView.prototype.destroy = function destroy() {
-          if (this.widget) {
-            this.widget.destroy();
-          }
-        };
-
-        TreeView.prototype.detach = function detach(node) {
-          if (this.widget) {
-            return this.widget.detach(node);
-          }
-        };
-
-        TreeView.prototype.enable = function enable(nodes, _enable) {
-          if (this.widget) {
-            return this.widget.enable(nodes, _enable === undefined ? true : _enable);
-          }
-        };
-
-        TreeView.prototype.expand = function expand(nodes) {
-          if (this.widget) {
-            this.widget.expand(nodes);
-          }
-        };
-
-        TreeView.prototype.expandPath = function expandPath(path, complete) {
-          if (this.widget) {
-            this.widget.expandPath(path, complete);
-          }
-        };
-
-        TreeView.prototype.expandTo = function expandTo(targetNode) {
-          if (this.widget) {
-            this.widget.expandTo(targetNode);
-          }
-        };
-
-        TreeView.prototype.findByText = function findByText(text) {
-          if (this.widget) {
-            return this.widget.findByText(text);
-          }
-        };
-
-        TreeView.prototype.findByUid = function findByUid(text) {
-          if (this.widget) {
-            return this.widget.findByUid(text);
-          }
-        };
-
-        TreeView.prototype.insertAfter = function insertAfter(nodeData, referenceNode) {
-          if (this.widget) {
-            this.widget.insertAfter(nodeData, referenceNode);
-          }
-        };
-
-        TreeView.prototype.insertBefore = function insertBefore(nodeData, referenceNode) {
-          if (this.widget) {
-            this.widget.insertBefore(nodeData, referenceNode);
-          }
-        };
-
-        TreeView.prototype.parent = function parent(node) {
-          if (this.widget) {
-            return this.widget.parent(node);
-          }
-        };
-
-        TreeView.prototype.remove = function remove(node) {
-          if (this.widget) {
-            this.widget.remove(node);
-          }
-        };
-
-        TreeView.prototype.select = function select(node) {
-          if (this.widget) {
-            if (node === undefined) {
-              return this.widget.select();
-            }
-            return this.widget.select(node);
-          }
-        };
-
-        TreeView.prototype.setDataSource = function setDataSource(dataSource) {
-          if (this.widget) {
-            this.widget.setDataSource(dataSource);
-          }
-        };
-
-        TreeView.prototype.text = function text(node, newText) {
-          if (this.widget) {
-            return this.widget.text(node, newText);
-          }
-        };
-
-        TreeView.prototype.toggle = function toggle(node) {
-          if (this.widget) {
-            this.widget.toggle(node);
-          }
-        };
-
-        TreeView.prototype.updateIndeterminate = function updateIndeterminate(node) {
-          if (this.widget) {
-            this.widget.updateIndeterminate(node);
-          }
+        TreeView.prototype.detached = function detached() {
+          this.widgetBase.destroy(this.kWidget);
         };
 
         var _TreeView = TreeView;
+        TreeView = inject(Element, WidgetBase)(TreeView) || TreeView;
         TreeView = generateBindables('kendoTreeView')(TreeView) || TreeView;
-        TreeView = inject(Element)(TreeView) || TreeView;
         TreeView = customAttribute('k-treeview')(TreeView) || TreeView;
         return TreeView;
-      })(WidgetBase);
+      })();
 
       _export('TreeView', TreeView);
     }

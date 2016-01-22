@@ -7,21 +7,12 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-  function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-  var Chart = (function (_WidgetBase) {
+  var Chart = (function () {
     var _instanceInitializers = {};
 
-    _inherits(Chart, _WidgetBase);
-
     _createDecoratedClass(Chart, [{
-      key: 'kDataSource',
-      decorators: [_aureliaFramework.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
       key: 'options',
       decorators: [_aureliaFramework.bindable],
       initializer: function initializer() {
@@ -30,110 +21,40 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
       enumerable: true
     }], null, _instanceInitializers);
 
-    function Chart(element) {
+    function Chart(element, widgetBase) {
       _classCallCheck(this, _Chart);
 
-      _WidgetBase.call(this, 'kendoChart', element);
-
-      _defineDecoratedPropertyDescriptor(this, 'kDataSource', _instanceInitializers);
-
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+
+      this.element = element;
+      this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this).setDefaultBindableValues();
     }
 
+    Chart.prototype.bind = function bind(ctx) {
+      this.$parent = ctx;
+    };
+
     Chart.prototype.attached = function attached() {
-      this._initialize();
+      this.recreate();
     };
 
-    Chart.prototype.exportImage = function exportImage(options) {
-      if (this.widget) {
-        return this.widget.exportImage(options);
-      }
+    Chart.prototype.recreate = function recreate() {
+      this.kWidget = this.widgetBase.createWidget({
+        element: this.element,
+        parentCtx: this.$parent
+      });
     };
 
-    Chart.prototype.exportPDF = function exportPDF(options) {
-      if (this.widget) {
-        return this.widget.exportPDF(options);
-      }
-    };
-
-    Chart.prototype.exportSVG = function exportSVG(options) {
-      if (this.widget) {
-        return this.widget.exportSVG(options);
-      }
-    };
-
-    Chart.prototype.getAxis = function getAxis(name) {
-      if (this.widget) {
-        return this.widget.getAxis(name);
-      }
-    };
-
-    Chart.prototype.redraw = function redraw() {
-      if (this.widget) {
-        return this.widget.redraw();
-      }
-    };
-
-    Chart.prototype.refresh = function refresh() {
-      if (this.widget) {
-        return this.widget.refresh();
-      }
-    };
-
-    Chart.prototype.resize = function resize() {
-      if (this.widget) {
-        return this.widget.resize();
-      }
-    };
-
-    Chart.prototype.saveAsPDF = function saveAsPDF() {
-      if (this.widget) {
-        return this.widget.saveAsPDF();
-      }
-    };
-
-    Chart.prototype.setDataSource = function setDataSource(dataSource) {
-      if (this.widget) {
-        return this.widget.setDataSource(dataSource);
-      }
-    };
-
-    Chart.prototype.setOptions = function setOptions(value) {
-      if (this.widget) {
-        return this.widget.setOptions(value);
-      }
-    };
-
-    Chart.prototype.svg = function svg() {
-      if (this.widget) {
-        return this.widget.svg();
-      }
-    };
-
-    Chart.prototype.imageDataURL = function imageDataURL() {
-      if (this.widget) {
-        return this.widget.imageDataURL();
-      }
-    };
-
-    Chart.prototype.toggleHighlight = function toggleHighlight(show, options) {
-      if (this.widget) {
-        return this.widget.toggleHighlight(show, options);
-      }
-    };
-
-    Chart.prototype.destroy = function destroy() {
-      if (this.widget) {
-        return this.widget.destroy();
-      }
+    Chart.prototype.detached = function detached() {
+      this.widgetBase.destroy(this.kWidget);
     };
 
     var _Chart = Chart;
-    Chart = _aureliaFramework.inject(Element)(Chart) || Chart;
+    Chart = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(Chart) || Chart;
     Chart = _commonDecorators.generateBindables('kendoChart')(Chart) || Chart;
     Chart = _aureliaFramework.customElement('k-chart')(Chart) || Chart;
     return Chart;
-  })(_commonWidgetBase.WidgetBase);
+  })();
 
   exports.Chart = Chart;
 });

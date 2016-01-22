@@ -31,7 +31,7 @@ define(['exports', 'aurelia-framework', 'aurelia-templating'], function (exports
     TemplateCompiler.prototype.handleTemplateEvents = function handleTemplateEvents(widget, _event, _args) {
       if (_event !== 'compile' && _event !== 'cleanup') return;
 
-      var $parent = widget._$parent || widget.options._$parent;
+      var $parent = widget._$parent || (widget.options._$parent ? widget.options._$parent[0] : undefined);
 
       if (!$parent) return;
 
