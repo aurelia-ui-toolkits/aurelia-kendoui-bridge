@@ -22,7 +22,7 @@ import 'kendo-ui/js/kendo.grid.min';
 @inject(Element, WidgetBase)
 export class Grid  {
 
-  @children('au-col') columns;
+  @children('k-col') columns;
   @bindable options = {};
 
   constructor(element, widgetBase) {
@@ -86,7 +86,7 @@ File `grid.html.js`
 ```
 <br>
 
-File `au-col`.js
+File `k-col`.js
 <br>
 ```javascript
 import {inject, noView, processContent, bindable, TargetInstruction} from 'aurelia-framework';

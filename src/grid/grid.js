@@ -11,7 +11,7 @@ import 'kendo-ui/js/kendo.grid.min';
 @inject(Element, WidgetBase)
 export class Grid  {
 
-  @children('au-col') columns;
+  @children('k-col') columns;
   @bindable options = {};
 
   constructor(element, widgetBase) {

@@ -2,13 +2,13 @@
     <require from="./basic-use.css"></require>
 
     <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">
-      <au-col title="Contact Name" field="ContactName">
+      <k-col title="Contact Name" field="ContactName">
         <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
         <div class='customer-name'>${ContactName}</div>
-      </au-col>
-      <au-col title="Contact Name" field="ContactName"></au-col>
-      <au-col title="Contact Title" field="ContactTitle"></au-col>
-      <au-col title="Company Name" field="CompanyName"></au-col>
-      <au-col field="Country"></au-col>
+      </k-col>
+      <k-col title="Contact Name" field="ContactName"></k-col>
+      <k-col title="Contact Title" field="ContactTitle"></k-col>
+      <k-col title="Company Name" field="CompanyName"></k-col>
+      <k-col field="Country"></k-col>
     </k-grid>
 </template>

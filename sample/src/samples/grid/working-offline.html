@@ -4,8 +4,8 @@
   <br>
   <br>
   <k-grid k-data-source.bind="datasource" k-pageable.bind="{refresh: true}" k-toolbar.bind="['create']" k-editable="inline">
-    <au-col field="ProductName"></au-col>
-    <au-col field="UnitsInStock" title="Units In Stock" width="120px"></au-col>
-    <au-col command.bind="['edit', 'destroy']" title="&nbsp;" width="250px"></au-col>
+    <k-col field="ProductName"></k-col>
+    <k-col field="UnitsInStock" title="Units In Stock" width="120px"></k-col>
+    <k-col command.bind="['edit', 'destroy']" title="&nbsp;" width="250px"></k-col>
   </k-grid>
 </template>

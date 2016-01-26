@@ -1,10 +1,10 @@
 <template>
   <div id="example">
     <k-grid k-pageable.bind="true" k-height.bind="500" k-toolbar.bind="['create']" k-editable.bind="true" k-data-source.bind="dataSource">
-      <au-col field="ProductName" title="Product Name"></au-col>
-      <au-col field="Category" title="Category" width="180px" editor.bind="categoryDropDownEditor" template.bind="categoryTemplate"></au-col>
-      <au-col field="UnitPrice" title="Unit Price" format="{0:c}" width="130px"></au-col>
-      <au-col command="destroy" title=" " width="150px"></au-col>
+      <k-col field="ProductName" title="Product Name"></k-col>
+      <k-col field="Category" title="Category" width="180px" editor.bind="categoryDropDownEditor" template.bind="categoryTemplate"></k-col>
+      <k-col field="UnitPrice" title="Unit Price" format="{0:c}" width="130px"></k-col>
+      <k-col command="destroy" title=" " width="150px"></k-col>
     </k-grid>
   </div>
 </template>

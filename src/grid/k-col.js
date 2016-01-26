@@ -1,4 +1,4 @@
-import {inject, noView, processContent, bindable, TargetInstruction} from 'aurelia-framework';
+import {inject, noView, processContent, bindable, customElement, TargetInstruction} from 'aurelia-framework';
 
 @noView
 @processContent((compiler, resources, element, instruction) => {
@@ -10,7 +10,8 @@ import {inject, noView, processContent, bindable, TargetInstruction} from 'aurel
   return true;
 })
 @inject(TargetInstruction)
-export class AuCol {
+@customElement('k-col')
+export class Col {
   @bindable aggregates;
   @bindable attributes;
   @bindable columns;
