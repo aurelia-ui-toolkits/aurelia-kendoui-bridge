@@ -1,0 +1,20 @@
+{
+  "title": "Panel Bar",
+  "samples": {
+    "basic-use": {
+      "default": true,
+      "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
+    },
+    "images": {
+      "route": "images",
+      "files": ["html", "js", "css"]
+    },
+    "ajax": {
+      "route": "ajax",
+      "files": ["html", "js", "css"]
+    },
+    "events": {},
+    "api": {}
+  }
+}
