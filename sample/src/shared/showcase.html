@@ -5,9 +5,9 @@
         <h3>${ router.title }</h3>
         <div>
             <div class="col-md-2">
-                <ul class="well nav nav-pills nav-stacked">
-                    <li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}">
-                        <a href.bind="row.href">${row.title}</a>
+                <ul class="k-widget k-reset k-header k-panelbar k-panel">
+                    <li repeat.for="row of router.navigation" class="k-item ${ $first ? 'k-first' : '' } ${ $last ? 'k-last' : ''} ">
+                        <span click.delegate="router.navigate(row.href)" mouseenter.trigger="row.isHovered = true" mouseleave.trigger="row.isHovered = false" class="k-link ${ row.isActive ? 'k-state-selected' : ''} ${ row.isHovered ? 'k-state-hover' : '' }">${row.title}</span>
                     </li>
                 </ul>
             </div>
