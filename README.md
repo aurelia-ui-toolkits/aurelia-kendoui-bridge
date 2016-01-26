@@ -2,7 +2,7 @@
 
 A set of [Aurelia](http://aurelia.io) wrappers for [Kendo UI](http://www.telerik.com/kendo-ui)
 
-**NOTE: This plugin is in active development and we would like to hear your feedback**
+**NOTE: This plugin is in active development and we would love to hear your feedback**
 
 [![Build](https://travis-ci.org/aurelia-ui-toolkits/aurelia-kendoui-bridge.svg)](https://travis-ci.org/aurelia-ui-toolkits/aurelia-kendoui-bridge)
 [![ZenHub](https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png)](https://zenhub.io)
