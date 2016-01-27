@@ -3,7 +3,7 @@ import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 import {TemplateCompiler} from 'src/common/template-compiler';
 import {initialize} from 'aurelia-pal-browser';
-import {TaskQueue} from 'aurelia-framework';
+import {TaskQueue} from 'aurelia-task-queue';
 import {DOM} from 'aurelia-pal';
 import {WidgetBase} from 'src/common/widget-base';
 
