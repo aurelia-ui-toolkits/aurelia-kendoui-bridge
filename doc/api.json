@@ -6,419 +6,6 @@
   "flags": {},
   "children": [
     {
-      "id": 231,
-      "name": "AuCol",
-      "kind": 128,
-      "kindString": "Class",
-      "flags": {
-        "isExported": true
-      },
-      "children": [
-        {
-          "id": 257,
-          "name": "constructor",
-          "kind": 512,
-          "kindString": "Constructor",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 258,
-              "name": "new AuCol",
-              "kind": 16384,
-              "kindString": "Constructor signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 259,
-                  "name": "targetInstruction",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                }
-              ],
-              "type": {
-                "type": "reference",
-                "name": "AuCol",
-                "id": 231,
-                "moduleName": "\"aurelia-kendoui-bridge\""
-              }
-            }
-          ]
-        },
-        {
-          "id": 232,
-          "name": "aggregates",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 233,
-          "name": "attributes",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 234,
-          "name": "columns",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 235,
-          "name": "command",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 236,
-          "name": "editor",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 237,
-          "name": "encoded",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 238,
-          "name": "field",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 239,
-          "name": "filterable",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 240,
-          "name": "footerTemplate",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 241,
-          "name": "format",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 243,
-          "name": "groupFooterTemplate",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 244,
-          "name": "groupHeaderTemplate",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 242,
-          "name": "groupable",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 245,
-          "name": "headerAttributes",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 246,
-          "name": "headerTemplate",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 247,
-          "name": "hidden",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 248,
-          "name": "lockable",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 249,
-          "name": "locked",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 250,
-          "name": "menu",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 251,
-          "name": "minScreenWidth",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 252,
-          "name": "sortable",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 256,
-          "name": "template",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 253,
-          "name": "title",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 254,
-          "name": "values",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 255,
-          "name": "width",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        }
-      ],
-      "groups": [
-        {
-          "title": "Constructors",
-          "kind": 512,
-          "children": [
-            257
-          ]
-        },
-        {
-          "title": "Properties",
-          "kind": 1024,
-          "children": [
-            232,
-            233,
-            234,
-            235,
-            236,
-            237,
-            238,
-            239,
-            240,
-            241,
-            243,
-            244,
-            242,
-            245,
-            246,
-            247,
-            248,
-            249,
-            250,
-            251,
-            252,
-            256,
-            253,
-            254,
-            255
-          ]
-        }
-      ]
-    },
-    {
       "id": 316,
       "name": "AuScheduler",
       "kind": 128,
@@ -983,6 +570,419 @@
             76,
             83,
             81
+          ]
+        }
+      ]
+    },
+    {
+      "id": 247,
+      "name": "Col",
+      "kind": 128,
+      "kindString": "Class",
+      "flags": {
+        "isExported": true
+      },
+      "children": [
+        {
+          "id": 273,
+          "name": "constructor",
+          "kind": 512,
+          "kindString": "Constructor",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 274,
+              "name": "new Col",
+              "kind": 16384,
+              "kindString": "Constructor signature",
+              "flags": {},
+              "parameters": [
+                {
+                  "id": 275,
+                  "name": "targetInstruction",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "name": "Col",
+                "id": 247,
+                "moduleName": "\"aurelia-kendoui-bridge\""
+              }
+            }
+          ]
+        },
+        {
+          "id": 248,
+          "name": "aggregates",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 249,
+          "name": "attributes",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 250,
+          "name": "columns",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 251,
+          "name": "command",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 252,
+          "name": "editor",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 253,
+          "name": "encoded",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 254,
+          "name": "field",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 255,
+          "name": "filterable",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 256,
+          "name": "footerTemplate",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 257,
+          "name": "format",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 259,
+          "name": "groupFooterTemplate",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 260,
+          "name": "groupHeaderTemplate",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 258,
+          "name": "groupable",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 261,
+          "name": "headerAttributes",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 262,
+          "name": "headerTemplate",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 263,
+          "name": "hidden",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 264,
+          "name": "lockable",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 265,
+          "name": "locked",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 266,
+          "name": "menu",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 267,
+          "name": "minScreenWidth",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 268,
+          "name": "sortable",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 272,
+          "name": "template",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 269,
+          "name": "title",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 270,
+          "name": "values",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 271,
+          "name": "width",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        }
+      ],
+      "groups": [
+        {
+          "title": "Constructors",
+          "kind": 512,
+          "children": [
+            273
+          ]
+        },
+        {
+          "title": "Properties",
+          "kind": 1024,
+          "children": [
+            248,
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255,
+            256,
+            257,
+            259,
+            260,
+            258,
+            261,
+            262,
+            263,
+            264,
+            265,
+            266,
+            267,
+            268,
+            272,
+            269,
+            270,
+            271
           ]
         }
       ]
@@ -1558,7 +1558,7 @@
       ]
     },
     {
-      "id": 260,
+      "id": 231,
       "name": "Grid",
       "kind": 128,
       "kindString": "Class",
@@ -1567,7 +1567,7 @@
       },
       "children": [
         {
-          "id": 263,
+          "id": 234,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -1576,14 +1576,14 @@
           },
           "signatures": [
             {
-              "id": 264,
+              "id": 235,
               "name": "new Grid",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 265,
+                  "id": 236,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1594,7 +1594,7 @@
                   }
                 },
                 {
-                  "id": 266,
+                  "id": 237,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1608,14 +1608,14 @@
               "type": {
                 "type": "reference",
                 "name": "Grid",
-                "id": 260,
+                "id": 231,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 261,
+          "id": 232,
           "name": "columns",
           "kind": 1024,
           "kindString": "Property",
@@ -1628,7 +1628,7 @@
           }
         },
         {
-          "id": 262,
+          "id": 233,
           "name": "options",
           "kind": 1024,
           "kindString": "Property",
@@ -1641,7 +1641,7 @@
           }
         },
         {
-          "id": 270,
+          "id": 241,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -1650,7 +1650,7 @@
           },
           "signatures": [
             {
-              "id": 271,
+              "id": 242,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -1663,7 +1663,7 @@
           ]
         },
         {
-          "id": 267,
+          "id": 238,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -1672,14 +1672,14 @@
           },
           "signatures": [
             {
-              "id": 268,
+              "id": 239,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 269,
+                  "id": 240,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1698,7 +1698,7 @@
           ]
         },
         {
-          "id": 274,
+          "id": 245,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -1707,7 +1707,7 @@
           },
           "signatures": [
             {
-              "id": 275,
+              "id": 246,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -1720,7 +1720,7 @@
           ]
         },
         {
-          "id": 272,
+          "id": 243,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -1729,7 +1729,7 @@
           },
           "signatures": [
             {
-              "id": 273,
+              "id": 244,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -1747,25 +1747,25 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            263
+            234
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            261,
-            262
+            232,
+            233
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            270,
-            267,
-            274,
-            272
+            241,
+            238,
+            245,
+            243
           ]
         }
       ]
@@ -5295,16 +5295,16 @@
       "title": "Classes",
       "kind": 128,
       "children": [
-        231,
         316,
         346,
         44,
         57,
         70,
+        247,
         130,
         202,
         217,
-        260,
+        231,
         3,
         276,
         289,

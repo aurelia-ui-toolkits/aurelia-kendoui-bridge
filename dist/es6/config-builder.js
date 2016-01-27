@@ -69,7 +69,7 @@ export class KendoConfigBuilder {
 
   kendoGrid(): KendoConfigBuilder {
     this.resources.push('grid/grid');
-    this.resources.push('grid/au-col');
+    this.resources.push('grid/k-col');
     return this;
   }
 

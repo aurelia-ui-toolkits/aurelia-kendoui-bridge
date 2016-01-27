@@ -131,7 +131,7 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoGrid = function kendoGrid() {
     this.resources.push('grid/grid');
-    this.resources.push('grid/au-col');
+    this.resources.push('grid/k-col');
     return this;
   };
 
@@ -1097,10 +1097,83 @@ var DropDownList = (function () {
 
 exports.DropDownList = DropDownList;
 
-var AuCol = (function () {
+var Grid = (function () {
   var _instanceInitializers10 = {};
 
-  _createDecoratedClass(AuCol, [{
+  _createDecoratedClass(Grid, [{
+    key: 'columns',
+    decorators: [_aureliaFramework.children('k-col')],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'options',
+    decorators: [_aureliaFramework.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers10);
+
+  function Grid(element, widgetBase) {
+    _classCallCheck(this, _Grid);
+
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers10);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers10);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).setDefaultBindableValues();
+  }
+
+  Grid.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  Grid.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  Grid.prototype.recreate = function recreate() {
+    var _this6 = this;
+
+    var element = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+
+    this.kWidget = this.widgetBase.createWidget({
+      element: element,
+      parentCtx: this.$parent,
+      beforeInitialize: function beforeInitialize(o) {
+        return _this6._beforeInitialize(o);
+      }
+    });
+  };
+
+  Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
+    if (this.columns && this.columns.length > 0) {
+      options.columns = this.columns;
+    }
+  };
+
+  Grid.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Grid = Grid;
+  Grid = _aureliaFramework.inject(Element, WidgetBase)(Grid) || Grid;
+  Grid = generateBindables('kendoGrid')(Grid) || Grid;
+  Grid = _aureliaFramework.customElement('k-grid')(Grid) || Grid;
+  return Grid;
+})();
+
+exports.Grid = Grid;
+
+function isInitFromTable(element) {
+  return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
+}
+
+var Col = (function () {
+  var _instanceInitializers11 = {};
+
+  _createDecoratedClass(Col, [{
     key: 'aggregates',
     decorators: [_aureliaFramework.bindable],
     initializer: null,
@@ -1227,152 +1300,80 @@ var AuCol = (function () {
     decorators: [_aureliaFramework.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers10);
+  }], null, _instanceInitializers11);
 
-  function AuCol(targetInstruction) {
-    _classCallCheck(this, _AuCol);
+  function Col(targetInstruction) {
+    _classCallCheck(this, _Col);
 
-    _defineDecoratedPropertyDescriptor(this, 'aggregates', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'aggregates', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'attributes', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'attributes', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'command', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'command', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'editor', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'editor', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'encoded', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'encoded', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'footerTemplate', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'footerTemplate', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'groupFooterTemplate', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'groupFooterTemplate', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'groupHeaderTemplate', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'groupHeaderTemplate', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'headerAttributes', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'headerAttributes', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'headerTemplate', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'headerTemplate', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'hidden', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'hidden', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'lockable', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'lockable', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'locked', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'locked', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'menu', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'menu', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'minScreenWidth', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'minScreenWidth', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'values', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'values', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers11);
 
-    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers11);
 
     this.template = targetInstruction.elementInstruction.template;
   }
 
-  var _AuCol = AuCol;
-  AuCol = _aureliaFramework.inject(_aureliaFramework.TargetInstruction)(AuCol) || AuCol;
-  AuCol = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
+  var _Col = Col;
+  Col = _aureliaFramework.customElement('k-col')(Col) || Col;
+  Col = _aureliaFramework.inject(_aureliaFramework.TargetInstruction)(Col) || Col;
+  Col = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
     var html = element.innerHTML;
     if (html !== '') {
       instruction.template = html;
     }
 
     return true;
-  })(AuCol) || AuCol;
-  AuCol = _aureliaFramework.noView(AuCol) || AuCol;
-  return AuCol;
+  })(Col) || Col;
+  Col = _aureliaFramework.noView(Col) || Col;
+  return Col;
 })();
 
-exports.AuCol = AuCol;
-
-var Grid = (function () {
-  var _instanceInitializers11 = {};
-
-  _createDecoratedClass(Grid, [{
-    key: 'columns',
-    decorators: [_aureliaFramework.children('au-col')],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'options',
-    decorators: [_aureliaFramework.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }], null, _instanceInitializers11);
-
-  function Grid(element, widgetBase) {
-    _classCallCheck(this, _Grid);
-
-    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers11);
-
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers11);
-
-    this.element = element;
-    this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).setDefaultBindableValues();
-  }
-
-  Grid.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
-  };
-
-  Grid.prototype.attached = function attached() {
-    this.recreate();
-  };
-
-  Grid.prototype.recreate = function recreate() {
-    var _this6 = this;
-
-    var element = isInitFromTable(this.element) ? this.element.children[0] : this.element;
-
-    this.kWidget = this.widgetBase.createWidget({
-      element: element,
-      parentCtx: this.$parent,
-      beforeInitialize: function beforeInitialize(o) {
-        return _this6._beforeInitialize(o);
-      }
-    });
-  };
-
-  Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
-    if (this.columns && this.columns.length > 0) {
-      options.columns = this.columns;
-    }
-  };
-
-  Grid.prototype.detached = function detached() {
-    this.widgetBase.destroy(this.kWidget);
-  };
-
-  var _Grid = Grid;
-  Grid = _aureliaFramework.inject(Element, WidgetBase)(Grid) || Grid;
-  Grid = generateBindables('kendoGrid')(Grid) || Grid;
-  Grid = _aureliaFramework.customElement('k-grid')(Grid) || Grid;
-  return Grid;
-})();
-
-exports.Grid = Grid;
-
-function isInitFromTable(element) {
-  return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
-}
+exports.Col = Col;
 
 var Menu = (function () {
   var _instanceInitializers12 = {};

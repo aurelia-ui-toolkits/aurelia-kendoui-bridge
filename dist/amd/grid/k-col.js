@@ -9,10 +9,10 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
 
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-  var AuCol = (function () {
+  var Col = (function () {
     var _instanceInitializers = {};
 
-    _createDecoratedClass(AuCol, [{
+    _createDecoratedClass(Col, [{
       key: 'aggregates',
       decorators: [_aureliaFramework.bindable],
       initializer: null,
@@ -141,8 +141,8 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
       enumerable: true
     }], null, _instanceInitializers);
 
-    function AuCol(targetInstruction) {
-      _classCallCheck(this, _AuCol);
+    function Col(targetInstruction) {
+      _classCallCheck(this, _Col);
 
       _defineDecoratedPropertyDescriptor(this, 'aggregates', _instanceInitializers);
 
@@ -197,19 +197,20 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
       this.template = targetInstruction.elementInstruction.template;
     }
 
-    var _AuCol = AuCol;
-    AuCol = _aureliaFramework.inject(_aureliaFramework.TargetInstruction)(AuCol) || AuCol;
-    AuCol = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
+    var _Col = Col;
+    Col = _aureliaFramework.customElement('k-col')(Col) || Col;
+    Col = _aureliaFramework.inject(_aureliaFramework.TargetInstruction)(Col) || Col;
+    Col = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
       var html = element.innerHTML;
       if (html !== '') {
         instruction.template = html;
       }
 
       return true;
-    })(AuCol) || AuCol;
-    AuCol = _aureliaFramework.noView(AuCol) || AuCol;
-    return AuCol;
+    })(Col) || Col;
+    Col = _aureliaFramework.noView(Col) || Col;
+    return Col;
   })();
 
-  exports.AuCol = AuCol;
+  exports.Col = Col;
 });

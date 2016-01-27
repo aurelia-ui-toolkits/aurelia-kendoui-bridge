@@ -54,7 +54,7 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoGrid = function kendoGrid() {
     this.resources.push('grid/grid');
-    this.resources.push('grid/au-col');
+    this.resources.push('grid/k-col');
     return this;
   };
 

@@ -14,7 +14,7 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
 
     _createDecoratedClass(Grid, [{
       key: 'columns',
-      decorators: [_aureliaFramework.children('au-col')],
+      decorators: [_aureliaFramework.children('k-col')],
       initializer: null,
       enumerable: true
     }, {

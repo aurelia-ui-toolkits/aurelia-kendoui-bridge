@@ -31,7 +31,7 @@ System.register(['aurelia-framework', '../common/widget-base', '../common/decora
 
         _createDecoratedClass(Grid, [{
           key: 'columns',
-          decorators: [children('au-col')],
+          decorators: [children('k-col')],
           initializer: null,
           enumerable: true
         }, {

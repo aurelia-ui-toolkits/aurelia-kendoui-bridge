@@ -23,7 +23,7 @@ import 'kendo-ui/js/kendo.progressbar.min';
 import 'kendo-ui/js/kendo.slider.min';
 import 'kendo-ui/js/kendo.tabstrip.min';
 import 'kendo-ui/js/kendo.treeview.min';
-import {Aurelia,customAttribute,bindable,inject,customElement,TaskQueue,transient,noView,processContent,TargetInstruction,children} from 'aurelia-framework';
+import {Aurelia,customAttribute,bindable,inject,customElement,TaskQueue,transient,children,noView,processContent,TargetInstruction} from 'aurelia-framework';
 import {BindableProperty,HtmlBehaviorResource,TemplatingEngine} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode} from 'aurelia-binding';
@@ -99,7 +99,7 @@ export class KendoConfigBuilder {
 
   kendoGrid(): KendoConfigBuilder {
     this.resources.push('grid/grid');
-    this.resources.push('grid/au-col');
+    this.resources.push('grid/k-col');
     return this;
   }
 
@@ -1036,55 +1036,13 @@ export class DropDownList {
   }
 }
 
-@noView
-@processContent((compiler, resources, element, instruction) => {
-  let html = element.innerHTML;
-  if (html !== '') {
-    instruction.template = html;
-  }
-
-  return true;
-})
-@inject(TargetInstruction)
-export class AuCol {
-  @bindable aggregates;
-  @bindable attributes;
-  @bindable columns;
-  @bindable command;
-  @bindable editor;
-  @bindable encoded;
-  @bindable field;
-  @bindable filterable;
-  @bindable footerTemplate;
-  @bindable format = '';
-  @bindable groupable;
-  @bindable groupFooterTemplate;
-  @bindable groupHeaderTemplate;
-  @bindable headerAttributes;
-  @bindable headerTemplate;
-  @bindable hidden;
-  @bindable lockable;
-  @bindable locked;
-  @bindable menu;
-  @bindable minScreenWidth;
-  @bindable sortable;
-  @bindable title;
-  @bindable values;
-  @bindable width;
-  @bindable template;
-
-  constructor(targetInstruction) {
-    this.template = targetInstruction.elementInstruction.template;
-  }
-}
-
 //eslint-disable-line no-unused-vars
 @customElement('k-grid')
 @generateBindables('kendoGrid')
 @inject(Element, WidgetBase)
 export class Grid  {
 
-  @children('au-col') columns;
+  @children('k-col') columns;
   @bindable options = {};
 
   constructor(element, widgetBase) {
@@ -1134,6 +1092,49 @@ export class Grid  {
 // existing table
 function isInitFromTable(element) {
   return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
+}
+
+@noView
+@processContent((compiler, resources, element, instruction) => {
+  let html = element.innerHTML;
+  if (html !== '') {
+    instruction.template = html;
+  }
+
+  return true;
+})
+@inject(TargetInstruction)
+@customElement('k-col')
+export class Col {
+  @bindable aggregates;
+  @bindable attributes;
+  @bindable columns;
+  @bindable command;
+  @bindable editor;
+  @bindable encoded;
+  @bindable field;
+  @bindable filterable;
+  @bindable footerTemplate;
+  @bindable format = '';
+  @bindable groupable;
+  @bindable groupFooterTemplate;
+  @bindable groupHeaderTemplate;
+  @bindable headerAttributes;
+  @bindable headerTemplate;
+  @bindable hidden;
+  @bindable lockable;
+  @bindable locked;
+  @bindable menu;
+  @bindable minScreenWidth;
+  @bindable sortable;
+  @bindable title;
+  @bindable values;
+  @bindable width;
+  @bindable template;
+
+  constructor(targetInstruction) {
+    this.template = targetInstruction.elementInstruction.template;
+  }
 }
 
 @customElement('k-menu')
