@@ -47,7 +47,7 @@ A couple of examples:
 <br>
 ### How to get to the original Kendo control
 
-There are two ways to get a reference of the original Kendo control: via `view-model.ref` and via the `k-widget` property. Both have their advantages and disadvantages.
+There are two ways to get a reference of the original Kendo control: via `view-model.ref` and via the `k-widget` property.
 
 
 #### view-model.ref
@@ -65,7 +65,24 @@ You can then use the `autocomplete` variable to communicate with the original Ke
 
 **Note**: you have to use `.two-way` binding for now, there is a bug causing it not to work with `.bind`.  
 
-**Note**: the binding system has not finished in `attached()` causing the bound variable (`autocomplete` in the sample above) to be undefined. If you need to communicate with the widget from inside the `attached` or `bind` callback, use the `view-model.ref` approach.
+**IMPORTANT**: **the binding system has not finished in `attached()` causing the bound variable (`autocomplete` in the sample above) to be undefined. If you need to communicate with the widget from inside the `attached` or `bind` callback, use either the `view-model.ref` approach or use the taskque (sample below).**
+
+#### Taskqueue
+
+	import {TaskQueue, inject} from 'aurelia-framework';
+
+	@inject(TaskQueue)
+	export class Sample {
+		constructor(taskQueue) {
+			this.taskQueue = taskQueue;
+		}
+		
+		attached() {
+			this.taskQueue.queueMicroTask(() => {
+			  this.autocomplete.enable(false);
+			});
+		}
+	}
 
 
 <br>
