@@ -15,7 +15,7 @@ export class Index {
   attached() {
     let type = this.params.type;
 
-    this.tabstrip.widget.select(this[type]);
+    this.tabstrip.kWidget.select(this[type]);
   }
 
   tabChanged(e) {
