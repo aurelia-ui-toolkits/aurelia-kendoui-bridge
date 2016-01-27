@@ -73,13 +73,15 @@ require('kendo-ui/js/kendo.tabstrip.min');
 
 require('kendo-ui/js/kendo.treeview.min');
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaTemplating = require('aurelia-templating');
 
 var _aureliaMetadata = require('aurelia-metadata');
 
 var _aureliaBinding = require('aurelia-binding');
+
+var _aureliaTaskQueue = require('aurelia-task-queue');
 
 var KendoConfigBuilder = (function () {
   function KendoConfigBuilder() {
@@ -219,7 +221,7 @@ var AutoComplete = (function () {
 
   _createDecoratedClass(AutoComplete, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -267,9 +269,9 @@ var AutoComplete = (function () {
   };
 
   var _AutoComplete = AutoComplete;
-  AutoComplete = _aureliaFramework.inject(Element, WidgetBase)(AutoComplete) || AutoComplete;
+  AutoComplete = _aureliaDependencyInjection.inject(Element, WidgetBase)(AutoComplete) || AutoComplete;
   AutoComplete = generateBindables('kendoAutoComplete')(AutoComplete) || AutoComplete;
-  AutoComplete = _aureliaFramework.customAttribute('k-autocomplete')(AutoComplete) || AutoComplete;
+  AutoComplete = _aureliaTemplating.customAttribute('k-autocomplete')(AutoComplete) || AutoComplete;
   return AutoComplete;
 })();
 
@@ -280,7 +282,7 @@ var Button = (function () {
 
   _createDecoratedClass(Button, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -314,9 +316,9 @@ var Button = (function () {
   };
 
   var _Button = Button;
-  Button = _aureliaFramework.inject(Element, WidgetBase)(Button) || Button;
+  Button = _aureliaDependencyInjection.inject(Element, WidgetBase)(Button) || Button;
   Button = generateBindables('kendoButton')(Button) || Button;
-  Button = _aureliaFramework.customAttribute('k-button')(Button) || Button;
+  Button = _aureliaTemplating.customAttribute('k-button')(Button) || Button;
   return Button;
 })();
 
@@ -327,7 +329,7 @@ var Chart = (function () {
 
   _createDecoratedClass(Chart, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -363,9 +365,9 @@ var Chart = (function () {
   };
 
   var _Chart = Chart;
-  Chart = _aureliaFramework.inject(Element, WidgetBase)(Chart) || Chart;
+  Chart = _aureliaDependencyInjection.inject(Element, WidgetBase)(Chart) || Chart;
   Chart = generateBindables('kendoChart')(Chart) || Chart;
-  Chart = _aureliaFramework.customElement('k-chart')(Chart) || Chart;
+  Chart = _aureliaTemplating.customElement('k-chart')(Chart) || Chart;
   return Chart;
 })();
 
@@ -376,7 +378,7 @@ var Sparkline = (function () {
 
   _createDecoratedClass(Sparkline, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -412,9 +414,9 @@ var Sparkline = (function () {
   };
 
   var _Sparkline = Sparkline;
-  Sparkline = _aureliaFramework.inject(Element, WidgetBase)(Sparkline) || Sparkline;
+  Sparkline = _aureliaDependencyInjection.inject(Element, WidgetBase)(Sparkline) || Sparkline;
   Sparkline = generateBindables('kendoSparkline')(Sparkline) || Sparkline;
-  Sparkline = _aureliaFramework.customElement('k-sparkline')(Sparkline) || Sparkline;
+  Sparkline = _aureliaTemplating.customElement('k-sparkline')(Sparkline) || Sparkline;
   return Sparkline;
 })();
 
@@ -425,7 +427,7 @@ var Stock = (function () {
 
   _createDecoratedClass(Stock, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -461,9 +463,9 @@ var Stock = (function () {
   };
 
   var _Stock = Stock;
-  Stock = _aureliaFramework.inject(Element, WidgetBase)(Stock) || Stock;
+  Stock = _aureliaDependencyInjection.inject(Element, WidgetBase)(Stock) || Stock;
   Stock = generateBindables('kendoStockChart')(Stock) || Stock;
-  Stock = _aureliaFramework.customElement('k-stock')(Stock) || Stock;
+  Stock = _aureliaTemplating.customElement('k-stock')(Stock) || Stock;
   return Stock;
 })();
 
@@ -474,7 +476,7 @@ var TreeMap = (function () {
 
   _createDecoratedClass(TreeMap, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -510,9 +512,9 @@ var TreeMap = (function () {
   };
 
   var _TreeMap = TreeMap;
-  TreeMap = _aureliaFramework.inject(Element, WidgetBase)(TreeMap) || TreeMap;
+  TreeMap = _aureliaDependencyInjection.inject(Element, WidgetBase)(TreeMap) || TreeMap;
   TreeMap = generateBindables('kendoTreeMap')(TreeMap) || TreeMap;
-  TreeMap = _aureliaFramework.customElement('k-treemap')(TreeMap) || TreeMap;
+  TreeMap = _aureliaTemplating.customElement('k-treemap')(TreeMap) || TreeMap;
   return TreeMap;
 })();
 
@@ -523,7 +525,7 @@ var ColorPicker = (function () {
 
   _createDecoratedClass(ColorPicker, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -557,9 +559,9 @@ var ColorPicker = (function () {
   };
 
   var _ColorPicker = ColorPicker;
-  ColorPicker = _aureliaFramework.inject(Element, WidgetBase)(ColorPicker) || ColorPicker;
+  ColorPicker = _aureliaDependencyInjection.inject(Element, WidgetBase)(ColorPicker) || ColorPicker;
   ColorPicker = generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
-  ColorPicker = _aureliaFramework.customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
+  ColorPicker = _aureliaTemplating.customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
   return ColorPicker;
 })();
 
@@ -738,7 +740,7 @@ var TemplateCompiler = (function () {
   };
 
   var _TemplateCompiler = TemplateCompiler;
-  TemplateCompiler = _aureliaFramework.inject(_aureliaTemplating.TemplatingEngine)(TemplateCompiler) || TemplateCompiler;
+  TemplateCompiler = _aureliaDependencyInjection.inject(_aureliaTemplating.TemplatingEngine)(TemplateCompiler) || TemplateCompiler;
   return TemplateCompiler;
 })();
 
@@ -953,8 +955,8 @@ var WidgetBase = (function () {
   };
 
   var _WidgetBase = WidgetBase;
-  WidgetBase = _aureliaFramework.inject(_aureliaFramework.TaskQueue, TemplateCompiler)(WidgetBase) || WidgetBase;
-  WidgetBase = _aureliaFramework.transient()(WidgetBase) || WidgetBase;
+  WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, TemplateCompiler)(WidgetBase) || WidgetBase;
+  WidgetBase = _aureliaDependencyInjection.transient()(WidgetBase) || WidgetBase;
   return WidgetBase;
 })();
 
@@ -965,17 +967,17 @@ var DatePicker = (function () {
 
   _createDecoratedClass(DatePicker, [{
     key: 'kValue',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'kDisableDates',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -1017,9 +1019,9 @@ var DatePicker = (function () {
   };
 
   var _DatePicker = DatePicker;
-  DatePicker = _aureliaFramework.inject(Element, WidgetBase)(DatePicker) || DatePicker;
+  DatePicker = _aureliaDependencyInjection.inject(Element, WidgetBase)(DatePicker) || DatePicker;
   DatePicker = generateBindables('kendoDatePicker')(DatePicker) || DatePicker;
-  DatePicker = _aureliaFramework.customAttribute('k-datepicker')(DatePicker) || DatePicker;
+  DatePicker = _aureliaTemplating.customAttribute('k-datepicker')(DatePicker) || DatePicker;
   return DatePicker;
 })();
 
@@ -1030,14 +1032,14 @@ var DropDownList = (function () {
 
   _createDecoratedClass(DropDownList, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
     enumerable: true
   }, {
     key: 'kValue',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }], null, _instanceInitializers9);
@@ -1089,9 +1091,9 @@ var DropDownList = (function () {
   };
 
   var _DropDownList = DropDownList;
-  DropDownList = _aureliaFramework.inject(Element, WidgetBase)(DropDownList) || DropDownList;
+  DropDownList = _aureliaDependencyInjection.inject(Element, WidgetBase)(DropDownList) || DropDownList;
   DropDownList = generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
-  DropDownList = _aureliaFramework.customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
+  DropDownList = _aureliaTemplating.customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
   return DropDownList;
 })();
 
@@ -1102,12 +1104,12 @@ var Grid = (function () {
 
   _createDecoratedClass(Grid, [{
     key: 'columns',
-    decorators: [_aureliaFramework.children('k-col')],
+    decorators: [_aureliaTemplating.children('k-col')],
     initializer: null,
     enumerable: true
   }, {
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -1158,9 +1160,9 @@ var Grid = (function () {
   };
 
   var _Grid = Grid;
-  Grid = _aureliaFramework.inject(Element, WidgetBase)(Grid) || Grid;
+  Grid = _aureliaDependencyInjection.inject(Element, WidgetBase)(Grid) || Grid;
   Grid = generateBindables('kendoGrid')(Grid) || Grid;
-  Grid = _aureliaFramework.customElement('k-grid')(Grid) || Grid;
+  Grid = _aureliaTemplating.customElement('k-grid')(Grid) || Grid;
   return Grid;
 })();
 
@@ -1175,129 +1177,129 @@ var Col = (function () {
 
   _createDecoratedClass(Col, [{
     key: 'aggregates',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'attributes',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'columns',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'command',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'editor',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'encoded',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'field',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'filterable',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'footerTemplate',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'format',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return '';
     },
     enumerable: true
   }, {
     key: 'groupable',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'groupFooterTemplate',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'groupHeaderTemplate',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'headerAttributes',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'headerTemplate',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'hidden',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'lockable',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'locked',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'menu',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'minScreenWidth',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'sortable',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'title',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'values',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'width',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'template',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }], null, _instanceInitializers11);
@@ -1359,9 +1361,9 @@ var Col = (function () {
   }
 
   var _Col = Col;
-  Col = _aureliaFramework.customElement('k-col')(Col) || Col;
-  Col = _aureliaFramework.inject(_aureliaFramework.TargetInstruction)(Col) || Col;
-  Col = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
+  Col = _aureliaTemplating.customElement('k-col')(Col) || Col;
+  Col = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(Col) || Col;
+  Col = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
     var html = element.innerHTML;
     if (html !== '') {
       instruction.template = html;
@@ -1369,7 +1371,7 @@ var Col = (function () {
 
     return true;
   })(Col) || Col;
-  Col = _aureliaFramework.noView(Col) || Col;
+  Col = _aureliaTemplating.noView(Col) || Col;
   return Col;
 })();
 
@@ -1380,7 +1382,7 @@ var Menu = (function () {
 
   _createDecoratedClass(Menu, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -1422,9 +1424,9 @@ var Menu = (function () {
   };
 
   var _Menu = Menu;
-  Menu = _aureliaFramework.inject(Element, WidgetBase)(Menu) || Menu;
+  Menu = _aureliaDependencyInjection.inject(Element, WidgetBase)(Menu) || Menu;
   Menu = generateBindables('kendoMenu')(Menu) || Menu;
-  Menu = _aureliaFramework.customElement('k-menu')(Menu) || Menu;
+  Menu = _aureliaTemplating.customElement('k-menu')(Menu) || Menu;
   return Menu;
 })();
 
@@ -1435,7 +1437,7 @@ var NumericTextBox = (function () {
 
   _createDecoratedClass(NumericTextBox, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -1469,9 +1471,9 @@ var NumericTextBox = (function () {
   };
 
   var _NumericTextBox = NumericTextBox;
-  NumericTextBox = _aureliaFramework.inject(Element, WidgetBase)(NumericTextBox) || NumericTextBox;
+  NumericTextBox = _aureliaDependencyInjection.inject(Element, WidgetBase)(NumericTextBox) || NumericTextBox;
   NumericTextBox = generateBindables('kendoNumericTextBox')(NumericTextBox) || NumericTextBox;
-  NumericTextBox = _aureliaFramework.customAttribute('k-numerictextbox')(NumericTextBox) || NumericTextBox;
+  NumericTextBox = _aureliaTemplating.customAttribute('k-numerictextbox')(NumericTextBox) || NumericTextBox;
   return NumericTextBox;
 })();
 
@@ -1488,7 +1490,7 @@ var ProgressBar = (function () {
 
   _createDecoratedClass(ProgressBar, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -1522,9 +1524,9 @@ var ProgressBar = (function () {
   };
 
   var _ProgressBar = ProgressBar;
-  ProgressBar = _aureliaFramework.inject(Element, WidgetBase)(ProgressBar) || ProgressBar;
+  ProgressBar = _aureliaDependencyInjection.inject(Element, WidgetBase)(ProgressBar) || ProgressBar;
   ProgressBar = generateBindables('kendoProgressBar')(ProgressBar) || ProgressBar;
-  ProgressBar = _aureliaFramework.customAttribute('k-progress-bar')(ProgressBar) || ProgressBar;
+  ProgressBar = _aureliaTemplating.customAttribute('k-progress-bar')(ProgressBar) || ProgressBar;
   return ProgressBar;
 })();
 
@@ -1541,12 +1543,12 @@ var Slider = (function () {
 
   _createDecoratedClass(Slider, [{
     key: 'kValue',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -1595,9 +1597,9 @@ var Slider = (function () {
   };
 
   var _Slider = Slider;
-  Slider = _aureliaFramework.inject(Element, WidgetBase)(Slider) || Slider;
+  Slider = _aureliaDependencyInjection.inject(Element, WidgetBase)(Slider) || Slider;
   Slider = generateBindables('kendoSlider')(Slider) || Slider;
-  Slider = _aureliaFramework.customAttribute('k-slider')(Slider) || Slider;
+  Slider = _aureliaTemplating.customAttribute('k-slider')(Slider) || Slider;
   return Slider;
 })();
 
@@ -1608,7 +1610,7 @@ var TabStrip = (function () {
 
   _createDecoratedClass(TabStrip, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -1642,9 +1644,9 @@ var TabStrip = (function () {
   };
 
   var _TabStrip = TabStrip;
-  TabStrip = _aureliaFramework.inject(Element, WidgetBase)(TabStrip) || TabStrip;
+  TabStrip = _aureliaDependencyInjection.inject(Element, WidgetBase)(TabStrip) || TabStrip;
   TabStrip = generateBindables('kendoTabStrip')(TabStrip) || TabStrip;
-  TabStrip = _aureliaFramework.customAttribute('k-tabstrip')(TabStrip) || TabStrip;
+  TabStrip = _aureliaTemplating.customAttribute('k-tabstrip')(TabStrip) || TabStrip;
   return TabStrip;
 })();
 
@@ -1661,7 +1663,7 @@ var TreeView = (function () {
 
   _createDecoratedClass(TreeView, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -1697,9 +1699,9 @@ var TreeView = (function () {
   };
 
   var _TreeView = TreeView;
-  TreeView = _aureliaFramework.inject(Element, WidgetBase)(TreeView) || TreeView;
+  TreeView = _aureliaDependencyInjection.inject(Element, WidgetBase)(TreeView) || TreeView;
   TreeView = generateBindables('kendoTreeView')(TreeView) || TreeView;
-  TreeView = _aureliaFramework.customAttribute('k-treeview')(TreeView) || TreeView;
+  TreeView = _aureliaTemplating.customAttribute('k-treeview')(TreeView) || TreeView;
   return TreeView;
 })();
 

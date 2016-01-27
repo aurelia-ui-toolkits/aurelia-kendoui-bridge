@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.datepicker.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoDatepickerMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.datepicker.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoDatepickerMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -14,17 +14,17 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
 
     _createDecoratedClass(DatePicker, [{
       key: 'kValue',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'kDisableDates',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'options',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
       },
@@ -66,9 +66,9 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
     };
 
     var _DatePicker = DatePicker;
-    DatePicker = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(DatePicker) || DatePicker;
+    DatePicker = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(DatePicker) || DatePicker;
     DatePicker = _commonDecorators.generateBindables('kendoDatePicker')(DatePicker) || DatePicker;
-    DatePicker = _aureliaFramework.customAttribute('k-datepicker')(DatePicker) || DatePicker;
+    DatePicker = _aureliaTemplating.customAttribute('k-datepicker')(DatePicker) || DatePicker;
     return DatePicker;
   })();
 

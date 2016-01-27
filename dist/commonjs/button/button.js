@@ -8,7 +8,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaTemplating = require('aurelia-templating');
 
 var _commonWidgetBase = require('../common/widget-base');
 
@@ -21,7 +23,7 @@ var Button = (function () {
 
   _createDecoratedClass(Button, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -55,9 +57,9 @@ var Button = (function () {
   };
 
   var _Button = Button;
-  Button = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(Button) || Button;
+  Button = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Button) || Button;
   Button = _commonDecorators.generateBindables('kendoButton')(Button) || Button;
-  Button = _aureliaFramework.customAttribute('k-button')(Button) || Button;
+  Button = _aureliaTemplating.customAttribute('k-button')(Button) || Button;
   return Button;
 })();
 

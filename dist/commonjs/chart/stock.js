@@ -8,7 +8,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaTemplating = require('aurelia-templating');
 
 var _commonWidgetBase = require('../common/widget-base');
 
@@ -23,7 +25,7 @@ var Stock = (function () {
 
   _createDecoratedClass(Stock, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -59,9 +61,9 @@ var Stock = (function () {
   };
 
   var _Stock = Stock;
-  Stock = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(Stock) || Stock;
+  Stock = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Stock) || Stock;
   Stock = _commonDecorators.generateBindables('kendoStockChart')(Stock) || Stock;
-  Stock = _aureliaFramework.customElement('k-stock')(Stock) || Stock;
+  Stock = _aureliaTemplating.customElement('k-stock')(Stock) || Stock;
   return Stock;
 })();
 

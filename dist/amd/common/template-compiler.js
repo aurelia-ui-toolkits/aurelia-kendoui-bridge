@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'aurelia-templating'], function (exports, _aureliaFramework, _aureliaTemplating) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating'], function (exports, _aureliaDependencyInjection, _aureliaTemplating) {
   'use strict';
 
   exports.__esModule = true;
@@ -105,7 +105,7 @@ define(['exports', 'aurelia-framework', 'aurelia-templating'], function (exports
     };
 
     var _TemplateCompiler = TemplateCompiler;
-    TemplateCompiler = _aureliaFramework.inject(_aureliaTemplating.TemplatingEngine)(TemplateCompiler) || TemplateCompiler;
+    TemplateCompiler = _aureliaDependencyInjection.inject(_aureliaTemplating.TemplatingEngine)(TemplateCompiler) || TemplateCompiler;
     return TemplateCompiler;
   })();
 

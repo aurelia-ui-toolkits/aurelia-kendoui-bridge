@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.numerictextbox.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoNumerictextboxMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.numerictextbox.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoNumerictextboxMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -14,7 +14,7 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
 
     _createDecoratedClass(NumericTextBox, [{
       key: 'options',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
       },
@@ -48,9 +48,9 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
     };
 
     var _NumericTextBox = NumericTextBox;
-    NumericTextBox = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(NumericTextBox) || NumericTextBox;
+    NumericTextBox = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(NumericTextBox) || NumericTextBox;
     NumericTextBox = _commonDecorators.generateBindables('kendoNumericTextBox')(NumericTextBox) || NumericTextBox;
-    NumericTextBox = _aureliaFramework.customAttribute('k-numerictextbox')(NumericTextBox) || NumericTextBox;
+    NumericTextBox = _aureliaTemplating.customAttribute('k-numerictextbox')(NumericTextBox) || NumericTextBox;
     return NumericTextBox;
   })();
 

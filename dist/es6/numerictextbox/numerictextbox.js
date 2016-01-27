@@ -1,4 +1,5 @@
-import {customAttribute, bindable, inject} from 'aurelia-framework';
+import {inject} from 'aurelia-dependency-injection';
+import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.numerictextbox.min';

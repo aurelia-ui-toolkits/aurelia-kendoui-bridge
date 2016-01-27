@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.slider.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoSliderMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.slider.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoSliderMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -14,12 +14,12 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
 
     _createDecoratedClass(Slider, [{
       key: 'kValue',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'options',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
       },
@@ -68,9 +68,9 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
     };
 
     var _Slider = Slider;
-    Slider = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(Slider) || Slider;
+    Slider = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Slider) || Slider;
     Slider = _commonDecorators.generateBindables('kendoSlider')(Slider) || Slider;
-    Slider = _aureliaFramework.customAttribute('k-slider')(Slider) || Slider;
+    Slider = _aureliaTemplating.customAttribute('k-slider')(Slider) || Slider;
     return Slider;
   })();
 

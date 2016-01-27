@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating'], function (exports, _aureliaDependencyInjection, _aureliaTemplating) {
   'use strict';
 
   exports.__esModule = true;
@@ -14,129 +14,129 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
 
     _createDecoratedClass(Col, [{
       key: 'aggregates',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'attributes',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'columns',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'command',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'editor',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'encoded',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'field',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'filterable',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'footerTemplate',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'format',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return '';
       },
       enumerable: true
     }, {
       key: 'groupable',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'groupFooterTemplate',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'groupHeaderTemplate',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'headerAttributes',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'headerTemplate',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'hidden',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'lockable',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'locked',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'menu',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'minScreenWidth',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'sortable',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'title',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'values',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'width',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }, {
       key: 'template',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
@@ -198,9 +198,9 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
     }
 
     var _Col = Col;
-    Col = _aureliaFramework.customElement('k-col')(Col) || Col;
-    Col = _aureliaFramework.inject(_aureliaFramework.TargetInstruction)(Col) || Col;
-    Col = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
+    Col = _aureliaTemplating.customElement('k-col')(Col) || Col;
+    Col = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(Col) || Col;
+    Col = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
       var html = element.innerHTML;
       if (html !== '') {
         instruction.template = html;
@@ -208,7 +208,7 @@ define(['exports', 'aurelia-framework'], function (exports, _aureliaFramework) {
 
       return true;
     })(Col) || Col;
-    Col = _aureliaFramework.noView(Col) || Col;
+    Col = _aureliaTemplating.noView(Col) || Col;
     return Col;
   })();
 

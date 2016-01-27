@@ -12,7 +12,9 @@ var _util = require('./util');
 
 var _templateCompiler = require('./template-compiler');
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaTaskQueue = require('aurelia-task-queue');
 
 var WidgetBase = (function () {
   function WidgetBase(taskQueue, templateCompiler) {
@@ -168,8 +170,8 @@ var WidgetBase = (function () {
   };
 
   var _WidgetBase = WidgetBase;
-  WidgetBase = _aureliaFramework.inject(_aureliaFramework.TaskQueue, _templateCompiler.TemplateCompiler)(WidgetBase) || WidgetBase;
-  WidgetBase = _aureliaFramework.transient()(WidgetBase) || WidgetBase;
+  WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler)(WidgetBase) || WidgetBase;
+  WidgetBase = _aureliaDependencyInjection.transient()(WidgetBase) || WidgetBase;
   return WidgetBase;
 })();
 

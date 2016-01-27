@@ -1,7 +1,7 @@
-System.register(['aurelia-framework'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating'], function (_export) {
   'use strict';
 
-  var inject, noView, processContent, bindable, customElement, TargetInstruction, Col;
+  var inject, customElement, bindable, noView, processContent, TargetInstruction, Col;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -10,13 +10,14 @@ System.register(['aurelia-framework'], function (_export) {
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
   return {
-    setters: [function (_aureliaFramework) {
-      inject = _aureliaFramework.inject;
-      noView = _aureliaFramework.noView;
-      processContent = _aureliaFramework.processContent;
-      bindable = _aureliaFramework.bindable;
-      customElement = _aureliaFramework.customElement;
-      TargetInstruction = _aureliaFramework.TargetInstruction;
+    setters: [function (_aureliaDependencyInjection) {
+      inject = _aureliaDependencyInjection.inject;
+    }, function (_aureliaTemplating) {
+      customElement = _aureliaTemplating.customElement;
+      bindable = _aureliaTemplating.bindable;
+      noView = _aureliaTemplating.noView;
+      processContent = _aureliaTemplating.processContent;
+      TargetInstruction = _aureliaTemplating.TargetInstruction;
     }],
     execute: function () {
       Col = (function () {

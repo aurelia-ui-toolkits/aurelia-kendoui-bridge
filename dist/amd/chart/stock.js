@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.stock.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _pdfPdf, _kendoUiJsKendoDatavizStockMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.stock.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _pdfPdf, _kendoUiJsKendoDatavizStockMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -14,7 +14,7 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
 
     _createDecoratedClass(Stock, [{
       key: 'options',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
       },
@@ -50,9 +50,9 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
     };
 
     var _Stock = Stock;
-    Stock = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(Stock) || Stock;
+    Stock = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Stock) || Stock;
     Stock = _commonDecorators.generateBindables('kendoStockChart')(Stock) || Stock;
-    Stock = _aureliaFramework.customElement('k-stock')(Stock) || Stock;
+    Stock = _aureliaTemplating.customElement('k-stock')(Stock) || Stock;
     return Stock;
   })();
 

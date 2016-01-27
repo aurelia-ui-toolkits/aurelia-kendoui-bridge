@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.colorpicker.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoColorpickerMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.colorpicker.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoColorpickerMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -14,7 +14,7 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
 
     _createDecoratedClass(ColorPicker, [{
       key: 'options',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
       },
@@ -48,9 +48,9 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
     };
 
     var _ColorPicker = ColorPicker;
-    ColorPicker = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(ColorPicker) || ColorPicker;
+    ColorPicker = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(ColorPicker) || ColorPicker;
     ColorPicker = _commonDecorators.generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
-    ColorPicker = _aureliaFramework.customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
+    ColorPicker = _aureliaTemplating.customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
     return ColorPicker;
   })();
 

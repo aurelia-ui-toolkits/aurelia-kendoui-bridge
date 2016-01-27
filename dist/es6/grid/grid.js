@@ -1,4 +1,5 @@
-import {inject, children, customElement, bindable} from 'aurelia-framework';
+import {inject} from 'aurelia-dependency-injection';
+import {customElement, bindable, children} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars

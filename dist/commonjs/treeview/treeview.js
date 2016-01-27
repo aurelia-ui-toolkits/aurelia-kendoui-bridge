@@ -8,7 +8,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaTemplating = require('aurelia-templating');
 
 var _commonWidgetBase = require('../common/widget-base');
 
@@ -21,7 +23,7 @@ var TreeView = (function () {
 
   _createDecoratedClass(TreeView, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -57,9 +59,9 @@ var TreeView = (function () {
   };
 
   var _TreeView = TreeView;
-  TreeView = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(TreeView) || TreeView;
+  TreeView = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(TreeView) || TreeView;
   TreeView = _commonDecorators.generateBindables('kendoTreeView')(TreeView) || TreeView;
-  TreeView = _aureliaFramework.customAttribute('k-treeview')(TreeView) || TreeView;
+  TreeView = _aureliaTemplating.customAttribute('k-treeview')(TreeView) || TreeView;
   return TreeView;
 })();
 
