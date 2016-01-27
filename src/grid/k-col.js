@@ -1,4 +1,5 @@
-import {inject, noView, processContent, bindable, customElement, TargetInstruction} from 'aurelia-framework';
+import {inject} from 'aurelia-dependency-injection';
+import {customElement, bindable, noView, processContent, TargetInstruction} from 'aurelia-templating';
 
 @noView
 @processContent((compiler, resources, element, instruction) => {

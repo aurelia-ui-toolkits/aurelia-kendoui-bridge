@@ -2,7 +2,8 @@ import {pruneOptions} from './options';
 import {fireKendoEvent} from './events';
 import {getEventsFromAttributes, _hyphenate, getBindablePropertyName} from './util';
 import {TemplateCompiler} from './template-compiler';
-import {inject, TaskQueue, transient} from 'aurelia-framework';
+import {inject, transient} from 'aurelia-dependency-injection';
+import {TaskQueue} from 'aurelia-task-queue';
 
 /**
 * Abstraction of commonly used code across wrappers
