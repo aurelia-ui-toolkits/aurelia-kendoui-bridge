@@ -2,8 +2,8 @@
 
 ### KendoUI Core
 
-1. Install KendoUI Core and the aurelia-kendoui-bridge by issuing the command:
-`jspm install kendo-ui aurelia-kendoui-bridge`
+1. Install KendoUI Core, the aurelia-kendoui-bridge and the css plugin by issuing the command:
+`jspm install kendo-ui aurelia-kendoui-bridge css`
 
 
 2. Open `config.js` and add a couple of path mappings:

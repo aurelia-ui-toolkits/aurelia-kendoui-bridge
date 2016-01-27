@@ -19,8 +19,8 @@ and use the following responses to the prompts you will get:
 <br>
 <br>
 
-3. Run the following command to install the PRO version of kendo and the aurelia-kendoui plugin:
-`jspm install aurelia-kendoui-bridge kendo-ui=kendo:bower-kendo-ui`
+3. Run the following command to install the PRO version of kendo, the aurelia-kendoui plugin and the css plugin:
+`jspm install aurelia-kendoui-bridge kendo-ui=kendo:bower-kendo-ui css`
 <br>
 
 4. Open `config.js` and add a couple of path mappings:
