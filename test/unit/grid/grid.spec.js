@@ -24,17 +24,17 @@ describe('Grid', () => {
 
     sut.columns = [{
       withKendoTemplates: false,
-      template: "template1"
+      template: 'template1'
     }, {
       withKendoTemplates: true,
-      template: "template2"
+      template: 'template2'
     }];
 
 
     sut._beforeInitialize(options);
 
     let columns = options.columns;
-    expect(columns[0].template()).toBe("template1");
-    expect(columns[1].template).toBe("template2");
+    expect(columns[0].template()).toBe('template1');
+    expect(columns[1].template).toBe('template2');
   });
 });
