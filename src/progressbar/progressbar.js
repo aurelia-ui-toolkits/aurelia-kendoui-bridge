@@ -2,9 +2,10 @@ import {inject} from 'aurelia-dependency-injection';
 import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
+import {constants} from '../common/constants';
 import 'kendo-ui/js/kendo.progressbar.min';
 
-@customAttribute('k-progress-bar')
+@customAttribute(`${constants.attributePrefix}progress-bar`)
 @generateBindables('kendoProgressBar')
 @inject(Element, WidgetBase)
 export class ProgressBar {
