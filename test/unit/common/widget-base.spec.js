@@ -179,6 +179,24 @@ describe('WidgetBase', () => {
     expect(widget.options._$parent[0].a).toBe('b');
   });
 
+
+  it('sets viewResources on the widget', () => {
+    sut._getOptions = jasmine.createSpy().and.returnValue({});
+    sut.controlName = 'kendoButton';
+    let parentCtx = { a: 'b'};
+    let viewResources = {
+      'a': 'b'
+    };
+    sut.useViewResources(viewResources);
+    let widget = sut.createWidget({
+      element: DOM.createElement('div'),
+      parentCtx: parentCtx
+    });
+
+    expect(widget._$resources).toBe(viewResources);
+    expect(widget.options._$resources[0].a).toBe('b');
+  });
+
   it('getOptionsFromBindables harvests properties from viewModel', () => {
     sut.kendoOptions = {
       option1: null,

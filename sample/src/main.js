@@ -12,7 +12,6 @@ export function configure(aurelia) {
   aurelia.use.globalResources('shared/markdown');
   aurelia.use.globalResources('shared/logger');
   aurelia.use.globalResources('shared/au-code');
-  aurelia.use.globalResources('samples/grid/capitalize');
 
   aurelia.start()
   .then(au => {

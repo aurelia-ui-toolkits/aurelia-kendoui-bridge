@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, bindable, children} from 'aurelia-templating';
+import {customElement, bindable, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
@@ -9,17 +9,18 @@ import 'kendo-ui/js/kendo.grid.min';
 
 @customElement('k-grid')
 @generateBindables('kendoGrid')
-@inject(Element, WidgetBase)
+@inject(Element, WidgetBase, ViewResources)
 export class Grid  {
 
   @children('k-col') columns;
   @bindable options = {};
 
-  constructor(element, widgetBase) {
+  constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoGrid')
                         .linkViewModel(this)
+                        .useViewResources(viewResources)
                         .setDefaultBindableValues();
   }
 
