@@ -18,6 +18,7 @@
     "initialization-from-table": {},
     "inline-editing": {},
     "popup-editing": {},
-    "working-offline": {}
+    "working-offline": {},
+    "advanced": {}
   }
 }
