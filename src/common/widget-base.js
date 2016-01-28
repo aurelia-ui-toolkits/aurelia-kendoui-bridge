@@ -4,6 +4,7 @@ import {getEventsFromAttributes, _hyphenate, getBindablePropertyName} from './ut
 import {TemplateCompiler} from './template-compiler';
 import {inject, transient} from 'aurelia-dependency-injection';
 import {TaskQueue} from 'aurelia-task-queue';
+import {ViewResources} from 'aurelia-templating';
 
 /**
 * Abstraction of commonly used code across wrappers
@@ -79,6 +80,16 @@ export class WidgetBase {
     return this;
   }
 
+  useViewResources(resources) {
+    if (!resources) {
+      throw new Error('resources is not set');
+    }
+
+    this.viewResources = resources;
+
+    return this;
+  }
+
   /**
   * collects all options objects
   * calls all hooks
@@ -109,12 +120,16 @@ export class WidgetBase {
     // add parent context to options
     // deepExtend in kendo.core will fail with stack
     // overflow if we don't put it in an array :-\
-    Object.assign(allOptions, { _$parent: [options.parentCtx] });
+    Object.assign(allOptions, {
+      _$parent: [options.parentCtx],
+      _$resources: [this.viewResources]
+    });
 
     // instantiate the Kendo control
     let widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
 
     widget._$parent = options.parentCtx;
+    widget._$resources = this.viewResources;
 
     if (options.afterInitialize) {
       options.afterInitialize();
