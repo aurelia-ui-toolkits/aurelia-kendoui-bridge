@@ -2,17 +2,18 @@ import {inject} from 'aurelia-dependency-injection';
 import {customElement, bindable, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
+import {constants} from '../common/constants';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 import 'kendo-ui/js/kendo.data.signalr.min';
 import 'kendo-ui/js/kendo.filtercell.min';
 import 'kendo-ui/js/kendo.grid.min';
 
-@customElement('k-grid')
+@customElement(`${constants.elementPrefix}grid`)
 @generateBindables('kendoGrid')
 @inject(Element, WidgetBase, ViewResources)
 export class Grid  {
 
-  @children('k-col') columns;
+  @children(`${constants.elementPrefix}col`) columns;
   @bindable options = {};
 
   constructor(element, widgetBase, viewResources) {

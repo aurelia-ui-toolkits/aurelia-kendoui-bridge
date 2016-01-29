@@ -2,9 +2,10 @@ import {inject} from 'aurelia-dependency-injection';
 import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
+import {constants} from '../common/constants';
 import 'kendo-ui/js/kendo.datepicker.min';
 
-@customAttribute('k-datepicker')
+@customAttribute(`${constants.attributePrefix}datepicker`)
 @generateBindables('kendoDatePicker')
 @inject(Element, WidgetBase)
 export class DatePicker {
