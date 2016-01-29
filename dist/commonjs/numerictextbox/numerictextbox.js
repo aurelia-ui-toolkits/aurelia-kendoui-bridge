@@ -8,7 +8,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaTemplating = require('aurelia-templating');
 
 var _commonWidgetBase = require('../common/widget-base');
 
@@ -21,7 +23,7 @@ var NumericTextBox = (function () {
 
   _createDecoratedClass(NumericTextBox, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -55,9 +57,9 @@ var NumericTextBox = (function () {
   };
 
   var _NumericTextBox = NumericTextBox;
-  NumericTextBox = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(NumericTextBox) || NumericTextBox;
+  NumericTextBox = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(NumericTextBox) || NumericTextBox;
   NumericTextBox = _commonDecorators.generateBindables('kendoNumericTextBox')(NumericTextBox) || NumericTextBox;
-  NumericTextBox = _aureliaFramework.customAttribute('k-numerictextbox')(NumericTextBox) || NumericTextBox;
+  NumericTextBox = _aureliaTemplating.customAttribute('k-numerictextbox')(NumericTextBox) || NumericTextBox;
   return NumericTextBox;
 })();
 

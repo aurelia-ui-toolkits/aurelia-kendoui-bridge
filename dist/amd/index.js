@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', 'aurelia-logging', './config-builder', 'jquery'], function (exports, _aureliaFramework, _aureliaLogging, _configBuilder, _jquery) {
+define(['exports', 'aurelia-logging', './config-builder', 'jquery'], function (exports, _aureliaLogging, _configBuilder, _jquery) {
   'use strict';
 
   exports.__esModule = true;

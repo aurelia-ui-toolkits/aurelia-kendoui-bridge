@@ -8,7 +8,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaTemplating = require('aurelia-templating');
 
 var _commonWidgetBase = require('../common/widget-base');
 
@@ -27,12 +29,12 @@ var Grid = (function () {
 
   _createDecoratedClass(Grid, [{
     key: 'columns',
-    decorators: [_aureliaFramework.children('au-col')],
+    decorators: [_aureliaTemplating.children('k-col')],
     initializer: null,
     enumerable: true
   }, {
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -83,9 +85,9 @@ var Grid = (function () {
   };
 
   var _Grid = Grid;
-  Grid = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(Grid) || Grid;
+  Grid = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Grid) || Grid;
   Grid = _commonDecorators.generateBindables('kendoGrid')(Grid) || Grid;
-  Grid = _aureliaFramework.customElement('k-grid')(Grid) || Grid;
+  Grid = _aureliaTemplating.customElement('k-grid')(Grid) || Grid;
   return Grid;
 })();
 

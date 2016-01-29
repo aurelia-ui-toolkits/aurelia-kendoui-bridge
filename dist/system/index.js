@@ -1,7 +1,7 @@
-System.register(['aurelia-framework', 'aurelia-logging', './config-builder', 'jquery'], function (_export) {
+System.register(['aurelia-logging', './config-builder', 'jquery'], function (_export) {
   'use strict';
 
-  var Aurelia, LogManager, KendoConfigBuilder, logger;
+  var LogManager, KendoConfigBuilder, logger;
 
   _export('configure', configure);
 
@@ -25,9 +25,7 @@ System.register(['aurelia-framework', 'aurelia-logging', './config-builder', 'jq
   }
 
   return {
-    setters: [function (_aureliaFramework) {
-      Aurelia = _aureliaFramework.Aurelia;
-    }, function (_aureliaLogging) {
+    setters: [function (_aureliaLogging) {
       LogManager = _aureliaLogging;
     }, function (_configBuilder) {
       KendoConfigBuilder = _configBuilder.KendoConfigBuilder;

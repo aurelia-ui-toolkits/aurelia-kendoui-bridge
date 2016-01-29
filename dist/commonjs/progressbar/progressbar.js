@@ -8,7 +8,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaTemplating = require('aurelia-templating');
 
 var _commonWidgetBase = require('../common/widget-base');
 
@@ -21,7 +23,7 @@ var ProgressBar = (function () {
 
   _createDecoratedClass(ProgressBar, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
@@ -55,9 +57,9 @@ var ProgressBar = (function () {
   };
 
   var _ProgressBar = ProgressBar;
-  ProgressBar = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(ProgressBar) || ProgressBar;
+  ProgressBar = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(ProgressBar) || ProgressBar;
   ProgressBar = _commonDecorators.generateBindables('kendoProgressBar')(ProgressBar) || ProgressBar;
-  ProgressBar = _aureliaFramework.customAttribute('k-progress-bar')(ProgressBar) || ProgressBar;
+  ProgressBar = _aureliaTemplating.customAttribute('k-progress-bar')(ProgressBar) || ProgressBar;
   return ProgressBar;
 })();
 

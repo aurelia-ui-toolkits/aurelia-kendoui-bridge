@@ -8,142 +8,144 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
-var AuCol = (function () {
+var _aureliaTemplating = require('aurelia-templating');
+
+var Col = (function () {
   var _instanceInitializers = {};
 
-  _createDecoratedClass(AuCol, [{
+  _createDecoratedClass(Col, [{
     key: 'aggregates',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'attributes',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'columns',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'command',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'editor',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'encoded',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'field',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'filterable',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'footerTemplate',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'format',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return '';
     },
     enumerable: true
   }, {
     key: 'groupable',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'groupFooterTemplate',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'groupHeaderTemplate',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'headerAttributes',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'headerTemplate',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'hidden',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'lockable',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'locked',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'menu',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'minScreenWidth',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'sortable',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'title',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'values',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'width',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }, {
     key: 'template',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }], null, _instanceInitializers);
 
-  function AuCol(targetInstruction) {
-    _classCallCheck(this, _AuCol);
+  function Col(targetInstruction) {
+    _classCallCheck(this, _Col);
 
     _defineDecoratedPropertyDescriptor(this, 'aggregates', _instanceInitializers);
 
@@ -198,18 +200,19 @@ var AuCol = (function () {
     this.template = targetInstruction.elementInstruction.template;
   }
 
-  var _AuCol = AuCol;
-  AuCol = _aureliaFramework.inject(_aureliaFramework.TargetInstruction)(AuCol) || AuCol;
-  AuCol = _aureliaFramework.processContent(function (compiler, resources, element, instruction) {
+  var _Col = Col;
+  Col = _aureliaTemplating.customElement('k-col')(Col) || Col;
+  Col = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(Col) || Col;
+  Col = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
     var html = element.innerHTML;
     if (html !== '') {
       instruction.template = html;
     }
 
     return true;
-  })(AuCol) || AuCol;
-  AuCol = _aureliaFramework.noView(AuCol) || AuCol;
-  return AuCol;
+  })(Col) || Col;
+  Col = _aureliaTemplating.noView(Col) || Col;
+  return Col;
 })();
 
-exports.AuCol = AuCol;
+exports.Col = Col;

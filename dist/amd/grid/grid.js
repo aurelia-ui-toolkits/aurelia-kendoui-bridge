@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.data.signalr.min', 'kendo-ui/js/kendo.filtercell.min', 'kendo-ui/js/kendo.grid.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _pdfPdf, _kendoUiJsKendoDataSignalrMin, _kendoUiJsKendoFiltercellMin, _kendoUiJsKendoGridMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.data.signalr.min', 'kendo-ui/js/kendo.filtercell.min', 'kendo-ui/js/kendo.grid.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _pdfPdf, _kendoUiJsKendoDataSignalrMin, _kendoUiJsKendoFiltercellMin, _kendoUiJsKendoGridMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -14,12 +14,12 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
 
     _createDecoratedClass(Grid, [{
       key: 'columns',
-      decorators: [_aureliaFramework.children('au-col')],
+      decorators: [_aureliaTemplating.children('k-col')],
       initializer: null,
       enumerable: true
     }, {
       key: 'options',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
       },
@@ -70,9 +70,9 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
     };
 
     var _Grid = Grid;
-    Grid = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(Grid) || Grid;
+    Grid = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Grid) || Grid;
     Grid = _commonDecorators.generateBindables('kendoGrid')(Grid) || Grid;
-    Grid = _aureliaFramework.customElement('k-grid')(Grid) || Grid;
+    Grid = _aureliaTemplating.customElement('k-grid')(Grid) || Grid;
     return Grid;
   })();
 

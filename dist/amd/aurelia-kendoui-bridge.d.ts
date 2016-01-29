@@ -24,10 +24,11 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo-ui/js/kendo.slider.min';
   import 'kendo-ui/js/kendo.tabstrip.min';
   import 'kendo-ui/js/kendo.treeview.min';
-  import { Aurelia, customAttribute, bindable, inject, customElement, TaskQueue, transient, noView, processContent, TargetInstruction, children }  from 'aurelia-framework';
-  import { BindableProperty, HtmlBehaviorResource, TemplatingEngine }  from 'aurelia-templating';
+  import { inject, transient }  from 'aurelia-dependency-injection';
+  import { customAttribute, bindable, customElement, BindableProperty, HtmlBehaviorResource, TemplatingEngine, children, noView, processContent, TargetInstruction }  from 'aurelia-templating';
   import { metadata }  from 'aurelia-metadata';
   import { bindingMode }  from 'aurelia-binding';
+  import { TaskQueue }  from 'aurelia-task-queue';
   
   /**
   * Configure the Aurelia-KendoUI-bridge
@@ -68,7 +69,7 @@ declare module 'aurelia-kendoui-bridge' {
     kendoDatePicker(): KendoConfigBuilder;
     kendoNumericTextBox(): KendoConfigBuilder;
   }
-  export function configure(aurelia: Aurelia, configCallback?: ((builder: KendoConfigBuilder) => void)): any;
+  export function configure(aurelia: any, configCallback: any): any;
   export class AutoComplete {
     options: any;
     constructor(element: any, widgetBase: any);
@@ -333,7 +334,21 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class AuCol {
+  
+  // eslint-disable-line no-unused-vars
+  export class Grid {
+    columns: any;
+    options: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    
+    //  initialization in bind() is giving issues in some scenarios
+    //  so, attached() is used for this control
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
+  export class Col {
     aggregates: any;
     attributes: any;
     columns: any;
@@ -360,20 +375,6 @@ declare module 'aurelia-kendoui-bridge' {
     width: any;
     template: any;
     constructor(targetInstruction: any);
-  }
-  
-  // eslint-disable-line no-unused-vars
-  export class Grid {
-    columns: any;
-    options: any;
-    constructor(element: any, widgetBase: any);
-    bind(ctx: any): any;
-    
-    //  initialization in bind() is giving issues in some scenarios
-    //  so, attached() is used for this control
-    attached(): any;
-    recreate(): any;
-    detached(): any;
   }
   export class Menu {
     options: any;

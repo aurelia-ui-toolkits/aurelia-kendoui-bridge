@@ -1,0 +1,14 @@
+<template>
+  <require from="./counter"></require>
+  <k-grid k-data-source.bind="datasource">
+    <k-col title="Contact Name" field="ContactName">
+      <counter></counter>
+
+      <div if.bind="true">This should be visible</div>
+      <div if.bind="false">This should be hidden</div>
+    </k-col>
+    <k-col title="Contact Name" field="ContactName">
+      ${ContactName | capitalize}
+    </k-col>
+  </k-grid>
+</template>

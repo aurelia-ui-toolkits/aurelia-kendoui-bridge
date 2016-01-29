@@ -55,7 +55,7 @@ Each of the page showing a KendoUI control converted to an Aurelia component, ha
 **Grid view**
 
 <p align=center>
-  <img src="http://i.imgur.com/XqCK5aO.png"></img>
+  <img src="https://i.imgur.com/hfsa6T8.png"></img>
  <br><br>
 Image 5
 </p>

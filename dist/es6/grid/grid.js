@@ -1,4 +1,5 @@
-import {inject, children, customElement, bindable} from 'aurelia-framework';
+import {inject} from 'aurelia-dependency-injection';
+import {customElement, bindable, children} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
@@ -11,7 +12,7 @@ import 'kendo-ui/js/kendo.grid.min';
 @inject(Element, WidgetBase)
 export class Grid  {
 
-  @children('au-col') columns;
+  @children('k-col') columns;
   @bindable options = {};
 
   constructor(element, widgetBase) {

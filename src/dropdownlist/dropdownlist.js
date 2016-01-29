@@ -1,11 +1,13 @@
-import {customAttribute, bindable, inject} from 'aurelia-framework';
+import {inject} from 'aurelia-dependency-injection';
+import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {fireEvent} from '../common/events';
+import {constants} from '../common/constants';
 import 'kendo-ui/js/kendo.dropdownlist.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
-@customAttribute('k-drop-down-list')
+@customAttribute(`${constants.attributePrefix}drop-down-list`)
 @generateBindables('kendoDropDownList')
 @inject(Element, WidgetBase)
 export class DropDownList {

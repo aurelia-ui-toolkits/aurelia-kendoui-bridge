@@ -8,7 +8,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaFramework = require('aurelia-framework');
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaTemplating = require('aurelia-templating');
 
 var _commonWidgetBase = require('../common/widget-base');
 
@@ -25,14 +27,14 @@ var DropDownList = (function () {
 
   _createDecoratedClass(DropDownList, [{
     key: 'options',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
     enumerable: true
   }, {
     key: 'kValue',
-    decorators: [_aureliaFramework.bindable],
+    decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
   }], null, _instanceInitializers);
@@ -84,9 +86,9 @@ var DropDownList = (function () {
   };
 
   var _DropDownList = DropDownList;
-  DropDownList = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(DropDownList) || DropDownList;
+  DropDownList = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(DropDownList) || DropDownList;
   DropDownList = _commonDecorators.generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
-  DropDownList = _aureliaFramework.customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
+  DropDownList = _aureliaTemplating.customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
   return DropDownList;
 })();
 

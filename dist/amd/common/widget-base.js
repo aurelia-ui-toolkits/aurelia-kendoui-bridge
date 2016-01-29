@@ -1,4 +1,4 @@
-define(['exports', './options', './events', './util', './template-compiler', 'aurelia-framework'], function (exports, _options, _events, _util, _templateCompiler, _aureliaFramework) {
+define(['exports', './options', './events', './util', './template-compiler', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (exports, _options, _events, _util, _templateCompiler, _aureliaDependencyInjection, _aureliaTaskQueue) {
   'use strict';
 
   exports.__esModule = true;
@@ -159,8 +159,8 @@ define(['exports', './options', './events', './util', './template-compiler', 'au
     };
 
     var _WidgetBase = WidgetBase;
-    WidgetBase = _aureliaFramework.inject(_aureliaFramework.TaskQueue, _templateCompiler.TemplateCompiler)(WidgetBase) || WidgetBase;
-    WidgetBase = _aureliaFramework.transient()(WidgetBase) || WidgetBase;
+    WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler)(WidgetBase) || WidgetBase;
+    WidgetBase = _aureliaDependencyInjection.transient()(WidgetBase) || WidgetBase;
     return WidgetBase;
   })();
 

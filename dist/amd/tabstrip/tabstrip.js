@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-framework', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.tabstrip.min'], function (exports, _aureliaFramework, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoTabstripMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.tabstrip.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoTabstripMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -14,7 +14,7 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
 
     _createDecoratedClass(TabStrip, [{
       key: 'options',
-      decorators: [_aureliaFramework.bindable],
+      decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
       },
@@ -48,9 +48,9 @@ define(['exports', 'aurelia-framework', '../common/widget-base', '../common/deco
     };
 
     var _TabStrip = TabStrip;
-    TabStrip = _aureliaFramework.inject(Element, _commonWidgetBase.WidgetBase)(TabStrip) || TabStrip;
+    TabStrip = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(TabStrip) || TabStrip;
     TabStrip = _commonDecorators.generateBindables('kendoTabStrip')(TabStrip) || TabStrip;
-    TabStrip = _aureliaFramework.customAttribute('k-tabstrip')(TabStrip) || TabStrip;
+    TabStrip = _aureliaTemplating.customAttribute('k-tabstrip')(TabStrip) || TabStrip;
     return TabStrip;
   })();
 

@@ -1,6 +1,6 @@
 {
   "name": "aurelia-kendoui-bridge",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "registry": "github",
   "description": "A set of Telerik KendoUI wrappers for Aurelia allowing developers to easily use KendoUI components in their Aurelia application.",
   "keywords": [
@@ -35,11 +35,10 @@
     },
     "dependencies": {
       "aurelia-binding": "npm:aurelia-binding@^1.0.0-beta.1.0.5",
-      "aurelia-bootstrapper": "npm:aurelia-bootstrapper@^1.0.0-beta.1.0.2",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0-beta.1.0.1",
-      "aurelia-framework": "npm:aurelia-framework@^1.0.0-beta.1.0.8",
       "aurelia-logging": "npm:aurelia-logging@^1.0.0-beta.1",
       "aurelia-metadata": "npm:aurelia-metadata@^1.0.0-beta.1",
+      "aurelia-task-queue": "npm:aurelia-task-queue@^1.0.0-beta.1.0.1",
       "aurelia-templating": "npm:aurelia-templating@^1.0.0-beta.1.0.3",
       "jquery": "components/jquery@^2.1.4"
     },
@@ -64,7 +63,7 @@
     "babel-eslint": "^4.1.1",
     "babel-runtime": "^5.8.20",
     "browser-sync": "^2.9.3",
-    "conventional-changelog": "0.0.11",
+    "conventional-changelog": "^0.5.3",
     "del": "^1.1.0",
     "gulp": "^3.8.10",
     "gulp-babel": "^5.1.0",

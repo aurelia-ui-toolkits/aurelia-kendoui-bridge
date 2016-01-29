@@ -1,10 +1,9 @@
-import {Aurelia} from 'aurelia-framework';
 import * as LogManager from 'aurelia-logging';
 let logger = LogManager.getLogger('aurelia-kendoui-bridge');
 import {KendoConfigBuilder} from './config-builder';
 import 'jquery';
 
-export function configure(aurelia: Aurelia, configCallback?: (builder: KendoConfigBuilder) => void) {
+export function configure(aurelia, configCallback) {
   let builder = new KendoConfigBuilder();
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {

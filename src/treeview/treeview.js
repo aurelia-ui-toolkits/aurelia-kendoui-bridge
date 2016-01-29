@@ -1,9 +1,11 @@
-import {customAttribute, bindable, inject} from 'aurelia-framework';
+import {inject} from 'aurelia-dependency-injection';
+import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
+import {constants} from '../common/constants';
 import 'kendo-ui/js/kendo.treeview.min';
 
-@customAttribute('k-treeview')
+@customAttribute(`${constants.attributePrefix}treeview`)
 @generateBindables('kendoTreeView')
 @inject(Element, WidgetBase)
 export class TreeView {

@@ -1,7 +1,7 @@
-System.register(['./options', './events', './util', './template-compiler', 'aurelia-framework'], function (_export) {
+System.register(['./options', './events', './util', './template-compiler', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (_export) {
   'use strict';
 
-  var pruneOptions, fireKendoEvent, getEventsFromAttributes, _hyphenate, getBindablePropertyName, TemplateCompiler, inject, TaskQueue, transient, WidgetBase;
+  var pruneOptions, fireKendoEvent, getEventsFromAttributes, _hyphenate, getBindablePropertyName, TemplateCompiler, inject, transient, TaskQueue, WidgetBase;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -16,10 +16,11 @@ System.register(['./options', './events', './util', './template-compiler', 'aure
       getBindablePropertyName = _util.getBindablePropertyName;
     }, function (_templateCompiler) {
       TemplateCompiler = _templateCompiler.TemplateCompiler;
-    }, function (_aureliaFramework) {
-      inject = _aureliaFramework.inject;
-      TaskQueue = _aureliaFramework.TaskQueue;
-      transient = _aureliaFramework.transient;
+    }, function (_aureliaDependencyInjection) {
+      inject = _aureliaDependencyInjection.inject;
+      transient = _aureliaDependencyInjection.transient;
+    }, function (_aureliaTaskQueue) {
+      TaskQueue = _aureliaTaskQueue.TaskQueue;
     }],
     execute: function () {
       WidgetBase = (function () {
