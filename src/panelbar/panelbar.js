@@ -47,7 +47,8 @@ export class PanelBar {
 
     this.kWidget = this.widgetBase.createWidget({
       element: element,
-      parentCtx: this.$parent
+      parentCtx: this.$parent,
+      rootElement: this.element
     });
   }
 
