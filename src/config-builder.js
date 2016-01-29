@@ -14,11 +14,12 @@ export class KendoConfigBuilder {
       .kendoTabStrip()
       .kendoProgressBar()
       .kendoSlider()
-      .kendoColorPicker()
       .kendoDropDownList()
       .kendoDatePicker()
       .kendoNumericTextBox()
-      .kendoPanelBar();
+      .kendoPanelBar()
+			.kendoColorPicker()
+			.kendoColorPalette();
     return this;
   }
 
@@ -116,6 +117,11 @@ export class KendoConfigBuilder {
     this.resources.push('colorpicker/colorpicker');
     return this;
   }
+
+	kendoColorPalette(): KendoConfigBuilder {
+    this.resources.push('colorpalette/colorpalette');
+		return this;
+	}
 
   kendoTreeView(): KendoConfigBuilder {
     this.resources.push('treeview/treeview');
