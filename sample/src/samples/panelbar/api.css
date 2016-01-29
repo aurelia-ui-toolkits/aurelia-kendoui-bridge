@@ -1,0 +1,12 @@
+.box-col {
+    width: 250px;
+    margin-bottom: -20px;
+}
+
+.box-col .options {
+    margin-bottom: 20px;
+}
+
+.box .k-textbox {
+    width: 80px;
+}

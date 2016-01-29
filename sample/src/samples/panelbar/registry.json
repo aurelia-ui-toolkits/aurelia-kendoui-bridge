@@ -1,20 +1,22 @@
 {
-  "title": "Panel Bar",
-  "samples": {
-    "basic-use": {
-      "default": true,
-      "route": ["", "basic-use"],
-      "files": ["html", "js", "css"]
-    },
-    "images": {
-      "route": "images",
-      "files": ["html", "js", "css"]
-    },
-    "ajax": {
-      "route": "ajax",
-      "files": ["html", "js", "css"]
-    },
-    "events": {},
-    "api": {}
-  }
+    "title": "Panel Bar",
+    "samples": {
+        "basic-use": {
+            "default": true,
+            "files": ["html", "js", "css"]
+        },
+        "images": {
+            "files": ["html", "js", "css"]
+        },
+        "ajax": {
+            "title": "Loading with AJAX",
+            "files": ["html", "js", "css"]
+        },
+        "events": {
+            "files": ["html", "js"]
+        },
+        "api": {
+            "title": "API"
+        }
+    }
 }
