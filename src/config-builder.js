@@ -101,7 +101,7 @@ export class KendoConfigBuilder {
     this.resources.push('panelbar/panelbar');
     return this;
   }
-  
+
   kendoProgressBar(): KendoConfigBuilder {
     this.resources.push('progressbar/progressbar');
     return this;

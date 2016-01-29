@@ -27,21 +27,19 @@ export class PanelBar {
   }
 
   recreate() {
-
     let element = this.element;
 
     // Insert a node in between the parent/children if no UL/OL is found
-    if(!hasListChildNode(element)) {
-      var ul = document.createElement("ul");
+    if (!hasListChildNode(element)) {
+      let ul = document.createElement('ul');
 
       while (element.children.length > 0) {
         ul.appendChild(element.children[0]);
       }
-      
+
       element.appendChild(ul);
       element = ul;
-    }
-    else {
+    } else {
       element = this.element.children[0];
     }
 
