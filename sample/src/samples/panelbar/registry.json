@@ -16,7 +16,8 @@
             "files": ["html", "js"]
         },
         "api": {
-            "title": "API"
+            "title": "API",
+            "files": ["html", "js", "css"]
         }
     }
 }
