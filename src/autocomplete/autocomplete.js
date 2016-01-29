@@ -18,6 +18,7 @@ export class AutoComplete {
     this.widgetBase = widgetBase
                         .control('kendoAutoComplete')
                         .linkViewModel(this)
+                        .withValueBinding()
                         .setDefaultBindableValues();
   }
 
@@ -32,22 +33,10 @@ export class AutoComplete {
       element: this.element,
       parentCtx: this.$parent
     });
+  }
 
-    // without these change and select handlers, when you select an options
-    // the value binding is not updated
-    this.kWidget.bind('change', (event) => {
-      this.kValue = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
-
-    this.kWidget.bind('select', (event) => {
-      this.kValue = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {
