@@ -1,2 +1,37 @@
 <template>
+  <require from="./basic-use.css"></require>
+
+  <div id="example">
+      <div id="team-schedule">
+          <div id="people">
+              <input type="checkbox"
+                     change.delegate="filter()"
+                     id.bind="employee.name"
+                     checked.bind="employee.checked"
+                     repeat.for="employee of employees"/>
+          </div>
+      </div>
+      <k-scheduler k-data-source.bind="datasource"
+                   k-date.bind="date"
+                   k-start-time.bind="startTime"
+                   k-views.bind="[
+                     'day',
+                     { type: 'workWeek', selected: true },
+                     'week',
+                     'month',
+                     'agenda',
+                     { type: 'timeline', eventHeight: 50}
+                   ]"
+                   k-height.bind="600"
+                   k-timezone="Etc/UTC"
+                   k-resources.bind="[{
+                     field: 'ownerId',
+                     title: 'Owner',
+                     dataSource: [
+                       { text: 'Alex', value: 1, color: '#f8a398' },
+                       { text: 'Bob', value: 2, color: '#51a0ed' },
+                       { text: 'Charlie', value: 3, color: '#56ca85' }
+                     ]
+                   }]"></k-scheduler>
+  </div>
 </template>
