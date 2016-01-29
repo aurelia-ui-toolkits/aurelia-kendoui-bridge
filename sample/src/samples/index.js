@@ -33,6 +33,7 @@ export class Index {
       { name: 'radar-charts',     route: 'radar-charts',        moduleId: './chart/radar-charts/index',     title: 'Radar Charts'},
       { name: 'range-charts',     route: 'range-charts',        moduleId: './chart/range-charts/index',     title: 'Range Charts'},
       { name: 'scatter-charts',   route: 'scatter-charts',      moduleId: './chart/scatter-charts/index',   title: 'Scatter charts'},
+      { name: 'scheduler',        route: 'scheduler',           moduleId: './scheduler/index',              title: 'Scheduler'},
       { name: 'slider',           route: 'slider',              moduleId: './slider/index',                 title: 'Slider'},
       { name: 'sparkline',        route: 'sparkline',           moduleId: './chart/sparkline/index',        title: 'Sparkline'},
       { name: 'stock',            route: 'stock',               moduleId: './chart/stock/index',            title: 'Stock'},

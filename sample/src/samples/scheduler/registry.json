@@ -3,11 +3,16 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
     },
     "api": {},
+    "export-to-pdf": {
+      "title": "Export to PDF"
+    },
     "horizontal-grouping": {},
     "resources": {},
     "timeline-view": {},
-    "vertical-grouping": {}
+    "vertical-grouping": {},
+    "templates": {}
   }
 }
