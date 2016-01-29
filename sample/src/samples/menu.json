@@ -40,7 +40,8 @@
   },
   "Navigation": {
     "Button": "button",
-    "Treeview": "treeview"
+    "Treeview": "treeview",
+    "Panel Bar": "panelbar"
   },
   "Interactivity & UX": {
     "ProgressBar": "progressbar"

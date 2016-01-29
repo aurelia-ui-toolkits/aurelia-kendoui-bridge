@@ -54,6 +54,7 @@ export class TemplateCompiler {
     // in these cases we get the parent context of the options instead of the
     // widget
     let $parent = widget._$parent || (widget.options._$parent ? widget.options._$parent[0] : undefined);
+    let viewResources = widget._$resources || (widget.options._$resources ? widget.options._$resources[0] : undefined);
 
     if (!$parent) return;
 
@@ -66,7 +67,7 @@ export class TemplateCompiler {
       // we need to pass elements and data to compile
       // so that Aurelia can enhance this elements with the correct
       // binding context
-      this.compile($parent, elements, data);
+      this.compile($parent, elements, data, viewResources);
       break;
 
     case 'cleanup':
@@ -86,7 +87,7 @@ export class TemplateCompiler {
   * @param elements an array of Elements or a jQuery selector
   * @param data optionally an array of dataitems
   */
-  compile($parent, elements, data) {
+  compile($parent, elements, data, viewResources) {
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
       let ctx;
@@ -97,9 +98,9 @@ export class TemplateCompiler {
       }
 
       if (element instanceof jQuery) {
-        element.each((index, elem) => this.enhanceView($parent, elem, ctx));
+        element.each((index, elem) => this.enhanceView($parent, elem, ctx, viewResources));
       } else {
-        this.enhanceView($parent, element, ctx);
+        this.enhanceView($parent, element, ctx, viewResources);
       }
     }
   }
@@ -110,8 +111,17 @@ export class TemplateCompiler {
   * @param element The Element to compile
   * @param ctx The dataitem (context) to compile the Element with
   */
-  enhanceView($parent, element, ctx) {
-    let view = this.templatingEngine.enhance(element);
+  enhanceView($parent, element, ctx, viewResources) {
+    let view;
+
+    if (viewResources) {
+      view = this.templatingEngine.enhance({
+        element: element,
+        resources: viewResources
+      });
+    } else {
+      view = this.templatingEngine.enhance(element);
+    }
 
     view.bind(ctx, $parent); // call the bind() function on the view with the dataItem we got from Kendo
     view.attached(); // attach it to the DOM

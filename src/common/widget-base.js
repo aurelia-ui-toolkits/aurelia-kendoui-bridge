@@ -79,6 +79,22 @@ export class WidgetBase {
     return this;
   }
 
+  useViewResources(resources) {
+    if (!resources) {
+      throw new Error('resources is not set');
+    }
+
+    this.viewResources = resources;
+
+    return this;
+  }
+
+  withValueBinding() {
+    this.withValueBinding = true;
+
+    return this;
+  }
+
   /**
   * collects all options objects
   * calls all hooks
@@ -97,8 +113,10 @@ export class WidgetBase {
       throw new Error('parentCtx is not set');
     }
 
-    // generate all options, including event handlers
-    let allOptions = this._getOptions(options.element);
+    // generate all options, including event handlers - use the rootElement if specified, otherwise fall back to the element
+    // this allows a child element in a custom elements tempate to be the container for the kendo control
+    // but allows the plugin to correctly discover attributes on the root element to match against events
+    let allOptions = this._getOptions(options.rootElement || options.element);
 
     // before initialization callback
     // allows you to modify/add/remove options before the control gets initialized
@@ -109,12 +127,20 @@ export class WidgetBase {
     // add parent context to options
     // deepExtend in kendo.core will fail with stack
     // overflow if we don't put it in an array :-\
-    Object.assign(allOptions, { _$parent: [options.parentCtx] });
+    Object.assign(allOptions, {
+      _$parent: [options.parentCtx],
+      _$resources: [this.viewResources]
+    });
 
     // instantiate the Kendo control
     let widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
 
     widget._$parent = options.parentCtx;
+    widget._$resources = this.viewResources;
+
+    if (this.withValueBinding) {
+      widget.first('change', (args) => this._handleChange(args));
+    }
 
     if (options.afterInitialize) {
       options.afterInitialize();
@@ -203,6 +229,19 @@ export class WidgetBase {
     });
 
     return options;
+  }
+
+
+  _handleChange(args) {
+    let sender = args.sender;
+
+    this.viewModel.kValue = sender.value();
+  }
+
+  handlePropertyChanged(widget, property, newValue, oldValue) {
+    if (property === 'kValue' && this.withValueBinding) {
+      widget.value(newValue);
+    }
   }
 
   /**
