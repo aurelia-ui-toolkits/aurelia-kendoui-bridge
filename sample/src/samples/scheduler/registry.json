@@ -10,9 +10,8 @@
       "title": "Export to PDF"
     },
     "horizontal-grouping": {},
-    "resources": {},
     "timeline-view": {},
-    "vertical-grouping": {},
-    "templates": {}
+    "templates": {},
+    "restrictions": {}
   }
 }
