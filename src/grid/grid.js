@@ -51,6 +51,15 @@ export class Grid  {
     // allow for both column definitions via HTML and via an array of columns
     if (this.columns && this.columns.length > 0) {
       options.columns = this.columns;
+
+      options.columns.forEach(c => {
+        if (c.template && !c.withKendoTemplates) {
+          let template = c.template;
+          c.template = function() {
+            return template;
+          };
+        }
+      });
     }
   }
 

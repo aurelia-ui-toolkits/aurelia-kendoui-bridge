@@ -39,6 +39,7 @@ export class Col {
   @bindable values;
   @bindable width;
   @bindable template;
+  @bindable withKendoTemplates = false;
 
   constructor(targetInstruction) {
     this.template = targetInstruction.elementInstruction.template;
