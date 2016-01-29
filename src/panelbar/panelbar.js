@@ -1,4 +1,4 @@
-import {customElement, bindable, inject} from 'aurelia-framework';
+import {customElement, bindable, inject} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import 'kendo-ui/js/kendo.panelbar.min';
