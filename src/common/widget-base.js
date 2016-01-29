@@ -4,7 +4,6 @@ import {getEventsFromAttributes, _hyphenate, getBindablePropertyName} from './ut
 import {TemplateCompiler} from './template-compiler';
 import {inject, transient} from 'aurelia-dependency-injection';
 import {TaskQueue} from 'aurelia-task-queue';
-import {ViewResources} from 'aurelia-templating';
 
 /**
 * Abstraction of commonly used code across wrappers
@@ -90,6 +89,12 @@ export class WidgetBase {
     return this;
   }
 
+  withValueBinding() {
+    this.withValueBinding = true;
+
+    return this;
+  }
+
   /**
   * collects all options objects
   * calls all hooks
@@ -130,6 +135,10 @@ export class WidgetBase {
 
     widget._$parent = options.parentCtx;
     widget._$resources = this.viewResources;
+
+    if (this.withValueBinding) {
+      widget.first('change', (args) => this._handleChange(args));
+    }
 
     if (options.afterInitialize) {
       options.afterInitialize();
@@ -218,6 +227,19 @@ export class WidgetBase {
     });
 
     return options;
+  }
+
+
+  _handleChange(args) {
+    let sender = args.sender;
+
+    this.viewModel.kValue = sender.value();
+  }
+
+  handlePropertyChanged(widget, property, newValue, oldValue) {
+    if (property === 'kValue' && this.withValueBinding) {
+      widget.value(newValue);
+    }
   }
 
   /**
