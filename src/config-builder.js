@@ -17,7 +17,8 @@ export class KendoConfigBuilder {
       .kendoColorPicker()
       .kendoDropDownList()
       .kendoDatePicker()
-      .kendoNumericTextBox();
+      .kendoNumericTextBox()
+      .kendoPanelBar();
     return this;
   }
 
@@ -27,7 +28,7 @@ export class KendoConfigBuilder {
   pro(): KendoConfigBuilder {
     this.core()
       .kendoGrid()
-	  .kendoAutoComplete()
+      .kendoAutoComplete()
       .kendoChart()
       .kendoTreeView();
     return this;
@@ -93,6 +94,11 @@ export class KendoConfigBuilder {
     this.resources.push('chart/sparkline');
     this.resources.push('chart/stock');
     this.resources.push('chart/treemap');
+    return this;
+  }
+
+  kendoPanelBar(): KendoConfigBuilder {
+    this.resources.push('panelbar/panelbar');
     return this;
   }
 
