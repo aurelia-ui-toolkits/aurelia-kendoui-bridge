@@ -13,7 +13,8 @@
     "Autocomplete": "autocomplete",
     "Slider": "slider",
     "DatePicker": "datepicker",
-    "NumericTextBox": "numerictextbox"
+    "NumericTextBox": "numerictextbox",
+    "ColorPicker": "colorpicker"
   },
   "Charts": {
     "Charts 1": {
