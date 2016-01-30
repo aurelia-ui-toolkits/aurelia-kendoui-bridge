@@ -17,6 +17,7 @@ export class KendoConfigBuilder {
       .kendoDropDownList()
       .kendoDatePicker()
       .kendoTimePicker()
+      .kendoMaskedTextBox()
       .kendoNumericTextBox()
       .kendoPanelBar()
 			.kendoColorPicker()
@@ -144,6 +145,11 @@ export class KendoConfigBuilder {
 
   kendoTimePicker(): KendoConfigBuilder {
     this.resources.push('timepicker/timepicker');
+    return this;
+  }
+
+  kendoMaskedTextBox(): KendoConfigBuilder {
+    this.resources.push('maskedtextbox/maskedtextbox');
     return this;
   }
 

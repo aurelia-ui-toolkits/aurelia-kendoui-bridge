@@ -12,11 +12,12 @@
   },
   "Editors": {
     "Autocomplete": "autocomplete",
-    "Slider": "slider",
+    "ColorPicker": "colorpicker",
     "DatePicker": "datepicker",
     "NumericTextBox": "numerictextbox",
-    "TimePicker": "timepicker",
-    "ColorPicker": "colorpicker"
+    "MaskedTextBox": "maskedtextbox",
+    "Slider": "slider",
+    "TimePicker": "timepicker"
   },
   "Charts": {
     "Charts 1": {

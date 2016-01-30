@@ -3,12 +3,12 @@ import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo-ui/js/kendo.timepicker.min';
+import 'kendo-ui/js/kendo.maskedtextbox.min';
 
-@customAttribute(`${constants.attributePrefix}timepicker`)
-@generateBindables('kendoTimePicker')
+@customAttribute(`${constants.attributePrefix}maskedtextbox`)
+@generateBindables('kendoMaskedTextBox')
 @inject(Element, WidgetBase)
-export class TimePicker {
+export class MaskedTextBox {
 
   @bindable kDisableDates;
   @bindable options = {};
@@ -16,7 +16,7 @@ export class TimePicker {
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoTimePicker')
+                        .control('kendoMaskedTextBox')
                         .linkViewModel(this)
                         .withValueBinding()
                         .setDefaultBindableValues();
