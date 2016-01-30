@@ -4560,7 +4560,7 @@
           "type": {
             "type": "reference",
             "name": "TaskQueue",
-            "id": 3638,
+            "id": 3639,
             "moduleName": "\"aurelia-task-queue\""
           }
         },
