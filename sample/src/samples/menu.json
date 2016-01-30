@@ -1,6 +1,7 @@
 {
   "Most popular": {
     "Grid": "grid",
+    "Scheduler": "scheduler",
     "Bar Charts": "bar-charts",
     "Line Charts": "line-charts",
     "Stock Charts": "stock",
@@ -38,9 +39,13 @@
       "Waterfall Charts": "waterfall-charts"
     }
   },
+  "Scheduling": {
+    "Scheduler": "scheduler",
+  },
   "Navigation": {
     "Button": "button",
-    "Treeview": "treeview"
+    "Treeview": "treeview",
+    "Panel Bar": "panelbar"
   },
   "Interactivity & UX": {
     "ProgressBar": "progressbar"

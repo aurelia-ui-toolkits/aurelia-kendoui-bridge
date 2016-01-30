@@ -1,2 +1,17 @@
 <template>
+  <div id="example" class="k-content">
+    <k-scheduler k-data-source.bind="dataSource"
+                 k-date.bind="date"
+                 k-start-time.bind="startTime"
+                 k-height.bind="600"
+                 k-timezone="Etc/UTC"
+                 k-group.bind="{resources: ['Rooms']}"
+                 k-resources.bind="resources"
+                 k-views.bind="[
+                     'day',
+                     { type: 'week', selected: true },
+                     'month',
+                     'timeline'
+                 ]"></k-scheduler>
+  </div>
 </template>

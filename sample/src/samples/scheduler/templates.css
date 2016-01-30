@@ -1,0 +1,20 @@
+.movie-template img {
+    float: left;
+    margin: 0 8px;
+}
+.movie-template p {
+    margin: 5px 0 0;
+}
+.movie-template h3 {
+    padding: 0 8px 5px;
+    font-size: 12px;
+}
+.movie-template a {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+}
+.k-state-hover .movie-template a,
+.movie-template a:hover {
+    color: #000000;
+}

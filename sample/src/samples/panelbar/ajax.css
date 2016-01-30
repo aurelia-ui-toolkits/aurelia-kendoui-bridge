@@ -1,0 +1,16 @@
+ .wrapper {
+     height: 320px;
+     margin: 20px auto;
+     padding: 20px 0 0;
+     background: url('http://demos.telerik.com/kendo-ui/content/web/panelbar/astonmartin.png') no-repeat center 50px transparent;
+ }
+ 
+ #panelbar {
+     width: 250px;
+     float: right;
+     margin-bottom: 20px;
+ }
+ 
+ #panelbar p {
+     padding: 1em;
+ }
