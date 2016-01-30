@@ -16,6 +16,7 @@ export class KendoConfigBuilder {
       .kendoSlider()
       .kendoDropDownList()
       .kendoDatePicker()
+      .kendoTimePicker()
       .kendoNumericTextBox()
       .kendoPanelBar()
 			.kendoColorPicker()
@@ -138,6 +139,11 @@ export class KendoConfigBuilder {
 
   kendoDatePicker(): KendoConfigBuilder {
     this.resources.push('datepicker/datepicker');
+    return this;
+  }
+
+  kendoTimePicker(): KendoConfigBuilder {
+    this.resources.push('timepicker/timepicker');
     return this;
   }
 

@@ -15,6 +15,7 @@
     "Slider": "slider",
     "DatePicker": "datepicker",
     "NumericTextBox": "numerictextbox",
+    "TimePicker": "timepicker",
     "ColorPicker": "colorpicker"
   },
   "Charts": {
