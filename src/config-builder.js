@@ -19,7 +19,8 @@ export class KendoConfigBuilder {
       .kendoNumericTextBox()
       .kendoPanelBar()
 			.kendoColorPicker()
-			.kendoColorPalette();
+			.kendoColorPalette()
+			.kendoFlatColorPicker();
     return this;
   }
 
@@ -118,10 +119,15 @@ export class KendoConfigBuilder {
     return this;
   }
 
-	kendoColorPalette(): KendoConfigBuilder {
+  kendoColorPalette(): KendoConfigBuilder {
     this.resources.push('colorpalette/colorpalette');
-		return this;
-	}
+    return this;
+  }
+
+  kendoFlatColorPicker(): KendoConfigBuilder {
+    this.resources.push('flatcolorpicker/flatcolorpicker');
+    return this;
+  }
 
   kendoTreeView(): KendoConfigBuilder {
     this.resources.push('treeview/treeview');
