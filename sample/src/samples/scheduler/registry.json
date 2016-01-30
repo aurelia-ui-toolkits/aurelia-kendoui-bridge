@@ -6,6 +6,7 @@
       "files": ["html", "js", "css"]
     },
     "api": {},
+    "events": {},
     "export-to-pdf": {
       "title": "Export to PDF"
     },
@@ -13,7 +14,6 @@
     "timeline-view": {},
     "templates": {},
     "restrictions": {},
-    "event-move-and-resize": {},
-    "binding-to-signalr": {}
+    "event-move-and-resize": {}
   }
 }
