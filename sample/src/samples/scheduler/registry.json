@@ -12,6 +12,8 @@
     "horizontal-grouping": {},
     "timeline-view": {},
     "templates": {},
-    "restrictions": {}
+    "restrictions": {},
+    "event-move-and-resize": {},
+    "binding-to-signalr": {}
   }
 }

@@ -1,5 +1,5 @@
 import 'kendo-ui/js/kendo.notification.min';
-import './signalr';
+import '../../shared/signalr';
 
 export class BindingToSignalr {
   constructor() {
