@@ -1,25 +1,21 @@
 <template>
-  <require from="./basic-use.css"></require>
-  <div id="example">
+  <require from="./flat.css"></require>
+  <div class="demo-section hidden-on-narrow k-content wide">
+      <div id="bike">
+          <div id="bike-tail" css="background-color: ${ tailBackground }"></div>
+          <div id="bike-head" css="background-color: ${ headBackground }"></div>
+      </div>
 
-    <div class="demo-section hidden-on-narrow k-content wide">
-        <div id="background" css="background-color: ${ background }">
-            <div class="column">
-                <h3 class="title">Select Wall Paint</h3>
-                <k-color-palette k-columns.bind="4"
-                                 k-palette.bind="palette"
-                                 k-on-change.delegate="background = $event.detail.value"
-                                 k-tile-size.bind="{ width: 34, height: 19 }"></k-color-palette>
-            </div>
-            <div class="column">
-                <h3 class="title">Choose Custom Color</h3>
-                <input k-color-picker="k-value: #ffffff; k-buttons.bind: false"
-                       k-on-select.delegate="background = $event.detail.value"
-                       id="picker" />
-            </div>
-        </div>
-    </div>
-
-    <div class="responsive-message"></div>
+      <div class="picker-wrapper">
+          <h4>Tail color</h4>
+          <k-flat-color-picker k-preview.bind="false"
+                               k-on-change.delegate="tailBackground = $event.detail.value"></k-flat-color-picker>
+      </div>
+      <div class="picker-wrapper">
+          <h4>Front &amp; side color</h4>
+          <k-flat-color-picker k-preview.bind="false"
+                               k-on-change.delegate="headBackground = $event.detail.value"></k-flat-color-picker>
+      </div>
   </div>
+  <div class="responsive-message"></div>
 </template>

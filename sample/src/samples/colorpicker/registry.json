@@ -9,6 +9,13 @@
       "title": "Flat color picker",
       "files": ["html", "js", "css"]
     },
-    "api": {}
+    "standalone": {
+      "title": "Standalone Palette",
+      "files": ["html", "js", "css"]
+    },
+    "api": {
+      "title": "API",
+      "files": ["html", "js", "css"]
+    }
   }
 }

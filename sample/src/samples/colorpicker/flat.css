@@ -1,34 +1,41 @@
 .demo-section {
-            height: 600px;
-            width: 600px;
-        }
+    text-align: center;
+    padding: 0 0 16px;
+}
 
-        #background {
-            background: transparent url(http://demos.telerik.com/kendo-ui/content/web/colorpicker/interior-bg.png) no-repeat;
-            margin: 0 auto;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
+#bike {
+    margin: 0 0 10px;
+    background: url(http://demos.telerik.com/kendo-ui/content/web/colorpicker/background.png);
+}
 
-        .column {
-            margin-top: 384px;
-            float: left;
-            width: 300px;
-            text-align: center;
-        }
+#bike-head, #bike-tail {
+    background: url(http://demos.telerik.com/kendo-ui/content/web/colorpicker/motor.png);
+    display: inline-block;
+    height: 299px;
+    width: 241px;
+}
 
-        .column .title {
-            color: #a3a3a3;
-            text-transform: uppercase;
-            font-size: 11px;
-            font-weight: normal;
-            padding: 41px 0 20px;
-        }
+#bike-tail {
+    background-color: #000;
+}
 
-        #palette {
-            vertical-align: top;
-            display: inline-block;
-        }
+#bike-head {
+    background-color: #e15613;
+    background-position: -241px 0;
+}
 
-        .k-colorpicker { vertical-align: top; margin: 20px 0; }
+.picker-wrapper {
+    display: inline-block;
+    text-align: left;
+    width: 252px;
+    margin: 0 18px;
+}
+
+.picker-wrapper .k-hsv-gradient {
+    height: 140px;
+}
+
+.picker-wrapper h3 {
+    padding: 13px 0 5px;
+    text-align: left;
+}
