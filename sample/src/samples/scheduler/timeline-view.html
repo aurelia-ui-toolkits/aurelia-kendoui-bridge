@@ -1,2 +1,17 @@
 <template>
+  <div id="example" class="k-content">
+      <k-scheduler k-date.bind="date"
+                   k-start-time.bind="startTime"
+                   k-event-height.bind="50"
+                   k-major-tick.bind="60"
+                   k-views.bind="views"
+                   k-timezone="Etc/UTC"
+                   k-data-source.bind="datasource"
+                   k-group.bind="{
+                     resources: ['Rooms', 'Attendees'],
+                     orientation: 'vertical'
+                   }"
+                   k-resources.bind="resources">
+      </k-scheduler>
+  </div>
 </template>

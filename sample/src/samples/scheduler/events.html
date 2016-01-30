@@ -1,0 +1,32 @@
+<template>
+  <div id="example">
+    <k-scheduler k-date.bind="date"
+                 k-start-time.bind="startTime"
+                 k-height.bind="400"
+                 k-timezone="Etc/UTC"
+                 k-views.bind="views"
+                 k-data-source.bind="dataSource"
+                 k-selectable.bind="true"
+                 k-on-data-binding.delegate="logger.log('dataBinding')"
+                 k-on-data-bound.delegate="logger.log('dataBound')"
+                 k-on-save.delegate="logger.log('save')"
+                 k-on-remove.delegate="logger.log('remove')"
+                 k-on-edit.delegate="logger.log('edit')"
+                 k-on-add.delegate="logger.log('add')"
+                 k-on-cancel.delegate="logger.log('cancel')"
+                 k-on-change.delegate="logger.log('change')"
+                 k-on-move-start.delegate="logger.log('moveStart')"
+                 k-on-move.delegate="logger.log('move')"
+                 k-on-move-end.delegate="logger.log('moveEnd')"
+                 k-on-resize-start.delegate="logger.log('resizeStart')"
+                 k-on-resize.delegate="logger.log('resize')"
+                 k-on-resize-end.delegate="logger.log('resizeEnd')"
+                 k-on-navigate.delegate="logger.log('navigate')">
+    </k-scheduler>
+
+    <div class="box">
+        <h4>Console log</h4>
+        <logger view-model.ref="logger"></logger>
+    </div>
+  </div>
+</template>

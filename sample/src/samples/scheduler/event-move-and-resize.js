@@ -1,27 +1,12 @@
-import {bindable} from 'aurelia-templating';
-
-export class Api {
-  @bindable currentView = 'week';
-  @bindable currentDate = new Date('2013/6/13');
+export class EventModeAndResize {
+  snap = true;
   date = new Date('2013/6/13');
-  startTime = new Date('2013/6/13 7:00');
+  startTime = new Date('2013/6/13 07:00 AM');
 
-
-  currentViewChanged() {
-    this.scheduler.view(this.currentView);
+  snapChanged() {
+    this.scheduler.options.snap = this.snap;
+    this.scheduler.view(this.scheduler.view().name);
   }
-
-  currentDateChanged() {
-    this.scheduler.date(this.currentDate);
-  }
-
-  views = [
-    'day',
-    { type: 'week', selected: true },
-    'month',
-    'agenda',
-    'timeline'
-  ];
 
   dataSource = {
     batch: true,
@@ -50,9 +35,9 @@ export class Api {
     },
     schema: {
       model: {
-        id: 'taskID',
+        id: 'taskId',
         fields: {
-          taskID: { from: 'TaskID', type: 'number' },
+          taskId: { from: 'TaskID', type: 'number' },
           title: { from: 'Title', defaultValue: 'No title', validation: { required: true } },
           start: { type: 'date', from: 'Start' },
           end: { type: 'date', from: 'End' },
@@ -62,7 +47,6 @@ export class Api {
           recurrenceId: { from: 'RecurrenceID' },
           recurrenceRule: { from: 'RecurrenceRule' },
           recurrenceException: { from: 'RecurrenceException' },
-          ownerId: { from: 'OwnerID', defaultValue: 1 },
           isAllDay: { type: 'boolean', from: 'IsAllDay' }
         }
       }

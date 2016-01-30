@@ -32,7 +32,8 @@ export class KendoConfigBuilder {
       .kendoGrid()
       .kendoAutoComplete()
       .kendoChart()
-      .kendoTreeView();
+      .kendoTreeView()
+      .kendoScheduler();
     return this;
   }
 
@@ -78,6 +79,7 @@ export class KendoConfigBuilder {
 
   kendoScheduler(): KendoConfigBuilder {
     this.resources.push('scheduler/scheduler');
+    this.resources.push('scheduler/event-template');
     return this;
   }
 

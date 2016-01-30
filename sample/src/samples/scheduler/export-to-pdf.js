@@ -1,27 +1,18 @@
-import {bindable} from 'aurelia-templating';
+export class ExportToPdf {
+  constructor() {
+    // Import DejaVu Sans font for embedding
+    // NOTE: Only required if the Kendo UI stylesheets are loaded
+    // from a different origin, e.g. cdn.kendostatic.com
+    kendo.pdf.defineFont({
+      'DejaVu Sans': '//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans.ttf',
+      'DejaVu Sans|Bold': '//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans-Bold.ttf',
+      'DejaVu Sans|Bold|Italic': '//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf',
+      'DejaVu Sans|Italic': '//kendo.cdn.telerik.com/2014.3.1314/styles/fonts/DejaVu/DejaVuSans-Oblique.ttf'
+    });
+  }
 
-export class Api {
-  @bindable currentView = 'week';
-  @bindable currentDate = new Date('2013/6/13');
   date = new Date('2013/6/13');
-  startTime = new Date('2013/6/13 7:00');
-
-
-  currentViewChanged() {
-    this.scheduler.view(this.currentView);
-  }
-
-  currentDateChanged() {
-    this.scheduler.date(this.currentDate);
-  }
-
-  views = [
-    'day',
-    { type: 'week', selected: true },
-    'month',
-    'agenda',
-    'timeline'
-  ];
+  startTime = new Date('2013/6/13 07:00 AM');
 
   dataSource = {
     batch: true,
@@ -50,9 +41,9 @@ export class Api {
     },
     schema: {
       model: {
-        id: 'taskID',
+        id: 'taskId',
         fields: {
-          taskID: { from: 'TaskID', type: 'number' },
+          taskId: { from: 'TaskID', type: 'number' },
           title: { from: 'Title', defaultValue: 'No title', validation: { required: true } },
           start: { type: 'date', from: 'Start' },
           end: { type: 'date', from: 'End' },

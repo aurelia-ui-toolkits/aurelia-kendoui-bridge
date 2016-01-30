@@ -1,19 +1,6 @@
-import {bindable} from 'aurelia-templating';
-
-export class Api {
-  @bindable currentView = 'week';
-  @bindable currentDate = new Date('2013/6/13');
+export class Events {
   date = new Date('2013/6/13');
   startTime = new Date('2013/6/13 7:00');
-
-
-  currentViewChanged() {
-    this.scheduler.view(this.currentView);
-  }
-
-  currentDateChanged() {
-    this.scheduler.date(this.currentDate);
-  }
 
   views = [
     'day',

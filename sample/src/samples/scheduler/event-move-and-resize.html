@@ -1,0 +1,20 @@
+<template>
+  <div id="example">
+      <div class="box wide">
+          <div class="box-col">
+              <label><input type="checkbox" checked.bind="snap" change.delegate="snapChanged()">Snap events to slot boundaries</label>
+          </div>
+      </div>
+      <k-scheduler k-date.bind="date"
+                   k-start-time.bind="startTime"
+                   k-height.bind="600"
+                   k-views.bind="[
+                    'day',
+                    { type: 'week', selected: true },
+                    'timeline'
+                   ]"
+                   k-timezone="Etc/UTC"
+                   k-data-source.bind="dataSource"
+                   k-widget.bind="scheduler"></k-scheduler>
+  </div>
+</template>
