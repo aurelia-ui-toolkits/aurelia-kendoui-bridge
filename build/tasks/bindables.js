@@ -80,20 +80,21 @@ gulp.task('bindables:extract', function (cb) {
 
 
   // create a flatter object so it can be easily read out by the plugin
-  var jsonObj = {};
+  var jsObj = {};
   for(var _optionClassIndex in optionClasses) {
     var _optionClass = optionClasses[_optionClassIndex];
-    jsonObj[_optionClass.method] = _optionClass.properties;
+    jsObj[_optionClass.method] = _optionClass.properties;
   }
 
+  var content = "export let bindables = " + JSON.stringify(jsObj);
 
-  // write the json file to the file system
-  fs.writeFile("./src/common/bindables.json", JSON.stringify(jsonObj), function (err) {
+  // write the js file to the file system
+  fs.writeFile("./src/common/bindables.js", content, function (err) {
     if(err) {
       return console.log(err);
     }
 
-    console.log("Bindables saved to ./src/common/bindables.json")
+    console.log("Bindables saved to ./src/common/bindables.js")
     cb();
   });
 });

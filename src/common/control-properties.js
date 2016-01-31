@@ -1,4 +1,4 @@
-import bindables from './bindables.json!';
+import {bindables} from './bindables';
 
 /***
 * Available properties (merged together from several locations) are stored here per controlName

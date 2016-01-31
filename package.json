@@ -40,8 +40,7 @@
       "aurelia-metadata": "npm:aurelia-metadata@^1.0.0-beta.1",
       "aurelia-task-queue": "npm:aurelia-task-queue@^1.0.0-beta.1.0.1",
       "aurelia-templating": "npm:aurelia-templating@^1.0.0-beta.1.0.3",
-      "jquery": "components/jquery@^2.1.4",
-      "json": "systemjs/plugin-json@^0.1.0"
+      "jquery": "components/jquery@^2.1.4"
     },
     "devDependencies": {
       "aurelia-pal": "npm:aurelia-pal@^1.0.0-beta.1",
