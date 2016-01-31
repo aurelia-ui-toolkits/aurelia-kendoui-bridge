@@ -1,0 +1,24 @@
+{
+  "title": "TreeList",
+  "samples": {
+    "basic-use": {
+      "default": true,
+      "files": ["html", "js", "css"]
+    },
+    "batch-editing": {},
+    "binding-to-local-data": {
+      "files": ["html", "js", "json"]
+    },
+    "binding-to-remote-data": {},
+    "binding-to-signalr": {},
+    "editing-custom-editor": {
+      "files": ["html", "js", "json"]
+    },
+    "frozen-columns": {},
+    "initialization-from-table": {},
+    "inline-editing": {},
+    "popup-editing": {},
+    "working-offline": {},
+    "advanced": {}
+  }
+}
