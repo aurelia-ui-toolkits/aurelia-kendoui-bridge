@@ -2,6 +2,7 @@ import {pruneOptions} from './options';
 import {fireKendoEvent} from './events';
 import {getEventsFromAttributes, _hyphenate, getBindablePropertyName} from './util';
 import {TemplateCompiler} from './template-compiler';
+import {ControlProperties} from './control-properties';
 import {inject, transient} from 'aurelia-dependency-injection';
 import {TaskQueue} from 'aurelia-task-queue';
 
@@ -9,7 +10,7 @@ import {TaskQueue} from 'aurelia-task-queue';
 * Abstraction of commonly used code across wrappers
 */
 @transient()
-@inject(TaskQueue, TemplateCompiler)
+@inject(TaskQueue, TemplateCompiler, ControlProperties)
 export class WidgetBase {
 
   /**
@@ -50,8 +51,9 @@ export class WidgetBase {
   */
   ctor: any;
 
-  constructor(taskQueue, templateCompiler) {
+  constructor(taskQueue, templateCompiler, controlProperties) {
     this.taskQueue = taskQueue;
+    this.controlProperties = controlProperties;
     templateCompiler.initialize();
   }
 
@@ -161,7 +163,7 @@ export class WidgetBase {
     // - options on the wrapper
     // - options compiled from all the bindable properties
     // - event handler options
-    return Object.assign({}, this.viewModel.options, pruneOptions(options), eventOptions);
+    return pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
   }
 
   /**
@@ -169,15 +171,10 @@ export class WidgetBase {
   * and puts all these values in a single options object
   */
   getOptionsFromBindables() {
-    let props = this.kendoOptions;
     let options = {};
 
-    for (let prop of Object.keys(props)) {
+    for (let prop of this.controlProperties.getProperties(this.controlName)) {
       options[prop] = this.viewModel[getBindablePropertyName(prop)];
-    }
-
-    if (this.viewModel.kDataSource) {
-      options.dataSource = this.viewModel.kDataSource;
     }
 
     return options;

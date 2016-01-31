@@ -32,7 +32,6 @@ gulp.task('bindables:typedoc', function(){
 });
 
 gulp.task('bindables:extract', function (cb) {
-  var classAndOptionsRefs = [];
   var optionClasses = [];
 
   var json = JSON.parse(fs.readFileSync('./temp/kendo-api.json', 'utf-8'));
@@ -41,60 +40,54 @@ gulp.task('bindables:extract', function (cb) {
 
   // get the kendo module
   var kendoModule = kendo.children.find(i => i.name === "kendo");
+  var jQueryInterface = kendo.children.find(i => i.name === "JQuery" && i.kindString === "Interface");
+  var kendoMethods = jQueryInterface.children;
 
-  // loop through all modules and all classes
-  // look for a property called "options"
-  // then grab the id of the type of this property (GridOptions = 5, ButtonOptions = 19 for example)
-  for(var _moduleIndex in kendoModule.children) {
-    var _module = kendoModule.children[_moduleIndex];
-
-    iterativeIdLookup(_module, classAndOptionsRefs, "kendo." + _module.name);
-  }
-
-  // iterate over all modules and classes again
-  // collect the classes with an id we found earlier
-  for(var _moduleIndex in kendoModule.children) {
-    var _module = kendoModule.children[_moduleIndex];
-
-    // loop through all classes such as kendo.data.DataSource
-    iterativeOptionsLookup(_module, optionClasses, classAndOptionsRefs);
-  }
-
-
-  // sort a-z on class name
-  optionClasses.sort(function(a,b) {
-    return (a.class > b.class) ? 1 : ((b.class > a.class) ? -1 : 0);
-  });
-
-
-  // loop over every options class
-  // store every property name in an array on the optionclass
-  for(var _optionClassIndex in optionClasses) {
-    var _optionClass = optionClasses[_optionClassIndex];
-
-    _optionClass.properties = [];
-
-    for(var _propertyIndex in _optionClass.children) {
-      var _property = _optionClass.children[_propertyIndex];
-
-      if(_property.kindString === "Property") {
-        _optionClass.properties.push(_property.name);
+  // loop over all kendo methods declarations:
+  // kendoAutoComplete(options: kendo.ui.AutoCompleteOptions): JQuery;
+  // kendoDraggable(options: kendo.ui.DraggableOptions): JQuery;
+  // and for each kendo method, find the id of the Options class (DraggableOptions, AutoCompleteOptions)
+  for(var _methodIndex in kendoMethods) {
+    var _method = kendoMethods[_methodIndex];
+    if(_method.name.startsWith('kendo')) {
+      var signatures = _method.signatures;
+      for(var _signatureIndex in signatures) {
+        var signature = signatures[_signatureIndex];
+        if(signature.parameters && signature.parameters.length > 0) {
+          optionClasses.push({
+            method: _method.name, // kendoButton, kendoGrid
+            id: signature.parameters[0].type.id // id of the options class
+          });
+        }
       }
     }
   }
 
+  // iterate over all modules and classes
+  // of every class matching an id we found above, add the properties to an array
+  for(var _moduleIndex in kendoModule.children) {
+    var _module = kendoModule.children[_moduleIndex];
 
-  var jsonObj = {};
-
-  for(var _optionClassIndex in optionClasses) {
-    var _optionClass = optionClasses[_optionClassIndex];
-    jsonObj[getKendoClassName(_optionClass.class)] = [];
-
-    for(var _optionIndex in _optionClass.properties) {
-      jsonObj[getKendoClassName(_optionClass.class)].push(_optionClass.properties[_optionIndex])
-    }
+    // loop through all classes such as kendo.data.DataSource
+    iterativeOptionsLookup(_module, optionClasses);
   }
 
+
+  // sort a-z on method name (for readability)
+  optionClasses.sort(function(a,b) {
+    return (a.method > b.method) ? 1 : ((b.method > a.method) ? -1 : 0);
+  });
+
+
+  // create a flatter object so it can be easily read out by the plugin
+  var jsonObj = {};
+  for(var _optionClassIndex in optionClasses) {
+    var _optionClass = optionClasses[_optionClassIndex];
+    jsonObj[_optionClass.method] = _optionClass.properties;
+  }
+
+
+  // write the json file to the file system
   fs.writeFile("./src/common/bindables.json", JSON.stringify(jsonObj), function (err) {
     if(err) {
       return console.log(err);
@@ -103,53 +96,40 @@ gulp.task('bindables:extract', function (cb) {
     console.log("Bindables saved to ./src/common/bindables.json")
     cb();
   });
-
-
 });
 
 
-function getKendoClassName(name) {
-  return "kendo" + name;
-}
-
-
-function iterativeOptionsLookup(_class, optionClasses, classAndOptionsRefs) {
+// iterate over all modules and classes
+// of every class matching an id we found earlier, add the properties to an array
+function iterativeOptionsLookup(_class, optionClasses) {
+  // if the kind is a module, iterate over all classes and modudules in there as well
   if(_class.kindString === "Module") {
     for(var _itemIndex in _class.children) {
       var _item = _class.children[_itemIndex];
-      iterativeOptionsLookup(_item, optionClasses, classAndOptionsRefs)
+      iterativeOptionsLookup(_item, optionClasses)
     }
   }
 
+  // these are classes/interfaces etc
+  // find an interface matching the id of an Options class we collected earlier
+  // of that interface, put all the propertynames of that interface into an array
   for(var _itemIndex in _class.children) {
     var _item = _class.children[_itemIndex];
 
-    for(var _classOptionIndex in classAndOptionsRefs) {
-      var classOption = classAndOptionsRefs[_classOptionIndex];
-      if(_item.id === classOption.optionsId && _item.kindString === "Interface") {
-        _item.class = classOption.class;
-        optionClasses.push(_item);
+    for(var _optionClass in optionClasses) {
+      var optionClass = optionClasses[_optionClass];
+      if(_item.id === optionClass.id && _item.kindString === "Interface") {
+
+        optionClass.properties = [];
+
+        for(var _propertyIndex in _item.children) {
+          var _property = _item.children[_propertyIndex];
+
+          if(_property.kindString === "Property") {
+            optionClass.properties.push(_property.name);
+          }
+        }
       }
-    }
-  }
-}
-
-function iterativeIdLookup (_class, classAndOptionsRefs, modulePath) {
-  if(_class.kindString === "Module") {
-    for(var _itemIndex in _class.children) {
-      var _item = _class.children[_itemIndex];
-      iterativeIdLookup(_item, classAndOptionsRefs, modulePath + "." + _item.name)
-    }
-  }
-
-
-  for(var _itemIndex in _class.children) {
-    var _item = _class.children[_itemIndex];
-    if(_item.kindString === "Property" && _item.name === "options" && _item.type.type === "reference" && _item.type.id) {
-      classAndOptionsRefs.push({
-        class: modulePath,
-        optionsId: _item.type.id
-      });
     }
   }
 }
