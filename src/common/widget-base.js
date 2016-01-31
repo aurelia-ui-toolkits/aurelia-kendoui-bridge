@@ -174,7 +174,11 @@ export class WidgetBase {
     let options = {};
 
     for (let prop of this.controlProperties.getProperties(this.controlName)) {
-      options[prop] = this.viewModel[getBindablePropertyName(prop)];
+      // we don't need to pass the widget property to the Kendo control
+      // it might also cause stackoverflow errors
+      if (prop !== 'widget') {
+        options[prop] = this.viewModel[getBindablePropertyName(prop)];
+      }
     }
 
     return options;

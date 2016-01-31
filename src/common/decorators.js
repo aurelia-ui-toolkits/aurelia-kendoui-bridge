@@ -15,7 +15,7 @@ export function generateBindables(controlName: string) {
     // get or create the HtmlBehaviorResource
     // on which we're going to create the BindableProperty's
     let behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
-    let controlProperties = Container.instance.get(ControlProperties);
+    let controlProperties = (Container.instance || new Container()).get(ControlProperties);
     let optionKeys = controlProperties.getProperties(controlName);
 
     for (let option of optionKeys) {
