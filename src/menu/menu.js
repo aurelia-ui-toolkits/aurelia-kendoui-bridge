@@ -16,8 +16,7 @@ export class Menu {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMenu')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {

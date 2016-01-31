@@ -16,8 +16,7 @@ export class ProgressBar {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoProgressBar')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {

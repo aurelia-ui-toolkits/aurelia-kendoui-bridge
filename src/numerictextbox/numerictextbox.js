@@ -16,8 +16,7 @@ export class NumericTextBox {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoNumericTextBox')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {

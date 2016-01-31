@@ -18,8 +18,7 @@ export class AutoComplete {
     this.widgetBase = widgetBase
                         .control('kendoAutoComplete')
                         .linkViewModel(this)
-                        .withValueBinding()
-                        .setDefaultBindableValues();
+                        .withValueBinding();
   }
 
   bind(ctx) {

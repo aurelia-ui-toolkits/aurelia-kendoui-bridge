@@ -2,6 +2,7 @@ import 'kendo-ui/js/kendo.button.min';
 import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 import {TemplateCompiler} from 'src/common/template-compiler';
+import {ControlProperties} from 'src/common/control-properties';
 import {initialize} from 'aurelia-pal-browser';
 import {TaskQueue} from 'aurelia-task-queue';
 import {DOM} from 'aurelia-pal';
@@ -12,6 +13,7 @@ describe('WidgetBase', () => {
   let templateCompilerFake;
   let container;
   let templatingEngine;
+  let controlProperties;
 
   beforeEach(() => {
     initialize();
@@ -23,9 +25,14 @@ describe('WidgetBase', () => {
       initialize: jasmine.createSpy()
     };
 
+    controlProperties = {
+      getProperties: jasmine.createSpy()
+    };
+
     container = new Container();
     container.registerInstance(TemplateCompiler, templateCompilerFake);
     container.registerInstance(TaskQueue, {});
+    container.registerInstance(ControlProperties, controlProperties);
 
     templatingEngine = container.get(TemplatingEngine);
     sut = templatingEngine.createViewModelForUnitTest(WidgetBase);
@@ -106,26 +113,6 @@ describe('WidgetBase', () => {
     }).toThrow(new Error('done is not an event on the myControl control'));
   });
 
-  it('setDefaultBindableValues sets default bindable values correctly', () => {
-    sut.viewModel = {};
-
-    sut.kendoOptions = {
-      prop: 'b'
-    };
-
-    sut.setDefaultBindableValues();
-
-    expect(sut.viewModel.kProp).toBe('b');
-  });
-
-  it('setDefaultBindableValues throws error when viewModel is not set', () => {
-    sut.viewModel = undefined;
-
-    expect(function() {
-      sut.setDefaultBindableValues();
-    }).toThrow(new Error('viewModel is not set'));
-  });
-
   it('createWidget throws error when option is missing', () => {
     expect(function() {
       sut.createWidget();
@@ -198,16 +185,16 @@ describe('WidgetBase', () => {
   });
 
   it('getOptionsFromBindables harvests properties from viewModel', () => {
-    sut.kendoOptions = {
-      option1: null,
-      test: null
-    };
+    sut.controlName = 'kendoButton';
+    controlProperties.getProperties = jasmine.createSpy().and.returnValue(['option1', 'test', 'dataSource', 'widget']);
     let datasource = {};
+    let widget = {};
 
     sut.viewModel = {
       kOption1: 'a',
       kTest: 'b',
-      kDataSource: datasource
+      kDataSource: datasource,
+      kWidget: widget
     };
 
     let options = sut.getOptionsFromBindables();
@@ -215,6 +202,7 @@ describe('WidgetBase', () => {
     expect(options.option1).toBe('a');
     expect(options.test).toBe('b');
     expect(options.dataSource).toBe(datasource);
+    expect(options.widget).toBeUndefined();
   });
 
   it('createWidget looks at the rootElement for event attributes when a rootElement is supplied', () => {

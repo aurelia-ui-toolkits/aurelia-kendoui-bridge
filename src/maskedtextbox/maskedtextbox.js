@@ -18,8 +18,7 @@ export class MaskedTextBox {
     this.widgetBase = widgetBase
                         .control('kendoMaskedTextBox')
                         .linkViewModel(this)
-                        .withValueBinding()
-                        .setDefaultBindableValues();
+                        .withValueBinding();
   }
 
   bind(ctx) {

@@ -18,10 +18,6 @@ import 'kendo-ui/js/kendo.scheduler.timelineview.min';
 export class Scheduler {
 
   @bindable options = {};
-  @bindable kEventHeight;
-  @bindable kStartTime;
-  @bindable kMajorTick;
-  @bindable kEventTemplate;
   @children(`${constants.elementPrefix}event-template`) eventTemplates;
 
   constructor(element, widgetBase, viewResources) {
@@ -29,8 +25,7 @@ export class Scheduler {
     this.widgetBase = widgetBase
                         .control('kendoScheduler')
                         .linkViewModel(this)
-                        .useViewResources(viewResources)
-                        .setDefaultBindableValues();
+                        .useViewResources(viewResources);
   }
 
   bind(ctx) {
@@ -59,9 +54,6 @@ export class Scheduler {
     }
 
     return Object.assign(options, pruneOptions({
-      eventHeight: this.kEventHeight,
-      majorTick: this.kMajorTick,
-      startTime: this.kStartTime,
       eventTemplate: eventTemplate
     }));
   }

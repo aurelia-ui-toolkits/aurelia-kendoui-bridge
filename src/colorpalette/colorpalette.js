@@ -16,8 +16,7 @@ export class ColorPalette {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoColorPalette')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
