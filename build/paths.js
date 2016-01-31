@@ -9,6 +9,7 @@ module.exports = {
   source: appRoot + '**/*.js',
   html: appRoot + '**/*.html',
   style: appRoot + '**/*.css',
+  json: appRoot + '**/*.json',
   output: 'devbuild/',
   releaseOutput: 'dist/',
   sample: 'sample',

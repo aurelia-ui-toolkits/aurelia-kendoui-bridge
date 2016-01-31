@@ -87,13 +87,22 @@ gulp.task('copy-css', function() {
 
 });
 
+gulp.task('copy-json', function() {
+ return gulp.src(paths.json)
+  .pipe(gulp.dest(paths.output + 'es6'))
+  .pipe(gulp.dest(paths.output + 'commonjs'))
+  .pipe(gulp.dest(paths.output + 'amd'))
+  .pipe(gulp.dest(paths.output + 'system'));
+
+});
+
 
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
     'build-index',
     ['build-es6-temp', 'build-es6', 'build-commonjs', 'build-amd', 'build-system'],
-    ['copy-html', 'copy-css'],
+    ['copy-html', 'copy-css', 'copy-json'],
     'build-dts',
     callback
   );
@@ -101,12 +110,12 @@ gulp.task('build', function(callback) {
 
 gulp.task('build-release', function(callback) {
   paths.output = paths.releaseOutput;
-  
+
   return runSequence(
     'clean',
     'build-index',
     ['build-es6-temp', 'build-es6', 'build-commonjs', 'build-amd', 'build-system'],
-    ['copy-html', 'copy-css'],
+    ['copy-html', 'copy-css', 'copy-json'],
     'build-dts',
     callback
   );
