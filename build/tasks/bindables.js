@@ -48,7 +48,7 @@ gulp.task('bindables:extract', function (cb) {
   for(var _moduleIndex in kendoModule.children) {
     var _module = kendoModule.children[_moduleIndex];
 
-    iterativeIdLookup(_module, classAndOptionsRefs);
+    iterativeIdLookup(_module, classAndOptionsRefs, "kendo." + _module.name);
   }
 
   // iterate over all modules and classes again
@@ -60,26 +60,17 @@ gulp.task('bindables:extract', function (cb) {
     iterativeOptionsLookup(_module, optionClasses, classAndOptionsRefs);
   }
 
-  // filter out duplicate option classes
-  var filteredOptions = [];
-  for(var _optionClassIndex in optionClasses) {
-    var _optionClass = optionClasses[_optionClassIndex];
-
-    if(!filteredOptions.find(i => i.name === _optionClass.name)) {
-      filteredOptions.push(_optionClass);
-    }
-  }
 
   // sort a-z on class name
-  filteredOptions.sort(function(a,b) {
+  optionClasses.sort(function(a,b) {
     return (a.class > b.class) ? 1 : ((b.class > a.class) ? -1 : 0);
   });
 
 
   // loop over every options class
   // store every property name in an array on the optionclass
-  for(var _optionClassIndex in filteredOptions) {
-    var _optionClass = filteredOptions[_optionClassIndex];
+  for(var _optionClassIndex in optionClasses) {
+    var _optionClass = optionClasses[_optionClassIndex];
 
     _optionClass.properties = [];
 
@@ -95,8 +86,8 @@ gulp.task('bindables:extract', function (cb) {
 
   var jsonObj = {};
 
-  for(var _optionClassIndex in filteredOptions) {
-    var _optionClass = filteredOptions[_optionClassIndex];
+  for(var _optionClassIndex in optionClasses) {
+    var _optionClass = optionClasses[_optionClassIndex];
     jsonObj[getKendoClassName(_optionClass.class)] = [];
 
     for(var _optionIndex in _optionClass.properties) {
@@ -143,11 +134,11 @@ function iterativeOptionsLookup(_class, optionClasses, classAndOptionsRefs) {
   }
 }
 
-function iterativeIdLookup (_class, classAndOptionsRefs) {
+function iterativeIdLookup (_class, classAndOptionsRefs, modulePath) {
   if(_class.kindString === "Module") {
     for(var _itemIndex in _class.children) {
       var _item = _class.children[_itemIndex];
-      iterativeIdLookup(_item, classAndOptionsRefs)
+      iterativeIdLookup(_item, classAndOptionsRefs, modulePath + "." + _item.name)
     }
   }
 
@@ -156,7 +147,7 @@ function iterativeIdLookup (_class, classAndOptionsRefs) {
     var _item = _class.children[_itemIndex];
     if(_item.kindString === "Property" && _item.name === "options" && _item.type.type === "reference" && _item.type.id) {
       classAndOptionsRefs.push({
-        class: _class.name,
+        class: modulePath,
         optionsId: _item.type.id
       });
     }
