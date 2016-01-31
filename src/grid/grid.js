@@ -21,8 +21,7 @@ export class Grid  {
     this.widgetBase = widgetBase
                         .control('kendoGrid')
                         .linkViewModel(this)
-                        .useViewResources(viewResources)
-                        .setDefaultBindableValues();
+                        .useViewResources(viewResources);
   }
 
   bind(ctx) {

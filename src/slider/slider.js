@@ -10,15 +10,13 @@ import 'kendo-ui/js/kendo.slider.min';
 @inject(Element, WidgetBase)
 export class Slider {
 
-  @bindable kValue;
   @bindable options = {};
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoSlider')
-                    .linkViewModel(this)
-                    .setDefaultBindableValues();
+                    .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -32,15 +30,8 @@ export class Slider {
   recreate() {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: (o) => this._beforeInitialize(o)
+      parentCtx: this.$parent
     });
-  }
-
-  _beforeInitialize(options) {
-    if (!options.value && this.kValue) {
-      options.value = this.kValue;
-    }
   }
 
   detached() {

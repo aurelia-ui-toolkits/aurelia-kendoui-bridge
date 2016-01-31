@@ -17,8 +17,7 @@ export class Sparkline {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoSparkline')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {

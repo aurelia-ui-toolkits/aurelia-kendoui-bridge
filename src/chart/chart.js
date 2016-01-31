@@ -19,8 +19,7 @@ export class Chart {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoChart')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {

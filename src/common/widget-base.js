@@ -180,23 +180,6 @@ export class WidgetBase {
     return options;
   }
 
-  /**
-  * sets the default value of all bindable properties
-  *  gets the value from the options object in the Kendo control itself
-  */
-  setDefaultBindableValues() {
-    if (!this.viewModel) {
-      throw new Error('viewModel is not set');
-    }
-
-    let props = this.kendoOptions;
-
-    for (let prop of Object.keys(props)) {
-      this.viewModel[getBindablePropertyName(prop)] = props[prop];
-    }
-
-    return this;
-  }
 
   /**
   * convert attributes into a list of events a user wants to subscribe to.

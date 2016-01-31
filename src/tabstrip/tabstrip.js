@@ -16,8 +16,7 @@ export class TabStrip {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTabStrip')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues(this);
+                        .linkViewModel(this);
   }
 
   bind(ctx) {

@@ -16,8 +16,7 @@ export class ColorPicker {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoColorPicker')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
