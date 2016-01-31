@@ -30,6 +30,7 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "jquery": "github:components/jquery@2.2.0",
     "jquery.min": "github:components/jquery@2.2.0",
+    "json": "github:systemjs/plugin-json@0.1.0",
     "polymer/mutationobservers": "github:polymer/mutationobservers@0.4.2",
     "showdown": "github:showdownjs/showdown@1.3.0",
     "text": "github:systemjs/plugin-text@0.0.4",
