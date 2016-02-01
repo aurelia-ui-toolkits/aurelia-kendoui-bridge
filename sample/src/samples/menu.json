@@ -17,6 +17,7 @@
     "NumericTextBox": "numerictextbox",
     "MaskedTextBox": "maskedtextbox",
     "Slider": "slider",
+    "RangeSlider": "rangeslider",
     "TimePicker": "timepicker"
   },
   "Charts": {

@@ -1,21 +1,21 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customAttribute, bindable} from 'aurelia-templating';
+import {customElement, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import 'kendo-ui/js/kendo.slider.min';
 
-@customAttribute(`${constants.attributePrefix}slider`)
-@generateBindables('kendoSlider')
+@customElement(`${constants.elementPrefix}range-slider`)
+@generateBindables('kendoRangeSlider')
 @inject(Element, WidgetBase)
-export class Slider {
+export class RangeSlider {
 
   @bindable options = {};
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                    .control('kendoSlider')
+                    .control('kendoRangeSlider')
                     .linkViewModel(this)
                     .withValueBinding();
   }
