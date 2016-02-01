@@ -484,7 +484,7 @@ export function generateBindables(controlName: string) {
 * @param name The Event's name
 * @param data Addition data to attach to an event
 */
-export function fireEvent(element: Element, name: string, data? = {}) {
+export function fireEvent(element: Element, name: string, data = {}) {
   let event = new CustomEvent(name, {
     detail: data,
     bubbles: true
@@ -500,7 +500,7 @@ export function fireEvent(element: Element, name: string, data? = {}) {
 * @param name The Event's name, without k-on prefix
 * @param data Addition data to attach to an event
 */
-export function fireKendoEvent(element: Element, name: string, data? = {}) {
+export function fireKendoEvent(element: Element, name: string, data = {}) {
   return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
 
