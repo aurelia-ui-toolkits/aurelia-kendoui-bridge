@@ -238,4 +238,28 @@ describe('TemplateCompiler', () => {
 
     expect(enhanceSpy).toHaveBeenCalledWith(element);
   });
+
+  it('enhances only fragments without au-targets', () => {
+    let $parent = {};
+    let element = DOM.createElement('div');
+    let div = DOM.createElement('div');
+    div.classList.add('au-target');
+    element.appendChild(div);
+
+    let bindSpy = jasmine.createSpy();
+    let view = {
+      bind: bindSpy,
+      attached: () => {}
+    };
+
+    $(element).data('viewInstance', view);
+    sut.templatingEngine = {
+      enhance: jasmine.createSpy()
+    };
+
+    sut.enhanceView($parent, element, {});
+
+    expect(sut.templatingEngine.enhance).not.toHaveBeenCalled();
+    expect(view.bind).toHaveBeenCalled();
+  });
 });

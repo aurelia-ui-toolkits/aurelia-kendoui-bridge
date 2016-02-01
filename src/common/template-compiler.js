@@ -112,24 +112,27 @@ export class TemplateCompiler {
   * @param ctx The dataitem (context) to compile the Element with
   */
   enhanceView($parent, element, ctx, viewResources) {
-    let view;
+    let view = $(element).data('viewInstance');
 
-    if (viewResources) {
-      view = this.templatingEngine.enhance({
-        element: element,
-        resources: viewResources
-      });
-    } else {
-      view = this.templatingEngine.enhance(element);
+    // check necessary due to https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/308
+    if (element.querySelectorAll('.au-target').length === 0) {
+      if (viewResources) {
+        view = this.templatingEngine.enhance({
+          element: element,
+          resources: viewResources
+        });
+      } else {
+        view = this.templatingEngine.enhance(element);
+      }
+
+      // when we do cleanup, we need to get the view instance
+      // so we can call detached/unbind
+      // so we store this view instance in the DOM element using JQuery.data
+      $(element).data('viewInstance', view);
     }
 
     view.bind(ctx, $parent); // call the bind() function on the view with the dataItem we got from Kendo
     view.attached(); // attach it to the DOM
-
-    // when we do cleanup, we need to get the view instance
-    // so we can call detached/unbind
-    // so we store this view instance in the DOM element using JQuery.data
-    $(element).data('viewInstance', view);
   }
 
   /**
