@@ -62,7 +62,6 @@ export class KendoConfigBuilder {
 
   kendoCalendar(): KendoConfigBuilder {
     this.resources.push('calendar/calendar');
-    this.resources.push('calendar/month-template');
     return this;
   }
 
