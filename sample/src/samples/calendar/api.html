@@ -1,0 +1,42 @@
+<template>
+    <require from="./api.css"></require>
+    <div id="example">
+      <div class="demo-section k-content">
+        <k-calendar k-widget.bind="calendar"></k-calendar>
+      </div>
+
+      <div class="box wide">
+          <div class="box-col">
+              <h4>Get value</h4>
+              <ul class="options">
+                  <li>
+                      <button k-button click.delegate="getDate()">Get date</button>
+                  </li>
+              </ul>
+          </div>
+          <div class="box-col">
+              <h4>Set value</h4>
+              <ul class="options">
+                  <li>
+                      <input k-datepicker="k-value.two-way: dateVal" />
+                      <button k-button click.delegate="calendar.value(dateVal)">Set date</button>
+                  </li>
+              </ul>
+          </div>
+          <div class="box-col">
+              <h4>Navigation</h4>
+              <ul class="options">
+                  <li>
+                      <select k-drop-down-list="k-value.two-way: view">
+                          <option value="up">upper view</option>
+                          <option value="down">lower view</option>
+                          <option value="past">past</option>
+                          <option value="future" selected="selected">future</option>
+                      </select>
+                      <button k-button click.delegate="navigate()">Navigate</button>
+                  </li>
+              </ul>
+          </div>
+      </div>
+    </div>
+</template>

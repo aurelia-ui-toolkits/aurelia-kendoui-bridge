@@ -11,6 +11,7 @@ export class KendoConfigBuilder {
   */
   core(): KendoConfigBuilder {
     this.kendoButton()
+      .kendoCalendar()
       .kendoTabStrip()
       .kendoProgressBar()
       .kendoSlider()
@@ -56,6 +57,12 @@ export class KendoConfigBuilder {
 
   kendoButton(): KendoConfigBuilder {
     this.resources.push('button/button');
+    return this;
+  }
+
+  kendoCalendar(): KendoConfigBuilder {
+    this.resources.push('calendar/calendar');
+    this.resources.push('calendar/month-template');
     return this;
   }
 

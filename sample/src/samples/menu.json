@@ -45,6 +45,7 @@
   },
   "Scheduling": {
     "Scheduler": "scheduler",
+    "Calendar": "calendar"
   },
   "Navigation": {
     "Button": "button",

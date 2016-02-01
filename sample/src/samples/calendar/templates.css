@@ -1,0 +1,24 @@
+#calendar-templates k-calendar {
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Template Days */
+
+.exhibition,
+.party,
+.cocktail {
+    font-weight: bold;
+}
+
+.exhibition {
+    color: #ff9e00;
+}
+
+.party {
+    color: #ff4081;
+}
+
+.cocktail {
+    color: #00a1e8;
+}
