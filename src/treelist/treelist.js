@@ -3,6 +3,7 @@ import {customElement, bindable, children, ViewResources} from 'aurelia-templati
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
+import {pruneOptions} from '../common/options';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 import 'kendo-ui/js/kendo.data.signalr.min';
 import 'kendo-ui/js/kendo.filtercell.min';
@@ -51,15 +52,18 @@ export class TreeList  {
   _beforeInitialize(options) {
     // allow for both column definitions via HTML and via an array of columns
     if (this.columns && this.columns.length > 0) {
-      options.columns = this.columns;
 
-      options.columns.forEach(c => {
+      options.columns = [];
+
+      this.columns.forEach(c => {
         if (c.template && !c.withKendoTemplates) {
           let template = c.template;
           c.template = function() {
             return template;
           };
         }
+
+        options.columns.push(pruneOptions(c));
       });
     }
   }

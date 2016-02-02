@@ -5,20 +5,21 @@
       "default": true,
       "files": ["html", "js", "css"]
     },
-    "batch-editing": {},
-    "binding-to-local-data": {
-      "files": ["html", "js", "json"]
-    },
+    "binding-to-local-data": {},
     "binding-to-remote-data": {},
-    "binding-to-signalr": {},
-    "editing-custom-editor": {
-      "files": ["html", "js", "json"]
+    "drag-and-drop": {
+      "files": ["html", "js", "css"]
     },
-    "frozen-columns": {},
-    "initialization-from-table": {},
-    "inline-editing": {},
+    "editing": {},
     "popup-editing": {},
-    "working-offline": {},
-    "advanced": {}
+    "column-resizing": {},
+    "column-reordering": {},
+    "column-menu": {},
+    "frozen-columns": {},
+    "aggregates": {},
+    "export-to-excel": {},
+    "export-to-pdf": {},
+    "events": {},
+    "api": {}
   }
 }
