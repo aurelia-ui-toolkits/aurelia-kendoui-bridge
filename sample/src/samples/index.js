@@ -23,6 +23,7 @@ export class Index {
       { name: 'calendar',         route: 'calendar',            moduleId: './calendar/index',               title: 'Calendar'},
       { name: 'button',           route: 'button',              moduleId: './button/index',                 title: 'Button'},
       { name: 'datepicker',       route: 'datepicker',          moduleId: './datepicker/index',             title: 'DatePicker'},
+      { name: 'datetimepicker',   route: 'datetimepicker',      moduleId: './datetimepicker/index',         title: 'DateTimePicker'},
       { name: 'donut-charts',     route: 'donut-charts',        moduleId: './chart/donut-charts/index',     title: 'Donut Charts',      settings: { pro: true } },
       { name: 'dropdownlist',     route: 'dropdownlist',        moduleId: './dropdownlist/index',           title: 'Drop Down List'},
       { name: 'funnel-charts',    route: 'funnel-charts',       moduleId: './chart/funnel-charts/index',    title: 'Funnel Charts',     settings: { pro: true } },

@@ -15,6 +15,7 @@
     "Autocomplete": "autocomplete",
     "ColorPicker": "colorpicker",
     "DatePicker": "datepicker",
+    "DateTimePicker": "datetimepicker",
     "NumericTextBox": "numerictextbox",
     "MaskedTextBox": "maskedtextbox",
     "Slider": "slider",
