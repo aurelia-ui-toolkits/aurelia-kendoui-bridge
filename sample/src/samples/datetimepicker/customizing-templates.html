@@ -1,0 +1,9 @@
+<template>
+  <require from="./customizing-templates.css"></require>
+  <input k-datetimepicker="k-value.bind: today;
+              k-dates.bind: events;
+              k-month.bind: month;
+              k-footer.bind: false;
+              k-widget.two-way: datetimepicker"
+         k-on-open.delegate="onOpen()"/>
+</template>

@@ -1,0 +1,28 @@
+{
+    "title": "DateTimePicker",
+    "samples": {
+        "basic-usage": {
+            "route": [
+                "",
+                "basic-usage"
+            ],
+        },
+        "range-selection": {},
+        "customizing-templates": {
+            "files": [
+                "html",
+                "js",
+                "css"
+            ]
+        },
+        "events": {},
+        "api": {
+            "files": [
+                "html",
+                "js",
+                "css"
+            ]
+        },
+        "disable-dates": {}
+    }
+}
