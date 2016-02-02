@@ -28,7 +28,7 @@ gulp.task('prepare-release', function(callback){
   paths.output = paths.releaseOutput;
 
   return runSequence(
-    'build',
+    'build-release',
     'lint',
     'bump-version',
     'doc',

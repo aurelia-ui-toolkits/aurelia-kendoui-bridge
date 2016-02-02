@@ -2,7 +2,7 @@
     <require from="./basic-use.css"></require>
 
     <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">
-      <k-col title="Contact Name" field="ContactName" with-kendo-templates.bind="true">
+      <k-col title="Contact Name" field="ContactName">
         <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
         <div class='customer-name'>${ContactName}</div>
       </k-col>
