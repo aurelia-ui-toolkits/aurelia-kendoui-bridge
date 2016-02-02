@@ -1,0 +1,19 @@
+<template>
+    <k-tree-list k-data-source.bind="dataSource"
+                 k-on-edit.delegate="onEdit($event.detail.model)"
+                 k-on-save.delegate="logger.log('save')"
+                 k-on-remove.delegate="logger.log('remove')"
+                 k-on-data-bound.delegate="logger.log('dataBound')"
+                 k-on-data-binding.delegate="logger.log('dataBinding')">
+      <k-tree-col field="FirstName" expandable.bind="true" title="First Name" width.bind="250"></k-tree-col>
+      <k-tree-col field="LastName" title="Last Name"></k-tree-col>
+      <k-tree-col field="HireDate" title="Hire Date" format="{0:MMMM d, yyyy}"></k-tree-col>
+      <k-tree-col field="Extension" title="Ext" format="{0:#}"></k-tree-col>
+      <k-tree-col command.bind="['edit', 'destroy']"></k-tree-col>
+    </k-tree-list>
+
+    <div class="box">
+        <h4>Console log</h4>
+        <logger view-model.ref="logger"></logger>
+    </div>
+</template>

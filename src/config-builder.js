@@ -37,7 +37,8 @@ export class KendoConfigBuilder {
       .kendoAutoComplete()
       .kendoChart()
       .kendoTreeView()
-      .kendoScheduler();
+      .kendoScheduler()
+      .kendoTreeList();
     return this;
   }
 
@@ -167,6 +168,12 @@ export class KendoConfigBuilder {
 
   kendoNumericTextBox(): KendoConfigBuilder {
     this.resources.push('numerictextbox/numerictextbox');
+    return this;
+  }
+
+  kendoTreeList(): KendoConfigBuilder {
+    this.resources.push('treelist/treelist');
+    this.resources.push('treelist/k-tree-col');
     return this;
   }
 }

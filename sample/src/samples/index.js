@@ -42,9 +42,10 @@ export class Index {
       { name: 'stock',            route: 'stock',               moduleId: './chart/stock/index',            title: 'Stock',             settings: { pro: true } },
       { name: 'tabstrip',         route: 'tabstrip',            moduleId: './tabstrip/index',               title: 'Tabstrip'},
       { name: 'timepicker',       route: 'timepicker',          moduleId: './timepicker/index',             title: 'TimePicker'},
-      { name: 'treemap',          route: 'treemap',             moduleId: './chart/treemap/index',          title: 'Treemap',           settings: { pro: true } },
-      { name: 'treeview',         route: 'treeview',            moduleId: './treeview/index',               title: 'Treeview',          settings: { pro: true } },
-      { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts',  settings: { pro: true } },
+      { name: 'treemap',          route: 'treemap',             moduleId: './chart/treemap/index',          title: 'Treemap'},
+      { name: 'treelist',         route: 'treelist',            moduleId: './treelist/index',               title: 'Treelist'},
+      { name: 'treeview',         route: 'treeview',            moduleId: './treeview/index',               title: 'Treeview'},
+      { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts'},
       { name: 'panelbar',         route: 'panelbar',            moduleId: './panelbar/index',               title: 'Panel Bar'},
       { name: 'colorpicker',      route: 'colorpicker',         moduleId: './colorpicker/index',            title: 'Color Picker'},
       { name: 'treelist',         route: 'treelist',            moduleId: './treelist/index',               title: 'Tree List',         settings: { pro: true } }

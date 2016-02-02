@@ -1,0 +1,25 @@
+{
+  "title": "TreeList",
+  "samples": {
+    "basic-use": {
+      "default": true,
+      "files": ["html", "js", "css"]
+    },
+    "binding-to-local-data": {},
+    "binding-to-remote-data": {},
+    "drag-and-drop": {
+      "files": ["html", "js", "css"]
+    },
+    "editing": {},
+    "popup-editing": {},
+    "column-resizing": {},
+    "column-reordering": {},
+    "column-menu": {},
+    "frozen-columns": {},
+    "aggregates": {},
+    "export-to-excel": {},
+    "export-to-pdf": {},
+    "events": {},
+    "api": {}
+  }
+}
