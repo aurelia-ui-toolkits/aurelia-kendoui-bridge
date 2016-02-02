@@ -17,8 +17,7 @@ export class TreeMap {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTreeMap')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {

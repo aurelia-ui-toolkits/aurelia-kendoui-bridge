@@ -15,11 +15,7 @@ export class TreeView {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTreeView')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
-
-    // kendo tree view has a wrong default value for the dataSource
-    this.kDataSource = undefined;
+                        .linkViewModel(this);
   }
 
   bind(ctx) {

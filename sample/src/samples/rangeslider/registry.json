@@ -1,0 +1,14 @@
+{
+  "title": "RangeSlider",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "events": {
+      "files": ["html", "js", "css"]
+    },
+    "api": {
+      "files": ["html", "js", "css"]
+    }
+  }
+}

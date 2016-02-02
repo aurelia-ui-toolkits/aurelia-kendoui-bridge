@@ -1,0 +1,22 @@
+<template>
+  <require from="./events.css"></require>
+  <div id="example">
+    <div id="slider-events">
+      <div class="demo-section k-content">
+        <ul id="fieldlist">
+          <li>
+            <label>Temperature</label>
+            <k-range-slider
+                   k-on-change.delegate="onChange($event.detail)"
+                   k-on-slide.delegate="onSlide($event.detail)">
+            </k-range-slider>
+          </li>
+        </ul>
+      </div>
+      <div class="box">
+        <h4>Console log</h4>
+        <logger view-model.ref="logger"></logger>
+      </div>
+    </div>
+  </div>
+</template>

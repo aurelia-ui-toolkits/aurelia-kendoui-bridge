@@ -22,8 +22,7 @@ export class TreeList  {
     this.widgetBase = widgetBase
                         .control('kendoTreeList')
                         .linkViewModel(this)
-                        .useViewResources(viewResources)
-                        .setDefaultBindableValues();
+                        .useViewResources(viewResources);
   }
 
   bind(ctx) {
@@ -52,7 +51,6 @@ export class TreeList  {
   _beforeInitialize(options) {
     // allow for both column definitions via HTML and via an array of columns
     if (this.columns && this.columns.length > 0) {
-
       options.columns = [];
 
       this.columns.forEach(c => {

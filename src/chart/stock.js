@@ -17,8 +17,7 @@ export class Stock {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoStockChart')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {

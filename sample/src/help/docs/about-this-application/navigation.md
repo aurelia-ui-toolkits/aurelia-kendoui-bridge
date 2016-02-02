@@ -3,11 +3,11 @@
 ### 2. Navigation guide
 <br>
 <br>
-The order of Help Documents sections:
+The order of Help Documents section, outlined on the Image 1 below:
 <br><br>
 
 <p align=center>
-  <img src="http://i.imgur.com/OFHR4Aw.png"></img>
+  <img src="http://i.imgur.com/7a11YNP.png"></img>
 <br>
   Image 1
 </p>

@@ -10,7 +10,6 @@ import 'kendo-ui/js/kendo.datepicker.min';
 @inject(Element, WidgetBase)
 export class DatePicker {
 
-  @bindable kDisableDates;
   @bindable options = {};
 
   constructor(element, widgetBase) {
@@ -18,8 +17,7 @@ export class DatePicker {
     this.widgetBase = widgetBase
                         .control('kendoDatePicker')
                         .linkViewModel(this)
-                        .withValueBinding()
-                        .setDefaultBindableValues();
+                        .withValueBinding();
   }
 
   bind(ctx) {
@@ -33,10 +31,6 @@ export class DatePicker {
       element: this.element,
       parentCtx: this.$parent
     });
-  }
-
-  _beforeInitialize(options) {
-    return Object.assign({}, options, { disableDates: this.kDisableDates });
   }
 
   propertyChanged(property, newValue, oldValue) {

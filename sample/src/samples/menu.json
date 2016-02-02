@@ -18,6 +18,7 @@
     "NumericTextBox": "numerictextbox",
     "MaskedTextBox": "maskedtextbox",
     "Slider": "slider",
+    "RangeSlider": "rangeslider",
     "TimePicker": "timepicker"
   },
   "Charts": {
@@ -45,6 +46,7 @@
   },
   "Scheduling": {
     "Scheduler": "scheduler",
+    "Calendar": "calendar"
   },
   "Navigation": {
     "Button": "button",
