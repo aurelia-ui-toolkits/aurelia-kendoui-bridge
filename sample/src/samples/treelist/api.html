@@ -1,0 +1,32 @@
+<template>
+  <k-tree-list k-data-source.bind="dataSource" k-selectable.bind="true" k-widget.bind="treelist">
+    <k-tree-col field="FirstName" expandable.bind="true" title="First Name"></k-tree-col>
+    <k-tree-col field="LastName" title="Last Name"></k-tree-col>
+    <k-tree-col field="Position"></k-tree-col>
+    <k-tree-col field="Extension" title="Ext" format="{0:#}"></k-tree-col>
+  </k-tree-list>
+
+  <div class="box wide">
+    <div class="box-col">
+      <h4>Selection</h4>
+      <ul class="options">
+        <li>
+          <input type="text" k-numerictextbox="k-value.two-way: selectRowIndex" />
+          <button k-button click.delegate="selectRow()">Select row</button>
+        </li>
+        <li>
+          <button k-button click.delegate="treelist.clearSelection()">Clear selected rows</button>
+        </li>
+      </ul>
+    </div>
+    <div class="box-col">
+      <h4>Expand / Collapse</h4>
+      <ul class="options">
+        <li>
+          <input type="text" k-numerictextbox="k-value.two-way: expandRowIndex"/>
+          <button k-button click.delegate="expandCollapse()">Collapse/Expand group</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>

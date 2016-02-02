@@ -1,0 +1,30 @@
+#panelbar {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.teamMate:after {
+    content: ".";
+    display: block;
+    height: 0;
+    line-height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.teamMate h2 {
+    font-size: 1.4em;
+    font-weight: normal;
+    padding-top: 20px;
+}
+
+.teamMate p {
+    margin: 0;
+}
+
+.teamMate img {
+    float: left;
+    margin: 5px 15px 5px 5px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}

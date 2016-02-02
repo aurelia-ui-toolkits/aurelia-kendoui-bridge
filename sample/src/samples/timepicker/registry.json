@@ -1,0 +1,20 @@
+{
+    "title": "TimePicker",
+    "samples": {
+        "basic-usage": {
+            "route": [
+                "",
+                "basic-usage"
+            ]
+        },
+        "range-selection": {},
+        "events": {},
+        "api": {
+            "files": [
+                "html",
+                "js",
+                "css"
+            ]
+        }
+    }
+}

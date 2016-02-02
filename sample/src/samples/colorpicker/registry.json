@@ -1,0 +1,21 @@
+{
+  "title": "Color Picker",
+  "samples": {
+    "basic-use": {
+      "default": true,
+      "files": ["html", "js", "css"]
+    },
+    "flat": {
+      "title": "Flat color picker",
+      "files": ["html", "js", "css"]
+    },
+    "standalone": {
+      "title": "Standalone Palette",
+      "files": ["html", "js", "css"]
+    },
+    "api": {
+      "title": "API",
+      "files": ["html", "js", "css"]
+    }
+  }
+}

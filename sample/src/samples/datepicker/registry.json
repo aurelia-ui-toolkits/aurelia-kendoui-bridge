@@ -38,6 +38,7 @@
                 "js",
                 "css"
             ]
-        }
+        },
+        "value-binding": {}
     }
 }

@@ -1,0 +1,8 @@
+<template>
+  <k-tree-list k-data-source.bind="dataSource" k-column-menu.bind="true" k-filterable.bind="true" k-sortable.bind="true">
+    <k-tree-col field="FirstName" expandable.bind="true" title="First Name" width.bind="250"></k-tree-col>
+    <k-tree-col field="LastName" title="Last Name"></k-tree-col>
+    <k-tree-col field="Position"></k-tree-col>
+    <k-tree-col field="Extension" title="Ext" format="{0:#}"></k-tree-col>
+  </k-tree-list>
+</template>

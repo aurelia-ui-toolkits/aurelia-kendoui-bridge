@@ -1,25 +1,27 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, bindable, children} from 'aurelia-templating';
+import {customElement, bindable, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
+import {constants} from '../common/constants';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 import 'kendo-ui/js/kendo.data.signalr.min';
 import 'kendo-ui/js/kendo.filtercell.min';
 import 'kendo-ui/js/kendo.grid.min';
 
-@customElement('k-grid')
+@customElement(`${constants.elementPrefix}grid`)
 @generateBindables('kendoGrid')
-@inject(Element, WidgetBase)
+@inject(Element, WidgetBase, ViewResources)
 export class Grid  {
 
-  @children('k-col') columns;
+  @children(`${constants.elementPrefix}col`) columns;
   @bindable options = {};
 
-  constructor(element, widgetBase) {
+  constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoGrid')
                         .linkViewModel(this)
+                        .useViewResources(viewResources)
                         .setDefaultBindableValues();
   }
 
@@ -49,6 +51,15 @@ export class Grid  {
     // allow for both column definitions via HTML and via an array of columns
     if (this.columns && this.columns.length > 0) {
       options.columns = this.columns;
+
+      options.columns.forEach(c => {
+        if (c.template && !c.withKendoTemplates) {
+          let template = c.template;
+          c.template = function() {
+            return template;
+          };
+        }
+      });
     }
   }
 

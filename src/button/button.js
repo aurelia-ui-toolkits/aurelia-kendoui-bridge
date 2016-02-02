@@ -2,9 +2,10 @@ import {inject} from 'aurelia-dependency-injection';
 import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
+import {constants} from '../common/constants';
 import 'kendo-ui/js/kendo.button.min';
 
-@customAttribute('k-button')
+@customAttribute(`${constants.attributePrefix}button`)
 @generateBindables('kendoButton')
 @inject(Element, WidgetBase)
 export class Button {

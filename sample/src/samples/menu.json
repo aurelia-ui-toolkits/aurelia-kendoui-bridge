@@ -1,19 +1,24 @@
 {
   "Most popular": {
     "Grid": "grid",
+    "Scheduler": "scheduler",
     "Bar Charts": "bar-charts",
     "Line Charts": "line-charts",
     "Stock Charts": "stock",
     "TreeView": "treeview"
   },
   "Data management": {
-    "Grid": "grid"
+    "Grid": "grid",
+    "TreeList": "treelist"
   },
   "Editors": {
     "Autocomplete": "autocomplete",
-    "Slider": "slider",
+    "ColorPicker": "colorpicker",
     "DatePicker": "datepicker",
-    "NumericTextBox": "numerictextbox"
+    "NumericTextBox": "numerictextbox",
+    "MaskedTextBox": "maskedtextbox",
+    "Slider": "slider",
+    "TimePicker": "timepicker"
   },
   "Charts": {
     "Charts 1": {
@@ -38,9 +43,13 @@
       "Waterfall Charts": "waterfall-charts"
     }
   },
+  "Scheduling": {
+    "Scheduler": "scheduler",
+  },
   "Navigation": {
     "Button": "button",
-    "Treeview": "treeview"
+    "Treeview": "treeview",
+    "Panel Bar": "panelbar"
   },
   "Interactivity & UX": {
     "ProgressBar": "progressbar"
