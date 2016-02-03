@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.button.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoButtonMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.button.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoUiJsKendoButtonMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoButton').linkViewModel(this).setDefaultBindableValues();
+      this.widgetBase = widgetBase.control('kendoButton').linkViewModel(this);
     }
 
     Button.prototype.bind = function bind(ctx) {
@@ -50,7 +50,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _Button = Button;
     Button = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Button) || Button;
     Button = _commonDecorators.generateBindables('kendoButton')(Button) || Button;
-    Button = _aureliaTemplating.customAttribute('k-button')(Button) || Button;
+    Button = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'button')(Button) || Button;
     return Button;
   })();
 

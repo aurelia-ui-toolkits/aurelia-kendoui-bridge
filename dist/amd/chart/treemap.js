@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.treemap.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _pdfPdf, _kendoUiJsKendoDatavizTreemapMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.treemap.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _pdfPdf, _kendoUiJsKendoDatavizTreemapMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoTreeMap').linkViewModel(this).setDefaultBindableValues();
+      this.widgetBase = widgetBase.control('kendoTreeMap').linkViewModel(this);
     }
 
     TreeMap.prototype.bind = function bind(ctx) {
@@ -52,7 +52,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _TreeMap = TreeMap;
     TreeMap = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(TreeMap) || TreeMap;
     TreeMap = _commonDecorators.generateBindables('kendoTreeMap')(TreeMap) || TreeMap;
-    TreeMap = _aureliaTemplating.customElement('k-treemap')(TreeMap) || TreeMap;
+    TreeMap = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'treemap')(TreeMap) || TreeMap;
     return TreeMap;
   })();
 

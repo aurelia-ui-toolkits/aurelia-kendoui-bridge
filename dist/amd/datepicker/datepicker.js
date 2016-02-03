@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.datepicker.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoDatepickerMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.datepicker.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoUiJsKendoDatepickerMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -13,16 +13,6 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _instanceInitializers = {};
 
     _createDecoratedClass(DatePicker, [{
-      key: 'kValue',
-      decorators: [_aureliaTemplating.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'kDisableDates',
-      decorators: [_aureliaTemplating.bindable],
-      initializer: null,
-      enumerable: true
-    }, {
       key: 'options',
       decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
@@ -34,14 +24,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     function DatePicker(element, widgetBase) {
       _classCallCheck(this, _DatePicker);
 
-      _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers);
-
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).setDefaultBindableValues();
+      this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).withValueBinding();
     }
 
     DatePicker.prototype.bind = function bind(ctx) {
@@ -57,8 +43,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    DatePicker.prototype._beforeInitialize = function _beforeInitialize(options) {
-      return Object.assign({}, options, { disableDates: this.kDisableDates });
+    DatePicker.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+      this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
     DatePicker.prototype.detached = function detached() {
@@ -68,7 +54,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _DatePicker = DatePicker;
     DatePicker = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(DatePicker) || DatePicker;
     DatePicker = _commonDecorators.generateBindables('kendoDatePicker')(DatePicker) || DatePicker;
-    DatePicker = _aureliaTemplating.customAttribute('k-datepicker')(DatePicker) || DatePicker;
+    DatePicker = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'datepicker')(DatePicker) || DatePicker;
     return DatePicker;
   })();
 

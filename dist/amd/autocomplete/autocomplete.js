@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/events', 'kendo-ui/js/kendo.autocomplete.min', 'kendo-ui/js/kendo.virtuallist.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonEvents, _kendoUiJsKendoAutocompleteMin, _kendoUiJsKendoVirtuallistMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.autocomplete.min', 'kendo-ui/js/kendo.virtuallist.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoUiJsKendoAutocompleteMin, _kendoUiJsKendoVirtuallistMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).setDefaultBindableValues();
+      this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).withValueBinding();
     }
 
     AutoComplete.prototype.bind = function bind(ctx) {
@@ -37,24 +37,14 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     AutoComplete.prototype.recreate = function recreate() {
-      var _this = this;
-
       this.kWidget = this.widgetBase.createWidget({
         element: this.element,
         parentCtx: this.$parent
       });
+    };
 
-      this.kWidget.bind('change', function (event) {
-        _this.kValue = event.sender.value();
-
-        _commonEvents.fireEvent(_this.element, 'input');
-      });
-
-      this.kWidget.bind('select', function (event) {
-        _this.kValue = event.sender.value();
-
-        _commonEvents.fireEvent(_this.element, 'input');
-      });
+    AutoComplete.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+      this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
     AutoComplete.prototype.detached = function detached() {
@@ -64,7 +54,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _AutoComplete = AutoComplete;
     AutoComplete = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(AutoComplete) || AutoComplete;
     AutoComplete = _commonDecorators.generateBindables('kendoAutoComplete')(AutoComplete) || AutoComplete;
-    AutoComplete = _aureliaTemplating.customAttribute('k-autocomplete')(AutoComplete) || AutoComplete;
+    AutoComplete = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'autocomplete')(AutoComplete) || AutoComplete;
     return AutoComplete;
   })();
 

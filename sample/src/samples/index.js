@@ -49,7 +49,7 @@ export class Index {
       { name: 'treemap',          route: 'treemap',             moduleId: './chart/treemap/index',          title: 'Treemap'},
       { name: 'treelist',         route: 'treelist',            moduleId: './treelist/index',               title: 'Treelist'},
       { name: 'treeview',         route: 'treeview',            moduleId: './treeview/index',               title: 'Treeview'},
-      { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts'},
+      { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts'}
     ]);
 
     this.router = router;

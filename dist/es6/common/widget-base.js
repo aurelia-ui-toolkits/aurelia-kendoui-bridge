@@ -2,6 +2,7 @@ import {pruneOptions} from './options';
 import {fireKendoEvent} from './events';
 import {getEventsFromAttributes, _hyphenate, getBindablePropertyName} from './util';
 import {TemplateCompiler} from './template-compiler';
+import {ControlProperties} from './control-properties';
 import {inject, transient} from 'aurelia-dependency-injection';
 import {TaskQueue} from 'aurelia-task-queue';
 
@@ -9,7 +10,7 @@ import {TaskQueue} from 'aurelia-task-queue';
 * Abstraction of commonly used code across wrappers
 */
 @transient()
-@inject(TaskQueue, TemplateCompiler)
+@inject(TaskQueue, TemplateCompiler, ControlProperties)
 export class WidgetBase {
 
   /**
@@ -50,8 +51,9 @@ export class WidgetBase {
   */
   ctor: any;
 
-  constructor(taskQueue, templateCompiler) {
+  constructor(taskQueue, templateCompiler, controlProperties) {
     this.taskQueue = taskQueue;
+    this.controlProperties = controlProperties;
     templateCompiler.initialize();
   }
 
@@ -79,6 +81,22 @@ export class WidgetBase {
     return this;
   }
 
+  useViewResources(resources) {
+    if (!resources) {
+      throw new Error('resources is not set');
+    }
+
+    this.viewResources = resources;
+
+    return this;
+  }
+
+  withValueBinding() {
+    this.withValueBinding = true;
+
+    return this;
+  }
+
   /**
   * collects all options objects
   * calls all hooks
@@ -97,8 +115,10 @@ export class WidgetBase {
       throw new Error('parentCtx is not set');
     }
 
-    // generate all options, including event handlers
-    let allOptions = this._getOptions(options.element);
+    // generate all options, including event handlers - use the rootElement if specified, otherwise fall back to the element
+    // this allows a child element in a custom elements tempate to be the container for the kendo control
+    // but allows the plugin to correctly discover attributes on the root element to match against events
+    let allOptions = this._getOptions(options.rootElement || options.element);
 
     // before initialization callback
     // allows you to modify/add/remove options before the control gets initialized
@@ -109,12 +129,20 @@ export class WidgetBase {
     // add parent context to options
     // deepExtend in kendo.core will fail with stack
     // overflow if we don't put it in an array :-\
-    Object.assign(allOptions, { _$parent: [options.parentCtx] });
+    Object.assign(allOptions, {
+      _$parent: [options.parentCtx],
+      _$resources: [this.viewResources]
+    });
 
     // instantiate the Kendo control
     let widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
 
     widget._$parent = options.parentCtx;
+    widget._$resources = this.viewResources;
+
+    if (this.withValueBinding) {
+      widget.first('change', (args) => this._handleChange(args));
+    }
 
     if (options.afterInitialize) {
       options.afterInitialize();
@@ -135,7 +163,7 @@ export class WidgetBase {
     // - options on the wrapper
     // - options compiled from all the bindable properties
     // - event handler options
-    return Object.assign({}, this.viewModel.options, pruneOptions(options), eventOptions);
+    return pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
   }
 
   /**
@@ -143,37 +171,19 @@ export class WidgetBase {
   * and puts all these values in a single options object
   */
   getOptionsFromBindables() {
-    let props = this.kendoOptions;
     let options = {};
 
-    for (let prop of Object.keys(props)) {
-      options[prop] = this.viewModel[getBindablePropertyName(prop)];
-    }
-
-    if (this.viewModel.kDataSource) {
-      options.dataSource = this.viewModel.kDataSource;
+    for (let prop of this.controlProperties.getProperties(this.controlName)) {
+      // we don't need to pass the widget property to the Kendo control
+      // it might also cause stackoverflow errors
+      if (prop !== 'widget') {
+        options[prop] = this.viewModel[getBindablePropertyName(prop)];
+      }
     }
 
     return options;
   }
 
-  /**
-  * sets the default value of all bindable properties
-  *  gets the value from the options object in the Kendo control itself
-  */
-  setDefaultBindableValues() {
-    if (!this.viewModel) {
-      throw new Error('viewModel is not set');
-    }
-
-    let props = this.kendoOptions;
-
-    for (let prop of Object.keys(props)) {
-      this.viewModel[getBindablePropertyName(prop)] = props[prop];
-    }
-
-    return this;
-  }
 
   /**
   * convert attributes into a list of events a user wants to subscribe to.
@@ -203,6 +213,19 @@ export class WidgetBase {
     });
 
     return options;
+  }
+
+
+  _handleChange(args) {
+    let sender = args.sender;
+
+    this.viewModel.kValue = sender.value();
+  }
+
+  handlePropertyChanged(widget, property, newValue, oldValue) {
+    if (property === 'kValue' && this.withValueBinding) {
+      widget.value(newValue);
+    }
   }
 
   /**

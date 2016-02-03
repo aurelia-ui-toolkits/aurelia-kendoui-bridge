@@ -16,6 +16,8 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 require('kendo-ui/js/kendo.treeview.min');
 
 var TreeView = (function () {
@@ -36,9 +38,7 @@ var TreeView = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this).setDefaultBindableValues();
-
-    this.kDataSource = undefined;
+    this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this);
   }
 
   TreeView.prototype.bind = function bind(ctx) {
@@ -61,7 +61,7 @@ var TreeView = (function () {
   var _TreeView = TreeView;
   TreeView = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(TreeView) || TreeView;
   TreeView = _commonDecorators.generateBindables('kendoTreeView')(TreeView) || TreeView;
-  TreeView = _aureliaTemplating.customAttribute('k-treeview')(TreeView) || TreeView;
+  TreeView = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'treeview')(TreeView) || TreeView;
   return TreeView;
 })();
 

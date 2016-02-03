@@ -16,6 +16,8 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 require('kendo-ui/js/kendo.numerictextbox.min');
 
 var NumericTextBox = (function () {
@@ -36,7 +38,7 @@ var NumericTextBox = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this);
   }
 
   NumericTextBox.prototype.bind = function bind(ctx) {
@@ -59,7 +61,7 @@ var NumericTextBox = (function () {
   var _NumericTextBox = NumericTextBox;
   NumericTextBox = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(NumericTextBox) || NumericTextBox;
   NumericTextBox = _commonDecorators.generateBindables('kendoNumericTextBox')(NumericTextBox) || NumericTextBox;
-  NumericTextBox = _aureliaTemplating.customAttribute('k-numerictextbox')(NumericTextBox) || NumericTextBox;
+  NumericTextBox = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'numerictextbox')(NumericTextBox) || NumericTextBox;
   return NumericTextBox;
 })();
 

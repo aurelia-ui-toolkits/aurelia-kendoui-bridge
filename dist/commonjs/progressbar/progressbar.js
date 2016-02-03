@@ -16,6 +16,8 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 require('kendo-ui/js/kendo.progressbar.min');
 
 var ProgressBar = (function () {
@@ -36,7 +38,7 @@ var ProgressBar = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoProgressBar').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoProgressBar').linkViewModel(this);
   }
 
   ProgressBar.prototype.bind = function bind(ctx) {
@@ -59,7 +61,7 @@ var ProgressBar = (function () {
   var _ProgressBar = ProgressBar;
   ProgressBar = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(ProgressBar) || ProgressBar;
   ProgressBar = _commonDecorators.generateBindables('kendoProgressBar')(ProgressBar) || ProgressBar;
-  ProgressBar = _aureliaTemplating.customAttribute('k-progress-bar')(ProgressBar) || ProgressBar;
+  ProgressBar = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'progress-bar')(ProgressBar) || ProgressBar;
   return ProgressBar;
 })();
 

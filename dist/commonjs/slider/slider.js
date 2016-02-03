@@ -16,17 +16,14 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 require('kendo-ui/js/kendo.slider.min');
 
 var Slider = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(Slider, [{
-    key: 'kValue',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'options',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
@@ -38,12 +35,10 @@ var Slider = (function () {
   function Slider(element, widgetBase) {
     _classCallCheck(this, _Slider);
 
-    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).withValueBinding();
   }
 
   Slider.prototype.bind = function bind(ctx) {
@@ -55,21 +50,14 @@ var Slider = (function () {
   };
 
   Slider.prototype.recreate = function recreate() {
-    var _this = this;
-
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: function beforeInitialize(o) {
-        return _this._beforeInitialize(o);
-      }
+      parentCtx: this.$parent
     });
   };
 
-  Slider.prototype._beforeInitialize = function _beforeInitialize(options) {
-    if (!options.value && this.kValue) {
-      options.value = this.kValue;
-    }
+  Slider.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
   Slider.prototype.detached = function detached() {
@@ -79,7 +67,7 @@ var Slider = (function () {
   var _Slider = Slider;
   Slider = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Slider) || Slider;
   Slider = _commonDecorators.generateBindables('kendoSlider')(Slider) || Slider;
-  Slider = _aureliaTemplating.customAttribute('k-slider')(Slider) || Slider;
+  Slider = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'slider')(Slider) || Slider;
   return Slider;
 })();
 

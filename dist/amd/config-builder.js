@@ -14,12 +14,12 @@ define(['exports'], function (exports) {
     }
 
     KendoConfigBuilder.prototype.core = function core() {
-      this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList().kendoDatePicker().kendoNumericTextBox();
+      this.kendoButton().kendoCalendar().kendoTabStrip().kendoProgressBar().kendoSlider().kendoRangeSlider().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoTimePicker().kendoMaskedTextBox().kendoNumericTextBox().kendoPanelBar().kendoColorPicker().kendoColorPalette().kendoFlatColorPicker();
       return this;
     };
 
     KendoConfigBuilder.prototype.pro = function pro() {
-      this.core().kendoGrid().kendoAutoComplete().kendoChart().kendoTreeView();
+      this.core().kendoGrid().kendoAutoComplete().kendoChart().kendoTreeView().kendoScheduler().kendoTreeList();
       return this;
     };
 
@@ -35,6 +35,11 @@ define(['exports'], function (exports) {
 
     KendoConfigBuilder.prototype.kendoButton = function kendoButton() {
       this.resources.push('button/button');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoCalendar = function kendoCalendar() {
+      this.resources.push('calendar/calendar');
       return this;
     };
 
@@ -61,6 +66,7 @@ define(['exports'], function (exports) {
 
     KendoConfigBuilder.prototype.kendoScheduler = function kendoScheduler() {
       this.resources.push('scheduler/scheduler');
+      this.resources.push('scheduler/event-template');
       return this;
     };
 
@@ -82,6 +88,11 @@ define(['exports'], function (exports) {
       return this;
     };
 
+    KendoConfigBuilder.prototype.kendoPanelBar = function kendoPanelBar() {
+      this.resources.push('panelbar/panelbar');
+      return this;
+    };
+
     KendoConfigBuilder.prototype.kendoProgressBar = function kendoProgressBar() {
       this.resources.push('progressbar/progressbar');
       return this;
@@ -92,8 +103,23 @@ define(['exports'], function (exports) {
       return this;
     };
 
+    KendoConfigBuilder.prototype.kendoRangeSlider = function kendoRangeSlider() {
+      this.resources.push('rangeslider/rangeslider');
+      return this;
+    };
+
     KendoConfigBuilder.prototype.kendoColorPicker = function kendoColorPicker() {
       this.resources.push('colorpicker/colorpicker');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoColorPalette = function kendoColorPalette() {
+      this.resources.push('colorpalette/colorpalette');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoFlatColorPicker = function kendoFlatColorPicker() {
+      this.resources.push('flatcolorpicker/flatcolorpicker');
       return this;
     };
 
@@ -107,8 +133,29 @@ define(['exports'], function (exports) {
       return this;
     };
 
+    KendoConfigBuilder.prototype.kendoDateTimePicker = function kendoDateTimePicker() {
+      this.resources.push('datetimepicker/datetimepicker');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoTimePicker = function kendoTimePicker() {
+      this.resources.push('timepicker/timepicker');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoMaskedTextBox = function kendoMaskedTextBox() {
+      this.resources.push('maskedtextbox/maskedtextbox');
+      return this;
+    };
+
     KendoConfigBuilder.prototype.kendoNumericTextBox = function kendoNumericTextBox() {
       this.resources.push('numerictextbox/numerictextbox');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoTreeList = function kendoTreeList() {
+      this.resources.push('treelist/treelist');
+      this.resources.push('treelist/k-tree-col');
       return this;
     };
 

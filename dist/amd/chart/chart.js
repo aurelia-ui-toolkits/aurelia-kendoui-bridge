@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.chart.min', 'kendo-ui/js/kendo.dataviz.chart.polar.min', 'kendo-ui/js/kendo.dataviz.chart.funnel.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _pdfPdf, _kendoUiJsKendoDatavizChartMin, _kendoUiJsKendoDatavizChartPolarMin, _kendoUiJsKendoDatavizChartFunnelMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.chart.min', 'kendo-ui/js/kendo.dataviz.chart.polar.min', 'kendo-ui/js/kendo.dataviz.chart.funnel.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _pdfPdf, _kendoUiJsKendoDatavizChartMin, _kendoUiJsKendoDatavizChartPolarMin, _kendoUiJsKendoDatavizChartFunnelMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this).setDefaultBindableValues();
+      this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this);
     }
 
     Chart.prototype.bind = function bind(ctx) {
@@ -52,7 +52,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _Chart = Chart;
     Chart = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Chart) || Chart;
     Chart = _commonDecorators.generateBindables('kendoChart')(Chart) || Chart;
-    Chart = _aureliaTemplating.customElement('k-chart')(Chart) || Chart;
+    Chart = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'chart')(Chart) || Chart;
     return Chart;
   })();
 
