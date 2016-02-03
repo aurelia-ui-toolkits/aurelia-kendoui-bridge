@@ -193,6 +193,7 @@ export class WidgetBase {
   getEventOptions(element) {
     let options = {};
     let allowedEvents = this.kendoEvents;
+    let delayedExecution = ['change'];
 
     // iterate all attributes on the custom elements
     // and only return the normalized kendo event's (dataBound etc)
@@ -204,12 +205,13 @@ export class WidgetBase {
         throw new Error(`${event} is not an event on the ${this.controlName} control`);
       }
 
-      // add an event handler 'proxy' to the options object
-      options[event] = e => {
-        this.taskQueue.queueMicroTask(() => {
-          fireKendoEvent(element, _hyphenate(event), e);
-        });
-      };
+      if (delayedExecution.includes(event)) {
+        options[event] = e => {
+          this.taskQueue.queueMicroTask(() => fireKendoEvent(element, _hyphenate(event), e));
+        };
+      } else {
+        options[event] = e => fireKendoEvent(element, _hyphenate(event), e);
+      }
     });
 
     return options;
