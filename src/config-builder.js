@@ -20,6 +20,7 @@ export class KendoConfigBuilder {
       .kendoDateTimePicker()
       .kendoDatePicker()
       .kendoTimePicker()
+      .kendoListView()
       .kendoMaskedTextBox()
       .kendoNumericTextBox()
       .kendoPanelBar()
@@ -144,6 +145,13 @@ export class KendoConfigBuilder {
 
   kendoFlatColorPicker(): KendoConfigBuilder {
     this.resources.push('flatcolorpicker/flatcolorpicker');
+    return this;
+  }
+
+  kendoListView(): KendoConfigBuilder {
+    this.resources.push('listview/listview');
+    this.resources.push('listview/k-list-template');
+    this.resources.push('listview/k-list-edit-template');
     return this;
   }
 
