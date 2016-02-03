@@ -1,0 +1,27 @@
+.k-panel {
+    -webkit-transform: translatez(0);
+}
+
+#panelbar-sprites .k-sprite {
+    background-image: url("http://demos.telerik.com/kendo-ui/content/shared/styles/flags.png");
+}
+
+.brazilFlag {
+    background-position: 0 0;
+}
+
+.indiaFlag {
+    background-position: 0 -32px;
+}
+
+.netherlandsFlag {
+    background-position: 0 -64px;
+}
+
+.historyIcon {
+    background-position: 0 -96px;
+}
+
+.geographyIcon {
+    background-position: 0 -128px;
+}

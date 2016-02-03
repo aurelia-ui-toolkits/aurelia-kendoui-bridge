@@ -1,0 +1,18 @@
+<template>
+  <k-scheduler style="margin-bottom:20px"
+               k-date.bind="date"
+               k-start-time.bind="startTime"
+               k-height.bind="600"
+               k-views.bind="[
+                  'day',
+                  { type: 'week', selected: true },
+                  'month',
+                  'agenda',
+                  'timeline'
+               ]"
+               k-timezone="Etc/UTC"
+               k-data-source.bind="dataSource"
+               k-resources.bind="resources">
+  </k-scheduler>
+  <span ref="notification"></span>
+</template>

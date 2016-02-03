@@ -1,0 +1,17 @@
+{
+  "title": "Calendar",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
+    },
+    "api": {
+      "files": ["html", "js", "css"]
+    },
+    "disable-dates": {},
+    "events": {},
+    "templates": {
+      "files": ["html", "js", "css"]
+    },
+  }
+}

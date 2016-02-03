@@ -1,0 +1,12 @@
+<template>
+    <div id="example">
+      <div class="demo-section k-content" style="text-align: center;">
+				<h4>Disable weekends</h4>
+				<k-calendar k-disable-dates.bind="['sa', 'su']"></k-calendar>
+
+				<h4 style="margin-top:1em">Disable Federal Holidays in USA in 2015</h4>
+				<k-calendar k-dates.bind="holidays"
+                    k-disable-dates.call="disableDates($event)"></k-calendar>
+			</div>
+    </div>
+</template>

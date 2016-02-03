@@ -21,5 +21,4 @@ Touch support, easy mobile rendering, responsive capabilities and integration wi
 
 Apply one of the 16 built-in themes, such as High Contrast, SAP Fiori theme or Material Design theme:
 <br>
-
-![](http://i.imgur.com/tH2FU7n.png)
+![](http://i.imgur.com/bPJCkBF.png)

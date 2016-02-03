@@ -1,0 +1,19 @@
+{
+    "title": "MaskedTextBox",
+    "samples": {
+        "basic-usage": {
+            "route": [
+                "",
+                "basic-usage"
+            ]
+        },
+        "events": {},
+        "api": {
+            "files": [
+                "html",
+                "js",
+                "css"
+            ]
+        }
+    }
+}

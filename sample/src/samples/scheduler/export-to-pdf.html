@@ -1,0 +1,51 @@
+<template>
+
+  <div id="example">
+    <k-scheduler k-toolbar.bind="['pdf']"
+                 k-pdf.bind="{
+                  fileName: 'Kendo UI Scheduler Export.pdf',
+                  proxyURL: '//demos.telerik.com/kendo-ui/service/export'
+                 }"
+                 k-date.bind="date"
+                 k-start-time.bind="startTime"
+                 k-height.bind="600"
+                 k-views.bind="[
+                  'day',
+                  { type: 'workWeek', selected: true },
+                  'week',
+                  'month',
+                  'agenda',
+                  { type: 'timeline', eventHeight: 50}
+                 ]"
+                 k-timezone="Etc/UTC"
+                 k-resources.bind="[{
+                  field: 'ownerId',
+                  title: 'Owner',
+                  dataSource: [
+                    { text: 'Alex', value: 1, color: '#f8a398' },
+                    { text: 'Bob', value: 2, color: '#51a0ed' },
+                    { text: 'Charlie', value: 3, color: '#56ca85' }
+                  ]
+                 }]"
+                 k-data-source.bind="dataSource">
+    </k-scheduler>
+  </div>
+
+
+  <style>
+    .k-scheduler {
+      font-family: "DejaVu Sans", "Arial", sans-serif;
+      font-size: .9em;
+    }
+
+    /* Hide toolbar, navigation and footer during export */
+    .k-pdf-export .k-scheduler-toolbar,
+    .k-pdf-export .k-scheduler-navigation .k-nav-today,
+    .k-pdf-export .k-scheduler-navigation .k-nav-prev,
+    .k-pdf-export .k-scheduler-navigation .k-nav-next,
+    .k-pdf-export .k-scheduler-footer
+    {
+      display: none;
+    }
+  </style>
+</template>

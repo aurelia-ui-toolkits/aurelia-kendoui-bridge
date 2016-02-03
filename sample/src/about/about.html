@@ -1,67 +1,70 @@
 <template>
+    <require from="./about.css"></require>
+    <div class="container-fluid">
+    <div class="k-header header">
+      <div style="margin:auto;text-align:center">
+        <h1 class="text-lg">Aurelia Kendo UI <i>Bridge</i></h1>
+        <h2>Industry standard, tried and tested HTML5 widgets - enhanced by Aurelia</h2>
+      </div>
+    </div>
+    <div class="row">
+       <div class="col-xs-12 col-sm-4 text-center">
+           <a href="http://aurelia.io" target="_blank"><img src="images/aurelia-logo.png" /></a>
+       </div>
+       <div class="col-xs-12 col-sm-4 text-center">
+           <img src="images/bridge.png" >
+       </div>
+       <div class="col-xs-12 col-sm-4 text-center">
+         <a href="http://www.telerik.com/kendo-ui" target="_blank"><img src="images/kendo-ui-logo.png" /></a>
+       </div>
+    </div>
     <section>
-        <h4>About Aurelia-KendoUI Components Catalog</h4>
-
-        <br>
-
-        <div>
-
-<!--             <div class="row">
-                <div class="col-xs-12 col-sm-1">
-
-                </div>
-                <div class="col-xs-12 col-sm-10">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet est scelerisque, tristique mauris et, pharetra arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean luctus mi sed purus placerat euismod. Cras dolor quam, sollicitudin nec ligula et, pellentesque efficitur dolor. Proin eget blandit nisl. Mauris venenatis porttitor risus a pulvinar. Aliquam tristique sem in eleifend pulvinar. Integer ac eros quis tellus volutpat semper quis in sapien. Morbi dapibus mattis leo vel aliquet. Vestibulum nec luctus ante. Curabitur tristique sapien vel nulla interdum efficitur. Maecenas pretium hendrerit nisi sed bibendum. Phasellus interdum risus ac laoreet aliquam.
-
-
-                </div>
-                <div class="col-xs-12 col-sm-1">
-
-                </div>
-            </div>
-            <hr> -->
-
-            <!-- Row 1 - 1 column (images) -->
-            <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                    <img src="images/abk-logo.png" >
-                </div>
-            </div>
-
-            <br>
-            <br>
-
-            <!-- Row 2 - 2 columns (text) -->
-            <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                    <p>
-                        Aurelia is a next generation UI framework. Whether you're building apps for the browser, mobile or desktop, Aurelia can enable you to not only create amazing UI, but do it in a way that is maintainable, testable and extensible.
-                    </p>
-                    <p>
-                        Aurelia is just JavaScript. However, it's not yesterday's JavaScript, but the JavaScript of tomorrow. By using modern tooling we've been able to write Aurelia from the ground up in ECMAScript 2016. This means we have native modules, classes, decorators and more at our disposal...and you have them too.
-                    </p>
-                    <p>
-                        Not only is Aurelia written in modern and future JavaScript, but it also takes a modern approach to architecture. In the past, frameworks have been monolithic beasts. Not Aurelia though. It's built as a series of collaborating libraries. Taken together, they form a powerful and robust framework for building Single Page Apps (SPAs). However, Aurelia's libraries can often be used individually, in traditional web sites or even on the server-side through technologies like NodeJS.
-                    </p>
-                    <p>
-                        Aurelia is open source, but unlike much open source in the JavaScript space, Aurelia is an official product with commercial backing. If your business is going to spend significant money building software, you want to do it on a platform that's committed to you as a customer. You want to be able to form a relationship with your technology provider to ensure that you and your developers have a solid platform upon which to build your business now and in the years to come.
-                    </p>
-                </div>
-
-                <div class="col-xs-12 col-sm-6">
-                    <p>
-                        Kendo UI is an HTML5 user interface framework for building interactive and high-performance websites and applications. The framework comes with a library of 70+ UI widgets, an abundance of data-visualization gadgets, client-side data source, built-in MVVM (Model-View-ViewModel) library. Kendo UI provides AngularJS, Bootstrap  - and soon Aurelia integration
-                    </p>
-
-                    <p>
-                        Kendo UI Professional is one of the commercial versions of Kendo UI. It is a comprehensive framework providing 70+ Kendo UI widgets, and includes a simple and consistent programming interface, a rock-solid DataSource, out-of-the-box themes, an MVVM framework, and more. Kendo UI Professional includes widgets for enterprise-grade line-of-business applications and is suitable for creating professional websites that require expert and timely technical support.
-                    </p>
-                    <p>
-                       Kendo UI Core is the free and open-source Kendo UI distribution, released under Apache v2.0 License. It provides access to a limited number of widgets and framework features, and to 1,000+ tests running across browsers for each commit to the Kendo UI Core GitHub repository. Kendo UI Core is suitable for open-source or commercial projects that do not require complex UI, such as Grid, Chart, etc., nor dedicated technical support. Kendo UI Core does not offer dedicated technical support.
-                    </p>
-                </div>
-            </div>
-
+      <h3 class="text-center" style="padding-top: 20px; padding-bottom:20px">
+        <ul class="features">
+          <li>We've done the hard work for you</li>
+          <li>Use Kendo UI components in your Aurelia application <i style="text-decoration:underline">without writing any wrapper code</i></li>
+          <li>Powerful binding expressions <i>directly in your markup</i></li>
+          <li>Full support for Aurelia's templating system in Kendo templates</li>
+          <li><a href="#samples">Get started</a> or check out the example below</li>
+        </ul>
+      </h3>
+      <h2>Example</h3>
+      <div class="row">
+        <div class="col-sm-12">
+          <k-grid k-data-source.bind="datasource" k-pageable.bind="{ refresh: true, pageSizes: true, buttonCount: 10 }" k-sortable.bind="true">
+            <k-col title="Contact Name" field="ContactName">
+              <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+              <div class='customer-name'>${ContactName}</div>
+            </k-col>
+            <k-col title="Contact Title" field="ContactTitle"></k-col>
+            <k-col title="Company Name" field="CompanyName"></k-col>
+            <k-col field="Country"></k-col>
+          </k-grid>
         </div>
+      </div>
+      <div class="row" style="margin-top: 10px">
+        <div class="col-sm-12">
+          <div k-tabstrip k-tabstrip.ref="tabstrip">
+              <ul>
+                  <li class="k-state-active">Without Bridge</li>
+                  <li>With Bridge (View)</li>
+                  <li>With Bridge (View-Model)</li>
+              </ul>
+              <div>
+                  <au-code language="markup" url="./src/about/kendo-standard-init.html">
+                  </au-code>
+              </div>
+              <div>
+                  <au-code language="markup" url="./src/about/kendo-bridge-init.html">
+                  </au-code>
+              </div>
+              <div>
+                  <au-code language="javascript" url="./src/about/kendo-bridge-viewmodel.js">
+                  </au-code>
+              </div>
+          </div>
+        </div>
+      </div>
     </section>
+  </div>
 </template>

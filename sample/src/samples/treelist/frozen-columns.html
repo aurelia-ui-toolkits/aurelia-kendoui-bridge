@@ -1,0 +1,26 @@
+<template>
+  <div id="frozen-columns-treelist">
+    <k-tree-list k-data-source.bind="dataSource"
+                 k-reorderable.bind="true"
+                 k-resizable.bind="true"
+                 k-sortable.bind="true"
+                 k-filterable.bind="true"
+                 k-column-menu.bind="true">
+      <k-tree-col field="FirstName"
+                  expandable.bind="true"
+                  title="First Name"
+                  width.bind="250"
+                  locked.bind="true"
+                  lockable.bind="false"></k-tree-col>
+      <k-tree-col field="LastName" title="Last Name" locked.bind="true" width.bind="200"></k-tree-col>
+      <k-tree-col field="Position" width.bind="400"></k-tree-col>
+      <k-tree-col field="Extension" title="Ext" width.bind="150" format="{0:#}" lockable.bind="false"></k-tree-col>
+    </k-tree-list>
+  </div>
+
+  <style>
+    #frozen-columns-treelist k-tree-list {
+     width: 950px;
+    }
+  </style>
+</template>

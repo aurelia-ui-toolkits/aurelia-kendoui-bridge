@@ -43,7 +43,8 @@ describe('TemplateCompiler', () => {
     };
     let args = () => realArgs;
     let $parent = {};
-    let widget = {  _$parent: $parent };
+    let viewResources = {};
+    let widget = {  _$parent: $parent, _$resources: viewResources };
 
     let compileSpy = spyOn(sut, 'compile');
     let cleanupSpy = spyOn(sut, 'cleanup');
@@ -51,7 +52,7 @@ describe('TemplateCompiler', () => {
     sut.handleTemplateEvents(widget, 'compile', args);
     sut.handleTemplateEvents(widget, 'cleanup', args);
 
-    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data);
+    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data, viewResources);
     expect(cleanupSpy).toHaveBeenCalledWith(realArgs.elements);
   });
 
@@ -67,29 +68,31 @@ describe('TemplateCompiler', () => {
     };
     let args = () => realArgs;
     let $parent = {};
-    let widget = { options: { _$parent: [$parent] }};
+    let viewResources = {};
+    let widget = { options: { _$parent: [$parent], _$resources: [viewResources] }};
 
     let compileSpy = spyOn(sut, 'compile');
 
     sut.handleTemplateEvents(widget, 'compile', args);
 
-    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data);
+    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data, viewResources);
   });
 
   it('enhances every element', () => {
     let elements = [];
     let data = [];
     let $parent = {};
+    let viewResources = {};
     let spy = spyOn(sut, 'enhanceView');
     for (let i = 0; i < 10; i++) {
       elements.push(DOM.createElement('div'));
       data.push({dataItem: i});
     }
 
-    sut.compile($parent, elements, data);
+    sut.compile($parent, elements, data, viewResources);
 
     for (let i = 0; i < elements.length; i++) {
-      expect(spy).toHaveBeenCalledWith($parent, elements[i], data[i].dataItem);
+      expect(spy).toHaveBeenCalledWith($parent, elements[i], data[i].dataItem, viewResources);
     }
   });
 
@@ -98,18 +101,19 @@ describe('TemplateCompiler', () => {
     let div1 = $('div');
     let div2 = $('div');
     let $parent = {};
+    let viewResources = {};
     let selector = jQuery([div1, div2]);
     let data = [{
       dataItem: 1
     }];
 
-    sut.compile($parent, [selector], data);
+    sut.compile($parent, [selector], data, viewResources);
 
     // kendo can pass in a jQuery selector, with a single dataitem
     // but we have to compile each element in the jQuery selector with the single
     // dataitem that kendo passed in
-    expect(spy).toHaveBeenCalledWith($parent, div1, data[0].dataItem);
-    expect(spy).toHaveBeenCalledWith($parent, div2, data[0].dataItem);
+    expect(spy).toHaveBeenCalledWith($parent, div1, data[0].dataItem, viewResources);
+    expect(spy).toHaveBeenCalledWith($parent, div2, data[0].dataItem, viewResources);
   });
 
   it('enhances elements and calls lifecycle events', () => {
@@ -197,5 +201,65 @@ describe('TemplateCompiler', () => {
     sut.initialize();
 
     expect(kendo.ui.Widget.prototype.angular).toBe('test');
+  });
+
+  it('enhances view with viewResources if available', () => {
+    let $parent = {};
+    let viewResources = {};
+    let element = DOM.createElement('div');
+    let enhanceSpy = jasmine.createSpy().and.returnValue({
+      bind: () => {},
+      attached: () => {}
+    });
+    sut.templatingEngine = {
+      enhance: enhanceSpy
+    };
+
+    sut.enhanceView($parent, element, {}, viewResources);
+
+    expect(enhanceSpy).toHaveBeenCalledWith({
+      element: element,
+      resources: viewResources
+    });
+  });
+
+  it('enhances view without viewResources if not available', () => {
+    let $parent = {};
+    let element = DOM.createElement('div');
+    let enhanceSpy = jasmine.createSpy().and.returnValue({
+      bind: () => {},
+      attached: () => {}
+    });
+    sut.templatingEngine = {
+      enhance: enhanceSpy
+    };
+
+    sut.enhanceView($parent, element, {});
+
+    expect(enhanceSpy).toHaveBeenCalledWith(element);
+  });
+
+  it('enhances only fragments without au-targets', () => {
+    let $parent = {};
+    let element = DOM.createElement('div');
+    let div = DOM.createElement('div');
+    div.classList.add('au-target');
+    element.appendChild(div);
+
+    let bindSpy = jasmine.createSpy();
+    let view = {
+      bind: bindSpy,
+      attached: () => {}
+    };
+
+    $(element).data('viewInstance', view);
+    sut.templatingEngine = {
+      enhance: jasmine.createSpy()
+    };
+
+    sut.enhanceView($parent, element, {});
+
+    expect(sut.templatingEngine.enhance).not.toHaveBeenCalled();
+    expect(view.bind).toHaveBeenCalled();
   });
 });
