@@ -15,7 +15,7 @@
                                 read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Categories'
                             }
                         }"
-                        k-drop-down-list.ref="categories" id="categories" style="width: 100%;" />
+                        id="categories" style="width: 100%;" />
 
                 <h4 style="margin-top: 2em;">Products:</h4>
                 <input k-drop-down-list="k-auto-bind.bind: false;
@@ -30,9 +30,9 @@
                                 read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Products'
                             }
                         }"
-                        k-drop-down-list.ref="products" id="products" disabled="disabled" style="width: 100%;" />
+                        k-drop-down-list.ref="products" id="products" style="width: 100%;" />
 
-                <h4 style="margin-top: 2em;">Orders:</h4>
+                <!-- <h4 style="margin-top: 2em;">Orders:</h4>
                 <input k-drop-down-list="k-auto-bind.bind: false;
                         k-cascade-from: products;
                         k-option-label: Select order...;
@@ -45,9 +45,9 @@
                                 read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Order_Details?$expand=Order'
                             }
                         }"
-                        k-drop-down-list.ref="orders" id="orders" disabled="disabled" style="width: 100%;" />
+                        k-drop-down-list.ref="orders" id="orders" disabled="disabled" style="width: 100%;" /> -->
 
-                <button click.delegate="viewOrder()" class="k-button k-primary" id="get" style="margin-top: 2em; float: right;">View Order</button>
+                <button click.delegate="viewOrder()" k-button style="margin-top: 2em; float: right;">View Order</button>
 
             </div>
 

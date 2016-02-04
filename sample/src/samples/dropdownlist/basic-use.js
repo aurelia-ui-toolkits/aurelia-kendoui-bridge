@@ -10,16 +10,16 @@ export class BasicUse {
     value: '3'
   }];
 
-  onChange() {
-    let value = this.capColor.value;
+  capColor = '1';
 
-    $('#cap')
-    .toggleClass('black-cap', value === 1)
-    .toggleClass('orange-cap', value === 2)
-    .toggleClass('grey-cap', value === 3);
+  colorChanged() {
+    $(this.cap)
+    .toggleClass('black-cap', this.capColor === '1')
+    .toggleClass('orange-cap', this.capColor === '2')
+    .toggleClass('grey-cap', this.capColor === '3');
   }
 
   buyCap() {
-    alert(`Thank you! Your Choice is:\n\nColor ID: ${this.capColor.kValue} and Size: ${this.capSize.kValue}`);
+    alert(`Thank you! Your Choice is:\n\nColor ID: ${this.capColor} and Size: ${this.capSize}`);
   }
 }

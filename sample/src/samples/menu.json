@@ -2,6 +2,7 @@
   "Most popular": {
     "Grid": "grid",
     "Scheduler": "scheduler",
+    "DropDownList": "dropdownlist",
     "Bar Charts": "bar-charts",
     "Line Charts": "line-charts",
     "Stock Charts": "stock",

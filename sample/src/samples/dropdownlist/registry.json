@@ -1,5 +1,5 @@
 {
-  "title": "Drop Down List",
+  "title": "DropDownList",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]

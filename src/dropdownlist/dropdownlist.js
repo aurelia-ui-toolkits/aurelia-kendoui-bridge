@@ -2,7 +2,6 @@ import {inject} from 'aurelia-dependency-injection';
 import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import {fireEvent} from '../common/events';
 import {constants} from '../common/constants';
 import 'kendo-ui/js/kendo.dropdownlist.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
@@ -13,13 +12,13 @@ import 'kendo-ui/js/kendo.virtuallist.min';
 export class DropDownList {
 
   @bindable options = {};
-  @bindable kValue;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoDropDownList')
-                        .linkViewModel(this);
+                        .linkViewModel(this)
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -33,27 +32,10 @@ export class DropDownList {
       element: this.element,
       parentCtx: this.$parent
     });
+  }
 
-	   // without these change and select handlers, when you select an options
-    // the value binding is not updated
-    this.kWidget.bind('change', (event) => {
-      this.kValue = event.sender.value();
-      this.kText = event.sender.text();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
-
-    this.kWidget.bind('select', (event) => {
-      this.kValue = event.sender.value();
-      this.kText = event.sender.text();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
-
-    // Ensure the dropdown has an initial value/text
-    this.kWidget.trigger('change');
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {
