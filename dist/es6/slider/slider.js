@@ -17,7 +17,7 @@ export class Slider {
     this.widgetBase = widgetBase
                     .control('kendoSlider')
                     .linkViewModel(this)
-                    .withValueBinding();
+                    .useValueBinding();
   }
 
   bind(ctx) {

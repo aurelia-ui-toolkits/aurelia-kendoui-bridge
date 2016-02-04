@@ -8056,6 +8056,28 @@
           ]
         },
         {
+          "id": 257,
+          "name": "useValueBinding",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 258,
+              "name": "useValueBinding",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
           "id": 254,
           "name": "useViewResources",
           "kind": 2048,
@@ -8083,28 +8105,6 @@
                   }
                 }
               ],
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        },
-        {
-          "id": 257,
-          "name": "withValueBinding",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 258,
-              "name": "withValueBinding",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
               "type": {
                 "type": "instrinct",
                 "name": "any"
@@ -8145,8 +8145,8 @@
             262,
             267,
             251,
-            254,
-            257
+            257,
+            254
           ]
         }
       ]

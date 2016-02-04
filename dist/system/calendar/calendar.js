@@ -41,7 +41,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoCalendar').linkViewModel(this).withValueBinding();
+          this.widgetBase = widgetBase.control('kendoCalendar').linkViewModel(this).useValueBinding();
         }
 
         Calendar.prototype.bind = function bind(ctx) {

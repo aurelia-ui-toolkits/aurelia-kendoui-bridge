@@ -12,16 +12,16 @@ gulp.task('bump-version', function(){
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('changelog', function(callback) {
+gulp.task('changelog', function() {
   var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
-
+  console.log(pkg.version);
   return gulp.src(paths.doc + '/CHANGELOG.md', {
-    buffer: false,
-    repository: pkg.repository.url,
-    version: pkg.version,
+    buffer: false
   })
   .pipe(conventionalChangelog({
-    preset: 'angular'
+    preset: 'angular',
+    repository: pkg.repository.url,
+    version: pkg.version
   }))
   .pipe(gulp.dest(paths.doc));
 });

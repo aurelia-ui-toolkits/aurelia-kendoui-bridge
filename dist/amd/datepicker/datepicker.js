@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).withValueBinding();
+      this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).useValueBinding();
     }
 
     DatePicker.prototype.bind = function bind(ctx) {

@@ -305,7 +305,7 @@ var AutoComplete = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).withValueBinding();
+    this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useValueBinding();
   }
 
   AutoComplete.prototype.bind = function bind(ctx) {
@@ -403,7 +403,7 @@ var Calendar = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers3);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoCalendar').linkViewModel(this).withValueBinding();
+    this.widgetBase = widgetBase.control('kendoCalendar').linkViewModel(this).useValueBinding();
   }
 
   Calendar.prototype.bind = function bind(ctx) {
@@ -1051,7 +1051,7 @@ var WidgetBase = (function () {
     return this;
   };
 
-  WidgetBase.prototype.withValueBinding = function withValueBinding() {
+  WidgetBase.prototype.useValueBinding = function useValueBinding() {
     this.withValueBinding = true;
 
     return this;
@@ -1083,15 +1083,17 @@ var WidgetBase = (function () {
       _$resources: [this.viewResources]
     });
 
-    var widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
+    var widget = this._createWidget(options.element, allOptions, this.controlName);
 
     widget._$parent = options.parentCtx;
     widget._$resources = this.viewResources;
 
     if (this.withValueBinding) {
       widget.first('change', function (args) {
-        return _this3._handleChange(args);
+        return _this3._handleChange(args.sender);
       });
+
+      this._handleChange(widget);
     }
 
     if (options.afterInitialize) {
@@ -1099,6 +1101,10 @@ var WidgetBase = (function () {
     }
 
     return widget;
+  };
+
+  WidgetBase.prototype._createWidget = function _createWidget(element, options, controlName) {
+    return jQuery(element)[controlName](options).data(controlName);
   };
 
   WidgetBase.prototype._getOptions = function _getOptions(element) {
@@ -1156,10 +1162,8 @@ var WidgetBase = (function () {
     return options;
   };
 
-  WidgetBase.prototype._handleChange = function _handleChange(args) {
-    var sender = args.sender;
-
-    this.viewModel.kValue = sender.value();
+  WidgetBase.prototype._handleChange = function _handleChange(widget) {
+    this.viewModel.kValue = widget.value();
   };
 
   WidgetBase.prototype.handlePropertyChanged = function handlePropertyChanged(widget, property, newValue, oldValue) {
@@ -1198,7 +1202,7 @@ var DatePicker = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers10);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).withValueBinding();
+    this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).useValueBinding();
   }
 
   DatePicker.prototype.bind = function bind(ctx) {
@@ -1249,7 +1253,7 @@ var DateTimePicker = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers11);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDateTimePicker').linkViewModel(this).withValueBinding();
+    this.widgetBase = widgetBase.control('kendoDateTimePicker').linkViewModel(this).useValueBinding();
   }
 
   DateTimePicker.prototype.bind = function bind(ctx) {
@@ -1726,7 +1730,7 @@ var MaskedTextBox = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers16);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoMaskedTextBox').linkViewModel(this).withValueBinding();
+    this.widgetBase = widgetBase.control('kendoMaskedTextBox').linkViewModel(this).useValueBinding();
   }
 
   MaskedTextBox.prototype.bind = function bind(ctx) {
@@ -2001,7 +2005,7 @@ var RangeSlider = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers21);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoRangeSlider').linkViewModel(this).withValueBinding();
+    this.widgetBase = widgetBase.control('kendoRangeSlider').linkViewModel(this).useValueBinding();
   }
 
   RangeSlider.prototype.bind = function bind(ctx) {
@@ -2170,7 +2174,7 @@ var Slider = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers24);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).withValueBinding();
+    this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).useValueBinding();
   }
 
   Slider.prototype.bind = function bind(ctx) {
@@ -2277,7 +2281,7 @@ var TimePicker = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers26);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoTimePicker').linkViewModel(this).withValueBinding();
+    this.widgetBase = widgetBase.control('kendoTimePicker').linkViewModel(this).useValueBinding();
   }
 
   TimePicker.prototype.bind = function bind(ctx) {

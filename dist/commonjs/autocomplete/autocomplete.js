@@ -40,7 +40,7 @@ var AutoComplete = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).withValueBinding();
+    this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useValueBinding();
   }
 
   AutoComplete.prototype.bind = function bind(ctx) {

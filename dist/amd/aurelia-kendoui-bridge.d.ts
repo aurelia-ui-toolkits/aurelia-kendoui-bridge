@@ -340,7 +340,7 @@ declare module 'aurelia-kendoui-bridge' {
     control(controlName: any): any;
     linkViewModel(viewModel: any): any;
     useViewResources(resources: any): any;
-    withValueBinding(): any;
+    useValueBinding(): any;
     
     /**
       * collects all options objects

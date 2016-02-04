@@ -68,7 +68,7 @@ System.register(['./options', './events', './util', './template-compiler', './co
           return this;
         };
 
-        WidgetBase.prototype.withValueBinding = function withValueBinding() {
+        WidgetBase.prototype.useValueBinding = function useValueBinding() {
           this.withValueBinding = true;
 
           return this;
@@ -100,15 +100,17 @@ System.register(['./options', './events', './util', './template-compiler', './co
             _$resources: [this.viewResources]
           });
 
-          var widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
+          var widget = this._createWidget(options.element, allOptions, this.controlName);
 
           widget._$parent = options.parentCtx;
           widget._$resources = this.viewResources;
 
           if (this.withValueBinding) {
             widget.first('change', function (args) {
-              return _this._handleChange(args);
+              return _this._handleChange(args.sender);
             });
+
+            this._handleChange(widget);
           }
 
           if (options.afterInitialize) {
@@ -116,6 +118,10 @@ System.register(['./options', './events', './util', './template-compiler', './co
           }
 
           return widget;
+        };
+
+        WidgetBase.prototype._createWidget = function _createWidget(element, options, controlName) {
+          return jQuery(element)[controlName](options).data(controlName);
         };
 
         WidgetBase.prototype._getOptions = function _getOptions(element) {
@@ -173,10 +179,8 @@ System.register(['./options', './events', './util', './template-compiler', './co
           return options;
         };
 
-        WidgetBase.prototype._handleChange = function _handleChange(args) {
-          var sender = args.sender;
-
-          this.viewModel.kValue = sender.value();
+        WidgetBase.prototype._handleChange = function _handleChange(widget) {
+          this.viewModel.kValue = widget.value();
         };
 
         WidgetBase.prototype.handlePropertyChanged = function handlePropertyChanged(widget, property, newValue, oldValue) {

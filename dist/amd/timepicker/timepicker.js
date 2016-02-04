@@ -34,7 +34,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoTimePicker').linkViewModel(this).withValueBinding();
+      this.widgetBase = widgetBase.control('kendoTimePicker').linkViewModel(this).useValueBinding();
     }
 
     TimePicker.prototype.bind = function bind(ctx) {

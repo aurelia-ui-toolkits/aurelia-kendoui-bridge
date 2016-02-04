@@ -17,7 +17,7 @@ export class DateTimePicker {
     this.widgetBase = widgetBase
                         .control('kendoDateTimePicker')
                         .linkViewModel(this)
-                        .withValueBinding();
+                        .useValueBinding();
   }
 
   bind(ctx) {

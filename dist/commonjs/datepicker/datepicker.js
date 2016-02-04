@@ -38,7 +38,7 @@ var DatePicker = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).withValueBinding();
+    this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).useValueBinding();
   }
 
   DatePicker.prototype.bind = function bind(ctx) {

@@ -41,7 +41,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).withValueBinding();
+          this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).useValueBinding();
         }
 
         Slider.prototype.bind = function bind(ctx) {

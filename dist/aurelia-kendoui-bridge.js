@@ -261,7 +261,7 @@ export class AutoComplete {
     this.widgetBase = widgetBase
                         .control('kendoAutoComplete')
                         .linkViewModel(this)
-                        .withValueBinding();
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -330,7 +330,7 @@ export class Calendar {
     this.widgetBase = widgetBase
                     .control('kendoCalendar')
                     .linkViewModel(this)
-                    .withValueBinding();
+                    .useValueBinding();
   }
 
   bind(ctx) {
@@ -986,7 +986,7 @@ export class WidgetBase {
     return this;
   }
 
-  withValueBinding() {
+  useValueBinding() {
     this.withValueBinding = true;
 
     return this;
@@ -1030,13 +1030,17 @@ export class WidgetBase {
     });
 
     // instantiate the Kendo control
-    let widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
+    let widget = this._createWidget(options.element, allOptions, this.controlName);
 
     widget._$parent = options.parentCtx;
     widget._$resources = this.viewResources;
 
     if (this.withValueBinding) {
-      widget.first('change', (args) => this._handleChange(args));
+      widget.first('change', (args) => this._handleChange(args.sender));
+
+      // sync kValue after initialization of the widget
+      // some widgets (such as dropdownlist) select first item
+      this._handleChange(widget);
     }
 
     if (options.afterInitialize) {
@@ -1044,6 +1048,11 @@ export class WidgetBase {
     }
 
     return widget;
+  }
+
+
+  _createWidget(element, options, controlName) {
+    return jQuery(element)[controlName](options).data(controlName);
   }
 
 
@@ -1111,10 +1120,8 @@ export class WidgetBase {
   }
 
 
-  _handleChange(args) {
-    let sender = args.sender;
-
-    this.viewModel.kValue = sender.value();
+  _handleChange(widget) {
+    this.viewModel.kValue = widget.value();
   }
 
   handlePropertyChanged(widget, property, newValue, oldValue) {
@@ -1143,7 +1150,7 @@ export class DatePicker {
     this.widgetBase = widgetBase
                         .control('kendoDatePicker')
                         .linkViewModel(this)
-                        .withValueBinding();
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -1180,7 +1187,7 @@ export class DateTimePicker {
     this.widgetBase = widgetBase
                         .control('kendoDateTimePicker')
                         .linkViewModel(this)
-                        .withValueBinding();
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -1417,7 +1424,7 @@ export class MaskedTextBox {
     this.widgetBase = widgetBase
                         .control('kendoMaskedTextBox')
                         .linkViewModel(this)
-                        .withValueBinding();
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -1617,7 +1624,7 @@ export class RangeSlider {
     this.widgetBase = widgetBase
                     .control('kendoRangeSlider')
                     .linkViewModel(this)
-                    .withValueBinding();
+                    .useValueBinding();
   }
 
   bind(ctx) {
@@ -1727,7 +1734,7 @@ export class Slider {
     this.widgetBase = widgetBase
                     .control('kendoSlider')
                     .linkViewModel(this)
-                    .withValueBinding();
+                    .useValueBinding();
   }
 
   bind(ctx) {
@@ -1799,7 +1806,7 @@ export class TimePicker {
     this.widgetBase = widgetBase
                         .control('kendoTimePicker')
                         .linkViewModel(this)
-                        .withValueBinding();
+                        .useValueBinding();
   }
 
   bind(ctx) {

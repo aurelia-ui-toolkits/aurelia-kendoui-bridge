@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).withValueBinding();
+      this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useValueBinding();
     }
 
     AutoComplete.prototype.bind = function bind(ctx) {

@@ -1,3 +1,14 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.2.0...v0.2.1) (2016-02-04)
+
+
+### Bug Fixes
+
+* **value-binding:** fix sender.value is undefined error ([f7e44a3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/f7e44a3))
+* **value-binding:** fix sender.value is undefined error ([d99ffeb](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/d99ffeb))
+
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.1.4...v0.2.0) (2016-02-03)
 
