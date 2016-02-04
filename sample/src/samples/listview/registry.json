@@ -11,5 +11,8 @@
     "editing": {
       "files": ["html", "js", "css"]
     },
+    "selection": {
+      "files": ["html", "js", "css"]
+    },
   }
 }

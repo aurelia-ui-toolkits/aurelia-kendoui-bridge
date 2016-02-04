@@ -1,1 +1,25 @@
-<template></template>
+<template>
+    <require from="./selection.css"></require>
+    <div id="listview-selection">
+      <k-list-view k-data-source.bind="dataSource"
+                   k-selectable="multiple"
+                   k-widget.bind="listView"
+                   k-on-data-bound.delegate="dataBound()"
+                   k-on-change.delegate="change()">
+        <k-list-template>
+          <div class="product">
+              <img src="http://demos.telerik.com/kendo-ui/content/web/foods/${ProductID}.jpg" alt="${ProductName} image" />
+              <h3>${ProductName}</h3>
+              <p>${UnitPrice}</p>
+          </div>
+        </k-list-template>
+      </k-list-view>
+
+      <div ref="pager" class="k-pager-wrap"></div>
+
+      <div class="box">
+          <h4>Console log</h4>
+          <logger view-model.ref="logger"></logger>
+      </div>
+    </div>
+</template>

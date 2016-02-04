@@ -91,7 +91,7 @@ export class WidgetBase {
     return this;
   }
 
-  withValueBinding() {
+  useValueBinding() {
     this.withValueBinding = true;
 
     return this;
