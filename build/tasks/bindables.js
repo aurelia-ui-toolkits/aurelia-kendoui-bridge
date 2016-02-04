@@ -39,8 +39,8 @@ gulp.task('bindables:extract', function (cb) {
   var kendo = json.children[0];
 
   // get the kendo module
-  var kendoModule = kendo.children.find(i => i.name === "kendo");
-  var jQueryInterface = kendo.children.find(i => i.name === "JQuery" && i.kindString === "Interface");
+  var kendoModule = kendo.children.find(function(i) { return i.name === "kendo" });
+  var jQueryInterface = kendo.children.find(function(i) { return i.name === "JQuery" && i.kindString === "Interface" });
   var kendoMethods = jQueryInterface.children;
 
   // loop over all kendo methods declarations:

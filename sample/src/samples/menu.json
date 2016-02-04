@@ -9,6 +9,7 @@
   },
   "Data management": {
     "Grid": "grid",
+    "ListView": "listview",
     "TreeList": "treelist"
   },
   "Editors": {
