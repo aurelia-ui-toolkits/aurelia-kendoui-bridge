@@ -228,4 +228,36 @@ describe('WidgetBase', () => {
     expect(widget.options[events[0]]).toEqual(jasmine.any(Function));
     expect(widget.options[events[1]]).toEqual(jasmine.any(Function));
   });
+
+
+  it('handles value binding and sets initial value', () => {
+    sut._getOptions = jasmine.createSpy().and.returnValue({});
+    let widgetFake = {
+      first: jasmine.createSpy(),
+      value: jasmine.createSpy().and.returnValue('initialValue')
+    };
+    sut._createWidget = () => widgetFake;
+    sut.controlName = 'kendoDropDownList';
+    sut.viewModel = {};
+    sut.useValueBinding();
+
+    let widget = sut.createWidget({
+      element: DOM.createElement('div'),
+      parentCtx: {}
+    });
+
+    // check if initial kValue is set
+    // verify that the change event is registered to
+    expect(widgetFake.value).toHaveBeenCalled();
+    let args = widgetFake.first.calls.argsFor(0);
+    expect(args[0]).toBe('change');
+    expect(widgetFake.first).toHaveBeenCalled();
+    expect(sut.viewModel.kValue).toBe('initialValue');
+
+
+    // raise 'change' event, check if kValue changed
+    widgetFake.value = jasmine.createSpy().and.returnValue('changedValue');
+    args[1]({ sender: widget });
+    expect(sut.viewModel.kValue).toBe('changedValue');
+  });
 });
