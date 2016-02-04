@@ -17,7 +17,7 @@ export class Calendar {
     this.widgetBase = widgetBase
                     .control('kendoCalendar')
                     .linkViewModel(this)
-                    .withValueBinding();
+                    .useValueBinding();
   }
 
   bind(ctx) {

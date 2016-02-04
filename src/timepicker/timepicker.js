@@ -18,7 +18,7 @@ export class TimePicker {
     this.widgetBase = widgetBase
                         .control('kendoTimePicker')
                         .linkViewModel(this)
-                        .withValueBinding();
+                        .useValueBinding();
   }
 
   bind(ctx) {

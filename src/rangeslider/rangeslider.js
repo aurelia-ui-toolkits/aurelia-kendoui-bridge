@@ -17,7 +17,7 @@ export class RangeSlider {
     this.widgetBase = widgetBase
                     .control('kendoRangeSlider')
                     .linkViewModel(this)
-                    .withValueBinding();
+                    .useValueBinding();
   }
 
   bind(ctx) {
