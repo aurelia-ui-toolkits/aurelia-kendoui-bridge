@@ -33,3 +33,22 @@ export function generateBindables(controlName: string) {
     }
   };
 }
+
+/**
+* Marks a member as a template property - allowing it to be assigned by a k-template element
+* @param isDefault is the property the default template property (most commonly used)
+*/
+export function templateProperty(isDefault: boolean = false) {
+  return function(target, key, descriptor) {
+    // get or create the HtmlBehaviorResource
+    // on which we're going to create the BindableProperty's
+    let controlProperties = (Container.instance || new Container()).get(ControlProperties);
+    let templateProps = controlProperties.getTemplateProperties(target);
+
+    if (isDefault) {
+      templateProps.defaultProperty = key;
+    } else {
+      templateProps.validProperties.push(key);
+    }
+  };
+}
