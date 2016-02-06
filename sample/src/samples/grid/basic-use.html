@@ -3,8 +3,11 @@
 
     <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">
       <k-col title="Contact Name" field="ContactName">
-        <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
-        <div class='customer-name'>${ContactName}</div>
+        <k-template>
+          <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+          <div class='customer-name'>${ContactName}</div>
+        </k-template>
+        <k-template for="headerrTemplate">Test</k-template>
       </k-col>
       <k-col title="Contact Name" field="ContactName"></k-col>
       <k-col title="Contact Title" field="ContactTitle"></k-col>

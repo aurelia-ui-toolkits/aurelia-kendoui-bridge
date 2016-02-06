@@ -7,10 +7,11 @@ export class KendoConfigBuilder {
   useGlobalResources: boolean = true;
 
   /**
-  * Globally register all Kendo Core wrappers
+  * Globally register all Kendo Core wrappers including templating support
   */
   core(): KendoConfigBuilder {
     this.useValueConverters()
+      .kendoTemplateSupport()
       .kendoButton()
       .kendoCalendar()
       .kendoTabStrip()
@@ -56,6 +57,14 @@ export class KendoConfigBuilder {
 
   useValueConverters(): KendoConfigBuilder {
     this.resources.push('valueconverters/valueconverters');
+  }
+
+  /**
+  * Adds kendo templating support
+  *
+  */
+  kendoTemplateSupport(): KendoConfigBuilder {
+    this.resources.push('common/k-template');
     return this;
   }
 
@@ -97,7 +106,6 @@ export class KendoConfigBuilder {
 
   kendoScheduler(): KendoConfigBuilder {
     this.resources.push('scheduler/scheduler');
-    this.resources.push('scheduler/event-template');
     return this;
   }
 

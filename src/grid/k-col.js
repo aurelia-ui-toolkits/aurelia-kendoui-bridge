@@ -1,17 +1,8 @@
-import {inject} from 'aurelia-dependency-injection';
-import {customElement, bindable, noView, processContent, TargetInstruction} from 'aurelia-templating';
+import {children, customElement, bindable} from 'aurelia-templating';
 import {constants} from '../common/constants';
+import {templateProperty} from '../common/decorators';
+import {useTemplates} from '../common/templating';
 
-@noView
-@processContent((compiler, resources, element, instruction) => {
-  let html = element.innerHTML;
-  if (html !== '') {
-    instruction.template = html;
-  }
-
-  return true;
-})
-@inject(TargetInstruction)
 @customElement(`${constants.elementPrefix}col`)
 export class Col {
   @bindable aggregates;
@@ -22,13 +13,13 @@ export class Col {
   @bindable encoded;
   @bindable field;
   @bindable filterable;
-  @bindable footerTemplate;
+  @templateProperty() footerTemplate;
   @bindable format = '';
   @bindable groupable;
-  @bindable groupFooterTemplate;
-  @bindable groupHeaderTemplate;
+  @templateProperty() groupFooterTemplate;
+  @templateProperty() groupHeaderTemplate;
   @bindable headerAttributes;
-  @bindable headerTemplate;
+  @templateProperty() headerTemplate;
   @bindable hidden;
   @bindable lockable;
   @bindable locked;
@@ -38,10 +29,13 @@ export class Col {
   @bindable title;
   @bindable values;
   @bindable width;
-  @bindable template;
+  @templateProperty(true) template;
   @bindable withKendoTemplates = false;
 
-  constructor(targetInstruction) {
-    this.template = targetInstruction.elementInstruction.template;
+  // For multi template support
+  @children(`${constants.elementPrefix}template`) templateChildren;
+
+  bind() {
+    useTemplates(this, this.templateChildren);
   }
 }
