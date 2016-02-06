@@ -7,10 +7,11 @@ export class KendoConfigBuilder {
   useGlobalResources: boolean = true;
 
   /**
-  * Globally register all Kendo Core wrappers
+  * Globally register all Kendo Core wrappers including templating support
   */
   core(): KendoConfigBuilder {
-    this.kendoButton()
+    this.kendoTemplateSupport()
+      .kendoButton()
       .kendoCalendar()
       .kendoTabStrip()
       .kendoProgressBar()
@@ -49,6 +50,15 @@ export class KendoConfigBuilder {
   */
   withoutGlobalResources(): KendoConfigBuilder {
     this.useGlobalResources = false;
+    return this;
+  }
+
+  /**
+  * Adds kendo templating support
+  *
+  */
+  kendoTemplateSupport(): KendoConfigBuilder {
+    this.resources.push('common/k-template');
     return this;
   }
 
