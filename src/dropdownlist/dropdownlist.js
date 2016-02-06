@@ -1,12 +1,12 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customAttribute, bindable} from 'aurelia-templating';
+import {customElement, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import 'kendo-ui/js/kendo.dropdownlist.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 
-@customAttribute(`${constants.attributePrefix}drop-down-list`)
+@customElement(`${constants.elementPrefix}drop-down-list`)
 @generateBindables('kendoDropDownList')
 @inject(Element, WidgetBase)
 export class DropDownList {
@@ -28,8 +28,11 @@ export class DropDownList {
   }
 
   recreate() {
+    let selectNode = getSelectNode(this.element);
+
     this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
+      rootElement: this.element,
+      element: selectNode.length > 0 ? selectNode[0] : this.element,
       parentCtx: this.$parent
     });
   }
@@ -41,4 +44,8 @@ export class DropDownList {
   detached() {
     this.widgetBase.destroy(this.kWidget);
   }
+}
+
+function getSelectNode(element) {
+  return element.querySelectorAll('select');
 }

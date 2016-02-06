@@ -12,6 +12,7 @@
     "customizing-templates": {},
     "grouping": {},
     "server-filtering": {},
-    "virtualization": {}
+    "virtualization": {},
+    "events": {}
   }
 }
