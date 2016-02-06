@@ -6,6 +6,7 @@ import {bindables} from './bindables';
 */
 export class ControlProperties {
   cache = [];
+  templateProperties = [];
 
   /**
   * Merges together available properties for a specific control
@@ -29,5 +30,12 @@ export class ControlProperties {
     this.cache[controlName] = keys;
 
     return keys;
+  }
+
+  getTemplateProperties(obj) {
+    if (!this.cache[obj]) {
+      this.cache[obj] = { validProperties: [] };
+    }
+    return this.cache[obj];
   }
 }
