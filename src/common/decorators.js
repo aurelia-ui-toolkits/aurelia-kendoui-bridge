@@ -29,6 +29,12 @@ export function generateBindables(controlName: string) {
         nameOrConfigOrTarget.defaultBindingMode = bindingMode.twoWay;
       }
 
+      if (option === 'template') {
+        registerTemplateProperty(target, option, descriptor, true);
+      } else if (option.indexOf('Template') > -1) {
+        registerTemplateProperty(target, option, descriptor, false);
+      }
+
       let prop = new BindableProperty(nameOrConfigOrTarget);
       prop.registerWith(target, behaviorResource, descriptor);
     }
@@ -37,23 +43,26 @@ export function generateBindables(controlName: string) {
 
 /**
 * Marks a member as a template property - allowing it to be assigned by a k-template element
-* @param isDefault is the property the default template property (most commonly used)
+* it also registers the property as a @bindable
+* @param isDefault Is this the default template property (most commonly used)?
 */
 export function templateProperty(isDefault?) {
   return function(target, key, descriptor) {
-    // get or create the HtmlBehaviorResource
-    // on which we're going to create the BindableProperty's
-    //let behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
-    let controlProperties = (Container.instance || new Container()).get(ControlProperties);
-    let templateProps = controlProperties.getTemplateProperties(target);
-
-    if (isDefault) {
-      templateProps.defaultProperty = key;
-    } else {
-      templateProps.validProperties.push(key);
-    }
-
+    // Register the template property
+    registerTemplateProperty(target, key, descriptor, isDefault);
     // Also register a bindable property to cut down on the number of decorators
     bindable(target, key, descriptor);
   };
+}
+
+function registerTemplateProperty(target, key, descriptor, isDefault) {
+  // Register a template property with the ControlProperties instance
+  let controlProperties = (Container.instance || new Container()).get(ControlProperties);
+  let templateProps = controlProperties.getTemplateProperties(target);
+
+  if (isDefault) {
+    templateProps.defaultProperty = key;
+  } else {
+    templateProps.validProperties.push(key);
+  }
 }
