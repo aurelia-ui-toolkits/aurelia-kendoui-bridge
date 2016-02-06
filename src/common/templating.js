@@ -12,7 +12,7 @@ export function useTemplates(target, templates) {
       if (templateProps.validProperties.indexOf(c.for) !== -1) {
         target[c.for] = c.template;
       } else {
-        throw new Error('Invalid template property name: ' + c.for);
+        throw new Error('Invalid template property name: "' + c.for + '", valid values are: ' + templateProps.validProperties.join(', '));
       }
     }
   });
