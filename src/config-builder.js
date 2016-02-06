@@ -10,7 +10,8 @@ export class KendoConfigBuilder {
   * Globally register all Kendo Core wrappers
   */
   core(): KendoConfigBuilder {
-    this.kendoButton()
+    this.useValueConverters()
+      .kendoButton()
       .kendoCalendar()
       .kendoTabStrip()
       .kendoProgressBar()
@@ -50,6 +51,11 @@ export class KendoConfigBuilder {
   */
   withoutGlobalResources(): KendoConfigBuilder {
     this.useGlobalResources = false;
+    return this;
+  }
+
+  useValueConverters(): KendoConfigBuilder {
+    this.resources.push('valueconverters/valueconverters');
     return this;
   }
 

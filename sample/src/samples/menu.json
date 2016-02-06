@@ -59,5 +59,8 @@
   },
   "Interactivity & UX": {
     "ProgressBar": "progressbar"
+  },
+  "Tools": {
+    "ValueConverters": "valueconverters"
   }
 }
