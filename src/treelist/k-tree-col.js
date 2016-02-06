@@ -1,17 +1,8 @@
-import {inject} from 'aurelia-dependency-injection';
-import {customElement, bindable, noView, processContent, TargetInstruction} from 'aurelia-templating';
+import {children, customElement, bindable} from 'aurelia-templating';
 import {constants} from '../common/constants';
+import {templateProperty} from '../common/decorators';
+import {useTemplates} from '../common/templating';
 
-@noView
-@processContent((compiler, resources, element, instruction) => {
-  let html = element.innerHTML;
-  if (html !== '') {
-    instruction.template = html;
-  }
-
-  return true;
-})
-@inject(TargetInstruction)
 @customElement(`${constants.elementPrefix}tree-col`)
 export class TreeCol {
   @bindable attributes;
@@ -21,12 +12,15 @@ export class TreeCol {
   @bindable expandable;
   @bindable field;
   @bindable filterable;
+  @templateProperty()
   @bindable footerTemplate;
   @bindable format = '';
   @bindable headerAttributes;
+  @templateProperty()
   @bindable headerTemplate;
   @bindable minScreenWidth;
   @bindable sortable;
+  @templateProperty(true)
   @bindable template;
   @bindable title;
   @bindable width;
@@ -36,7 +30,9 @@ export class TreeCol {
   @bindable lockable;
   @bindable withKendoTemplates = false;
 
-  constructor(targetInstruction) {
-    this.template = targetInstruction.elementInstruction.template;
+  @children(`${constants.elementPrefix}template`) templateChildren;
+
+  bind() {
+    useTemplates(this, this.templateChildren);
   }
 }
