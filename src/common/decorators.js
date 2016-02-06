@@ -4,6 +4,7 @@ import {metadata} from 'aurelia-metadata';
 import {bindingMode} from 'aurelia-binding';
 import {ControlProperties} from './control-properties';
 import {getBindablePropertyName} from './util';
+import {bindable} from 'aurelia-templating';
 
 /**
 * Creates a BindableProperty for every option defined in a Kendo control
@@ -38,10 +39,11 @@ export function generateBindables(controlName: string) {
 * Marks a member as a template property - allowing it to be assigned by a k-template element
 * @param isDefault is the property the default template property (most commonly used)
 */
-export function templateProperty(isDefault: boolean = false) {
+export function templateProperty(isDefault?) {
   return function(target, key, descriptor) {
     // get or create the HtmlBehaviorResource
     // on which we're going to create the BindableProperty's
+    //let behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
     let controlProperties = (Container.instance || new Container()).get(ControlProperties);
     let templateProps = controlProperties.getTemplateProperties(target);
 
@@ -50,5 +52,8 @@ export function templateProperty(isDefault: boolean = false) {
     } else {
       templateProps.validProperties.push(key);
     }
+
+    // Also register a bindable property to cut down on the number of decorators
+    bindable(target, key, descriptor);
   };
 }

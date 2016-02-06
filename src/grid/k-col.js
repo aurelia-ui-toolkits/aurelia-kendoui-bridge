@@ -13,17 +13,13 @@ export class Col {
   @bindable encoded;
   @bindable field;
   @bindable filterable;
-  @templateProperty()
-  @bindable footerTemplate;
+  @templateProperty() footerTemplate;
   @bindable format = '';
   @bindable groupable;
-  @templateProperty()
-  @bindable groupFooterTemplate;
-  @templateProperty()
-  @bindable groupHeaderTemplate;
+  @templateProperty() groupFooterTemplate;
+  @templateProperty() groupHeaderTemplate;
   @bindable headerAttributes;
-  @templateProperty()
-  @bindable headerTemplate;
+  @templateProperty() headerTemplate;
   @bindable hidden;
   @bindable lockable;
   @bindable locked;
@@ -33,7 +29,7 @@ export class Col {
   @bindable title;
   @bindable values;
   @bindable width;
-  @templateProperty(true) @bindable template;
+  @templateProperty(true) template;
   @bindable withKendoTemplates = false;
 
   // For multi template support

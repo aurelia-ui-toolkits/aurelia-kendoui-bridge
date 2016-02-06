@@ -12,16 +12,13 @@ export class TreeCol {
   @bindable expandable;
   @bindable field;
   @bindable filterable;
-  @templateProperty()
-  @bindable footerTemplate;
+  @templateProperty() footerTemplate;
   @bindable format = '';
   @bindable headerAttributes;
-  @templateProperty()
-  @bindable headerTemplate;
+  @templateProperty() headerTemplate;
   @bindable minScreenWidth;
   @bindable sortable;
-  @templateProperty(true)
-  @bindable template;
+  @templateProperty(true) template;
   @bindable title;
   @bindable width;
   @bindable hidden;
