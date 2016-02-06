@@ -100,7 +100,6 @@ export class KendoConfigBuilder {
 
   kendoScheduler(): KendoConfigBuilder {
     this.resources.push('scheduler/scheduler');
-    this.resources.push('scheduler/event-template');
     return this;
   }
 

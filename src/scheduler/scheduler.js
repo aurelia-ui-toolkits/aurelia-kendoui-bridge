@@ -18,7 +18,7 @@ import 'kendo-ui/js/kendo.scheduler.timelineview.min';
 export class Scheduler {
 
   @bindable options = {};
-  @children(`${constants.elementPrefix}event-template`) eventTemplates;
+  @children(`${constants.elementPrefix}template`) eventTemplates;
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
