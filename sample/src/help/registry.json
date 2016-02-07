@@ -89,6 +89,15 @@
       },
     ],
 
+    "App developers notes":
+    [
+      {
+        "name": "1. Introduction",
+        "path": "help/docs/app-developers-notes/introduction.md"
+      }
+
+    ],
+
     "Bridge developers tutorials":
     [
       {
