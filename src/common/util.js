@@ -112,14 +112,10 @@ export function useTemplates(target, controlName, templates) {
   let templateProps = controlProperties.getTemplateProperties(controlName);
 
   templates.forEach(c => {
-    if (!c.for) {
-      target[getBindablePropertyName('template')] = c.template;
+    if (templateProps.indexOf(c.for) > -1) {
+      target[getBindablePropertyName(c.for)] = c.template;
     } else {
-      if (templateProps.indexOf(c.for) > -1) {
-        target[getBindablePropertyName(c.for)] = c.template;
-      } else {
-        throw new Error('Invalid template property name: "' + c.for + '", valid values are: ' + templateProps.join(', '));
-      }
+      throw new Error('Invalid template property name: "' + c.for + '", valid values are: ' + templateProps.join(', '));
     }
   });
 }
