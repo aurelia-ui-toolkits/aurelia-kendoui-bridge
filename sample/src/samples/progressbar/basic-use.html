@@ -7,33 +7,39 @@
             <ul class="forms">
                 <li>
                     <label>First favourite</label>
-                    <select k-drop-down-list="k-widget.two-way: favouriteMovie1" style="width: 100%;">
-                        <option value="fastAndFurious">Fast and Furious 6</option>
-                        <option value="nowYouSeeMe">Now you see me</option>
-                        <option value="theHelp">The Help</option>
-                        <option value="theInternship" selected>The Internship</option>
-                        <option value="thePerks">The Perks of Being a Wallflower</option>
-                    </select>
+                    <k-drop-down-list k-widget.two-way="favouriteMovie1">
+                      <select style="width: 100%;">
+                          <option value="fastAndFurious">Fast and Furious 6</option>
+                          <option value="nowYouSeeMe">Now you see me</option>
+                          <option value="theHelp">The Help</option>
+                          <option value="theInternship" selected>The Internship</option>
+                          <option value="thePerks">The Perks of Being a Wallflower</option>
+                      </select>
+                    </k-drop-down-list>
                 </li>
                 <li>
                     <label>Second favourite</label>
-                    <select k-drop-down-list="k-widget.two-way: favouriteMovie2" style="width: 100%;">
+                    <k-drop-down-list k-widget.two-way="favouriteMovie2">
+                      <select style="width: 100%;">
                         <option value="fastAndFurious" selected>Fast and Furious 6</option>
                         <option value="nowYouSeeMe">Now you see me</option>
                         <option value="theHelp">The Help</option>
                         <option value="theInternship">The Internship</option>
                         <option value="thePerks">The Perks of Being a Wallflower</option>
                     </select>
+                  </k-drop-down-list>
                 </li>
                 <li>
                     <label>Third favourite</label>
-                    <select k-drop-down-list="k-widget.two-way: favouriteMovie3" style="width: 100%;">
+                    <k-drop-down-list k-widget.two-way="favouriteMovie3">
+                      <select style="width: 100%;">
                         <option value="fastAndFurious">Fast and Furious 6</option>
                         <option value="nowYouSeeMe" selected>Now you see me</option>
                         <option value="theHelp">The Help</option>
                         <option value="theInternship">The Internship</option>
                         <option value="thePerks">The Perks of Being a Wallflower</option>
                     </select>
+                  </k-drop-down-list>
                 </li>
                 <li>
                     <button click.delegate="castVote()" class="k-button k-primary">Vote</button>
