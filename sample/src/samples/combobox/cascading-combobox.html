@@ -1,2 +1,56 @@
 <template>
+  <div id="example">
+    <div class="demo-section k-content">
+      <h4>Categories:</h4>
+      <k-combobox k-option-label="Select category..."
+              k-data-text-field="CategoryName"
+              k-data-value-field="CategoryID"
+              k-widget.bind="categories"
+              k-data-source.bind="{
+                  type: 'odata',
+                  serverFiltering: true,
+                  transport: {
+                      read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Categories'
+                  }
+              }"
+              id="categories" style="width: 100%;">
+      </k-combobox>
+
+      <h4 style="margin-top: 2em;">Products:</h4>
+      <k-combobox k-auto-bind.bind="false"
+              k-cascade-from="categories"
+              k-option-label="Select product..."
+              k-data-text-field="ProductName"
+              k-data-value-field="ProductID"
+              k-widget.bind="products"
+              k-data-source.bind="{
+                  type: 'odata',
+                  serverFiltering: true,
+                  transport: {
+                      read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Products'
+                  }
+              }"
+              id="products" style="width: 100%;">
+      </k-combobox>
+
+      <h4 style="margin-top: 2em;">Orders:</h4>
+      <k-combobox k-auto-bind.bind="false"
+              k-cascade-from="products"
+              k-widget.bind="orders"
+              k-option-label="Select order..."
+              k-data-text-field="Order.ShipCity"
+              k-data-value-field="OrderID"
+              k-data-source.bind="{
+                  type: 'odata',
+                  serverFiltering: true,
+                  transport: {
+                      read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Order_Details?$expand=Order'
+                  }
+              }"
+              id="orders" disabled="disabled" style="width: 100%;">
+      </k-combobox>
+
+      <button click.delegate="viewOrder()" k-button style="margin-top: 2em; float: right;">View Order</button>
+    </div>
+  </div>
 </template>

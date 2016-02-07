@@ -14,6 +14,7 @@ export class KendoConfigBuilder {
       .kendoTemplateSupport()
       .kendoButton()
       .kendoCalendar()
+      .kendoCombobox()
       .kendoTabStrip()
       .kendoProgressBar()
       .kendoSlider()

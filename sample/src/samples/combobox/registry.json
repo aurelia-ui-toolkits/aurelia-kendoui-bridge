@@ -1,14 +1,17 @@
 {
-  "title": "Button",
+  "title": "ComboBox",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]
     },
-    "api": {},
+    "api": {
+      "title": "API",
+    },
     "cascading-combobox": {},
     "customizing-templates": {},
     "grouping": {},
     "server-filtering": {},
-    "virtualization": {}
+    "virtualization": {},
+    "events": {}
   }
 }
