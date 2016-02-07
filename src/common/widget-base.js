@@ -1,5 +1,4 @@
-import {fireKendoEvent} from './events';
-import {getEventsFromAttributes, _hyphenate, getBindablePropertyName, pruneOptions} from './util';
+import {fireKendoEvent, getEventsFromAttributes, _hyphenate, pruneOptions, useTemplates} from './util';
 import {OptionsBuilder} from './options-builder';
 import {TemplateCompiler} from './template-compiler';
 import {inject, transient} from 'aurelia-dependency-injection';
@@ -216,6 +215,10 @@ export class WidgetBase {
     if (property === 'kValue' && this.withValueBinding) {
       widget.value(newValue);
     }
+  }
+
+  useTemplates(target, controlName, templates) {
+    return useTemplates(target, controlName, templates);
   }
 
   /**

@@ -3,7 +3,6 @@ import {customElement, bindable, children, ViewResources} from 'aurelia-templati
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import {pruneOptions} from '../common/util';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 import 'kendo-ui/js/kendo.scheduler.min';
 import 'kendo-ui/js/kendo.scheduler.agendaview.min';
@@ -18,7 +17,7 @@ import 'kendo-ui/js/kendo.scheduler.timelineview.min';
 export class Scheduler {
 
   @bindable options = {};
-  @children(`${constants.elementPrefix}template`) eventTemplates;
+  @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -29,6 +28,7 @@ export class Scheduler {
   }
 
   bind(ctx) {
+    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
     this.$parent = ctx;
   }
 
@@ -39,23 +39,8 @@ export class Scheduler {
   recreate() {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: o => this._beforeInitialize(o)
+      parentCtx: this.$parent
     });
-  }
-
-  _beforeInitialize(options) {
-    let eventTemplate;
-
-    if (this.kEventTemplate) {
-      eventTemplate = () => this.kEventTemplate;
-    } else if (this.eventTemplates.length > 0) {
-      eventTemplate = () => this.eventTemplates[0].template;
-    }
-
-    return Object.assign(options, pruneOptions({
-      eventTemplate: eventTemplate
-    }));
   }
 
   detached() {

@@ -42,10 +42,11 @@ export class ControlProperties {
     return [];
   }
 
-  getTemplateProperties(obj) {
-    if (!this.cache[obj]) {
-      this.cache[obj] = { validProperties: [] };
-    }
-    return this.cache[obj];
+  getTemplateProperties(controlName) {
+    let properties = this.getProperties(controlName);
+
+    let templates = properties.filter(prop => prop.toLowerCase().indexOf('template') >= -1);
+
+    return templates;
   }
 }

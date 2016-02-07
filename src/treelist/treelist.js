@@ -3,7 +3,7 @@ import {customElement, bindable, children, ViewResources} from 'aurelia-templati
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import {pruneOptions} from '../common/util';
+import {OptionsBuilder} from '../common/options-builder';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 import 'kendo-ui/js/kendo.data.signalr.min';
 import 'kendo-ui/js/kendo.filtercell.min';
@@ -11,14 +11,15 @@ import 'kendo-ui/js/kendo.treelist.min';
 
 @customElement(`${constants.elementPrefix}tree-list`)
 @generateBindables('kendoTreeList')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, ViewResources, OptionsBuilder)
 export class TreeList  {
 
   @children(`${constants.elementPrefix}tree-col`) columns;
   @bindable options = {};
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;
+    this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoTreeList')
                         .linkViewModel(this)
@@ -36,9 +37,6 @@ export class TreeList  {
   }
 
   recreate() {
-    // init grid on the <table> tag if initialization is from table
-    // else, just use the root element
-//    let element = isInitFromTable(this.element) ? this.element.children[0] : this.element;
     let element = this.element;
 
     this.kWidget = this.widgetBase.createWidget({
@@ -53,15 +51,8 @@ export class TreeList  {
     if (this.columns && this.columns.length > 0) {
       options.columns = [];
 
-      this.columns.forEach(c => {
-        if (c.template && !c.withKendoTemplates) {
-          let template = c.template;
-          c.template = function() {
-            return template;
-          };
-        }
-
-        options.columns.push(pruneOptions(c));
+      this.columns.forEach(column => {
+        options.columns.push(this.optionsBuilder.getOptions(column, 'TreeListColumn'));
       });
     }
   }
@@ -70,10 +61,3 @@ export class TreeList  {
     this.widgetBase.destroy(this.kWidget);
   }
 }
-
-// if the first child node is a table tag
-// then the user wants to initialize the Kendo Grid from an
-// // existing table
-// function isInitFromTable(element) {
-//   return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
-// }

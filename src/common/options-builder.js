@@ -13,6 +13,11 @@ export class OptionsBuilder {
     this.controlProperties = controlProperties;
   }
 
+  /**
+  * converts properties of view-model (with k- convention) to an object
+  * that can be passed to a Kendo control. It also wraps templates into a function
+  * so the Kendo templating system is not used
+  */
   getOptions(viewModel, className) {
     let options = {};
 
@@ -20,7 +25,7 @@ export class OptionsBuilder {
       let value = viewModel[getBindablePropertyName(prop)];
 
       if (hasValue(value)) {
-        if (prop.toLowerCase().indexOf('template') > -1) {
+        if (this.isTemplate(prop)) {
           options[prop] = () => value;
         } else {
           options[prop] = value;
@@ -29,5 +34,9 @@ export class OptionsBuilder {
     }
 
     return pruneOptions(options);
+  }
+
+  isTemplate(propertyName) {
+    return propertyName.toLowerCase().indexOf('template') > -1;
   }
 }

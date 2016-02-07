@@ -4,7 +4,6 @@ import {metadata} from 'aurelia-metadata';
 import {bindingMode} from 'aurelia-binding';
 import {ControlProperties} from './control-properties';
 import {getBindablePropertyName} from './util';
-import {bindable} from 'aurelia-templating';
 
 /**
 * Creates a BindableProperty for every option defined in a Kendo control
@@ -31,42 +30,8 @@ export function generateBindables(controlName: string) {
         nameOrConfigOrTarget.defaultBindingMode = bindingMode.twoWay;
       }
 
-      // if the option equals to template or ends with template
-      // register the property as a templateproperty
-      if (option === 'template') {
-        registerTemplateProperty(target, option, descriptor, true);
-      } else if (option.indexOf('Template') > -1) {
-        registerTemplateProperty(target, option, descriptor, false);
-      }
-
       let prop = new BindableProperty(nameOrConfigOrTarget);
       prop.registerWith(target, behaviorResource, descriptor);
     }
   };
-}
-
-/**
-* Marks a member as a template property - allowing it to be assigned by a k-template element
-* it also registers the property as a @bindable
-* @param isDefault Is this the default template property (most commonly used)?
-*/
-export function templateProperty(isDefault?) {
-  return function(target, key, descriptor) {
-    // Register the template property
-    registerTemplateProperty(target, key, descriptor, isDefault);
-    // Also register a bindable property to cut down on the number of decorators
-    bindable(target, key, descriptor);
-  };
-}
-
-function registerTemplateProperty(target, key, descriptor, isDefault) {
-  // Register a template property with the ControlProperties instance
-  let controlProperties = (Container.instance || new Container()).get(ControlProperties);
-  let templateProps = controlProperties.getTemplateProperties(target);
-
-  if (isDefault) {
-    templateProps.defaultProperty = key;
-  } else {
-    templateProps.validProperties.push(key);
-  }
 }
