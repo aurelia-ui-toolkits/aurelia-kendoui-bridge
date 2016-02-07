@@ -4,9 +4,9 @@
           k-navigatable.bind="true"
           k-toolbar.bind="['create', 'save', 'cancel']"
           k-editable.bind="true">
-    <k-col field="UnitPrice" title="Unit Price" format="{0:c}" width.bind="120"></k-col>
-    <k-col field="UnitsInStock" title="Units In Stock" width.bind="120"></k-col>
-    <k-col field="Discontinued" width.bind="120"></k-col>
-    <k-col command="destroy" title="&nbsp;" width.bind="150"></k-col>
+    <k-col k-field="UnitPrice" k-title="Unit Price" k-format="{0:c}" k-width.bind="120"></k-col>
+    <k-col k-field="UnitsInStock" k-title="Units In Stock" k-width.bind="120"></k-col>
+    <k-col k-field="Discontinued" k-width.bind="120"></k-col>
+    <k-col k-command="destroy" k-title="&nbsp;" k-width.bind="150"></k-col>
   </k-grid>
 </template>

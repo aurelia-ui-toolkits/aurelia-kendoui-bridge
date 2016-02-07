@@ -1,9 +1,18 @@
 <template>
   <k-tree-list k-data-source.bind="dataSource" k-resizable.bind="true" k-height.bind="300">
-    <k-tree-col field="FirstName" title="Name" footer-template="#= count # employee(s)">
-      ${FirstName} ${LastName}
+    <k-tree-col k-field="FirstName" k-title="Name">
+      <k-template>
+        ${FirstName} ${LastName}
+      </k-template>
+      <k-template for="footerTemplate">
+        ${count} employee(s)
+      </k-template>
     </k-tree-col>
-    <k-tree-col field="Position"></k-tree-col>
-    <k-tree-col field="HireDate" title="Hire Date" format="{0:MMMM d, yyyy}" footer-template="Last employee hired on #= kendo.format('{0:MMMM d, yyyy}', max) #"></k-tree-col>
+    <k-tree-col k-field="Position"></k-tree-col>
+    <k-tree-col k-field="HireDate" k-title="Hire Date" k-format="{0:MMMM d, yyyy}">
+      <k-template for="footerTemplate">
+        Last employee hired on ${max | kendoToString:'MMMM d, yyyy'}
+      </k-template>
+    </k-tree-col>
   </k-tree-list>
 </template>

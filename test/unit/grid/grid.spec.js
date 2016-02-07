@@ -31,7 +31,7 @@ describe('Grid', () => {
     sut._beforeInitialize(options);
 
     let columns = options.columns;
-    console.log(columns);
+
     expect(columns[0].template()).toBe('template1');
   });
 });

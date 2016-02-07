@@ -1,7 +1,7 @@
 <template>
   <require from="./counter"></require>
   <k-grid k-data-source.bind="datasource">
-    <k-col title="Contact Name" field="ContactName">
+    <k-col k-title="Contact Name" k-field="ContactName">
       <k-template>
         <counter></counter>
 
@@ -9,9 +9,14 @@
         <div if.bind="false">This should be hidden</div>
       </k-template>
     </k-col>
-    <k-col title="Contact Name" field="ContactName">
+    <k-col k-title="Contact Name" k-field="ContactName">
       <k-template>
         ${ContactName | capitalize}
+      </k-template>
+    </k-col>
+    <k-col k-title="Contact Name" k-field="ContactName">
+      <k-template for="headerTemplate">
+        ${'a' + 'b'}
       </k-template>
     </k-col>
   </k-grid>
