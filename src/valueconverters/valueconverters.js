@@ -21,3 +21,23 @@ export class kendoParseFloatValueConverter {
     return kendo.parseFloat(value, language);
   }
 }
+
+export class kendoParseColorValueConverter {
+  toView(value) {
+    return kendo.parseColor(value);
+  }
+}
+
+export class kendoStringifyValueConverter {
+  toView(obj) {
+    return kendo.stringify(obj);
+  }
+}
+
+export class kendoFormatValueConverter {
+  toView(value, ...params) {
+    params.unshift(value);
+
+    return kendo.format.apply(this, params);
+  }
+}

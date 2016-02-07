@@ -6,6 +6,8 @@
       <p>${'2012/07/16' | kendoParseDate:["MM/dd/yyyy", "yyyy/MM/dd"]}
       <p>${'1.212,22 €' | kendoParseInt}</p>
       <p>${'1.212,22 €' | kendoParseFloat}</p>
+      <p>${'#ff0000' | kendoParseColor | kendoStringify}</p>
+      <p>${'{0:c} - {1:c}' | kendoFormat:12:24}</p>
     </div>
   </div>
 </template>
