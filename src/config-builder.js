@@ -57,6 +57,7 @@ export class KendoConfigBuilder {
 
   useValueConverters(): KendoConfigBuilder {
     this.resources.push('valueconverters/valueconverters');
+    return this;
   }
 
   /**

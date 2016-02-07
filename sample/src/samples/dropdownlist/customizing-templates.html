@@ -9,6 +9,23 @@
                             k-height="400"
                             k-data-source.bind="dataSource"
                             style="width: 100%">
+            <k-template for="headerTemplate">
+              <div class="dropdown-header k-widget k-header">
+                <span>Photo</span>
+                <span>Contact info</span>
+              </div>
+            </k-template>
+            <k-template>
+              <span class="k-state-default" style="background-image: url('http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg')"></span>
+              <span class="k-state-default">
+                <h3>${ContactName}</h3>
+                <p>${CompanyName}</p>
+              </span>
+            </k-template>
+            <k-template for="valueTemplate">
+              <span class="selected-value" style="background-image: url('http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg')"></span>
+              <span>${ContactName}</span>
+            </k-template>
           </k-drop-down-list>
       </div>
     </div>

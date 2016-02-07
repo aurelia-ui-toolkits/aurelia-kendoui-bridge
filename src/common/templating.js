@@ -1,4 +1,5 @@
 import {ControlProperties} from './control-properties';
+import {getBindablePropertyName} from './util';
 import {Container} from 'aurelia-dependency-injection';
 
 export function useTemplates(target, templates) {
@@ -7,10 +8,10 @@ export function useTemplates(target, templates) {
 
   templates.forEach(c => {
     if (!c.for) {
-      target[templateProps.defaultProperty] = c.template;
+      target[getBindablePropertyName(templateProps.defaultProperty)] = c.template;
     } else {
       if (templateProps.validProperties.indexOf(c.for) !== -1) {
-        target[c.for] = c.template;
+        target[getBindablePropertyName(c.for)] = c.template;
       } else {
         throw new Error('Invalid template property name: "' + c.for + '", valid values are: ' + templateProps.validProperties.join(', '));
       }

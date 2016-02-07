@@ -37,6 +37,16 @@ export function getBindablePropertyName(propertyName: string): string {
 }
 
 /**
+* removes prefix and unhyphenates the resulting string
+* kTest -> test
+*/
+export function getKendoPropertyName(propertyName: string): string {
+  let withoutPrefix = propertyName.substring(1); // remove 'k'
+
+  return (withoutPrefix.charAt(0).toLowerCase() + withoutPrefix.slice(1));
+}
+
+/**
 * converts all attributes found on an element to matching Kendo events
 * returns a list of these Kendo events
 */
@@ -61,4 +71,27 @@ export function getEventsFromAttributes(element: Element): string[] {
   }
 
   return events;
+}
+
+
+/**
+* Implicitly setting options to "undefined" for a kendo control can break things.
+* this function prunes the supplied options object and removes values that
+* aren't set to something explicit (i.e. not null)
+* @param options the options object to prune the properties of
+*/
+export function pruneOptions(options: any) {
+  let returnOptions = {};
+
+  for (let prop in options) {
+    if (hasValue(options[prop])) {
+      returnOptions[prop] = options[prop];
+    }
+  }
+
+  return returnOptions;
+}
+
+export function hasValue(prop) {
+  return typeof(prop) !== 'undefined' && prop !== null;
 }

@@ -19,6 +19,8 @@ export function generateBindables(controlName: string) {
     let controlProperties = (Container.instance || new Container()).get(ControlProperties);
     let optionKeys = controlProperties.getProperties(controlName);
 
+    optionKeys.push('widget');
+
     for (let option of optionKeys) {
       // set the name of the bindable property to the option
       let nameOrConfigOrTarget = {
@@ -29,6 +31,8 @@ export function generateBindables(controlName: string) {
         nameOrConfigOrTarget.defaultBindingMode = bindingMode.twoWay;
       }
 
+      // if the option equals to template or ends with template
+      // register the property as a templateproperty
       if (option === 'template') {
         registerTemplateProperty(target, option, descriptor, true);
       } else if (option.indexOf('Template') > -1) {

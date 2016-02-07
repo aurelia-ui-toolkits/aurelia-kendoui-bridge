@@ -3,7 +3,7 @@ import {customElement, bindable, children, ViewResources} from 'aurelia-templati
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import {pruneOptions} from '../common/options';
+import {pruneOptions} from '../common/util';
 import 'kendo-ui/js/kendo.listview.min';
 
 @customElement(`${constants.elementPrefix}list-view`)

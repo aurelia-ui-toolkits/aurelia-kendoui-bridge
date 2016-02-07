@@ -1,4 +1,4 @@
-import {getEventsFromAttributes, getBindablePropertyName, _hyphenate, _unhyphenate, addHyphenAndLower} from 'src/common/util';
+import {getEventsFromAttributes, getBindablePropertyName, _hyphenate, _unhyphenate, addHyphenAndLower, getKendoPropertyName, pruneOptions} from 'src/common/util';
 import {constants} from 'src/common/constants';
 import {initialize} from 'aurelia-pal-browser';
 import {DOM} from 'aurelia-pal';
@@ -77,5 +77,26 @@ describe('Util', () => {
   it('addHyphenAndLower adds hyphen and lowercases the char', () => {
     expect(addHyphenAndLower('k')).toBe('-k');
     expect(addHyphenAndLower('K')).toBe('-k');
+  });
+
+  it('getKendoPropertyName', () => {
+    expect(getKendoPropertyName('kTemplate')).toBe('template');
+    expect(getKendoPropertyName('kPropertyName')).toBe('propertyName');
+  });
+
+  describe('Options', () => {
+    it('pruneOptions removes null properties', () => {
+      let pruned = pruneOptions({
+        a: null,
+        b: '1',
+        c: 0,
+        d: undefined
+      });
+
+      expect(pruned.hasOwnProperty('a')).toBe(false);
+      expect(pruned.b).toBe('1');
+      expect(pruned.c).toBe(0);
+      expect(pruned.hasOwnProperty('d')).toBe(false);
+    });
   });
 });

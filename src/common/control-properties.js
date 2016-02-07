@@ -18,18 +18,28 @@ export class ControlProperties {
     }
 
     // get available properties of the options object inside a Kendo control
-    let options1 = Object.keys(jQuery.fn[controlName].widget.prototype.options);
+    let options1 = this.getWidgetProperties(controlName);
     // get available properties of the pre-generated bindables.json file
     let options2 = bindables[controlName];
+
+    if (!options2) {
+      throw new Error(`${controlName} not found in generated bindables.js`);
+    }
+
     // merge together without duplicates
     let keys = options1.concat(options2.filter(item => options1.indexOf(item) < 0));
-
-    // we also want k-widget on all wrappers
-    keys.push('widget');
 
     this.cache[controlName] = keys;
 
     return keys;
+  }
+
+  getWidgetProperties(controlName) {
+    if (jQuery.fn[controlName]) {
+      return Object.keys(jQuery.fn[controlName].widget.prototype.options);
+    }
+
+    return [];
   }
 
   getTemplateProperties(obj) {
