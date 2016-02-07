@@ -25,7 +25,9 @@ export class DropDownList {
   bind(ctx) {
     this.$parent = ctx;
     this.widgetBase.useTemplates(this, 'kendoDropDownList', this.templates);
+  }
 
+  attached() {
     this.recreate();
   }
 

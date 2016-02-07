@@ -14,7 +14,7 @@ import {constants} from '../common/constants';
 @inject(TargetInstruction)
 export class Template {
   @bindable template;
-  @bindable for;
+  @bindable for = 'template';
 
   constructor(targetInstruction) {
     this.template = targetInstruction.elementInstruction.template;

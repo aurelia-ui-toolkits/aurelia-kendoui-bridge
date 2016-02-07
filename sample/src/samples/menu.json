@@ -16,8 +16,10 @@
   "Editors": {
     "Autocomplete": "autocomplete",
     "ColorPicker": "colorpicker",
+    "ComboBox": "combobox",
     "DatePicker": "datepicker",
     "DateTimePicker": "datetimepicker",
+    "DropDownList": "dropdownlist",
     "NumericTextBox": "numerictextbox",
     "MaskedTextBox": "maskedtextbox",
     "Slider": "slider",

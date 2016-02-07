@@ -27,11 +27,13 @@
               </li>
               <li>
                   <label>Gender</label>
-                  <select k-drop-down-list name="gender" style="width: 100%;">
-                      <option value="male" selected>Male</option>
-                      <option value="female">Female</option>
-                      <option value="notsay">Rather not say</option>
-                  </select>
+                  <k-drop-down-list k-value.two-way="gender">
+                    <select style="width: 100%;">
+                        <option value="male" selected>Male</option>
+                        <option value="female">Female</option>
+                        <option value="notsay">Rather not say</option>
+                    </select>
+                  </k-drop-down-list>
               </li>
               <li>
                   <label>Occupation</label>
