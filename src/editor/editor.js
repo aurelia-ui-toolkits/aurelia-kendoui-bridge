@@ -30,7 +30,8 @@ export class Editor {
 
   recreate() {
     this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
+      element: this.textarea,
+      rootElement: this.element,
       parentCtx: this.$parent
     });
   }
