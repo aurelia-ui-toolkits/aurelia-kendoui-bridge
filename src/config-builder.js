@@ -40,6 +40,7 @@ export class KendoConfigBuilder {
     this.core()
       .kendoAutoComplete()
       .kendoChart()
+      .kendoEditor()
       .kendoGrid()
       .kendoScheduler()
       .kendoTreeList()
@@ -121,6 +122,11 @@ export class KendoConfigBuilder {
 
   kendoDropDownList(): KendoConfigBuilder {
     this.resources.push('dropdownlist/dropdownlist');
+    return this;
+  }
+
+  kendoEditor(): KendoConfigBuilder {
+    this.resources.push('kendoEditor/kendoEditor');
     return this;
   }
 

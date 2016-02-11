@@ -27,7 +27,7 @@ System.config({
     "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.1.0",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
-    "core-js": "npm:core-js@2.0.3",
+    "core-js": "npm:core-js@1.2.6",
     "jquery": "github:components/jquery@2.2.0",
     "jquery.min": "github:components/jquery@2.2.0",
     "polymer/mutationobservers": "github:polymer/mutationobservers@0.4.2",
@@ -90,6 +90,12 @@ System.config({
     },
     "npm:babel-runtime@5.8.35": {
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:core-js@1.2.6": {
+      "fs": "github:jspm/nodelibs-fs@0.1.2",
+      "path": "github:jspm/nodelibs-path@0.1.0",
+      "process": "github:jspm/nodelibs-process@0.1.2",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:core-js@2.0.3": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
