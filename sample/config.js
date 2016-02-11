@@ -40,7 +40,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "clean-css": "npm:clean-css@3.4.8",
-    "core-js": "npm:core-js@1.2.6",
+    "core-js": "npm:core-js@2.1.0",
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
     "google/code-prettify": "github:google/code-prettify@master",
@@ -253,12 +253,6 @@ System.config({
       "process": "github:jspm/nodelibs-process@0.1.2",
       "proto-list": "npm:proto-list@1.2.4",
       "url": "github:jspm/nodelibs-url@0.1.0"
-    },
-    "npm:core-js@1.2.6": {
-      "fs": "github:jspm/nodelibs-fs@0.1.2",
-      "path": "github:jspm/nodelibs-path@0.1.0",
-      "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
     },
     "npm:core-js@2.1.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
