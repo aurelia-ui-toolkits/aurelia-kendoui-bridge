@@ -126,7 +126,7 @@ export class KendoConfigBuilder {
   }
 
   kendoEditor(): KendoConfigBuilder {
-    this.resources.push('kendoEditor/kendoEditor');
+    this.resources.push('editor/editor');
     return this;
   }
 

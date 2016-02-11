@@ -3,7 +3,7 @@ import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo-ui/js/kendo.editor.min';
+import 'kendo-ui/js/kendo.all.min';
 
 @customAttribute(`${constants.attributePrefix}editor`)
 @generateBindables('kendoEditor')
@@ -22,7 +22,9 @@ export class Editor {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
