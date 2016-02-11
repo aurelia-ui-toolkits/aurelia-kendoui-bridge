@@ -1,26 +1,27 @@
 <template>
   <require from="theme-selector/theme-selector"></require>
-
-  <ul ref="menu">
-    <li>
-        <a route-href="route: samples">Components Catalog</a>
-    </li>
-    <li>
-        <a route-href="route: about">About</a>
-    </li>
-    <li>
-        <a route-href="route: installation; params.bind: { type: 'description' }">Installation</a>
-    </li>
-    <li>
-        <a route-href="route: project-status">Project status</a>
-    </li>
-    <li click.delegate="showThemeDialog()">
-        <a href="#">Theme</a>
-    </li>
-    <li>
-        <a route-href="route: help">Help/Docs</a>
-    </li>
-  </ul>
+  <h4>
+      <ul ref="menu">
+        <li>
+            <a route-href="route: samples">Components Catalog</a>
+        </li>
+        <li>
+            <a route-href="route: about">About</a>
+        </li>
+        <li>
+            <a route-href="route: installation; params.bind: { type: 'description' }">Installation</a>
+        </li>
+        <li>
+            <a route-href="route: project-status">Project status</a>
+        </li>
+        <li click.delegate="showThemeDialog()">
+            <a href="#">Theme</a>
+        </li>
+        <li>
+            <a route-href="route: help">Help/Docs</a>
+        </li>
+      </ul>
+  </h4>
 
   <theme-selector ref="themeSelector"></theme-selector>
 </template>
