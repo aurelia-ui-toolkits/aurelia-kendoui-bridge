@@ -1,3 +1,13 @@
+<a name="0.2.3"></a>
+## [0.2.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.2.2...v0.2.3) (2016-02-12)
+
+
+### Bug Fixes
+
+* **all:** lock down jQuery version to 2.1.4 ([bc74e84](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/bc74e84))
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.2.1...v0.2.2) (2016-02-11)
 
