@@ -21,10 +21,10 @@ export class CustomTools {
                         [{ text: "Fieldset", value: "fieldset" }]
                     )
                 },
-                {
-                    name: "customTemplate",
-                    template: $("#backgroundColor-template").html()
-                },
+                // {
+                //     name: "customTemplate",
+                //     template: $("#backgroundColor-template").html()
+                // },
                 {
                     name: "custom",
                     tooltip: "Insert a horizontal rule",

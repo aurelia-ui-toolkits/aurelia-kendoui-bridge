@@ -1,5 +1,12 @@
 <template >
-  <textarea k-editor style="height:400px; width: 800px">
+    <div class="box wide">
+        <p>Allowed file types for the Image browser are: jpg, jpeg, gif, png</p>
+        <p>Allowed file types for the File browser for this demo are: txt, doc, docx, xls, xlsx, ppt, pptx, zip, rar, jpg, jpeg, gif, png</p>
+    </div>
+
+    <textarea k-editor="k-tools.bind: tools"
+              style="height:400px">
+
     &lt;p&gt;&lt;img src=&quot;http://demos.telerik.com/kendo-ui/content/web/editor/kendo-ui-web.png&quot; alt=&quot;Editor for ASP.NET MVC logo&quot; style=&quot;display:block;margin-left:auto;margin-right:auto;&quot; /&gt;&lt;/p&gt;
     &lt;p&gt;
         Kendo UI Editor allows your users to edit HTML in a familiar, user-friendly way.&lt;br /&gt;
