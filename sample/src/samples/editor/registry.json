@@ -6,7 +6,7 @@
       "files": ["html", "js"]
     },
     "api": {
-      "files": ["html", "js", "css"]
+      "files": ["html", "js"]
     },
     "inline-editing": {},
     "custom-tools": {},
