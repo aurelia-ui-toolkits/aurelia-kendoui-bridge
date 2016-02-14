@@ -20,6 +20,7 @@ export class KendoConfigBuilder {
       .kendoDatePicker()
       .kendoFlatColorPicker()
       .kendoListView()
+      .kendoMap()
       .kendoMaskedTextBox()
       .kendoNumericTextBox()
       .kendoPanelBar()
@@ -141,6 +142,12 @@ export class KendoConfigBuilder {
     this.resources.push('listview/k-list-edit-template');
     return this;
   }
+
+  kendoMap(): KendoConfigBuilder {
+    this.resources.push('map/map');
+    return this;
+  }
+
 
   kendoMenu(): KendoConfigBuilder {
     this.resources.push('menu/menu');

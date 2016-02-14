@@ -1,4 +1,4 @@
 export class Settings {
-  defaultTheme = 'material';
-  activeTheme = 'material';
+  defaultTheme = 'default';
+  activeTheme = 'default';
 }

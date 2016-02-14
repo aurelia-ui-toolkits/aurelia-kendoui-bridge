@@ -59,6 +59,10 @@
     "Treeview": "treeview",
     "Panel Bar": "panelbar"
   },
+  "Diagrams & Maps" : {
+    "Map": "map"
+  },
+
   "Interactivity & UX": {
     "ProgressBar": "progressbar"
   },
