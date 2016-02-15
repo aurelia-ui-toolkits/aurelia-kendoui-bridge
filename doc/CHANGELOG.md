@@ -1,3 +1,61 @@
+<a name="0.2.3"></a>
+## [0.2.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.2.2...v0.2.3) (2016-02-12)
+
+
+### Bug Fixes
+
+* **all:** lock down jQuery version to 2.1.4 ([bc74e84](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/bc74e84))
+
+
+
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.2.1...v0.2.2) (2016-02-11)
+
+### dependencies
+updated dependencies
+
+
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.2.0...v0.2.1) (2016-02-04)
+
+
+### Bug Fixes
+
+* **value-binding:** fix sender.value is undefined error ([f7e44a3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/f7e44a3))
+* **value-binding:** fix sender.value is undefined error ([d99ffeb](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/d99ffeb))
+
+
+
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.1.4...v0.2.0) (2016-02-03)
+
+
+### Bug Fixes
+
+* **calendar:** remove unneeded line ([35ec7d9](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/35ec7d9))
+* **template-compiler:** only enhance without au-targets ([e40fc66](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e40fc66))
+
+### Features
+
+* **all:** two-way value-binding ([84817b9](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/84817b9))
+* **bindables:** generate bindables from json ([aa4da77](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/aa4da77))
+* **calendar:** calendar wrapper ([b118808](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/b118808))
+* **colorpicker:** add flatcolorpicker component ([9b469d0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/9b469d0))
+* **colorpicker:** added kendoColorPalette implementation ([1c047af](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/1c047af))
+* **datetimepicker:** added datetimepicker wrapper ([47b603a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/47b603a))
+* **grid:** allow for value converters ([e4d1d01](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e4d1d01))
+* **grid:** pass <require> ViewResources to enhance ([1de0564](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/1de0564))
+* **maskedtextbox:** add masked textbox wrapper ([05db6c6](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/05db6c6))
+* **panelbar:** added initial panelbar implementation ([754b3c1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/754b3c1))
+* **panelbar:** tweaked call to widgetbase to fix missing event handlers ([05b6ca0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/05b6ca0))
+* **rangeslider:** add rangeslider wrapper ([f9bd238](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/f9bd238))
+* **scheduler:** scheduler ([5f71c62](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/5f71c62))
+* **timepicker:** add timepicker wrapper ([d09ccf4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/d09ccf4))
+* **treelist:** added treelist implementation ([79f8983](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/79f8983))
+* **widgetbase:** added "rootElement" to widgetbase.createWidget() options object ([f6af2f3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/f6af2f3))
+
+
+
 <a name="0.1.2"></a>
 ## 0.1.2 (2016-01-27)
 

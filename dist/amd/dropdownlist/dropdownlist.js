@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/events', 'kendo-ui/js/kendo.dropdownlist.min', 'kendo-ui/js/kendo.virtuallist.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonEvents, _kendoUiJsKendoDropdownlistMin, _kendoUiJsKendoVirtuallistMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/events', '../common/constants', 'kendo-ui/js/kendo.dropdownlist.min', 'kendo-ui/js/kendo.virtuallist.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonEvents, _commonConstants, _kendoUiJsKendoDropdownlistMin, _kendoUiJsKendoVirtuallistMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -34,7 +34,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).setDefaultBindableValues();
+      this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this);
     }
 
     DropDownList.prototype.bind = function bind(ctx) {
@@ -75,7 +75,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _DropDownList = DropDownList;
     DropDownList = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(DropDownList) || DropDownList;
     DropDownList = _commonDecorators.generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
-    DropDownList = _aureliaTemplating.customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
+    DropDownList = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'drop-down-list')(DropDownList) || DropDownList;
     return DropDownList;
   })();
 

@@ -33,6 +33,8 @@ require('kendo-ui/js/kendo.virtuallist.min');
 
 require('kendo-ui/js/kendo.button.min');
 
+require('kendo-ui/js/kendo.calendar.min');
+
 require('kendo-ui/js/kendo.dataviz.chart.min');
 
 require('kendo-ui/js/kendo.dataviz.chart.polar.min');
@@ -49,6 +51,8 @@ require('kendo-ui/js/kendo.colorpicker.min');
 
 require('kendo-ui/js/kendo.datepicker.min');
 
+require('kendo-ui/js/kendo.datetimepicker.min');
+
 require('kendo-ui/js/kendo.dropdownlist.min');
 
 require('kendo-ui/js/kendo.data.signalr.min');
@@ -57,19 +61,39 @@ require('kendo-ui/js/kendo.filtercell.min');
 
 require('kendo-ui/js/kendo.grid.min');
 
+require('kendo-ui/js/kendo.maskedtextbox.min');
+
 require('kendo-ui/js/kendo.menu.min');
 
 require('kendo-ui/js/kendo.numerictextbox.min');
 
+require('kendo-ui/js/kendo.panelbar.min');
+
 require('kendo-ui/js/kendo.pdf.min');
 
-require('kendo-ui/js/jszip.min');
+require('kendo-ui/js/kendo.excel.min');
 
 require('kendo-ui/js/kendo.progressbar.min');
 
 require('kendo-ui/js/kendo.slider.min');
 
+require('kendo-ui/js/kendo.scheduler.min');
+
+require('kendo-ui/js/kendo.scheduler.agendaview.min');
+
+require('kendo-ui/js/kendo.scheduler.dayview.min');
+
+require('kendo-ui/js/kendo.scheduler.monthview.min');
+
+require('kendo-ui/js/kendo.scheduler.recurrence.min');
+
+require('kendo-ui/js/kendo.scheduler.timelineview.min');
+
 require('kendo-ui/js/kendo.tabstrip.min');
+
+require('kendo-ui/js/kendo.timepicker.min');
+
+require('kendo-ui/js/kendo.treelist.min');
 
 require('kendo-ui/js/kendo.treeview.min');
 
@@ -92,12 +116,12 @@ var KendoConfigBuilder = (function () {
   }
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoButton().kendoTabStrip().kendoProgressBar().kendoSlider().kendoColorPicker().kendoDropDownList().kendoDatePicker().kendoNumericTextBox();
+    this.kendoButton().kendoCalendar().kendoTabStrip().kendoProgressBar().kendoSlider().kendoRangeSlider().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoTimePicker().kendoMaskedTextBox().kendoNumericTextBox().kendoPanelBar().kendoColorPicker().kendoColorPalette().kendoFlatColorPicker();
     return this;
   };
 
   KendoConfigBuilder.prototype.pro = function pro() {
-    this.core().kendoGrid().kendoAutoComplete().kendoChart().kendoTreeView();
+    this.core().kendoGrid().kendoAutoComplete().kendoChart().kendoTreeView().kendoScheduler().kendoTreeList();
     return this;
   };
 
@@ -113,6 +137,11 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoButton = function kendoButton() {
     this.resources.push('button/button');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoCalendar = function kendoCalendar() {
+    this.resources.push('calendar/calendar');
     return this;
   };
 
@@ -139,6 +168,7 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoScheduler = function kendoScheduler() {
     this.resources.push('scheduler/scheduler');
+    this.resources.push('scheduler/event-template');
     return this;
   };
 
@@ -160,6 +190,11 @@ var KendoConfigBuilder = (function () {
     return this;
   };
 
+  KendoConfigBuilder.prototype.kendoPanelBar = function kendoPanelBar() {
+    this.resources.push('panelbar/panelbar');
+    return this;
+  };
+
   KendoConfigBuilder.prototype.kendoProgressBar = function kendoProgressBar() {
     this.resources.push('progressbar/progressbar');
     return this;
@@ -170,8 +205,23 @@ var KendoConfigBuilder = (function () {
     return this;
   };
 
+  KendoConfigBuilder.prototype.kendoRangeSlider = function kendoRangeSlider() {
+    this.resources.push('rangeslider/rangeslider');
+    return this;
+  };
+
   KendoConfigBuilder.prototype.kendoColorPicker = function kendoColorPicker() {
     this.resources.push('colorpicker/colorpicker');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoColorPalette = function kendoColorPalette() {
+    this.resources.push('colorpalette/colorpalette');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoFlatColorPicker = function kendoFlatColorPicker() {
+    this.resources.push('flatcolorpicker/flatcolorpicker');
     return this;
   };
 
@@ -185,8 +235,29 @@ var KendoConfigBuilder = (function () {
     return this;
   };
 
+  KendoConfigBuilder.prototype.kendoDateTimePicker = function kendoDateTimePicker() {
+    this.resources.push('datetimepicker/datetimepicker');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoTimePicker = function kendoTimePicker() {
+    this.resources.push('timepicker/timepicker');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoMaskedTextBox = function kendoMaskedTextBox() {
+    this.resources.push('maskedtextbox/maskedtextbox');
+    return this;
+  };
+
   KendoConfigBuilder.prototype.kendoNumericTextBox = function kendoNumericTextBox() {
     this.resources.push('numerictextbox/numerictextbox');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoTreeList = function kendoTreeList() {
+    this.resources.push('treelist/treelist');
+    this.resources.push('treelist/k-tree-col');
     return this;
   };
 
@@ -234,7 +305,7 @@ var AutoComplete = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useValueBinding();
   }
 
   AutoComplete.prototype.bind = function bind(ctx) {
@@ -244,24 +315,14 @@ var AutoComplete = (function () {
   };
 
   AutoComplete.prototype.recreate = function recreate() {
-    var _this2 = this;
-
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent
     });
+  };
 
-    this.kWidget.bind('change', function (event) {
-      _this2.kValue = event.sender.value();
-
-      fireEvent(_this2.element, 'input');
-    });
-
-    this.kWidget.bind('select', function (event) {
-      _this2.kValue = event.sender.value();
-
-      fireEvent(_this2.element, 'input');
-    });
+  AutoComplete.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
   AutoComplete.prototype.detached = function detached() {
@@ -271,7 +332,7 @@ var AutoComplete = (function () {
   var _AutoComplete = AutoComplete;
   AutoComplete = _aureliaDependencyInjection.inject(Element, WidgetBase)(AutoComplete) || AutoComplete;
   AutoComplete = generateBindables('kendoAutoComplete')(AutoComplete) || AutoComplete;
-  AutoComplete = _aureliaTemplating.customAttribute('k-autocomplete')(AutoComplete) || AutoComplete;
+  AutoComplete = _aureliaTemplating.customAttribute(constants.attributePrefix + 'autocomplete')(AutoComplete) || AutoComplete;
   return AutoComplete;
 })();
 
@@ -295,7 +356,7 @@ var Button = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers2);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoButton').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoButton').linkViewModel(this);
   }
 
   Button.prototype.bind = function bind(ctx) {
@@ -318,16 +379,16 @@ var Button = (function () {
   var _Button = Button;
   Button = _aureliaDependencyInjection.inject(Element, WidgetBase)(Button) || Button;
   Button = generateBindables('kendoButton')(Button) || Button;
-  Button = _aureliaTemplating.customAttribute('k-button')(Button) || Button;
+  Button = _aureliaTemplating.customAttribute(constants.attributePrefix + 'button')(Button) || Button;
   return Button;
 })();
 
 exports.Button = Button;
 
-var Chart = (function () {
+var Calendar = (function () {
   var _instanceInitializers3 = {};
 
-  _createDecoratedClass(Chart, [{
+  _createDecoratedClass(Calendar, [{
     key: 'options',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
@@ -336,13 +397,66 @@ var Chart = (function () {
     enumerable: true
   }], null, _instanceInitializers3);
 
-  function Chart(element, widgetBase) {
-    _classCallCheck(this, _Chart);
+  function Calendar(element, widgetBase, viewResources) {
+    _classCallCheck(this, _Calendar);
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers3);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoCalendar').linkViewModel(this).useValueBinding();
+  }
+
+  Calendar.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  Calendar.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  Calendar.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  Calendar.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  };
+
+  Calendar.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Calendar = Calendar;
+  Calendar = _aureliaDependencyInjection.inject(Element, WidgetBase)(Calendar) || Calendar;
+  Calendar = generateBindables('kendoCalendar')(Calendar) || Calendar;
+  Calendar = _aureliaTemplating.customElement(constants.elementPrefix + 'calendar')(Calendar) || Calendar;
+  return Calendar;
+})();
+
+exports.Calendar = Calendar;
+
+var Chart = (function () {
+  var _instanceInitializers4 = {};
+
+  _createDecoratedClass(Chart, [{
+    key: 'options',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers4);
+
+  function Chart(element, widgetBase) {
+    _classCallCheck(this, _Chart);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this);
   }
 
   Chart.prototype.bind = function bind(ctx) {
@@ -367,14 +481,14 @@ var Chart = (function () {
   var _Chart = Chart;
   Chart = _aureliaDependencyInjection.inject(Element, WidgetBase)(Chart) || Chart;
   Chart = generateBindables('kendoChart')(Chart) || Chart;
-  Chart = _aureliaTemplating.customElement('k-chart')(Chart) || Chart;
+  Chart = _aureliaTemplating.customElement(constants.elementPrefix + 'chart')(Chart) || Chart;
   return Chart;
 })();
 
 exports.Chart = Chart;
 
 var Sparkline = (function () {
-  var _instanceInitializers4 = {};
+  var _instanceInitializers5 = {};
 
   _createDecoratedClass(Sparkline, [{
     key: 'options',
@@ -383,15 +497,15 @@ var Sparkline = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers4);
+  }], null, _instanceInitializers5);
 
   function Sparkline(element, widgetBase) {
     _classCallCheck(this, _Sparkline);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers4);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers5);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoSparkline').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoSparkline').linkViewModel(this);
   }
 
   Sparkline.prototype.bind = function bind(ctx) {
@@ -416,14 +530,14 @@ var Sparkline = (function () {
   var _Sparkline = Sparkline;
   Sparkline = _aureliaDependencyInjection.inject(Element, WidgetBase)(Sparkline) || Sparkline;
   Sparkline = generateBindables('kendoSparkline')(Sparkline) || Sparkline;
-  Sparkline = _aureliaTemplating.customElement('k-sparkline')(Sparkline) || Sparkline;
+  Sparkline = _aureliaTemplating.customElement(constants.elementPrefix + 'sparkline')(Sparkline) || Sparkline;
   return Sparkline;
 })();
 
 exports.Sparkline = Sparkline;
 
 var Stock = (function () {
-  var _instanceInitializers5 = {};
+  var _instanceInitializers6 = {};
 
   _createDecoratedClass(Stock, [{
     key: 'options',
@@ -432,15 +546,15 @@ var Stock = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers5);
+  }], null, _instanceInitializers6);
 
   function Stock(element, widgetBase) {
     _classCallCheck(this, _Stock);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers5);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers6);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoStockChart').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoStockChart').linkViewModel(this);
   }
 
   Stock.prototype.bind = function bind(ctx) {
@@ -465,14 +579,14 @@ var Stock = (function () {
   var _Stock = Stock;
   Stock = _aureliaDependencyInjection.inject(Element, WidgetBase)(Stock) || Stock;
   Stock = generateBindables('kendoStockChart')(Stock) || Stock;
-  Stock = _aureliaTemplating.customElement('k-stock')(Stock) || Stock;
+  Stock = _aureliaTemplating.customElement(constants.elementPrefix + 'stock')(Stock) || Stock;
   return Stock;
 })();
 
 exports.Stock = Stock;
 
 var TreeMap = (function () {
-  var _instanceInitializers6 = {};
+  var _instanceInitializers7 = {};
 
   _createDecoratedClass(TreeMap, [{
     key: 'options',
@@ -481,15 +595,15 @@ var TreeMap = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers6);
+  }], null, _instanceInitializers7);
 
   function TreeMap(element, widgetBase) {
     _classCallCheck(this, _TreeMap);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers6);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers7);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoTreeMap').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoTreeMap').linkViewModel(this);
   }
 
   TreeMap.prototype.bind = function bind(ctx) {
@@ -514,14 +628,61 @@ var TreeMap = (function () {
   var _TreeMap = TreeMap;
   TreeMap = _aureliaDependencyInjection.inject(Element, WidgetBase)(TreeMap) || TreeMap;
   TreeMap = generateBindables('kendoTreeMap')(TreeMap) || TreeMap;
-  TreeMap = _aureliaTemplating.customElement('k-treemap')(TreeMap) || TreeMap;
+  TreeMap = _aureliaTemplating.customElement(constants.elementPrefix + 'treemap')(TreeMap) || TreeMap;
   return TreeMap;
 })();
 
 exports.TreeMap = TreeMap;
 
+var ColorPalette = (function () {
+  var _instanceInitializers8 = {};
+
+  _createDecoratedClass(ColorPalette, [{
+    key: 'options',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers8);
+
+  function ColorPalette(element, widgetBase) {
+    _classCallCheck(this, _ColorPalette);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers8);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoColorPalette').linkViewModel(this);
+  }
+
+  ColorPalette.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
+  };
+
+  ColorPalette.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  ColorPalette.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _ColorPalette = ColorPalette;
+  ColorPalette = _aureliaDependencyInjection.inject(Element, WidgetBase)(ColorPalette) || ColorPalette;
+  ColorPalette = generateBindables('kendoColorPalette')(ColorPalette) || ColorPalette;
+  ColorPalette = _aureliaTemplating.customElement(constants.attributePrefix + 'color-palette')(ColorPalette) || ColorPalette;
+  return ColorPalette;
+})();
+
+exports.ColorPalette = ColorPalette;
+
 var ColorPicker = (function () {
-  var _instanceInitializers7 = {};
+  var _instanceInitializers9 = {};
 
   _createDecoratedClass(ColorPicker, [{
     key: 'options',
@@ -530,15 +691,15 @@ var ColorPicker = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers7);
+  }], null, _instanceInitializers9);
 
   function ColorPicker(element, widgetBase) {
     _classCallCheck(this, _ColorPicker);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers7);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers9);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this);
   }
 
   ColorPicker.prototype.bind = function bind(ctx) {
@@ -561,26 +722,59 @@ var ColorPicker = (function () {
   var _ColorPicker = ColorPicker;
   ColorPicker = _aureliaDependencyInjection.inject(Element, WidgetBase)(ColorPicker) || ColorPicker;
   ColorPicker = generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
-  ColorPicker = _aureliaTemplating.customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
+  ColorPicker = _aureliaTemplating.customAttribute(constants.attributePrefix + 'color-picker')(ColorPicker) || ColorPicker;
   return ColorPicker;
 })();
 
 exports.ColorPicker = ColorPicker;
+var bindables = { "kendoAutoComplete": ["animation", "dataSource", "dataTextField", "delay", "enable", "filter", "fixedGroupTemplate", "groupTemplate", "headerTemplate", "height", "highlightFirst", "ignoreCase", "minLength", "name", "placeholder", "popup", "separator", "suggest", "template", "valuePrimitive", "virtual"], "kendoBarcode": ["background", "border", "checksum", "color", "height", "name", "padding", "renderAs", "text", "type", "value", "width"], "kendoButton": ["enable", "icon", "imageUrl", "name", "spriteCssClass"], "kendoCalendar": ["culture", "dates", "depth", "disableDates", "footer", "format", "max", "min", "month", "name", "start", "value"], "kendoChart": ["autoBind", "axisDefaults", "categoryAxis", "chartArea", "dataSource", "legend", "name", "panes", "pannable", "pdf", "plotArea", "renderAs", "series", "seriesColors", "seriesDefaults", "theme", "title", "tooltip", "transitions", "valueAxis", "xAxis", "yAxis", "zoomable"], "kendoColorPalette": ["columns", "name", "palette", "tileSize", "value"], "kendoColorPicker": ["buttons", "columns", "messages", "name", "opacity", "palette", "preview", "tileSize", "toolIcon", "value"], "kendoComboBox": ["animation", "autoBind", "cascadeFrom", "cascadeFromField", "dataSource", "dataTextField", "dataValueField", "delay", "enable", "filter", "fixedGroupTemplate", "groupTemplate", "headerTemplate", "height", "highlightFirst", "ignoreCase", "index", "minLength", "name", "placeholder", "popup", "suggest", "template", "text", "value", "valuePrimitive", "virtual"], "kendoContextMenu": ["alignToAnchor", "animation", "closeOnClick", "dataSource", "direction", "filter", "hoverDelay", "name", "orientation", "popupCollision", "showOn", "target"], "kendoDatePicker": ["ARIATemplate", "animation", "culture", "dates", "depth", "disableDates", "footer", "format", "max", "min", "month", "name", "parseFormats", "start", "value"], "kendoDateTimePicker": ["ARIATemplate", "animation", "culture", "dates", "depth", "disableDates", "footer", "format", "interval", "max", "min", "month", "name", "parseFormats", "start", "timeFormat", "value"], "kendoDiagram": ["autoBind", "connectionDefaults", "connections", "connectionsDataSource", "dataSource", "editable", "layout", "name", "pannable", "pdf", "selectable", "shapeDefaults", "shapes", "template", "zoom", "zoomMax", "zoomMin", "zoomRate"], "kendoDraggable": ["axis", "container", "cursorOffset", "distance", "filter", "group", "hint", "ignore"], "kendoDropDownList": ["animation", "autoBind", "cascadeFrom", "cascadeFromField", "dataSource", "dataTextField", "dataValueField", "delay", "enable", "filter", "fixedGroupTemplate", "groupTemplate", "headerTemplate", "height", "ignoreCase", "index", "minLength", "name", "optionLabel", "optionLabelTemplate", "popup", "template", "text", "value", "valuePrimitive", "valueTemplate", "virtual"], "kendoDropTarget": ["group"], "kendoDropTargetArea": ["filter", "group"], "kendoEditor": ["domain", "encoded", "fileBrowser", "imageBrowser", "messages", "name", "pdf", "resizable", "serialization", "stylesheets", "tools"], "kendoFlatColorPicker": ["autoupdate", "buttons", "messages", "name", "opacity", "preview", "value"], "kendoGantt": ["assignments", "autoBind", "columnResizeHandleWidth", "columns", "currentTimeMarker", "dataSource", "dependencies", "editable", "height", "hourSpan", "listWidth", "messages", "name", "navigatable", "pdf", "resizable", "resources", "rowHeight", "selectable", "showWorkDays", "showWorkHours", "snap", "taskTemplate", "toolbar", "tooltip", "views", "workDayEnd", "workDayStart", "workWeekEnd", "workWeekStart"], "kendoGrid": ["allowCopy", "altRowTemplate", "autoBind", "columnMenu", "columnResizeHandleWidth", "columns", "dataSource", "detailTemplate", "editable", "excel", "filterable", "groupable", "height", "messages", "mobile", "name", "navigatable", "noRecords", "pageable", "pdf", "reorderable", "resizable", "rowTemplate", "scrollable", "selectable", "sortable", "toolbar"], "kendoLinearGauge": ["gaugeArea", "name", "pointer", "renderAs", "scale", "transitions"], "kendoListView": ["altTemplate", "autoBind", "dataSource", "editTemplate", "name", "navigatable", "selectable", "template"], "kendoMap": ["center", "controls", "layerDefaults", "layers", "markerDefaults", "markers", "maxZoom", "minSize", "minZoom", "name", "pannable", "wraparound", "zoom", "zoomable"], "kendoMaskedTextBox": ["clearPromptChar", "culture", "mask", "name", "promptChar", "rules", "unmaskOnPost", "value"], "kendoMenu": ["animation", "closeOnClick", "dataSource", "direction", "hoverDelay", "name", "openOnClick", "orientation", "popupCollision"], "kendoMobileActionSheet": ["cancel", "name", "popup", "type"], "kendoMobileBackButton": ["name"], "kendoMobileButton": ["badge", "clickOn", "enable", "icon", "name"], "kendoMobileButtonGroup": ["enable", "index", "name", "selectOn"], "kendoMobileCollapsible": ["animation", "collapsed", "expandIcon", "iconPosition", "inset", "name"], "kendoMobileDetailButton": ["name"], "kendoMobileDrawer": ["container", "name", "position", "swipeToOpen", "swipeToOpenViews", "title", "views"], "kendoMobileLayout": ["id", "name", "platform"], "kendoMobileListView": ["appendOnRefresh", "autoBind", "dataSource", "endlessScroll", "filterable", "fixedHeaders", "headerTemplate", "loadMore", "messages", "name", "pullParameters", "pullToRefresh", "style", "template", "type", "virtualViewSize"], "kendoMobileLoader": ["name"], "kendoMobileModalView": ["height", "modal", "name", "width"], "kendoMobileNavBar": ["name"], "kendoMobilePane": ["collapsible", "initial", "layout", "loading", "name", "portraitWidth", "transition"], "kendoMobilePopOver": ["name", "pane", "popup"], "kendoMobileScrollView": ["autoBind", "bounceVelocityThreshold", "contentHeight", "dataSource", "duration", "emptyTemplate", "enablePager", "itemsPerPage", "name", "page", "pageSize", "template", "velocityThreshold"], "kendoMobileScroller": ["elastic", "messages", "name", "pullOffset", "pullToRefresh", "useNative", "visibleScrollHints", "zoom"], "kendoMobileSplitView": ["name", "style"], "kendoMobileSwitch": ["checked", "enable", "name", "offLabel", "onLabel"], "kendoMobileTabStrip": ["name", "selectedIndex"], "kendoMobileView": ["model", "name", "reload", "scroller", "stretch", "title", "useNativeScrolling", "zoom"], "kendoMultiSelect": ["animation", "autoBind", "autoClose", "dataSource", "dataTextField", "dataValueField", "delay", "enable", "filter", "fixedGroupTemplate", "groupTemplate", "headerTemplate", "height", "highlightFirst", "ignoreCase", "itemTemplate", "maxSelectedItems", "minLength", "name", "placeholder", "popup", "tagMode", "tagTemplate", "value", "valuePrimitive", "virtual"], "kendoNotification": ["allowHideAfter", "animation", "appendTo", "autoHideAfter", "button", "height", "hideOnClick", "name", "position", "stacking", "templates", "width"], "kendoNumericTextBox": ["culture", "decimals", "downArrowText", "format", "max", "min", "name", "placeholder", "spinners", "step", "upArrowText", "value"], "kendoPager": ["autoBind", "buttonCount", "dataSource", "info", "input", "linkTemplate", "messages", "name", "numeric", "pageSizes", "previousNext", "refresh", "selectTemplate"], "kendoPanelBar": ["animation", "contentUrls", "dataSource", "expandMode", "name"], "kendoPivotConfigurator": ["dataSource", "filterable", "height", "messages", "name", "sortable"], "kendoPivotGrid": ["autoBind", "columnHeaderTemplate", "columnWidth", "dataCellTemplate", "dataSource", "excel", "filterable", "height", "kpiStatusTemplate", "kpiTrendTemplate", "messages", "name", "pdf", "reorderable", "rowHeaderTemplate", "sortable"], "kendoPopup": ["anchor", "animation", "appendTo", "name", "origin", "position"], "kendoProgressBar": ["animation", "chunkCount", "enable", "max", "min", "name", "orientation", "reverse", "showStatus", "type", "value"], "kendoQRCode": ["background", "border", "color", "encoding", "errorCorrection", "name", "padding", "renderAs", "size", "value"], "kendoRadialGauge": ["gaugeArea", "name", "pointer", "renderAs", "scale", "transitions"], "kendoRangeSlider": ["largeStep", "max", "min", "name", "orientation", "selectionEnd", "selectionStart", "smallStep", "tickPlacement", "tooltip"], "kendoResponsivePanel": ["autoClose", "breakpoint", "name", "orientation", "toggleButton"], "kendoScheduler": ["allDayEventTemplate", "allDaySlot", "autoBind", "currentTimeMarker", "dataSource", "date", "dateHeaderTemplate", "editable", "endTime", "eventTemplate", "footer", "group", "groupHeaderTemplate", "height", "majorTick", "majorTimeHeaderTemplate", "max", "messages", "min", "minorTickCount", "minorTimeHeaderTemplate", "mobile", "name", "pdf", "resources", "selectable", "showWorkHours", "snap", "startTime", "timezone", "toolbar", "views", "width", "workDayEnd", "workDayStart", "workWeekEnd", "workWeekStart"], "kendoSlider": ["decreaseButtonTitle", "increaseButtonTitle", "largeStep", "max", "min", "name", "orientation", "showButtons", "smallStep", "tickPlacement", "tooltip", "value"], "kendoSortable": ["autoScroll", "axis", "connectWith", "container", "cursor", "cursorOffset", "disabled", "filter", "handler", "hint", "holdToDrag", "ignore", "name", "placeholder"], "kendoSparkline": ["autoBind", "axisDefaults", "categoryAxis", "chartArea", "data", "dataSource", "name", "plotArea", "pointWidth", "renderAs", "series", "seriesColors", "seriesDefaults", "theme", "tooltip", "transitions", "type", "valueAxis"], "kendoSplitter": ["name", "orientation", "panes"], "kendoSpreadsheet": ["activeSheet", "columnWidth", "columns", "excel", "headerHeight", "headerWidth", "name", "pdf", "rowHeight", "rows", "sheets", "sheetsbar", "toolbar"], "kendoStockChart": ["autoBind", "axisDefaults", "categoryAxis", "chartArea", "dataSource", "dateField", "legend", "name", "navigator", "panes", "pdf", "plotArea", "renderAs", "series", "seriesColors", "seriesDefaults", "theme", "title", "tooltip", "transitions", "valueAxis"], "kendoTabStrip": ["animation", "collapsible", "contentUrls", "dataContentField", "dataContentUrlField", "dataImageUrlField", "dataSource", "dataSpriteCssClass", "dataTextField", "dataUrlField", "name", "navigatable", "scrollable", "tabPosition", "value"], "kendoTimePicker": ["animation", "culture", "dates", "format", "interval", "max", "min", "name", "parseFormats", "value"], "kendoToolBar": ["items", "name", "resizable"], "kendoTooltip": ["animation", "autoHide", "callout", "content", "filter", "height", "iframe", "name", "position", "showAfter", "showOn", "width"], "kendoTouch": ["doubleTapTimeout", "enableSwipe", "filter", "maxDuration", "maxYDelta", "minHold", "minXDelta", "multiTouch", "name", "surface"], "kendoTreeList": ["autoBind", "columnMenu", "columns", "dataSource", "editable", "excel", "filterable", "height", "messages", "name", "pdf", "reorderable", "resizable", "scrollable", "selectable", "sortable", "toolbar"], "kendoTreeMap": ["autoBind", "colorField", "colors", "dataSource", "name", "template", "textField", "theme", "type", "valueField"], "kendoTreeView": ["animation", "autoBind", "autoScroll", "checkboxes", "dataImageUrlField", "dataSource", "dataSpriteCssClassField", "dataTextField", "dataUrlField", "dragAndDrop", "loadOnDemand", "messages", "name", "template"], "kendoUpload": ["async", "enabled", "files", "localization", "multiple", "name", "showFileList", "template"], "kendoValidator": ["errorTemplate", "messages", "name", "rules", "validateOnBlur"], "kendoWindow": ["actions", "animation", "appendTo", "autoFocus", "content", "draggable", "height", "iframe", "maxHeight", "maxWidth", "minHeight", "minWidth", "modal", "name", "pinned", "position", "resizable", "scrollable", "title", "visible", "width"] };
+exports.bindables = bindables;
 var constants = {
   eventPrefix: 'k-on-',
-  bindablePrefix: 'k-'
+  bindablePrefix: 'k-',
+  attributePrefix: 'k-',
+  elementPrefix: 'k-'
 };
 
 exports.constants = constants;
 
+var ControlProperties = (function () {
+  function ControlProperties() {
+    _classCallCheck(this, ControlProperties);
+
+    this.cache = [];
+  }
+
+  ControlProperties.prototype.getProperties = function getProperties(controlName) {
+    if (this.cache[controlName]) {
+      return this.cache[controlName];
+    }
+
+    var options1 = Object.keys(jQuery.fn[controlName].widget.prototype.options);
+
+    var options2 = bindables[controlName];
+
+    var keys = options1.concat(options2.filter(function (item) {
+      return options1.indexOf(item) < 0;
+    }));
+
+    keys.push('widget');
+
+    this.cache[controlName] = keys;
+
+    return keys;
+  };
+
+  return ControlProperties;
+})();
+
+exports.ControlProperties = ControlProperties;
+
 function generateBindables(controlName) {
   return function (target, key, descriptor) {
-    var options = jQuery.fn[controlName].widget.prototype.options;
-
     var behaviorResource = _aureliaMetadata.metadata.getOrCreateOwn(_aureliaMetadata.metadata.resource, _aureliaTemplating.HtmlBehaviorResource, target);
-    var optionKeys = Object.keys(options);
-    optionKeys.push('dataSource');
-    optionKeys.push('widget');
+    var controlProperties = (_aureliaDependencyInjection.Container.instance || new _aureliaDependencyInjection.Container()).get(ControlProperties);
+    var optionKeys = controlProperties.getProperties(controlName);
 
     for (var _iterator = optionKeys, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
       var _ref;
@@ -632,7 +826,7 @@ function pruneOptions(options) {
   var returnOptions = {};
 
   for (var prop in options) {
-    if (options.hasOwnProperty(prop) && options[prop] !== null) {
+    if (typeof options[prop] !== 'undefined' && options[prop] !== null) {
       returnOptions[prop] = options[prop];
     }
   }
@@ -667,6 +861,7 @@ var TemplateCompiler = (function () {
     if (_event !== 'compile' && _event !== 'cleanup') return;
 
     var $parent = widget._$parent || (widget.options._$parent ? widget.options._$parent[0] : undefined);
+    var viewResources = widget._$resources || (widget.options._$resources ? widget.options._$resources[0] : undefined);
 
     if (!$parent) return;
 
@@ -676,7 +871,7 @@ var TemplateCompiler = (function () {
 
     switch (_event) {
       case 'compile':
-        this.compile($parent, elements, data);
+        this.compile($parent, elements, data, viewResources);
         break;
 
       case 'cleanup':
@@ -688,8 +883,8 @@ var TemplateCompiler = (function () {
     }
   };
 
-  TemplateCompiler.prototype.compile = function compile($parent, elements, data) {
-    var _this3 = this;
+  TemplateCompiler.prototype.compile = function compile($parent, elements, data, viewResources) {
+    var _this2 = this;
 
     var _loop = function (i) {
       var element = elements[i];
@@ -702,10 +897,10 @@ var TemplateCompiler = (function () {
 
       if (element instanceof jQuery) {
         element.each(function (index, elem) {
-          return _this3.enhanceView($parent, elem, ctx);
+          return _this2.enhanceView($parent, elem, ctx, viewResources);
         });
       } else {
-        _this3.enhanceView($parent, element, ctx);
+        _this2.enhanceView($parent, element, ctx, viewResources);
       }
     };
 
@@ -714,12 +909,24 @@ var TemplateCompiler = (function () {
     }
   };
 
-  TemplateCompiler.prototype.enhanceView = function enhanceView($parent, element, ctx) {
-    var view = this.templatingEngine.enhance(element);
+  TemplateCompiler.prototype.enhanceView = function enhanceView($parent, element, ctx, viewResources) {
+    var view = $(element).data('viewInstance');
+
+    if (element.querySelectorAll('.au-target').length === 0) {
+      if (viewResources) {
+        view = this.templatingEngine.enhance({
+          element: element,
+          resources: viewResources
+        });
+      } else {
+        view = this.templatingEngine.enhance(element);
+      }
+
+      $(element).data('viewInstance', view);
+    }
 
     view.bind(ctx, $parent);
     view.attached();
-    $(element).data('viewInstance', view);
   };
 
   TemplateCompiler.prototype.cleanup = function cleanup(elements) {
@@ -802,10 +1009,11 @@ function getEventsFromAttributes(element) {
 }
 
 var WidgetBase = (function () {
-  function WidgetBase(taskQueue, templateCompiler) {
+  function WidgetBase(taskQueue, templateCompiler, controlProperties) {
     _classCallCheck(this, _WidgetBase);
 
     this.taskQueue = taskQueue;
+    this.controlProperties = controlProperties;
     templateCompiler.initialize();
   }
 
@@ -833,7 +1041,25 @@ var WidgetBase = (function () {
     return this;
   };
 
+  WidgetBase.prototype.useViewResources = function useViewResources(resources) {
+    if (!resources) {
+      throw new Error('resources is not set');
+    }
+
+    this.viewResources = resources;
+
+    return this;
+  };
+
+  WidgetBase.prototype.useValueBinding = function useValueBinding() {
+    this.withValueBinding = true;
+
+    return this;
+  };
+
   WidgetBase.prototype.createWidget = function createWidget(options) {
+    var _this3 = this;
+
     if (!options) {
       throw new Error('the createWidget() function needs to be called with an object');
     }
@@ -846,17 +1072,29 @@ var WidgetBase = (function () {
       throw new Error('parentCtx is not set');
     }
 
-    var allOptions = this._getOptions(options.element);
+    var allOptions = this._getOptions(options.rootElement || options.element);
 
     if (options.beforeInitialize) {
       options.beforeInitialize(allOptions);
     }
 
-    Object.assign(allOptions, { _$parent: [options.parentCtx] });
+    Object.assign(allOptions, {
+      _$parent: [options.parentCtx],
+      _$resources: [this.viewResources]
+    });
 
-    var widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
+    var widget = this._createWidget(options.element, allOptions, this.controlName);
 
     widget._$parent = options.parentCtx;
+    widget._$resources = this.viewResources;
+
+    if (this.withValueBinding) {
+      widget.first('change', function (args) {
+        return _this3._handleChange(args.sender);
+      });
+
+      this._handleChange(widget);
+    }
 
     if (options.afterInitialize) {
       options.afterInitialize();
@@ -865,18 +1103,21 @@ var WidgetBase = (function () {
     return widget;
   };
 
+  WidgetBase.prototype._createWidget = function _createWidget(element, options, controlName) {
+    return jQuery(element)[controlName](options).data(controlName);
+  };
+
   WidgetBase.prototype._getOptions = function _getOptions(element) {
     var options = this.getOptionsFromBindables();
     var eventOptions = this.getEventOptions(element);
 
-    return Object.assign({}, this.viewModel.options, pruneOptions(options), eventOptions);
+    return pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
   };
 
   WidgetBase.prototype.getOptionsFromBindables = function getOptionsFromBindables() {
-    var props = this.kendoOptions;
     var options = {};
 
-    for (var _iterator3 = Object.keys(props), _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
+    for (var _iterator3 = this.controlProperties.getProperties(this.controlName), _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
       var _ref3;
 
       if (_isArray3) {
@@ -890,41 +1131,12 @@ var WidgetBase = (function () {
 
       var prop = _ref3;
 
-      options[prop] = this.viewModel[getBindablePropertyName(prop)];
-    }
-
-    if (this.viewModel.kDataSource) {
-      options.dataSource = this.viewModel.kDataSource;
+      if (prop !== 'widget') {
+        options[prop] = this.viewModel[getBindablePropertyName(prop)];
+      }
     }
 
     return options;
-  };
-
-  WidgetBase.prototype.setDefaultBindableValues = function setDefaultBindableValues() {
-    if (!this.viewModel) {
-      throw new Error('viewModel is not set');
-    }
-
-    var props = this.kendoOptions;
-
-    for (var _iterator4 = Object.keys(props), _isArray4 = Array.isArray(_iterator4), _i4 = 0, _iterator4 = _isArray4 ? _iterator4 : _iterator4[Symbol.iterator]();;) {
-      var _ref4;
-
-      if (_isArray4) {
-        if (_i4 >= _iterator4.length) break;
-        _ref4 = _iterator4[_i4++];
-      } else {
-        _i4 = _iterator4.next();
-        if (_i4.done) break;
-        _ref4 = _i4.value;
-      }
-
-      var prop = _ref4;
-
-      this.viewModel[getBindablePropertyName(prop)] = props[prop];
-    }
-
-    return this;
   };
 
   WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
@@ -950,12 +1162,22 @@ var WidgetBase = (function () {
     return options;
   };
 
+  WidgetBase.prototype._handleChange = function _handleChange(widget) {
+    this.viewModel.kValue = widget.value();
+  };
+
+  WidgetBase.prototype.handlePropertyChanged = function handlePropertyChanged(widget, property, newValue, oldValue) {
+    if (property === 'kValue' && this.withValueBinding) {
+      widget.value(newValue);
+    }
+  };
+
   WidgetBase.prototype.destroy = function destroy(widget) {
     widget.destroy();
   };
 
   var _WidgetBase = WidgetBase;
-  WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, TemplateCompiler)(WidgetBase) || WidgetBase;
+  WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, TemplateCompiler, ControlProperties)(WidgetBase) || WidgetBase;
   WidgetBase = _aureliaDependencyInjection.transient()(WidgetBase) || WidgetBase;
   return WidgetBase;
 })();
@@ -963,38 +1185,24 @@ var WidgetBase = (function () {
 exports.WidgetBase = WidgetBase;
 
 var DatePicker = (function () {
-  var _instanceInitializers8 = {};
+  var _instanceInitializers10 = {};
 
   _createDecoratedClass(DatePicker, [{
-    key: 'kValue',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'kDisableDates',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'options',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers8);
+  }], null, _instanceInitializers10);
 
   function DatePicker(element, widgetBase) {
     _classCallCheck(this, _DatePicker);
 
-    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers8);
-
-    _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers8);
-
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers8);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers10);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).useValueBinding();
   }
 
   DatePicker.prototype.bind = function bind(ctx) {
@@ -1010,8 +1218,8 @@ var DatePicker = (function () {
     });
   };
 
-  DatePicker.prototype._beforeInitialize = function _beforeInitialize(options) {
-    return Object.assign({}, options, { disableDates: this.kDisableDates });
+  DatePicker.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
   DatePicker.prototype.detached = function detached() {
@@ -1021,14 +1229,65 @@ var DatePicker = (function () {
   var _DatePicker = DatePicker;
   DatePicker = _aureliaDependencyInjection.inject(Element, WidgetBase)(DatePicker) || DatePicker;
   DatePicker = generateBindables('kendoDatePicker')(DatePicker) || DatePicker;
-  DatePicker = _aureliaTemplating.customAttribute('k-datepicker')(DatePicker) || DatePicker;
+  DatePicker = _aureliaTemplating.customAttribute(constants.attributePrefix + 'datepicker')(DatePicker) || DatePicker;
   return DatePicker;
 })();
 
 exports.DatePicker = DatePicker;
 
+var DateTimePicker = (function () {
+  var _instanceInitializers11 = {};
+
+  _createDecoratedClass(DateTimePicker, [{
+    key: 'options',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers11);
+
+  function DateTimePicker(element, widgetBase) {
+    _classCallCheck(this, _DateTimePicker);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers11);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoDateTimePicker').linkViewModel(this).useValueBinding();
+  }
+
+  DateTimePicker.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
+  };
+
+  DateTimePicker.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  DateTimePicker.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  };
+
+  DateTimePicker.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _DateTimePicker = DateTimePicker;
+  DateTimePicker = _aureliaDependencyInjection.inject(Element, WidgetBase)(DateTimePicker) || DateTimePicker;
+  DateTimePicker = generateBindables('kendoDateTimePicker')(DateTimePicker) || DateTimePicker;
+  DateTimePicker = _aureliaTemplating.customAttribute(constants.attributePrefix + 'datetimepicker')(DateTimePicker) || DateTimePicker;
+  return DateTimePicker;
+})();
+
+exports.DateTimePicker = DateTimePicker;
+
 var DropDownList = (function () {
-  var _instanceInitializers9 = {};
+  var _instanceInitializers12 = {};
 
   _createDecoratedClass(DropDownList, [{
     key: 'options',
@@ -1042,17 +1301,17 @@ var DropDownList = (function () {
     decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers9);
+  }], null, _instanceInitializers12);
 
   function DropDownList(element, widgetBase) {
     _classCallCheck(this, _DropDownList);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers9);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers12);
 
-    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers9);
+    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers12);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this);
   }
 
   DropDownList.prototype.bind = function bind(ctx) {
@@ -1093,18 +1352,67 @@ var DropDownList = (function () {
   var _DropDownList = DropDownList;
   DropDownList = _aureliaDependencyInjection.inject(Element, WidgetBase)(DropDownList) || DropDownList;
   DropDownList = generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
-  DropDownList = _aureliaTemplating.customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
+  DropDownList = _aureliaTemplating.customAttribute(constants.attributePrefix + 'drop-down-list')(DropDownList) || DropDownList;
   return DropDownList;
 })();
 
 exports.DropDownList = DropDownList;
 
+var FlatColorPicker = (function () {
+  var _instanceInitializers13 = {};
+
+  _createDecoratedClass(FlatColorPicker, [{
+    key: 'options',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers13);
+
+  function FlatColorPicker(element, widgetBase) {
+    _classCallCheck(this, _FlatColorPicker);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers13);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoFlatColorPicker').linkViewModel(this);
+  }
+
+  FlatColorPicker.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  FlatColorPicker.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  FlatColorPicker.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  FlatColorPicker.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _FlatColorPicker = FlatColorPicker;
+  FlatColorPicker = _aureliaDependencyInjection.inject(Element, WidgetBase)(FlatColorPicker) || FlatColorPicker;
+  FlatColorPicker = generateBindables('kendoFlatColorPicker')(FlatColorPicker) || FlatColorPicker;
+  FlatColorPicker = _aureliaTemplating.customElement(constants.attributePrefix + 'flat-color-picker')(FlatColorPicker) || FlatColorPicker;
+  return FlatColorPicker;
+})();
+
+exports.FlatColorPicker = FlatColorPicker;
+
 var Grid = (function () {
-  var _instanceInitializers10 = {};
+  var _instanceInitializers14 = {};
 
   _createDecoratedClass(Grid, [{
     key: 'columns',
-    decorators: [_aureliaTemplating.children('k-col')],
+    decorators: [_aureliaTemplating.children(constants.elementPrefix + 'col')],
     initializer: null,
     enumerable: true
   }, {
@@ -1114,17 +1422,17 @@ var Grid = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers10);
+  }], null, _instanceInitializers14);
 
-  function Grid(element, widgetBase) {
+  function Grid(element, widgetBase, viewResources) {
     _classCallCheck(this, _Grid);
 
-    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers14);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers10);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers14);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).useViewResources(viewResources);
   }
 
   Grid.prototype.bind = function bind(ctx) {
@@ -1152,6 +1460,17 @@ var Grid = (function () {
   Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
     if (this.columns && this.columns.length > 0) {
       options.columns = this.columns;
+
+      options.columns.forEach(function (c) {
+        if (c.template && !c.withKendoTemplates) {
+          (function () {
+            var template = c.template;
+            c.template = function () {
+              return template;
+            };
+          })();
+        }
+      });
     }
   };
 
@@ -1160,9 +1479,9 @@ var Grid = (function () {
   };
 
   var _Grid = Grid;
-  Grid = _aureliaDependencyInjection.inject(Element, WidgetBase)(Grid) || Grid;
+  Grid = _aureliaDependencyInjection.inject(Element, WidgetBase, _aureliaTemplating.ViewResources)(Grid) || Grid;
   Grid = generateBindables('kendoGrid')(Grid) || Grid;
-  Grid = _aureliaTemplating.customElement('k-grid')(Grid) || Grid;
+  Grid = _aureliaTemplating.customElement(constants.elementPrefix + 'grid')(Grid) || Grid;
   return Grid;
 })();
 
@@ -1173,7 +1492,7 @@ function isInitFromTable(element) {
 }
 
 var Col = (function () {
-  var _instanceInitializers11 = {};
+  var _instanceInitializers15 = {};
 
   _createDecoratedClass(Col, [{
     key: 'aggregates',
@@ -1302,66 +1621,75 @@ var Col = (function () {
     decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers11);
+  }, {
+    key: 'withKendoTemplates',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }], null, _instanceInitializers15);
 
   function Col(targetInstruction) {
     _classCallCheck(this, _Col);
 
-    _defineDecoratedPropertyDescriptor(this, 'aggregates', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'aggregates', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'attributes', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'attributes', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'command', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'command', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'editor', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'editor', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'encoded', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'encoded', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'footerTemplate', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'footerTemplate', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'groupFooterTemplate', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'groupFooterTemplate', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'groupHeaderTemplate', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'groupHeaderTemplate', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'headerAttributes', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'headerAttributes', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'headerTemplate', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'headerTemplate', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'hidden', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'hidden', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'lockable', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'lockable', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'locked', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'locked', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'menu', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'menu', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'minScreenWidth', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'minScreenWidth', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'values', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'values', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers15);
 
-    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers11);
+    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers15);
+
+    _defineDecoratedPropertyDescriptor(this, 'withKendoTemplates', _instanceInitializers15);
 
     this.template = targetInstruction.elementInstruction.template;
   }
 
   var _Col = Col;
-  Col = _aureliaTemplating.customElement('k-col')(Col) || Col;
+  Col = _aureliaTemplating.customElement(constants.elementPrefix + 'col')(Col) || Col;
   Col = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(Col) || Col;
   Col = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
     var html = element.innerHTML;
@@ -1377,8 +1705,66 @@ var Col = (function () {
 
 exports.Col = Col;
 
+var MaskedTextBox = (function () {
+  var _instanceInitializers16 = {};
+
+  _createDecoratedClass(MaskedTextBox, [{
+    key: 'kDisableDates',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'options',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers16);
+
+  function MaskedTextBox(element, widgetBase) {
+    _classCallCheck(this, _MaskedTextBox);
+
+    _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers16);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers16);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoMaskedTextBox').linkViewModel(this).useValueBinding();
+  }
+
+  MaskedTextBox.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
+  };
+
+  MaskedTextBox.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  MaskedTextBox.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  };
+
+  MaskedTextBox.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _MaskedTextBox = MaskedTextBox;
+  MaskedTextBox = _aureliaDependencyInjection.inject(Element, WidgetBase)(MaskedTextBox) || MaskedTextBox;
+  MaskedTextBox = generateBindables('kendoMaskedTextBox')(MaskedTextBox) || MaskedTextBox;
+  MaskedTextBox = _aureliaTemplating.customAttribute(constants.attributePrefix + 'maskedtextbox')(MaskedTextBox) || MaskedTextBox;
+  return MaskedTextBox;
+})();
+
+exports.MaskedTextBox = MaskedTextBox;
+
 var Menu = (function () {
-  var _instanceInitializers12 = {};
+  var _instanceInitializers17 = {};
 
   _createDecoratedClass(Menu, [{
     key: 'options',
@@ -1387,15 +1773,15 @@ var Menu = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers12);
+  }], null, _instanceInitializers17);
 
   function Menu(element, widgetBase) {
     _classCallCheck(this, _Menu);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers12);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers17);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoMenu').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoMenu').linkViewModel(this);
   }
 
   Menu.prototype.bind = function bind(ctx) {
@@ -1426,14 +1812,14 @@ var Menu = (function () {
   var _Menu = Menu;
   Menu = _aureliaDependencyInjection.inject(Element, WidgetBase)(Menu) || Menu;
   Menu = generateBindables('kendoMenu')(Menu) || Menu;
-  Menu = _aureliaTemplating.customElement('k-menu')(Menu) || Menu;
+  Menu = _aureliaTemplating.customElement(constants.elementPrefix + 'menu')(Menu) || Menu;
   return Menu;
 })();
 
 exports.Menu = Menu;
 
 var NumericTextBox = (function () {
-  var _instanceInitializers13 = {};
+  var _instanceInitializers18 = {};
 
   _createDecoratedClass(NumericTextBox, [{
     key: 'options',
@@ -1442,15 +1828,15 @@ var NumericTextBox = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers13);
+  }], null, _instanceInitializers18);
 
   function NumericTextBox(element, widgetBase) {
     _classCallCheck(this, _NumericTextBox);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers13);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers18);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this);
   }
 
   NumericTextBox.prototype.bind = function bind(ctx) {
@@ -1473,11 +1859,80 @@ var NumericTextBox = (function () {
   var _NumericTextBox = NumericTextBox;
   NumericTextBox = _aureliaDependencyInjection.inject(Element, WidgetBase)(NumericTextBox) || NumericTextBox;
   NumericTextBox = generateBindables('kendoNumericTextBox')(NumericTextBox) || NumericTextBox;
-  NumericTextBox = _aureliaTemplating.customAttribute('k-numerictextbox')(NumericTextBox) || NumericTextBox;
+  NumericTextBox = _aureliaTemplating.customAttribute(constants.attributePrefix + 'numerictextbox')(NumericTextBox) || NumericTextBox;
   return NumericTextBox;
 })();
 
 exports.NumericTextBox = NumericTextBox;
+
+var PanelBar = (function () {
+  var _instanceInitializers19 = {};
+
+  _createDecoratedClass(PanelBar, [{
+    key: 'options',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers19);
+
+  function PanelBar(element, widgetBase) {
+    _classCallCheck(this, _PanelBar);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers19);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoPanelBar').linkViewModel(this);
+  }
+
+  PanelBar.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  PanelBar.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  PanelBar.prototype.recreate = function recreate() {
+    var element = this.element;
+
+    if (!hasListChildNode(element)) {
+      var ul = document.createElement('ul');
+
+      while (element.children.length > 0) {
+        ul.appendChild(element.children[0]);
+      }
+
+      element.appendChild(ul);
+      element = ul;
+    } else {
+      element = this.element.children[0];
+    }
+
+    this.kWidget = this.widgetBase.createWidget({
+      element: element,
+      parentCtx: this.$parent,
+      rootElement: this.element
+    });
+  };
+
+  PanelBar.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _PanelBar = PanelBar;
+  PanelBar = _aureliaDependencyInjection.inject(Element, WidgetBase)(PanelBar) || PanelBar;
+  PanelBar = generateBindables('kendoPanelBar')(PanelBar) || PanelBar;
+  PanelBar = _aureliaTemplating.customElement('k-panel-bar')(PanelBar) || PanelBar;
+  return PanelBar;
+})();
+
+exports.PanelBar = PanelBar;
+
+function hasListChildNode(element) {
+  return element.children.length > 0 && (element.children[0].nodeName === 'UL' || element.children[0].nodeName === 'OL');
+}
 
 var PDF = function PDF() {
   _classCallCheck(this, PDF);
@@ -1486,7 +1941,7 @@ var PDF = function PDF() {
 exports.PDF = PDF;
 
 var ProgressBar = (function () {
-  var _instanceInitializers14 = {};
+  var _instanceInitializers20 = {};
 
   _createDecoratedClass(ProgressBar, [{
     key: 'options',
@@ -1495,15 +1950,15 @@ var ProgressBar = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers14);
+  }], null, _instanceInitializers20);
 
   function ProgressBar(element, widgetBase) {
     _classCallCheck(this, _ProgressBar);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers14);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers20);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoProgressBar').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoProgressBar').linkViewModel(this);
   }
 
   ProgressBar.prototype.bind = function bind(ctx) {
@@ -1526,55 +1981,137 @@ var ProgressBar = (function () {
   var _ProgressBar = ProgressBar;
   ProgressBar = _aureliaDependencyInjection.inject(Element, WidgetBase)(ProgressBar) || ProgressBar;
   ProgressBar = generateBindables('kendoProgressBar')(ProgressBar) || ProgressBar;
-  ProgressBar = _aureliaTemplating.customAttribute('k-progress-bar')(ProgressBar) || ProgressBar;
+  ProgressBar = _aureliaTemplating.customAttribute(constants.attributePrefix + 'progress-bar')(ProgressBar) || ProgressBar;
   return ProgressBar;
 })();
 
 exports.ProgressBar = ProgressBar;
 
-var AuScheduler = function AuScheduler() {
-  _classCallCheck(this, AuScheduler);
-};
+var RangeSlider = (function () {
+  var _instanceInitializers21 = {};
 
-exports.AuScheduler = AuScheduler;
-
-var Slider = (function () {
-  var _instanceInitializers15 = {};
-
-  _createDecoratedClass(Slider, [{
-    key: 'kValue',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
+  _createDecoratedClass(RangeSlider, [{
     key: 'options',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers15);
+  }], null, _instanceInitializers21);
 
-  function Slider(element, widgetBase) {
-    _classCallCheck(this, _Slider);
+  function RangeSlider(element, widgetBase) {
+    _classCallCheck(this, _RangeSlider);
 
-    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers15);
-
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers15);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers21);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoRangeSlider').linkViewModel(this).useValueBinding();
   }
 
-  Slider.prototype.bind = function bind(ctx) {
+  RangeSlider.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
   };
 
-  Slider.prototype.attached = function attached() {
+  RangeSlider.prototype.attached = function attached() {
     this.recreate();
   };
 
-  Slider.prototype.recreate = function recreate() {
+  RangeSlider.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  RangeSlider.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  };
+
+  RangeSlider.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _RangeSlider = RangeSlider;
+  RangeSlider = _aureliaDependencyInjection.inject(Element, WidgetBase)(RangeSlider) || RangeSlider;
+  RangeSlider = generateBindables('kendoRangeSlider')(RangeSlider) || RangeSlider;
+  RangeSlider = _aureliaTemplating.customElement(constants.elementPrefix + 'range-slider')(RangeSlider) || RangeSlider;
+  return RangeSlider;
+})();
+
+exports.RangeSlider = RangeSlider;
+
+var EventTemplate = (function () {
+  var _instanceInitializers22 = {};
+
+  _createDecoratedClass(EventTemplate, [{
+    key: 'template',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers22);
+
+  function EventTemplate(targetInstruction) {
+    _classCallCheck(this, _EventTemplate);
+
+    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers22);
+
+    this.template = targetInstruction.elementInstruction.template;
+  }
+
+  var _EventTemplate = EventTemplate;
+  EventTemplate = _aureliaTemplating.customElement(constants.elementPrefix + 'event-template')(EventTemplate) || EventTemplate;
+  EventTemplate = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(EventTemplate) || EventTemplate;
+  EventTemplate = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
+    var html = element.innerHTML;
+    if (html !== '') {
+      instruction.template = html;
+    }
+
+    return true;
+  })(EventTemplate) || EventTemplate;
+  EventTemplate = _aureliaTemplating.noView(EventTemplate) || EventTemplate;
+  return EventTemplate;
+})();
+
+exports.EventTemplate = EventTemplate;
+
+var Scheduler = (function () {
+  var _instanceInitializers23 = {};
+
+  _createDecoratedClass(Scheduler, [{
+    key: 'options',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }, {
+    key: 'eventTemplates',
+    decorators: [_aureliaTemplating.children(constants.elementPrefix + 'event-template')],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers23);
+
+  function Scheduler(element, widgetBase, viewResources) {
+    _classCallCheck(this, _Scheduler);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers23);
+
+    _defineDecoratedPropertyDescriptor(this, 'eventTemplates', _instanceInitializers23);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoScheduler').linkViewModel(this).useViewResources(viewResources);
+  }
+
+  Scheduler.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  Scheduler.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  Scheduler.prototype.recreate = function recreate() {
     var _this7 = this;
 
     this.kWidget = this.widgetBase.createWidget({
@@ -1586,10 +2123,77 @@ var Slider = (function () {
     });
   };
 
-  Slider.prototype._beforeInitialize = function _beforeInitialize(options) {
-    if (!options.value && this.kValue) {
-      options.value = this.kValue;
+  Scheduler.prototype._beforeInitialize = function _beforeInitialize(options) {
+    var _this8 = this;
+
+    var eventTemplate = undefined;
+
+    if (this.kEventTemplate) {
+      eventTemplate = function () {
+        return _this8.kEventTemplate;
+      };
+    } else if (this.eventTemplates.length > 0) {
+      eventTemplate = function () {
+        return _this8.eventTemplates[0].template;
+      };
     }
+
+    return Object.assign(options, pruneOptions({
+      eventTemplate: eventTemplate
+    }));
+  };
+
+  Scheduler.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Scheduler = Scheduler;
+  Scheduler = _aureliaDependencyInjection.inject(Element, WidgetBase, _aureliaTemplating.ViewResources)(Scheduler) || Scheduler;
+  Scheduler = generateBindables('kendoScheduler')(Scheduler) || Scheduler;
+  Scheduler = _aureliaTemplating.customElement(constants.elementPrefix + 'scheduler')(Scheduler) || Scheduler;
+  return Scheduler;
+})();
+
+exports.Scheduler = Scheduler;
+
+var Slider = (function () {
+  var _instanceInitializers24 = {};
+
+  _createDecoratedClass(Slider, [{
+    key: 'options',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers24);
+
+  function Slider(element, widgetBase) {
+    _classCallCheck(this, _Slider);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers24);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).useValueBinding();
+  }
+
+  Slider.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  Slider.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  Slider.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  Slider.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
   Slider.prototype.detached = function detached() {
@@ -1599,14 +2203,14 @@ var Slider = (function () {
   var _Slider = Slider;
   Slider = _aureliaDependencyInjection.inject(Element, WidgetBase)(Slider) || Slider;
   Slider = generateBindables('kendoSlider')(Slider) || Slider;
-  Slider = _aureliaTemplating.customAttribute('k-slider')(Slider) || Slider;
+  Slider = _aureliaTemplating.customAttribute(constants.attributePrefix + 'slider')(Slider) || Slider;
   return Slider;
 })();
 
 exports.Slider = Slider;
 
 var TabStrip = (function () {
-  var _instanceInitializers16 = {};
+  var _instanceInitializers25 = {};
 
   _createDecoratedClass(TabStrip, [{
     key: 'options',
@@ -1615,15 +2219,15 @@ var TabStrip = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers16);
+  }], null, _instanceInitializers25);
 
   function TabStrip(element, widgetBase) {
     _classCallCheck(this, _TabStrip);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers16);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers25);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoTabStrip').linkViewModel(this).setDefaultBindableValues(this);
+    this.widgetBase = widgetBase.control('kendoTabStrip').linkViewModel(this);
   }
 
   TabStrip.prototype.bind = function bind(ctx) {
@@ -1646,11 +2250,69 @@ var TabStrip = (function () {
   var _TabStrip = TabStrip;
   TabStrip = _aureliaDependencyInjection.inject(Element, WidgetBase)(TabStrip) || TabStrip;
   TabStrip = generateBindables('kendoTabStrip')(TabStrip) || TabStrip;
-  TabStrip = _aureliaTemplating.customAttribute('k-tabstrip')(TabStrip) || TabStrip;
+  TabStrip = _aureliaTemplating.customAttribute(constants.attributePrefix + 'tabstrip')(TabStrip) || TabStrip;
   return TabStrip;
 })();
 
 exports.TabStrip = TabStrip;
+
+var TimePicker = (function () {
+  var _instanceInitializers26 = {};
+
+  _createDecoratedClass(TimePicker, [{
+    key: 'kDisableDates',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'options',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers26);
+
+  function TimePicker(element, widgetBase) {
+    _classCallCheck(this, _TimePicker);
+
+    _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers26);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers26);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoTimePicker').linkViewModel(this).useValueBinding();
+  }
+
+  TimePicker.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
+  };
+
+  TimePicker.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  TimePicker.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  };
+
+  TimePicker.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _TimePicker = TimePicker;
+  TimePicker = _aureliaDependencyInjection.inject(Element, WidgetBase)(TimePicker) || TimePicker;
+  TimePicker = generateBindables('kendoTimePicker')(TimePicker) || TimePicker;
+  TimePicker = _aureliaTemplating.customAttribute(constants.attributePrefix + 'timepicker')(TimePicker) || TimePicker;
+  return TimePicker;
+})();
+
+exports.TimePicker = TimePicker;
 
 var AuToolbar = function AuToolbar() {
   _classCallCheck(this, AuToolbar);
@@ -1658,8 +2320,269 @@ var AuToolbar = function AuToolbar() {
 
 exports.AuToolbar = AuToolbar;
 
+var TreeCol = (function () {
+  var _instanceInitializers27 = {};
+
+  _createDecoratedClass(TreeCol, [{
+    key: 'attributes',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'command',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'editor',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'encoded',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'expandable',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'field',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'filterable',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'footerTemplate',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'format',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return '';
+    },
+    enumerable: true
+  }, {
+    key: 'headerAttributes',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'headerTemplate',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'minScreenWidth',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'sortable',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'template',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'title',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'width',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'hidden',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'menu',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'locked',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'lockable',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'withKendoTemplates',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }], null, _instanceInitializers27);
+
+  function TreeCol(targetInstruction) {
+    _classCallCheck(this, _TreeCol);
+
+    _defineDecoratedPropertyDescriptor(this, 'attributes', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'command', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'editor', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'encoded', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'expandable', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'footerTemplate', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'headerAttributes', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'headerTemplate', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'minScreenWidth', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'hidden', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'menu', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'locked', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'lockable', _instanceInitializers27);
+
+    _defineDecoratedPropertyDescriptor(this, 'withKendoTemplates', _instanceInitializers27);
+
+    this.template = targetInstruction.elementInstruction.template;
+  }
+
+  var _TreeCol = TreeCol;
+  TreeCol = _aureliaTemplating.customElement(constants.elementPrefix + 'tree-col')(TreeCol) || TreeCol;
+  TreeCol = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(TreeCol) || TreeCol;
+  TreeCol = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
+    var html = element.innerHTML;
+    if (html !== '') {
+      instruction.template = html;
+    }
+
+    return true;
+  })(TreeCol) || TreeCol;
+  TreeCol = _aureliaTemplating.noView(TreeCol) || TreeCol;
+  return TreeCol;
+})();
+
+exports.TreeCol = TreeCol;
+
+var TreeList = (function () {
+  var _instanceInitializers28 = {};
+
+  _createDecoratedClass(TreeList, [{
+    key: 'columns',
+    decorators: [_aureliaTemplating.children(constants.elementPrefix + 'tree-col')],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'options',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers28);
+
+  function TreeList(element, widgetBase, viewResources) {
+    _classCallCheck(this, _TreeList);
+
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers28);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers28);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoTreeList').linkViewModel(this).useViewResources(viewResources);
+  }
+
+  TreeList.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  TreeList.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  TreeList.prototype.recreate = function recreate() {
+    var _this9 = this;
+
+    var element = this.element;
+
+    this.kWidget = this.widgetBase.createWidget({
+      element: element,
+      parentCtx: this.$parent,
+      beforeInitialize: function beforeInitialize(o) {
+        return _this9._beforeInitialize(o);
+      }
+    });
+  };
+
+  TreeList.prototype._beforeInitialize = function _beforeInitialize(options) {
+    if (this.columns && this.columns.length > 0) {
+      options.columns = [];
+
+      this.columns.forEach(function (c) {
+        if (c.template && !c.withKendoTemplates) {
+          (function () {
+            var template = c.template;
+            c.template = function () {
+              return template;
+            };
+          })();
+        }
+
+        options.columns.push(pruneOptions(c));
+      });
+    }
+  };
+
+  TreeList.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _TreeList = TreeList;
+  TreeList = _aureliaDependencyInjection.inject(Element, WidgetBase, _aureliaTemplating.ViewResources)(TreeList) || TreeList;
+  TreeList = generateBindables('kendoTreeList')(TreeList) || TreeList;
+  TreeList = _aureliaTemplating.customElement(constants.elementPrefix + 'tree-list')(TreeList) || TreeList;
+  return TreeList;
+})();
+
+exports.TreeList = TreeList;
+
 var TreeView = (function () {
-  var _instanceInitializers17 = {};
+  var _instanceInitializers29 = {};
 
   _createDecoratedClass(TreeView, [{
     key: 'options',
@@ -1668,17 +2591,15 @@ var TreeView = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers17);
+  }], null, _instanceInitializers29);
 
   function TreeView(element, widgetBase) {
     _classCallCheck(this, _TreeView);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers17);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers29);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this).setDefaultBindableValues();
-
-    this.kDataSource = undefined;
+    this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this);
   }
 
   TreeView.prototype.bind = function bind(ctx) {
@@ -1701,7 +2622,7 @@ var TreeView = (function () {
   var _TreeView = TreeView;
   TreeView = _aureliaDependencyInjection.inject(Element, WidgetBase)(TreeView) || TreeView;
   TreeView = generateBindables('kendoTreeView')(TreeView) || TreeView;
-  TreeView = _aureliaTemplating.customAttribute('k-treeview')(TreeView) || TreeView;
+  TreeView = _aureliaTemplating.customAttribute(constants.attributePrefix + 'treeview')(TreeView) || TreeView;
   return TreeView;
 })();
 

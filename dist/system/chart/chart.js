@@ -1,7 +1,7 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.chart.min', 'kendo-ui/js/kendo.dataviz.chart.polar.min', 'kendo-ui/js/kendo.dataviz.chart.funnel.min'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.chart.min', 'kendo-ui/js/kendo.dataviz.chart.polar.min', 'kendo-ui/js/kendo.dataviz.chart.funnel.min'], function (_export) {
   'use strict';
 
-  var inject, customElement, bindable, WidgetBase, generateBindables, PDF, Chart;
+  var inject, customElement, bindable, WidgetBase, generateBindables, constants, PDF, Chart;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -19,6 +19,8 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
       generateBindables = _commonDecorators.generateBindables;
+    }, function (_commonConstants) {
+      constants = _commonConstants.constants;
     }, function (_pdfPdf) {
       PDF = _pdfPdf.PDF;
     }, function (_kendoUiJsKendoDatavizChartMin) {}, function (_kendoUiJsKendoDatavizChartPolarMin) {}, function (_kendoUiJsKendoDatavizChartFunnelMin) {}],
@@ -41,7 +43,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this).setDefaultBindableValues();
+          this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this);
         }
 
         Chart.prototype.bind = function bind(ctx) {
@@ -66,7 +68,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _Chart = Chart;
         Chart = inject(Element, WidgetBase)(Chart) || Chart;
         Chart = generateBindables('kendoChart')(Chart) || Chart;
-        Chart = customElement('k-chart')(Chart) || Chart;
+        Chart = customElement(constants.elementPrefix + 'chart')(Chart) || Chart;
         return Chart;
       })();
 

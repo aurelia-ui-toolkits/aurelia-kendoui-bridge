@@ -12,6 +12,8 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaTemplating = require('aurelia-templating');
 
+var _commonConstants = require('../common/constants');
+
 var Col = (function () {
   var _instanceInitializers = {};
 
@@ -142,6 +144,13 @@ var Col = (function () {
     decorators: [_aureliaTemplating.bindable],
     initializer: null,
     enumerable: true
+  }, {
+    key: 'withKendoTemplates',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
   }], null, _instanceInitializers);
 
   function Col(targetInstruction) {
@@ -197,11 +206,13 @@ var Col = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
 
+    _defineDecoratedPropertyDescriptor(this, 'withKendoTemplates', _instanceInitializers);
+
     this.template = targetInstruction.elementInstruction.template;
   }
 
   var _Col = Col;
-  Col = _aureliaTemplating.customElement('k-col')(Col) || Col;
+  Col = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'col')(Col) || Col;
   Col = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(Col) || Col;
   Col = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
     var html = element.innerHTML;

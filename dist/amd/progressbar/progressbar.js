@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.progressbar.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoProgressbarMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.progressbar.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoUiJsKendoProgressbarMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoProgressBar').linkViewModel(this).setDefaultBindableValues();
+      this.widgetBase = widgetBase.control('kendoProgressBar').linkViewModel(this);
     }
 
     ProgressBar.prototype.bind = function bind(ctx) {
@@ -50,7 +50,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _ProgressBar = ProgressBar;
     ProgressBar = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(ProgressBar) || ProgressBar;
     ProgressBar = _commonDecorators.generateBindables('kendoProgressBar')(ProgressBar) || ProgressBar;
-    ProgressBar = _aureliaTemplating.customAttribute('k-progress-bar')(ProgressBar) || ProgressBar;
+    ProgressBar = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'progress-bar')(ProgressBar) || ProgressBar;
     return ProgressBar;
   })();
 

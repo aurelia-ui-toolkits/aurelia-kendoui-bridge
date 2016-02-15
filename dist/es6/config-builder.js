@@ -11,13 +11,21 @@ export class KendoConfigBuilder {
   */
   core(): KendoConfigBuilder {
     this.kendoButton()
+      .kendoCalendar()
       .kendoTabStrip()
       .kendoProgressBar()
       .kendoSlider()
-      .kendoColorPicker()
+      .kendoRangeSlider()
       .kendoDropDownList()
+      .kendoDateTimePicker()
       .kendoDatePicker()
-      .kendoNumericTextBox();
+      .kendoTimePicker()
+      .kendoMaskedTextBox()
+      .kendoNumericTextBox()
+      .kendoPanelBar()
+			.kendoColorPicker()
+			.kendoColorPalette()
+			.kendoFlatColorPicker();
     return this;
   }
 
@@ -27,9 +35,11 @@ export class KendoConfigBuilder {
   pro(): KendoConfigBuilder {
     this.core()
       .kendoGrid()
-	  .kendoAutoComplete()
+      .kendoAutoComplete()
       .kendoChart()
-      .kendoTreeView();
+      .kendoTreeView()
+      .kendoScheduler()
+      .kendoTreeList();
     return this;
   }
 
@@ -49,6 +59,11 @@ export class KendoConfigBuilder {
 
   kendoButton(): KendoConfigBuilder {
     this.resources.push('button/button');
+    return this;
+  }
+
+  kendoCalendar(): KendoConfigBuilder {
+    this.resources.push('calendar/calendar');
     return this;
   }
 
@@ -75,6 +90,7 @@ export class KendoConfigBuilder {
 
   kendoScheduler(): KendoConfigBuilder {
     this.resources.push('scheduler/scheduler');
+    this.resources.push('scheduler/event-template');
     return this;
   }
 
@@ -96,6 +112,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoPanelBar(): KendoConfigBuilder {
+    this.resources.push('panelbar/panelbar');
+    return this;
+  }
+
   kendoProgressBar(): KendoConfigBuilder {
     this.resources.push('progressbar/progressbar');
     return this;
@@ -106,8 +127,23 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoRangeSlider(): KendoConfigBuilder {
+    this.resources.push('rangeslider/rangeslider');
+    return this;
+  }
+
   kendoColorPicker(): KendoConfigBuilder {
     this.resources.push('colorpicker/colorpicker');
+    return this;
+  }
+
+  kendoColorPalette(): KendoConfigBuilder {
+    this.resources.push('colorpalette/colorpalette');
+    return this;
+  }
+
+  kendoFlatColorPicker(): KendoConfigBuilder {
+    this.resources.push('flatcolorpicker/flatcolorpicker');
     return this;
   }
 
@@ -121,8 +157,29 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoDateTimePicker(): KendoConfigBuilder {
+    this.resources.push('datetimepicker/datetimepicker');
+    return this;
+  }
+
+  kendoTimePicker(): KendoConfigBuilder {
+    this.resources.push('timepicker/timepicker');
+    return this;
+  }
+
+  kendoMaskedTextBox(): KendoConfigBuilder {
+    this.resources.push('maskedtextbox/maskedtextbox');
+    return this;
+  }
+
   kendoNumericTextBox(): KendoConfigBuilder {
     this.resources.push('numerictextbox/numerictextbox');
+    return this;
+  }
+
+  kendoTreeList(): KendoConfigBuilder {
+    this.resources.push('treelist/treelist');
+    this.resources.push('treelist/k-tree-col');
     return this;
   }
 }

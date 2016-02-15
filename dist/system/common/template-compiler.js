@@ -39,6 +39,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
           if (_event !== 'compile' && _event !== 'cleanup') return;
 
           var $parent = widget._$parent || (widget.options._$parent ? widget.options._$parent[0] : undefined);
+          var viewResources = widget._$resources || (widget.options._$resources ? widget.options._$resources[0] : undefined);
 
           if (!$parent) return;
 
@@ -48,7 +49,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
 
           switch (_event) {
             case 'compile':
-              this.compile($parent, elements, data);
+              this.compile($parent, elements, data, viewResources);
               break;
 
             case 'cleanup':
@@ -60,7 +61,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
           }
         };
 
-        TemplateCompiler.prototype.compile = function compile($parent, elements, data) {
+        TemplateCompiler.prototype.compile = function compile($parent, elements, data, viewResources) {
           var _this2 = this;
 
           var _loop = function (i) {
@@ -74,10 +75,10 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
 
             if (element instanceof jQuery) {
               element.each(function (index, elem) {
-                return _this2.enhanceView($parent, elem, ctx);
+                return _this2.enhanceView($parent, elem, ctx, viewResources);
               });
             } else {
-              _this2.enhanceView($parent, element, ctx);
+              _this2.enhanceView($parent, element, ctx, viewResources);
             }
           };
 
@@ -86,12 +87,24 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
           }
         };
 
-        TemplateCompiler.prototype.enhanceView = function enhanceView($parent, element, ctx) {
-          var view = this.templatingEngine.enhance(element);
+        TemplateCompiler.prototype.enhanceView = function enhanceView($parent, element, ctx, viewResources) {
+          var view = $(element).data('viewInstance');
+
+          if (element.querySelectorAll('.au-target').length === 0) {
+            if (viewResources) {
+              view = this.templatingEngine.enhance({
+                element: element,
+                resources: viewResources
+              });
+            } else {
+              view = this.templatingEngine.enhance(element);
+            }
+
+            $(element).data('viewInstance', view);
+          }
 
           view.bind(ctx, $parent);
           view.attached();
-          $(element).data('viewInstance', view);
         };
 
         TemplateCompiler.prototype.cleanup = function cleanup(elements) {

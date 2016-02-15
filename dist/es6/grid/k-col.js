@@ -1,5 +1,6 @@
 import {inject} from 'aurelia-dependency-injection';
 import {customElement, bindable, noView, processContent, TargetInstruction} from 'aurelia-templating';
+import {constants} from '../common/constants';
 
 @noView
 @processContent((compiler, resources, element, instruction) => {
@@ -11,7 +12,7 @@ import {customElement, bindable, noView, processContent, TargetInstruction} from
   return true;
 })
 @inject(TargetInstruction)
-@customElement('k-col')
+@customElement(`${constants.elementPrefix}col`)
 export class Col {
   @bindable aggregates;
   @bindable attributes;
@@ -38,6 +39,7 @@ export class Col {
   @bindable values;
   @bindable width;
   @bindable template;
+  @bindable withKendoTemplates = false;
 
   constructor(targetInstruction) {
     this.template = targetInstruction.elementInstruction.template;

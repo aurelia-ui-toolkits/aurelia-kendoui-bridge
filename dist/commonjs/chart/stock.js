@@ -16,6 +16,8 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 var _pdfPdf = require('../pdf/pdf');
 
 require('kendo-ui/js/kendo.dataviz.stock.min');
@@ -38,7 +40,7 @@ var Stock = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoStockChart').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoStockChart').linkViewModel(this);
   }
 
   Stock.prototype.bind = function bind(ctx) {
@@ -63,7 +65,7 @@ var Stock = (function () {
   var _Stock = Stock;
   Stock = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Stock) || Stock;
   Stock = _commonDecorators.generateBindables('kendoStockChart')(Stock) || Stock;
-  Stock = _aureliaTemplating.customElement('k-stock')(Stock) || Stock;
+  Stock = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'stock')(Stock) || Stock;
   return Stock;
 })();
 

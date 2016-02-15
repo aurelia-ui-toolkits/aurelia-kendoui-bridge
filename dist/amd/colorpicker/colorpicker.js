@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.colorpicker.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoColorpickerMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.colorpicker.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoUiJsKendoColorpickerMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this).setDefaultBindableValues();
+      this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this);
     }
 
     ColorPicker.prototype.bind = function bind(ctx) {
@@ -50,7 +50,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _ColorPicker = ColorPicker;
     ColorPicker = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(ColorPicker) || ColorPicker;
     ColorPicker = _commonDecorators.generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
-    ColorPicker = _aureliaTemplating.customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
+    ColorPicker = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'color-picker')(ColorPicker) || ColorPicker;
     return ColorPicker;
   })();
 

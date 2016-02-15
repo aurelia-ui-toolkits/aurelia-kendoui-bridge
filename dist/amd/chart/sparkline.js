@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.sparkline.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _pdfPdf, _kendoUiJsKendoDatavizSparklineMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.sparkline.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _pdfPdf, _kendoUiJsKendoDatavizSparklineMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoSparkline').linkViewModel(this).setDefaultBindableValues();
+      this.widgetBase = widgetBase.control('kendoSparkline').linkViewModel(this);
     }
 
     Sparkline.prototype.bind = function bind(ctx) {
@@ -52,7 +52,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _Sparkline = Sparkline;
     Sparkline = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Sparkline) || Sparkline;
     Sparkline = _commonDecorators.generateBindables('kendoSparkline')(Sparkline) || Sparkline;
-    Sparkline = _aureliaTemplating.customElement('k-sparkline')(Sparkline) || Sparkline;
+    Sparkline = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'sparkline')(Sparkline) || Sparkline;
     return Sparkline;
   })();
 

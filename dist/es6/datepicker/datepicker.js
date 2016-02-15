@@ -2,15 +2,14 @@ import {inject} from 'aurelia-dependency-injection';
 import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
+import {constants} from '../common/constants';
 import 'kendo-ui/js/kendo.datepicker.min';
 
-@customAttribute('k-datepicker')
+@customAttribute(`${constants.attributePrefix}datepicker`)
 @generateBindables('kendoDatePicker')
 @inject(Element, WidgetBase)
 export class DatePicker {
 
-  @bindable kValue;
-  @bindable kDisableDates;
   @bindable options = {};
 
   constructor(element, widgetBase) {
@@ -18,7 +17,7 @@ export class DatePicker {
     this.widgetBase = widgetBase
                         .control('kendoDatePicker')
                         .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -34,8 +33,8 @@ export class DatePicker {
     });
   }
 
-  _beforeInitialize(options) {
-    return Object.assign({}, options, { disableDates: this.kDisableDates });
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {

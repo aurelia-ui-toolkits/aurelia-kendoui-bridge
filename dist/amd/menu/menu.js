@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.menu.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoMenuMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.menu.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoUiJsKendoMenuMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoMenu').linkViewModel(this).setDefaultBindableValues();
+      this.widgetBase = widgetBase.control('kendoMenu').linkViewModel(this);
     }
 
     Menu.prototype.bind = function bind(ctx) {
@@ -58,7 +58,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _Menu = Menu;
     Menu = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Menu) || Menu;
     Menu = _commonDecorators.generateBindables('kendoMenu')(Menu) || Menu;
-    Menu = _aureliaTemplating.customElement('k-menu')(Menu) || Menu;
+    Menu = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'menu')(Menu) || Menu;
     return Menu;
   })();
 
