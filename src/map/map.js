@@ -16,8 +16,7 @@ export class Map {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoMap')
-                    .linkViewModel(this)
-                    .useValueBinding();
+                    .linkViewModel(this);
   }
 
   bind(ctx) {
