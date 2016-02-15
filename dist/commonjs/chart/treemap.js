@@ -16,6 +16,8 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 var _pdfPdf = require('../pdf/pdf');
 
 require('kendo-ui/js/kendo.dataviz.treemap.min');
@@ -38,7 +40,7 @@ var TreeMap = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoTreeMap').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoTreeMap').linkViewModel(this);
   }
 
   TreeMap.prototype.bind = function bind(ctx) {
@@ -63,7 +65,7 @@ var TreeMap = (function () {
   var _TreeMap = TreeMap;
   TreeMap = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(TreeMap) || TreeMap;
   TreeMap = _commonDecorators.generateBindables('kendoTreeMap')(TreeMap) || TreeMap;
-  TreeMap = _aureliaTemplating.customElement('k-treemap')(TreeMap) || TreeMap;
+  TreeMap = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'treemap')(TreeMap) || TreeMap;
   return TreeMap;
 })();
 

@@ -16,6 +16,8 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 require('kendo-ui/js/kendo.tabstrip.min');
 
 var TabStrip = (function () {
@@ -36,7 +38,7 @@ var TabStrip = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoTabStrip').linkViewModel(this).setDefaultBindableValues(this);
+    this.widgetBase = widgetBase.control('kendoTabStrip').linkViewModel(this);
   }
 
   TabStrip.prototype.bind = function bind(ctx) {
@@ -59,7 +61,7 @@ var TabStrip = (function () {
   var _TabStrip = TabStrip;
   TabStrip = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(TabStrip) || TabStrip;
   TabStrip = _commonDecorators.generateBindables('kendoTabStrip')(TabStrip) || TabStrip;
-  TabStrip = _aureliaTemplating.customAttribute('k-tabstrip')(TabStrip) || TabStrip;
+  TabStrip = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'tabstrip')(TabStrip) || TabStrip;
   return TabStrip;
 })();
 

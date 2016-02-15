@@ -1,5 +1,5 @@
-define(["exports"], function (exports) {
-  "use strict";
+define(['exports'], function (exports) {
+  'use strict';
 
   exports.__esModule = true;
   exports.pruneOptions = pruneOptions;
@@ -8,7 +8,7 @@ define(["exports"], function (exports) {
     var returnOptions = {};
 
     for (var prop in options) {
-      if (options.hasOwnProperty(prop) && options[prop] !== null) {
+      if (typeof options[prop] !== 'undefined' && options[prop] !== null) {
         returnOptions[prop] = options[prop];
       }
     }

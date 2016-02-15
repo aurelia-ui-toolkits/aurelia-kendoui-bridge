@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.treeview.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoUiJsKendoTreeviewMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.treeview.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoUiJsKendoTreeviewMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,9 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this).setDefaultBindableValues();
-
-      this.kDataSource = undefined;
+      this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this);
     }
 
     TreeView.prototype.bind = function bind(ctx) {
@@ -52,7 +50,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _TreeView = TreeView;
     TreeView = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(TreeView) || TreeView;
     TreeView = _commonDecorators.generateBindables('kendoTreeView')(TreeView) || TreeView;
-    TreeView = _aureliaTemplating.customAttribute('k-treeview')(TreeView) || TreeView;
+    TreeView = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'treeview')(TreeView) || TreeView;
     return TreeView;
   })();
 

@@ -1,7 +1,7 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/constants'], function (_export) {
   'use strict';
 
-  var inject, customElement, bindable, noView, processContent, TargetInstruction, Col;
+  var inject, customElement, bindable, noView, processContent, TargetInstruction, constants, Col;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -18,6 +18,8 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
       noView = _aureliaTemplating.noView;
       processContent = _aureliaTemplating.processContent;
       TargetInstruction = _aureliaTemplating.TargetInstruction;
+    }, function (_commonConstants) {
+      constants = _commonConstants.constants;
     }],
     execute: function () {
       Col = (function () {
@@ -150,6 +152,13 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
           decorators: [bindable],
           initializer: null,
           enumerable: true
+        }, {
+          key: 'withKendoTemplates',
+          decorators: [bindable],
+          initializer: function initializer() {
+            return false;
+          },
+          enumerable: true
         }], null, _instanceInitializers);
 
         function Col(targetInstruction) {
@@ -205,11 +214,13 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
 
           _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
 
+          _defineDecoratedPropertyDescriptor(this, 'withKendoTemplates', _instanceInitializers);
+
           this.template = targetInstruction.elementInstruction.template;
         }
 
         var _Col = Col;
-        Col = customElement('k-col')(Col) || Col;
+        Col = customElement(constants.elementPrefix + 'col')(Col) || Col;
         Col = inject(TargetInstruction)(Col) || Col;
         Col = processContent(function (compiler, resources, element, instruction) {
           var html = element.innerHTML;

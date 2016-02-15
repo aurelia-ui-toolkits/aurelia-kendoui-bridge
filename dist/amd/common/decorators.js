@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-metadata', 'aurelia-binding', './util'], function (exports, _aureliaTemplating, _aureliaMetadata, _aureliaBinding, _util) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aurelia-metadata', 'aurelia-binding', './control-properties', './util'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _aureliaMetadata, _aureliaBinding, _controlProperties, _util) {
   'use strict';
 
   exports.__esModule = true;
@@ -6,12 +6,9 @@ define(['exports', 'aurelia-templating', 'aurelia-metadata', 'aurelia-binding', 
 
   function generateBindables(controlName) {
     return function (target, key, descriptor) {
-      var options = jQuery.fn[controlName].widget.prototype.options;
-
       var behaviorResource = _aureliaMetadata.metadata.getOrCreateOwn(_aureliaMetadata.metadata.resource, _aureliaTemplating.HtmlBehaviorResource, target);
-      var optionKeys = Object.keys(options);
-      optionKeys.push('dataSource');
-      optionKeys.push('widget');
+      var controlProperties = (_aureliaDependencyInjection.Container.instance || new _aureliaDependencyInjection.Container()).get(_controlProperties.ControlProperties);
+      var optionKeys = controlProperties.getProperties(controlName);
 
       for (var _iterator = optionKeys, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
         var _ref;

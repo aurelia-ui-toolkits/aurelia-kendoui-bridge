@@ -3,6 +3,7 @@ import 'jquery';
 import 'kendo-ui/js/kendo.autocomplete.min';
 import 'kendo-ui/js/kendo.virtuallist.min';
 import 'kendo-ui/js/kendo.button.min';
+import 'kendo-ui/js/kendo.calendar.min';
 import 'kendo-ui/js/kendo.dataviz.chart.min';
 import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
 import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
@@ -11,20 +12,31 @@ import 'kendo-ui/js/kendo.dataviz.stock.min';
 import 'kendo-ui/js/kendo.dataviz.treemap.min';
 import 'kendo-ui/js/kendo.colorpicker.min';
 import 'kendo-ui/js/kendo.datepicker.min';
+import 'kendo-ui/js/kendo.datetimepicker.min';
 import 'kendo-ui/js/kendo.dropdownlist.min';
 import 'kendo-ui/js/kendo.data.signalr.min';
 import 'kendo-ui/js/kendo.filtercell.min';
 import 'kendo-ui/js/kendo.grid.min';
+import 'kendo-ui/js/kendo.maskedtextbox.min';
 import 'kendo-ui/js/kendo.menu.min';
 import 'kendo-ui/js/kendo.numerictextbox.min';
+import 'kendo-ui/js/kendo.panelbar.min';
 import 'kendo-ui/js/kendo.pdf.min';
-import 'kendo-ui/js/jszip.min';
+import 'kendo-ui/js/kendo.excel.min';
 import 'kendo-ui/js/kendo.progressbar.min';
 import 'kendo-ui/js/kendo.slider.min';
+import 'kendo-ui/js/kendo.scheduler.min';
+import 'kendo-ui/js/kendo.scheduler.agendaview.min';
+import 'kendo-ui/js/kendo.scheduler.dayview.min';
+import 'kendo-ui/js/kendo.scheduler.monthview.min';
+import 'kendo-ui/js/kendo.scheduler.recurrence.min';
+import 'kendo-ui/js/kendo.scheduler.timelineview.min';
 import 'kendo-ui/js/kendo.tabstrip.min';
+import 'kendo-ui/js/kendo.timepicker.min';
+import 'kendo-ui/js/kendo.treelist.min';
 import 'kendo-ui/js/kendo.treeview.min';
-import {inject,transient} from 'aurelia-dependency-injection';
-import {customAttribute,bindable,customElement,BindableProperty,HtmlBehaviorResource,TemplatingEngine,children,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {inject,Container,transient} from 'aurelia-dependency-injection';
+import {customAttribute,bindable,customElement,BindableProperty,HtmlBehaviorResource,TemplatingEngine,children,ViewResources,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -42,13 +54,21 @@ export class KendoConfigBuilder {
   */
   core(): KendoConfigBuilder {
     this.kendoButton()
+      .kendoCalendar()
       .kendoTabStrip()
       .kendoProgressBar()
       .kendoSlider()
-      .kendoColorPicker()
+      .kendoRangeSlider()
       .kendoDropDownList()
+      .kendoDateTimePicker()
       .kendoDatePicker()
-      .kendoNumericTextBox();
+      .kendoTimePicker()
+      .kendoMaskedTextBox()
+      .kendoNumericTextBox()
+      .kendoPanelBar()
+			.kendoColorPicker()
+			.kendoColorPalette()
+			.kendoFlatColorPicker();
     return this;
   }
 
@@ -58,9 +78,11 @@ export class KendoConfigBuilder {
   pro(): KendoConfigBuilder {
     this.core()
       .kendoGrid()
-	  .kendoAutoComplete()
+      .kendoAutoComplete()
       .kendoChart()
-      .kendoTreeView();
+      .kendoTreeView()
+      .kendoScheduler()
+      .kendoTreeList();
     return this;
   }
 
@@ -80,6 +102,11 @@ export class KendoConfigBuilder {
 
   kendoButton(): KendoConfigBuilder {
     this.resources.push('button/button');
+    return this;
+  }
+
+  kendoCalendar(): KendoConfigBuilder {
+    this.resources.push('calendar/calendar');
     return this;
   }
 
@@ -106,6 +133,7 @@ export class KendoConfigBuilder {
 
   kendoScheduler(): KendoConfigBuilder {
     this.resources.push('scheduler/scheduler');
+    this.resources.push('scheduler/event-template');
     return this;
   }
 
@@ -127,6 +155,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoPanelBar(): KendoConfigBuilder {
+    this.resources.push('panelbar/panelbar');
+    return this;
+  }
+
   kendoProgressBar(): KendoConfigBuilder {
     this.resources.push('progressbar/progressbar');
     return this;
@@ -137,8 +170,23 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoRangeSlider(): KendoConfigBuilder {
+    this.resources.push('rangeslider/rangeslider');
+    return this;
+  }
+
   kendoColorPicker(): KendoConfigBuilder {
     this.resources.push('colorpicker/colorpicker');
+    return this;
+  }
+
+  kendoColorPalette(): KendoConfigBuilder {
+    this.resources.push('colorpalette/colorpalette');
+    return this;
+  }
+
+  kendoFlatColorPicker(): KendoConfigBuilder {
+    this.resources.push('flatcolorpicker/flatcolorpicker');
     return this;
   }
 
@@ -152,8 +200,29 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoDateTimePicker(): KendoConfigBuilder {
+    this.resources.push('datetimepicker/datetimepicker');
+    return this;
+  }
+
+  kendoTimePicker(): KendoConfigBuilder {
+    this.resources.push('timepicker/timepicker');
+    return this;
+  }
+
+  kendoMaskedTextBox(): KendoConfigBuilder {
+    this.resources.push('maskedtextbox/maskedtextbox');
+    return this;
+  }
+
   kendoNumericTextBox(): KendoConfigBuilder {
     this.resources.push('numerictextbox/numerictextbox');
+    return this;
+  }
+
+  kendoTreeList(): KendoConfigBuilder {
+    this.resources.push('treelist/treelist');
+    this.resources.push('treelist/k-tree-col');
     return this;
   }
 }
@@ -180,7 +249,7 @@ export function configure(aurelia, configCallback) {
   }
 }
 
-@customAttribute('k-autocomplete')
+@customAttribute(`${constants.attributePrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase)
 export class AutoComplete {
@@ -192,7 +261,7 @@ export class AutoComplete {
     this.widgetBase = widgetBase
                         .control('kendoAutoComplete')
                         .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -206,22 +275,10 @@ export class AutoComplete {
       element: this.element,
       parentCtx: this.$parent
     });
+  }
 
-    // without these change and select handlers, when you select an options
-    // the value binding is not updated
-    this.kWidget.bind('change', (event) => {
-      this.kValue = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
-
-    this.kWidget.bind('select', (event) => {
-      this.kValue = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {
@@ -229,7 +286,7 @@ export class AutoComplete {
   }
 }
 
-@customAttribute('k-button')
+@customAttribute(`${constants.attributePrefix}button`)
 @generateBindables('kendoButton')
 @inject(Element, WidgetBase)
 export class Button {
@@ -240,8 +297,7 @@ export class Button {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoButton')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -262,8 +318,47 @@ export class Button {
   }
 }
 
+@customElement(`${constants.elementPrefix}calendar`)
+@generateBindables('kendoCalendar')
+@inject(Element, WidgetBase)
+export class Calendar {
+
+  @bindable options = {};
+
+  constructor(element, widgetBase, viewResources) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                    .control('kendoCalendar')
+                    .linkViewModel(this)
+                    .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
 //eslint-disable-line no-unused-vars
-@customElement('k-chart')
+@customElement(`${constants.elementPrefix}chart`)
 @generateBindables('kendoChart')
 @inject(Element, WidgetBase)
 export class Chart {
@@ -274,8 +369,7 @@ export class Chart {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoChart')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -299,7 +393,7 @@ export class Chart {
 }
 
 //eslint-disable-line no-unused-vars
-@customElement('k-sparkline')
+@customElement(`${constants.elementPrefix}sparkline`)
 @generateBindables('kendoSparkline')
 @inject(Element, WidgetBase)
 export class Sparkline {
@@ -310,8 +404,7 @@ export class Sparkline {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoSparkline')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -335,7 +428,7 @@ export class Sparkline {
 }
 
 //eslint-disable-line no-unused-vars
-@customElement('k-stock')
+@customElement(`${constants.elementPrefix}stock`)
 @generateBindables('kendoStockChart')
 @inject(Element, WidgetBase)
 export class Stock {
@@ -346,8 +439,7 @@ export class Stock {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoStockChart')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -371,7 +463,7 @@ export class Stock {
 }
 
 //eslint-disable-line no-unused-vars
-@customElement('k-treemap')
+@customElement(`${constants.elementPrefix}treemap`)
 @generateBindables('kendoTreeMap')
 @inject(Element, WidgetBase)
 export class TreeMap {
@@ -382,8 +474,7 @@ export class TreeMap {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTreeMap')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -406,19 +497,18 @@ export class TreeMap {
   }
 }
 
-@customAttribute('k-color-picker')
-@generateBindables('kendoColorPicker')
+@customElement(`${constants.attributePrefix}color-palette`)
+@generateBindables('kendoColorPalette')
 @inject(Element, WidgetBase)
-export class ColorPicker {
+export class ColorPalette {
 
   @bindable options = {};
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoColorPicker')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .control('kendoColorPalette')
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -439,11 +529,77 @@ export class ColorPicker {
   }
 }
 
+@customAttribute(`${constants.attributePrefix}color-picker`)
+@generateBindables('kendoColorPicker')
+@inject(Element, WidgetBase)
+export class ColorPicker {
 
+  @bindable options = {};
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoColorPicker')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+export let bindables = {"kendoAutoComplete":["animation","dataSource","dataTextField","delay","enable","filter","fixedGroupTemplate","groupTemplate","headerTemplate","height","highlightFirst","ignoreCase","minLength","name","placeholder","popup","separator","suggest","template","valuePrimitive","virtual"],"kendoBarcode":["background","border","checksum","color","height","name","padding","renderAs","text","type","value","width"],"kendoButton":["enable","icon","imageUrl","name","spriteCssClass"],"kendoCalendar":["culture","dates","depth","disableDates","footer","format","max","min","month","name","start","value"],"kendoChart":["autoBind","axisDefaults","categoryAxis","chartArea","dataSource","legend","name","panes","pannable","pdf","plotArea","renderAs","series","seriesColors","seriesDefaults","theme","title","tooltip","transitions","valueAxis","xAxis","yAxis","zoomable"],"kendoColorPalette":["columns","name","palette","tileSize","value"],"kendoColorPicker":["buttons","columns","messages","name","opacity","palette","preview","tileSize","toolIcon","value"],"kendoComboBox":["animation","autoBind","cascadeFrom","cascadeFromField","dataSource","dataTextField","dataValueField","delay","enable","filter","fixedGroupTemplate","groupTemplate","headerTemplate","height","highlightFirst","ignoreCase","index","minLength","name","placeholder","popup","suggest","template","text","value","valuePrimitive","virtual"],"kendoContextMenu":["alignToAnchor","animation","closeOnClick","dataSource","direction","filter","hoverDelay","name","orientation","popupCollision","showOn","target"],"kendoDatePicker":["ARIATemplate","animation","culture","dates","depth","disableDates","footer","format","max","min","month","name","parseFormats","start","value"],"kendoDateTimePicker":["ARIATemplate","animation","culture","dates","depth","disableDates","footer","format","interval","max","min","month","name","parseFormats","start","timeFormat","value"],"kendoDiagram":["autoBind","connectionDefaults","connections","connectionsDataSource","dataSource","editable","layout","name","pannable","pdf","selectable","shapeDefaults","shapes","template","zoom","zoomMax","zoomMin","zoomRate"],"kendoDraggable":["axis","container","cursorOffset","distance","filter","group","hint","ignore"],"kendoDropDownList":["animation","autoBind","cascadeFrom","cascadeFromField","dataSource","dataTextField","dataValueField","delay","enable","filter","fixedGroupTemplate","groupTemplate","headerTemplate","height","ignoreCase","index","minLength","name","optionLabel","optionLabelTemplate","popup","template","text","value","valuePrimitive","valueTemplate","virtual"],"kendoDropTarget":["group"],"kendoDropTargetArea":["filter","group"],"kendoEditor":["domain","encoded","fileBrowser","imageBrowser","messages","name","pdf","resizable","serialization","stylesheets","tools"],"kendoFlatColorPicker":["autoupdate","buttons","messages","name","opacity","preview","value"],"kendoGantt":["assignments","autoBind","columnResizeHandleWidth","columns","currentTimeMarker","dataSource","dependencies","editable","height","hourSpan","listWidth","messages","name","navigatable","pdf","resizable","resources","rowHeight","selectable","showWorkDays","showWorkHours","snap","taskTemplate","toolbar","tooltip","views","workDayEnd","workDayStart","workWeekEnd","workWeekStart"],"kendoGrid":["allowCopy","altRowTemplate","autoBind","columnMenu","columnResizeHandleWidth","columns","dataSource","detailTemplate","editable","excel","filterable","groupable","height","messages","mobile","name","navigatable","noRecords","pageable","pdf","reorderable","resizable","rowTemplate","scrollable","selectable","sortable","toolbar"],"kendoLinearGauge":["gaugeArea","name","pointer","renderAs","scale","transitions"],"kendoListView":["altTemplate","autoBind","dataSource","editTemplate","name","navigatable","selectable","template"],"kendoMap":["center","controls","layerDefaults","layers","markerDefaults","markers","maxZoom","minSize","minZoom","name","pannable","wraparound","zoom","zoomable"],"kendoMaskedTextBox":["clearPromptChar","culture","mask","name","promptChar","rules","unmaskOnPost","value"],"kendoMenu":["animation","closeOnClick","dataSource","direction","hoverDelay","name","openOnClick","orientation","popupCollision"],"kendoMobileActionSheet":["cancel","name","popup","type"],"kendoMobileBackButton":["name"],"kendoMobileButton":["badge","clickOn","enable","icon","name"],"kendoMobileButtonGroup":["enable","index","name","selectOn"],"kendoMobileCollapsible":["animation","collapsed","expandIcon","iconPosition","inset","name"],"kendoMobileDetailButton":["name"],"kendoMobileDrawer":["container","name","position","swipeToOpen","swipeToOpenViews","title","views"],"kendoMobileLayout":["id","name","platform"],"kendoMobileListView":["appendOnRefresh","autoBind","dataSource","endlessScroll","filterable","fixedHeaders","headerTemplate","loadMore","messages","name","pullParameters","pullToRefresh","style","template","type","virtualViewSize"],"kendoMobileLoader":["name"],"kendoMobileModalView":["height","modal","name","width"],"kendoMobileNavBar":["name"],"kendoMobilePane":["collapsible","initial","layout","loading","name","portraitWidth","transition"],"kendoMobilePopOver":["name","pane","popup"],"kendoMobileScrollView":["autoBind","bounceVelocityThreshold","contentHeight","dataSource","duration","emptyTemplate","enablePager","itemsPerPage","name","page","pageSize","template","velocityThreshold"],"kendoMobileScroller":["elastic","messages","name","pullOffset","pullToRefresh","useNative","visibleScrollHints","zoom"],"kendoMobileSplitView":["name","style"],"kendoMobileSwitch":["checked","enable","name","offLabel","onLabel"],"kendoMobileTabStrip":["name","selectedIndex"],"kendoMobileView":["model","name","reload","scroller","stretch","title","useNativeScrolling","zoom"],"kendoMultiSelect":["animation","autoBind","autoClose","dataSource","dataTextField","dataValueField","delay","enable","filter","fixedGroupTemplate","groupTemplate","headerTemplate","height","highlightFirst","ignoreCase","itemTemplate","maxSelectedItems","minLength","name","placeholder","popup","tagMode","tagTemplate","value","valuePrimitive","virtual"],"kendoNotification":["allowHideAfter","animation","appendTo","autoHideAfter","button","height","hideOnClick","name","position","stacking","templates","width"],"kendoNumericTextBox":["culture","decimals","downArrowText","format","max","min","name","placeholder","spinners","step","upArrowText","value"],"kendoPager":["autoBind","buttonCount","dataSource","info","input","linkTemplate","messages","name","numeric","pageSizes","previousNext","refresh","selectTemplate"],"kendoPanelBar":["animation","contentUrls","dataSource","expandMode","name"],"kendoPivotConfigurator":["dataSource","filterable","height","messages","name","sortable"],"kendoPivotGrid":["autoBind","columnHeaderTemplate","columnWidth","dataCellTemplate","dataSource","excel","filterable","height","kpiStatusTemplate","kpiTrendTemplate","messages","name","pdf","reorderable","rowHeaderTemplate","sortable"],"kendoPopup":["anchor","animation","appendTo","name","origin","position"],"kendoProgressBar":["animation","chunkCount","enable","max","min","name","orientation","reverse","showStatus","type","value"],"kendoQRCode":["background","border","color","encoding","errorCorrection","name","padding","renderAs","size","value"],"kendoRadialGauge":["gaugeArea","name","pointer","renderAs","scale","transitions"],"kendoRangeSlider":["largeStep","max","min","name","orientation","selectionEnd","selectionStart","smallStep","tickPlacement","tooltip"],"kendoResponsivePanel":["autoClose","breakpoint","name","orientation","toggleButton"],"kendoScheduler":["allDayEventTemplate","allDaySlot","autoBind","currentTimeMarker","dataSource","date","dateHeaderTemplate","editable","endTime","eventTemplate","footer","group","groupHeaderTemplate","height","majorTick","majorTimeHeaderTemplate","max","messages","min","minorTickCount","minorTimeHeaderTemplate","mobile","name","pdf","resources","selectable","showWorkHours","snap","startTime","timezone","toolbar","views","width","workDayEnd","workDayStart","workWeekEnd","workWeekStart"],"kendoSlider":["decreaseButtonTitle","increaseButtonTitle","largeStep","max","min","name","orientation","showButtons","smallStep","tickPlacement","tooltip","value"],"kendoSortable":["autoScroll","axis","connectWith","container","cursor","cursorOffset","disabled","filter","handler","hint","holdToDrag","ignore","name","placeholder"],"kendoSparkline":["autoBind","axisDefaults","categoryAxis","chartArea","data","dataSource","name","plotArea","pointWidth","renderAs","series","seriesColors","seriesDefaults","theme","tooltip","transitions","type","valueAxis"],"kendoSplitter":["name","orientation","panes"],"kendoSpreadsheet":["activeSheet","columnWidth","columns","excel","headerHeight","headerWidth","name","pdf","rowHeight","rows","sheets","sheetsbar","toolbar"],"kendoStockChart":["autoBind","axisDefaults","categoryAxis","chartArea","dataSource","dateField","legend","name","navigator","panes","pdf","plotArea","renderAs","series","seriesColors","seriesDefaults","theme","title","tooltip","transitions","valueAxis"],"kendoTabStrip":["animation","collapsible","contentUrls","dataContentField","dataContentUrlField","dataImageUrlField","dataSource","dataSpriteCssClass","dataTextField","dataUrlField","name","navigatable","scrollable","tabPosition","value"],"kendoTimePicker":["animation","culture","dates","format","interval","max","min","name","parseFormats","value"],"kendoToolBar":["items","name","resizable"],"kendoTooltip":["animation","autoHide","callout","content","filter","height","iframe","name","position","showAfter","showOn","width"],"kendoTouch":["doubleTapTimeout","enableSwipe","filter","maxDuration","maxYDelta","minHold","minXDelta","multiTouch","name","surface"],"kendoTreeList":["autoBind","columnMenu","columns","dataSource","editable","excel","filterable","height","messages","name","pdf","reorderable","resizable","scrollable","selectable","sortable","toolbar"],"kendoTreeMap":["autoBind","colorField","colors","dataSource","name","template","textField","theme","type","valueField"],"kendoTreeView":["animation","autoBind","autoScroll","checkboxes","dataImageUrlField","dataSource","dataSpriteCssClassField","dataTextField","dataUrlField","dragAndDrop","loadOnDemand","messages","name","template"],"kendoUpload":["async","enabled","files","localization","multiple","name","showFileList","template"],"kendoValidator":["errorTemplate","messages","name","rules","validateOnBlur"],"kendoWindow":["actions","animation","appendTo","autoFocus","content","draggable","height","iframe","maxHeight","maxWidth","minHeight","minWidth","modal","name","pinned","position","resizable","scrollable","title","visible","width"]}
 export const constants = {
   eventPrefix: 'k-on-',
-  bindablePrefix: 'k-'
+  bindablePrefix: 'k-',
+  attributePrefix: 'k-',
+  elementPrefix: 'k-'
 };
+
+/***
+* Available properties (merged together from several locations) are stored here per controlName
+* so that this isn't done for each created wrapper instance
+*/
+export class ControlProperties {
+  cache = [];
+
+  /**
+  * Merges together available properties for a specific control
+  * and stores this in a cache so that this is done only once per control
+  */
+  getProperties(controlName) {
+    if (this.cache[controlName]) {
+      return this.cache[controlName];
+    }
+
+    // get available properties of the options object inside a Kendo control
+    let options1 = Object.keys(jQuery.fn[controlName].widget.prototype.options);
+    // get available properties of the pre-generated bindables.json file
+    let options2 = bindables[controlName];
+    // merge together without duplicates
+    let keys = options1.concat(options2.filter(item => options1.indexOf(item) < 0));
+
+    // we also want k-widget on all wrappers
+    keys.push('widget');
+
+    this.cache[controlName] = keys;
+
+    return keys;
+  }
+}
 
 /**
 * Creates a BindableProperty for every option defined in a Kendo control
@@ -452,15 +608,11 @@ export const constants = {
 */
 export function generateBindables(controlName: string) {
   return function(target, key, descriptor) {
-    // get all options defined in the Kendo control
-    let options = jQuery.fn[controlName].widget.prototype.options;
-
     // get or create the HtmlBehaviorResource
     // on which we're going to create the BindableProperty's
     let behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
-    let optionKeys = Object.keys(options);
-    optionKeys.push('dataSource');
-    optionKeys.push('widget');
+    let controlProperties = (Container.instance || new Container()).get(ControlProperties);
+    let optionKeys = controlProperties.getProperties(controlName);
 
     for (let option of optionKeys) {
       // set the name of the bindable property to the option
@@ -514,7 +666,7 @@ export function pruneOptions(options: any) {
   let returnOptions = {};
 
   for (let prop in options) {
-    if (options.hasOwnProperty(prop) && options[prop] !== null) {
+    if (typeof(options[prop]) !== 'undefined' && options[prop] !== null) {
       returnOptions[prop] = options[prop];
     }
   }
@@ -575,6 +727,7 @@ export class TemplateCompiler {
     // in these cases we get the parent context of the options instead of the
     // widget
     let $parent = widget._$parent || (widget.options._$parent ? widget.options._$parent[0] : undefined);
+    let viewResources = widget._$resources || (widget.options._$resources ? widget.options._$resources[0] : undefined);
 
     if (!$parent) return;
 
@@ -587,7 +740,7 @@ export class TemplateCompiler {
       // we need to pass elements and data to compile
       // so that Aurelia can enhance this elements with the correct
       // binding context
-      this.compile($parent, elements, data);
+      this.compile($parent, elements, data, viewResources);
       break;
 
     case 'cleanup':
@@ -607,7 +760,7 @@ export class TemplateCompiler {
   * @param elements an array of Elements or a jQuery selector
   * @param data optionally an array of dataitems
   */
-  compile($parent, elements, data) {
+  compile($parent, elements, data, viewResources) {
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
       let ctx;
@@ -618,9 +771,9 @@ export class TemplateCompiler {
       }
 
       if (element instanceof jQuery) {
-        element.each((index, elem) => this.enhanceView($parent, elem, ctx));
+        element.each((index, elem) => this.enhanceView($parent, elem, ctx, viewResources));
       } else {
-        this.enhanceView($parent, element, ctx);
+        this.enhanceView($parent, element, ctx, viewResources);
       }
     }
   }
@@ -631,16 +784,28 @@ export class TemplateCompiler {
   * @param element The Element to compile
   * @param ctx The dataitem (context) to compile the Element with
   */
-  enhanceView($parent, element, ctx) {
-    let view = this.templatingEngine.enhance(element);
+  enhanceView($parent, element, ctx, viewResources) {
+    let view = $(element).data('viewInstance');
+
+    // check necessary due to https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/308
+    if (element.querySelectorAll('.au-target').length === 0) {
+      if (viewResources) {
+        view = this.templatingEngine.enhance({
+          element: element,
+          resources: viewResources
+        });
+      } else {
+        view = this.templatingEngine.enhance(element);
+      }
+
+      // when we do cleanup, we need to get the view instance
+      // so we can call detached/unbind
+      // so we store this view instance in the DOM element using JQuery.data
+      $(element).data('viewInstance', view);
+    }
 
     view.bind(ctx, $parent); // call the bind() function on the view with the dataItem we got from Kendo
     view.attached(); // attach it to the DOM
-
-    // when we do cleanup, we need to get the view instance
-    // so we can call detached/unbind
-    // so we store this view instance in the DOM element using JQuery.data
-    $(element).data('viewInstance', view);
   }
 
   /**
@@ -739,7 +904,7 @@ export function getEventsFromAttributes(element: Element): string[] {
 * Abstraction of commonly used code across wrappers
 */
 @transient()
-@inject(TaskQueue, TemplateCompiler)
+@inject(TaskQueue, TemplateCompiler, ControlProperties)
 export class WidgetBase {
 
   /**
@@ -780,8 +945,9 @@ export class WidgetBase {
   */
   ctor: any;
 
-  constructor(taskQueue, templateCompiler) {
+  constructor(taskQueue, templateCompiler, controlProperties) {
     this.taskQueue = taskQueue;
+    this.controlProperties = controlProperties;
     templateCompiler.initialize();
   }
 
@@ -809,6 +975,22 @@ export class WidgetBase {
     return this;
   }
 
+  useViewResources(resources) {
+    if (!resources) {
+      throw new Error('resources is not set');
+    }
+
+    this.viewResources = resources;
+
+    return this;
+  }
+
+  useValueBinding() {
+    this.withValueBinding = true;
+
+    return this;
+  }
+
   /**
   * collects all options objects
   * calls all hooks
@@ -827,8 +1009,10 @@ export class WidgetBase {
       throw new Error('parentCtx is not set');
     }
 
-    // generate all options, including event handlers
-    let allOptions = this._getOptions(options.element);
+    // generate all options, including event handlers - use the rootElement if specified, otherwise fall back to the element
+    // this allows a child element in a custom elements tempate to be the container for the kendo control
+    // but allows the plugin to correctly discover attributes on the root element to match against events
+    let allOptions = this._getOptions(options.rootElement || options.element);
 
     // before initialization callback
     // allows you to modify/add/remove options before the control gets initialized
@@ -839,18 +1023,35 @@ export class WidgetBase {
     // add parent context to options
     // deepExtend in kendo.core will fail with stack
     // overflow if we don't put it in an array :-\
-    Object.assign(allOptions, { _$parent: [options.parentCtx] });
+    Object.assign(allOptions, {
+      _$parent: [options.parentCtx],
+      _$resources: [this.viewResources]
+    });
 
     // instantiate the Kendo control
-    let widget = jQuery(options.element)[this.controlName](allOptions).data(this.controlName);
+    let widget = this._createWidget(options.element, allOptions, this.controlName);
 
     widget._$parent = options.parentCtx;
+    widget._$resources = this.viewResources;
+
+    if (this.withValueBinding) {
+      widget.first('change', (args) => this._handleChange(args.sender));
+
+      // sync kValue after initialization of the widget
+      // some widgets (such as dropdownlist) select first item
+      this._handleChange(widget);
+    }
 
     if (options.afterInitialize) {
       options.afterInitialize();
     }
 
     return widget;
+  }
+
+
+  _createWidget(element, options, controlName) {
+    return jQuery(element)[controlName](options).data(controlName);
   }
 
 
@@ -865,7 +1066,7 @@ export class WidgetBase {
     // - options on the wrapper
     // - options compiled from all the bindable properties
     // - event handler options
-    return Object.assign({}, this.viewModel.options, pruneOptions(options), eventOptions);
+    return pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
   }
 
   /**
@@ -873,37 +1074,19 @@ export class WidgetBase {
   * and puts all these values in a single options object
   */
   getOptionsFromBindables() {
-    let props = this.kendoOptions;
     let options = {};
 
-    for (let prop of Object.keys(props)) {
-      options[prop] = this.viewModel[getBindablePropertyName(prop)];
-    }
-
-    if (this.viewModel.kDataSource) {
-      options.dataSource = this.viewModel.kDataSource;
+    for (let prop of this.controlProperties.getProperties(this.controlName)) {
+      // we don't need to pass the widget property to the Kendo control
+      // it might also cause stackoverflow errors
+      if (prop !== 'widget') {
+        options[prop] = this.viewModel[getBindablePropertyName(prop)];
+      }
     }
 
     return options;
   }
 
-  /**
-  * sets the default value of all bindable properties
-  *  gets the value from the options object in the Kendo control itself
-  */
-  setDefaultBindableValues() {
-    if (!this.viewModel) {
-      throw new Error('viewModel is not set');
-    }
-
-    let props = this.kendoOptions;
-
-    for (let prop of Object.keys(props)) {
-      this.viewModel[getBindablePropertyName(prop)] = props[prop];
-    }
-
-    return this;
-  }
 
   /**
   * convert attributes into a list of events a user wants to subscribe to.
@@ -935,6 +1118,17 @@ export class WidgetBase {
     return options;
   }
 
+
+  _handleChange(widget) {
+    this.viewModel.kValue = widget.value();
+  }
+
+  handlePropertyChanged(widget, property, newValue, oldValue) {
+    if (property === 'kValue' && this.withValueBinding) {
+      widget.value(newValue);
+    }
+  }
+
   /**
   * destroys the widget
   */
@@ -943,13 +1137,12 @@ export class WidgetBase {
   }
 }
 
-@customAttribute('k-datepicker')
+
+@customAttribute(`${constants.attributePrefix}datepicker`)
 @generateBindables('kendoDatePicker')
 @inject(Element, WidgetBase)
 export class DatePicker {
 
-  @bindable kValue;
-  @bindable kDisableDates;
   @bindable options = {};
 
   constructor(element, widgetBase) {
@@ -957,7 +1150,7 @@ export class DatePicker {
     this.widgetBase = widgetBase
                         .control('kendoDatePicker')
                         .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -973,8 +1166,8 @@ export class DatePicker {
     });
   }
 
-  _beforeInitialize(options) {
-    return Object.assign({}, options, { disableDates: this.kDisableDates });
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {
@@ -982,7 +1175,44 @@ export class DatePicker {
   }
 }
 
-@customAttribute('k-drop-down-list')
+@customAttribute(`${constants.attributePrefix}datetimepicker`)
+@generateBindables('kendoDateTimePicker')
+@inject(Element, WidgetBase)
+export class DateTimePicker {
+
+  @bindable options = {};
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoDateTimePicker')
+                        .linkViewModel(this)
+                        .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+@customAttribute(`${constants.attributePrefix}drop-down-list`)
 @generateBindables('kendoDropDownList')
 @inject(Element, WidgetBase)
 export class DropDownList {
@@ -994,8 +1224,7 @@ export class DropDownList {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoDropDownList')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -1037,21 +1266,55 @@ export class DropDownList {
   }
 }
 
-//eslint-disable-line no-unused-vars
-@customElement('k-grid')
-@generateBindables('kendoGrid')
+@customElement(`${constants.attributePrefix}flat-color-picker`)
+@generateBindables('kendoFlatColorPicker')
 @inject(Element, WidgetBase)
-export class Grid  {
+export class FlatColorPicker {
 
-  @children('k-col') columns;
   @bindable options = {};
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
+                        .control('kendoFlatColorPicker')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+//eslint-disable-line no-unused-vars
+@customElement(`${constants.elementPrefix}grid`)
+@generateBindables('kendoGrid')
+@inject(Element, WidgetBase, ViewResources)
+export class Grid  {
+
+  @children(`${constants.elementPrefix}col`) columns;
+  @bindable options = {};
+
+  constructor(element, widgetBase, viewResources) {
+    this.element = element;
+    this.widgetBase = widgetBase
                         .control('kendoGrid')
                         .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .useViewResources(viewResources);
   }
 
   bind(ctx) {
@@ -1080,6 +1343,15 @@ export class Grid  {
     // allow for both column definitions via HTML and via an array of columns
     if (this.columns && this.columns.length > 0) {
       options.columns = this.columns;
+
+      options.columns.forEach(c => {
+        if (c.template && !c.withKendoTemplates) {
+          let template = c.template;
+          c.template = function() {
+            return template;
+          };
+        }
+      });
     }
   }
 
@@ -1105,7 +1377,7 @@ function isInitFromTable(element) {
   return true;
 })
 @inject(TargetInstruction)
-@customElement('k-col')
+@customElement(`${constants.elementPrefix}col`)
 export class Col {
   @bindable aggregates;
   @bindable attributes;
@@ -1132,13 +1404,52 @@ export class Col {
   @bindable values;
   @bindable width;
   @bindable template;
+  @bindable withKendoTemplates = false;
 
   constructor(targetInstruction) {
     this.template = targetInstruction.elementInstruction.template;
   }
 }
 
-@customElement('k-menu')
+@customAttribute(`${constants.attributePrefix}maskedtextbox`)
+@generateBindables('kendoMaskedTextBox')
+@inject(Element, WidgetBase)
+export class MaskedTextBox {
+
+  @bindable kDisableDates;
+  @bindable options = {};
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoMaskedTextBox')
+                        .linkViewModel(this)
+                        .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+@customElement(`${constants.elementPrefix}menu`)
 @generateBindables('kendoMenu')
 @inject(Element, WidgetBase)
 export class Menu {
@@ -1149,8 +1460,7 @@ export class Menu {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMenu')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -1179,7 +1489,7 @@ export class Menu {
   }
 }
 
-@customAttribute('k-numerictextbox')
+@customAttribute(`${constants.attributePrefix}numerictextbox`)
 @generateBindables('kendoNumericTextBox')
 @inject(Element, WidgetBase)
 export class NumericTextBox {
@@ -1190,8 +1500,7 @@ export class NumericTextBox {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoNumericTextBox')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -1212,9 +1521,66 @@ export class NumericTextBox {
   }
 }
 
+@customElement('k-panel-bar')
+@generateBindables('kendoPanelBar')
+@inject(Element, WidgetBase)
+export class PanelBar {
+
+  @bindable options = {};
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoPanelBar')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    this.recreate();
+  }
+
+  recreate() {
+    let element = this.element;
+
+    // Insert a node in between the parent/children if no UL/OL is found
+    if (!hasListChildNode(element)) {
+      let ul = document.createElement('ul');
+
+      while (element.children.length > 0) {
+        ul.appendChild(element.children[0]);
+      }
+
+      element.appendChild(ul);
+      element = ul;
+    } else {
+      element = this.element.children[0];
+    }
+
+    this.kWidget = this.widgetBase.createWidget({
+      element: element,
+      parentCtx: this.$parent,
+      rootElement: this.element
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+
+// if the first child is not a UL/OL then create one to use as the target, otherwise the panelbar can look a bit mangled
+function hasListChildNode(element) {
+  return element.children.length > 0 && (element.children[0].nodeName === 'UL' || element.children[0].nodeName === 'OL');
+}
+
 export class PDF {}
 
-@customAttribute('k-progress-bar')
+@customAttribute(`${constants.attributePrefix}progress-bar`)
 @generateBindables('kendoProgressBar')
 @inject(Element, WidgetBase)
 export class ProgressBar {
@@ -1225,8 +1591,7 @@ export class ProgressBar {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoProgressBar')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -1247,24 +1612,79 @@ export class ProgressBar {
   }
 }
 
-export class AuScheduler {
-
-}
-
-@customAttribute('k-slider')
-@generateBindables('kendoSlider')
+@customElement(`${constants.elementPrefix}range-slider`)
+@generateBindables('kendoRangeSlider')
 @inject(Element, WidgetBase)
-export class Slider {
+export class RangeSlider {
 
-  @bindable kValue;
   @bindable options = {};
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                    .control('kendoSlider')
+                    .control('kendoRangeSlider')
                     .linkViewModel(this)
-                    .setDefaultBindableValues();
+                    .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+@noView
+@processContent((compiler, resources, element, instruction) => {
+  let html = element.innerHTML;
+  if (html !== '') {
+    instruction.template = html;
+  }
+
+  return true;
+})
+@inject(TargetInstruction)
+@customElement(`${constants.elementPrefix}event-template`)
+export class EventTemplate {
+  @bindable template;
+
+  constructor(targetInstruction) {
+    this.template = targetInstruction.elementInstruction.template;
+  }
+}
+
+//eslint-disable-line no-unused-vars
+@customElement(`${constants.elementPrefix}scheduler`)
+@generateBindables('kendoScheduler')
+@inject(Element, WidgetBase, ViewResources)
+export class Scheduler {
+
+  @bindable options = {};
+  @children(`${constants.elementPrefix}event-template`) eventTemplates;
+
+  constructor(element, widgetBase, viewResources) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoScheduler')
+                        .linkViewModel(this)
+                        .useViewResources(viewResources);
   }
 
   bind(ctx) {
@@ -1279,14 +1699,22 @@ export class Slider {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent,
-      beforeInitialize: (o) => this._beforeInitialize(o)
+      beforeInitialize: o => this._beforeInitialize(o)
     });
   }
 
   _beforeInitialize(options) {
-    if (!options.value && this.kValue) {
-      options.value = this.kValue;
+    let eventTemplate;
+
+    if (this.kEventTemplate) {
+      eventTemplate = () => this.kEventTemplate;
+    } else if (this.eventTemplates.length > 0) {
+      eventTemplate = () => this.eventTemplates[0].template;
     }
+
+    return Object.assign(options, pruneOptions({
+      eventTemplate: eventTemplate
+    }));
   }
 
   detached() {
@@ -1294,7 +1722,46 @@ export class Slider {
   }
 }
 
-@customAttribute('k-tabstrip')
+@customAttribute(`${constants.attributePrefix}slider`)
+@generateBindables('kendoSlider')
+@inject(Element, WidgetBase)
+export class Slider {
+
+  @bindable options = {};
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                    .control('kendoSlider')
+                    .linkViewModel(this)
+                    .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+@customAttribute(`${constants.attributePrefix}tabstrip`)
 @generateBindables('kendoTabStrip')
 @inject(Element, WidgetBase)
 export class TabStrip {
@@ -1305,8 +1772,7 @@ export class TabStrip {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTabStrip')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues(this);
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -1327,11 +1793,158 @@ export class TabStrip {
   }
 }
 
+@customAttribute(`${constants.attributePrefix}timepicker`)
+@generateBindables('kendoTimePicker')
+@inject(Element, WidgetBase)
+export class TimePicker {
+
+  @bindable kDisableDates;
+  @bindable options = {};
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoTimePicker')
+                        .linkViewModel(this)
+                        .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
 export class AuToolbar {
 
 }
 
-@customAttribute('k-treeview')
+@noView
+@processContent((compiler, resources, element, instruction) => {
+  let html = element.innerHTML;
+  if (html !== '') {
+    instruction.template = html;
+  }
+
+  return true;
+})
+@inject(TargetInstruction)
+@customElement(`${constants.elementPrefix}tree-col`)
+export class TreeCol {
+  @bindable attributes;
+  @bindable command;
+  @bindable editor;
+  @bindable encoded;
+  @bindable expandable;
+  @bindable field;
+  @bindable filterable;
+  @bindable footerTemplate;
+  @bindable format = '';
+  @bindable headerAttributes;
+  @bindable headerTemplate;
+  @bindable minScreenWidth;
+  @bindable sortable;
+  @bindable template;
+  @bindable title;
+  @bindable width;
+  @bindable hidden;
+  @bindable menu;
+  @bindable locked;
+  @bindable lockable;
+  @bindable withKendoTemplates = false;
+
+  constructor(targetInstruction) {
+    this.template = targetInstruction.elementInstruction.template;
+  }
+}
+
+//eslint-disable-line no-unused-vars
+@customElement(`${constants.elementPrefix}tree-list`)
+@generateBindables('kendoTreeList')
+@inject(Element, WidgetBase, ViewResources)
+export class TreeList  {
+
+  @children(`${constants.elementPrefix}tree-col`) columns;
+  @bindable options = {};
+
+  constructor(element, widgetBase, viewResources) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoTreeList')
+                        .linkViewModel(this)
+                        .useViewResources(viewResources);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  // initialization in bind() is giving issues in some scenarios
+  // so, attached() is used for this control
+  attached() {
+    this.recreate();
+  }
+
+  recreate() {
+    // init grid on the <table> tag if initialization is from table
+    // else, just use the root element
+//    let element = isInitFromTable(this.element) ? this.element.children[0] : this.element;
+    let element = this.element;
+
+    this.kWidget = this.widgetBase.createWidget({
+      element: element,
+      parentCtx: this.$parent,
+      beforeInitialize: (o) => this._beforeInitialize(o)
+    });
+  }
+
+  _beforeInitialize(options) {
+    // allow for both column definitions via HTML and via an array of columns
+    if (this.columns && this.columns.length > 0) {
+      options.columns = [];
+
+      this.columns.forEach(c => {
+        if (c.template && !c.withKendoTemplates) {
+          let template = c.template;
+          c.template = function() {
+            return template;
+          };
+        }
+
+        options.columns.push(pruneOptions(c));
+      });
+    }
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+// if the first child node is a table tag
+// then the user wants to initialize the Kendo Grid from an
+// // existing table
+// function isInitFromTable(element) {
+//   return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
+// }
+
+@customAttribute(`${constants.attributePrefix}treeview`)
 @generateBindables('kendoTreeView')
 @inject(Element, WidgetBase)
 export class TreeView {
@@ -1341,11 +1954,7 @@ export class TreeView {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTreeView')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
-
-    // kendo tree view has a wrong default value for the dataSource
-    this.kDataSource = undefined;
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
