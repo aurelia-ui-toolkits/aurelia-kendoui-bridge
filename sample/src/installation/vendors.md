@@ -1,3 +1,9 @@
+## Important note
+
+Make sure to use Kendo UI **v2016.1.118** or higher if you decided to use the third alternative **Having KendoUI already: Vendors** and you only have the KendoUI trial version. Until Telerik fixes the problem and releases a new version of the trial package, please get this **[vendors folder](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/tree/master/vendors)**.
+
+* * *
+
 ### Vendors
 
 1. Create a `vendors` folder in the root (at the same level as src or dist)

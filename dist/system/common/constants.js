@@ -7,7 +7,9 @@ System.register([], function (_export) {
     execute: function () {
       constants = {
         eventPrefix: 'k-on-',
-        bindablePrefix: 'k-'
+        bindablePrefix: 'k-',
+        attributePrefix: 'k-',
+        elementPrefix: 'k-'
       };
 
       _export('constants', constants);

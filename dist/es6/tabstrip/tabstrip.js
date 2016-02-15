@@ -2,9 +2,10 @@ import {inject} from 'aurelia-dependency-injection';
 import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
+import {constants} from '../common/constants';
 import 'kendo-ui/js/kendo.tabstrip.min';
 
-@customAttribute('k-tabstrip')
+@customAttribute(`${constants.attributePrefix}tabstrip`)
 @generateBindables('kendoTabStrip')
 @inject(Element, WidgetBase)
 export class TabStrip {
@@ -15,8 +16,7 @@ export class TabStrip {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTabStrip')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues(this);
+                        .linkViewModel(this);
   }
 
   bind(ctx) {

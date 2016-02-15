@@ -18,6 +18,8 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonEvents = require('../common/events');
 
+var _commonConstants = require('../common/constants');
+
 require('kendo-ui/js/kendo.dropdownlist.min');
 
 require('kendo-ui/js/kendo.virtuallist.min');
@@ -47,7 +49,7 @@ var DropDownList = (function () {
     _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this);
   }
 
   DropDownList.prototype.bind = function bind(ctx) {
@@ -88,7 +90,7 @@ var DropDownList = (function () {
   var _DropDownList = DropDownList;
   DropDownList = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(DropDownList) || DropDownList;
   DropDownList = _commonDecorators.generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
-  DropDownList = _aureliaTemplating.customAttribute('k-drop-down-list')(DropDownList) || DropDownList;
+  DropDownList = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'drop-down-list')(DropDownList) || DropDownList;
   return DropDownList;
 })();
 

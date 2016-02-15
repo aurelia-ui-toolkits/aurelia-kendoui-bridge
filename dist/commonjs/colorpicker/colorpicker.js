@@ -16,6 +16,8 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 require('kendo-ui/js/kendo.colorpicker.min');
 
 var ColorPicker = (function () {
@@ -36,7 +38,7 @@ var ColorPicker = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this);
   }
 
   ColorPicker.prototype.bind = function bind(ctx) {
@@ -59,7 +61,7 @@ var ColorPicker = (function () {
   var _ColorPicker = ColorPicker;
   ColorPicker = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(ColorPicker) || ColorPicker;
   ColorPicker = _commonDecorators.generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
-  ColorPicker = _aureliaTemplating.customAttribute('k-color-picker')(ColorPicker) || ColorPicker;
+  ColorPicker = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'color-picker')(ColorPicker) || ColorPicker;
   return ColorPicker;
 })();
 

@@ -3,6 +3,8 @@
 exports.__esModule = true;
 var constants = {
   eventPrefix: 'k-on-',
-  bindablePrefix: 'k-'
+  bindablePrefix: 'k-',
+  attributePrefix: 'k-',
+  elementPrefix: 'k-'
 };
 exports.constants = constants;

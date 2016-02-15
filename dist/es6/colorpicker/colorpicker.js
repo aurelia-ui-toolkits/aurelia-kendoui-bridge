@@ -2,9 +2,10 @@ import {inject} from 'aurelia-dependency-injection';
 import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
+import {constants} from '../common/constants';
 import 'kendo-ui/js/kendo.colorpicker.min';
 
-@customAttribute('k-color-picker')
+@customAttribute(`${constants.attributePrefix}color-picker`)
 @generateBindables('kendoColorPicker')
 @inject(Element, WidgetBase)
 export class ColorPicker {
@@ -15,8 +16,7 @@ export class ColorPicker {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoColorPicker')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {

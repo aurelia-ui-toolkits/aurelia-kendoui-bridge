@@ -16,6 +16,8 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 require('kendo-ui/js/kendo.button.min');
 
 var Button = (function () {
@@ -36,7 +38,7 @@ var Button = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoButton').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoButton').linkViewModel(this);
   }
 
   Button.prototype.bind = function bind(ctx) {
@@ -59,7 +61,7 @@ var Button = (function () {
   var _Button = Button;
   Button = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Button) || Button;
   Button = _commonDecorators.generateBindables('kendoButton')(Button) || Button;
-  Button = _aureliaTemplating.customAttribute('k-button')(Button) || Button;
+  Button = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'button')(Button) || Button;
   return Button;
 })();
 

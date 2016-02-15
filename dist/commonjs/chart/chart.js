@@ -16,6 +16,8 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 var _pdfPdf = require('../pdf/pdf');
 
 require('kendo-ui/js/kendo.dataviz.chart.min');
@@ -42,7 +44,7 @@ var Chart = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this);
   }
 
   Chart.prototype.bind = function bind(ctx) {
@@ -67,7 +69,7 @@ var Chart = (function () {
   var _Chart = Chart;
   Chart = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Chart) || Chart;
   Chart = _commonDecorators.generateBindables('kendoChart')(Chart) || Chart;
-  Chart = _aureliaTemplating.customElement('k-chart')(Chart) || Chart;
+  Chart = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'chart')(Chart) || Chart;
   return Chart;
 })();
 

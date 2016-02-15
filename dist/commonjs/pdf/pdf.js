@@ -6,7 +6,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 require('kendo-ui/js/kendo.pdf.min');
 
-require('kendo-ui/js/jszip.min');
+require('kendo-ui/js/kendo.excel.min');
 
 var PDF = function PDF() {
   _classCallCheck(this, PDF);

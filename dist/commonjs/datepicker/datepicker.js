@@ -16,22 +16,14 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 require('kendo-ui/js/kendo.datepicker.min');
 
 var DatePicker = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(DatePicker, [{
-    key: 'kValue',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'kDisableDates',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
     key: 'options',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
@@ -43,14 +35,10 @@ var DatePicker = (function () {
   function DatePicker(element, widgetBase) {
     _classCallCheck(this, _DatePicker);
 
-    _defineDecoratedPropertyDescriptor(this, 'kValue', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers);
-
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).useValueBinding();
   }
 
   DatePicker.prototype.bind = function bind(ctx) {
@@ -66,8 +54,8 @@ var DatePicker = (function () {
     });
   };
 
-  DatePicker.prototype._beforeInitialize = function _beforeInitialize(options) {
-    return Object.assign({}, options, { disableDates: this.kDisableDates });
+  DatePicker.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
   DatePicker.prototype.detached = function detached() {
@@ -77,7 +65,7 @@ var DatePicker = (function () {
   var _DatePicker = DatePicker;
   DatePicker = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(DatePicker) || DatePicker;
   DatePicker = _commonDecorators.generateBindables('kendoDatePicker')(DatePicker) || DatePicker;
-  DatePicker = _aureliaTemplating.customAttribute('k-datepicker')(DatePicker) || DatePicker;
+  DatePicker = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'datepicker')(DatePicker) || DatePicker;
   return DatePicker;
 })();
 

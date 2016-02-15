@@ -8,7 +8,7 @@ export function pruneOptions(options: any) {
   let returnOptions = {};
 
   for (let prop in options) {
-    if (options.hasOwnProperty(prop) && options[prop] !== null) {
+    if (typeof(options[prop]) !== 'undefined' && options[prop] !== null) {
       returnOptions[prop] = options[prop];
     }
   }

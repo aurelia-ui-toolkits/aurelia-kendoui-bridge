@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.stock.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _pdfPdf, _kendoUiJsKendoDatavizStockMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.stock.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _pdfPdf, _kendoUiJsKendoDatavizStockMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoStockChart').linkViewModel(this).setDefaultBindableValues();
+      this.widgetBase = widgetBase.control('kendoStockChart').linkViewModel(this);
     }
 
     Stock.prototype.bind = function bind(ctx) {
@@ -52,7 +52,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _Stock = Stock;
     Stock = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Stock) || Stock;
     Stock = _commonDecorators.generateBindables('kendoStockChart')(Stock) || Stock;
-    Stock = _aureliaTemplating.customElement('k-stock')(Stock) || Stock;
+    Stock = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'stock')(Stock) || Stock;
     return Stock;
   })();
 

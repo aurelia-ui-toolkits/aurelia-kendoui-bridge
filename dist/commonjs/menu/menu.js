@@ -16,6 +16,8 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
+var _commonConstants = require('../common/constants');
+
 require('kendo-ui/js/kendo.menu.min');
 
 var Menu = (function () {
@@ -36,7 +38,7 @@ var Menu = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoMenu').linkViewModel(this).setDefaultBindableValues();
+    this.widgetBase = widgetBase.control('kendoMenu').linkViewModel(this);
   }
 
   Menu.prototype.bind = function bind(ctx) {
@@ -67,7 +69,7 @@ var Menu = (function () {
   var _Menu = Menu;
   Menu = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Menu) || Menu;
   Menu = _commonDecorators.generateBindables('kendoMenu')(Menu) || Menu;
-  Menu = _aureliaTemplating.customElement('k-menu')(Menu) || Menu;
+  Menu = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'menu')(Menu) || Menu;
   return Menu;
 })();
 
