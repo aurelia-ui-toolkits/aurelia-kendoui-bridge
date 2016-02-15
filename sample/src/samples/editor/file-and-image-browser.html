@@ -1,11 +1,16 @@
 <template >
 <div id="example">
     <div class="box wide">
+        <h3>Note: this sample only displays the configuration</h3>
+        <p>The sample itself does not work since Telerik's API does not allow requests from this origin.</p>
+
+        <hr>
+
         <p>Allowed file types for the Image browser are: jpg, jpeg, gif, png</p>
         <p>Allowed file types for the File browser for this demo are: txt, doc, docx, xls, xlsx, ppt, pptx, zip, rar, jpg, jpeg, gif, png</p>
     </div>
 
-    <textarea k-editor="k-tools.bind: tools"
+    <textarea k-editor="k-tools.bind: tools;k-image-browser.bind: imageBrowser;k-file-browser.bind: fileBrowser"
               style="height:400px">
 
     &lt;p&gt;&lt;img src=&quot;http://demos.telerik.com/kendo-ui/content/web/editor/kendo-ui-web.png&quot; alt=&quot;Editor for ASP.NET MVC logo&quot; style=&quot;display:block;margin-left:auto;margin-right:auto;&quot; /&gt;&lt;/p&gt;

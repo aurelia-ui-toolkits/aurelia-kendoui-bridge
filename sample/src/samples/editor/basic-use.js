@@ -1,6 +1,6 @@
 export class BasicUse {
-    resizable = {
-        content: true,
-        toolbar: true
-    }
+  resizable = {
+    content: true,
+    toolbar: true
+  }
 }

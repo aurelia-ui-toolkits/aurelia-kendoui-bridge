@@ -1,14 +1,14 @@
 export class Api {
   resizable = {
-                content: false,
-                toolbar: true
-              };
+    content: false,
+    toolbar: true
+  };
 
   getValue() {
-    alert('get value');
+    alert(`${this.editor.value()}`);
   }
 
   setValue() {
-    alert('set value');
+    this.editor.value(this.setValueText);
   }
 }

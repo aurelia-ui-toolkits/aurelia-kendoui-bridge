@@ -8,7 +8,6 @@
     "api": {
       "files": ["html", "js"]
     },
-    "inline-editing": {},
     "custom-tools": {},
     "file-and-image-browser": {},
     "all-tools": {},

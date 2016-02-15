@@ -13,7 +13,7 @@
                 <h4>Set value</h4>
                 <ul class="options">
                 <li>
-                    <textarea id="value" style="width: 200px; height: 80px" >new value</textarea>
+                    <textarea value.bind="setValueText" style="width: 200px; height: 80px" >new value</textarea>
                 </li>
                 <li>
                     <button k-button click.delegate="setValue()">Set value</button>
@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <textarea k-editor="k-resizable.bind: resizable"
+        <textarea k-editor="k-resizable.bind: resizable; k-widget.two-way: editor"
                   style="height:440px">
         &lt;p&gt;&lt;img src=&quot;http://demos.telerik.com/kendo-ui/content/web/editor/kendo-ui-web.png&quot; alt=&quot;Editor for ASP.NET MVC logo&quot; style=&quot;display:block;margin-left:auto;margin-right:auto;&quot; /&gt;&lt;/p&gt;
         &lt;p&gt;
