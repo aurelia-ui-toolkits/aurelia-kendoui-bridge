@@ -2,7 +2,12 @@
   <div id="example">
     <div id="map-bubble-layer">
       <div style="text-align: center;">
-         <h4>Map bubble layer</h4>
+        <k-map k-center.bind = "center"
+               k-zoom.bind = 4
+               k-minZoom.bind = 3
+               k-wraparound.bind = false
+               k-layers.bind = "layers">
+        </k-map>
       </div>
     </div>
    </div>
