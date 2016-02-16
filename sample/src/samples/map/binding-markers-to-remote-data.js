@@ -13,7 +13,7 @@ export class BindingMarkersToRemoteData {
         dataSource:  new kendo.data.DataSource({
           transport: {
             read: function(options) {
-              return System.import('samples/map/json/store-location.json!json')
+              return System.import('samples/map/json/store-locations.json!json')
               .then(data => options.success(data));
             }
           }
@@ -22,5 +22,3 @@ export class BindingMarkersToRemoteData {
         titleField: "name"
     }];
 }
-
-
