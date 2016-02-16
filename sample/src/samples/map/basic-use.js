@@ -10,7 +10,7 @@ export class BasicUse {
     }];
 
     markers = [{
-        location: [83.7483, 83.7483],
+        location: [42.2814, -83.7483],
         shape: "pinTarget",
         tooltip: {
             content: "Ann Arbor, MI"

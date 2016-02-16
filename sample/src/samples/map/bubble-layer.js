@@ -17,7 +17,7 @@ export class BubbleLayer {
                 width: 0
             }
         },
-        datasource:  new kendo.data.DataSource({
+        dataSource:  new kendo.data.DataSource({
           transport: {
             read: function(options) {
               return System.import('samples/map/json/urban-areas.json!json')

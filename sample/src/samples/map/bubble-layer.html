@@ -1,10 +1,21 @@
 <template>
   <div id="example">
+    <div class="box wide">
+        <div class="box-col">
+            <h4>Bubble symbol</h4>
+            <ul id="select-symbol">
+                <li>Circle</li>
+                <li>Square</li>
+            </ul>
+        </div>
+        <div id="info" class="box-col"></div>
+    </div>
+
     <div id="map-bubble-layer">
-      <div style="text-align: center;">
+      <div style="text-align: center">
         <k-map k-center.bind = "center"
                k-zoom.bind = 4
-               k-minZoom.bind = 3
+               k-min-zoom.bind = 3
                k-wraparound.bind = false
                k-layers.bind = "layers">
         </k-map>

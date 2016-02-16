@@ -10,7 +10,7 @@ export class BindingMarkersToRemoteData {
                      "Tiles courtesy of <a href='http://www.opencyclemap.org/'>Andy Allan</a>"
     }, {
         type: "marker",
-        datasource:  new kendo.data.DataSource({
+        dataSource:  new kendo.data.DataSource({
           transport: {
             read: function(options) {
               return System.import('samples/map/json/store-location.json!json')
