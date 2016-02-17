@@ -3,7 +3,7 @@
     <div class="box wide">
         <div class="box-col">
             <h4>Bubble symbol</h4>
-            <ul id="select-symbol">
+            <ul ref="selectSymbol">
                 <li>Circle</li>
                 <li>Square</li>
             </ul>
@@ -14,10 +14,11 @@
     <div id="map-bubble-layer">
       <div style="text-align: center">
         <k-map k-center.bind = "center"
-               k-zoom.bind = 4
-               k-min-zoom.bind = 3
-               k-wraparound.bind = false
-               k-layers.bind = "layers">
+               k-zoom.bind = "4"
+               k-min-zoom.bind = "3"
+               k-wraparound.bind = "false"
+               k-layers.bind = "layers"
+               k-widget.two-way = "map">
         </k-map>
       </div>
     </div>
