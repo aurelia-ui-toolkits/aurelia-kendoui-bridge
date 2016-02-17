@@ -20,6 +20,7 @@
     "DatePicker": "datepicker",
     "DateTimePicker": "datetimepicker",
     "DropDownList": "dropdownlist",
+    "Editor": "editor",
     "NumericTextBox": "numerictextbox",
     "MaskedTextBox": "maskedtextbox",
     "Slider": "slider",

@@ -1,6 +1,6 @@
 <br>
 
-### 3. babel-dts-generator
+### 3. Babel DTS generator
 <br>
 
 Aurelia uses a babel plugin called [`babel-dts-generator`](https://github.com/YoloDev/babel-dts-generator) to extract typescript definitions from ES6 source. The babel transpiler doesn't care that there are typescript definitions in the ES6 source, it simply ignores and doesn't output them. The `babel-dts-generator` plugin extracts these definitions, and outputs them to a typescript definition file. As typescript definitions also need `import` statements, it extracts these from the source as well.

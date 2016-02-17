@@ -1,6 +1,6 @@
 <br>
 
-### 5. KendoUI Grid component HTML API
+### 6. KendoUI Grid component HTML API
 <br>
 
 #### How is the KendoUI Grid component being used?

@@ -1,0 +1,19 @@
+{
+  "title": "Editor",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    },
+    "api": {
+      "files": ["html", "js"]
+    },
+    "custom-tools": {},
+    "file-and-image-browser": {},
+    "all-tools": {},
+    "snippets": {},
+    "styles": {},
+    "pdf-export": {},
+    "events": {}
+  }
+}

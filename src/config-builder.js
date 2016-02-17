@@ -21,6 +21,7 @@ export class KendoConfigBuilder {
       .kendoFlatColorPicker()
       .kendoListView()
       .kendoMaskedTextBox()
+      .kendoMenu()
       .kendoNumericTextBox()
       .kendoPanelBar()
       .kendoProgressBar()
@@ -40,6 +41,7 @@ export class KendoConfigBuilder {
     this.core()
       .kendoAutoComplete()
       .kendoChart()
+      .kendoEditor()
       .kendoGrid()
       .kendoScheduler()
       .kendoTreeList()
@@ -121,6 +123,11 @@ export class KendoConfigBuilder {
 
   kendoDropDownList(): KendoConfigBuilder {
     this.resources.push('dropdownlist/dropdownlist');
+    return this;
+  }
+
+  kendoEditor(): KendoConfigBuilder {
+    this.resources.push('editor/editor');
     return this;
   }
 

@@ -1,6 +1,6 @@
 <br>
 
-### 1. Auto generation of bindable properties
+### 3. Auto generation of bindable properties
 <br>
 
 Before discovering the optimization described in this note, Aurelia-KendoUI control wrappers had this "classic" form shown below (using KendoUI button control as the model). The pattern consists of enumerating all control attributes that we want to expose to the view, decorate them with the @bindable decorator and made them available to the view via `return Object.assign({}, this.options, options);` statement
