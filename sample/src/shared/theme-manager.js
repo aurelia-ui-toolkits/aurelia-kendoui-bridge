@@ -21,7 +21,7 @@ export class ThemeManager {
   loadTheme(theme) {
     this.removeOldThemes();
 
-    return Promise.all([this.common(theme), this.theme(theme)])
+    return Promise.all([this.common(theme), this.theme(theme), this.mobile(theme)])
     .then(() => this.ea.publish('kendo:skinChange', theme));
   }
 
@@ -51,6 +51,13 @@ export class ThemeManager {
     this.deleteFromSystemJS(commonPath);
 
     return System.import(commonPath);
+  }
+
+  mobile(theme) {
+    let mobilePath = this.getNormalizedThemePath(`${theme}.mobile`);
+    this.deleteFromSystemJS(mobilePath);
+
+    return System.import(mobilePath);
   }
 
   deleteFromSystemJS(normalizedPath) {
