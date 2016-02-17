@@ -5,9 +5,9 @@ import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {OptionsBuilder} from '../common/options-builder';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-import 'kendo-ui/js/kendo.data.signalr.min';
-import 'kendo-ui/js/kendo.filtercell.min';
-import 'kendo-ui/js/kendo.treelist.min';
+import 'kendo.data.signalr.min';
+import 'kendo.filtercell.min';
+import 'kendo.treelist.min';
 
 @customElement(`${constants.elementPrefix}tree-list`)
 @generateBindables('kendoTreeList')

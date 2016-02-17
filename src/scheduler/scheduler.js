@@ -4,12 +4,12 @@ import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-import 'kendo-ui/js/kendo.scheduler.min';
-import 'kendo-ui/js/kendo.scheduler.agendaview.min';
-import 'kendo-ui/js/kendo.scheduler.dayview.min';
-import 'kendo-ui/js/kendo.scheduler.monthview.min';
-import 'kendo-ui/js/kendo.scheduler.recurrence.min';
-import 'kendo-ui/js/kendo.scheduler.timelineview.min';
+import 'kendo.scheduler.min';
+import 'kendo.scheduler.agendaview.min';
+import 'kendo.scheduler.dayview.min';
+import 'kendo.scheduler.monthview.min';
+import 'kendo.scheduler.recurrence.min';
+import 'kendo.scheduler.timelineview.min';
 
 @customElement(`${constants.elementPrefix}scheduler`)
 @generateBindables('kendoScheduler')
