@@ -1,13 +1,13 @@
-.demo-section {
+#button-images .demo-section {
     line-height: 4em;
 }
-.demo-section .k-button {
+#button-images .demo-section .k-button {
     margin-right: 10px;
 }
-.k-button .k-image {
+#button-images .k-button .k-image {
     height: 16px;
 }
-.netherlandsFlag {
+#button-images .netherlandsFlag {
     background-image: url("http://demos.telerik.com/kendo-ui/content/shared/styles/flags.png");
     background-position: 0 -64px;
 }

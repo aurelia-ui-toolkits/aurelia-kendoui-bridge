@@ -2,7 +2,9 @@
     <section>
         <collapse-panel title.bind="sample.title">
           <div id="exampleWrap">
-            <compose view-model.bind="sample.path"></compose>
+            <div id="${sample.control}-${sample.sample}">
+              <compose view-model.bind="sample.path"></compose>
+            </div>
           </div>
         </collapse-panel>
         <collapse-panel title="Code Preview">
