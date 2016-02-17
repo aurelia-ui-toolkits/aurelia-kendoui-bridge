@@ -8,7 +8,7 @@
                 <li>Square</li>
             </ul>
         </div>
-        <div id="info" class="box-col"></div>
+        <div ref="info" class="box-col"></div>
     </div>
 
     <div id="map-bubble-layer">
@@ -18,9 +18,21 @@
                k-min-zoom.bind = "3"
                k-wraparound.bind = "false"
                k-layers.bind = "layers"
-               k-widget.two-way = "map">
+               k-widget.two-way = "map"
+               k-on-shape-mouse-enter.delegate="onShapeMouseEnter($event.detail)"
+               k-on-reset.delegate="onReset()">
         </k-map>
       </div>
     </div>
    </div>
+
+   <script ref="infoTemplate" type="text/x-kendo-template">
+    <h4>#: City #, #= Country #</h4>
+    <p class="info">Population #= kendo.toString(Pop2010 * 1000, "N0") #</p>
+   </script>
+
+   <script ref="emptyInfoTemplate" type="text/x-kendo-template">
+    <h4>Hover over urban areas</h4>
+    <p>&nbsp;</p>
+   </script>
 </template>

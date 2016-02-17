@@ -41,4 +41,20 @@ export class BubbleLayer {
       index: 0
     });
   }
+
+  onReset() {
+    this.info.innerHTML = kendo.template(this.emptyInfoTemplate.innerHTML)({});
+    this.activeShape = null;
+  }
+
+  onShapeMouseEnter(e) {
+    if (this.activeShape) {
+      this.activeShape.options.set('stroke', null);
+    }
+
+    this.activeShape = e.shape;
+    this.activeShape.options.set('stroke', { width: 1.5, color: '#fff' });
+
+    this.info.innerHTML = kendo.template(this.infoTemplate.innerHTML)(e.shape.dataItem);
+  }
 }
