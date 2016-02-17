@@ -1,0 +1,48 @@
+{
+  "title": "Map",
+  "samples": {
+      "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js"]
+    },
+      "api": {
+      "files": ["html", "js"],
+      "route": ["api"],
+      "files": ["html", "js"]
+    },
+      "binding-markers-to-remote-data": {
+      "route": ["binding-markers-to-remote-data"],
+      "files": ["html", "js"]
+    },
+      "bing-tile-layer": {
+      "files": ["html", "js"],
+      "route": ["bing-tile-layer"],
+      "files": ["html", "js"]
+    },
+    "bubble-layer": {
+    "files": ["html", "js"],
+    "route": ["bubble-layer"],
+    "files": ["html", "js"]
+    },
+    "binding-to-geojson": {
+      "files": ["html", "js"],
+      "route": ["binding-to-geojson"],
+      "files": ["html", "js"]
+    },
+    "binding-markers-to-remote-data": {
+      "files": ["html", "js"],
+      "route": ["binding-markers-to-remote-data"],
+      "files": ["html", "js"]
+    },
+    "export": {
+      "files": ["html", "js"],
+      "route": ["export"],
+      "files": ["html", "js"]
+    },
+    "events": {
+      "files": ["html", "js"],
+      "route": ["events"],
+      "files": ["html", "js"]
+    }
+  }
+}
