@@ -1,18 +1,18 @@
-#dropdownlist-templates .dropdown-header {
+#dropdownlist-customizing-templates-customers-list .dropdown-header {
     border-width: 0 0 1px 0;
     text-transform: uppercase;
 }
 
-#dropdownlist-templates .dropdown-header > span {
+#dropdownlist-customizing-templates-customers-list .dropdown-header > span {
     display: inline-block;
     padding: 10px;
 }
 
-#dropdownlist-templates .dropdown-header > span:first-child {
+#dropdownlist-customizing-templates-customers-list .dropdown-header > span:first-child {
     width: 50px;
 }
 
-#dropdownlist-templates .selected-value {
+#dropdownlist-customizing-templates .selected-value {
     display: inline-block;
     vertical-align: middle;
     width: 24px;
@@ -22,22 +22,22 @@
     border-radius: 50%;
 }
 
-#dropdownlist-templates #customersdropdown-list .k-item {
+#dropdownlist-customizing-templates-customers-list .k-item {
     line-height: 1em;
     min-width: 300px;
 }
 
 /* Material Theme padding adjustment*/
 
-#dropdownlist-templates .k-material #customers-list .k-item,
-#dropdownlist-templates .k-material #customers-list .k-item.k-state-hover,
-#dropdownlist-templates .k-materialblack #customers-list .k-item,
-#dropdownlist-templates .k-materialblack #customers-list .k-item.k-state-hover {
+#dropdownlist-customizing-templates-customers-list .k-material .k-item,
+#dropdownlist-customizing-templates-customers-list .k-material .k-item.k-state-hover,
+#dropdownlist-customizing-templates-customers-list .k-materialblack .k-item,
+#dropdownlist-customizing-templates-customers-list .k-materialblack .k-item.k-state-hover {
     padding-left: 5px;
     border-left: 0;
 }
 
-#customersdropdown-list .k-item > span {
+#dropdownlist-customizing-templates-customers-list .k-item > span {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -46,7 +46,7 @@
     margin: 20px 10px 10px 5px;
 }
 
-#customersdropdown-list .k-item > span:first-child {
+#dropdownlist-customizing-templates-customers-list .k-item > span:first-child {
     -moz-box-shadow: inset 0 0 30px rgba(0,0,0,.3);
     -webkit-box-shadow: inset 0 0 30px rgba(0,0,0,.3);
     box-shadow: inset 0 0 30px rgba(0,0,0,.3);
@@ -58,14 +58,14 @@
     background-repeat: no-repeat;
 }
 
-#customersdropdown-list h3 {
+#dropdownlist-customizing-templates-customers-list h3 {
     font-size: 1.2em;
     font-weight: normal;
     margin: 0 0 1px 0;
     padding: 0;
 }
 
-#customersdropdown-list p {
+#dropdownlist-customizing-templates-customers-list p {
     margin: 0;
     padding: 0;
     font-size: .8em;

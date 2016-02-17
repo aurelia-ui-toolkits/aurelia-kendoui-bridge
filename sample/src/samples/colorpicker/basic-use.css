@@ -1,9 +1,9 @@
-#colorpicker-basicuse .demo-section {
+#colorpicker-basic-use .demo-section {
     height: 600px;
     width: 600px;
 }
 
-#colorpicker-basicuse #background {
+#colorpicker-basic-use #background {
     background: transparent url(http://demos.telerik.com/kendo-ui/content/web/colorpicker/interior-bg.png) no-repeat;
     margin: 0 auto;
     width: 100%;
@@ -11,14 +11,14 @@
     overflow: hidden;
 }
 
-#colorpicker-basicuse .column {
+#colorpicker-basic-use .column {
     margin-top: 384px;
     float: left;
     width: 300px;
     text-align: center;
 }
 
-#colorpicker-basicuse .column .title {
+#colorpicker-basic-use .column .title {
     color: #a3a3a3;
     text-transform: uppercase;
     font-size: 11px;
@@ -26,9 +26,9 @@
     padding: 41px 0 20px;
 }
 
-#colorpicker-basicuse #palette {
+#colorpicker-basic-use #palette {
     vertical-align: top;
     display: inline-block;
 }
 
-#colorpicker-basicuse .k-colorpicker { vertical-align: top; margin: 20px 0; }
+#colorpicker-basic-use .k-colorpicker { vertical-align: top; margin: 20px 0; }

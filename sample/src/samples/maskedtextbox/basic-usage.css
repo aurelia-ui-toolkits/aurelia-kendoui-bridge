@@ -1,14 +1,14 @@
-#fieldlist {
+#maskedtextbox-basic-usage #fieldlist {
     margin: 0 0 -2em;
     padding: 0;
 }
 
-#fieldlist li {
+#maskedtextbox-basic-usage #fieldlist li {
     list-style: none;
     padding-bottom: 2em;
 }
 
-#fieldlist label {
+#maskedtextbox-basic-usage #fieldlist label {
     display: block;
     padding-bottom: 1em;
     font-weight: bold;
@@ -17,6 +17,6 @@
     color: #444;
 }
 
-#fieldlist input {
+#maskedtextbox-basic-usage #fieldlist input {
     width: 100%;
 }

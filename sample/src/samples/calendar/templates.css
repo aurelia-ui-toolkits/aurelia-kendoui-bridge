@@ -5,20 +5,20 @@
 
 /* Template Days */
 
-.exhibition,
-.party,
-.cocktail {
+#calendar-templates .exhibition,
+#calendar-templates .party,
+#calendar-templates .cocktail {
     font-weight: bold;
 }
 
-.exhibition {
+#calendar-templates .exhibition {
     color: #ff9e00;
 }
 
-.party {
+#calendar-templates .party {
     color: #ff4081;
 }
 
-.cocktail {
+#calendar-templates .cocktail {
     color: #00a1e8;
 }

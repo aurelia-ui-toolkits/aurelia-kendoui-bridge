@@ -1,6 +1,6 @@
-.box .k-textbox {
+#datetimepicker-api .box .k-textbox {
     width: 80px;
 }
-.box .k-button {
+#datetimepicker-api .box .k-button {
     min-width: 80px;
 }

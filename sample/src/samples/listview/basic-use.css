@@ -1,9 +1,9 @@
-#listview-basicuse k-listview {
+#listview-basic-use k-listview {
   padding: 10px 5px;
   margin-bottom: -1px;
   min-height: 510px;
 }
-#listview-basicuse .product {
+#listview-basic-use .product {
   float: left;
   position: relative;
   width: 111px;
@@ -11,11 +11,11 @@
   margin: 0 5px;
   padding: 0;
 }
-#listview-basicuse .product img {
+#listview-basic-use .product img {
   width: 110px;
   height: 110px;
 }
-#listview-basicuse .product h3 {
+#listview-basic-use .product h3 {
   margin: 0;
   padding: 3px 5px 0 0;
   max-width: 96px;
@@ -26,10 +26,10 @@
   text-transform: uppercase;
   color: #999;
 }
-#listview-basicuse .product p {
+#listview-basic-use .product p {
   visibility: hidden;
 }
-#listview-basicuse .product:hover p {
+#listview-basic-use .product:hover p {
   visibility: visible;
   position: absolute;
   width: 110px;
@@ -47,7 +47,7 @@
   -webkit-transition: background .2s linear, color .2s linear;
   -o-transition: background .2s linear, color .2s linear;
 }
-#listview-basicuse .k-listview:after {
+#listview-basic-use .k-listview:after {
   content: ".";
   display: block;
   height: 0;

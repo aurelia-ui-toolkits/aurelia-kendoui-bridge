@@ -1,33 +1,31 @@
 <template>
   <require from="./standalone.css"></require>
-  <div id="colorpicker-standalone">
-    <div class="demo-section hidden-on-narrow k-content wide">
-      <div class="product-display">
-        <img class="product-image" src="http://demos.telerik.com/kendo-ui/content/web/colorpicker/sofa-ffcc33.jpg" alt="" width="285" height="149">
+  <div class="demo-section hidden-on-narrow k-content wide">
+    <div class="product-display">
+      <img class="product-image" src="http://demos.telerik.com/kendo-ui/content/web/colorpicker/sofa-ffcc33.jpg" alt="" width="285" height="149">
 
-        <k-color-palette k-palette.bind="[ '#ddd1c3', '#d2d2d2', '#746153', '#3a4c8b', '#ffcc33', '#fb455f', '#ac120f' ]"
-                         k-tile-size.bind="30"
-                         k-value="#ffcc33"
-                         k-on-change.delegate="select($event.detail)"></k-color-palette>
-      </div>
-
-      <div class="product-info">
-        <h3>Natural Linen Loveseat</h3>
-        <p>Add comfortable seating to your living room or den. The soft foam in the cushions make this loveseat a great place to relax.</p>
-        <dl>
-            <dt>Dimensions</dt>
-            <dd>34" D x 52" W x 31" H</dd>
-
-            <dt>Materials</dt>
-            <dd>Wood, Fabric, Foam</dd>
-
-            <dt>Assembly</dt>
-            <dd>No Assembly Required</dd>
-        </dl>
-
-        <button class="k-primary k-button">Add to cart</button>
-      </div>
+      <k-color-palette k-palette.bind="[ '#ddd1c3', '#d2d2d2', '#746153', '#3a4c8b', '#ffcc33', '#fb455f', '#ac120f' ]"
+                       k-tile-size.bind="30"
+                       k-value="#ffcc33"
+                       k-on-change.delegate="select($event.detail)"></k-color-palette>
     </div>
-    <div class="responsive-message"></div>
+
+    <div class="product-info">
+      <h3>Natural Linen Loveseat</h3>
+      <p>Add comfortable seating to your living room or den. The soft foam in the cushions make this loveseat a great place to relax.</p>
+      <dl>
+          <dt>Dimensions</dt>
+          <dd>34" D x 52" W x 31" H</dd>
+
+          <dt>Materials</dt>
+          <dd>Wood, Fabric, Foam</dd>
+
+          <dt>Assembly</dt>
+          <dd>No Assembly Required</dd>
+      </dl>
+
+      <button class="k-primary k-button">Add to cart</button>
+    </div>
   </div>
+  <div class="responsive-message"></div>
 </template>

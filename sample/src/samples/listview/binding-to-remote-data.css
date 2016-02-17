@@ -1,9 +1,9 @@
-#listview-remotedata k-listview {
+#listview-binding-to-remote-data k-listview {
   padding: 10px 5px;
   margin-bottom: -1px;
   min-height: 510px;
 }
-#listview-remotedata .product {
+#listview-binding-to-remote-data .product {
   float: left;
   position: relative;
   width: 111px;
@@ -11,11 +11,11 @@
   margin: 0 5px;
   padding: 0;
 }
-#listview-remotedata .product img {
+#listview-binding-to-remote-data .product img {
   width: 110px;
   height: 110px;
 }
-#listview-remotedata .product h3 {
+#listview-binding-to-remote-data .product h3 {
   margin: 0;
   padding: 3px 5px 0 0;
   max-width: 96px;
@@ -26,10 +26,10 @@
   text-transform: uppercase;
   color: #999;
 }
-#listview-remotedata .product p {
+#listview-binding-to-remote-data .product p {
   visibility: hidden;
 }
-#listview-remotedata .product:hover p {
+#listview-binding-to-remote-data .product:hover p {
   visibility: visible;
   position: absolute;
   width: 110px;
@@ -47,7 +47,7 @@
   -webkit-transition: background .2s linear, color .2s linear;
   -o-transition: background .2s linear, color .2s linear;
 }
-#listview-remotedata .k-listview:after {
+#listview-binding-to-remote-data .k-listview:after {
   content: ".";
   display: block;
   height: 0;

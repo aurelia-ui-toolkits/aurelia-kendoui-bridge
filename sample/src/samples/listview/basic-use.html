@@ -1,16 +1,14 @@
 <template>
     <require from="./basic-use.css"></require>
-    <div id="listview-basicuse">
-      <k-list-view k-data-source.bind="dataSource">
-        <k-list-template>
-          <div class="product">
-              <img src="http://demos.telerik.com/kendo-ui/content/web/foods/${ProductID}.jpg" alt="${ProductName} image" />
-              <h3>${ProductName}</h3>
-              <p>${UnitPrice}</p>
-          </div>
-        </k-list-template>
-      </k-list-view>
+    <k-list-view k-data-source.bind="dataSource">
+      <k-list-template>
+        <div class="product">
+            <img src="http://demos.telerik.com/kendo-ui/content/web/foods/${ProductID}.jpg" alt="${ProductName} image" />
+            <h3>${ProductName}</h3>
+            <p>${UnitPrice}</p>
+        </div>
+      </k-list-template>
+    </k-list-view>
 
-      <div ref="pager" class="k-pager-wrap"></div>
-    </div>
+    <div ref="pager" class="k-pager-wrap"></div>
 </template>
