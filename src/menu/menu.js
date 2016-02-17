@@ -27,11 +27,12 @@ export class Menu {
 
   recreate() {
     let element;
-    let ul = $(this.element).find('ul');
-    if (ul.has()) {
-      element = $(this.element).find('ul').first();
+    let ul = this.element.querySelectorAll('ul');
+    if (ul.length > 0) {
+      element = ul[0];
     } else {
-      element = $(this.element).appendChild('<ul></ul>');
+      element = document.createElement('ul');
+      this.element.appendChild(element);
     }
 
     this.kWidget = this.widgetBase.createWidget({
