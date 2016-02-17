@@ -21,6 +21,7 @@ export class KendoConfigBuilder {
       .kendoFlatColorPicker()
       .kendoListView()
       .kendoMaskedTextBox()
+      .kendoMenu()
       .kendoNumericTextBox()
       .kendoPanelBar()
       .kendoProgressBar()

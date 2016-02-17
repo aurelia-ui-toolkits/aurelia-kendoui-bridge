@@ -1,6 +1,6 @@
 <br>
 
-### 4. Bundling KendoUI
+### 5. Bundling KendoUI
 <br>
 
 The Aurelia-KendoUI-bridge is designed to offer you - as end-user - flexibility. The wrappers include only the Kendo files they need for that particular control to work. These files exist (in minified state) in the `js` folder of KendoUI distribution.
