@@ -3,8 +3,8 @@ import {customElement, bindable, children} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo-ui/js/kendo.dropdownlist.min';
-import 'kendo-ui/js/kendo.virtuallist.min';
+import 'kendo.dropdownlist.min';
+import 'kendo.virtuallist.min';
 
 @customElement(`${constants.elementPrefix}drop-down-list`)
 @generateBindables('kendoDropDownList')

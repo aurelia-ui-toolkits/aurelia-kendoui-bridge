@@ -18,5 +18,5 @@ gulp.task('watch', ['serve'], function() {
   gulp.watch(paths.html, ['build-system', 'copy-html', bs.reload]).on('change', reportChange);
   gulp.watch(paths.style, bs.reload).on('change', reportChange);
   gulp.watch(paths.sample + '/*', bs.reload).on('change', reportChange);
-  gulp.watch(paths.sample + '/src/**/*', bs.reload).on('change', reportChange);
+  gulp.watch(paths.sample + '/src/**/*', { interval: 500 }, bs.reload).on('change', reportChange);
 });

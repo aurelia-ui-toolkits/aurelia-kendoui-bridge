@@ -1,4 +1,4 @@
-import 'kendo-ui/js/kendo.pdf.min';
-import 'kendo-ui/js/kendo.excel.min';
+import 'kendo.pdf.min';
+import 'kendo.excel.min';
 
 export class PDF {}

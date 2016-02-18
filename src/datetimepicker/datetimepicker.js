@@ -3,7 +3,7 @@ import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo-ui/js/kendo.datetimepicker.min';
+import 'kendo.datetimepicker.min';
 
 @customAttribute(`${constants.attributePrefix}datetimepicker`)
 @generateBindables('kendoDateTimePicker')
