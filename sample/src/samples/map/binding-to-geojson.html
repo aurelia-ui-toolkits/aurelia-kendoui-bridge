@@ -2,9 +2,12 @@
   <div id="example">
     <div id="map-binding-to-geojson">
       <div style="text-align: center">
-        <k-map k-center.bind = "center"
-               k-zoom.bind = 3
-               k-layers.bind = "layers">
+        <k-map k-center.bind="center"
+               k-zoom.bind="3"
+               k-layers.bind="layers"
+               k-on-shape-created.delegate="onShapeCreated($event.detail)"
+               k-on-shape-mouse-enter.delegate="onShapeMouseEnter($event.detail)"
+               k-on-shape-mouse-leave.delegate="onShapeMouseLeave($event.detail)">
         </k-map>
       </div>
     </div>

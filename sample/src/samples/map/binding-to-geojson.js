@@ -3,6 +3,9 @@ import 'gka/chroma.js/chroma.min';
 export class BindingToGeojson {
 
   center = [30.2681, -97.7448];
+  scale = chroma
+            .scale(['white', 'green'])
+            .domain([1, 1000]);
 
   layers = [{
     type: 'shape',
@@ -19,12 +22,23 @@ export class BindingToGeojson {
           .then(data => options.success(data));
         }
       }
-    }),
-    locationField: 'Location',
-    valueField: 'Pop2010'
+    })
   }];
 
-  attached() {
-    console.log(chroma);
+  onShapeCreated(e) {
+    let shape = e.shape;
+    let users = shape.dataItem.properties.users;
+    if (users) {
+      let color = this.scale(users).hex();
+      shape.options.fill.set('color', color);
+    }
+  }
+
+  onShapeMouseEnter(e) {
+    e.shape.options.set('fill.opacity', 1);
+  }
+
+  onShapeMouseLeave(e) {
+    e.shape.options.set('fill.opacity', 0.7);
   }
 }
