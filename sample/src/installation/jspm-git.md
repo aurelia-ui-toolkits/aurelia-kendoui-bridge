@@ -62,7 +62,7 @@ Now we're going to register the plugin with Aurelia in your "main.js" or equival
 6. Now let's open up "app.html" and load KendoUI's CSS files
 
     ```
-    <require from="kendo-ui/styles/kendo.common.core.min.css!"></require>
+    <require from="kendo-ui/styles/kendo.common.min.css!"></require>
     <require from="kendo-ui/styles/kendo.bootstrap.min.css!"></require>
     ```
 <br>
