@@ -56,7 +56,6 @@
   },
   "Navigation": {
     "Button": "button",
-    "Menu": "menu",
     "Treeview": "treeview",
     "Panel Bar": "panelbar"
   },
