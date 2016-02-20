@@ -84,7 +84,7 @@ describe('TemplateCompiler', () => {
     let $parent = {};
     let viewResources = {};
     let spy = spyOn(sut, 'enhanceView');
-    for (let i = 0; i < 10; i++) {
+    for (let i = 10; i < 20; i++) {
       elements.push(DOM.createElement('div'));
       data.push({dataItem: i});
     }
@@ -94,6 +94,29 @@ describe('TemplateCompiler', () => {
     for (let i = 0; i < elements.length; i++) {
       expect(spy).toHaveBeenCalledWith($parent, elements[i], data[i].dataItem, viewResources);
     }
+  });
+
+  it('enhances with narrow scope context', () => {
+    let elements = [];
+    let data = [];
+    let $parent = {};
+    let viewResources = {};
+    let spy = spyOn(sut, 'enhanceView');
+
+    elements.push(DOM.createElement('div'));
+    data.push({dataItem: 15});
+
+    elements.push(DOM.createElement('div'));
+    data.push({aggregate: 30});
+
+    elements.push(DOM.createElement('div'));
+    data.push({something: 45});
+
+    sut.compile($parent, elements, data, viewResources);
+
+    expect(spy).toHaveBeenCalledWith($parent, elements[0], 15, viewResources);
+    expect(spy).toHaveBeenCalledWith($parent, elements[1], 30, viewResources);
+    expect(spy).toHaveBeenCalledWith($parent, elements[2], {something: 45}, viewResources);
   });
 
   it('supports jQuery selector', () => {

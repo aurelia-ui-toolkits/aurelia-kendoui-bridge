@@ -2,7 +2,6 @@ import 'kendo-ui/js/kendo.button.min';
 import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 import {TemplateCompiler} from 'src/common/template-compiler';
-import {ControlProperties} from 'src/common/control-properties';
 import {initialize} from 'aurelia-pal-browser';
 import {TaskQueue} from 'aurelia-task-queue';
 import {DOM} from 'aurelia-pal';
@@ -13,7 +12,6 @@ describe('WidgetBase', () => {
   let templateCompilerFake;
   let container;
   let templatingEngine;
-  let controlProperties;
 
   beforeEach(() => {
     initialize();
@@ -25,14 +23,9 @@ describe('WidgetBase', () => {
       initialize: jasmine.createSpy()
     };
 
-    controlProperties = {
-      getProperties: jasmine.createSpy()
-    };
-
     container = new Container();
     container.registerInstance(TemplateCompiler, templateCompilerFake);
     container.registerInstance(TaskQueue, {});
-    container.registerInstance(ControlProperties, controlProperties);
 
     templatingEngine = container.get(TemplatingEngine);
     sut = templatingEngine.createViewModelForUnitTest(WidgetBase);
@@ -182,27 +175,6 @@ describe('WidgetBase', () => {
 
     expect(widget._$resources).toBe(viewResources);
     expect(widget.options._$resources[0].a).toBe('b');
-  });
-
-  it('getOptionsFromBindables harvests properties from viewModel', () => {
-    sut.controlName = 'kendoButton';
-    controlProperties.getProperties = jasmine.createSpy().and.returnValue(['option1', 'test', 'dataSource', 'widget']);
-    let datasource = {};
-    let widget = {};
-
-    sut.viewModel = {
-      kOption1: 'a',
-      kTest: 'b',
-      kDataSource: datasource,
-      kWidget: widget
-    };
-
-    let options = sut.getOptionsFromBindables();
-
-    expect(options.option1).toBe('a');
-    expect(options.test).toBe('b');
-    expect(options.dataSource).toBe(datasource);
-    expect(options.widget).toBeUndefined();
   });
 
   it('createWidget looks at the rootElement for event attributes when a rootElement is supplied', () => {
