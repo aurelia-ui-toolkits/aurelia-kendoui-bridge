@@ -43,7 +43,5 @@ export class Editing {
     $(this.pager).kendoPager({
       dataSource: this.dataSource
     });
-
-    console.log(this.dataSource);
   }
 }
