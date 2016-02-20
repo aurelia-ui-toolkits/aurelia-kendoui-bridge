@@ -45,6 +45,8 @@ export class KendoConfigBuilder {
       .kendoChart()
       .kendoEditor()
       .kendoGrid()
+      .kendoLinearGauge()
+      .kendoRadialGauge()
       .kendoScheduler()
       .kendoTreeList()
       .kendoTreeView();
@@ -149,6 +151,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoLinearGauge(): KendoConfigBuilder {
+    this.resources.push('gauges/linear-gauge');
+    return this;
+  }
+
   kendoListView(): KendoConfigBuilder {
     this.resources.push('listview/listview');
     this.resources.push('listview/k-list-template');
@@ -184,6 +191,11 @@ export class KendoConfigBuilder {
 
   kendoProgressBar(): KendoConfigBuilder {
     this.resources.push('progressbar/progressbar');
+    return this;
+  }
+
+  kendoRadialGauge(): KendoConfigBuilder {
+    this.resources.push('gauges/radial-gauge');
     return this;
   }
 
