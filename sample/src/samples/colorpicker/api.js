@@ -8,4 +8,8 @@ export class Api {
       alert(e);
     }
   }
+
+  getColor() {
+    alert(this.colorPicker.value());
+  }
 }

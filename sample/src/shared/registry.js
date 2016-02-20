@@ -11,6 +11,8 @@ export class Registry {
 
         sample.path = `samples/${control}/${_sample}`;
         sample.route = sample.route || _sample;
+        sample.control = control;
+        sample.sample = _sample;
         sample.title = sample.title || this.getTitleFromRoute(_sample);
         sample.moduleId = sample.moduleId || 'sample-runner';
         sample.nav = sample.nav || true;

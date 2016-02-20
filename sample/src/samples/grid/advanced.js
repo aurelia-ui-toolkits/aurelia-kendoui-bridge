@@ -8,4 +8,8 @@ export class Advanced {
       ContactName: 'nikolaj'
     }]
   }
+
+  showAlert(message) {
+    alert(message);
+  }
 }

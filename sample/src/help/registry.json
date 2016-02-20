@@ -89,6 +89,15 @@
       },
     ],
 
+    "App developers notes":
+    [
+      {
+        "name": "1. Introduction",
+        "path": "help/docs/app-developers-notes/introduction.md"
+      }
+
+    ],
+
     "Bridge developers tutorials":
     [
       {
@@ -133,8 +142,8 @@
         "path": "help/docs/bridge-developers-notes/bridge-utilities.md"
       },
       {
-        "name": "3. Generation of 'Bindables'",
-        "path": "help/docs/bridge-developers-notes/bindables.md"
+        "name": "3. Generation of 'bindables'",
+        "path": "help/docs/bridge-developers-notes/generation-of-bindable-properties.md"
       },
       {
         "name": "4. Babel DTS generator",
@@ -151,6 +160,14 @@
       {
         "name": "7. Template compilation",
         "path": "help/docs/bridge-developers-notes/template-compilation.md"
+      },
+      {
+        "name": "8. Harvesting bindable variables",
+        "path": "help/docs/bridge-developers-notes/harvesting-bindable-variables.md"
+      },
+      {
+        "name": "9. Registry helper class",
+        "path": "help/docs/bridge-developers-notes/registry-use.md"
       },
     ]
 }

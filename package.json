@@ -85,6 +85,7 @@
     "karma-jspm": "^2.0.2",
     "object.assign": "^1.0.3",
     "phantomjs-polyfill": "0.0.1",
+    "request": "^2.69.0",
     "require-dir": "^0.1.0",
     "run-sequence": "^1.0.2",
     "through2": "^2.0.0",

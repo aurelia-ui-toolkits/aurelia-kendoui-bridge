@@ -1,6 +1,6 @@
-.box .k-textbox {
+#datepicker-api .box .k-textbox {
     width: 80px;
 }
-.box .k-button {
+#datepicker-api .box .k-button {
     min-width: 80px;
 }

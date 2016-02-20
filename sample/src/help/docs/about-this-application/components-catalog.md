@@ -1,10 +1,11 @@
 <br>
 ### 3. Catalog of KendoUI controls as Aurelia components.
 
-This is the most likely fashion this application is being used. Invoked via URL: **<a href="http://aurelia-ui-toolkits.github.io/demo-kendo">http://aurelia-ui-toolkits.github.io/demo-kendo</a>** the application renders the view shown below, which shows the likely most interesting control **grid** by default.
+Being a catalog is the most likely fashion this application is being used. Invoked via URL: **<a href="http://aurelia-ui-toolkits.github.io/demo-kendo">http://aurelia-ui-toolkits.github.io/demo-kendo</a>** the application renders the view shown below, which shows the likely most interesting control **grid**, in the context of the "About page".
 
+<br>
 <p align=center>
-  <img src="http://i.imgur.com/3AWmKbp.png"></img>
+  <img src="https://cloud.githubusercontent.com/assets/2712405/13064878/bd047f2a-d424-11e5-8b9b-9bb226d7d6b1.png"></img>
 <br>
   Image 1
 </p>

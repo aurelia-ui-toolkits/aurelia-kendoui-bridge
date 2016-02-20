@@ -1,4 +1,4 @@
-.customer-photo {
+#grid-basic-use .customer-photo {
     display: inline-block;
     width: 32px;
     height: 32px;
@@ -11,7 +11,7 @@
     margin-left: 5px;
 }
 
-.customer-name {
+#grid-basic-use .customer-name {
     display: inline-block;
     vertical-align: middle;
     line-height: 32px;

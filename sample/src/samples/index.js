@@ -22,13 +22,17 @@ export class Index {
       { name: 'button',           route: 'button',              moduleId: './button/index',                 title: 'Button'},
       { name: 'calendar',         route: 'calendar',            moduleId: './calendar/index',               title: 'Calendar'},
       { name: 'colorpicker',      route: 'colorpicker',         moduleId: './colorpicker/index',            title: 'Color Picker'},
+      { name: 'combobox',         route: 'combobox',            moduleId: './combobox/index',               title: 'ComboBox'},
       { name: 'datepicker',       route: 'datepicker',          moduleId: './datepicker/index',             title: 'DatePicker'},
       { name: 'datetimepicker',   route: 'datetimepicker',      moduleId: './datetimepicker/index',         title: 'DateTimePicker'},
       { name: 'donut-charts',     route: 'donut-charts',        moduleId: './chart/donut-charts/index',     title: 'Donut Charts',      settings: { pro: true } },
       { name: 'dropdownlist',     route: 'dropdownlist',        moduleId: './dropdownlist/index',           title: 'Drop Down List'},
+      { name: 'editor',           route: 'editor',              moduleId: './editor/index',                 title: 'Editor',            settings: { pro: true } },
       { name: 'funnel-charts',    route: 'funnel-charts',       moduleId: './chart/funnel-charts/index',    title: 'Funnel Charts',     settings: { pro: true } },
       { name: 'grid',             route: 'grid',                moduleId: './grid/index',                   title: 'Grid',              settings: { pro: true } },
       { name: 'line-charts',      route: 'line-charts',         moduleId: './chart/line-charts/index',      title: 'Line Charts',       settings: { pro: true } },
+      { name: 'listview',         route: 'listview',            moduleId: './listview/index',               title: 'ListView' },
+      { name: 'map',              route: 'map',                 moduleId: './map/index',                    title: 'Map',               settings: { pro: true } },
       { name: 'menu',             route: 'menu',                moduleId: './menu/index',                   title: 'Menu'},
       { name: 'numerictextbox',   route: 'numerictextbox',      moduleId: './numerictextbox/index',         title: 'NumericTextBox' },
       { name: 'maskedtextbox',    route: 'maskedtextbox',       moduleId: './maskedtextbox/index',          title: 'MaskedTextBox' },
@@ -49,6 +53,7 @@ export class Index {
       { name: 'treemap',          route: 'treemap',             moduleId: './chart/treemap/index',          title: 'Treemap'},
       { name: 'treelist',         route: 'treelist',            moduleId: './treelist/index',               title: 'Treelist'},
       { name: 'treeview',         route: 'treeview',            moduleId: './treeview/index',               title: 'Treeview'},
+      { name: 'valueconverters',  route: 'valueconverters',     moduleId: './valueconverters/index',        title: 'ValueConverters'},
       { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts'}
     ]);
 

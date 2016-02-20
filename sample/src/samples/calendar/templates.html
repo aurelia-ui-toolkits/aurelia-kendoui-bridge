@@ -1,16 +1,14 @@
 <template>
   <require from="./templates.css"></require>
   <div id="example">
-    <div id="calendar-templates">
-      <div class="demo-section k-content" style="text-align: center;">
-        <div id="special-days">
-           <k-calendar k-value.bind="today"
-                       k-dates.bind="events"
-                       k-month.bind="month"
-                       k-footer.bind="false">
-           </k-calendar>
-        </div>
-       </div>
-    </div>
+    <div class="demo-section k-content" style="text-align: center;">
+      <div id="special-days">
+         <k-calendar k-value.bind="today"
+                     k-dates.bind="events"
+                     k-month.bind="month"
+                     k-footer.bind="false">
+         </k-calendar>
+      </div>
+     </div>
    </div>
 </template>

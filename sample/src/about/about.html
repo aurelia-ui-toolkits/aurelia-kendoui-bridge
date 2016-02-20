@@ -7,6 +7,7 @@
         <h3>Industry standard, tried and tested HTML5 widgets - enhanced by Aurelia</h3>
       </div>
     </div>
+
     <div class="row">
        <div class="col-xs-12 col-sm-4 text-center">
            <a href="http://aurelia.io" target="_blank"><img src="images/aurelia-logo.png" /></a>
@@ -18,6 +19,7 @@
          <a href="http://www.telerik.com/kendo-ui" target="_blank"><img src="images/kendo-ui-logo.png" /></a>
        </div>
     </div>
+
     <section>
       <h4 class="text-center" style="padding-top: 20px; padding-bottom:20px">
         <ul class="features">
@@ -32,19 +34,21 @@
       <div class="row">
         <div class="col-sm-12">
           <k-grid k-data-source.bind="datasource" k-pageable.bind="{ refresh: true, pageSizes: true, buttonCount: 10 }" k-sortable.bind="true">
-            <k-col title="Contact Name" field="ContactName">
-              <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
-              <div class='customer-name'>${ContactName}</div>
+            <k-col k-title="Contact Name" k-field="ContactName">
+              <k-template>
+                <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+                <div class='customer-name'>${ContactName}</div>
+              </k-template>
             </k-col>
-            <k-col title="Contact Title" field="ContactTitle"></k-col>
-            <k-col title="Company Name" field="CompanyName"></k-col>
-            <k-col field="Country"></k-col>
+            <k-col k-title="Contact Title" k-field="ContactTitle"></k-col>
+            <k-col k-title="Company Name" k-field="CompanyName"></k-col>
+            <k-col k-field="Country"></k-col>
           </k-grid>
         </div>
       </div>
       <div class="row" style="margin-top: 10px">
         <div class="col-sm-12">
-          <div k-tabstrip k-tabstrip.ref="tabstrip">
+          <div k-tabstrip="k-animation.bind: false" k-tabstrip.ref="tabstrip">
               <ul>
                   <li class="k-state-active">Without Bridge</li>
                   <li>With Bridge (View)</li>

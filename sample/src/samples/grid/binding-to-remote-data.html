@@ -1,9 +1,9 @@
 <template>
   <k-grid k-data-source.bind="datasource" k-pageable.bind="true" k-filterable.bind="true" k-sortable.bind="true">
-    <k-col title="OrderId" field="OrderID"></k-col>
-    <k-col field="Freight"></k-col>
-    <k-col title="Order Date" field="OrderDate" format="{0:MM/dd/yyyy}"></k-col>
-    <k-col title="Ship Name" field="ShipName"></k-col>
-    <k-col title="Ship City" field="ShipCity"></k-col>
+    <k-col k-title="OrderId" k-field="OrderID"></k-col>
+    <k-col k-field="Freight"></k-col>
+    <k-col k-title="Order Date" k-field="OrderDate" k-format="{0:MM/dd/yyyy}"></k-col>
+    <k-col k-title="Ship Name" k-field="ShipName"></k-col>
+    <k-col k-title="Ship City" k-field="ShipCity"></k-col>
   </k-grid>
 </template>

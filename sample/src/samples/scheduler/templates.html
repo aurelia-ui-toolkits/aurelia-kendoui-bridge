@@ -8,14 +8,14 @@
                    k-views.bind="['day', 'agenda']"
                    k-editable.bind="false"
                    k-data-source.bind="dataSource">
-        <k-event-template>
+        <k-template for="eventTemplate">
           <div class="movie-template">
             <img src="${image}">
             <p>${start | movieTime} - ${end | movieTime}</p>
             <h3>${title}</h3>
             <a href="${imdb}">Movie in IMDB</a>
           </div>
-        </k-event-template>
+        </k-template>
       </k-scheduler>
   </div>
 </template>

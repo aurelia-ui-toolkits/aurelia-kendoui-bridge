@@ -2,6 +2,7 @@
   "Most popular": {
     "Grid": "grid",
     "Scheduler": "scheduler",
+    "DropDownList": "dropdownlist",
     "Bar Charts": "bar-charts",
     "Line Charts": "line-charts",
     "Stock Charts": "stock",
@@ -9,13 +10,17 @@
   },
   "Data management": {
     "Grid": "grid",
+    "ListView": "listview",
     "TreeList": "treelist"
   },
   "Editors": {
     "Autocomplete": "autocomplete",
     "ColorPicker": "colorpicker",
+    "ComboBox": "combobox",
     "DatePicker": "datepicker",
     "DateTimePicker": "datetimepicker",
+    "DropDownList": "dropdownlist",
+    "Editor": "editor",
     "NumericTextBox": "numerictextbox",
     "MaskedTextBox": "maskedtextbox",
     "Slider": "slider",
@@ -51,11 +56,17 @@
   },
   "Navigation": {
     "Button": "button",
-    "Menu": "menu",
     "Treeview": "treeview",
     "Panel Bar": "panelbar"
   },
+  "Diagrams & Maps" : {
+    "Map": "map"
+  },
+
   "Interactivity & UX": {
     "ProgressBar": "progressbar"
+  },
+  "Tools": {
+    "ValueConverters": "valueconverters"
   }
 }

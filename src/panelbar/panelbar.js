@@ -2,7 +2,7 @@ import {inject} from 'aurelia-dependency-injection';
 import {customElement, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import 'kendo-ui/js/kendo.panelbar.min';
+import 'kendo.panelbar.min';
 
 @customElement('k-panel-bar')
 @generateBindables('kendoPanelBar')

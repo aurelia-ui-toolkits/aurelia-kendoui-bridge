@@ -1,5 +1,5 @@
 {
-  "title": "Drop Down List",
+  "title": "DropDownList",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]
@@ -12,6 +12,7 @@
     "customizing-templates": {},
     "grouping": {},
     "server-filtering": {},
-    "virtualization": {}
+    "virtualization": {},
+    "events": {}
   }
 }

@@ -1,7 +1,7 @@
-.demo-section {
+#calendar-api .demo-section {
     text-align: center;
 }
-.box .k-textbox {
+#calendar-api .box .k-textbox {
     margin: 0;
     width: 80px;
 }

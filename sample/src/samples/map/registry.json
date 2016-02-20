@@ -1,0 +1,18 @@
+{
+  "title": "Map",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "api": {},
+    "binding-markers-to-remote-data": {},
+    "bing-tile-layer": {},
+    "bubble-layer": {
+    "files": ["html", "js", "md"],
+    },
+    "binding-to-geojson": {},
+    "binding-markers-to-remote-data": {},
+    "export": {},
+    "events": {}
+  }
+}

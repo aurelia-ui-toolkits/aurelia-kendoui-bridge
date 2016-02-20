@@ -3,7 +3,7 @@ import {customElement, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo-ui/js/kendo.slider.min';
+import 'kendo.slider.min';
 
 @customElement(`${constants.elementPrefix}range-slider`)
 @generateBindables('kendoRangeSlider')

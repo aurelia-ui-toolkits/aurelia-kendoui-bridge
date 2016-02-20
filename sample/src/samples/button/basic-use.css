@@ -1,10 +1,10 @@
-.btn-basic-use .demo-section p {
+#basic-use .btn-basic-use .demo-section p {
     margin: 0 0 30px;
     line-height: 50px;
 }
-.btn-basic-use .demo-section p .k-button {
+#basic-use .btn-basic-use .demo-section p .k-button {
     margin: 0 10px 0 0;
 }
-.btn-basic-use .k-primary {
+#basic-use .btn-basic-use .k-primary {
     min-width: 150px;
 }

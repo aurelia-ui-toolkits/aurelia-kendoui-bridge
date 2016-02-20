@@ -2,11 +2,13 @@
     <section>
         <collapse-panel title.bind="sample.title">
           <div id="exampleWrap">
-            <compose view-model.bind="sample.path"></compose>
+            <div id="${sample.control}-${sample.sample}">
+              <compose view-model.bind="sample.path"></compose>
+            </div>
           </div>
         </collapse-panel>
         <collapse-panel title="Code Preview">
-            <div k-tabstrip k-tabstrip.ref="tabstrip">
+            <div k-tabstrip="k-animation.bind: false" k-tabstrip.ref="tabstrip">
                 <ul>
                     <li class="k-state-active" show.bind="sample.html">HTML</li>
                     <li show.bind="sample.js">Javascript</li>

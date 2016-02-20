@@ -3,41 +3,39 @@
   <require from="./api.css"></require>
 
   <div id="example">
-    <div id="autocomplete-api">
-      <div class="demo-section k-content">
-        <p><strong>Pick a color:</strong></p>
-        <p>
-            <input k-autocomplete="k-data-source.bind: items; k-widget.two-way: autocomplete"
-                   style="width: 100%;">
-        </p>
-        <p class="demo-hint">Hint: type "red"</p>
-      </div>
+    <div class="demo-section k-content">
+      <p><strong>Pick a color:</strong></p>
+      <p>
+          <input k-autocomplete="k-data-source.bind: items; k-widget.two-way: autocomplete"
+                 style="width: 100%;">
+      </p>
+      <p class="demo-hint">Hint: type "red"</p>
+    </div>
 
-      <hr>
+    <hr>
 
-      <div class="box wide">
-          <div class="box-col">
-              <h4>Set / Get Value</h4>
-              <ul class="options">
-                  <li>
-                      <input id="value" type="text" class="k-textbox" ref="setGetInput"/>
-                      <button id="set" class="k-button" click.delegate="autocomplete.value(setGetInput.value)">Set value</button>
-                  </li>
-                  <li style="text-align: right;">
-                      <button id="get" class="k-button" click.delegate="getValue()">Get value</button>
-                  </li>
-              </ul>
-          </div>
-          <div class="box-col">
-              <h4>Find item</h4>
-              <ul class="options">
-                  <li>
-                      <input id="word" value="B" class="k-textbox" ref="searchInput"/>
-                      <button id="search" class="k-button" click.delegate="autocomplete.search(searchInput.value)">Search</button>
-                  </li>
-              </ul>
-          </div>
-      </div>
+    <div class="box wide">
+        <div class="box-col">
+            <h4>Set / Get Value</h4>
+            <ul class="options">
+                <li>
+                    <input id="value" type="text" class="k-textbox" ref="setGetInput"/>
+                    <button id="set" class="k-button" click.delegate="autocomplete.value(setGetInput.value)">Set value</button>
+                </li>
+                <li style="text-align: right;">
+                    <button id="get" class="k-button" click.delegate="getValue()">Get value</button>
+                </li>
+            </ul>
+        </div>
+        <div class="box-col">
+            <h4>Find item</h4>
+            <ul class="options">
+                <li>
+                    <input id="word" value="B" class="k-textbox" ref="searchInput"/>
+                    <button id="search" class="k-button" click.delegate="autocomplete.search(searchInput.value)">Search</button>
+                </li>
+            </ul>
+        </div>
     </div>
   </div>
 </template>

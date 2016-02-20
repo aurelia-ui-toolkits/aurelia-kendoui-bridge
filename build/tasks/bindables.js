@@ -32,15 +32,35 @@ gulp.task('bindables:typedoc', function(){
 });
 
 gulp.task('bindables:extract', function (cb) {
+  var json = JSON.parse(fs.readFileSync('./temp/kendo-api.json', 'utf-8'));
+
+  var jsObj = {};
+  extractOptions(jsObj, json);
+  extractInterfaces(jsObj, json);
+
+  var content = "export let bindables = " + JSON.stringify(jsObj);
+
+  // write the js file to the file system
+  fs.writeFile("./src/common/bindables.js", content, function (err) {
+    if(err) {
+      return console.log(err);
+    }
+
+    console.log("Bindables saved to ./src/common/bindables.js")
+    cb();
+  });
+});
+
+
+function extractOptions(jsObj, json) {
   var optionClasses = [];
 
-  var json = JSON.parse(fs.readFileSync('./temp/kendo-api.json', 'utf-8'));
   // the first child contains typedoc information about Kendo
   var kendo = json.children[0];
 
   // get the kendo module
-  var kendoModule = kendo.children.find(i => i.name === "kendo");
-  var jQueryInterface = kendo.children.find(i => i.name === "JQuery" && i.kindString === "Interface");
+  var kendoModule = kendo.children.find(function(i) { return i.name === "kendo" });
+  var jQueryInterface = kendo.children.find(function(i) { return i.name === "JQuery" && i.kindString === "Interface" });
   var kendoMethods = jQueryInterface.children;
 
   // loop over all kendo methods declarations:
@@ -73,6 +93,7 @@ gulp.task('bindables:extract', function (cb) {
   }
 
 
+
   // sort a-z on method name (for readability)
   optionClasses.sort(function(a,b) {
     return (a.method > b.method) ? 1 : ((b.method > a.method) ? -1 : 0);
@@ -80,24 +101,35 @@ gulp.task('bindables:extract', function (cb) {
 
 
   // create a flatter object so it can be easily read out by the plugin
-  var jsObj = {};
   for(var _optionClassIndex in optionClasses) {
     var _optionClass = optionClasses[_optionClassIndex];
     jsObj[_optionClass.method] = _optionClass.properties;
   }
+}
 
-  var content = "export let bindables = " + JSON.stringify(jsObj);
 
-  // write the js file to the file system
-  fs.writeFile("./src/common/bindables.js", content, function (err) {
-    if(err) {
-      return console.log(err);
+function extractInterfaces(jsObj, json) {
+  var findInterfaces = ["GridColumn", "TreeListColumn"];
+
+  var kendo = json.children[0];
+  var kendoModule = kendo.children.find(function(i) { return i.name === "kendo" && i.kindString === "Module" });
+  var kendoUI = kendoModule.children.find(function(i) { return i.name === "ui" && i.kindString === "Module" });
+  var interfaces = kendoUI.children.filter(function(i) { return findInterfaces.indexOf(i.name) > -1 && i.kindString === "Interface"});
+
+  for(var _interfaceIndex in interfaces) {
+    var _interface = interfaces[_interfaceIndex];
+
+    jsObj[_interface.name] = [];
+
+    for(var _propertyIndex in _interface.children) {
+      var _property = _interface.children[_propertyIndex];
+
+      if(_property.kindString === "Property" || _property.kindString === "Method") {
+        jsObj[_interface.name].push(_property.name);
+      }
     }
-
-    console.log("Bindables saved to ./src/common/bindables.js")
-    cb();
-  });
-});
+  }
+}
 
 
 // iterate over all modules and classes

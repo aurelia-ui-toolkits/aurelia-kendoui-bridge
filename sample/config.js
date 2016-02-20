@@ -20,6 +20,10 @@ System.config({
   meta: {
     "showdown/dist/showdown": {
       "format": "global"
+    },
+    "gka/chroma.js/chroma.min": {
+      "format": "global",
+      "exports": "chroma"
     }
   },
 
@@ -43,6 +47,7 @@ System.config({
     "core-js": "npm:core-js@2.1.0",
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
+    "gka/chroma.js": "github:gka/chroma.js@1.1.1",
     "google/code-prettify": "github:google/code-prettify@master",
     "jquery": "github:components/jquery@2.1.4",
     "jquery.min": "github:components/jquery@2.1.4",

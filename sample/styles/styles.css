@@ -189,10 +189,6 @@ div.au-stagger {
     font: 11px Consolas, Monaco, "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
 }
 
-.gitter-open-chat-button {
-  display: none;
-}
-
 .theme-window {
   background-color: #ebeef0;
 }
@@ -221,7 +217,7 @@ menu {
 }
 
 .help-docs .k-header {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #doc > .col-md-3, #doc > .col-md-9 {

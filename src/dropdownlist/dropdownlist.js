@@ -1,62 +1,55 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customAttribute, bindable} from 'aurelia-templating';
+import {customElement, bindable, children} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import {fireEvent} from '../common/events';
 import {constants} from '../common/constants';
-import 'kendo-ui/js/kendo.dropdownlist.min';
-import 'kendo-ui/js/kendo.virtuallist.min';
+import 'kendo.dropdownlist.min';
+import 'kendo.virtuallist.min';
 
-@customAttribute(`${constants.attributePrefix}drop-down-list`)
+@customElement(`${constants.elementPrefix}drop-down-list`)
 @generateBindables('kendoDropDownList')
 @inject(Element, WidgetBase)
 export class DropDownList {
 
   @bindable options = {};
-  @bindable kValue;
+  @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoDropDownList')
-                        .linkViewModel(this);
+                        .linkViewModel(this)
+                        .useValueBinding();
   }
 
   bind(ctx) {
     this.$parent = ctx;
+    this.widgetBase.useTemplates(this, 'kendoDropDownList', this.templates);
+  }
 
+  attached() {
     this.recreate();
   }
 
   recreate() {
+    let selectNode = getSelectNode(this.element);
+
     this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
+      rootElement: this.element,
+      element: selectNode.length > 0 ? selectNode[0] : this.element,
       parentCtx: this.$parent
     });
+  }
 
-	   // without these change and select handlers, when you select an options
-    // the value binding is not updated
-    this.kWidget.bind('change', (event) => {
-      this.kValue = event.sender.value();
-      this.kText = event.sender.text();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
-
-    this.kWidget.bind('select', (event) => {
-      this.kValue = event.sender.value();
-      this.kText = event.sender.text();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
-
-    // Ensure the dropdown has an initial value/text
-    this.kWidget.trigger('change');
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {
     this.widgetBase.destroy(this.kWidget);
   }
+}
+
+function getSelectNode(element) {
+  return element.querySelectorAll('select');
 }

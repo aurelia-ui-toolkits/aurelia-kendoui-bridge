@@ -1,0 +1,13 @@
+<template>
+  <div id="example">
+    <div class="demo-section k-content">
+      <p>${2.5 | kendoToString:'n5'}</p>
+      <p>${'5/16/2016' | kendoParseDate:'MM/dd/yyyy'}</p>
+      <p>${'2012/07/16' | kendoParseDate:["MM/dd/yyyy", "yyyy/MM/dd"]}
+      <p>${'1.212,22 €' | kendoParseInt}</p>
+      <p>${'1.212,22 €' | kendoParseFloat}</p>
+      <p>${'#ff0000' | kendoParseColor | kendoStringify}</p>
+      <p>${'{0:c} - {1:c}' | kendoFormat:12:24}</p>
+    </div>
+  </div>
+</template>

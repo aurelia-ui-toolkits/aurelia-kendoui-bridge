@@ -3,14 +3,16 @@
   <br>
   <br>
   <k-grid k-data-source.bind="datasource" k-sortable.bind="true" k-scrollable.bind="{virtual:true}">
-    <k-col title="Order ID" field="OrderID" width.bind="110"></k-col>
-    <k-col title="Customer ID" field="CustomerID" width.bind="130"></k-col>
-    <k-col title="Ship Name" field="ShipName" width.bind="280"></k-col>
-    <k-col title="Ship Address" field="ShipAddress"></k-col>
-    <k-col title="Ship City" field="ShipCity" width.bind="160"></k-col>
-    <k-col title="Ship Country" field="ShipCountry" width.bind="160"></k-col>
-    <k-col title="Test">
-      <button k-button class="k-primary">Enable</button>
+    <k-col k-title="Order ID" k-field="OrderID" k-width.bind="110"></k-col>
+    <k-col k-title="Customer ID" k-field="CustomerID" k-width.bind="130"></k-col>
+    <k-col k-title="Ship Name" k-field="ShipName" k-width.bind="280"></k-col>
+    <k-col k-title="Ship Address" k-field="ShipAddress"></k-col>
+    <k-col k-title="Ship City" k-field="ShipCity" k-width.bind="160"></k-col>
+    <k-col k-title="Ship Country" k-field="ShipCountry" k-width.bind="160"></k-col>
+    <k-col k-title="Test">
+      <k-template>
+        <button k-button class="k-primary">Enable</button>
+      </k-template>
     </k-col>
   </k-grid>
 </template>

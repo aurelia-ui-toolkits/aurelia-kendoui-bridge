@@ -1,7 +1,7 @@
 import products from './editing-custom-editor.json!';
 
 export class EditingCustomEditor {
-  categoryTemplate = '#=Category.CategoryName#';
+  categoryTemplate = '${Category.CategoryName}';
 
   dataSource = new kendo.data.DataSource({
     pageSize: 20,

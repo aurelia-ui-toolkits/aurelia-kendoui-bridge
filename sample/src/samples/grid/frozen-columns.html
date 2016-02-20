@@ -4,13 +4,13 @@
           k-reorderable.bind="true"
           k-groupable.bind="true"
           k-resizable.bind="true"
-          k-filterable.bind="true" 
+          k-filterable.bind="true"
           k-column-menu.bind="true"
           k-pageable.bind="true">
-    <k-col field="OrderID" title="Order ID" locked.bind="true" lockable.bind="false" width.bind="150"></k-col>
-    <k-col field="ShipCountry" title="Ship Country" width.bind="300"></k-col>
-    <k-col field="ShipCity" title="Ship City" width.bind="300"></k-col>
-    <k-col field="ShipName" title="Ship Name" locked.bind="true" width.bind="300"></k-col>
-    <k-col field="ShipAddress" lockable.bind="false" width.bind="400"></k-col>
+    <k-col k-field="OrderID" k-title="Order ID" k-locked.bind="true" k-lockable.bind="false" k-width.bind="150"></k-col>
+    <k-col k-field="ShipCountry" k-title="Ship Country" k-width.bind="300"></k-col>
+    <k-col k-field="ShipCity" k-title="Ship City" k-width.bind="300"></k-col>
+    <k-col k-field="ShipName" k-title="Ship Name" k-locked.bind="true" k-width.bind="300"></k-col>
+    <k-col k-field="ShipAddress" k-lockable.bind="false" k-width.bind="400"></k-col>
   </k-grid>
 </template>
