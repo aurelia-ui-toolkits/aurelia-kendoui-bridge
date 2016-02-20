@@ -41,6 +41,7 @@ export class KendoConfigBuilder {
   pro(): KendoConfigBuilder {
     this.core()
       .kendoAutoComplete()
+      .kendoBarcode()
       .kendoChart()
       .kendoEditor()
       .kendoGrid()
@@ -82,6 +83,11 @@ export class KendoConfigBuilder {
 
   kendoButton(): KendoConfigBuilder {
     this.resources.push('button/button');
+    return this;
+  }
+
+  kendoBarcode(): KendoConfigBuilder {
+    this.resources.push('barcode/barcode');
     return this;
   }
 

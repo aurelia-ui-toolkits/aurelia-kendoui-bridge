@@ -16,6 +16,7 @@ export class Index {
       { name: 'autocomplete',     route: 'autocomplete',        moduleId: './autocomplete/index',           title: 'Autocomplete'},
       { name: 'area-charts',      route: 'area-charts',         moduleId: './chart/area-charts/index',      title: 'Area Charts',       settings: { pro: true } },
       { name: 'bar-charts',       route: 'bar-charts',          moduleId: './chart/bar-charts/index',       title: 'Bar Charts',        settings: { pro: true } },
+      { name: 'barcode',          route: 'barcode',             moduleId: './barcode/index',                title: 'Barcode',           settings: { pro: true } },
       { name: 'box-plot-charts',  route: 'box-plot-charts',     moduleId: './chart/box-plot-charts/index',  title: 'Box Plot Charts',   settings: { pro: true } },
       { name: 'bubble-charts',    route: 'bubble-charts',       moduleId: './chart/bubble-charts/index',    title: 'Bubble Charts',     settings: { pro: true } },
       { name: 'bullet-charts',    route: 'bullet-charts',       moduleId: './chart/bullet-charts/index',    title: 'Bullet Charts',     settings: { pro: true } },

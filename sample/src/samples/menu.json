@@ -62,7 +62,9 @@
   "Diagrams & Maps" : {
     "Map": "map"
   },
-
+  "Barcodes": {
+    "Barcode": "barcode"
+  },
   "Interactivity & UX": {
     "ProgressBar": "progressbar"
   },
