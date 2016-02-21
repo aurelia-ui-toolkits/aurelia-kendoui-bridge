@@ -9,3 +9,4 @@ sample/config.js
 sample/package.json
 sample/system.js
 src/common/bindables.js
+config.js
