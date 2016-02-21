@@ -5,7 +5,7 @@ import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import 'kendo.editor.min';
 
-@customAttribute(`${constants.attributePrefix}editor`)
+@customAttribute(`${constants.attributePrefix}rich-editor`)
 @generateBindables('kendoEditor')
 @inject(Element, WidgetBase)
 export class Editor {
