@@ -70,7 +70,8 @@
     "Radial Gauge": "radial-gauge"
   },
   "Interactivity & UX": {
-    "ProgressBar": "progressbar"
+    "ProgressBar": "progressbar",
+    "Drag and drop": "drag-and-drop"
   },
   "Tools": {
     "ValueConverters": "valueconverters"

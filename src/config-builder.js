@@ -18,6 +18,8 @@ export class KendoConfigBuilder {
       .kendoDropDownList()
       .kendoDateTimePicker()
       .kendoDatePicker()
+      .kendoDraggable()
+      .kendoDropTarget()
       .kendoFlatColorPicker()
       .kendoListView()
       .kendoMap()
@@ -120,6 +122,7 @@ export class KendoConfigBuilder {
     this.resources.push('colorpalette/colorpalette');
     return this;
   }
+
   kendoDatePicker(): KendoConfigBuilder {
     this.resources.push('datepicker/datepicker');
     return this;
@@ -130,8 +133,19 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoDraggable(): KendoConfigBuilder {
+    this.resources.push('draggable/draggable');
+    return this;
+  }
+
   kendoDropDownList(): KendoConfigBuilder {
     this.resources.push('dropdownlist/dropdownlist');
+    return this;
+  }
+
+  kendoDropTarget(): KendoConfigBuilder {
+    this.resources.push('drop-target/drop-target');
+    this.resources.push('drop-target/drop-target-area');
     return this;
   }
 

@@ -1,0 +1,18 @@
+{
+  "title": "Drag and Drop",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
+    },
+    "container": {
+      "files": ["html", "js", "css"]
+    },
+    "area": {
+      "files": ["html", "js", "css"]
+    },
+    "events": {
+      "files": ["html", "js", "css"]
+    }
+  }
+}

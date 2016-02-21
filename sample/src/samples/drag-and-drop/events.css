@@ -1,0 +1,41 @@
+.events-draggable {
+  cursor: move;
+  position: absolute;
+  top: 260px;
+  left: 50%;
+  margin-left: -28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #03a9f4;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
+}
+#drag-and-drop-events .painted {
+  background-color: #03a9f4;
+  color: #fff;
+}
+
+#drag-and-drop-events #draggable.hollow
+{
+  cursor: default;
+  background: #ececec;
+}
+
+#drag-and-drop-events #droptarget
+{
+  height: 200px;
+  width: 200px;
+  font-size: 14px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 200px;
+  margin: 0 auto;
+  cursor: default;
+  border: 1px solid #999;
+}
+
+#drag-and-drop-events .demo-section
+{
+  height: 350px;
+  position: relative;
+}
