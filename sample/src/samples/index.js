@@ -26,6 +26,7 @@ export class Index {
       { name: 'combobox',         route: 'combobox',            moduleId: './combobox/index',               title: 'ComboBox'},
       { name: 'datepicker',       route: 'datepicker',          moduleId: './datepicker/index',             title: 'DatePicker'},
       { name: 'datetimepicker',   route: 'datetimepicker',      moduleId: './datetimepicker/index',         title: 'DateTimePicker'},
+      { name: 'diagram',          route: 'diagram',             moduleId: './diagram/index',                title: 'Diagram',           settings: { pro: true } },
       { name: 'donut-charts',     route: 'donut-charts',        moduleId: './chart/donut-charts/index',     title: 'Donut Charts',      settings: { pro: true } },
       { name: 'drag-and-drop',    route: 'drag-and-drop',       moduleId: './drag-and-drop/index',          title: 'Drag and drop'},
       { name: 'dropdownlist',     route: 'dropdownlist',        moduleId: './dropdownlist/index',           title: 'Drop Down List'},

@@ -45,6 +45,7 @@ export class KendoConfigBuilder {
       .kendoAutoComplete()
       .kendoBarcode()
       .kendoChart()
+      .kendoDiagram()
       .kendoEditor()
       .kendoGrid()
       .kendoLinearGauge()
@@ -130,6 +131,11 @@ export class KendoConfigBuilder {
 
   kendoDateTimePicker(): KendoConfigBuilder {
     this.resources.push('datetimepicker/datetimepicker');
+    return this;
+  }
+
+  kendoDiagram(): KendoConfigBuilder {
+    this.resources.push('diagram/diagram');
     return this;
   }
 

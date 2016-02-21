@@ -60,7 +60,8 @@
     "Panel Bar": "panelbar"
   },
   "Diagrams & Maps" : {
-    "Map": "map"
+    "Map": "map",
+    "Diagram": "diagram"
   },
   "Barcodes": {
     "Barcode": "barcode"
