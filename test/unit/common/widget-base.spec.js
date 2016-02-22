@@ -255,4 +255,18 @@ describe('WidgetBase', () => {
     expect(widget.check).toHaveBeenCalledWith(2);
     expect(widget.check).not.toHaveBeenCalledWith(4);
   });
+
+
+  it('_handleChange takes valueBindingProperty into account', () => {
+    sut.viewModel = {};
+    let widget = {
+      check: jasmine.createSpy().and.returnValue('foo')
+    };
+    sut.useValueBinding('checked', 'check');
+
+    sut._handleChange(widget);
+
+    expect(widget.check).toHaveBeenCalled();
+    expect(sut.viewModel.kChecked).toBe('foo');
+  });
 });
