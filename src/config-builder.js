@@ -53,7 +53,8 @@ export class KendoConfigBuilder {
       .kendoRadialGauge()
       .kendoScheduler()
       .kendoTreeList()
-      .kendoTreeView();
+      .kendoTreeView()
+      .kendoUpload();
     return this;
   }
 
@@ -263,6 +264,11 @@ export class KendoConfigBuilder {
 
   kendoRangeSlider(): KendoConfigBuilder {
     this.resources.push('rangeslider/rangeslider');
+    return this;
+  }
+
+  kendoUpload(): KendoConfigBuilder {
+    this.resources.push('upload/upload');
     return this;
   }
 }

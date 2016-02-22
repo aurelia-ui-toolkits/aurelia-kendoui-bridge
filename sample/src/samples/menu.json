@@ -26,6 +26,7 @@
     "Slider": "slider",
     "RangeSlider": "rangeslider",
     "TimePicker": "timepicker",
+    "Upload": "upload",
     "Switch": "switch"
   },
   "Charts": {
