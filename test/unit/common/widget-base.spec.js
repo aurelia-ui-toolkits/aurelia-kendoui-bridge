@@ -1,4 +1,6 @@
 import 'kendo-ui/js/kendo.button.min';
+import 'kendo-ui/js/kendo.dropdownlist.min';
+import 'kendo-ui/js/kendo.mobile.switch.min';
 import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 import {TemplateCompiler} from 'src/common/template-compiler';
@@ -83,27 +85,25 @@ describe('WidgetBase', () => {
   });
 
   it('getEventOptions registers on events', () => {
+    sut.control('kendoButton');
     let element = DOM.createElement('div');
-    sut.kendoEvents = ['ready', 'done', 'finished'];
-    element.setAttributeNode(document.createAttribute('k-on-ready'));
-    element.setAttributeNode(document.createAttribute('k-on-done'));
+    element.setAttributeNode(document.createAttribute('k-on-click'));
 
     let returnedOptions = sut.getEventOptions(element);
 
-    expect(returnedOptions.ready).not.toBeUndefined();
-    expect(returnedOptions.done).not.toBeUndefined();
+    expect(returnedOptions.click).not.toBeUndefined();
     expect(returnedOptions.finished).toBeUndefined();
   });
 
   it('getEventOptions throws when kendo event does not exist', () => {
     let element = DOM.createElement('div');
-    sut.kendoEvents = ['ready'];
-    sut.controlName = 'myControl';
+    sut.control('kendoButton');
     element.setAttributeNode(document.createAttribute('k-on-done'));
+    element.setAttributeNode(document.createAttribute('k-on-click'));
 
     expect(function() {
       sut.getEventOptions(element);
-    }).toThrow(new Error('done is not an event on the myControl control'));
+    }).toThrow(new Error('done is not an event on the kendoButton control'));
   });
 
   it('createWidget throws error when option is missing', () => {
@@ -125,16 +125,17 @@ describe('WidgetBase', () => {
   });
 
   it('createWidget calls hooks', () => {
+    sut.control('kendoButton')
+    .linkViewModel({});
+
     let beforeSpy = jasmine.createSpy();
-    sut._getOptions = jasmine.createSpy().and.returnValue({});
-    sut.controlName = 'kendoButton';
     sut.createWidget({
       element: DOM.createElement('div'),
       parentCtx: {},
       beforeInitialize: beforeSpy
     });
-
     expect(beforeSpy).toHaveBeenCalled();
+
 
     let afterSpy = jasmine.createSpy();
     sut.createWidget({
@@ -142,17 +143,16 @@ describe('WidgetBase', () => {
       parentCtx: {},
       afterInitialize: afterSpy
     });
-
     expect(afterSpy).toHaveBeenCalled();
   });
 
   it('createWidget sets parent context on options and widget', () => {
-    sut._getOptions = jasmine.createSpy().and.returnValue({});
-    sut.controlName = 'kendoButton';
-    let parentCtx = { a: 'b'};
+    sut.control('kendoButton')
+    .linkViewModel({});
+
     let widget = sut.createWidget({
       element: DOM.createElement('div'),
-      parentCtx: parentCtx
+      parentCtx: { a: 'b'}
     });
 
     expect(widget._$parent.a).toBe('b');
@@ -161,16 +161,17 @@ describe('WidgetBase', () => {
 
 
   it('sets viewResources on the widget', () => {
-    sut._getOptions = jasmine.createSpy().and.returnValue({});
-    sut.controlName = 'kendoButton';
-    let parentCtx = { a: 'b'};
     let viewResources = {
       'a': 'b'
     };
-    sut.useViewResources(viewResources);
+
+    sut.control('kendoButton')
+    .linkViewModel({})
+    .useViewResources(viewResources);
+
     let widget = sut.createWidget({
       element: DOM.createElement('div'),
-      parentCtx: parentCtx
+      parentCtx: { a: 'b'}
     });
 
     expect(widget._$resources).toBe(viewResources);
@@ -178,18 +179,12 @@ describe('WidgetBase', () => {
   });
 
   it('createWidget looks at the rootElement for event attributes when a rootElement is supplied', () => {
-    sut.getOptionsFromBindables = jasmine.createSpy().and.returnValue({});
-    let events = ['test1', 'test2'];
-
-    sut.kendoEvents = events;
-    sut.controlName = 'kendoButton';
-    sut.viewModel = { options: {} };
-
-    let attrs = events.map(e => 'k-on-' + e);
+    // sut.getOptionsFromBindables = jasmine.createSpy().and.returnValue({});
+    sut.control('kendoButton')
+    .linkViewModel({ options: {} });
 
     let rootElement = DOM.createElement('div');
-    rootElement.setAttribute(attrs[0], 'test');
-    rootElement.setAttribute(attrs[1], 'test2');
+    rootElement.setAttribute('k-on-click', 'click');
 
     let widget = sut.createWidget({
       element: DOM.createElement('div'),
@@ -197,21 +192,18 @@ describe('WidgetBase', () => {
       rootElement: rootElement
     });
 
-    expect(widget.options[events[0]]).toEqual(jasmine.any(Function));
-    expect(widget.options[events[1]]).toEqual(jasmine.any(Function));
+    expect(widget.options.click).toEqual(jasmine.any(Function));
   });
 
 
   it('handles value binding and sets initial value', () => {
-    sut._getOptions = jasmine.createSpy().and.returnValue({});
-    let widgetFake = {
-      first: jasmine.createSpy(),
-      value: jasmine.createSpy().and.returnValue('initialValue')
-    };
-    sut._createWidget = () => widgetFake;
-    sut.controlName = 'kendoDropDownList';
-    sut.viewModel = {};
-    sut.useValueBinding();
+    let widgetFake = new WidgetFake();
+    widgetFake.value.and.returnValue('initialValue');
+    spyOn(sut, '_createWidget').and.returnValue(widgetFake);
+
+    sut.control('kendoDropDownList')
+    .linkViewModel({})
+    .useValueBinding();
 
     let widget = sut.createWidget({
       element: DOM.createElement('div'),
@@ -235,14 +227,12 @@ describe('WidgetBase', () => {
 
 
   it('uses valueBindingProperty', () => {
-    sut.controlName = 'kendoMobileSwitch';
-    sut.viewModel = {};
-    sut.useValueBinding('checked', 'check');
-    let widgetFake = {
-      first: jasmine.createSpy(),
-      check: jasmine.createSpy()
-    };
-    sut._createWidget = () => widgetFake;
+    sut.control('kendoMobileSwitch')
+    .linkViewModel({})
+    .useValueBinding('checked', 'check');
+
+    let widgetFake = new WidgetFake();
+    spyOn(sut, '_createWidget').and.returnValue(widgetFake);
 
     let widget = sut.createWidget({
       element: DOM.createElement('div'),
@@ -258,11 +248,11 @@ describe('WidgetBase', () => {
 
 
   it('_handleChange takes valueBindingProperty into account', () => {
-    sut.viewModel = {};
-    let widget = {
-      check: jasmine.createSpy().and.returnValue('foo')
-    };
-    sut.useValueBinding('checked', 'check');
+    let widget = new WidgetFake();
+    widget.check.and.returnValue('foo');
+
+    sut.linkViewModel({})
+    .useValueBinding('checked', 'check');
 
     sut._handleChange(widget);
 
@@ -270,3 +260,10 @@ describe('WidgetBase', () => {
     expect(sut.viewModel.kChecked).toBe('foo');
   });
 });
+
+export class WidgetFake {
+  first = jasmine.createSpy();
+  value = jasmine.createSpy();
+  check = jasmine.createSpy();
+  destroy = jasmine.createSpy();
+}
