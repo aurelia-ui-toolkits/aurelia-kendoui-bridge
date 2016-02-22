@@ -6,6 +6,10 @@
     },
     "asynchronous-upload": {},
     "events": {},
-    "api": {}
+    "api": {},
+    "templates": {
+      "files": ["html", "js", "css"]
+    },
+    "initial-files": {}
   }
 }
