@@ -256,7 +256,6 @@ describe('WidgetBase', () => {
     expect(widget.check).not.toHaveBeenCalledWith(4);
   });
 
-
   it('_handleChange takes valueBindingProperty into account', () => {
     sut.viewModel = {};
     let widget = {
