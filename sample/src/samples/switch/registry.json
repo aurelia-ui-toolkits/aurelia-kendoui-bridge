@@ -1,0 +1,12 @@
+{
+  "title": "Switch",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
+    },
+    "value-binding": {
+      "files": ["html", "js", "css"]
+    }
+  }
+}

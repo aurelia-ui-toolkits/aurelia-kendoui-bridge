@@ -1,0 +1,14 @@
+<template>
+  <require from="./basic-use.css"></require>
+  <div id="example">
+      <div class="demo-section k-content">
+        <div class="settings-head"></div>
+        <ul>
+            <li>Notifications <input k-switch type="checkbox" checked="true"/></li>
+            <li>Send notifications <input k-switch="k-on-label: YES; k-off-label: NO" /></li>
+            <li>Always visible <input k-switch="k-checked.bind: true" /></li>
+            <li>Display real name <input k-switch/></li>
+        </ul>
+      </div>
+  </div>
+</template>
