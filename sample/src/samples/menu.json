@@ -25,7 +25,8 @@
     "MaskedTextBox": "maskedtextbox",
     "Slider": "slider",
     "RangeSlider": "rangeslider",
-    "TimePicker": "timepicker"
+    "TimePicker": "timepicker",
+    "Switch": "switch"
   },
   "Charts": {
     "Charts 1": {

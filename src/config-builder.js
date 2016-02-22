@@ -31,6 +31,7 @@ export class KendoConfigBuilder {
       .kendoProgressBar()
       .kendoRangeSlider()
       .kendoSlider()
+      .kendoSwitch()
       .kendoTabStrip()
       .kendoTemplateSupport()
       .kendoTimePicker()
@@ -224,6 +225,11 @@ export class KendoConfigBuilder {
 
   kendoSlider(): KendoConfigBuilder {
     this.resources.push('slider/slider');
+    return this;
+  }
+
+  kendoSwitch(): KendoConfigBuilder {
+    this.resources.push('switch/switch');
     return this;
   }
 
