@@ -232,4 +232,41 @@ describe('WidgetBase', () => {
     args[1]({ sender: widget });
     expect(sut.viewModel.kValue).toBe('changedValue');
   });
+
+
+  it('uses valueBindingProperty', () => {
+    sut.controlName = 'kendoMobileSwitch';
+    sut.viewModel = {};
+    sut.useValueBinding('checked', 'check');
+    let widgetFake = {
+      first: jasmine.createSpy(),
+      check: jasmine.createSpy()
+    };
+    sut._createWidget = () => widgetFake;
+
+    let widget = sut.createWidget({
+      element: DOM.createElement('div'),
+      parentCtx: {}
+    });
+
+    sut.handlePropertyChanged(widget, 'kChecked', 2, 1);
+    sut.handlePropertyChanged(widget, 'kValue', 4, 3);
+
+    expect(widget.check).toHaveBeenCalledWith(2);
+    expect(widget.check).not.toHaveBeenCalledWith(4);
+  });
+
+
+  it('_handleChange takes valueBindingProperty into account', () => {
+    sut.viewModel = {};
+    let widget = {
+      check: jasmine.createSpy().and.returnValue('foo')
+    };
+    sut.useValueBinding('checked', 'check');
+
+    sut._handleChange(widget);
+
+    expect(widget.check).toHaveBeenCalled();
+    expect(sut.viewModel.kChecked).toBe('foo');
+  });
 });
