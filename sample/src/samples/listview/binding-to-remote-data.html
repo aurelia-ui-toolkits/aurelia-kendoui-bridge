@@ -1,13 +1,13 @@
 <template>
   <require from="./binding-to-remote-data.css"></require>
   <k-list-view k-data-source.bind="dataSource">
-    <k-list-template>
+    <k-template>
       <div class="product">
           <img src="http://demos.telerik.com/kendo-ui/content/web/foods/${ProductID}.jpg" alt="${ProductName} image" />
           <h3>${ProductName}</h3>
           <p>${UnitPrice}</p>
       </div>
-    </k-list-template>
+    </k-template>
   </k-list-view>
 
   <div ref="pager" class="k-pager-wrap"></div>
