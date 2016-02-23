@@ -51,6 +51,7 @@ export class KendoConfigBuilder {
       .kendoEditor()
       .kendoGrid()
       .kendoLinearGauge()
+      .kendoPivotGrid()
       .kendoRadialGauge()
       .kendoScheduler()
       .kendoTreeList()
@@ -213,6 +214,12 @@ export class KendoConfigBuilder {
 
   kendoPanelBar(): KendoConfigBuilder {
     this.resources.push('panelbar/panelbar');
+    return this;
+  }
+
+  kendoPivotGrid(): KendoConfigBuilder {
+    this.resources.push('pivotgrid/pivotgrid');
+    this.resources.push('pivotgrid/pivotconfigurator');
     return this;
   }
 
