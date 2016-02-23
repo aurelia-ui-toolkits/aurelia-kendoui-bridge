@@ -25,6 +25,7 @@ export class KendoConfigBuilder {
       .kendoMap()
       .kendoMaskedTextBox()
       .kendoMenu()
+      .kendoMultiselect()
       .kendoNumericTextBox()
       .kendoPanelBar()
       .kendoProgressBar()
@@ -190,7 +191,6 @@ export class KendoConfigBuilder {
     return this;
   }
 
-
   kendoMenu(): KendoConfigBuilder {
     this.resources.push('menu/menu');
     return this;
@@ -198,6 +198,11 @@ export class KendoConfigBuilder {
 
   kendoMaskedTextBox(): KendoConfigBuilder {
     this.resources.push('maskedtextbox/maskedtextbox');
+    return this;
+  }
+
+  kendoMultiselect(): KendoConfigBuilder {
+    this.resources.push('multiselect/multiselect');
     return this;
   }
 
