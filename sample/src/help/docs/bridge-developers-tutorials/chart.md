@@ -4,20 +4,20 @@
 <br>
 
 This wrapper encapsulates the KendoUI module `kendo.chart.min.js`, ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/help/docs/app_developers_tutorials/5._chart_component)** and **[here](#/samples/chart)**.
-<br>
+<br><br>
 
-File `chart.js`
-<br>
+#### File `chart.js`
+
 ```javascript
-import {customElement, bindable, inject} from 'aurelia-framework';
+import {inject} from 'aurelia-dependency-injection';
+import {customElement, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-import 'kendo-ui/js/kendo.dataviz.chart.min';
-import 'kendo-ui/js/kendo.dataviz.chart.polar.min';
-import 'kendo-ui/js/kendo.dataviz.chart.funnel.min';
+import {constants} from '../common/constants';
 
-@customElement('k-chart')
+import 'kendo.dataviz.chart.min';
+
+@customElement(`${constants.elementPrefix}chart`)
 @generateBindables('kendoChart')
 @inject(Element, WidgetBase)
 export class Chart {
@@ -28,8 +28,7 @@ export class Chart {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoChart')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -51,6 +50,7 @@ export class Chart {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
 
 ```
 <br>

@@ -1,6 +1,6 @@
 <br>
 
-### 1. Introduction
+### 1. Current limitations
 <br>
 
 This section contains additional information which we hope will be of value to Aurelia application developers using KendoUI bridge.

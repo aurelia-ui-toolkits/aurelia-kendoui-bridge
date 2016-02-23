@@ -5,7 +5,7 @@
 Unlike the previous two controls, Chart is represented (by Aurelia KendoUI bridge) as an Aurelia custom element (component) - since chart is not a native HTML element. The specific sample we chose to discuss here is sufficiently  complex, allowing us to glance over the its use in an Aurelia application as well as the relationship between this component, Aurelia KendoUI bridge and the KendoUI native plugin.
 <br>
 
-##### View: k-chart.html
+#### View: k-chart.html
 
 ```html
 <template>
@@ -44,7 +44,7 @@ The HTML code in the view is a good demonstration of Aurelia's support for Kendo
 
 <br>
 
-##### View model: k-chart.js
+#### View model: k-chart.js
 
 ```javascript
 export class BasicUse {

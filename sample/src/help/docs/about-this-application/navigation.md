@@ -7,7 +7,7 @@ The order of Help Documents section, outlined on the Image 1 below:
 <br><br>
 
 <p align=center>
-  <img src="http://i.imgur.com/7a11YNP.png"></img>
+  <img src="https://cloud.githubusercontent.com/assets/2712405/13227869/e177d5fe-d966-11e5-8789-91e065a38ae1.png"></img>
 <br>
   Image 1
 </p>
