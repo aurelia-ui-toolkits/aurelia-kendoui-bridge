@@ -10,13 +10,13 @@ import {getBindablePropertyName} from './util';
 * in the option property of a Kendo control
 * @param controlName The Kendo control of which the options should be converted into bindable properties
 */
-export function generateBindables(controlName: string) {
+export function generateBindables(controlName: string, extraProperties = []) {
   return function(target, key, descriptor) {
     // get or create the HtmlBehaviorResource
     // on which we're going to create the BindableProperty's
     let behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
     let controlProperties = (Container.instance || new Container()).get(ControlProperties);
-    let optionKeys = controlProperties.getProperties(controlName);
+    let optionKeys = controlProperties.getProperties(controlName, extraProperties);
 
     optionKeys.push('widget');
 

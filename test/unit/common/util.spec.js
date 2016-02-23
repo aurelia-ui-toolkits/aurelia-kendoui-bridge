@@ -1,4 +1,4 @@
-import {getEventsFromAttributes, getBindablePropertyName, _hyphenate, _unhyphenate, addHyphenAndLower, getKendoPropertyName, pruneOptions, fireEvent, fireKendoEvent} from 'src/common/util';
+import {getEventsFromAttributes, getBindablePropertyName, _hyphenate, _unhyphenate, isTemplateProperty, addHyphenAndLower, getKendoPropertyName, pruneOptions, fireEvent, fireKendoEvent} from 'src/common/util';
 import {constants} from 'src/common/constants';
 import {initialize} from 'aurelia-pal-browser';
 import {DOM} from 'aurelia-pal';
@@ -150,5 +150,11 @@ describe('Events', (a) => {
     let event = fireKendoEvent(elem, 'test');
 
     expect(event.type).toBe(`k-on-test`);
+  });
+
+  it('finds templates by conventions', () => {
+    expect(isTemplateProperty('test')).toBe(false);
+    expect(isTemplateProperty('testTemplate')).toBe(true);
+    expect(isTemplateProperty('template')).toBe(true);
   });
 });

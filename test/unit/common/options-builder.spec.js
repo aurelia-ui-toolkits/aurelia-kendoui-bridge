@@ -23,12 +23,6 @@ describe('OptionsBuilder', () => {
     sut = templatingEngine.createViewModelForUnitTest(OptionsBuilder);
   });
 
-  it('finds templates by conventions', () => {
-    expect(sut.isTemplate('test')).toBe(false);
-    expect(sut.isTemplate('testTemplate')).toBe(true);
-    expect(sut.isTemplate('template')).toBe(true);
-  });
-
   it('getOptions harvests properties from viewModel', () => {
     controlProperties.getProperties = jasmine.createSpy().and.returnValue(['option1', 'test', 'dataSource', 'template', 'empty1', 'empty2']);
     let datasource = {};

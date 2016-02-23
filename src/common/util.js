@@ -146,3 +146,10 @@ export function fireEvent(element: Element, name: string, data = {}) {
 export function fireKendoEvent(element: Element, name: string, data = {}) {
   return fireEvent(element, `${constants.eventPrefix}${name}`, data);
 }
+
+/**
+* detection of template properties
+*/
+export function isTemplateProperty(propertyName: string) {
+  return propertyName.toLowerCase().indexOf('template') > -1;
+}

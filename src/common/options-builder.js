@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-dependency-injection';
 import {ControlProperties} from './control-properties';
-import {getBindablePropertyName, pruneOptions, hasValue} from './util';
+import {getBindablePropertyName, pruneOptions, hasValue, isTemplateProperty} from './util';
 
 /***
 * Converts an object with bindable properties (with k- convention)
@@ -25,7 +25,7 @@ export class OptionsBuilder {
       let value = viewModel[getBindablePropertyName(prop)];
 
       if (hasValue(value)) {
-        if (this.isTemplate(prop)) {
+        if (isTemplateProperty(prop)) {
           options[prop] = () => value;
         } else {
           options[prop] = value;
@@ -34,9 +34,5 @@ export class OptionsBuilder {
     }
 
     return pruneOptions(options);
-  }
-
-  isTemplate(propertyName) {
-    return propertyName.toLowerCase().indexOf('template') > -1;
   }
 }
