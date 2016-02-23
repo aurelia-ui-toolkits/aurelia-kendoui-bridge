@@ -3,7 +3,6 @@ import {customElement, bindable, children, ViewResources} from 'aurelia-templati
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import {pruneOptions} from '../common/util';
 import 'kendo.listview.min';
 
 @customElement(`${constants.elementPrefix}list-view`)
@@ -12,8 +11,7 @@ import 'kendo.listview.min';
 export class ListView  {
 
   @bindable options = {};
-  @children(`${constants.elementPrefix}list-template`) listTemplates;
-  @children(`${constants.elementPrefix}list-edit-template`) listEditTemplates;
+  @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -25,6 +23,7 @@ export class ListView  {
 
   bind(ctx) {
     this.$parent = ctx;
+    this.widgetBase.useTemplates(this, 'kendoListView', this.templates);
   }
 
   attached() {
@@ -34,33 +33,8 @@ export class ListView  {
   recreate() {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: (o) => this._beforeInitialize(o)
+      parentCtx: this.$parent
     });
-  }
-
-  _beforeInitialize(options) {
-    let template;
-    let editTemplate;
-
-    if (this.kTemplate) {
-      template = () => this.kTemplate;
-    } else if (this.listTemplates.length > 0) {
-      let templ = this.listTemplates[0].template;
-      template = () => templ;
-    }
-
-    if (this.kEditTemplate) {
-      editTemplate = () => this.kEditTemplate;
-    } else if (this.listEditTemplates.length > 0) {
-      let templ = this.listEditTemplates[0].template;
-      editTemplate = () => templ;
-    }
-
-    return Object.assign(options, pruneOptions({
-      editTemplate: editTemplate,
-      template: template
-    }));
   }
 
   detached() {

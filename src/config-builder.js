@@ -178,8 +178,6 @@ export class KendoConfigBuilder {
 
   kendoListView(): KendoConfigBuilder {
     this.resources.push('listview/listview');
-    this.resources.push('listview/k-list-template');
-    this.resources.push('listview/k-list-edit-template');
     return this;
   }
 
