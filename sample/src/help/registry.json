@@ -92,8 +92,8 @@
     "App developers notes":
     [
       {
-        "name": "1. Introduction",
-        "path": "help/docs/app-developers-notes/introduction.md"
+        "name": "1. Current limitations",
+        "path": "help/docs/app-developers-notes/current-limitations.md"
       }
 
     ],
