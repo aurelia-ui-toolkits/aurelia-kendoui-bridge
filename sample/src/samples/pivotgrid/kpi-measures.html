@@ -1,0 +1,23 @@
+<template>
+  <require from="./kpi-measures.css"></require>
+  <div id="example">
+    <k-pivot-configurator class="hidden-on-narrow"
+                          k-data-source.bind="dataSource"
+                          k-filterable.bind="true"
+                          k-sortable.bind="true"
+                          k-height.bind="500"
+                          style="display: inline-block"></k-pivot-configurator>
+
+    <k-pivot-grid id="pivotgrid"
+                  class="hidden-on-narrow"
+                  k-filterable.bind="true"
+                  k-sortable.bind="true"
+                  k-column-width.bind="200"
+                  k-height.bind="580"
+                  k-data-source.bind="dataSource"
+                  style="display: inline-block">
+    </k-pivot-grid>
+
+    <div class="responsive-message"></div>
+  </div>
+</template>

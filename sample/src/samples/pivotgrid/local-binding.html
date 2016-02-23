@@ -1,0 +1,21 @@
+<template>
+  <require from="./local-binding.css"></require>
+  <div id="example">
+    <k-pivot-configurator class="hidden-on-narrow"
+                          k-data-source.bind="dataSource"
+                          k-filterable.bind="true"
+                          k-height.bind="570"
+                          style="display: inline-block"></k-pivot-configurator>
+
+    <k-pivot-grid id="pivotgrid"
+                  class="hidden-on-narrow"
+                  k-filterable.bind="true"
+                  k-column-width.bind="120"
+                  k-height.bind="570"
+                  k-data-source.bind="dataSource"
+                  style="display: inline-block">
+    </k-pivot-grid>
+
+    <div class="responsive-message"></div>
+  </div>
+</template>

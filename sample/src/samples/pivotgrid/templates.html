@@ -1,0 +1,30 @@
+<template>
+  <div id="example">
+    <!-- var columnMember = columnTuple ? columnTuple.members[0] : { children: [] };
+    var rowMember = rowTuple ? rowTuple.members[0] : { children: [] };
+    var value = kendo.toString(kendo.parseFloat(dataItem.value) || "N/A", "c2"); -->
+    <k-pivot-grid k-column-width.bind="200"
+                  k-height.bind="320"
+                  k-data-source.bind="dataSource">
+        <k-template for="dataCellTemplate">
+          <span show.bind="columnMember.children.length || rowMember.children.length">
+            <em style="color: red">${getTotal(value) | kendoToString} (total)</em>
+          </span>
+
+          <span show.bind="!(columnMember.children.length || rowMember.children.length)">${getTotal(value) | kendoToString}</span>
+        </k-template>
+
+        <k-template for="headerTemplate">
+          <span show.bind="member.children.length">${member.caption}</span>
+          <span show.bind="!member.children.length"><em>${member.caption}</em></span>
+        </k-template>
+
+        <k-template for="rowHeaderTemplate">
+          <span show.bind="member.children.length">${member.caption}</span>
+          <span show.bind="!member.children.length"><em>${member.caption}</em></span>
+        </k-template>
+    </k-pivot-grid>
+
+    <div class="responsive-message"></div>
+  </div>
+</template>

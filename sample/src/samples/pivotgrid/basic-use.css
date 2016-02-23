@@ -1,0 +1,8 @@
+#pivotgrid-basic-use #pivotgrid {
+    width: 70%;
+}
+
+#pivotgrid-basic-use .hidden-on-narrow {
+    display: inline-block;
+    vertical-align: top;
+}

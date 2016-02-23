@@ -11,7 +11,8 @@
   "Data management": {
     "Grid": "grid",
     "ListView": "listview",
-    "TreeList": "treelist"
+    "TreeList": "treelist",
+    "PivotGrid": "pivotgrid"
   },
   "Editors": {
     "Autocomplete": "autocomplete",
