@@ -12,7 +12,7 @@ export class Map {
 
   @bindable options = {};
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoMap')

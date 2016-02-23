@@ -23,6 +23,7 @@
     "Editor": "editor",
     "NumericTextBox": "numerictextbox",
     "MaskedTextBox": "maskedtextbox",
+    "Multiselect": "multiselect",
     "Slider": "slider",
     "RangeSlider": "rangeslider",
     "TimePicker": "timepicker",

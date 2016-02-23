@@ -3,13 +3,13 @@ import {customElement, bindable, children, ViewResources} from 'aurelia-templati
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.autocomplete.min';
+import 'kendo.multiselect.min';
 import 'kendo.virtuallist.min';
 
-@customElement(`${constants.elementPrefix}autocomplete`)
-@generateBindables('kendoAutoComplete')
+@customElement(`${constants.elementPrefix}multiselect`)
+@generateBindables('kendoMultiSelect', ['template'])
 @inject(Element, WidgetBase, ViewResources)
-export class AutoComplete {
+export class Multiselect {
 
   @bindable options = {};
   @children(`${constants.elementPrefix}template`) templates;
@@ -17,7 +17,7 @@ export class AutoComplete {
   constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoAutoComplete')
+                        .control('kendoMultiSelect')
                         .linkViewModel(this)
                         .useValueBinding()
                         .useViewResources(viewResources);
@@ -25,23 +25,19 @@ export class AutoComplete {
 
   bind(ctx) {
     this.$parent = ctx;
-    this.widgetBase.useTemplates(this, 'kendoAutoComplete', this.templates);
+    this.widgetBase.useTemplates(this, 'kendoMultiSelect', this.templates);
+  }
 
-    let inputs = this.element.querySelectorAll('input');
-    if (inputs.length > 0) {
-      this.target = inputs[0];
-    } else {
-      this.target = document.createElement('input');
-      this.element.appendChild(this.target);
-    }
-
+  attached() {
     this.recreate();
   }
 
   recreate() {
+    let selectNode = getSelectNode(this.element);
+
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,
-      element: this.target,
+      element: selectNode.length > 0 ? selectNode[0] : this.element,
       parentCtx: this.$parent
     });
   }
@@ -53,4 +49,8 @@ export class AutoComplete {
   detached() {
     this.widgetBase.destroy(this.kWidget);
   }
+}
+
+function getSelectNode(element) {
+  return element.querySelectorAll('select');
 }
