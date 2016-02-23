@@ -19,7 +19,11 @@ Touch support, easy mobile rendering, responsive capabilities and integration wi
 
 #### Built-In, Customizable Themes
 
-Apply one of the 16 built-in themes, such as High Contrast, SAP Fiori theme or Material Design theme:
+Apply one of the 16 built-in themes, (KendoUI Default theme shown as selected)
 <br><br>
 
-![](http://i.imgur.com/bPJCkBF.png)
+<p align=center>
+  <img src="https://cloud.githubusercontent.com/assets/2712405/13236773/8886e092-d994-11e5-8424-48004bc1e098.png"></img>
+ <br><br>
+</p>
+
