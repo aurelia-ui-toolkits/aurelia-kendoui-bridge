@@ -12,15 +12,23 @@ This document describes the use of several utilities added by Aurelia UI Toolkit
 In order to make the plugin a bit more maintainable, we use the [`constants.js`](#constants) file throughout the entire plugin. Currently, this file contains the conventions we use for the plugin. More specifically, the `k-on-` events and `k-` property conventions.
 <br><br>
 
+[[`control-properties.js`](#control-properties)]
+A class that's responsible for compiling a list of available properties for a Kendo control
+<br><br>
+
 [[`decorators.js`](#decorators)]
 The [`decorators.js`](#decorators) file contains decorators used within multiple wrappers. Currently, this file contains the `generateBindables` decorator, used to create `@bindable` properties for a particular Kendo control.
+<br><br>
+
+[[`k-template.js`](#k-template)]
+The view-model for the `<k-template>` custom element
 <br><br>
 
 [[`events.js`](#decorators)]
 In several parts of the `aurelia-kendoui-bridge` codebase, events are dispatched. In order to keep the logic of dispatching events in one place, we have put these functions in the [`events.js`](#decorators) file.
 <br><br>
 
-[[`options.js`](#options)]
+[[`options-builder.js`](#options)]
 Kendo can act up when `options` objects are used with properties that are `undefined`. We use the `pruneOptions` function in [`options.js`](#options) to prevent these issues.
 <br><br>
 
@@ -42,7 +50,7 @@ The `WidgetBase` is the base class from which all wrappers inherit. The purpose 
 <a name="constants"></a>
 File `constants.js`
 <br>
-```javacript
+```javascript
 export const constants = {
   eventPrefix: 'k-on-',
   bindablePrefix: 'k-',
@@ -50,6 +58,66 @@ export const constants = {
   elementPrefix: 'k-'
 };
 
+```
+<br><br>
+
+
+<a name="control-properties"></a>
+File `control-properties.js`
+<br>
+```javascript
+import {bindables} from './bindables';
+
+/***
+* Available properties (merged together from several locations) are stored here per controlName
+* so that this isn't done for each created wrapper instance
+*/
+export class ControlProperties {
+  cache = [];
+  templateProperties = [];
+
+  /**
+  * Merges together available properties for a specific control
+  * and stores this in a cache so that this is done only once per control
+  */
+  getProperties(controlName) {
+    if (this.cache[controlName]) {
+      return this.cache[controlName];
+    }
+
+    // get available properties of the options object inside a Kendo control
+    let options1 = this.getWidgetProperties(controlName);
+    // get available properties of the pre-generated bindables.json file
+    let options2 = bindables[controlName];
+
+    if (!options2) {
+      throw new Error(`${controlName} not found in generated bindables.js`);
+    }
+
+    // merge together without duplicates
+    let keys = options1.concat(options2.filter(item => options1.indexOf(item) < 0));
+
+    this.cache[controlName] = keys;
+
+    return keys;
+  }
+
+  getWidgetProperties(controlName) {
+    if (jQuery.fn[controlName]) {
+      return Object.keys(jQuery.fn[controlName].widget.prototype.options);
+    }
+
+    return [];
+  }
+
+  getTemplateProperties(controlName) {
+    let properties = this.getProperties(controlName);
+
+    let templates = properties.filter(prop => prop.toLowerCase().indexOf('template') >= -1);
+
+    return templates;
+  }
+}
 ```
 <br>
 [Go to top](#top)
@@ -59,7 +127,7 @@ export const constants = {
 <a name="decorators"></a>
 File `decorators.js`
 <br>
-```javacript
+```javascript
 import {BindableProperty, HtmlBehaviorResource} from 'aurelia-templating';
 import {Container} from 'aurelia-dependency-injection';
 import {metadata} from 'aurelia-metadata';
@@ -97,6 +165,38 @@ export function generateBindables(controlName: string) {
     }
   };
 }
+```
+<br>
+[Go to top](#top)
+* * *
+<br>
+
+<a name="k-template"></a>
+File `k-template.js`
+<br>
+```javascript
+import {inject} from 'aurelia-dependency-injection';
+import {customElement, bindable, noView, processContent, TargetInstruction} from 'aurelia-templating';
+import {constants} from '../common/constants';
+
+@customElement(`${constants.elementPrefix}template`)
+@noView()
+@processContent((compiler, resources, element, instruction) => {
+  let html = element.innerHTML;
+  if (html !== '') {
+    instruction.template = html;
+  }
+  return true;
+})
+@inject(TargetInstruction)
+export class Template {
+  @bindable template;
+  @bindable for = 'template';
+
+  constructor(targetInstruction) {
+    this.template = targetInstruction.elementInstruction.template;
+  }
+}
 
 ```
 <br>
@@ -104,26 +204,51 @@ export function generateBindables(controlName: string) {
 * * *
 <br>
 
-<a name="options"></a>
-File `options.js`
+<a name="options-builder"></a>
+File `options-builder.js`
 <br>
-```javacript
-/**
-* Implicitly setting options to "undefined" for a kendo control can break things.
-* this function prunes the supplied options object and removes values that
-* aren't set to something explicit (i.e. not null)
-* @param options the options object to prune the properties of
-*/
-export function pruneOptions(options: any) {
-  let returnOptions = {};
+```javascript
+import {inject} from 'aurelia-dependency-injection';
+import {ControlProperties} from './control-properties';
+import {getBindablePropertyName, pruneOptions, hasValue} from './util';
 
-  for (let prop in options) {
-    if (options.hasOwnProperty(prop) && options[prop] !== null) {
-      returnOptions[prop] = options[prop];
-    }
+/***
+* Converts an object with bindable properties (with k- convention)
+* into an object that can be passed to a Kendo control
+*/
+@inject(ControlProperties)
+export class OptionsBuilder {
+
+  constructor(controlProperties) {
+    this.controlProperties = controlProperties;
   }
 
-  return returnOptions;
+  /**
+  * converts properties of view-model (with k- convention) to an object
+  * that can be passed to a Kendo control. It also wraps templates into a function
+  * so the Kendo templating system is not used
+  */
+  getOptions(viewModel, className) {
+    let options = {};
+
+    for (let prop of this.controlProperties.getProperties(className)) {
+      let value = viewModel[getBindablePropertyName(prop)];
+
+      if (hasValue(value)) {
+        if (this.isTemplate(prop)) {
+          options[prop] = () => value;
+        } else {
+          options[prop] = value;
+        }
+      }
+    }
+
+    return pruneOptions(options);
+  }
+
+  isTemplate(propertyName) {
+    return propertyName.toLowerCase().indexOf('template') > -1;
+  }
 }
 ```
 <br>
@@ -134,8 +259,8 @@ export function pruneOptions(options: any) {
 <a name="template-compiler"></a>
 File `template-compiler.js`
 <br>
-```javacript
-import {inject} from 'aurelia-framework';
+```javascript
+import {inject} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 
 /**
@@ -186,7 +311,12 @@ export class TemplateCompiler {
   handleTemplateEvents(widget, _event: string, _args?) {
     if (_event !== 'compile' && _event !== 'cleanup') return;
 
-    let $parent = widget._$parent;
+    // pull the parent context of the widget, or of the options
+    // in some cases, templates are compiled when a Kendo control's constructor is called
+    // in these cases we get the parent context of the options instead of the
+    // widget
+    let $parent = widget._$parent || (widget.options._$parent ? widget.options._$parent[0] : undefined);
+    let viewResources = widget._$resources || (widget.options._$resources ? widget.options._$resources[0] : undefined);
 
     if (!$parent) return;
 
@@ -199,7 +329,7 @@ export class TemplateCompiler {
       // we need to pass elements and data to compile
       // so that Aurelia can enhance this elements with the correct
       // binding context
-      this.compile($parent, elements, data);
+      this.compile($parent, elements, data, viewResources);
       break;
 
     case 'cleanup':
@@ -219,20 +349,20 @@ export class TemplateCompiler {
   * @param elements an array of Elements or a jQuery selector
   * @param data optionally an array of dataitems
   */
-  compile($parent, elements, data) {
+  compile($parent, elements, data, viewResources) {
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
       let ctx;
 
       if (data && data[i]) {
         let _data = data[i];
-        ctx = _data.dataItem;
+        ctx = _data.dataItem || _data.aggregate || _data;
       }
 
       if (element instanceof jQuery) {
-        element.each((index, elem) => this.enhanceView($parent, elem, ctx));
+        element.each((index, elem) => this.enhanceView($parent, elem, ctx, viewResources));
       } else {
-        this.enhanceView($parent, element, ctx);
+        this.enhanceView($parent, element, ctx, viewResources);
       }
     }
   }
@@ -243,16 +373,28 @@ export class TemplateCompiler {
   * @param element The Element to compile
   * @param ctx The dataitem (context) to compile the Element with
   */
-  enhanceView($parent, element, ctx) {
-    let view = this.templatingEngine.enhance(element);
+  enhanceView($parent, element, ctx, viewResources) {
+    let view = $(element).data('viewInstance');
+
+    // check necessary due to https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/308
+    if (element.querySelectorAll('.au-target').length === 0) {
+      if (viewResources) {
+        view = this.templatingEngine.enhance({
+          element: element,
+          resources: viewResources
+        });
+      } else {
+        view = this.templatingEngine.enhance(element);
+      }
+
+      // when we do cleanup, we need to get the view instance
+      // so we can call detached/unbind
+      // so we store this view instance in the DOM element using JQuery.data
+      $(element).data('viewInstance', view);
+    }
 
     view.bind(ctx, $parent); // call the bind() function on the view with the dataItem we got from Kendo
     view.attached(); // attach it to the DOM
-
-    // when we do cleanup, we need to get the view instance
-    // so we can call detached/unbind
-    // so we store this view instance in the DOM element using JQuery.data
-    $(element).data('viewInstance', view);
   }
 
   /**
@@ -292,9 +434,11 @@ export class TemplateCompiler {
 <a name="utils"></a>
 File `utils.js`
 <br>
-```javacript
+```javascript
 const capitalMatcher = /([A-Z])/g;
 import {constants} from './constants';
+import {ControlProperties} from './control-properties';
+import {Container} from 'aurelia-dependency-injection';
 
 /**
 * prepends hyphen and lowercases the input char
@@ -332,6 +476,16 @@ export function getBindablePropertyName(propertyName: string): string {
 }
 
 /**
+* removes prefix and unhyphenates the resulting string
+* kTest -> test
+*/
+export function getKendoPropertyName(propertyName: string): string {
+  let withoutPrefix = propertyName.substring(1); // remove 'k'
+
+  return (withoutPrefix.charAt(0).toLowerCase() + withoutPrefix.slice(1));
+}
+
+/**
 * converts all attributes found on an element to matching Kendo events
 * returns a list of these Kendo events
 */
@@ -357,6 +511,78 @@ export function getEventsFromAttributes(element: Element): string[] {
 
   return events;
 }
+
+
+/**
+* Implicitly setting options to "undefined" for a kendo control can break things.
+* this function prunes the supplied options object and removes values that
+* aren't set to something explicit (i.e. not null)
+* @param options the options object to prune the properties of
+*/
+export function pruneOptions(options: any) {
+  let returnOptions = {};
+
+  for (let prop in options) {
+    if (hasValue(options[prop])) {
+      returnOptions[prop] = options[prop];
+    }
+  }
+
+  return returnOptions;
+}
+
+export function hasValue(prop) {
+  return typeof(prop) !== 'undefined' && prop !== null;
+}
+
+
+/***
+* parses array of k-template view-models (@children)
+* <k-template for='test'>
+* this function sets the property 'test' on the viewmodel to the template
+* @param target the viewModel with template properties
+* @param kendoGrid or GridColumn, properties are retrieved from bindables.js
+* @param templates array of k-template view-models
+*/
+export function useTemplates(target, controlName, templates) {
+  let controlProperties = (Container.instance || new Container()).get(ControlProperties);
+  let templateProps = controlProperties.getTemplateProperties(controlName);
+
+  templates.forEach(c => {
+    if (templateProps.indexOf(c.for) > -1) {
+      target[getBindablePropertyName(c.for)] = c.template;
+    } else {
+      throw new Error('Invalid template property name: "' + c.for + '", valid values are: ' + templateProps.join(', '));
+    }
+  });
+}
+
+
+/**
+* Fire DOM event on an element
+* @param element The Element which the DOM event will be fired on
+* @param name The Event's name
+* @param data Addition data to attach to an event
+*/
+export function fireEvent(element: Element, name: string, data = {}) {
+  let event = new CustomEvent(name, {
+    detail: data,
+    bubbles: true
+  });
+  element.dispatchEvent(event);
+
+  return event;
+}
+
+/**
+* Fire DOM event on an element with the k-on prefix
+* @param element The Element which the DOM event will be fired on
+* @param name The Event's name, without k-on prefix
+* @param data Addition data to attach to an event
+*/
+export function fireKendoEvent(element: Element, name: string, data = {}) {
+  return fireEvent(element, `${constants.eventPrefix}${name}`, data);
+}
 ```
 <br>
 [Go to top](#top)
@@ -366,23 +592,19 @@ export function getEventsFromAttributes(element: Element): string[] {
 <a name="widget-base"></a>
 File `widget-base.js`
 <br>
-```javacript
-import {pruneOptions} from './options';
-import {fireKendoEvent} from './events';
-import {getEventsFromAttributes, _hyphenate, getBindablePropertyName} from './util';
+```javascript
+import {fireKendoEvent, getEventsFromAttributes, _hyphenate, pruneOptions, useTemplates} from './util';
+import {OptionsBuilder} from './options-builder';
 import {TemplateCompiler} from './template-compiler';
-import {TaskQueue} from 'aurelia-framework';
-import {Container} from 'aurelia-dependency-injection';
+import {inject, transient} from 'aurelia-dependency-injection';
+import {TaskQueue} from 'aurelia-task-queue';
 
 /**
 * Abstraction of commonly used code across wrappers
 */
+@transient()
+@inject(TaskQueue, TemplateCompiler, OptionsBuilder)
 export class WidgetBase {
-
-  /**
-  * the Kendo widget after initialization
-  */
-  widget: any;
 
   /**
   * The element of the custom element, or the element on which a custom attribute
@@ -413,32 +635,59 @@ export class WidgetBase {
   $parent: any;
 
   /**
-  * The templating compiler adaptor
+  * The widgets parent viewmodel (this is the object instance the user will bind to)
   */
-  templateCompiler: TemplateCompiler;
+  viewModel: any;
 
-  constructor(controlName: string, element: Element) {
-    // access root container
-    let container = Container.instance;
-    this.taskQueue = container.get(TaskQueue);
-    this.templateCompiler = container.get(TemplateCompiler);
-    this.templateCompiler.initialize();
+  /**
+  * The constructor of a Kendo control
+  */
+  ctor: any;
 
-    this.element = element;
+  constructor(taskQueue, templateCompiler, optionsBuilder) {
+    this.taskQueue = taskQueue;
+    this.optionsBuilder = optionsBuilder;
+    templateCompiler.initialize();
+  }
 
-    this.target = this.element;
+  control(controlName) {
+    if (!controlName || !jQuery.fn[controlName]) {
+      throw new Error(`The name of control ${controlName} is invalid or not set`);
+    }
 
     this.controlName = controlName;
 
-    // the BindableProperty's are created by the generateBindables decorator
-    // but the values of the bindables can only be set now the class has been
-    // instantiated
-    this.setDefaultBindableValues();
+    let ctor = jQuery.fn[this.controlName];
+    this.kendoOptions = ctor.widget.prototype.options;
+    this.kendoEvents = ctor.widget.prototype.events;
+
+    return this;
   }
 
+  linkViewModel(viewModel) {
+    if (!viewModel) {
+      throw new Error('viewModel is not set');
+    }
 
-  bind(ctx) {
-    this.$parent = ctx;
+    this.viewModel = viewModel;
+
+    return this;
+  }
+
+  useViewResources(resources) {
+    if (!resources) {
+      throw new Error('resources is not set');
+    }
+
+    this.viewResources = resources;
+
+    return this;
+  }
+
+  useValueBinding() {
+    this.withValueBinding = true;
+
+    return this;
   }
 
   /**
@@ -446,113 +695,93 @@ export class WidgetBase {
   * calls all hooks
   * then initialized the Kendo control as "widget"
   */
-  _initialize() {
-    if (!this.$parent) {
-      throw new Error('$parent is not set. Did you call bind(ctx) on the widget base?');
+  createWidget(options) {
+    if (!options) {
+      throw new Error('the createWidget() function needs to be called with an object');
     }
 
-    // get the jQuery selector of the target element
-    let target = jQuery(this.target);
+    if (!options.element) {
+      throw new Error('element is not set');
+    }
 
-    // get the constructor of the Kendo control
-    // equivalent to jQuery("<div>").kendoChart
-    let ctor = target[this.controlName];
+    if (!options.parentCtx) {
+      throw new Error('parentCtx is not set');
+    }
 
-    // generate all options, including event handlers
-    let options = this._getOptions(ctor);
+    // generate all options, including event handlers - use the rootElement if specified, otherwise fall back to the element
+    // this allows a child element in a custom elements tempate to be the container for the kendo control
+    // but allows the plugin to correctly discover attributes on the root element to match against events
+    let allOptions = this._getOptions(options.rootElement || options.element);
 
     // before initialization callback
     // allows you to modify/add/remove options before the control gets initialized
-    this._beforeInitialize(options);
+    if (options.beforeInitialize) {
+      options.beforeInitialize(allOptions);
+    }
 
-    // instantiate the Kendo control, pass in the target and the options
-    this.widget = ctor.call(target, options).data(this.controlName);
+    // add parent context to options
+    // deepExtend in kendo.core will fail with stack
+    // overflow if we don't put it in an array :-\
+    Object.assign(allOptions, {
+      _$parent: [options.parentCtx],
+      _$resources: [this.viewResources]
+    });
 
-    this.widget._$parent = this.$parent;
+    // instantiate the Kendo control
+    let widget = this._createWidget(options.element, allOptions, this.controlName);
 
-    this._initialized();
+    widget._$parent = options.parentCtx;
+    widget._$resources = this.viewResources;
+
+    if (this.withValueBinding) {
+      widget.first('change', (args) => this._handleChange(args.sender));
+
+      // sync kValue after initialization of the widget
+      // some widgets (such as dropdownlist) select first item
+      this._handleChange(widget);
+    }
+
+    if (options.afterInitialize) {
+      options.afterInitialize();
+    }
+
+    return widget;
   }
 
-  /**
-  * hook that allows a wrapper to modify options before
-  * the Kendo control is initialized
-  * @param options the options object that a wrapper can modify
-  */
-  _beforeInitialize(options) {
 
+  _createWidget(element, options, controlName) {
+    return jQuery(element)[controlName](options).data(controlName);
   }
 
-  /**
-  * hook that allows a wrapper to take actions after the widget is initialized
-  */
-  _initialized() {
-
-  }
-
-  /**
-  * Re-initializes the control
-  */
-  recreate() {
-    this._initialize();
-  }
 
   /**
   * combines all options objects and properties into a single options object
   */
-  _getOptions(ctor) {
-    let options = this.getOptionsFromBindables();
-    let eventOptions = this.getEventOptions(ctor);
+  _getOptions(element) {
+    let options = this.optionsBuilder.getOptions(this.viewModel, this.controlName);
+    let eventOptions = this.getEventOptions(element);
 
     // merge all option objects together
-    // - options property on the wrapper
+    // - options on the wrapper
     // - options compiled from all the bindable properties
     // - event handler options
-    return Object.assign({}, this.options, pruneOptions(options), eventOptions);
+    return pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
   }
 
-  /**
-  * loops through all bindable properties generated by the @generateBindables decorator
-  * and puts all these values in a single options object
-  */
-  getOptionsFromBindables() {
-    let props = jQuery.fn[this.controlName].widget.prototype.options;
-    let options = {};
-
-    for (let prop of Object.keys(props)) {
-      options[prop] = this[getBindablePropertyName(prop)];
-    }
-
-    if (this.kDataSource) {
-      options.dataSource = this.kDataSource;
-    }
-
-    return options;
-  }
-
-  /**
-  * sets the default value of all bindable properties
-  *  gets the value from the options object in the Kendo control itself
-  */
-  setDefaultBindableValues() {
-    let props = jQuery.fn[this.controlName].widget.prototype.options;
-
-    for (let prop of Object.keys(props)) {
-      this[getBindablePropertyName(prop)] = props[prop];
-    }
-  }
 
   /**
   * convert attributes into a list of events a user wants to subscribe to.
   * These events are then subscribed to, which when called
   * calls the fireKendoEvent function to raise a DOM event
   */
-  getEventOptions(ctor) {
+  getEventOptions(element) {
     let options = {};
-    let allowedEvents = ctor.widget.prototype.events;
+    let allowedEvents = this.kendoEvents;
+    let delayedExecution = ['change'];
 
     // iterate all attributes on the custom elements
     // and only return the normalized kendo event's (dataBound etc)
-    let events = getEventsFromAttributes(this.element);
+    let events = getEventsFromAttributes(element);
 
     events.forEach(event => {
       // throw error if this event is not defined on the Kendo control
@@ -560,27 +789,40 @@ export class WidgetBase {
         throw new Error(`${event} is not an event on the ${this.controlName} control`);
       }
 
-      // add an event handler 'proxy' to the options object
-      options[event] = e => {
-        this.taskQueue.queueMicroTask(() => {
-          fireKendoEvent(this.target, _hyphenate(event), e);
-        });
-      };
+      if (delayedExecution.includes(event)) {
+        options[event] = e => {
+          this.taskQueue.queueMicroTask(() => fireKendoEvent(element, _hyphenate(event), e));
+        };
+      } else {
+        options[event] = e => fireKendoEvent(element, _hyphenate(event), e);
+      }
     });
 
     return options;
   }
 
-  /**
-  * destroys the widget when the view gets detached
-  */
-  detached() {
-    if (this.widget) {
-      this.widget.destroy();
+
+  _handleChange(widget) {
+    this.viewModel.kValue = widget.value();
+  }
+
+  handlePropertyChanged(widget, property, newValue, oldValue) {
+    if (property === 'kValue' && this.withValueBinding) {
+      widget.value(newValue);
     }
   }
-}
 
+  useTemplates(target, controlName, templates) {
+    return useTemplates(target, controlName, templates);
+  }
+
+  /**
+  * destroys the widget
+  */
+  destroy(widget) {
+    widget.destroy();
+  }
+}
 ```
 <br>
 [Go to top](#top)

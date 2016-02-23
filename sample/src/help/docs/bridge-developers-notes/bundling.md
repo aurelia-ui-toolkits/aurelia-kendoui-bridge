@@ -39,7 +39,7 @@ If your app bundle configuration looks like this:
 ```
     "src/app-build": {
       "includes": [
-        "*",
+        "*.js",
         "aurelia-kendoui-bridge",
         "aurelia-kendoui-bridge/**/*",
         "aurelia-kendoui-bridge/**/*.html!text",
@@ -54,7 +54,7 @@ then you can change it to this:
 ```
     "src/app-build": {
       "includes": [
-        "[*]",
+        "[*.js]",
         "[aurelia-kendoui-bridge]",
         "[aurelia-kendoui-bridge/**/*]",
         "aurelia-kendoui-bridge/**/*.html!text",
@@ -79,7 +79,7 @@ To prevent the JSPM bundler from bundling any Kendo files, you can change your i
 ```
     "src/app-build": {
       "includes": [
-        "[*]",
+        "[*.js]",
         "[aurelia-kendoui-bridge]",
         "[aurelia-kendoui-bridge/**/*]",
         "aurelia-kendoui-bridge/**/*.html!text",
