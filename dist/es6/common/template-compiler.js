@@ -94,7 +94,7 @@ export class TemplateCompiler {
 
       if (data && data[i]) {
         let _data = data[i];
-        ctx = _data.dataItem;
+        ctx = _data.dataItem || _data.aggregate || _data;
       }
 
       if (element instanceof jQuery) {

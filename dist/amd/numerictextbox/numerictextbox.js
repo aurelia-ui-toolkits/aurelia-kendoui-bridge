@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.numerictextbox.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoUiJsKendoNumerictextboxMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.numerictextbox.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoNumerictextboxMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -27,7 +27,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this);
+      this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this).useValueBinding();
     }
 
     NumericTextBox.prototype.bind = function bind(ctx) {
@@ -41,6 +41,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
         element: this.element,
         parentCtx: this.$parent
       });
+    };
+
+    NumericTextBox.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+      this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
     NumericTextBox.prototype.detached = function detached() {

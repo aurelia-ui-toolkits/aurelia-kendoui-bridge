@@ -18,9 +18,9 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.autocomplete.min');
+require('kendo.autocomplete.min');
 
-require('kendo-ui/js/kendo.virtuallist.min');
+require('kendo.virtuallist.min');
 
 var AutoComplete = (function () {
   var _instanceInitializers = {};

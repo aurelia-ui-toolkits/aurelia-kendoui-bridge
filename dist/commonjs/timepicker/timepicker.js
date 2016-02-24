@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.timepicker.min');
+require('kendo.timepicker.min');
 
 var TimePicker = (function () {
   var _instanceInitializers = {};

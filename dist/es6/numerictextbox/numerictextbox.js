@@ -3,7 +3,7 @@ import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo-ui/js/kendo.numerictextbox.min';
+import 'kendo.numerictextbox.min';
 
 @customAttribute(`${constants.attributePrefix}numerictextbox`)
 @generateBindables('kendoNumericTextBox')
@@ -16,7 +16,8 @@ export class NumericTextBox {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoNumericTextBox')
-                        .linkViewModel(this);
+                        .linkViewModel(this)
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -30,6 +31,10 @@ export class NumericTextBox {
       element: this.element,
       parentCtx: this.$parent
     });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {

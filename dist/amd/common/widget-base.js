@@ -1,4 +1,4 @@
-define(['exports', './options', './events', './util', './template-compiler', './control-properties', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (exports, _options, _events, _util, _templateCompiler, _controlProperties, _aureliaDependencyInjection, _aureliaTaskQueue) {
+define(['exports', './util', './options-builder', './template-compiler', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (exports, _util, _optionsBuilder, _templateCompiler, _aureliaDependencyInjection, _aureliaTaskQueue) {
   'use strict';
 
   exports.__esModule = true;
@@ -6,11 +6,11 @@ define(['exports', './options', './events', './util', './template-compiler', './
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   var WidgetBase = (function () {
-    function WidgetBase(taskQueue, templateCompiler, controlProperties) {
+    function WidgetBase(taskQueue, templateCompiler, optionsBuilder) {
       _classCallCheck(this, _WidgetBase);
 
       this.taskQueue = taskQueue;
-      this.controlProperties = controlProperties;
+      this.optionsBuilder = optionsBuilder;
       templateCompiler.initialize();
     }
 
@@ -105,35 +105,10 @@ define(['exports', './options', './events', './util', './template-compiler', './
     };
 
     WidgetBase.prototype._getOptions = function _getOptions(element) {
-      var options = this.getOptionsFromBindables();
+      var options = this.optionsBuilder.getOptions(this.viewModel, this.controlName);
       var eventOptions = this.getEventOptions(element);
 
-      return _options.pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
-    };
-
-    WidgetBase.prototype.getOptionsFromBindables = function getOptionsFromBindables() {
-      var options = {};
-
-      for (var _iterator = this.controlProperties.getProperties(this.controlName), _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-        var _ref;
-
-        if (_isArray) {
-          if (_i >= _iterator.length) break;
-          _ref = _iterator[_i++];
-        } else {
-          _i = _iterator.next();
-          if (_i.done) break;
-          _ref = _i.value;
-        }
-
-        var prop = _ref;
-
-        if (prop !== 'widget') {
-          options[prop] = this.viewModel[_util.getBindablePropertyName(prop)];
-        }
-      }
-
-      return options;
+      return _util.pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
     };
 
     WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
@@ -141,6 +116,7 @@ define(['exports', './options', './events', './util', './template-compiler', './
 
       var options = {};
       var allowedEvents = this.kendoEvents;
+      var delayedExecution = ['change'];
 
       var events = _util.getEventsFromAttributes(element);
 
@@ -149,11 +125,17 @@ define(['exports', './options', './events', './util', './template-compiler', './
           throw new Error(event + ' is not an event on the ' + _this2.controlName + ' control');
         }
 
-        options[event] = function (e) {
-          _this2.taskQueue.queueMicroTask(function () {
-            _events.fireKendoEvent(element, _util._hyphenate(event), e);
-          });
-        };
+        if (delayedExecution.includes(event)) {
+          options[event] = function (e) {
+            _this2.taskQueue.queueMicroTask(function () {
+              return _util.fireKendoEvent(element, _util._hyphenate(event), e);
+            });
+          };
+        } else {
+          options[event] = function (e) {
+            return _util.fireKendoEvent(element, _util._hyphenate(event), e);
+          };
+        }
       });
 
       return options;
@@ -169,12 +151,16 @@ define(['exports', './options', './events', './util', './template-compiler', './
       }
     };
 
+    WidgetBase.prototype.useTemplates = function useTemplates(target, controlName, templates) {
+      return _util.useTemplates(target, controlName, templates);
+    };
+
     WidgetBase.prototype.destroy = function destroy(widget) {
       widget.destroy();
     };
 
     var _WidgetBase = WidgetBase;
-    WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _controlProperties.ControlProperties)(WidgetBase) || WidgetBase;
+    WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder)(WidgetBase) || WidgetBase;
     WidgetBase = _aureliaDependencyInjection.transient()(WidgetBase) || WidgetBase;
     return WidgetBase;
   })();

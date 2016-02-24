@@ -70,7 +70,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
 
             if (data && data[i]) {
               var _data = data[i];
-              ctx = _data.dataItem;
+              ctx = _data.dataItem || _data.aggregate || _data;
             }
 
             if (element instanceof jQuery) {

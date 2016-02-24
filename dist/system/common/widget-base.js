@@ -1,23 +1,21 @@
-System.register(['./options', './events', './util', './template-compiler', './control-properties', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (_export) {
+System.register(['./util', './options-builder', './template-compiler', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (_export) {
   'use strict';
 
-  var pruneOptions, fireKendoEvent, getEventsFromAttributes, _hyphenate, getBindablePropertyName, TemplateCompiler, ControlProperties, inject, transient, TaskQueue, WidgetBase;
+  var fireKendoEvent, getEventsFromAttributes, _hyphenate, pruneOptions, _useTemplates, OptionsBuilder, TemplateCompiler, inject, transient, TaskQueue, WidgetBase;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   return {
-    setters: [function (_options) {
-      pruneOptions = _options.pruneOptions;
-    }, function (_events) {
-      fireKendoEvent = _events.fireKendoEvent;
-    }, function (_util) {
+    setters: [function (_util) {
+      fireKendoEvent = _util.fireKendoEvent;
       getEventsFromAttributes = _util.getEventsFromAttributes;
       _hyphenate = _util._hyphenate;
-      getBindablePropertyName = _util.getBindablePropertyName;
+      pruneOptions = _util.pruneOptions;
+      _useTemplates = _util.useTemplates;
+    }, function (_optionsBuilder) {
+      OptionsBuilder = _optionsBuilder.OptionsBuilder;
     }, function (_templateCompiler) {
       TemplateCompiler = _templateCompiler.TemplateCompiler;
-    }, function (_controlProperties) {
-      ControlProperties = _controlProperties.ControlProperties;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
       transient = _aureliaDependencyInjection.transient;
@@ -26,11 +24,11 @@ System.register(['./options', './events', './util', './template-compiler', './co
     }],
     execute: function () {
       WidgetBase = (function () {
-        function WidgetBase(taskQueue, templateCompiler, controlProperties) {
+        function WidgetBase(taskQueue, templateCompiler, optionsBuilder) {
           _classCallCheck(this, _WidgetBase);
 
           this.taskQueue = taskQueue;
-          this.controlProperties = controlProperties;
+          this.optionsBuilder = optionsBuilder;
           templateCompiler.initialize();
         }
 
@@ -125,35 +123,10 @@ System.register(['./options', './events', './util', './template-compiler', './co
         };
 
         WidgetBase.prototype._getOptions = function _getOptions(element) {
-          var options = this.getOptionsFromBindables();
+          var options = this.optionsBuilder.getOptions(this.viewModel, this.controlName);
           var eventOptions = this.getEventOptions(element);
 
           return pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
-        };
-
-        WidgetBase.prototype.getOptionsFromBindables = function getOptionsFromBindables() {
-          var options = {};
-
-          for (var _iterator = this.controlProperties.getProperties(this.controlName), _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-            var _ref;
-
-            if (_isArray) {
-              if (_i >= _iterator.length) break;
-              _ref = _iterator[_i++];
-            } else {
-              _i = _iterator.next();
-              if (_i.done) break;
-              _ref = _i.value;
-            }
-
-            var prop = _ref;
-
-            if (prop !== 'widget') {
-              options[prop] = this.viewModel[getBindablePropertyName(prop)];
-            }
-          }
-
-          return options;
         };
 
         WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
@@ -161,6 +134,7 @@ System.register(['./options', './events', './util', './template-compiler', './co
 
           var options = {};
           var allowedEvents = this.kendoEvents;
+          var delayedExecution = ['change'];
 
           var events = getEventsFromAttributes(element);
 
@@ -169,11 +143,17 @@ System.register(['./options', './events', './util', './template-compiler', './co
               throw new Error(event + ' is not an event on the ' + _this2.controlName + ' control');
             }
 
-            options[event] = function (e) {
-              _this2.taskQueue.queueMicroTask(function () {
-                fireKendoEvent(element, _hyphenate(event), e);
-              });
-            };
+            if (delayedExecution.includes(event)) {
+              options[event] = function (e) {
+                _this2.taskQueue.queueMicroTask(function () {
+                  return fireKendoEvent(element, _hyphenate(event), e);
+                });
+              };
+            } else {
+              options[event] = function (e) {
+                return fireKendoEvent(element, _hyphenate(event), e);
+              };
+            }
           });
 
           return options;
@@ -189,12 +169,16 @@ System.register(['./options', './events', './util', './template-compiler', './co
           }
         };
 
+        WidgetBase.prototype.useTemplates = function useTemplates(target, controlName, templates) {
+          return _useTemplates(target, controlName, templates);
+        };
+
         WidgetBase.prototype.destroy = function destroy(widget) {
           widget.destroy();
         };
 
         var _WidgetBase = WidgetBase;
-        WidgetBase = inject(TaskQueue, TemplateCompiler, ControlProperties)(WidgetBase) || WidgetBase;
+        WidgetBase = inject(TaskQueue, TemplateCompiler, OptionsBuilder)(WidgetBase) || WidgetBase;
         WidgetBase = transient()(WidgetBase) || WidgetBase;
         return WidgetBase;
       })();

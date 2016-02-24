@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.calendar.min');
+require('kendo.calendar.min');
 
 var Calendar = (function () {
   var _instanceInitializers = {};

@@ -1,4 +1,4 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.colorpicker.min'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.colorpicker.min'], function (_export) {
   'use strict';
 
   var inject, customAttribute, bindable, WidgetBase, generateBindables, constants, ColorPicker;
@@ -21,7 +21,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }, function (_kendoUiJsKendoColorpickerMin) {}],
+    }, function (_kendoColorpickerMin) {}],
     execute: function () {
       ColorPicker = (function () {
         var _instanceInitializers = {};

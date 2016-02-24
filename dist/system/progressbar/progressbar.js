@@ -1,4 +1,4 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.progressbar.min'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.progressbar.min'], function (_export) {
   'use strict';
 
   var inject, customAttribute, bindable, WidgetBase, generateBindables, constants, ProgressBar;
@@ -21,7 +21,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }, function (_kendoUiJsKendoProgressbarMin) {}],
+    }, function (_kendoProgressbarMin) {}],
     execute: function () {
       ProgressBar = (function () {
         var _instanceInitializers = {};

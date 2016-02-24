@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.treeview.min');
+require('kendo.treeview.min');
 
 var TreeView = (function () {
   var _instanceInitializers = {};

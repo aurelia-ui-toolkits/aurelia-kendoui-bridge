@@ -20,7 +20,7 @@ var _commonConstants = require('../common/constants');
 
 var _pdfPdf = require('../pdf/pdf');
 
-require('kendo-ui/js/kendo.dataviz.stock.min');
+require('kendo.dataviz.stock.min');
 
 var Stock = (function () {
   var _instanceInitializers = {};

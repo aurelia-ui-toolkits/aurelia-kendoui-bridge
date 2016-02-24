@@ -1,4 +1,4 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo-ui/js/kendo.dataviz.treemap.min'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo.dataviz.treemap.min'], function (_export) {
   'use strict';
 
   var inject, customElement, bindable, WidgetBase, generateBindables, constants, PDF, TreeMap;
@@ -23,7 +23,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       constants = _commonConstants.constants;
     }, function (_pdfPdf) {
       PDF = _pdfPdf.PDF;
-    }, function (_kendoUiJsKendoDatavizTreemapMin) {}],
+    }, function (_kendoDatavizTreemapMin) {}],
     execute: function () {
       TreeMap = (function () {
         var _instanceInitializers = {};

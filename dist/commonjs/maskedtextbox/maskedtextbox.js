@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.maskedtextbox.min');
+require('kendo.maskedtextbox.min');
 
 var MaskedTextBox = (function () {
   var _instanceInitializers = {};

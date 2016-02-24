@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.menu.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoUiJsKendoMenuMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.menu.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoMenuMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -38,11 +38,12 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     Menu.prototype.recreate = function recreate() {
       var element = undefined;
-      var ul = $(this.element).find('ul');
-      if (ul.has()) {
-        element = $(this.element).find('ul').first();
+      var ul = this.element.querySelectorAll('ul');
+      if (ul.length > 0) {
+        element = ul[0];
       } else {
-        element = $(this.element).appendChild('<ul></ul>');
+        element = document.createElement('ul');
+        this.element.appendChild(element);
       }
 
       this.kWidget = this.widgetBase.createWidget({

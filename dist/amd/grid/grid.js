@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo-ui/js/kendo.data.signalr.min', 'kendo-ui/js/kendo.filtercell.min', 'kendo-ui/js/kendo.grid.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _pdfPdf, _kendoUiJsKendoDataSignalrMin, _kendoUiJsKendoFiltercellMin, _kendoUiJsKendoGridMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../pdf/pdf', 'kendo.data.signalr.min', 'kendo.filtercell.min', 'kendo.grid.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _commonOptionsBuilder, _pdfPdf, _kendoDataSignalrMin, _kendoFiltercellMin, _kendoGridMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -26,7 +26,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       enumerable: true
     }], null, _instanceInitializers);
 
-    function Grid(element, widgetBase, viewResources) {
+    function Grid(element, widgetBase, viewResources, optionsBuilder) {
       _classCallCheck(this, _Grid);
 
       _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
@@ -34,6 +34,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
       this.element = element;
+      this.optionsBuilder = optionsBuilder;
       this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).useViewResources(viewResources);
     }
 
@@ -60,18 +61,13 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
-      if (this.columns && this.columns.length > 0) {
-        options.columns = this.columns;
+      var _this2 = this;
 
-        options.columns.forEach(function (c) {
-          if (c.template && !c.withKendoTemplates) {
-            (function () {
-              var template = c.template;
-              c.template = function () {
-                return template;
-              };
-            })();
-          }
+      if (this.columns && this.columns.length > 0) {
+        options.columns = [];
+
+        this.columns.forEach(function (column) {
+          options.columns.push(_this2.optionsBuilder.getOptions(column, 'GridColumn'));
         });
       }
     };
@@ -81,7 +77,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     var _Grid = Grid;
-    Grid = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources)(Grid) || Grid;
+    Grid = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources, _commonOptionsBuilder.OptionsBuilder)(Grid) || Grid;
     Grid = _commonDecorators.generateBindables('kendoGrid')(Grid) || Grid;
     Grid = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'grid')(Grid) || Grid;
     return Grid;

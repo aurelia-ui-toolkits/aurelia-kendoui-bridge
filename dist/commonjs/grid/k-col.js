@@ -8,221 +8,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-var _aureliaDependencyInjection = require('aurelia-dependency-injection');
-
 var _aureliaTemplating = require('aurelia-templating');
 
 var _commonConstants = require('../common/constants');
 
+var _commonDecorators = require('../common/decorators');
+
+var _commonUtil = require('../common/util');
+
 var Col = (function () {
   var _instanceInitializers = {};
 
+  function Col() {
+    _classCallCheck(this, _Col);
+
+    _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
+  }
+
+  Col.prototype.bind = function bind() {
+    _commonUtil.useTemplates(this, 'GridColumn', this.templates);
+  };
+
   _createDecoratedClass(Col, [{
-    key: 'aggregates',
-    decorators: [_aureliaTemplating.bindable],
+    key: 'templates',
+    decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
     initializer: null,
-    enumerable: true
-  }, {
-    key: 'attributes',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'columns',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'command',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'editor',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'encoded',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'field',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'filterable',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'footerTemplate',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'format',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return '';
-    },
-    enumerable: true
-  }, {
-    key: 'groupable',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'groupFooterTemplate',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'groupHeaderTemplate',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'headerAttributes',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'headerTemplate',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'hidden',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'lockable',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'locked',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'menu',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'minScreenWidth',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'sortable',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'title',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'values',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'width',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'template',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'withKendoTemplates',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return false;
-    },
     enumerable: true
   }], null, _instanceInitializers);
 
-  function Col(targetInstruction) {
-    _classCallCheck(this, _Col);
-
-    _defineDecoratedPropertyDescriptor(this, 'aggregates', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'attributes', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'command', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'editor', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'encoded', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'field', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'filterable', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'footerTemplate', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'format', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'groupable', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'groupFooterTemplate', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'groupHeaderTemplate', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'headerAttributes', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'headerTemplate', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'hidden', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'lockable', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'locked', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'menu', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'minScreenWidth', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'sortable', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'title', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'values', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'width', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'withKendoTemplates', _instanceInitializers);
-
-    this.template = targetInstruction.elementInstruction.template;
-  }
-
   var _Col = Col;
+  Col = _commonDecorators.generateBindables('GridColumn')(Col) || Col;
   Col = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'col')(Col) || Col;
-  Col = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(Col) || Col;
-  Col = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
-    var html = element.innerHTML;
-    if (html !== '') {
-      instruction.template = html;
-    }
-
-    return true;
-  })(Col) || Col;
-  Col = _aureliaTemplating.noView(Col) || Col;
   return Col;
 })();
 

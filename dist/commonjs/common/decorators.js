@@ -21,6 +21,8 @@ function generateBindables(controlName) {
     var controlProperties = (_aureliaDependencyInjection.Container.instance || new _aureliaDependencyInjection.Container()).get(_controlProperties.ControlProperties);
     var optionKeys = controlProperties.getProperties(controlName);
 
+    optionKeys.push('widget');
+
     for (var _iterator = optionKeys, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
       var _ref;
 
