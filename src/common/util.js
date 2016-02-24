@@ -1,16 +1,10 @@
 const capitalMatcher = /([A-Z])/g;
 import {constants} from './constants';
-import {ControlProperties} from './control-properties';
-import {inject} from 'aurelia-dependency-injection';
 
-@inject(ControlProperties)
+/**
+* Collection of useful functions used in multiple parts of the plugin
+*/
 export class Util {
-
-  controlProperties: ControlProperties;
-
-  constructor(controlProperties: ControlProperties) {
-    this.controlProperties = controlProperties;
-  }
 
   /**
   * prepends hyphen and lowercases the input char
@@ -26,7 +20,7 @@ export class Util {
   * @param name the string to hyphenate
   */
   _hyphenate(name: string): string {
-    return (name.charAt(0).toLowerCase() + name.slice(1)).replace(capitalMatcher, addHyphenAndLower);
+    return (name.charAt(0).toLowerCase() + name.slice(1)).replace(capitalMatcher, this.addHyphenAndLower);
   }
 
   /**
@@ -44,7 +38,7 @@ export class Util {
   getBindablePropertyName(propertyName: string): string {
     let name = `${constants.bindablePrefix}${propertyName}`;
 
-    return _unhyphenate(name);
+    return this._unhyphenate(name);
   }
 
   /**
@@ -76,7 +70,7 @@ export class Util {
       let withoutTriggerDelegate = hyphenatedEvent.split('.')[0];
 
       // my-event -> myEvent
-      let camelCased = _unhyphenate(withoutTriggerDelegate);
+      let camelCased = this._unhyphenate(withoutTriggerDelegate);
 
       events.push(camelCased);
     }
@@ -95,7 +89,7 @@ export class Util {
     let returnOptions = {};
 
     for (let prop in options) {
-      if (hasValue(options[prop])) {
+      if (this.hasValue(options[prop])) {
         returnOptions[prop] = options[prop];
       }
     }
@@ -106,30 +100,6 @@ export class Util {
   hasValue(prop) {
     return typeof(prop) !== 'undefined' && prop !== null;
   }
-
-
-  /***
-  * parses array of k-template view-models (@children)
-  * <k-template for='test'>
-  * this function sets the property 'test' on the viewmodel to the template
-  * @param target the viewModel with template properties
-  * @param kendoGrid or GridColumn, properties are retrieved from bindables.js
-  * @param templates array of k-template view-models
-  */
-  useTemplates(target, controlName, templates) {
-    let templateProps = this.controlProperties.getTemplateProperties(controlName);
-
-    templates.forEach(c => {
-      if (templateProps.indexOf(c.for) > -1) {
-        if (hasValue(c.template)) {
-          target[getBindablePropertyName(c.for)] = c.kendoTemplate ? c.template : () => c.template;
-        }
-      } else {
-        throw new Error('Invalid template property name: "' + c.for + '", valid values are: ' + templateProps.join(', '));
-      }
-    });
-  }
-
 
   /**
   * Fire DOM event on an element
@@ -154,7 +124,7 @@ export class Util {
   * @param data Addition data to attach to an event
   */
   fireKendoEvent(element: Element, name: string, data = {}) {
-    return fireEvent(element, `${constants.eventPrefix}${name}`, data);
+    return this.fireEvent(element, `${constants.eventPrefix}${name}`, data);
   }
 
   /**

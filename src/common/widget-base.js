@@ -1,6 +1,7 @@
 import {Util} from './util';
 import {OptionsBuilder} from './options-builder';
 import {TemplateCompiler} from './template-compiler';
+import {TemplateGatherer} from './template-gatherer';
 import {inject, transient} from 'aurelia-dependency-injection';
 import {TaskQueue} from 'aurelia-task-queue';
 
@@ -8,7 +9,7 @@ import {TaskQueue} from 'aurelia-task-queue';
 * Abstraction of commonly used code across wrappers
 */
 @transient()
-@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util)
+@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer)
 export class WidgetBase {
 
   /**
@@ -49,10 +50,11 @@ export class WidgetBase {
   */
   ctor: any;
 
-  constructor(taskQueue, templateCompiler, optionsBuilder, util) {
+  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer) {
     this.taskQueue = taskQueue;
     this.optionsBuilder = optionsBuilder;
     this.util = util;
+    this.templateGatherer = templateGatherer;
     templateCompiler.initialize();
   }
 
@@ -205,10 +207,10 @@ export class WidgetBase {
 
       if (delayedExecution.includes(event)) {
         options[event] = e => {
-          this.taskQueue.queueMicroTask(() => fireKendoEvent(element, _hyphenate(event), e));
+          this.taskQueue.queueMicroTask(() => this.util.fireKendoEvent(element, this.util._hyphenate(event), e));
         };
       } else {
-        options[event] = e => fireKendoEvent(element, _hyphenate(event), e);
+        options[event] = e => this.util.fireKendoEvent(element, this.util._hyphenate(event), e);
       }
     });
 
@@ -228,7 +230,7 @@ export class WidgetBase {
   }
 
   useTemplates(target, controlName, templates) {
-    return this.util.useTemplates(target, controlName, templates);
+    return this.templateGatherer.useTemplates(target, controlName, templates);
   }
 
   /**

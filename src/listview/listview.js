@@ -23,7 +23,6 @@ export class ListView  {
 
   bind(ctx) {
     this.$parent = ctx;
-    this.widgetBase.useTemplates(this, 'kendoListView', this.templates);
   }
 
   attached() {
@@ -31,6 +30,8 @@ export class ListView  {
   }
 
   recreate() {
+    this.widgetBase.useTemplates(this, 'kendoListView', this.templates);
+
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent

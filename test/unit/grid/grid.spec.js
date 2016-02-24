@@ -4,6 +4,7 @@ import {initialize} from 'aurelia-pal-browser';
 import {DOM} from 'aurelia-pal';
 import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
+import {TemplateGatherer} from 'src/common/template-gatherer';
 
 describe('Grid', () => {
   let element;
@@ -23,7 +24,7 @@ describe('Grid', () => {
   it('disables the Kendo templating system', () => {
     let options = {};
 
-    let col = new Col();
+    let col = new Col(container.get(TemplateGatherer));
     col.templates = [{
       for: 'template',
       template: 'abcd'
