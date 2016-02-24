@@ -28,13 +28,13 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.pdf.min';
   import 'kendo.excel.min';
   import 'kendo.progressbar.min';
+  import 'kendo.slider.min';
   import 'kendo.scheduler.min';
   import 'kendo.scheduler.agendaview.min';
   import 'kendo.scheduler.dayview.min';
   import 'kendo.scheduler.monthview.min';
   import 'kendo.scheduler.recurrence.min';
   import 'kendo.scheduler.timelineview.min';
-  import 'kendo.slider.min';
   import 'kendo.tabstrip.min';
   import 'kendo.timepicker.min';
   import 'kendo.treelist.min';
@@ -171,14 +171,14 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class ColorPalette {
+  export class ColorPicker {
     options: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     recreate(): any;
     detached(): any;
   }
-  export class ColorPicker {
+  export class ColorPalette {
     options: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
@@ -446,14 +446,6 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
-  export class FlatColorPicker {
-    options: any;
-    constructor(element: any, widgetBase: any);
-    bind(ctx: any): any;
-    attached(): any;
-    recreate(): any;
-    detached(): any;
-  }
   export class DropDownList {
     options: any;
     templates: any;
@@ -471,6 +463,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property: any, newValue: any, oldValue: any): any;
+    detached(): any;
+  }
+  export class FlatColorPicker {
+    options: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
     detached(): any;
   }
   
@@ -559,6 +559,15 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
+  export class RangeSlider {
+    options: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property: any, newValue: any, oldValue: any): any;
+    detached(): any;
+  }
   
   // eslint-disable-line no-unused-vars
   export class Scheduler {
@@ -568,15 +577,6 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
-  }
-  export class RangeSlider {
-    options: any;
-    constructor(element: any, widgetBase: any);
-    bind(ctx: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
   export class Slider {

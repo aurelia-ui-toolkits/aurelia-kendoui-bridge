@@ -954,184 +954,8 @@
       ]
     },
     {
-      "id": 184,
-      "name": "ColorPalette",
-      "kind": 128,
-      "kindString": "Class",
-      "flags": {
-        "isExported": true
-      },
-      "children": [
-        {
-          "id": 186,
-          "name": "constructor",
-          "kind": 512,
-          "kindString": "Constructor",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 187,
-              "name": "new ColorPalette",
-              "kind": 16384,
-              "kindString": "Constructor signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 188,
-                  "name": "element",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                },
-                {
-                  "id": 189,
-                  "name": "widgetBase",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                }
-              ],
-              "type": {
-                "type": "reference",
-                "name": "ColorPalette",
-                "id": 184,
-                "moduleName": "\"aurelia-kendoui-bridge\""
-              }
-            }
-          ]
-        },
-        {
-          "id": 185,
-          "name": "options",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 190,
-          "name": "bind",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 191,
-              "name": "bind",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 192,
-                  "name": "ctx",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                }
-              ],
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        },
-        {
-          "id": 195,
-          "name": "detached",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 196,
-              "name": "detached",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        },
-        {
-          "id": 193,
-          "name": "recreate",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 194,
-              "name": "recreate",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        }
-      ],
-      "groups": [
-        {
-          "title": "Constructors",
-          "kind": 512,
-          "children": [
-            186
-          ]
-        },
-        {
-          "title": "Properties",
-          "kind": 1024,
-          "children": [
-            185
-          ]
-        },
-        {
-          "title": "Methods",
-          "kind": 2048,
-          "children": [
-            190,
-            195,
-            193
-          ]
-        }
-      ]
-    },
-    {
       "id": 197,
-      "name": "ColorPicker",
+      "name": "ColorPalette",
       "kind": 128,
       "kindString": "Class",
       "flags": {
@@ -1149,7 +973,7 @@
           "signatures": [
             {
               "id": 200,
-              "name": "new ColorPicker",
+              "name": "new ColorPalette",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
@@ -1179,7 +1003,7 @@
               ],
               "type": {
                 "type": "reference",
-                "name": "ColorPicker",
+                "name": "ColorPalette",
                 "id": 197,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
@@ -1301,6 +1125,182 @@
             203,
             208,
             206
+          ]
+        }
+      ]
+    },
+    {
+      "id": 184,
+      "name": "ColorPicker",
+      "kind": 128,
+      "kindString": "Class",
+      "flags": {
+        "isExported": true
+      },
+      "children": [
+        {
+          "id": 186,
+          "name": "constructor",
+          "kind": 512,
+          "kindString": "Constructor",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 187,
+              "name": "new ColorPicker",
+              "kind": 16384,
+              "kindString": "Constructor signature",
+              "flags": {},
+              "parameters": [
+                {
+                  "id": 188,
+                  "name": "element",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                },
+                {
+                  "id": 189,
+                  "name": "widgetBase",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "name": "ColorPicker",
+                "id": 184,
+                "moduleName": "\"aurelia-kendoui-bridge\""
+              }
+            }
+          ]
+        },
+        {
+          "id": 185,
+          "name": "options",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 190,
+          "name": "bind",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 191,
+              "name": "bind",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "parameters": [
+                {
+                  "id": 192,
+                  "name": "ctx",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                }
+              ],
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
+          "id": 195,
+          "name": "detached",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 196,
+              "name": "detached",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
+          "id": 193,
+          "name": "recreate",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 194,
+              "name": "recreate",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "title": "Constructors",
+          "kind": 512,
+          "children": [
+            186
+          ]
+        },
+        {
+          "title": "Properties",
+          "kind": 1024,
+          "children": [
+            185
+          ]
+        },
+        {
+          "title": "Methods",
+          "kind": 2048,
+          "children": [
+            190,
+            195,
+            193
           ]
         }
       ]
@@ -2212,7 +2212,7 @@
       ]
     },
     {
-      "id": 385,
+      "id": 370,
       "name": "DropDownList",
       "kind": 128,
       "kindString": "Class",
@@ -2221,7 +2221,7 @@
       },
       "children": [
         {
-          "id": 388,
+          "id": 373,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -2230,14 +2230,14 @@
           },
           "signatures": [
             {
-              "id": 389,
+              "id": 374,
               "name": "new DropDownList",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 390,
+                  "id": 375,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -2248,7 +2248,7 @@
                   }
                 },
                 {
-                  "id": 391,
+                  "id": 376,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -2262,14 +2262,14 @@
               "type": {
                 "type": "reference",
                 "name": "DropDownList",
-                "id": 385,
+                "id": 370,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 386,
+          "id": 371,
           "name": "options",
           "kind": 1024,
           "kindString": "Property",
@@ -2282,7 +2282,7 @@
           }
         },
         {
-          "id": 387,
+          "id": 372,
           "name": "templates",
           "kind": 1024,
           "kindString": "Property",
@@ -2295,7 +2295,7 @@
           }
         },
         {
-          "id": 395,
+          "id": 380,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -2304,7 +2304,7 @@
           },
           "signatures": [
             {
-              "id": 396,
+              "id": 381,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -2317,7 +2317,7 @@
           ]
         },
         {
-          "id": 392,
+          "id": 377,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -2326,14 +2326,14 @@
           },
           "signatures": [
             {
-              "id": 393,
+              "id": 378,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 394,
+                  "id": 379,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -2352,7 +2352,7 @@
           ]
         },
         {
-          "id": 404,
+          "id": 389,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -2361,7 +2361,7 @@
           },
           "signatures": [
             {
-              "id": 405,
+              "id": 390,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -2374,7 +2374,7 @@
           ]
         },
         {
-          "id": 399,
+          "id": 384,
           "name": "propertyChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -2383,14 +2383,14 @@
           },
           "signatures": [
             {
-              "id": 400,
+              "id": 385,
               "name": "propertyChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 401,
+                  "id": 386,
                   "name": "property",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -2401,7 +2401,7 @@
                   }
                 },
                 {
-                  "id": 402,
+                  "id": 387,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -2412,7 +2412,7 @@
                   }
                 },
                 {
-                  "id": 403,
+                  "id": 388,
                   "name": "oldValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -2431,7 +2431,7 @@
           ]
         },
         {
-          "id": 397,
+          "id": 382,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -2440,7 +2440,7 @@
           },
           "signatures": [
             {
-              "id": 398,
+              "id": 383,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -2458,32 +2458,32 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            388
+            373
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            386,
-            387
+            371,
+            372
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            395,
-            392,
-            404,
-            399,
-            397
+            380,
+            377,
+            389,
+            384,
+            382
           ]
         }
       ]
     },
     {
-      "id": 406,
+      "id": 391,
       "name": "Editor",
       "kind": 128,
       "kindString": "Class",
@@ -2492,7 +2492,7 @@
       },
       "children": [
         {
-          "id": 408,
+          "id": 393,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -2501,14 +2501,14 @@
           },
           "signatures": [
             {
-              "id": 409,
+              "id": 394,
               "name": "new Editor",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 410,
+                  "id": 395,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -2519,7 +2519,7 @@
                   }
                 },
                 {
-                  "id": 411,
+                  "id": 396,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -2533,14 +2533,14 @@
               "type": {
                 "type": "reference",
                 "name": "Editor",
-                "id": 406,
+                "id": 391,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 407,
+          "id": 392,
           "name": "options",
           "kind": 1024,
           "kindString": "Property",
@@ -2553,7 +2553,7 @@
           }
         },
         {
-          "id": 415,
+          "id": 400,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -2562,7 +2562,7 @@
           },
           "signatures": [
             {
-              "id": 416,
+              "id": 401,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -2575,7 +2575,7 @@
           ]
         },
         {
-          "id": 412,
+          "id": 397,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -2584,14 +2584,271 @@
           },
           "signatures": [
             {
-              "id": 413,
+              "id": 398,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 414,
+                  "id": 399,
+                  "name": "ctx",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                }
+              ],
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
+          "id": 409,
+          "name": "detached",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 410,
+              "name": "detached",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
+          "id": 404,
+          "name": "propertyChanged",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 405,
+              "name": "propertyChanged",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "parameters": [
+                {
+                  "id": 406,
+                  "name": "property",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                },
+                {
+                  "id": 407,
+                  "name": "newValue",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                },
+                {
+                  "id": 408,
+                  "name": "oldValue",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                }
+              ],
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
+          "id": 402,
+          "name": "recreate",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 403,
+              "name": "recreate",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "title": "Constructors",
+          "kind": 512,
+          "children": [
+            393
+          ]
+        },
+        {
+          "title": "Properties",
+          "kind": 1024,
+          "children": [
+            392
+          ]
+        },
+        {
+          "title": "Methods",
+          "kind": 2048,
+          "children": [
+            400,
+            397,
+            409,
+            404,
+            402
+          ]
+        }
+      ]
+    },
+    {
+      "id": 411,
+      "name": "FlatColorPicker",
+      "kind": 128,
+      "kindString": "Class",
+      "flags": {
+        "isExported": true
+      },
+      "children": [
+        {
+          "id": 413,
+          "name": "constructor",
+          "kind": 512,
+          "kindString": "Constructor",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 414,
+              "name": "new FlatColorPicker",
+              "kind": 16384,
+              "kindString": "Constructor signature",
+              "flags": {},
+              "parameters": [
+                {
+                  "id": 415,
+                  "name": "element",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                },
+                {
+                  "id": 416,
+                  "name": "widgetBase",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "name": "FlatColorPicker",
+                "id": 411,
+                "moduleName": "\"aurelia-kendoui-bridge\""
+              }
+            }
+          ]
+        },
+        {
+          "id": 412,
+          "name": "options",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 420,
+          "name": "attached",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 421,
+              "name": "attached",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
+          "id": 417,
+          "name": "bind",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 418,
+              "name": "bind",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "parameters": [
+                {
+                  "id": 419,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -2632,64 +2889,7 @@
           ]
         },
         {
-          "id": 419,
-          "name": "propertyChanged",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 420,
-              "name": "propertyChanged",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 421,
-                  "name": "property",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                },
-                {
-                  "id": 422,
-                  "name": "newValue",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                },
-                {
-                  "id": 423,
-                  "name": "oldValue",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                }
-              ],
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        },
-        {
-          "id": 417,
+          "id": 422,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -2698,7 +2898,7 @@
           },
           "signatures": [
             {
-              "id": 418,
+              "id": 423,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -2716,224 +2916,24 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            408
+            413
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            407
+            412
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            415,
-            412,
+            420,
+            417,
             424,
-            419,
-            417
-          ]
-        }
-      ]
-    },
-    {
-      "id": 370,
-      "name": "FlatColorPicker",
-      "kind": 128,
-      "kindString": "Class",
-      "flags": {
-        "isExported": true
-      },
-      "children": [
-        {
-          "id": 372,
-          "name": "constructor",
-          "kind": 512,
-          "kindString": "Constructor",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 373,
-              "name": "new FlatColorPicker",
-              "kind": 16384,
-              "kindString": "Constructor signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 374,
-                  "name": "element",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                },
-                {
-                  "id": 375,
-                  "name": "widgetBase",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                }
-              ],
-              "type": {
-                "type": "reference",
-                "name": "FlatColorPicker",
-                "id": 370,
-                "moduleName": "\"aurelia-kendoui-bridge\""
-              }
-            }
-          ]
-        },
-        {
-          "id": 371,
-          "name": "options",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 379,
-          "name": "attached",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 380,
-              "name": "attached",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        },
-        {
-          "id": 376,
-          "name": "bind",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 377,
-              "name": "bind",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 378,
-                  "name": "ctx",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                }
-              ],
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        },
-        {
-          "id": 383,
-          "name": "detached",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 384,
-              "name": "detached",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        },
-        {
-          "id": 381,
-          "name": "recreate",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 382,
-              "name": "recreate",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        }
-      ],
-      "groups": [
-        {
-          "title": "Constructors",
-          "kind": 512,
-          "children": [
-            372
-          ]
-        },
-        {
-          "title": "Properties",
-          "kind": 1024,
-          "children": [
-            371
-          ]
-        },
-        {
-          "title": "Methods",
-          "kind": 2048,
-          "children": [
-            379,
-            376,
-            383,
-            381
+            422
           ]
         }
       ]
@@ -5925,7 +5925,7 @@
       ]
     },
     {
-      "id": 593,
+      "id": 576,
       "name": "RangeSlider",
       "kind": 128,
       "kindString": "Class",
@@ -5934,7 +5934,7 @@
       },
       "children": [
         {
-          "id": 595,
+          "id": 578,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -5943,14 +5943,14 @@
           },
           "signatures": [
             {
-              "id": 596,
+              "id": 579,
               "name": "new RangeSlider",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 597,
+                  "id": 580,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5961,7 +5961,7 @@
                   }
                 },
                 {
-                  "id": 598,
+                  "id": 581,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -5975,14 +5975,14 @@
               "type": {
                 "type": "reference",
                 "name": "RangeSlider",
-                "id": 593,
+                "id": 576,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 594,
+          "id": 577,
           "name": "options",
           "kind": 1024,
           "kindString": "Property",
@@ -5995,7 +5995,7 @@
           }
         },
         {
-          "id": 602,
+          "id": 585,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -6004,7 +6004,7 @@
           },
           "signatures": [
             {
-              "id": 603,
+              "id": 586,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6017,7 +6017,7 @@
           ]
         },
         {
-          "id": 599,
+          "id": 582,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -6026,14 +6026,295 @@
           },
           "signatures": [
             {
-              "id": 600,
+              "id": 583,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
+                  "id": 584,
+                  "name": "ctx",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                }
+              ],
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
+          "id": 594,
+          "name": "detached",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 595,
+              "name": "detached",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
+          "id": 589,
+          "name": "propertyChanged",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 590,
+              "name": "propertyChanged",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "parameters": [
+                {
+                  "id": 591,
+                  "name": "property",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                },
+                {
+                  "id": 592,
+                  "name": "newValue",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                },
+                {
+                  "id": 593,
+                  "name": "oldValue",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                }
+              ],
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
+          "id": 587,
+          "name": "recreate",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 588,
+              "name": "recreate",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        }
+      ],
+      "groups": [
+        {
+          "title": "Constructors",
+          "kind": 512,
+          "children": [
+            578
+          ]
+        },
+        {
+          "title": "Properties",
+          "kind": 1024,
+          "children": [
+            577
+          ]
+        },
+        {
+          "title": "Methods",
+          "kind": 2048,
+          "children": [
+            585,
+            582,
+            594,
+            589,
+            587
+          ]
+        }
+      ]
+    },
+    {
+      "id": 596,
+      "name": "Scheduler",
+      "kind": 128,
+      "kindString": "Class",
+      "flags": {
+        "isExported": true
+      },
+      "children": [
+        {
+          "id": 599,
+          "name": "constructor",
+          "kind": 512,
+          "kindString": "Constructor",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 600,
+              "name": "new Scheduler",
+              "kind": 16384,
+              "kindString": "Constructor signature",
+              "flags": {},
+              "parameters": [
+                {
                   "id": 601,
+                  "name": "element",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                },
+                {
+                  "id": 602,
+                  "name": "widgetBase",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                },
+                {
+                  "id": 603,
+                  "name": "viewResources",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                }
+              ],
+              "type": {
+                "type": "reference",
+                "name": "Scheduler",
+                "id": 596,
+                "moduleName": "\"aurelia-kendoui-bridge\""
+              }
+            }
+          ]
+        },
+        {
+          "id": 597,
+          "name": "options",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 598,
+          "name": "templates",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
+          "id": 607,
+          "name": "attached",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 608,
+              "name": "attached",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "type": {
+                "type": "instrinct",
+                "name": "any"
+              }
+            }
+          ]
+        },
+        {
+          "id": 604,
+          "name": "bind",
+          "kind": 2048,
+          "kindString": "Method",
+          "flags": {
+            "isExported": true
+          },
+          "signatures": [
+            {
+              "id": 605,
+              "name": "bind",
+              "kind": 4096,
+              "kindString": "Call signature",
+              "flags": {},
+              "parameters": [
+                {
+                  "id": 606,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -6074,64 +6355,7 @@
           ]
         },
         {
-          "id": 606,
-          "name": "propertyChanged",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 607,
-              "name": "propertyChanged",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 608,
-                  "name": "property",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                },
-                {
-                  "id": 609,
-                  "name": "newValue",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                },
-                {
-                  "id": 610,
-                  "name": "oldValue",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                }
-              ],
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        },
-        {
-          "id": 604,
+          "id": 609,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -6140,7 +6364,7 @@
           },
           "signatures": [
             {
-              "id": 605,
+              "id": 610,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -6158,249 +6382,25 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            595
+            599
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            594
+            597,
+            598
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            602,
-            599,
+            607,
+            604,
             611,
-            606,
-            604
-          ]
-        }
-      ]
-    },
-    {
-      "id": 576,
-      "name": "Scheduler",
-      "kind": 128,
-      "kindString": "Class",
-      "flags": {
-        "isExported": true
-      },
-      "children": [
-        {
-          "id": 579,
-          "name": "constructor",
-          "kind": 512,
-          "kindString": "Constructor",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 580,
-              "name": "new Scheduler",
-              "kind": 16384,
-              "kindString": "Constructor signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 581,
-                  "name": "element",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                },
-                {
-                  "id": 582,
-                  "name": "widgetBase",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                },
-                {
-                  "id": 583,
-                  "name": "viewResources",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                }
-              ],
-              "type": {
-                "type": "reference",
-                "name": "Scheduler",
-                "id": 576,
-                "moduleName": "\"aurelia-kendoui-bridge\""
-              }
-            }
-          ]
-        },
-        {
-          "id": 577,
-          "name": "options",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 578,
-          "name": "templates",
-          "kind": 1024,
-          "kindString": "Property",
-          "flags": {
-            "isExported": true
-          },
-          "type": {
-            "type": "instrinct",
-            "name": "any"
-          }
-        },
-        {
-          "id": 587,
-          "name": "attached",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 588,
-              "name": "attached",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        },
-        {
-          "id": 584,
-          "name": "bind",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 585,
-              "name": "bind",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "parameters": [
-                {
-                  "id": 586,
-                  "name": "ctx",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                }
-              ],
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        },
-        {
-          "id": 591,
-          "name": "detached",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 592,
-              "name": "detached",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        },
-        {
-          "id": 589,
-          "name": "recreate",
-          "kind": 2048,
-          "kindString": "Method",
-          "flags": {
-            "isExported": true
-          },
-          "signatures": [
-            {
-              "id": 590,
-              "name": "recreate",
-              "kind": 4096,
-              "kindString": "Call signature",
-              "flags": {},
-              "type": {
-                "type": "instrinct",
-                "name": "any"
-              }
-            }
-          ]
-        }
-      ],
-      "groups": [
-        {
-          "title": "Constructors",
-          "kind": 512,
-          "children": [
-            579
-          ]
-        },
-        {
-          "title": "Properties",
-          "kind": 1024,
-          "children": [
-            577,
-            578
-          ]
-        },
-        {
-          "title": "Methods",
-          "kind": 2048,
-          "children": [
-            587,
-            584,
-            591,
-            589
+            609
           ]
         }
       ]
@@ -10285,15 +10285,15 @@
         103,
         124,
         444,
-        184,
         197,
+        184,
         210,
         231,
         334,
         352,
-        385,
-        406,
         370,
+        391,
+        411,
         426,
         3,
         448,
@@ -10307,8 +10307,8 @@
         562,
         547,
         563,
-        593,
         576,
+        596,
         613,
         139,
         154,

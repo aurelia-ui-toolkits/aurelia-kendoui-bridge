@@ -27,13 +27,13 @@ import 'kendo.panelbar.min';
 import 'kendo.pdf.min';
 import 'kendo.excel.min';
 import 'kendo.progressbar.min';
+import 'kendo.slider.min';
 import 'kendo.scheduler.min';
 import 'kendo.scheduler.agendaview.min';
 import 'kendo.scheduler.dayview.min';
 import 'kendo.scheduler.monthview.min';
 import 'kendo.scheduler.recurrence.min';
 import 'kendo.scheduler.timelineview.min';
-import 'kendo.slider.min';
 import 'kendo.tabstrip.min';
 import 'kendo.timepicker.min';
 import 'kendo.treelist.min';
@@ -56,7 +56,8 @@ export class KendoConfigBuilder {
   * Globally register all Kendo Core wrappers including templating support
   */
   core(): KendoConfigBuilder {
-    this.kendoButton()
+    this.kendoAutoComplete()
+      .kendoButton()
       .kendoCalendar()
       .kendoColorPicker()
       .kendoColorPalette()
@@ -86,7 +87,6 @@ export class KendoConfigBuilder {
   */
   pro(): KendoConfigBuilder {
     this.core()
-      .kendoAutoComplete()
       .kendoChart()
       .kendoEditor()
       .kendoGrid()
@@ -539,17 +539,17 @@ export class TreeMap {
   }
 }
 
-@customElement(`${constants.attributePrefix}color-palette`)
-@generateBindables('kendoColorPalette')
+@customAttribute(`${constants.attributePrefix}color-picker`)
+@generateBindables('kendoColorPicker')
 @inject(Element, WidgetBase)
-export class ColorPalette {
+export class ColorPicker {
 
   @bindable options = {};
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoColorPalette')
+                        .control('kendoColorPicker')
                         .linkViewModel(this);
   }
 
@@ -571,17 +571,17 @@ export class ColorPalette {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}color-picker`)
-@generateBindables('kendoColorPicker')
+@customElement(`${constants.attributePrefix}color-palette`)
+@generateBindables('kendoColorPalette')
 @inject(Element, WidgetBase)
-export class ColorPicker {
+export class ColorPalette {
 
   @bindable options = {};
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoColorPicker')
+                        .control('kendoColorPalette')
                         .linkViewModel(this);
   }
 
@@ -1406,40 +1406,6 @@ export class DateTimePicker {
   }
 }
 
-@customElement(`${constants.attributePrefix}flat-color-picker`)
-@generateBindables('kendoFlatColorPicker')
-@inject(Element, WidgetBase)
-export class FlatColorPicker {
-
-  @bindable options = {};
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoFlatColorPicker')
-                        .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    this.recreate();
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
 @customElement(`${constants.elementPrefix}drop-down-list`)
 @generateBindables('kendoDropDownList')
 @inject(Element, WidgetBase)
@@ -1520,6 +1486,40 @@ export class Editor {
 
   propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+@customElement(`${constants.attributePrefix}flat-color-picker`)
+@generateBindables('kendoFlatColorPicker')
+@inject(Element, WidgetBase)
+export class FlatColorPicker {
+
+  @bindable options = {};
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoFlatColorPicker')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
   detached() {
@@ -1945,44 +1945,6 @@ export class ProgressBar {
   }
 }
 
-//eslint-disable-line no-unused-vars
-@customElement(`${constants.elementPrefix}scheduler`)
-@generateBindables('kendoScheduler')
-@inject(Element, WidgetBase, ViewResources)
-export class Scheduler {
-
-  @bindable options = {};
-  @children(`${constants.elementPrefix}template`) templates;
-
-  constructor(element, widgetBase, viewResources) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoScheduler')
-                        .linkViewModel(this)
-                        .useViewResources(viewResources);
-  }
-
-  bind(ctx) {
-    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
-    this.$parent = ctx;
-  }
-
-  attached() {
-    this.recreate();
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
 @customElement(`${constants.elementPrefix}range-slider`)
 @generateBindables('kendoRangeSlider')
 @inject(Element, WidgetBase)
@@ -2015,6 +1977,44 @@ export class RangeSlider {
 
   propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+//eslint-disable-line no-unused-vars
+@customElement(`${constants.elementPrefix}scheduler`)
+@generateBindables('kendoScheduler')
+@inject(Element, WidgetBase, ViewResources)
+export class Scheduler {
+
+  @bindable options = {};
+  @children(`${constants.elementPrefix}template`) templates;
+
+  constructor(element, widgetBase, viewResources) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoScheduler')
+                        .linkViewModel(this)
+                        .useViewResources(viewResources);
+  }
+
+  bind(ctx) {
+    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
+    this.$parent = ctx;
+  }
+
+  attached() {
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
   detached() {

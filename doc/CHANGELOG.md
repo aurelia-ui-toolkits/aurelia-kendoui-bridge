@@ -1,3 +1,13 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.3.0...v0.3.1) (2016-02-24)
+
+
+### Bug Fixes
+
+* **autocomplete:** load autocomplete with core() ([695d1a6](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/695d1a6))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.2.3...v0.3.0) (2016-02-24)
 
