@@ -28,7 +28,6 @@ export class Scheduler {
   }
 
   bind(ctx) {
-    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
     this.$parent = ctx;
   }
 
@@ -37,6 +36,8 @@ export class Scheduler {
   }
 
   recreate() {
+    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
+
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent

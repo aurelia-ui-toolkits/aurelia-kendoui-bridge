@@ -25,7 +25,6 @@ export class Multiselect {
 
   bind(ctx) {
     this.$parent = ctx;
-    this.widgetBase.useTemplates(this, 'kendoMultiSelect', this.templates);
   }
 
   attached() {
@@ -34,6 +33,7 @@ export class Multiselect {
 
   recreate() {
     let selectNode = getSelectNode(this.element);
+    this.widgetBase.useTemplates(this, 'kendoMultiSelect', this.templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,

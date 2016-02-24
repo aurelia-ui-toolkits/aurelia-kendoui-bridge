@@ -25,7 +25,6 @@ export class ComboBox {
 
   bind(ctx) {
     this.$parent = ctx;
-    this.widgetBase.useTemplates(this, 'kendoComboBox', this.templates);
   }
 
   attached() {
@@ -34,6 +33,7 @@ export class ComboBox {
 
   recreate() {
     let selectNode = getSelectNode(this.element);
+    this.widgetBase.useTemplates(this, 'kendoComboBox', this.templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,

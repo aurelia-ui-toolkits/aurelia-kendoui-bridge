@@ -25,7 +25,6 @@ export class AutoComplete {
 
   bind(ctx) {
     this.$parent = ctx;
-    this.widgetBase.useTemplates(this, 'kendoAutoComplete', this.templates);
 
     let inputs = this.element.querySelectorAll('input');
     if (inputs.length > 0) {
@@ -34,11 +33,15 @@ export class AutoComplete {
       this.target = document.createElement('input');
       this.element.appendChild(this.target);
     }
+  }
 
+  attached() {
     this.recreate();
   }
 
   recreate() {
+    this.widgetBase.useTemplates(this, 'kendoAutoComplete', this.templates);
+
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,
       element: this.target,

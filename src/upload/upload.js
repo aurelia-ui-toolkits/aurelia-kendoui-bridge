@@ -22,7 +22,6 @@ export class Upload {
   }
 
   bind(ctx) {
-    this.widgetBase.useTemplates(this, 'kendoUpload', this.templates);
     this.$parent = ctx;
 
     this.recreate();
@@ -37,6 +36,8 @@ export class Upload {
       target = document.createElement('input');
       this.element.appendChild(target);
     }
+
+    this.widgetBase.useTemplates(this, 'kendoUpload', this.templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,

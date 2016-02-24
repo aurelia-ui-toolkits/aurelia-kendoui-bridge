@@ -1,6 +1,7 @@
-import {getEventsFromAttributes, getBindablePropertyName, _hyphenate, _unhyphenate, isTemplateProperty, addHyphenAndLower, getKendoPropertyName, pruneOptions, fireEvent, fireKendoEvent} from 'src/common/util';
+import {getEventsFromAttributes, getBindablePropertyName, _hyphenate, _unhyphenate, isTemplateProperty, addHyphenAndLower, useTemplates, getKendoPropertyName, pruneOptions, fireEvent, fireKendoEvent} from 'src/common/util';
 import {constants} from 'src/common/constants';
 import {initialize} from 'aurelia-pal-browser';
+import {Container} from 'aurelia-dependency-injection';
 import {DOM} from 'aurelia-pal';
 
 describe('Util', () => {
@@ -156,5 +157,90 @@ describe('Events', (a) => {
     expect(isTemplateProperty('test')).toBe(false);
     expect(isTemplateProperty('testTemplate')).toBe(true);
     expect(isTemplateProperty('template')).toBe(true);
+  });
+});
+
+describe('useTemplates', () => {
+  let container;
+
+  beforeEach(() => {
+    container = new Container();
+    Container.instance = container;
+  });
+
+  it('throws error when template prop is not allowed', () => {
+    let templateProps = ['template'];
+    let templates = [{
+      for: 'unknownTemplate'
+    }];
+    let target = {};
+    let controlName = 'kendoScheduler';
+
+    let getTemplateProperties = jasmine.createSpy().and.returnValue(templateProps);
+    spyOn(container, 'get').and.returnValue({
+      getTemplateProperties: getTemplateProperties
+    });
+
+    expect(() => useTemplates(target, controlName, templates)).toThrow(new Error('Invalid template property name: "unknownTemplate", valid values are: template'));
+  });
+
+  it('ignores undefined/null templates', () => {
+    let templateProps = ['template'];
+    let templates = [{
+      for: 'template',
+      template: undefined
+    }];
+    let target = {};
+    let controlName = 'kendoScheduler';
+
+    let getTemplateProperties = jasmine.createSpy().and.returnValue(templateProps);
+    spyOn(container, 'get').and.returnValue({
+      getTemplateProperties: getTemplateProperties
+    });
+
+    useTemplates(target, controlName, templates);
+
+    expect(target.hasOwnProperty('template')).toBe(false);
+  });
+
+  it('wraps template in function if kendoTemplate is false', () => {
+    let templateProps = ['template'];
+    let templates = [{
+      for: 'template',
+      template: 'abcd',
+      kendoTemplate: false
+    }];
+    let target = {};
+    let controlName = 'kendoScheduler';
+
+    let getTemplateProperties = jasmine.createSpy().and.returnValue(templateProps);
+    spyOn(container, 'get').and.returnValue({
+      getTemplateProperties: getTemplateProperties
+    });
+
+    useTemplates(target, controlName, templates);
+
+    expect(typeof target.kTemplate).toBe('function');
+    expect(target.kTemplate()).toBe('abcd');
+  });
+
+  it('doesn\t wrap template in function if kendoTemplate is true', () => {
+    let templateProps = ['template'];
+    let templates = [{
+      for: 'template',
+      template: 'abcd',
+      kendoTemplate: true
+    }];
+    let target = {};
+    let controlName = 'kendoScheduler';
+
+    let getTemplateProperties = jasmine.createSpy().and.returnValue(templateProps);
+    spyOn(container, 'get').and.returnValue({
+      getTemplateProperties: getTemplateProperties
+    });
+
+    useTemplates(target, controlName, templates);
+
+    expect(target.kTemplate).toBe('abcd');
   });
 });

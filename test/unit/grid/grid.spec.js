@@ -24,7 +24,11 @@ describe('Grid', () => {
     let options = {};
 
     let col = new Col();
-    col.kTemplate = 'template1';
+    col.templates = [{
+      for: 'template',
+      template: 'abcd'
+    }];
+    col.bind();
 
     sut.columns = [col];
 
@@ -32,7 +36,7 @@ describe('Grid', () => {
 
     let columns = options.columns;
 
-    expect(columns[0].template()).toBe('template1');
+    expect(columns[0].template()).toBe('abcd');
   });
 
   it('initializes on table', () => {

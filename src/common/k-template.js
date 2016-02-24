@@ -15,6 +15,7 @@ import {constants} from '../common/constants';
 export class Template {
   @bindable template;
   @bindable for = 'template';
+  @bindable kendoTemplate = false;
 
   constructor(targetInstruction) {
     this.template = targetInstruction.elementInstruction.template;

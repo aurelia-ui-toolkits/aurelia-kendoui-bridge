@@ -113,7 +113,9 @@ export function useTemplates(target, controlName, templates) {
 
   templates.forEach(c => {
     if (templateProps.indexOf(c.for) > -1) {
-      target[getBindablePropertyName(c.for)] = c.template;
+      if (hasValue(c.template)) {
+        target[getBindablePropertyName(c.for)] = c.kendoTemplate ? c.template : () => c.template;
+      }
     } else {
       throw new Error('Invalid template property name: "' + c.for + '", valid values are: ' + templateProps.join(', '));
     }

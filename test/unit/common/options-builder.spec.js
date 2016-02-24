@@ -42,7 +42,7 @@ describe('OptionsBuilder', () => {
 
     expect(options.option1).toBe('a');
     expect(options.test).toBe('b');
-    expect(options.template()).toBe('abcd');
+    expect(options.template).toBe('abcd');
     expect(options.dataSource).toBe(datasource);
     expect(options.widget).toBeUndefined();
     expect(options.empty1).toBeUndefined();

@@ -25,7 +25,6 @@ export class DropDownList {
 
   bind(ctx) {
     this.$parent = ctx;
-    this.widgetBase.useTemplates(this, 'kendoDropDownList', this.templates);
   }
 
   attached() {
@@ -34,6 +33,7 @@ export class DropDownList {
 
   recreate() {
     let selectNode = getSelectNode(this.element);
+    this.widgetBase.useTemplates(this, 'kendoDropDownList', this.templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,

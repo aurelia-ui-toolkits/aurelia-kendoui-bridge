@@ -26,7 +26,6 @@ export class PivotGrid {
 
   bind(ctx) {
     this.$parent = ctx;
-    this.widgetBase.useTemplates(this, 'kendoPivotGrid', this.templates);
   }
 
   attached() {
@@ -34,6 +33,8 @@ export class PivotGrid {
   }
 
   recreate() {
+    this.widgetBase.useTemplates(this, 'kendoPivotGrid', this.templates);
+
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent
