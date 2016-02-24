@@ -1,13 +1,19 @@
 import {bindables} from './bindables';
-import {isTemplateProperty} from './util';
+import {inject} from 'aurelia-dependency-injection';
+import {Util} from './util';
 
 /***
 * Available properties (merged together from several locations) are stored here per controlName
 * so that this isn't done for each created wrapper instance
 */
+@inject(Util)
 export class ControlProperties {
 
   cache = {};
+
+  constructor(util: Util) {
+    this.util = util;
+  }
 
   /**
   * Merges together available properties for a specific control
@@ -67,7 +73,7 @@ export class ControlProperties {
   getTemplateProperties(controlName: string): string[] {
     let properties = this.getProperties(controlName);
 
-    let templates = properties.filter(prop => isTemplateProperty(prop));
+    let templates = properties.filter(prop => this.util.isTemplateProperty(prop));
 
     return templates;
   }

@@ -3,7 +3,7 @@ import {Container} from 'aurelia-dependency-injection';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode} from 'aurelia-binding';
 import {ControlProperties} from './control-properties';
-import {getBindablePropertyName} from './util';
+import {Util} from './util';
 
 /**
 * Creates a BindableProperty for every option defined in a Kendo control
@@ -15,7 +15,9 @@ export function generateBindables(controlName: string, extraProperties = []) {
     // get or create the HtmlBehaviorResource
     // on which we're going to create the BindableProperty's
     let behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
-    let controlProperties = (Container.instance || new Container()).get(ControlProperties);
+    let container = (Container.instance || new Container());
+    let controlProperties = container.get(ControlProperties);
+    let util = container.get(Util);
     let optionKeys = controlProperties.getProperties(controlName, extraProperties);
 
     optionKeys.push('widget');
@@ -23,7 +25,7 @@ export function generateBindables(controlName: string, extraProperties = []) {
     for (let option of optionKeys) {
       // set the name of the bindable property to the option
       let nameOrConfigOrTarget = {
-        name: getBindablePropertyName(option)
+        name: util.getBindablePropertyName(option)
       };
 
       if (option === 'widget') {

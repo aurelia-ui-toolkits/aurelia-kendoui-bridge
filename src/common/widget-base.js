@@ -1,4 +1,4 @@
-import {fireKendoEvent, getEventsFromAttributes, getBindablePropertyName, _hyphenate, pruneOptions, useTemplates} from './util';
+import {Util} from './util';
 import {OptionsBuilder} from './options-builder';
 import {TemplateCompiler} from './template-compiler';
 import {inject, transient} from 'aurelia-dependency-injection';
@@ -8,7 +8,7 @@ import {TaskQueue} from 'aurelia-task-queue';
 * Abstraction of commonly used code across wrappers
 */
 @transient()
-@inject(TaskQueue, TemplateCompiler, OptionsBuilder)
+@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util)
 export class WidgetBase {
 
   /**
@@ -49,9 +49,10 @@ export class WidgetBase {
   */
   ctor: any;
 
-  constructor(taskQueue, templateCompiler, optionsBuilder) {
+  constructor(taskQueue, templateCompiler, optionsBuilder, util) {
     this.taskQueue = taskQueue;
     this.optionsBuilder = optionsBuilder;
+    this.util = util;
     templateCompiler.initialize();
   }
 
@@ -178,7 +179,7 @@ export class WidgetBase {
     // - options on the wrapper
     // - options compiled from all the bindable properties
     // - event handler options
-    return pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
+    return this.util.pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
   }
 
 
@@ -194,7 +195,7 @@ export class WidgetBase {
 
     // iterate all attributes on the custom elements
     // and only return the normalized kendo event's (dataBound etc)
-    let events = getEventsFromAttributes(element);
+    let events = this.util.getEventsFromAttributes(element);
 
     events.forEach(event => {
       // throw error if this event is not defined on the Kendo control
@@ -216,17 +217,18 @@ export class WidgetBase {
 
 
   _handleChange(widget) {
-    this.viewModel[getBindablePropertyName(this.valueBindingProperty)] = widget[this.valueFunction]();
+    let propName = this.util.getBindablePropertyName(this.valueBindingProperty);
+    this.viewModel[propName] = widget[this.valueFunction]();
   }
 
   handlePropertyChanged(widget, property, newValue, oldValue) {
-    if (property === getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
+    if (property === this.util.getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
       widget[this.valueFunction](newValue);
     }
   }
 
   useTemplates(target, controlName, templates) {
-    return useTemplates(target, controlName, templates);
+    return this.util.useTemplates(target, controlName, templates);
   }
 
   /**
