@@ -1,3 +1,32 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.2.3...v0.3.0) (2016-02-24)
+
+
+### Bug Fixes
+
+* **events:** only delay specific events ([c19801c](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/c19801c))
+* **value-binding:** fix sender.value is undefined error ([33c214a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/33c214a))
+* **wrapper:** map control has no value ([33e4e66](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/33e4e66))
+
+### Features
+
+* **all:** added multi-template support using k-template element ([2dbe981](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/2dbe981))
+* **combobox:** combobox wrapper ([9ab478f](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/9ab478f))
+* **editor wrapper:** add basic use case ([bb30950](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/bb30950))
+* **grid:** added multi-template support for grid ([bd6ba43](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/bd6ba43))
+* **listview:** added listview wrapper ([0ffc197](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/0ffc197))
+* **listview:** listview wrapper ([000e0ea](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/000e0ea))
+* **numeric-textbox:** two-way value binding ([6b1fbba](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/6b1fbba))
+* **scheduler:** replace k-event-template with generic k-template element ([b601108](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/b601108))
+* **scheduler:** replace k-event-template with generic k-template element ([9c02497](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/9c02497))
+* **templating:** added more helpful errors for invalid template prop names ([ec598e8](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ec598e8))
+* **templating:** template properties now auto-register in generateBindables ([5074424](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/5074424))
+* **templating:** templateProperty now automatically creates a bindable ([3c6b8b6](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/3c6b8b6))
+* **treelist:** added support for multi-templates ([da201d3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/da201d3))
+* **value-converters:** wrap kendo functions in value converters ([fa1985b](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/fa1985b))
+
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.2.2...v0.2.3) (2016-02-12)
 
