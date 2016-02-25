@@ -33,16 +33,26 @@ export class Grid  {
   // initialization in bind() is giving issues in some scenarios
   // so, attached() is used for this control
   attached() {
+    // if <table> exists, initialize on that
+    // if <div> exists, initialize on that
+    // if neither exists, create <div>
+    // grid needs to be initialized on a div https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/358
+    if (isInitFromDiv(this.element)) {
+      this.target = this.element.querySelectorAll('div')[0];
+    } else if (isInitFromTable(this.element)) {
+      this.target = this.element.children[0];
+    } else {
+      this.target = document.createElement('div');
+      this.element.appendChild(this.target);
+    }
+
     this.recreate();
   }
 
   recreate() {
-    // init grid on the <table> tag if initialization is from table
-    // else, just use the root element
-    let element = isInitFromTable(this.element) ? this.element.children[0] : this.element;
-
     this.kWidget = this.widgetBase.createWidget({
-      element: element,
+      element: this.target,
+      rootElement: this.element,
       parentCtx: this.$parent,
       beforeInitialize: (o) => this._beforeInitialize(o)
     });
@@ -69,4 +79,8 @@ export class Grid  {
 // existing table
 function isInitFromTable(element) {
   return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
+}
+
+function isInitFromDiv(element) {
+  return element.querySelectorAll('div').length > 0;
 }

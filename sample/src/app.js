@@ -9,8 +9,7 @@ export class App {
       { name: 'home',             route: '',                           redirect: 'about/about' },
       { name: 'installation',     route: 'installation',               moduleId: 'installation/index',          title: 'Installation' },
       { name: 'project-status',   route: 'project-status',             moduleId: 'project-status/controls',     title: 'Project status'},
-      { name: 'samples',          route: 'samples',                    moduleId: 'samples/index',               title: 'Samples' },
-      { name: 'test',             route: 'test',                       moduleId: 'test/index',                  title: 'Test pages' }
+      { name: 'samples',          route: 'samples',                    moduleId: 'samples/index',               title: 'Samples' }
     ]);
 
     this.router = router;

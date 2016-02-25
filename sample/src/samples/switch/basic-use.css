@@ -1,0 +1,25 @@
+#switch-basic-use .demo-section ul {
+    margin: 0;
+    padding: 0;
+}
+#switch-basic-use .demo-section ul li {
+    margin: 0;
+    padding: 10px 10px 10px 20px;
+    min-height: 28px;
+    line-height: 28px;
+    list-style-type: none;
+    vertical-align: middle;
+    border-top: 1px solid rgba(128,128,128,.5);
+}
+#switch-basic-use .demo-section {
+    min-width: 220px;
+    margin-top: 50px;
+    padding: 0;
+}
+#switch-basic-use .demo-section ul li .km-switch {
+    float: right;
+}
+#switch-basic-use .settings-head {
+    height: 66px;
+    background: url('http://demos.telerik.com/kendo-ui/content/web/switch/settings-title.png') no-repeat 20px 50% #2db245;
+}

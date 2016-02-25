@@ -19,6 +19,8 @@ export class KendoConfigBuilder {
       .kendoDropDownList()
       .kendoDateTimePicker()
       .kendoDatePicker()
+      .kendoDraggable()
+      .kendoDropTarget()
       .kendoFlatColorPicker()
       .kendoListView()
       .kendoMaskedTextBox()
@@ -28,6 +30,7 @@ export class KendoConfigBuilder {
       .kendoProgressBar()
       .kendoRangeSlider()
       .kendoSlider()
+      .kendoSwitch()
       .kendoTabStrip()
       .kendoTemplateSupport()
       .kendoTimePicker()
@@ -40,10 +43,14 @@ export class KendoConfigBuilder {
   */
   pro(): KendoConfigBuilder {
     this.core()
+      .kendoBarcode()
       .kendoChart()
+      .kendoDiagram()
       .kendoEditor()
       .kendoGrid()
       .kendoMap()
+      .kendoLinearGauge()
+      .kendoRadialGauge()
       .kendoScheduler()
       .kendoTreeList()
       .kendoTreeView();
@@ -85,6 +92,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoBarcode(): KendoConfigBuilder {
+    this.resources.push('barcode/barcode');
+    return this;
+  }
+
   kendoCalendar(): KendoConfigBuilder {
     this.resources.push('calendar/calendar');
     return this;
@@ -112,6 +124,7 @@ export class KendoConfigBuilder {
     this.resources.push('colorpalette/colorpalette');
     return this;
   }
+
   kendoDatePicker(): KendoConfigBuilder {
     this.resources.push('datepicker/datepicker');
     return this;
@@ -122,8 +135,24 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoDiagram(): KendoConfigBuilder {
+    this.resources.push('diagram/diagram');
+    return this;
+  }
+
+  kendoDraggable(): KendoConfigBuilder {
+    this.resources.push('draggable/draggable');
+    return this;
+  }
+
   kendoDropDownList(): KendoConfigBuilder {
     this.resources.push('dropdownlist/dropdownlist');
+    return this;
+  }
+
+  kendoDropTarget(): KendoConfigBuilder {
+    this.resources.push('drop-target/drop-target');
+    this.resources.push('drop-target/drop-target-area');
     return this;
   }
 
@@ -143,10 +172,13 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoLinearGauge(): KendoConfigBuilder {
+    this.resources.push('gauges/linear-gauge');
+    return this;
+  }
+
   kendoListView(): KendoConfigBuilder {
     this.resources.push('listview/listview');
-    this.resources.push('listview/k-list-template');
-    this.resources.push('listview/k-list-edit-template');
     return this;
   }
 
@@ -181,6 +213,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoRadialGauge(): KendoConfigBuilder {
+    this.resources.push('gauges/radial-gauge');
+    return this;
+  }
+
   kendoScheduler(): KendoConfigBuilder {
     this.resources.push('scheduler/scheduler');
     return this;
@@ -188,6 +225,11 @@ export class KendoConfigBuilder {
 
   kendoSlider(): KendoConfigBuilder {
     this.resources.push('slider/slider');
+    return this;
+  }
+
+  kendoSwitch(): KendoConfigBuilder {
+    this.resources.push('switch/switch');
     return this;
   }
 

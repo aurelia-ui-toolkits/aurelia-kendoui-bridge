@@ -1,0 +1,25 @@
+<template>
+  <require from="./export.css"></require>
+  <div id="example" class="k-content">
+    <div class="box wide">
+      <h4>Advanced Export options</h4>
+      <div class="box-col">
+        <button k-button click.delegate="exportPDF()">Export as PDF</button>
+      </div>
+      <div class="box-col">
+        <button k-button click.delegate="exportImage()">Export as Image</button>
+      </div>
+      <div class="box-col">
+        <button k-button click.delegate="exportSVG()">Export as SVG</button>
+      </div>
+    </div>
+
+    <div id="gauge-container">
+      <k-radial-gauge id="gauge"
+                      k-widget.two-way="gauge"
+                      k-pointer.bind="pointer"
+                      k-scale.bind="scale">
+    </k-radial-gauge>
+  </div>
+</div>
+</template>

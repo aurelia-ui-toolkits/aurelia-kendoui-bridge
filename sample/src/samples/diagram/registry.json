@@ -1,0 +1,14 @@
+{
+  "title": "Diagram",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "built-in-layouts": {},
+    "editing": {},
+    "pdf-export": {},
+    "advanced-export": {},
+    "events": {},
+    "api": {}
+  }
+}

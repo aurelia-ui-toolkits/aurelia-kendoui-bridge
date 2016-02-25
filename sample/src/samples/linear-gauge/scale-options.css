@@ -1,0 +1,19 @@
+#linear-gauge-scale-options #gauge-container {
+  text-align: center;
+  margin-left: 30px;
+  background: transparent url("http://demos.telerik.com/kendo-ui/content/dataviz/gauge/linear-gauge-container.png") no-repeat 50% 50%;
+  padding: 18px;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+#linear-gauge-scale-options #gauge-container.horizontal {
+    background-image: url("http://demos.telerik.com/kendo-ui/content/dataviz/gauge/linear-gauge-container-h.png");
+}
+
+#linear-gauge-scale-options #gauge {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto 0;
+}

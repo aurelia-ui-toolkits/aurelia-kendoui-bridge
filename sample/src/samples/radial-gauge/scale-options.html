@@ -1,0 +1,45 @@
+<template>
+  <require from="./scale-options.css"></require>
+  <div id="example" class="k-content">
+    <div id="gauge-container" ref="gaugeContainer">
+      <k-radial-gauge id="gauge"
+                      view-model.ref="gaugeVM"
+                      k-widget.two-way="gauge"
+                      k-pointer.bind="{value: 65}"
+                      k-scale.bind="scale">
+      </k-radial-gauge>
+    </div>
+
+    <div class="box wide">
+        <div class="box-col">
+        <h4>Gauge Labels</h4>
+        <ul class="options">
+            <li>
+                <input checked.bind="showLabels" type="checkbox" autocomplete="off">
+                <label for="labels">Show labels</label>
+            </li>
+
+            <li>
+                <input checked.bind="labelsPosition" type="radio" value="inside" name="labels-position">
+                <label for="labels-inside">- inside the gauge</label>
+            </li>
+
+            <li>
+                <input checked.bind="labelsPosition" type="radio" value="outside" name="labels-position">
+                <label for="labels-outside">- outside of the gauge</label>
+            </li>
+        </ul>
+        </div>
+        <div class="box-col">
+        <h4>Gauge Ranges</h4>
+        <ul class="options">
+            <li>
+                <input id="ranges" checked.bind="showRanges" type="checkbox" autocomplete="off">
+                <label for="ranges">Show ranges</label>
+            </li>
+        </ul>
+        </div>
+
+    </div>
+  </div>
+</template>

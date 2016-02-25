@@ -1,0 +1,18 @@
+{
+  "title": "Radial gauge",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
+    },
+    "scale-options": {
+      "files": ["html", "js", "css"]
+    },
+    "multiple-pointers": {
+      "files": ["html", "js", "css"]
+    },
+    "export": {
+      "files": ["html", "js", "css"]
+    }
+  }
+}

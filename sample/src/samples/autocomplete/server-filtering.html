@@ -2,10 +2,12 @@
   <div id="example">
     <div class="demo-section k-content">
       <p><strong>Find a product:</strong></p>
-      <input k-autocomplete="k-data-source.bind: datasource;
-                      k-data-text-field: ProductName;
-                      k-filter: contains;
-                      k-min-length: 3" style="width: 100%;"></input>
+      <k-autocomplete k-data-source.bind="datasource";
+                      k-data-text-field="ProductName";
+                      k-filter="contains";
+                      k-min-length.bind="3">
+        <input style="width: 100%;"></input>
+      </k-autocomplete>
       <p class="demo-hint">Hint: type "che"</p>
     </div>
   </div>

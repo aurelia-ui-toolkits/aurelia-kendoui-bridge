@@ -1,0 +1,52 @@
+#drag-and-drop-area .demo-section {
+  padding-top: 100px;
+  position: relative;
+}
+
+.drag-and-drop-area-draggable {
+  cursor: move;
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  margin-left: -28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #03a9f4;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.23), 0 3px 10px rgba(0, 0, 0, 0.16);
+}
+
+#drag-and-drop-area #droptarget {
+  padding: 20px;
+  cursor: default;
+  vertical-align: middle;
+  text-align: center;
+  border: 2px dotted #ccc;
+}
+
+#drag-and-drop-area .test1,
+#drag-and-drop-area .test2 {
+  vertical-align: middle;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 1.5em;
+  margin: 10px;
+  padding: 20px;
+  font-size: 14px;
+  font-weight: normal;
+  color: #fff;
+}
+#drag-and-drop-area .test1 {
+  background-color: #3f51b5;
+}
+#drag-and-drop-area .test2 {
+  background-color: #ee6f0b;
+}
+
+#drag-and-drop-area *+html .test1,
+#drag-and-drop-area *+html .test2 {
+  margin-top: 50px;
+  display: inline;
+  zoom: 1;
+}

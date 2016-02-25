@@ -1,0 +1,18 @@
+#draggable-container {
+  margin: 10px auto;
+  width: 200px;
+  height: 200px;
+  background: #eee;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.container-draggable-item {
+  width: 20px;
+  height: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  margin: 5px;
+  background: #666;
+  color: white;
+}

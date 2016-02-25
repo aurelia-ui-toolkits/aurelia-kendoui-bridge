@@ -25,7 +25,8 @@
     "MaskedTextBox": "maskedtextbox",
     "Slider": "slider",
     "RangeSlider": "rangeslider",
-    "TimePicker": "timepicker"
+    "TimePicker": "timepicker",
+    "Switch": "switch"
   },
   "Charts": {
     "Charts 1": {
@@ -60,11 +61,19 @@
     "Panel Bar": "panelbar"
   },
   "Diagrams & Maps" : {
-    "Map": "map"
+    "Map": "map",
+    "Diagram": "diagram"
   },
-
+  "Barcodes": {
+    "Barcode": "barcode"
+  },
+  "Gauges": {
+    "Linear Gauge": "linear-gauge",
+    "Radial Gauge": "radial-gauge"
+  },
   "Interactivity & UX": {
-    "ProgressBar": "progressbar"
+    "ProgressBar": "progressbar",
+    "Drag and drop": "drag-and-drop"
   },
   "Tools": {
     "ValueConverters": "valueconverters"

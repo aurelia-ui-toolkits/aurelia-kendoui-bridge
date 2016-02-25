@@ -1,0 +1,43 @@
+<template>
+  <require from="./multiple-pointers.css"></require>
+  <div id="example" class="k-content">
+    <div id="gauge-container">
+        <k-radial-gauge id="gauge"
+                        k-widget.two-way="gauge"
+                        k-pointer.bind="pointer"
+                        k-scale.bind="{minorUnit: 5, startAngle: -30, endAngle: 210, max: 180}">
+        </k-radial-gauge>
+    </div>
+
+    <div class="box wide">
+      <div class="box-col">
+          <h4>Red pointer value</h4>
+
+          <input k-slider="k-value.bind: 10; k-min.bind: 0; k-max.bind: 180; k-show-buttons.bind: false"
+                 k-on-change.delegate="sliderChanged(0, $event.detail)"
+                 style="width: 220px;">
+
+          <h4 style="margin-top: 30px;">Get all pointer values</h4>
+          <button k-button click.delegate="getAll()">Get all</button>
+      </div>
+      <div class="box-col">
+          <h4>Orange pointer value</h4>
+
+          <input k-slider="k-value.bind: 70; k-min.bind: 0; k-max.bind: 180; k-show-buttons.bind: false"
+                 k-on-change.delegate="sliderChanged(1, $event.detail)"
+                 style="width: 220px;">
+
+          <h4 style="margin-top: 30px;">Set all pointer values</h4>
+          <input class="k-textbox" value.bind="newValues" style="width: 110px;" />
+          <button k-button click.delegate="setValues(newValues)">Set all</button>
+      </div>
+      <div class="box-col">
+          <h4>Yellow pointer value</h4>
+
+          <input k-slider="k-value.bind: 140; k-min.bind: 0; k-max.bind: 180; k-show-buttons.bind: false"
+                 k-on-change.delegate="sliderChanged(2, $event.detail)"
+                 style="width: 220px;">
+      </div>
+    </div>
+   </div>
+</template>

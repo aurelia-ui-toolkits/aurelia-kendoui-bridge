@@ -1,0 +1,33 @@
+<template>
+  <require from="./scale-options.css"></require>
+  <div id="example" class="k-content">
+    <div id="gauge-container" ref="gaugeContainer">
+      <k-linear-gauge id="gauge"
+                      view-model.ref="gaugeVM"
+                      k-widget.two-way="gauge"
+                      k-pointer.bind="{value: 65, shape: 'arrow'}"
+                      k-scale.bind="scale">
+      </k-linear-gauge>
+    </div>
+
+    <div class="box wide">
+      <h4>Gauge scale should...</h4>
+      <ul class="options">
+        <li>
+          <input id="vertical" checked.bind="vertical" type="checkbox" autocomplete="off">
+          <label for="vertical">... be vertical</label>
+        </li>
+
+        <li>
+          <input id="labels" checked.bind="showLabels" type="checkbox" autocomplete="off">
+          <label for="labels">... show labels</label>
+        </li>
+
+        <li>
+          <input id="ranges" checked.bind="showRanges" type="checkbox" autocomplete="off">
+          <label for="ranges">... show ranges</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>

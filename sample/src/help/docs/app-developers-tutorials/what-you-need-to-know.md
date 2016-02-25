@@ -99,10 +99,4 @@ You can then use the `autocomplete` variable to communicate with the original Ke
 <br>
 
 ### Current limitations
-&nbsp;&nbsp;- Inside `<k-col>` templates, using value converters results in an error: [tracked here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/268).
-
-&nbsp;&nbsp;- Custom attributes and elements can only be used inside `<k-col>` templates when they are registered via `globalResources`: [tracked here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/269)
-
 &nbsp;&nbsp;- `k-widget` binding only works with explicit two-way databinding on input controls: [tracked here](https://github.com/aurelia/templating/issues/253)
-
-&nbsp;&nbsp;- binding of value properties is not reliable and often out of sync: [tracked here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/263) and [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/253). Recommendation is to use the `value()` functions to read the current value

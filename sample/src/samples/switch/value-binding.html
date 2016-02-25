@@ -1,0 +1,14 @@
+<template>
+  <require from="./value-binding.css"></require>
+  <div id="example">
+      <div class="demo-section k-content">
+        <p>Notifications are ${isChecked ? 'enabled' : 'disabled'}</p>
+        <input type="checkbox" checked.bind="isChecked"/>
+
+        <div class="settings-head"></div>
+        <ul>
+            <li>Notifications <input k-switch="k-checked.two-way: isChecked"/></li>
+        </ul>
+      </div>
+  </div>
+</template>
