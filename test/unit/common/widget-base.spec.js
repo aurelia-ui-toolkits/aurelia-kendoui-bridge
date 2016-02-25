@@ -116,12 +116,6 @@ describe('WidgetBase', () => {
         parentCtx: {}
       });
     }).toThrow(new Error('element is not set'));
-
-    expect(function() {
-      sut.createWidget({
-        element: DOM.createElement('div')
-      });
-    }).toThrow(new Error('parentCtx is not set'));
   });
 
   it('createWidget calls hooks', () => {
