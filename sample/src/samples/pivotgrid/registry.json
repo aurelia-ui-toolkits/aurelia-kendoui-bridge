@@ -14,6 +14,12 @@
     "local-binding": {
       "files": ["html", "js", "css"]
     },
-    "templates": {}
+    "templates": {},
+    "export-to-excel": {
+      "files": ["html", "js", "css"]
+    },
+    "export-to-pdf": {
+      "files": ["html", "js", "css"]
+    }
   }
 }
