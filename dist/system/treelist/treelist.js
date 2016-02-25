@@ -1,7 +1,7 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options', '../pdf/pdf', 'kendo-ui/js/kendo.data.signalr.min', 'kendo-ui/js/kendo.filtercell.min', 'kendo-ui/js/kendo.treelist.min'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../pdf/pdf', 'kendo.data.signalr.min', 'kendo.filtercell.min', 'kendo.treelist.min'], function (_export) {
   'use strict';
 
-  var inject, customElement, bindable, children, ViewResources, WidgetBase, generateBindables, constants, pruneOptions, PDF, TreeList;
+  var inject, customElement, bindable, children, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, PDF, TreeList;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -23,11 +23,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }, function (_commonOptions) {
-      pruneOptions = _commonOptions.pruneOptions;
+    }, function (_commonOptionsBuilder) {
+      OptionsBuilder = _commonOptionsBuilder.OptionsBuilder;
     }, function (_pdfPdf) {
       PDF = _pdfPdf.PDF;
-    }, function (_kendoUiJsKendoDataSignalrMin) {}, function (_kendoUiJsKendoFiltercellMin) {}, function (_kendoUiJsKendoTreelistMin) {}],
+    }, function (_kendoDataSignalrMin) {}, function (_kendoFiltercellMin) {}, function (_kendoTreelistMin) {}],
     execute: function () {
       TreeList = (function () {
         var _instanceInitializers = {};
@@ -46,7 +46,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           enumerable: true
         }], null, _instanceInitializers);
 
-        function TreeList(element, widgetBase, viewResources) {
+        function TreeList(element, widgetBase, viewResources, optionsBuilder) {
           _classCallCheck(this, _TreeList);
 
           _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
@@ -54,6 +54,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
           this.element = element;
+          this.optionsBuilder = optionsBuilder;
           this.widgetBase = widgetBase.control('kendoTreeList').linkViewModel(this).useViewResources(viewResources);
         }
 
@@ -80,20 +81,13 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         TreeList.prototype._beforeInitialize = function _beforeInitialize(options) {
+          var _this2 = this;
+
           if (this.columns && this.columns.length > 0) {
             options.columns = [];
 
-            this.columns.forEach(function (c) {
-              if (c.template && !c.withKendoTemplates) {
-                (function () {
-                  var template = c.template;
-                  c.template = function () {
-                    return template;
-                  };
-                })();
-              }
-
-              options.columns.push(pruneOptions(c));
+            this.columns.forEach(function (column) {
+              options.columns.push(_this2.optionsBuilder.getOptions(column, 'TreeListColumn'));
             });
           }
         };
@@ -103,7 +97,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         var _TreeList = TreeList;
-        TreeList = inject(Element, WidgetBase, ViewResources)(TreeList) || TreeList;
+        TreeList = inject(Element, WidgetBase, ViewResources, OptionsBuilder)(TreeList) || TreeList;
         TreeList = generateBindables('kendoTreeList')(TreeList) || TreeList;
         TreeList = customElement(constants.elementPrefix + 'tree-list')(TreeList) || TreeList;
         return TreeList;

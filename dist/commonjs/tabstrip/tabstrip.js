@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.tabstrip.min');
+require('kendo.tabstrip.min');
 
 var TabStrip = (function () {
   var _instanceInitializers = {};

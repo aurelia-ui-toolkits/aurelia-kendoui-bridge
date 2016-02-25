@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.numerictextbox.min');
+require('kendo.numerictextbox.min');
 
 var NumericTextBox = (function () {
   var _instanceInitializers = {};
@@ -38,7 +38,7 @@ var NumericTextBox = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this).useValueBinding();
   }
 
   NumericTextBox.prototype.bind = function bind(ctx) {
@@ -52,6 +52,10 @@ var NumericTextBox = (function () {
       element: this.element,
       parentCtx: this.$parent
     });
+  };
+
+  NumericTextBox.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
   NumericTextBox.prototype.detached = function detached() {

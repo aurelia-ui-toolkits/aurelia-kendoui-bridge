@@ -1,4 +1,4 @@
-System.register(['kendo-ui/js/kendo.pdf.min', 'kendo-ui/js/kendo.excel.min'], function (_export) {
+System.register(['kendo.pdf.min', 'kendo.excel.min'], function (_export) {
   'use strict';
 
   var PDF;
@@ -6,7 +6,7 @@ System.register(['kendo-ui/js/kendo.pdf.min', 'kendo-ui/js/kendo.excel.min'], fu
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   return {
-    setters: [function (_kendoUiJsKendoPdfMin) {}, function (_kendoUiJsKendoExcelMin) {}],
+    setters: [function (_kendoPdfMin) {}, function (_kendoExcelMin) {}],
     execute: function () {
       PDF = function PDF() {
         _classCallCheck(this, PDF);

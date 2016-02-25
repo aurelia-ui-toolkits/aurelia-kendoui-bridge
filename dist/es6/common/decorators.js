@@ -18,6 +18,8 @@ export function generateBindables(controlName: string) {
     let controlProperties = (Container.instance || new Container()).get(ControlProperties);
     let optionKeys = controlProperties.getProperties(controlName);
 
+    optionKeys.push('widget');
+
     for (let option of optionKeys) {
       // set the name of the bindable property to the option
       let nameOrConfigOrTarget = {

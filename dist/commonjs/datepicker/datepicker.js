@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.datepicker.min');
+require('kendo.datepicker.min');
 
 var DatePicker = (function () {
   var _instanceInitializers = {};

@@ -11,6 +11,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
       var controlProperties = (Container.instance || new Container()).get(ControlProperties);
       var optionKeys = controlProperties.getProperties(controlName);
 
+      optionKeys.push('widget');
+
       for (var _iterator = optionKeys, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
         var _ref;
 

@@ -9,38 +9,46 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-  var EventTemplate = (function () {
+  var Template = (function () {
     var _instanceInitializers = {};
 
-    _createDecoratedClass(EventTemplate, [{
+    _createDecoratedClass(Template, [{
       key: 'template',
       decorators: [_aureliaTemplating.bindable],
       initializer: null,
       enumerable: true
+    }, {
+      key: 'for',
+      decorators: [_aureliaTemplating.bindable],
+      initializer: function initializer() {
+        return 'template';
+      },
+      enumerable: true
     }], null, _instanceInitializers);
 
-    function EventTemplate(targetInstruction) {
-      _classCallCheck(this, _EventTemplate);
+    function Template(targetInstruction) {
+      _classCallCheck(this, _Template);
 
       _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'for', _instanceInitializers);
 
       this.template = targetInstruction.elementInstruction.template;
     }
 
-    var _EventTemplate = EventTemplate;
-    EventTemplate = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'event-template')(EventTemplate) || EventTemplate;
-    EventTemplate = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(EventTemplate) || EventTemplate;
-    EventTemplate = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
+    var _Template = Template;
+    Template = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(Template) || Template;
+    Template = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
       var html = element.innerHTML;
       if (html !== '') {
         instruction.template = html;
       }
-
       return true;
-    })(EventTemplate) || EventTemplate;
-    EventTemplate = _aureliaTemplating.noView(EventTemplate) || EventTemplate;
-    return EventTemplate;
+    })(Template) || Template;
+    Template = _aureliaTemplating.noView()(Template) || Template;
+    Template = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'template')(Template) || Template;
+    return Template;
   })();
 
-  exports.EventTemplate = EventTemplate;
+  exports.Template = Template;
 });

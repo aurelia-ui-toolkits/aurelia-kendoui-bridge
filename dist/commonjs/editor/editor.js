@@ -12,39 +12,63 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaTemplating = require('aurelia-templating');
 
+var _commonWidgetBase = require('../common/widget-base');
+
+var _commonDecorators = require('../common/decorators');
+
 var _commonConstants = require('../common/constants');
 
-var EventTemplate = (function () {
+require('kendo.editor.min');
+
+var Editor = (function () {
   var _instanceInitializers = {};
 
-  _createDecoratedClass(EventTemplate, [{
-    key: 'template',
+  _createDecoratedClass(Editor, [{
+    key: 'options',
     decorators: [_aureliaTemplating.bindable],
-    initializer: null,
+    initializer: function initializer() {
+      return {};
+    },
     enumerable: true
   }], null, _instanceInitializers);
 
-  function EventTemplate(targetInstruction) {
-    _classCallCheck(this, _EventTemplate);
+  function Editor(element, widgetBase) {
+    _classCallCheck(this, _Editor);
 
-    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-    this.template = targetInstruction.elementInstruction.template;
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoEditor').linkViewModel(this).useValueBinding();
   }
 
-  var _EventTemplate = EventTemplate;
-  EventTemplate = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'event-template')(EventTemplate) || EventTemplate;
-  EventTemplate = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(EventTemplate) || EventTemplate;
-  EventTemplate = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
-    var html = element.innerHTML;
-    if (html !== '') {
-      instruction.template = html;
-    }
+  Editor.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
 
-    return true;
-  })(EventTemplate) || EventTemplate;
-  EventTemplate = _aureliaTemplating.noView(EventTemplate) || EventTemplate;
-  return EventTemplate;
+  Editor.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  Editor.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  Editor.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  };
+
+  Editor.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Editor = Editor;
+  Editor = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Editor) || Editor;
+  Editor = _commonDecorators.generateBindables('kendoEditor')(Editor) || Editor;
+  Editor = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'rich-editor')(Editor) || Editor;
+  return Editor;
 })();
 
-exports.EventTemplate = EventTemplate;
+exports.Editor = Editor;

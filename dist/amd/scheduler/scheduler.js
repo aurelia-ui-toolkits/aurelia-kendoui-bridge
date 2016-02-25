@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options', '../pdf/pdf', 'kendo-ui/js/kendo.scheduler.min', 'kendo-ui/js/kendo.scheduler.agendaview.min', 'kendo-ui/js/kendo.scheduler.dayview.min', 'kendo-ui/js/kendo.scheduler.monthview.min', 'kendo-ui/js/kendo.scheduler.recurrence.min', 'kendo-ui/js/kendo.scheduler.timelineview.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _commonOptions, _pdfPdf, _kendoUiJsKendoSchedulerMin, _kendoUiJsKendoSchedulerAgendaviewMin, _kendoUiJsKendoSchedulerDayviewMin, _kendoUiJsKendoSchedulerMonthviewMin, _kendoUiJsKendoSchedulerRecurrenceMin, _kendoUiJsKendoSchedulerTimelineviewMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo.scheduler.min', 'kendo.scheduler.agendaview.min', 'kendo.scheduler.dayview.min', 'kendo.scheduler.monthview.min', 'kendo.scheduler.recurrence.min', 'kendo.scheduler.timelineview.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _pdfPdf, _kendoSchedulerMin, _kendoSchedulerAgendaviewMin, _kendoSchedulerDayviewMin, _kendoSchedulerMonthviewMin, _kendoSchedulerRecurrenceMin, _kendoSchedulerTimelineviewMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -20,8 +20,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       },
       enumerable: true
     }, {
-      key: 'eventTemplates',
-      decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'event-template')],
+      key: 'templates',
+      decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
       initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
@@ -31,13 +31,14 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'eventTemplates', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
       this.element = element;
       this.widgetBase = widgetBase.control('kendoScheduler').linkViewModel(this).useViewResources(viewResources);
     }
 
     Scheduler.prototype.bind = function bind(ctx) {
+      this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
       this.$parent = ctx;
     };
 
@@ -46,35 +47,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Scheduler.prototype.recreate = function recreate() {
-      var _this = this;
-
       this.kWidget = this.widgetBase.createWidget({
         element: this.element,
-        parentCtx: this.$parent,
-        beforeInitialize: function beforeInitialize(o) {
-          return _this._beforeInitialize(o);
-        }
+        parentCtx: this.$parent
       });
-    };
-
-    Scheduler.prototype._beforeInitialize = function _beforeInitialize(options) {
-      var _this2 = this;
-
-      var eventTemplate = undefined;
-
-      if (this.kEventTemplate) {
-        eventTemplate = function () {
-          return _this2.kEventTemplate;
-        };
-      } else if (this.eventTemplates.length > 0) {
-        eventTemplate = function () {
-          return _this2.eventTemplates[0].template;
-        };
-      }
-
-      return Object.assign(options, _commonOptions.pruneOptions({
-        eventTemplate: eventTemplate
-      }));
     };
 
     Scheduler.prototype.detached = function detached() {

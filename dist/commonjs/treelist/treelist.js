@@ -18,15 +18,15 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-var _commonOptions = require('../common/options');
+var _commonOptionsBuilder = require('../common/options-builder');
 
 var _pdfPdf = require('../pdf/pdf');
 
-require('kendo-ui/js/kendo.data.signalr.min');
+require('kendo.data.signalr.min');
 
-require('kendo-ui/js/kendo.filtercell.min');
+require('kendo.filtercell.min');
 
-require('kendo-ui/js/kendo.treelist.min');
+require('kendo.treelist.min');
 
 var TreeList = (function () {
   var _instanceInitializers = {};
@@ -45,7 +45,7 @@ var TreeList = (function () {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function TreeList(element, widgetBase, viewResources) {
+  function TreeList(element, widgetBase, viewResources, optionsBuilder) {
     _classCallCheck(this, _TreeList);
 
     _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
@@ -53,6 +53,7 @@ var TreeList = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
+    this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase.control('kendoTreeList').linkViewModel(this).useViewResources(viewResources);
   }
 
@@ -79,20 +80,13 @@ var TreeList = (function () {
   };
 
   TreeList.prototype._beforeInitialize = function _beforeInitialize(options) {
+    var _this2 = this;
+
     if (this.columns && this.columns.length > 0) {
       options.columns = [];
 
-      this.columns.forEach(function (c) {
-        if (c.template && !c.withKendoTemplates) {
-          (function () {
-            var template = c.template;
-            c.template = function () {
-              return template;
-            };
-          })();
-        }
-
-        options.columns.push(_commonOptions.pruneOptions(c));
+      this.columns.forEach(function (column) {
+        options.columns.push(_this2.optionsBuilder.getOptions(column, 'TreeListColumn'));
       });
     }
   };
@@ -102,7 +96,7 @@ var TreeList = (function () {
   };
 
   var _TreeList = TreeList;
-  TreeList = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources)(TreeList) || TreeList;
+  TreeList = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources, _commonOptionsBuilder.OptionsBuilder)(TreeList) || TreeList;
   TreeList = _commonDecorators.generateBindables('kendoTreeList')(TreeList) || TreeList;
   TreeList = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'tree-list')(TreeList) || TreeList;
   return TreeList;

@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.button.min');
+require('kendo.button.min');
 
 var Button = (function () {
   var _instanceInitializers = {};

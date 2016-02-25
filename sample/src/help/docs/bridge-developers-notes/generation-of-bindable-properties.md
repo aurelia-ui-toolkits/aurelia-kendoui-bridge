@@ -68,6 +68,8 @@ Every Kendo control (class) has this options object defined within. We can itera
 <br><br>
 
 Luckily this was possible with this syntax: `jQuery.fn[controlName].widget.prototype.options` where controlName is 'kendoGrid' or 'kendoButton' or any other Kendo control. The result is the same, it is an object with properties that we can iterate over.
+
+**Note:** More about this process can be found in **[Harvesting bindable variables](#/help/docs/bridge_developers_notes/8._harvesting_bindable_variables)**
 <br><br>
 
 Now, instead of using the `@bindable` property decorator, we needed to generate bindable properties from code. The old syntax was this: `@bindable kEnable = true;`. This is a [class field](https://github.com/jeffmo/es-class-fields-and-static-properties#es-class-fields--static-properties) named `kEnable`, with a default value of `true`, and made bindable by the `@bindable` decorator.
@@ -77,33 +79,30 @@ Because we wanted to do this dynamically, we had to look at the implementation o
 <br><br>
 
 ```javascript
-export function bindable(nameOrConfigOrTarget?: string | Object, key?, descriptor?): any {
-  let deco = function(target, key2, descriptor2) {
-    let actualTarget = key2 ? target.constructor : target; //is it on a property or a class?
-    let r = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, actualTarget);
-    let prop;
+export function generateBindables(controlName: string) {
+  return function(target, key, descriptor) {
+    // get or create the HtmlBehaviorResource
+    // on which we're going to create the BindableProperty's
+    let behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
+    let controlProperties = (Container.instance || new Container()).get(ControlProperties);
+    let optionKeys = controlProperties.getProperties(controlName);
 
-    if (key2) { //is it on a property or a class?
-      nameOrConfigOrTarget = nameOrConfigOrTarget || {};
-      nameOrConfigOrTarget.name = key2;
+    optionKeys.push('widget');
+
+    for (let option of optionKeys) {
+      // set the name of the bindable property to the option
+      let nameOrConfigOrTarget = {
+        name: getBindablePropertyName(option)
+      };
+
+      if (option === 'widget') {
+        nameOrConfigOrTarget.defaultBindingMode = bindingMode.twoWay;
+      }
+
+      let prop = new BindableProperty(nameOrConfigOrTarget);
+      prop.registerWith(target, behaviorResource, descriptor);
     }
-
-    prop = new BindableProperty(nameOrConfigOrTarget);
-    return prop.registerWith(actualTarget, r, descriptor2);
   };
-
-  if (!nameOrConfigOrTarget) { //placed on property initializer with parens
-    return deco;
-  }
-
-  if (key) { //placed on a property initializer without parens
-    let target = nameOrConfigOrTarget;
-    nameOrConfigOrTarget = null;
-    return deco(target, key, descriptor);
-  }
-
-  return deco; //placed on a class
-}
 ```
 <br>
 
@@ -162,22 +161,7 @@ export class AuKendoButton {
 <br>
 
 Note, the `@bindable` property declarations are gone, and the `@generateBindables()` decorator is used instead. Our full implementation of this decorator can be found [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/src/common/decorators.js).
-<br><br>
 
-We came to the conclusion that it was not possible to set the default value of a bindable property from the `generateBindables` decorator, because the instance of the actual wrapper was not available. We decided to set these default values from the constructor of each wrapper. Because that would lead to duplicate code, we extracted this into a base class, the `WidgetBase`. The `WidgetBase`'s implementation of this process looks like this:
-<br><br>
-
-```
-  setDefaultBindableValues() {
-    let props = jQuery.fn[this.controlName].widget.prototype.options;
-
-    for (let prop of Object.keys(props)) {
-      this[getBindablePropertyName(prop)] = props[prop];
-    }
-  }
-```
-<br><br>
-We retrieve the `options` from the Kendo control, which we talked about earlier, and iterate over this object (just like we did in the `generateBindable` decorator), and set the default value for each property.
 <br><br>
 
 **Note:** see the **[Harvesting bindable variables](#/help/docs/bridge_developers_notes/8._harvesting_bindable_variables)** note for more information on the "Generation of bindable properties" subject.

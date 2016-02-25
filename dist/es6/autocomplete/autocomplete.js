@@ -3,8 +3,8 @@ import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo-ui/js/kendo.autocomplete.min';
-import 'kendo-ui/js/kendo.virtuallist.min';
+import 'kendo.autocomplete.min';
+import 'kendo.virtuallist.min';
 
 @customAttribute(`${constants.attributePrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')

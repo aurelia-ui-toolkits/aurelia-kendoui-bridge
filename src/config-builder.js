@@ -10,7 +10,8 @@ export class KendoConfigBuilder {
   * Globally register all Kendo Core wrappers including templating support
   */
   core(): KendoConfigBuilder {
-    this.kendoButton()
+    this.kendoAutoComplete()
+      .kendoButton()
       .kendoCalendar()
       .kendoColorPicker()
       .kendoColorPalette()
@@ -45,7 +46,6 @@ export class KendoConfigBuilder {
   */
   pro(): KendoConfigBuilder {
     this.core()
-      .kendoAutoComplete()
       .kendoBarcode()
       .kendoChart()
       .kendoDiagram()

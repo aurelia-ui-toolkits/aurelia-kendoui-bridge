@@ -4,26 +4,22 @@ exports.__esModule = true;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _options = require('./options');
-
-var _events = require('./events');
-
 var _util = require('./util');
 
-var _templateCompiler = require('./template-compiler');
+var _optionsBuilder = require('./options-builder');
 
-var _controlProperties = require('./control-properties');
+var _templateCompiler = require('./template-compiler');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaTaskQueue = require('aurelia-task-queue');
 
 var WidgetBase = (function () {
-  function WidgetBase(taskQueue, templateCompiler, controlProperties) {
+  function WidgetBase(taskQueue, templateCompiler, optionsBuilder) {
     _classCallCheck(this, _WidgetBase);
 
     this.taskQueue = taskQueue;
-    this.controlProperties = controlProperties;
+    this.optionsBuilder = optionsBuilder;
     templateCompiler.initialize();
   }
 
@@ -118,35 +114,10 @@ var WidgetBase = (function () {
   };
 
   WidgetBase.prototype._getOptions = function _getOptions(element) {
-    var options = this.getOptionsFromBindables();
+    var options = this.optionsBuilder.getOptions(this.viewModel, this.controlName);
     var eventOptions = this.getEventOptions(element);
 
-    return _options.pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
-  };
-
-  WidgetBase.prototype.getOptionsFromBindables = function getOptionsFromBindables() {
-    var options = {};
-
-    for (var _iterator = this.controlProperties.getProperties(this.controlName), _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-      var _ref;
-
-      if (_isArray) {
-        if (_i >= _iterator.length) break;
-        _ref = _iterator[_i++];
-      } else {
-        _i = _iterator.next();
-        if (_i.done) break;
-        _ref = _i.value;
-      }
-
-      var prop = _ref;
-
-      if (prop !== 'widget') {
-        options[prop] = this.viewModel[_util.getBindablePropertyName(prop)];
-      }
-    }
-
-    return options;
+    return _util.pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
   };
 
   WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
@@ -154,6 +125,7 @@ var WidgetBase = (function () {
 
     var options = {};
     var allowedEvents = this.kendoEvents;
+    var delayedExecution = ['change'];
 
     var events = _util.getEventsFromAttributes(element);
 
@@ -162,11 +134,17 @@ var WidgetBase = (function () {
         throw new Error(event + ' is not an event on the ' + _this2.controlName + ' control');
       }
 
-      options[event] = function (e) {
-        _this2.taskQueue.queueMicroTask(function () {
-          _events.fireKendoEvent(element, _util._hyphenate(event), e);
-        });
-      };
+      if (delayedExecution.includes(event)) {
+        options[event] = function (e) {
+          _this2.taskQueue.queueMicroTask(function () {
+            return _util.fireKendoEvent(element, _util._hyphenate(event), e);
+          });
+        };
+      } else {
+        options[event] = function (e) {
+          return _util.fireKendoEvent(element, _util._hyphenate(event), e);
+        };
+      }
     });
 
     return options;
@@ -182,12 +160,16 @@ var WidgetBase = (function () {
     }
   };
 
+  WidgetBase.prototype.useTemplates = function useTemplates(target, controlName, templates) {
+    return _util.useTemplates(target, controlName, templates);
+  };
+
   WidgetBase.prototype.destroy = function destroy(widget) {
     widget.destroy();
   };
 
   var _WidgetBase = WidgetBase;
-  WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _controlProperties.ControlProperties)(WidgetBase) || WidgetBase;
+  WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder)(WidgetBase) || WidgetBase;
   WidgetBase = _aureliaDependencyInjection.transient()(WidgetBase) || WidgetBase;
   return WidgetBase;
 })();

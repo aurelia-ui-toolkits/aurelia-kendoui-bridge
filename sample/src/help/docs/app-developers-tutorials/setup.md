@@ -36,13 +36,19 @@ Now, we want to add several (four) additional pages to this application that wou
 
 * * *
 
-At this point, while following the series of steps described next, it is assumed that you have the KendoUI package already installed on your computer as described in the HAVING KENDOUI ALREADY: VENDORS type of installation, mentioned [here](#/installation/vendors).
-
+At this point, while following the series of steps described next, it is assumed that you have the KendoUI package already installed on your computer as described in the HAVING KENDOUI ALREADY: VENDORS type of installation, mentioned [here](#/installation/vendors), and that you executed all 7 steps,  five of which are shown on image 3 below.
 <br>
 
-and that you executed all 8 steps (partially) shown on image 3 above. While all of them are equally important, at this point verify that your  `main.js` class looks like this:
+<p align=center>
+  <img src="https://cloud.githubusercontent.com/assets/2712405/13240091/8abd0846-d9ad-11e5-8e32-294eea7556c8.png"></img>
+ <br><br>
+ Image 3
+</p>
+
 <br>
+While all of these steps are equally important, at this point verify that your  `main.js` class looks like this:
 <br>
+
 ```javascript
 import 'bootstrap';
 
@@ -57,12 +63,20 @@ export function configure(aurelia) {
 
 ```
 
+#### Important notes
+Observe that the registration of the plugin used in this tutorial (line 7 in `main.js` class above) **is not** the "real" plugin used in the Aurelia-KendoUI bridge. It is its small cousin, created specifically for this tutorial. The code for this "small cousin" is in **[skeleton-plugin-kendo](https://github.com/aurelia-ui-toolkits/skeleton-plugin-kendo)** repository, where the name is chosen to indicate how this app is the standard **[Aurelia Skeleton plugin](https://github.com/aurelia/skeleton-plugin)** "enhanced" by adding a few Aurelia KendoUI component "wrappers".
+
+The name used in `main.js` class - ` .plugin('aurelia-kendoui-bridge', (kendo) => kendo.pro());` is different from the name of the repository where this plugin resides - as we use the npm renaming
+<br>
+```
+  "aurelia-kendoui-plugin": "github:aurelia-ui-toolkits/skeleton-plugin-kendo@master",
+```
+<br>
+
+as it can be verified **[here](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo/blob/master/package.json#L68)**
 <br>
 <br>
 
-as this will ensure that the application we are about to augment from its original form, loads the Aurelia KendoUI bridge (named plugin in the above code).
-
-<br>
 
 The next screenshot depicts the final UI for the application we are about to create, with four additional menubar items
 
