@@ -43,35 +43,37 @@ Edit the "root level" `config.js` file and ensure that the lines 8, 9 and 15 are
 ```javascript
 System.config({
   defaultJSExtensions: true,
-  transpiler: 'babel',
+  transpiler: "babel",
   babelOptions: {
-    'optional': [
-      'runtime',
-      'optimisation.modules.system',
-      'es7.decorators',
-      'es7.classProperties'
+    "optional": [
+      "runtime",
+      "optimisation.modules.system",
+      "es7.decorators",
+      "es7.classProperties"
     ]
   },
   paths: {
-    'github:*': 'jspm_packages/github/*',
-    'npm:*': 'jspm_packages/npm/*',
-    'kendo-ui/*': 'vendors/*'
+    "github:*": "jspm_packages/github/*",
+    "npm:*": "jspm_packages/npm/*",
+    "kendo-ui/*": "vendors/*"
   },
 
   map: {
-    'aurelia-binding': 'npm:aurelia-binding@1.0.0-beta.1.0.3',
-    'aurelia-bootstrapper': 'npm:aurelia-bootstrapper@1.0.0-beta.1',
+    "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.1.3",
+    "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
+    "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.1.3",
+    "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.1.3",
     ...
 ```
 <br><br>
 
-#### Step 3
-Add the the following code to define the (so far empty) file `index.js` - this is the plugin's interface to the consumer application, used for plugin initialization.
+#### Step 4
+Add the the following code to define the file `index.js` - this is the plugin's interface to the consumer application, used for plugin initialization.
 <br>
 ```javascript
 import {Aurelia} from 'aurelia-framework';
 import * as LogManager from 'aurelia-logging';
-let logger = LogManager.getLogger('aurelia-kendoui-bridge');
+let logger = LogManager.getLogger('aurelia-kendoui-plugin');
 import {KendoConfigBuilder} from './config-builder';
 import 'jquery';
 
@@ -95,30 +97,28 @@ export function configure(aurelia: Aurelia, configCallback?: (builder: KendoConf
     aurelia.globalResources(resources);
   }
 }
+
 ```
 <br><br>
-#### Step 4
-Add the the following code to define the (so far empty) file `config-builder.js` - this is the tool that creates the final content of the `index.js` - interface to the consumer application, used for plugin initialization.
+#### Step 5
+Add the the following code to define the file `config-builder.js` - this is the tool that creates the final content of the `index.js` - interface to the consumer application, used for plugin initialization.
 <br>
 ```javascript
 /**
-* Configure the Aurelia-KendoUI-bridge
+* Configure the Aurelia-KendoUI-plugin
 */
 export class KendoConfigBuilder {
 
-    resources: string[] = [];
+  resources: string[] = [];
   useGlobalResources: boolean = true;
 
   /**
   * Globally register all Kendo Core wrappers
   */
   core(): KendoConfigBuilder {
-    this.kendoButton()
-      .kendoTabStrip()
-      .kendoProgressBar()
-      .kendoSlider()
-      .kendoColorPicker()
-      .kendoDropDownList();
+    this.kendoAutoComplete()
+      .kendoButton()
+      .kendoTemplateSupport();
     return this;
   }
 
@@ -128,7 +128,6 @@ export class KendoConfigBuilder {
   pro(): KendoConfigBuilder {
     this.core()
       .kendoGrid()
-            .kendoAutoComplete()
       .kendoChart();
     return this;
   }
@@ -139,6 +138,22 @@ export class KendoConfigBuilder {
   */
   withoutGlobalResources(): KendoConfigBuilder {
     this.useGlobalResources = false;
+    return this;
+  }
+
+    /**
+  * Registers value converters (wrappers around kendo functions)
+  */
+  useValueConverters(): KendoConfigBuilder {
+    this.resources.push('valueconverters/valueconverters');
+    return this;
+  }
+
+  /**
+  * Adds kendo templating support
+  */
+  kendoTemplateSupport(): KendoConfigBuilder {
+    this.resources.push('common/k-template');
     return this;
   }
 
@@ -166,7 +181,7 @@ export class KendoConfigBuilder {
 
 ```
 <br><br>
-#### Step 5
+#### Step 6
 This is not an action step - it is rather a reminder that the document **[Bridge utilities](#/help/docs/bridge_developers_notes/2._bridge_utilities)** has the explanations and the code for all functionality that Aurelia UI Toolkits team created to simplify the process of building this bridge.
 <br>
 * * *

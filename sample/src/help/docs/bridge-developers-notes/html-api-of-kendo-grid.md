@@ -11,14 +11,14 @@ The Kendo Grid can be used and configured via the following section of HTML code
 <br>
 ```html
     <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">
-      <k-col title="Contact Name" field="ContactName">
+      <k-col k-title="Contact Name" k-field="ContactName">
         <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
         <div class='customer-name'>${ContactName}</div>
       </k-col>
-      <k-col title="Contact Name" field="ContactName"></k-col>
-      <k-col title="Contact Title" field="ContactTitle"></k-col>
-      <k-col title="Company Name" field="CompanyName"></k-col>
-      <k-col field="Country"></k-col>
+      <k-col k-title="Contact Name" k-field="ContactName"></k-col>
+      <k-col k-title="Contact Title" k-field="ContactTitle"></k-col>
+      <k-col k-title="Company Name" k-field="CompanyName"></k-col>
+      <k-col k-field="Country"></k-col>
     </k-grid>
 ```
 <br>
@@ -32,15 +32,17 @@ This code is the **[Basic use](#/samples/grid/basic-use)** sample, which is a pa
  &nbsp; &nbsp; - We see two custom elements: `k-grid` and `k-col`. The `k-col` custom elements are inside of the `k-grid` custom element, making the `k-col` custom elements "children" of the `k-grid` custom element.
 <br>
 
- &nbsp; &nbsp; - Both custom elements have some `@bindable` properties available, such as `k-data-source`, `title` and `command`. A bindable property is a property inside a view-model marked with the `@bindable` decorator. The `title` property is defined as `@bindable title`. Because of the `@bindable` decorator, we can now set these properties from HTML: `<k-grid k-title="my value"></k-grid>`, and respond to changes of these properties when needed.
+ &nbsp; &nbsp; - Both custom elements have some `@bindable` properties available, such as `k-data-source`, `k-title` and `k-command`. A bindable property is a property inside a view-model marked with the `@bindable` decorator. The `title` property is defined as `@bindable kTitle`. Because of the `@bindable` decorator, we can now set these properties from HTML: `<k-grid k-title="my value"></k-grid>`, and respond to changes of these properties when needed.
 <br>
 
 The `k-col` custom element is a bit special, as it has a template defined within. Let's look at this more closely:
 
 ```html
-	<k-col title="Contact Name" field="ContactName">
-		<div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
-		<div class='customer-name'>${ContactName}</div>
+	<k-col k-title="Contact Name" k-field="ContactName">
+		<k-template>
+			<div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+			<div class='customer-name'>${ContactName}</div>
+		</k-template>
 	</k-col>
 ```
 <br>
@@ -214,14 +216,14 @@ The developer uses this piece of HTML code:
 
 ```html
     <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">
-      <k-col title="Contact Name" field="ContactName">
+      <k-col k-title="Contact Name" k-field="ContactName">
         <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
         <div class='customer-name'>${ContactName}</div>
       </k-col>
-      <k-col title="Contact Name" field="ContactName"></k-col>
-      <k-col title="Contact Title" field="ContactTitle"></k-col>
-      <k-col title="Company Name" field="CompanyName"></k-col>
-      <k-col field="Country"></k-col>
+      <k-col k-title="Contact Name" k-field="ContactName"></k-col>
+      <k-col k-title="Contact Title" k-field="ContactTitle"></k-col>
+      <k-col k-title="Company Name" k-field="CompanyName"></k-col>
+      <k-col k-field="Country"></k-col>
     </k-grid>
 ```
 <br>

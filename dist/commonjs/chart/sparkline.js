@@ -20,7 +20,7 @@ var _commonConstants = require('../common/constants');
 
 var _pdfPdf = require('../pdf/pdf');
 
-require('kendo-ui/js/kendo.dataviz.sparkline.min');
+require('kendo.dataviz.sparkline.min');
 
 var Sparkline = (function () {
   var _instanceInitializers = {};

@@ -20,11 +20,11 @@ var _commonConstants = require('../common/constants');
 
 var _pdfPdf = require('../pdf/pdf');
 
-require('kendo-ui/js/kendo.dataviz.chart.min');
+require('kendo.dataviz.chart.min');
 
-require('kendo-ui/js/kendo.dataviz.chart.polar.min');
+require('kendo.dataviz.chart.polar.min');
 
-require('kendo-ui/js/kendo.dataviz.chart.funnel.min');
+require('kendo.dataviz.chart.funnel.min');
 
 var Chart = (function () {
   var _instanceInitializers = {};

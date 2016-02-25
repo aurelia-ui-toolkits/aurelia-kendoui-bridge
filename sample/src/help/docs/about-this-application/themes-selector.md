@@ -8,7 +8,7 @@ Click on the **Theme** menu item results with the invocation of the theme select
 <br>
 
 <p align=center>
-  <img src="http://i.imgur.com/q5QhhMM.png"></img>
+  <img src="https://cloud.githubusercontent.com/assets/2712405/13236773/8886e092-d994-11e5-8424-48004bc1e098.png"></img>
  <br><br>
 </p>
 
@@ -17,4 +17,4 @@ Click on the **Theme** menu item results with the invocation of the theme select
 
 Selecting any of the 16 supported themes results with the application and all elements of its **[Components catalog](#/help/docs/about_this_application/3._components_catalog)**  be rendered using the selected theme.
 
-The above screen shot indicates that the Material theme is the default theme. This can be changed using **[this](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/sample/src/settings.js#L2)** line.
+The above screen shot indicates that the KendoUI Default theme is the default theme. This can be changed using **[this](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/sample/src/settings.js#L2)** line.

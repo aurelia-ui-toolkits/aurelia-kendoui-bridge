@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.colorpicker.min');
+require('kendo.colorpicker.min');
 
 var ColorPicker = (function () {
   var _instanceInitializers = {};

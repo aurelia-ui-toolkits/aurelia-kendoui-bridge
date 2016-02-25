@@ -18,13 +18,15 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
+var _commonOptionsBuilder = require('../common/options-builder');
+
 var _pdfPdf = require('../pdf/pdf');
 
-require('kendo-ui/js/kendo.data.signalr.min');
+require('kendo.data.signalr.min');
 
-require('kendo-ui/js/kendo.filtercell.min');
+require('kendo.filtercell.min');
 
-require('kendo-ui/js/kendo.grid.min');
+require('kendo.grid.min');
 
 var Grid = (function () {
   var _instanceInitializers = {};
@@ -43,7 +45,7 @@ var Grid = (function () {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function Grid(element, widgetBase, viewResources) {
+  function Grid(element, widgetBase, viewResources, optionsBuilder) {
     _classCallCheck(this, _Grid);
 
     _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
@@ -51,6 +53,7 @@ var Grid = (function () {
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
     this.element = element;
+    this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).useViewResources(viewResources);
   }
 
@@ -77,18 +80,13 @@ var Grid = (function () {
   };
 
   Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
-    if (this.columns && this.columns.length > 0) {
-      options.columns = this.columns;
+    var _this2 = this;
 
-      options.columns.forEach(function (c) {
-        if (c.template && !c.withKendoTemplates) {
-          (function () {
-            var template = c.template;
-            c.template = function () {
-              return template;
-            };
-          })();
-        }
+    if (this.columns && this.columns.length > 0) {
+      options.columns = [];
+
+      this.columns.forEach(function (column) {
+        options.columns.push(_this2.optionsBuilder.getOptions(column, 'GridColumn'));
       });
     }
   };
@@ -98,7 +96,7 @@ var Grid = (function () {
   };
 
   var _Grid = Grid;
-  Grid = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources)(Grid) || Grid;
+  Grid = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources, _commonOptionsBuilder.OptionsBuilder)(Grid) || Grid;
   Grid = _commonDecorators.generateBindables('kendoGrid')(Grid) || Grid;
   Grid = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'grid')(Grid) || Grid;
   return Grid;

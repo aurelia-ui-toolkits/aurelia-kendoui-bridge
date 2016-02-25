@@ -1,4 +1,4 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo-ui/js/kendo.maskedtextbox.min'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.maskedtextbox.min'], function (_export) {
   'use strict';
 
   var inject, customAttribute, bindable, WidgetBase, generateBindables, constants, MaskedTextBox;
@@ -21,7 +21,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }, function (_kendoUiJsKendoMaskedtextboxMin) {}],
+    }, function (_kendoMaskedtextboxMin) {}],
     execute: function () {
       MaskedTextBox = (function () {
         var _instanceInitializers = {};

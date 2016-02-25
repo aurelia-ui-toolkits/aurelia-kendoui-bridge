@@ -4,19 +4,20 @@
 <br>
 
 This wrapper encapsulates the KendoUI module `kendo.autocomplete.min.js`, ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/help/docs/app_developers_tutorials/3._autocomplete_component)** and **[here](#/samples/autocomplete)**.
-<br>
+<br><br>
 
-File `autocomplete.js`
-<br>
+#### File `autocomplete.js`
+
 ```javascript
-import {customAttribute, bindable, inject} from 'aurelia-framework';
+import {inject} from 'aurelia-dependency-injection';
+import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import {fireEvent} from '../common/events';
-import 'kendo-ui/js/kendo.autocomplete.min';
-import 'kendo-ui/js/kendo.virtuallist.min';
+import {constants} from '../common/constants';
+import 'kendo.autocomplete.min';
+import 'kendo.virtuallist.min';
 
-@customAttribute('k-autocomplete')
+@customAttribute(`${constants.attributePrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase)
 export class AutoComplete {
@@ -28,7 +29,7 @@ export class AutoComplete {
     this.widgetBase = widgetBase
                         .control('kendoAutoComplete')
                         .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -42,28 +43,17 @@ export class AutoComplete {
       element: this.element,
       parentCtx: this.$parent
     });
+  }
 
-    // without these change and select handlers, when you select an options
-    // the value binding is not updated
-    this.kWidget.bind('change', (event) => {
-      this.kValue = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
-
-    this.kWidget.bind('select', (event) => {
-      this.kValue = event.sender.value();
-
-      // Update the kendo binding
-      fireEvent(this.element, 'input');
-    });
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
 
 ```
 

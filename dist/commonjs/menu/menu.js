@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.menu.min');
+require('kendo.menu.min');
 
 var Menu = (function () {
   var _instanceInitializers = {};
@@ -49,11 +49,12 @@ var Menu = (function () {
 
   Menu.prototype.recreate = function recreate() {
     var element = undefined;
-    var ul = $(this.element).find('ul');
-    if (ul.has()) {
-      element = $(this.element).find('ul').first();
+    var ul = this.element.querySelectorAll('ul');
+    if (ul.length > 0) {
+      element = ul[0];
     } else {
-      element = $(this.element).appendChild('<ul></ul>');
+      element = document.createElement('ul');
+      this.element.appendChild(element);
     }
 
     this.kWidget = this.widgetBase.createWidget({

@@ -20,7 +20,7 @@ var _commonConstants = require('../common/constants');
 
 var _pdfPdf = require('../pdf/pdf');
 
-require('kendo-ui/js/kendo.dataviz.treemap.min');
+require('kendo.dataviz.treemap.min');
 
 var TreeMap = (function () {
   var _instanceInitializers = {};

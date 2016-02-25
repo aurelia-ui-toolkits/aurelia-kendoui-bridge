@@ -16,7 +16,7 @@ var _commonWidgetBase = require('../common/widget-base');
 
 var _commonDecorators = require('../common/decorators');
 
-require('kendo-ui/js/kendo.panelbar.min');
+require('kendo.panelbar.min');
 
 var PanelBar = (function () {
   var _instanceInitializers = {};

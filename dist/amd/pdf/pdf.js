@@ -1,4 +1,4 @@
-define(['exports', 'kendo-ui/js/kendo.pdf.min', 'kendo-ui/js/kendo.excel.min'], function (exports, _kendoUiJsKendoPdfMin, _kendoUiJsKendoExcelMin) {
+define(['exports', 'kendo.pdf.min', 'kendo.excel.min'], function (exports, _kendoPdfMin, _kendoExcelMin) {
   'use strict';
 
   exports.__esModule = true;

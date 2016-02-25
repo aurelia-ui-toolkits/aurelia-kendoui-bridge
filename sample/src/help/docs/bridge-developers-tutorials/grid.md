@@ -4,33 +4,43 @@
 <br>
 
 This wrapper encapsulates the KendoUI module `kendo.grid.min.js`, ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/help/docs/app_developers_tutorials/6._grid_component)** and **[here](#/samples/grid)**.
+<br><br>
+
+#### File `grid.html`
+
+```HTML
+<template>
+  <content></content>
+</template>
+```
 <br>
 
-File `grid.js`
-<br>
+#### File `grid.js`
+
 ```javascript
-import {inject, children, customElement, bindable} from 'aurelia-framework';
+import {inject} from 'aurelia-dependency-injection';
+import {customElement, bindable, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-import 'kendo-ui/js/kendo.data.signalr.min';
-import 'kendo-ui/js/kendo.filtercell.min';
-import 'kendo-ui/js/kendo.grid.min';
+import {constants} from '../common/constants';
+import {OptionsBuilder} from '../common/options-builder';
+import 'kendo.grid.min';
 
-@customElement('k-grid')
+@customElement(`${constants.elementPrefix}grid`)
 @generateBindables('kendoGrid')
-@inject(Element, WidgetBase)
+@inject(Element, WidgetBase, ViewResources, OptionsBuilder)
 export class Grid  {
 
-  @children('k-col') columns;
+  @children(`${constants.elementPrefix}col`) columns;
   @bindable options = {};
 
-  constructor(element, widgetBase) {
+  constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;
+    this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoGrid')
                         .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .useViewResources(viewResources);
   }
 
   bind(ctx) {
@@ -58,7 +68,11 @@ export class Grid  {
   _beforeInitialize(options) {
     // allow for both column definitions via HTML and via an array of columns
     if (this.columns && this.columns.length > 0) {
-      options.columns = this.columns;
+      options.columns = [];
+
+      this.columns.forEach(column => {
+        options.columns.push(this.optionsBuilder.getOptions(column, 'GridColumn'));
+      });
     }
   }
 
@@ -77,8 +91,8 @@ function isInitFromTable(element) {
 ```
 <br>
 
-File `grid.html.js`
-<br>
+#### File `k-col.html`
+
 ```HTML
 <template>
   <content></content>
@@ -86,52 +100,24 @@ File `grid.html.js`
 ```
 <br>
 
-File `k-col`.js
-<br>
+#### File `k-col`.js
+
 ```javascript
-import {inject, noView, processContent, bindable, TargetInstruction} from 'aurelia-framework';
+import {children, customElement} from 'aurelia-templating';
+import {constants} from '../common/constants';
+import {generateBindables} from '../common/decorators';
+import {useTemplates} from '../common/util';
 
-@noView
-@processContent((compiler, resources, element, instruction) => {
-  let html = element.innerHTML;
-  if (html !== '') {
-    instruction.template = html;
-  }
+@customElement(`${constants.elementPrefix}col`)
+@generateBindables('GridColumn')
+export class Col {
+  @children(`${constants.elementPrefix}template`) templates;
 
-  return true;
-})
-@inject(TargetInstruction)
-export class AuCol {
-  @bindable aggregates;
-  @bindable attributes;
-  @bindable columns;
-  @bindable command;
-  @bindable editor;
-  @bindable encoded;
-  @bindable field;
-  @bindable filterable;
-  @bindable footerTemplate;
-  @bindable format = '';
-  @bindable groupable;
-  @bindable groupFooterTemplate;
-  @bindable groupHeaderTemplate;
-  @bindable headerAttributes;
-  @bindable headerTemplate;
-  @bindable hidden;
-  @bindable lockable;
-  @bindable locked;
-  @bindable menu;
-  @bindable minScreenWidth;
-  @bindable sortable;
-  @bindable title;
-  @bindable values;
-  @bindable width;
-  @bindable template;
-
-  constructor(targetInstruction) {
-    this.template = targetInstruction.elementInstruction.template;
+  bind() {
+    useTemplates(this, 'GridColumn', this.templates);
   }
 }
+
 ```
 
 <br>

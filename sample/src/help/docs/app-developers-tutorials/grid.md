@@ -3,29 +3,31 @@
 ### 6. Grid
 <br>
 
-##### View: k-grid.html
+#### View: k-grid.html
 
 ```html
 <template>
     <require from="./basic-grid.css"></require>
-        <section>
-            <br>
-            <h3>Basic KendoUI Grid sample</h3>
+    <section>
+        <br>
+        <h3>Basic KendoUI Grid sample</h3>
 
-            <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/tree/master/sample/src/samples/grid">See KendoUI Bridge grid folder for more details</a>
-            <br>
-            <br>
-            <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">
-                <k-col title="Contact Name" field="ContactName">
-                    <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
-                    <div class='customer-name'>${ContactName}</div>
-                </k-col>
-                <k-col title="Contact Name" field="ContactName"></k-col>
-                <k-col title="Contact Title" field="ContactTitle"></k-col>
-                <k-col title="Company Name" field="CompanyName"></k-col>
-                <k-col field="Country"></k-col>
-            </k-grid>
-        </section>
+        <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-plugin/tree/master/sample/src/samples/grid">See KendoUI Bridge grid folder for more details</a>
+        <br>
+        <br>
+        <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">
+        <k-col k-title="Contact Name" k-field="ContactName">
+            <k-template>
+              <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+              <div class='customer-name'>${ContactName}</div>
+            </k-template>
+        </k-col>
+        <k-col k-title="Contact Name" k-field="ContactName"></k-col>
+        <k-col k-title="Contact Title" k-field="ContactTitle"></k-col>
+        <k-col k-title="Company Name" k-field="CompanyName"></k-col>
+        <k-col k-field="Country"></k-col>
+    </k-grid>
+    </section>
 </template>
 ```
 <br>
@@ -57,7 +59,7 @@ and that the grid should show 10 rows per page.
 <br>
 <br>
 
-##### View model:  k-grid.js
+#### View model:  k-grid.js
 
 ```javascript
 export class BasicUse {
@@ -74,7 +76,7 @@ export class BasicUse {
       transport: {
         read: '//demos.telerik.com/kendo-ui/service/Northwind.svc/Customers'
       },
-      pageSize: 5
+      pageSize: 10
     };
   }
 }
@@ -82,7 +84,7 @@ export class BasicUse {
 ```
 <br>
 
-##### View model: basic-grid.css
+#### View model: basic-grid.css
 
 ```
 .customer-photo {

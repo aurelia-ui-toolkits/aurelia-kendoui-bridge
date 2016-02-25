@@ -18,21 +18,19 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-var _commonOptions = require('../common/options');
-
 var _pdfPdf = require('../pdf/pdf');
 
-require('kendo-ui/js/kendo.scheduler.min');
+require('kendo.scheduler.min');
 
-require('kendo-ui/js/kendo.scheduler.agendaview.min');
+require('kendo.scheduler.agendaview.min');
 
-require('kendo-ui/js/kendo.scheduler.dayview.min');
+require('kendo.scheduler.dayview.min');
 
-require('kendo-ui/js/kendo.scheduler.monthview.min');
+require('kendo.scheduler.monthview.min');
 
-require('kendo-ui/js/kendo.scheduler.recurrence.min');
+require('kendo.scheduler.recurrence.min');
 
-require('kendo-ui/js/kendo.scheduler.timelineview.min');
+require('kendo.scheduler.timelineview.min');
 
 var Scheduler = (function () {
   var _instanceInitializers = {};
@@ -45,8 +43,8 @@ var Scheduler = (function () {
     },
     enumerable: true
   }, {
-    key: 'eventTemplates',
-    decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'event-template')],
+    key: 'templates',
+    decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
     initializer: null,
     enumerable: true
   }], null, _instanceInitializers);
@@ -56,13 +54,14 @@ var Scheduler = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'eventTemplates', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoScheduler').linkViewModel(this).useViewResources(viewResources);
   }
 
   Scheduler.prototype.bind = function bind(ctx) {
+    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
     this.$parent = ctx;
   };
 
@@ -71,35 +70,10 @@ var Scheduler = (function () {
   };
 
   Scheduler.prototype.recreate = function recreate() {
-    var _this = this;
-
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: function beforeInitialize(o) {
-        return _this._beforeInitialize(o);
-      }
+      parentCtx: this.$parent
     });
-  };
-
-  Scheduler.prototype._beforeInitialize = function _beforeInitialize(options) {
-    var _this2 = this;
-
-    var eventTemplate = undefined;
-
-    if (this.kEventTemplate) {
-      eventTemplate = function () {
-        return _this2.kEventTemplate;
-      };
-    } else if (this.eventTemplates.length > 0) {
-      eventTemplate = function () {
-        return _this2.eventTemplates[0].template;
-      };
-    }
-
-    return Object.assign(options, _commonOptions.pruneOptions({
-      eventTemplate: eventTemplate
-    }));
   };
 
   Scheduler.prototype.detached = function detached() {

@@ -4,17 +4,19 @@
 <br>
 
 This wrapper encapsulates the KendoUI module `kendo.button.min.js`, ensuring that it behaves as a standard Aurelia component. See how the Aurelia application uses this component **[here](#/help/docs/app_developers_tutorials/4._button_component)** and **[here](#/samples/button)**.
-<br>
+<br><br>
 
-File `button.js`
-<br>
+#### File `button.js`
+
 ```javascript
-import {customAttribute, bindable, inject} from 'aurelia-framework';
+import {inject} from 'aurelia-dependency-injection';
+import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import 'kendo-ui/js/kendo.button.min';
+import {constants} from '../common/constants';
+import 'kendo.button.min';
 
-@customAttribute('k-button')
+@customAttribute(`${constants.attributePrefix}button`)
 @generateBindables('kendoButton')
 @inject(Element, WidgetBase)
 export class Button {
@@ -25,8 +27,7 @@ export class Button {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoButton')
-                        .linkViewModel(this)
-                        .setDefaultBindableValues();
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -46,6 +47,7 @@ export class Button {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
 
 ```
 

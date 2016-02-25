@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo-ui/js/kendo.slider.min');
+require('kendo.slider.min');
 
 var Slider = (function () {
   var _instanceInitializers = {};

@@ -1,4 +1,4 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo-ui/js/kendo.panelbar.min'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo.panelbar.min'], function (_export) {
   'use strict';
 
   var inject, customElement, bindable, WidgetBase, generateBindables, PanelBar;
@@ -22,7 +22,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
       generateBindables = _commonDecorators.generateBindables;
-    }, function (_kendoUiJsKendoPanelbarMin) {}],
+    }, function (_kendoPanelbarMin) {}],
     execute: function () {
       PanelBar = (function () {
         var _instanceInitializers = {};

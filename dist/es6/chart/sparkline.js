@@ -4,7 +4,7 @@ import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-import 'kendo-ui/js/kendo.dataviz.sparkline.min';
+import 'kendo.dataviz.sparkline.min';
 
 @customElement(`${constants.elementPrefix}sparkline`)
 @generateBindables('kendoSparkline')
