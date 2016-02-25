@@ -13,12 +13,12 @@ var KendoConfigBuilder = (function () {
   }
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoAutoComplete().kendoButton().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoCombobox().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoFlatColorPicker().kendoListView().kendoMap().kendoMaskedTextBox().kendoMenu().kendoNumericTextBox().kendoPanelBar().kendoProgressBar().kendoRangeSlider().kendoSlider().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().useValueConverters();
+    this.kendoAutoComplete().kendoButton().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoCombobox().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoFlatColorPicker().kendoListView().kendoMaskedTextBox().kendoMenu().kendoNumericTextBox().kendoPanelBar().kendoProgressBar().kendoRangeSlider().kendoSlider().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().useValueConverters();
     return this;
   };
 
   KendoConfigBuilder.prototype.pro = function pro() {
-    this.core().kendoChart().kendoEditor().kendoGrid().kendoScheduler().kendoTreeList().kendoTreeView();
+    this.core().kendoChart().kendoEditor().kendoGrid().kendoMap().kendoScheduler().kendoTreeList().kendoTreeView();
     return this;
   };
 

@@ -67,7 +67,6 @@ export class KendoConfigBuilder {
       .kendoDatePicker()
       .kendoFlatColorPicker()
       .kendoListView()
-      .kendoMap()
       .kendoMaskedTextBox()
       .kendoMenu()
       .kendoNumericTextBox()
@@ -90,6 +89,7 @@ export class KendoConfigBuilder {
       .kendoChart()
       .kendoEditor()
       .kendoGrid()
+      .kendoMap()
       .kendoScheduler()
       .kendoTreeList()
       .kendoTreeView();
@@ -539,17 +539,17 @@ export class TreeMap {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}color-picker`)
-@generateBindables('kendoColorPicker')
+@customElement(`${constants.attributePrefix}color-palette`)
+@generateBindables('kendoColorPalette')
 @inject(Element, WidgetBase)
-export class ColorPicker {
+export class ColorPalette {
 
   @bindable options = {};
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoColorPicker')
+                        .control('kendoColorPalette')
                         .linkViewModel(this);
   }
 
@@ -571,17 +571,17 @@ export class ColorPicker {
   }
 }
 
-@customElement(`${constants.attributePrefix}color-palette`)
-@generateBindables('kendoColorPalette')
+@customAttribute(`${constants.attributePrefix}color-picker`)
+@generateBindables('kendoColorPicker')
 @inject(Element, WidgetBase)
-export class ColorPalette {
+export class ColorPicker {
 
   @bindable options = {};
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoColorPalette')
+                        .control('kendoColorPicker')
                         .linkViewModel(this);
   }
 

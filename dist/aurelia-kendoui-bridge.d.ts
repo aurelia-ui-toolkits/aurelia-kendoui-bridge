@@ -171,14 +171,14 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class ColorPicker {
+  export class ColorPalette {
     options: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     recreate(): any;
     detached(): any;
   }
-  export class ColorPalette {
+  export class ColorPicker {
     options: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;

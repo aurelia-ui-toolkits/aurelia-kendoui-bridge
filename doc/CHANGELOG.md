@@ -1,3 +1,13 @@
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.3.1...v0.3.2) (2016-02-25)
+
+
+### Bug Fixes
+
+* **map:** Map is a PRO control ([9bec7a2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/9bec7a2))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.3.0...v0.3.1) (2016-02-24)
 

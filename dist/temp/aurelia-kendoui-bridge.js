@@ -125,12 +125,12 @@ var KendoConfigBuilder = (function () {
   }
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoAutoComplete().kendoButton().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoCombobox().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoFlatColorPicker().kendoListView().kendoMap().kendoMaskedTextBox().kendoMenu().kendoNumericTextBox().kendoPanelBar().kendoProgressBar().kendoRangeSlider().kendoSlider().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().useValueConverters();
+    this.kendoAutoComplete().kendoButton().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoCombobox().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoFlatColorPicker().kendoListView().kendoMaskedTextBox().kendoMenu().kendoNumericTextBox().kendoPanelBar().kendoProgressBar().kendoRangeSlider().kendoSlider().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().useValueConverters();
     return this;
   };
 
   KendoConfigBuilder.prototype.pro = function pro() {
-    this.core().kendoChart().kendoEditor().kendoGrid().kendoScheduler().kendoTreeList().kendoTreeView();
+    this.core().kendoChart().kendoEditor().kendoGrid().kendoMap().kendoScheduler().kendoTreeList().kendoTreeView();
     return this;
   };
 
@@ -669,55 +669,8 @@ var TreeMap = (function () {
 
 exports.TreeMap = TreeMap;
 
-var ColorPicker = (function () {
-  var _instanceInitializers8 = {};
-
-  _createDecoratedClass(ColorPicker, [{
-    key: 'options',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }], null, _instanceInitializers8);
-
-  function ColorPicker(element, widgetBase) {
-    _classCallCheck(this, _ColorPicker);
-
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers8);
-
-    this.element = element;
-    this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this);
-  }
-
-  ColorPicker.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
-
-    this.recreate();
-  };
-
-  ColorPicker.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  };
-
-  ColorPicker.prototype.detached = function detached() {
-    this.widgetBase.destroy(this.kWidget);
-  };
-
-  var _ColorPicker = ColorPicker;
-  ColorPicker = _aureliaDependencyInjection.inject(Element, WidgetBase)(ColorPicker) || ColorPicker;
-  ColorPicker = generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
-  ColorPicker = _aureliaTemplating.customAttribute(constants.attributePrefix + 'color-picker')(ColorPicker) || ColorPicker;
-  return ColorPicker;
-})();
-
-exports.ColorPicker = ColorPicker;
-
 var ColorPalette = (function () {
-  var _instanceInitializers9 = {};
+  var _instanceInitializers8 = {};
 
   _createDecoratedClass(ColorPalette, [{
     key: 'options',
@@ -726,12 +679,12 @@ var ColorPalette = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers9);
+  }], null, _instanceInitializers8);
 
   function ColorPalette(element, widgetBase) {
     _classCallCheck(this, _ColorPalette);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers9);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers8);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoColorPalette').linkViewModel(this);
@@ -762,6 +715,53 @@ var ColorPalette = (function () {
 })();
 
 exports.ColorPalette = ColorPalette;
+
+var ColorPicker = (function () {
+  var _instanceInitializers9 = {};
+
+  _createDecoratedClass(ColorPicker, [{
+    key: 'options',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers9);
+
+  function ColorPicker(element, widgetBase) {
+    _classCallCheck(this, _ColorPicker);
+
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers9);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this);
+  }
+
+  ColorPicker.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+
+    this.recreate();
+  };
+
+  ColorPicker.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  ColorPicker.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _ColorPicker = ColorPicker;
+  ColorPicker = _aureliaDependencyInjection.inject(Element, WidgetBase)(ColorPicker) || ColorPicker;
+  ColorPicker = generateBindables('kendoColorPicker')(ColorPicker) || ColorPicker;
+  ColorPicker = _aureliaTemplating.customAttribute(constants.attributePrefix + 'color-picker')(ColorPicker) || ColorPicker;
+  return ColorPicker;
+})();
+
+exports.ColorPicker = ColorPicker;
 
 var ComboBox = (function () {
   var _instanceInitializers10 = {};

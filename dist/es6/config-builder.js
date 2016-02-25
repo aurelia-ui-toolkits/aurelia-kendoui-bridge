@@ -21,7 +21,6 @@ export class KendoConfigBuilder {
       .kendoDatePicker()
       .kendoFlatColorPicker()
       .kendoListView()
-      .kendoMap()
       .kendoMaskedTextBox()
       .kendoMenu()
       .kendoNumericTextBox()
@@ -44,6 +43,7 @@ export class KendoConfigBuilder {
       .kendoChart()
       .kendoEditor()
       .kendoGrid()
+      .kendoMap()
       .kendoScheduler()
       .kendoTreeList()
       .kendoTreeView();
