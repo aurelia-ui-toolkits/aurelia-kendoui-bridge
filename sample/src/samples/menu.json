@@ -61,7 +61,8 @@
   "Navigation": {
     "Button": "button",
     "Treeview": "treeview",
-    "Panel Bar": "panelbar"
+    "Panel Bar": "panelbar",
+    "Toolbar": "toolbar"
   },
   "Diagrams & Maps" : {
     "Map": "map",

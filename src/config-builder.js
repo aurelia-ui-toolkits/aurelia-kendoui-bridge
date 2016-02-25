@@ -35,6 +35,7 @@ export class KendoConfigBuilder {
       .kendoTabStrip()
       .kendoTemplateSupport()
       .kendoTimePicker()
+      .kendoToolbar()
       .useValueConverters();
     return this;
   }
@@ -269,6 +270,12 @@ export class KendoConfigBuilder {
 
   kendoTimePicker(): KendoConfigBuilder {
     this.resources.push('timepicker/timepicker');
+    return this;
+  }
+
+  kendoToolbar(): KendoConfigBuilder {
+    this.resources.push('toolbar/toolbar');
+    this.resources.push('toolbar/toolbar-item');
     return this;
   }
 

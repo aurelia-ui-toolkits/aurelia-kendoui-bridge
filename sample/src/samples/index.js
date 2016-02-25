@@ -58,6 +58,7 @@ export class Index {
       { name: 'switch',           route: 'switch',              moduleId: './switch/index',                 title: 'Switch',            settings: { pro: true } },
       { name: 'tabstrip',         route: 'tabstrip',            moduleId: './tabstrip/index',               title: 'Tabstrip'},
       { name: 'timepicker',       route: 'timepicker',          moduleId: './timepicker/index',             title: 'TimePicker'},
+      { name: 'toolbar',          route: 'toolbar',             moduleId: './toolbar/index',                title: 'Toolbar'},
       { name: 'treemap',          route: 'treemap',             moduleId: './chart/treemap/index',          title: 'Treemap'},
       { name: 'treelist',         route: 'treelist',            moduleId: './treelist/index',               title: 'Treelist'},
       { name: 'treeview',         route: 'treeview',            moduleId: './treeview/index',               title: 'Treeview'},
