@@ -1,7 +1,7 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/constants'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.dataviz.diagram.min'], function (_export) {
   'use strict';
 
-  var inject, customElement, noView, bindable, processContent, TargetInstruction, constants, ListEditTemplate;
+  var inject, customElement, bindable, WidgetBase, generateBindables, constants, Diagram;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -14,48 +14,63 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
-      noView = _aureliaTemplating.noView;
       bindable = _aureliaTemplating.bindable;
-      processContent = _aureliaTemplating.processContent;
-      TargetInstruction = _aureliaTemplating.TargetInstruction;
+    }, function (_commonWidgetBase) {
+      WidgetBase = _commonWidgetBase.WidgetBase;
+    }, function (_commonDecorators) {
+      generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }],
+    }, function (_kendoDatavizDiagramMin) {}],
     execute: function () {
-      ListEditTemplate = (function () {
+      Diagram = (function () {
         var _instanceInitializers = {};
 
-        _createDecoratedClass(ListEditTemplate, [{
-          key: 'template',
+        _createDecoratedClass(Diagram, [{
+          key: 'options',
           decorators: [bindable],
-          initializer: null,
+          initializer: function initializer() {
+            return {};
+          },
           enumerable: true
         }], null, _instanceInitializers);
 
-        function ListEditTemplate(targetInstruction) {
-          _classCallCheck(this, _ListEditTemplate);
+        function Diagram(element, widgetBase) {
+          _classCallCheck(this, _Diagram);
 
-          _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-          this.template = targetInstruction.elementInstruction.template;
+          this.element = element;
+          this.widgetBase = widgetBase.control('kendoDiagram').linkViewModel(this);
         }
 
-        var _ListEditTemplate = ListEditTemplate;
-        ListEditTemplate = customElement(constants.elementPrefix + 'list-edit-template')(ListEditTemplate) || ListEditTemplate;
-        ListEditTemplate = inject(TargetInstruction)(ListEditTemplate) || ListEditTemplate;
-        ListEditTemplate = processContent(function (compiler, resources, element, instruction) {
-          var html = element.innerHTML;
-          if (html !== '') {
-            instruction.template = html;
-          }
+        Diagram.prototype.bind = function bind(ctx) {
+          this.$parent = ctx;
+        };
 
-          return true;
-        })(ListEditTemplate) || ListEditTemplate;
-        ListEditTemplate = noView(ListEditTemplate) || ListEditTemplate;
-        return ListEditTemplate;
+        Diagram.prototype.attached = function attached() {
+          this.recreate();
+        };
+
+        Diagram.prototype.recreate = function recreate() {
+          this.kWidget = this.widgetBase.createWidget({
+            element: this.element,
+            parentCtx: this.$parent
+          });
+        };
+
+        Diagram.prototype.detached = function detached() {
+          this.widgetBase.destroy(this.kWidget);
+        };
+
+        var _Diagram = Diagram;
+        Diagram = inject(Element, WidgetBase)(Diagram) || Diagram;
+        Diagram = generateBindables('kendoDiagram')(Diagram) || Diagram;
+        Diagram = customElement(constants.elementPrefix + 'diagram')(Diagram) || Diagram;
+        return Diagram;
       })();
 
-      _export('ListEditTemplate', ListEditTemplate);
+      _export('Diagram', Diagram);
     }
   };
 });

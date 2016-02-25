@@ -1,7 +1,7 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/constants'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.dataviz.barcode.min'], function (_export) {
   'use strict';
 
-  var inject, customElement, noView, bindable, processContent, TargetInstruction, constants, ListTemplate;
+  var inject, customAttribute, bindable, WidgetBase, generateBindables, constants, Barcode;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -13,49 +13,62 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
-      customElement = _aureliaTemplating.customElement;
-      noView = _aureliaTemplating.noView;
+      customAttribute = _aureliaTemplating.customAttribute;
       bindable = _aureliaTemplating.bindable;
-      processContent = _aureliaTemplating.processContent;
-      TargetInstruction = _aureliaTemplating.TargetInstruction;
+    }, function (_commonWidgetBase) {
+      WidgetBase = _commonWidgetBase.WidgetBase;
+    }, function (_commonDecorators) {
+      generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }],
+    }, function (_kendoDatavizBarcodeMin) {}],
     execute: function () {
-      ListTemplate = (function () {
+      Barcode = (function () {
         var _instanceInitializers = {};
 
-        _createDecoratedClass(ListTemplate, [{
-          key: 'template',
+        _createDecoratedClass(Barcode, [{
+          key: 'options',
           decorators: [bindable],
-          initializer: null,
+          initializer: function initializer() {
+            return {};
+          },
           enumerable: true
         }], null, _instanceInitializers);
 
-        function ListTemplate(targetInstruction) {
-          _classCallCheck(this, _ListTemplate);
+        function Barcode(element, widgetBase) {
+          _classCallCheck(this, _Barcode);
 
-          _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-          this.template = targetInstruction.elementInstruction.template;
+          this.element = element;
+          this.widgetBase = widgetBase.control('kendoBarcode').linkViewModel(this);
         }
 
-        var _ListTemplate = ListTemplate;
-        ListTemplate = customElement(constants.elementPrefix + 'list-template')(ListTemplate) || ListTemplate;
-        ListTemplate = inject(TargetInstruction)(ListTemplate) || ListTemplate;
-        ListTemplate = processContent(function (compiler, resources, element, instruction) {
-          var html = element.innerHTML;
-          if (html !== '') {
-            instruction.template = html;
-          }
+        Barcode.prototype.bind = function bind(ctx) {
+          this.$parent = ctx;
 
-          return true;
-        })(ListTemplate) || ListTemplate;
-        ListTemplate = noView(ListTemplate) || ListTemplate;
-        return ListTemplate;
+          this.recreate();
+        };
+
+        Barcode.prototype.recreate = function recreate() {
+          this.kWidget = this.widgetBase.createWidget({
+            element: this.element,
+            parentCtx: this.$parent
+          });
+        };
+
+        Barcode.prototype.detached = function detached() {
+          this.widgetBase.destroy(this.kWidget);
+        };
+
+        var _Barcode = Barcode;
+        Barcode = inject(Element, WidgetBase)(Barcode) || Barcode;
+        Barcode = generateBindables('kendoBarcode')(Barcode) || Barcode;
+        Barcode = customAttribute(constants.attributePrefix + 'barcode')(Barcode) || Barcode;
+        return Barcode;
       })();
 
-      _export('ListTemplate', ListTemplate);
+      _export('Barcode', Barcode);
     }
   };
 });

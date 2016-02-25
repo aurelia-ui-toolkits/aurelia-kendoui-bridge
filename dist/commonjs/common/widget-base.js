@@ -58,6 +58,11 @@ var WidgetBase = (function () {
   };
 
   WidgetBase.prototype.useValueBinding = function useValueBinding() {
+    var valueBindingProperty = arguments.length <= 0 || arguments[0] === undefined ? 'value' : arguments[0];
+    var valueFunction = arguments.length <= 1 || arguments[1] === undefined ? 'value' : arguments[1];
+
+    this.valueBindingProperty = valueBindingProperty;
+    this.valueFunction = valueFunction;
     this.withValueBinding = true;
 
     return this;
@@ -151,12 +156,12 @@ var WidgetBase = (function () {
   };
 
   WidgetBase.prototype._handleChange = function _handleChange(widget) {
-    this.viewModel.kValue = widget.value();
+    this.viewModel[_util.getBindablePropertyName(this.valueBindingProperty)] = widget[this.valueFunction]();
   };
 
   WidgetBase.prototype.handlePropertyChanged = function handlePropertyChanged(widget, property, newValue, oldValue) {
-    if (property === 'kValue' && this.withValueBinding) {
-      widget.value(newValue);
+    if (property === _util.getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
+      widget[this.valueFunction](newValue);
     }
   };
 

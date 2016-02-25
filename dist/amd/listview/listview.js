@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/util', 'kendo.listview.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _commonUtil, _kendoListviewMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.listview.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoListviewMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -20,13 +20,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       },
       enumerable: true
     }, {
-      key: 'listTemplates',
-      decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'list-template')],
-      initializer: null,
-      enumerable: true
-    }, {
-      key: 'listEditTemplates',
-      decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'list-edit-template')],
+      key: 'templates',
+      decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
       initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
@@ -36,9 +31,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'listTemplates', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'listEditTemplates', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
       this.element = element;
       this.widgetBase = widgetBase.control('kendoListView').linkViewModel(this).useViewResources(viewResources);
@@ -46,6 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     ListView.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+      this.widgetBase.useTemplates(this, 'kendoListView', this.templates);
     };
 
     ListView.prototype.attached = function attached() {
@@ -53,53 +47,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     ListView.prototype.recreate = function recreate() {
-      var _this = this;
-
       this.kWidget = this.widgetBase.createWidget({
         element: this.element,
-        parentCtx: this.$parent,
-        beforeInitialize: function beforeInitialize(o) {
-          return _this._beforeInitialize(o);
-        }
+        parentCtx: this.$parent
       });
-    };
-
-    ListView.prototype._beforeInitialize = function _beforeInitialize(options) {
-      var _this2 = this;
-
-      var template = undefined;
-      var editTemplate = undefined;
-
-      if (this.kTemplate) {
-        template = function () {
-          return _this2.kTemplate;
-        };
-      } else if (this.listTemplates.length > 0) {
-        (function () {
-          var templ = _this2.listTemplates[0].template;
-          template = function () {
-            return templ;
-          };
-        })();
-      }
-
-      if (this.kEditTemplate) {
-        editTemplate = function () {
-          return _this2.kEditTemplate;
-        };
-      } else if (this.listEditTemplates.length > 0) {
-        (function () {
-          var templ = _this2.listEditTemplates[0].template;
-          editTemplate = function () {
-            return templ;
-          };
-        })();
-      }
-
-      return Object.assign(options, _commonUtil.pruneOptions({
-        editTemplate: editTemplate,
-        template: template
-      }));
     };
 
     ListView.prototype.detached = function detached() {
