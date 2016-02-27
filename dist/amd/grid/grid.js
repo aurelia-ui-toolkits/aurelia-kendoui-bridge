@@ -43,16 +43,24 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Grid.prototype.attached = function attached() {
+      if (isInitFromDiv(this.element)) {
+        this.target = this.element.querySelectorAll('div')[0];
+      } else if (isInitFromTable(this.element)) {
+        this.target = this.element.children[0];
+      } else {
+        this.target = document.createElement('div');
+        this.element.appendChild(this.target);
+      }
+
       this.recreate();
     };
 
     Grid.prototype.recreate = function recreate() {
       var _this = this;
 
-      var element = isInitFromTable(this.element) ? this.element.children[0] : this.element;
-
       this.kWidget = this.widgetBase.createWidget({
-        element: element,
+        element: this.target,
+        rootElement: this.element,
         parentCtx: this.$parent,
         beforeInitialize: function beforeInitialize(o) {
           return _this._beforeInitialize(o);
@@ -87,5 +95,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   function isInitFromTable(element) {
     return element.children.length > 0 && element.children[0].nodeName === 'TABLE';
+  }
+
+  function isInitFromDiv(element) {
+    return element.querySelectorAll('div').length > 0;
   }
 });

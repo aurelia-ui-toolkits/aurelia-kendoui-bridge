@@ -1,7 +1,7 @@
 System.register(['./util', './options-builder', './template-compiler', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (_export) {
   'use strict';
 
-  var fireKendoEvent, getEventsFromAttributes, _hyphenate, pruneOptions, _useTemplates, OptionsBuilder, TemplateCompiler, inject, transient, TaskQueue, WidgetBase;
+  var fireKendoEvent, getEventsFromAttributes, getBindablePropertyName, _hyphenate, pruneOptions, _useTemplates, OptionsBuilder, TemplateCompiler, inject, transient, TaskQueue, WidgetBase;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -9,6 +9,7 @@ System.register(['./util', './options-builder', './template-compiler', 'aurelia-
     setters: [function (_util) {
       fireKendoEvent = _util.fireKendoEvent;
       getEventsFromAttributes = _util.getEventsFromAttributes;
+      getBindablePropertyName = _util.getBindablePropertyName;
       _hyphenate = _util._hyphenate;
       pruneOptions = _util.pruneOptions;
       _useTemplates = _util.useTemplates;
@@ -67,6 +68,11 @@ System.register(['./util', './options-builder', './template-compiler', 'aurelia-
         };
 
         WidgetBase.prototype.useValueBinding = function useValueBinding() {
+          var valueBindingProperty = arguments.length <= 0 || arguments[0] === undefined ? 'value' : arguments[0];
+          var valueFunction = arguments.length <= 1 || arguments[1] === undefined ? 'value' : arguments[1];
+
+          this.valueBindingProperty = valueBindingProperty;
+          this.valueFunction = valueFunction;
           this.withValueBinding = true;
 
           return this;
@@ -160,12 +166,12 @@ System.register(['./util', './options-builder', './template-compiler', 'aurelia-
         };
 
         WidgetBase.prototype._handleChange = function _handleChange(widget) {
-          this.viewModel.kValue = widget.value();
+          this.viewModel[getBindablePropertyName(this.valueBindingProperty)] = widget[this.valueFunction]();
         };
 
         WidgetBase.prototype.handlePropertyChanged = function handlePropertyChanged(widget, property, newValue, oldValue) {
-          if (property === 'kValue' && this.withValueBinding) {
-            widget.value(newValue);
+          if (property === getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
+            widget[this.valueFunction](newValue);
           }
         };
 

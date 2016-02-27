@@ -13,12 +13,12 @@ var KendoConfigBuilder = (function () {
   }
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoAutoComplete().kendoButton().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoCombobox().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoFlatColorPicker().kendoListView().kendoMap().kendoMaskedTextBox().kendoMenu().kendoNumericTextBox().kendoPanelBar().kendoProgressBar().kendoRangeSlider().kendoSlider().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().useValueConverters();
+    this.kendoAutoComplete().kendoButton().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoCombobox().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoDraggable().kendoDropTarget().kendoFlatColorPicker().kendoListView().kendoMaskedTextBox().kendoMenu().kendoNumericTextBox().kendoPanelBar().kendoProgressBar().kendoRangeSlider().kendoSlider().kendoSwitch().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().useValueConverters();
     return this;
   };
 
   KendoConfigBuilder.prototype.pro = function pro() {
-    this.core().kendoChart().kendoEditor().kendoGrid().kendoScheduler().kendoTreeList().kendoTreeView();
+    this.core().kendoBarcode().kendoChart().kendoDiagram().kendoEditor().kendoGrid().kendoMap().kendoLinearGauge().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView();
     return this;
   };
 
@@ -44,6 +44,11 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoButton = function kendoButton() {
     this.resources.push('button/button');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoBarcode = function kendoBarcode() {
+    this.resources.push('barcode/barcode');
     return this;
   };
 
@@ -85,8 +90,24 @@ var KendoConfigBuilder = (function () {
     return this;
   };
 
+  KendoConfigBuilder.prototype.kendoDiagram = function kendoDiagram() {
+    this.resources.push('diagram/diagram');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoDraggable = function kendoDraggable() {
+    this.resources.push('draggable/draggable');
+    return this;
+  };
+
   KendoConfigBuilder.prototype.kendoDropDownList = function kendoDropDownList() {
     this.resources.push('dropdownlist/dropdownlist');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoDropTarget = function kendoDropTarget() {
+    this.resources.push('drop-target/drop-target');
+    this.resources.push('drop-target/drop-target-area');
     return this;
   };
 
@@ -106,10 +127,13 @@ var KendoConfigBuilder = (function () {
     return this;
   };
 
+  KendoConfigBuilder.prototype.kendoLinearGauge = function kendoLinearGauge() {
+    this.resources.push('gauges/linear-gauge');
+    return this;
+  };
+
   KendoConfigBuilder.prototype.kendoListView = function kendoListView() {
     this.resources.push('listview/listview');
-    this.resources.push('listview/k-list-template');
-    this.resources.push('listview/k-list-edit-template');
     return this;
   };
 
@@ -143,6 +167,11 @@ var KendoConfigBuilder = (function () {
     return this;
   };
 
+  KendoConfigBuilder.prototype.kendoRadialGauge = function kendoRadialGauge() {
+    this.resources.push('gauges/radial-gauge');
+    return this;
+  };
+
   KendoConfigBuilder.prototype.kendoScheduler = function kendoScheduler() {
     this.resources.push('scheduler/scheduler');
     return this;
@@ -150,6 +179,11 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoSlider = function kendoSlider() {
     this.resources.push('slider/slider');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoSwitch = function kendoSwitch() {
+    this.resources.push('switch/switch');
     return this;
   };
 

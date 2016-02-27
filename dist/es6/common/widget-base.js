@@ -1,4 +1,4 @@
-import {fireKendoEvent, getEventsFromAttributes, _hyphenate, pruneOptions, useTemplates} from './util';
+import {fireKendoEvent, getEventsFromAttributes, getBindablePropertyName, _hyphenate, pruneOptions, useTemplates} from './util';
 import {OptionsBuilder} from './options-builder';
 import {TemplateCompiler} from './template-compiler';
 import {inject, transient} from 'aurelia-dependency-injection';
@@ -89,7 +89,15 @@ export class WidgetBase {
     return this;
   }
 
-  useValueBinding() {
+
+  /**
+  * adds two-way value binding
+  * @param valueBindingProperty the property name of the kendo control (value/checked)
+  * @param valueFunction the function on the kendo control that gets the value of the above property
+  */
+  useValueBinding(valueBindingProperty = 'value', valueFunction = 'value') {
+    this.valueBindingProperty = valueBindingProperty;
+    this.valueFunction = valueFunction;
     this.withValueBinding = true;
 
     return this;
@@ -208,12 +216,12 @@ export class WidgetBase {
 
 
   _handleChange(widget) {
-    this.viewModel.kValue = widget.value();
+    this.viewModel[getBindablePropertyName(this.valueBindingProperty)] = widget[this.valueFunction]();
   }
 
   handlePropertyChanged(widget, property, newValue, oldValue) {
-    if (property === 'kValue' && this.withValueBinding) {
-      widget.value(newValue);
+    if (property === getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
+      widget[this.valueFunction](newValue);
     }
   }
 

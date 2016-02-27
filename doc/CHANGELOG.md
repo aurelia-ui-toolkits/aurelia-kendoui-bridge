@@ -1,3 +1,32 @@
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.3.2...v0.4.0) (2016-02-25)
+
+
+### Bug Fixes
+
+* **grid:** always initialize on div ([d5c64e1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/d5c64e1))
+
+### Features
+
+* **autocomplete:** convert to custom element ([5125848](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/5125848))
+* **barcode:** add barcode wrapper ([895246f](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/895246f))
+* **diagram:** added diagram wrapper ([93b581f](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/93b581f))
+* **drag-and-drop:** added drag and drop wrappers ([783378d](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/783378d))
+* **gauges:** add linear and radial gauges ([e81c6b3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e81c6b3))
+* **switch:** add switch wrapper ([6ab4259](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/6ab4259))
+
+
+
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.3.1...v0.3.2) (2016-02-25)
+
+
+### Bug Fixes
+
+* **map:** Map is a PRO control ([9bec7a2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/9bec7a2))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.3.0...v0.3.1) (2016-02-24)
 

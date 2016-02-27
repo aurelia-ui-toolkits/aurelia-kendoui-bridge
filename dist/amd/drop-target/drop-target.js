@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/constants'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonConstants) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.draganddrop.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _kendoDraganddropMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -9,38 +9,50 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
-  var ListTemplate = (function () {
+  var DropTarget = (function () {
     var _instanceInitializers = {};
 
-    _createDecoratedClass(ListTemplate, [{
-      key: 'template',
+    _createDecoratedClass(DropTarget, [{
+      key: 'options',
       decorators: [_aureliaTemplating.bindable],
-      initializer: null,
+      initializer: function initializer() {
+        return {};
+      },
       enumerable: true
     }], null, _instanceInitializers);
 
-    function ListTemplate(targetInstruction) {
-      _classCallCheck(this, _ListTemplate);
+    function DropTarget(element, widgetBase) {
+      _classCallCheck(this, _DropTarget);
 
-      _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-      this.template = targetInstruction.elementInstruction.template;
+      this.element = element;
+      this.widgetBase = widgetBase.control('kendoDropTarget').linkViewModel(this);
     }
 
-    var _ListTemplate = ListTemplate;
-    ListTemplate = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'list-template')(ListTemplate) || ListTemplate;
-    ListTemplate = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(ListTemplate) || ListTemplate;
-    ListTemplate = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
-      var html = element.innerHTML;
-      if (html !== '') {
-        instruction.template = html;
-      }
+    DropTarget.prototype.bind = function bind(ctx) {
+      this.$parent = ctx;
 
-      return true;
-    })(ListTemplate) || ListTemplate;
-    ListTemplate = _aureliaTemplating.noView(ListTemplate) || ListTemplate;
-    return ListTemplate;
+      this.recreate();
+    };
+
+    DropTarget.prototype.recreate = function recreate() {
+      this.kWidget = this.widgetBase.createWidget({
+        element: this.element,
+        parentCtx: this.$parent
+      });
+    };
+
+    DropTarget.prototype.detached = function detached() {
+      this.widgetBase.destroy(this.kWidget);
+    };
+
+    var _DropTarget = DropTarget;
+    DropTarget = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(DropTarget) || DropTarget;
+    DropTarget = _commonDecorators.generateBindables('kendoDropTarget')(DropTarget) || DropTarget;
+    DropTarget = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'drop-target')(DropTarget) || DropTarget;
+    return DropTarget;
   })();
 
-  exports.ListTemplate = ListTemplate;
+  exports.DropTarget = DropTarget;
 });

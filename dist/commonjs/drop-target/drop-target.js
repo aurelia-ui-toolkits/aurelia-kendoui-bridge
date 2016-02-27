@@ -12,39 +12,57 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaTemplating = require('aurelia-templating');
 
+var _commonWidgetBase = require('../common/widget-base');
+
+var _commonDecorators = require('../common/decorators');
+
 var _commonConstants = require('../common/constants');
 
-var ListEditTemplate = (function () {
+require('kendo.draganddrop.min');
+
+var DropTarget = (function () {
   var _instanceInitializers = {};
 
-  _createDecoratedClass(ListEditTemplate, [{
-    key: 'template',
+  _createDecoratedClass(DropTarget, [{
+    key: 'options',
     decorators: [_aureliaTemplating.bindable],
-    initializer: null,
+    initializer: function initializer() {
+      return {};
+    },
     enumerable: true
   }], null, _instanceInitializers);
 
-  function ListEditTemplate(targetInstruction) {
-    _classCallCheck(this, _ListEditTemplate);
+  function DropTarget(element, widgetBase) {
+    _classCallCheck(this, _DropTarget);
 
-    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-    this.template = targetInstruction.elementInstruction.template;
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoDropTarget').linkViewModel(this);
   }
 
-  var _ListEditTemplate = ListEditTemplate;
-  ListEditTemplate = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'list-edit-template')(ListEditTemplate) || ListEditTemplate;
-  ListEditTemplate = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(ListEditTemplate) || ListEditTemplate;
-  ListEditTemplate = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
-    var html = element.innerHTML;
-    if (html !== '') {
-      instruction.template = html;
-    }
+  DropTarget.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
 
-    return true;
-  })(ListEditTemplate) || ListEditTemplate;
-  ListEditTemplate = _aureliaTemplating.noView(ListEditTemplate) || ListEditTemplate;
-  return ListEditTemplate;
+    this.recreate();
+  };
+
+  DropTarget.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  DropTarget.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _DropTarget = DropTarget;
+  DropTarget = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(DropTarget) || DropTarget;
+  DropTarget = _commonDecorators.generateBindables('kendoDropTarget')(DropTarget) || DropTarget;
+  DropTarget = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'drop-target')(DropTarget) || DropTarget;
+  return DropTarget;
 })();
 
-exports.ListEditTemplate = ListEditTemplate;
+exports.DropTarget = DropTarget;

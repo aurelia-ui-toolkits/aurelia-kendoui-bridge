@@ -22,4 +22,4 @@ A set of [Aurelia](http://aurelia.io) wrappers for [Kendo UI](http://www.telerik
 
 
 ## Contributing
-Do you want to help us develop the `aurelia-kendoui-bridge`? Great! We would love for you to send us pull requests. For more information, please check [contributing.md](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/CONTRIBUTING.md) - and these instructions look "too terse" here is a **[great set set of lessons](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
+Do you want to help us develop the `aurelia-kendoui-bridge`? Great! We would love for you to send us pull requests. For more information, please check [contributing.md](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/CONTRIBUTING.md) - and if these instructions look "too terse" here is a **[great set set of lessons](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**

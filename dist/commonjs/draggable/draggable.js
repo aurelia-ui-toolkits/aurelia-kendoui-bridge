@@ -12,39 +12,70 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaTemplating = require('aurelia-templating');
 
+var _commonWidgetBase = require('../common/widget-base');
+
+var _commonDecorators = require('../common/decorators');
+
 var _commonConstants = require('../common/constants');
 
-var ListTemplate = (function () {
+require('kendo.draganddrop.min');
+
+var Draggabke = (function () {
   var _instanceInitializers = {};
 
-  _createDecoratedClass(ListTemplate, [{
-    key: 'template',
+  _createDecoratedClass(Draggabke, [{
+    key: 'options',
     decorators: [_aureliaTemplating.bindable],
-    initializer: null,
+    initializer: function initializer() {
+      return {};
+    },
     enumerable: true
   }], null, _instanceInitializers);
 
-  function ListTemplate(targetInstruction) {
-    _classCallCheck(this, _ListTemplate);
+  function Draggabke(element, widgetBase) {
+    _classCallCheck(this, _Draggabke);
 
-    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
-    this.template = targetInstruction.elementInstruction.template;
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoDraggable').linkViewModel(this);
   }
 
-  var _ListTemplate = ListTemplate;
-  ListTemplate = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'list-template')(ListTemplate) || ListTemplate;
-  ListTemplate = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(ListTemplate) || ListTemplate;
-  ListTemplate = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
-    var html = element.innerHTML;
-    if (html !== '') {
-      instruction.template = html;
-    }
+  Draggabke.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
 
-    return true;
-  })(ListTemplate) || ListTemplate;
-  ListTemplate = _aureliaTemplating.noView(ListTemplate) || ListTemplate;
-  return ListTemplate;
+  Draggabke.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  Draggabke.prototype.recreate = function recreate() {
+    var _this = this;
+
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent,
+      beforeInitialize: function beforeInitialize(options) {
+        return _this.beforeInitialize(options);
+      }
+    });
+  };
+
+  Draggabke.prototype.beforeInitialize = function beforeInitialize(options) {
+    if (options.container) {
+      Object.assign(options, { container: $(options.container) });
+    }
+  };
+
+  Draggabke.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Draggabke = Draggabke;
+  Draggabke = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Draggabke) || Draggabke;
+  Draggabke = _commonDecorators.generateBindables('kendoDraggable')(Draggabke) || Draggabke;
+  Draggabke = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'draggable')(Draggabke) || Draggabke;
+  return Draggabke;
 })();
 
-exports.ListTemplate = ListTemplate;
+exports.Draggabke = Draggabke;

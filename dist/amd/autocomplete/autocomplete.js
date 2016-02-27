@@ -19,6 +19,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
         return {};
       },
       enumerable: true
+    }, {
+      key: 'templates',
+      decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
+      initializer: null,
+      enumerable: true
     }], null, _instanceInitializers);
 
     function AutoComplete(element, widgetBase) {
@@ -26,19 +31,31 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
       _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
+      _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
+
       this.element = element;
       this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useValueBinding();
     }
 
     AutoComplete.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+      this.widgetBase.useTemplates(this, 'kendoAutoComplete', this.templates);
+
+      var inputs = this.element.querySelectorAll('input');
+      if (inputs.length > 0) {
+        this.target = inputs[0];
+      } else {
+        this.target = document.createElement('input');
+        this.element.appendChild(this.target);
+      }
 
       this.recreate();
     };
 
     AutoComplete.prototype.recreate = function recreate() {
       this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
+        rootElement: this.element,
+        element: this.target,
         parentCtx: this.$parent
       });
     };
@@ -54,7 +71,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _AutoComplete = AutoComplete;
     AutoComplete = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(AutoComplete) || AutoComplete;
     AutoComplete = _commonDecorators.generateBindables('kendoAutoComplete')(AutoComplete) || AutoComplete;
-    AutoComplete = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'autocomplete')(AutoComplete) || AutoComplete;
+    AutoComplete = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'autocomplete')(AutoComplete) || AutoComplete;
     return AutoComplete;
   })();
 

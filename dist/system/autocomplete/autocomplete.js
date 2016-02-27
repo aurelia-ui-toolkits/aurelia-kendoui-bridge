@@ -1,7 +1,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.autocomplete.min', 'kendo.virtuallist.min'], function (_export) {
   'use strict';
 
-  var inject, customAttribute, bindable, WidgetBase, generateBindables, constants, AutoComplete;
+  var inject, customElement, bindable, children, WidgetBase, generateBindables, constants, AutoComplete;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -13,8 +13,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
-      customAttribute = _aureliaTemplating.customAttribute;
+      customElement = _aureliaTemplating.customElement;
       bindable = _aureliaTemplating.bindable;
+      children = _aureliaTemplating.children;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -33,6 +34,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
             return {};
           },
           enumerable: true
+        }, {
+          key: 'templates',
+          decorators: [children(constants.elementPrefix + 'template')],
+          initializer: null,
+          enumerable: true
         }], null, _instanceInitializers);
 
         function AutoComplete(element, widgetBase) {
@@ -40,19 +46,31 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
           _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
 
+          _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
+
           this.element = element;
           this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useValueBinding();
         }
 
         AutoComplete.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+          this.widgetBase.useTemplates(this, 'kendoAutoComplete', this.templates);
+
+          var inputs = this.element.querySelectorAll('input');
+          if (inputs.length > 0) {
+            this.target = inputs[0];
+          } else {
+            this.target = document.createElement('input');
+            this.element.appendChild(this.target);
+          }
 
           this.recreate();
         };
 
         AutoComplete.prototype.recreate = function recreate() {
           this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
+            rootElement: this.element,
+            element: this.target,
             parentCtx: this.$parent
           });
         };
@@ -68,7 +86,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _AutoComplete = AutoComplete;
         AutoComplete = inject(Element, WidgetBase)(AutoComplete) || AutoComplete;
         AutoComplete = generateBindables('kendoAutoComplete')(AutoComplete) || AutoComplete;
-        AutoComplete = customAttribute(constants.attributePrefix + 'autocomplete')(AutoComplete) || AutoComplete;
+        AutoComplete = customElement(constants.elementPrefix + 'autocomplete')(AutoComplete) || AutoComplete;
         return AutoComplete;
       })();
 
