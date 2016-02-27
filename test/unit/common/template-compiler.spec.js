@@ -121,7 +121,7 @@ describe('TemplateCompiler', () => {
     expect(spy).toHaveBeenCalledWith($parent, elements[0], 15, viewResources);
     expect(spy).toHaveBeenCalledWith($parent, elements[1], 30, viewResources);
     expect(spy).toHaveBeenCalledWith($parent, elements[2], {something: 45}, viewResources);
-    expect(spy).toHaveBeenCalledWith($parent, elements[3], {}, viewResources);
+    expect(spy).toHaveBeenCalledWith($parent, elements[3], undefined, viewResources);
   });
 
   it('supports jQuery selector', () => {
