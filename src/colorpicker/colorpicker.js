@@ -16,12 +16,15 @@ export class ColorPicker {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoColorPicker')
-                        .linkViewModel(this);
+                        .linkViewModel(this)
+                        .useValueBinding();
   }
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -30,6 +33,10 @@ export class ColorPicker {
       element: this.element,
       parentCtx: this.$parent
     });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {
