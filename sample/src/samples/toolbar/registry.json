@@ -4,6 +4,8 @@
     "basic-use": {
       "route": ["", "basic-use"]
     },
+    "resize": {},
+    "events": {},
     "customizing-with-editors": {},
     "api": {}
   }

@@ -2079,15 +2079,10 @@ a.footer-links:hover,
 }
 
 /* Demos */
-#exampleWrap,
 #codeStrip,
 #resources-technologies {
     clear: both;
     margin: 4.583em 7.500em 5.000em 7.500em;
-}
-
-#exampleWrap {
-    margin: 0 6.429em 5.000em 6.429em;
 }
 
 #exampleWrap .mobileExample {

@@ -1,0 +1,78 @@
+<template>
+  <div id="example">
+    <div class="demo-section k-content wide">
+      <k-toolbar>
+        <k-toolbar-item k-overflow="never">
+          <k-template>
+            <img src='http://demos.telerik.com/kendo-ui/content/web/toolbar/user.png' class='user-image'/>
+          </k-template>
+        </k-toolbar-item>
+        <k-toolbar-item k-type="button" k-text="Send" k-overflow="never"></k-toolbar-item>
+        <k-toolbar-item k-type="button" k-text="Discard" k-overflow="never"></k-toolbar-item>
+        <k-toolbar-item k-type="separator"></k-toolbar-item>
+        <k-toolbar-item k-type="splitButton"
+                        k-image-url="http://demos.telerik.com/kendo-ui/content/web/toolbar/save.png"
+                        k-text="Save"
+                        k-menu-buttons.bind="[
+          	{ imageUrl: 'http://demos.telerik.com/kendo-ui/content/web/toolbar/save.png', text: 'Save as' },
+          	{ imageUrl: 'http://demos.telerik.com/kendo-ui/content/web/toolbar/upload.png', text: 'Upload to drive' }
+        ]"></k-toolbar-item>
+        <k-toolbar-item k-type="splitButton"
+                        k-image-url="http://demos.telerik.com/kendo-ui/content/web/toolbar/reply.png"
+                        k-text="Reply"
+                        k-menu-buttons.bind="[
+            { imageUrl: 'http://demos.telerik.com/kendo-ui/content/web/toolbar/save.png',  text: 'Reply All' },
+            { imageUrl: 'http://demos.telerik.com/kendo-ui/content/web/toolbar/forward.png', text: 'Forward' },
+            { imageUrl: 'http://demos.telerik.com/kendo-ui/content/web/toolbar/reply.png', text: 'Reply & Delete' }
+        ]">
+        </k-toolbar-item>
+        <k-toolbar-item k-type="separator"></k-toolbar-item>
+        <k-toolbar-item k-overflow="never">
+          <k-template>
+            <span>
+              <label>Contacts:</label>
+              <k-drop-down-list k-option-label="Ann Devon"
+                                k-data-text-field="text"
+                                k-data-value-field="value"
+                                k-data-source.bind="[
+                                  { text: 'Ana Trujillo', value: 1 },
+                                  { text: 'Antonio Moreno', value: 2 },
+                                  { text: 'Christina Berglund', value: 3 },
+                                  { text: 'Felipe Izquierdo', value: 4 }
+                                ]">
+              </k-drop-downlist>
+            </span>
+          </k-template>
+        </k-toolbar-item>
+        <k-toolbar-item k-overflow="never">
+          <k-template>
+            <div>
+              <label>Labels:</label>
+              <k-drop-down-list k-option-label="Forums"
+                                k-data-text-field="text"
+                                k-data-value-field="value"
+                                k-data-source.bind="[
+                                  { text: 'Follow up', value: 1 },
+                                  { text: 'Misc', value: 2 },
+                                  { text: 'Priority', value: 3 },
+                                  { text: 'Deleted Messages', value: 4 }
+                                ]">
+              </k-drop-downlist>
+            </div>
+          </k-template>
+          <k-template for="overflowTemplate">
+            <span></span>
+          </k-template>
+        </k-toolbar-item>
+        <k-toolbar-item k-type="separator"></k-toolbar-item>
+        <k-toolbar-item k-type="buttonGroup"
+                        k-buttons.bind="[
+              { imageUrl: 'http://demos.telerik.com/kendo-ui/content/web/toolbar/done.png', text: 'Done', togglable: true, group: 'category' },
+              { imageUrl: 'http://demos.telerik.com/kendo-ui/content/web/toolbar/todo.png', text: 'To Do', togglable: true, group: 'category' },
+              { imageUrl: 'http://demos.telerik.com/kendo-ui/content/web/toolbar/important.png', text: 'Important', togglable: true, group: 'category' }
+          ]">
+        </k-toolbar-item>
+      </k-toolbar>
+    </div>
+  </div>
+</template>

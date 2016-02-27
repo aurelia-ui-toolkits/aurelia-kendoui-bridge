@@ -112,11 +112,16 @@ describe('TemplateCompiler', () => {
     elements.push(DOM.createElement('div'));
     data.push({something: 45});
 
+    // sometimes Kendo calls the callback with an undefined dataItem
+    elements.push(DOM.createElement('div'));
+    data.push(undefined);
+
     sut.compile($parent, elements, data, viewResources);
 
     expect(spy).toHaveBeenCalledWith($parent, elements[0], 15, viewResources);
     expect(spy).toHaveBeenCalledWith($parent, elements[1], 30, viewResources);
     expect(spy).toHaveBeenCalledWith($parent, elements[2], {something: 45}, viewResources);
+    expect(spy).toHaveBeenCalledWith($parent, elements[3], {}, viewResources);
   });
 
   it('supports jQuery selector', () => {

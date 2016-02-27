@@ -11,7 +11,8 @@
   "Data management": {
     "Grid": "grid",
     "ListView": "listview",
-    "TreeList": "treelist"
+    "TreeList": "treelist",
+    "PivotGrid": "pivotgrid"
   },
   "Editors": {
     "Autocomplete": "autocomplete",
@@ -23,9 +24,11 @@
     "Editor": "editor",
     "NumericTextBox": "numerictextbox",
     "MaskedTextBox": "maskedtextbox",
+    "Multiselect": "multiselect",
     "Slider": "slider",
     "RangeSlider": "rangeslider",
     "TimePicker": "timepicker",
+    "Upload": "upload",
     "Switch": "switch"
   },
   "Charts": {
@@ -58,7 +61,8 @@
   "Navigation": {
     "Button": "button",
     "Treeview": "treeview",
-    "Panel Bar": "panelbar"
+    "Panel Bar": "panelbar",
+    "Toolbar": "toolbar"
   },
   "Diagrams & Maps" : {
     "Map": "map",

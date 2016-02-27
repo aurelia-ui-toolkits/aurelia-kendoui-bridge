@@ -25,6 +25,7 @@ export class KendoConfigBuilder {
       .kendoListView()
       .kendoMaskedTextBox()
       .kendoMenu()
+      .kendoMultiselect()
       .kendoNumericTextBox()
       .kendoPanelBar()
       .kendoProgressBar()
@@ -34,6 +35,7 @@ export class KendoConfigBuilder {
       .kendoTabStrip()
       .kendoTemplateSupport()
       .kendoTimePicker()
+      .kendoToolbar()
       .useValueConverters();
     return this;
   }
@@ -50,10 +52,12 @@ export class KendoConfigBuilder {
       .kendoGrid()
       .kendoMap()
       .kendoLinearGauge()
+      .kendoPivotGrid()
       .kendoRadialGauge()
       .kendoScheduler()
       .kendoTreeList()
-      .kendoTreeView();
+      .kendoTreeView()
+      .kendoUpload();
     return this;
   }
 
@@ -187,7 +191,6 @@ export class KendoConfigBuilder {
     return this;
   }
 
-
   kendoMenu(): KendoConfigBuilder {
     this.resources.push('menu/menu');
     return this;
@@ -198,6 +201,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoMultiselect(): KendoConfigBuilder {
+    this.resources.push('multiselect/multiselect');
+    return this;
+  }
+
   kendoNumericTextBox(): KendoConfigBuilder {
     this.resources.push('numerictextbox/numerictextbox');
     return this;
@@ -205,6 +213,12 @@ export class KendoConfigBuilder {
 
   kendoPanelBar(): KendoConfigBuilder {
     this.resources.push('panelbar/panelbar');
+    return this;
+  }
+
+  kendoPivotGrid(): KendoConfigBuilder {
+    this.resources.push('pivotgrid/pivotgrid');
+    this.resources.push('pivotgrid/pivotconfigurator');
     return this;
   }
 
@@ -259,8 +273,19 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoToolbar(): KendoConfigBuilder {
+    this.resources.push('toolbar/toolbar');
+    this.resources.push('toolbar/toolbar-item');
+    return this;
+  }
+
   kendoRangeSlider(): KendoConfigBuilder {
     this.resources.push('rangeslider/rangeslider');
+    return this;
+  }
+
+  kendoUpload(): KendoConfigBuilder {
+    this.resources.push('upload/upload');
     return this;
   }
 }

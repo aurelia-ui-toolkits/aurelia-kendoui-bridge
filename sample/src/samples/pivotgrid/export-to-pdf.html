@@ -1,0 +1,21 @@
+<template>
+  <require from="./export-to-pdf.css"></require>
+  <div id="example">
+    <button k-button click.delegate="export()" class="k-button k-button-icontext hidden-on-narrow">
+      <span class="k-icon k-i-pdf"></span>Export to PDF
+    </button>
+
+    <k-pivot-grid id="pivotgrid"
+                  class="hidden-on-narrow"
+                  k-filterable.bind="true"
+                  k-pdf.bind="pdf"
+                  k-sortable.bind="true"
+                  k-column-width.bind="200"
+                  k-height.bind="580"
+                  k-data-source.bind="dataSource"
+                  k-widget.bind="pivotgrid">
+    </k-pivot-grid>
+
+    <div class="responsive-message"></div>
+  </div>
+</template>
