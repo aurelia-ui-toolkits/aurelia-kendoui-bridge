@@ -12,6 +12,7 @@ export class KendoConfigBuilder {
   core(): KendoConfigBuilder {
     this.kendoAutoComplete()
       .kendoButton()
+      .kendoButtonGroup()
       .kendoCalendar()
       .kendoColorPicker()
       .kendoColorPalette()
@@ -93,6 +94,11 @@ export class KendoConfigBuilder {
 
   kendoButton(): KendoConfigBuilder {
     this.resources.push('button/button');
+    return this;
+  }
+
+  kendoButtonGroup(): KendoConfigBuilder {
+    this.resources.push('buttongroup/buttongroup');
     return this;
   }
 

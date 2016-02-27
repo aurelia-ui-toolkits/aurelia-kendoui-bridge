@@ -21,6 +21,7 @@ export class Index {
       { name: 'bubble-charts',    route: 'bubble-charts',       moduleId: './chart/bubble-charts/index',    title: 'Bubble Charts',     settings: { pro: true } },
       { name: 'bullet-charts',    route: 'bullet-charts',       moduleId: './chart/bullet-charts/index',    title: 'Bullet Charts',     settings: { pro: true } },
       { name: 'button',           route: 'button',              moduleId: './button/index',                 title: 'Button'},
+      { name: 'buttongroup',      route: 'buttongroup',         moduleId: './buttongroup/index',            title: 'ButtonGroup'},
       { name: 'calendar',         route: 'calendar',            moduleId: './calendar/index',               title: 'Calendar'},
       { name: 'colorpicker',      route: 'colorpicker',         moduleId: './colorpicker/index',            title: 'Color Picker'},
       { name: 'combobox',         route: 'combobox',            moduleId: './combobox/index',               title: 'ComboBox'},

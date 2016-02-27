@@ -60,6 +60,7 @@
   },
   "Navigation": {
     "Button": "button",
+    "ButtonGroup": "buttongroup",
     "Treeview": "treeview",
     "Panel Bar": "panelbar",
     "Toolbar": "toolbar"
