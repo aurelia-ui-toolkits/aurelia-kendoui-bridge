@@ -90,7 +90,7 @@ You can then use the `autocomplete` variable to communicate with the original Ke
 		}
 
 		attached() {
-			this.taskQueue.queueMicroTask(() => {
+			this.taskQueue.queueTask(() => {
 			  this.autocomplete.enable(false);
 			});
 		}
