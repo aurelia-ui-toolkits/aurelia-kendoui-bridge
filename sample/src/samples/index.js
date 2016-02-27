@@ -53,6 +53,7 @@ export class Index {
       { name: 'rangeslider',      route: 'rangeslider',         moduleId: './rangeslider/index',            title: 'RangeSlider' },
       { name: 'scatter-charts',   route: 'scatter-charts',      moduleId: './chart/scatter-charts/index',   title: 'Scatter charts',    settings: { pro: true } },
       { name: 'scheduler',        route: 'scheduler',           moduleId: './scheduler/index',              title: 'Scheduler',         settings: { pro: true } },
+      { name: 'sortable',         route: 'sortable',            moduleId: './sortable/index',               title: 'Sortable'},
       { name: 'slider',           route: 'slider',              moduleId: './slider/index',                 title: 'Slider'},
       { name: 'sparkline',        route: 'sparkline',           moduleId: './chart/sparkline/index',        title: 'Sparkline',         settings: { pro: true } },
       { name: 'stock',            route: 'stock',               moduleId: './chart/stock/index',            title: 'Stock',             settings: { pro: true } },

@@ -31,6 +31,7 @@ export class KendoConfigBuilder {
       .kendoPanelBar()
       .kendoProgressBar()
       .kendoRangeSlider()
+      .kendoSortable()
       .kendoSlider()
       .kendoSwitch()
       .kendoTabStrip()
@@ -240,6 +241,11 @@ export class KendoConfigBuilder {
 
   kendoScheduler(): KendoConfigBuilder {
     this.resources.push('scheduler/scheduler');
+    return this;
+  }
+
+  kendoSortable(): KendoConfigBuilder {
+    this.resources.push('sortable/sortable');
     return this;
   }
 

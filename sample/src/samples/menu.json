@@ -78,7 +78,8 @@
   },
   "Interactivity & UX": {
     "ProgressBar": "progressbar",
-    "Drag and drop": "drag-and-drop"
+    "Drag and drop": "drag-and-drop",
+    "Sortable": "sortable"
   },
   "Tools": {
     "ValueConverters": "valueconverters"
