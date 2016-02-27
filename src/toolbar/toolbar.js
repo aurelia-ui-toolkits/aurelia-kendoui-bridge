@@ -43,7 +43,7 @@ export class Toolbar {
       options.items = [];
 
       this.toolbarItems.forEach(item => {
-        options.items.push(this.optionsBuilder.getOptions(item, 'ToolBarItem'));
+        options.items.push(item.getOptions());
       });
     }
   }

@@ -1,2 +1,71 @@
 <template>
+  <div id="example">
+    <div class="demo-section k-content wide">
+      <k-toolbar k-widget.bind="toolbar">
+        <k-toolbar-item k-type="buttonGroup" k-id="playerControls" k-text="Button">
+          <k-toolbar-item-button k-id="play" k-text="play" k-togglable.bind="true" k-group="player"></k-toolbar-item-button>
+          <k-toolbar-item-button k-id="pause" k-text="pause" k-togglable.bind="true" k-group="player" k-selected.bind="true"></k-toolbar-item-button>
+          <k-toolbar-item-button k-id="stop" k-text="stop" k-togglable.bind="true" k-group="player"></k-toolbar-item-button>
+        </k-toolbar-item>
+        <k-toolbar-item k-type="button" k-togglable.bind="true" k-id="repeat" k-text="repeat"></k-toolbar-item>
+        <k-toolbar-item k-type="splitButton" k-id="save" k-text="save" k-menu-buttons.bind="[
+          { id: 'favourites', text: 'add to favourites' },
+          { id: 'later', text: 'listen later' },
+          { id: 'download', text: 'download' }
+        ]">
+        </k-toolbar-item>
+        <k-toolbar-item k-type="button" k-id="delete" k-text="delete"></k-toolbar-item>
+      </k-toolbar>
+
+      <div class="box wide">
+        <div class="box-col">
+          <h4>Get selected action</h4>
+          <ul class="options">
+            <li>
+              <button k-button click.delegate="getSelected()">Get selected action</button>
+            </li>
+            <li>
+              Selected: <span ref="selectedFromGroup"></span>
+            </li>
+            <li>
+              <button k-button click.delegate="togglePlayerControls($event)">Hide player controls</button>
+            </li>
+          </ul>
+        </div>
+
+        <div class="box-col">
+          <h4>Enable / Disable</h4>
+          <ul class="options">
+            <li>
+              <button k-button click.delegate="enableDisabledRepeat()">Enable/Disable Repeat</button>
+            </li>
+            <li>
+              <button k-button click.delegate="hideRepeat($event)">Hide Repeat</button>
+            </li>
+          </ul>
+        </div>
+        <div class="box-col">
+          <h4>Add / Remove</h4>
+          <ul class="options">
+            <li>
+              <button k-button click.delegate="removeById()">Remove by ID</button>
+              <input type="text" value.bind="deleteId" class="k-textbox"/>
+            </li>
+            <li>
+              <button k-button click.delegate="addButton()">Add new button</button>
+              <label>Text: <input type="text" value.bind="buttonText" class="k-textbox"/></label>
+              <label>ID: <input type="text" value.bind="buttonID" class="k-textbox"/></label>
+              <label>Togglable: <input type="checkbox" checked.bind="buttonToggable"/></label>
+            </li>
+            <li>
+              <button k-button click.delegate="addSplitButton()">Add new SplitButton</button>
+            </li>
+            <li>
+              <button k-button click.delegate="addButtonGroup()">Add new ButtonGroup</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>

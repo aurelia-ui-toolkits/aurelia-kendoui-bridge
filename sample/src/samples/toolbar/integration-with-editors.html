@@ -1,0 +1,92 @@
+<template>
+  <require from="./integration-with-editors.css"></require>
+  <div id="example">
+    <div class="demo-section k-content wide">
+        <h4>Customize the element</h4>
+        <k-toolbar id="toolbar"
+                   k-resizable.bind="false"
+                   k-on-toggle.delegate="onToggle($event.detail)">
+          <k-toolbar-item>
+            <k-template>
+              <label>SHAPE:</label>
+              <k-drop-down-list k-data-text-field="text"
+                                k-data-value-field="value"
+                                k-value.two-way="shape"
+                                k-data-source.bind="[
+                            { text: 'Rectangle', value: 0 },
+                            { text: 'Rounded rectangle', value: 30 },
+                            { text: 'Circle/Ellipse', value: 300 }]">
+              </k-drop-down-list>
+            </k-template>
+          </k-toolbar-item>
+          <k-toolbar-item k-type="separator"></k-toolbar-item>
+          <k-toolbar-item>
+            <k-template>
+              <label>H:</label>
+              <input k-numerictextbox="k-value.two-way: height; k-decimals.bind: 0; k-format: n0; k-max.bind: 300; k-min.bind: 50"
+                     style='width: 70px;'/>
+            </k-template>
+          </k-toolbar-item>
+          <k-toolbar-item>
+            <k-template>
+              <label>W:</label>
+              <input k-numerictextbox="k-value.two-way: width; k-decimals.bind: 0; k-format: n0; k-max.bind: 300; k-min.bind: 50"
+                     style='width: 70px;'/>
+            </k-template>
+          </k-toolbar-item>
+          <k-toolbar-item k-type="separator"></k-toolbar-item>
+          <k-toolbar-item>
+            <k-template>
+              <label>POSITION:</label>
+            </k-template>
+          </k-toolbar-item>
+          <k-toolbar-item k-type="buttonGroup">
+            <k-toolbar-item-button k-text="Left" k-togglable.bind="true" k-group="position"></k-toolbar-item-button>
+            <k-toolbar-item-button k-text="Center" k-togglable.bind="true" k-group="position" k-selected.bind="true"></k-toolbar-item-button>
+            <k-toolbar-item-button k-text="Right" k-togglable.bind="true" k-group="position"></k-toolbar-item-button>
+          </k-toolbar-item>
+          <k-toolbar-item k-type="separator"></k-toolbar-item>
+          <k-toolbar-item>
+            <k-template>
+              <label>BACKGROUND:</label>
+              <input k-color-picker="k-value.two-way: backColor; k-buttons.bind: false"/>
+            </k-template>
+          </k-toolbar-item>
+          <k-toolbar-item k-type="separator"></k-toolbar-item>
+          <k-toolbar-item>
+            <k-template>
+              <label>BORDER:</label>
+              <input k-color-picker="k-value.two-way: borderColor; k-buttons.bind: false"/>
+            </k-template>
+          </k-toolbar-item>
+          <k-toolbar-item>
+            <k-template>
+              <k-drop-down-list k-data-text-field="text"
+                                k-data-value-field="value"
+                                k-value.two-way="borderStyle"
+                                k-data-source.bind="[
+                            { text: 'Solid', value: 'solid' },
+                            { text: 'Dashed', value: 'dashed' },
+                            { text: 'Dotted', value: 'dotted' }]">
+                <select style='width: 100px;'></select>
+              </k-drop-down-list>
+            </k-template>
+          </k-toolbar-item>
+        </k-toolbar>
+    </div>
+    <div class="box wide">
+        <div id="target" css="float: ${float}; width: ${width}px; height: ${height}px; background-color: ${backColor}; border-color: ${borderColor}; border-style: ${borderStyle}"></div>
+    </div>
+  </div>
+
+  <style>
+    #target {
+      border: 3px solid #333333;
+      border-radius: 0;
+      background-color: #ffffff;
+      height: 150px;
+      width: 150px;
+      margin: 0 auto;
+    }
+  </style>
+</template>

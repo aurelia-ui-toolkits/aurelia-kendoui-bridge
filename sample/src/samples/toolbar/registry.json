@@ -6,7 +6,9 @@
     },
     "resize": {},
     "events": {},
-    "customizing-with-editors": {},
-    "api": {}
+    "api": {},
+    "integration-with-editors": {
+      "files": ["html", "js", "css"]
+    }
   }
 }

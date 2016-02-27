@@ -65,12 +65,10 @@
           </k-template>
         </k-toolbar-item>
         <k-toolbar-item k-type="separator"></k-toolbar-item>
-        <k-toolbar-item k-type="buttonGroup"
-                        k-buttons.bind="[
-              { imageUrl: 'http://demos.telerik.com/kendo-ui/content/web/toolbar/done.png', text: 'Done', togglable: true, group: 'category' },
-              { imageUrl: 'http://demos.telerik.com/kendo-ui/content/web/toolbar/todo.png', text: 'To Do', togglable: true, group: 'category' },
-              { imageUrl: 'http://demos.telerik.com/kendo-ui/content/web/toolbar/important.png', text: 'Important', togglable: true, group: 'category' }
-          ]">
+        <k-toolbar-item k-type="buttonGroup">
+          <k-toolbar-item-button k-image-url="http://demos.telerik.com/kendo-ui/content/web/toolbar/done.png" k-text="Done" k-togglable.bind="true" k-group="category"></k-toolbar-item-button>
+          <k-toolbar-item-button k-image-url="http://demos.telerik.com/kendo-ui/content/web/toolbar/todo.png" k-text="To Do" k-togglable.bind="true" k-group="category"></k-toolbar-item-button>
+          <k-toolbar-item-button k-image-url="http://demos.telerik.com/kendo-ui/content/web/toolbar/important.png" k-text="Important" k-togglable.bind="true" k-group="category"></k-toolbar-item-button>
         </k-toolbar-item>
       </k-toolbar>
     </div>

@@ -1,0 +1,20 @@
+#toolbar-integration-with-editors #toolbar {
+    margin: 1em 0;
+    padding: 0 .9em;
+}
+
+#toolbar-integration-with-editors #toolbar label {
+    font-size: .85em;
+    font-weight: bold;
+}
+#toolbar-integration-with-editors #toolbar .k-separator {
+    margin: 0 .9em;
+}
+
+#toolbar-integration-with-editors .k-numeric-wrap {
+  display: inline-block;
+}
+
+#toolbar-integration-with-editors k-drop-down-list {
+  width: 150px;
+}

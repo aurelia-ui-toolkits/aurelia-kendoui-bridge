@@ -276,6 +276,7 @@ export class KendoConfigBuilder {
   kendoToolbar(): KendoConfigBuilder {
     this.resources.push('toolbar/toolbar');
     this.resources.push('toolbar/toolbar-item');
+    this.resources.push('toolbar/toolbar-item-button');
     return this;
   }
 
