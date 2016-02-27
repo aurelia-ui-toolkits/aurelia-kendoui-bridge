@@ -1,6 +1,11 @@
-export class RangeSelection {
-    constructor() {
+import {inject} from 'aurelia-dependency-injection';
+import {TaskQueue} from 'aurelia-task-queue';
 
+@inject(TaskQueue)
+export class RangeSelection {
+
+    constructor(taskQueue) {
+      this.taskQueue = taskQueue;
     }
 
     startChange() {
@@ -38,7 +43,9 @@ export class RangeSelection {
     }
 
     attached() {
-      this.startDatePicker.max(this.endDatePicker.value());
-      this.endDatePicker.min(this.startDatePicker.value());
+      this.taskQueue.queueTask(() => {
+        this.startDatePicker.max(this.endDatePicker.value());
+        this.endDatePicker.min(this.startDatePicker.value());
+      });
     }
 }

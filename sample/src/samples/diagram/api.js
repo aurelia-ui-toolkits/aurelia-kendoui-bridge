@@ -16,11 +16,10 @@ export class API {
   }
 
   attached() {
-    this.taskQueue.queueMicroTask(() => {
-      let diagram = this.diagramVM.kWidget;
-      let shape1 = diagram.addShape({x: 100, y: 100});
-      let shape2 = diagram.addShape({ x: 300, y: 100 });
-      diagram.connect(shape1, shape2);
+    this.taskQueue.queueTask(() => {
+      let shape1 = this.diagram.addShape({x: 100, y: 100});
+      let shape2 = this.diagram.addShape({ x: 300, y: 100 });
+      this.diagram.connect(shape1, shape2);
     });
   }
 

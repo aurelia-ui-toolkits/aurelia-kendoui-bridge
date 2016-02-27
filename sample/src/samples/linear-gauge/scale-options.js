@@ -35,8 +35,8 @@ export class ScaleOptions {
   }
 
   attached() {
-    this.taskQueue.queueMicroTask(() => {
-      this.configuredRanges = this.gaugeVM.kWidget.options.scale.ranges;
+    this.taskQueue.queueTask(() => {
+      this.configuredRanges = this.gauge.options.scale.ranges;
     });
   }
 

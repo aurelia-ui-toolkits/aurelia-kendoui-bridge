@@ -10,7 +10,7 @@ export class VerticalProgressbar {
   }
 
   attached() {
-    this.taskQueue.queueMicroTask(() => {
+    this.taskQueue.queueTask(() => {
       this.load();
     });
   }

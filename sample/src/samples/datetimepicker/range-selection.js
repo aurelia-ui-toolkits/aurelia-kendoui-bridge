@@ -44,7 +44,7 @@ export class RangeSelection {
     }
 
     attached() {
-      this.taskQueue.queueMicroTask(() => {
+      this.taskQueue.queueTask(() => {
         this.startDatePicker.max(this.endDatePicker.value());
         this.endDatePicker.min(this.startDatePicker.value());
       });
