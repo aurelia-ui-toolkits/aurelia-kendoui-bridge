@@ -2,13 +2,16 @@
   "title": "Menu",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
     },
+    "images": {
+      "files": ["html", "js", "css"]
+    },
+    "direction": {},
+    "orientation": {},
     "animation-effects": {},
     "api": {},
-    "context-menu": {},
-    "direction": {},
-    "images": {},
-    "orientation": {}
+    "context-menu": {}
   }
 }

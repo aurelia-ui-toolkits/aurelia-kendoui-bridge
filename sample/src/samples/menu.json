@@ -65,7 +65,8 @@
     "ButtonGroup": "buttongroup",
     "Treeview": "treeview",
     "Panel Bar": "panelbar",
-    "Toolbar": "toolbar"
+    "Toolbar": "toolbar",
+    "Menu": "menu"
   },
   "Diagrams & Maps" : {
     "Map": "map",
