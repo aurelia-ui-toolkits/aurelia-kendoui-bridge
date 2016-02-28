@@ -44,6 +44,7 @@ export class Index {
       { name: 'pie-charts',       route: 'pie-charts',          moduleId: './chart/pie-charts/index',       title: 'Pie Charts',        settings: { pro: true } },
       { name: 'polar-charts',     route: 'polar-charts',        moduleId: './chart/polar-charts/index',     title: 'Polar Charts',      settings: { pro: true } },
       { name: 'progressbar',      route: 'progressbar',         moduleId: './progressbar/index',            title: 'Progress Bar'},
+      { name: 'qrcode',           route: 'qrcode',              moduleId: './qrcode/index',                 title: 'QR Code',           settings: { pro: true } },
       { name: 'radar-charts',     route: 'radar-charts',        moduleId: './chart/radar-charts/index',     title: 'Radar Charts',      settings: { pro: true } },
       { name: 'radial-gauge',     route: 'radial-gauge',        moduleId: './radial-gauge/index',           title: 'Radial gauge',      settings: { pro: true } },
       { name: 'range-charts',     route: 'range-charts',        moduleId: './chart/range-charts/index',     title: 'Range Charts',      settings: { pro: true } },

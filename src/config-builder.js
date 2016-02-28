@@ -50,6 +50,7 @@ export class KendoConfigBuilder {
       .kendoGrid()
       .kendoMap()
       .kendoLinearGauge()
+      .kendoQRCode()
       .kendoRadialGauge()
       .kendoScheduler()
       .kendoTreeList()
@@ -210,6 +211,11 @@ export class KendoConfigBuilder {
 
   kendoProgressBar(): KendoConfigBuilder {
     this.resources.push('progressbar/progressbar');
+    return this;
+  }
+
+  kendoQRCode(): KendoConfigBuilder {
+    this.resources.push('qrcode/qrcode');
     return this;
   }
 

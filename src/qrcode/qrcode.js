@@ -8,7 +8,7 @@ import 'kendo.dataviz.qrcode.min';
 @customAttribute(`${constants.attributePrefix}qrcode`)
 @generateBindables('kendoQRCode')
 @inject(Element, WidgetBase)
-export class QRcode {
+export class QRCode {
 
   @bindable options = {};
 
