@@ -1,0 +1,50 @@
+.demo-section {
+  position: relative;
+}
+.demo-section > p {
+  text-align: right;
+  margin-top: 10px;
+  font-size: .8em;
+}
+#prev-img,
+#next-img {
+  display: block;
+  position: absolute;
+  top: 42px;
+  z-idex: 1;
+  height: 400px;
+  width: 100px;
+  opacity: 0.2;
+}
+#prev-img {
+  left: 42px;
+  background: url('http://demos.telerik.com/kendo-ui/content/web/scrollview/arrow-left.png') no-repeat 50% 50%;
+}
+#next-img {
+  left: auto;
+  right: 42px;
+  background: url('http://demos.telerik.com/kendo-ui/content/web/scrollview/arrow-right.png') no-repeat 50% 50%;
+}
+a#prev-img:hover {
+  background: url('http://demos.telerik.com/kendo-ui/content/web/scrollview/arrow-left.png') no-repeat 50% 50% rgba(0,0,0,.3);
+  opacity: 1;
+}
+a#next-img:hover  {
+  background: url('http://demos.telerik.com/kendo-ui/content/web/scrollview/arrow-right.png') no-repeat 50% 50% rgba(0,0,0,.3);
+  opacity: 1;
+}
+.title {
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  padding: 1em;
+  background-color: #222;
+  color: #fff;
+}
+.image {
+  display: block;
+  height: 400px;
+  width: 600px;
+  background-size: cover;
+}

@@ -12,7 +12,8 @@
     "Grid": "grid",
     "ListView": "listview",
     "TreeList": "treelist",
-    "PivotGrid": "pivotgrid"
+    "PivotGrid": "pivotgrid",
+    "Scrollview": "scrollview"
   },
   "Editors": {
     "Autocomplete": "autocomplete",
