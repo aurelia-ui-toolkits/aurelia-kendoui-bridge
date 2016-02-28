@@ -40,6 +40,7 @@ export class KendoConfigBuilder {
       .kendoTemplateSupport()
       .kendoTimePicker()
       .kendoToolbar()
+      .kendoTooltip()
       .kendoValidator()
       .useValueConverters();
     return this;
@@ -302,6 +303,11 @@ export class KendoConfigBuilder {
   kendoToolbar(): KendoConfigBuilder {
     this.resources.push('toolbar/toolbar');
     this.resources.push('toolbar/toolbar-item');
+    return this;
+  }
+
+  kendoTooltip(): KendoConfigBuilder {
+    this.resources.push('tooltip/tooltip');
     return this;
   }
 

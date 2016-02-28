@@ -79,7 +79,8 @@
     "Radial Gauge": "radial-gauge"
   },
   "Layout": {
-    "Notification": "notification"
+    "Notification": "notification",
+    "Tooltip": "tooltip"
   },
   "Interactivity & UX": {
     "ProgressBar": "progressbar",
