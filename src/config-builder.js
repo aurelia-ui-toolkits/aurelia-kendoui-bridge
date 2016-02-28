@@ -198,6 +198,7 @@ export class KendoConfigBuilder {
 
   kendoNotification(): KendoConfigBuilder {
     this.resources.push('notification/notification');
+    this.resources.push('notification/k-notification-template');
     return this;
   }
 

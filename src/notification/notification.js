@@ -11,7 +11,7 @@ import 'kendo.notification.min';
 export class Notification {
 
   @bindable kOptions = {};
-  @children(`${constants.elementPrefix}template`) templates;
+  @children(`${constants.elementPrefix}notification-template`) templates;
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -30,12 +30,22 @@ export class Notification {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoNotification', this.templates);
-
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
-      parentCtx: this.$parent
+      parentCtx: this.$parent,
+      beforeInitialize: e => this.beforeInitialize(e)
     });
+  }
+
+  beforeInitialize(options) {
+    if (this.templates && this.templates.length > 0) {
+      options.templates = [];
+
+      this.templates.forEach(template => options.templates.push({
+        type: template.type,
+        template: () => template.template
+      }));
+    }
   }
 
   detached() {

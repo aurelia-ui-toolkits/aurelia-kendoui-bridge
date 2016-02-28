@@ -1,0 +1,71 @@
+#notification-templates .demo-section p {
+  margin: 3px 0 20px;
+  line-height: 50px;
+}
+#notification-templates .demo-section .k-button {
+  width: 250px;
+}
+
+#notification-templates .k-notification {
+  border: 0;
+}
+
+
+/* Info template */
+.k-notification-info.k-group {
+  background: rgba(0%,0%,0%,.7);
+  color: #fff;
+}
+.new-mail {
+  width: 300px;
+  height: 100px;
+}
+.new-mail h3 {
+  font-size: 1em;
+  padding: 32px 10px 5px;
+}
+.new-mail img {
+  float: left;
+  margin: 30px 15px 30px 30px;
+}
+
+/* Error template */
+.k-notification-error.k-group {
+  background: rgba(100%,0%,0%,.7);
+  color: #ffffff;
+}
+.wrong-pass {
+  width: 300px;
+  height: 100px;
+}
+.wrong-pass h3 {
+  font-size: 1em;
+  padding: 32px 10px 5px;
+}
+.wrong-pass img {
+  float: left;
+  margin: 30px 15px 30px 30px;
+}
+
+/* Success template */
+.k-notification-upload-success.k-group {
+  background: rgba(0%,60%,0%,.7);
+  color: #fff;
+}
+.upload-success {
+  width: 240px;
+  height: 100px;
+  padding: 0 30px;
+  line-height: 100px;
+}
+.upload-success>h3 {
+  font-size: 1.6em;
+  font-weight: normal;
+  display: inline;
+  vertical-align: middle;
+}
+.upload-success>img {
+  display: inline;
+  vertical-align: middle;
+  margin-right: 10px;
+}
