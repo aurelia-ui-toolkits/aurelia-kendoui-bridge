@@ -1,42 +1,33 @@
 import {inject} from 'aurelia-dependency-injection';
 import {ControlProperties} from './control-properties';
-import {getBindablePropertyName, pruneOptions, hasValue} from './util';
+import {Util} from './util';
 
 /***
 * Converts an object with bindable properties (with k- convention)
 * into an object that can be passed to a Kendo control
 */
-@inject(ControlProperties)
+@inject(ControlProperties, Util)
 export class OptionsBuilder {
 
-  constructor(controlProperties) {
+  constructor(controlProperties: ControlProperties, util: Util) {
     this.controlProperties = controlProperties;
+    this.util = util;
   }
 
   /**
   * converts properties of view-model (with k- convention) to an object
-  * that can be passed to a Kendo control. It also wraps templates into a function
-  * so the Kendo templating system is not used
   */
   getOptions(viewModel, className) {
     let options = {};
 
     for (let prop of this.controlProperties.getProperties(className)) {
-      let value = viewModel[getBindablePropertyName(prop)];
+      let value = viewModel[this.util.getBindablePropertyName(prop)];
 
-      if (hasValue(value)) {
-        if (this.isTemplate(prop)) {
-          options[prop] = () => value;
-        } else {
-          options[prop] = value;
-        }
+      if (this.util.hasValue(value)) {
+        options[prop] = value;
       }
     }
 
-    return pruneOptions(options);
-  }
-
-  isTemplate(propertyName) {
-    return propertyName.toLowerCase().indexOf('template') > -1;
+    return this.util.pruneOptions(options);
   }
 }

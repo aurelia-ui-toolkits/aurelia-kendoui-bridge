@@ -1,0 +1,22 @@
+<template>
+  <require from="./axis-constraints.css"></require>
+  <div id="example">
+    <div class="hidden-on-narrow k-content wide" style="min-width: 910px;">
+      <h4>Rearrange the photos</h4>
+      <div id="sortable-horizontal"
+            k-sortable="k-axis: x;
+                        k-cursor: move;
+                        k-container: #sortable-horizontal;
+                        k-placeholder: <div class='axis-placeholder'>Drop Here!</div>;
+                        k-hint.call: hint($event)">
+          <img src="http://demos.telerik.com/kendo-ui/content/web/sortable/1.jpg" />
+          <img src="http://demos.telerik.com/kendo-ui/content/web/sortable/2.jpg" />
+          <img src="http://demos.telerik.com/kendo-ui/content/web/sortable/3.jpg" />
+          <img src="http://demos.telerik.com/kendo-ui/content/web/sortable/4.jpg" />
+          <img src="http://demos.telerik.com/kendo-ui/content/web/sortable/5.jpg" />
+      </div>
+    </div>
+
+    <div class="responsive-message"></div>
+  </div>
+</template>

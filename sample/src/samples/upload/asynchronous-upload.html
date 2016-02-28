@@ -1,0 +1,28 @@
+<template>
+  <div id="example">
+    <div class="box">
+        <h4>Information</h4>
+        <p>
+            The Upload is able to upload files out-of-band using the
+            HTML5 File API with fallback for legacy browsers.
+        </p>
+        <p>
+            You need to configure save action that will receive
+            the uploaded files.
+            An optional remove action is also available.
+        </p>
+    </div>
+
+    <div>
+        <div class="demo-section k-content">
+            <k-upload k-async.bind="{
+                            saveUrl: 'http://demos.telerik.com/kendo-ui/upload/save',
+                            removeUrl: 'http://demos.telerik.com/kendo-ui/upload/remove',
+                            autoUpload: true
+                        }">
+              <input name="files" type="file"/>
+            </k-upload>
+        </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,51 @@
+#upload-templates .file-icon {
+  display: inline-block;
+  float: left;
+  width: 48px;
+  height: 48px;
+  margin-left: 10px;
+  margin-top: 13.5px;
+}
+
+#upload-templates .img-file { background-image: url(http://demos.telerik.com/kendo-ui/content/web/upload/jpg.png) }
+#upload-templates .doc-file { background-image: url(http://demos.telerik.com/kendo-ui/content/web/upload/doc.png) }
+#upload-templates .pdf-file { background-image: url(http://demos.telerik.com/kendo-ui/content/web/upload/pdf.png) }
+#upload-templates .xls-file { background-image: url(http://demos.telerik.com/kendo-ui/content/web/upload/xls.png) }
+#upload-templates .zip-file { background-image: url(http://demos.telerik.com/kendo-ui/content/web/upload/zip.png) }
+#upload-templates .default-file { background-image: url(http://demos.telerik.com/kendo-ui/content/web/upload/default.png) }
+
+#upload-templates #example .file-heading {
+  font-family: Arial;
+  font-size: 1.1em;
+  display: inline-block;
+  float: left;
+  width: 60%;
+  margin: 0 0 0 20px;
+  height: 25px;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow:hidden;
+  white-space:nowrap;
+}
+
+#upload-templates #example .file-name-heading {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+#upload-templates #example .file-size-heading {
+  font-weight: normal;
+  font-style: italic;
+}
+
+#upload-templates li.k-file .file-wrapper .k-upload-action {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#upload-templates li.k-file div.file-wrapper {
+  position: relative;
+  height: 75px;
+}

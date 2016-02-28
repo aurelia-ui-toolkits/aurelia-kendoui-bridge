@@ -1,0 +1,33 @@
+<template>
+  <div id="example">
+    <div class="box">
+        <h4>Information</h4>
+        <p>
+            This example shows how to handle events triggered by kendoUpload.
+        </p>
+    </div>
+    <div>
+        <div class="demo-section k-content">
+          <k-upload k-async.bind="{
+                          saveUrl: 'http://demos.telerik.com/kendo-ui/upload/save',
+                          removeUrl: 'http://demos.telerik.com/kendo-ui/upload/remove',
+                          autoUpload: true
+                      }"
+                      k-on-cancel.delegate="logger.log('cancel')"
+                      k-on-complete.delegate="logger.log('complete')"
+                      k-on-error.delegate="logger.log('error')"
+                      k-on-progress.delegate="logger.log('progress')"
+                      k-on-remove.delegate="logger.log('remove')"
+                      k-on-select.delegate="logger.log('select')"
+                      k-on-success.delegate="logger.log('success')"
+                      k-on-upload.delegate="logger.log('upload')">
+            <input name="files" type="file" />
+          </k-upload>
+        </div>
+    </div>
+    <div class="box">
+        <h4>Console log</h4>
+        <logger view-model.ref="logger"></logger>
+    </div>
+  </div>
+</template>

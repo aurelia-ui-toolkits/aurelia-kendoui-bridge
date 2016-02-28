@@ -1,0 +1,36 @@
+#sortable-axis-constraints #example {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#sortable-axis-constraints #sortable-horizontal {
+  overflow: hidden;
+  text-align: center;
+}
+
+#sortable-axis-constraints #sortable-horizontal img {
+  width: 166px;
+  margin: 10px 20px 10px 0;
+  vertical-align: middle;
+  cursor: move;
+}
+
+.axis-placeholder {
+  display: inline-block;
+  width: 164px;
+  height: 123px;
+  border: 1px dashed #ddd;
+  background-color: #f3f5f7;
+  margin: 10px 20px 10px 0;
+  font-size: 1.3em;
+  font-weight: bold;
+  line-height: 125px;
+  vertical-align: middle;
+  color: #777;
+}
+
+.sortable-axis-tooltip {
+  opacity: .6;
+}

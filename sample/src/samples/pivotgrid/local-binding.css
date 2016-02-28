@@ -1,0 +1,8 @@
+#pivotgrid-local-binding #pivotgrid {
+    width: 70%;
+}
+
+#pivotgrid-local-binding .hidden-on-narrow {
+    display: inline-block;
+    vertical-align: top;
+}

@@ -1,0 +1,8 @@
+#pivotgrid-kpi-measures #pivotgrid {
+    width: 70%;
+}
+
+#pivotgrid-kpi-measures .hidden-on-narrow {
+    display: inline-block;
+    vertical-align: top;
+}

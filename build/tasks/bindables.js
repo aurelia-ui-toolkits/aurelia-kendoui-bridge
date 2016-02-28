@@ -67,32 +67,26 @@ function extractOptions(jsObj, json) {
   // kendoAutoComplete(options: kendo.ui.AutoCompleteOptions): JQuery;
   // kendoDraggable(options: kendo.ui.DraggableOptions): JQuery;
   // and for each kendo method, find the id of the Options class (DraggableOptions, AutoCompleteOptions)
-  for(var _methodIndex in kendoMethods) {
-    var _method = kendoMethods[_methodIndex];
-    if(_method.name.startsWith('kendo')) {
-      var signatures = _method.signatures;
-      for(var _signatureIndex in signatures) {
-        var signature = signatures[_signatureIndex];
+  kendoMethods.forEach(function (method) {
+    if(method.name.startsWith('kendo')) {
+      var signatures = method.signatures;
+      signatures.forEach(function (signature) {
         if(signature.parameters && signature.parameters.length > 0) {
           optionClasses.push({
-            method: _method.name, // kendoButton, kendoGrid
+            method: method.name, // kendoButton, kendoGrid
             id: signature.parameters[0].type.id // id of the options class
           });
         }
-      }
+      });
     }
-  }
+  });
 
   // iterate over all modules and classes
   // of every class matching an id we found above, add the properties to an array
-  for(var _moduleIndex in kendoModule.children) {
-    var _module = kendoModule.children[_moduleIndex];
-
+  kendoModule.children.forEach(function (module) {
     // loop through all classes such as kendo.data.DataSource
-    iterativeOptionsLookup(_module, optionClasses);
-  }
-
-
+    iterativeOptionsLookup(module, optionClasses);
+  });
 
   // sort a-z on method name (for readability)
   optionClasses.sort(function(a,b) {
@@ -101,34 +95,29 @@ function extractOptions(jsObj, json) {
 
 
   // create a flatter object so it can be easily read out by the plugin
-  for(var _optionClassIndex in optionClasses) {
-    var _optionClass = optionClasses[_optionClassIndex];
-    jsObj[_optionClass.method] = _optionClass.properties;
-  }
+  optionClasses.forEach(function (optionClass) {
+    jsObj[optionClass.method] = optionClass.properties;
+  });
 }
 
 
 function extractInterfaces(jsObj, json) {
-  var findInterfaces = ["GridColumn", "TreeListColumn"];
+  var findInterfaces = ["GridColumn", "TreeListColumn", "ToolBarItem"];
 
   var kendo = json.children[0];
   var kendoModule = kendo.children.find(function(i) { return i.name === "kendo" && i.kindString === "Module" });
   var kendoUI = kendoModule.children.find(function(i) { return i.name === "ui" && i.kindString === "Module" });
   var interfaces = kendoUI.children.filter(function(i) { return findInterfaces.indexOf(i.name) > -1 && i.kindString === "Interface"});
 
-  for(var _interfaceIndex in interfaces) {
-    var _interface = interfaces[_interfaceIndex];
+  interfaces.forEach(function (interface) {
+    jsObj[interface.name] = [];
 
-    jsObj[_interface.name] = [];
-
-    for(var _propertyIndex in _interface.children) {
-      var _property = _interface.children[_propertyIndex];
-
-      if(_property.kindString === "Property" || _property.kindString === "Method") {
-        jsObj[_interface.name].push(_property.name);
+    interface.children.forEach(function (property) {
+      if(property.kindString === "Property" || property.kindString === "Method") {
+        jsObj[interface.name].push(property.name);
       }
-    }
-  }
+    });
+  });
 }
 
 
@@ -137,34 +126,32 @@ function extractInterfaces(jsObj, json) {
 function iterativeOptionsLookup(_class, optionClasses) {
   // if the kind is a module, iterate over all classes and modudules in there as well
   if(_class.kindString === "Module") {
-    for(var _itemIndex in _class.children) {
-      var _item = _class.children[_itemIndex];
-      iterativeOptionsLookup(_item, optionClasses)
+    if(_class.children) {
+      _class.children.forEach(function (item) {
+        iterativeOptionsLookup(item, optionClasses)
+      });
     }
   }
 
   // these are classes/interfaces etc
   // find an interface matching the id of an Options class we collected earlier
   // of that interface, put all the propertynames of that interface into an array
-  for(var _itemIndex in _class.children) {
-    var _item = _class.children[_itemIndex];
+   if(_class.children) {
+     _class.children.forEach(function (item) {
+       optionClasses.forEach(function (optionClass) {
+         if(item.id === optionClass.id && item.kindString === "Interface") {
 
-    for(var _optionClass in optionClasses) {
-      var optionClass = optionClasses[_optionClass];
-      if(_item.id === optionClass.id && _item.kindString === "Interface") {
+           optionClass.properties = [];
 
-        optionClass.properties = [];
-
-        for(var _propertyIndex in _item.children) {
-          var _property = _item.children[_propertyIndex];
-
-          if(_property.kindString === "Property") {
-            optionClass.properties.push(_property.name);
-          }
-        }
-      }
-    }
-  }
+           item.children.forEach(function (property) {
+             if(property.kindString === "Property") {
+               optionClass.properties.push(property.name);
+             }
+           });
+         }
+       });
+     });
+   }
 }
 
 gulp.task('bindables', function (cb) {
