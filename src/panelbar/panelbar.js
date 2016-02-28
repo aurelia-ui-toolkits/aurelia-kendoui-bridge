@@ -9,7 +9,7 @@ import 'kendo.panelbar.min';
 @inject(Element, WidgetBase)
 export class PanelBar {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

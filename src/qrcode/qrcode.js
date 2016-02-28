@@ -10,7 +10,7 @@ import 'kendo.dataviz.qrcode.min';
 @inject(Element, WidgetBase)
 export class QRcode {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

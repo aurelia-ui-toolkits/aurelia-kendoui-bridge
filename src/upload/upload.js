@@ -10,7 +10,7 @@ import 'kendo.upload.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Upload {
 
-  @bindable options = {};
+  @bindable kOptions = {};
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {

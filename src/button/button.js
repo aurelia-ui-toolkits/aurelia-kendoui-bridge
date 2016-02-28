@@ -10,7 +10,7 @@ import 'kendo.button.min';
 @inject(Element, WidgetBase)
 export class Button {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

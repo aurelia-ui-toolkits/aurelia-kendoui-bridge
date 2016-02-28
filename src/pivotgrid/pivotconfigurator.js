@@ -11,7 +11,7 @@ import 'kendo.pivot.configurator.min';
 @inject(Element, WidgetBase)
 export class PivotConfigurator {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;

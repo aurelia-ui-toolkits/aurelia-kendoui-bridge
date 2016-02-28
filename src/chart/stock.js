@@ -11,7 +11,7 @@ import 'kendo.dataviz.stock.min';
 @inject(Element, WidgetBase)
 export class Stock {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

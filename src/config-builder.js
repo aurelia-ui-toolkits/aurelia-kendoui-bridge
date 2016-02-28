@@ -27,6 +27,7 @@ export class KendoConfigBuilder {
       .kendoMaskedTextBox()
       .kendoMenu()
       .kendoMultiselect()
+      .kendoNotification()
       .kendoNumericTextBox()
       .kendoPanelBar()
       .kendoProgressBar()
@@ -192,6 +193,11 @@ export class KendoConfigBuilder {
 
   kendoListView(): KendoConfigBuilder {
     this.resources.push('listview/listview');
+    return this;
+  }
+
+  kendoNotification(): KendoConfigBuilder {
+    this.resources.push('notification/notification');
     return this;
   }
 

@@ -10,7 +10,7 @@ import 'kendo.dataviz.barcode.min';
 @inject(Element, WidgetBase)
 export class Barcode {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

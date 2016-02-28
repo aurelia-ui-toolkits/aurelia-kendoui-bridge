@@ -13,7 +13,7 @@ import 'kendo.dataviz.chart.funnel.min';
 @inject(Element, WidgetBase)
 export class Chart {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
