@@ -2,9 +2,11 @@
 
 A set of [Aurelia](http://aurelia.io) wrappers for [Kendo UI](http://www.telerik.com/kendo-ui)
 
-**NOTE: This plugin is in active development and we would love to hear your feedback**
+**NOTE: This plugin is in active development and we would love to hear your feedback**  
 
+[![npm version](https://badge.fury.io/js/aurelia-kendoui-bridge.svg)](https://badge.fury.io/js/aurelia-kendoui-bridge)
 [![Build](https://travis-ci.org/aurelia-ui-toolkits/aurelia-kendoui-bridge.svg)](https://travis-ci.org/aurelia-ui-toolkits/aurelia-kendoui-bridge)
+[![downloads](https://img.shields.io/npm/dt/aurelia-kendoui-bridge.svg)](https://img.shields.io/npm/dt/aurelia-kendoui-bridge.svg)
 [![ZenHub](https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png)](https://zenhub.io)
 [![Join the chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/adriatic/Aurelia-KendoUI?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
