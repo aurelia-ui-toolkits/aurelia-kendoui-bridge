@@ -1,0 +1,36 @@
+<template>
+
+  <div id="example" style="min-height: 360px">
+    <div class="box wide">
+        <ul class="options">
+            <li>
+               Show at
+               <k-drop-down-list k-on-change.delegate="onChange()" k-value.two-way="selector">
+                 <select id="selector">
+                      <option value="1">Target 1</option>
+                      <option value="2">Target 2</option>
+                  </select>
+               </k-drop-down-list>
+            </li>
+        </ul>
+    </div>
+
+    <div id="tooltip" k-tooltip="k-widget.bind: tooltip; k-auto-hide.bind: false; k-show-on: click; k-position: bottom: k-filter: div; k-width.bind: 200; k-content.bind: content">
+        <div id="target1" class="k-group">Target 1</div>
+        <div id="target2" class="k-group">Target 2</div>
+    </div>
+  </div>
+
+  <style>
+    #target1, #target2 {
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        width: 200px;
+        white-space: nowrap;
+        border-width: 1px;
+        border-style: solid;
+        padding: 2em;
+    }
+  </style>
+</template>

@@ -6,10 +6,12 @@
       "files": ["html", "js", "css"]
     },
     "ajax": {
-      "files": ["html", "js", "css"]
+      "files": ["html", "js", "css", "md"]
     },
     "content-template": {
-      "files": ["html", "js", "css"]
-    }
+      "files": ["html", "js", "css", "md"]
+    },
+    "events": {},
+    "api": {}
   }
 }
