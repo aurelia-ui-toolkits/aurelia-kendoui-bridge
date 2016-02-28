@@ -1,0 +1,13 @@
+#notification-position-and-stacking .box-col label {
+    display: inline-block;
+    width: 11em;
+    padding-right: .8em;
+}
+
+#notification-position-and-stacking .box-col li {
+    padding-bottom: .3em;
+}
+
+#notification-position-and-stacking .num {
+    width: 6em;
+}

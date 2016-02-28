@@ -78,6 +78,9 @@
     "Linear Gauge": "linear-gauge",
     "Radial Gauge": "radial-gauge"
   },
+  "Layout": {
+    "Notification": "notification"
+  },
   "Interactivity & UX": {
     "ProgressBar": "progressbar",
     "Drag and drop": "drag-and-drop",

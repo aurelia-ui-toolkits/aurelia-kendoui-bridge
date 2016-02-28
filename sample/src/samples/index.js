@@ -41,6 +41,7 @@ export class Index {
       { name: 'menu',             route: 'menu',                moduleId: './menu/index',                   title: 'Menu'},
       { name: 'maskedtextbox',    route: 'maskedtextbox',       moduleId: './maskedtextbox/index',          title: 'MaskedTextBox' },
       { name: 'multiselect',      route: 'multiselect',         moduleId: './multiselect/index',            title: 'Multiselect' },
+      { name: 'notification',     route: 'notification',        moduleId: './notification/index',           title: 'Notification' },
       { name: 'numerictextbox',   route: 'numerictextbox',      moduleId: './numerictextbox/index',         title: 'NumericTextBox' },
       { name: 'panelbar',         route: 'panelbar',            moduleId: './panelbar/index',               title: 'Panel Bar'},
       { name: 'pie-charts',       route: 'pie-charts',          moduleId: './chart/pie-charts/index',       title: 'Pie Charts',        settings: { pro: true } },

@@ -1,0 +1,12 @@
+{
+  "title": "Notification",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
+    },
+    "position-and-stacking": {
+      "files": ["html", "js", "css"]
+    }
+  }
+}
