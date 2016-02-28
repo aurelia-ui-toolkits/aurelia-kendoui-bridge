@@ -30,6 +30,7 @@
     "RangeSlider": "rangeslider",
     "TimePicker": "timepicker",
     "Upload": "upload",
+    "Validator": "validator",
     "Switch": "switch"
   },
   "Charts": {

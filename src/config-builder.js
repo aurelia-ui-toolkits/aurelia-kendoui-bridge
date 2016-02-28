@@ -39,6 +39,7 @@ export class KendoConfigBuilder {
       .kendoTemplateSupport()
       .kendoTimePicker()
       .kendoToolbar()
+      .kendoValidator()
       .useValueConverters();
     return this;
   }
@@ -304,6 +305,11 @@ export class KendoConfigBuilder {
 
   kendoUpload(): KendoConfigBuilder {
     this.resources.push('upload/upload');
+    return this;
+  }
+
+  kendoValidator(): KendoConfigBuilder {
+    this.resources.push('validator/validator');
     return this;
   }
 }

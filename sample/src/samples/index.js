@@ -65,6 +65,7 @@ export class Index {
       { name: 'treemap',          route: 'treemap',             moduleId: './chart/treemap/index',          title: 'Treemap'},
       { name: 'treelist',         route: 'treelist',            moduleId: './treelist/index',               title: 'Treelist'},
       { name: 'treeview',         route: 'treeview',            moduleId: './treeview/index',               title: 'Treeview'},
+      { name: 'validator',        route: 'validator',           moduleId: './validator/index',              title: 'Validator'},
       { name: 'valueconverters',  route: 'valueconverters',     moduleId: './valueconverters/index',        title: 'ValueConverters'},
       { name: 'upload',           route: 'upload',              moduleId: './upload/index',                 title: 'Upload',            settings: { pro: true } },
       { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts'}
