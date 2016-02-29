@@ -1,0 +1,27 @@
+#window-basic-use #example
+{
+  min-height:500px;
+}
+
+#window-basic-use #undo {
+  text-align: center;
+  position: absolute;
+  white-space: nowrap;
+  padding: 1em;
+  cursor: pointer;
+}
+.armchair {
+  float: left;
+  margin: 30px 30px 120px 30px;
+  text-align: center;
+}
+.armchair img {
+  display: block;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1023px) {
+  #window-basic-use div.k-window {
+    display: none !important;
+  }
+}

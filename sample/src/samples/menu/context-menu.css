@@ -1,16 +1,16 @@
-#listview-context-menu {
+#menu-context-menu #listview-context-menu {
   padding: 0;
   margin-bottom: -1px;
   min-height: 300px;
 }
-.product {
+#menu-context-menu .product {
   position: relative;
   height: 62px;
   margin: 0;
   padding: 0;
   border-bottom: 1px solid rgba(128,128,128,.3);
 }
-.product img {
+#menu-context-menu .product img {
   width: 40px;
   height: 40px;
   border-radius: 40px;
@@ -18,7 +18,7 @@
   border: 1px solid #000;
   float: left;
 }
-.product h3 {
+#menu-context-menu .product h3 {
   margin: 0;
   padding: 15px 5px 1px 0;
   overflow: hidden;
@@ -26,14 +26,14 @@
   font-size: 1.1em;
   font-weight: bold;
 }
-.product p {
+#menu-context-menu .product p {
   font-size: .9em;
 }
-.product .date {
+#menu-context-menu .product .date {
   float: right;
   margin: -8px 15px 0 0;
 }
-.k-listview:after {
+#menu-context-menu .k-listview:after {
   content: ".";
   display: block;
   height: 0;
@@ -42,7 +42,7 @@
 }
 
 @media screen and (max-width: 620px) {
-  .product h3 {
+  #menu-context-menu .product h3 {
     max-width: 100px;
     white-space: nowrap;
     text-overflow: ellipsis;

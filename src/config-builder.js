@@ -43,6 +43,7 @@ export class KendoConfigBuilder {
       .kendoToolbar()
       .kendoTooltip()
       .kendoValidator()
+      .kendoWindow()
       .useValueConverters();
     return this;
   }
@@ -329,6 +330,11 @@ export class KendoConfigBuilder {
 
   kendoValidator(): KendoConfigBuilder {
     this.resources.push('validator/validator');
+    return this;
+  }
+
+  kendoWindow(): KendoConfigBuilder {
+    this.resources.push('window/window');
     return this;
   }
 }

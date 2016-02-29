@@ -70,7 +70,8 @@ export class Index {
       { name: 'validator',        route: 'validator',           moduleId: './validator/index',              title: 'Validator'},
       { name: 'valueconverters',  route: 'valueconverters',     moduleId: './valueconverters/index',        title: 'ValueConverters'},
       { name: 'upload',           route: 'upload',              moduleId: './upload/index',                 title: 'Upload',            settings: { pro: true } },
-      { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts'}
+      { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts'},
+      { name: 'window',           route: 'window',              moduleId: './window/index',                 title: 'Window'}
     ]);
 
     this.router = router;
