@@ -17,6 +17,7 @@ export class KendoConfigBuilder {
       .kendoColorPicker()
       .kendoColorPalette()
       .kendoCombobox()
+      .kendoContextMenu()
       .kendoDropDownList()
       .kendoDateTimePicker()
       .kendoDatePicker()
@@ -127,6 +128,11 @@ export class KendoConfigBuilder {
 
   kendoCombobox(): KendoConfigBuilder {
     this.resources.push('combobox/combobox');
+    return this;
+  }
+
+  kendoContextMenu(): KendoConfigBuilder {
+    this.resources.push('contextmenu/contextmenu');
     return this;
   }
 
