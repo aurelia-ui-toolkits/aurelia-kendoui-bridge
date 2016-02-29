@@ -1,7 +1,18 @@
-#button-api .demo-section {
-    text-align: center;
+#qrcode-api .k-qrcode {
+    margin: 20px auto;
 }
-#button-api .box .k-textbox {
-    margin: 0;
-    width: 80px;
+
+#qrcode-api #qrValue{
+    width: 190px;
+    max-width:190px;
+    height: 100px;
+}
+
+#qrcode-api .options label {
+     display: inline-block;
+     width: 120px;
+}
+#qrcode-api .options .k-dropdown,
+#qrcode-api .options .k-numerictextbox {
+     width: 100px;
 }

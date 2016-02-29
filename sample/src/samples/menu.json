@@ -75,7 +75,8 @@
     "Diagram": "diagram"
   },
   "Barcodes": {
-    "Barcode": "barcode"
+    "Barcode": "barcode",
+    "QR Code": "qrcode"
   },
   "Gauges": {
     "Linear Gauge": "linear-gauge",
