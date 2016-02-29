@@ -10,7 +10,7 @@
     "events": {},
     "api": {},
     "task-template": {
-      "files": ["html", "js", "css"]
+      "files": ["html", "js", "css", "md"]
     }
   }
 }
