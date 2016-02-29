@@ -58,7 +58,8 @@
   },
   "Scheduling": {
     "Scheduler": "scheduler",
-    "Calendar": "calendar"
+    "Calendar": "calendar",
+    "Gantt": "gantt"
   },
   "Navigation": {
     "Button": "button",

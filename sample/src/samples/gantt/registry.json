@@ -1,0 +1,16 @@
+{
+  "title": "Gantt",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "column-resizing": {},
+    "exporting-to-pdf": {},
+    "resources": {},
+    "events": {},
+    "api": {},
+    "task-template": {
+      "files": ["html", "js", "css"]
+    }
+  }
+}

@@ -33,6 +33,7 @@ export class Index {
       { name: 'dropdownlist',     route: 'dropdownlist',        moduleId: './dropdownlist/index',           title: 'Drop Down List'},
       { name: 'editor',           route: 'editor',              moduleId: './editor/index',                 title: 'Editor',            settings: { pro: true } },
       { name: 'funnel-charts',    route: 'funnel-charts',       moduleId: './chart/funnel-charts/index',    title: 'Funnel Charts',     settings: { pro: true } },
+      { name: 'gantt',            route: 'gantt',               moduleId: './gantt/index',                  title: 'Gantt',              settings: { pro: true } },
       { name: 'grid',             route: 'grid',                moduleId: './grid/index',                   title: 'Grid',              settings: { pro: true } },
       { name: 'line-charts',      route: 'line-charts',         moduleId: './chart/line-charts/index',      title: 'Line Charts',       settings: { pro: true } },
       { name: 'linear-gauge',     route: 'linear-gauge',        moduleId: './linear-gauge/index',           title: 'Linear gauge',       settings: { pro: true } },

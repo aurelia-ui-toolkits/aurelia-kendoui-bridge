@@ -102,7 +102,7 @@ function extractOptions(jsObj, json) {
 
 
 function extractInterfaces(jsObj, json) {
-  var findInterfaces = ["GridColumn", "TreeListColumn", "ToolBarItem"];
+  var findInterfaces = ["GridColumn", "TreeListColumn", "ToolBarItem", "GanttColumn"];
 
   var kendo = json.children[0];
   var kendoModule = kendo.children.find(function(i) { return i.name === "kendo" && i.kindString === "Module" });

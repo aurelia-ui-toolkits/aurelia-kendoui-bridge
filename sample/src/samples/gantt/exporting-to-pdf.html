@@ -1,0 +1,18 @@
+<template>
+  <div id="example">
+    <k-gantt k-data-source.bind="tasksDataSource"
+             k-dependencies.bind="dependenciesDataSource"
+             k-toolbar.bind="['append', 'pdf']"
+             k-pdf.bind="pdf"
+             k-views.bind="['day', {type:'week', selected: true}, 'month']"
+             k-height.bind="700"
+             k-show-work-hours.bind="false"
+             k-show-work-days.bind="false"
+             k-snap.bind="false">
+      <k-gantt-col k-field="id" k-title="ID" k-width.bind="60"></k-gantt-col>
+      <k-gantt-col k-field="title" k-title="Title" k-editable.bind="true" k-sortable.bind="true"></k-gantt-col>
+      <k-gantt-col k-field="start" k-title="Start Time" k-format="{0:MM/dd/yyyy}" k-width.bind="100" k-editable.bind="true" k-sortable.bind="true"></k-gantt-col>
+      <k-gantt-col k-field="end" k-title="End Time" k-format="{0:MM/dd/yyyy}" k-width.bind="100" k-editable.bind="true" k-sortable.bind="true"></k-gantt-col>
+    </k-gantt>
+  </div>
+</template>

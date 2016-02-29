@@ -57,6 +57,7 @@ export class KendoConfigBuilder {
       .kendoChart()
       .kendoDiagram()
       .kendoEditor()
+      .kendoGantt()
       .kendoGrid()
       .kendoMap()
       .kendoLinearGauge()
@@ -185,6 +186,12 @@ export class KendoConfigBuilder {
 
   kendoFlatColorPicker(): KendoConfigBuilder {
     this.resources.push('flatcolorpicker/flatcolorpicker');
+    return this;
+  }
+
+  kendoGantt(): KendoConfigBuilder {
+    this.resources.push('gantt/gantt');
+    this.resources.push('gantt/k-gantt-col');
     return this;
   }
 
