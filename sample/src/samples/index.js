@@ -59,6 +59,7 @@ export class Index {
       { name: 'sortable',         route: 'sortable',            moduleId: './sortable/index',               title: 'Sortable'},
       { name: 'slider',           route: 'slider',              moduleId: './slider/index',                 title: 'Slider'},
       { name: 'sparkline',        route: 'sparkline',           moduleId: './chart/sparkline/index',        title: 'Sparkline',         settings: { pro: true } },
+      { name: 'spreadsheet',      route: 'spreadsheet',         moduleId: './spreadsheet/index',      title: 'Spreadsheet',       settings: { pro: true } },
       { name: 'stock',            route: 'stock',               moduleId: './chart/stock/index',            title: 'Stock',             settings: { pro: true } },
       { name: 'switch',           route: 'switch',              moduleId: './switch/index',                 title: 'Switch'},
       { name: 'tabstrip',         route: 'tabstrip',            moduleId: './tabstrip/index',               title: 'Tabstrip'},

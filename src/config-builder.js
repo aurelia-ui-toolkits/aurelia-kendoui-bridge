@@ -278,6 +278,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoSpreadsheet(): KendoConfigBuilder {
+    this.resources.push('spreadsheet/spreadsheet');
+    return this;
+  }
+
   kendoSlider(): KendoConfigBuilder {
     this.resources.push('slider/slider');
     return this;

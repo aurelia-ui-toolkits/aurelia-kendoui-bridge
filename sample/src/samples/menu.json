@@ -13,7 +13,8 @@
     "ListView": "listview",
     "TreeList": "treelist",
     "PivotGrid": "pivotgrid",
-    "Scrollview": "scrollview"
+    "Scrollview": "scrollview",
+    "Spreadsheet": "spreadsheet"
   },
   "Editors": {
     "Autocomplete": "autocomplete",
