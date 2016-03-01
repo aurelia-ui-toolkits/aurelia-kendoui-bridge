@@ -63,6 +63,7 @@
     "Gantt": "gantt"
   },
   "Navigation": {
+    "Tabstrip": "tabstrip",
     "Button": "button",
     "ButtonGroup": "buttongroup",
     "Treeview": "treeview",

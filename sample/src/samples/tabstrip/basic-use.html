@@ -1,10 +1,51 @@
 <template>
-  <div k-tabstrip>
-    <ul>
-        <li class="k-state-active">This is tab 1</li>
-        <li>This is tab 2</li>
-    </ul>
-    <div>This is some content for tab 1</div>
-    <div>This is some more content for tab 2</div>
+  <require from="./basic-use.css"></require>
+  <div id="example">
+    <div class="demo-section k-content">
+      <div id="tabstrip" k-tabstrip="k-animation.bind: { open: { effects: 'fadeIn' } }">
+        <ul>
+          <li class="k-state-active">
+            Paris
+          </li>
+          <li>
+            New York
+          </li>
+          <li>
+            London
+          </li>
+          <li>
+            Moscow
+          </li>
+        </ul>
+        <div>
+          <span class="rainy">&nbsp;</span>
+          <div class="weather">
+            <h2>17<span>&ordm;C</span></h2>
+            <p>Rainy weather in Paris.</p>
+          </div>
+        </div>
+        <div>
+          <span class="sunny">&nbsp;</span>
+          <div class="weather">
+            <h2>29<span>&ordm;C</span></h2>
+            <p>Sunny weather in New York.</p>
+          </div>
+        </div>
+        <div>
+          <span class="sunny">&nbsp;</span>
+          <div class="weather">
+            <h2>21<span>&ordm;C</span></h2>
+            <p>Sunny weather in London.</p>
+          </div>
+        </div>
+        <div>
+          <span class="cloudy">&nbsp;</span>
+          <div class="weather">
+            <h2>16<span>&ordm;C</span></h2>
+            <p>Cloudy weather in Moscow.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
