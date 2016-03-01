@@ -1,0 +1,18 @@
+#qrcode-api .k-qrcode {
+    margin: 20px auto;
+}
+
+#qrcode-api #qrValue{
+    width: 190px;
+    max-width:190px;
+    height: 100px;
+}
+
+#qrcode-api .options label {
+     display: inline-block;
+     width: 120px;
+}
+#qrcode-api .options .k-dropdown,
+#qrcode-api .options .k-numerictextbox {
+     width: 100px;
+}

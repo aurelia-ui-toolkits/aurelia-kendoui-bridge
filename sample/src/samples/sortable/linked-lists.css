@@ -1,0 +1,76 @@
+#sortable-linked-lists #example {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#sortable-linked-lists .demo-section {
+  padding: 50px 70px;
+}
+
+#sortable-linked-lists .one-way {
+  background: url('http://demos.telerik.com/kendo-ui/content/web/sortable/one-way.png') no-repeat 50% 50%;
+}
+
+#sortable-linked-lists .two-way {
+  background: url('http://demos.telerik.com/kendo-ui/content/web/sortable/two-way.png') no-repeat 50% 50%;
+}
+
+#sortable-linked-lists .list-wrapper {
+  overflow: hidden;
+}
+
+#sortable-linked-lists #sortable-listA, #sortable-linked-lists #sortable-listB, #sortable-linked-lists #sortable-listC, #sortable-linked-lists #sortable-listD {
+  width: 210px;
+  min-height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+
+#sortable-linked-lists #sortable-listA, #linked-lists #sortable-listC {
+  float: left;
+}
+
+#sortable-linked-lists #sortable-listB, #sortable-linked-lists #sortable-listD {
+  float: right;
+}
+
+.linked-list-item {
+  list-style-type: none;
+  width: 200px;
+  margin: 5px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #222222;
+  color: #ffffff;
+  border-radius: 3px;
+  cursor: move;
+}
+
+#sortable-listA .linked-list-item {
+  background-color: #54b8fa;
+  color: #000000;
+}
+
+#sortable-listB .linked-list-item {
+  background-color: #ff879e;
+  color: #000000;
+}
+
+#sortable-listC .linked-list-item {
+  background-color: #66cc66;
+  color: #000000;
+}
+
+#sortable-listD .linked-list-item {
+  background-color: #ffcc33;
+  color: #000000;
+}
+
+#placeholder.linked-list-item {
+  background-color: #ffffff;
+  color: #777;
+}

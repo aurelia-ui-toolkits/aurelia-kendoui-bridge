@@ -1,0 +1,41 @@
+#sortable-disable-items #example {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#sortable-disable-items .sortable-wrapper {
+  width: 37%;
+  margin: 20px 40px;
+  padding: 20px;
+  float: left;
+}
+
+#sortable-disable-items .sortable-wrapper p {
+  margin: 5px auto 20px;
+}
+
+.disable-items-sortable, .disable-items-not-sortable {
+  padding: 10px 0;
+  margin: 1px 0;
+  width: 358px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.disable-items-sortable {
+  background-color: #51A0ED;
+  cursor: move;
+}
+
+.disable-items-not-sortable {
+  background-color: #8E8E8E;
+  opacity: 0.5;
+}
+
+.disable-items-disabled {
+  background-color: #FF0000;
+  opacity: 0.5;
+  cursor: auto;
+}

@@ -12,6 +12,7 @@ export class KendoConfigBuilder {
   core(): KendoConfigBuilder {
     this.kendoAutoComplete()
       .kendoButton()
+      .kendoButtonGroup()
       .kendoCalendar()
       .kendoColorPicker()
       .kendoColorPalette()
@@ -30,12 +31,16 @@ export class KendoConfigBuilder {
       .kendoPanelBar()
       .kendoProgressBar()
       .kendoRangeSlider()
+      .kendoScrollView()
+      .kendoSortable()
       .kendoSlider()
+      .kendoSplitter()
       .kendoSwitch()
       .kendoTabStrip()
       .kendoTemplateSupport()
       .kendoTimePicker()
       .kendoToolbar()
+      .kendoValidator()
       .useValueConverters();
     return this;
   }
@@ -53,6 +58,7 @@ export class KendoConfigBuilder {
       .kendoMap()
       .kendoLinearGauge()
       .kendoPivotGrid()
+      .kendoQRCode()
       .kendoRadialGauge()
       .kendoScheduler()
       .kendoTreeList()
@@ -93,6 +99,11 @@ export class KendoConfigBuilder {
 
   kendoButton(): KendoConfigBuilder {
     this.resources.push('button/button');
+    return this;
+  }
+
+  kendoButtonGroup(): KendoConfigBuilder {
+    this.resources.push('buttongroup/buttongroup');
     return this;
   }
 
@@ -227,8 +238,18 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoQRCode(): KendoConfigBuilder {
+    this.resources.push('qrcode/qrcode');
+    return this;
+  }
+
   kendoRadialGauge(): KendoConfigBuilder {
     this.resources.push('gauges/radial-gauge');
+    return this;
+  }
+
+  kendoScrollView(): KendoConfigBuilder {
+    this.resources.push('scrollview/scrollview');
     return this;
   }
 
@@ -239,6 +260,16 @@ export class KendoConfigBuilder {
 
   kendoSlider(): KendoConfigBuilder {
     this.resources.push('slider/slider');
+    return this;
+  }
+
+  kendoSortable(): KendoConfigBuilder {
+    this.resources.push('sortable/sortable');
+    return this;
+  }
+
+  kendoSplitter(): KendoConfigBuilder {
+    this.resources.push('splitter/splitter');
     return this;
   }
 
@@ -287,6 +318,11 @@ export class KendoConfigBuilder {
 
   kendoUpload(): KendoConfigBuilder {
     this.resources.push('upload/upload');
+    return this;
+  }
+
+  kendoValidator(): KendoConfigBuilder {
+    this.resources.push('validator/validator');
     return this;
   }
 }

@@ -12,7 +12,8 @@
     "Grid": "grid",
     "ListView": "listview",
     "TreeList": "treelist",
-    "PivotGrid": "pivotgrid"
+    "PivotGrid": "pivotgrid",
+    "Scrollview": "scrollview"
   },
   "Editors": {
     "Autocomplete": "autocomplete",
@@ -29,6 +30,7 @@
     "RangeSlider": "rangeslider",
     "TimePicker": "timepicker",
     "Upload": "upload",
+    "Validator": "validator",
     "Switch": "switch"
   },
   "Charts": {
@@ -60,6 +62,7 @@
   },
   "Navigation": {
     "Button": "button",
+    "ButtonGroup": "buttongroup",
     "Treeview": "treeview",
     "Panel Bar": "panelbar",
     "Toolbar": "toolbar"
@@ -69,15 +72,20 @@
     "Diagram": "diagram"
   },
   "Barcodes": {
-    "Barcode": "barcode"
+    "Barcode": "barcode",
+    "QR Code": "qrcode"
   },
   "Gauges": {
     "Linear Gauge": "linear-gauge",
     "Radial Gauge": "radial-gauge"
   },
+  "Layout": {
+    "Splitter": "splitter"
+  },
   "Interactivity & UX": {
     "ProgressBar": "progressbar",
-    "Drag and drop": "drag-and-drop"
+    "Drag and drop": "drag-and-drop",
+    "Sortable": "sortable"
   },
   "Tools": {
     "ValueConverters": "valueconverters"

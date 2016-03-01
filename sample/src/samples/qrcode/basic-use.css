@@ -1,0 +1,10 @@
+#qrcode-basic-use .demo-section {
+    display: inline-block;
+    margin: 15px 30px 15px 0;
+}
+
+#qrcode-basic-use .k-qrcode {
+    display:inline-block;
+    margin: 10px 0 0;
+    border: none;
+}

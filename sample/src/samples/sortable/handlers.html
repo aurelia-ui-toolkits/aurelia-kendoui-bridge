@@ -1,0 +1,31 @@
+<template>
+  <require from="./handlers.css"></require>
+  <div id="example">
+
+    <div id="pages">
+      <div id="pages-title"><span>Site Menu</span></div>
+      <div id="sortable-handlers" k-sortable="k-handler: .sortable-handlers-handler; k-hint.call: hint($event)">
+        <div class="sortable-handlers-item">
+          <span class="sortable-handlers-handler">&nbsp;</span>
+          <span>About us</span>
+        </div>
+        <div class="sortable-handlers-item">
+          <span class="sortable-handlers-handler">&nbsp;</span>
+          <span>Contact us</span>
+        </div>
+        <div class="sortable-handlers-item">
+          <span class="sortable-handlers-handler">&nbsp;</span>
+          <span>Community</span>
+        </div>
+        <div class="sortable-handlers-item">
+          <span class="sortable-handlers-handler">&nbsp;</span>
+          <span>Products</span>
+        </div>
+        <div class="sortable-handlers-item">
+          <span class="sortable-handlers-handler">&nbsp;</span>
+          <span>Services</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
