@@ -15,7 +15,7 @@ A set of [Aurelia](http://aurelia.io) wrappers for [Kendo UI](http://www.telerik
 ### [Plunker](http://dabuttonfactory.com/button.png?t=Plunker&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)
 
 ## Installing the plugin
-[![Installation](http://dabuttonfactory.com/button.png?t=Installation+wizard&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)](http://aurelia-ui-toolkits.github.io/demo-kendo/#/installation/description)
+[![Installation](http://dabuttonfactory.com/button.png?t=Installation+instructions&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)](http://aurelia-ui-toolkits.github.io/demo-kendo/#/installation)
 
 ## Need help?
 
