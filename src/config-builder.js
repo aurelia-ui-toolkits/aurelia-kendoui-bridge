@@ -33,6 +33,7 @@ export class KendoConfigBuilder {
       .kendoPanelBar()
       .kendoProgressBar()
       .kendoRangeSlider()
+      .kendoResponsivePanel()
       .kendoScrollView()
       .kendoSortable()
       .kendoSlider()
@@ -266,6 +267,11 @@ export class KendoConfigBuilder {
 
   kendoRadialGauge(): KendoConfigBuilder {
     this.resources.push('gauges/radial-gauge');
+    return this;
+  }
+
+  kendoResponsivePanel(): KendoConfigBuilder {
+    this.resources.push('responsivepanel/responsivepanel');
     return this;
   }
 

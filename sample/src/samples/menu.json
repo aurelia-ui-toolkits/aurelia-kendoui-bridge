@@ -86,7 +86,8 @@
   "Layout": {
     "Notification": "notification",
     "Tooltip": "tooltip",
-    "Window": "window"
+    "Window": "window",
+    "Responsive panel": "responsivepanel"
   },
   "Interactivity & UX": {
     "ProgressBar": "progressbar",
