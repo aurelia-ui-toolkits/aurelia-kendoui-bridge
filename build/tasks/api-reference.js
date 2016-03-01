@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var fs = require('fs');
 var path = require('path');
+var mkpath = require('mkpath');
 var glob = require("glob");
 
 gulp.task('api:extract', function(cb) {
@@ -18,12 +19,14 @@ gulp.task('api:extract', function(cb) {
 
         var cleanedup = cleanup(normalized);
 
-        var fileName = path.basename(file)
-              .replace('./doc/kendo', './doc/kendo-api')
-              .replace('.md','.json');
+        var relPath = file.replace('./doc/kendo', './doc/kendo-api')
+            .replace('.md','.json');
 
-        console.log('writing ' + fileName)
-        // fs.writeFileSync(fileName, JSON.stringify(cleanedup));
+        mkpath.sync(path.dirname(relPath));
+
+        console.log("writing " + relPath);
+
+        fs.writeFileSync(relPath, JSON.stringify(cleanedup));
       });
     });
 

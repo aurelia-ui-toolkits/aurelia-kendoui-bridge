@@ -84,6 +84,7 @@
     "karma-chrome-launcher": "^0.2.2",
     "karma-jasmine": "^0.2.3",
     "karma-jspm": "^2.0.2",
+    "mkpath": "^1.0.0",
     "object.assign": "^1.0.3",
     "phantomjs-polyfill": "0.0.1",
     "request": "^2.69.0",
