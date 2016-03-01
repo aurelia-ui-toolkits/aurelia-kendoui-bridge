@@ -1,0 +1,14 @@
+{
+  "title": "Splitter",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
+    },
+    "api": {
+      "files": ["html", "js"]
+    },
+    "ajax": {},
+    "events": {}
+  }
+}

@@ -34,6 +34,7 @@ export class KendoConfigBuilder {
       .kendoScrollView()
       .kendoSortable()
       .kendoSlider()
+      .kendoSplitter()
       .kendoSwitch()
       .kendoTabStrip()
       .kendoTemplateSupport()
@@ -257,13 +258,18 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoSlider(): KendoConfigBuilder {
+    this.resources.push('slider/slider');
+    return this;
+  }
+
   kendoSortable(): KendoConfigBuilder {
     this.resources.push('sortable/sortable');
     return this;
   }
 
-  kendoSlider(): KendoConfigBuilder {
-    this.resources.push('slider/slider');
+  kendoSplitter(): KendoConfigBuilder {
+    this.resources.push('splitter/splitter');
     return this;
   }
 
