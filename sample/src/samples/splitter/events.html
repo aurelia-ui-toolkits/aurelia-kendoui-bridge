@@ -1,4 +1,29 @@
 <template>
-  <br><br>
-  <h4>Events</h4>
+  <div id="example">
+    <div id="splitter"
+         style="height: 400px"
+         k-splitter="k-orientation: vertical; k-panes.bind: panes; k-widget.bind: splitter"
+         k-on-expand.delegate="expand($event.detail)"
+         k-on-collapse.delegate="collapse($event.detail)"
+         k-on-content-load.delegate="contentLoad($event.detail)"
+         k-on-resize.delegate="resize($event.detail)">
+      <div id="top_pane">
+        <p>
+          Top pane
+        </p>
+      </div>
+      <div id="ajax_pane">
+        <!-- content loaded with ajax -->
+      </div>
+      <div id="bottom_pane">
+        <p>
+          Bottom pane
+        </p>
+      </div>
+    </div>
+    <div class="box">
+      <h4>Console log</h4>
+      <logger view-model.ref="logger"></logger>
+    </div>
+  </div>
 </template>

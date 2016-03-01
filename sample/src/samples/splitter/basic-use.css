@@ -1,0 +1,12 @@
+#splitter-basic-use #vertical {
+  height: 380px;
+  margin: 0 auto;
+}
+
+#splitter-basic-use #middle-pane { background-color: rgba(60, 70, 80, 0.10); }
+#splitter-basic-use #bottom-pane { background-color: rgba(60, 70, 80, 0.15); }
+#splitter-basic-use #left-pane, #splitter-basic-use #center-pane, #splitter-basic-use #right-pane  { background-color: rgba(60, 70, 80, 0.05); }
+
+#splitter-basic-use .pane-content {
+  padding: 0 10px;
+}

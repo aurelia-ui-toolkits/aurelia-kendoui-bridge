@@ -1,11 +1,11 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, bindable} from 'aurelia-templating';
+import {customAttribute, bindable} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import 'kendo.splitter.min';
 
-@customElement(`${constants.elementPrefix}splitter`)
+@customAttribute(`${constants.attributePrefix}splitter`)
 @generateBindables('kendoSplitter')
 @inject(Element, WidgetBase)
 export class Splitter {
@@ -35,6 +35,11 @@ export class Splitter {
   }
 
   detached() {
-    this.widgetBase.destroy(this.kWidget);
+    // only destroy if splitter has an Element
+    // prevents nested splitters from throwing error on destroy
+    // as the parent splitter destroys all child splitters itself
+    if (this.kWidget && this.kWidget.element) {
+      this.widgetBase.destroy(this.kWidget);
+    }
   }
 }

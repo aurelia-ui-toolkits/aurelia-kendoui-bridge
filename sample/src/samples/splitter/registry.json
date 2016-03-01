@@ -5,10 +5,10 @@
       "route": ["", "basic-use"],
       "files": ["html", "js", "css"]
     },
+    "ajax": {},
+    "events": {},
     "api": {
       "files": ["html", "js"]
-    },
-    "ajax": {},
-    "events": {}
+    }
   }
 }
