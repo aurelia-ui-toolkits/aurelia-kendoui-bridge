@@ -11,7 +11,7 @@
         <h4>Value</h4>
         <ul class="options">
             <li>
-                <textarea id="qrValue" class="k-textbox" data-bind="value: qrValue" rows="5" cols="20"></textarea>
+                <textarea id="qrValue" class="k-textbox" value.bind="qrValue" rows="5" cols="20"></textarea>
             </li>
         </ul>
       </div>
@@ -41,8 +41,8 @@
 
             <li>
               <label for="size">Size:</label>
-              <input id="size" k-numerictextbox="k-value.bind: 120;
-                               k-format.bind: n0;
+              <input id="size" k-numerictextbox="k-value.two-way: size;
+                               k-format: n0;
                                k-min.bind: 60;
                                k-max.bind: 200;
                                k-step.bind: 10" />
@@ -51,8 +51,8 @@
 
             <li>
               <label for="borderWidth">Border width:</label>
-              <input id="borderWidth" k-numerictextbox="k-value.bind: 5;
-                                      k-format.bind: n0;
+              <input id="borderWidth" k-numerictextbox="k-value.two-way: borderWidth;
+                                      k-format: n0;
                                       k-min.bind:0;
                                       k-max.bind:20;
                                       k-step.bind:1" />

@@ -2,14 +2,14 @@ import {bindable} from 'aurelia-templating';
 
 export class Api {
 
-  @bindable qrValue = "Hello World";
-  @bindable errorCorrection = "L";
-  @bindable encoding = "ISO_8859_1";
-  @bindable backgroundColor = "#FFFFFF";
-  @bindable moduleColor = "#000000";
-  @bindable size = "200";
-  @bindable borderColor = "#FFFFFF";
-  @bindable boderWidth = "0"
+  @bindable qrValue = 'Hello World';
+  @bindable errorCorrection = 'L';
+  @bindable encoding = 'ISO_8859_1';
+  @bindable backgroundColor = '#FFFFFF';
+  @bindable moduleColor = '#000000';
+  @bindable size = '200';
+  @bindable borderColor = '#FFFFFF';
+  @bindable boderWidth = '0'
 
   errorCorrectionDataSource = [
     { errorCorrection: 'L', value: 'L' },
@@ -28,15 +28,7 @@ export class Api {
     let validValue = this.validValue;
 
     try {
-      this.qrcode.setOptions({
-        value: this.qrValue,
-        errorCorrection: this.errorCorrection,
-        encoding: this.encoding,
-        size: this.size,
-        moduleColor: this.moduleColor,
-        borderColor: this.borderColor,
-        background: this.backgroundColor,
-      });
+
 
       validValue.innerHTML = '';
     } catch (error) {
@@ -45,6 +37,17 @@ export class Api {
   }
 
   propertyChanged() {
-    this.setOptions();
+    this.qrcode.setOptions({
+      value: this.qrValue,
+      errorCorrection: this.errorCorrection,
+      encoding: this.encoding,
+      size: this.size,
+      color: this.moduleColor,
+      border: {
+        width: this.borderWidth,
+        color: this.borderColor
+      },
+      background: this.backgroundColor
+    });
   }
 }
