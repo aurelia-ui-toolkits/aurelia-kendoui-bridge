@@ -65,6 +65,7 @@
     "browser-sync": "^2.9.3",
     "conventional-changelog": "^0.5.3",
     "del": "^1.1.0",
+    "glob": "^7.0.0",
     "gulp": "^3.8.10",
     "gulp-babel": "^5.1.0",
     "gulp-bump": "^0.3.1",
