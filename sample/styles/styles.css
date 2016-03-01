@@ -250,3 +250,16 @@ li.L5, li.L6, li.L7, li.L8 {
 #exampleWrap li {
   list-style-type: none;
 }
+
+collapse-panel .buttons {
+  display: inline;
+  float: right;
+}
+
+collapse-panel .panel-heading {
+  height: 46px;
+}
+
+collapse-panel .panel-heading strong {
+  line-height: 26px;
+}
