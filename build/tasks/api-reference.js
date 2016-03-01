@@ -4,8 +4,11 @@ var path = require('path');
 var glob = require("glob");
 
 gulp.task('api:extract', function(cb) {
-  glob("./doc/kendo/**/*.md", options, function (er, files) {
+  glob("./doc/kendo/**/*.md", {}, function (er, files) {
     files.forEach(function(file) {
+
+      console.log("parsing " + file);
+
       var json = fs.readFile(file, "utf8", function(err, data) {
         var lines = data.match(/[^\r\n]+/g);
 
@@ -15,13 +18,16 @@ gulp.task('api:extract', function(cb) {
 
         var cleanedup = cleanup(normalized);
 
-        var fileName = path.basename(file).replace('.md','.json');
+        var fileName = path.basename(file)
+              .replace('./doc/kendo', './doc/kendo-api')
+              .replace('.md','.json');
 
-        fs.writeFileSync('./doc/kendo-api/' + fileName, JSON.stringify(cleanedup));
-
-        cb();
+        console.log('writing ' + fileName)
+        // fs.writeFileSync(fileName, JSON.stringify(cleanedup));
       });
     });
+
+    cb();
   });
 });
 
@@ -55,54 +61,64 @@ function normalize(tree) {
 function normalizeMethods(tree) {
   var methods = tree.children.find(function (i) { return i.name === 'Methods'});
 
-  methods.children.forEach(function(method) {
-    method.parameters = [];
-    method.description = method._description;
+  if(methods) {
+    methods.children.forEach(function(method) {
+      method.parameters = [];
+      method.description = method._description;
 
-    var parameters = method.children.find(function (i) { return i.name === 'Parameters' });
-    if(parameters) {
-      parameters.children.forEach(function (parameter) {
-        method.parameters.push({
-          name: parameter.name,
-          description: parameter._description
+      var parameters = method.children.find(function (i) { return i.name === 'Parameters' });
+      if(parameters) {
+        parameters.children.forEach(function (parameter) {
+          method.parameters.push({
+            name: parameter.name,
+            description: parameter._description
+          });
         });
-      });
-    }
-  });
+      }
+    });
+  }
 }
 
 function normalizeConfiguration(tree) {
   var configuration = tree.children.find(function (i) { return i.name === 'Configuration'});
 
-  configuration.children.forEach(function(prop) {
-    var name = prop.name;
-    prop.name = name.split(' ')[0];
+  if(configuration) {
+    configuration.children.forEach(function(prop) {
+      var name = prop.name;
+      prop.name = name.split(' ')[0];
 
-    var type = name.match(/`(.*?)`/)[1];
-    prop.type = type.match(/\|/) ? type.split(/\|/) : type;
+      if(name.match(/`(.*?)`/)) {
+        var type = name.match(/`(.*?)`/)[1];
+        prop.type = type.match(/\|/) ? type.split(/\|/) : type;
+      }
 
-    if(name.match(/default/)) {
-      prop.default = name.match(/\*\(default:\s(.*?)\)\*/)[1]
-    }
+      if(name.match(/default/)) {
+        if(name.match(/\*\(default:(.*?)\)\*/)) {
+          prop.default = name.match(/\*\(default:(.*?)\)\*/)[1]
+        }
+      }
 
-    prop.description = prop._description;
-  });
+      prop.description = prop._description;
+    });
+  }
 }
 
 function normalizeEvents(tree) {
   var events = tree.children.find(function (i) { return i.name === 'Events' });
 
-  events.children.forEach(function(event) {
-    event.description = event._description;
+  if(events) {
+    events.children.forEach(function(event) {
+      event.description = event._description;
 
-    var eventData = event.children.find(function (i) { return i.name === 'Event Data'});
-    if(eventData) {
-      event.args = [];
-      eventData.children.forEach(function(eventDataItem) {
-        event.args.push(eventDataItem.name.split(' ')[0]);
-      });
-    }
-  });
+      var eventData = event.children.find(function (i) { return i.name === 'Event Data'});
+      if(eventData) {
+        event.args = [];
+        eventData.children.forEach(function(eventDataItem) {
+          event.args.push(eventDataItem.name.split(' ')[0]);
+        });
+      }
+    });
+  }
 }
 
 

@@ -1,0 +1,1 @@
+{"name":"kendo.data.TreeListModel","children":[{"name":"Events"},{"name":"Methods","children":[{"name":"loaded","parameters":[],"description":"Gets or sets the loaded flag of the TreeList. Setting the loaded flag to `false` allows reloading of child items."}]}]}

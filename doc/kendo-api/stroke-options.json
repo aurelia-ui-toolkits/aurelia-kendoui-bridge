@@ -1,0 +1,1 @@
+{"name":"kendo.drawing.StrokeOptions","children":[{"name":"Fields","children":[{"name":"width `Number`"},{"name":"opacity `Number`"},{"name":"lineJoin `String` *(default: \"miter\")*"},{"name":"lineCap `String` *(default: \"butt\")*"},{"name":"dashType `String` *(default: \"solid\")*"},{"name":"color `String`"}]}]}
