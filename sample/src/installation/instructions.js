@@ -1,11 +1,12 @@
-import {inject} from 'aurelia-framework';
+import {inject, TaskQueue} from 'aurelia-framework';
 import {Router} from 'aurelia-router';
 
-@inject(Router)
+@inject(Router, TaskQueue)
 export class Instructions {
 
-  constructor(router) {
+  constructor(router, taskqueue) {
     this.router = router;
+    this.taskqueue = taskqueue;
   }
 
   activate(params) {
@@ -15,7 +16,9 @@ export class Instructions {
   attached() {
     let type = this.params.type;
 
-    this.tabstrip.kWidget.select(this[type]);
+    this.taskqueue.queueTask(() => {
+      this.tabstrip.select(this[type]);
+    });
   }
 
   tabChanged(e) {
