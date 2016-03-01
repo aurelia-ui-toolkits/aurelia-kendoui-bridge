@@ -1,0 +1,17 @@
+{
+  "title": "Tooltip",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
+    },
+    "ajax": {
+      "files": ["html", "js", "css", "md"]
+    },
+    "content-template": {
+      "files": ["html", "js", "css", "md"]
+    },
+    "events": {},
+    "api": {}
+  }
+}

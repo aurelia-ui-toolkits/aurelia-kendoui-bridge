@@ -1,6 +1,11 @@
 <template>
+    <api namespace.bind="sample.namespace" view-model.ref="api"></api>
+
     <section>
         <collapse-panel title.bind="sample.title">
+          <div class="buttons" if.bind="sample.namespace">
+            <button k-button click.delegate="api.show()">API</button>
+          </div>
           <div id="exampleWrap">
             <div id="${sample.control}-${sample.sample}">
               <compose view-model.bind="sample.path"></compose>

@@ -11,7 +11,7 @@ import 'kendo.maskedtextbox.min';
 export class MaskedTextBox {
 
   @bindable kDisableDates;
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

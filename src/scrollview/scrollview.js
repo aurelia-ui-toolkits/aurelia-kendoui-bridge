@@ -10,7 +10,7 @@ import 'kendo.mobile.scrollview.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Scrollview {
 
-  @bindable options = {};
+  @bindable kOptions = {};
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {

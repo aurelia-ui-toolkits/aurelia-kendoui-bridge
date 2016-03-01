@@ -53,6 +53,7 @@ System.config({
     "jquery.min": "github:components/jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
     "kendo-ui": "root/vendors",
+    "doc": "root/doc",
     "prettify": "npm:prettify@0.1.7",
     "prism": "github:PrismJS/prism@1.3.0",
     "showdown": "github:showdownjs/showdown@1.3.0",

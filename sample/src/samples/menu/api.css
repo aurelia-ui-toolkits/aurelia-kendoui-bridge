@@ -1,0 +1,22 @@
+#menu-api .box .k-textbox {
+  width: 60px;
+}
+#menu-api .box-col {
+  width: 320px;
+  margin-bottom: -20px;
+}
+#menu-api .box-col .options {
+  margin-bottom: 20px;
+}
+#menu-api .append-position {
+  display: inline-block;
+  min-width: 45px;
+}
+#menu-api .redText,
+#menu-api .redText > .k-link {
+  color: red;
+}
+
+#menu-api .redText.k-state-disabled > .k-link {
+  color: lightcoral;
+}

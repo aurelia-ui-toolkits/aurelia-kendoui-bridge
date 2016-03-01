@@ -13,7 +13,7 @@ import 'kendo.pivot.fieldmenu.min';
 @inject(Element, WidgetBase, ViewResources)
 export class PivotGrid {
 
-  @bindable options = {};
+  @bindable kOptions = {};
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {

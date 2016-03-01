@@ -10,7 +10,7 @@ import 'kendo.dataviz.gauge.min';
 @inject(Element, WidgetBase)
 export class LinearGauge {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;

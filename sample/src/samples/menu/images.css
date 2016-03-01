@@ -1,0 +1,18 @@
+#menu-images #menu-sprites .k-sprite {
+    background-image: url("http://demos.telerik.com/kendo-ui/content/shared/styles/flags.png");
+}
+#menu-images .brazilFlag {
+  background-position: 0 0;
+}
+#menu-images .indiaFlag {
+  background-position: 0 -32px;
+}
+#menu-images .netherlandsFlag {
+  background-position: 0 -64px;
+}
+#menu-images .historyIcon {
+  background-position: 0 -96px;
+}
+#menu-images .geographyIcon {
+  background-position: 0 -128px;
+}

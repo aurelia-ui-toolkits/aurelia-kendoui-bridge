@@ -17,6 +17,7 @@ export class KendoConfigBuilder {
       .kendoColorPicker()
       .kendoColorPalette()
       .kendoCombobox()
+      .kendoContextMenu()
       .kendoDropDownList()
       .kendoDateTimePicker()
       .kendoDatePicker()
@@ -27,10 +28,12 @@ export class KendoConfigBuilder {
       .kendoMaskedTextBox()
       .kendoMenu()
       .kendoMultiselect()
+      .kendoNotification()
       .kendoNumericTextBox()
       .kendoPanelBar()
       .kendoProgressBar()
       .kendoRangeSlider()
+      .kendoResponsivePanel()
       .kendoScrollView()
       .kendoSortable()
       .kendoSlider()
@@ -40,7 +43,9 @@ export class KendoConfigBuilder {
       .kendoTemplateSupport()
       .kendoTimePicker()
       .kendoToolbar()
+      .kendoTooltip()
       .kendoValidator()
+      .kendoWindow()
       .useValueConverters();
     return this;
   }
@@ -54,6 +59,7 @@ export class KendoConfigBuilder {
       .kendoChart()
       .kendoDiagram()
       .kendoEditor()
+      .kendoGantt()
       .kendoGrid()
       .kendoMap()
       .kendoLinearGauge()
@@ -130,6 +136,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoContextMenu(): KendoConfigBuilder {
+    this.resources.push('contextmenu/contextmenu');
+    return this;
+  }
+
   kendoColorPicker(): KendoConfigBuilder {
     this.resources.push('colorpicker/colorpicker');
     return this;
@@ -181,6 +192,12 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoGantt(): KendoConfigBuilder {
+    this.resources.push('gantt/gantt');
+    this.resources.push('gantt/k-gantt-col');
+    return this;
+  }
+
   kendoGrid(): KendoConfigBuilder {
     this.resources.push('grid/grid');
     this.resources.push('grid/k-col');
@@ -194,6 +211,12 @@ export class KendoConfigBuilder {
 
   kendoListView(): KendoConfigBuilder {
     this.resources.push('listview/listview');
+    return this;
+  }
+
+  kendoNotification(): KendoConfigBuilder {
+    this.resources.push('notification/notification');
+    this.resources.push('notification/k-notification-template');
     return this;
   }
 
@@ -248,6 +271,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoResponsivePanel(): KendoConfigBuilder {
+    this.resources.push('responsivepanel/responsivepanel');
+    return this;
+  }
+
   kendoScrollView(): KendoConfigBuilder {
     this.resources.push('scrollview/scrollview');
     return this;
@@ -268,8 +296,18 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoSpreadsheet(): KendoConfigBuilder {
+    this.resources.push('spreadsheet/spreadsheet');
+    return this;
+  }
+
   kendoSplitter(): KendoConfigBuilder {
     this.resources.push('splitter/splitter');
+    return this;
+  }
+
+  kendoSlider(): KendoConfigBuilder {
+    this.resources.push('slider/slider');
     return this;
   }
 
@@ -311,6 +349,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoTooltip(): KendoConfigBuilder {
+    this.resources.push('tooltip/tooltip');
+    return this;
+  }
+
   kendoRangeSlider(): KendoConfigBuilder {
     this.resources.push('rangeslider/rangeslider');
     return this;
@@ -323,6 +366,11 @@ export class KendoConfigBuilder {
 
   kendoValidator(): KendoConfigBuilder {
     this.resources.push('validator/validator');
+    return this;
+  }
+
+  kendoWindow(): KendoConfigBuilder {
+    this.resources.push('window/window');
     return this;
   }
 }

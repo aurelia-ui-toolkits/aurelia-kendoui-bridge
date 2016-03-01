@@ -3,11 +3,20 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
     },
-    "images": {},
-    "api": {},
-    "scrollable-tabs": {},
+    "images": {
+      "files": ["html", "js", "css"]
+    },
+    "ajax": {
+      "files": ["html", "js", "css"]
+    },
+    "animation-effects": {},
     "tab-position": {},
-    "animation-effects": {}
+    "scrollable-tabs": {},
+    "events": {
+      "files": ["html", "js", "css"]
+    },
+    "api": {},
   }
 }

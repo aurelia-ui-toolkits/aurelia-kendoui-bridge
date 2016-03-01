@@ -1,0 +1,62 @@
+/*center treelist cell content vertically*/
+.k-gantt .k-treelist td
+{
+  vertical-align: middle;
+}
+
+/*hide the resource labels, as they are present in the task template*/
+.k-gantt .k-resource
+{
+  display: none;
+}
+
+/*style the task template*/
+.k-task-template {
+  height: 100%;
+  padding: 0 !important;
+}
+
+.template {
+  height: 100%;
+  overflow: hidden;
+}
+
+.resource-img {
+  float: left;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin: 8px;
+}
+
+.wrapper {
+  padding: 8px;
+  color: #fff;
+}
+
+.k-task-template .wrapper > * {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.resource {
+  text-transform: uppercase;
+  font-size: 9px;
+  margin-top: .5em;
+}
+
+.progress
+{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 4px;
+  background: rgba(0, 0, 0, .3);
+}

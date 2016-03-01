@@ -10,7 +10,7 @@ import 'kendo.mobile.switch.min';
 @inject(Element, WidgetBase)
 export class Switch {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

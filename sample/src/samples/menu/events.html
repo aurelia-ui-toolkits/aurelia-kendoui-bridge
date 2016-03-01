@@ -1,0 +1,79 @@
+<template>
+  <require from="./events.css"></require>
+  <div id="example">
+    <div class="demo-section k-content">
+      <h4>Menu</h4>
+      <ul id="menu"
+          k-menu
+          k-on-open.delegate="onOpen($event.detail)"
+          k-on-close.delegate="onClose($event.detail)"
+          k-on-select.delegate="onSelect($event.detail)"
+          k-on-activate.delegate="onActivate($event.detail)"
+          k-on-deactivate.delegate="onDeactivate($event.detail)">
+        <li>
+          First Item
+          <ul>
+            <li>Sub Item 1</li>
+            <li>Sub Item 2</li>
+            <li>Sub Item 3</li>
+            <li>Sub Item 4</li>
+          </ul>
+        </li>
+        <li>
+          Second Item
+          <ul>
+            <li>Sub Item 1</li>
+            <li>Sub Item 2</li>
+            <li>Sub Item 3</li>
+            <li>Sub Item 4</li>
+          </ul>
+        </li>
+        <li>
+          Third Item
+          <ul>
+            <li>Sub Item 1</li>
+            <li>Sub Item 2</li>
+            <li>Sub Item 3</li>
+            <li>Sub Item 4</li>
+          </ul>
+        </li>
+      </ul>
+      <h4 style="padding-top: 2em;">Context Menu</h4>
+      <ul id="context-menu-events"
+          k-contextmenu="k-target: #context-target;
+                         k-show-on: click;
+                         k-align-to-anchor.bind: true"
+          k-on-open.delegate="onOpen($event.detail)"
+          k-on-close.delegate="onClose($event.detail)"
+          k-on-select.delegate="onSelect($event.detail)"
+          k-on-activate.delegate="onActivate($event.detail)"
+          k-on-deactivate.delegate="onDeactivate($event.detail)">
+        <li>animation
+          <ul>
+            <li>slideIn</li>
+            <li>fadeIn</li>
+            <li>expand</li>
+          </ul>
+        </li>
+        <li>animation.close
+          <ul>
+            <li>animation.close.effects</li>
+            <li>animation.close.duration</li>
+          </ul>
+        </li>
+        <li>animation.open
+          <ul>
+            <li>animation.open.effects</li>
+            <li>animation.open.duration</li>
+          </ul>
+        </li>
+      </ul>
+      <p>A collection of <span id="context-target">Animation (?)</span> objects, used to change default animations. A value of false will disable all animations in the widget.</p>
+    </div>
+
+    <div class="box">
+        <h4>Console log</h4>
+         <logger view-model.ref="logger"></logger>
+    </div>
+  </div>
+</template>

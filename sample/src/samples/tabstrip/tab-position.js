@@ -1,3 +1,3 @@
 export class TabPosition {
-  tabPosition = 'left';
+  animation: { open: { effects: 'fadeIn' } };
 }

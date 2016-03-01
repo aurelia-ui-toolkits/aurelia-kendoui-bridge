@@ -2,13 +2,23 @@
   "title": "Menu",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "files": ["html", "js", "css"]
     },
-    "animation-effects": {},
-    "api": {},
-    "context-menu": {},
+    "images": {
+      "files": ["html", "js", "css"]
+    },
     "direction": {},
-    "images": {},
-    "orientation": {}
+    "orientation": {},
+    "animation-effects": {},
+    "events": {
+      "files": ["html", "js", "css"]
+    },
+    "api": {
+      "files": ["html", "js", "css"]
+    },
+    "context-menu": {
+      "files": ["html", "js", "css"]
+    }
   }
 }

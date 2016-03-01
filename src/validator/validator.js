@@ -10,7 +10,7 @@ import 'kendo.validator.min';
 @inject(Element, WidgetBase)
 export class Validator {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

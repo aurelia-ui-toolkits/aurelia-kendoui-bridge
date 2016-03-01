@@ -1,0 +1,21 @@
+#window-customizing-actions #example
+{
+  min-height:500px;
+}
+
+#window-customizing-actions #undo {
+  text-align: center;
+  position: absolute;
+  white-space: nowrap;
+  padding: 1em;
+  cursor: pointer;
+}
+.armchair-cust {
+    float: left;
+    margin: 20px 30px;
+    text-align: center;
+}
+.armchair-cust img {
+    display: block;
+    margin-bottom: 10px;
+}

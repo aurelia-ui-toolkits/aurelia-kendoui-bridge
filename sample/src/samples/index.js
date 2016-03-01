@@ -33,6 +33,7 @@ export class Index {
       { name: 'dropdownlist',     route: 'dropdownlist',        moduleId: './dropdownlist/index',           title: 'Drop Down List'},
       { name: 'editor',           route: 'editor',              moduleId: './editor/index',                 title: 'Editor',            settings: { pro: true } },
       { name: 'funnel-charts',    route: 'funnel-charts',       moduleId: './chart/funnel-charts/index',    title: 'Funnel Charts',     settings: { pro: true } },
+      { name: 'gantt',            route: 'gantt',               moduleId: './gantt/index',                  title: 'Gantt',              settings: { pro: true } },
       { name: 'grid',             route: 'grid',                moduleId: './grid/index',                   title: 'Grid',              settings: { pro: true } },
       { name: 'line-charts',      route: 'line-charts',         moduleId: './chart/line-charts/index',      title: 'Line Charts',       settings: { pro: true } },
       { name: 'linear-gauge',     route: 'linear-gauge',        moduleId: './linear-gauge/index',           title: 'Linear gauge',       settings: { pro: true } },
@@ -41,6 +42,7 @@ export class Index {
       { name: 'menu',             route: 'menu',                moduleId: './menu/index',                   title: 'Menu'},
       { name: 'maskedtextbox',    route: 'maskedtextbox',       moduleId: './maskedtextbox/index',          title: 'MaskedTextBox' },
       { name: 'multiselect',      route: 'multiselect',         moduleId: './multiselect/index',            title: 'Multiselect' },
+      { name: 'notification',     route: 'notification',        moduleId: './notification/index',           title: 'Notification' },
       { name: 'numerictextbox',   route: 'numerictextbox',      moduleId: './numerictextbox/index',         title: 'NumericTextBox' },
       { name: 'panelbar',         route: 'panelbar',            moduleId: './panelbar/index',               title: 'Panel Bar'},
       { name: 'pie-charts',       route: 'pie-charts',          moduleId: './chart/pie-charts/index',       title: 'Pie Charts',        settings: { pro: true } },
@@ -52,6 +54,7 @@ export class Index {
       { name: 'radial-gauge',     route: 'radial-gauge',        moduleId: './radial-gauge/index',           title: 'Radial gauge',      settings: { pro: true } },
       { name: 'range-charts',     route: 'range-charts',        moduleId: './chart/range-charts/index',     title: 'Range Charts',      settings: { pro: true } },
       { name: 'rangeslider',      route: 'rangeslider',         moduleId: './rangeslider/index',            title: 'RangeSlider' },
+      { name: 'responsivepanel',  route: 'responsivepanel',     moduleId: './responsivepanel/index',        title: 'Responsive panel' },
       { name: 'scatter-charts',   route: 'scatter-charts',      moduleId: './chart/scatter-charts/index',   title: 'Scatter charts',    settings: { pro: true } },
       { name: 'scheduler',        route: 'scheduler',           moduleId: './scheduler/index',              title: 'Scheduler',         settings: { pro: true } },
       { name: 'scrollview',       route: 'scrollview',          moduleId: './scrollview/index',             title: 'Scrollview' },
@@ -59,18 +62,21 @@ export class Index {
       { name: 'slider',           route: 'slider',              moduleId: './slider/index',                 title: 'Slider'},
       { name: 'sparkline',        route: 'sparkline',           moduleId: './chart/sparkline/index',        title: 'Sparkline',         settings: { pro: true } },
       { name: 'splitter',         route: 'splitter',            moduleId: './splitter/index',               title: 'Splitter'},
+      { name: 'spreadsheet',      route: 'spreadsheet',         moduleId: './spreadsheet/index',            title: 'Spreadsheet',       settings: { pro: true } },
       { name: 'stock',            route: 'stock',               moduleId: './chart/stock/index',            title: 'Stock',             settings: { pro: true } },
       { name: 'switch',           route: 'switch',              moduleId: './switch/index',                 title: 'Switch'},
       { name: 'tabstrip',         route: 'tabstrip',            moduleId: './tabstrip/index',               title: 'Tabstrip'},
       { name: 'timepicker',       route: 'timepicker',          moduleId: './timepicker/index',             title: 'TimePicker'},
       { name: 'toolbar',          route: 'toolbar',             moduleId: './toolbar/index',                title: 'Toolbar'},
+      { name: 'tooltip',          route: 'tooltip',             moduleId: './tooltip/index',                title: 'Tooltip'},
       { name: 'treemap',          route: 'treemap',             moduleId: './chart/treemap/index',          title: 'Treemap'},
       { name: 'treelist',         route: 'treelist',            moduleId: './treelist/index',               title: 'Treelist'},
       { name: 'treeview',         route: 'treeview',            moduleId: './treeview/index',               title: 'Treeview'},
       { name: 'validator',        route: 'validator',           moduleId: './validator/index',              title: 'Validator'},
       { name: 'valueconverters',  route: 'valueconverters',     moduleId: './valueconverters/index',        title: 'ValueConverters'},
       { name: 'upload',           route: 'upload',              moduleId: './upload/index',                 title: 'Upload',            settings: { pro: true } },
-      { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts'}
+      { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts'},
+      { name: 'window',           route: 'window',              moduleId: './window/index',                 title: 'Window'}
     ]);
 
     this.router = router;

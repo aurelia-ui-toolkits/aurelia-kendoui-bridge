@@ -1,0 +1,40 @@
+#tabstrip-basic-use .sunny, #tabstrip-basic-use .cloudy, #tabstrip-basic-use .rainy {
+  display: block;
+  margin: 30px auto 10px;
+  width: 128px;
+  height: 128px;
+  background: url('http://demos.telerik.com/kendo-ui/content/web/tabstrip/weather.png') transparent no-repeat 0 0;
+}
+
+#tabstrip-basic-use .cloudy{
+  background-position: -128px 0;
+}
+
+#tabstrip-basic-use .rainy{
+  background-position: -256px 0;
+}
+
+#tabstrip-basic-use .weather {
+  margin: 0 auto 30px;
+  text-align: center;
+}
+
+#tabstrip-basic-use #tabstrip h2 {
+  font-weight: lighter;
+  font-size: 5em;
+  line-height: 1;
+  padding: 0 0 0 30px;
+  margin: 0;
+}
+
+#tabstrip-basic-use #tabstrip h2 span {
+  background: none;
+  padding-left: 5px;
+  font-size: .3em;
+  vertical-align: top;
+}
+
+#tabstrip-basic-use #tabstrip p {
+  margin: 0;
+  padding: 0;
+}

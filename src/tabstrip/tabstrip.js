@@ -10,7 +10,7 @@ import 'kendo.tabstrip.min';
 @inject(Element, WidgetBase)
 export class TabStrip {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -21,7 +21,9 @@ export class TabStrip {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 

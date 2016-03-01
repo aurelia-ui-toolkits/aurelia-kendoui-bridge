@@ -1,0 +1,1 @@
+{"name":"kendo.mobile.ui.Widget","children":[{"name":"Methods","children":[{"name":"view","children":[{"name":"Example"}],"parameters":[],"description":"Returns the [kendo.mobile.ui.View](/api/mobile/view) which contains the widget. If the widget is contained in a splitview, modalview, or drawer, the respective widget instance is returned."}]}]}

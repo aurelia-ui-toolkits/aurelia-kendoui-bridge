@@ -1,5 +1,6 @@
 {
   "title": "Grid",
+  "namespace": "kendo.ui.Grid",
   "samples": {
     "basic-use": {
       "default": true,

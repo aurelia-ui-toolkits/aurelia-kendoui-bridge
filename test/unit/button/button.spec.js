@@ -21,7 +21,7 @@ describe('Button', () => {
   });
 
   it('clears options in constructor', () => {
-    expect(widget.options).toEqual({});
+    expect(widget.kOptions).toEqual({});
   });
 
   it('sets element in constructor', () => {

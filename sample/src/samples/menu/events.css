@@ -1,0 +1,10 @@
+#menu-events .demo-section .box-col li {
+    margin-bottom: 0;
+}
+#menu-events #context-target {
+    cursor: pointer;
+    color: red;
+}
+#menu-events #context-target:hover {
+    text-decoration: underline;
+}

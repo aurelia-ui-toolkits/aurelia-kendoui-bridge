@@ -1,0 +1,8 @@
+#window-events #undo {
+  text-align: center;
+  white-space: nowrap;
+  border-width: 1px;
+  border-style: solid;
+  padding: 2em;
+  cursor: pointer;
+}

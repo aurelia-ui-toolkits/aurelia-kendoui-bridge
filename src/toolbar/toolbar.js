@@ -11,7 +11,7 @@ import 'kendo.toolbar.min';
 @inject(Element, WidgetBase, OptionsBuilder)
 export class Toolbar {
 
-  @bindable options = {};
+  @bindable kOptions = {};
   @children(`${constants.elementPrefix}toolbar-item`) toolbarItems;
 
   constructor(element, widgetBase, optionsBuilder) {

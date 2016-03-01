@@ -1,0 +1,19 @@
+<template>
+  <div id="example">
+    <div class="box wide">
+      <div class="box-col">
+        <h4>Disable cells</h4>
+        <ul class="options">
+          <li>
+            <button k-button click.delegate="toggle()">Disable / Enable 'Quantity' column</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <k-spreadsheet style="width: 100%"
+                   k-sheets.bind="sheets"
+                   k-widget.bind="spreadsheet">
+    </k-spreadsheet>
+  </div>
+</template>

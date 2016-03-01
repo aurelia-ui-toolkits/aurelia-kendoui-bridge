@@ -10,7 +10,7 @@ import 'kendo.dataviz.diagram.min';
 @inject(Element, WidgetBase)
 export class Diagram {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

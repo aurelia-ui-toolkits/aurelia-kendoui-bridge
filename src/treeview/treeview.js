@@ -9,7 +9,7 @@ import 'kendo.treeview.min';
 @generateBindables('kendoTreeView')
 @inject(Element, WidgetBase)
 export class TreeView {
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

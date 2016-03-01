@@ -1,0 +1,19 @@
+{
+  "title": "Spreadsheet",
+  "samples": {
+    "basic-use": {
+      "route": ["", "basic-use"]
+    },
+    "sorting-and-filtering": {},
+    "server-import-export": {
+      "title": "Server import/export"
+    },
+    "server-export-to-pdf": {},
+    "datasource-binding": {},
+    "disabled-cells": {},
+    "events": {
+      "files": ["html", "js", "md"]
+    },
+    "validation": {}
+  }
+}

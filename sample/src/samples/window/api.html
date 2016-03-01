@@ -1,0 +1,40 @@
+<template>
+  <div id="example">
+    <div class="box wide hidden-on-narrow" style="z-index:10000">
+      <div class="box-col">
+        <h4>API Functions</h4>
+        <ul class="options">
+          <li>
+            <button click.delegate="window.open()" k-button>Open</button>
+            <button click.delegate="window.close()" k-button>Close</button>
+          </li>
+        </ul>
+      </div>
+      <div class="box-col">
+        <h4>&nbsp;</h4>
+        <ul class="options">
+          <li>
+            <button click.delegate="window.refresh()" k-button>Refresh</button>
+            <button click.delegate="window.center()" k-button>Center</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="window"
+         k-window="k-width: 505px;
+            k-height: 315px;
+            k-title.bind: title;
+            k-actions.bind: actions;
+            k-content.bind: content;
+            k-widget.two-way: window"></div>
+
+    <div class="responsive-message"></div>
+  </div>
+
+  <style>
+  #example {
+    min-height: 600px;
+  }
+  </style>
+</template>

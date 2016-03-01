@@ -11,7 +11,7 @@ import 'kendo.virtuallist.min';
 @inject(Element, WidgetBase, ViewResources)
 export class ComboBox {
 
-  @bindable options = {};
+  @bindable kOptions = {};
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {

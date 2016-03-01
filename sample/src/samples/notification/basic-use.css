@@ -1,0 +1,7 @@
+#notification-basic-use .demo-section {
+    text-align: center;
+    line-height: 4em;
+}
+#notification-basic-use .demo-section .k-button {
+    width: 250px;
+}

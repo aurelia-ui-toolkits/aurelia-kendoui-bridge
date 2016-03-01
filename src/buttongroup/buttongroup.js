@@ -10,7 +10,7 @@ import 'kendo.mobile.buttongroup.min';
 @inject(Element, WidgetBase)
 export class ButtonGroup {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

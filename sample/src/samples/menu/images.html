@@ -1,4 +1,19 @@
 <template>
-  <k-menu "data-source.bind: datasource">
-  </k-menu>
+  <require from="./images.css"></require>
+  <div id="example">
+    <div class="demo-section k-content">
+
+      <h4>Menu with images</h4>
+
+      <ul id="menu-images" k-menu="k-data-source.bind: dataSource"></ul>
+    </div>
+
+
+    <div class="demo-section k-content">
+
+      <h4>Menu with sprites</h4>
+
+      <div id="menu-sprites" k-menu="k-data-source.bind: spritesDS"></div>
+    </div>
+  </div>
 </template>

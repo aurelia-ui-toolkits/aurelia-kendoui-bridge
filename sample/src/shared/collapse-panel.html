@@ -5,6 +5,8 @@
                 <span class="glyphicon glyphicon-chevron-down" if.bind="!collapsed && allowCollapse"></span>
                 <span class="glyphicon glyphicon-chevron-up" if.bind="collapsed && allowCollapse"></span>
                 <strong>${title}</strong>
+
+                <content select=".buttons"></content>
             </div>
             <div class="panel-body" show.bind="!collapsed">
                 <content></content>

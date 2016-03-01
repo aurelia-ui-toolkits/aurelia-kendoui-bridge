@@ -13,7 +13,8 @@
     "ListView": "listview",
     "TreeList": "treelist",
     "PivotGrid": "pivotgrid",
-    "Scrollview": "scrollview"
+    "Scrollview": "scrollview",
+    "Spreadsheet": "spreadsheet"
   },
   "Editors": {
     "Autocomplete": "autocomplete",
@@ -58,14 +59,17 @@
   },
   "Scheduling": {
     "Scheduler": "scheduler",
-    "Calendar": "calendar"
+    "Calendar": "calendar",
+    "Gantt": "gantt"
   },
   "Navigation": {
+    "Tabstrip": "tabstrip",
     "Button": "button",
     "ButtonGroup": "buttongroup",
     "Treeview": "treeview",
     "Panel Bar": "panelbar",
-    "Toolbar": "toolbar"
+    "Toolbar": "toolbar",
+    "Menu": "menu"
   },
   "Diagrams & Maps" : {
     "Map": "map",
@@ -80,7 +84,11 @@
     "Radial Gauge": "radial-gauge"
   },
   "Layout": {
-    "Splitter": "splitter"
+    "Splitter": "splitter",
+    "Notification": "notification",
+    "Tooltip": "tooltip",
+    "Window": "window",
+    "Responsive panel": "responsivepanel"
   },
   "Interactivity & UX": {
     "ProgressBar": "progressbar",

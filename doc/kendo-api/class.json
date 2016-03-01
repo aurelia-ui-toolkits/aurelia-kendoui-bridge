@@ -1,0 +1,1 @@
+{"name":"kendo.Class","children":[{"name":"Class methods","children":[{"name":"extend","children":[{"name":"Example - inheritance"},{"name":"Parameters","children":[{"name":"prototype `Object`"}]},{"name":"Returns"}]}]},{"name":"Fields","children":[{"name":"fn `Object`","children":[{"name":"Example - use the prototype to call base methods"}]}]}]}
