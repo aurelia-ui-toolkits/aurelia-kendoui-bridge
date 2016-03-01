@@ -1,5 +1,9 @@
 export class Events {
-  contentUrls = ['http://demos.telerik.com/kendo-ui/content/web/tabstrip/ajax/ajaxContent1.html', 'http://demos.telerik.com/kendo-ui/tabstrip/error.html'];
+  contentUrls = [
+    '',
+    'http://kendo.jeroenvinke.nl/shared/web/tabstrip/ajax/ajaxContent1.html',
+    'http://demos.telerik.com/kendo-ui/tabstrip/error.html'
+  ];
 
   select(e) {
     this.logger.log('Selected: ' + $(e.item).find('> .k-link').text());

@@ -1,6 +1,6 @@
 export class Events {
   title = 'Rams\'s Ten Principles of Good Design';
-  content = 'http://demos.telerik.com/kendo-ui/content/web/window/ajax/ajaxContent1.html';
+  content = 'http://kendo.jeroenvinke.nl/shared/web/window/ajax/ajaxContent1.html';
 
   open() {
     this.window.open();

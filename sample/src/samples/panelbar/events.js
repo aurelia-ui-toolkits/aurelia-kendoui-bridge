@@ -1,6 +1,6 @@
 export class Events {
 
-  contentUrls = [undefined, undefined, undefined, '../content/web/panelbar/ajax/ajaxContent1.html', 'error.html'];
+  contentUrls = [undefined, undefined, undefined, 'http://kendo.jeroenvinke.nl/shared/web/panelbar/ajax/ajaxContent1.html', 'error.html'];
 
   onSelect(e) {
     this.logger.log('Select: ' + $(e.item).find('> .k-link').text());
