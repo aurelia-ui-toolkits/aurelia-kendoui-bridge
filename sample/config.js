@@ -4,7 +4,6 @@ System.config({
   transpiler: "babel",
   babelOptions: {
     "optional": [
-      "runtime",
       "optimisation.modules.system",
       "es7.decorators",
       "es7.classProperties"
@@ -44,7 +43,6 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "clean-css": "npm:clean-css@3.4.8",
-    "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
     "gka/chroma.js": "github:gka/chroma.js@1.1.1",
