@@ -1,3 +1,4 @@
+import '../setup';
 import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 import {initialize} from 'aurelia-pal-browser';

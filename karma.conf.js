@@ -13,8 +13,8 @@ module.exports = function(config) {
     frameworks: ['jspm', 'jasmine'],
 
     jspm: {
-      // Edit this to your needs
-      loadFiles: ['jspm_packages/github/components/jquery@*/jquery.min.js', 'src/**/*.js', 'test/unit/**/*.js']
+      serveFiles: ['src/**/*.js'],
+      loadFiles: ['jspm_packages/github/components/jquery@*/jquery.min.js', 'test/unit/**/*.js']
     },
 
 
@@ -28,9 +28,6 @@ module.exports = function(config) {
     exclude: [
     ],
 
-
-
-
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
@@ -40,11 +37,10 @@ module.exports = function(config) {
     'babelPreprocessor': {
       options: {
         sourceMap: 'inline',
-        modules: 'system',
         moduleIds: false,
         optional: [
-          "es7.decorators",
-          "es7.classProperties"
+          'es7.decorators',
+          'es7.classProperties'
         ]
       }
     },
@@ -77,7 +73,7 @@ module.exports = function(config) {
         flags: ['--no-sandbox']
       }
     },
-    
+
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
@@ -87,7 +83,7 @@ module.exports = function(config) {
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false
   };
-  
+
   if (process.env.TRAVIS) {
     configuration.browsers = ['Chrome_travis_ci', 'Firefox'];
   }

@@ -1,3 +1,4 @@
+import '../setup';
 import {Grid as Widget} from 'src/grid/grid';
 import {Col} from 'src/grid/k-col';
 import {initialize} from 'aurelia-pal-browser';

@@ -1,3 +1,4 @@
+import '../setup';
 import {getEventsFromAttributes, getBindablePropertyName, _hyphenate, _unhyphenate, addHyphenAndLower, getKendoPropertyName, pruneOptions, fireEvent, fireKendoEvent} from 'src/common/util';
 import {constants} from 'src/common/constants';
 import {initialize} from 'aurelia-pal-browser';

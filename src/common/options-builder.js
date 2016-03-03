@@ -20,8 +20,10 @@ export class OptionsBuilder {
   */
   getOptions(viewModel, className) {
     let options = {};
+    let props = this.controlProperties.getProperties(className);
 
-    for (let prop of this.controlProperties.getProperties(className)) {
+    for (let i = 0; i < props.length; i++) {
+      let prop = props[i];
       let value = viewModel[getBindablePropertyName(prop)];
 
       if (hasValue(value)) {
