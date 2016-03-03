@@ -1,75 +1,93 @@
 <template>
     <require from="./about.css"></require>
+
     <div class="container-fluid">
-    <div class="k-header header">
-      <div style="margin:auto;text-align:center">
-        <h1 class="text-lg">Aurelia Kendo UI <i>Bridge</i></h1>
-        <h3>Industry standard, tried and tested HTML5 widgets - enhanced by Aurelia</h3>
-        <span>Version 0.5.0</span>
-      </div>
-    </div>
 
-    <div class="row">
-       <div class="col-xs-12 col-sm-4 text-center">
-           <a href="http://aurelia.io" target="_blank"><img src="images/aurelia-logo.png" /></a>
-       </div>
-       <div class="col-xs-12 col-sm-4 text-center">
-           <img src="images/bridge.png" >
-       </div>
-       <div class="col-xs-12 col-sm-4 text-center">
-         <a href="http://www.telerik.com/kendo-ui" target="_blank"><img src="images/kendo-ui-logo.png" /></a>
-       </div>
-    </div>
-
-    <section>
-      <h4 class="text-center" style="padding-top: 20px; padding-bottom:20px">
-        <ul class="features">
-          <li>We've done the hard work for you</li>
-          <li>Use Kendo UI components in your Aurelia application <i style="text-decoration:underline">without writing any wrapper code</i></li>
-          <li>Powerful binding expressions <i>directly in your markup</i></li>
-          <li>Full support for Aurelia's templating system in Kendo templates</li>
-          <li><a href="#samples">See the catalog</a> or check out the example below</li>
-        </ul>
-      </h4>
-      <h3>Example</h3>
-      <div class="row">
-        <div class="col-sm-12">
-          <k-grid k-data-source.bind="datasource" k-pageable.bind="{ refresh: true, pageSizes: true, buttonCount: 10 }" k-sortable.bind="true">
-            <k-col k-title="Contact Name" k-field="ContactName">
-              <k-template>
-                <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
-                <div class='customer-name'>${ContactName}</div>
-              </k-template>
-            </k-col>
-            <k-col k-title="Contact Title" k-field="ContactTitle"></k-col>
-            <k-col k-title="Company Name" k-field="CompanyName"></k-col>
-            <k-col k-field="Country"></k-col>
-          </k-grid>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 10px">
-        <div class="col-sm-12">
-          <div k-tabstrip="k-animation.bind: false" k-tabstrip.ref="tabstrip">
-              <ul>
-                  <li class="k-state-active">Without Bridge</li>
-                  <li>With Bridge (View)</li>
-                  <li>With Bridge (View-Model)</li>
-              </ul>
-              <div>
-                  <au-code language="markup" url="./src/about/kendo-standard-init.html">
-                  </au-code>
-              </div>
-              <div>
-                  <au-code language="markup" url="./src/about/kendo-bridge-init.html">
-                  </au-code>
-              </div>
-              <div>
-                  <au-code language="javascript" url="./src/about/kendo-bridge-viewmodel.js">
-                  </au-code>
-              </div>
+    <br>
+    <div k-tabstrip>
+      <ul>
+          <li class="k-state-active">What is Aurelia-Kendoui bridge</li>
+          <li>GRID - example of an Aurelia-Kendoui component</li>
+      </ul>
+      <div>
+        <section>
+          <br>
+          <div class="k-header header">
+            <div style="margin:auto;text-align:center">
+              <h1 class="text-lg">Aurelia Kendo UI <i>Bridge</i></h1>
+              <h3>Industry standard, tried and tested HTML5 widgets - enhanced by Aurelia</h3>
+              <span>Version 0.5.0</span>
+            </div>
           </div>
-        </div>
+
+          <div class="row">
+             <div class="col-xs-12 col-sm-4 text-center">
+                 <a href="http://aurelia.io" target="_blank"><img src="images/aurelia-logo.png" /></a>
+             </div>
+             <div class="col-xs-12 col-sm-4 text-center">
+                 <img src="images/bridge.png" >
+             </div>
+             <div class="col-xs-12 col-sm-4 text-center">
+               <a href="http://www.telerik.com/kendo-ui" target="_blank"><img src="images/kendo-ui-logo.png" /></a>
+             </div>
+          </div>
+
+          <h4 class="text-center" style="padding-top: 20px; padding-bottom:20px">
+            <ul class="features">
+              <li>We've done the hard work for you</li>
+              <li>Use Kendo UI components in your Aurelia application <i style="text-decoration:underline">without writing any wrapper code</i></li>
+              <li>Powerful binding expressions <i>directly in your markup</i></li>
+              <li>Full support for Aurelia's templating system in Kendo templates</li>
+              <li><a href="#samples">See the catalog</a> or check out the example below</li>
+            </ul>
+          </h4>
+        </section>
       </div>
-    </section>
+      <div>
+        <section>
+          <br>
+          <h3>Example</h3>
+          <div class="row">
+            <div class="col-sm-12">
+              <k-grid k-data-source.bind="datasource" k-pageable.bind="{ refresh: true, pageSizes: true, buttonCount: 10 }" k-sortable.bind="true">
+                <k-col k-title="Contact Name" k-field="ContactName">
+                  <k-template>
+                    <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+                    <div class='customer-name'>${ContactName}</div>
+                  </k-template>
+                </k-col>
+                <k-col k-title="Contact Title" k-field="ContactTitle"></k-col>
+                <k-col k-title="Company Name" k-field="CompanyName"></k-col>
+                <k-col k-field="Country"></k-col>
+              </k-grid>
+            </div>
+          </div>
+          <div class="row" style="margin-top: 10px">
+            <div class="col-sm-12">
+              <div k-tabstrip="k-animation.bind: false" k-tabstrip.ref="tabstrip">
+                  <ul>
+                      <li class="k-state-active">Without Bridge</li>
+                      <li>With Bridge (View)</li>
+                      <li>With Bridge (View-Model)</li>
+                  </ul>
+                  <div>
+                      <au-code language="markup" url="./src/about/kendo-standard-init.html">
+                      </au-code>
+                  </div>
+                  <div>
+                      <au-code language="markup" url="./src/about/kendo-bridge-init.html">
+                      </au-code>
+                  </div>
+                  <div>
+                      <au-code language="javascript" url="./src/about/kendo-bridge-viewmodel.js">
+                      </au-code>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      <div>
+    </div>
+
   </div>
 </template>
