@@ -815,7 +815,9 @@ export function generateBindables(controlName: string) {
 
     optionKeys.push('widget');
 
-    for (let option of optionKeys) {
+    for (let i = 0; i < optionKeys.length; i++) {
+      let option = optionKeys[i];
+
       // set the name of the bindable property to the option
       let nameOrConfigOrTarget = {
         name: getBindablePropertyName(option)
@@ -868,8 +870,10 @@ export class OptionsBuilder {
   */
   getOptions(viewModel, className) {
     let options = {};
+    let props = this.controlProperties.getProperties(className);
 
-    for (let prop of this.controlProperties.getProperties(className)) {
+    for (let i = 0; i < props.length; i++) {
+      let prop = props[i];
       let value = viewModel[getBindablePropertyName(prop)];
 
       if (hasValue(value)) {
@@ -1106,7 +1110,8 @@ export function getEventsFromAttributes(element: Element): string[] {
   let attributes = Array.prototype.slice.call(element.attributes);
   let events: string[] = [];
 
-  for (let attribute of attributes) {
+  for (let i = 0; i < attributes.length; i++) {
+    let attribute = attributes[i];
     let attributeName = attribute.name;
     if (!attributeName.startsWith(constants.eventPrefix)) continue;
 

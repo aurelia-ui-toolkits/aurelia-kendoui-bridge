@@ -1011,19 +1011,8 @@ function generateBindables(controlName) {
 
     optionKeys.push('widget');
 
-    for (var _iterator = optionKeys, _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-      var _ref;
-
-      if (_isArray) {
-        if (_i >= _iterator.length) break;
-        _ref = _iterator[_i++];
-      } else {
-        _i = _iterator.next();
-        if (_i.done) break;
-        _ref = _i.value;
-      }
-
-      var option = _ref;
+    for (var i = 0; i < optionKeys.length; i++) {
+      var option = optionKeys[i];
 
       var nameOrConfigOrTarget = {
         name: getBindablePropertyName(option)
@@ -1093,19 +1082,10 @@ var OptionsBuilder = (function () {
     var _this2 = this;
 
     var options = {};
+    var props = this.controlProperties.getProperties(className);
 
-    var _loop = function () {
-      if (_isArray2) {
-        if (_i2 >= _iterator2.length) return 'break';
-        _ref2 = _iterator2[_i2++];
-      } else {
-        _i2 = _iterator2.next();
-        if (_i2.done) return 'break';
-        _ref2 = _i2.value;
-      }
-
-      var prop = _ref2;
-
+    var _loop = function (i) {
+      var prop = props[i];
       var value = viewModel[getBindablePropertyName(prop)];
 
       if (hasValue(value)) {
@@ -1119,12 +1099,8 @@ var OptionsBuilder = (function () {
       }
     };
 
-    for (var _iterator2 = this.controlProperties.getProperties(className), _isArray2 = Array.isArray(_iterator2), _i2 = 0, _iterator2 = _isArray2 ? _iterator2 : _iterator2[Symbol.iterator]();;) {
-      var _ref2;
-
-      var _ret = _loop();
-
-      if (_ret === 'break') break;
+    for (var i = 0; i < props.length; i++) {
+      _loop(i);
     }
 
     return pruneOptions(options);
@@ -1292,20 +1268,8 @@ function getEventsFromAttributes(element) {
   var attributes = Array.prototype.slice.call(element.attributes);
   var events = [];
 
-  for (var _iterator3 = attributes, _isArray3 = Array.isArray(_iterator3), _i3 = 0, _iterator3 = _isArray3 ? _iterator3 : _iterator3[Symbol.iterator]();;) {
-    var _ref3;
-
-    if (_isArray3) {
-      if (_i3 >= _iterator3.length) break;
-      _ref3 = _iterator3[_i3++];
-    } else {
-      _i3 = _iterator3.next();
-      if (_i3.done) break;
-      _ref3 = _i3.value;
-    }
-
-    var attribute = _ref3;
-
+  for (var i = 0; i < attributes.length; i++) {
+    var attribute = attributes[i];
     var attributeName = attribute.name;
     if (!attributeName.startsWith(constants.eventPrefix)) continue;
 
