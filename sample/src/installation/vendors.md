@@ -16,14 +16,14 @@ Make sure to use Kendo UI **v2016.1.118** or higher if you decided to use the th
       "*": "dist/*",
       "github:*": "jspm_packages/github/*",
       "npm:*": "jspm_packages/npm/*",
-      "kendo.*": "vendors/js/kendo.*.js"        <----
+      "kendo.*": "vendors/js/kendo.*.js",        <----
+      "kendo-ui/*": "vendors/*",                 <----
     },
     "map": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
       "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
       "jquery": "github:components/jquery@2.1.4",             <----
-      "kendo-ui": "/vendors",                   <----
       "jquery.min": "github:components/jquery@2.1.4"          <----
     }
     ```

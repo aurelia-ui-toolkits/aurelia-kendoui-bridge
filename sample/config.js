@@ -14,7 +14,8 @@ System.config({
     "*": "src/*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "kendo.*": "src/root/vendors/js/kendo.*.js"
+    "kendo.*": "src/root/vendors/js/kendo.*.js",
+    "kendo-ui/*": "src/root/vendors/*",
   },
 
   meta: {
@@ -52,7 +53,6 @@ System.config({
     "jquery": "github:components/jquery@2.1.4",
     "jquery.min": "github:components/jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
-    "kendo-ui": "root/vendors",
     "doc": "root/doc",
     "prettify": "npm:prettify@0.1.7",
     "prism": "github:PrismJS/prism@1.3.0",
