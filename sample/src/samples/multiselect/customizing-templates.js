@@ -3,7 +3,7 @@ export class Grouping {
     transport: {
       read: {
         dataType: 'jsonp',
-        url: '//demos.telerik.com/kendo-ui/service/Customers',
+        url: '//demos.telerik.com/kendo-ui/service/Customers'
       }
     }
   }

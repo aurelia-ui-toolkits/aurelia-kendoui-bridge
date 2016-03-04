@@ -46,8 +46,6 @@ export class API {
   }
 
   namespaceChanged() {
-    if (this.namespace) {
-      console.log(this.namespace);
-    }
+    // if (this.namespace) { }
   }
 }

@@ -1,4 +1,4 @@
-/*jslint eqeq: true, newcap: true, nomen: true, plusplus: true, browser: true, indent: 2 */
+/*eslint-disable */
 (function () {
   'use strict';
 

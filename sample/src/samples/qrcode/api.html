@@ -22,7 +22,6 @@
             <li>
                 <label for="errorCorrection">Error correction level:</label>
                 <k-drop-down-list k-data-source.bind="errorCorrectionDataSource"
-                                  k-on-change.delegate="setOptions()"
                                   k-value.two-way="errorCorrection"
                                   k-data-text-field="errorCorrection"
                                   k-data-value-field="errorCorrection"
@@ -32,7 +31,6 @@
             <li>
               <label for="encoding">Encoding:</label>
               <k-drop-down-list k-data-source.bind="encodingDataSource"
-                                k-on-change.delegate="setOptions()"
                                 k-value.two-way="encoding"
                                 k-data-text-field="encoding"
                                 k-data-value-field="encoding"

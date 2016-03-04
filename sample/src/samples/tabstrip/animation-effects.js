@@ -15,7 +15,7 @@ export class AnimationEffects {
     if (this.animation) {
       anim += ' ' + this.animation;
     }
-    console.log(anim);
+
     return anim;
   }
 
@@ -26,8 +26,6 @@ export class AnimationEffects {
           effects: this.getEffects()
         }
       };
-
-      console.log(this);
 
       this.tabstripVM.recreate();
     });

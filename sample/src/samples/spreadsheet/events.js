@@ -1,10 +1,8 @@
 export class Events {
 
   onChange(e) {
-    console.log('change');
     this.logger.log('Spreadsheet change, new value: ' + e.range.value());
   }
-
 
   sheets = [{
     name: 'Invoices',

@@ -59,7 +59,7 @@ export class Util {
     let attributes = Array.prototype.slice.call(element.attributes);
     let events: string[] = [];
 
-  	for (let i = 0; i < attributes.length; i++) {
+    for (let i = 0; i < attributes.length; i++) {
       let attribute = attributes[i];
       let attributeName = attribute.name;
       if (!attributeName.startsWith(constants.eventPrefix)) continue;

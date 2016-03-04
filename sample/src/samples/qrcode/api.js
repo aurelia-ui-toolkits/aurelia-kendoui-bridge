@@ -24,18 +24,6 @@ export class Api {
     { encoding: 'UTF_8', value: 'UTF_8' }
   ];
 
-  setOptions() {
-    let validValue = this.validValue;
-
-    try {
-
-
-      validValue.innerHTML = '';
-    } catch (error) {
-      validValue.innerHTML = error.message;
-    }
-  }
-
   propertyChanged() {
     this.qrcode.setOptions({
       value: this.qrValue,

@@ -18,7 +18,7 @@ export class Events {
   }
 
   contentLoad(e) {
-    this.logger.log('Content loaded in <b>'+ $(e.item).find('> .k-link').text() + '</b> and starts with <b>' + $(e.contentElement).text().substr(0, 20) + '...</b>');
+    this.logger.log('Content loaded in <b>' + $(e.item).find('> .k-link').text() + '</b> and starts with <b>' + $(e.contentElement).text().substr(0, 20) + '...</b>');
   }
 
   error(e) {
