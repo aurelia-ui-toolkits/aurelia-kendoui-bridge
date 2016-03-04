@@ -12,8 +12,10 @@ The Kendo Grid can be used and configured via the following section of HTML code
 ```html
     <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">
       <k-col k-title="Contact Name" k-field="ContactName">
-        <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
-        <div class='customer-name'>${ContactName}</div>
+        <k-template for="template">
+			<div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+        	<div class='customer-name'>${ContactName}</div>
+		</k-template>
       </k-col>
       <k-col k-title="Contact Name" k-field="ContactName"></k-col>
       <k-col k-title="Contact Title" k-field="ContactTitle"></k-col>
@@ -29,33 +31,31 @@ This code is the **[Basic use](#/samples/grid/basic-use)** sample, which is a pa
 <br>
 **What are the characteristics of this sample, that require this whole article to explain them?**
 
- &nbsp; &nbsp; - We see two custom elements: `k-grid` and `k-col`. The `k-col` custom elements are inside of the `k-grid` custom element, making the `k-col` custom elements "children" of the `k-grid` custom element.
+ &nbsp; &nbsp; - We see three custom elements: `k-grid` and `k-col`. The `k-col` custom elements are inside of the `k-grid` custom element, making the `k-col` custom elements "children" of the `k-grid` custom element. The `k-template` custom element is a child element of the `k-col`.
 <br>
 
- &nbsp; &nbsp; - Both custom elements have some `@bindable` properties available, such as `k-data-source`, `k-title` and `k-command`. A bindable property is a property inside a view-model marked with the `@bindable` decorator. The `title` property is defined as `@bindable kTitle`. Because of the `@bindable` decorator, we can now set these properties from HTML: `<k-grid k-title="my value"></k-grid>`, and respond to changes of these properties when needed.
+ &nbsp; &nbsp; - All three custom elements have some `@bindable` properties available, such as `k-data-source`, `k-title`, `k-command` and `for`. A bindable property is a property inside a view-model marked with the `@bindable` decorator. The `title` property is defined as `@bindable kTitle`. Because of the `@bindable` decorator, we can now set these properties from HTML: `<k-grid k-title="my value"></k-grid>`, and respond to changes of these properties when needed.
 <br>
 
-The `k-col` custom element is a bit special, as it has a template defined within. Let's look at this more closely:
+The `k-template` custom element is a bit special, as it has a template defined within. Let's look at this more closely:
 
 ```html
-	<k-col k-title="Contact Name" k-field="ContactName">
-		<k-template>
-			<div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
-			<div class='customer-name'>${ContactName}</div>
-		</k-template>
-	</k-col>
+	<k-template for="template">
+		<div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+		<div class='customer-name'>${ContactName}</div>
+	</k-template>
 ```
 <br>
 
-This `k-col` has three properties: **`title`**, **`field`** and **`template`**, where the **`title`** and **`field`** are  easy to spot, but the **`template`** is somewhat hidden. The `template` property is extracted by the `<k-col>` custom element from its inner content (innerHTML).
+This `k-col` has two properties: **`for`** and **`template`**, where the **`for`** is easy to spot, but the **`template`** is somewhat hidden. The `template` property is extracted by the `<k-template>` custom element from its inner content (innerHTML).
 <br><br>
 
-#### How does the k-col extract the template?
+#### How does the k-template extract the template?
 
-Let's take a look at the code of the [k-col custom element](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/src/grid/k-col.js).
+Let's take a look at the code of the [k-template custom element](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/src/common/k-template.js).
 <br>
 
-We use the `@bindable` properties, to configure them via attributes on the custom element. If we use `<k-col title="Contact Name" field="ContactName">`, then Aurelia sets the `title` property on the `k-col` view-model to "Contact Name" and the `field` property to "ContactName".
+We use the `@bindable` properties, to configure them via attributes on the custom element. If we use `<k-template for="template">`, then Aurelia sets the `for` property on the `k-template` view-model to "template".
 <br>
 
 Now, how does it extract the template? This magic happens inside of the `@processContent` decorator.
@@ -75,16 +75,15 @@ In other words, the `@processContent` decorator allows us to process the content
 	  if (html !== '') {
 	    instruction.template = html;
 	  }
-
 	  return true;
 	})
 ```
 <br>
 
-The `@processContent` decorator passes us a few arguments we can use inside of the callback function. The things we care about are `element` and `instruction`. The `element` is the HTML tag of our custom-element, so in this case, `<k-col>`. It's the same thing as when you `@inject(Element)`. The `instruction` is a [BehaviorInstruction](http://aurelia.io/docs.html#/aurelia/templating/1.0.0-beta.1.0.1/doc/api/class/BehaviorInstruction). All you need to know is that this object is shared by both the `@processContent` and the actual view-model (`AuCol`). So, this means that we can **define properties** on this object from within the `@processContent` function, and access it from inside the view-model.
+The `@processContent` decorator passes us a few arguments we can use inside of the callback function. The things we care about are `element` and `instruction`. The `element` is the HTML tag of our custom-element, so in this case, `<k-template>`. It's the same thing as when you `@inject(Element)`. The `instruction` is a [BehaviorInstruction](http://aurelia.io/docs.html#/aurelia/templating/1.0.0-beta.1.0.1/doc/api/class/BehaviorInstruction). All you need to know is that this object is shared by both the `@processContent` and the actual view-model (`Template`). So, this means that we can **define properties** on this object from within the `@processContent` function, and access it from inside the view-model.
 <br>
 
-In our implementation of the `@processContent` function, we take the `innerHTML` of the `<k-col>` element, and put this in the `template` property of the `instruction`. We could have chosen any property name, but we chose the name **`template`**.
+In our implementation of the `@processContent` function, we take the `innerHTML` of the `<k-template>` element, and put this in the `template` property of the `instruction`. We could have chosen any property name, but we chose the name **`template`**.
 <br><br>
 
 Now, in order for us to pull this `template` property of the [`instruction`](#instruction) inside the view-model, we need to inject the `TargetInstruction`, as shown below:
@@ -92,11 +91,10 @@ Now, in order for us to pull this `template` property of the [`instruction`](#in
 
 ```javascript
 	@inject(TargetInstruction)
-	export class AuCol {
-	  @bindable title;
-	  @bindable field;
-	  template;
-
+	export class Template {
+	  @bindable template;
+	  @bindable for = 'template';
+	
 	  constructor(targetInstruction) {
 	    this.template = targetInstruction.elementInstruction.template;
 	  }
@@ -110,21 +108,23 @@ The `targetInstruction` has an `elementInstruction` atttribute which contains th
 Now before we go on, let's take a look at `return true;` at the end of the `@processContent` function. What does this do? It tells Aurelia that we have handled content processing, and that no further processing should be done. This effectively removes the content of the custom element, and this is exactly what we want, because we don't want to see the template on the screen. We just want to store the template as a property of the AuClass, so we can pass this onto Kendo's grid.
 <br><br>
 
-#### How does the `k-grid` element get to the properties of the `k-col` elements?
+#### How does the `k-template` element get to the properties of the `k-col` elements?
 
 Let's take a step back, and look at the usage of the Grid control one more time:
 <br>
 
 ```html
     <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">
-      <k-col title="Contact Name" field="ContactName">
-        <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
-        <div class='customer-name'>${ContactName}</div>
+      <k-col k-title="Contact Name" k-field="ContactName">
+        <k-template for="template">
+			<div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+        	<div class='customer-name'>${ContactName}</div>
+		</k-template>
       </k-col>
-      <k-col title="Contact Name" field="ContactName"></k-col>
-      <k-col title="Contact Title" field="ContactTitle"></k-col>
-      <k-col title="Company Name" field="CompanyName"></k-col>
-      <k-col field="Country"></k-col>
+      <k-col k-title="Contact Name" k-field="ContactName"></k-col>
+      <k-col k-title="Contact Title" k-field="ContactTitle"></k-col>
+      <k-col k-title="Company Name" k-field="CompanyName"></k-col>
+      <k-col k-field="Country"></k-col>
     </k-grid>
 ```
 <br>
@@ -132,13 +132,15 @@ Let's take a step back, and look at the usage of the Grid control one more time:
 We said that all the `k-col` custom elements are "children" of the `<k-grid>` custom element. What we want is to reach all view-models behind the `k-col` elements, from within the view-model of the `<k-grid>`. Aurelia's got us covered. We need to do something else first though.
 <br>
 
-Since the `k-grid` custom element now has content, it has now become a view. For Aurelia to recognize this, in addition to the `grid.js` view-model, we need to create a `grid.html` file (see [Creating Components](http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.0.3/doc/article/creating-components) article for more details). In this file, we define the following:
+Since the `k-grid` custom element now has content, it has become a view. For Aurelia to recognize this, in addition to the `grid.js` view-model, we need to create a `grid.html` file (see [Creating Components](http://aurelia.io/docs.html#/aurelia/framework/1.0.0-beta.1.0.3/doc/article/creating-components) article for more details). In this file, we define the following:
 <br>
 ```html
 	<template>
 	  <content></content>
 	</template>
 ```
+
+The same applies for both `<k-col>` and `<k-template>`.
 <br>
 
 Notice the use of the `<content>` tag. This tells Aurelia to put the content of the `<k-grid>` tag, at that place in the view. More information about the `<content>` tag, can be found [here](http://patrickwalters.net/wielding-the-power-of-aurelia-content-selectors/).
@@ -217,8 +219,10 @@ The developer uses this piece of HTML code:
 ```html
     <k-grid k-data-source.bind="datasource" k-pageable.bind="pageable" k-sortable.bind="true">
       <k-col k-title="Contact Name" k-field="ContactName">
-        <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
-        <div class='customer-name'>${ContactName}</div>
+        <k-template for="template">
+			<div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
+        	<div class='customer-name'>${ContactName}</div>
+		</k-template>
       </k-col>
       <k-col k-title="Contact Name" k-field="ContactName"></k-col>
       <k-col k-title="Contact Title" k-field="ContactTitle"></k-col>
@@ -228,10 +232,10 @@ The developer uses this piece of HTML code:
 ```
 <br>
 
-The `AuCol` class uses `@processContent` to "extract" the template which can be found in the content of the `<k-col>` custom element, and the `AuCol` class also stores the `title` and `field` properties.
+The `k-template` viewmodel uses `@processContent` to "extract" the template which can be found in the content of the `<k-template>` custom element, and it also stores the `for` property.
 <br>
 
-The `k-grid` custom element, uses `@children` to get an array of all these `AuCol` instances, which contain the `title`, `field` en `template` properties.
+The `k-grid` custom element, uses `@children` to get an array of all `AuCol` instances, which contain the `k-title`, `k-field` and `template` properties.
 <br>
 
 When Kendo's Grid gets initialized, this array of `AuCol` instances is passed along. In essence, Kendo's Grid is now initialized as follows:
