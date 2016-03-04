@@ -1,3 +1,4 @@
+import '../setup';
 import 'kendo-ui/js/kendo.button.min';
 import 'kendo-ui/js/kendo.dropdownlist.min';
 import 'kendo-ui/js/kendo.mobile.switch.min';

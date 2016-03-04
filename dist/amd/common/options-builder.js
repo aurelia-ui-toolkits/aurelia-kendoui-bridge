@@ -16,19 +16,10 @@ define(['exports', 'aurelia-dependency-injection', './control-properties', './ut
       var _this = this;
 
       var options = {};
+      var props = this.controlProperties.getProperties(className);
 
-      var _loop = function () {
-        if (_isArray) {
-          if (_i >= _iterator.length) return 'break';
-          _ref = _iterator[_i++];
-        } else {
-          _i = _iterator.next();
-          if (_i.done) return 'break';
-          _ref = _i.value;
-        }
-
-        var prop = _ref;
-
+      var _loop = function (i) {
+        var prop = props[i];
         var value = viewModel[_util.getBindablePropertyName(prop)];
 
         if (_util.hasValue(value)) {
@@ -42,12 +33,8 @@ define(['exports', 'aurelia-dependency-injection', './control-properties', './ut
         }
       };
 
-      for (var _iterator = this.controlProperties.getProperties(className), _isArray = Array.isArray(_iterator), _i = 0, _iterator = _isArray ? _iterator : _iterator[Symbol.iterator]();;) {
-        var _ref;
-
-        var _ret = _loop();
-
-        if (_ret === 'break') break;
+      for (var i = 0; i < props.length; i++) {
+        _loop(i);
       }
 
       return _util.pruneOptions(options);

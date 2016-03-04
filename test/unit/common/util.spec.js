@@ -1,3 +1,4 @@
+import '../setup';
 import {Util} from 'src/common/util';
 import {TemplatingEngine} from 'aurelia-templating';
 import {constants} from 'src/common/constants';

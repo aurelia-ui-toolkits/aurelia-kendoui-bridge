@@ -56,7 +56,8 @@ export function getEventsFromAttributes(element: Element): string[] {
   let attributes = Array.prototype.slice.call(element.attributes);
   let events: string[] = [];
 
-  for (let attribute of attributes) {
+  for (let i = 0; i < attributes.length; i++) {
+    let attribute = attributes[i];
     let attributeName = attribute.name;
     if (!attributeName.startsWith(constants.eventPrefix)) continue;
 

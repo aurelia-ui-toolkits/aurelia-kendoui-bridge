@@ -1,3 +1,4 @@
+import '../setup';
 import {Button as Widget} from 'src/button/button';
 import {initialize} from 'aurelia-pal-browser';
 import {DOM} from 'aurelia-pal';
