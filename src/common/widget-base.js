@@ -233,6 +233,12 @@ export class WidgetBase {
   * destroys the widget
   */
   destroy(widget) {
-    widget.destroy();
+    // only destroy if the widget has an Element property
+    // things like splitters and tabstrips destroy all underlying Kendo controls
+    // when the splitter/tabstrip is destroyed
+    // so we shouldn't destroy child Kendo controls twice by checking for the element prop
+    if (widget && widget.element) {
+      widget.destroy();
+    }
   }
 }

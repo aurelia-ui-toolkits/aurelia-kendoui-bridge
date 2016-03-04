@@ -77,11 +77,23 @@ describe('WidgetBase', () => {
   it('destroys the Kendo widget', () => {
     let destroySpy = jasmine.createSpy();
     let widget = {
-      destroy: destroySpy
+      destroy: destroySpy,
+      element: DOM.createElement('div')
     };
     sut.destroy(widget);
 
     expect(destroySpy).toHaveBeenCalled();
+  });
+
+  it('does not destroy widget when element property is null/undefined', () => {
+    let destroySpy = jasmine.createSpy();
+    let widget = {
+      destroy: destroySpy,
+      element: null
+    };
+    sut.destroy(widget);
+
+    expect(destroySpy).not.toHaveBeenCalled();
   });
 
   it('getEventOptions registers on events', () => {

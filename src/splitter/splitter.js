@@ -35,11 +35,6 @@ export class Splitter {
   }
 
   detached() {
-    // only destroy if splitter has an Element
-    // prevents nested splitters from throwing error on destroy
-    // as the parent splitter destroys all child splitters itself
-    if (this.kWidget && this.kWidget.element) {
-      this.widgetBase.destroy(this.kWidget);
-    }
+    this.widgetBase.destroy(this.kWidget);
   }
 }
