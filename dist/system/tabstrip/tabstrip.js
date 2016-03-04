@@ -27,7 +27,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(TabStrip, [{
-          key: 'options',
+          key: 'kOptions',
           decorators: [bindable],
           initializer: function initializer() {
             return {};
@@ -38,7 +38,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         function TabStrip(element, widgetBase) {
           _classCallCheck(this, _TabStrip);
 
-          _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
           this.element = element;
           this.widgetBase = widgetBase.control('kendoTabStrip').linkViewModel(this);
@@ -46,7 +46,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         TabStrip.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        TabStrip.prototype.attached = function attached() {
           this.recreate();
         };
 

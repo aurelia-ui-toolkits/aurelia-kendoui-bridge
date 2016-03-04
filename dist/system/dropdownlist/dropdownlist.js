@@ -1,7 +1,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.dropdownlist.min', 'kendo.virtuallist.min'], function (_export) {
   'use strict';
 
-  var inject, customElement, bindable, children, WidgetBase, generateBindables, constants, DropDownList;
+  var inject, customElement, bindable, children, ViewResources, WidgetBase, generateBindables, constants, DropDownList;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -19,6 +19,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       customElement = _aureliaTemplating.customElement;
       bindable = _aureliaTemplating.bindable;
       children = _aureliaTemplating.children;
+      ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -31,7 +32,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(DropDownList, [{
-          key: 'options',
+          key: 'kOptions',
           decorators: [bindable],
           initializer: function initializer() {
             return {};
@@ -44,20 +45,19 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           enumerable: true
         }], null, _instanceInitializers);
 
-        function DropDownList(element, widgetBase) {
+        function DropDownList(element, widgetBase, viewResources) {
           _classCallCheck(this, _DropDownList);
 
-          _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useValueBinding();
+          this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useValueBinding().useViewResources(viewResources);
         }
 
         DropDownList.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
-          this.widgetBase.useTemplates(this, 'kendoDropDownList', this.templates);
         };
 
         DropDownList.prototype.attached = function attached() {
@@ -66,6 +66,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         DropDownList.prototype.recreate = function recreate() {
           var selectNode = getSelectNode(this.element);
+          this.widgetBase.useTemplates(this, 'kendoDropDownList', this.templates);
 
           this.kWidget = this.widgetBase.createWidget({
             rootElement: this.element,
@@ -83,7 +84,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         var _DropDownList = DropDownList;
-        DropDownList = inject(Element, WidgetBase)(DropDownList) || DropDownList;
+        DropDownList = inject(Element, WidgetBase, ViewResources)(DropDownList) || DropDownList;
         DropDownList = generateBindables('kendoDropDownList')(DropDownList) || DropDownList;
         DropDownList = customElement(constants.elementPrefix + 'drop-down-list')(DropDownList) || DropDownList;
         return DropDownList;

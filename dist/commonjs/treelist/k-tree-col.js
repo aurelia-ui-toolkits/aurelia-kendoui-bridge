@@ -10,24 +10,16 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaTemplating = require('aurelia-templating');
 
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
 var _commonConstants = require('../common/constants');
 
 var _commonDecorators = require('../common/decorators');
 
-var _commonUtil = require('../common/util');
+var _commonTemplateGatherer = require('../common/template-gatherer');
 
 var TreeCol = (function () {
   var _instanceInitializers = {};
-
-  function TreeCol() {
-    _classCallCheck(this, _TreeCol);
-
-    _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
-  }
-
-  TreeCol.prototype.bind = function bind() {
-    _commonUtil.useTemplates(this, 'TreeListColumn', this.templates);
-  };
 
   _createDecoratedClass(TreeCol, [{
     key: 'templates',
@@ -36,7 +28,20 @@ var TreeCol = (function () {
     enumerable: true
   }], null, _instanceInitializers);
 
+  function TreeCol(templateGatherer) {
+    _classCallCheck(this, _TreeCol);
+
+    _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
+
+    this.templateGatherer = templateGatherer;
+  }
+
+  TreeCol.prototype.bind = function bind() {
+    this.templateGatherer.useTemplates(this, 'TreeListColumn', this.templates);
+  };
+
   var _TreeCol = TreeCol;
+  TreeCol = _aureliaDependencyInjection.inject(_commonTemplateGatherer.TemplateGatherer)(TreeCol) || TreeCol;
   TreeCol = _commonDecorators.generateBindables('TreeListColumn')(TreeCol) || TreeCol;
   TreeCol = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'tree-col')(TreeCol) || TreeCol;
   return TreeCol;

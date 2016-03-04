@@ -1,4 +1,4 @@
-define(['exports', './util', './options-builder', './template-compiler', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (exports, _util, _optionsBuilder, _templateCompiler, _aureliaDependencyInjection, _aureliaTaskQueue) {
+define(['exports', './util', './options-builder', './template-compiler', './template-gatherer', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (exports, _util, _optionsBuilder, _templateCompiler, _templateGatherer, _aureliaDependencyInjection, _aureliaTaskQueue) {
   'use strict';
 
   exports.__esModule = true;
@@ -6,11 +6,13 @@ define(['exports', './util', './options-builder', './template-compiler', 'aureli
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   var WidgetBase = (function () {
-    function WidgetBase(taskQueue, templateCompiler, optionsBuilder) {
+    function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer) {
       _classCallCheck(this, _WidgetBase);
 
       this.taskQueue = taskQueue;
       this.optionsBuilder = optionsBuilder;
+      this.util = util;
+      this.templateGatherer = templateGatherer;
       templateCompiler.initialize();
     }
 
@@ -70,10 +72,6 @@ define(['exports', './util', './options-builder', './template-compiler', 'aureli
         throw new Error('element is not set');
       }
 
-      if (!options.parentCtx) {
-        throw new Error('parentCtx is not set');
-      }
-
       var allOptions = this._getOptions(options.rootElement || options.element);
 
       if (options.beforeInitialize) {
@@ -113,7 +111,7 @@ define(['exports', './util', './options-builder', './template-compiler', 'aureli
       var options = this.optionsBuilder.getOptions(this.viewModel, this.controlName);
       var eventOptions = this.getEventOptions(element);
 
-      return _util.pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
+      return this.util.pruneOptions(Object.assign({}, this.viewModel.kOptions, options, eventOptions));
     };
 
     WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
@@ -123,7 +121,7 @@ define(['exports', './util', './options-builder', './template-compiler', 'aureli
       var allowedEvents = this.kendoEvents;
       var delayedExecution = ['change'];
 
-      var events = _util.getEventsFromAttributes(element);
+      var events = this.util.getEventsFromAttributes(element);
 
       events.forEach(function (event) {
         if (!allowedEvents.includes(event)) {
@@ -133,12 +131,12 @@ define(['exports', './util', './options-builder', './template-compiler', 'aureli
         if (delayedExecution.includes(event)) {
           options[event] = function (e) {
             _this2.taskQueue.queueMicroTask(function () {
-              return _util.fireKendoEvent(element, _util._hyphenate(event), e);
+              return _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
             });
           };
         } else {
           options[event] = function (e) {
-            return _util.fireKendoEvent(element, _util._hyphenate(event), e);
+            return _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
           };
         }
       });
@@ -147,25 +145,28 @@ define(['exports', './util', './options-builder', './template-compiler', 'aureli
     };
 
     WidgetBase.prototype._handleChange = function _handleChange(widget) {
-      this.viewModel[_util.getBindablePropertyName(this.valueBindingProperty)] = widget[this.valueFunction]();
+      var propName = this.util.getBindablePropertyName(this.valueBindingProperty);
+      this.viewModel[propName] = widget[this.valueFunction]();
     };
 
     WidgetBase.prototype.handlePropertyChanged = function handlePropertyChanged(widget, property, newValue, oldValue) {
-      if (property === _util.getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
+      if (property === this.util.getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
         widget[this.valueFunction](newValue);
       }
     };
 
     WidgetBase.prototype.useTemplates = function useTemplates(target, controlName, templates) {
-      return _util.useTemplates(target, controlName, templates);
+      return this.templateGatherer.useTemplates(target, controlName, templates);
     };
 
     WidgetBase.prototype.destroy = function destroy(widget) {
-      widget.destroy();
+      if (widget && widget.element) {
+        widget.destroy();
+      }
     };
 
     var _WidgetBase = WidgetBase;
-    WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder)(WidgetBase) || WidgetBase;
+    WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder, _util.Util, _templateGatherer.TemplateGatherer)(WidgetBase) || WidgetBase;
     WidgetBase = _aureliaDependencyInjection.transient()(WidgetBase) || WidgetBase;
     return WidgetBase;
   })();

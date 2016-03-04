@@ -24,7 +24,7 @@ var DropTarget = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(DropTarget, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var DropTarget = (function () {
   function DropTarget(element, widgetBase) {
     _classCallCheck(this, _DropTarget);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoDropTarget').linkViewModel(this);

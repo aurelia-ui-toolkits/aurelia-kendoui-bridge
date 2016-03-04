@@ -11,46 +11,31 @@ var _controlProperties = require('./control-properties');
 var _util = require('./util');
 
 var OptionsBuilder = (function () {
-  function OptionsBuilder(controlProperties) {
+  function OptionsBuilder(controlProperties, util) {
     _classCallCheck(this, _OptionsBuilder);
 
     this.controlProperties = controlProperties;
+    this.util = util;
   }
 
   OptionsBuilder.prototype.getOptions = function getOptions(viewModel, className) {
-    var _this = this;
-
     var options = {};
     var props = this.controlProperties.getProperties(className);
 
-    var _loop = function (i) {
-      var prop = props[i];
-      var value = viewModel[_util.getBindablePropertyName(prop)];
-
-      if (_util.hasValue(value)) {
-        if (_this.isTemplate(prop)) {
-          options[prop] = function () {
-            return value;
-          };
-        } else {
-          options[prop] = value;
-        }
-      }
-    };
-
     for (var i = 0; i < props.length; i++) {
-      _loop(i);
+      var prop = props[i];
+      var value = viewModel[this.util.getBindablePropertyName(prop)];
+
+      if (this.util.hasValue(value)) {
+        options[prop] = value;
+      }
     }
 
-    return _util.pruneOptions(options);
-  };
-
-  OptionsBuilder.prototype.isTemplate = function isTemplate(propertyName) {
-    return propertyName.toLowerCase().indexOf('template') > -1;
+    return this.util.pruneOptions(options);
   };
 
   var _OptionsBuilder = OptionsBuilder;
-  OptionsBuilder = _aureliaDependencyInjection.inject(_controlProperties.ControlProperties)(OptionsBuilder) || OptionsBuilder;
+  OptionsBuilder = _aureliaDependencyInjection.inject(_controlProperties.ControlProperties, _util.Util)(OptionsBuilder) || OptionsBuilder;
   return OptionsBuilder;
 })();
 

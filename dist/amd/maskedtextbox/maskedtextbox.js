@@ -18,7 +18,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       initializer: null,
       enumerable: true
     }, {
-      key: 'options',
+      key: 'kOptions',
       decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
@@ -31,7 +31,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
       _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers);
 
-      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
       this.element = element;
       this.widgetBase = widgetBase.control('kendoMaskedTextBox').linkViewModel(this).useValueBinding();

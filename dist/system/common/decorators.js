@@ -1,15 +1,19 @@
 System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-metadata', 'aurelia-binding', './control-properties', './util'], function (_export) {
   'use strict';
 
-  var BindableProperty, HtmlBehaviorResource, Container, metadata, bindingMode, ControlProperties, getBindablePropertyName;
+  var BindableProperty, HtmlBehaviorResource, Container, metadata, bindingMode, ControlProperties, Util;
 
   _export('generateBindables', generateBindables);
 
   function generateBindables(controlName) {
+    var extraProperties = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
+
     return function (target, key, descriptor) {
       var behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
-      var controlProperties = (Container.instance || new Container()).get(ControlProperties);
-      var optionKeys = controlProperties.getProperties(controlName);
+      var container = Container.instance || new Container();
+      var controlProperties = container.get(ControlProperties);
+      var util = container.get(Util);
+      var optionKeys = controlProperties.getProperties(controlName, extraProperties);
 
       optionKeys.push('widget');
 
@@ -17,7 +21,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
         var option = optionKeys[i];
 
         var nameOrConfigOrTarget = {
-          name: getBindablePropertyName(option)
+          name: util.getBindablePropertyName(option)
         };
 
         if (option === 'widget') {
@@ -43,7 +47,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
     }, function (_controlProperties) {
       ControlProperties = _controlProperties.ControlProperties;
     }, function (_util) {
-      getBindablePropertyName = _util.getBindablePropertyName;
+      Util = _util.Util;
     }],
     execute: function () {}
   };

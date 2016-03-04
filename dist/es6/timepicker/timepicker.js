@@ -11,7 +11,7 @@ import 'kendo.timepicker.min';
 export class TimePicker {
 
   @bindable kDisableDates;
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

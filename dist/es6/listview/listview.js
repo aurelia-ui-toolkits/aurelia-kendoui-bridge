@@ -10,7 +10,7 @@ import 'kendo.listview.min';
 @inject(Element, WidgetBase, ViewResources)
 export class ListView  {
 
-  @bindable options = {};
+  @bindable kOptions = {};
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -31,6 +31,8 @@ export class ListView  {
   }
 
   recreate() {
+    this.widgetBase.useTemplates(this, 'kendoListView', this.templates);
+
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent

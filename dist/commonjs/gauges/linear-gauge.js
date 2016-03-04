@@ -24,7 +24,7 @@ var LinearGauge = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(LinearGauge, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var LinearGauge = (function () {
   function LinearGauge(element, widgetBase, viewResources) {
     _classCallCheck(this, _LinearGauge);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoLinearGauge').linkViewModel(this).useValueBinding();

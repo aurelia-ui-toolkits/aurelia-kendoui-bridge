@@ -24,7 +24,7 @@ var DateTimePicker = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(DateTimePicker, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var DateTimePicker = (function () {
   function DateTimePicker(element, widgetBase) {
     _classCallCheck(this, _DateTimePicker);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoDateTimePicker').linkViewModel(this).useValueBinding();

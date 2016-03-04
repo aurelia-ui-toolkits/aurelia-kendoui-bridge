@@ -27,7 +27,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(ColorPicker, [{
-          key: 'options',
+          key: 'kOptions',
           decorators: [bindable],
           initializer: function initializer() {
             return {};
@@ -38,15 +38,17 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         function ColorPicker(element, widgetBase) {
           _classCallCheck(this, _ColorPicker);
 
-          _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this);
+          this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this).useValueBinding();
         }
 
         ColorPicker.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        ColorPicker.prototype.attached = function attached() {
           this.recreate();
         };
 
@@ -55,6 +57,10 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
             element: this.element,
             parentCtx: this.$parent
           });
+        };
+
+        ColorPicker.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+          this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
         ColorPicker.prototype.detached = function detached() {

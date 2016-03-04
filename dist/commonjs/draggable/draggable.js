@@ -24,7 +24,7 @@ var Draggabke = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(Draggabke, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var Draggabke = (function () {
   function Draggabke(element, widgetBase) {
     _classCallCheck(this, _Draggabke);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoDraggable').linkViewModel(this);

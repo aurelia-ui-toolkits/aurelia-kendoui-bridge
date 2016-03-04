@@ -26,7 +26,7 @@ var Sparkline = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(Sparkline, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -37,7 +37,7 @@ var Sparkline = (function () {
   function Sparkline(element, widgetBase) {
     _classCallCheck(this, _Sparkline);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoSparkline').linkViewModel(this);

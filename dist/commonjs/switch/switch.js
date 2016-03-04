@@ -24,7 +24,7 @@ var Switch = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(Switch, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var Switch = (function () {
   function Switch(element, widgetBase) {
     _classCallCheck(this, _Switch);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoMobileSwitch').linkViewModel(this).useValueBinding('checked');

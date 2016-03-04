@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', '../common/constants', '../common/decorators', '../common/util'], function (exports, _aureliaTemplating, _commonConstants, _commonDecorators, _commonUtil) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/constants', '../common/decorators', '../common/template-gatherer'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _commonConstants, _commonDecorators, _commonTemplateGatherer) {
   'use strict';
 
   exports.__esModule = true;
@@ -12,16 +12,6 @@ define(['exports', 'aurelia-templating', '../common/constants', '../common/decor
   var TreeCol = (function () {
     var _instanceInitializers = {};
 
-    function TreeCol() {
-      _classCallCheck(this, _TreeCol);
-
-      _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
-    }
-
-    TreeCol.prototype.bind = function bind() {
-      _commonUtil.useTemplates(this, 'TreeListColumn', this.templates);
-    };
-
     _createDecoratedClass(TreeCol, [{
       key: 'templates',
       decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
@@ -29,7 +19,20 @@ define(['exports', 'aurelia-templating', '../common/constants', '../common/decor
       enumerable: true
     }], null, _instanceInitializers);
 
+    function TreeCol(templateGatherer) {
+      _classCallCheck(this, _TreeCol);
+
+      _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
+
+      this.templateGatherer = templateGatherer;
+    }
+
+    TreeCol.prototype.bind = function bind() {
+      this.templateGatherer.useTemplates(this, 'TreeListColumn', this.templates);
+    };
+
     var _TreeCol = TreeCol;
+    TreeCol = _aureliaDependencyInjection.inject(_commonTemplateGatherer.TemplateGatherer)(TreeCol) || TreeCol;
     TreeCol = _commonDecorators.generateBindables('TreeListColumn')(TreeCol) || TreeCol;
     TreeCol = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'tree-col')(TreeCol) || TreeCol;
     return TreeCol;

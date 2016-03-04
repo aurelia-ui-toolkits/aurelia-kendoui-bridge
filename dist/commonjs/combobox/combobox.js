@@ -26,7 +26,7 @@ var ComboBox = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(ComboBox, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -39,20 +39,19 @@ var ComboBox = (function () {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function ComboBox(element, widgetBase) {
+  function ComboBox(element, widgetBase, viewResources) {
     _classCallCheck(this, _ComboBox);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding();
+    this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useViewResources(viewResources);
   }
 
   ComboBox.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
-    this.widgetBase.useTemplates(this, 'kendoComboBox', this.templates);
   };
 
   ComboBox.prototype.attached = function attached() {
@@ -61,6 +60,7 @@ var ComboBox = (function () {
 
   ComboBox.prototype.recreate = function recreate() {
     var selectNode = getSelectNode(this.element);
+    this.widgetBase.useTemplates(this, 'kendoComboBox', this.templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,
@@ -78,7 +78,7 @@ var ComboBox = (function () {
   };
 
   var _ComboBox = ComboBox;
-  ComboBox = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(ComboBox) || ComboBox;
+  ComboBox = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources)(ComboBox) || ComboBox;
   ComboBox = _commonDecorators.generateBindables('kendoComboBox')(ComboBox) || ComboBox;
   ComboBox = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'combobox')(ComboBox) || ComboBox;
   return ComboBox;

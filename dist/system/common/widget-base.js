@@ -1,22 +1,19 @@
-System.register(['./util', './options-builder', './template-compiler', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (_export) {
+System.register(['./util', './options-builder', './template-compiler', './template-gatherer', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (_export) {
   'use strict';
 
-  var fireKendoEvent, getEventsFromAttributes, getBindablePropertyName, _hyphenate, pruneOptions, _useTemplates, OptionsBuilder, TemplateCompiler, inject, transient, TaskQueue, WidgetBase;
+  var Util, OptionsBuilder, TemplateCompiler, TemplateGatherer, inject, transient, TaskQueue, WidgetBase;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   return {
     setters: [function (_util) {
-      fireKendoEvent = _util.fireKendoEvent;
-      getEventsFromAttributes = _util.getEventsFromAttributes;
-      getBindablePropertyName = _util.getBindablePropertyName;
-      _hyphenate = _util._hyphenate;
-      pruneOptions = _util.pruneOptions;
-      _useTemplates = _util.useTemplates;
+      Util = _util.Util;
     }, function (_optionsBuilder) {
       OptionsBuilder = _optionsBuilder.OptionsBuilder;
     }, function (_templateCompiler) {
       TemplateCompiler = _templateCompiler.TemplateCompiler;
+    }, function (_templateGatherer) {
+      TemplateGatherer = _templateGatherer.TemplateGatherer;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
       transient = _aureliaDependencyInjection.transient;
@@ -25,11 +22,13 @@ System.register(['./util', './options-builder', './template-compiler', 'aurelia-
     }],
     execute: function () {
       WidgetBase = (function () {
-        function WidgetBase(taskQueue, templateCompiler, optionsBuilder) {
+        function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer) {
           _classCallCheck(this, _WidgetBase);
 
           this.taskQueue = taskQueue;
           this.optionsBuilder = optionsBuilder;
+          this.util = util;
+          this.templateGatherer = templateGatherer;
           templateCompiler.initialize();
         }
 
@@ -89,10 +88,6 @@ System.register(['./util', './options-builder', './template-compiler', 'aurelia-
             throw new Error('element is not set');
           }
 
-          if (!options.parentCtx) {
-            throw new Error('parentCtx is not set');
-          }
-
           var allOptions = this._getOptions(options.rootElement || options.element);
 
           if (options.beforeInitialize) {
@@ -132,7 +127,7 @@ System.register(['./util', './options-builder', './template-compiler', 'aurelia-
           var options = this.optionsBuilder.getOptions(this.viewModel, this.controlName);
           var eventOptions = this.getEventOptions(element);
 
-          return pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
+          return this.util.pruneOptions(Object.assign({}, this.viewModel.kOptions, options, eventOptions));
         };
 
         WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
@@ -142,7 +137,7 @@ System.register(['./util', './options-builder', './template-compiler', 'aurelia-
           var allowedEvents = this.kendoEvents;
           var delayedExecution = ['change'];
 
-          var events = getEventsFromAttributes(element);
+          var events = this.util.getEventsFromAttributes(element);
 
           events.forEach(function (event) {
             if (!allowedEvents.includes(event)) {
@@ -152,12 +147,12 @@ System.register(['./util', './options-builder', './template-compiler', 'aurelia-
             if (delayedExecution.includes(event)) {
               options[event] = function (e) {
                 _this2.taskQueue.queueMicroTask(function () {
-                  return fireKendoEvent(element, _hyphenate(event), e);
+                  return _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
                 });
               };
             } else {
               options[event] = function (e) {
-                return fireKendoEvent(element, _hyphenate(event), e);
+                return _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
               };
             }
           });
@@ -166,25 +161,28 @@ System.register(['./util', './options-builder', './template-compiler', 'aurelia-
         };
 
         WidgetBase.prototype._handleChange = function _handleChange(widget) {
-          this.viewModel[getBindablePropertyName(this.valueBindingProperty)] = widget[this.valueFunction]();
+          var propName = this.util.getBindablePropertyName(this.valueBindingProperty);
+          this.viewModel[propName] = widget[this.valueFunction]();
         };
 
         WidgetBase.prototype.handlePropertyChanged = function handlePropertyChanged(widget, property, newValue, oldValue) {
-          if (property === getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
+          if (property === this.util.getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
             widget[this.valueFunction](newValue);
           }
         };
 
         WidgetBase.prototype.useTemplates = function useTemplates(target, controlName, templates) {
-          return _useTemplates(target, controlName, templates);
+          return this.templateGatherer.useTemplates(target, controlName, templates);
         };
 
         WidgetBase.prototype.destroy = function destroy(widget) {
-          widget.destroy();
+          if (widget && widget.element) {
+            widget.destroy();
+          }
         };
 
         var _WidgetBase = WidgetBase;
-        WidgetBase = inject(TaskQueue, TemplateCompiler, OptionsBuilder)(WidgetBase) || WidgetBase;
+        WidgetBase = inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer)(WidgetBase) || WidgetBase;
         WidgetBase = transient()(WidgetBase) || WidgetBase;
         return WidgetBase;
       })();

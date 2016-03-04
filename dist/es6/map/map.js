@@ -10,9 +10,9 @@ import 'kendo.dataviz.map.min';
 @inject(Element, WidgetBase)
 export class Map {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoMap')

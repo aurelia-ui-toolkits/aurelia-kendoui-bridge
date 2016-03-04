@@ -36,7 +36,7 @@ var Scheduler = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(Scheduler, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -52,7 +52,7 @@ var Scheduler = (function () {
   function Scheduler(element, widgetBase, viewResources) {
     _classCallCheck(this, _Scheduler);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
@@ -61,7 +61,6 @@ var Scheduler = (function () {
   }
 
   Scheduler.prototype.bind = function bind(ctx) {
-    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
     this.$parent = ctx;
   };
 
@@ -70,6 +69,8 @@ var Scheduler = (function () {
   };
 
   Scheduler.prototype.recreate = function recreate() {
+    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
+
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent

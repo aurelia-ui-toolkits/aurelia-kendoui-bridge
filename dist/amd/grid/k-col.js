@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', '../common/constants', '../common/decorators', '../common/util'], function (exports, _aureliaTemplating, _commonConstants, _commonDecorators, _commonUtil) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/constants', '../common/decorators', '../common/template-gatherer'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _commonConstants, _commonDecorators, _commonTemplateGatherer) {
   'use strict';
 
   exports.__esModule = true;
@@ -12,16 +12,6 @@ define(['exports', 'aurelia-templating', '../common/constants', '../common/decor
   var Col = (function () {
     var _instanceInitializers = {};
 
-    function Col() {
-      _classCallCheck(this, _Col);
-
-      _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
-    }
-
-    Col.prototype.bind = function bind() {
-      _commonUtil.useTemplates(this, 'GridColumn', this.templates);
-    };
-
     _createDecoratedClass(Col, [{
       key: 'templates',
       decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
@@ -29,7 +19,20 @@ define(['exports', 'aurelia-templating', '../common/constants', '../common/decor
       enumerable: true
     }], null, _instanceInitializers);
 
+    function Col(templateGatherer) {
+      _classCallCheck(this, _Col);
+
+      _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
+
+      this.templateGatherer = templateGatherer;
+    }
+
+    Col.prototype.bind = function bind() {
+      this.templateGatherer.useTemplates(this, 'GridColumn', this.templates);
+    };
+
     var _Col = Col;
+    Col = _aureliaDependencyInjection.inject(_commonTemplateGatherer.TemplateGatherer)(Col) || Col;
     Col = _commonDecorators.generateBindables('GridColumn')(Col) || Col;
     Col = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'col')(Col) || Col;
     return Col;

@@ -27,7 +27,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(ProgressBar, [{
-          key: 'options',
+          key: 'kOptions',
           decorators: [bindable],
           initializer: function initializer() {
             return {};
@@ -38,7 +38,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         function ProgressBar(element, widgetBase) {
           _classCallCheck(this, _ProgressBar);
 
-          _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
           this.element = element;
           this.widgetBase = widgetBase.control('kendoProgressBar').linkViewModel(this);

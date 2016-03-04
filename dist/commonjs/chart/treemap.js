@@ -26,7 +26,7 @@ var TreeMap = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(TreeMap, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -37,7 +37,7 @@ var TreeMap = (function () {
   function TreeMap(element, widgetBase) {
     _classCallCheck(this, _TreeMap);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoTreeMap').linkViewModel(this);

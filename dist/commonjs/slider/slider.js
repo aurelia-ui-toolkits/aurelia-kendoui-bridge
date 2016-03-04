@@ -24,7 +24,7 @@ var Slider = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(Slider, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var Slider = (function () {
   function Slider(element, widgetBase) {
     _classCallCheck(this, _Slider);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).useValueBinding();

@@ -5,10 +5,14 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
   exports.generateBindables = generateBindables;
 
   function generateBindables(controlName) {
+    var extraProperties = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
+
     return function (target, key, descriptor) {
       var behaviorResource = _aureliaMetadata.metadata.getOrCreateOwn(_aureliaMetadata.metadata.resource, _aureliaTemplating.HtmlBehaviorResource, target);
-      var controlProperties = (_aureliaDependencyInjection.Container.instance || new _aureliaDependencyInjection.Container()).get(_controlProperties.ControlProperties);
-      var optionKeys = controlProperties.getProperties(controlName);
+      var container = _aureliaDependencyInjection.Container.instance || new _aureliaDependencyInjection.Container();
+      var controlProperties = container.get(_controlProperties.ControlProperties);
+      var util = container.get(_util.Util);
+      var optionKeys = controlProperties.getProperties(controlName, extraProperties);
 
       optionKeys.push('widget');
 
@@ -16,7 +20,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
         var option = optionKeys[i];
 
         var nameOrConfigOrTarget = {
-          name: _util.getBindablePropertyName(option)
+          name: util.getBindablePropertyName(option)
         };
 
         if (option === 'widget') {

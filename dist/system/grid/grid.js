@@ -45,7 +45,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           initializer: null,
           enumerable: true
         }, {
-          key: 'options',
+          key: 'kOptions',
           decorators: [bindable],
           initializer: function initializer() {
             return {};
@@ -58,7 +58,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
           _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
-          _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
           this.element = element;
           this.optionsBuilder = optionsBuilder;

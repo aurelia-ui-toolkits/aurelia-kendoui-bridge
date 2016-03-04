@@ -24,7 +24,7 @@ var ProgressBar = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(ProgressBar, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var ProgressBar = (function () {
   function ProgressBar(element, widgetBase) {
     _classCallCheck(this, _ProgressBar);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoProgressBar').linkViewModel(this);

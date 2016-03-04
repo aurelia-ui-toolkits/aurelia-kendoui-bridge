@@ -1,3 +1,45 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.4.2...v0.5.0) (2016-03-04)
+
+
+### Bug Fixes
+
+* **numeric-textbox:** initialize from attached and not bind ([dbf273a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/dbf273a))
+* **template-compiler:** resolved issue where parentcontext is null ([e25de25](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e25de25))
+* **widget-base:** allow for undefined context ([dfa5110](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/dfa5110))
+* **widget-base:** allow for undefined parent contexts ([07063a5](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/07063a5))
+* **widget-base:** destroy only if widget has element property ([929fb92](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/929fb92))
+
+### Features
+
+* **all:** add QR Code ([f2a57ba](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/f2a57ba))
+* **buttongroup:** added buttongroup wrapper ([a296e6f](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/a296e6f))
+* **colorpalette:** enable two-way value binding ([3e85292](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/3e85292))
+* **colorpicker:** enable two-way value binding ([858b5b1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/858b5b1))
+* **colorpicker:** enable two-way value binding ([cc83b7a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/cc83b7a))
+* **contextmenu:** contextmenu wrapper ([8d62237](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/8d62237))
+* **gantt:** gantt chart wrapper ([f41e8d7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/f41e8d7))
+* **menu:** menu wrapper and initial samples ([84bb2de](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/84bb2de))
+* **multiselect:** added multiselect wrapper ([8443b82](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/8443b82))
+* **notification:** notification wrapper ([425b8e2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/425b8e2))
+* **pivotgrid:** added pivotgrid wrapper ([19de5a7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/19de5a7))
+* **responsive-panel:** responsive panel ([d93a710](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/d93a710))
+* **scroll-view:** scrollview wrapper ([4af603c](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/4af603c))
+* **sortable:** sortable wrapper ([de01cb8](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/de01cb8))
+* **spreadsheet:** added spreadsheet wrapper ([977fac0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/977fac0))
+* **switch:** add switch wrapper ([08cd61d](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/08cd61d))
+* **tabstrip:** tabstrip wrapper ([d12ca6a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/d12ca6a))
+* **templating:** allow for kendo templates in k-template ([31727ef](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/31727ef))
+* **toolbar:** initial toolbar wrapper ([9c01410](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/9c01410))
+* **tooltip:** initial tooltip wrapper ([efa9646](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/efa9646))
+* **upload:** upload wrapper ([ca3d39f](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ca3d39f))
+* **validator:** validator wrapper ([8cfb4b3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/8cfb4b3))
+* **widget-base:** allow for k-options binding ([130f12d](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/130f12d))
+* **widget-base:** allow for multiple value binding property names ([69615f6](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/69615f6))
+* **window:** window wrapper ([551a05c](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/551a05c))
+
+
+
 <a name="0.4.2"></a>
 ## [0.4.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.4.1...v0.4.2) (2016-03-03)
 

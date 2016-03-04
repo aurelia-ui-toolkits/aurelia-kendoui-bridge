@@ -29,7 +29,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(Sparkline, [{
-          key: 'options',
+          key: 'kOptions',
           decorators: [bindable],
           initializer: function initializer() {
             return {};
@@ -40,7 +40,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         function Sparkline(element, widgetBase) {
           _classCallCheck(this, _Sparkline);
 
-          _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
           this.element = element;
           this.widgetBase = widgetBase.control('kendoSparkline').linkViewModel(this);

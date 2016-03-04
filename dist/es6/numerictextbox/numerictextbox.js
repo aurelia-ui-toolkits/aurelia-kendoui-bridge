@@ -10,7 +10,7 @@ import 'kendo.numerictextbox.min';
 @inject(Element, WidgetBase)
 export class NumericTextBox {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -22,7 +22,9 @@ export class NumericTextBox {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 

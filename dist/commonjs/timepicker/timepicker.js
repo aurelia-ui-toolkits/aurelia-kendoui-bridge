@@ -29,7 +29,7 @@ var TimePicker = (function () {
     initializer: null,
     enumerable: true
   }, {
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -42,7 +42,7 @@ var TimePicker = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoTimePicker').linkViewModel(this).useValueBinding();

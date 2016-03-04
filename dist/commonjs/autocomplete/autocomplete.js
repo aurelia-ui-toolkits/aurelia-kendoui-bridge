@@ -26,7 +26,7 @@ var AutoComplete = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(AutoComplete, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -39,20 +39,19 @@ var AutoComplete = (function () {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function AutoComplete(element, widgetBase) {
+  function AutoComplete(element, widgetBase, viewResources) {
     _classCallCheck(this, _AutoComplete);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useValueBinding();
+    this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useValueBinding().useViewResources(viewResources);
   }
 
   AutoComplete.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
-    this.widgetBase.useTemplates(this, 'kendoAutoComplete', this.templates);
 
     var inputs = this.element.querySelectorAll('input');
     if (inputs.length > 0) {
@@ -61,11 +60,15 @@ var AutoComplete = (function () {
       this.target = document.createElement('input');
       this.element.appendChild(this.target);
     }
+  };
 
+  AutoComplete.prototype.attached = function attached() {
     this.recreate();
   };
 
   AutoComplete.prototype.recreate = function recreate() {
+    this.widgetBase.useTemplates(this, 'kendoAutoComplete', this.templates);
+
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,
       element: this.target,
@@ -82,7 +85,7 @@ var AutoComplete = (function () {
   };
 
   var _AutoComplete = AutoComplete;
-  AutoComplete = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(AutoComplete) || AutoComplete;
+  AutoComplete = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources)(AutoComplete) || AutoComplete;
   AutoComplete = _commonDecorators.generateBindables('kendoAutoComplete')(AutoComplete) || AutoComplete;
   AutoComplete = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'autocomplete')(AutoComplete) || AutoComplete;
   return AutoComplete;

@@ -24,7 +24,7 @@ var Menu = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(Menu, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var Menu = (function () {
   function Menu(element, widgetBase) {
     _classCallCheck(this, _Menu);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoMenu').linkViewModel(this);
@@ -48,17 +48,8 @@ var Menu = (function () {
   };
 
   Menu.prototype.recreate = function recreate() {
-    var element = undefined;
-    var ul = this.element.querySelectorAll('ul');
-    if (ul.length > 0) {
-      element = ul[0];
-    } else {
-      element = document.createElement('ul');
-      this.element.appendChild(element);
-    }
-
     this.kWidget = this.widgetBase.createWidget({
-      element: element,
+      element: this.element,
       parentCtx: this.$parent
     });
   };
@@ -70,7 +61,7 @@ var Menu = (function () {
   var _Menu = Menu;
   Menu = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(Menu) || Menu;
   Menu = _commonDecorators.generateBindables('kendoMenu')(Menu) || Menu;
-  Menu = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'menu')(Menu) || Menu;
+  Menu = _aureliaTemplating.customAttribute(_commonConstants.constants.attributePrefix + 'menu')(Menu) || Menu;
   return Menu;
 })();
 

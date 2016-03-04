@@ -13,7 +13,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _instanceInitializers = {};
 
     _createDecoratedClass(Map, [{
-      key: 'options',
+      key: 'kOptions',
       decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
@@ -21,10 +21,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       enumerable: true
     }], null, _instanceInitializers);
 
-    function Map(element, widgetBase, viewResources) {
+    function Map(element, widgetBase) {
       _classCallCheck(this, _Map);
 
-      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
       this.element = element;
       this.widgetBase = widgetBase.control('kendoMap').linkViewModel(this);

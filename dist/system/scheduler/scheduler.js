@@ -31,7 +31,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(Scheduler, [{
-          key: 'options',
+          key: 'kOptions',
           decorators: [bindable],
           initializer: function initializer() {
             return {};
@@ -47,7 +47,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         function Scheduler(element, widgetBase, viewResources) {
           _classCallCheck(this, _Scheduler);
 
-          _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
@@ -56,7 +56,6 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         }
 
         Scheduler.prototype.bind = function bind(ctx) {
-          this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
           this.$parent = ctx;
         };
 
@@ -65,6 +64,8 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Scheduler.prototype.recreate = function recreate() {
+          this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
+
           this.kWidget = this.widgetBase.createWidget({
             element: this.element,
             parentCtx: this.$parent

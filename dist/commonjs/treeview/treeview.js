@@ -24,7 +24,7 @@ var TreeView = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(TreeView, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var TreeView = (function () {
   function TreeView(element, widgetBase) {
     _classCallCheck(this, _TreeView);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this);

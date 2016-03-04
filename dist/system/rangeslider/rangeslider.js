@@ -27,7 +27,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(RangeSlider, [{
-          key: 'options',
+          key: 'kOptions',
           decorators: [bindable],
           initializer: function initializer() {
             return {};
@@ -38,7 +38,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         function RangeSlider(element, widgetBase) {
           _classCallCheck(this, _RangeSlider);
 
-          _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
           this.element = element;
           this.widgetBase = widgetBase.control('kendoRangeSlider').linkViewModel(this).useValueBinding();

@@ -6,34 +6,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var _bindables = require('./bindables');
 
-var ControlProperties = (function () {
-  function ControlProperties() {
-    _classCallCheck(this, ControlProperties);
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
-    this.cache = [];
-    this.templateProperties = [];
+var _util = require('./util');
+
+var ControlProperties = (function () {
+  function ControlProperties(util) {
+    _classCallCheck(this, _ControlProperties);
+
+    this.cache = {};
+
+    this.util = util;
   }
 
   ControlProperties.prototype.getProperties = function getProperties(controlName) {
+    var extraProperties = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
+
     if (this.cache[controlName]) {
       return this.cache[controlName];
     }
 
     var options1 = this.getWidgetProperties(controlName);
 
-    var options2 = _bindables.bindables[controlName];
-
-    if (!options2) {
-      throw new Error(controlName + ' not found in generated bindables.js');
-    }
+    var options2 = this.getGeneratedProperties(controlName);
 
     var keys = options1.concat(options2.filter(function (item) {
       return options1.indexOf(item) < 0;
+    }));
+    keys = keys.concat(extraProperties.filter(function (item) {
+      return keys.indexOf(item) < 0;
     }));
 
     this.cache[controlName] = keys;
 
     return keys;
+  };
+
+  ControlProperties.prototype.getGeneratedProperties = function getGeneratedProperties(controlName) {
+    if (!_bindables.bindables[controlName]) {
+      throw new Error(controlName + ' not found in generated bindables.js');
+    }
+
+    return _bindables.bindables[controlName];
   };
 
   ControlProperties.prototype.getWidgetProperties = function getWidgetProperties(controlName) {
@@ -45,15 +59,19 @@ var ControlProperties = (function () {
   };
 
   ControlProperties.prototype.getTemplateProperties = function getTemplateProperties(controlName) {
+    var _this = this;
+
     var properties = this.getProperties(controlName);
 
     var templates = properties.filter(function (prop) {
-      return prop.toLowerCase().indexOf('template') >= -1;
+      return _this.util.isTemplateProperty(prop);
     });
 
     return templates;
   };
 
+  var _ControlProperties = ControlProperties;
+  ControlProperties = _aureliaDependencyInjection.inject(_util.Util)(ControlProperties) || ControlProperties;
   return ControlProperties;
 })();
 

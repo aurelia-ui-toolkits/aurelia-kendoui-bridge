@@ -29,7 +29,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(ListView, [{
-          key: 'options',
+          key: 'kOptions',
           decorators: [bindable],
           initializer: function initializer() {
             return {};
@@ -45,7 +45,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         function ListView(element, widgetBase, viewResources) {
           _classCallCheck(this, _ListView);
 
-          _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
@@ -63,6 +63,8 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         ListView.prototype.recreate = function recreate() {
+          this.widgetBase.useTemplates(this, 'kendoListView', this.templates);
+
           this.kWidget = this.widgetBase.createWidget({
             element: this.element,
             parentCtx: this.$parent

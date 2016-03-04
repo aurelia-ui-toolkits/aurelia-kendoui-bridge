@@ -10,7 +10,7 @@ import 'kendo.progressbar.min';
 @inject(Element, WidgetBase)
 export class ProgressBar {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

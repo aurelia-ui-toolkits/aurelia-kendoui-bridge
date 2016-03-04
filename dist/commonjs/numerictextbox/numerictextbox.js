@@ -24,7 +24,7 @@ var NumericTextBox = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(NumericTextBox, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var NumericTextBox = (function () {
   function NumericTextBox(element, widgetBase) {
     _classCallCheck(this, _NumericTextBox);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this).useValueBinding();
@@ -43,7 +43,9 @@ var NumericTextBox = (function () {
 
   NumericTextBox.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  NumericTextBox.prototype.attached = function attached() {
     this.recreate();
   };
 

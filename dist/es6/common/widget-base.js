@@ -1,6 +1,7 @@
-import {fireKendoEvent, getEventsFromAttributes, getBindablePropertyName, _hyphenate, pruneOptions, useTemplates} from './util';
+import {Util} from './util';
 import {OptionsBuilder} from './options-builder';
 import {TemplateCompiler} from './template-compiler';
+import {TemplateGatherer} from './template-gatherer';
 import {inject, transient} from 'aurelia-dependency-injection';
 import {TaskQueue} from 'aurelia-task-queue';
 
@@ -8,7 +9,7 @@ import {TaskQueue} from 'aurelia-task-queue';
 * Abstraction of commonly used code across wrappers
 */
 @transient()
-@inject(TaskQueue, TemplateCompiler, OptionsBuilder)
+@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer)
 export class WidgetBase {
 
   /**
@@ -49,9 +50,11 @@ export class WidgetBase {
   */
   ctor: any;
 
-  constructor(taskQueue, templateCompiler, optionsBuilder) {
+  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer) {
     this.taskQueue = taskQueue;
     this.optionsBuilder = optionsBuilder;
+    this.util = util;
+    this.templateGatherer = templateGatherer;
     templateCompiler.initialize();
   }
 
@@ -117,10 +120,6 @@ export class WidgetBase {
       throw new Error('element is not set');
     }
 
-    if (!options.parentCtx) {
-      throw new Error('parentCtx is not set');
-    }
-
     // generate all options, including event handlers - use the rootElement if specified, otherwise fall back to the element
     // this allows a child element in a custom elements tempate to be the container for the kendo control
     // but allows the plugin to correctly discover attributes on the root element to match against events
@@ -178,7 +177,7 @@ export class WidgetBase {
     // - options on the wrapper
     // - options compiled from all the bindable properties
     // - event handler options
-    return pruneOptions(Object.assign({}, this.viewModel.options, options, eventOptions));
+    return this.util.pruneOptions(Object.assign({}, this.viewModel.kOptions, options, eventOptions));
   }
 
 
@@ -194,7 +193,7 @@ export class WidgetBase {
 
     // iterate all attributes on the custom elements
     // and only return the normalized kendo event's (dataBound etc)
-    let events = getEventsFromAttributes(element);
+    let events = this.util.getEventsFromAttributes(element);
 
     events.forEach(event => {
       // throw error if this event is not defined on the Kendo control
@@ -204,10 +203,10 @@ export class WidgetBase {
 
       if (delayedExecution.includes(event)) {
         options[event] = e => {
-          this.taskQueue.queueMicroTask(() => fireKendoEvent(element, _hyphenate(event), e));
+          this.taskQueue.queueMicroTask(() => this.util.fireKendoEvent(element, this.util._hyphenate(event), e));
         };
       } else {
-        options[event] = e => fireKendoEvent(element, _hyphenate(event), e);
+        options[event] = e => this.util.fireKendoEvent(element, this.util._hyphenate(event), e);
       }
     });
 
@@ -216,23 +215,30 @@ export class WidgetBase {
 
 
   _handleChange(widget) {
-    this.viewModel[getBindablePropertyName(this.valueBindingProperty)] = widget[this.valueFunction]();
+    let propName = this.util.getBindablePropertyName(this.valueBindingProperty);
+    this.viewModel[propName] = widget[this.valueFunction]();
   }
 
   handlePropertyChanged(widget, property, newValue, oldValue) {
-    if (property === getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
+    if (property === this.util.getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
       widget[this.valueFunction](newValue);
     }
   }
 
   useTemplates(target, controlName, templates) {
-    return useTemplates(target, controlName, templates);
+    return this.templateGatherer.useTemplates(target, controlName, templates);
   }
 
   /**
   * destroys the widget
   */
   destroy(widget) {
-    widget.destroy();
+    // only destroy if the widget has an Element property
+    // things like splitters and tabstrips destroy all underlying Kendo controls
+    // when the splitter/tabstrip is destroyed
+    // so we shouldn't destroy child Kendo controls twice by checking for the element prop
+    if (widget && widget.element) {
+      widget.destroy();
+    }
   }
 }

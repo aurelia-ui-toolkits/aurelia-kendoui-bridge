@@ -24,6 +24,13 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
         return 'template';
       },
       enumerable: true
+    }, {
+      key: 'kendoTemplate',
+      decorators: [_aureliaTemplating.bindable],
+      initializer: function initializer() {
+        return false;
+      },
+      enumerable: true
     }], null, _instanceInitializers);
 
     function Template(targetInstruction) {
@@ -32,6 +39,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'for', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'kendoTemplate', _instanceInitializers);
 
       this.template = targetInstruction.elementInstruction.template;
     }

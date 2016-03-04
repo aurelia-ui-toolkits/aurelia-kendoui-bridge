@@ -24,7 +24,7 @@ var Diagram = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(Diagram, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var Diagram = (function () {
   function Diagram(element, widgetBase) {
     _classCallCheck(this, _Diagram);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoDiagram').linkViewModel(this);

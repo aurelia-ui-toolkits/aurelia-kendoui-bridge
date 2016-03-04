@@ -13,7 +13,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _instanceInitializers = {};
 
     _createDecoratedClass(RadialGauge, [{
-      key: 'options',
+      key: 'kOptions',
       decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
@@ -24,7 +24,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     function RadialGauge(element, widgetBase, viewResources) {
       _classCallCheck(this, _RadialGauge);
 
-      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
       this.element = element;
       this.widgetBase = widgetBase.control('kendoRadialGauge').linkViewModel(this).useValueBinding();

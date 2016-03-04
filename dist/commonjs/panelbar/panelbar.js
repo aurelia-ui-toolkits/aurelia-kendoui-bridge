@@ -22,7 +22,7 @@ var PanelBar = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(PanelBar, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -33,7 +33,7 @@ var PanelBar = (function () {
   function PanelBar(element, widgetBase) {
     _classCallCheck(this, _PanelBar);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoPanelBar').linkViewModel(this);

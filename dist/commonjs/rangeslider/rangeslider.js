@@ -24,7 +24,7 @@ var RangeSlider = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(RangeSlider, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -35,7 +35,7 @@ var RangeSlider = (function () {
   function RangeSlider(element, widgetBase) {
     _classCallCheck(this, _RangeSlider);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoRangeSlider').linkViewModel(this).useValueBinding();

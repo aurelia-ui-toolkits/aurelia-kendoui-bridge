@@ -11,7 +11,7 @@ import 'kendo.dataviz.treemap.min';
 @inject(Element, WidgetBase)
 export class TreeMap {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

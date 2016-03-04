@@ -10,7 +10,7 @@ import 'kendo.draganddrop.min';
 @inject(Element, WidgetBase)
 export class Draggabke {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

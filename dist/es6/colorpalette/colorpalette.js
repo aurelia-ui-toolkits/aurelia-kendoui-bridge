@@ -10,13 +10,14 @@ import 'kendo.colorpicker.min';
 @inject(Element, WidgetBase)
 export class ColorPalette {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoColorPalette')
-                        .linkViewModel(this);
+                        .linkViewModel(this)
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -30,6 +31,10 @@ export class ColorPalette {
       element: this.element,
       parentCtx: this.$parent
     });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {

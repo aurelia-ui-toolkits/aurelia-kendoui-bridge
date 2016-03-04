@@ -24,7 +24,7 @@ var ListView = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(ListView, [{
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -40,7 +40,7 @@ var ListView = (function () {
   function ListView(element, widgetBase, viewResources) {
     _classCallCheck(this, _ListView);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
@@ -58,6 +58,8 @@ var ListView = (function () {
   };
 
   ListView.prototype.recreate = function recreate() {
+    this.widgetBase.useTemplates(this, 'kendoListView', this.templates);
+
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent

@@ -13,7 +13,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _instanceInitializers = {};
 
     _createDecoratedClass(ColorPalette, [{
-      key: 'options',
+      key: 'kOptions',
       decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
@@ -24,10 +24,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     function ColorPalette(element, widgetBase) {
       _classCallCheck(this, _ColorPalette);
 
-      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoColorPalette').linkViewModel(this);
+      this.widgetBase = widgetBase.control('kendoColorPalette').linkViewModel(this).useValueBinding();
     }
 
     ColorPalette.prototype.bind = function bind(ctx) {
@@ -41,6 +41,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
         element: this.element,
         parentCtx: this.$parent
       });
+    };
+
+    ColorPalette.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+      this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
     ColorPalette.prototype.detached = function detached() {

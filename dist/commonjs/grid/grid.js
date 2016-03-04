@@ -37,7 +37,7 @@ var Grid = (function () {
     initializer: null,
     enumerable: true
   }, {
-    key: 'options',
+    key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return {};
@@ -50,7 +50,7 @@ var Grid = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.optionsBuilder = optionsBuilder;

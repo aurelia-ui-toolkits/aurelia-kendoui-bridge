@@ -10,24 +10,16 @@ function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _des
 
 var _aureliaTemplating = require('aurelia-templating');
 
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
 var _commonConstants = require('../common/constants');
 
 var _commonDecorators = require('../common/decorators');
 
-var _commonUtil = require('../common/util');
+var _commonTemplateGatherer = require('../common/template-gatherer');
 
 var Col = (function () {
   var _instanceInitializers = {};
-
-  function Col() {
-    _classCallCheck(this, _Col);
-
-    _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
-  }
-
-  Col.prototype.bind = function bind() {
-    _commonUtil.useTemplates(this, 'GridColumn', this.templates);
-  };
 
   _createDecoratedClass(Col, [{
     key: 'templates',
@@ -36,7 +28,20 @@ var Col = (function () {
     enumerable: true
   }], null, _instanceInitializers);
 
+  function Col(templateGatherer) {
+    _classCallCheck(this, _Col);
+
+    _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
+
+    this.templateGatherer = templateGatherer;
+  }
+
+  Col.prototype.bind = function bind() {
+    this.templateGatherer.useTemplates(this, 'GridColumn', this.templates);
+  };
+
   var _Col = Col;
+  Col = _aureliaDependencyInjection.inject(_commonTemplateGatherer.TemplateGatherer)(Col) || Col;
   Col = _commonDecorators.generateBindables('GridColumn')(Col) || Col;
   Col = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'col')(Col) || Col;
   return Col;

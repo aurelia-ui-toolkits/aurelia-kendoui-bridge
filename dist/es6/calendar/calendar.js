@@ -10,7 +10,7 @@ import 'kendo.calendar.min';
 @inject(Element, WidgetBase)
 export class Calendar {
 
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;

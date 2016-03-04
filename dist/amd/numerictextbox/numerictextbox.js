@@ -13,7 +13,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _instanceInitializers = {};
 
     _createDecoratedClass(NumericTextBox, [{
-      key: 'options',
+      key: 'kOptions',
       decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
         return {};
@@ -24,7 +24,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     function NumericTextBox(element, widgetBase) {
       _classCallCheck(this, _NumericTextBox);
 
-      _defineDecoratedPropertyDescriptor(this, 'options', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
       this.element = element;
       this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this).useValueBinding();
@@ -32,7 +32,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     NumericTextBox.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+    };
 
+    NumericTextBox.prototype.attached = function attached() {
       this.recreate();
     };
 

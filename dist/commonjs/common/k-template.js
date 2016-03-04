@@ -29,6 +29,13 @@ var Template = (function () {
       return 'template';
     },
     enumerable: true
+  }, {
+    key: 'kendoTemplate',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
   }], null, _instanceInitializers);
 
   function Template(targetInstruction) {
@@ -37,6 +44,8 @@ var Template = (function () {
     _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'for', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'kendoTemplate', _instanceInitializers);
 
     this.template = targetInstruction.elementInstruction.template;
   }

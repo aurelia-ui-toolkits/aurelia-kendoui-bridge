@@ -15,7 +15,7 @@ import 'kendo.grid.min';
 export class Grid  {
 
   @children(`${constants.elementPrefix}col`) columns;
-  @bindable options = {};
+  @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;
