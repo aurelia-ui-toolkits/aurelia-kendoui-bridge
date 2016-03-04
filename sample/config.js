@@ -14,7 +14,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
     "kendo.*": "src/root/vendors/js/kendo.*.js",
-    "kendo-ui/*": "src/root/vendors/*",
+    "kendo-ui/*": "src/root/vendors/*"
   },
 
   meta: {
@@ -46,13 +46,13 @@ System.config({
     "clean-css": "npm:clean-css@3.4.8",
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
+    "doc": "root/doc",
     "font-awesome": "npm:font-awesome@4.5.0",
     "gka/chroma.js": "github:gka/chroma.js@1.1.1",
     "google/code-prettify": "github:google/code-prettify@master",
     "jquery": "github:components/jquery@2.1.4",
     "jquery.min": "github:components/jquery@2.1.4",
     "json": "github:systemjs/plugin-json@0.1.0",
-    "doc": "root/doc",
     "prism": "github:PrismJS/prism@1.3.0",
     "showdown": "github:showdownjs/showdown@1.3.0",
     "showdown-prettify": "npm:showdown-prettify@1.3.0",
