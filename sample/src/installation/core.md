@@ -53,3 +53,5 @@ Now we're going to register the plugin with Aurelia in your "main.js" or equival
 It is now possible to drop some custom-elements into your DOM. See the other pages on this website for detailed information on how to do this.
 
 **We recommend that you read [these instructions](#/help/docs/app_developers_tutorials/7._what_you_need_to_know) in order to get started**
+
+**Loading all wrappers too slow? Lazy loading of wrappers is also possible: [instructions](#/help/docs/app_developers_notes/3._lazy_loading_wrappers)**
