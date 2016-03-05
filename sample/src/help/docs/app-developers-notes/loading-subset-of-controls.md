@@ -1,4 +1,8 @@
-### Loading subset of controls
+<br>
+
+### 2. Loading subset of controls
+<br>
+
 You may want to load only a subset of the controls Kendo provide. This is possible with the aurelia-kendoui-bridge.
 
 When you do the following in `main.js`:
@@ -13,7 +17,9 @@ Instead of calling the `.pro()` function, a builder pattern can be used here:
 
 Notice that instead of calling the `pro()` function, we tell the plugin to load only the button and the grid.
 
+<br>
 #### Special functions
+<br>
 
 `.kendoTemplateSupport()` - will load the `<k-template>` custom element necessary for custom templates in a Kendo control.
 

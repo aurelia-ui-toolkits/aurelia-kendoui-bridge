@@ -94,8 +94,15 @@
       {
         "name": "1. Current limitations",
         "path": "help/docs/app-developers-notes/current-limitations.md"
+      },
+      {
+        "name": "2. Loading subset of controls",
+        "path": "help/docs/app-developers-notes/loading-subset-of-controls.md"
+      },
+      {
+        "name": "3. Lazy loading wrappers",
+        "path": "help/docs/app-developers-notes/lazy-loading-wrappers.md"
       }
-
     ],
 
     "Bridge developers tutorials":
