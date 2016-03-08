@@ -46,7 +46,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         ColorPalette.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        ColorPalette.prototype.attached = function attached() {
           this.recreate();
         };
 

@@ -46,7 +46,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         DatePicker.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        DatePicker.prototype.attached = function attached() {
           this.recreate();
         };
 

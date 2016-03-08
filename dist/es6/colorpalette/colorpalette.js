@@ -22,7 +22,9 @@ export class ColorPalette {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 

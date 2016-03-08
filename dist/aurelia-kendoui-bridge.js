@@ -810,7 +810,9 @@ export class ColorPalette {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -1711,7 +1713,9 @@ export class DatePicker {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -1748,7 +1752,9 @@ export class DateTimePicker {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -3162,7 +3168,9 @@ export class TimePicker {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 

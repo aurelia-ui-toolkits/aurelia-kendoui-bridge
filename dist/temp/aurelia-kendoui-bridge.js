@@ -970,7 +970,9 @@ var ColorPalette = (function () {
 
   ColorPalette.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  ColorPalette.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -1798,7 +1800,9 @@ var DatePicker = (function () {
 
   DatePicker.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  DatePicker.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -1849,7 +1853,9 @@ var DateTimePicker = (function () {
 
   DateTimePicker.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  DateTimePicker.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -3881,7 +3887,9 @@ var TimePicker = (function () {
 
   TimePicker.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  TimePicker.prototype.attached = function attached() {
     this.recreate();
   };
 

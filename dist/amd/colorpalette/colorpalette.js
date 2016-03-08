@@ -32,7 +32,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     ColorPalette.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+    };
 
+    ColorPalette.prototype.attached = function attached() {
       this.recreate();
     };
 

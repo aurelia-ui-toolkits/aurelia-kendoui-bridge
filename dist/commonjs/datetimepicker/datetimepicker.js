@@ -43,7 +43,9 @@ var DateTimePicker = (function () {
 
   DateTimePicker.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  DateTimePicker.prototype.attached = function attached() {
     this.recreate();
   };
 

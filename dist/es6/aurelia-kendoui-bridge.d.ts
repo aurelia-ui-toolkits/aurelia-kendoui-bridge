@@ -239,6 +239,7 @@ declare module 'aurelia-kendoui-bridge' {
     kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
+    attached(): any;
     recreate(): any;
     propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
@@ -547,6 +548,7 @@ declare module 'aurelia-kendoui-bridge' {
     kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
+    attached(): any;
     recreate(): any;
     propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
@@ -555,6 +557,7 @@ declare module 'aurelia-kendoui-bridge' {
     kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
+    attached(): any;
     recreate(): any;
     propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
@@ -871,6 +874,7 @@ declare module 'aurelia-kendoui-bridge' {
     kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
+    attached(): any;
     recreate(): any;
     propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;

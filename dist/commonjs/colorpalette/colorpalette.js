@@ -43,7 +43,9 @@ var ColorPalette = (function () {
 
   ColorPalette.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  ColorPalette.prototype.attached = function attached() {
     this.recreate();
   };
 

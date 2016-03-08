@@ -1,3 +1,13 @@
+<a name="0.5.1"></a>
+## [0.5.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.5.0...v0.5.1) (2016-03-08)
+
+
+### Bug Fixes
+
+* **all:** delay initialization for some controls ([50bde02](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/50bde02))
+
+
+
 <a name="0.5.0"></a>
 # [0.5.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.4.2...v0.5.0) (2016-03-04)
 

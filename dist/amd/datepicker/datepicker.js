@@ -32,7 +32,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     DatePicker.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+    };
 
+    DatePicker.prototype.attached = function attached() {
       this.recreate();
     };
 

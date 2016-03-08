@@ -53,7 +53,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         TimePicker.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        TimePicker.prototype.attached = function attached() {
           this.recreate();
         };
 
