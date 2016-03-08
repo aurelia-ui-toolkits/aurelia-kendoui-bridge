@@ -58,4 +58,10 @@ export class Events {
     'Wisconsin',
     'Wyoming'
   ];
+
+  onSelect(e) {
+    let autocomplete = e.sender;
+    let dataItem = autocomplete.dataItem(e.item.index());
+    this.logger.log(`select: ${dataItem}`);
+  }
 }
