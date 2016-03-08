@@ -22,7 +22,9 @@ export class DatePicker {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
