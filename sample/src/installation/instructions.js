@@ -9,12 +9,16 @@ export class Instructions {
     this.taskqueue = taskqueue;
   }
 
-  activate(params) {
-    this.params = params;
+  activate(params, route) {
+    this.route = route;
   }
 
   attached() {
-    let type = this.params.type;
+    let type = this.route.route;
+
+    if (type === 'jspm-git') {
+      type = 'jspmGit';
+    }
 
     this.taskqueue.queueTask(() => {
       this.tabstrip.select(this[type]);

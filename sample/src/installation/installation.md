@@ -1,9 +1,4 @@
 <br>
-## Important note
-
-Make sure to use Kendo UI **v2016.1.118** or higher if you decided to use the third alternative **Having KendoUI already: Vendors** and you only have the KendoUI trial version. Until Telerik fixes the problem and releases a new version of the trial package, please get this **[vendors folder](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/tree/master/vendors)**.
-
-* * *
 
 ### Installation
 To get you started, we have come up with three different installation methods for KendoUI. Below, we will explain these method, so you can decide which installation method to use. After installation, we recommend that you read [these instructions](#/help/docs/app_developers_tutorials/7._what_you_need_to_know) in order to get started using the bridge.

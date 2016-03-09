@@ -31,13 +31,13 @@ and use the following responses to the prompts you will get:
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
     "kendo:*": "jspm_packages/kendo/*",
-    "kendo.*": "jspm_packages/kendo/bower-kendo-ui@2016.1.120/js/kendo.*.js"    <----
+    "kendo.*": "jspm_packages/kendo/bower-kendo-ui@2016.1.226+SP1/js/kendo.*.js"    <----
   },
   "map": {
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
     "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
-    "kendo-ui": "kendo:bower-kendo-ui@2016.1.120",
+    "kendo-ui": "kendo:bower-kendo-ui@2016.1.226+SP1",
     "jquery": "github:components/jquery@2.1.4",             <----
     "jquery.min": "github:components/jquery@2.1.4"          <----
   }

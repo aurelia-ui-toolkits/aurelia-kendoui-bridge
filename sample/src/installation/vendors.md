@@ -1,8 +1,4 @@
-## Important note
-
-Make sure to use Kendo UI **v2016.1.118** or higher if you decided to use the third alternative **Having KendoUI already: Vendors** and you only have the KendoUI trial version. Until Telerik fixes the problem and releases a new version of the trial package, please get this **[vendors folder](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/tree/master/vendors)**.
-
-* * *
+<br>
 
 ### Vendors
 
@@ -28,7 +24,8 @@ Make sure to use Kendo UI **v2016.1.118** or higher if you decided to use the th
     }
     ```
 
-  **Note:** you may have to update the version of Kendo when adding these mappings. Improvements are tracked [here](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/272)
+  **Note:** you may have to update the version of Kendo when adding these mappings.
+
 5. Install the aurelia-kendoui-bridge and the css plugin
 `jspm install aurelia-kendoui-bridge css`
 
