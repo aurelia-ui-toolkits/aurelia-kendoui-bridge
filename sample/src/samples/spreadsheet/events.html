@@ -1,11 +1,11 @@
 <template>
   <div id="example">
-    <k-spreadsheet style="width: 100%"
+    <ak-spreadsheet style="width: 100%"
                    k-sheets.bind="sheets"
                    k-on-change.delegate="onChange($event.detail)"
                    k-on-render.delegate="logger.log('render')"
                    k-on-excel-export.delegate="logger.log('excel export')">
-    </k-spreadsheet>
+    </ak-spreadsheet>
 
     <div class="box">
       <h4>Console log</h4>

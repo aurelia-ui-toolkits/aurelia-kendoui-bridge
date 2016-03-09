@@ -1,18 +1,18 @@
 <template>
   <require from="./position-and-stacking.css"></require>
 
-  <k-notification id="centeredNotification"
+  <ak-notification id="centeredNotification"
                   k-stacking="down",
                   k-on-show.delegate="onShow($event.detail)"
-                  k-widget.bind="centered"></k-notification>
-  <k-notification id="configurableNotification"
-                  k-widget.bind="configurable"></k-notification>
+                  k-widget.bind="centered"></ak-notification>
+  <ak-notification id="configurableNotification"
+                  k-widget.bind="configurable"></ak-notification>
 
   <div class="demo-section k-content">
     <div class="box-col">
       <h4>Centered notification:</h4>
       <ul>
-        <li><button k-button click.delegate="showNotification()">Show centered notification</button></li>
+        <li><button ak-button click.delegate="showNotification()">Show centered notification</button></li>
       </ul>
     </div>
 
@@ -21,23 +21,23 @@
       <ul>
         <li>
           <label for="left">Left position:</label>
-          <input type="number" k-numerictextbox="k-options.bind: numericOptions; k-widget.two-way: left" />
+          <input type="number" ak-numerictextbox="k-options.bind: numericOptions; k-widget.two-way: left" />
         </li>
         <li>
           <label for="left">Top position:</label>
-          <input type="number" k-numerictextbox="k-options.bind: numericOptions; k-widget.two-way: top" />
+          <input type="number" ak-numerictextbox="k-options.bind: numericOptions; k-widget.two-way: top" />
         </li>
         <li>
           <label for="left">Right position:</label>
-          <input type="number" k-numerictextbox="k-options.bind: numericOptions; k-widget.two-way: right" value="20" />
+          <input type="number" ak-numerictextbox="k-options.bind: numericOptions; k-widget.two-way: right" value="20" />
         </li>
         <li>
           <label for="left">Bottom position:</label>
-          <input type="number" k-numerictextbox="k-options.bind: numericOptions; k-widget.two-way: bottom" value="20" />
+          <input type="number" ak-numerictextbox="k-options.bind: numericOptions; k-widget.two-way: bottom" value="20" />
         </li>
         <li>
           <label for="stacking">Notification stacking:</label>
-          <k-drop-down-list k-value.two-way="stacking"
+          <ak-drop-down-list k-value.two-way="stacking"
                             k-on-change.delegate="applyConfiguration()"
                             style="display: inline-block">
             <select id="stacking" style="width:6em">
@@ -47,9 +47,9 @@
               <option>down</option>
               <option>left</option>
             </select>
-          </k-drop-down-list>
+          </ak-drop-down-list>
         </li>
-        <li><button k-button click.delegate="showConfigurable()">Show notification</button></li>
+        <li><button ak-button click.delegate="showConfigurable()">Show notification</button></li>
         <li><p class="demo-hint">Top / Left position settings take precedence over Bottom / Right, if both pairs are set.</p></li>
 
       </ul>
@@ -58,7 +58,7 @@
     <div class="box-col">
       <h4>Hide notification:</h4>
       <ul>
-        <li><button k-button click.delegate="hideAllNotifications()">Hide all notifications</button></li>
+        <li><button ak-button click.delegate="hideAllNotifications()">Hide all notifications</button></li>
       </ul>
     </div>
   </div>

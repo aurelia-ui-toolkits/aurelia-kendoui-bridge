@@ -1,7 +1,7 @@
 <template>
   <require from="./task-template.css"></require>
   <div id="example">
-    <k-gantt k-data-source.bind="tasksDataSource"
+    <ak-gantt k-data-source.bind="tasksDataSource"
              k-dependencies.bind="dependenciesDataSource"
              k-assignments.bind="assignments"
              k-resources.bind="resources"
@@ -11,7 +11,7 @@
              k-show-work-hours.bind="false"
              k-show-work-days.bind="false"
              k-snap.bind="false">
-      <k-template for="taskTemplate" kendo-template.bind="true">
+      <ak-template for="taskTemplate" kendo-template.bind="true">
         # if (resources[0]) { #
         <div class="template" style="background-color: #= resources[0].color #;">
             <img class="resource-img" src="http://demos.telerik.com/kendo-ui/content/web/gantt/resources/#:resources[0].id#.jpg" alt="#: resources[0].id #" />
@@ -30,9 +30,9 @@
             <div class="progress" style="width:#= (100 * parseFloat(percentComplete)) #%"> </div>
         </div>
         # } #
-      </k-template>
-      <k-gantt-col k-field="title" k-title="Title" k-editable.bind="true" k-sortable.bind="true" k-width.bind="200"></k-gantt-col>
-      <k-gantt-col k-field="resources" k-title="Assigned resources" k-editable.bind="true"></k-gantt-col>
-    </k-gantt>
+      </ak-template>
+      <ak-gantt-col k-field="title" k-title="Title" k-editable.bind="true" k-sortable.bind="true" k-width.bind="200"></ak-gantt-col>
+      <ak-gantt-col k-field="resources" k-title="Assigned resources" k-editable.bind="true"></ak-gantt-col>
+    </ak-gantt>
   </div>
 </template>

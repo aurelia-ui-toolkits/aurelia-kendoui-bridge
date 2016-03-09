@@ -1,19 +1,19 @@
 <template>
   <div id="example">
     <div class="demo-section k-content wide">
-      <k-toolbar k-on-click.delegate="click($event.detail)"
+      <ak-toolbar k-on-click.delegate="click($event.detail)"
                  k-on-toggle.delegate="toggle($event.detail)"
                  k-on-overflow-open.delegate="overflowOpen($event.detail)"
                  k-on-overflow-close.delegate="overflowClose($event.detail)"
                  k-on-open.delegate="open($event.detail)"
                  k-on-close.delegate="close($event.detail)">
-        <k-toolbar-item k-type="button" k-id="button1" k-text="Button 1" k-click.call="buttonClickHandler($event)"></k-toolbar-item>
-        <k-toolbar-item k-type="button" k-id="button2" k-text="Button 2" k-click.call="buttonClickHandler($event)"></k-toolbar-item>
-        <k-toolbar-item k-type="separator"></k-toolbar-item>
-        <k-toolbar-item k-type="button" k-id="toggle1" k-text="Toggle 1" k-togglable.bind="true" k-toggle.call="buttonToggleHandler($event)"></k-toolbar-item>
-        <k-toolbar-item k-type="button" k-id="toggle2" k-text="Toggle 2" k-togglable.bind="true" k-toggle.call="buttonToggleHandler($event)"></k-toolbar-item>
-        <k-toolbar-item k-type="separator"></k-toolbar-item>
-        <k-toolbar-item k-type="splitButton"
+        <ak-toolbar-item k-type="button" k-id="button1" k-text="Button 1" k-click.call="buttonClickHandler($event)"></ak-toolbar-item>
+        <ak-toolbar-item k-type="button" k-id="button2" k-text="Button 2" k-click.call="buttonClickHandler($event)"></ak-toolbar-item>
+        <ak-toolbar-item k-type="separator"></ak-toolbar-item>
+        <ak-toolbar-item k-type="button" k-id="toggle1" k-text="Toggle 1" k-togglable.bind="true" k-toggle.call="buttonToggleHandler($event)"></ak-toolbar-item>
+        <ak-toolbar-item k-type="button" k-id="toggle2" k-text="Toggle 2" k-togglable.bind="true" k-toggle.call="buttonToggleHandler($event)"></ak-toolbar-item>
+        <ak-toolbar-item k-type="separator"></ak-toolbar-item>
+        <ak-toolbar-item k-type="splitButton"
                         k-id="mainButton"
                         k-text="Split Button"
                         k-click.call="splitButtonClickHandler($event)"
@@ -21,9 +21,9 @@
           { text: 'Action 1', id: 'action1' },
           { text: 'Action 2', id: 'action2' },
           { text: 'Action 3', id: 'action3' }
-        ]"></k-toolbar-item>
-        <k-toolbar-item k-type="separator"></k-toolbar-item>
-        <k-toolbar-item k-type="splitButton"
+        ]"></ak-toolbar-item>
+        <ak-toolbar-item k-type="separator"></ak-toolbar-item>
+        <ak-toolbar-item k-type="splitButton"
                         k-id="mainButton"
                         k-text="Split Button"
                         k-click.call="splitButtonClickHandler($event)"
@@ -32,15 +32,15 @@
           { text: 'Action 2', id: 'action2' },
           { text: 'Action 3', id: 'action3' }
         ]">
-        </k-toolbar-item>
-        <k-toolbar-item k-type="separator"></k-toolbar-item>
-        <k-toolbar-item k-type="buttonGroup">
-          <k-toolbar-item-button k-text="Radio 1" k-id="radio1" k-togglable.bind="true" k-group="radio" k-toggle.call="buttonToggleHandler($event)"></k-toolbar-item-button>
-          <k-toolbar-item-button k-text="Radio 2" k-id="radio2" k-togglable.bind="true" k-group="radio" k-toggle.call="buttonToggleHandler($event)"></k-toolbar-item-button>
-          <k-toolbar-item-button k-text="Radio 3" k-id="radio3" k-togglable.bind="true" k-group="radio" k-toggle.call="buttonToggleHandler($event)"></k-toolbar-item-button>
-        </k-toolbar-item>
-        <k-toolbar-item k-type="button" k-id="overflowButton" k-text="Overflow button" k-overflow="always"></k-toolbar-item>
-      </k-toolbar>
+        </ak-toolbar-item>
+        <ak-toolbar-item k-type="separator"></ak-toolbar-item>
+        <ak-toolbar-item k-type="buttonGroup">
+          <ak-toolbar-item-button k-text="Radio 1" k-id="radio1" k-togglable.bind="true" k-group="radio" k-toggle.call="buttonToggleHandler($event)"></ak-toolbar-item-button>
+          <ak-toolbar-item-button k-text="Radio 2" k-id="radio2" k-togglable.bind="true" k-group="radio" k-toggle.call="buttonToggleHandler($event)"></ak-toolbar-item-button>
+          <ak-toolbar-item-button k-text="Radio 3" k-id="radio3" k-togglable.bind="true" k-group="radio" k-toggle.call="buttonToggleHandler($event)"></ak-toolbar-item-button>
+        </ak-toolbar-item>
+        <ak-toolbar-item k-type="button" k-id="overflowButton" k-text="Overflow button" k-overflow="always"></ak-toolbar-item>
+      </ak-toolbar>
 
       <div class="box">
           <h4>Console log</h4>

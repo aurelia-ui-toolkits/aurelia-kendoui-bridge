@@ -1,21 +1,21 @@
 <template>
   <div id="frozen-columns-treelist">
-    <k-tree-list k-data-source.bind="dataSource"
+    <ak-tree-list k-data-source.bind="dataSource"
                  k-reorderable.bind="true"
                  k-resizable.bind="true"
                  k-sortable.bind="true"
                  k-filterable.bind="true"
                  k-column-menu.bind="true">
-      <k-tree-col k-field="FirstName"
+      <ak-tree-col k-field="FirstName"
                   k-expandable.bind="true"
                   k-title="First Name"
                   k-width.bind="250"
                   k-locked.bind="true"
-                  k-lockable.bind="false"></k-tree-col>
-      <k-tree-col k-field="LastName" k-title="Last Name" k-locked.bind="true" k-width.bind="200"></k-tree-col>
-      <k-tree-col k-field="Position" k-width.bind="400"></k-tree-col>
-      <k-tree-col k-field="Extension" k-title="Ext" k-width.bind="150" k-format="{0:#}" k-lockable.bind="false"></k-tree-col>
-    </k-tree-list>
+                  k-lockable.bind="false"></ak-tree-col>
+      <ak-tree-col k-field="LastName" k-title="Last Name" k-locked.bind="true" k-width.bind="200"></ak-tree-col>
+      <ak-tree-col k-field="Position" k-width.bind="400"></ak-tree-col>
+      <ak-tree-col k-field="Extension" k-title="Ext" k-width.bind="150" k-format="{0:#}" k-lockable.bind="false"></ak-tree-col>
+    </ak-tree-list>
   </div>
 
   <style>

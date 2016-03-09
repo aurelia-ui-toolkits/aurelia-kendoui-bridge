@@ -2,7 +2,7 @@
   <require from="./api.css"></require>
   <div id="example">
     <div class="demo-section k-content">
-      <div k-barcode="k-widget.two-way: barcode; k-value: 1234567; k-type: ean8; k-background: transparent"></div>
+      <div ak-barcode="k-widget.two-way: barcode; k-value: 1234567; k-type: ean8; k-background: transparent"></div>
     </div>
 
     <div class="box wide">
@@ -18,12 +18,12 @@
         <ul class="options second-col">
           <li>
             <label for="type">Encoding:</label>
-            <k-drop-down-list k-data-source.bind="typesDataSource"
+            <ak-drop-down-list k-data-source.bind="typesDataSource"
                               k-on-change.delegate="setOptions()"
                               k-value.two-way="type"
                               k-data-text-field="type"
                               k-data-value-field="type">
-            </k-drop-down-list>
+            </ak-drop-down-list>
           </li>
           <li>
             <label for="value">Value:</label><input class="k-textbox" value.bind="value"/>

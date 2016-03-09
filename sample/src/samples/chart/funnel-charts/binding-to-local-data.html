@@ -6,22 +6,22 @@
         <div id="after"></div>
         <div class="row">
             <div class="col-xs-12 col-sm-6">
-                <k-chart  k-title.bind="{text: 'Before optimization'}"
+                <ak-chart  k-title.bind="{text: 'Before optimization'}"
                           style="height: 256px"
                           k-data-source.bind="dataBefore"
                           k-legend.bind="{ visible: false }"
                           k-series.bind="seriesBefore"
                           k-tooltip.bind="tooltip">
-                </k-chart>
+                </ak-chart>
             </div>
             <div class="col-xs-12 col-sm-6">
-                <k-chart  k-title.bind="{text: 'After optimization'}"
+                <ak-chart  k-title.bind="{text: 'After optimization'}"
                           style="height: 256px"
                           k-data-source.bind="dataAfter"
                           k-legend.bind="{ visible: false }"
                           k-series.bind="seriesAfter"
                           k-tooltip.bind="tooltip">
-                </k-chart>
+                </ak-chart>
             </div>
         </div>
       </div>

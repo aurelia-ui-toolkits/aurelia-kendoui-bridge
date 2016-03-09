@@ -27,7 +27,7 @@
             <ul class="paper">
               <li>
                 <label for="paper-size">Paper Size</label>
-                <k-drop-down-list>
+                <ak-drop-down-list>
                   <select id="paper-size" name="options.PaperSize">
                     <option>A0</option>
                     <option>A1</option>
@@ -37,16 +37,16 @@
                     <option>Letter</option>
                     <option>Legal</option>
                   </select>
-                </k-drop-down-list>
+                </ak-drop-down-list>
               </li>
               <li>
                 <label for="orientation">Orientation</label>
-                <k-drop-down-list>
+                <ak-drop-down-list>
                   <select id="orientation" name="options.Orientation">
                     <option>Portrait</option>
                     <option selected="selected">Landscape</option>
                   </select>
-                </k-drop-down-list>
+                </ak-drop-down-list>
               </li>
             </ul>
           </div>
@@ -55,19 +55,19 @@
             <ul class="margins">
               <li>
                 <label for="margin-top">Top</label>
-                <input id="margin-top" name="options.Margins.Top" k-numerictextbox="k-format: n; k-min.bind: 0; k-max.bind: 10" value="2"/>
+                <input id="margin-top" name="options.Margins.Top" ak-numerictextbox="k-format: n; k-min.bind: 0; k-max.bind: 10" value="2"/>
               </li>
               <li>
                 <label for="margin-right">Right</label>
-                <input id="margin-top" name="options.Margins.Right" k-numerictextbox="k-format: n; k-min.bind: 0; k-max.bind: 10" value="1"/>
+                <input id="margin-top" name="options.Margins.Right" ak-numerictextbox="k-format: n; k-min.bind: 0; k-max.bind: 10" value="1"/>
               </li>
               <li>
                 <label for="margin-bottom">Bottom</label>
-                <input id="margin-top" name="options.Margins.Bottom" k-numerictextbox="k-format: n; k-min.bind: 0; k-max.bind: 10" value="1"/>
+                <input id="margin-top" name="options.Margins.Bottom" ak-numerictextbox="k-format: n; k-min.bind: 0; k-max.bind: 10" value="1"/>
               </li>
               <li>
                 <label for="margin-left">Left</label>
-                <input id="margin-top" name="options.Margins.Left" k-numerictextbox="k-format: n; k-min.bind: 0; k-max.bind: 10" value="2"/>
+                <input id="margin-top" name="options.Margins.Left" ak-numerictextbox="k-format: n; k-min.bind: 0; k-max.bind: 10" value="2"/>
               </li>
             </ul>
           </div>
@@ -95,9 +95,9 @@
       </form>
     </div>
 
-    <k-spreadsheet style="width: 100%"
+    <ak-spreadsheet style="width: 100%"
                    k-widget.bind="spreadsheet"
                    k-sheets.bind="sheets">
-    </k-spreadsheet>
+    </ak-spreadsheet>
   </div>
 </template>

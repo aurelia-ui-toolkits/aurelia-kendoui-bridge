@@ -5,17 +5,17 @@
             <img src="http://demos.telerik.com/kendo-ui/content/web/combobox/tShirt.png" id="tshirt"/>
 
             <h4>T-shirt fabric</h4>
-            <k-combobox k-data-text-field="text"
+            <ak-combobox k-data-text-field="text"
                     					k-data-value-field="value"
                               k-data-source.bind="data"
                               k-value.two-way="fabric"
                               k-filter="contains"
                               k-suggest.bind="true"
                               style="width: 100%;">
-            </k-combobox>
+            </ak-combobox>
 
             <h4 style="margin-top: 2em;">T-shirt Size</h4>
-            <k-combobox k-value.two-way="size">
+            <ak-combobox k-value.two-way="size">
               <select style="width: 100%;">
                 <option>X-Small</option>
                 <option>Small</option>
@@ -24,7 +24,7 @@
                 <option>X-Large</option>
                 <option>2X-Large</option>
               </select>
-            </k-combobox>
+            </ak-combobox>
 
             <button class="k-button k-primary" click.delegate="buyCap()" style="margin-top: 2em; float: right;">Customize</button>
         </div>

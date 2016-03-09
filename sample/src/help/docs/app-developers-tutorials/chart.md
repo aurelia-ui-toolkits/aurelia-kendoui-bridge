@@ -17,14 +17,14 @@ Unlike the previous two controls, Chart is represented (by Aurelia KendoUI bridg
         <br>
         <br>
 
-        <k-chart    k-title.bind="{text: 'Gross Domestic product growth \n /GDP annual %/'}"
+        <ak-chart    k-title.bind="{text: 'Gross Domestic product growth \n /GDP annual %/'}"
                     k-legend.bind="{position: 'bottom'}"
                     k-series-defaults.bind="seriesDefaults"
                     k-series.bind="series"
                     k-value-axis.bind="valueAxis"
                     k-category-axis.bind="categoryAxis"
                     k-tooltip.bind="tooltip">
-        </k-chart>
+        </ak-chart>
     </section>
 </template>
 ```

@@ -1,14 +1,14 @@
 <template>
-  <k-grid style="margin-bottom: 20px"
+  <ak-grid style="margin-bottom: 20px"
           k-height.bind="550"
           k-editable.bind="true"
           k-sortable.bind="true"
           k-toolbar.bind="['create']"
           k-data-source.bind="dataSource">
-    <k-col k-field="UnitPrice"></k-col>
-    <k-col k-field="ProductName"></k-col>
-    <k-col k-command="destroy" k-width.bind="150"></k-col>
-  </k-grid>
+    <ak-col k-field="UnitPrice"></ak-col>
+    <ak-col k-field="ProductName"></ak-col>
+    <ak-col k-command="destroy" k-width.bind="150"></ak-col>
+  </ak-grid>
 
   <span ref="notification"></span>
 </template>

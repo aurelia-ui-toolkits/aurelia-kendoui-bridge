@@ -1,21 +1,21 @@
 <template>
-  <k-tree-list k-data-source.bind="dataSource" k-selectable.bind="true" k-widget.bind="treelist">
-    <k-tree-col k-field="FirstName" k-expandable.bind="true" k-title="First Name"></k-tree-col>
-    <k-tree-col k-field="LastName" k-title="Last Name"></k-tree-col>
-    <k-tree-col k-field="Position"></k-tree-col>
-    <k-tree-col k-field="Extension" k-title="Ext" k-format="{0:#}"></k-tree-col>
-  </k-tree-list>
+  <ak-tree-list k-data-source.bind="dataSource" k-selectable.bind="true" k-widget.bind="treelist">
+    <ak-tree-col k-field="FirstName" k-expandable.bind="true" k-title="First Name"></ak-tree-col>
+    <ak-tree-col k-field="LastName" k-title="Last Name"></ak-tree-col>
+    <ak-tree-col k-field="Position"></ak-tree-col>
+    <ak-tree-col k-field="Extension" k-title="Ext" k-format="{0:#}"></ak-tree-col>
+  </ak-tree-list>
 
   <div class="box wide">
     <div class="box-col">
       <h4>Selection</h4>
       <ul class="options">
         <li>
-          <input type="text" k-numerictextbox="k-value.two-way: selectRowIndex" />
-          <button k-button click.delegate="selectRow()">Select row</button>
+          <input type="text" ak-numerictextbox="k-value.two-way: selectRowIndex" />
+          <button ak-button click.delegate="selectRow()">Select row</button>
         </li>
         <li>
-          <button k-button click.delegate="treelist.clearSelection()">Clear selected rows</button>
+          <button ak-button click.delegate="treelist.clearSelection()">Clear selected rows</button>
         </li>
       </ul>
     </div>
@@ -23,8 +23,8 @@
       <h4>Expand / Collapse</h4>
       <ul class="options">
         <li>
-          <input type="text" k-numerictextbox="k-value.two-way: expandRowIndex"/>
-          <button k-button click.delegate="expandCollapse()">Collapse/Expand group</button>
+          <input type="text" ak-numerictextbox="k-value.two-way: expandRowIndex"/>
+          <button ak-button click.delegate="expandCollapse()">Collapse/Expand group</button>
         </li>
       </ul>
     </div>

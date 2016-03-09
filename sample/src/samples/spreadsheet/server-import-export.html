@@ -17,20 +17,20 @@
       <div class="box-col">
         <h4>Import</h4>
 
-        <k-upload k-widget.two-way="upload"
+        <ak-upload k-widget.two-way="upload"
                   k-async.bind="{ saveUrl: 'https://demos.telerik.com/kendo-ui/spreadsheet/Upload'}"
                   k-multiple.bind="false"
                   k-localization.bind="{ select: 'Select file to import...' }"
                   k-on-select.delegate="select($event.detail)"
                   k-on-success.delegate="success($event.detail)">
           <input type="file" name="file" id="upload" />
-        </k-upload>
+        </ak-upload>
       </div>
     </div>
-    <k-spreadsheet style="width: 100%;"
+    <ak-spreadsheet style="width: 100%;"
                    k-widget.bind="spreadsheet"
                    k-excel.bind="{ proxyURL: '//demos.telerik.com/kendo-ui/service/export' }">
-    </k-spreadsheet>
+    </ak-spreadsheet>
     <style>
     .download { width: 260px; }
     </style>

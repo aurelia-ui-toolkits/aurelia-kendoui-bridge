@@ -6,11 +6,11 @@
             <ul class="options">
                 <li>
                     <label for="newShapeX" style="width: 30px;">X:</label>
-                    <input k-numerictextbox="k-value.two-way: newShapeX" />
+                    <input ak-numerictextbox="k-value.two-way: newShapeX" />
                 </li>
                 <li>
                     <label for="newShapeY" style="width: 30px;">Y:</label>
-                    <input k-numerictextbox="k-value.two-way: newShapeY" />
+                    <input ak-numerictextbox="k-value.two-way: newShapeY" />
                 </li>
                 <li>
                     <button type="button" k-button click.delegate="addShape()">Add</button>
@@ -22,11 +22,11 @@
             <ul class="options">
                 <li>
                     <label for="fromShapeIndex" style="width: 90px;">From Index:</label>
-                    <input k-numerictextbox="k-value.two-way: fromShapeIndex; k-min.bind: 0; k-format: n0; k-decimals.bind: 0" />
+                    <input ak-numerictextbox="k-value.two-way: fromShapeIndex; k-min.bind: 0; k-format: n0; k-decimals.bind: 0" />
                 </li>
                 <li>
                     <label for="toShapeIndex" style="width: 90px;">To Index:</label>
-                    <input k-numerictextbox="k-value.two-way: toShapeIndex; k-min.bind: 0; k-format: n0; k-decimals.bind: 0" />
+                    <input ak-numerictextbox="k-value.two-way: toShapeIndex; k-min.bind: 0; k-format: n0; k-decimals.bind: 0" />
                 </li>
                 <li>
                     <button type="button" k-button click.delegate="addConnection()">Add</button>
@@ -46,7 +46,7 @@
             <ul class="options">
                 <li>
                     <label for="selectShapeIndex">Select At:</label>
-                    <input k-numerictextbox="k-value.two-way: selectShapeIndex; k-min.bind: 0; k-format: n0; k-decimals.bind: 0" />
+                    <input ak-numerictextbox="k-value.two-way: selectShapeIndex; k-min.bind: 0; k-format: n0; k-decimals.bind: 0" />
                 </li>
                 <li>
                     <button type="button" k-button click.delegate="select()">Select</button>
@@ -57,16 +57,16 @@
             <h4>Zoom/Pan</h4>
             <ul class="options">
                 <li>
-                    <input k-slider="k-min.bind: 0.1; k-max.bind: 2; k-show-buttons.bind: false; k-value.two-way: zoom"
+                    <input ak-slider="k-min.bind: 0.1; k-max.bind: 2; k-show-buttons.bind: false; k-value.two-way: zoom"
                            k-on-change.delegate="zoomDiagram()"/>
                 </li>
                 <li>
                     <label for="panX">Pan X:</label>
-                    <input k-numerictextbox="k-value.two-way: panX" />
+                    <input ak-numerictextbox="k-value.two-way: panX" />
                 </li>
                 <li>
                     <label for="panY">Pan Y:</label>
-                    <input k-numerictextbox="k-value.two-way: panY" />
+                    <input ak-numerictextbox="k-value.two-way: panY" />
                 </li>
                 <li>
                     <button type="button" k-button click.delegate="pan()">Pan</button>
@@ -76,9 +76,9 @@
     </div>
 
     <div class="demo-section k-content wide">
-      <k-diagram view-model.ref="diagramVM"
+      <ak-diagram view-model.ref="diagramVM"
                  k-widget.two-way="diagram">
-      </k-diagram>
+      </ak-diagram>
     </div>
   </div>
 </template>

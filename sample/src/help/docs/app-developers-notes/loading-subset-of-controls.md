@@ -21,6 +21,6 @@ Notice that instead of calling the `pro()` function, we tell the plugin to load 
 #### Special functions
 <br>
 
-`.kendoTemplateSupport()` - will load the `<k-template>` custom element necessary for custom templates in a Kendo control.
+`.kendoTemplateSupport()` - will load the `<ak-template>` custom element necessary for custom templates in a Kendo control.
 
 `.useValueConverters();` - will load the value convertes around useful Kendo functions ([link](http://aurelia-ui-toolkits.github.io/demo-kendo/#/samples/valueconverters)).

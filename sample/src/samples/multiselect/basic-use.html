@@ -4,7 +4,7 @@
       <div class="demo-section wide k-content">
         <h2>Invite Attendees</h2>
         <label for="required">Required</label>
-        <k-multiselect k-value.two-way="required">
+        <ak-multiselect k-value.two-way="required">
           <select multiple="multiple" data-placeholder="Select attendees...">
               <option>Steven White</option>
               <option>Nancy King</option>
@@ -26,9 +26,9 @@
               <option>Nige Buchanan</option>
               <option>Laura Fuller</option>
           </select>
-        </k-multiselect>
+        </ak-multiselect>
         <label for="optional">Optional</label>
-        <k-multiselect k-auto-close.bind="false" k-value.two-way="optional">
+        <ak-multiselect k-auto-close.bind="false" k-value.two-way="optional">
           <select multiple="multiple" data-placeholder="Select attendees...">
               <option>Steven White</option>
               <option>Nancy King</option>
@@ -50,9 +50,9 @@
               <option>Nige Buchanan</option>
               <option>Laura Fuller</option>
           </select>
-        </k-multiselect>
+        </ak-multiselect>
 
-        <button k-button click.delegate="showAttendees()">Send Invitation</button>
+        <button ak-button click.delegate="showAttendees()">Send Invitation</button>
       </div>
   </div>
 </template>

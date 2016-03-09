@@ -2,13 +2,13 @@
   <require from="./basic-use.css"></require>
   <div id="example" class="k-content">
     <div id="gauge-container">
-        <k-radial-gauge id="gauge"
+        <ak-radial-gauge id="gauge"
                         k-widget.two-way="gauge"
                         k-pointer.bind="{ value: 65 }"
                         k-scale.bind="{ minorUnit: 5, startAngle: -30, endAngle: 210, max: 180}">
-        </k-radial-gauge>
+        </ak-radial-gauge>
 
-        <input k-slider="k-value.two-way: sliderValue; k-min.bind: 0; k-max.bind: 180; k-show-buttons: false"
+        <input ak-slider="k-value.two-way: sliderValue; k-min.bind: 0; k-max.bind: 180; k-show-buttons: false"
                k-on-change.delegate="updateValue()">
     </div>
    </div>

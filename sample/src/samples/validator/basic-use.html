@@ -11,25 +11,25 @@
             </li>
             <li>
               <label for="search" class="required">Movie</label>
-              <k-autocomplete k-data-source.bind="data" k-separator=", ">
+              <ak-autocomplete k-data-source.bind="data" k-separator=", ">
                 <input type="search" id="search" name="search" required validationMessage="Select movie" style="width: 220px;" /><span class="k-invalid-msg" data-for="search"></span>
-              </k-autocomplete>
+              </ak-autocomplete>
             </li>
             <li>
               <label for="time">Start time</label>
-              <k-drop-down-list>
+              <ak-drop-down-list>
                 <select name="time" id="time" required data-required-msg="Select start time" style="width: 220px;" >
                   <option>14:00</option>
                   <option>15:30</option>
                   <option>17:00</option>
                   <option>20:15</option>
                 </select>
-              </k-drop-down-list>
+              </ak-drop-down-list>
               <span class="k-invalid-msg" data-for="time"></span>
             </li>
             <li>
               <label for="amount">Amount</label>
-              <input id="amount" name="Amount" type="text" k-numerictextbox="k-min.bind: 1; k-max.bind: 10; k-value.bind: 1" required data-max-msg="Enter value between 1 and 10" style="width: 220px;" />
+              <input id="amount" name="Amount" type="text" ak-numerictextbox="k-min.bind: 1; k-max.bind: 10; k-value.bind: 1" required data-max-msg="Enter value between 1 and 10" style="width: 220px;" />
               <span class="k-invalid-msg" data-for="Amount"></span>
             </li>
             <li>

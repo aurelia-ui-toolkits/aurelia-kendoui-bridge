@@ -1,18 +1,18 @@
 <template>
     <require from="./selection.css"></require>
-    <k-list-view k-data-source.bind="dataSource"
+    <ak-list-view k-data-source.bind="dataSource"
                  k-selectable="multiple"
                  k-widget.bind="listView"
                  k-on-data-bound.delegate="dataBound()"
                  k-on-change.delegate="change()">
-      <k-template>
+      <ak-template>
         <div class="product">
             <img src="http://demos.telerik.com/kendo-ui/content/web/foods/${ProductID}.jpg" alt="${ProductName} image" />
             <h3>${ProductName}</h3>
             <p>${UnitPrice}</p>
         </div>
-      </k-template>
-    </k-list-view>
+      </ak-template>
+    </ak-list-view>
 
     <div ref="pager" class="k-pager-wrap"></div>
 

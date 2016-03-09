@@ -1,16 +1,16 @@
 <template>
     <require from="./basic-use.css"></require>
-    <k-tree-list k-data-source.bind="dataSource" k-filterable.bind="true" k-sortable.bind="true" k-height.bind="540">
-      <k-tree-col k-field="FirstName" k-title="First Name" k-width.bind="280">
-        <k-template>
+    <ak-tree-list k-data-source.bind="dataSource" k-filterable.bind="true" k-sortable.bind="true" k-height.bind="540">
+      <ak-tree-col k-field="FirstName" k-title="First Name" k-width.bind="280">
+        <ak-template>
           <div class="employee-photo" style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/treelist/people/${EmployeeID}.jpg);"></div>
           <div class="employee-name">${FirstName}</div>
-        </k-template>
-      </k-tree-col>
-      <k-tree-col k-field="LastName" k-title="Last Name" k-width.bind="160"></k-tree-col>
-      <k-tree-col k-field="Position"></k-tree-col>
-      <k-tree-col k-field="Phone" k-width.bind="200"></k-tree-col>
-      <k-tree-col k-field="Extension" k-width.bind="140"></k-tree-col>
-      <k-tree-col k-field="Address"></k-tree-col>
-    </k-tree-list>
+        </ak-template>
+      </ak-tree-col>
+      <ak-tree-col k-field="LastName" k-title="Last Name" k-width.bind="160"></ak-tree-col>
+      <ak-tree-col k-field="Position"></ak-tree-col>
+      <ak-tree-col k-field="Phone" k-width.bind="200"></ak-tree-col>
+      <ak-tree-col k-field="Extension" k-width.bind="140"></ak-tree-col>
+      <ak-tree-col k-field="Address"></ak-tree-col>
+    </ak-tree-list>
 </template>

@@ -4,8 +4,8 @@
   <a class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Add new record</a>
 
   <div id="listview-editing">
-    <k-list-view k-data-source.bind="dataSource">
-      <k-template>
+    <ak-list-view k-data-source.bind="dataSource">
+      <ak-template>
         <div class="product-view k-widget" data-uid="${uid}">
           <dl>
             <dt>Product Name</dt>
@@ -22,8 +22,8 @@
             <a class="k-button k-delete-button"><span class="k-icon k-delete"></span></a>
           </div>
         </div>
-      </k-template>
-      <k-template for="editTemplate">
+      </ak-template>
+      <ak-template for="editTemplate">
         <div class="product-view k-widget">
           <dl>
             <dt>Product Name</dt>
@@ -49,8 +49,8 @@
             <a class="k-button k-cancel-button"><span class="k-icon k-cancel"></span></a>
           </div>
         </div>
-      </k-template>
-    </k-list-view>
+      </ak-template>
+    </ak-list-view>
 
     <div ref="pager" class="k-pager-wrap"></div>
   </div>

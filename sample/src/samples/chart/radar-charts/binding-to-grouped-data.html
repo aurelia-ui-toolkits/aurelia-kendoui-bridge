@@ -1,5 +1,5 @@
 <template>
-  <k-chart  k-title.bind="{text: 'Wind Rose'}"
+  <ak-chart  k-title.bind="{text: 'Wind Rose'}"
             k-legend.bind="legend"
             k-data-source.bind="dataSource"
             k-series-colors.bind="seriesColors"
@@ -7,5 +7,5 @@
             k-category-axis.bind="{field: 'dirText'}"
             k-value-axis.bind="{visible: false}"
             k-tooltip.bind="{template: '#= category # (#= dataItem.categoryText # m/s) #= value #%', visible: true}">
-  </k-chart>
+  </ak-chart>
 </template>

@@ -3,15 +3,15 @@
     <div class="demo-section k-content">
       <p><strong>People:</strong></p>
 
-      <k-autocomplete k-data-source.bind="items"
+      <ak-autocomplete k-data-source.bind="items"
                       k-value.two-way="selectedValue">
         <input style="width: 100%;">
-      </k-autocomplete>
+      </ak-autocomplete>
 
       <p class="demo-hint" style="word-break: break-all">Type a name, available values in the list are: ${ items } </p>
 
       <p>Selected value: ${selectedValue}</p>
-      <button k-button k-on-click.delegate="selectRandom()">Select random</button>
+      <button ak-button k-on-click.delegate="selectRandom()">Select random</button>
     </div>
   </div>
 </template>

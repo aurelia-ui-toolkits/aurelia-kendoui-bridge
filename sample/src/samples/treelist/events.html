@@ -1,16 +1,16 @@
 <template>
-    <k-tree-list k-data-source.bind="dataSource"
+    <ak-tree-list k-data-source.bind="dataSource"
                  k-on-edit.delegate="onEdit($event.detail.model)"
                  k-on-save.delegate="logger.log('save')"
                  k-on-remove.delegate="logger.log('remove')"
                  k-on-data-bound.delegate="logger.log('dataBound')"
                  k-on-data-binding.delegate="logger.log('dataBinding')">
-      <k-tree-col k-field="FirstName" k-expandable.bind="true" k-title="First Name" k-width.bind="250"></k-tree-col>
-      <k-tree-col k-field="LastName" k-title="Last Name"></k-tree-col>
-      <k-tree-col k-field="HireDate" k-title="Hire Date" k-format="{0:MMMM d, yyyy}"></k-tree-col>
-      <k-tree-col k-field="Extension" k-title="Ext" k-format="{0:#}"></k-tree-col>
-      <k-tree-col k-command.bind="['edit', 'destroy']"></k-tree-col>
-    </k-tree-list>
+      <ak-tree-col k-field="FirstName" k-expandable.bind="true" k-title="First Name" k-width.bind="250"></ak-tree-col>
+      <ak-tree-col k-field="LastName" k-title="Last Name"></ak-tree-col>
+      <ak-tree-col k-field="HireDate" k-title="Hire Date" k-format="{0:MMMM d, yyyy}"></ak-tree-col>
+      <ak-tree-col k-field="Extension" k-title="Ext" k-format="{0:#}"></ak-tree-col>
+      <ak-tree-col k-command.bind="['edit', 'destroy']"></ak-tree-col>
+    </ak-tree-list>
 
     <div class="box">
         <h4>Console log</h4>

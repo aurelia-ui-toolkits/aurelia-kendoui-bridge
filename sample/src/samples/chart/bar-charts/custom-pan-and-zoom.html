@@ -1,5 +1,5 @@
 <template>
-    <k-chart  k-render-as="canvas"
+    <ak-chart  k-render-as="canvas"
               k-data-source.bind="dataSource"
               k-category-axis.bind="{field: 'category'}"
               k-value-axis.bind="{min: 0, max: 12}"
@@ -8,5 +8,5 @@
               k-on-drag.delegate="onDrag($event)"
               k-on-drag-end.delegate="onDragEnd($event)"
               k-on-zoom.delegate="onZoom($event)">
-    </k-chart>
+    </ak-chart>
 </template>

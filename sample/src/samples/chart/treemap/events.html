@@ -1,11 +1,11 @@
 <template>
-  <k-treemap  style="height: 600px; font-size: 12px;"
+  <ak-treemap  style="height: 600px; font-size: 12px;"
               k-data-source.bind="dataSource"
               k-value-field="value"
               k-text-field="name"
               k-on-data-bound.delegate="logger.log('Data bound')"
               k-on-item-created.delegate="logger.log('Item is created')">
-  </k-treemap>
+  </ak-treemap>
 
   <div class="box">
       <h4>Console log</h4>

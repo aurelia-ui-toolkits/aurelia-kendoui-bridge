@@ -1,14 +1,14 @@
 <template>
     <require from="./basic-use.css"></require>
-    <k-list-view k-data-source.bind="dataSource">
-      <k-template>
+    <ak-list-view k-data-source.bind="dataSource">
+      <ak-template>
         <div class="product">
             <img src="http://demos.telerik.com/kendo-ui/content/web/foods/${ProductID}.jpg" alt="${ProductName} image" />
             <h3>${ProductName}</h3>
             <p>${UnitPrice}</p>
         </div>
-      </k-template>
-    </k-list-view>
+      </ak-template>
+    </ak-list-view>
 
     <div ref="pager" class="k-pager-wrap"></div>
 </template>

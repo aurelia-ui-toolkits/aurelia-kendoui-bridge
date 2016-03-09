@@ -1,21 +1,21 @@
 <template>
   <require from="./templates.css"></require>
   <div id="example" class="k-content">
-      <k-scheduler k-date.bind="date"
+      <ak-scheduler k-date.bind="date"
                    k-start-time.bind="startTime"
                    k-end-time.bind="endTime"
                    k-height.bind="600"
                    k-views.bind="['day', 'agenda']"
                    k-editable.bind="false"
                    k-data-source.bind="dataSource">
-        <k-template for="eventTemplate">
+        <ak-template for="eventTemplate">
           <div class="movie-template">
             <img src="${image}">
             <p>${start | movieTime} - ${end | movieTime}</p>
             <h3>${title}</h3>
             <a href="${imdb}">Movie in IMDB</a>
           </div>
-        </k-template>
-      </k-scheduler>
+        </ak-template>
+      </ak-scheduler>
   </div>
 </template>

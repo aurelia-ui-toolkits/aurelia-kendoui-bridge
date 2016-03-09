@@ -1,6 +1,6 @@
 <template>
     <div class="demo-section k-content">
-      <k-chart  k-title.bind="{text: 'The AIDA model'}"
+      <ak-chart  k-title.bind="{text: 'The AIDA model'}"
                 k-legend.bind="legend"
                 k-series-defaults.bind="seriesDefaults"
                 k-series.bind="series"
@@ -8,7 +8,7 @@
                 k-category-axis.bind="categoryAxis"
                 k-tooltip.bind="tooltip"
                 view-model.ref="funnel">
-      </k-chart>
+      </ak-chart>
     </div>
 
 
@@ -89,7 +89,7 @@
                 <h4>Font size</h4>
                 <ul class="options">
                     <li><input k-on-change.delegate="refresh()"
-                                          k-slider="k-min.bind: 1;
+                                          ak-slider="k-min.bind: 1;
                                                     k-max.bind: 40;
                                                     k-value.bind: 15;
                                                     k-show-buttons.bind: false;

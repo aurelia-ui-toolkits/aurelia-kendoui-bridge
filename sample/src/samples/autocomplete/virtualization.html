@@ -3,17 +3,17 @@
     <div class="demo-section k-content">
       <h4>Search for shipping name</h4>
 
-      <k-autocomplete k-data-source.bind="datasource"
+      <ak-autocomplete k-data-source.bind="datasource"
                       k-virtual.bind="virtual"
                       k-data-text-field="ShipName"
                       k-height.bind="520">
-        <k-template>
+        <ak-template>
           <span class="order-id">${OrderID}</span>
           ${ShipName}, ${ShipCountry}
-        </k-template>
+        </ak-template>
 
         <input style="width: 100%;" />
-      </k-autocomplete>
+      </ak-autocomplete>
 
       <div class="demo-hint">Hint: type "an"</div>
     </div>
