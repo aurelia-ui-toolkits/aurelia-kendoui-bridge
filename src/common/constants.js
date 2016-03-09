@@ -1,6 +1,6 @@
 export const constants = {
   eventPrefix: 'k-on-',
   bindablePrefix: 'k-',
-  attributePrefix: 'k-',
-  elementPrefix: 'k-'
+  attributePrefix: 'ak-',
+  elementPrefix: 'ak-'
 };

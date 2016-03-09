@@ -94,7 +94,7 @@ export class KendoConfigBuilder {
   * Adds kendo templating support
   */
   kendoTemplateSupport(): KendoConfigBuilder {
-    this.resources.push('common/k-template');
+    this.resources.push('common/template');
     return this;
   }
 
@@ -194,13 +194,13 @@ export class KendoConfigBuilder {
 
   kendoGantt(): KendoConfigBuilder {
     this.resources.push('gantt/gantt');
-    this.resources.push('gantt/k-gantt-col');
+    this.resources.push('gantt/gantt-col');
     return this;
   }
 
   kendoGrid(): KendoConfigBuilder {
     this.resources.push('grid/grid');
-    this.resources.push('grid/k-col');
+    this.resources.push('grid/col');
     return this;
   }
 
@@ -216,7 +216,7 @@ export class KendoConfigBuilder {
 
   kendoNotification(): KendoConfigBuilder {
     this.resources.push('notification/notification');
-    this.resources.push('notification/k-notification-template');
+    this.resources.push('notification/notification-template');
     return this;
   }
 
@@ -323,7 +323,7 @@ export class KendoConfigBuilder {
 
   kendoTreeList(): KendoConfigBuilder {
     this.resources.push('treelist/treelist');
-    this.resources.push('treelist/k-tree-col');
+    this.resources.push('treelist/tree-col');
     return this;
   }
 

@@ -1,6 +1,6 @@
 import '../setup';
 import {Grid as Widget} from 'src/grid/grid';
-import {Col} from 'src/grid/k-col';
+import {Col} from 'src/grid/col';
 import {initialize} from 'aurelia-pal-browser';
 import {DOM} from 'aurelia-pal';
 import {Container} from 'aurelia-dependency-injection';
@@ -16,7 +16,7 @@ describe('Grid', () => {
   beforeEach(() => {
     initialize();
     container = new Container();
-    element = DOM.createElement('k-grid');
+    element = DOM.createElement('ak-grid');
     container.registerInstance(DOM.Element, element);
     templatingEngine = container.get(TemplatingEngine);
     sut = templatingEngine.createViewModelForUnitTest(Widget, null, {});

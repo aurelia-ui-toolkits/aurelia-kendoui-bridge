@@ -13,12 +13,12 @@ export class TemplateGatherer {
   }
 
   /***
-  * parses array of k-template view-models (@children)
-  * <k-template for='test'>
+  * parses array of ak-template view-models (@children)
+  * <ak-template for='test'>
   * this function sets the property 'test' on the viewmodel to the template
   * @param target the viewModel with template properties
   * @param kendoGrid or GridColumn, properties are retrieved from bindables.js
-  * @param templates array of k-template view-models
+  * @param templates array of ak-template view-models
   */
   useTemplates(target, controlName, templates) {
     let templateProps = this.controlProperties.getTemplateProperties(controlName);
