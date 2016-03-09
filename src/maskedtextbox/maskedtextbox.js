@@ -23,7 +23,9 @@ export class MaskedTextBox {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
