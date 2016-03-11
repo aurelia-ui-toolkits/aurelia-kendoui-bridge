@@ -100,13 +100,13 @@ export class TemplateCompiler {
 
         if (!this.util.isObject(dataItem)) {
           ctx = {
-            dataItem: dataItem
+            dataItem: dataItem,
+            $$item: dataItem
           };
         } else {
           ctx = dataItem;
+          ctx.$$item = Object.assign({}, ctx);
         }
-
-        ctx.$$item = dataItem;
       }
 
       if (element instanceof jQuery) {
