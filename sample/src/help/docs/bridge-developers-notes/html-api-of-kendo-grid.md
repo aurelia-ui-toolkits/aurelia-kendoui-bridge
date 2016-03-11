@@ -50,7 +50,7 @@ The `k-template` custom element is a bit special, as it has a template defined w
 This `k-col` has two properties: **`for`** and **`template`**, where the **`for`** is easy to spot, but the **`template`** is somewhat hidden. The `template` property is extracted by the `<ak-template>` custom element from its inner content (innerHTML).
 <br><br>
 
-#### How does the k-template extract the template?
+#### How does the ak-template extract the template?
 
 Let's take a look at the code of the [k-template custom element](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/src/common/k-template.js).
 <br>
@@ -94,7 +94,7 @@ Now, in order for us to pull this `template` property of the [`instruction`](#in
 	export class Template {
 	  @bindable template;
 	  @bindable for = 'template';
-	
+
 	  constructor(targetInstruction) {
 	    this.template = targetInstruction.elementInstruction.template;
 	  }
