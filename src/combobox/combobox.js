@@ -3,7 +3,7 @@ import {customElement, bindable, children, ViewResources} from 'aurelia-templati
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.dropdownlist.min';
+import 'kendo.combobox.min';
 import 'kendo.virtuallist.min';
 
 @customElement(`${constants.elementPrefix}combobox`)
