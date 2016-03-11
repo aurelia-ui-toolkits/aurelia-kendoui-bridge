@@ -46,7 +46,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         Menu.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        Menu.prototype.attached = function attached() {
           this.recreate();
         };
 

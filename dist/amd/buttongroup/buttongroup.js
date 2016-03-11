@@ -32,7 +32,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     ButtonGroup.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+    };
 
+    ButtonGroup.prototype.attached = function attached() {
       this.recreate();
     };
 

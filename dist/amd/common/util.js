@@ -97,6 +97,10 @@ define(['exports', './constants'], function (exports, _constants) {
       return propertyName.toLowerCase().indexOf('template') > -1;
     };
 
+    Util.prototype.isObject = function isObject(obj) {
+      return obj !== null && typeof obj === 'object';
+    };
+
     return Util;
   })();
 

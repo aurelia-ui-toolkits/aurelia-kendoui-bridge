@@ -46,7 +46,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         DropTargetArea.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        DropTargetArea.prototype.attached = function attached() {
           this.recreate();
         };
 

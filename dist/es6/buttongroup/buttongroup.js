@@ -21,7 +21,9 @@ export class ButtonGroup {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 

@@ -18,7 +18,7 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonConstants = require('../common/constants');
 
-require('kendo.dropdownlist.min');
+require('kendo.combobox.min');
 
 require('kendo.virtuallist.min');
 

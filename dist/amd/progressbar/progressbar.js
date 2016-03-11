@@ -32,7 +32,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     ProgressBar.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+    };
 
+    ProgressBar.prototype.attached = function attached() {
       this.recreate();
     };
 

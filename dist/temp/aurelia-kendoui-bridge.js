@@ -7,15 +7,9 @@ var _createDecoratedClass = (function () { function defineProperties(target, des
 exports.configure = configure;
 exports.generateBindables = generateBindables;
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
-
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-var _aureliaLogging = require('aurelia-logging');
-
-var LogManager = _interopRequireWildcard(_aureliaLogging);
 
 require('jquery');
 
@@ -45,7 +39,7 @@ require('kendo.dataviz.treemap.min');
 
 require('kendo.colorpicker.min');
 
-require('kendo.dropdownlist.min');
+require('kendo.combobox.min');
 
 require('kendo.menu.min');
 
@@ -56,6 +50,8 @@ require('kendo.datetimepicker.min');
 require('kendo.dataviz.diagram.min');
 
 require('kendo.draganddrop.min');
+
+require('kendo.dropdownlist.min');
 
 require('kendo.editor.min');
 
@@ -180,7 +176,7 @@ var KendoConfigBuilder = (function () {
   };
 
   KendoConfigBuilder.prototype.kendoTemplateSupport = function kendoTemplateSupport() {
-    this.resources.push('common/k-template');
+    this.resources.push('common/template');
     return this;
   };
 
@@ -280,13 +276,13 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoGantt = function kendoGantt() {
     this.resources.push('gantt/gantt');
-    this.resources.push('gantt/k-gantt-col');
+    this.resources.push('gantt/gantt-col');
     return this;
   };
 
   KendoConfigBuilder.prototype.kendoGrid = function kendoGrid() {
     this.resources.push('grid/grid');
-    this.resources.push('grid/k-col');
+    this.resources.push('grid/col');
     return this;
   };
 
@@ -302,7 +298,7 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoNotification = function kendoNotification() {
     this.resources.push('notification/notification');
-    this.resources.push('notification/k-notification-template');
+    this.resources.push('notification/notification-template');
     return this;
   };
 
@@ -409,7 +405,7 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.kendoTreeList = function kendoTreeList() {
     this.resources.push('treelist/treelist');
-    this.resources.push('treelist/k-tree-col');
+    this.resources.push('treelist/tree-col');
     return this;
   };
 
@@ -465,18 +461,11 @@ var KendoConfigBuilder = (function () {
 
 exports.KendoConfigBuilder = KendoConfigBuilder;
 
-var logger = LogManager.getLogger('aurelia-kendoui-bridge');
-
 function configure(aurelia, configCallback) {
   var builder = new KendoConfigBuilder();
 
   if (configCallback !== undefined && typeof configCallback === 'function') {
     configCallback(builder);
-  }
-
-  if (builder.resources.length === 0) {
-    logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
-    builder.core();
   }
 
   var resources = builder.resources;
@@ -580,7 +569,9 @@ var Barcode = (function () {
 
   Barcode.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  Barcode.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -627,7 +618,9 @@ var Button = (function () {
 
   Button.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  Button.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -674,7 +667,9 @@ var ButtonGroup = (function () {
 
   ButtonGroup.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  ButtonGroup.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -1126,8 +1121,8 @@ exports.bindables = bindables;
 var constants = {
   eventPrefix: 'k-on-',
   bindablePrefix: 'k-',
-  attributePrefix: 'k-',
-  elementPrefix: 'k-'
+  attributePrefix: 'ak-',
+  elementPrefix: 'ak-'
 };
 
 exports.constants = constants;
@@ -1228,58 +1223,6 @@ function generateBindables(controlName) {
   };
 }
 
-var Template = (function () {
-  var _instanceInitializers13 = {};
-
-  _createDecoratedClass(Template, [{
-    key: 'template',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: null,
-    enumerable: true
-  }, {
-    key: 'for',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return 'template';
-    },
-    enumerable: true
-  }, {
-    key: 'kendoTemplate',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return false;
-    },
-    enumerable: true
-  }], null, _instanceInitializers13);
-
-  function Template(targetInstruction) {
-    _classCallCheck(this, _Template);
-
-    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers13);
-
-    _defineDecoratedPropertyDescriptor(this, 'for', _instanceInitializers13);
-
-    _defineDecoratedPropertyDescriptor(this, 'kendoTemplate', _instanceInitializers13);
-
-    this.template = targetInstruction.elementInstruction.template;
-  }
-
-  var _Template = Template;
-  Template = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(Template) || Template;
-  Template = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
-    var html = element.innerHTML;
-    if (html !== '') {
-      instruction.template = html;
-    }
-    return true;
-  })(Template) || Template;
-  Template = _aureliaTemplating.noView()(Template) || Template;
-  Template = _aureliaTemplating.customElement(constants.elementPrefix + 'template')(Template) || Template;
-  return Template;
-})();
-
-exports.Template = Template;
-
 var OptionsBuilder = (function () {
   function OptionsBuilder(controlProperties, util) {
     _classCallCheck(this, _OptionsBuilder);
@@ -1312,12 +1255,13 @@ var OptionsBuilder = (function () {
 exports.OptionsBuilder = OptionsBuilder;
 
 var TemplateCompiler = (function () {
-  function TemplateCompiler(templatingEngine) {
+  function TemplateCompiler(templatingEngine, util) {
     _classCallCheck(this, _TemplateCompiler);
 
     this.isInitialized = false;
 
     this.templatingEngine = templatingEngine;
+    this.util = util;
   }
 
   TemplateCompiler.prototype.initialize = function initialize() {
@@ -1369,7 +1313,17 @@ var TemplateCompiler = (function () {
 
       if (data && data[i]) {
         var _data = data[i];
-        ctx = _data.dataItem || _data.aggregate || _data;
+        var dataItem = _data.dataItem || _data.aggregate || _data;
+
+        if (!_this3.util.isObject(dataItem)) {
+          ctx = {
+            dataItem: dataItem,
+            $$item: dataItem
+          };
+        } else {
+          ctx = dataItem;
+          ctx.$$item = Object.assign({}, ctx);
+        }
       }
 
       if (element instanceof jQuery) {
@@ -1424,7 +1378,7 @@ var TemplateCompiler = (function () {
   };
 
   var _TemplateCompiler = TemplateCompiler;
-  TemplateCompiler = _aureliaDependencyInjection.inject(_aureliaTemplating.TemplatingEngine)(TemplateCompiler) || TemplateCompiler;
+  TemplateCompiler = _aureliaDependencyInjection.inject(_aureliaTemplating.TemplatingEngine, Util)(TemplateCompiler) || TemplateCompiler;
   return TemplateCompiler;
 })();
 
@@ -1462,6 +1416,58 @@ var TemplateGatherer = (function () {
 })();
 
 exports.TemplateGatherer = TemplateGatherer;
+
+var Template = (function () {
+  var _instanceInitializers13 = {};
+
+  _createDecoratedClass(Template, [{
+    key: 'template',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'for',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return 'template';
+    },
+    enumerable: true
+  }, {
+    key: 'kendoTemplate',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }], null, _instanceInitializers13);
+
+  function Template(targetInstruction) {
+    _classCallCheck(this, _Template);
+
+    _defineDecoratedPropertyDescriptor(this, 'template', _instanceInitializers13);
+
+    _defineDecoratedPropertyDescriptor(this, 'for', _instanceInitializers13);
+
+    _defineDecoratedPropertyDescriptor(this, 'kendoTemplate', _instanceInitializers13);
+
+    this.template = targetInstruction.elementInstruction.template;
+  }
+
+  var _Template = Template;
+  Template = _aureliaDependencyInjection.inject(_aureliaTemplating.TargetInstruction)(Template) || Template;
+  Template = _aureliaTemplating.processContent(function (compiler, resources, element, instruction) {
+    var html = element.innerHTML;
+    if (html !== '') {
+      instruction.template = html;
+    }
+    return true;
+  })(Template) || Template;
+  Template = _aureliaTemplating.noView()(Template) || Template;
+  Template = _aureliaTemplating.customElement(constants.elementPrefix + 'template')(Template) || Template;
+  return Template;
+})();
+
+exports.Template = Template;
 
 var capitalMatcher = /([A-Z])/g;
 
@@ -1553,6 +1559,10 @@ var Util = (function () {
 
   Util.prototype.isTemplateProperty = function isTemplateProperty(propertyName) {
     return propertyName.toLowerCase().indexOf('template') > -1;
+  };
+
+  Util.prototype.isObject = function isObject(obj) {
+    return obj !== null && typeof obj === 'object';
   };
 
   return Util;
@@ -2015,7 +2025,9 @@ var DropTargetArea = (function () {
 
   DropTargetArea.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  DropTargetArea.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -2062,7 +2074,9 @@ var DropTarget = (function () {
 
   DropTarget.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  DropTarget.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -2256,6 +2270,20 @@ var FlatColorPicker = (function () {
 
 exports.FlatColorPicker = FlatColorPicker;
 
+var GanttCol = (function () {
+  function GanttCol() {
+    _classCallCheck(this, _GanttCol);
+  }
+
+  var _GanttCol = GanttCol;
+  GanttCol = _aureliaDependencyInjection.inject(TemplateGatherer)(GanttCol) || GanttCol;
+  GanttCol = generateBindables('GanttColumn')(GanttCol) || GanttCol;
+  GanttCol = _aureliaTemplating.customElement(constants.elementPrefix + 'gantt-col')(GanttCol) || GanttCol;
+  return GanttCol;
+})();
+
+exports.GanttCol = GanttCol;
+
 var Gantt = (function () {
   var _instanceInitializers24 = {};
 
@@ -2350,20 +2378,6 @@ exports.Gantt = Gantt;
 function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
 }
-
-var GanttCol = (function () {
-  function GanttCol() {
-    _classCallCheck(this, _GanttCol);
-  }
-
-  var _GanttCol = GanttCol;
-  GanttCol = _aureliaDependencyInjection.inject(TemplateGatherer)(GanttCol) || GanttCol;
-  GanttCol = generateBindables('GanttColumn')(GanttCol) || GanttCol;
-  GanttCol = _aureliaTemplating.customElement(constants.elementPrefix + 'gantt-col')(GanttCol) || GanttCol;
-  return GanttCol;
-})();
-
-exports.GanttCol = GanttCol;
 
 var LinearGauge = (function () {
   var _instanceInitializers25 = {};
@@ -2471,8 +2485,39 @@ var RadialGauge = (function () {
 
 exports.RadialGauge = RadialGauge;
 
-var Grid = (function () {
+var Col = (function () {
   var _instanceInitializers27 = {};
+
+  _createDecoratedClass(Col, [{
+    key: 'templates',
+    decorators: [_aureliaTemplating.children(constants.elementPrefix + 'template')],
+    initializer: null,
+    enumerable: true
+  }], null, _instanceInitializers27);
+
+  function Col(templateGatherer) {
+    _classCallCheck(this, _Col);
+
+    _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers27);
+
+    this.templateGatherer = templateGatherer;
+  }
+
+  Col.prototype.bind = function bind() {
+    this.templateGatherer.useTemplates(this, 'GridColumn', this.templates);
+  };
+
+  var _Col = Col;
+  Col = _aureliaDependencyInjection.inject(TemplateGatherer)(Col) || Col;
+  Col = generateBindables('GridColumn')(Col) || Col;
+  Col = _aureliaTemplating.customElement(constants.elementPrefix + 'col')(Col) || Col;
+  return Col;
+})();
+
+exports.Col = Col;
+
+var Grid = (function () {
+  var _instanceInitializers28 = {};
 
   _createDecoratedClass(Grid, [{
     key: 'columns',
@@ -2486,14 +2531,14 @@ var Grid = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers27);
+  }], null, _instanceInitializers28);
 
   function Grid(element, widgetBase, viewResources, optionsBuilder) {
     _classCallCheck(this, _Grid);
 
-    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers27);
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers28);
 
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers27);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers28);
 
     this.element = element;
     this.optionsBuilder = optionsBuilder;
@@ -2562,37 +2607,6 @@ function isInitFromTable(element) {
 function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
 }
-
-var Col = (function () {
-  var _instanceInitializers28 = {};
-
-  _createDecoratedClass(Col, [{
-    key: 'templates',
-    decorators: [_aureliaTemplating.children(constants.elementPrefix + 'template')],
-    initializer: null,
-    enumerable: true
-  }], null, _instanceInitializers28);
-
-  function Col(templateGatherer) {
-    _classCallCheck(this, _Col);
-
-    _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers28);
-
-    this.templateGatherer = templateGatherer;
-  }
-
-  Col.prototype.bind = function bind() {
-    this.templateGatherer.useTemplates(this, 'GridColumn', this.templates);
-  };
-
-  var _Col = Col;
-  Col = _aureliaDependencyInjection.inject(TemplateGatherer)(Col) || Col;
-  Col = generateBindables('GridColumn')(Col) || Col;
-  Col = _aureliaTemplating.customElement(constants.elementPrefix + 'col')(Col) || Col;
-  return Col;
-})();
-
-exports.Col = Col;
 
 var ListView = (function () {
   var _instanceInitializers29 = {};
@@ -2736,7 +2750,9 @@ var MaskedTextBox = (function () {
 
   MaskedTextBox.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  MaskedTextBox.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -2787,7 +2803,9 @@ var Menu = (function () {
 
   Menu.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  Menu.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -3108,7 +3126,7 @@ var PanelBar = (function () {
   var _PanelBar = PanelBar;
   PanelBar = _aureliaDependencyInjection.inject(Element, WidgetBase)(PanelBar) || PanelBar;
   PanelBar = generateBindables('kendoPanelBar')(PanelBar) || PanelBar;
-  PanelBar = _aureliaTemplating.customElement('k-panel-bar')(PanelBar) || PanelBar;
+  PanelBar = _aureliaTemplating.customElement(constants.elementPrefix + 'panel-bar')(PanelBar) || PanelBar;
   return PanelBar;
 })();
 
@@ -3254,7 +3272,9 @@ var ProgressBar = (function () {
 
   ProgressBar.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  ProgressBar.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -3301,7 +3321,9 @@ var QRCode = (function () {
 
   QRCode.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  QRCode.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -4239,7 +4261,9 @@ var TreeView = (function () {
 
   TreeView.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  TreeView.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -4293,7 +4317,9 @@ var Upload = (function () {
 
   Upload.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  Upload.prototype.attached = function attached() {
     this.recreate();
   };
 
@@ -4352,7 +4378,9 @@ var Validator = (function () {
 
   Validator.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  Validator.prototype.attached = function attached() {
     this.recreate();
   };
 

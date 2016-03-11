@@ -46,7 +46,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         QRCode.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        QRCode.prototype.attached = function attached() {
           this.recreate();
         };
 

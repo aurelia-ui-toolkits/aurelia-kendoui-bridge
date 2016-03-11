@@ -46,7 +46,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         Validator.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        Validator.prototype.attached = function attached() {
           this.recreate();
         };
 

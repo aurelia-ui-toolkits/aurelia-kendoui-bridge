@@ -32,7 +32,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     Barcode.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+    };
 
+    Barcode.prototype.attached = function attached() {
       this.recreate();
     };
 

@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo.panelbar.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _kendoPanelbarMin) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/constants', '../common/widget-base', '../common/decorators', 'kendo.panelbar.min'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _commonConstants, _commonWidgetBase, _commonDecorators, _kendoPanelbarMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -68,7 +68,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _PanelBar = PanelBar;
     PanelBar = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(PanelBar) || PanelBar;
     PanelBar = _commonDecorators.generateBindables('kendoPanelBar')(PanelBar) || PanelBar;
-    PanelBar = _aureliaTemplating.customElement('k-panel-bar')(PanelBar) || PanelBar;
+    PanelBar = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'panel-bar')(PanelBar) || PanelBar;
     return PanelBar;
   })();
 

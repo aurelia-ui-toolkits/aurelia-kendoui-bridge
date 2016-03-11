@@ -46,7 +46,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         TreeView.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        TreeView.prototype.attached = function attached() {
           this.recreate();
         };
 

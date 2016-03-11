@@ -1,7 +1,7 @@
-System.register(['aurelia-logging', './config-builder', 'jquery'], function (_export) {
+System.register(['./config-builder', 'jquery'], function (_export) {
   'use strict';
 
-  var LogManager, KendoConfigBuilder, logger;
+  var KendoConfigBuilder;
 
   _export('configure', configure);
 
@@ -12,11 +12,6 @@ System.register(['aurelia-logging', './config-builder', 'jquery'], function (_ex
       configCallback(builder);
     }
 
-    if (builder.resources.length === 0) {
-      logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
-      builder.core();
-    }
-
     var resources = builder.resources;
 
     if (builder.useGlobalResources) {
@@ -25,13 +20,9 @@ System.register(['aurelia-logging', './config-builder', 'jquery'], function (_ex
   }
 
   return {
-    setters: [function (_aureliaLogging) {
-      LogManager = _aureliaLogging;
-    }, function (_configBuilder) {
+    setters: [function (_configBuilder) {
       KendoConfigBuilder = _configBuilder.KendoConfigBuilder;
     }, function (_jquery) {}],
-    execute: function () {
-      logger = LogManager.getLogger('aurelia-kendoui-bridge');
-    }
+    execute: function () {}
   };
 });

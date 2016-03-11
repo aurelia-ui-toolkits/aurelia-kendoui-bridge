@@ -43,7 +43,9 @@ var TreeView = (function () {
 
   TreeView.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  TreeView.prototype.attached = function attached() {
     this.recreate();
   };
 

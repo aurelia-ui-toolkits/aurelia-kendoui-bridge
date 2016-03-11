@@ -50,7 +50,9 @@ var Upload = (function () {
 
   Upload.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  Upload.prototype.attached = function attached() {
     this.recreate();
   };
 

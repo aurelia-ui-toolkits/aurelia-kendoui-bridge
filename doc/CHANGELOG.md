@@ -1,3 +1,43 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.5.1...v0.6.0) (2016-03-11)
+
+### Important
+We had to change the prefix of custom elements and custom attributes as there were conflicts with some properties. For example, the `k-tooltip` property on the Chart was conflicting with the `k-tooltip` custom attribute for the Kendo Tooltip control. This is probably the largest breaking change we've had so far, but we'd rather have a breaking change than people having weird issues.
+
+This is what you have to change:
+
+`<k-grid k-sortable.bind="true">`  
+becomes  
+`<ak-grid k-sortable.bind="true">`
+
+
+`<button k-button="k-enable.bind: false">foo</button>`  
+becomes  
+`<button ak-button="k-enable.bind: false">foo</button>`
+
+So all **custom elements** and **custom attributes** now have the `ak-` prefix, and all **properties** and **events** keep the `k-` prefix  
+
+Please check the [catalog](http://aurelia-ui-toolkits.github.io/demo-kendo/) for more examples
+
+
+### Bug Fixes
+
+* **all:** delay initialization ([8f7c17b](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/8f7c17b))
+* **combobox:** import combox kendo file ([2522549](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/2522549))
+
+### Features
+
+* **index:** allow not to globalize anything ([d4d4d03](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/d4d4d03))
+* **template-compiler:** compile with $$item and wrap strings/integers in object ([ba6247e](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ba6247e))
+
+
+### BREAKING CHANGES
+
+* **prefix for custom elements / custom attributes changed (`k-` is now `ak-`)
+* index: if you want to use `core()` you now need to explicitly call this function on the plugin callback
+
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.5.0...v0.5.1) (2016-03-08)
 

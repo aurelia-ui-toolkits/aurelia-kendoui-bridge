@@ -43,7 +43,9 @@ var Button = (function () {
 
   Button.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  Button.prototype.attached = function attached() {
     this.recreate();
   };
 

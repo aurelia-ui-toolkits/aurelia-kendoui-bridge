@@ -8,8 +8,8 @@ System.register([], function (_export) {
       constants = {
         eventPrefix: 'k-on-',
         bindablePrefix: 'k-',
-        attributePrefix: 'k-',
-        elementPrefix: 'k-'
+        attributePrefix: 'ak-',
+        elementPrefix: 'ak-'
       };
 
       _export('constants', constants);

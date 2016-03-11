@@ -46,7 +46,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         Barcode.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        Barcode.prototype.attached = function attached() {
           this.recreate();
         };
 

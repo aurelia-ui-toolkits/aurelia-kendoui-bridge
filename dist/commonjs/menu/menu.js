@@ -43,7 +43,9 @@ var Menu = (function () {
 
   Menu.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  Menu.prototype.attached = function attached() {
     this.recreate();
   };
 

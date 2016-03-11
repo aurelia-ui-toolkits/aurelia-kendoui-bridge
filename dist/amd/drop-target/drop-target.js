@@ -32,7 +32,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     DropTarget.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+    };
 
+    DropTarget.prototype.attached = function attached() {
       this.recreate();
     };
 

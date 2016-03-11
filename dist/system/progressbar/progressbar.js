@@ -46,7 +46,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         ProgressBar.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        ProgressBar.prototype.attached = function attached() {
           this.recreate();
         };
 

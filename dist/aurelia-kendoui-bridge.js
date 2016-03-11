@@ -1,4 +1,3 @@
-import * as LogManager from 'aurelia-logging';
 import 'jquery';
 import 'kendo.autocomplete.min';
 import 'kendo.virtuallist.min';
@@ -13,12 +12,13 @@ import 'kendo.dataviz.sparkline.min';
 import 'kendo.dataviz.stock.min';
 import 'kendo.dataviz.treemap.min';
 import 'kendo.colorpicker.min';
-import 'kendo.dropdownlist.min';
+import 'kendo.combobox.min';
 import 'kendo.menu.min';
 import 'kendo.datepicker.min';
 import 'kendo.datetimepicker.min';
 import 'kendo.dataviz.diagram.min';
 import 'kendo.draganddrop.min';
+import 'kendo.dropdownlist.min';
 import 'kendo.editor.min';
 import 'kendo.gantt.min';
 import 'kendo.dataviz.gauge.min';
@@ -62,7 +62,7 @@ import 'kendo.upload.min';
 import 'kendo.validator.min';
 import 'kendo.window.min';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customElement,bindable,children,ViewResources,customAttribute,BindableProperty,HtmlBehaviorResource,noView,processContent,TargetInstruction,TemplatingEngine} from 'aurelia-templating';
+import {customElement,bindable,children,ViewResources,customAttribute,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -163,7 +163,7 @@ export class KendoConfigBuilder {
   * Adds kendo templating support
   */
   kendoTemplateSupport(): KendoConfigBuilder {
-    this.resources.push('common/k-template');
+    this.resources.push('common/template');
     return this;
   }
 
@@ -263,13 +263,13 @@ export class KendoConfigBuilder {
 
   kendoGantt(): KendoConfigBuilder {
     this.resources.push('gantt/gantt');
-    this.resources.push('gantt/k-gantt-col');
+    this.resources.push('gantt/gantt-col');
     return this;
   }
 
   kendoGrid(): KendoConfigBuilder {
     this.resources.push('grid/grid');
-    this.resources.push('grid/k-col');
+    this.resources.push('grid/col');
     return this;
   }
 
@@ -285,7 +285,7 @@ export class KendoConfigBuilder {
 
   kendoNotification(): KendoConfigBuilder {
     this.resources.push('notification/notification');
-    this.resources.push('notification/k-notification-template');
+    this.resources.push('notification/notification-template');
     return this;
   }
 
@@ -392,7 +392,7 @@ export class KendoConfigBuilder {
 
   kendoTreeList(): KendoConfigBuilder {
     this.resources.push('treelist/treelist');
-    this.resources.push('treelist/k-tree-col');
+    this.resources.push('treelist/tree-col');
     return this;
   }
 
@@ -444,18 +444,11 @@ export class KendoConfigBuilder {
   }
 }
 
-let logger = LogManager.getLogger('aurelia-kendoui-bridge');
 export function configure(aurelia, configCallback) {
   let builder = new KendoConfigBuilder();
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
     configCallback(builder);
-  }
-
-    // Provide core if nothing was specified
-  if (builder.resources.length === 0) {
-    logger.warn('Nothing specified for kendo configuration - using defaults for Kendo Core');
-    builder.core();
   }
 
     // Pull the data off the builder
@@ -534,7 +527,9 @@ export class Barcode {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -566,7 +561,9 @@ export class Button {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -598,7 +595,9 @@ export class ButtonGroup {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -924,8 +923,8 @@ export let bindables = {"kendoAutoComplete":["animation","dataSource","dataTextF
 export const constants = {
   eventPrefix: 'k-on-',
   bindablePrefix: 'k-',
-  attributePrefix: 'k-',
-  elementPrefix: 'k-'
+  attributePrefix: 'ak-',
+  elementPrefix: 'ak-'
 };
 
 /***
@@ -1040,26 +1039,6 @@ export function generateBindables(controlName: string, extraProperties = []) {
   };
 }
 
-@customElement(`${constants.elementPrefix}template`)
-@noView()
-@processContent((compiler, resources, element, instruction) => {
-  let html = element.innerHTML;
-  if (html !== '') {
-    instruction.template = html;
-  }
-  return true;
-})
-@inject(TargetInstruction)
-export class Template {
-  @bindable template;
-  @bindable for = 'template';
-  @bindable kendoTemplate = false;
-
-  constructor(targetInstruction) {
-    this.template = targetInstruction.elementInstruction.template;
-  }
-}
-
 /***
 * Converts an object with bindable properties (with k- convention)
 * into an object that can be passed to a Kendo control
@@ -1096,7 +1075,7 @@ export class OptionsBuilder {
 * An adaptor which uses Aurelia's enhance capability to
 * compile any template Kendo wants to have compiled
 */
-@inject(TemplatingEngine)
+@inject(TemplatingEngine, Util)
 export class TemplateCompiler {
 
   /**
@@ -1105,8 +1084,9 @@ export class TemplateCompiler {
   */
   isInitialized = false;
 
-  constructor(templatingEngine) {
+  constructor(templatingEngine, util) {
     this.templatingEngine = templatingEngine;
+    this.util = util;
   }
 
   /**
@@ -1185,7 +1165,17 @@ export class TemplateCompiler {
 
       if (data && data[i]) {
         let _data = data[i];
-        ctx = _data.dataItem || _data.aggregate || _data;
+        let dataItem = _data.dataItem || _data.aggregate || _data;
+
+        if (!this.util.isObject(dataItem)) {
+          ctx = {
+            dataItem: dataItem,
+            $$item: dataItem
+          };
+        } else {
+          ctx = dataItem;
+          ctx.$$item = Object.assign({}, ctx);
+        }
       }
 
       if (element instanceof jQuery) {
@@ -1266,12 +1256,12 @@ export class TemplateGatherer {
   }
 
   /***
-  * parses array of k-template view-models (@children)
-  * <k-template for='test'>
+  * parses array of ak-template view-models (@children)
+  * <ak-template for='test'>
   * this function sets the property 'test' on the viewmodel to the template
   * @param target the viewModel with template properties
   * @param kendoGrid or GridColumn, properties are retrieved from bindables.js
-  * @param templates array of k-template view-models
+  * @param templates array of ak-template view-models
   */
   useTemplates(target, controlName, templates) {
     let templateProps = this.controlProperties.getTemplateProperties(controlName);
@@ -1285,6 +1275,26 @@ export class TemplateGatherer {
         throw new Error('Invalid template property name: "' + c.for + '", valid values are: ' + templateProps.join(', '));
       }
     });
+  }
+}
+
+@customElement(`${constants.elementPrefix}template`)
+@noView()
+@processContent((compiler, resources, element, instruction) => {
+  let html = element.innerHTML;
+  if (html !== '') {
+    instruction.template = html;
+  }
+  return true;
+})
+@inject(TargetInstruction)
+export class Template {
+  @bindable template;
+  @bindable for = 'template';
+  @bindable kendoTemplate = false;
+
+  constructor(targetInstruction) {
+    this.template = targetInstruction.elementInstruction.template;
   }
 }
 
@@ -1421,6 +1431,13 @@ export class Util {
   */
   isTemplateProperty(propertyName: string) {
     return propertyName.toLowerCase().indexOf('template') > -1;
+  }
+
+  /**
+  * detection of objects
+  */
+  isObject(obj) {
+    return obj !== null && typeof(obj) === 'object';
   }
 }
 
@@ -1865,7 +1882,9 @@ export class DropTargetArea {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -1897,7 +1916,9 @@ export class DropTarget {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -2035,6 +2056,11 @@ export class FlatColorPicker {
   }
 }
 
+@customElement(`${constants.elementPrefix}gantt-col`)
+@generateBindables('GanttColumn')
+@inject(TemplateGatherer)
+export class GanttCol {}
+
 //eslint-disable-line no-unused-vars
 @customElement(`${constants.elementPrefix}gantt`)
 @generateBindables('kendoGantt')
@@ -2100,11 +2126,6 @@ export class Gantt  {
 function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
 }
-
-@customElement(`${constants.elementPrefix}gantt-col`)
-@generateBindables('GanttColumn')
-@inject(TemplateGatherer)
-export class GanttCol {}
 
 @customElement(`${constants.elementPrefix}linear-gauge`)
 @generateBindables('kendoLinearGauge')
@@ -2184,6 +2205,21 @@ export class RadialGauge {
   }
 }
 
+@customElement(`${constants.elementPrefix}col`)
+@generateBindables('GridColumn')
+@inject(TemplateGatherer)
+export class Col {
+  @children(`${constants.elementPrefix}template`) templates;
+
+  constructor(templateGatherer) {
+    this.templateGatherer = templateGatherer;
+  }
+
+  bind() {
+    this.templateGatherer.useTemplates(this, 'GridColumn', this.templates);
+  }
+}
+
 //eslint-disable-line no-unused-vars
 @customElement(`${constants.elementPrefix}grid`)
 @generateBindables('kendoGrid')
@@ -2259,21 +2295,6 @@ function isInitFromTable(element) {
 
 function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
-}
-
-@customElement(`${constants.elementPrefix}col`)
-@generateBindables('GridColumn')
-@inject(TemplateGatherer)
-export class Col {
-  @children(`${constants.elementPrefix}template`) templates;
-
-  constructor(templateGatherer) {
-    this.templateGatherer = templateGatherer;
-  }
-
-  bind() {
-    this.templateGatherer.useTemplates(this, 'GridColumn', this.templates);
-  }
 }
 
 @customElement(`${constants.elementPrefix}list-view`)
@@ -2371,7 +2392,9 @@ export class MaskedTextBox {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -2407,7 +2430,9 @@ export class Menu {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -2578,7 +2603,7 @@ export class NumericTextBox {
   }
 }
 
-@customElement('k-panel-bar')
+@customElement(`${constants.elementPrefix}panel-bar`)
 @generateBindables('kendoPanelBar')
 @inject(Element, WidgetBase)
 export class PanelBar {
@@ -2726,7 +2751,9 @@ export class ProgressBar {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -2758,7 +2785,9 @@ export class QRCode {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -3396,7 +3425,9 @@ export class TreeView {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -3430,7 +3461,9 @@ export class Upload {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 
@@ -3474,7 +3507,9 @@ export class Validator {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 

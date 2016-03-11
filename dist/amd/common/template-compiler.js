@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating'], function (exports, _aureliaDependencyInjection, _aureliaTemplating) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', './util'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _util) {
   'use strict';
 
   exports.__esModule = true;
@@ -6,12 +6,13 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating'], functi
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   var TemplateCompiler = (function () {
-    function TemplateCompiler(templatingEngine) {
+    function TemplateCompiler(templatingEngine, util) {
       _classCallCheck(this, _TemplateCompiler);
 
       this.isInitialized = false;
 
       this.templatingEngine = templatingEngine;
+      this.util = util;
     }
 
     TemplateCompiler.prototype.initialize = function initialize() {
@@ -63,7 +64,17 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating'], functi
 
         if (data && data[i]) {
           var _data = data[i];
-          ctx = _data.dataItem || _data.aggregate || _data;
+          var dataItem = _data.dataItem || _data.aggregate || _data;
+
+          if (!_this2.util.isObject(dataItem)) {
+            ctx = {
+              dataItem: dataItem,
+              $$item: dataItem
+            };
+          } else {
+            ctx = dataItem;
+            ctx.$$item = Object.assign({}, ctx);
+          }
         }
 
         if (element instanceof jQuery) {
@@ -118,7 +129,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating'], functi
     };
 
     var _TemplateCompiler = TemplateCompiler;
-    TemplateCompiler = _aureliaDependencyInjection.inject(_aureliaTemplating.TemplatingEngine)(TemplateCompiler) || TemplateCompiler;
+    TemplateCompiler = _aureliaDependencyInjection.inject(_aureliaTemplating.TemplatingEngine, _util.Util)(TemplateCompiler) || TemplateCompiler;
     return TemplateCompiler;
   })();
 

@@ -43,7 +43,9 @@ var ButtonGroup = (function () {
 
   ButtonGroup.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  ButtonGroup.prototype.attached = function attached() {
     this.recreate();
   };
 

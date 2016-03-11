@@ -32,7 +32,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     TreeView.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+    };
 
+    TreeView.prototype.attached = function attached() {
       this.recreate();
     };
 

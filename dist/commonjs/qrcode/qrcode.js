@@ -43,7 +43,9 @@ var QRCode = (function () {
 
   QRCode.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  QRCode.prototype.attached = function attached() {
     this.recreate();
   };
 

@@ -5,8 +5,8 @@ define(['exports'], function (exports) {
   var constants = {
     eventPrefix: 'k-on-',
     bindablePrefix: 'k-',
-    attributePrefix: 'k-',
-    elementPrefix: 'k-'
+    attributePrefix: 'ak-',
+    elementPrefix: 'ak-'
   };
   exports.constants = constants;
 });

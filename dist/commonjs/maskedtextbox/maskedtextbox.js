@@ -50,7 +50,9 @@ var MaskedTextBox = (function () {
 
   MaskedTextBox.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  MaskedTextBox.prototype.attached = function attached() {
     this.recreate();
   };
 

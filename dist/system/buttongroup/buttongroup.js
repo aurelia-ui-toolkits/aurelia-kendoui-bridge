@@ -46,7 +46,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         ButtonGroup.prototype.bind = function bind(ctx) {
           this.$parent = ctx;
+        };
 
+        ButtonGroup.prototype.attached = function attached() {
           this.recreate();
         };
 

@@ -37,7 +37,7 @@ System.register([], function (_export) {
         };
 
         KendoConfigBuilder.prototype.kendoTemplateSupport = function kendoTemplateSupport() {
-          this.resources.push('common/k-template');
+          this.resources.push('common/template');
           return this;
         };
 
@@ -137,13 +137,13 @@ System.register([], function (_export) {
 
         KendoConfigBuilder.prototype.kendoGantt = function kendoGantt() {
           this.resources.push('gantt/gantt');
-          this.resources.push('gantt/k-gantt-col');
+          this.resources.push('gantt/gantt-col');
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoGrid = function kendoGrid() {
           this.resources.push('grid/grid');
-          this.resources.push('grid/k-col');
+          this.resources.push('grid/col');
           return this;
         };
 
@@ -159,7 +159,7 @@ System.register([], function (_export) {
 
         KendoConfigBuilder.prototype.kendoNotification = function kendoNotification() {
           this.resources.push('notification/notification');
-          this.resources.push('notification/k-notification-template');
+          this.resources.push('notification/notification-template');
           return this;
         };
 
@@ -266,7 +266,7 @@ System.register([], function (_export) {
 
         KendoConfigBuilder.prototype.kendoTreeList = function kendoTreeList() {
           this.resources.push('treelist/treelist');
-          this.resources.push('treelist/k-tree-col');
+          this.resources.push('treelist/tree-col');
           return this;
         };
 

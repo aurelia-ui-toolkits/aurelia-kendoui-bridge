@@ -43,7 +43,9 @@ var Validator = (function () {
 
   Validator.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  Validator.prototype.attached = function attached() {
     this.recreate();
   };
 

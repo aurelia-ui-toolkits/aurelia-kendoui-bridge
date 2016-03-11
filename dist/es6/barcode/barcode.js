@@ -21,7 +21,9 @@ export class Barcode {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 

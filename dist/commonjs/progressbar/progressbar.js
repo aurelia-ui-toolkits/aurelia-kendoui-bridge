@@ -43,7 +43,9 @@ var ProgressBar = (function () {
 
   ProgressBar.prototype.bind = function bind(ctx) {
     this.$parent = ctx;
+  };
 
+  ProgressBar.prototype.attached = function attached() {
     this.recreate();
   };
 

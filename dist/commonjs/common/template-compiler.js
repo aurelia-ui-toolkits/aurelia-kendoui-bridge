@@ -8,13 +8,16 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaTemplating = require('aurelia-templating');
 
+var _util = require('./util');
+
 var TemplateCompiler = (function () {
-  function TemplateCompiler(templatingEngine) {
+  function TemplateCompiler(templatingEngine, util) {
     _classCallCheck(this, _TemplateCompiler);
 
     this.isInitialized = false;
 
     this.templatingEngine = templatingEngine;
+    this.util = util;
   }
 
   TemplateCompiler.prototype.initialize = function initialize() {
@@ -66,7 +69,17 @@ var TemplateCompiler = (function () {
 
       if (data && data[i]) {
         var _data = data[i];
-        ctx = _data.dataItem || _data.aggregate || _data;
+        var dataItem = _data.dataItem || _data.aggregate || _data;
+
+        if (!_this2.util.isObject(dataItem)) {
+          ctx = {
+            dataItem: dataItem,
+            $$item: dataItem
+          };
+        } else {
+          ctx = dataItem;
+          ctx.$$item = Object.assign({}, ctx);
+        }
       }
 
       if (element instanceof jQuery) {
@@ -121,7 +134,7 @@ var TemplateCompiler = (function () {
   };
 
   var _TemplateCompiler = TemplateCompiler;
-  TemplateCompiler = _aureliaDependencyInjection.inject(_aureliaTemplating.TemplatingEngine)(TemplateCompiler) || TemplateCompiler;
+  TemplateCompiler = _aureliaDependencyInjection.inject(_aureliaTemplating.TemplatingEngine, _util.Util)(TemplateCompiler) || TemplateCompiler;
   return TemplateCompiler;
 })();
 

@@ -21,7 +21,9 @@ export class QRCode {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 

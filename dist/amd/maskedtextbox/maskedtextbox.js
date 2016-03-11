@@ -39,7 +39,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     MaskedTextBox.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+    };
 
+    MaskedTextBox.prototype.attached = function attached() {
       this.recreate();
     };
 

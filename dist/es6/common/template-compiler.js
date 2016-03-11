@@ -1,11 +1,12 @@
 import {inject} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
+import {Util} from './util';
 
 /**
 * An adaptor which uses Aurelia's enhance capability to
 * compile any template Kendo wants to have compiled
 */
-@inject(TemplatingEngine)
+@inject(TemplatingEngine, Util)
 export class TemplateCompiler {
 
   /**
@@ -14,8 +15,9 @@ export class TemplateCompiler {
   */
   isInitialized = false;
 
-  constructor(templatingEngine) {
+  constructor(templatingEngine, util) {
     this.templatingEngine = templatingEngine;
+    this.util = util;
   }
 
   /**
@@ -94,7 +96,17 @@ export class TemplateCompiler {
 
       if (data && data[i]) {
         let _data = data[i];
-        ctx = _data.dataItem || _data.aggregate || _data;
+        let dataItem = _data.dataItem || _data.aggregate || _data;
+
+        if (!this.util.isObject(dataItem)) {
+          ctx = {
+            dataItem: dataItem,
+            $$item: dataItem
+          };
+        } else {
+          ctx = dataItem;
+          ctx.$$item = Object.assign({}, ctx);
+        }
       }
 
       if (element instanceof jQuery) {

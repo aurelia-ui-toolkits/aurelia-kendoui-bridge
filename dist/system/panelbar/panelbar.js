@@ -1,7 +1,7 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', 'kendo.panelbar.min'], function (_export) {
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/constants', '../common/widget-base', '../common/decorators', 'kendo.panelbar.min'], function (_export) {
   'use strict';
 
-  var inject, customElement, bindable, WidgetBase, generateBindables, PanelBar;
+  var customElement, bindable, inject, constants, WidgetBase, generateBindables, PanelBar;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -13,11 +13,13 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
     return element.children.length > 0 && (element.children[0].nodeName === 'UL' || element.children[0].nodeName === 'OL');
   }
   return {
-    setters: [function (_aureliaDependencyInjection) {
-      inject = _aureliaDependencyInjection.inject;
-    }, function (_aureliaTemplating) {
+    setters: [function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
       bindable = _aureliaTemplating.bindable;
+    }, function (_aureliaDependencyInjection) {
+      inject = _aureliaDependencyInjection.inject;
+    }, function (_commonConstants) {
+      constants = _commonConstants.constants;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -83,7 +85,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _PanelBar = PanelBar;
         PanelBar = inject(Element, WidgetBase)(PanelBar) || PanelBar;
         PanelBar = generateBindables('kendoPanelBar')(PanelBar) || PanelBar;
-        PanelBar = customElement('k-panel-bar')(PanelBar) || PanelBar;
+        PanelBar = customElement(constants.elementPrefix + 'panel-bar')(PanelBar) || PanelBar;
         return PanelBar;
       })();
 

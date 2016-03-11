@@ -8,9 +8,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _defineDecoratedPropertyDescriptor(target, key, descriptors) { var _descriptor = descriptors[key]; if (!_descriptor) return; var descriptor = {}; for (var _key in _descriptor) descriptor[_key] = _descriptor[_key]; descriptor.value = descriptor.initializer ? descriptor.initializer.call(target) : undefined; Object.defineProperty(target, key, descriptor); }
 
+var _aureliaTemplating = require('aurelia-templating');
+
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
-var _aureliaTemplating = require('aurelia-templating');
+var _commonConstants = require('../common/constants');
 
 var _commonWidgetBase = require('../common/widget-base');
 
@@ -77,7 +79,7 @@ var PanelBar = (function () {
   var _PanelBar = PanelBar;
   PanelBar = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase)(PanelBar) || PanelBar;
   PanelBar = _commonDecorators.generateBindables('kendoPanelBar')(PanelBar) || PanelBar;
-  PanelBar = _aureliaTemplating.customElement('k-panel-bar')(PanelBar) || PanelBar;
+  PanelBar = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'panel-bar')(PanelBar) || PanelBar;
   return PanelBar;
 })();
 

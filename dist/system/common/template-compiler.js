@@ -1,7 +1,7 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', './util'], function (_export) {
   'use strict';
 
-  var inject, TemplatingEngine, TemplateCompiler;
+  var inject, TemplatingEngine, Util, TemplateCompiler;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -10,15 +10,18 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
       TemplatingEngine = _aureliaTemplating.TemplatingEngine;
+    }, function (_util) {
+      Util = _util.Util;
     }],
     execute: function () {
       TemplateCompiler = (function () {
-        function TemplateCompiler(templatingEngine) {
+        function TemplateCompiler(templatingEngine, util) {
           _classCallCheck(this, _TemplateCompiler);
 
           this.isInitialized = false;
 
           this.templatingEngine = templatingEngine;
+          this.util = util;
         }
 
         TemplateCompiler.prototype.initialize = function initialize() {
@@ -70,7 +73,17 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
 
             if (data && data[i]) {
               var _data = data[i];
-              ctx = _data.dataItem || _data.aggregate || _data;
+              var dataItem = _data.dataItem || _data.aggregate || _data;
+
+              if (!_this2.util.isObject(dataItem)) {
+                ctx = {
+                  dataItem: dataItem,
+                  $$item: dataItem
+                };
+              } else {
+                ctx = dataItem;
+                ctx.$$item = Object.assign({}, ctx);
+              }
             }
 
             if (element instanceof jQuery) {
@@ -125,7 +138,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating'], function
         };
 
         var _TemplateCompiler = TemplateCompiler;
-        TemplateCompiler = inject(TemplatingEngine)(TemplateCompiler) || TemplateCompiler;
+        TemplateCompiler = inject(TemplatingEngine, Util)(TemplateCompiler) || TemplateCompiler;
         return TemplateCompiler;
       })();
 

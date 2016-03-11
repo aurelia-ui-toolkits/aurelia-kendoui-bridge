@@ -39,7 +39,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     Upload.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
+    };
 
+    Upload.prototype.attached = function attached() {
       this.recreate();
     };
 
