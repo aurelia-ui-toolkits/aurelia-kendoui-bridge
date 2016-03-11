@@ -134,4 +134,11 @@ export class Util {
   isTemplateProperty(propertyName: string) {
     return propertyName.toLowerCase().indexOf('template') > -1;
   }
+
+  /**
+  * detection of objects
+  */
+  isObject(obj) {
+    return obj !== null && typeof(obj) === 'object';
+  }
 }
