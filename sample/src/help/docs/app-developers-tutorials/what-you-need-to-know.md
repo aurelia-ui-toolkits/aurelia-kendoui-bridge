@@ -13,9 +13,9 @@ For example, the [kendo API documentation](http://docs.telerik.com/kendo-ui/api/
 
 This translates into this HTML tag:
 
-`<input k-button="k-enable.bind: true"/>`
+`<input ak-button="k-enable.bind: true"/>`
 
-Notice the `k-` convention for the attribute and for the property.
+Notice the `ak-` prefix convention for the custom attribute (and custom elements) and the `k-` prefix convention for properties.
 <br><br>
 
 It is also possible to delegate Kendo events. We use the `k-on-` convention here.
@@ -23,7 +23,7 @@ It is also possible to delegate Kendo events. We use the `k-on-` convention here
 To illustrate this, we'll take a look at the [open](http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete#events-open) event of the Autocomplete control. This translates into:
 <br><br>
 
-	  <input k-autocomplete
+	  <input ak-autocomplete
 	         k-on-open.delegate="myFunction($event.detail)">
 <br><br>
 
@@ -59,7 +59,7 @@ There are two ways to get a reference of the original Kendo control: via `view-m
 **Note**: For custom elements use `view-model.ref` and for custom attributes use the name of the attribute with `.ref` as suffix:
 <br>
 
-	<div k-progress-bar k-progress-bar.ref="progressBar"></div>
+	<div ak-progress-bar k-progress-bar.ref="progressBar"></div>
 <br>
 
 the `progressBar` variable is now a reference to the wrapper, not the original Kendo control. Every wrapper has a `kWidget` property, which can be used: `this.progressBar.kWidget`.

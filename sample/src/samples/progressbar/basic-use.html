@@ -7,7 +7,7 @@
             <ul class="forms">
                 <li>
                     <label>First favourite</label>
-                    <k-drop-down-list k-widget.two-way="favouriteMovie1">
+                    <ak-drop-down-list k-widget.two-way="favouriteMovie1">
                       <select style="width: 100%;">
                           <option value="fastAndFurious">Fast and Furious 6</option>
                           <option value="nowYouSeeMe">Now you see me</option>
@@ -15,11 +15,11 @@
                           <option value="theInternship" selected>The Internship</option>
                           <option value="thePerks">The Perks of Being a Wallflower</option>
                       </select>
-                    </k-drop-down-list>
+                    </ak-drop-down-list>
                 </li>
                 <li>
                     <label>Second favourite</label>
-                    <k-drop-down-list k-widget.two-way="favouriteMovie2">
+                    <ak-drop-down-list k-widget.two-way="favouriteMovie2">
                       <select style="width: 100%;">
                         <option value="fastAndFurious" selected>Fast and Furious 6</option>
                         <option value="nowYouSeeMe">Now you see me</option>
@@ -27,11 +27,11 @@
                         <option value="theInternship">The Internship</option>
                         <option value="thePerks">The Perks of Being a Wallflower</option>
                     </select>
-                  </k-drop-down-list>
+                  </ak-drop-down-list>
                 </li>
                 <li>
                     <label>Third favourite</label>
-                    <k-drop-down-list k-widget.two-way="favouriteMovie3">
+                    <ak-drop-down-list k-widget.two-way="favouriteMovie3">
                       <select style="width: 100%;">
                         <option value="fastAndFurious">Fast and Furious 6</option>
                         <option value="nowYouSeeMe" selected>Now you see me</option>
@@ -39,7 +39,7 @@
                         <option value="theInternship">The Internship</option>
                         <option value="thePerks">The Perks of Being a Wallflower</option>
                     </select>
-                  </k-drop-down-list>
+                  </ak-drop-down-list>
                 </li>
                 <li>
                     <button click.delegate="castVote()" class="k-button k-primary">Vote</button>
@@ -51,23 +51,23 @@
             <ul class="poll-results">
                 <li>
                     <h4>Fast and Furious 6</h4>
-                    <div k-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: fastAndFurious"></div>
+                    <div ak-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: fastAndFurious"></div>
                 </li>
                 <li>
                     <h4>Now you see me</h4>
-                    <div k-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: nowYouSeeMe"></div>
+                    <div ak-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: nowYouSeeMe"></div>
                 </li>
                 <li>
                     <h4>The Help</h4>
-                    <div k-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: theHelp"></div>
+                    <div ak-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: theHelp"></div>
                 </li>
                 <li>
                     <h4>The Internship</h4>
-                    <div k-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: theInternship"></div>
+                    <div ak-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: theInternship"></div>
                 </li>
                 <li>
                     <h4>The Perks of Being a Wallflower</h4>
-                    <div k-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: thePerks"></div>
+                    <div ak-progress-bar="type: percent; animation.bind: { duration: 600 }; k-widget.two-way: thePerks"></div>
                 </li>
             </ul>
         </div>

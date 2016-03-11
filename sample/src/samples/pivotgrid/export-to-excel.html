@@ -1,11 +1,11 @@
 <template>
   <require from="./export-to-excel.css"></require>
   <div id="example">
-    <button k-button click.delegate="export()" class="k-button k-button-icontext hidden-on-narrow">
+    <button ak-button click.delegate="export()" class="k-button ak-button-icontext hidden-on-narrow">
       <span class="k-icon k-i-excel"></span>Export to Excel
     </button>
 
-    <k-pivot-grid id="pivotgrid"
+    <ak-pivot-grid id="pivotgrid"
                   class="hidden-on-narrow"
                   k-filterable.bind="true"
                   k-excel.bind="excel"
@@ -14,7 +14,7 @@
                   k-height.bind="580"
                   k-data-source.bind="dataSource"
                   k-widget.bind="pivotgrid">
-    </k-pivot-grid>
+    </ak-pivot-grid>
 
     <div class="responsive-message"></div>
   </div>

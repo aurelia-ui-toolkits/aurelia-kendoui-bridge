@@ -1,9 +1,9 @@
 <template>
-  <k-grid k-data-source.bind="datasource" k-pageable.bind="true" k-toolbar.bind="['create']" k-editable="popup">
-    <k-col k-field="ProductName"></k-col>
-    <k-col k-field="UnitPrice" k-title="Unit Price" k-format="{0:c}" k-width="120px"></k-col>
-    <k-col k-field="UnitsInStock" k-title="Units In Stock" k-width="120px"></k-col>
-    <k-col k-field="Discontinued" k-width="120px"></k-col>
-    <k-col k-command.bind="['edit', 'destroy']" k-title="&nbsp;" k-width="250px"></k-col>
-  </k-grid>
+  <ak-grid k-data-source.bind="datasource" k-pageable.bind="true" k-toolbar.bind="['create']" k-editable="popup">
+    <ak-col k-field="ProductName"></ak-col>
+    <ak-col k-field="UnitPrice" k-title="Unit Price" k-format="{0:c}" k-width="120px"></ak-col>
+    <ak-col k-field="UnitsInStock" k-title="Units In Stock" k-width="120px"></ak-col>
+    <ak-col k-field="Discontinued" k-width="120px"></ak-col>
+    <ak-col k-command.bind="['edit', 'destroy']" k-title="&nbsp;" k-width="250px"></ak-col>
+  </ak-grid>
 </template>

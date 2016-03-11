@@ -5,13 +5,13 @@
         <ul id="fieldlist">
           <li>
             <label>Temperature</label>
-            <k-range-slider view-model.ref="sliderWidget"
+            <ak-range-slider view-model.ref="sliderWidget"
                             k-widget.bind="slider"
                             k-selection-start.two-way="selectionStart"
                             k-selection-end.two-way="selectionEnd"
                             k-min.bind="10"
                             k-max.bind="100"
-                            style="width: 100%;"></k-range-slider>
+                            style="width: 100%;"></ak-range-slider>
           </li>
         </ul>
       </div>
@@ -26,9 +26,9 @@
             </li>
             <li>
               min:
-              <input k-numerictextbox="k-value.two-way: selectionStart" />
+              <input ak-numerictextbox="k-value.two-way: selectionStart" />
               max:
-              <input k-numerictextbox="k-value.two-way: selectionEnd" />
+              <input ak-numerictextbox="k-value.two-way: selectionEnd" />
               <button class="k-button" click.delegate="slider.value([selectionStart, selectionEnd])">Set value</button>
             </li>
             <li>

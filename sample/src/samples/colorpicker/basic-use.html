@@ -6,14 +6,14 @@
         <div id="background" css="background-color: ${ background }">
             <div class="column">
                 <h3 class="title">Select Wall Paint</h3>
-                <k-color-palette k-columns.bind="4"
+                <ak-color-palette k-columns.bind="4"
                                  k-palette.bind="palette"
                                  k-on-change.delegate="background = $event.detail.value"
-                                 k-tile-size.bind="{ width: 34, height: 19 }"></k-color-palette>
+                                 k-tile-size.bind="{ width: 34, height: 19 }"></ak-color-palette>
             </div>
             <div class="column">
                 <h3 class="title">Choose Custom Color</h3>
-                <input k-color-picker="k-value: #ffffff; k-buttons.bind: false"
+                <input ak-color-picker="k-value: #ffffff; ak-buttons.bind: false"
                        k-on-select.delegate="background = $event.detail.value"
                        id="picker" />
             </div>

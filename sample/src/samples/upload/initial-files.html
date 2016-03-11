@@ -10,13 +10,13 @@
     </div>
     <div>
       <div class="demo-section k-content">
-        <k-upload k-multiple.bind="true"
+        <ak-upload k-multiple.bind="true"
                   k-async.bind="asyncUpload"
                   k-files.bind="initialFiles"
                   k-on-success.delegate="onSuccess($event.detail)"
                   k-on-error.delegate="onSuccess($event.detail)">
           <input name="files" type="file"/>
-        </k-upload>
+        </ak-upload>
       </div>
     </div>
   </div>

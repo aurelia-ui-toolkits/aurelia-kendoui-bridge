@@ -1,13 +1,13 @@
 <template>
   <require from="./drag-and-drop.css"></require>
-  <k-tree-list k-data-source.bind="dataSource" k-height.bind="540" k-editable.bind="{move: true}">
-    <k-tree-col k-field="FirstName" k-title="First Name" k-width.bind="280">
-      <k-template>
+  <ak-tree-list k-data-source.bind="dataSource" k-height.bind="540" k-editable.bind="{move: true}">
+    <ak-tree-col k-field="FirstName" k-title="First Name" k-width.bind="280">
+      <ak-template>
         <div class="employee-photo" style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/treelist/people/${EmployeeID}.jpg);"></div>
         <div class="employee-name">${FirstName}</div>
-      </k-template>
-    </k-tree-col>
-    <k-tree-col k-field="LastName" k-title="Last Name" k-width.bind="160"></k-tree-col>
-    <k-tree-col k-field="Position"></k-tree-col>
-  </k-tree-list>
+      </ak-template>
+    </ak-tree-col>
+    <ak-tree-col k-field="LastName" k-title="Last Name" k-width.bind="160"></ak-tree-col>
+    <ak-tree-col k-field="Position"></ak-tree-col>
+  </ak-tree-list>
 </template>

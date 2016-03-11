@@ -1,13 +1,13 @@
 <template>
-    <k-tree-list k-editable="popup"
+    <ak-tree-list k-editable="popup"
                  k-data-source.bind="dataSource"
                  k-toolbar.bind="['create']"
                  k-height.bind="540">
-      <k-tree-col k-field="FirstName" k-expandable.bind="true" k-title="First Name" k-width.bind="280"></k-tree-col>
-      <k-tree-col k-field="LastName" k-title="Last Name" k-width.bind="100"></k-tree-col>
-      <k-tree-col k-field="Position"></k-tree-col>
-      <k-tree-col k-field="Phone" k-title="Phone"></k-tree-col>
-      <k-tree-col k-field="Extension" k-title="Ext" k-format="{0:#}"></k-tree-col>
-      <k-tree-col k-command.bind="['edit', 'destroy']"></k-tree-col>
-    </k-tree-list>
+      <ak-tree-col k-field="FirstName" k-expandable.bind="true" k-title="First Name" k-width.bind="280"></ak-tree-col>
+      <ak-tree-col k-field="LastName" k-title="Last Name" k-width.bind="100"></ak-tree-col>
+      <ak-tree-col k-field="Position"></ak-tree-col>
+      <ak-tree-col k-field="Phone" k-title="Phone"></ak-tree-col>
+      <ak-tree-col k-field="Extension" k-title="Ext" k-format="{0:#}"></ak-tree-col>
+      <ak-tree-col k-command.bind="['edit', 'destroy']"></ak-tree-col>
+    </ak-tree-list>
 </template>

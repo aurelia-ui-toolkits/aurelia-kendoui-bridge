@@ -2,7 +2,7 @@
   <require from="./basic-use.css"></require>
   <div id="example">
     <div id="window"
-         k-window="k-width: 600px; k-title: About Alvar Aalto; k-visible.bind: false; k-actions.bind: actions; k-widget.bind: window"
+         ak-window="k-width: 600px; k-title: About Alvar Aalto; k-visible.bind: false; k-actions.bind: actions; k-widget.bind: window"
          k-on-close.delegate="onClose()">
     <div class="armchair">
       <img src="http://demos.telerik.com/kendo-ui/content/web/window/armchair-402.png" alt="Artek Alvar Aalto - Armchair 402" /> Artek Alvar Aalto - Armchair 402</div>
@@ -15,7 +15,7 @@
       <p>Source: <a href="http://www.aalto.com/about-alvar-aalto.html" title="About Alvar Aalto">www.aalto.com</a></p>
     </div>
 
-    <span id="undo" ref="undo" style="display:none" k-button click.delegate="open()">Click here to open the window.</span>
+    <span id="undo" ref="undo" style="display:none" ak-button click.delegate="open()">Click here to open the window.</span>
 
     <div class="responsive-message"></div>
   </div>

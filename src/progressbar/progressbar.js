@@ -21,7 +21,9 @@ export class ProgressBar {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 

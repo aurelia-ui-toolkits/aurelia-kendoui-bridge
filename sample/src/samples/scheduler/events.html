@@ -1,6 +1,6 @@
 <template>
   <div id="example">
-    <k-scheduler k-date.bind="date"
+    <ak-scheduler k-date.bind="date"
                  k-start-time.bind="startTime"
                  k-height.bind="400"
                  k-timezone="Etc/UTC"
@@ -22,7 +22,7 @@
                  k-on-resize.delegate="logger.log('resize')"
                  k-on-resize-end.delegate="logger.log('resizeEnd')"
                  k-on-navigate.delegate="logger.log('navigate')">
-    </k-scheduler>
+    </ak-scheduler>
 
     <div class="box">
         <h4>Console log</h4>

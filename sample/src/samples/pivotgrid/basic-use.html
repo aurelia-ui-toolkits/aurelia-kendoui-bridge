@@ -1,14 +1,14 @@
 <template>
   <require from="./basic-use.css"></require>
   <div id="example">
-    <k-pivot-configurator class="hidden-on-narrow"
+    <ak-pivot-configurator class="hidden-on-narrow"
                           k-data-source.bind="dataSource"
                           k-filterable.bind="true"
                           k-sortable.bind="true"
                           k-height.bind="500"
-                          style="display: inline-block"></k-pivot-configurator>
+                          style="display: inline-block"></ak-pivot-configurator>
 
-    <k-pivot-grid id="pivotgrid"
+    <ak-pivot-grid id="pivotgrid"
                   class="hidden-on-narrow"
                   k-filterable.bind="true"
                   k-sortable.bind="true"
@@ -16,7 +16,7 @@
                   k-height.bind="580"
                   k-data-source.bind="dataSource"
                   style="display: inline-block">
-    </k-pivot-grid>
+    </ak-pivot-grid>
 
     <div class="responsive-message"></div>
   </div>

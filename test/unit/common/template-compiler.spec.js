@@ -87,7 +87,7 @@ describe('TemplateCompiler', () => {
     let spy = spyOn(sut, 'enhanceView');
     for (let i = 10; i < 20; i++) {
       elements.push(DOM.createElement('div'));
-      data.push({dataItem: i});
+      data.push({dataItem: { id: 1 }});
     }
 
     sut.compile($parent, elements, data, viewResources);
@@ -105,10 +105,10 @@ describe('TemplateCompiler', () => {
     let spy = spyOn(sut, 'enhanceView');
 
     elements.push(DOM.createElement('div'));
-    data.push({dataItem: 15});
+    data.push({dataItem: {id: 15}});
 
     elements.push(DOM.createElement('div'));
-    data.push({aggregate: 30});
+    data.push({aggregate: {id: 30}});
 
     elements.push(DOM.createElement('div'));
     data.push({something: 45});
@@ -119,10 +119,49 @@ describe('TemplateCompiler', () => {
 
     sut.compile($parent, elements, data, viewResources);
 
-    expect(spy).toHaveBeenCalledWith($parent, elements[0], 15, viewResources);
-    expect(spy).toHaveBeenCalledWith($parent, elements[1], 30, viewResources);
-    expect(spy).toHaveBeenCalledWith($parent, elements[2], {something: 45}, viewResources);
-    expect(spy).toHaveBeenCalledWith($parent, elements[3], undefined, viewResources);
+
+    expect(spy.calls.argsFor(0)[2].id).toBe(15);
+    expect(spy.calls.argsFor(1)[2].id).toBe(30);
+    expect(spy.calls.argsFor(2)[2].something).toBe(45);
+    expect(spy.calls.argsFor(3)[2]).toBe(undefined);
+  });
+
+  it('strings/integers as ctx should be put in an object', () => {
+    let elements = [];
+    let data = [];
+    let $parent = {};
+    let viewResources = {};
+    let spy = spyOn(sut, 'enhanceView');
+
+    elements.push(DOM.createElement('div'));
+    data.push({dataItem: 15});
+
+    elements.push(DOM.createElement('div'));
+    data.push({aggregate: 30});
+
+    sut.compile($parent, elements, data, viewResources);
+
+    expect(spy.calls.argsFor(0)[2].dataItem).toBe(15);
+    expect(spy.calls.argsFor(1)[2].dataItem).toBe(30);
+  });
+
+  it('$$item should be put on the context', () => {
+    let elements = [];
+    let data = [];
+    let $parent = {};
+    let viewResources = {};
+    let spy = spyOn(sut, 'enhanceView');
+
+    elements.push(DOM.createElement('div'));
+    data.push({dataItem: 15});
+
+    elements.push(DOM.createElement('div'));
+    data.push({aggregate: 30});
+
+    sut.compile($parent, elements, data, viewResources);
+
+    expect(spy.calls.argsFor(0)[2].$$item).toBe(15);
+    expect(spy.calls.argsFor(1)[2].$$item).toBe(30);
   });
 
   it('supports jQuery selector', () => {
@@ -133,7 +172,9 @@ describe('TemplateCompiler', () => {
     let viewResources = {};
     let selector = jQuery([div1, div2]);
     let data = [{
-      dataItem: 1
+      dataItem: {
+        id: 1
+      }
     }];
 
     sut.compile($parent, [selector], data, viewResources);

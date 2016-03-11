@@ -8,7 +8,7 @@
     </div>
 
     <div id="window"
-         k-window="k-width: 615px; k-height: 315px; k-actions.bind: ['Refresh', 'Close']; k-title.bind: title; k-content.bind: content; k-widget.bind: window"
+         ak-window="k-width: 615px; k-height: 315px; k-actions.bind: ['Refresh', 'Close']; k-title.bind: title; k-content.bind: content; k-widget.bind: window"
          k-on-close.delegate="onClose()"
          k-on-open.delegate="logger.log('open')"
          k-on-activate.delegate="logger.log('activate')"
@@ -19,7 +19,7 @@
          k-on-dragstart.delegate="logger.log('drag start')"
          k-on-dragend.delegate="logger.log('drag end')"></div>
 
-    <span id="undo" ref="undo" style="display:none" k-button click.delegate="open()">Click here to open the window.</span>
+    <span id="undo" ref="undo" style="display:none" ak-button click.delegate="open()">Click here to open the window.</span>
 
     <div class="responsive-message"></div>
   </div>

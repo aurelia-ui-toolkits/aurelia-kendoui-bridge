@@ -4,11 +4,11 @@
   <div class="box wide">
       <h4>Export Stock Chart</h4>
       <div class="box-col">
-          <button class='export-pdf k-button' click.delegate="exportPDF()">Save as PDF</button>
+          <button class='export-pdf ak-button' click.delegate="exportPDF()">Save as PDF</button>
       </div>
   </div>
 
-  <k-stock  id="stock-chart"
+  <ak-stock  id="stock-chart"
             k-data-source.bind="dataSource"
             k-pdf.bind="pdf",
             k-title.bind="{text: 'The Boeing Company\nNYSE:BA'}"
@@ -19,5 +19,5 @@
             k-value-axis.bind="valueAxis"
             k-navigator.bind="navigator"
             k-widget.bind="stock">
-  </k-stock>
+  </ak-stock>
 </template>

@@ -4,17 +4,17 @@
       <div class="box wide">
         <div class="box-col">
           <h4>Layout: </h4>
-          <k-drop-down-list k-value.two-way="subtype" k-on-change.delegate="subtypeChanged()">
+          <ak-drop-down-list k-value.two-way="subtype" k-on-change.delegate="subtypeChanged()">
             <select>
               <option value="down">Tree Down</option>
               <option value="up">Tree Up</option>
               <option value="tipover">Tipover Tree</option>
             </select>
-          </k-drop-down-list>
+          </ak-drop-down-list>
         </div>
       </div>
 
-      <k-diagram k-data-source.bind="dataSource"
+      <ak-diagram k-data-source.bind="dataSource"
                  k-layout.bind="{
                   type: 'tree',
                   subtype: 'down',
@@ -23,7 +23,7 @@
                  }"
                  k-shape-defaults.bind="{ width: 40, height: 40 }"
                  k-widget.two-way="diagram">
-      </k-diagram>
+      </ak-diagram>
     </div>
   </div>
 </template>

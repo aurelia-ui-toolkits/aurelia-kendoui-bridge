@@ -1,12 +1,12 @@
 <template>
-  <k-grid k-data-source.bind="datasource"
+  <ak-grid k-data-source.bind="datasource"
           k-pageable.bind="true"
           k-navigatable.bind="true"
           k-toolbar.bind="['create', 'save', 'cancel']"
           k-editable.bind="true">
-    <k-col k-field="UnitPrice" k-title="Unit Price" k-format="{0:c}" k-width.bind="120"></k-col>
-    <k-col k-field="UnitsInStock" k-title="Units In Stock" k-width.bind="120"></k-col>
-    <k-col k-field="Discontinued" k-width.bind="120"></k-col>
-    <k-col k-command="destroy" k-title="&nbsp;" k-width.bind="150"></k-col>
-  </k-grid>
+    <ak-col k-field="UnitPrice" k-title="Unit Price" k-format="{0:c}" k-width.bind="120"></ak-col>
+    <ak-col k-field="UnitsInStock" k-title="Units In Stock" k-width.bind="120"></ak-col>
+    <ak-col k-field="Discontinued" k-width.bind="120"></ak-col>
+    <ak-col k-command="destroy" k-title="&nbsp;" k-width.bind="150"></ak-col>
+  </ak-grid>
 </template>

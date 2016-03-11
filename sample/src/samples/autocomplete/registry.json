@@ -15,6 +15,7 @@
     "server-filtering": {},
     "virtualization": {},
     "grouping": {},
-    "value-binding": {}
+    "value-binding": {},
+    "highlighting": {}
   }
 }

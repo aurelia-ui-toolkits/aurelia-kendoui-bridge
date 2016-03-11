@@ -5,7 +5,7 @@
               <label><input type="checkbox" checked.bind="snap" change.delegate="snapChanged()">Snap events to slot boundaries</label>
           </div>
       </div>
-      <k-scheduler k-date.bind="date"
+      <ak-scheduler k-date.bind="date"
                    k-start-time.bind="startTime"
                    k-height.bind="600"
                    k-views.bind="[
@@ -15,6 +15,6 @@
                    ]"
                    k-timezone="Etc/UTC"
                    k-data-source.bind="dataSource"
-                   k-widget.bind="scheduler"></k-scheduler>
+                   k-widget.bind="scheduler"></ak-scheduler>
   </div>
 </template>

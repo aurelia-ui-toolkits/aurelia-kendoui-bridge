@@ -1,7 +1,7 @@
 <template>
   <div id="example">
     <div style="text-align: center;">
-       <k-map k-center.bind = "center"
+       <ak-map k-center.bind = "center"
               k-zoom.bind = "4"
               k-layers.bind = "layers"
               k-on-click.delegate="onClick($event.detail)"
@@ -14,7 +14,7 @@
               k-on-shape-mouse-leave.delegate="onShapeMouseLeave($event.detail)"
               k-on-zoom-start.delegate="onZoomStart($event.detail)"
               k-on-zoom-end.delegate="onZoomEnd($event.detail)">
-       </k-map>
+       </ak-map>
     </div>
 
     <div class="box">

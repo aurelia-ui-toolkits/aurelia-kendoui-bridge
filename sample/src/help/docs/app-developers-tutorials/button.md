@@ -14,12 +14,12 @@
         <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/tree/master/sample/src/samples/button">See KendoUI Bridge button folder for more details</a>
         <br>
         <br>
-        <button k-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>
+        <button ak-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>
         <br>
         <br>
-        <button k-button click.delegate="disable()">Disable</button>
+        <button ak-button click.delegate="disable()">Disable</button>
         &nbsp;&nbsp
-        <button k-button click.delegate="enable()">Enable</button>
+        <button ak-button click.delegate="enable()">Enable</button>
     </section>
 </template>
 ```
@@ -28,7 +28,7 @@
 Just like in the case of the Autocomplete control, the statement
 
 <br>
-&nbsp; &nbsp; &nbsp; &nbsp; `<button k-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>`
+&nbsp; &nbsp; &nbsp; &nbsp; `<button ak-button="k-enable.bind: enabled; k-icon: ungroup" k-on-click.trigger="test()">Kendo UI Button</button>`
 
 <br>
 

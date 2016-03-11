@@ -1,6 +1,6 @@
 <template>
   <div id="example">
-    <k-gantt k-data-source.bind="tasksDataSource"
+    <ak-gantt k-data-source.bind="tasksDataSource"
              k-dependencies.bind="dependenciesDataSource"
              k-assignments.bind="assignments"
              k-resources.bind="resources"
@@ -9,8 +9,8 @@
              k-show-work-hours.bind="false"
              k-show-work-days.bind="false"
              k-snap.bind="false">
-      <k-gantt-col k-field="title" k-title="Title" k-editable.bind="true" k-sortable.bind="true" k-width.bind="200"></k-gantt-col>
-      <k-gantt-col k-field="resources" k-title="Assigned resources" k-editable.bind="true"></k-gantt-col>
-    </k-gantt>
+      <ak-gantt-col k-field="title" k-title="Title" k-editable.bind="true" k-sortable.bind="true" k-width.bind="200"></ak-gantt-col>
+      <ak-gantt-col k-field="resources" k-title="Assigned resources" k-editable.bind="true"></ak-gantt-col>
+    </ak-gantt>
   </div>
 </template>

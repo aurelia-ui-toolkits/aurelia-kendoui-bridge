@@ -2,14 +2,14 @@
     <require from="./binding-to-remote-data.css"></require>
     <div class="row" id="pie-charts-remote-data">
         <div class="col-xs-12 col-sm-2" repeat.for="year of years">
-            <k-chart  class="pie-chart"
+            <ak-chart  class="pie-chart"
                       k-title.bind="{ text: year }"
                       k-data-source.bind="getDatasource(year)"
                       k-legend.bind="legend"
                       k-series-defaults.bind="seriesDefaults"
                       k-series.bind="series"
                       k-tooltip.bind="tooltip">
-            </k-chart>
+            </ak-chart>
         </div>
     </div>
 

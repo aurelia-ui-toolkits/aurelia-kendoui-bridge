@@ -1,23 +1,23 @@
 <template>
   <div id="example">
     <div class="demo-section k-content wide">
-      <k-toolbar>
-        <k-toolbar-item k-type="button" k-text="Button"></k-toolbar-item>
-        <k-toolbar-item k-type="button" k-text="Toggle Button" k-togglable.bind="true"></k-toolbar-item>
-        <k-toolbar-item k-type="splitButton" k-text="Insert" k-menu-buttons.bind="[
+      <ak-toolbar>
+        <ak-toolbar-item k-type="button" k-text="Button"></ak-toolbar-item>
+        <ak-toolbar-item k-type="button" k-text="Toggle Button" k-togglable.bind="true"></ak-toolbar-item>
+        <ak-toolbar-item k-type="splitButton" k-text="Insert" k-menu-buttons.bind="[
           { text: 'Insert above', icon: 'insert-n' },
           { text: 'Insert between', icon: 'insert-m' },
           { text: 'Insert below', icon: 'insert-s' }
-        ]"></k-toolbar-item>
-        <k-toolbar-item k-type="separator"></k-toolbar-item>
-        <k-toolbar-item>
-          <k-template>
+        ]"></ak-toolbar-item>
+        <ak-toolbar-item k-type="separator"></ak-toolbar-item>
+        <ak-toolbar-item>
+          <ak-template>
             <label>Format:</label>
-          </k-template>
-        </k-toolbar-item>
-        <k-toolbar-item k-overflow="never">
-          <k-template>
-            <k-drop-down-list k-option-label="Paragraph"
+          </ak-template>
+        </ak-toolbar-item>
+        <ak-toolbar-item k-overflow="never">
+          <ak-template>
+            <ak-drop-down-list k-option-label="Paragraph"
                               k-data-text-field="text"
                               k-data-value-field="value"
                               k-data-source.bind="[
@@ -27,24 +27,24 @@
                                 { text: 'Title', value: 4 },
                                 { text: 'Subtitle', value: 5 }
                               ]">
-            </k-drop-down-list>
-          </k-template>
-        </k-toolbar-item>
-        <k-toolbar-item k-type="separator"></k-toolbar-item>
-        <k-toolbar-item k-type="buttonGroup">
-          <k-toolbar-item-button k-sprite-css-class="k-tool-icon k-justifyLeft" k-text="Left" k-togglable.bind="true" k-group="text-align"></k-toolbar-item-button>
-          <k-toolbar-item-button k-sprite-css-class="k-tool-icon k-justifyCenter" k-text="Center" k-togglable.bind="true" k-group="text-align"></k-toolbar-item-button>
-          <k-toolbar-item-button k-sprite-css-class="k-tool-icon k-justifyRight" k-text="Right" k-togglable.bind="true" k-group="text-align"></k-toolbar-item-button>
-        </k-toolbar-item>
-        <k-toolbar-item k-type="buttonGroup">
-          <k-toolbar-item-button k-sprite-css-class="k-tool-icon k-bold" k-text="Bold" k-togglable.bind="true" k-show-text="overflow"></k-toolbar-item>
-          <k-toolbar-item-button k-sprite-css-class="k-tool-icon k-italic" k-text="Italic" k-togglable.bind="true" k-show-text="overflow"></k-toolbar-item>
-          <k-toolbar-item-button k-sprite-css-class="k-tool-icon k-underline" k-text="Underline" k-togglable.bind="true" k-show-text="overflow"></k-toolbar-item>
-        </k-toolbar-item>
-        <k-toolbar-item k-type="button" k-text="Action" k-overflow="always"></k-toolbar-item>
-        <k-toolbar-item k-type="button" k-text="Another Action" k-overflow="always"></k-toolbar-item>
-        <k-toolbar-item k-type="button" k-text="Something else here" k-overflow="always"></k-toolbar-item>
-      </k-toolbar>
+            </ak-drop-down-list>
+          </ak-template>
+        </ak-toolbar-item>
+        <ak-toolbar-item k-type="separator"></ak-toolbar-item>
+        <ak-toolbar-item k-type="buttonGroup">
+          <ak-toolbar-item-button k-sprite-css-class="k-tool-icon k-justifyLeft" k-text="Left" k-togglable.bind="true" k-group="text-align"></ak-toolbar-item-button>
+          <ak-toolbar-item-button k-sprite-css-class="k-tool-icon k-justifyCenter" k-text="Center" k-togglable.bind="true" k-group="text-align"></ak-toolbar-item-button>
+          <ak-toolbar-item-button k-sprite-css-class="k-tool-icon k-justifyRight" k-text="Right" k-togglable.bind="true" k-group="text-align"></ak-toolbar-item-button>
+        </ak-toolbar-item>
+        <ak-toolbar-item k-type="buttonGroup">
+          <ak-toolbar-item-button k-sprite-css-class="k-tool-icon k-bold" k-text="Bold" k-togglable.bind="true" k-show-text="overflow"></ak-toolbar-item>
+          <ak-toolbar-item-button k-sprite-css-class="k-tool-icon k-italic" k-text="Italic" k-togglable.bind="true" k-show-text="overflow"></ak-toolbar-item>
+          <ak-toolbar-item-button k-sprite-css-class="k-tool-icon k-underline" k-text="Underline" k-togglable.bind="true" k-show-text="overflow"></ak-toolbar-item>
+        </ak-toolbar-item>
+        <ak-toolbar-item k-type="button" k-text="Action" k-overflow="always"></ak-toolbar-item>
+        <ak-toolbar-item k-type="button" k-text="Another Action" k-overflow="always"></ak-toolbar-item>
+        <ak-toolbar-item k-type="button" k-text="Something else here" k-overflow="always"></ak-toolbar-item>
+      </ak-toolbar>
     </div>
   </div>
 </template>

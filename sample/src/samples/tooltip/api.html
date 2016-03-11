@@ -5,17 +5,17 @@
         <ul class="options">
             <li>
                Show at
-               <k-drop-down-list k-on-change.delegate="onChange()" k-value.two-way="selector">
+               <ak-drop-down-list k-on-change.delegate="onChange()" k-value.two-way="selector">
                  <select id="selector">
                       <option value="1">Target 1</option>
                       <option value="2">Target 2</option>
                   </select>
-               </k-drop-down-list>
+               </ak-drop-down-list>
             </li>
         </ul>
     </div>
 
-    <div id="tooltip" k-tooltip="k-widget.bind: tooltip; k-auto-hide.bind: false; k-show-on: click; k-position: bottom: k-filter: div; k-width.bind: 200; k-content.bind: content">
+    <div id="tooltip" ak-tooltip="k-widget.bind: tooltip; k-auto-hide.bind: false; k-show-on: click; k-position: bottom: k-filter: div; k-width.bind: 200; k-content.bind: content">
         <div id="target1" class="k-group">Target 1</div>
         <div id="target2" class="k-group">Target 2</div>
     </div>

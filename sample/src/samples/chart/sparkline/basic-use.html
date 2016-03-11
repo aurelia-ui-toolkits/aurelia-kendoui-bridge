@@ -9,31 +9,31 @@
              <table class="history">
                  <tr>
                      <td class="spark">
-                       <k-sparkline k-series.bind="[{data: pressLogData}]"></k-sparkline>
+                       <ak-sparkline k-series.bind="[{data: pressLogData}]"></ak-sparkline>
                      </td>
                      <td class="value">980<span>mb</span></td>
                  </tr>
                  <tr>
                      <td class="spark">
-                       <k-sparkline
+                       <ak-sparkline
                           k-series.bind="[{
                             data: tempLogData,
                             type: 'column',
                             tooltip: {format: '{0} &deg;C'}
                           }]">
-                       </k-sparkline>
+                       </ak-sparkline>
                      </td>
                      <td class="value">21<span>&deg;C</span></td>
                  </tr>
                  <tr>
                      <td class="spark">
-                       <k-sparkline
+                       <ak-sparkline
                           k-series.bind="[{
                             data: humLogData,
                             type: 'area',
                             tooltip: {format: '{0} %'}
                           }]">
-                       </k-sparkline>
+                       </ak-sparkline>
                      </td>
                      <td class="value">32<span>%</span></td>
                  </tr>
@@ -44,14 +44,14 @@
                  Temperature control
              </h4>
              <div class="stats">
-               <k-sparkline
+               <ak-sparkline
                   k-series.bind="[{
                     data: [21,23],
                     type: 'bullet',
                     tooltip: {visible: true}
                   }]"
                   k-value-axis.bind="tempRangeValueAxis">
-               </k-sparkline>
+               </ak-sparkline>
              </div>
          </div>
          <div class="conditioner">
@@ -59,13 +59,13 @@
                  Conditioner working time
              </h4>
              <ul class="pie-list stats">
-                 <li>MON <k-sparkline k-series.bind="[{ type: 'pie', data: [14,10] }]"/></li>
-                 <li>TUE <k-sparkline k-series.bind="[{ type: 'pie', data: [8,16] }]"/></li>
-                 <li>WED <k-sparkline k-series.bind="[{ type: 'pie', data: [8,16] }]"/></li>
-                 <li>THU <k-sparkline k-series.bind="[{ type: 'pie', data: [12,12] }]"/></li>
-                 <li>FRI <k-sparkline k-series.bind="[{ type: 'pie', data: [6,18] }]"/></li>
-                 <li>SAT <k-sparkline k-series.bind="[{ type: 'pie', data: [1,23] }]"/></li>
-                 <li>SUN <k-sparkline k-series.bind="[{ type: 'pie', data: [5,19] }]"/></li>
+                 <li>MON <ak-sparkline k-series.bind="[{ type: 'pie', data: [14,10] }]"/></li>
+                 <li>TUE <ak-sparkline k-series.bind="[{ type: 'pie', data: [8,16] }]"/></li>
+                 <li>WED <ak-sparkline k-series.bind="[{ type: 'pie', data: [8,16] }]"/></li>
+                 <li>THU <ak-sparkline k-series.bind="[{ type: 'pie', data: [12,12] }]"/></li>
+                 <li>FRI <ak-sparkline k-series.bind="[{ type: 'pie', data: [6,18] }]"/></li>
+                 <li>SAT <ak-sparkline k-series.bind="[{ type: 'pie', data: [1,23] }]"/></li>
+                 <li>SUN <ak-sparkline k-series.bind="[{ type: 'pie', data: [5,19] }]"/></li>
              </ul>
          </div>
      </div>

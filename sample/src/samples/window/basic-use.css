@@ -21,7 +21,7 @@
 }
 
 @media screen and (max-width: 1023px) {
-  #window-basic-use div.k-window {
+  #window-basic-use div.ak-window {
     display: none !important;
   }
 }

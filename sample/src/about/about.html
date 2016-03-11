@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
     <br>
-    <div k-tabstrip>
+    <div ak-tabstrip>
       <ul>
           <li class="k-state-active">What is Aurelia-Kendoui bridge</li>
           <li>GRID - example of an Aurelia-Kendoui component</li>
@@ -49,22 +49,22 @@
           <h3>Example</h3>
           <div class="row">
             <div class="col-sm-12">
-              <k-grid k-data-source.bind="datasource" k-pageable.bind="{ refresh: true, pageSizes: true, buttonCount: 10 }" k-sortable.bind="true">
-                <k-col k-title="Contact Name" k-field="ContactName">
-                  <k-template>
+              <ak-grid k-data-source.bind="datasource" k-pageable.bind="{ refresh: true, pageSizes: true, buttonCount: 10 }" k-sortable.bind="true">
+                <ak-col k-title="Contact Name" k-field="ContactName">
+                  <ak-template>
                     <div class='customer-photo' style="background-image: url(http://demos.telerik.com/kendo-ui/content/web/Customers/${CustomerID}.jpg);"></div>
                     <div class='customer-name'>${ContactName}</div>
-                  </k-template>
-                </k-col>
-                <k-col k-title="Contact Title" k-field="ContactTitle"></k-col>
-                <k-col k-title="Company Name" k-field="CompanyName"></k-col>
-                <k-col k-field="Country"></k-col>
-              </k-grid>
+                  </ak-template>
+                </ak-col>
+                <ak-col k-title="Contact Title" k-field="ContactTitle"></ak-col>
+                <ak-col k-title="Company Name" k-field="CompanyName"></ak-col>
+                <ak-col k-field="Country"></ak-col>
+              </ak-grid>
             </div>
           </div>
           <div class="row" style="margin-top: 10px">
             <div class="col-sm-12">
-              <div k-tabstrip="k-animation.bind: false" k-tabstrip.ref="tabstrip">
+              <div ak-tabstrip="k-animation.bind: false" ak-tabstrip.ref="tabstrip">
                   <ul>
                       <li class="k-state-active">Without Bridge</li>
                       <li>With Bridge (View)</li>

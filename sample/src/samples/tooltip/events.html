@@ -3,13 +3,13 @@
     <div class="demo-section k-content">
       <span id="autohide-true"
             class="k-button wider"
-            k-tooltip="k-content: Hello!; k-position: top"
+            ak-tooltip="k-content: Hello!; k-position: top"
             k-on-show.delegate="logger.log('show button 1')"
             k-on-hide.delegate="logger.log('hide button 1')">Hover me!</span>
 
       <span id="autohide-false"
             class="k-button wider"
-            k-tooltip="k-content: Hello!; k-position: top; k-auto-hide.bind: false"
+            ak-tooltip="k-content: Hello!; k-position: top; k-auto-hide.bind: false"
             k-on-show.delegate="logger.log('show button 2')"
             k-on-hide.delegate="logger.log('hide button 2')">Hover me too!</span>
     </div>

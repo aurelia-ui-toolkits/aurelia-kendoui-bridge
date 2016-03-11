@@ -2,8 +2,8 @@
   <require from="./templates.css"></require>
   <div id="example">
     <div class="demo-section k-content">
-      <k-upload k-multiple.bind="true" k-async.bind="asyncUpload">
-        <k-template>
+      <ak-upload k-multiple.bind="true" k-async.bind="asyncUpload">
+        <ak-template>
           <span class='k-progress'></span>
           <div class='file-wrapper'>
               <span class='file-icon ${addExtensionClass(files[0].extension)}'></span>
@@ -11,10 +11,10 @@
               <h4 class='file-heading file-size-heading'>Size: ${size} bytes</h4>
               <button type='button' class='k-upload-action'></button>
           </div>
-        </k-template>
+        </ak-template>
 
         <input name="files" type="file"/>
-      </k-upload>
+      </ak-upload>
     </div>
   </div>
 </template>

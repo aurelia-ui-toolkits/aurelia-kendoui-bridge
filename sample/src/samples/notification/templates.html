@@ -3,44 +3,44 @@
 
   <div id="example">
 
-    <k-notification id="notification"
+    <ak-notification id="notification"
                     k-widget.bind="notification"
                     k-position.bind="{pinned: true, top: 30, right: 30}"
                     k-auto-hide-after.bind="0"
                     k-stacking="down">
-      <k-notification-template type="info">
+      <ak-notification-template type="info">
         <div class="new-mail">
             <img src="http://demos.telerik.com/kendo-ui/content/web/notification/envelope.png" />
             <h3>${title}</h3>
             <p>${message}</p>
         </div>
-      </k-notification-template>
-      <k-notification-template type="error">
+      </ak-notification-template>
+      <ak-notification-template type="error">
         <div class="wrong-pass">
             <img src="http://demos.telerik.com/kendo-ui/content/web/notification/error-icon.png" />
             <h3>${title}</h3>
             <p>${message}</p>
         </div>
-      </k-notification-template>
-      <k-notification-template type="success">
+      </ak-notification-template>
+      <ak-notification-template type="success">
         <div class="upload-success">
             <img src="http://demos.telerik.com/kendo-ui/content/web/notification/success-icon.png" />
             <h3>${message}</h3>
         </div>
-      </k-notification-template>
-    </k-notification>
+      </ak-notification-template>
+    </ak-notification>
 
     <div class="demo-section k-content" style="text-align: center;">
 
       <h4>Show notification:</h4>
       <p>
-        <button click.delegate="showEmailNotification()" k-button>Email</button><br />
-        <button click.delegate="showErrorNotification()" k-button>Error</button><br />
-        <button click.delegate="showSuccessNotification()" k-button>Upload Success</button>
+        <button click.delegate="showEmailNotification()" ak-button>Email</button><br />
+        <button click.delegate="showErrorNotification()" ak-button>Error</button><br />
+        <button click.delegate="showSuccessNotification()" ak-button>Upload Success</button>
       </p>
       <h4>Hide notification:</h4>
       <p>
-        <button click.delegate="hideAllNotifications()" k-button>Hide All Notifications</button>
+        <button click.delegate="hideAllNotifications()" ak-button>Hide All Notifications</button>
       </p>
 
     </div>

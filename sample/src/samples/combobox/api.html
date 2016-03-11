@@ -2,13 +2,13 @@
   <div id="example">
     <div class="demo-section k-content">
       <h4>Select movie</h4>
-      <k-combobox k-data-text-field="text"
+      <ak-combobox k-data-text-field="text"
                   			k-data-value-field="value"
                   			k-data-source.bind="data"
                   			k-height.bind="100"
                         k-widget.two-way="movies"
                   			style="width: 100%;">
-      </k-combobox>
+      </ak-combobox>
     </div>
 
     <div class="box wide">
@@ -37,7 +37,7 @@
         <h4>Filter</h4>
         <ul class="options">
             <li>
-                <k-drop-down-list k-value.two-way="filter"
+                <ak-drop-down-list k-value.two-way="filter"
                                   k-on-change.delegate="filterTypeOnChanged()">
                   <select>
                       <option value="none">None</option>
@@ -45,7 +45,7 @@
                       <option value="contains">Contains</option>
                       <option value="eq">Equal</option>
                   </select>
-                </k-drop-down-list>
+                </ak-drop-down-list>
             </li>
             <li>
                 <input ref="word" value="The" class="k-textbox" style="width: 149px; margin: 0;" />

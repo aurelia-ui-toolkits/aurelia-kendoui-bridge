@@ -5,23 +5,23 @@
             <div ref="cap" id="cap" class="black-cap"></div>
 
             <h4>Cap Color</h4>
-            <k-drop-down-list k-data-text-field="text"
+            <ak-drop-down-list k-data-text-field="text"
                     					k-data-value-field="value"
                               k-data-source.bind="data"
                               k-value.two-way="capColor"
                               k-on-change.delegate="colorChanged()"
                               style="width: 100%;">
-            </k-drop-down-list>
+            </ak-drop-down-list>
 
             <h4 style="margin-top: 2em;">Cap Size</h4>
-            <k-drop-down-list k-value.two-way="capSize">
+            <ak-drop-down-list k-value.two-way="capSize">
               <select style="width: 100%;">
                   <option>S - 6 3/4"</option>
                   <option>M - 7 1/4"</option>
                   <option>L - 7 1/8"</option>
                   <option>XL - 7 5/8"</option>
               </select>
-            </k-drop-down-list>
+            </ak-drop-down-list>
 
             <button class="k-button k-primary" click.delegate="buyCap()" style="margin-top: 2em; float: right;">Customize</button>
         </div>

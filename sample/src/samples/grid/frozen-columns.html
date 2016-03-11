@@ -1,5 +1,5 @@
 <template>
-  <k-grid k-data-source.bind="datasource"
+  <ak-grid k-data-source.bind="datasource"
           k-sortable.bind="true"
           k-reorderable.bind="true"
           k-groupable.bind="true"
@@ -7,10 +7,10 @@
           k-filterable.bind="true"
           k-column-menu.bind="true"
           k-pageable.bind="true">
-    <k-col k-field="OrderID" k-title="Order ID" k-locked.bind="true" k-lockable.bind="false" k-width.bind="150"></k-col>
-    <k-col k-field="ShipCountry" k-title="Ship Country" k-width.bind="300"></k-col>
-    <k-col k-field="ShipCity" k-title="Ship City" k-width.bind="300"></k-col>
-    <k-col k-field="ShipName" k-title="Ship Name" k-locked.bind="true" k-width.bind="300"></k-col>
-    <k-col k-field="ShipAddress" k-lockable.bind="false" k-width.bind="400"></k-col>
-  </k-grid>
+    <ak-col k-field="OrderID" k-title="Order ID" k-locked.bind="true" k-lockable.bind="false" k-width.bind="150"></ak-col>
+    <ak-col k-field="ShipCountry" k-title="Ship Country" k-width.bind="300"></ak-col>
+    <ak-col k-field="ShipCity" k-title="Ship City" k-width.bind="300"></ak-col>
+    <ak-col k-field="ShipName" k-title="Ship Name" k-locked.bind="true" k-width.bind="300"></ak-col>
+    <ak-col k-field="ShipAddress" k-lockable.bind="false" k-width.bind="400"></ak-col>
+  </ak-grid>
 </template>

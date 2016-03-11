@@ -26,8 +26,8 @@ This is how you would `<require>` the grid wrapper in a view:
 
 ```
 <require from="aurelia-kendoui-bridge/grid/grid"></require>
-<require from="aurelia-kendoui-bridge/grid/k-col"></require>
-<require from="aurelia-kendoui-bridge/common/k-template"></require>
+<require from="aurelia-kendoui-bridge/grid/col"></require>
+<require from="aurelia-kendoui-bridge/common/template"></require>
 ```
 
 Note that you need to know the location of the wrappers. These paths can be found in the [config-builder.js](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/src/config-builder.js) file of our plugin.

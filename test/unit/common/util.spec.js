@@ -162,4 +162,12 @@ describe('Util', () => {
     expect(sut.isTemplateProperty('testTemplate')).toBe(true);
     expect(sut.isTemplateProperty('template')).toBe(true);
   });
+
+  it('isObject detects objects correctly', () => {
+    expect(sut.isObject({})).toBe(true);
+    expect(sut.isObject(null)).toBe(false);
+    expect(sut.isObject(undefined)).toBe(false);
+    expect(sut.isObject('foo')).toBe(false);
+    expect(sut.isObject(15)).toBe(false);
+  });
 });

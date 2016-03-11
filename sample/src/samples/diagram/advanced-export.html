@@ -3,22 +3,22 @@
     <div class="box wide">
         <h4>Export diagram content</h4>
         <div class="box-col">
-            <button k-button click.delegate="exportPDF()">Export as PDF</button>
+            <button ak-button click.delegate="exportPDF()">Export as PDF</button>
         </div>
         <div class="box-col">
-            <button k-button click.delegate="exportImage()">Export as Image</button>
+            <button ak-button click.delegate="exportImage()">Export as Image</button>
         </div>
         <div class="box-col">
-            <button k-button click.delegate="exportSVG()">Export as SVG</button>
+            <button ak-button click.delegate="exportSVG()">Export as SVG</button>
         </div>
     </div>
     <div class="demo-section k-content wide">
-      <k-diagram k-data-source.bind="dataSource"
+      <ak-diagram k-data-source.bind="dataSource"
                  k-layout.bind="{ type: 'layered'}"
                  k-shape-defaults.bind="shapeDefaults"
                  k-connection-defaults.bind="{ stroke: { color: '#979797', width: 2}}"
                  k-widget.two-way="diagram">
-      </k-diagram>
+      </ak-diagram>
     </div>
   </div>
 </template>

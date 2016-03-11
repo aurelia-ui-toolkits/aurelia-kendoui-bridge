@@ -21,7 +21,9 @@ export class DropTarget {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     this.recreate();
   }
 

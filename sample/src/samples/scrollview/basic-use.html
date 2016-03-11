@@ -2,17 +2,17 @@
   <require from="./basic-use.css"></require>
   <div id="example">
     <div class="demo-section k-content">
-      <k-scrollview k-data-source.bind="_500pxDS"
+      <ak-scrollview k-data-source.bind="_500pxDS"
                     k-content-height="440px"
                     k-enable-pager.bind="false"
                     k-widget.bind="scrollview">
-        <k-template>
+        <ak-template>
           <div>
               <div class="image" style="background-image: url(${image_url});"></div>
               <p class="title">${name}</p>
           </div>
-        </k-template>
-      </k-scrollview>
+        </ak-template>
+      </ak-scrollview>
       <a click.delegate="prev()" id="prev-img" title="Previous Image"></a>
       <a click.delegate="next()" id="next-img" title="Next Image"></a>
       <p>Photos via <a href="http://www.500px.com">500px.com</a></p>
