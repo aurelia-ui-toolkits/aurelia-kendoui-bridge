@@ -1,5 +1,6 @@
 {
   "title": "Spreadsheet",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/spreadsheet",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]

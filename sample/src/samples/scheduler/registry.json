@@ -1,5 +1,6 @@
 {
   "title": "Scheduler",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/scheduler",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

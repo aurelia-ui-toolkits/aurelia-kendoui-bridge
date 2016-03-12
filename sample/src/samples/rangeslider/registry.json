@@ -1,5 +1,6 @@
 {
   "title": "RangeSlider",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/rangeslider",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]

@@ -1,5 +1,6 @@
 {
   "title": "Button",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/button",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

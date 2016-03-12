@@ -1,5 +1,6 @@
 {
   "title": "DropDownList",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/dropdownlist",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]

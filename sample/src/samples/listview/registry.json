@@ -1,5 +1,6 @@
 {
   "title": "ListView",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/listview",
   "samples": {
     "basic-use": {
       "default": true,

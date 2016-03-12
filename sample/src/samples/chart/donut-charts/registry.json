@@ -1,5 +1,6 @@
 {
   "title": "Donut charts",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]

@@ -1,5 +1,6 @@
 {
   "title": "TreeList",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/treelist",
   "samples": {
     "basic-use": {
       "default": true,

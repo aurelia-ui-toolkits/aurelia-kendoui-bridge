@@ -1,5 +1,6 @@
 {
   "title": "Radial gauge",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/radialgauge",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

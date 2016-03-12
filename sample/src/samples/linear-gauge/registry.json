@@ -1,5 +1,6 @@
 {
   "title": "Linear gauge",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/lineargauge",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

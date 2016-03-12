@@ -1,10 +1,12 @@
-import {inject} from 'aurelia-framework';
+import {inject, bindable} from 'aurelia-framework';
 import {activationStrategy} from 'aurelia-router';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {TaskQueue} from 'aurelia-framework';
 
 @inject(EventAggregator, TaskQueue)
 export class SampleRunner {
+
+  @bindable router;
 
   constructor(ea, taskQueue) {
     this.taskQueue = taskQueue;

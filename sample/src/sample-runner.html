@@ -1,9 +1,8 @@
 <template>
-    <api namespace.bind="sample.namespace" view-model.ref="api"></api>
-
     <section>
         <collapse-panel title.bind="sample.title">
-          <div class="buttons" if.bind="sample.namespace">
+          <div class="buttons">
+            <a href.bind="sample.documentation" show.bind="sample.documentation" target="_blank" class="k-button">API</a>
           </div>
           <div id="exampleWrap">
             <div id="${sample.control}-${sample.sample}">

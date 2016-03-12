@@ -1,5 +1,6 @@
 {
   "title": "Window",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/window",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

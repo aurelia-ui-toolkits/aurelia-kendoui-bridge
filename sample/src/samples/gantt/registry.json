@@ -1,5 +1,6 @@
 {
   "title": "Gantt",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]

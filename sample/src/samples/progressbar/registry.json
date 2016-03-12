@@ -1,5 +1,6 @@
 {
   "title": "Progress Bar",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/progressbar",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]

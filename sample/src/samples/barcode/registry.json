@@ -1,5 +1,6 @@
 {
   "title": "Barcode",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/barcode",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

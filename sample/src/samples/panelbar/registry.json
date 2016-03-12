@@ -1,5 +1,6 @@
 {
     "title": "Panel Bar",
+    "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/panelbar",
     "samples": {
         "basic-use": {
             "default": true,

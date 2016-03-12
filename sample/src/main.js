@@ -9,11 +9,9 @@ export function configure(aurelia) {
     .plugin('aurelia-kendoui-bridge', (kendo) => kendo.pro().kendoSpreadsheet());
 
   aurelia.use.globalResources('shared/collapse-panel');
-  aurelia.use.globalResources('shared/api');
   aurelia.use.globalResources('shared/markdown');
   aurelia.use.globalResources('shared/logger');
   aurelia.use.globalResources('shared/au-code');
-  aurelia.use.globalResources('samples/grid/capitalize');
 
   aurelia.start()
   .then(au => {

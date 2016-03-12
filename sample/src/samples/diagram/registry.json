@@ -1,5 +1,6 @@
 {
   "title": "Diagram",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/diagram",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]

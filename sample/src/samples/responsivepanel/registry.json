@@ -1,5 +1,6 @@
 {
   "title": "ResponsivePanel",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/responsivepanel",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]

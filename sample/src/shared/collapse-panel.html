@@ -1,18 +1,13 @@
 <template>
     <div>
-        <div class="panel ${ 'panel-' + panelClass }">
-            <div class="panel-heading ${ allowCollapse ? 'panel-hover' : '' }" click.delegate="toggle()">
-                <span class="glyphicon glyphicon-chevron-down" if.bind="!collapsed && allowCollapse"></span>
-                <span class="glyphicon glyphicon-chevron-up" if.bind="collapsed && allowCollapse"></span>
+        <div class="panel panel-default">
+            <div class="panel-heading">
                 <strong>${title}</strong>
 
                 <content select=".buttons"></content>
             </div>
-            <div class="panel-body" show.bind="!collapsed">
+            <div class="panel-body">
                 <content></content>
-            </div>
-            <div class="panel-footer" if.bind="footer">
-                ${footer}
             </div>
         </div>
     </div>

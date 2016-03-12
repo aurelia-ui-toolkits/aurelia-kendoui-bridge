@@ -1,5 +1,6 @@
 {
   "title": "Map",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/map",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"]

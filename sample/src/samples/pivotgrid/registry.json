@@ -1,5 +1,6 @@
 {
   "title": "Pivot Grid",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/pivotgrid",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

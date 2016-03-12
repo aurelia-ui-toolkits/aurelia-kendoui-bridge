@@ -1,5 +1,6 @@
 {
   "title": "Polar charts",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
   "samples": {
     "binding-to-local-data": {},
     "binding-to-remote-data": {},

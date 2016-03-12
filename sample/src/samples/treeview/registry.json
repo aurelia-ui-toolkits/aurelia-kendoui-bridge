@@ -1,5 +1,6 @@
 {
     "title": "Treeview",
+    "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/treeview",
     "samples": {
         "basic-use": {
             "route": [

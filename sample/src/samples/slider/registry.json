@@ -1,5 +1,6 @@
 {
   "title": "Slider",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/slider",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

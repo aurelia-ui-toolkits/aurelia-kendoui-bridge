@@ -1,5 +1,6 @@
 {
   "title": "QR Code",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/qrcode",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

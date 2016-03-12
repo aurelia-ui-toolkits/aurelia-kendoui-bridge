@@ -1,5 +1,6 @@
 {
   "title": "Scrollview",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/mobile/ui/scrollview",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

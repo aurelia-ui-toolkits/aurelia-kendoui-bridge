@@ -1,5 +1,6 @@
 {
   "title": "Calendar",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/calendar",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

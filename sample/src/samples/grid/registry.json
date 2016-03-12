@@ -1,6 +1,6 @@
 {
   "title": "Grid",
-  "namespace": "kendo.ui.Grid",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/grid",
   "samples": {
     "basic-use": {
       "default": true,

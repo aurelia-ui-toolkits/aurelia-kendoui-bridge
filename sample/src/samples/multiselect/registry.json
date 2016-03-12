@@ -1,5 +1,6 @@
 {
   "title": "Multiselect",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/multiselect",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],

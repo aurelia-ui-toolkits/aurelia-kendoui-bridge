@@ -1,5 +1,6 @@
 {
     "title": "DatePicker",
+    "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/datepicker",
     "samples": {
         "basic-usage": {
             "route": [

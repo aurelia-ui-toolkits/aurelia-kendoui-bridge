@@ -1,5 +1,6 @@
 {
   "title": "Color Picker",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/colorpicker",
   "samples": {
     "basic-use": {
       "default": true,
