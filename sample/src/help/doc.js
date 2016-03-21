@@ -18,7 +18,9 @@ export class Doc {
     // go through all the categories in the json
     // and convert it into an array that allows for easier looping
     this.categories = [];
-    for (let categoryKey of Object.keys(this.registry)) {
+
+    let keys = Object.keys(this.registry);
+    keys.forEach(categoryKey => {
       let category = {
         name: categoryKey,
         files: this.registry[categoryKey]
@@ -29,7 +31,7 @@ export class Doc {
       }
 
       this.categories.push(category);
-    }
+    });
   }
 
   attached() {

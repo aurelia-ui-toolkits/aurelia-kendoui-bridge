@@ -116,7 +116,7 @@ export class BasicUse {
   refresh() {
     let chartNames = ['oct', 'nov', 'dec'];
 
-    for (let idx of chartNames) {
+    chartNames.forEach(idx => {
       let chart = this[idx];
 
       let options = {
@@ -135,6 +135,6 @@ export class BasicUse {
 
       chart.setOptions(options);
       this.slider.enable(!options.seriesDefaults.dynamicSlope);
-    }
+    });
   }
 }

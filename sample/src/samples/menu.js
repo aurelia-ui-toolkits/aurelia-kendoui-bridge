@@ -23,10 +23,11 @@ export class Menu {
 
     this.element.appendChild(div);
 
-    for (let key of Object.keys(data)) {
+    let items = Object.keys(data);
+    items.forEach(key => {
       let id = this.getId(this.toolbars.length, buttons.length);
       buttons.push({ type: 'button', id: id, text: key, togglable: true, data: data[key], rowIndex: this.toolbars.length });
-    }
+    });
 
     let toolbar = jQuery(div).kendoToolBar({
       items: buttons
