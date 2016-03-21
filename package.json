@@ -58,7 +58,7 @@
     }
   },
   "devDependencies": {
-    "aurelia-tools": "git://github.com/aurelia-ui-toolkits/tools.git#master",
+    "aurelia-tools": "^0.1.20",
     "babel": "^5.8.22",
     "babel-dts-generator": "^0.2.17",
     "babel-eslint": "^4.1.1",
