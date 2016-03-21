@@ -13,6 +13,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 require('jquery');
 
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
+var _aureliaTemplating = require('aurelia-templating');
+
+var _aureliaMetadata = require('aurelia-metadata');
+
+var _aureliaBinding = require('aurelia-binding');
+
+var _aureliaTaskQueue = require('aurelia-task-queue');
+
 require('kendo.autocomplete.min');
 
 require('kendo.virtuallist.min');
@@ -39,7 +49,11 @@ require('kendo.dataviz.treemap.min');
 
 require('kendo.colorpicker.min');
 
+require('kendo.colorpicker.min');
+
 require('kendo.combobox.min');
+
+require('kendo.virtuallist.min');
 
 require('kendo.menu.min');
 
@@ -51,11 +65,21 @@ require('kendo.dataviz.diagram.min');
 
 require('kendo.draganddrop.min');
 
+require('kendo.draganddrop.min');
+
+require('kendo.draganddrop.min');
+
 require('kendo.dropdownlist.min');
+
+require('kendo.virtuallist.min');
 
 require('kendo.editor.min');
 
+require('kendo.colorpicker.min');
+
 require('kendo.gantt.min');
+
+require('kendo.dataviz.gauge.min');
 
 require('kendo.dataviz.gauge.min');
 
@@ -71,7 +95,11 @@ require('kendo.dataviz.map.min');
 
 require('kendo.maskedtextbox.min');
 
+require('kendo.menu.min');
+
 require('kendo.multiselect.min');
+
+require('kendo.virtuallist.min');
 
 require('kendo.notification.min');
 
@@ -111,6 +139,8 @@ require('kendo.scheduler.timelineview.min');
 
 require('kendo.mobile.scrollview.min');
 
+require('kendo.slider.min');
+
 require('kendo.sortable.min');
 
 require('kendo.splitter.min');
@@ -127,6 +157,10 @@ require('kendo.toolbar.min');
 
 require('kendo.tooltip.min');
 
+require('kendo.data.signalr.min');
+
+require('kendo.filtercell.min');
+
 require('kendo.treelist.min');
 
 require('kendo.treeview.min');
@@ -136,16 +170,6 @@ require('kendo.upload.min');
 require('kendo.validator.min');
 
 require('kendo.window.min');
-
-var _aureliaDependencyInjection = require('aurelia-dependency-injection');
-
-var _aureliaTemplating = require('aurelia-templating');
-
-var _aureliaMetadata = require('aurelia-metadata');
-
-var _aureliaBinding = require('aurelia-binding');
-
-var _aureliaTaskQueue = require('aurelia-task-queue');
 
 var KendoConfigBuilder = (function () {
   function KendoConfigBuilder() {

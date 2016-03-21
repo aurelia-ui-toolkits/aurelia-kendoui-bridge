@@ -1,3 +1,13 @@
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.6.0...v0.6.1) (2016-03-21)
+
+
+### Bug Fixes
+
+* **webpack:** added main to package.json ([fac4acf](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/fac4acf))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.5.1...v0.6.0) (2016-03-11)
 

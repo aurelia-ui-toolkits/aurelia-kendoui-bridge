@@ -1,47 +1,77 @@
 declare module 'aurelia-kendoui-bridge' {
   import 'jquery';
+  import { inject, Container, transient }  from 'aurelia-dependency-injection';
+  import { customElement, bindable, children, ViewResources, customAttribute, BindableProperty, HtmlBehaviorResource, TemplatingEngine, noView, processContent, TargetInstruction }  from 'aurelia-templating';
+  import { metadata }  from 'aurelia-metadata';
+  import { bindingMode }  from 'aurelia-binding';
+  import { TaskQueue }  from 'aurelia-task-queue';
   import 'kendo.autocomplete.min';
   import 'kendo.virtuallist.min';
   import 'kendo.dataviz.barcode.min';
   import 'kendo.button.min';
   import 'kendo.mobile.buttongroup.min';
   import 'kendo.calendar.min';
+  
+  // eslint-disable-line no-unused-vars
   import 'kendo.dataviz.chart.min';
   import 'kendo.dataviz.chart.polar.min';
   import 'kendo.dataviz.chart.funnel.min';
+  
+  // eslint-disable-line no-unused-vars
   import 'kendo.dataviz.sparkline.min';
+  
+  // eslint-disable-line no-unused-vars
   import 'kendo.dataviz.stock.min';
+  
+  // eslint-disable-line no-unused-vars
   import 'kendo.dataviz.treemap.min';
   import 'kendo.colorpicker.min';
+  import 'kendo.colorpicker.min';
   import 'kendo.combobox.min';
+  import 'kendo.virtuallist.min';
   import 'kendo.menu.min';
   import 'kendo.datepicker.min';
   import 'kendo.datetimepicker.min';
   import 'kendo.dataviz.diagram.min';
   import 'kendo.draganddrop.min';
+  import 'kendo.draganddrop.min';
+  import 'kendo.draganddrop.min';
   import 'kendo.dropdownlist.min';
+  import 'kendo.virtuallist.min';
   import 'kendo.editor.min';
+  import 'kendo.colorpicker.min';
+  
+  // eslint-disable-line no-unused-vars
   import 'kendo.gantt.min';
   import 'kendo.dataviz.gauge.min';
+  import 'kendo.dataviz.gauge.min';
+  
+  // eslint-disable-line no-unused-vars
   import 'kendo.data.signalr.min';
   import 'kendo.filtercell.min';
   import 'kendo.grid.min';
   import 'kendo.listview.min';
   import 'kendo.dataviz.map.min';
   import 'kendo.maskedtextbox.min';
+  import 'kendo.menu.min';
   import 'kendo.multiselect.min';
+  import 'kendo.virtuallist.min';
   import 'kendo.notification.min';
   import 'kendo.numerictextbox.min';
   import 'kendo.panelbar.min';
   import 'kendo.pdf.min';
   import 'kendo.excel.min';
   import 'kendo.pivot.configurator.min';
+  
+  // eslint-disable-line no-unused-vars
   import 'kendo.pivotgrid.min';
   import 'kendo.pivot.fieldmenu.min';
   import 'kendo.progressbar.min';
   import 'kendo.dataviz.qrcode.min';
   import 'kendo.slider.min';
   import 'kendo.responsivepanel.min';
+  
+  // eslint-disable-line no-unused-vars
   import 'kendo.scheduler.min';
   import 'kendo.scheduler.agendaview.min';
   import 'kendo.scheduler.dayview.min';
@@ -49,6 +79,7 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.scheduler.recurrence.min';
   import 'kendo.scheduler.timelineview.min';
   import 'kendo.mobile.scrollview.min';
+  import 'kendo.slider.min';
   import 'kendo.sortable.min';
   import 'kendo.splitter.min';
   import 'kendo.spreadsheet.min';
@@ -57,16 +88,15 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.timepicker.min';
   import 'kendo.toolbar.min';
   import 'kendo.tooltip.min';
+  
+  // eslint-disable-line no-unused-vars
+  import 'kendo.data.signalr.min';
+  import 'kendo.filtercell.min';
   import 'kendo.treelist.min';
   import 'kendo.treeview.min';
   import 'kendo.upload.min';
   import 'kendo.validator.min';
   import 'kendo.window.min';
-  import { inject, Container, transient }  from 'aurelia-dependency-injection';
-  import { customElement, bindable, children, ViewResources, customAttribute, BindableProperty, HtmlBehaviorResource, TemplatingEngine, noView, processContent, TargetInstruction }  from 'aurelia-templating';
-  import { metadata }  from 'aurelia-metadata';
-  import { bindingMode }  from 'aurelia-binding';
-  import { TaskQueue }  from 'aurelia-task-queue';
   
   /**
   * Configure the Aurelia-KendoUI-bridge
@@ -198,8 +228,6 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
-  
-  // eslint-disable-line no-unused-vars
   export class Chart {
     kOptions: any;
     constructor(element: any, widgetBase: any);
@@ -208,8 +236,6 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  
-  // eslint-disable-line no-unused-vars
   export class Sparkline {
     kOptions: any;
     constructor(element: any, widgetBase: any);
@@ -218,8 +244,6 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  
-  // eslint-disable-line no-unused-vars
   export class Stock {
     kOptions: any;
     constructor(element: any, widgetBase: any);
@@ -228,8 +252,6 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  
-  // eslint-disable-line no-unused-vars
   export class TreeMap {
     kOptions: any;
     constructor(element: any, widgetBase: any);
@@ -632,8 +654,6 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class GanttCol {
   }
-  
-  // eslint-disable-line no-unused-vars
   export class Gantt {
     columns: any;
     templates: any;
@@ -667,8 +687,6 @@ declare module 'aurelia-kendoui-bridge' {
     constructor(templateGatherer: any);
     bind(): any;
   }
-  
-  // eslint-disable-line no-unused-vars
   export class Grid {
     columns: any;
     kOptions: any;
@@ -769,8 +787,6 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  
-  // eslint-disable-line no-unused-vars
   export class PivotGrid {
     kOptions: any;
     templates: any;
@@ -813,8 +829,6 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  
-  // eslint-disable-line no-unused-vars
   export class Scheduler {
     kOptions: any;
     templates: any;
@@ -925,8 +939,6 @@ declare module 'aurelia-kendoui-bridge' {
     constructor(templateGatherer: any);
     bind(): any;
   }
-  
-  // eslint-disable-line no-unused-vars
   export class TreeList {
     columns: any;
     kOptions: any;

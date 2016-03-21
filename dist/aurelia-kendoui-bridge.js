@@ -1,66 +1,4 @@
 import 'jquery';
-import 'kendo.autocomplete.min';
-import 'kendo.virtuallist.min';
-import 'kendo.dataviz.barcode.min';
-import 'kendo.button.min';
-import 'kendo.mobile.buttongroup.min';
-import 'kendo.calendar.min';
-import 'kendo.dataviz.chart.min';
-import 'kendo.dataviz.chart.polar.min';
-import 'kendo.dataviz.chart.funnel.min';
-import 'kendo.dataviz.sparkline.min';
-import 'kendo.dataviz.stock.min';
-import 'kendo.dataviz.treemap.min';
-import 'kendo.colorpicker.min';
-import 'kendo.combobox.min';
-import 'kendo.menu.min';
-import 'kendo.datepicker.min';
-import 'kendo.datetimepicker.min';
-import 'kendo.dataviz.diagram.min';
-import 'kendo.draganddrop.min';
-import 'kendo.dropdownlist.min';
-import 'kendo.editor.min';
-import 'kendo.gantt.min';
-import 'kendo.dataviz.gauge.min';
-import 'kendo.data.signalr.min';
-import 'kendo.filtercell.min';
-import 'kendo.grid.min';
-import 'kendo.listview.min';
-import 'kendo.dataviz.map.min';
-import 'kendo.maskedtextbox.min';
-import 'kendo.multiselect.min';
-import 'kendo.notification.min';
-import 'kendo.numerictextbox.min';
-import 'kendo.panelbar.min';
-import 'kendo.pdf.min';
-import 'kendo.excel.min';
-import 'kendo.pivot.configurator.min';
-import 'kendo.pivotgrid.min';
-import 'kendo.pivot.fieldmenu.min';
-import 'kendo.progressbar.min';
-import 'kendo.dataviz.qrcode.min';
-import 'kendo.slider.min';
-import 'kendo.responsivepanel.min';
-import 'kendo.scheduler.min';
-import 'kendo.scheduler.agendaview.min';
-import 'kendo.scheduler.dayview.min';
-import 'kendo.scheduler.monthview.min';
-import 'kendo.scheduler.recurrence.min';
-import 'kendo.scheduler.timelineview.min';
-import 'kendo.mobile.scrollview.min';
-import 'kendo.sortable.min';
-import 'kendo.splitter.min';
-import 'kendo.spreadsheet.min';
-import 'kendo.mobile.switch.min';
-import 'kendo.tabstrip.min';
-import 'kendo.timepicker.min';
-import 'kendo.toolbar.min';
-import 'kendo.tooltip.min';
-import 'kendo.treelist.min';
-import 'kendo.treeview.min';
-import 'kendo.upload.min';
-import 'kendo.validator.min';
-import 'kendo.window.min';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
 import {customElement,bindable,children,ViewResources,customAttribute,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
@@ -459,6 +397,9 @@ export function configure(aurelia, configCallback) {
   }
 }
 
+import 'kendo.autocomplete.min';
+import 'kendo.virtuallist.min';
+
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, ViewResources)
@@ -511,6 +452,8 @@ export class AutoComplete {
   }
 }
 
+import 'kendo.dataviz.barcode.min';
+
 @customAttribute(`${constants.attributePrefix}barcode`)
 @generateBindables('kendoBarcode')
 @inject(Element, WidgetBase)
@@ -544,6 +487,8 @@ export class Barcode {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.button.min';
 
 @customAttribute(`${constants.attributePrefix}button`)
 @generateBindables('kendoButton')
@@ -579,6 +524,8 @@ export class Button {
   }
 }
 
+import 'kendo.mobile.buttongroup.min';
+
 @customAttribute(`${constants.attributePrefix}buttongroup`)
 @generateBindables('kendoMobileButtonGroup')
 @inject(Element, WidgetBase)
@@ -612,6 +559,8 @@ export class ButtonGroup {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.calendar.min';
 
 @customElement(`${constants.elementPrefix}calendar`)
 @generateBindables('kendoCalendar')
@@ -653,6 +602,10 @@ export class Calendar {
 }
 
 //eslint-disable-line no-unused-vars
+import 'kendo.dataviz.chart.min';
+import 'kendo.dataviz.chart.polar.min';
+import 'kendo.dataviz.chart.funnel.min';
+
 @customElement(`${constants.elementPrefix}chart`)
 @generateBindables('kendoChart')
 @inject(Element, WidgetBase)
@@ -688,6 +641,8 @@ export class Chart {
 }
 
 //eslint-disable-line no-unused-vars
+import 'kendo.dataviz.sparkline.min';
+
 @customElement(`${constants.elementPrefix}sparkline`)
 @generateBindables('kendoSparkline')
 @inject(Element, WidgetBase)
@@ -723,6 +678,8 @@ export class Sparkline {
 }
 
 //eslint-disable-line no-unused-vars
+import 'kendo.dataviz.stock.min';
+
 @customElement(`${constants.elementPrefix}stock`)
 @generateBindables('kendoStockChart')
 @inject(Element, WidgetBase)
@@ -758,6 +715,8 @@ export class Stock {
 }
 
 //eslint-disable-line no-unused-vars
+import 'kendo.dataviz.treemap.min';
+
 @customElement(`${constants.elementPrefix}treemap`)
 @generateBindables('kendoTreeMap')
 @inject(Element, WidgetBase)
@@ -791,6 +750,8 @@ export class TreeMap {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.colorpicker.min';
 
 @customElement(`${constants.attributePrefix}color-palette`)
 @generateBindables('kendoColorPalette')
@@ -831,6 +792,8 @@ export class ColorPalette {
   }
 }
 
+import 'kendo.colorpicker.min';
+
 @customAttribute(`${constants.attributePrefix}color-picker`)
 @generateBindables('kendoColorPicker')
 @inject(Element, WidgetBase)
@@ -869,6 +832,9 @@ export class ColorPicker {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.combobox.min';
+import 'kendo.virtuallist.min';
 
 @customElement(`${constants.elementPrefix}combobox`)
 @generateBindables('kendoComboBox')
@@ -1679,6 +1645,8 @@ export class WidgetBase {
   }
 }
 
+import 'kendo.menu.min';
+
 @customAttribute(`${constants.attributePrefix}contextmenu`)
 @generateBindables('kendoContextMenu')
 @inject(Element, WidgetBase)
@@ -1712,6 +1680,8 @@ export class ContextMenu {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.datepicker.min';
 
 @customAttribute(`${constants.attributePrefix}datepicker`)
 @generateBindables('kendoDatePicker')
@@ -1752,6 +1722,8 @@ export class DatePicker {
   }
 }
 
+import 'kendo.datetimepicker.min';
+
 @customAttribute(`${constants.attributePrefix}datetimepicker`)
 @generateBindables('kendoDateTimePicker')
 @inject(Element, WidgetBase)
@@ -1791,6 +1763,8 @@ export class DateTimePicker {
   }
 }
 
+import 'kendo.dataviz.diagram.min';
+
 @customElement(`${constants.elementPrefix}diagram`)
 @generateBindables('kendoDiagram')
 @inject(Element, WidgetBase)
@@ -1824,6 +1798,8 @@ export class Diagram {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.draganddrop.min';
 
 @customAttribute(`${constants.attributePrefix}draggable`)
 @generateBindables('kendoDraggable')
@@ -1866,6 +1842,8 @@ export class Draggabke {
   }
 }
 
+import 'kendo.draganddrop.min';
+
 @customAttribute(`${constants.attributePrefix}drop-target-area`)
 @generateBindables('kendoDropTargetArea')
 @inject(Element, WidgetBase)
@@ -1900,6 +1878,8 @@ export class DropTargetArea {
   }
 }
 
+import 'kendo.draganddrop.min';
+
 @customAttribute(`${constants.attributePrefix}drop-target`)
 @generateBindables('kendoDropTarget')
 @inject(Element, WidgetBase)
@@ -1933,6 +1913,9 @@ export class DropTarget {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.dropdownlist.min';
+import 'kendo.virtuallist.min';
 
 @customElement(`${constants.elementPrefix}drop-down-list`)
 @generateBindables('kendoDropDownList')
@@ -1983,6 +1966,8 @@ function getSelectNode(element) {
   return element.querySelectorAll('select');
 }
 
+import 'kendo.editor.min';
+
 @customAttribute(`${constants.attributePrefix}rich-editor`)
 @generateBindables('kendoEditor')
 @inject(Element, WidgetBase)
@@ -2021,6 +2006,8 @@ export class Editor {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.colorpicker.min';
 
 @customElement(`${constants.attributePrefix}flat-color-picker`)
 @generateBindables('kendoFlatColorPicker')
@@ -2062,6 +2049,8 @@ export class FlatColorPicker {
 export class GanttCol {}
 
 //eslint-disable-line no-unused-vars
+import 'kendo.gantt.min';
+
 @customElement(`${constants.elementPrefix}gantt`)
 @generateBindables('kendoGantt')
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder)
@@ -2127,6 +2116,8 @@ function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
 }
 
+import 'kendo.dataviz.gauge.min';
+
 @customElement(`${constants.elementPrefix}linear-gauge`)
 @generateBindables('kendoLinearGauge')
 @inject(Element, WidgetBase)
@@ -2165,6 +2156,8 @@ export class LinearGauge {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.dataviz.gauge.min';
 
 @customElement(`${constants.elementPrefix}radial-gauge`)
 @generateBindables('kendoRadialGauge')
@@ -2221,6 +2214,10 @@ export class Col {
 }
 
 //eslint-disable-line no-unused-vars
+import 'kendo.data.signalr.min';
+import 'kendo.filtercell.min';
+import 'kendo.grid.min';
+
 @customElement(`${constants.elementPrefix}grid`)
 @generateBindables('kendoGrid')
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder)
@@ -2297,6 +2294,8 @@ function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
 }
 
+import 'kendo.listview.min';
+
 @customElement(`${constants.elementPrefix}list-view`)
 @generateBindables('kendoListView')
 @inject(Element, WidgetBase, ViewResources)
@@ -2336,6 +2335,8 @@ export class ListView  {
   }
 }
 
+import 'kendo.dataviz.map.min';
+
 @customElement(`${constants.elementPrefix}map`)
 @generateBindables('kendoMap')
 @inject(Element, WidgetBase)
@@ -2373,6 +2374,8 @@ export class Map {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.maskedtextbox.min';
 
 @customAttribute(`${constants.attributePrefix}maskedtextbox`)
 @generateBindables('kendoMaskedTextBox')
@@ -2414,6 +2417,8 @@ export class MaskedTextBox {
   }
 }
 
+import 'kendo.menu.min';
+
 @customAttribute(`${constants.attributePrefix}menu`)
 @generateBindables('kendoMenu')
 @inject(Element, WidgetBase)
@@ -2447,6 +2452,9 @@ export class Menu {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.multiselect.min';
+import 'kendo.virtuallist.min';
 
 @customElement(`${constants.elementPrefix}multiselect`)
 @generateBindables('kendoMultiSelect', ['template'])
@@ -2516,6 +2524,8 @@ export class NotificationTemplate {
   }
 }
 
+import 'kendo.notification.min';
+
 @customElement(`${constants.elementPrefix}notification`)
 @generateBindables('kendoNotification')
 @inject(Element, WidgetBase, ViewResources)
@@ -2564,6 +2574,8 @@ export class Notification {
   }
 }
 
+import 'kendo.numerictextbox.min';
+
 @customAttribute(`${constants.attributePrefix}numerictextbox`)
 @generateBindables('kendoNumericTextBox')
 @inject(Element, WidgetBase)
@@ -2602,6 +2614,8 @@ export class NumericTextBox {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.panelbar.min';
 
 @customElement(`${constants.elementPrefix}panel-bar`)
 @generateBindables('kendoPanelBar')
@@ -2660,7 +2674,13 @@ function hasListChildNode(element) {
   return element.children.length > 0 && (element.children[0].nodeName === 'UL' || element.children[0].nodeName === 'OL');
 }
 
+import 'kendo.pdf.min';
+import 'kendo.excel.min';
+
 export class PDF {}
+
+import 'kendo.pivot.configurator.min';
+
 
 @customElement(`${constants.elementPrefix}pivot-configurator`)
 @generateBindables('kendoPivotConfigurator')
@@ -2697,6 +2717,10 @@ export class PivotConfigurator {
 }
 
 //eslint-disable-line no-unused-vars
+import 'kendo.pivotgrid.min';
+import 'kendo.pivot.fieldmenu.min';
+
+
 @customElement(`${constants.elementPrefix}pivot-grid`)
 @generateBindables('kendoPivotGrid')
 @inject(Element, WidgetBase, ViewResources)
@@ -2735,6 +2759,8 @@ export class PivotGrid {
   }
 }
 
+import 'kendo.progressbar.min';
+
 @customAttribute(`${constants.attributePrefix}progress-bar`)
 @generateBindables('kendoProgressBar')
 @inject(Element, WidgetBase)
@@ -2769,6 +2795,8 @@ export class ProgressBar {
   }
 }
 
+import 'kendo.dataviz.qrcode.min';
+
 @customAttribute(`${constants.attributePrefix}qrcode`)
 @generateBindables('kendoQRCode')
 @inject(Element, WidgetBase)
@@ -2802,6 +2830,8 @@ export class QRCode {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.slider.min';
 
 @customElement(`${constants.elementPrefix}range-slider`)
 @generateBindables('kendoRangeSlider')
@@ -2842,6 +2872,8 @@ export class RangeSlider {
   }
 }
 
+import 'kendo.responsivepanel.min';
+
 @customAttribute(`${constants.attributePrefix}responsivepanel`)
 @generateBindables('kendoResponsivePanel')
 @inject(Element, WidgetBase)
@@ -2877,6 +2909,13 @@ export class ResponsivePanel {
 }
 
 //eslint-disable-line no-unused-vars
+import 'kendo.scheduler.min';
+import 'kendo.scheduler.agendaview.min';
+import 'kendo.scheduler.dayview.min';
+import 'kendo.scheduler.monthview.min';
+import 'kendo.scheduler.recurrence.min';
+import 'kendo.scheduler.timelineview.min';
+
 @customElement(`${constants.elementPrefix}scheduler`)
 @generateBindables('kendoScheduler')
 @inject(Element, WidgetBase, ViewResources)
@@ -2914,6 +2953,8 @@ export class Scheduler {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.mobile.scrollview.min';
 
 @customElement(`${constants.elementPrefix}scrollview`)
 @generateBindables('kendoMobileScrollView')
@@ -2965,6 +3006,8 @@ function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
 }
 
+import 'kendo.slider.min';
+
 @customAttribute(`${constants.attributePrefix}slider`)
 @generateBindables('kendoSlider')
 @inject(Element, WidgetBase)
@@ -3004,6 +3047,8 @@ export class Slider {
   }
 }
 
+import 'kendo.sortable.min';
+
 @customAttribute(`${constants.attributePrefix}sortable`)
 @generateBindables('kendoSortable')
 @inject(Element, WidgetBase)
@@ -3037,6 +3082,8 @@ export class Sortable {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.splitter.min';
 
 @customAttribute(`${constants.attributePrefix}splitter`)
 @generateBindables('kendoSplitter')
@@ -3072,6 +3119,8 @@ export class Splitter {
   }
 }
 
+import 'kendo.spreadsheet.min';
+
 @customElement(`${constants.elementPrefix}spreadsheet`)
 @generateBindables('kendoSpreadsheet')
 @inject(Element, WidgetBase)
@@ -3105,6 +3154,8 @@ export class Spreadsheet {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.mobile.switch.min';
 
 @customAttribute(`${constants.attributePrefix}switch`)
 @generateBindables('kendoMobileSwitch')
@@ -3145,6 +3196,8 @@ export class Switch {
   }
 }
 
+import 'kendo.tabstrip.min';
+
 @customAttribute(`${constants.attributePrefix}tabstrip`)
 @generateBindables('kendoTabStrip')
 @inject(Element, WidgetBase)
@@ -3178,6 +3231,8 @@ export class TabStrip {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.timepicker.min';
 
 @customAttribute(`${constants.attributePrefix}timepicker`)
 @generateBindables('kendoTimePicker')
@@ -3260,6 +3315,8 @@ export class ToolbarItem {
   }
 }
 
+import 'kendo.toolbar.min';
+
 @customElement(`${constants.elementPrefix}toolbar`)
 @generateBindables('kendoToolBar')
 @inject(Element, WidgetBase, OptionsBuilder)
@@ -3306,6 +3363,8 @@ export class Toolbar {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.tooltip.min';
 
 @customAttribute(`${constants.attributePrefix}tooltip`)
 @generateBindables('kendoTooltip')
@@ -3357,6 +3416,10 @@ export class TreeCol {
 }
 
 //eslint-disable-line no-unused-vars
+import 'kendo.data.signalr.min';
+import 'kendo.filtercell.min';
+import 'kendo.treelist.min';
+
 @customElement(`${constants.elementPrefix}tree-list`)
 @generateBindables('kendoTreeList')
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder)
@@ -3410,6 +3473,8 @@ export class TreeList  {
   }
 }
 
+import 'kendo.treeview.min';
+
 @customAttribute(`${constants.attributePrefix}treeview`)
 @generateBindables('kendoTreeView')
 @inject(Element, WidgetBase)
@@ -3442,6 +3507,8 @@ export class TreeView {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.upload.min';
 
 @customElement(`${constants.elementPrefix}upload`)
 @generateBindables('kendoUpload')
@@ -3490,6 +3557,8 @@ export class Upload {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.validator.min';
 
 @customAttribute(`${constants.attributePrefix}validator`)
 @generateBindables('kendoValidator')
@@ -3568,6 +3637,8 @@ export class kendoFormatValueConverter {
     return kendo.format.apply(this, params);
   }
 }
+
+import 'kendo.window.min';
 
 @customAttribute(`${constants.attributePrefix}window`)
 @generateBindables('kendoWindow')
