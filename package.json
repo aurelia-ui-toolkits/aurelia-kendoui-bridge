@@ -16,6 +16,7 @@
   },
   "license": "MIT",
   "author": "aurelia-ui-toolkits",
+  "main": "dist/commonjs/index.js",
   "directories": {
     "lib": "dist/system"
   },
