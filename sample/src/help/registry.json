@@ -14,20 +14,16 @@
         "path": "help/docs/about-this-application/components-catalog.md"
       },
       {
-        "name": "4. Internal structure",
-        "path": "help/docs/about-this-application/internal-structure.md"
-      },
-      {
-        "name": "5. Installation",
+        "name": "4. Installation",
         "path": "help/docs/about-this-application/installation.md"
       },
 
       {
-        "name": "6. Project status",
-        "path": "help/docs/about-this-application/project-status.md"
+        "name": "5. Catalog index",
+        "path": "help/docs/about-this-application/catalog-index.md"
       },
       {
-        "name": "7. Themes selector",
+        "name": "6. Themes selector",
         "path": "help/docs/about-this-application/themes-selector.md"
       },
     ],
@@ -60,33 +56,29 @@
         "path": "help/docs/app-developers-tutorials/introduction.md"
       },
       {
-        "name": "2. Setup",
-        "path": "help/docs/app-developers-tutorials/setup.md"
+        "name": "2. es2016",
+        "path": "help/docs/app-developers-tutorials/es2016.md"
       },
       {
-        "name": "3. Autocomplete component",
-        "path": "help/docs/app-developers-tutorials/autocomplete.md"
+        "name": "3. es2016-asp.net5",
+        "path": "help/docs/app-developers-tutorials/es2016-asp.net5.md"
+      },
+           {
+        "name": "4. typescript",
+        "path": "help/docs/app-developers-tutorials/typescript.md"
       },
       {
-        "name": "4. Button component",
-        "path": "help/docs/app-developers-tutorials/button.md"
+        "name": "5. typescript-asp.net5",
+        "path": "help/docs/app-developers-tutorials/typescript-asp.net5.md"
       },
       {
-        "name": "5. Chart component",
-        "path": "help/docs/app-developers-tutorials/chart.md"
-      },
-      {
-        "name": "6. Grid component",
-        "path": "help/docs/app-developers-tutorials/grid.md"
+        "name": "6. webpack",
+        "path": "help/docs/app-developers-tutorials/webpack.md"
       },
       {
         "name": "7. What you need to know",
         "path": "help/docs/app-developers-tutorials/what-you-need-to-know.md"
-      },
-      {
-        "name": "8. Next actions",
-        "path": "help/docs/app-developers-tutorials/next-actions.md"
-      },
+      }
     ],
 
     "App developers notes":
@@ -96,49 +88,12 @@
         "path": "help/docs/app-developers-notes/current-limitations.md"
       },
       {
-        "name": "2. Loading subset of controls",
-        "path": "help/docs/app-developers-notes/loading-subset-of-controls.md"
-      },
-      {
-        "name": "3. Lazy loading wrappers",
-        "path": "help/docs/app-developers-notes/lazy-loading-wrappers.md"
+        "name" : "2. Loading a subset of controls",
+        "path" : "help/docs/app-developers-notes/loading-subset-of-controls.md"
       }
     ],
 
-    "Bridge developers tutorials":
-    [
-      {
-        "name": "1. Introduction",
-        "path": "help/docs/bridge-developers-tutorials/introduction.md"
-      },
-      {
-        "name": "2. Setup",
-        "path": "help/docs/bridge-developers-tutorials/setup.md"
-      },
-      {
-        "name": "3. Autocomplete component",
-        "path": "help/docs/bridge-developers-tutorials/autocomplete.md"
-      },
-      {
-        "name": "4. Button component",
-        "path": "help/docs/bridge-developers-tutorials/button.md"
-      },
-      {
-        "name": "5. Chart component",
-        "path": "help/docs/bridge-developers-tutorials/chart.md"
-      },
-      {
-        "name": "6. Grid component",
-        "path": "help/docs/bridge-developers-tutorials/grid.md"
-      },
-      {
-        "name": "7. Next actions",
-        "path": "help/docs/bridge-developers-tutorials/next-actions.md"
-      },
-
-    ],
-
-    "Bridge developers notes":
+    "Notes on the bridge":
     [
       {
         "name": "1. Introduction",

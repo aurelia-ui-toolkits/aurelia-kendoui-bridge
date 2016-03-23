@@ -38,7 +38,7 @@ So we wanted to be able to do something like this:
 <br>
 ```html
     $("#customers").kendoAutoComplete({
-        template: '${data.ContactName} <button ak-button>Call</button>'
+        template: '${data.ContactName} <button k-button>Call</button>'
     });
 ```
 <br>

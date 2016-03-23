@@ -1,26 +1,35 @@
 <br>
 
-### 2. Loading subset of controls
+### 2. Loading a subset of KendoUI components
 <br>
 
-You may want to load only a subset of the controls Kendo provide. This is possible with the aurelia-kendoui-bridge.
+This section contains additional information which we hope will be of value to Aurelia application developers using KendoUI bridge.
+<br><br>
 
-When you do the following in `main.js`:
+You may often want to load only a subset of the components that KendoUI bridge provides. Instead of the requirement to load them all at the bootstrap time - controlled by the following code in `main.js` class:
 
-`.plugin('aurelia-kendoui-bridge', kendo => kendo.pro())`
+```
+...
+.plugin('aurelia-kendoui-bridge', kendo => kendo.pro())
+...
+```
+<br><br>
 
-By calling the bridge's `pro()` function, it will assume you want to use the entire Kendo library and load all necessary files from the bridge and from Kendo.
+If instead, you wish to use only a subset of KendoUI components - say, kendoButton and kendoGrid, you should express that by using the following pattern;
 
-Instead of calling the `.pro()` function, a builder pattern can be used here:
+```
+...
+.plugin('aurelia-kendoui-bridge', kendo => kendo.kendoButton().kendoGrid())
+...
+```
+<br><br>
 
-`.plugin('aurelia-kendoui-bridge', kendo => kendo.kendoButton().kendoGrid())`
-
-Notice that instead of calling the `pro()` function, we tell the plugin to load only the button and the grid.
-
-<br>
 #### Special functions
-<br>
 
-`.kendoTemplateSupport()` - will load the `<ak-template>` custom element necessary for custom templates in a Kendo control.
+`.kendoTemplateSupport()` - will load the `<k-template>` custom element necessary for custom templates in a Kendo control.
 
-`.useValueConverters();` - will load the value convertes around useful Kendo functions ([link](http://aurelia-ui-toolkits.github.io/demo-kendo/#/samples/valueconverters)).
+`.useValueConverters();` - will load the value convertes around useful Kendo functions. **[This sample](#/samples/valueconverters)** demonstrates these value converters.
+<br><br>
+
+#### Mobile applications
+More information about mobile applications with Kendo controls can be found on [this website](http://www.kendouimobileguide.com/)

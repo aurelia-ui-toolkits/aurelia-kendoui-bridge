@@ -1,5 +1,5 @@
 <br>
-### 7. Themes selector
+### 6. Themes selector
 <br>
 
 

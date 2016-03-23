@@ -21,7 +21,7 @@ The [`decorators.js`](#decorators) file contains decorators used within multiple
 <br><br>
 
 [[`k-template.js`](#k-template)]
-The view-model for the `<ak-template>` custom element
+The view-model for the `<k-template>` custom element
 <br><br>
 
 [[`events.js`](#decorators)]
@@ -54,8 +54,8 @@ File `constants.js`
 export const constants = {
   eventPrefix: 'k-on-',
   bindablePrefix: 'k-',
-  attributePrefix: 'ak-',
-  elementPrefix: 'ak-'
+  attributePrefix: 'k-',
+  elementPrefix: 'k-'
 };
 
 ```
@@ -538,7 +538,7 @@ export function hasValue(prop) {
 
 /***
 * parses array of k-template view-models (@children)
-* <ak-template for='test'>
+* <k-template for='test'>
 * this function sets the property 'test' on the viewmodel to the template
 * @param target the viewModel with template properties
 * @param kendoGrid or GridColumn, properties are retrieved from bindables.js

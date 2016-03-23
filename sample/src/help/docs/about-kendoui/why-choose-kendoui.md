@@ -3,19 +3,22 @@
 ### 2. Why Choose KendoUI
 <br>
 
-***Note: each of the enumerated advantages below have to be augmented by a lot of Aurelia specific added advantages***
-* * *
+We expect at least two classes of Aurelia-KendoUI components users
 
-<br>
+1. Existing Telerik KendoUI SDK customers, seeking for the state of the art front end framework, where Aurelia is by far the best alternative
+
+2. Existing Aurelia developers, who are tired of "manual" adaptation of various UI toolkits, all of which expose the same JavaScript based interface as Telerik KendoUI SDK does. While the set of Aurelia KendoUI components is the first in the series of **[Aurelia-UI-Toolkits](https://github.com/aurelia-ui-toolkits)** authored bridges, we plan to continue enriching Aurelia development environment with interfaces to other JavaScript toolkist as well.
+<br><br>
+
 #### Ultimate Performance with Minimum Resources
 
 Fast and light. Every Kendo UI widget is rendered with the fastest possible mark-up to deliver ultimate JavaScript performance.
-<br> <br> <br>
+<br><br>
+
 #### Mobile-Friendly and Responsive
 
 Touch support, easy mobile rendering, responsive capabilities and integration with Bootstrap. **[Learn more](http://www.telerik.com/kendo-ui/responsive-features)** about the rich Kendo UI responsive features.
-
-<br> <br> <br>
+<br><br>
 
 #### Built-In, Customizable Themes
 

@@ -1,5 +1,5 @@
 <br>
-### 5. Installation
+### 4. Installation
 <br>
 
 The **[Installation page](#/installation)** contains detailed description of all three installation variants which depend on how do you plan to get **[KendoUI product](http://www.telerik.com/kendo-ui)** from Telerik.

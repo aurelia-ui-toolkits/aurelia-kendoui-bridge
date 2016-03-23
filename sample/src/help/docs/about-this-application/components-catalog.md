@@ -5,10 +5,12 @@ Being a catalog is the most likely fashion this application is being used. Invok
 
 <br>
 <p align=center>
-  <img src="https://cloud.githubusercontent.com/assets/2712405/13064878/bd047f2a-d424-11e5-8b9b-9bb226d7d6b1.png"></img>
+  <img src="https://cloud.githubusercontent.com/assets/2712405/13549299/6ba206ce-e2d0-11e5-96e6-a603553e31bd.png"></img>
 <br>
   Image 1
 </p>
+<br>
+<br>
 
 #### 2.1 Browsing the catalog
 
