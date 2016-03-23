@@ -1,3 +1,14 @@
+<a name="0.6.2"></a>
+## [0.6.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.6.1...v0.6.2) (2016-03-23)
+
+
+### Bug Fixes
+
+* **config-builder:** use relative paths ([5c0edd6](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/5c0edd6))
+* **dependencies:** updated aurelia dependencies ([ab2e99d](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ab2e99d))
+
+
+
 <a name="0.6.1"></a>
 ## [0.6.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.6.0...v0.6.1) (2016-03-21)
 
