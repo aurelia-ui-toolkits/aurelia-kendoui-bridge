@@ -36,7 +36,7 @@ This section is provided as a help to developers that are familiar with **[Aurel
 
 #### App developers tutorials
 
-This section starts with the well known **[Aurelia Skeleton Navigation](https://github.com/aurelia/skeleton-navigation/tree/master/skeleton-es2016)** application and the **[Aurelia KendoUI bridge](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)** (creation of which is the subject of the **Bridge developers tutorials**) and teaches you how to add four chosen Aurelia KendoUI **components** (`autocomplete, `button`, `chart` and `grid`).
+This section starts with the well known **[Aurelia Skeleton Navigation](https://github.com/aurelia/skeleton-navigation/tree/master/skeleton-es2016)** application and the **[Aurelia KendoUI bridge](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)** (creation of which is the subject of the **Bridge developers tutorials**) and teaches you how to add four chosen Aurelia KendoUI **components** (`autocomplete`, `button`, `chart` and `grid`).
 <br><br>
 
 #### Notes on the bridge

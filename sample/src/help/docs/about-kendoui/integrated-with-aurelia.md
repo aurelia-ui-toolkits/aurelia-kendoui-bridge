@@ -6,7 +6,7 @@
 Kendo UI is a fast, light, complete: 70+ jQuery-based UI widgets in one powerful toolset, used by tens of thousands developers because if offers everything for building web and mobile apps with HTML5 and JavaScript. Despite its popularity, it was not easy to use for Aurelia developers due to differences between JavaScript version used in KendoUI controls and JavaScript ES2016 used by Aurelia framework.
 <br><br>
 
-Now, by using Aurelia-UI-Toolkits **[Aurelia-KendoUI bridge]()** plugin,  Kendo UI framework is seamlessly integrated with Aurelia. From Grid to Scheduler to Chart, the tight Aurelia integration in Kendo UI tools enables you to drop a few script and style files into your page and get instant—and complete—Kendo UI access using the Aurelia's declarative programming model. As an illustration of this claim , let's compare the code used to render the grid control using **[Telerik's original SDK](http://demos.telerik.com/kendo-ui/grid/index)**:
+Now, by using Aurelia-UI-Toolkits **[Aurelia-KendoUI bridge](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge)** plugin,  Kendo UI framework is seamlessly integrated with Aurelia. From Grid to Scheduler to Chart, the tight Aurelia integration in Kendo UI tools enables you to drop a few script and style files into your page and get instant—and complete—Kendo UI access using the Aurelia's declarative programming model. As an illustration of this claim , let's compare the code used to render the grid control using **[Telerik's original SDK](http://demos.telerik.com/kendo-ui/grid/index)**:
 
 ```
 <!DOCTYPE html>
