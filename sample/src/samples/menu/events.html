@@ -4,7 +4,7 @@
     <div class="demo-section k-content">
       <h4>Menu</h4>
       <ul id="menu"
-          k-menu
+          ak-menu
           k-on-open.delegate="onOpen($event.detail)"
           k-on-close.delegate="onClose($event.detail)"
           k-on-select.delegate="onSelect($event.detail)"
@@ -40,7 +40,7 @@
       </ul>
       <h4 style="padding-top: 2em;">Context Menu</h4>
       <ul id="context-menu-events"
-          k-contextmenu="k-target: #context-target;
+          ak-contextmenu="k-target: #context-target;
                          k-show-on: click;
                          k-align-to-anchor.bind: true"
           k-on-open.delegate="onOpen($event.detail)"
