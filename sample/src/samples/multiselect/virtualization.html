@@ -1,11 +1,11 @@
 <template>
   <div id="example">
     <div class="demo-section wide k-content">
-      <p>This sample is not working correctly, it is tracked in <a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/368">this issue</a> </p>
       <ak-multiselect k-placeholder="Select addresses..."
                      k-data-text-field="ShipName"
                      k-data-value-field="OrderID"
                      k-height.bind="520"
+                     k-no-value-binding.bind="true"
                      k-value.bind="[10265, 10289]"
                      k-virtual.bind="virtual"
                      k-data-source.bind="dataSource">
