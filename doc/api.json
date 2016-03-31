@@ -1153,7 +1153,7 @@
       ]
     },
     {
-      "id": 208,
+      "id": 228,
       "name": "Chart",
       "kind": 128,
       "kindString": "Class",
@@ -1162,7 +1162,7 @@
       },
       "children": [
         {
-          "id": 210,
+          "id": 230,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -1171,14 +1171,14 @@
           },
           "signatures": [
             {
-              "id": 211,
+              "id": 231,
               "name": "new Chart",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 212,
+                  "id": 232,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1189,7 +1189,7 @@
                   }
                 },
                 {
-                  "id": 213,
+                  "id": 233,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1203,14 +1203,14 @@
               "type": {
                 "type": "reference",
                 "name": "Chart",
-                "id": 208,
+                "id": 228,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 209,
+          "id": 229,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -1223,7 +1223,7 @@
           }
         },
         {
-          "id": 217,
+          "id": 237,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -1232,7 +1232,7 @@
           },
           "signatures": [
             {
-              "id": 218,
+              "id": 238,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -1245,7 +1245,7 @@
           ]
         },
         {
-          "id": 214,
+          "id": 234,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -1254,14 +1254,14 @@
           },
           "signatures": [
             {
-              "id": 215,
+              "id": 235,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 216,
+                  "id": 236,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1280,7 +1280,7 @@
           ]
         },
         {
-          "id": 221,
+          "id": 241,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -1289,7 +1289,7 @@
           },
           "signatures": [
             {
-              "id": 222,
+              "id": 242,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -1302,7 +1302,7 @@
           ]
         },
         {
-          "id": 219,
+          "id": 239,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -1311,7 +1311,7 @@
           },
           "signatures": [
             {
-              "id": 220,
+              "id": 240,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -1329,24 +1329,24 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            210
+            230
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            209
+            229
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            217,
-            214,
-            221,
-            219
+            237,
+            234,
+            241,
+            239
           ]
         }
       ]
@@ -1458,7 +1458,7 @@
       ]
     },
     {
-      "id": 268,
+      "id": 208,
       "name": "ColorPalette",
       "kind": 128,
       "kindString": "Class",
@@ -1467,7 +1467,7 @@
       },
       "children": [
         {
-          "id": 270,
+          "id": 210,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -1476,14 +1476,14 @@
           },
           "signatures": [
             {
-              "id": 271,
+              "id": 211,
               "name": "new ColorPalette",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 272,
+                  "id": 212,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1494,7 +1494,7 @@
                   }
                 },
                 {
-                  "id": 273,
+                  "id": 213,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1508,14 +1508,14 @@
               "type": {
                 "type": "reference",
                 "name": "ColorPalette",
-                "id": 268,
+                "id": 208,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 269,
+          "id": 209,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -1528,7 +1528,7 @@
           }
         },
         {
-          "id": 277,
+          "id": 217,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -1537,7 +1537,7 @@
           },
           "signatures": [
             {
-              "id": 278,
+              "id": 218,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -1550,7 +1550,7 @@
           ]
         },
         {
-          "id": 274,
+          "id": 214,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -1559,14 +1559,14 @@
           },
           "signatures": [
             {
-              "id": 275,
+              "id": 215,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 276,
+                  "id": 216,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1585,7 +1585,7 @@
           ]
         },
         {
-          "id": 286,
+          "id": 226,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -1594,7 +1594,7 @@
           },
           "signatures": [
             {
-              "id": 287,
+              "id": 227,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -1607,7 +1607,7 @@
           ]
         },
         {
-          "id": 281,
+          "id": 221,
           "name": "propertyChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -1616,14 +1616,14 @@
           },
           "signatures": [
             {
-              "id": 282,
+              "id": 222,
               "name": "propertyChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 283,
+                  "id": 223,
                   "name": "property",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1634,7 +1634,7 @@
                   }
                 },
                 {
-                  "id": 284,
+                  "id": 224,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1645,7 +1645,7 @@
                   }
                 },
                 {
-                  "id": 285,
+                  "id": 225,
                   "name": "oldValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -1664,7 +1664,7 @@
           ]
         },
         {
-          "id": 279,
+          "id": 219,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -1673,7 +1673,7 @@
           },
           "signatures": [
             {
-              "id": 280,
+              "id": 220,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -1691,25 +1691,25 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            270
+            210
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            269
+            209
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            277,
-            274,
-            286,
-            281,
-            279
+            217,
+            214,
+            226,
+            221,
+            219
           ]
         }
       ]
@@ -8019,7 +8019,7 @@
       },
       "children": [
         {
-          "id": 827,
+          "id": 828,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -8028,14 +8028,14 @@
           },
           "signatures": [
             {
-              "id": 828,
+              "id": 829,
               "name": "new Multiselect",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 829,
+                  "id": 830,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8046,7 +8046,7 @@
                   }
                 },
                 {
-                  "id": 830,
+                  "id": 831,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8057,7 +8057,7 @@
                   }
                 },
                 {
-                  "id": 831,
+                  "id": 832,
                   "name": "viewResources",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8078,6 +8078,19 @@
           ]
         },
         {
+          "id": 826,
+          "name": "kNoValueBinding",
+          "kind": 1024,
+          "kindString": "Property",
+          "flags": {
+            "isExported": true
+          },
+          "type": {
+            "type": "instrinct",
+            "name": "any"
+          }
+        },
+        {
           "id": 825,
           "name": "kOptions",
           "kind": 1024,
@@ -8091,7 +8104,7 @@
           }
         },
         {
-          "id": 826,
+          "id": 827,
           "name": "templates",
           "kind": 1024,
           "kindString": "Property",
@@ -8104,7 +8117,7 @@
           }
         },
         {
-          "id": 835,
+          "id": 836,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -8113,7 +8126,7 @@
           },
           "signatures": [
             {
-              "id": 836,
+              "id": 837,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8126,7 +8139,7 @@
           ]
         },
         {
-          "id": 832,
+          "id": 833,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -8135,14 +8148,14 @@
           },
           "signatures": [
             {
-              "id": 833,
+              "id": 834,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 834,
+                  "id": 835,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8161,7 +8174,7 @@
           ]
         },
         {
-          "id": 844,
+          "id": 845,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -8170,7 +8183,7 @@
           },
           "signatures": [
             {
-              "id": 845,
+              "id": 846,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8183,7 +8196,7 @@
           ]
         },
         {
-          "id": 839,
+          "id": 840,
           "name": "propertyChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -8192,14 +8205,14 @@
           },
           "signatures": [
             {
-              "id": 840,
+              "id": 841,
               "name": "propertyChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 841,
+                  "id": 842,
                   "name": "property",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8210,7 +8223,7 @@
                   }
                 },
                 {
-                  "id": 842,
+                  "id": 843,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8221,7 +8234,7 @@
                   }
                 },
                 {
-                  "id": 843,
+                  "id": 844,
                   "name": "oldValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8240,7 +8253,7 @@
           ]
         },
         {
-          "id": 837,
+          "id": 838,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -8249,7 +8262,7 @@
           },
           "signatures": [
             {
-              "id": 838,
+              "id": 839,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8267,32 +8280,33 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            827
+            828
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
+            826,
             825,
-            826
+            827
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            835,
-            832,
-            844,
-            839,
-            837
+            836,
+            833,
+            845,
+            840,
+            838
           ]
         }
       ]
     },
     {
-      "id": 852,
+      "id": 853,
       "name": "Notification",
       "kind": 128,
       "kindString": "Class",
@@ -8301,7 +8315,7 @@
       },
       "children": [
         {
-          "id": 855,
+          "id": 856,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -8310,14 +8324,14 @@
           },
           "signatures": [
             {
-              "id": 856,
+              "id": 857,
               "name": "new Notification",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 857,
+                  "id": 858,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8328,7 +8342,7 @@
                   }
                 },
                 {
-                  "id": 858,
+                  "id": 859,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8339,7 +8353,7 @@
                   }
                 },
                 {
-                  "id": 859,
+                  "id": 860,
                   "name": "viewResources",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8353,14 +8367,14 @@
               "type": {
                 "type": "reference",
                 "name": "Notification",
-                "id": 852,
+                "id": 853,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 853,
+          "id": 854,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -8373,7 +8387,7 @@
           }
         },
         {
-          "id": 854,
+          "id": 855,
           "name": "templates",
           "kind": 1024,
           "kindString": "Property",
@@ -8386,7 +8400,7 @@
           }
         },
         {
-          "id": 863,
+          "id": 864,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -8395,7 +8409,7 @@
           },
           "signatures": [
             {
-              "id": 864,
+              "id": 865,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8408,7 +8422,7 @@
           ]
         },
         {
-          "id": 867,
+          "id": 868,
           "name": "beforeInitialize",
           "kind": 2048,
           "kindString": "Method",
@@ -8417,14 +8431,14 @@
           },
           "signatures": [
             {
-              "id": 868,
+              "id": 869,
               "name": "beforeInitialize",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 869,
+                  "id": 870,
                   "name": "options",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8443,7 +8457,7 @@
           ]
         },
         {
-          "id": 860,
+          "id": 861,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -8452,14 +8466,14 @@
           },
           "signatures": [
             {
-              "id": 861,
+              "id": 862,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 862,
+                  "id": 863,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8478,7 +8492,7 @@
           ]
         },
         {
-          "id": 870,
+          "id": 871,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -8487,7 +8501,7 @@
           },
           "signatures": [
             {
-              "id": 871,
+              "id": 872,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8500,7 +8514,7 @@
           ]
         },
         {
-          "id": 865,
+          "id": 866,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -8509,7 +8523,7 @@
           },
           "signatures": [
             {
-              "id": 866,
+              "id": 867,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8527,32 +8541,32 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            855
+            856
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            853,
-            854
+            854,
+            855
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            863,
-            867,
-            860,
-            870,
-            865
+            864,
+            868,
+            861,
+            871,
+            866
           ]
         }
       ]
     },
     {
-      "id": 846,
+      "id": 847,
       "name": "NotificationTemplate",
       "kind": 128,
       "kindString": "Class",
@@ -8561,7 +8575,7 @@
       },
       "children": [
         {
-          "id": 849,
+          "id": 850,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -8570,14 +8584,14 @@
           },
           "signatures": [
             {
-              "id": 850,
+              "id": 851,
               "name": "new NotificationTemplate",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 851,
+                  "id": 852,
                   "name": "targetInstruction",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8591,14 +8605,14 @@
               "type": {
                 "type": "reference",
                 "name": "NotificationTemplate",
-                "id": 846,
+                "id": 847,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 847,
+          "id": 848,
           "name": "template",
           "kind": 1024,
           "kindString": "Property",
@@ -8611,7 +8625,7 @@
           }
         },
         {
-          "id": 848,
+          "id": 849,
           "name": "type",
           "kind": 1024,
           "kindString": "Property",
@@ -8629,21 +8643,21 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            849
+            850
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            847,
-            848
+            848,
+            849
           ]
         }
       ]
     },
     {
-      "id": 872,
+      "id": 873,
       "name": "NumericTextBox",
       "kind": 128,
       "kindString": "Class",
@@ -8652,7 +8666,7 @@
       },
       "children": [
         {
-          "id": 874,
+          "id": 875,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -8661,14 +8675,14 @@
           },
           "signatures": [
             {
-              "id": 875,
+              "id": 876,
               "name": "new NumericTextBox",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 876,
+                  "id": 877,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8679,7 +8693,7 @@
                   }
                 },
                 {
-                  "id": 877,
+                  "id": 878,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8693,14 +8707,14 @@
               "type": {
                 "type": "reference",
                 "name": "NumericTextBox",
-                "id": 872,
+                "id": 873,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 873,
+          "id": 874,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -8713,7 +8727,7 @@
           }
         },
         {
-          "id": 881,
+          "id": 882,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -8722,7 +8736,7 @@
           },
           "signatures": [
             {
-              "id": 882,
+              "id": 883,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8735,7 +8749,7 @@
           ]
         },
         {
-          "id": 878,
+          "id": 879,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -8744,14 +8758,14 @@
           },
           "signatures": [
             {
-              "id": 879,
+              "id": 880,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 880,
+                  "id": 881,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8770,7 +8784,7 @@
           ]
         },
         {
-          "id": 890,
+          "id": 891,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -8779,7 +8793,7 @@
           },
           "signatures": [
             {
-              "id": 891,
+              "id": 892,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8792,7 +8806,7 @@
           ]
         },
         {
-          "id": 885,
+          "id": 886,
           "name": "propertyChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -8801,14 +8815,14 @@
           },
           "signatures": [
             {
-              "id": 886,
+              "id": 887,
               "name": "propertyChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 887,
+                  "id": 888,
                   "name": "property",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8819,7 +8833,7 @@
                   }
                 },
                 {
-                  "id": 888,
+                  "id": 889,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8830,7 +8844,7 @@
                   }
                 },
                 {
-                  "id": 889,
+                  "id": 890,
                   "name": "oldValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -8849,7 +8863,7 @@
           ]
         },
         {
-          "id": 883,
+          "id": 884,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -8858,7 +8872,7 @@
           },
           "signatures": [
             {
-              "id": 884,
+              "id": 885,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -8876,25 +8890,25 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            874
+            875
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            873
+            874
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            881,
-            878,
-            890,
-            885,
-            883
+            882,
+            879,
+            891,
+            886,
+            884
           ]
         }
       ]
@@ -9031,7 +9045,7 @@
       ]
     },
     {
-      "id": 907,
+      "id": 908,
       "name": "PDF",
       "kind": 128,
       "kindString": "Class",
@@ -9040,7 +9054,7 @@
       }
     },
     {
-      "id": 892,
+      "id": 893,
       "name": "PanelBar",
       "kind": 128,
       "kindString": "Class",
@@ -9049,7 +9063,7 @@
       },
       "children": [
         {
-          "id": 894,
+          "id": 895,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -9058,14 +9072,14 @@
           },
           "signatures": [
             {
-              "id": 895,
+              "id": 896,
               "name": "new PanelBar",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 896,
+                  "id": 897,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9076,7 +9090,7 @@
                   }
                 },
                 {
-                  "id": 897,
+                  "id": 898,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9090,14 +9104,14 @@
               "type": {
                 "type": "reference",
                 "name": "PanelBar",
-                "id": 892,
+                "id": 893,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 893,
+          "id": 894,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -9110,7 +9124,7 @@
           }
         },
         {
-          "id": 901,
+          "id": 902,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -9119,7 +9133,7 @@
           },
           "signatures": [
             {
-              "id": 902,
+              "id": 903,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9132,7 +9146,7 @@
           ]
         },
         {
-          "id": 898,
+          "id": 899,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -9141,14 +9155,14 @@
           },
           "signatures": [
             {
-              "id": 899,
+              "id": 900,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 900,
+                  "id": 901,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9167,7 +9181,7 @@
           ]
         },
         {
-          "id": 905,
+          "id": 906,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -9176,7 +9190,7 @@
           },
           "signatures": [
             {
-              "id": 906,
+              "id": 907,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9189,7 +9203,7 @@
           ]
         },
         {
-          "id": 903,
+          "id": 904,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -9198,7 +9212,7 @@
           },
           "signatures": [
             {
-              "id": 904,
+              "id": 905,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9216,30 +9230,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            894
+            895
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            893
+            894
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            901,
-            898,
-            905,
-            903
+            902,
+            899,
+            906,
+            904
           ]
         }
       ]
     },
     {
-      "id": 908,
+      "id": 909,
       "name": "PivotConfigurator",
       "kind": 128,
       "kindString": "Class",
@@ -9248,7 +9262,7 @@
       },
       "children": [
         {
-          "id": 910,
+          "id": 911,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -9257,14 +9271,14 @@
           },
           "signatures": [
             {
-              "id": 911,
+              "id": 912,
               "name": "new PivotConfigurator",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 912,
+                  "id": 913,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9275,7 +9289,7 @@
                   }
                 },
                 {
-                  "id": 913,
+                  "id": 914,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9286,7 +9300,7 @@
                   }
                 },
                 {
-                  "id": 914,
+                  "id": 915,
                   "name": "viewResources",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9300,14 +9314,14 @@
               "type": {
                 "type": "reference",
                 "name": "PivotConfigurator",
-                "id": 908,
+                "id": 909,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 909,
+          "id": 910,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -9320,7 +9334,7 @@
           }
         },
         {
-          "id": 918,
+          "id": 919,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -9329,7 +9343,7 @@
           },
           "signatures": [
             {
-              "id": 919,
+              "id": 920,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9342,7 +9356,7 @@
           ]
         },
         {
-          "id": 915,
+          "id": 916,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -9351,14 +9365,14 @@
           },
           "signatures": [
             {
-              "id": 916,
+              "id": 917,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 917,
+                  "id": 918,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9377,7 +9391,7 @@
           ]
         },
         {
-          "id": 922,
+          "id": 923,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -9386,7 +9400,7 @@
           },
           "signatures": [
             {
-              "id": 923,
+              "id": 924,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9399,7 +9413,7 @@
           ]
         },
         {
-          "id": 920,
+          "id": 921,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -9408,7 +9422,7 @@
           },
           "signatures": [
             {
-              "id": 921,
+              "id": 922,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9426,30 +9440,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            910
+            911
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            909
+            910
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            918,
-            915,
-            922,
-            920
+            919,
+            916,
+            923,
+            921
           ]
         }
       ]
     },
     {
-      "id": 924,
+      "id": 925,
       "name": "PivotGrid",
       "kind": 128,
       "kindString": "Class",
@@ -9458,7 +9472,7 @@
       },
       "children": [
         {
-          "id": 927,
+          "id": 928,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -9467,14 +9481,14 @@
           },
           "signatures": [
             {
-              "id": 928,
+              "id": 929,
               "name": "new PivotGrid",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 929,
+                  "id": 930,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9485,7 +9499,7 @@
                   }
                 },
                 {
-                  "id": 930,
+                  "id": 931,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9496,7 +9510,7 @@
                   }
                 },
                 {
-                  "id": 931,
+                  "id": 932,
                   "name": "viewResources",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9510,14 +9524,14 @@
               "type": {
                 "type": "reference",
                 "name": "PivotGrid",
-                "id": 924,
+                "id": 925,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 925,
+          "id": 926,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -9530,7 +9544,7 @@
           }
         },
         {
-          "id": 926,
+          "id": 927,
           "name": "templates",
           "kind": 1024,
           "kindString": "Property",
@@ -9543,7 +9557,7 @@
           }
         },
         {
-          "id": 935,
+          "id": 936,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -9552,7 +9566,7 @@
           },
           "signatures": [
             {
-              "id": 936,
+              "id": 937,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9565,7 +9579,7 @@
           ]
         },
         {
-          "id": 932,
+          "id": 933,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -9574,14 +9588,14 @@
           },
           "signatures": [
             {
-              "id": 933,
+              "id": 934,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 934,
+                  "id": 935,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9600,7 +9614,7 @@
           ]
         },
         {
-          "id": 939,
+          "id": 940,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -9609,7 +9623,7 @@
           },
           "signatures": [
             {
-              "id": 940,
+              "id": 941,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9622,7 +9636,7 @@
           ]
         },
         {
-          "id": 937,
+          "id": 938,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -9631,7 +9645,7 @@
           },
           "signatures": [
             {
-              "id": 938,
+              "id": 939,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9649,31 +9663,31 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            927
+            928
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            925,
-            926
+            926,
+            927
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            935,
-            932,
-            939,
-            937
+            936,
+            933,
+            940,
+            938
           ]
         }
       ]
     },
     {
-      "id": 941,
+      "id": 942,
       "name": "ProgressBar",
       "kind": 128,
       "kindString": "Class",
@@ -9682,7 +9696,7 @@
       },
       "children": [
         {
-          "id": 943,
+          "id": 944,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -9691,14 +9705,14 @@
           },
           "signatures": [
             {
-              "id": 944,
+              "id": 945,
               "name": "new ProgressBar",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 945,
+                  "id": 946,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9709,7 +9723,7 @@
                   }
                 },
                 {
-                  "id": 946,
+                  "id": 947,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9723,14 +9737,14 @@
               "type": {
                 "type": "reference",
                 "name": "ProgressBar",
-                "id": 941,
+                "id": 942,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 942,
+          "id": 943,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -9743,7 +9757,7 @@
           }
         },
         {
-          "id": 950,
+          "id": 951,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -9752,7 +9766,7 @@
           },
           "signatures": [
             {
-              "id": 951,
+              "id": 952,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9765,7 +9779,7 @@
           ]
         },
         {
-          "id": 947,
+          "id": 948,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -9774,14 +9788,14 @@
           },
           "signatures": [
             {
-              "id": 948,
+              "id": 949,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 949,
+                  "id": 950,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9800,7 +9814,7 @@
           ]
         },
         {
-          "id": 954,
+          "id": 955,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -9809,7 +9823,7 @@
           },
           "signatures": [
             {
-              "id": 955,
+              "id": 956,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9822,7 +9836,7 @@
           ]
         },
         {
-          "id": 952,
+          "id": 953,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -9831,7 +9845,7 @@
           },
           "signatures": [
             {
-              "id": 953,
+              "id": 954,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9849,30 +9863,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            943
+            944
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            942
+            943
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            950,
-            947,
-            954,
-            952
+            951,
+            948,
+            955,
+            953
           ]
         }
       ]
     },
     {
-      "id": 956,
+      "id": 957,
       "name": "QRCode",
       "kind": 128,
       "kindString": "Class",
@@ -9881,7 +9895,7 @@
       },
       "children": [
         {
-          "id": 958,
+          "id": 959,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -9890,14 +9904,14 @@
           },
           "signatures": [
             {
-              "id": 959,
+              "id": 960,
               "name": "new QRCode",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 960,
+                  "id": 961,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9908,7 +9922,7 @@
                   }
                 },
                 {
-                  "id": 961,
+                  "id": 962,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9922,14 +9936,14 @@
               "type": {
                 "type": "reference",
                 "name": "QRCode",
-                "id": 956,
+                "id": 957,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 957,
+          "id": 958,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -9942,7 +9956,7 @@
           }
         },
         {
-          "id": 965,
+          "id": 966,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -9951,7 +9965,7 @@
           },
           "signatures": [
             {
-              "id": 966,
+              "id": 967,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -9964,7 +9978,7 @@
           ]
         },
         {
-          "id": 962,
+          "id": 963,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -9973,14 +9987,14 @@
           },
           "signatures": [
             {
-              "id": 963,
+              "id": 964,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 964,
+                  "id": 965,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -9999,7 +10013,7 @@
           ]
         },
         {
-          "id": 969,
+          "id": 970,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -10008,7 +10022,7 @@
           },
           "signatures": [
             {
-              "id": 970,
+              "id": 971,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -10021,7 +10035,7 @@
           ]
         },
         {
-          "id": 967,
+          "id": 968,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -10030,7 +10044,7 @@
           },
           "signatures": [
             {
-              "id": 968,
+              "id": 969,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -10048,24 +10062,24 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            958
+            959
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            957
+            958
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            965,
-            962,
-            969,
-            967
+            966,
+            963,
+            970,
+            968
           ]
         }
       ]
@@ -10339,7 +10353,7 @@
       ]
     },
     {
-      "id": 971,
+      "id": 972,
       "name": "RangeSlider",
       "kind": 128,
       "kindString": "Class",
@@ -10348,7 +10362,7 @@
       },
       "children": [
         {
-          "id": 973,
+          "id": 974,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -10357,14 +10371,14 @@
           },
           "signatures": [
             {
-              "id": 974,
+              "id": 975,
               "name": "new RangeSlider",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 975,
+                  "id": 976,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10375,7 +10389,7 @@
                   }
                 },
                 {
-                  "id": 976,
+                  "id": 977,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10389,14 +10403,14 @@
               "type": {
                 "type": "reference",
                 "name": "RangeSlider",
-                "id": 971,
+                "id": 972,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 972,
+          "id": 973,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -10409,7 +10423,7 @@
           }
         },
         {
-          "id": 980,
+          "id": 981,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -10418,7 +10432,7 @@
           },
           "signatures": [
             {
-              "id": 981,
+              "id": 982,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -10431,7 +10445,7 @@
           ]
         },
         {
-          "id": 977,
+          "id": 978,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -10440,14 +10454,14 @@
           },
           "signatures": [
             {
-              "id": 978,
+              "id": 979,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 979,
+                  "id": 980,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10466,7 +10480,7 @@
           ]
         },
         {
-          "id": 989,
+          "id": 990,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -10475,7 +10489,7 @@
           },
           "signatures": [
             {
-              "id": 990,
+              "id": 991,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -10488,7 +10502,7 @@
           ]
         },
         {
-          "id": 984,
+          "id": 985,
           "name": "propertyChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -10497,14 +10511,14 @@
           },
           "signatures": [
             {
-              "id": 985,
+              "id": 986,
               "name": "propertyChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 986,
+                  "id": 987,
                   "name": "property",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10515,7 +10529,7 @@
                   }
                 },
                 {
-                  "id": 987,
+                  "id": 988,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10526,7 +10540,7 @@
                   }
                 },
                 {
-                  "id": 988,
+                  "id": 989,
                   "name": "oldValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10545,7 +10559,7 @@
           ]
         },
         {
-          "id": 982,
+          "id": 983,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -10554,7 +10568,7 @@
           },
           "signatures": [
             {
-              "id": 983,
+              "id": 984,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -10572,31 +10586,31 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            973
+            974
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            972
+            973
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            980,
-            977,
-            989,
-            984,
-            982
+            981,
+            978,
+            990,
+            985,
+            983
           ]
         }
       ]
     },
     {
-      "id": 991,
+      "id": 992,
       "name": "ResponsivePanel",
       "kind": 128,
       "kindString": "Class",
@@ -10605,7 +10619,7 @@
       },
       "children": [
         {
-          "id": 993,
+          "id": 994,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -10614,14 +10628,14 @@
           },
           "signatures": [
             {
-              "id": 994,
+              "id": 995,
               "name": "new ResponsivePanel",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 995,
+                  "id": 996,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10632,7 +10646,7 @@
                   }
                 },
                 {
-                  "id": 996,
+                  "id": 997,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10646,14 +10660,14 @@
               "type": {
                 "type": "reference",
                 "name": "ResponsivePanel",
-                "id": 991,
+                "id": 992,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 992,
+          "id": 993,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -10666,7 +10680,7 @@
           }
         },
         {
-          "id": 1000,
+          "id": 1001,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -10675,7 +10689,7 @@
           },
           "signatures": [
             {
-              "id": 1001,
+              "id": 1002,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -10688,7 +10702,7 @@
           ]
         },
         {
-          "id": 997,
+          "id": 998,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -10697,14 +10711,14 @@
           },
           "signatures": [
             {
-              "id": 998,
+              "id": 999,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 999,
+                  "id": 1000,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10723,7 +10737,7 @@
           ]
         },
         {
-          "id": 1004,
+          "id": 1005,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -10732,7 +10746,7 @@
           },
           "signatures": [
             {
-              "id": 1005,
+              "id": 1006,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -10745,7 +10759,7 @@
           ]
         },
         {
-          "id": 1002,
+          "id": 1003,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -10754,7 +10768,7 @@
           },
           "signatures": [
             {
-              "id": 1003,
+              "id": 1004,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -10772,30 +10786,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            993
+            994
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            992
+            993
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1000,
-            997,
-            1004,
-            1002
+            1001,
+            998,
+            1005,
+            1003
           ]
         }
       ]
     },
     {
-      "id": 1006,
+      "id": 1007,
       "name": "Scheduler",
       "kind": 128,
       "kindString": "Class",
@@ -10804,7 +10818,7 @@
       },
       "children": [
         {
-          "id": 1009,
+          "id": 1010,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -10813,14 +10827,14 @@
           },
           "signatures": [
             {
-              "id": 1010,
+              "id": 1011,
               "name": "new Scheduler",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1011,
+                  "id": 1012,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10831,7 +10845,7 @@
                   }
                 },
                 {
-                  "id": 1012,
+                  "id": 1013,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10842,7 +10856,7 @@
                   }
                 },
                 {
-                  "id": 1013,
+                  "id": 1014,
                   "name": "viewResources",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10856,14 +10870,14 @@
               "type": {
                 "type": "reference",
                 "name": "Scheduler",
-                "id": 1006,
+                "id": 1007,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1007,
+          "id": 1008,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -10876,7 +10890,7 @@
           }
         },
         {
-          "id": 1008,
+          "id": 1009,
           "name": "templates",
           "kind": 1024,
           "kindString": "Property",
@@ -10889,7 +10903,7 @@
           }
         },
         {
-          "id": 1017,
+          "id": 1018,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -10898,7 +10912,7 @@
           },
           "signatures": [
             {
-              "id": 1018,
+              "id": 1019,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -10911,7 +10925,7 @@
           ]
         },
         {
-          "id": 1014,
+          "id": 1015,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -10920,14 +10934,14 @@
           },
           "signatures": [
             {
-              "id": 1015,
+              "id": 1016,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1016,
+                  "id": 1017,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -10946,7 +10960,7 @@
           ]
         },
         {
-          "id": 1021,
+          "id": 1022,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -10955,7 +10969,7 @@
           },
           "signatures": [
             {
-              "id": 1022,
+              "id": 1023,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -10968,7 +10982,7 @@
           ]
         },
         {
-          "id": 1019,
+          "id": 1020,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -10977,7 +10991,7 @@
           },
           "signatures": [
             {
-              "id": 1020,
+              "id": 1021,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -10995,31 +11009,31 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1009
+            1010
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1007,
-            1008
+            1008,
+            1009
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1017,
-            1014,
-            1021,
-            1019
+            1018,
+            1015,
+            1022,
+            1020
           ]
         }
       ]
     },
     {
-      "id": 1023,
+      "id": 1024,
       "name": "Scrollview",
       "kind": 128,
       "kindString": "Class",
@@ -11028,7 +11042,7 @@
       },
       "children": [
         {
-          "id": 1026,
+          "id": 1027,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -11037,14 +11051,14 @@
           },
           "signatures": [
             {
-              "id": 1027,
+              "id": 1028,
               "name": "new Scrollview",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1028,
+                  "id": 1029,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11055,7 +11069,7 @@
                   }
                 },
                 {
-                  "id": 1029,
+                  "id": 1030,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11066,7 +11080,7 @@
                   }
                 },
                 {
-                  "id": 1030,
+                  "id": 1031,
                   "name": "viewResources",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11080,14 +11094,14 @@
               "type": {
                 "type": "reference",
                 "name": "Scrollview",
-                "id": 1023,
+                "id": 1024,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1024,
+          "id": 1025,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -11100,7 +11114,7 @@
           }
         },
         {
-          "id": 1025,
+          "id": 1026,
           "name": "templates",
           "kind": 1024,
           "kindString": "Property",
@@ -11113,7 +11127,7 @@
           }
         },
         {
-          "id": 1034,
+          "id": 1035,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -11122,7 +11136,7 @@
           },
           "signatures": [
             {
-              "id": 1035,
+              "id": 1036,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11135,7 +11149,7 @@
           ]
         },
         {
-          "id": 1031,
+          "id": 1032,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -11144,14 +11158,14 @@
           },
           "signatures": [
             {
-              "id": 1032,
+              "id": 1033,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1033,
+                  "id": 1034,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11170,7 +11184,7 @@
           ]
         },
         {
-          "id": 1038,
+          "id": 1039,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -11179,7 +11193,7 @@
           },
           "signatures": [
             {
-              "id": 1039,
+              "id": 1040,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11192,7 +11206,7 @@
           ]
         },
         {
-          "id": 1036,
+          "id": 1037,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -11201,7 +11215,7 @@
           },
           "signatures": [
             {
-              "id": 1037,
+              "id": 1038,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11219,31 +11233,31 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1026
+            1027
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1024,
-            1025
+            1025,
+            1026
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1034,
-            1031,
-            1038,
-            1036
+            1035,
+            1032,
+            1039,
+            1037
           ]
         }
       ]
     },
     {
-      "id": 1040,
+      "id": 1041,
       "name": "Slider",
       "kind": 128,
       "kindString": "Class",
@@ -11252,7 +11266,7 @@
       },
       "children": [
         {
-          "id": 1042,
+          "id": 1043,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -11261,14 +11275,14 @@
           },
           "signatures": [
             {
-              "id": 1043,
+              "id": 1044,
               "name": "new Slider",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1044,
+                  "id": 1045,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11279,7 +11293,7 @@
                   }
                 },
                 {
-                  "id": 1045,
+                  "id": 1046,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11293,14 +11307,14 @@
               "type": {
                 "type": "reference",
                 "name": "Slider",
-                "id": 1040,
+                "id": 1041,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1041,
+          "id": 1042,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -11313,7 +11327,7 @@
           }
         },
         {
-          "id": 1049,
+          "id": 1050,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -11322,7 +11336,7 @@
           },
           "signatures": [
             {
-              "id": 1050,
+              "id": 1051,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11335,7 +11349,7 @@
           ]
         },
         {
-          "id": 1046,
+          "id": 1047,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -11344,14 +11358,14 @@
           },
           "signatures": [
             {
-              "id": 1047,
+              "id": 1048,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1048,
+                  "id": 1049,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11370,7 +11384,7 @@
           ]
         },
         {
-          "id": 1058,
+          "id": 1059,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -11379,7 +11393,7 @@
           },
           "signatures": [
             {
-              "id": 1059,
+              "id": 1060,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11392,7 +11406,7 @@
           ]
         },
         {
-          "id": 1053,
+          "id": 1054,
           "name": "propertyChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -11401,14 +11415,14 @@
           },
           "signatures": [
             {
-              "id": 1054,
+              "id": 1055,
               "name": "propertyChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1055,
+                  "id": 1056,
                   "name": "property",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11419,7 +11433,7 @@
                   }
                 },
                 {
-                  "id": 1056,
+                  "id": 1057,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11430,7 +11444,7 @@
                   }
                 },
                 {
-                  "id": 1057,
+                  "id": 1058,
                   "name": "oldValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11449,7 +11463,7 @@
           ]
         },
         {
-          "id": 1051,
+          "id": 1052,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -11458,7 +11472,7 @@
           },
           "signatures": [
             {
-              "id": 1052,
+              "id": 1053,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11476,31 +11490,31 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1042
+            1043
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1041
+            1042
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1049,
-            1046,
-            1058,
-            1053,
-            1051
+            1050,
+            1047,
+            1059,
+            1054,
+            1052
           ]
         }
       ]
     },
     {
-      "id": 1060,
+      "id": 1061,
       "name": "Sortable",
       "kind": 128,
       "kindString": "Class",
@@ -11509,7 +11523,7 @@
       },
       "children": [
         {
-          "id": 1062,
+          "id": 1063,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -11518,14 +11532,14 @@
           },
           "signatures": [
             {
-              "id": 1063,
+              "id": 1064,
               "name": "new Sortable",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1064,
+                  "id": 1065,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11536,7 +11550,7 @@
                   }
                 },
                 {
-                  "id": 1065,
+                  "id": 1066,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11550,14 +11564,14 @@
               "type": {
                 "type": "reference",
                 "name": "Sortable",
-                "id": 1060,
+                "id": 1061,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1061,
+          "id": 1062,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -11570,7 +11584,7 @@
           }
         },
         {
-          "id": 1069,
+          "id": 1070,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -11579,7 +11593,7 @@
           },
           "signatures": [
             {
-              "id": 1070,
+              "id": 1071,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11592,7 +11606,7 @@
           ]
         },
         {
-          "id": 1066,
+          "id": 1067,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -11601,14 +11615,14 @@
           },
           "signatures": [
             {
-              "id": 1067,
+              "id": 1068,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1068,
+                  "id": 1069,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11627,7 +11641,7 @@
           ]
         },
         {
-          "id": 1073,
+          "id": 1074,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -11636,7 +11650,7 @@
           },
           "signatures": [
             {
-              "id": 1074,
+              "id": 1075,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11649,7 +11663,7 @@
           ]
         },
         {
-          "id": 1071,
+          "id": 1072,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -11658,7 +11672,7 @@
           },
           "signatures": [
             {
-              "id": 1072,
+              "id": 1073,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11676,30 +11690,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1062
+            1063
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1061
+            1062
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1069,
-            1066,
-            1073,
-            1071
+            1070,
+            1067,
+            1074,
+            1072
           ]
         }
       ]
     },
     {
-      "id": 223,
+      "id": 243,
       "name": "Sparkline",
       "kind": 128,
       "kindString": "Class",
@@ -11708,7 +11722,7 @@
       },
       "children": [
         {
-          "id": 225,
+          "id": 245,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -11717,14 +11731,14 @@
           },
           "signatures": [
             {
-              "id": 226,
+              "id": 246,
               "name": "new Sparkline",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 227,
+                  "id": 247,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11735,7 +11749,7 @@
                   }
                 },
                 {
-                  "id": 228,
+                  "id": 248,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11749,14 +11763,14 @@
               "type": {
                 "type": "reference",
                 "name": "Sparkline",
-                "id": 223,
+                "id": 243,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 224,
+          "id": 244,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -11769,7 +11783,7 @@
           }
         },
         {
-          "id": 232,
+          "id": 252,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -11778,7 +11792,7 @@
           },
           "signatures": [
             {
-              "id": 233,
+              "id": 253,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11791,7 +11805,7 @@
           ]
         },
         {
-          "id": 229,
+          "id": 249,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -11800,14 +11814,14 @@
           },
           "signatures": [
             {
-              "id": 230,
+              "id": 250,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 231,
+                  "id": 251,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11826,7 +11840,7 @@
           ]
         },
         {
-          "id": 236,
+          "id": 256,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -11835,7 +11849,7 @@
           },
           "signatures": [
             {
-              "id": 237,
+              "id": 257,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11848,7 +11862,7 @@
           ]
         },
         {
-          "id": 234,
+          "id": 254,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -11857,7 +11871,7 @@
           },
           "signatures": [
             {
-              "id": 235,
+              "id": 255,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11875,30 +11889,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            225
+            245
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            224
+            244
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            232,
-            229,
-            236,
-            234
+            252,
+            249,
+            256,
+            254
           ]
         }
       ]
     },
     {
-      "id": 1075,
+      "id": 1076,
       "name": "Splitter",
       "kind": 128,
       "kindString": "Class",
@@ -11907,7 +11921,7 @@
       },
       "children": [
         {
-          "id": 1077,
+          "id": 1078,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -11916,14 +11930,14 @@
           },
           "signatures": [
             {
-              "id": 1078,
+              "id": 1079,
               "name": "new Splitter",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1079,
+                  "id": 1080,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11934,7 +11948,7 @@
                   }
                 },
                 {
-                  "id": 1080,
+                  "id": 1081,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -11948,14 +11962,14 @@
               "type": {
                 "type": "reference",
                 "name": "Splitter",
-                "id": 1075,
+                "id": 1076,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1076,
+          "id": 1077,
           "name": "options",
           "kind": 1024,
           "kindString": "Property",
@@ -11968,7 +11982,7 @@
           }
         },
         {
-          "id": 1084,
+          "id": 1085,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -11977,7 +11991,7 @@
           },
           "signatures": [
             {
-              "id": 1085,
+              "id": 1086,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -11990,7 +12004,7 @@
           ]
         },
         {
-          "id": 1081,
+          "id": 1082,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -11999,14 +12013,14 @@
           },
           "signatures": [
             {
-              "id": 1082,
+              "id": 1083,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1083,
+                  "id": 1084,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12025,7 +12039,7 @@
           ]
         },
         {
-          "id": 1088,
+          "id": 1089,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -12034,7 +12048,7 @@
           },
           "signatures": [
             {
-              "id": 1089,
+              "id": 1090,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12047,7 +12061,7 @@
           ]
         },
         {
-          "id": 1086,
+          "id": 1087,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -12056,7 +12070,7 @@
           },
           "signatures": [
             {
-              "id": 1087,
+              "id": 1088,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12074,30 +12088,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1077
+            1078
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1076
+            1077
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1084,
-            1081,
-            1088,
-            1086
+            1085,
+            1082,
+            1089,
+            1087
           ]
         }
       ]
     },
     {
-      "id": 1090,
+      "id": 1091,
       "name": "Spreadsheet",
       "kind": 128,
       "kindString": "Class",
@@ -12106,7 +12120,7 @@
       },
       "children": [
         {
-          "id": 1092,
+          "id": 1093,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -12115,14 +12129,14 @@
           },
           "signatures": [
             {
-              "id": 1093,
+              "id": 1094,
               "name": "new Spreadsheet",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1094,
+                  "id": 1095,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12133,7 +12147,7 @@
                   }
                 },
                 {
-                  "id": 1095,
+                  "id": 1096,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12147,14 +12161,14 @@
               "type": {
                 "type": "reference",
                 "name": "Spreadsheet",
-                "id": 1090,
+                "id": 1091,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1091,
+          "id": 1092,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -12167,7 +12181,7 @@
           }
         },
         {
-          "id": 1099,
+          "id": 1100,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -12176,7 +12190,7 @@
           },
           "signatures": [
             {
-              "id": 1100,
+              "id": 1101,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12189,7 +12203,7 @@
           ]
         },
         {
-          "id": 1096,
+          "id": 1097,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -12198,14 +12212,14 @@
           },
           "signatures": [
             {
-              "id": 1097,
+              "id": 1098,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1098,
+                  "id": 1099,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12224,7 +12238,7 @@
           ]
         },
         {
-          "id": 1103,
+          "id": 1104,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -12233,7 +12247,7 @@
           },
           "signatures": [
             {
-              "id": 1104,
+              "id": 1105,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12246,7 +12260,7 @@
           ]
         },
         {
-          "id": 1101,
+          "id": 1102,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -12255,7 +12269,7 @@
           },
           "signatures": [
             {
-              "id": 1102,
+              "id": 1103,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12273,30 +12287,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1092
+            1093
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1091
+            1092
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1099,
-            1096,
-            1103,
-            1101
+            1100,
+            1097,
+            1104,
+            1102
           ]
         }
       ]
     },
     {
-      "id": 238,
+      "id": 258,
       "name": "Stock",
       "kind": 128,
       "kindString": "Class",
@@ -12305,7 +12319,7 @@
       },
       "children": [
         {
-          "id": 240,
+          "id": 260,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -12314,14 +12328,14 @@
           },
           "signatures": [
             {
-              "id": 241,
+              "id": 261,
               "name": "new Stock",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 242,
+                  "id": 262,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12332,7 +12346,7 @@
                   }
                 },
                 {
-                  "id": 243,
+                  "id": 263,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12346,14 +12360,14 @@
               "type": {
                 "type": "reference",
                 "name": "Stock",
-                "id": 238,
+                "id": 258,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 239,
+          "id": 259,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -12366,7 +12380,7 @@
           }
         },
         {
-          "id": 247,
+          "id": 267,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -12375,7 +12389,7 @@
           },
           "signatures": [
             {
-              "id": 248,
+              "id": 268,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12388,7 +12402,7 @@
           ]
         },
         {
-          "id": 244,
+          "id": 264,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -12397,14 +12411,14 @@
           },
           "signatures": [
             {
-              "id": 245,
+              "id": 265,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 246,
+                  "id": 266,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12423,7 +12437,7 @@
           ]
         },
         {
-          "id": 251,
+          "id": 271,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -12432,7 +12446,7 @@
           },
           "signatures": [
             {
-              "id": 252,
+              "id": 272,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12445,7 +12459,7 @@
           ]
         },
         {
-          "id": 249,
+          "id": 269,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -12454,7 +12468,7 @@
           },
           "signatures": [
             {
-              "id": 250,
+              "id": 270,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12472,30 +12486,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            240
+            260
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            239
+            259
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            247,
-            244,
-            251,
-            249
+            267,
+            264,
+            271,
+            269
           ]
         }
       ]
     },
     {
-      "id": 1105,
+      "id": 1106,
       "name": "Switch",
       "kind": 128,
       "kindString": "Class",
@@ -12504,7 +12518,7 @@
       },
       "children": [
         {
-          "id": 1107,
+          "id": 1108,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -12513,14 +12527,14 @@
           },
           "signatures": [
             {
-              "id": 1108,
+              "id": 1109,
               "name": "new Switch",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1109,
+                  "id": 1110,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12531,7 +12545,7 @@
                   }
                 },
                 {
-                  "id": 1110,
+                  "id": 1111,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12545,14 +12559,14 @@
               "type": {
                 "type": "reference",
                 "name": "Switch",
-                "id": 1105,
+                "id": 1106,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1106,
+          "id": 1107,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -12565,7 +12579,7 @@
           }
         },
         {
-          "id": 1114,
+          "id": 1115,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -12574,7 +12588,7 @@
           },
           "signatures": [
             {
-              "id": 1115,
+              "id": 1116,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12587,7 +12601,7 @@
           ]
         },
         {
-          "id": 1111,
+          "id": 1112,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -12596,14 +12610,14 @@
           },
           "signatures": [
             {
-              "id": 1112,
+              "id": 1113,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1113,
+                  "id": 1114,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12622,7 +12636,7 @@
           ]
         },
         {
-          "id": 1123,
+          "id": 1124,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -12631,7 +12645,7 @@
           },
           "signatures": [
             {
-              "id": 1124,
+              "id": 1125,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12644,7 +12658,7 @@
           ]
         },
         {
-          "id": 1118,
+          "id": 1119,
           "name": "propertyChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -12653,14 +12667,14 @@
           },
           "signatures": [
             {
-              "id": 1119,
+              "id": 1120,
               "name": "propertyChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1120,
+                  "id": 1121,
                   "name": "property",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12671,7 +12685,7 @@
                   }
                 },
                 {
-                  "id": 1121,
+                  "id": 1122,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12682,7 +12696,7 @@
                   }
                 },
                 {
-                  "id": 1122,
+                  "id": 1123,
                   "name": "oldValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12701,7 +12715,7 @@
           ]
         },
         {
-          "id": 1116,
+          "id": 1117,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -12710,7 +12724,7 @@
           },
           "signatures": [
             {
-              "id": 1117,
+              "id": 1118,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12728,31 +12742,31 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1107
+            1108
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1106
+            1107
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1114,
-            1111,
-            1123,
-            1118,
-            1116
+            1115,
+            1112,
+            1124,
+            1119,
+            1117
           ]
         }
       ]
     },
     {
-      "id": 1125,
+      "id": 1126,
       "name": "TabStrip",
       "kind": 128,
       "kindString": "Class",
@@ -12761,7 +12775,7 @@
       },
       "children": [
         {
-          "id": 1127,
+          "id": 1128,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -12770,14 +12784,14 @@
           },
           "signatures": [
             {
-              "id": 1128,
+              "id": 1129,
               "name": "new TabStrip",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1129,
+                  "id": 1130,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12788,7 +12802,7 @@
                   }
                 },
                 {
-                  "id": 1130,
+                  "id": 1131,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12802,14 +12816,14 @@
               "type": {
                 "type": "reference",
                 "name": "TabStrip",
-                "id": 1125,
+                "id": 1126,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1126,
+          "id": 1127,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -12822,7 +12836,7 @@
           }
         },
         {
-          "id": 1134,
+          "id": 1135,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -12831,7 +12845,7 @@
           },
           "signatures": [
             {
-              "id": 1135,
+              "id": 1136,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12844,7 +12858,7 @@
           ]
         },
         {
-          "id": 1131,
+          "id": 1132,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -12853,14 +12867,14 @@
           },
           "signatures": [
             {
-              "id": 1132,
+              "id": 1133,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1133,
+                  "id": 1134,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -12879,7 +12893,7 @@
           ]
         },
         {
-          "id": 1138,
+          "id": 1139,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -12888,7 +12902,7 @@
           },
           "signatures": [
             {
-              "id": 1139,
+              "id": 1140,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12901,7 +12915,7 @@
           ]
         },
         {
-          "id": 1136,
+          "id": 1137,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -12910,7 +12924,7 @@
           },
           "signatures": [
             {
-              "id": 1137,
+              "id": 1138,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -12928,24 +12942,24 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1127
+            1128
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1126
+            1127
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1134,
-            1131,
-            1138,
-            1136
+            1135,
+            1132,
+            1139,
+            1137
           ]
         }
       ]
@@ -13652,7 +13666,7 @@
       ]
     },
     {
-      "id": 1140,
+      "id": 1141,
       "name": "TimePicker",
       "kind": 128,
       "kindString": "Class",
@@ -13661,7 +13675,7 @@
       },
       "children": [
         {
-          "id": 1143,
+          "id": 1144,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -13670,14 +13684,14 @@
           },
           "signatures": [
             {
-              "id": 1144,
+              "id": 1145,
               "name": "new TimePicker",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1145,
+                  "id": 1146,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -13688,7 +13702,7 @@
                   }
                 },
                 {
-                  "id": 1146,
+                  "id": 1147,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -13702,14 +13716,14 @@
               "type": {
                 "type": "reference",
                 "name": "TimePicker",
-                "id": 1140,
+                "id": 1141,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1141,
+          "id": 1142,
           "name": "kDisableDates",
           "kind": 1024,
           "kindString": "Property",
@@ -13722,7 +13736,7 @@
           }
         },
         {
-          "id": 1142,
+          "id": 1143,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -13735,7 +13749,7 @@
           }
         },
         {
-          "id": 1150,
+          "id": 1151,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -13744,7 +13758,7 @@
           },
           "signatures": [
             {
-              "id": 1151,
+              "id": 1152,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -13757,7 +13771,7 @@
           ]
         },
         {
-          "id": 1147,
+          "id": 1148,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -13766,14 +13780,14 @@
           },
           "signatures": [
             {
-              "id": 1148,
+              "id": 1149,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1149,
+                  "id": 1150,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -13792,7 +13806,7 @@
           ]
         },
         {
-          "id": 1159,
+          "id": 1160,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -13801,7 +13815,7 @@
           },
           "signatures": [
             {
-              "id": 1160,
+              "id": 1161,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -13814,7 +13828,7 @@
           ]
         },
         {
-          "id": 1154,
+          "id": 1155,
           "name": "propertyChanged",
           "kind": 2048,
           "kindString": "Method",
@@ -13823,14 +13837,14 @@
           },
           "signatures": [
             {
-              "id": 1155,
+              "id": 1156,
               "name": "propertyChanged",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1156,
+                  "id": 1157,
                   "name": "property",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -13841,7 +13855,7 @@
                   }
                 },
                 {
-                  "id": 1157,
+                  "id": 1158,
                   "name": "newValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -13852,7 +13866,7 @@
                   }
                 },
                 {
-                  "id": 1158,
+                  "id": 1159,
                   "name": "oldValue",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -13871,7 +13885,7 @@
           ]
         },
         {
-          "id": 1152,
+          "id": 1153,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -13880,7 +13894,7 @@
           },
           "signatures": [
             {
-              "id": 1153,
+              "id": 1154,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -13898,32 +13912,32 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1143
+            1144
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1141,
-            1142
+            1142,
+            1143
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1150,
-            1147,
-            1159,
-            1154,
-            1152
+            1151,
+            1148,
+            1160,
+            1155,
+            1153
           ]
         }
       ]
     },
     {
-      "id": 1176,
+      "id": 1177,
       "name": "Toolbar",
       "kind": 128,
       "kindString": "Class",
@@ -13932,7 +13946,7 @@
       },
       "children": [
         {
-          "id": 1179,
+          "id": 1180,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -13941,14 +13955,14 @@
           },
           "signatures": [
             {
-              "id": 1180,
+              "id": 1181,
               "name": "new Toolbar",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1181,
+                  "id": 1182,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -13959,7 +13973,7 @@
                   }
                 },
                 {
-                  "id": 1182,
+                  "id": 1183,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -13970,7 +13984,7 @@
                   }
                 },
                 {
-                  "id": 1183,
+                  "id": 1184,
                   "name": "optionsBuilder",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -13984,14 +13998,14 @@
               "type": {
                 "type": "reference",
                 "name": "Toolbar",
-                "id": 1176,
+                "id": 1177,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1177,
+          "id": 1178,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -14004,7 +14018,7 @@
           }
         },
         {
-          "id": 1178,
+          "id": 1179,
           "name": "toolbarItems",
           "kind": 1024,
           "kindString": "Property",
@@ -14017,7 +14031,7 @@
           }
         },
         {
-          "id": 1187,
+          "id": 1188,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -14026,7 +14040,7 @@
           },
           "signatures": [
             {
-              "id": 1188,
+              "id": 1189,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14039,7 +14053,7 @@
           ]
         },
         {
-          "id": 1184,
+          "id": 1185,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -14048,14 +14062,14 @@
           },
           "signatures": [
             {
-              "id": 1185,
+              "id": 1186,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1186,
+                  "id": 1187,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14074,7 +14088,7 @@
           ]
         },
         {
-          "id": 1191,
+          "id": 1192,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -14083,7 +14097,7 @@
           },
           "signatures": [
             {
-              "id": 1192,
+              "id": 1193,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14096,7 +14110,7 @@
           ]
         },
         {
-          "id": 1189,
+          "id": 1190,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -14105,7 +14119,7 @@
           },
           "signatures": [
             {
-              "id": 1190,
+              "id": 1191,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14123,31 +14137,31 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1179
+            1180
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1177,
-            1178
+            1178,
+            1179
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1187,
-            1184,
-            1191,
-            1189
+            1188,
+            1185,
+            1192,
+            1190
           ]
         }
       ]
     },
     {
-      "id": 1167,
+      "id": 1168,
       "name": "ToolbarItem",
       "kind": 128,
       "kindString": "Class",
@@ -14156,7 +14170,7 @@
       },
       "children": [
         {
-          "id": 1170,
+          "id": 1171,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -14165,14 +14179,14 @@
           },
           "signatures": [
             {
-              "id": 1171,
+              "id": 1172,
               "name": "new ToolbarItem",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1172,
+                  "id": 1173,
                   "name": "templateGatherer",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14183,7 +14197,7 @@
                   }
                 },
                 {
-                  "id": 1173,
+                  "id": 1174,
                   "name": "optionsBuilder",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14197,14 +14211,14 @@
               "type": {
                 "type": "reference",
                 "name": "ToolbarItem",
-                "id": 1167,
+                "id": 1168,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1169,
+          "id": 1170,
           "name": "buttons",
           "kind": 1024,
           "kindString": "Property",
@@ -14217,7 +14231,7 @@
           }
         },
         {
-          "id": 1168,
+          "id": 1169,
           "name": "templates",
           "kind": 1024,
           "kindString": "Property",
@@ -14230,7 +14244,7 @@
           }
         },
         {
-          "id": 1174,
+          "id": 1175,
           "name": "getOptions",
           "kind": 2048,
           "kindString": "Method",
@@ -14239,7 +14253,7 @@
           },
           "signatures": [
             {
-              "id": 1175,
+              "id": 1176,
               "name": "getOptions",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14257,28 +14271,28 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1170
+            1171
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1169,
-            1168
+            1170,
+            1169
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1174
+            1175
           ]
         }
       ]
     },
     {
-      "id": 1161,
+      "id": 1162,
       "name": "ToolbarItemButton",
       "kind": 128,
       "kindString": "Class",
@@ -14287,7 +14301,7 @@
       },
       "children": [
         {
-          "id": 1162,
+          "id": 1163,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -14296,14 +14310,14 @@
           },
           "signatures": [
             {
-              "id": 1163,
+              "id": 1164,
               "name": "new ToolbarItemButton",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1164,
+                  "id": 1165,
                   "name": "optionsBuilder",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14317,14 +14331,14 @@
               "type": {
                 "type": "reference",
                 "name": "ToolbarItemButton",
-                "id": 1161,
+                "id": 1162,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1165,
+          "id": 1166,
           "name": "getOptions",
           "kind": 2048,
           "kindString": "Method",
@@ -14333,7 +14347,7 @@
           },
           "signatures": [
             {
-              "id": 1166,
+              "id": 1167,
               "name": "getOptions",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14351,20 +14365,20 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1162
+            1163
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1165
+            1166
           ]
         }
       ]
     },
     {
-      "id": 1193,
+      "id": 1194,
       "name": "Tooltip",
       "kind": 128,
       "kindString": "Class",
@@ -14373,7 +14387,7 @@
       },
       "children": [
         {
-          "id": 1195,
+          "id": 1196,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -14382,14 +14396,14 @@
           },
           "signatures": [
             {
-              "id": 1196,
+              "id": 1197,
               "name": "new Tooltip",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1197,
+                  "id": 1198,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14400,7 +14414,7 @@
                   }
                 },
                 {
-                  "id": 1198,
+                  "id": 1199,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14414,14 +14428,14 @@
               "type": {
                 "type": "reference",
                 "name": "Tooltip",
-                "id": 1193,
+                "id": 1194,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1194,
+          "id": 1195,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -14434,7 +14448,7 @@
           }
         },
         {
-          "id": 1202,
+          "id": 1203,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -14443,7 +14457,7 @@
           },
           "signatures": [
             {
-              "id": 1203,
+              "id": 1204,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14456,7 +14470,7 @@
           ]
         },
         {
-          "id": 1199,
+          "id": 1200,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -14465,14 +14479,14 @@
           },
           "signatures": [
             {
-              "id": 1200,
+              "id": 1201,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1201,
+                  "id": 1202,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14491,7 +14505,7 @@
           ]
         },
         {
-          "id": 1206,
+          "id": 1207,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -14500,7 +14514,7 @@
           },
           "signatures": [
             {
-              "id": 1207,
+              "id": 1208,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14513,7 +14527,7 @@
           ]
         },
         {
-          "id": 1204,
+          "id": 1205,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -14522,7 +14536,7 @@
           },
           "signatures": [
             {
-              "id": 1205,
+              "id": 1206,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14540,30 +14554,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1195
+            1196
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1194
+            1195
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1202,
-            1199,
-            1206,
-            1204
+            1203,
+            1200,
+            1207,
+            1205
           ]
         }
       ]
     },
     {
-      "id": 1208,
+      "id": 1209,
       "name": "TreeCol",
       "kind": 128,
       "kindString": "Class",
@@ -14572,7 +14586,7 @@
       },
       "children": [
         {
-          "id": 1210,
+          "id": 1211,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -14581,14 +14595,14 @@
           },
           "signatures": [
             {
-              "id": 1211,
+              "id": 1212,
               "name": "new TreeCol",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1212,
+                  "id": 1213,
                   "name": "templateGatherer",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14602,14 +14616,14 @@
               "type": {
                 "type": "reference",
                 "name": "TreeCol",
-                "id": 1208,
+                "id": 1209,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1209,
+          "id": 1210,
           "name": "templates",
           "kind": 1024,
           "kindString": "Property",
@@ -14622,7 +14636,7 @@
           }
         },
         {
-          "id": 1213,
+          "id": 1214,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -14631,7 +14645,7 @@
           },
           "signatures": [
             {
-              "id": 1214,
+              "id": 1215,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14649,27 +14663,27 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1210
+            1211
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1209
+            1210
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1213
+            1214
           ]
         }
       ]
     },
     {
-      "id": 1215,
+      "id": 1216,
       "name": "TreeList",
       "kind": 128,
       "kindString": "Class",
@@ -14678,7 +14692,7 @@
       },
       "children": [
         {
-          "id": 1218,
+          "id": 1219,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -14687,14 +14701,14 @@
           },
           "signatures": [
             {
-              "id": 1219,
+              "id": 1220,
               "name": "new TreeList",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1220,
+                  "id": 1221,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14705,7 +14719,7 @@
                   }
                 },
                 {
-                  "id": 1221,
+                  "id": 1222,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14716,7 +14730,7 @@
                   }
                 },
                 {
-                  "id": 1222,
+                  "id": 1223,
                   "name": "viewResources",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14727,7 +14741,7 @@
                   }
                 },
                 {
-                  "id": 1223,
+                  "id": 1224,
                   "name": "optionsBuilder",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14741,14 +14755,14 @@
               "type": {
                 "type": "reference",
                 "name": "TreeList",
-                "id": 1215,
+                "id": 1216,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1216,
+          "id": 1217,
           "name": "columns",
           "kind": 1024,
           "kindString": "Property",
@@ -14761,7 +14775,7 @@
           }
         },
         {
-          "id": 1217,
+          "id": 1218,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -14774,7 +14788,7 @@
           }
         },
         {
-          "id": 1227,
+          "id": 1228,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -14783,7 +14797,7 @@
           },
           "signatures": [
             {
-              "id": 1228,
+              "id": 1229,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14796,7 +14810,7 @@
           ]
         },
         {
-          "id": 1224,
+          "id": 1225,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -14805,14 +14819,14 @@
           },
           "signatures": [
             {
-              "id": 1225,
+              "id": 1226,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1226,
+                  "id": 1227,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14831,7 +14845,7 @@
           ]
         },
         {
-          "id": 1231,
+          "id": 1232,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -14840,7 +14854,7 @@
           },
           "signatures": [
             {
-              "id": 1232,
+              "id": 1233,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14853,7 +14867,7 @@
           ]
         },
         {
-          "id": 1229,
+          "id": 1230,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -14862,7 +14876,7 @@
           },
           "signatures": [
             {
-              "id": 1230,
+              "id": 1231,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14880,31 +14894,31 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1218
+            1219
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1216,
-            1217
+            1217,
+            1218
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1227,
-            1224,
-            1231,
-            1229
+            1228,
+            1225,
+            1232,
+            1230
           ]
         }
       ]
     },
     {
-      "id": 253,
+      "id": 273,
       "name": "TreeMap",
       "kind": 128,
       "kindString": "Class",
@@ -14913,7 +14927,7 @@
       },
       "children": [
         {
-          "id": 255,
+          "id": 275,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -14922,14 +14936,14 @@
           },
           "signatures": [
             {
-              "id": 256,
+              "id": 276,
               "name": "new TreeMap",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 257,
+                  "id": 277,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14940,7 +14954,7 @@
                   }
                 },
                 {
-                  "id": 258,
+                  "id": 278,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -14954,14 +14968,14 @@
               "type": {
                 "type": "reference",
                 "name": "TreeMap",
-                "id": 253,
+                "id": 273,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 254,
+          "id": 274,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -14974,7 +14988,7 @@
           }
         },
         {
-          "id": 262,
+          "id": 282,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -14983,7 +14997,7 @@
           },
           "signatures": [
             {
-              "id": 263,
+              "id": 283,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -14996,7 +15010,7 @@
           ]
         },
         {
-          "id": 259,
+          "id": 279,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -15005,14 +15019,14 @@
           },
           "signatures": [
             {
-              "id": 260,
+              "id": 280,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 261,
+                  "id": 281,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -15031,7 +15045,7 @@
           ]
         },
         {
-          "id": 266,
+          "id": 286,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -15040,7 +15054,7 @@
           },
           "signatures": [
             {
-              "id": 267,
+              "id": 287,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -15053,7 +15067,7 @@
           ]
         },
         {
-          "id": 264,
+          "id": 284,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -15062,7 +15076,7 @@
           },
           "signatures": [
             {
-              "id": 265,
+              "id": 285,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -15080,30 +15094,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            255
+            275
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            254
+            274
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            262,
-            259,
-            266,
-            264
+            282,
+            279,
+            286,
+            284
           ]
         }
       ]
     },
     {
-      "id": 1233,
+      "id": 1234,
       "name": "TreeView",
       "kind": 128,
       "kindString": "Class",
@@ -15112,7 +15126,7 @@
       },
       "children": [
         {
-          "id": 1235,
+          "id": 1236,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -15121,14 +15135,14 @@
           },
           "signatures": [
             {
-              "id": 1236,
+              "id": 1237,
               "name": "new TreeView",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1237,
+                  "id": 1238,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -15139,7 +15153,7 @@
                   }
                 },
                 {
-                  "id": 1238,
+                  "id": 1239,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -15153,14 +15167,14 @@
               "type": {
                 "type": "reference",
                 "name": "TreeView",
-                "id": 1233,
+                "id": 1234,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1234,
+          "id": 1235,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -15173,7 +15187,7 @@
           }
         },
         {
-          "id": 1242,
+          "id": 1243,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -15182,7 +15196,7 @@
           },
           "signatures": [
             {
-              "id": 1243,
+              "id": 1244,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -15195,7 +15209,7 @@
           ]
         },
         {
-          "id": 1239,
+          "id": 1240,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -15204,14 +15218,14 @@
           },
           "signatures": [
             {
-              "id": 1240,
+              "id": 1241,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1241,
+                  "id": 1242,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -15230,7 +15244,7 @@
           ]
         },
         {
-          "id": 1246,
+          "id": 1247,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -15239,7 +15253,7 @@
           },
           "signatures": [
             {
-              "id": 1247,
+              "id": 1248,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -15252,7 +15266,7 @@
           ]
         },
         {
-          "id": 1244,
+          "id": 1245,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -15261,7 +15275,7 @@
           },
           "signatures": [
             {
-              "id": 1245,
+              "id": 1246,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -15279,30 +15293,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1235
+            1236
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1234
+            1235
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1242,
-            1239,
-            1246,
-            1244
+            1243,
+            1240,
+            1247,
+            1245
           ]
         }
       ]
     },
     {
-      "id": 1248,
+      "id": 1249,
       "name": "Upload",
       "kind": 128,
       "kindString": "Class",
@@ -15311,7 +15325,7 @@
       },
       "children": [
         {
-          "id": 1251,
+          "id": 1252,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -15320,14 +15334,14 @@
           },
           "signatures": [
             {
-              "id": 1252,
+              "id": 1253,
               "name": "new Upload",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1253,
+                  "id": 1254,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -15338,7 +15352,7 @@
                   }
                 },
                 {
-                  "id": 1254,
+                  "id": 1255,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -15349,7 +15363,7 @@
                   }
                 },
                 {
-                  "id": 1255,
+                  "id": 1256,
                   "name": "viewResources",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -15363,14 +15377,14 @@
               "type": {
                 "type": "reference",
                 "name": "Upload",
-                "id": 1248,
+                "id": 1249,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1249,
+          "id": 1250,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -15383,7 +15397,7 @@
           }
         },
         {
-          "id": 1250,
+          "id": 1251,
           "name": "templates",
           "kind": 1024,
           "kindString": "Property",
@@ -15396,7 +15410,7 @@
           }
         },
         {
-          "id": 1259,
+          "id": 1260,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -15405,7 +15419,7 @@
           },
           "signatures": [
             {
-              "id": 1260,
+              "id": 1261,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -15418,7 +15432,7 @@
           ]
         },
         {
-          "id": 1256,
+          "id": 1257,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -15427,14 +15441,14 @@
           },
           "signatures": [
             {
-              "id": 1257,
+              "id": 1258,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1258,
+                  "id": 1259,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -15453,7 +15467,7 @@
           ]
         },
         {
-          "id": 1263,
+          "id": 1264,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -15462,7 +15476,7 @@
           },
           "signatures": [
             {
-              "id": 1264,
+              "id": 1265,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -15475,7 +15489,7 @@
           ]
         },
         {
-          "id": 1261,
+          "id": 1262,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -15484,7 +15498,7 @@
           },
           "signatures": [
             {
-              "id": 1262,
+              "id": 1263,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -15502,25 +15516,25 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1251
+            1252
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1249,
-            1250
+            1250,
+            1251
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1259,
-            1256,
-            1263,
-            1261
+            1260,
+            1257,
+            1264,
+            1262
           ]
         }
       ]
@@ -16008,7 +16022,7 @@
       ]
     },
     {
-      "id": 1265,
+      "id": 1266,
       "name": "Validator",
       "kind": 128,
       "kindString": "Class",
@@ -16017,7 +16031,7 @@
       },
       "children": [
         {
-          "id": 1267,
+          "id": 1268,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -16026,14 +16040,14 @@
           },
           "signatures": [
             {
-              "id": 1268,
+              "id": 1269,
               "name": "new Validator",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1269,
+                  "id": 1270,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -16044,7 +16058,7 @@
                   }
                 },
                 {
-                  "id": 1270,
+                  "id": 1271,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -16058,14 +16072,14 @@
               "type": {
                 "type": "reference",
                 "name": "Validator",
-                "id": 1265,
+                "id": 1266,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1266,
+          "id": 1267,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -16078,7 +16092,7 @@
           }
         },
         {
-          "id": 1274,
+          "id": 1275,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -16087,7 +16101,7 @@
           },
           "signatures": [
             {
-              "id": 1275,
+              "id": 1276,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -16100,7 +16114,7 @@
           ]
         },
         {
-          "id": 1271,
+          "id": 1272,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -16109,14 +16123,14 @@
           },
           "signatures": [
             {
-              "id": 1272,
+              "id": 1273,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1273,
+                  "id": 1274,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -16135,7 +16149,7 @@
           ]
         },
         {
-          "id": 1278,
+          "id": 1279,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -16144,7 +16158,7 @@
           },
           "signatures": [
             {
-              "id": 1279,
+              "id": 1280,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -16157,7 +16171,7 @@
           ]
         },
         {
-          "id": 1276,
+          "id": 1277,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -16166,7 +16180,7 @@
           },
           "signatures": [
             {
-              "id": 1277,
+              "id": 1278,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -16184,24 +16198,24 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1267
+            1268
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1266
+            1267
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1274,
-            1271,
-            1278,
-            1276
+            1275,
+            1272,
+            1279,
+            1277
           ]
         }
       ]
@@ -16393,7 +16407,7 @@
           "type": {
             "type": "reference",
             "name": "TaskQueue",
-            "id": 4618,
+            "id": 4619,
             "moduleName": "\"aurelia-task-queue\""
           }
         },
@@ -16856,7 +16870,7 @@
       ]
     },
     {
-      "id": 1315,
+      "id": 1316,
       "name": "Window",
       "kind": 128,
       "kindString": "Class",
@@ -16865,7 +16879,7 @@
       },
       "children": [
         {
-          "id": 1317,
+          "id": 1318,
           "name": "constructor",
           "kind": 512,
           "kindString": "Constructor",
@@ -16874,14 +16888,14 @@
           },
           "signatures": [
             {
-              "id": 1318,
+              "id": 1319,
               "name": "new Window",
               "kind": 16384,
               "kindString": "Constructor signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1319,
+                  "id": 1320,
                   "name": "element",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -16892,7 +16906,7 @@
                   }
                 },
                 {
-                  "id": 1320,
+                  "id": 1321,
                   "name": "widgetBase",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -16906,14 +16920,14 @@
               "type": {
                 "type": "reference",
                 "name": "Window",
-                "id": 1315,
+                "id": 1316,
                 "moduleName": "\"aurelia-kendoui-bridge\""
               }
             }
           ]
         },
         {
-          "id": 1316,
+          "id": 1317,
           "name": "kOptions",
           "kind": 1024,
           "kindString": "Property",
@@ -16926,7 +16940,7 @@
           }
         },
         {
-          "id": 1324,
+          "id": 1325,
           "name": "attached",
           "kind": 2048,
           "kindString": "Method",
@@ -16935,7 +16949,7 @@
           },
           "signatures": [
             {
-              "id": 1325,
+              "id": 1326,
               "name": "attached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -16948,7 +16962,7 @@
           ]
         },
         {
-          "id": 1321,
+          "id": 1322,
           "name": "bind",
           "kind": 2048,
           "kindString": "Method",
@@ -16957,14 +16971,14 @@
           },
           "signatures": [
             {
-              "id": 1322,
+              "id": 1323,
               "name": "bind",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1323,
+                  "id": 1324,
                   "name": "ctx",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -16983,7 +16997,7 @@
           ]
         },
         {
-          "id": 1328,
+          "id": 1329,
           "name": "detached",
           "kind": 2048,
           "kindString": "Method",
@@ -16992,7 +17006,7 @@
           },
           "signatures": [
             {
-              "id": 1329,
+              "id": 1330,
               "name": "detached",
               "kind": 4096,
               "kindString": "Call signature",
@@ -17005,7 +17019,7 @@
           ]
         },
         {
-          "id": 1326,
+          "id": 1327,
           "name": "recreate",
           "kind": 2048,
           "kindString": "Method",
@@ -17014,7 +17028,7 @@
           },
           "signatures": [
             {
-              "id": 1327,
+              "id": 1328,
               "name": "recreate",
               "kind": 4096,
               "kindString": "Call signature",
@@ -17032,30 +17046,30 @@
           "title": "Constructors",
           "kind": 512,
           "children": [
-            1317
+            1318
           ]
         },
         {
           "title": "Properties",
           "kind": 1024,
           "children": [
-            1316
+            1317
           ]
         },
         {
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1324,
-            1321,
-            1328,
-            1326
+            1325,
+            1322,
+            1329,
+            1327
           ]
         }
       ]
     },
     {
-      "id": 1310,
+      "id": 1311,
       "name": "kendoFormatValueConverter",
       "kind": 128,
       "kindString": "Class",
@@ -17064,7 +17078,7 @@
       },
       "children": [
         {
-          "id": 1311,
+          "id": 1312,
           "name": "toView",
           "kind": 2048,
           "kindString": "Method",
@@ -17073,14 +17087,14 @@
           },
           "signatures": [
             {
-              "id": 1312,
+              "id": 1313,
               "name": "toView",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1313,
+                  "id": 1314,
                   "name": "value",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17091,7 +17105,7 @@
                   }
                 },
                 {
-                  "id": 1314,
+                  "id": 1315,
                   "name": "params",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17118,13 +17132,13 @@
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1311
+            1312
           ]
         }
       ]
     },
     {
-      "id": 1302,
+      "id": 1303,
       "name": "kendoParseColorValueConverter",
       "kind": 128,
       "kindString": "Class",
@@ -17133,7 +17147,7 @@
       },
       "children": [
         {
-          "id": 1303,
+          "id": 1304,
           "name": "toView",
           "kind": 2048,
           "kindString": "Method",
@@ -17142,14 +17156,14 @@
           },
           "signatures": [
             {
-              "id": 1304,
+              "id": 1305,
               "name": "toView",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1305,
+                  "id": 1306,
                   "name": "value",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17173,13 +17187,13 @@
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1303
+            1304
           ]
         }
       ]
     },
     {
-      "id": 1286,
+      "id": 1287,
       "name": "kendoParseDateValueConverter",
       "kind": 128,
       "kindString": "Class",
@@ -17188,7 +17202,7 @@
       },
       "children": [
         {
-          "id": 1287,
+          "id": 1288,
           "name": "toView",
           "kind": 2048,
           "kindString": "Method",
@@ -17197,26 +17211,15 @@
           },
           "signatures": [
             {
-              "id": 1288,
+              "id": 1289,
               "name": "toView",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1289,
-                  "name": "value",
-                  "kind": 32768,
-                  "kindString": "Parameter",
-                  "flags": {},
-                  "type": {
-                    "type": "instrinct",
-                    "name": "any"
-                  }
-                },
-                {
                   "id": 1290,
-                  "name": "format",
+                  "name": "value",
                   "kind": 32768,
                   "kindString": "Parameter",
                   "flags": {},
@@ -17227,6 +17230,17 @@
                 },
                 {
                   "id": 1291,
+                  "name": "format",
+                  "kind": 32768,
+                  "kindString": "Parameter",
+                  "flags": {},
+                  "type": {
+                    "type": "instrinct",
+                    "name": "any"
+                  }
+                },
+                {
+                  "id": 1292,
                   "name": "language",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17250,13 +17264,13 @@
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1287
+            1288
           ]
         }
       ]
     },
     {
-      "id": 1297,
+      "id": 1298,
       "name": "kendoParseFloatValueConverter",
       "kind": 128,
       "kindString": "Class",
@@ -17265,7 +17279,7 @@
       },
       "children": [
         {
-          "id": 1298,
+          "id": 1299,
           "name": "toView",
           "kind": 2048,
           "kindString": "Method",
@@ -17274,14 +17288,14 @@
           },
           "signatures": [
             {
-              "id": 1299,
+              "id": 1300,
               "name": "toView",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1300,
+                  "id": 1301,
                   "name": "value",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17292,7 +17306,7 @@
                   }
                 },
                 {
-                  "id": 1301,
+                  "id": 1302,
                   "name": "language",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17316,13 +17330,13 @@
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1298
+            1299
           ]
         }
       ]
     },
     {
-      "id": 1292,
+      "id": 1293,
       "name": "kendoParseIntValueConverter",
       "kind": 128,
       "kindString": "Class",
@@ -17331,7 +17345,7 @@
       },
       "children": [
         {
-          "id": 1293,
+          "id": 1294,
           "name": "toView",
           "kind": 2048,
           "kindString": "Method",
@@ -17340,14 +17354,14 @@
           },
           "signatures": [
             {
-              "id": 1294,
+              "id": 1295,
               "name": "toView",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1295,
+                  "id": 1296,
                   "name": "value",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17358,7 +17372,7 @@
                   }
                 },
                 {
-                  "id": 1296,
+                  "id": 1297,
                   "name": "language",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17382,13 +17396,13 @@
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1293
+            1294
           ]
         }
       ]
     },
     {
-      "id": 1306,
+      "id": 1307,
       "name": "kendoStringifyValueConverter",
       "kind": 128,
       "kindString": "Class",
@@ -17397,7 +17411,7 @@
       },
       "children": [
         {
-          "id": 1307,
+          "id": 1308,
           "name": "toView",
           "kind": 2048,
           "kindString": "Method",
@@ -17406,14 +17420,14 @@
           },
           "signatures": [
             {
-              "id": 1308,
+              "id": 1309,
               "name": "toView",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1309,
+                  "id": 1310,
                   "name": "obj",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17437,13 +17451,13 @@
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1307
+            1308
           ]
         }
       ]
     },
     {
-      "id": 1280,
+      "id": 1281,
       "name": "kendoToStringValueConverter",
       "kind": 128,
       "kindString": "Class",
@@ -17452,7 +17466,7 @@
       },
       "children": [
         {
-          "id": 1281,
+          "id": 1282,
           "name": "toView",
           "kind": 2048,
           "kindString": "Method",
@@ -17461,14 +17475,14 @@
           },
           "signatures": [
             {
-              "id": 1282,
+              "id": 1283,
               "name": "toView",
               "kind": 4096,
               "kindString": "Call signature",
               "flags": {},
               "parameters": [
                 {
-                  "id": 1283,
+                  "id": 1284,
                   "name": "value",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17479,7 +17493,7 @@
                   }
                 },
                 {
-                  "id": 1284,
+                  "id": 1285,
                   "name": "format",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17490,7 +17504,7 @@
                   }
                 },
                 {
-                  "id": 1285,
+                  "id": 1286,
                   "name": "language",
                   "kind": 32768,
                   "kindString": "Parameter",
@@ -17514,13 +17528,13 @@
           "title": "Methods",
           "kind": 2048,
           "children": [
-            1281
+            1282
           ]
         }
       ]
     },
     {
-      "id": 1334,
+      "id": 1335,
       "name": "bindables",
       "kind": 32,
       "kindString": "Variable",
@@ -17533,7 +17547,7 @@
       }
     },
     {
-      "id": 1335,
+      "id": 1336,
       "name": "constants",
       "kind": 32,
       "kindString": "Variable",
@@ -17546,7 +17560,7 @@
       }
     },
     {
-      "id": 1330,
+      "id": 1331,
       "name": "configure",
       "kind": 64,
       "kindString": "Function",
@@ -17555,14 +17569,14 @@
       },
       "signatures": [
         {
-          "id": 1331,
+          "id": 1332,
           "name": "configure",
           "kind": 4096,
           "kindString": "Call signature",
           "flags": {},
           "parameters": [
             {
-              "id": 1332,
+              "id": 1333,
               "name": "aurelia",
               "kind": 32768,
               "kindString": "Parameter",
@@ -17573,7 +17587,7 @@
               }
             },
             {
-              "id": 1333,
+              "id": 1334,
               "name": "configCallback",
               "kind": 32768,
               "kindString": "Parameter",
@@ -17592,7 +17606,7 @@
       ]
     },
     {
-      "id": 1336,
+      "id": 1337,
       "name": "generateBindables",
       "kind": 64,
       "kindString": "Function",
@@ -17601,7 +17615,7 @@
       },
       "signatures": [
         {
-          "id": 1337,
+          "id": 1338,
           "name": "generateBindables",
           "kind": 4096,
           "kindString": "Call signature",
@@ -17611,7 +17625,7 @@
           },
           "parameters": [
             {
-              "id": 1338,
+              "id": 1339,
               "name": "controlName",
               "kind": 32768,
               "kindString": "Parameter",
@@ -17625,7 +17639,7 @@
               }
             },
             {
-              "id": 1339,
+              "id": 1340,
               "name": "extraProperties",
               "kind": 32768,
               "kindString": "Parameter",
@@ -17656,9 +17670,9 @@
         157,
         172,
         187,
-        208,
+        228,
         726,
-        268,
+        208,
         288,
         308,
         489,
@@ -17682,69 +17696,69 @@
         788,
         809,
         824,
-        852,
-        846,
-        872,
+        853,
+        847,
+        873,
         348,
-        907,
-        892,
         908,
-        924,
-        941,
-        956,
+        893,
+        909,
+        925,
+        942,
+        957,
         705,
-        971,
-        991,
-        1006,
-        1023,
-        1040,
-        1060,
-        223,
-        1075,
-        1090,
-        238,
-        1105,
-        1125,
+        972,
+        992,
+        1007,
+        1024,
+        1041,
+        1061,
+        243,
+        1076,
+        1091,
+        258,
+        1106,
+        1126,
         399,
         357,
         388,
-        1140,
-        1176,
-        1167,
-        1161,
-        1193,
-        1208,
-        1215,
-        253,
-        1233,
-        1248,
+        1141,
+        1177,
+        1168,
+        1162,
+        1194,
+        1209,
+        1216,
+        273,
+        1234,
+        1249,
         406,
-        1265,
+        1266,
         441,
-        1315,
-        1310,
-        1302,
-        1286,
-        1297,
-        1292,
-        1306,
-        1280
+        1316,
+        1311,
+        1303,
+        1287,
+        1298,
+        1293,
+        1307,
+        1281
       ]
     },
     {
       "title": "Variables",
       "kind": 32,
       "children": [
-        1334,
-        1335
+        1335,
+        1336
       ]
     },
     {
       "title": "Functions",
       "kind": 64,
       "children": [
-        1330,
-        1336
+        1331,
+        1337
       ]
     }
   ]

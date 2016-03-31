@@ -11,6 +11,7 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.button.min';
   import 'kendo.mobile.buttongroup.min';
   import 'kendo.calendar.min';
+  import 'kendo.colorpicker.min';
   
   // eslint-disable-line no-unused-vars
   import 'kendo.dataviz.chart.min';
@@ -25,7 +26,6 @@ declare module 'aurelia-kendoui-bridge' {
   
   // eslint-disable-line no-unused-vars
   import 'kendo.dataviz.treemap.min';
-  import 'kendo.colorpicker.min';
   import 'kendo.colorpicker.min';
   import 'kendo.combobox.min';
   import 'kendo.virtuallist.min';
@@ -228,6 +228,15 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
+  export class ColorPalette {
+    kOptions: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property: any, newValue: any, oldValue: any): any;
+    detached(): any;
+  }
   export class Chart {
     kOptions: any;
     constructor(element: any, widgetBase: any);
@@ -258,15 +267,6 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
-  }
-  export class ColorPalette {
-    kOptions: any;
-    constructor(element: any, widgetBase: any);
-    bind(ctx: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
   export class ColorPicker {
@@ -737,6 +737,7 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class Multiselect {
     kOptions: any;
+    kNoValueBinding: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;

@@ -20,6 +20,13 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       },
       enumerable: true
     }, {
+      key: 'kNoValueBinding',
+      decorators: [_aureliaTemplating.bindable],
+      initializer: function initializer() {
+        return false;
+      },
+      enumerable: true
+    }, {
       key: 'templates',
       decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
       initializer: null,
@@ -30,6 +37,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, _Multiselect);
 
       _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'kNoValueBinding', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
@@ -43,6 +52,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     Multiselect.prototype.attached = function attached() {
       this.recreate();
+
+      if (this.kNoValueBinding) {
+        this.widgetBase.withValueBinding = false;
+      }
     };
 
     Multiselect.prototype.recreate = function recreate() {

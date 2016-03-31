@@ -601,6 +601,47 @@ export class Calendar {
   }
 }
 
+import 'kendo.colorpicker.min';
+
+@customElement(`${constants.attributePrefix}color-palette`)
+@generateBindables('kendoColorPalette')
+@inject(Element, WidgetBase)
+export class ColorPalette {
+
+  @bindable kOptions = {};
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoColorPalette')
+                        .linkViewModel(this)
+                        .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
 //eslint-disable-line no-unused-vars
 import 'kendo.dataviz.chart.min';
 import 'kendo.dataviz.chart.polar.min';
@@ -744,47 +785,6 @@ export class TreeMap {
       element: this.element,
       parentCtx: this.$parent
     });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
-import 'kendo.colorpicker.min';
-
-@customElement(`${constants.attributePrefix}color-palette`)
-@generateBindables('kendoColorPalette')
-@inject(Element, WidgetBase)
-export class ColorPalette {
-
-  @bindable kOptions = {};
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoColorPalette')
-                        .linkViewModel(this)
-                        .useValueBinding();
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    this.recreate();
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {
@@ -2462,6 +2462,7 @@ import 'kendo.virtuallist.min';
 export class Multiselect {
 
   @bindable kOptions = {};
+  @bindable kNoValueBinding = false;
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -2479,6 +2480,10 @@ export class Multiselect {
 
   attached() {
     this.recreate();
+
+    if (this.kNoValueBinding) {
+      this.widgetBase.withValueBinding = false;
+    }
   }
 
   recreate() {

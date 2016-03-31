@@ -1,3 +1,17 @@
+<a name="0.6.3"></a>
+## [0.6.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.6.2...v0.6.3) (2016-03-31)
+
+
+### Bug Fixes
+
+* **multiselect:** allow workaround for #442 ([eaf10bb](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/eaf10bb))
+
+### Features
+
+* **sample help:** new tutorials ([e1d7a3c](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e1d7a3c))
+
+
+
 <a name="0.6.2"></a>
 ## [0.6.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.6.1...v0.6.2) (2016-03-23)
 
