@@ -12,6 +12,7 @@ import 'kendo.virtuallist.min';
 export class DropDownList {
 
   @bindable kOptions = {};
+  @bindable kNoValueBinding = false;
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -29,6 +30,10 @@ export class DropDownList {
 
   attached() {
     this.recreate();
+
+    if (this.kNoValueBinding) {
+      this.widgetBase.withValueBinding = false;
+    }
   }
 
   recreate() {
