@@ -4,6 +4,7 @@ import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {OptionsBuilder} from '../common/options-builder';
+import {TemplateGatherer} from '../common/template-gatherer';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 import 'kendo.data.signalr.min';
 import 'kendo.filtercell.min';
@@ -11,14 +12,16 @@ import 'kendo.grid.min';
 
 @customElement(`${constants.elementPrefix}grid`)
 @generateBindables('kendoGrid')
-@inject(Element, WidgetBase, ViewResources, OptionsBuilder)
+@inject(Element, WidgetBase, ViewResources, OptionsBuilder, TemplateGatherer)
 export class Grid  {
 
   @children(`${constants.elementPrefix}col`) columns;
+  @children(`${constants.elementPrefix}template`) templates;
   @bindable kOptions = {};
 
-  constructor(element, widgetBase, viewResources, optionsBuilder) {
+  constructor(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
     this.element = element;
+    this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoGrid')
@@ -50,6 +53,8 @@ export class Grid  {
   }
 
   recreate() {
+    this.templateGatherer.useTemplates(this, 'kendoGrid', this.templates);
+
     this.kWidget = this.widgetBase.createWidget({
       element: this.target,
       rootElement: this.element,
