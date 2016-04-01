@@ -601,47 +601,6 @@ export class Calendar {
   }
 }
 
-import 'kendo.colorpicker.min';
-
-@customElement(`${constants.attributePrefix}color-palette`)
-@generateBindables('kendoColorPalette')
-@inject(Element, WidgetBase)
-export class ColorPalette {
-
-  @bindable kOptions = {};
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoColorPalette')
-                        .linkViewModel(this)
-                        .useValueBinding();
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    this.recreate();
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
 //eslint-disable-line no-unused-vars
 import 'kendo.dataviz.chart.min';
 import 'kendo.dataviz.chart.polar.min';
@@ -785,6 +744,47 @@ export class TreeMap {
       element: this.element,
       parentCtx: this.$parent
     });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+import 'kendo.colorpicker.min';
+
+@customElement(`${constants.attributePrefix}color-palette`)
+@generateBindables('kendoColorPalette')
+@inject(Element, WidgetBase)
+export class ColorPalette {
+
+  @bindable kOptions = {};
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoColorPalette')
+                        .linkViewModel(this)
+                        .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {
@@ -1923,6 +1923,7 @@ import 'kendo.virtuallist.min';
 export class DropDownList {
 
   @bindable kOptions = {};
+  @bindable kNoValueBinding = false;
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -1940,6 +1941,10 @@ export class DropDownList {
 
   attached() {
     this.recreate();
+
+    if (this.kNoValueBinding) {
+      this.widgetBase.withValueBinding = false;
+    }
   }
 
   recreate() {
@@ -2679,11 +2684,6 @@ function hasListChildNode(element) {
   return element.children.length > 0 && (element.children[0].nodeName === 'UL' || element.children[0].nodeName === 'OL');
 }
 
-import 'kendo.pdf.min';
-import 'kendo.excel.min';
-
-export class PDF {}
-
 import 'kendo.pivot.configurator.min';
 
 
@@ -2763,6 +2763,11 @@ export class PivotGrid {
     this.widgetBase.destroy(this.kWidget);
   }
 }
+
+import 'kendo.pdf.min';
+import 'kendo.excel.min';
+
+export class PDF {}
 
 import 'kendo.progressbar.min';
 
@@ -3369,42 +3374,6 @@ export class Toolbar {
   }
 }
 
-import 'kendo.tooltip.min';
-
-@customAttribute(`${constants.attributePrefix}tooltip`)
-@generateBindables('kendoTooltip')
-@inject(Element, WidgetBase)
-export class Tooltip {
-
-  @bindable kOptions = {};
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoTooltip')
-                        .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    this.recreate();
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
 @customElement(`${constants.elementPrefix}tree-col`)
 @generateBindables('TreeListColumn')
 @inject(TemplateGatherer)
@@ -3471,6 +3440,42 @@ export class TreeList  {
         options.columns.push(this.optionsBuilder.getOptions(column, 'TreeListColumn'));
       });
     }
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+import 'kendo.tooltip.min';
+
+@customAttribute(`${constants.attributePrefix}tooltip`)
+@generateBindables('kendoTooltip')
+@inject(Element, WidgetBase)
+export class Tooltip {
+
+  @bindable kOptions = {};
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoTooltip')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    this.recreate();
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
   detached() {

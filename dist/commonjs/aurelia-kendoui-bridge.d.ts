@@ -11,7 +11,6 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.button.min';
   import 'kendo.mobile.buttongroup.min';
   import 'kendo.calendar.min';
-  import 'kendo.colorpicker.min';
   
   // eslint-disable-line no-unused-vars
   import 'kendo.dataviz.chart.min';
@@ -26,6 +25,7 @@ declare module 'aurelia-kendoui-bridge' {
   
   // eslint-disable-line no-unused-vars
   import 'kendo.dataviz.treemap.min';
+  import 'kendo.colorpicker.min';
   import 'kendo.colorpicker.min';
   import 'kendo.combobox.min';
   import 'kendo.virtuallist.min';
@@ -59,13 +59,13 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.notification.min';
   import 'kendo.numerictextbox.min';
   import 'kendo.panelbar.min';
-  import 'kendo.pdf.min';
-  import 'kendo.excel.min';
   import 'kendo.pivot.configurator.min';
   
   // eslint-disable-line no-unused-vars
   import 'kendo.pivotgrid.min';
   import 'kendo.pivot.fieldmenu.min';
+  import 'kendo.pdf.min';
+  import 'kendo.excel.min';
   import 'kendo.progressbar.min';
   import 'kendo.dataviz.qrcode.min';
   import 'kendo.slider.min';
@@ -87,12 +87,12 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.tabstrip.min';
   import 'kendo.timepicker.min';
   import 'kendo.toolbar.min';
-  import 'kendo.tooltip.min';
   
   // eslint-disable-line no-unused-vars
   import 'kendo.data.signalr.min';
   import 'kendo.filtercell.min';
   import 'kendo.treelist.min';
+  import 'kendo.tooltip.min';
   import 'kendo.treeview.min';
   import 'kendo.upload.min';
   import 'kendo.validator.min';
@@ -228,15 +228,6 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
-  export class ColorPalette {
-    kOptions: any;
-    constructor(element: any, widgetBase: any);
-    bind(ctx: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property: any, newValue: any, oldValue: any): any;
-    detached(): any;
-  }
   export class Chart {
     kOptions: any;
     constructor(element: any, widgetBase: any);
@@ -267,6 +258,15 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx: any): any;
     attached(): any;
     recreate(): any;
+    detached(): any;
+  }
+  export class ColorPalette {
+    kOptions: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
   export class ColorPicker {
@@ -627,6 +627,7 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class DropDownList {
     kOptions: any;
+    kNoValueBinding: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
@@ -778,8 +779,6 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class PDF {
-  }
   export class PivotConfigurator {
     kOptions: any;
     constructor(element: any, widgetBase: any, viewResources: any);
@@ -796,6 +795,8 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     detached(): any;
+  }
+  export class PDF {
   }
   export class ProgressBar {
     kOptions: any;
@@ -927,14 +928,6 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class Tooltip {
-    kOptions: any;
-    constructor(element: any, widgetBase: any);
-    bind(ctx: any): any;
-    attached(): any;
-    recreate(): any;
-    detached(): any;
-  }
   export class TreeCol {
     templates: any;
     constructor(templateGatherer: any);
@@ -948,6 +941,14 @@ declare module 'aurelia-kendoui-bridge' {
     
     //  initialization in bind() is giving issues in some scenarios
     //  so, attached() is used for this control
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
+  export class Tooltip {
+    kOptions: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
     attached(): any;
     recreate(): any;
     detached(): any;

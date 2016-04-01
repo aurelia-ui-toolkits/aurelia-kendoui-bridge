@@ -33,6 +33,13 @@ var DropDownList = (function () {
     },
     enumerable: true
   }, {
+    key: 'kNoValueBinding',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }, {
     key: 'templates',
     decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
     initializer: null,
@@ -43,6 +50,8 @@ var DropDownList = (function () {
     _classCallCheck(this, _DropDownList);
 
     _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'kNoValueBinding', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
@@ -56,6 +65,10 @@ var DropDownList = (function () {
 
   DropDownList.prototype.attached = function attached() {
     this.recreate();
+
+    if (this.kNoValueBinding) {
+      this.widgetBase.withValueBinding = false;
+    }
   };
 
   DropDownList.prototype.recreate = function recreate() {

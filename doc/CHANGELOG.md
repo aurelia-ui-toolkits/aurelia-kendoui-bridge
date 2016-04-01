@@ -1,3 +1,13 @@
+<a name="0.6.4"></a>
+## [0.6.4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.6.3...v0.6.4) (2016-04-01)
+
+
+### Bug Fixes
+
+* **dropdownlist:** allow workaround for #442 with dropdownlist like multiselect component (@JeroenV ([9f6c153](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/9f6c153))
+
+
+
 <a name="0.6.3"></a>
 ## [0.6.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.6.2...v0.6.3) (2016-03-31)
 

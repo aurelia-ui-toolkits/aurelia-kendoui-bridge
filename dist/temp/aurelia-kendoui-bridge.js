@@ -35,8 +35,6 @@ require('kendo.mobile.buttongroup.min');
 
 require('kendo.calendar.min');
 
-require('kendo.colorpicker.min');
-
 require('kendo.dataviz.chart.min');
 
 require('kendo.dataviz.chart.polar.min');
@@ -48,6 +46,8 @@ require('kendo.dataviz.sparkline.min');
 require('kendo.dataviz.stock.min');
 
 require('kendo.dataviz.treemap.min');
+
+require('kendo.colorpicker.min');
 
 require('kendo.colorpicker.min');
 
@@ -107,15 +107,15 @@ require('kendo.numerictextbox.min');
 
 require('kendo.panelbar.min');
 
-require('kendo.pdf.min');
-
-require('kendo.excel.min');
-
 require('kendo.pivot.configurator.min');
 
 require('kendo.pivotgrid.min');
 
 require('kendo.pivot.fieldmenu.min');
+
+require('kendo.pdf.min');
+
+require('kendo.excel.min');
 
 require('kendo.progressbar.min');
 
@@ -155,13 +155,13 @@ require('kendo.timepicker.min');
 
 require('kendo.toolbar.min');
 
-require('kendo.tooltip.min');
-
 require('kendo.data.signalr.min');
 
 require('kendo.filtercell.min');
 
 require('kendo.treelist.min');
+
+require('kendo.tooltip.min');
 
 require('kendo.treeview.min');
 
@@ -770,10 +770,10 @@ var Calendar = (function () {
 
 exports.Calendar = Calendar;
 
-var ColorPalette = (function () {
+var Chart = (function () {
   var _instanceInitializers6 = {};
 
-  _createDecoratedClass(ColorPalette, [{
+  _createDecoratedClass(Chart, [{
     key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
@@ -782,10 +782,206 @@ var ColorPalette = (function () {
     enumerable: true
   }], null, _instanceInitializers6);
 
+  function Chart(element, widgetBase) {
+    _classCallCheck(this, _Chart);
+
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers6);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this);
+  }
+
+  Chart.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  Chart.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  Chart.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  Chart.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Chart = Chart;
+  Chart = _aureliaDependencyInjection.inject(Element, WidgetBase)(Chart) || Chart;
+  Chart = generateBindables('kendoChart')(Chart) || Chart;
+  Chart = _aureliaTemplating.customElement(constants.elementPrefix + 'chart')(Chart) || Chart;
+  return Chart;
+})();
+
+exports.Chart = Chart;
+
+var Sparkline = (function () {
+  var _instanceInitializers7 = {};
+
+  _createDecoratedClass(Sparkline, [{
+    key: 'kOptions',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers7);
+
+  function Sparkline(element, widgetBase) {
+    _classCallCheck(this, _Sparkline);
+
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers7);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoSparkline').linkViewModel(this);
+  }
+
+  Sparkline.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  Sparkline.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  Sparkline.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  Sparkline.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Sparkline = Sparkline;
+  Sparkline = _aureliaDependencyInjection.inject(Element, WidgetBase)(Sparkline) || Sparkline;
+  Sparkline = generateBindables('kendoSparkline')(Sparkline) || Sparkline;
+  Sparkline = _aureliaTemplating.customElement(constants.elementPrefix + 'sparkline')(Sparkline) || Sparkline;
+  return Sparkline;
+})();
+
+exports.Sparkline = Sparkline;
+
+var Stock = (function () {
+  var _instanceInitializers8 = {};
+
+  _createDecoratedClass(Stock, [{
+    key: 'kOptions',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers8);
+
+  function Stock(element, widgetBase) {
+    _classCallCheck(this, _Stock);
+
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers8);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoStockChart').linkViewModel(this);
+  }
+
+  Stock.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  Stock.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  Stock.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  Stock.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Stock = Stock;
+  Stock = _aureliaDependencyInjection.inject(Element, WidgetBase)(Stock) || Stock;
+  Stock = generateBindables('kendoStockChart')(Stock) || Stock;
+  Stock = _aureliaTemplating.customElement(constants.elementPrefix + 'stock')(Stock) || Stock;
+  return Stock;
+})();
+
+exports.Stock = Stock;
+
+var TreeMap = (function () {
+  var _instanceInitializers9 = {};
+
+  _createDecoratedClass(TreeMap, [{
+    key: 'kOptions',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers9);
+
+  function TreeMap(element, widgetBase) {
+    _classCallCheck(this, _TreeMap);
+
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers9);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoTreeMap').linkViewModel(this);
+  }
+
+  TreeMap.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  TreeMap.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  TreeMap.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  TreeMap.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _TreeMap = TreeMap;
+  TreeMap = _aureliaDependencyInjection.inject(Element, WidgetBase)(TreeMap) || TreeMap;
+  TreeMap = generateBindables('kendoTreeMap')(TreeMap) || TreeMap;
+  TreeMap = _aureliaTemplating.customElement(constants.elementPrefix + 'treemap')(TreeMap) || TreeMap;
+  return TreeMap;
+})();
+
+exports.TreeMap = TreeMap;
+
+var ColorPalette = (function () {
+  var _instanceInitializers10 = {};
+
+  _createDecoratedClass(ColorPalette, [{
+    key: 'kOptions',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers10);
+
   function ColorPalette(element, widgetBase) {
     _classCallCheck(this, _ColorPalette);
 
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers6);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers10);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoColorPalette').linkViewModel(this).useValueBinding();
@@ -822,202 +1018,6 @@ var ColorPalette = (function () {
 })();
 
 exports.ColorPalette = ColorPalette;
-
-var Chart = (function () {
-  var _instanceInitializers7 = {};
-
-  _createDecoratedClass(Chart, [{
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }], null, _instanceInitializers7);
-
-  function Chart(element, widgetBase) {
-    _classCallCheck(this, _Chart);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers7);
-
-    this.element = element;
-    this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this);
-  }
-
-  Chart.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
-  };
-
-  Chart.prototype.attached = function attached() {
-    this.recreate();
-  };
-
-  Chart.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  };
-
-  Chart.prototype.detached = function detached() {
-    this.widgetBase.destroy(this.kWidget);
-  };
-
-  var _Chart = Chart;
-  Chart = _aureliaDependencyInjection.inject(Element, WidgetBase)(Chart) || Chart;
-  Chart = generateBindables('kendoChart')(Chart) || Chart;
-  Chart = _aureliaTemplating.customElement(constants.elementPrefix + 'chart')(Chart) || Chart;
-  return Chart;
-})();
-
-exports.Chart = Chart;
-
-var Sparkline = (function () {
-  var _instanceInitializers8 = {};
-
-  _createDecoratedClass(Sparkline, [{
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }], null, _instanceInitializers8);
-
-  function Sparkline(element, widgetBase) {
-    _classCallCheck(this, _Sparkline);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers8);
-
-    this.element = element;
-    this.widgetBase = widgetBase.control('kendoSparkline').linkViewModel(this);
-  }
-
-  Sparkline.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
-  };
-
-  Sparkline.prototype.attached = function attached() {
-    this.recreate();
-  };
-
-  Sparkline.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  };
-
-  Sparkline.prototype.detached = function detached() {
-    this.widgetBase.destroy(this.kWidget);
-  };
-
-  var _Sparkline = Sparkline;
-  Sparkline = _aureliaDependencyInjection.inject(Element, WidgetBase)(Sparkline) || Sparkline;
-  Sparkline = generateBindables('kendoSparkline')(Sparkline) || Sparkline;
-  Sparkline = _aureliaTemplating.customElement(constants.elementPrefix + 'sparkline')(Sparkline) || Sparkline;
-  return Sparkline;
-})();
-
-exports.Sparkline = Sparkline;
-
-var Stock = (function () {
-  var _instanceInitializers9 = {};
-
-  _createDecoratedClass(Stock, [{
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }], null, _instanceInitializers9);
-
-  function Stock(element, widgetBase) {
-    _classCallCheck(this, _Stock);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers9);
-
-    this.element = element;
-    this.widgetBase = widgetBase.control('kendoStockChart').linkViewModel(this);
-  }
-
-  Stock.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
-  };
-
-  Stock.prototype.attached = function attached() {
-    this.recreate();
-  };
-
-  Stock.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  };
-
-  Stock.prototype.detached = function detached() {
-    this.widgetBase.destroy(this.kWidget);
-  };
-
-  var _Stock = Stock;
-  Stock = _aureliaDependencyInjection.inject(Element, WidgetBase)(Stock) || Stock;
-  Stock = generateBindables('kendoStockChart')(Stock) || Stock;
-  Stock = _aureliaTemplating.customElement(constants.elementPrefix + 'stock')(Stock) || Stock;
-  return Stock;
-})();
-
-exports.Stock = Stock;
-
-var TreeMap = (function () {
-  var _instanceInitializers10 = {};
-
-  _createDecoratedClass(TreeMap, [{
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }], null, _instanceInitializers10);
-
-  function TreeMap(element, widgetBase) {
-    _classCallCheck(this, _TreeMap);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers10);
-
-    this.element = element;
-    this.widgetBase = widgetBase.control('kendoTreeMap').linkViewModel(this);
-  }
-
-  TreeMap.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
-  };
-
-  TreeMap.prototype.attached = function attached() {
-    this.recreate();
-  };
-
-  TreeMap.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  };
-
-  TreeMap.prototype.detached = function detached() {
-    this.widgetBase.destroy(this.kWidget);
-  };
-
-  var _TreeMap = TreeMap;
-  TreeMap = _aureliaDependencyInjection.inject(Element, WidgetBase)(TreeMap) || TreeMap;
-  TreeMap = generateBindables('kendoTreeMap')(TreeMap) || TreeMap;
-  TreeMap = _aureliaTemplating.customElement(constants.elementPrefix + 'treemap')(TreeMap) || TreeMap;
-  return TreeMap;
-})();
-
-exports.TreeMap = TreeMap;
 
 var ColorPicker = (function () {
   var _instanceInitializers11 = {};
@@ -2135,6 +2135,13 @@ var DropDownList = (function () {
     },
     enumerable: true
   }, {
+    key: 'kNoValueBinding',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return false;
+    },
+    enumerable: true
+  }, {
     key: 'templates',
     decorators: [_aureliaTemplating.children(constants.elementPrefix + 'template')],
     initializer: null,
@@ -2145,6 +2152,8 @@ var DropDownList = (function () {
     _classCallCheck(this, _DropDownList);
 
     _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers21);
+
+    _defineDecoratedPropertyDescriptor(this, 'kNoValueBinding', _instanceInitializers21);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers21);
 
@@ -2158,6 +2167,10 @@ var DropDownList = (function () {
 
   DropDownList.prototype.attached = function attached() {
     this.recreate();
+
+    if (this.kNoValueBinding) {
+      this.widgetBase.withValueBinding = false;
+    }
   };
 
   DropDownList.prototype.recreate = function recreate() {
@@ -3173,12 +3186,6 @@ function hasListChildNode(element) {
   return element.children.length > 0 && (element.children[0].nodeName === 'UL' || element.children[0].nodeName === 'OL');
 }
 
-var PDF = function PDF() {
-  _classCallCheck(this, PDF);
-};
-
-exports.PDF = PDF;
-
 var PivotConfigurator = (function () {
   var _instanceInitializers38 = {};
 
@@ -3285,6 +3292,12 @@ var PivotGrid = (function () {
 })();
 
 exports.PivotGrid = PivotGrid;
+
+var PDF = function PDF() {
+  _classCallCheck(this, PDF);
+};
+
+exports.PDF = PDF;
 
 var ProgressBar = (function () {
   var _instanceInitializers40 = {};
@@ -4119,69 +4132,20 @@ var Toolbar = (function () {
 
 exports.Toolbar = Toolbar;
 
-var Tooltip = (function () {
-  var _instanceInitializers55 = {};
-
-  _createDecoratedClass(Tooltip, [{
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }], null, _instanceInitializers55);
-
-  function Tooltip(element, widgetBase) {
-    _classCallCheck(this, _Tooltip);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers55);
-
-    this.element = element;
-    this.widgetBase = widgetBase.control('kendoTooltip').linkViewModel(this);
-  }
-
-  Tooltip.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
-  };
-
-  Tooltip.prototype.attached = function attached() {
-    this.recreate();
-  };
-
-  Tooltip.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  };
-
-  Tooltip.prototype.detached = function detached() {
-    this.widgetBase.destroy(this.kWidget);
-  };
-
-  var _Tooltip = Tooltip;
-  Tooltip = _aureliaDependencyInjection.inject(Element, WidgetBase)(Tooltip) || Tooltip;
-  Tooltip = generateBindables('kendoTooltip')(Tooltip) || Tooltip;
-  Tooltip = _aureliaTemplating.customAttribute(constants.attributePrefix + 'tooltip')(Tooltip) || Tooltip;
-  return Tooltip;
-})();
-
-exports.Tooltip = Tooltip;
-
 var TreeCol = (function () {
-  var _instanceInitializers56 = {};
+  var _instanceInitializers55 = {};
 
   _createDecoratedClass(TreeCol, [{
     key: 'templates',
     decorators: [_aureliaTemplating.children(constants.elementPrefix + 'template')],
     initializer: null,
     enumerable: true
-  }], null, _instanceInitializers56);
+  }], null, _instanceInitializers55);
 
   function TreeCol(templateGatherer) {
     _classCallCheck(this, _TreeCol);
 
-    _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers56);
+    _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers55);
 
     this.templateGatherer = templateGatherer;
   }
@@ -4200,7 +4164,7 @@ var TreeCol = (function () {
 exports.TreeCol = TreeCol;
 
 var TreeList = (function () {
-  var _instanceInitializers57 = {};
+  var _instanceInitializers56 = {};
 
   _createDecoratedClass(TreeList, [{
     key: 'columns',
@@ -4214,14 +4178,14 @@ var TreeList = (function () {
       return {};
     },
     enumerable: true
-  }], null, _instanceInitializers57);
+  }], null, _instanceInitializers56);
 
   function TreeList(element, widgetBase, viewResources, optionsBuilder) {
     _classCallCheck(this, _TreeList);
 
-    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers57);
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers56);
 
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers57);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers56);
 
     this.element = element;
     this.optionsBuilder = optionsBuilder;
@@ -4274,6 +4238,55 @@ var TreeList = (function () {
 })();
 
 exports.TreeList = TreeList;
+
+var Tooltip = (function () {
+  var _instanceInitializers57 = {};
+
+  _createDecoratedClass(Tooltip, [{
+    key: 'kOptions',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers57);
+
+  function Tooltip(element, widgetBase) {
+    _classCallCheck(this, _Tooltip);
+
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers57);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoTooltip').linkViewModel(this);
+  }
+
+  Tooltip.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  Tooltip.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  Tooltip.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  Tooltip.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Tooltip = Tooltip;
+  Tooltip = _aureliaDependencyInjection.inject(Element, WidgetBase)(Tooltip) || Tooltip;
+  Tooltip = generateBindables('kendoTooltip')(Tooltip) || Tooltip;
+  Tooltip = _aureliaTemplating.customAttribute(constants.attributePrefix + 'tooltip')(Tooltip) || Tooltip;
+  return Tooltip;
+})();
+
+exports.Tooltip = Tooltip;
 
 var TreeView = (function () {
   var _instanceInitializers58 = {};
