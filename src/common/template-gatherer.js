@@ -23,6 +23,10 @@ export class TemplateGatherer {
   useTemplates(target, controlName, templates) {
     let templateProps = this.controlProperties.getTemplateProperties(controlName);
 
+    if (!templates) {
+      templates = [];
+    }
+
     templates.forEach(c => {
       if (templateProps.indexOf(c.for) > -1) {
         if (this.util.hasValue(c.template)) {
