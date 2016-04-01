@@ -12,8 +12,9 @@
                   <label>Password strength</label>
                   <div ak-progress-bar="k-type: value;
                                        k-max: 9;
+                                       k-widget.bind: pb;
                                        k-animation.bind: false"
-                       k-progress-bar.ref="pbWrapper"
+                       ak-progress-bar.ref="pbWrapper"
                        k-on-change.delegate="onChange($event.detail)"
                        style="width: 100%;">
                   </div>

@@ -1,7 +1,15 @@
+import {inject, TaskQueue} from 'aurelia-framework';
+
+@inject(TaskQueue)
 export class CustomLabel {
+  constructor(taskQueue) {
+    this.taskQueue = taskQueue;
+  }
+
   attached() {
-    this.pb = this.pbWrapper.kWidget;
-    this.pb.progressStatus.text('Empty');
+    this.taskQueue.queueTask(() => {
+      this.pb.progressStatus.text('Empty');
+    });
   }
 
   onKeyUp() {
