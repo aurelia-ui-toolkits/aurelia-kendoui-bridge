@@ -20,6 +20,8 @@ var _commonConstants = require('../common/constants');
 
 var _commonOptionsBuilder = require('../common/options-builder');
 
+var _commonTemplateGatherer = require('../common/template-gatherer');
+
 var _pdfPdf = require('../pdf/pdf');
 
 require('kendo.data.signalr.min');
@@ -37,6 +39,16 @@ var Grid = (function () {
     initializer: null,
     enumerable: true
   }, {
+    key: 'templates',
+    decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'gridToolbars',
+    decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'grid-toolbar')],
+    initializer: null,
+    enumerable: true
+  }, {
     key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
@@ -45,14 +57,19 @@ var Grid = (function () {
     enumerable: true
   }], null, _instanceInitializers);
 
-  function Grid(element, widgetBase, viewResources, optionsBuilder) {
+  function Grid(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
     _classCallCheck(this, _Grid);
 
     _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
+    _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'gridToolbars', _instanceInitializers);
+
     _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
+    this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).useViewResources(viewResources);
   }
@@ -77,6 +94,8 @@ var Grid = (function () {
   Grid.prototype.recreate = function recreate() {
     var _this = this;
 
+    this.templateGatherer.useTemplates(this, 'kendoGrid', this.templates);
+
     this.kWidget = this.widgetBase.createWidget({
       element: this.target,
       rootElement: this.element,
@@ -97,6 +116,14 @@ var Grid = (function () {
         options.columns.push(_this2.optionsBuilder.getOptions(column, 'GridColumn'));
       });
     }
+
+    if (this.gridToolbars && this.gridToolbars.length > 0) {
+      options.toolbar = [];
+
+      this.gridToolbars.forEach(function (toolbar) {
+        options.toolbar.push(_this2.optionsBuilder.getOptions(toolbar, 'GridToolbarItem'));
+      });
+    }
   };
 
   Grid.prototype.detached = function detached() {
@@ -104,7 +131,7 @@ var Grid = (function () {
   };
 
   var _Grid = Grid;
-  Grid = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources, _commonOptionsBuilder.OptionsBuilder)(Grid) || Grid;
+  Grid = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources, _commonOptionsBuilder.OptionsBuilder, _commonTemplateGatherer.TemplateGatherer)(Grid) || Grid;
   Grid = _commonDecorators.generateBindables('kendoGrid')(Grid) || Grid;
   Grid = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'grid')(Grid) || Grid;
   return Grid;

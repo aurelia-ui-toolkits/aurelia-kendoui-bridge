@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../pdf/pdf', 'kendo.data.signalr.min', 'kendo.filtercell.min', 'kendo.grid.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _commonOptionsBuilder, _pdfPdf, _kendoDataSignalrMin, _kendoFiltercellMin, _kendoGridMin) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../common/template-gatherer', '../pdf/pdf', 'kendo.data.signalr.min', 'kendo.filtercell.min', 'kendo.grid.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _commonWidgetBase, _commonDecorators, _commonConstants, _commonOptionsBuilder, _commonTemplateGatherer, _pdfPdf, _kendoDataSignalrMin, _kendoFiltercellMin, _kendoGridMin) {
   'use strict';
 
   exports.__esModule = true;
@@ -18,6 +18,16 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       initializer: null,
       enumerable: true
     }, {
+      key: 'templates',
+      decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'gridToolbars',
+      decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'grid-toolbar')],
+      initializer: null,
+      enumerable: true
+    }, {
       key: 'kOptions',
       decorators: [_aureliaTemplating.bindable],
       initializer: function initializer() {
@@ -26,14 +36,19 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       enumerable: true
     }], null, _instanceInitializers);
 
-    function Grid(element, widgetBase, viewResources, optionsBuilder) {
+    function Grid(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
       _classCallCheck(this, _Grid);
 
       _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
+      _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'gridToolbars', _instanceInitializers);
+
       _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
       this.element = element;
+      this.templateGatherer = templateGatherer;
       this.optionsBuilder = optionsBuilder;
       this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).useViewResources(viewResources);
     }
@@ -58,6 +73,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     Grid.prototype.recreate = function recreate() {
       var _this = this;
 
+      this.templateGatherer.useTemplates(this, 'kendoGrid', this.templates);
+
       this.kWidget = this.widgetBase.createWidget({
         element: this.target,
         rootElement: this.element,
@@ -78,6 +95,14 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
           options.columns.push(_this2.optionsBuilder.getOptions(column, 'GridColumn'));
         });
       }
+
+      if (this.gridToolbars && this.gridToolbars.length > 0) {
+        options.toolbar = [];
+
+        this.gridToolbars.forEach(function (toolbar) {
+          options.toolbar.push(_this2.optionsBuilder.getOptions(toolbar, 'GridToolbarItem'));
+        });
+      }
     };
 
     Grid.prototype.detached = function detached() {
@@ -85,7 +110,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     var _Grid = Grid;
-    Grid = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources, _commonOptionsBuilder.OptionsBuilder)(Grid) || Grid;
+    Grid = _aureliaDependencyInjection.inject(Element, _commonWidgetBase.WidgetBase, _aureliaTemplating.ViewResources, _commonOptionsBuilder.OptionsBuilder, _commonTemplateGatherer.TemplateGatherer)(Grid) || Grid;
     Grid = _commonDecorators.generateBindables('kendoGrid')(Grid) || Grid;
     Grid = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'grid')(Grid) || Grid;
     return Grid;

@@ -18,6 +18,10 @@ define(['exports', './control-properties', './util', 'aurelia-dependency-injecti
 
       var templateProps = this.controlProperties.getTemplateProperties(controlName);
 
+      if (!templates) {
+        templates = [];
+      }
+
       templates.forEach(function (c) {
         if (templateProps.indexOf(c['for']) > -1) {
           if (_this.util.hasValue(c.template)) {

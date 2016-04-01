@@ -1,5 +1,6 @@
 declare module 'aurelia-kendoui-bridge' {
   import 'jquery';
+  import * as LogManager from 'aurelia-logging';
   import { inject, Container, transient }  from 'aurelia-dependency-injection';
   import { customElement, bindable, children, ViewResources, customAttribute, BindableProperty, HtmlBehaviorResource, TemplatingEngine, noView, processContent, TargetInstruction }  from 'aurelia-templating';
   import { metadata }  from 'aurelia-metadata';
@@ -32,8 +33,8 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.menu.min';
   import 'kendo.datepicker.min';
   import 'kendo.datetimepicker.min';
-  import 'kendo.dataviz.diagram.min';
   import 'kendo.draganddrop.min';
+  import 'kendo.dataviz.diagram.min';
   import 'kendo.draganddrop.min';
   import 'kendo.draganddrop.min';
   import 'kendo.dropdownlist.min';
@@ -59,13 +60,13 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.notification.min';
   import 'kendo.numerictextbox.min';
   import 'kendo.panelbar.min';
+  import 'kendo.pdf.min';
+  import 'kendo.excel.min';
   import 'kendo.pivot.configurator.min';
   
   // eslint-disable-line no-unused-vars
   import 'kendo.pivotgrid.min';
   import 'kendo.pivot.fieldmenu.min';
-  import 'kendo.pdf.min';
-  import 'kendo.excel.min';
   import 'kendo.progressbar.min';
   import 'kendo.dataviz.qrcode.min';
   import 'kendo.slider.min';
@@ -87,12 +88,12 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.tabstrip.min';
   import 'kendo.timepicker.min';
   import 'kendo.toolbar.min';
+  import 'kendo.tooltip.min';
   
   // eslint-disable-line no-unused-vars
   import 'kendo.data.signalr.min';
   import 'kendo.filtercell.min';
   import 'kendo.treelist.min';
-  import 'kendo.tooltip.min';
   import 'kendo.treeview.min';
   import 'kendo.upload.min';
   import 'kendo.validator.min';
@@ -103,7 +104,7 @@ declare module 'aurelia-kendoui-bridge' {
   */
   export class KendoConfigBuilder {
     resources: string[];
-    useGlobalResources: boolean;
+    debugMode: any;
     
     /**
       * Globally register all Kendo Core wrappers including templating support
@@ -116,12 +117,6 @@ declare module 'aurelia-kendoui-bridge' {
     pro(): KendoConfigBuilder;
     
     /**
-      * Don't globalize any resources
-      * Allows you to import wrappers yourself via <require></require>
-      */
-    withoutGlobalResources(): KendoConfigBuilder;
-    
-    /**
       * Registers value converters (wrappers around kendo functions)
       */
     useValueConverters(): KendoConfigBuilder;
@@ -130,6 +125,11 @@ declare module 'aurelia-kendoui-bridge' {
       * Adds kendo templating support
       */
     kendoTemplateSupport(): KendoConfigBuilder;
+    
+    /**
+      * Adds kendo templating support
+      */
+    debug(): KendoConfigBuilder;
     kendoAutoComplete(): KendoConfigBuilder;
     kendoButton(): KendoConfigBuilder;
     kendoButtonGroup(): KendoConfigBuilder;
@@ -156,7 +156,7 @@ declare module 'aurelia-kendoui-bridge' {
     kendoMap(): KendoConfigBuilder;
     kendoMenu(): KendoConfigBuilder;
     kendoMaskedTextBox(): KendoConfigBuilder;
-    kendoMultiselect(): KendoConfigBuilder;
+    kendoMultiSelect(): KendoConfigBuilder;
     kendoNumericTextBox(): KendoConfigBuilder;
     kendoPanelBar(): KendoConfigBuilder;
     kendoPivotGrid(): KendoConfigBuilder;
@@ -533,7 +533,7 @@ declare module 'aurelia-kendoui-bridge' {
       * The constructor of a Kendo control
       */
     ctor: any;
-    constructor(taskQueue: any, templateCompiler: any, optionsBuilder: any, util: any, templateGatherer: any);
+    constructor(taskQueue: any, templateCompiler: any, optionsBuilder: any, util: any, templateGatherer: any, configBuilder: any);
     control(controlName: any): any;
     linkViewModel(viewModel: any): any;
     useViewResources(resources: any): any;
@@ -592,14 +592,6 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
-  export class Diagram {
-    kOptions: any;
-    constructor(element: any, widgetBase: any);
-    bind(ctx: any): any;
-    attached(): any;
-    recreate(): any;
-    detached(): any;
-  }
   export class Draggabke {
     kOptions: any;
     constructor(element: any, widgetBase: any);
@@ -607,6 +599,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     beforeInitialize(options: any): any;
+    detached(): any;
+  }
+  export class Diagram {
+    kOptions: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
     detached(): any;
   }
   export class DropTargetArea {
@@ -688,10 +688,17 @@ declare module 'aurelia-kendoui-bridge' {
     constructor(templateGatherer: any);
     bind(): any;
   }
+  export class GridToolbar {
+    templates: any;
+    constructor(templateGatherer: any);
+    bind(): any;
+  }
   export class Grid {
     columns: any;
+    templates: any;
+    gridToolbars: any;
     kOptions: any;
-    constructor(element: any, widgetBase: any, viewResources: any, optionsBuilder: any);
+    constructor(element: any, widgetBase: any, viewResources: any, optionsBuilder: any, templateGatherer: any);
     bind(ctx: any): any;
     
     //  initialization in bind() is giving issues in some scenarios
@@ -779,6 +786,8 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
+  export class PDF {
+  }
   export class PivotConfigurator {
     kOptions: any;
     constructor(element: any, widgetBase: any, viewResources: any);
@@ -795,8 +804,6 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     detached(): any;
-  }
-  export class PDF {
   }
   export class ProgressBar {
     kOptions: any;
@@ -928,6 +935,14 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
+  export class Tooltip {
+    kOptions: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
   export class TreeCol {
     templates: any;
     constructor(templateGatherer: any);
@@ -941,14 +956,6 @@ declare module 'aurelia-kendoui-bridge' {
     
     //  initialization in bind() is giving issues in some scenarios
     //  so, attached() is used for this control
-    attached(): any;
-    recreate(): any;
-    detached(): any;
-  }
-  export class Tooltip {
-    kOptions: any;
-    constructor(element: any, widgetBase: any);
-    bind(ctx: any): any;
     attached(): any;
     recreate(): any;
     detached(): any;

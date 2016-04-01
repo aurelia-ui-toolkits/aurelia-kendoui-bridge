@@ -5,7 +5,7 @@ define(['exports', './config-builder', 'jquery'], function (exports, _configBuil
   exports.configure = configure;
 
   function configure(aurelia, configCallback) {
-    var builder = new _configBuilder.KendoConfigBuilder();
+    var builder = aurelia.container.get(_configBuilder.KendoConfigBuilder);
 
     if (configCallback !== undefined && typeof configCallback === 'function') {
       configCallback(builder);
@@ -13,7 +13,7 @@ define(['exports', './config-builder', 'jquery'], function (exports, _configBuil
 
     var resources = builder.resources;
 
-    if (builder.useGlobalResources) {
+    if (resources.length > 0) {
       aurelia.globalResources(resources);
     }
   }

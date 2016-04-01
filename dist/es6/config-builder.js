@@ -4,7 +4,7 @@
 export class KendoConfigBuilder {
 
 	resources: string[] = [];
-  useGlobalResources: boolean = true;
+  debugMode = false;
 
   /**
   * Globally register all Kendo Core wrappers including templating support
@@ -27,7 +27,7 @@ export class KendoConfigBuilder {
       .kendoListView()
       .kendoMaskedTextBox()
       .kendoMenu()
-      .kendoMultiselect()
+      .kendoMultiSelect()
       .kendoNotification()
       .kendoNumericTextBox()
       .kendoPanelBar()
@@ -74,15 +74,6 @@ export class KendoConfigBuilder {
   }
 
   /**
-  * Don't globalize any resources
-  * Allows you to import wrappers yourself via <require></require>
-  */
-  withoutGlobalResources(): KendoConfigBuilder {
-    this.useGlobalResources = false;
-    return this;
-  }
-
-  /**
   * Registers value converters (wrappers around kendo functions)
   */
   useValueConverters(): KendoConfigBuilder {
@@ -95,6 +86,14 @@ export class KendoConfigBuilder {
   */
   kendoTemplateSupport(): KendoConfigBuilder {
     this.resources.push('./common/template');
+    return this;
+  }
+
+  /**
+  * Adds kendo templating support
+  */
+  debug(): KendoConfigBuilder {
+    this.debugMode = true;
     return this;
   }
 
@@ -201,6 +200,7 @@ export class KendoConfigBuilder {
   kendoGrid(): KendoConfigBuilder {
     this.resources.push('./grid/grid');
     this.resources.push('./grid/col');
+    this.resources.push('./grid/grid-toolbar');
     return this;
   }
 
@@ -235,7 +235,7 @@ export class KendoConfigBuilder {
     return this;
   }
 
-  kendoMultiselect(): KendoConfigBuilder {
+  kendoMultiSelect(): KendoConfigBuilder {
     this.resources.push('./multiselect/multiselect');
     return this;
   }

@@ -10,21 +10,16 @@ define(['exports'], function (exports) {
       _classCallCheck(this, KendoConfigBuilder);
 
       this.resources = [];
-      this.useGlobalResources = true;
+      this.debugMode = false;
     }
 
     KendoConfigBuilder.prototype.core = function core() {
-      this.kendoAutoComplete().kendoButton().kendoButtonGroup().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoCombobox().kendoContextMenu().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoDraggable().kendoDropTarget().kendoFlatColorPicker().kendoListView().kendoMaskedTextBox().kendoMenu().kendoMultiselect().kendoNotification().kendoNumericTextBox().kendoPanelBar().kendoProgressBar().kendoRangeSlider().kendoResponsivePanel().kendoScrollView().kendoSortable().kendoSlider().kendoSplitter().kendoSwitch().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().kendoToolbar().kendoTooltip().kendoValidator().kendoWindow().useValueConverters();
+      this.kendoAutoComplete().kendoButton().kendoButtonGroup().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoCombobox().kendoContextMenu().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoDraggable().kendoDropTarget().kendoFlatColorPicker().kendoListView().kendoMaskedTextBox().kendoMenu().kendoMultiSelect().kendoNotification().kendoNumericTextBox().kendoPanelBar().kendoProgressBar().kendoRangeSlider().kendoResponsivePanel().kendoScrollView().kendoSortable().kendoSlider().kendoSplitter().kendoSwitch().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().kendoToolbar().kendoTooltip().kendoValidator().kendoWindow().useValueConverters();
       return this;
     };
 
     KendoConfigBuilder.prototype.pro = function pro() {
       this.core().kendoBarcode().kendoChart().kendoDiagram().kendoEditor().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
-      return this;
-    };
-
-    KendoConfigBuilder.prototype.withoutGlobalResources = function withoutGlobalResources() {
-      this.useGlobalResources = false;
       return this;
     };
 
@@ -35,6 +30,11 @@ define(['exports'], function (exports) {
 
     KendoConfigBuilder.prototype.kendoTemplateSupport = function kendoTemplateSupport() {
       this.resources.push('./common/template');
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.debug = function debug() {
+      this.debugMode = true;
       return this;
     };
 
@@ -141,6 +141,7 @@ define(['exports'], function (exports) {
     KendoConfigBuilder.prototype.kendoGrid = function kendoGrid() {
       this.resources.push('./grid/grid');
       this.resources.push('./grid/col');
+      this.resources.push('./grid/grid-toolbar');
       return this;
     };
 
@@ -175,7 +176,7 @@ define(['exports'], function (exports) {
       return this;
     };
 
-    KendoConfigBuilder.prototype.kendoMultiselect = function kendoMultiselect() {
+    KendoConfigBuilder.prototype.kendoMultiSelect = function kendoMultiSelect() {
       this.resources.push('./multiselect/multiselect');
       return this;
     };

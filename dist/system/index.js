@@ -6,7 +6,7 @@ System.register(['./config-builder', 'jquery'], function (_export) {
   _export('configure', configure);
 
   function configure(aurelia, configCallback) {
-    var builder = new KendoConfigBuilder();
+    var builder = aurelia.container.get(KendoConfigBuilder);
 
     if (configCallback !== undefined && typeof configCallback === 'function') {
       configCallback(builder);
@@ -14,7 +14,7 @@ System.register(['./config-builder', 'jquery'], function (_export) {
 
     var resources = builder.resources;
 
-    if (builder.useGlobalResources) {
+    if (resources.length > 0) {
       aurelia.globalResources(resources);
     }
   }

@@ -2,14 +2,18 @@ import {Util} from './util';
 import {OptionsBuilder} from './options-builder';
 import {TemplateCompiler} from './template-compiler';
 import {TemplateGatherer} from './template-gatherer';
+import {KendoConfigBuilder} from '../config-builder';
 import {inject, transient} from 'aurelia-dependency-injection';
 import {TaskQueue} from 'aurelia-task-queue';
+import * as LogManager from 'aurelia-logging';
+
+const logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
 /**
 * Abstraction of commonly used code across wrappers
 */
 @transient()
-@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer)
+@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder)
 export class WidgetBase {
 
   /**
@@ -50,10 +54,11 @@ export class WidgetBase {
   */
   ctor: any;
 
-  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer) {
+  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
     this.taskQueue = taskQueue;
     this.optionsBuilder = optionsBuilder;
     this.util = util;
+    this.configBuilder = configBuilder;
     this.templateGatherer = templateGatherer;
     templateCompiler.initialize();
   }
@@ -138,6 +143,11 @@ export class WidgetBase {
       _$parent: [options.parentCtx],
       _$resources: [this.viewResources]
     });
+
+
+    if (this.configBuilder.debugMode) {
+      logger.debug(`initializing ${this.controlName} with the following config`, allOptions);
+    }
 
     // instantiate the Kendo control
     let widget = this._createWidget(options.element, allOptions, this.controlName);

@@ -1,7 +1,7 @@
-System.register(['./util', './options-builder', './template-compiler', './template-gatherer', 'aurelia-dependency-injection', 'aurelia-task-queue'], function (_export) {
+System.register(['./util', './options-builder', './template-compiler', './template-gatherer', '../config-builder', 'aurelia-dependency-injection', 'aurelia-task-queue', 'aurelia-logging'], function (_export) {
   'use strict';
 
-  var Util, OptionsBuilder, TemplateCompiler, TemplateGatherer, inject, transient, TaskQueue, WidgetBase;
+  var Util, OptionsBuilder, TemplateCompiler, TemplateGatherer, KendoConfigBuilder, inject, transient, TaskQueue, LogManager, logger, WidgetBase;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -14,20 +14,27 @@ System.register(['./util', './options-builder', './template-compiler', './templa
       TemplateCompiler = _templateCompiler.TemplateCompiler;
     }, function (_templateGatherer) {
       TemplateGatherer = _templateGatherer.TemplateGatherer;
+    }, function (_configBuilder) {
+      KendoConfigBuilder = _configBuilder.KendoConfigBuilder;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
       transient = _aureliaDependencyInjection.transient;
     }, function (_aureliaTaskQueue) {
       TaskQueue = _aureliaTaskQueue.TaskQueue;
+    }, function (_aureliaLogging) {
+      LogManager = _aureliaLogging;
     }],
     execute: function () {
+      logger = LogManager.getLogger('aurelia-kendoui-bridge');
+
       WidgetBase = (function () {
-        function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer) {
+        function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
           _classCallCheck(this, _WidgetBase);
 
           this.taskQueue = taskQueue;
           this.optionsBuilder = optionsBuilder;
           this.util = util;
+          this.configBuilder = configBuilder;
           this.templateGatherer = templateGatherer;
           templateCompiler.initialize();
         }
@@ -98,6 +105,10 @@ System.register(['./util', './options-builder', './template-compiler', './templa
             _$parent: [options.parentCtx],
             _$resources: [this.viewResources]
           });
+
+          if (this.configBuilder.debugMode) {
+            logger.debug('initializing ' + this.controlName + ' with the following config', allOptions);
+          }
 
           var widget = this._createWidget(options.element, allOptions, this.controlName);
 
@@ -182,7 +193,7 @@ System.register(['./util', './options-builder', './template-compiler', './templa
         };
 
         var _WidgetBase = WidgetBase;
-        WidgetBase = inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer)(WidgetBase) || WidgetBase;
+        WidgetBase = inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder)(WidgetBase) || WidgetBase;
         WidgetBase = transient()(WidgetBase) || WidgetBase;
         return WidgetBase;
       })();

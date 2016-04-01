@@ -2,7 +2,7 @@ import {KendoConfigBuilder} from './config-builder';
 import 'jquery';
 
 export function configure(aurelia, configCallback) {
-  let builder = new KendoConfigBuilder();
+  let builder = aurelia.container.get(KendoConfigBuilder);
 
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
     configCallback(builder);
@@ -11,7 +11,7 @@ export function configure(aurelia, configCallback) {
     // Pull the data off the builder
   let resources = builder.resources;
 
-  if (builder.useGlobalResources) {
+  if (resources.length > 0) {
     aurelia.globalResources(resources);
   }
 }

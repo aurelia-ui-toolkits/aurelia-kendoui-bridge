@@ -2,6 +2,8 @@
 
 exports.__esModule = true;
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 var _util = require('./util');
@@ -12,17 +14,26 @@ var _templateCompiler = require('./template-compiler');
 
 var _templateGatherer = require('./template-gatherer');
 
+var _configBuilder = require('../config-builder');
+
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaTaskQueue = require('aurelia-task-queue');
 
+var _aureliaLogging = require('aurelia-logging');
+
+var LogManager = _interopRequireWildcard(_aureliaLogging);
+
+var logger = LogManager.getLogger('aurelia-kendoui-bridge');
+
 var WidgetBase = (function () {
-  function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer) {
+  function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
     _classCallCheck(this, _WidgetBase);
 
     this.taskQueue = taskQueue;
     this.optionsBuilder = optionsBuilder;
     this.util = util;
+    this.configBuilder = configBuilder;
     this.templateGatherer = templateGatherer;
     templateCompiler.initialize();
   }
@@ -93,6 +104,10 @@ var WidgetBase = (function () {
       _$parent: [options.parentCtx],
       _$resources: [this.viewResources]
     });
+
+    if (this.configBuilder.debugMode) {
+      logger.debug('initializing ' + this.controlName + ' with the following config', allOptions);
+    }
 
     var widget = this._createWidget(options.element, allOptions, this.controlName);
 
@@ -177,7 +192,7 @@ var WidgetBase = (function () {
   };
 
   var _WidgetBase = WidgetBase;
-  WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder, _util.Util, _templateGatherer.TemplateGatherer)(WidgetBase) || WidgetBase;
+  WidgetBase = _aureliaDependencyInjection.inject(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder, _util.Util, _templateGatherer.TemplateGatherer, _configBuilder.KendoConfigBuilder)(WidgetBase) || WidgetBase;
   WidgetBase = _aureliaDependencyInjection.transient()(WidgetBase) || WidgetBase;
   return WidgetBase;
 })();

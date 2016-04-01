@@ -1,3 +1,18 @@
+<a name="0.7.0"></a>
+# [0.7.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.6.4...v0.7.0) (2016-04-01)
+
+
+### Features
+
+* **all:** debug mode ([e8de138](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e8de138))
+* **grid:** support templates on the grid (not column) ([f288579](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/f288579))
+* **grid:** support toolbar template ([58c8a45](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/58c8a45))
+
+### Bug Fixes
+* **multiselect:** rename kendoMultiselect() to kendoMultiSelect() ([36612373](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/36612373e22b0bee9b8fd82f158d2e41509269e0))
+* **config-builder:** remove withoutGlobalResources() ([13f7d39b0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/13f7d39b0282529c48f713387ce7ae0f090ffe64))
+
+
 <a name="0.6.4"></a>
 ## [0.6.4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.6.3...v0.6.4) (2016-04-01)
 
