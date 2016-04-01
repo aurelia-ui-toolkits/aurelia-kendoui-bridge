@@ -1,0 +1,16 @@
+#grid .k-grid-toolbar
+{
+   padding: .6em 1.3em;
+}
+.category-label
+{
+   vertical-align: middle;
+   padding-right: .5em;
+}
+#category
+{
+   vertical-align: middle;
+}
+.toolbar {
+   float: right;
+}
