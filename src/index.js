@@ -11,7 +11,7 @@ export function configure(aurelia, configCallback) {
     // Pull the data off the builder
   let resources = builder.resources;
 
-  if (builder.useGlobalResources) {
+  if (resources.length > 0) {
     aurelia.globalResources(resources);
   }
 }

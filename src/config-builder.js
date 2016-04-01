@@ -5,7 +5,6 @@ export class KendoConfigBuilder {
 
 	resources: string[] = [];
   debugMode = false;
-  useGlobalResources: boolean = true;
 
   /**
   * Globally register all Kendo Core wrappers including templating support
@@ -71,15 +70,6 @@ export class KendoConfigBuilder {
       .kendoTreeList()
       .kendoTreeView()
       .kendoUpload();
-    return this;
-  }
-
-  /**
-  * Don't globalize any resources
-  * Allows you to import wrappers yourself via <require></require>
-  */
-  withoutGlobalResources(): KendoConfigBuilder {
-    this.useGlobalResources = false;
     return this;
   }
 
