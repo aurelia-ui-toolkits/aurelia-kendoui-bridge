@@ -1,0 +1,65 @@
+<template>
+    <ak-grid k-data-source.bind="datasource"
+             k-pageable.bind="pageable"
+             k-sortable.bind="true"
+             k-on-data-bound.delegate="onDataBound($event.detail)"
+             k-on-detail-init.delegate="detailInit($event.detail)">
+      <ak-col k-title="First Name" k-field="FirstName"></ak-col>
+      <ak-col k-title="Last Name" k-field="LastName"></ak-col>
+      <ak-col k-width="120px" k-field="City"></ak-col>
+      <ak-col k-field="Title"></ak-col>
+      <ak-template for="detailTemplate">
+        <div class="tabstrip">
+            <ul>
+                <li class="k-state-active">
+                   Orders
+                </li>
+                <li>
+                    Contact Information
+                </li>
+            </ul>
+            <div>
+                <div class="orders"></div>
+            </div>
+            <div>
+                <div class='employee-details'>
+                    <ul>
+                        <li><label>Country:</label>${Country}</li>
+                        <li><label>City:</label>${City}</li>
+                        <li><label>Address:</label>${Address}</li>
+                        <li><label>Home Phone:</label>${HomePhone}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </ak-template>
+    </ak-grid>
+
+    <style>
+        #grid-detail-template .k-detail-cell .k-tabstrip .k-content {
+            padding: 0.2em;
+        }
+        #grid-detail-template .employee-details ul
+        {
+            list-style:none;
+            font-style:italic;
+            margin: 15px;
+            padding: 0;
+        }
+        #grid-detail-template .employee-details ul li
+        {
+            margin: 0;
+            line-height: 1.7em;
+        }
+
+        #grid-detail-template .employee-details label
+        {
+            display:inline-block;
+            width:90px;
+            padding-right: 10px;
+            text-align: right;
+            font-style:normal;
+            font-weight:bold;
+        }
+    </style>
+</template>
