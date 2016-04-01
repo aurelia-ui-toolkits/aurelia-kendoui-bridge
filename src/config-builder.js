@@ -4,6 +4,7 @@
 export class KendoConfigBuilder {
 
 	resources: string[] = [];
+  debugMode = false;
   useGlobalResources: boolean = true;
 
   /**
@@ -95,6 +96,14 @@ export class KendoConfigBuilder {
   */
   kendoTemplateSupport(): KendoConfigBuilder {
     this.resources.push('./common/template');
+    return this;
+  }
+
+  /**
+  * Adds kendo templating support
+  */
+  debug(): KendoConfigBuilder {
+    this.debugMode = true;
     return this;
   }
 
