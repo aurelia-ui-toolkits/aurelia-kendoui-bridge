@@ -201,6 +201,7 @@ export class KendoConfigBuilder {
   kendoGrid(): KendoConfigBuilder {
     this.resources.push('./grid/grid');
     this.resources.push('./grid/col');
+    this.resources.push('./grid/grid-toolbar');
     return this;
   }
 

@@ -17,6 +17,7 @@ export class Grid  {
 
   @children(`${constants.elementPrefix}col`) columns;
   @children(`${constants.elementPrefix}template`) templates;
+  @children(`${constants.elementPrefix}grid-toolbar`) gridToolbars;
   @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
@@ -70,6 +71,14 @@ export class Grid  {
 
       this.columns.forEach(column => {
         options.columns.push(this.optionsBuilder.getOptions(column, 'GridColumn'));
+      });
+    }
+
+    if (this.gridToolbars && this.gridToolbars.length > 0) {
+      options.toolbar = [];
+
+      this.gridToolbars.forEach(toolbar => {
+        options.toolbar.push(this.optionsBuilder.getOptions(toolbar, 'GridToolbarItem'));
       });
     }
   }
