@@ -27,7 +27,7 @@ export class KendoConfigBuilder {
       .kendoListView()
       .kendoMaskedTextBox()
       .kendoMenu()
-      .kendoMultiselect()
+      .kendoMultiSelect()
       .kendoNotification()
       .kendoNumericTextBox()
       .kendoPanelBar()
@@ -235,7 +235,7 @@ export class KendoConfigBuilder {
     return this;
   }
 
-  kendoMultiselect(): KendoConfigBuilder {
+  kendoMultiSelect(): KendoConfigBuilder {
     this.resources.push('./multiselect/multiselect');
     return this;
   }
