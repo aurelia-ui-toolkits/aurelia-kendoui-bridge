@@ -1,11 +1,14 @@
 export class Advanced {
   datasource = {
     data: [{
-      ContactName: 'jeroen'
+      ContactName: 'jeroen',
+      PhoneNumbers: ['12345678', '87654321']
     }, {
-      ContactName: 'charles'
+      ContactName: 'charles',
+      PhoneNumbers: ['12345678', '87654321']
     }, {
-      ContactName: 'nikolaj'
+      ContactName: 'nikolaj',
+      PhoneNumbers: ['12345678', '87654321']
     }]
   }
 
