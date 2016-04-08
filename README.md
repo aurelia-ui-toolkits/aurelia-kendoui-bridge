@@ -12,7 +12,7 @@ A set of [Aurelia](http://aurelia.io) wrappers for [Kendo UI](http://www.telerik
 
 ### [Component catalog (demos)](http://aurelia-ui-toolkits.github.io/demo-kendo/)
 
-### [Plunker](http://dabuttonfactory.com/button.png?t=Plunker&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)
+### [Gist.run playground](https://gist.run/?id=f297b91bb94e9ec0ec8a100b260dee36)
 
 ## Installing the plugin
 [![Installation](http://dabuttonfactory.com/button.png?t=Installation+instructions&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)](http://aurelia-ui-toolkits.github.io/demo-kendo/#/installation)
