@@ -84,6 +84,36 @@ describe('WidgetBase', () => {
     sut.destroy(widget);
 
     expect(destroySpy).toHaveBeenCalled();
+
+
+    destroySpy = jasmine.createSpy();
+    widget = {
+      destroy: destroySpy,
+      wrapper: DOM.createElement('div')
+    };
+    sut.destroy(widget);
+
+    expect(destroySpy).toHaveBeenCalled();
+
+
+    destroySpy = jasmine.createSpy();
+    widget = {
+      destroy: destroySpy,
+      wrapper: null
+    };
+    sut.destroy(widget);
+
+    expect(destroySpy).not.toHaveBeenCalled();
+
+
+    destroySpy = jasmine.createSpy();
+    widget = {
+      destroy: destroySpy,
+      element: null
+    };
+    sut.destroy(widget);
+
+    expect(destroySpy).not.toHaveBeenCalled();
   });
 
   it('does not destroy widget when element property is null/undefined', () => {
