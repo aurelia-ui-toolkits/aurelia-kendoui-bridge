@@ -33,8 +33,8 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.menu.min';
   import 'kendo.datepicker.min';
   import 'kendo.datetimepicker.min';
-  import 'kendo.draganddrop.min';
   import 'kendo.dataviz.diagram.min';
+  import 'kendo.draganddrop.min';
   import 'kendo.draganddrop.min';
   import 'kendo.draganddrop.min';
   import 'kendo.dropdownlist.min';
@@ -592,6 +592,14 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
+  export class Diagram {
+    kOptions: any;
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
   export class Draggabke {
     kOptions: any;
     constructor(element: any, widgetBase: any);
@@ -599,14 +607,6 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     beforeInitialize(options: any): any;
-    detached(): any;
-  }
-  export class Diagram {
-    kOptions: any;
-    constructor(element: any, widgetBase: any);
-    bind(ctx: any): any;
-    attached(): any;
-    recreate(): any;
     detached(): any;
   }
   export class DropTargetArea {

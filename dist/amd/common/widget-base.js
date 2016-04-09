@@ -167,8 +167,13 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
     };
 
     WidgetBase.prototype.destroy = function destroy(widget) {
-      if (widget && widget.element) {
-        widget.destroy();
+      if (widget) {
+        kendo.destroy(widget.element);
+        widget = null;
+
+        if (this.viewModel.kWidget) {
+          this.viewModel.kWidget = null;
+        }
       }
     };
 

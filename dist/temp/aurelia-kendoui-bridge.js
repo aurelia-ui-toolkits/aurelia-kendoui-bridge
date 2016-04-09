@@ -67,9 +67,9 @@ require('kendo.datepicker.min');
 
 require('kendo.datetimepicker.min');
 
-require('kendo.draganddrop.min');
-
 require('kendo.dataviz.diagram.min');
+
+require('kendo.draganddrop.min');
 
 require('kendo.draganddrop.min');
 
@@ -1767,8 +1767,13 @@ var WidgetBase = (function () {
   };
 
   WidgetBase.prototype.destroy = function destroy(widget) {
-    if (widget && widget.element) {
-      widget.destroy();
+    if (widget) {
+      kendo.destroy(widget.element);
+      widget = null;
+
+      if (this.viewModel.kWidget) {
+        this.viewModel.kWidget = null;
+      }
     }
   };
 
@@ -1935,10 +1940,10 @@ var DateTimePicker = (function () {
 
 exports.DateTimePicker = DateTimePicker;
 
-var Draggabke = (function () {
+var Diagram = (function () {
   var _instanceInitializers17 = {};
 
-  _createDecoratedClass(Draggabke, [{
+  _createDecoratedClass(Diagram, [{
     key: 'kOptions',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
@@ -1947,10 +1952,59 @@ var Draggabke = (function () {
     enumerable: true
   }], null, _instanceInitializers17);
 
+  function Diagram(element, widgetBase) {
+    _classCallCheck(this, _Diagram);
+
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers17);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoDiagram').linkViewModel(this);
+  }
+
+  Diagram.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  Diagram.prototype.attached = function attached() {
+    this.recreate();
+  };
+
+  Diagram.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  Diagram.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Diagram = Diagram;
+  Diagram = _aureliaDependencyInjection.inject(Element, WidgetBase)(Diagram) || Diagram;
+  Diagram = generateBindables('kendoDiagram')(Diagram) || Diagram;
+  Diagram = _aureliaTemplating.customElement(constants.elementPrefix + 'diagram')(Diagram) || Diagram;
+  return Diagram;
+})();
+
+exports.Diagram = Diagram;
+
+var Draggabke = (function () {
+  var _instanceInitializers18 = {};
+
+  _createDecoratedClass(Draggabke, [{
+    key: 'kOptions',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: function initializer() {
+      return {};
+    },
+    enumerable: true
+  }], null, _instanceInitializers18);
+
   function Draggabke(element, widgetBase) {
     _classCallCheck(this, _Draggabke);
 
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers17);
+    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers18);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoDraggable').linkViewModel(this);
@@ -1994,55 +2048,6 @@ var Draggabke = (function () {
 })();
 
 exports.Draggabke = Draggabke;
-
-var Diagram = (function () {
-  var _instanceInitializers18 = {};
-
-  _createDecoratedClass(Diagram, [{
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }], null, _instanceInitializers18);
-
-  function Diagram(element, widgetBase) {
-    _classCallCheck(this, _Diagram);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers18);
-
-    this.element = element;
-    this.widgetBase = widgetBase.control('kendoDiagram').linkViewModel(this);
-  }
-
-  Diagram.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
-  };
-
-  Diagram.prototype.attached = function attached() {
-    this.recreate();
-  };
-
-  Diagram.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  };
-
-  Diagram.prototype.detached = function detached() {
-    this.widgetBase.destroy(this.kWidget);
-  };
-
-  var _Diagram = Diagram;
-  Diagram = _aureliaDependencyInjection.inject(Element, WidgetBase)(Diagram) || Diagram;
-  Diagram = generateBindables('kendoDiagram')(Diagram) || Diagram;
-  Diagram = _aureliaTemplating.customElement(constants.elementPrefix + 'diagram')(Diagram) || Diagram;
-  return Diagram;
-})();
-
-exports.Diagram = Diagram;
 
 var DropTargetArea = (function () {
   var _instanceInitializers19 = {};

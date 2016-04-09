@@ -186,8 +186,13 @@ var WidgetBase = (function () {
   };
 
   WidgetBase.prototype.destroy = function destroy(widget) {
-    if (widget && widget.element) {
-      widget.destroy();
+    if (widget) {
+      kendo.destroy(widget.element);
+      widget = null;
+
+      if (this.viewModel.kWidget) {
+        this.viewModel.kWidget = null;
+      }
     }
   };
 

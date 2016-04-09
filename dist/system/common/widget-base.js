@@ -187,8 +187,13 @@ System.register(['./util', './options-builder', './template-compiler', './templa
         };
 
         WidgetBase.prototype.destroy = function destroy(widget) {
-          if (widget && widget.element) {
-            widget.destroy();
+          if (widget) {
+            kendo.destroy(widget.element);
+            widget = null;
+
+            if (this.viewModel.kWidget) {
+              this.viewModel.kWidget = null;
+            }
           }
         };
 

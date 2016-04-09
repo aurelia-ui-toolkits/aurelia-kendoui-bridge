@@ -1,3 +1,14 @@
+<a name="0.7.1"></a>
+## [0.7.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.7.0...v0.7.1) (2016-04-09)
+
+
+### Bug Fixes
+
+* **widget-base:** destroy via kendo.destroy() ([e7f70d5](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e7f70d5))
+* **widget-base:** destroy widgets when they have a wrapper property ([7761265](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/7761265))
+
+
+
 <a name="0.7.0"></a>
 # [0.7.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.6.4...v0.7.0) (2016-04-01)
 
