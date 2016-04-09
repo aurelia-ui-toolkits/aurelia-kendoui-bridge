@@ -76,53 +76,18 @@ describe('WidgetBase', () => {
   });
 
   it('destroys the Kendo widget', () => {
-    let destroySpy = jasmine.createSpy();
-    let widget = {
-      destroy: destroySpy,
-      element: DOM.createElement('div')
+    let vm = {
+      kWidget: $(DOM.createElement('div')).kendoButton()
     };
-    sut.destroy(widget);
+    sut.linkViewModel(vm);
+    let destroySpy = spyOn(kendo, 'destroy');
+    sut.destroy(vm.kWidget);
 
     expect(destroySpy).toHaveBeenCalled();
+    expect(vm.kWidget).toBe(null);
 
-
-    destroySpy = jasmine.createSpy();
-    widget = {
-      destroy: destroySpy,
-      wrapper: DOM.createElement('div')
-    };
-    sut.destroy(widget);
-
-    expect(destroySpy).toHaveBeenCalled();
-
-
-    destroySpy = jasmine.createSpy();
-    widget = {
-      destroy: destroySpy,
-      wrapper: null
-    };
-    sut.destroy(widget);
-
-    expect(destroySpy).not.toHaveBeenCalled();
-
-
-    destroySpy = jasmine.createSpy();
-    widget = {
-      destroy: destroySpy,
-      element: null
-    };
-    sut.destroy(widget);
-
-    expect(destroySpy).not.toHaveBeenCalled();
-  });
-
-  it('does not destroy widget when element property is null/undefined', () => {
-    let destroySpy = jasmine.createSpy();
-    let widget = {
-      destroy: destroySpy,
-      element: null
-    };
-    sut.destroy(widget);
+    destroySpy.calls.reset();
+    sut.destroy(null);
 
     expect(destroySpy).not.toHaveBeenCalled();
   });
