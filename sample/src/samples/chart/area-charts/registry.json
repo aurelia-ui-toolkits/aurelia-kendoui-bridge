@@ -4,38 +4,38 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=4f2598a11aff6149f3df6a0b5b03920f"
     },
     "binding-to-grouped-data": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=247d14476242e4e71c04784db4670cae"
     },
     "binding-to-local-data": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=17d2fc456b35a54c0ca5287465e1bf53",
       "files": ["html", "js", "json"]
     },
     "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=a54029487bb2c93310cc818dfdffc988"
     },
     "date-axis": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=73625e67f3ee28fc8af42471a39b0b28"
     },
     "error-bars": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=bb21690a1596d4d78111727329f7b737"
     },
     "logarithmic-axis": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=69301cf79e16e6d5ffbf45f690df3e2b"
     },
     "multi-axis": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=ccdad50933467a7a79c9198fa93bba82"
     },
     "smooth-area": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=413a37b1c8925f15ad99bb01cdeba976"
     },
     "stacked-area": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=16fbee66c21f9bc94f8b3be7342fddca"
     },
     "stepped-area": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=d620493e4b3fbfc3eab8c9009cc2a2cd"
     }
   }
 }
