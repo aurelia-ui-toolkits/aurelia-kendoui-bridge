@@ -3,30 +3,62 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
-    "binding-to-grouped-data": {},
+    "binding-to-grouped-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "binding-to-local-data": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "json"]
     },
-    "binding-to-remote-data": {},
-    "column-chart": {},
-    "custom-pan-and-zoom": {},
-    "custom-visuals": {},
-    "date-axis": {},
-    "error-bars": {},
-    "gap-and-spacing": {},
-    "logarithmic-axis": {},
-    "multi-axis": {},
-    "pan-and-zoom": {},
-    "plot-bands": {},
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "column-chart": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "custom-pan-and-zoom": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "custom-visuals": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "date-axis": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "error-bars": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "gap-and-spacing": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "logarithmic-axis": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "multi-axis": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "pan-and-zoom": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "plot-bands": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "stacked-and-grouped-bars-100": {
-      "title": "Stacked and grouped bars 100%"
+      "title": "Stacked and grouped bars 100%",
+      "gist": "https://gist.run/?id=xxx"
     },
-    "stacked-and-grouped-bars": {},
+    "stacked-and-grouped-bars": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "stacked-bars-100": {
-      "title": "Stacked bars 100%"
+      "title": "Stacked bars 100%",
+      "gist": "https://gist.run/?id=xxx"
     },
-    "stacked-bars": {}
+    "stacked-bars": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

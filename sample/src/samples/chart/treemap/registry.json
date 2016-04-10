@@ -3,8 +3,11 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/treemap",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
-    "events": {}
+    "events": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

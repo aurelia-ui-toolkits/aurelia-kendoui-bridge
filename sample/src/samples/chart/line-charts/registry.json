@@ -3,19 +3,39 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
     "binding-to-local-data": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "json"]
     },
-    "binding-to-remote-data": {},
-    "binding-to-grouped-data": {},
-    "date-axis": {},
-    "error-bars": {},
-    "logarithmic-axis": {},
-    "multi-axis": {},
-    "smooth-line": {},
-    "stacked-line": {},
-    "stepped-line": {}
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "binding-to-grouped-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "date-axis": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "error-bars": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "logarithmic-axis": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "multi-axis": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "smooth-line": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "stacked-line": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "stepped-line": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

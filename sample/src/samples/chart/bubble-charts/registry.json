@@ -3,12 +3,18 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
-    "binding-to-grouped-data": {},
+    "binding-to-grouped-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "binding-to-local-data": {
-      "files": ["html", "js", "json"]
+      "files": ["html", "js", "json"],
+      "gist": "https://gist.run/?id=xxx"
     },
-    "binding-to-remote-data": {}
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

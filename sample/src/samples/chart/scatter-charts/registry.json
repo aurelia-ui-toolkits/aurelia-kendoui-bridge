@@ -4,18 +4,34 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js"]
     },
-    "scatter-line-chart": {},
-    "smooth-scatter-line": {},
+    "scatter-line-chart": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "smooth-scatter-line": {"gist": "https://gist.run/?id=xxx"},
     "binding-to-local-data": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "json"]
     },
-    "binding-to-remote-data": {},
-    "binding-to-grouped-data": {},
-    "custom-pan-and-zoom": {},
-    "date-axis": {},
-    "multi-axis": {},
-    "pan-and-zoom": {}
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "binding-to-grouped-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "custom-pan-and-zoom": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "date-axis": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "multi-axis": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "pan-and-zoom": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

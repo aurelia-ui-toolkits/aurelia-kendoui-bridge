@@ -3,14 +3,24 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
   "samples": {
     "radar-line": {
-      "route": ["", "radar-line"]
+      "route": ["", "radar-line"],
+      "gist": "https://gist.run/?id=xxx"
     },
     "binding-to-local-data": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "json"]
     },
-    "binding-to-remote-data": {},
-    "binding-to-grouped-data": {},
-    "radar-area": {},
-    "smooth-radar-line": {},
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "binding-to-grouped-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "radar-area": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "smooth-radar-line": {
+      "gist": "https://gist.run/?id=xxx"
+    },
   }
 }

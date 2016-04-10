@@ -2,13 +2,24 @@
   "title": "Polar charts",
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
   "samples": {
-    "binding-to-local-data": {},
-    "binding-to-remote-data": {},
-    "polar-area": {},
+    "binding-to-local-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "polar-area": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "polar-line": {
+      "gist": "https://gist.run/?id=xxx",
       "route": ["", "polar-line"],
     },
-    "polar-scatter": {},
-    "smooth-polar-line": {}
+    "polar-scatter": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "smooth-polar-line": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

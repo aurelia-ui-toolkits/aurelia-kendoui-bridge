@@ -3,13 +3,18 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/stock-chart",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
     "multiple-panes": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["js", "html", "css"]
     },
-    "virtualization": {},
+    "virtualization": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "pdf-export": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["js", "html", "css"]
     }
   }

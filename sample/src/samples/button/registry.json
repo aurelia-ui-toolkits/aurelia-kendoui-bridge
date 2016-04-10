@@ -4,14 +4,19 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "api": {
-      "files": ["html", "js", "css"]
+      "files": ["html", "js", "css"],
+      "gist": "https://gist.run/?id=xxx",
     },
     "images": {
-      "files": ["html", "js", "css"]
+      "files": ["html", "js", "css"],
+      "gist": "https://gist.run/?id=xxx",
     },
-    "events": {}
+    "events": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

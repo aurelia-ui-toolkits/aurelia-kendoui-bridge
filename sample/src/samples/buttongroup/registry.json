@@ -3,6 +3,7 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/mobile/ui/buttongroup",
   "samples": {
     "basic-use": {
+      "gist": "https://gist.run/?id=xxx",
       "route": ["", "basic-use"]
     }
   }
