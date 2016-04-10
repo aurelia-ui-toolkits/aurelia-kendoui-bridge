@@ -13,6 +13,7 @@ export class Registry {
         sample.path = `samples/${control}/${_sample}`;
         sample.route = sample.route || _sample;
         sample.documentation = sample.documentation || registry.documentation;
+        sample.gist = sample.gist;
         sample.control = control;
         sample.sample = _sample;
         sample.title = sample.title || this.getTitleFromRoute(_sample);
