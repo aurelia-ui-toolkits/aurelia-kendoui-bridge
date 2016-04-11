@@ -7,7 +7,7 @@ The order of Help Documents section, outlined on the Image 1 below:
 <br><br>
 
 <p align=center>
-  <img src="https://cloud.githubusercontent.com/assets/2712405/13549086/a095e764-e2cc-11e5-8b74-f6c1d04da231.png"></img>
+  <img src="https://cloud.githubusercontent.com/assets/2712405/14414779/7135ecd4-ff65-11e5-8a34-2ae4e1ad2a8c.png"></img>
 <br>
   Image 1
 </p>
@@ -38,6 +38,17 @@ This section is provided as a help to developers that are familiar with **[Aurel
 
 This section starts with the well known **[Aurelia Skeleton Navigation](https://github.com/aurelia/skeleton-navigation/tree/master/skeleton-es2016)** application and the **[Aurelia KendoUI bridge](https://github.com/aurelia-ui-toolkits/skeleton-navigation-kendo)** (creation of which is the subject of the **Bridge developers tutorials**) and teaches you how to add four chosen Aurelia KendoUI **components** (`autocomplete`, `button`, `chart` and `grid`).
 <br><br>
+
+#### App developers notes
+
+This section contains several pages of hints and ideas we believe would be of value to Aurelia application developers that are using KendoUI bridge for user interface development.
+<br><br>
+
+#### Troubleshooting
+
+This section contains instructions and recommendations on troubleshooting Aurelia applications using KendoUI bridge for user interface development.
+<br><br>
+
 
 #### Notes on the bridge
 
