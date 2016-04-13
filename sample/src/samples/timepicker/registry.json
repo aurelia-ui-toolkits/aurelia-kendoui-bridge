@@ -6,11 +6,17 @@
             "route": [
                 "",
                 "basic-usage"
-            ]
+            ],
+            "gist": "https://gist.run/?id=xxx"
         },
-        "range-selection": {},
-        "events": {},
+        "range-selection": {
+            "gist": "https://gist.run/?id=xxx"
+        },
+        "events": {
+            "gist": "https://gist.run/?id=xxx"
+        },
         "api": {
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js",

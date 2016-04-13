@@ -4,22 +4,30 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "kpi-measures": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "remote-binding": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "local-binding": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
-    "templates": {},
+    "templates": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "export-to-excel": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "export-to-pdf": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     }
   }

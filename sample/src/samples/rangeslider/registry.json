@@ -3,12 +3,15 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/rangeslider",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
     "events": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "api": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     }
   }

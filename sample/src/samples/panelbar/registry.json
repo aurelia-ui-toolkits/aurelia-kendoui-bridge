@@ -4,20 +4,25 @@
     "samples": {
         "basic-use": {
             "default": true,
+            "gist": "https://gist.run/?id=xxx",
             "files": ["html", "js", "css"]
         },
         "images": {
+            "gist": "https://gist.run/?id=xxx",
             "files": ["html", "js", "css"]
         },
         "ajax": {
             "title": "Loading with AJAX",
+            "gist": "https://gist.run/?id=xxx",
             "files": ["html", "js", "css"]
         },
         "events": {
+            "gist": "https://gist.run/?id=xxx",
             "files": ["html", "js"]
         },
         "api": {
             "title": "API",
+            "gist": "https://gist.run/?id=xxx",
             "files": ["html", "js", "css"]
         }
     }

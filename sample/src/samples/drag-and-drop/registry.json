@@ -4,15 +4,19 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "container": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "area": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "events": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     }
   }

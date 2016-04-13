@@ -3,14 +3,26 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
-    "column-resizing": {},
-    "exporting-to-pdf": {},
-    "resources": {},
-    "events": {},
-    "api": {},
+    "column-resizing": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "exporting-to-pdf": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "resources": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "events": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "api": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "task-template": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css", "md"]
     }
   }

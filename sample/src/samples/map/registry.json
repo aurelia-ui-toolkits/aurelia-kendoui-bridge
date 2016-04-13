@@ -3,17 +3,33 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/map",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
-    "api": {},
-    "binding-markers-to-remote-data": {},
-    "bing-tile-layer": {},
+    "api": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "binding-markers-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "bing-tile-layer": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "bubble-layer": {
-    "files": ["html", "js", "md"],
+      "gist": "https://gist.run/?id=xxx",
+      "files": ["html", "js", "md"]
     },
-    "binding-to-geojson": {},
-    "binding-markers-to-remote-data": {},
-    "export": {},
-    "events": {}
+    "binding-to-geojson": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "binding-markers-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "export": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "events": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

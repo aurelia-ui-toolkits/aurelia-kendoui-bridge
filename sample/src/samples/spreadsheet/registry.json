@@ -3,18 +3,31 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/spreadsheet",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
-    "sorting-and-filtering": {},
+    "sorting-and-filtering": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "server-import-export": {
-      "title": "Server import/export"
+      "title": "Server import/export",
+      "gist": "https://gist.run/?id=xxx"
     },
-    "server-export-to-pdf": {},
-    "datasource-binding": {},
-    "disabled-cells": {},
+    "server-export-to-pdf": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "datasource-binding": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "disabled-cells": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "events": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "md"]
     },
-    "validation": {}
+    "validation": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

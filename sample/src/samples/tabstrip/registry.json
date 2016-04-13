@@ -4,20 +4,32 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "images": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "ajax": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
-    "animation-effects": {},
-    "tab-position": {},
-    "scrollable-tabs": {},
+    "animation-effects": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "tab-position": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "scrollable-tabs": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "events": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
-    "api": {},
+    "api": {
+      "gist": "https://gist.run/?id=xxx"
+    },
   }
 }

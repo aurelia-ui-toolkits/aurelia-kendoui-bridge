@@ -7,6 +7,7 @@
                 "",
                 "basic-usage"
             ],
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js"
@@ -16,6 +17,7 @@
             "route": [
                 "range-selection"
             ],
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js"
@@ -25,6 +27,7 @@
             "route": [
                 "events"
             ],
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js"
@@ -34,12 +37,15 @@
             "route": [
                 "api"
             ],
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js",
                 "css"
             ]
         },
-        "value-binding": {}
+        "value-binding": {
+            "gist": "https://gist.run/?id=xxx"
+        }
     }
 }

@@ -4,23 +4,51 @@
   "samples": {
     "basic-use": {
       "default": true,
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
-    "binding-to-local-data": {},
-    "binding-to-remote-data": {},
+    "binding-to-local-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "drag-and-drop": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
-    "editing": {},
-    "popup-editing": {},
-    "column-resizing": {},
-    "column-reordering": {},
-    "column-menu": {},
-    "frozen-columns": {},
-    "aggregates": {},
-    "export-to-excel": {},
-    "export-to-pdf": {},
-    "events": {},
-    "api": {}
+    "editing": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "popup-editing": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "column-resizing": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "column-reordering": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "column-menu": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "frozen-columns": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "aggregates": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "export-to-excel": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "export-to-pdf": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "events": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "api": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

@@ -4,25 +4,32 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "disable-items": {
       "title": "Filter / Disable items",
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "handlers": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "axis-constraints": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "linked-lists": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "events": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "sortable-panels": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     }
   }

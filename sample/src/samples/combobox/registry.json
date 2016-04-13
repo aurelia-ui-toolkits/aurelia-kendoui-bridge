@@ -3,16 +3,30 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/combobox",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
     "api": {
       "title": "API",
+      "gist": "https://gist.run/?id=xxx"
     },
-    "cascading-combobox": {},
-    "customizing-templates": {},
-    "grouping": {},
-    "server-filtering": {},
-    "virtualization": {},
-    "events": {}
+    "cascading-combobox": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "customizing-templates": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "grouping": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "server-filtering": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "virtualization": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "events": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

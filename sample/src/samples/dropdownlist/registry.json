@@ -3,17 +3,33 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/dropdownlist",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
     "api": {
       "title": "API",
+      "gist": "https://gist.run/?id=xxx"
     },
-    "binding-to-remote-data": {},
-    "cascading-dropdownlist": {},
-    "customizing-templates": {},
-    "grouping": {},
-    "server-filtering": {},
-    "virtualization": {},
-    "events": {}
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "cascading-dropdownlist": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "customizing-templates": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "grouping": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "server-filtering": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "virtualization": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "events": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

@@ -6,10 +6,14 @@
             "route": [
                 "",
                 "basic-usage"
-            ]
+            ],
+            "gist": "https://gist.run/?id=xxx"
         },
-        "events": {},
+        "events": {
+            "gist": "https://gist.run/?id=xxx"
+            },
         "api": {
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js",

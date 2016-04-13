@@ -3,13 +3,26 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/diagram",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
-    "built-in-layouts": {},
-    "editing": {},
-    "pdf-export": {},
-    "advanced-export": {},
-    "events": {},
-    "api": {}
+    "built-in-layouts": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "editing": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "pdf-export": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "advanced-export": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "events": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "api": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

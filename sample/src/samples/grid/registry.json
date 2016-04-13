@@ -4,24 +4,49 @@
   "samples": {
     "basic-use": {
       "default": true,
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
-    "batch-editing": {},
+    "batch-editing": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "binding-to-local-data": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "json"]
     },
-    "binding-to-remote-data": {},
-    "binding-to-signalr": {},
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "binding-to-signalr": {
+      "gist": "https://gist.run/?id=xxx"
+    },
     "editing-custom-editor": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "json"]
     },
-    "frozen-columns": {},
-    "initialization-from-table": {},
-    "inline-editing": {},
-    "popup-editing": {},
-    "working-offline": {},
-    "detail-template": {},
-    "toolbar-template": {},
-    "advanced": {}
+    "frozen-columns": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "initialization-from-table": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "inline-editing": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "popup-editing": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "working-offline": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "detail-template": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "toolbar-template": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "advanced": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

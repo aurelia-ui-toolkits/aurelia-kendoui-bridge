@@ -4,18 +4,22 @@
   "samples": {
     "basic-use": {
       "default": true,
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "flat": {
       "title": "Flat color picker",
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "standalone": {
       "title": "Standalone Palette",
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "api": {
       "title": "API",
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     }
   }

@@ -3,18 +3,26 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/progressbar",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx"
     },
     "chunk-progressbar": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "vertical-progressbar": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "custom-label": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
-    "events": {},
-    "api": {}
+    "events": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "api": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }

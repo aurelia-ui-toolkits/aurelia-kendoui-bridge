@@ -7,6 +7,7 @@
                 "",
                 "basic-use"
             ],
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js",
@@ -17,6 +18,7 @@
             "route": [
                 "drag-drop"
             ],
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js"
@@ -26,6 +28,7 @@
             "route": [
                 "images"
             ],
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js",
@@ -36,6 +39,7 @@
             "route": [
                 "checkboxes"
             ],
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js",
@@ -46,6 +50,7 @@
             "route": [
                 "binding-to-local-data"
             ],
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js",
@@ -56,6 +61,7 @@
             "route": [
                 "binding-to-remote-data"
             ],
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js"
@@ -65,6 +71,7 @@
             "route": [
                 "api"
             ],
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js"

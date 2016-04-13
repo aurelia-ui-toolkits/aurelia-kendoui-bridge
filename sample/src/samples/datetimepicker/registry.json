@@ -7,23 +7,30 @@
                 "",
                 "basic-usage"
             ],
+            "gist": "https://gist.run/?id=xxx"
         },
         "range-selection": {},
         "customizing-templates": {
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js",
                 "css"
             ]
         },
-        "events": {},
+        "events": {
+            "gist": "https://gist.run/?id=xxx"
+        },
         "api": {
+            "gist": "https://gist.run/?id=xxx",
             "files": [
                 "html",
                 "js",
                 "css"
             ]
         },
-        "disable-dates": {}
+        "disable-dates": {
+            "gist": "https://gist.run/?id=xxx"
+        }
     }
 }

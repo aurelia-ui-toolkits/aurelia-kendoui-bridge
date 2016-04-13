@@ -4,15 +4,19 @@
   "samples": {
     "basic-use": {
       "default": true,
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "editing": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
     "selection": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js", "css"]
     },
   }

@@ -4,17 +4,33 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js"]
     },
     "api": {
+      "gist": "https://gist.run/?id=xxx",
       "files": ["html", "js"]
     },
-    "custom-tools": {},
-    "file-and-image-browser": {},
-    "all-tools": {},
-    "snippets": {},
-    "styles": {},
-    "pdf-export": {},
-    "events": {}
+    "custom-tools": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "file-and-image-browser": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "all-tools": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "snippets": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "styles": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "pdf-export": {
+      "gist": "https://gist.run/?id=xxx"
+    },
+    "events": {
+      "gist": "https://gist.run/?id=xxx"
+    }
   }
 }
