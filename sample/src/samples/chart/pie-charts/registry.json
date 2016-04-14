@@ -4,17 +4,17 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=865b4c67ebee175afae6cebf13c5e545"
     },
     "pie-labels": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=39eed857799371aa61aa2c764cefae43"
     },
     "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=c80e92006779e789fac04e4590b6beb8",
       "files": ["html", "js", "css"]
     },
     "binding-to-local-data": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=304535e166674f76765b0ba98ba27d0a"
     }
   }
 }

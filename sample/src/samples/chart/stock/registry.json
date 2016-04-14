@@ -4,17 +4,17 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=e57fa69d4697091a20cec1f240bfaa0f"
     },
     "multiple-panes": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=b521c3a4bd50a10c00b10e672952e10c",
       "files": ["js", "html", "css"]
     },
     "virtualization": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=36ef66850cd9b6c4ec81e50af941f3ba"
     },
     "pdf-export": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=b513fa7355a4d41eb25d79eaa7396749",
       "files": ["js", "html", "css"]
     }
   }

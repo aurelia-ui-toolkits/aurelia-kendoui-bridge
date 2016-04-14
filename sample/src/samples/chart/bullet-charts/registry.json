@@ -4,13 +4,13 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=56de0e47d50db79b38a49b72abf2d51b"
     },
     "binding-to-local-data": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=61976d2f399840b1ae5cbfb635e878e2"
       },
     "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=d41876ae63d0d8bba52fb04862a2adb3"
     }
   }
 }

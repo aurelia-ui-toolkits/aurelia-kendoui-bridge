@@ -4,23 +4,23 @@
   "samples": {
     "radar-line": {
       "route": ["", "radar-line"],
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=5acf41abd95e126f864a0721facc4d2c"
     },
     "binding-to-local-data": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=a165f9f448474bb5eb897bac28bc7b8c",
       "files": ["html", "js", "json"]
     },
     "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=20c036001e63b0df53878e8122561ca8"
     },
     "binding-to-grouped-data": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=3a8e9586890e435ddeaf4f6bc354a0be"
     },
     "radar-area": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=f15b13d37c70ad305ba0649a49df5403"
     },
     "smooth-radar-line": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=07763d39fc5b8eb1c46f43a9e869161b"
     },
   }
 }

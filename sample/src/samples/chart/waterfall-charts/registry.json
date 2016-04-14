@@ -4,17 +4,17 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=37f7612660bd26de51e017b90db3b124"
     },
     "binding-to-local-data": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=5539d3ed14d6a9e4948cb7fcd5276e6b",
       "files": ["html", "js", "json"]
     },
     "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=93e78f02941a7b30588e4cc08daa425d"
       },
     "horizontal-waterfall": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=3684d116c0c820962b7350506c07fff8"
     }
   }
 }

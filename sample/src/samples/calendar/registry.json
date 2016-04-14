@@ -4,21 +4,21 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=18e39b76e04e41160cd2553b66079cbb",
       "files": ["html", "js", "css"]
     },
     "api": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=5a2575f45afdcdc5b24090f2ccfb7033",
       "files": ["html", "js", "css"]
     },
     "disable-dates": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=0b817d79d7b94823f5c8ecf267814400"
     },
     "events": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=cb8e8f7caa58dd0b6de9e6a42e3e0b11"
     },
     "templates": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=0bb35f592a702f1a54ad5d26a0e851da",
       "files": ["html", "js", "css"]
     },
   }

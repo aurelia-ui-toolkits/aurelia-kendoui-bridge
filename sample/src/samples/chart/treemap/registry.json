@@ -4,10 +4,10 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=b0e1975d1817dcf53b85c11a976a3ef1"
     },
     "events": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=1dfab777c90c7286c6576c6a3254b0c8"
     }
   }
 }
