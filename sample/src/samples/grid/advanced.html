@@ -15,6 +15,15 @@
         ${ContactName | capitalize}
       </ak-template>
     </ak-col>
+    <ak-col k-title="Phonenumbers">
+      <ak-template>
+        <ul>
+          <li repeat.for="phoneNumber of PhoneNumbers">
+            ${phoneNumber}
+          </li>
+        </ul>
+      </ak-template>
+    </ak-col>
     <ak-col k-title="Contact Name" k-field="ContactName">
       <ak-template for="headerTemplate">
         ${'Contact' + 'Name'}
