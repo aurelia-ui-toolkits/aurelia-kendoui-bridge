@@ -4,11 +4,11 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=afc34d59c08c190b706c4f992a05dd50",
       "files": ["html", "js", "css"]
     },
     "custom-validation": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=9288bc4984177beeb8f795fc1bfc091f",
       "files": ["html", "js", "css"]
     }
   }

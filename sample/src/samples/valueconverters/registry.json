@@ -2,8 +2,8 @@
   "title": "ValueConverters",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
-      "gist": "https://gist.run/?id=xxx"
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=ab9b1966f0d01ee90730c0022cc0f805"
     }
   }
 }

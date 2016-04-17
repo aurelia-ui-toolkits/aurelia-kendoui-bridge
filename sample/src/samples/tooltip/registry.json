@@ -4,22 +4,22 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=4708bf9f73a04c228903d61423396f04",
       "files": ["html", "js", "css"]
     },
     "ajax": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=b1982c786526f3ee7d3d6b83378f6a25",
       "files": ["html", "js", "css", "md"]
     },
     "content-template": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=725d23ea6b408d825f47cc0cc2b325ac",
       "files": ["html", "js", "css", "md"]
     },
     "events": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=4a9bcacf3aa2a4d95ad5865a750e1c12"
     },
     "api": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=42a4115b789bdd0cfa30ba4092e5bfb3"
     }
   }
 }

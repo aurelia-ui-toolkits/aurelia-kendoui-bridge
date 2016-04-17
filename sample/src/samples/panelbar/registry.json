@@ -4,25 +4,25 @@
     "samples": {
         "basic-use": {
             "default": true,
-            "gist": "https://gist.run/?id=xxx",
+            "gist": "https://gist.run/?id=5641c3985adbaff8c3f707d802d832c8",
             "files": ["html", "js", "css"]
         },
         "images": {
-            "gist": "https://gist.run/?id=xxx",
+            "gist": "https://gist.run/?id=159515db11e4d50ffc2378b35aa2db7d",
             "files": ["html", "js", "css"]
         },
         "ajax": {
             "title": "Loading with AJAX",
-            "gist": "https://gist.run/?id=xxx",
+            "gist": "https://gist.run/?id=918de5e83cc94055a90b94aca1460819",
             "files": ["html", "js", "css"]
         },
         "events": {
-            "gist": "https://gist.run/?id=xxx",
+            "gist": "https://gist.run/?id=27ef4e0ec231f8618a5b3c0065cfb5b9",
             "files": ["html", "js"]
         },
         "api": {
             "title": "API",
-            "gist": "https://gist.run/?id=xxx",
+            "gist": "https://gist.run/?id=94ec8355c9008162e760d76e990fd0e9",
             "files": ["html", "js", "css"]
         }
     }

@@ -4,30 +4,30 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=4143eb684d7fd4d7dfb0f86e833bf045",
       "files": ["html", "js", "css"]
     },
     "server-filtering": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=d804e873cbd7043b41edee7ecba0fb79"
     },
     "virtualization": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=46704315f96dc429d9ae718c99313dac"
     },
     "grouping": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=80741a5120460be192d63f1ccb11f93b"
     },
     "customizing-templates": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=01b9dc9b41f8f1f42a4e6281f93c5473",
       "files": ["html", "js", "css"]
     },
     "events": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=48487d2d131ff95d0fcb5fa95b449bca"
     },
     "api": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=0ab185be8db54cae263776f13ac2b495"
     },
     "tag-mode": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=b73a68ea6c11ff965426b8076b835404"
     }
   }
 }

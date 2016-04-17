@@ -4,19 +4,19 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=64554150080b00714a51153ae26d2f70"
     },
     "resize": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=c4e0cd1ac841df50c4eca1f2c059a5ff"
     },
     "events": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=1d5ff9f9b881b192b1f57d382500fa3c"
     },
     "api": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=d70e7b1821e1729e6492d5b1bb962e99"
     },
     "integration-with-editors": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=e3e566d4d30e90dd9aabfb8b01e3c060",
       "files": ["html", "js", "css"]
     }
   }

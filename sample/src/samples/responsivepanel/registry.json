@@ -3,8 +3,8 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/responsivepanel",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
-      "gist": "https://gist.run/?id=xxx"
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=4f92f421189da8824568c40fec6d4995"
     }
   }
 }

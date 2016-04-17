@@ -4,25 +4,25 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=a4c39389ef7ef676b849b2bc8ff7c558"
     },
     "built-in-layouts": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=71dc6028336b771faa13993a096582b5"
     },
     "editing": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=da3a2e302ab11cf425cdf7bdecccacb1"
     },
     "pdf-export": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=fcbf25779a0812166e5e41c58638a55b"
     },
     "advanced-export": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=298a9e321e0c88484ca7fe0c6b243802"
     },
     "events": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=a26388350a9615d9439816ce2a81574d"
     },
     "api": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=d29f930cdc0cff6e0b7e6cf2ca9184f7"
     }
   }
 }

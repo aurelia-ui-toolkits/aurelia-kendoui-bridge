@@ -4,7 +4,7 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=9301a5fba165c95194b31287fde8affe",
       "files": ["html", "js", "css"]
     }
   }

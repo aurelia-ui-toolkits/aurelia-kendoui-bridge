@@ -4,17 +4,17 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=6bfb62ec43d3cd933ce366224e655e7c",
       "files": ["html", "js", "css"]
     },
     "ajax": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=055662d1928402b84bbdf6efc5f20ce5"
     },
     "events": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=c0162f69c1b0c4a9daf1726cd89f51fd"
     },
     "api": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=26dadec1cf9f6f1e1ede3f4779803afa",
       "files": ["html", "js"]
     }
   }

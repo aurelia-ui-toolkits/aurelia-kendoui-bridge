@@ -4,29 +4,30 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=95abaa46cdb41dcc1394a2f86636bbd6"
     },
     "api": {
       "title": "API",
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=30b332f7f22748609a8dba0cef45a593"
     },
     "cascading-combobox": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=9874fbf5283d4f2c6c9c770295c4eca8"
     },
     "customizing-templates": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=18348665770acaec9fd0d8c0337e4d68",
+      "files": ["html", "js", "css"]
     },
     "grouping": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=63324e7cb00585679386a6e656512770"
     },
     "server-filtering": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=2ba4aef2ff6b954878b8316efc454745"
     },
     "virtualization": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=0163326527dfc2ce54c077103467c764"
     },
     "events": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=6d063b505ad91a6f98536fcbed13af6d"
     }
   }
 }

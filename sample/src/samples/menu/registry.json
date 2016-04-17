@@ -4,30 +4,32 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=09176e19cbf820af33aaa439c392daa8",
       "files": ["html", "js", "css"]
     },
     "images": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=326b30a5e035842c8c780aa487378888",
       "files": ["html", "js", "css"]
     },
     "direction": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=f1fd9861f470dcab75c908f53903b497"
     },
-    "orientation": {"gist": "https://gist.run/?id=xxx"},
+    "orientation": {
+      "gist": "https://gist.run/?id=c16c687b108612b8998855459d933e95"
+    },
     "animation-effects": {
-      "gist": "https://gist.run/?id=xxx"
+      "gist": "https://gist.run/?id=f6d569643b780d080e444d191e4ea174"
     },
     "events": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=c3f4d3f5dbcd340184871c965e8f7324",
       "files": ["html", "js", "css"]
     },
     "api": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=af1ffe35ff1d155f7bdda8d2833e1e28",
       "files": ["html", "js", "css"]
     },
     "context-menu": {
-      "gist": "https://gist.run/?id=xxx",
+      "gist": "https://gist.run/?id=dab3f56b4a1b072e207dd7bb8eb10b5e",
       "files": ["html", "js", "css"]
     }
   }
