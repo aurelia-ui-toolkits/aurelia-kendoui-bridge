@@ -256,7 +256,7 @@ Image 2
 <br><br>
 
 and paste it in the `registry.json` entry for the **ComboBox: basic use** example.
-<br>
+<br><br>
 
 <p align=center>
   <img src="https://cloud.githubusercontent.com/assets/2712405/14576927/b3be7f38-033b-11e6-8e7c-13da0ac1c57d.png"></img>
