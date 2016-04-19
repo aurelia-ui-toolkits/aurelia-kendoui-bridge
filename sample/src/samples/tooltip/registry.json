@@ -1,6 +1,6 @@
 {
   "title": "Tooltip",
-  "tooltip": "http://docs.telerik.com/kendo-ui/api/javascript/ui/tooltip",
+  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/tooltip",
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
