@@ -51,9 +51,9 @@ System.config({
     "font-awesome": "npm:font-awesome@4.6.1",
     "gka/chroma.js": "github:gka/chroma.js@1.1.1",
     "google/code-prettify": "github:google/code-prettify@master",
-    "jquery": "github:components/jquery@2.1.4",
-    "jquery.min": "github:components/jquery@2.1.4",
-    "json": "github:systemjs/plugin-json@0.1.0",
+    "jquery": "github:components/jquery@2.2.1",
+    "jquery.min": "github:components/jquery@2.2.1",
+    "json": "github:systemjs/plugin-json@0.1.1",
     "prism": "github:PrismJS/prism@1.3.0",
     "showdown": "github:showdownjs/showdown@1.3.0",
     "showdown-prettify": "npm:showdown-prettify@1.3.0",
@@ -74,7 +74,7 @@ System.config({
       "util": "npm:util@0.10.3"
     },
     "github:twbs/bootstrap@3.3.6": {
-      "jquery": "github:components/jquery@2.1.4"
+      "jquery": "npm:jquery@2.2.3"
     },
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
@@ -213,7 +213,7 @@ System.config({
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "path": "github:jspm/nodelibs-path@0.1.0",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+      "systemjs-json": "github:systemjs/plugin-json@0.1.1"
     },
     "npm:font-awesome@4.6.1": {
       "css": "github:systemjs/plugin-css@0.1.20"
@@ -226,7 +226,7 @@ System.config({
     },
     "npm:lcid@1.0.0": {
       "invert-kv": "npm:invert-kv@1.0.0",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+      "systemjs-json": "github:systemjs/plugin-json@0.1.1"
     },
     "npm:os-locale@1.4.0": {
       "child_process": "github:jspm/nodelibs-child_process@0.1.0",
@@ -245,7 +245,7 @@ System.config({
     "npm:showdown@1.3.0": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",
       "process": "github:jspm/nodelibs-process@0.1.2",
-      "systemjs-json": "github:systemjs/plugin-json@0.1.0",
+      "systemjs-json": "github:systemjs/plugin-json@0.1.1",
       "yargs": "npm:yargs@3.32.0"
     },
     "npm:string-width@1.0.1": {
