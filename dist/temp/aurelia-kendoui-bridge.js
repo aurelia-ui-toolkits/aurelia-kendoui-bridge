@@ -19,6 +19,8 @@ var _aureliaLogging = require('aurelia-logging');
 
 var LogManager = _interopRequireWildcard(_aureliaLogging);
 
+var _aureliaTemplatingResources = require('aurelia-templating-resources');
+
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaTemplating = require('aurelia-templating');
@@ -28,6 +30,8 @@ var _aureliaMetadata = require('aurelia-metadata');
 var _aureliaBinding = require('aurelia-binding');
 
 var _aureliaTaskQueue = require('aurelia-task-queue');
+
+require('kendo.data.min');
 
 require('kendo.autocomplete.min');
 
@@ -183,6 +187,7 @@ var KendoConfigBuilder = (function () {
 
     this.resources = [];
     this.debugMode = false;
+    this.registerRepeatStrategy = true;
   }
 
   KendoConfigBuilder.prototype.core = function core() {
@@ -208,6 +213,10 @@ var KendoConfigBuilder = (function () {
   KendoConfigBuilder.prototype.debug = function debug() {
     this.debugMode = true;
     return this;
+  };
+
+  KendoConfigBuilder.prototype.withoutRepeatStrategy = function withoutRepeatStrategy() {
+    this.registerRepeatStrategy = false;
   };
 
   KendoConfigBuilder.prototype.kendoAutoComplete = function kendoAutoComplete() {
@@ -503,6 +512,13 @@ function configure(aurelia, configCallback) {
 
   if (resources.length > 0) {
     aurelia.globalResources(resources);
+  }
+
+  if (builder.registerRepeatStrategy) {
+    var repeatStrategyLocator = aurelia.container.get(_aureliaTemplatingResources.RepeatStrategyLocator);
+    repeatStrategyLocator.addStrategy(function (items) {
+      return items instanceof kendo.data.ObservableArray;
+    }, new _aureliaTemplatingResources.ArrayRepeatStrategy());
   }
 }
 

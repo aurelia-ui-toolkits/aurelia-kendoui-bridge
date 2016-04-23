@@ -1,6 +1,6 @@
 {
   "name": "aurelia-kendoui-bridge",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "registry": "github",
   "description": "A set of Telerik KendoUI wrappers for Aurelia allowing developers to easily use KendoUI components in their Aurelia application.",
   "keywords": [

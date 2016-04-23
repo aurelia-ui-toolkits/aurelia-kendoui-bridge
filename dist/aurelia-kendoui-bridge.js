@@ -1,5 +1,6 @@
 import 'jquery';
 import * as LogManager from 'aurelia-logging';
+import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
 import {customElement,bindable,children,ViewResources,customAttribute,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
@@ -13,6 +14,7 @@ export class KendoConfigBuilder {
 
 	resources: string[] = [];
   debugMode = false;
+  registerRepeatStrategy = true;
 
   /**
   * Globally register all Kendo Core wrappers including templating support
@@ -103,6 +105,13 @@ export class KendoConfigBuilder {
   debug(): KendoConfigBuilder {
     this.debugMode = true;
     return this;
+  }
+
+  /**
+  * Don't register an array repeat strategy for kendo.data.ObservableArray
+  */
+  withoutRepeatStrategy() {
+    this.registerRepeatStrategy = false;
   }
 
   kendoAutoComplete(): KendoConfigBuilder {
@@ -383,6 +392,8 @@ export class KendoConfigBuilder {
   }
 }
 
+import 'kendo.data.min';
+
 export function configure(aurelia, configCallback) {
   let builder = aurelia.container.get(KendoConfigBuilder);
 
@@ -395,6 +406,11 @@ export function configure(aurelia, configCallback) {
 
   if (resources.length > 0) {
     aurelia.globalResources(resources);
+  }
+
+  if (builder.registerRepeatStrategy) {
+    let repeatStrategyLocator = aurelia.container.get(RepeatStrategyLocator);
+    repeatStrategyLocator.addStrategy(items => items instanceof kendo.data.ObservableArray, new ArrayRepeatStrategy());
   }
 }
 

@@ -10,6 +10,7 @@ var KendoConfigBuilder = (function () {
 
     this.resources = [];
     this.debugMode = false;
+    this.registerRepeatStrategy = true;
   }
 
   KendoConfigBuilder.prototype.core = function core() {
@@ -35,6 +36,10 @@ var KendoConfigBuilder = (function () {
   KendoConfigBuilder.prototype.debug = function debug() {
     this.debugMode = true;
     return this;
+  };
+
+  KendoConfigBuilder.prototype.withoutRepeatStrategy = function withoutRepeatStrategy() {
+    this.registerRepeatStrategy = false;
   };
 
   KendoConfigBuilder.prototype.kendoAutoComplete = function kendoAutoComplete() {

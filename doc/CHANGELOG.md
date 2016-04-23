@@ -1,3 +1,20 @@
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.7.1...v0.8.0) (2016-04-23)
+
+
+### Bug Fixes
+
+* **all:** allow repeaters in ak-templates ([2ffd035](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/2ffd035))
+* **index:** import minified kendo.data and improve import of repeat strategy ([f92cef2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/f92cef2))
+* **jquery:** remove jquery version lock ([abbe694](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/abbe694))
+
+### Features
+
+* **catalog:** "test implementation" of RUN button ([aea9524](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/aea9524))
+* **catalog:** add two tutorials ([f394a54](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/f394a54))
+
+
+
 <a name="0.7.1"></a>
 ## [0.7.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.7.0...v0.7.1) (2016-04-09)
 

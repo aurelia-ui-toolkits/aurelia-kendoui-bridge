@@ -1,11 +1,13 @@
 declare module 'aurelia-kendoui-bridge' {
   import 'jquery';
   import * as LogManager from 'aurelia-logging';
+  import { RepeatStrategyLocator, ArrayRepeatStrategy }  from 'aurelia-templating-resources';
   import { inject, Container, transient }  from 'aurelia-dependency-injection';
   import { customElement, bindable, children, ViewResources, customAttribute, BindableProperty, HtmlBehaviorResource, TemplatingEngine, noView, processContent, TargetInstruction }  from 'aurelia-templating';
   import { metadata }  from 'aurelia-metadata';
   import { bindingMode }  from 'aurelia-binding';
   import { TaskQueue }  from 'aurelia-task-queue';
+  import 'kendo.data.min';
   import 'kendo.autocomplete.min';
   import 'kendo.virtuallist.min';
   import 'kendo.dataviz.barcode.min';
@@ -105,6 +107,7 @@ declare module 'aurelia-kendoui-bridge' {
   export class KendoConfigBuilder {
     resources: string[];
     debugMode: any;
+    registerRepeatStrategy: any;
     
     /**
       * Globally register all Kendo Core wrappers including templating support
@@ -130,6 +133,11 @@ declare module 'aurelia-kendoui-bridge' {
       * Adds kendo templating support
       */
     debug(): KendoConfigBuilder;
+    
+    /**
+      * Don't register an array repeat strategy for kendo.data.ObservableArray
+      */
+    withoutRepeatStrategy(): any;
     kendoAutoComplete(): KendoConfigBuilder;
     kendoButton(): KendoConfigBuilder;
     kendoButtonGroup(): KendoConfigBuilder;
