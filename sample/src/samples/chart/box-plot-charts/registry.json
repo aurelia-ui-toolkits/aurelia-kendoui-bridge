@@ -3,9 +3,14 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=dfaeaf56b278b49012a9731cf09988bd"
     },
-    "binding-to-local-data": {},
-    "binding-to-remote-data": {}
+    "binding-to-local-data": {
+      "gist": "https://gist.run/?id=a8d1b52ac3b6e4d0e82a1157c5b21c24"
+    },
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=1ae4a60101c2b65f137cb3b38411b649"
+    }
   }
 }

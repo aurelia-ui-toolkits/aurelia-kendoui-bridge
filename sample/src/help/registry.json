@@ -94,6 +94,22 @@
       {
         "name" : "3. Lazy loading wrappers",
         "path" : "help/docs/app-developers-notes/lazy-loading-wrappers.md"
+      },
+      {
+        "name" : "4. Running gists",
+        "path" : "help/docs/app-developers-notes/running-gists.md"
+      }
+    ],
+
+    "Troubleshooting":
+    [
+      {
+        "name": "1. Introduction",
+        "path": "help/docs/troubleshooting/introduction.md"
+      },
+      {
+        "name": "2. Using gists and GistRun",
+        "path": "help/docs/troubleshooting/using-gists-and-gistrun.md"
       }
     ],
 
@@ -135,5 +151,9 @@
         "name": "9. Registry helper class",
         "path": "help/docs/bridge-developers-notes/registry-use.md"
       },
+      {
+        "name": "10. Creating gists for catalog app",
+        "path": "help/docs/bridge-developers-notes/creating-gists.md"
+      }
     ]
 }

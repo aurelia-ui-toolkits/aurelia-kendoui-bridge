@@ -4,23 +4,51 @@
   "samples": {
     "basic-use": {
       "default": true,
+      "gist": "https://gist.run/?id=d9b79864319e52a1551e45877db45388",
       "files": ["html", "js", "css"]
     },
-    "binding-to-local-data": {},
-    "binding-to-remote-data": {},
+    "binding-to-local-data": {
+      "gist": "https://gist.run/?id=2ff895765057a3dc2a97ec00dd2c4459"
+    },
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=e7bf4dada7fe4c996f178ab4f5825fbd"
+    },
     "drag-and-drop": {
+      "gist": "https://gist.run/?id=a99b8fd578ade8e48fbbf8bae7e15ea6",
       "files": ["html", "js", "css"]
     },
-    "editing": {},
-    "popup-editing": {},
-    "column-resizing": {},
-    "column-reordering": {},
-    "column-menu": {},
-    "frozen-columns": {},
-    "aggregates": {},
-    "export-to-excel": {},
-    "export-to-pdf": {},
-    "events": {},
-    "api": {}
+    "editing": {
+      "gist": "https://gist.run/?id=824dd49136db653db33d7ff723dca75a"
+    },
+    "popup-editing": {
+      "gist": "https://gist.run/?id=eaf4f8dc219e25f9ebe81dd5a7a852ed"
+    },
+    "column-resizing": {
+      "gist": "https://gist.run/?id=91288526529e2ccef9240a25865f6e52"
+    },
+    "column-reordering": {
+      "gist": "https://gist.run/?id=23cdb4761629d705866a462fd41e76bb"
+    },
+    "column-menu": {
+      "gist": "https://gist.run/?id=1c6b82f44af1c64bedaf5156c9304b5c"
+    },
+    "frozen-columns": {
+      "gist": "https://gist.run/?id=11a5c4954c04661c637c45e7ed9be132"
+    },
+    "aggregates": {
+      "gist": "https://gist.run/?id=188d0e981a07a374abb85af1f65a247a"
+    },
+    "export-to-excel": {
+      "gist": "https://gist.run/?id=0c11b253bf0ab4f922a5c5367e59f9a0"
+    },
+    "export-to-pdf": {
+      "gist": "https://gist.run/?id=d6cb2c9388c31e57a8e7f2a5ab8ecb91"
+    },
+    "events": {
+      "gist": "https://gist.run/?id=c419780b0c04d5d2256a0a384e601422"
+    },
+    "api": {
+      "gist": "https://gist.run/?id=8a288dca24e45352c403205a821927e3"
+    }
   }
 }

@@ -7,23 +7,32 @@
                 "",
                 "basic-usage"
             ],
+            "gist": "https://gist.run/?id=7c6ea3d34b2245dd89112e0f9da80375"
         },
-        "range-selection": {},
+        "range-selection": {
+            "gist": "https://gist.run/?id=cbefccaa09d274f190f2ee98e5f27dc7"
+        },
         "customizing-templates": {
+            "gist": "https://gist.run/?id=6d32addbfc57aadf1b5ab60d3dec41a1",
             "files": [
                 "html",
                 "js",
                 "css"
             ]
         },
-        "events": {},
+        "events": {
+            "gist": "https://gist.run/?id=83437c2a8caa10a6837d4c1dc3ccd05a"
+        },
         "api": {
+            "gist": "https://gist.run/?id=fd9398e4a078a2186bdee40dc847fd8d",
             "files": [
                 "html",
                 "js",
                 "css"
             ]
         },
-        "disable-dates": {}
+        "disable-dates": {
+            "gist": "https://gist.run/?id=b4d15c6e029d9132199c58ab2c634360"
+        }
     }
 }

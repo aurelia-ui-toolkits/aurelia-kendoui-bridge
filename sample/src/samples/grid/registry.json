@@ -4,24 +4,49 @@
   "samples": {
     "basic-use": {
       "default": true,
+      "gist": "https://gist.run/?id=7267b221b5ddd066427ec238bcbc943d",
       "files": ["html", "js", "css"]
     },
-    "batch-editing": {},
+    "batch-editing": {
+      "gist": "https://gist.run/?id=31d381796e60831dfabb8844e3527242"
+    },
     "binding-to-local-data": {
+      "gist": "https://gist.run/?id=fc0cd40ea79f0cd2af5399342e08085d",
       "files": ["html", "js", "json"]
     },
-    "binding-to-remote-data": {},
-    "binding-to-signalr": {},
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=1ddfa633b6a3fbed56c549ec70d2ead6"
+    },
+    "binding-to-signalr": {
+      "gist": "https://gist.run/?id=33654b6d7791f1e3face835f1b122d16"
+    },
     "editing-custom-editor": {
+      "gist": "https://gist.run/?id=f6df1bd1ba18faea5aa13593fe80e2e4",
       "files": ["html", "js", "json"]
     },
-    "frozen-columns": {},
-    "initialization-from-table": {},
-    "inline-editing": {},
-    "popup-editing": {},
-    "working-offline": {},
-    "detail-template": {},
-    "toolbar-template": {},
-    "advanced": {}
+    "frozen-columns": {
+      "gist": "https://gist.run/?id=18d1d711dcdc12b9b0aef2bae59ab2c3"
+    },
+    "initialization-from-table": {
+      "gist": "https://gist.run/?id=2c3ef931e2005f25c48531c00aecc60e"
+    },
+    "inline-editing": {
+      "gist": "https://gist.run/?id=5bfc055cad2bf731a4cefd3a9d8dd64f"
+    },
+    "popup-editing": {
+      "gist": "https://gist.run/?id=4319d3b673d50512d9745d04cf12ea8d"
+    },
+    "working-offline": {
+      "gist": "https://gist.run/?id=6d01c311742c42ac527515ccb7b0789e"
+    },
+    "detail-template": {
+      "gist": "https://gist.run/?id=d99a1cf42b917b2c11735fc8ba9ea2a6"
+    },
+    "toolbar-template": {
+      "gist": "https://gist.run/?id=653f67f40c7fd4bdcd89a5e324204910"
+    },
+    "advanced": {
+      "gist": "https://gist.run/?id=8acafaaca1c4e9c71a0927ea0dbc8fce"
+    }
   }
 }

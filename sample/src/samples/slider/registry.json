@@ -4,12 +4,15 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=09803c150a2c9b6cce9ef48aa7b0edd7",
       "files": ["html", "js", "css"]
     },
     "events": {
+      "gist": "https://gist.run/?id=e303d2530bbf99063bc27dfb80ba1714",
       "files": ["html", "js", "css"]
     },
     "api": {
+      "gist": "https://gist.run/?id=a3645bc701d1672372ffe3f9912a2e0a",
       "files": ["html", "js", "css"]
     }
   }

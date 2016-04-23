@@ -4,25 +4,32 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=c488531cb470b1b285b89f96bd13a68e",
       "files": ["html", "js", "css"]
     },
     "disable-items": {
       "title": "Filter / Disable items",
+      "gist": "https://gist.run/?id=55074152e10d8fbcd92bb882ce51dada",
       "files": ["html", "js", "css"]
     },
     "handlers": {
+      "gist": "https://gist.run/?id=03d459858bd34b95b532f5baa6995840",
       "files": ["html", "js", "css"]
     },
     "axis-constraints": {
+      "gist": "https://gist.run/?id=1794d942998359efc745b64f4d0a8ba7",
       "files": ["html", "js", "css"]
     },
     "linked-lists": {
+      "gist": "https://gist.run/?id=05ee7390bdfa0c5941bc9173f326ffd6",
       "files": ["html", "js", "css"]
     },
     "events": {
+      "gist": "https://gist.run/?id=a28467c83d6f0e42cb680461b22d2998",
       "files": ["html", "js", "css"]
     },
     "sortable-panels": {
+      "gist": "https://gist.run/?id=b2193b1518b0ebaa2b1867f563827dda",
       "files": ["html", "js", "css"]
     }
   }

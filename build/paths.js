@@ -14,6 +14,8 @@ module.exports = {
   releaseOutput: 'dist/',
   sample: 'sample',
   sampleSrc: './sample/src/**/*.js',
+
+
   doc:'./doc',
   unit: 'test/unit/**/*.js',
   e2eSpecsSrc: 'test/e2e/src/*.js',

@@ -6,11 +6,21 @@
             "route": [
                 "",
                 "basic-usage"
+            ],
+            "gist": "https://gist.run/?id=a599d311b76841b50ffc76e3bb415299"
+        },
+        "range-selection": {
+            "gist": "https://gist.run/?id=b8f32f43f4dfb068a13a35f6dddd18aa",
+            "files": [
+                "html",
+                "js",
             ]
         },
-        "range-selection": {},
-        "events": {},
+        "events": {
+            "gist": "https://gist.run/?id=73dfc34b78707d2c01804821826f66b5"
+        },
         "api": {
+            "gist": "https://gist.run/?id=5f6d38f2cc284d0004be96ba3b765af8",
             "files": [
                 "html",
                 "js",

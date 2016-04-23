@@ -3,17 +3,33 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/dropdownlist",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=1fdc29ef6e09b4c6e1d22c2f725909b1"
     },
     "api": {
       "title": "API",
+      "gist": "https://gist.run/?id=ba1d5c88b1c08537f62f1f4d05aac6c3"
     },
-    "binding-to-remote-data": {},
-    "cascading-dropdownlist": {},
-    "customizing-templates": {},
-    "grouping": {},
-    "server-filtering": {},
-    "virtualization": {},
-    "events": {}
+    "binding-to-remote-data": {
+      "gist": "https://gist.run/?id=d16a5eaa8711f7dc3156f4c6ade6ffcb"
+    },
+    "cascading-dropdownlist": {
+      "gist": "https://gist.run/?id=b80f560cab1293c474857e5c2ca694dc"
+    },
+    "customizing-templates": {
+      "gist": "https://gist.run/?id=4ce374162dbf3b57228e63f781ec6c61"
+    },
+    "grouping": {
+      "gist": "https://gist.run/?id=b528d223d96a1c63afb0100d9c3831b2"
+    },
+    "server-filtering": {
+      "gist": "https://gist.run/?id=bb07db0b850901a9b9a7e3e56d203632"
+    },
+    "virtualization": {
+      "gist": "https://gist.run/?id=3cef1d31000952022cac6bf76183dcea"
+    },
+    "events": {
+      "gist": "https://gist.run/?id=6cf2426d5f0224b3a02dfedb21acc816"
+    }
   }
 }

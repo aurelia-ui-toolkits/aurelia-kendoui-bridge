@@ -8,7 +8,7 @@ export class App {
       { name: 'docs',             route: 'help/docs/:category/:file',  moduleId: 'help/help',                   title: 'Help' },
       { name: 'home',             route: '',                           redirect: 'about/about' },
       { name: 'installation',     route: 'installation',               moduleId: 'installation/index',          title: 'Installation' },
-      { name: 'project-status',   route: 'project-status',             moduleId: 'project-status/controls',     title: 'Project status'},
+      { name: 'catalog-index',    route: 'catalog-index',              moduleId: 'catalog-index/controls',      title: 'Catalog-index'},
       { name: 'samples',          route: 'samples',                    moduleId: 'samples/index',               title: 'Samples' }
     ]);
 

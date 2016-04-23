@@ -4,9 +4,11 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=473c7b748278d9a95e1a2f721fd5f8ee",
       "files": ["html", "js", "css"]
     },
     "value-binding": {
+      "gist": "https://gist.run/?id=feef053f09dd15d1ec2a21de772a2dbc",
       "files": ["html", "js", "css"]
     }
   }

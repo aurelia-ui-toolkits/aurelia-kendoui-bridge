@@ -4,15 +4,19 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=013d092fa8a415ac552737140ef26fc0",
       "files": ["html", "js", "css"]
     },
     "scale-options": {
+      "gist": "https://gist.run/?id=543099a5b688f37be47d7b818be942fa",
       "files": ["html", "js", "css"]
     },
     "multiple-pointers": {
+      "gist": "https://gist.run/?id=1b4feee996872fec8d89c74ee2032e34",
       "files": ["html", "js", "css"]
     },
     "export": {
+      "gist": "https://gist.run/?id=cfaab2b6ba4d828055959b53b47b2aa0",
       "files": ["html", "js", "css"]
     }
   }

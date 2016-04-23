@@ -3,17 +3,30 @@
   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/map",
   "samples": {
     "basic-use": {
-      "route": ["", "basic-use"]
+      "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=27ab859f98eda4a50b69e62a8f7f476a"
     },
-    "api": {},
-    "binding-markers-to-remote-data": {},
-    "bing-tile-layer": {},
+    "api": {
+      "gist": "https://gist.run/?id=7c3e86216571cd9072007a20e27c8955"
+    },
+    "binding-markers-to-remote-data": {
+      "gist": "https://gist.run/?id=c21ca7d41dd3863f11fab8015beb81f4"
+    },
+    "bing-tile-layer": {
+      "gist": "https://gist.run/?id=69612daf2b5fabb1c402d9ff45553394"
+    },
     "bubble-layer": {
-    "files": ["html", "js", "md"],
+      "gist": "https://gist.run/?id=51da5a17a99bd869725a908d2f4134d2",
+      "files": ["html", "js", "md"]
     },
-    "binding-to-geojson": {},
-    "binding-markers-to-remote-data": {},
-    "export": {},
-    "events": {}
+    "binding-to-geojson": {
+      "gist": "https://gist.run/?id=9c4a057fcb9f38bfa3f4704094adf709"
+    },
+    "export": {
+      "gist": "https://gist.run/?id=4ae54547b837816c0d4180c5551a9bea"
+    },
+    "events": {
+      "gist": "https://gist.run/?id=2f08f2b4f6cf7e1873c821daf06f0443"
+    }
   }
 }

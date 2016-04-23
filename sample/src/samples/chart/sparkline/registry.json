@@ -4,9 +4,14 @@
   "samples": {
     "basic-use": {
       "route": ["", "basic-use"],
+      "gist": "https://gist.run/?id=4dec6ff25c50be4f3d39d9893fcea013",
       "files": ["html", "js", "css"]
     },
-    "aurelia": {},
-    "remote-data": {}
+    "aurelia": {
+      "gist": "https://gist.run/?id=4044017f4b21fb368ac7ee34450514ca"
+    },
+    "remote-data": {
+      "gist": "https://gist.run/?id=c977684d5fb3b6a166f8b590d70524a7"
+    }
   }
 }
