@@ -5,7 +5,7 @@
     "basic-use": {
       "title": "basic use",
       "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=fa0f189d809a9577661e861b27c5a15e",
+      "gist": "https://gist.run/?id=fa0f189d809a9577661e861b27c5a15e"
     },
     "api": {
       "title": "API",
@@ -36,7 +36,7 @@
     "value-binding": {
       "title": "value binding",
       "gist": "https://gist.run/?id=6e0824daeeaa3098c4829ec07119eb21"
-      },
+    },
     "highlighting": {
       "title": "highlighting",
       "gist": "https://gist.run/?id=3802d4c3bccb13a7d9f8dda5060192e3"
