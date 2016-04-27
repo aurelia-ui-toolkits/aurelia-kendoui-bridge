@@ -23,7 +23,7 @@ describe('TemplateGatherer', () => {
     sut = templatingEngine.createViewModelForUnitTest(TemplateGatherer);
   });
 
-  it('throws error when template prop is not allowed', () => {
+  it('throws error when template prop is not supported', () => {
     let templateProps = ['template'];
     let templates = [{
       for: 'unknownTemplate'
@@ -34,6 +34,19 @@ describe('TemplateGatherer', () => {
     controlProperties.getTemplateProperties.and.returnValue(templateProps);
 
     expect(() => sut.useTemplates(target, controlName, templates)).toThrow(new Error('Invalid template property name: "unknownTemplate", valid values are: template'));
+  });
+
+  it('throws errors when templating support is not enabled', () => {
+    let templateProps = ['template'];
+    let templates = [{
+      for: undefined
+    }];
+    let target = {};
+    let controlName = 'kendoScheduler';
+
+    controlProperties.getTemplateProperties.and.returnValue(templateProps);
+
+    expect(() => sut.useTemplates(target, controlName, templates)).toThrow(new Error('Templating support is not enabled. Call .kendoTemplateSupport() in main.js or import common/template via require'));
   });
 
   it('ignores undefined/null templates', () => {
