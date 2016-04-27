@@ -157,10 +157,15 @@ export class WidgetBase {
 
     if (this.withValueBinding) {
       widget.first('change', (args) => this._handleChange(args.sender));
+      widget.first('dataBound', (args) => this._handleChange(args.sender));
 
       // sync kValue after initialization of the widget
       // some widgets (such as dropdownlist) select first item
-      this._handleChange(widget);
+      // don't do this when the value of the widget is an empty string
+      // as it indicates that the widget has not been databound yet
+      if (this.getValue(widget) !== '') {
+        this._handleChange(widget);
+      }
     }
 
     if (options.afterInitialize) {
@@ -226,7 +231,11 @@ export class WidgetBase {
 
   _handleChange(widget) {
     let propName = this.util.getBindablePropertyName(this.valueBindingProperty);
-    this.viewModel[propName] = widget[this.valueFunction]();
+    this.viewModel[propName] = this.getValue(widget);
+  }
+
+  getValue(widget) {
+    return widget[this.valueFunction]();
   }
 
   handlePropertyChanged(widget, property, newValue, oldValue) {

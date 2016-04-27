@@ -198,9 +198,8 @@ describe('WidgetBase', () => {
   });
 
 
-  it('handles value binding and sets initial value', () => {
+  it('registers to change and dataBound events for value binding', () => {
     let widgetFake = new WidgetFake();
-    widgetFake.value.and.returnValue('initialValue');
     spyOn(sut, '_createWidget').and.returnValue(widgetFake);
 
     sut.control('kendoDropDownList')
@@ -214,17 +213,46 @@ describe('WidgetBase', () => {
 
     // check if initial kValue is set
     // verify that the change event is registered to
-    expect(widgetFake.value).toHaveBeenCalled();
     let args = widgetFake.first.calls.argsFor(0);
     expect(args[0]).toBe('change');
     expect(widgetFake.first).toHaveBeenCalled();
-    expect(sut.viewModel.kValue).toBe('initialValue');
 
+    // for remote databinding listen to the dataBound event
+    expect(widgetFake.first.calls.argsFor(1)[0]).toBe('dataBound');
+  });
 
-    // raise 'change' event, check if kValue changed
-    widgetFake.value = jasmine.createSpy().and.returnValue('changedValue');
-    args[1]({ sender: widget });
-    expect(sut.viewModel.kValue).toBe('changedValue');
+  it('sets initial value in viewmodel when value binding is enabled', () => {
+    let widgetFake = new WidgetFake();
+    let _handleChangeSpy = spyOn(sut, '_handleChange');
+    spyOn(sut, 'getValue').and.returnValue('foo');
+    spyOn(sut, '_createWidget').and.returnValue(widgetFake);
+
+    sut.control('kendoDropDownList')
+    .linkViewModel({})
+    .useValueBinding();
+
+    let widget = sut.createWidget({
+      element: DOM.createElement('div'),
+      parentCtx: {}
+    });
+
+    expect(_handleChangeSpy).toHaveBeenCalled();
+
+    // ignore empty strings because it messes up the dropdownlist initial value
+    // https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/470
+    sut.getValue.and.returnValue('');
+    _handleChangeSpy.calls.reset();
+
+    sut.control('kendoDropDownList')
+    .linkViewModel({})
+    .useValueBinding();
+
+    widget = sut.createWidget({
+      element: DOM.createElement('div'),
+      parentCtx: {}
+    });
+
+    expect(_handleChangeSpy).not.toHaveBeenCalled();
   });
 
 
