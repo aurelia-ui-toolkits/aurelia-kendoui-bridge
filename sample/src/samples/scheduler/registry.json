@@ -31,6 +31,7 @@
     },
     "event-move-and-resize": {
       "gist": "https://gist.run/?id=3ec4451fbd0cd5feecdce23816feb2ef"
-    }
+    },
+    "binding-to-signalr": {}
   }
 }
