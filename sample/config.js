@@ -51,7 +51,7 @@ System.config({
     "font-awesome": "npm:font-awesome@4.6.1",
     "gka/chroma.js": "github:gka/chroma.js@1.1.1",
     "google/code-prettify": "github:google/code-prettify@master",
-    "jquery": "github:components/jquery@2.2.1",
+    "jquery": "npm:jquery@2.2.3",
     "jquery.min": "github:components/jquery@2.2.1",
     "json": "github:systemjs/plugin-json@0.1.1",
     "prism": "github:PrismJS/prism@1.3.0",
