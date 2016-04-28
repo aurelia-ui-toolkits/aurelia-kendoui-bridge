@@ -566,6 +566,7 @@ declare module 'aurelia-kendoui-bridge' {
       * calls the fireKendoEvent function to raise a DOM event
       */
     getEventOptions(element: any): any;
+    getValue(widget: any): any;
     handlePropertyChanged(widget: any, property: any, newValue: any, oldValue: any): any;
     useTemplates(target: any, controlName: any, templates: any): any;
     

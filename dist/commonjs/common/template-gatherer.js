@@ -35,7 +35,11 @@ var TemplateGatherer = (function () {
           };
         }
       } else {
-        throw new Error('Invalid template property name: "' + c['for'] + '", valid values are: ' + templateProps.join(', '));
+        if (!c['for']) {
+          throw new Error('Templating support is not enabled. Call .kendoTemplateSupport() in main.js or import common/template via require');
+        } else {
+          throw new Error('Invalid template property name: "' + c['for'] + '", valid values are: ' + templateProps.join(', '));
+        }
       }
     });
   };

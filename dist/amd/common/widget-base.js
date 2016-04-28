@@ -99,8 +99,13 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
         widget.first('change', function (args) {
           return _this._handleChange(args.sender);
         });
+        widget.first('dataBound', function (args) {
+          return _this._handleChange(args.sender);
+        });
 
-        this._handleChange(widget);
+        if (this.getValue(widget) !== '') {
+          this._handleChange(widget);
+        }
       }
 
       if (options.afterInitialize) {
@@ -153,7 +158,11 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
 
     WidgetBase.prototype._handleChange = function _handleChange(widget) {
       var propName = this.util.getBindablePropertyName(this.valueBindingProperty);
-      this.viewModel[propName] = widget[this.valueFunction]();
+      this.viewModel[propName] = this.getValue(widget);
+    };
+
+    WidgetBase.prototype.getValue = function getValue(widget) {
+      return widget[this.valueFunction]();
     };
 
     WidgetBase.prototype.handlePropertyChanged = function handlePropertyChanged(widget, property, newValue, oldValue) {

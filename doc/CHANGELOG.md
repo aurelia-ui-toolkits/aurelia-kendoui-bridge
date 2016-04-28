@@ -1,3 +1,15 @@
+<a name="0.8.1"></a>
+## [0.8.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.8.0...v0.8.1) (2016-04-28)
+
+
+### Bug Fixes
+
+* **dependencies:** remove jquery version lock ([6e1203a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/6e1203a))
+* **template-gatherer:** throw error when templating support is not enabled ([6412fa2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/6412fa2))
+* **value-binding:** don't update view-model with initial value in case of empty string value ([793671b](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/793671b))
+
+
+
 <a name="0.8.0"></a>
 # [0.8.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.7.1...v0.8.0) (2016-04-23)
 

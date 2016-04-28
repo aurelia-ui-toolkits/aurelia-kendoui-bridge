@@ -119,8 +119,13 @@ System.register(['./util', './options-builder', './template-compiler', './templa
             widget.first('change', function (args) {
               return _this._handleChange(args.sender);
             });
+            widget.first('dataBound', function (args) {
+              return _this._handleChange(args.sender);
+            });
 
-            this._handleChange(widget);
+            if (this.getValue(widget) !== '') {
+              this._handleChange(widget);
+            }
           }
 
           if (options.afterInitialize) {
@@ -173,7 +178,11 @@ System.register(['./util', './options-builder', './template-compiler', './templa
 
         WidgetBase.prototype._handleChange = function _handleChange(widget) {
           var propName = this.util.getBindablePropertyName(this.valueBindingProperty);
-          this.viewModel[propName] = widget[this.valueFunction]();
+          this.viewModel[propName] = this.getValue(widget);
+        };
+
+        WidgetBase.prototype.getValue = function getValue(widget) {
+          return widget[this.valueFunction]();
         };
 
         WidgetBase.prototype.handlePropertyChanged = function handlePropertyChanged(widget, property, newValue, oldValue) {
