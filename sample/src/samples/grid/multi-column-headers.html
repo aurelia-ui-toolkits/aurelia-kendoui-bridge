@@ -1,0 +1,6 @@
+<template>
+  <ak-grid k-data-source.bind="datasource" k-height.bind="550" k-groupable.bind="true" k-sortable.bind="true" k-resizable.bind="true" k-reorderable.bind="true" k-column-menu.bind="true">
+    <ak-col k-field="CompanyName" k-title="Company Name" k-width.bind="420"></ak-col>
+    <ak-col k-title="Contact Info" k-columns.bind="groupedColumns"></ak-col>
+  </ak-grid>
+</template>
