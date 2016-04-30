@@ -221,45 +221,51 @@ describe('WidgetBase', () => {
     expect(widgetFake.first.calls.argsFor(1)[0]).toBe('dataBound');
   });
 
-  it('sets initial value in viewmodel when value binding is enabled', () => {
+  it('uses Kendo API functions to set wrapper viewmodel properties', () => {
     let widgetFake = new WidgetFake();
-    let _handleChangeSpy = spyOn(sut, '_handleChange');
-    spyOn(sut, 'getValue').and.returnValue('foo');
+    let vm = {
+      kValue: 'foo'
+    };
     spyOn(sut, '_createWidget').and.returnValue(widgetFake);
 
     sut.control('kendoDropDownList')
-    .linkViewModel({})
-    .useValueBinding();
+    .linkViewModel(vm)
+    .bindToKendo('kValue', 'value')
 
-    let widget = sut.createWidget({
+    sut.createWidget({
       element: DOM.createElement('div'),
       parentCtx: {}
     });
 
-    expect(_handleChangeSpy).toHaveBeenCalled();
+    expect(widgetFake.value).toHaveBeenCalledWith('foo');
 
     // ignore empty strings because it messes up the dropdownlist initial value
     // https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/470
-    sut.getValue.and.returnValue('');
-    _handleChangeSpy.calls.reset();
+
+    vm = {
+      kValue: ''
+    };
+
+    widgetFake.value.calls.reset();
 
     sut.control('kendoDropDownList')
-    .linkViewModel({})
-    .useValueBinding();
+    .linkViewModel(vm);
 
-    widget = sut.createWidget({
+    sut.createWidget({
       element: DOM.createElement('div'),
       parentCtx: {}
     });
 
-    expect(_handleChangeSpy).not.toHaveBeenCalled();
+    expect(widgetFake.value).not.toHaveBeenCalled();
   });
 
 
-  it('uses valueBindingProperty', () => {
+  it('supports property binding to Kendo API functions', () => {
     sut.control('kendoMobileSwitch')
     .linkViewModel({})
-    .useValueBinding('checked', 'check');
+    .bindToKendo('kValue', 'value')
+    .bindToKendo('kChecked', 'check')
+    .bindToKendo('kReadOnly', 'readonly');
 
     let widgetFake = new WidgetFake();
     spyOn(sut, '_createWidget').and.returnValue(widgetFake);
@@ -271,20 +277,22 @@ describe('WidgetBase', () => {
 
     sut.handlePropertyChanged(widget, 'kChecked', 2, 1);
     sut.handlePropertyChanged(widget, 'kValue', 4, 3);
+    sut.handlePropertyChanged(widget, 'kReadOnly', true, false);
 
     expect(widget.check).toHaveBeenCalledWith(2);
-    expect(widget.check).not.toHaveBeenCalledWith(4);
+    expect(widget.value).toHaveBeenCalledWith(4);
+    expect(widget.readonly).toHaveBeenCalledWith(true);
   });
 
 
-  it('_handleChange takes valueBindingProperty into account', () => {
+  it('_handleValueChange takes valueBindingProperty and valueFunction into account', () => {
     let widget = new WidgetFake();
     widget.check.and.returnValue('foo');
 
     sut.linkViewModel({})
-    .useValueBinding('checked', 'check');
+    .useValueBinding('kChecked', 'check');
 
-    sut._handleChange(widget);
+    sut._handleValueChange(widget);
 
     expect(widget.check).toHaveBeenCalled();
     expect(sut.viewModel.kChecked).toBe('foo');
@@ -295,5 +303,6 @@ export class WidgetFake {
   first = jasmine.createSpy();
   value = jasmine.createSpy();
   check = jasmine.createSpy();
+  readonly = jasmine.createSpy();
   destroy = jasmine.createSpy();
 }

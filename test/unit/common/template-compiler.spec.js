@@ -145,25 +145,6 @@ describe('TemplateCompiler', () => {
     expect(spy.calls.argsFor(1)[2].dataItem).toBe(30);
   });
 
-  it('$$item should be put on the context', () => {
-    let elements = [];
-    let data = [];
-    let $parent = {};
-    let viewResources = {};
-    let spy = spyOn(sut, 'enhanceView');
-
-    elements.push(DOM.createElement('div'));
-    data.push({dataItem: 15});
-
-    elements.push(DOM.createElement('div'));
-    data.push({aggregate: 30});
-
-    sut.compile($parent, elements, data, viewResources);
-
-    expect(spy.calls.argsFor(0)[2].$$item).toBe(15);
-    expect(spy.calls.argsFor(1)[2].$$item).toBe(30);
-  });
-
   it('supports jQuery selector', () => {
     let spy = spyOn(sut, 'enhanceView');
     let div1 = $('div');
@@ -198,13 +179,11 @@ describe('TemplateCompiler', () => {
       attached: () => {}
     };
     let enhanceSpy = spyOn(sut.templatingEngine, 'enhance').and.returnValue(fakeView);
-    let bindSpy = spyOn(fakeView, 'bind');
     let attachedSpy = spyOn(fakeView, 'attached');
 
     sut.enhanceView($parent, element, ctx);
 
-    expect(enhanceSpy).toHaveBeenCalledWith(element);
-    expect(bindSpy).toHaveBeenCalledWith(ctx, $parent);
+    expect(enhanceSpy).toHaveBeenCalled();
     expect(attachedSpy).toHaveBeenCalled();
   });
 
@@ -276,6 +255,7 @@ describe('TemplateCompiler', () => {
   it('enhances view with viewResources if available', () => {
     let $parent = {};
     let viewResources = {};
+    let ctx = {};
     let element = DOM.createElement('div');
     let enhanceSpy = jasmine.createSpy().and.returnValue({
       bind: () => {},
@@ -285,16 +265,17 @@ describe('TemplateCompiler', () => {
       enhance: enhanceSpy
     };
 
-    sut.enhanceView($parent, element, {}, viewResources);
+    sut.enhanceView($parent, element, ctx, viewResources);
 
-    expect(enhanceSpy).toHaveBeenCalledWith({
-      element: element,
-      resources: viewResources
-    });
+    expect(enhanceSpy).toHaveBeenCalled();
+    expect(enhanceSpy.calls.argsFor(0)[0].element).toBe(element);
+    expect(enhanceSpy.calls.argsFor(0)[0].resources).toBe(viewResources);
+    expect(enhanceSpy.calls.argsFor(0)[0].bindingContext).toBe(ctx);
   });
 
   it('enhances view without viewResources if not available', () => {
     let $parent = {};
+    let ctx = {};
     let element = DOM.createElement('div');
     let enhanceSpy = jasmine.createSpy().and.returnValue({
       bind: () => {},
@@ -304,9 +285,10 @@ describe('TemplateCompiler', () => {
       enhance: enhanceSpy
     };
 
-    sut.enhanceView($parent, element, {});
+    sut.enhanceView($parent, element, ctx);
 
-    expect(enhanceSpy).toHaveBeenCalledWith(element);
+    expect(enhanceSpy).toHaveBeenCalled();
+    expect(enhanceSpy.calls.argsFor(0)[0].element).toBe(element);
   });
 
   it('enhances only fragments without au-targets', () => {
@@ -330,6 +312,5 @@ describe('TemplateCompiler', () => {
     sut.enhanceView($parent, element, {});
 
     expect(sut.templatingEngine.enhance).not.toHaveBeenCalled();
-    expect(view.bind).toHaveBeenCalled();
   });
 });

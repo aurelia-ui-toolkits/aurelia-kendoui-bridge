@@ -21,10 +21,6 @@ describe('Button', () => {
     widget = templatingEngine.createViewModelForUnitTest(Widget, null, {});
   });
 
-  it('clears options in constructor', () => {
-    expect(widget.kOptions).toEqual({});
-  });
-
   it('sets element in constructor', () => {
     expect(widget.element).toBe(element);
   });
