@@ -146,6 +146,11 @@ export class WidgetBase {
       throw new Error('element is not set');
     }
 
+    // destroy old widgets
+    if (this.viewModel && this.viewModel.kWidget) {
+      this.destroy(this.viewModel.kWidget);
+    }
+
     // generate all options, including event handlers - use the rootElement if specified, otherwise fall back to the element
     // this allows a child element in a custom elements tempate to be the container for the kendo control
     // but allows the plugin to correctly discover attributes on the root element to match against events
