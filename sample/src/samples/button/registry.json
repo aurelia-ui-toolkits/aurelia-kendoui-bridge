@@ -17,6 +17,7 @@
     },
     "events": {
       "gist": "https://gist.run/?id=631530f825587b7d8b6c05979d08e099"
-    }
+    },
+    "binding": {}
   }
 }

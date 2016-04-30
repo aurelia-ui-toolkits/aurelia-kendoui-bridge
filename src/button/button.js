@@ -35,6 +35,10 @@ export class Button {
     });
   }
 
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
   detached() {
     this.widgetBase.destroy(this.kWidget);
   }
