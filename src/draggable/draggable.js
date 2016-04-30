@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customAttribute, bindable} from 'aurelia-templating';
+import {customAttribute} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -9,8 +9,6 @@ import 'kendo.draganddrop.min';
 @generateBindables('kendoDraggable')
 @inject(Element, WidgetBase)
 export class Draggabke {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

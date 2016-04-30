@@ -17,6 +17,6 @@ export class Advanced {
   }
 
   log(obj) {
-    console.log(obj);
+    console.log(obj); // eslint-disable-line no-console
   }
 }

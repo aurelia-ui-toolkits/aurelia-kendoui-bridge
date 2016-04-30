@@ -10,7 +10,6 @@ import 'kendo.colorpicker.min';
 @inject(Element, WidgetBase)
 export class ColorPicker {
 
-  @bindable kOptions = {};
   @bindable kEnabled;
 
   constructor(element, widgetBase) {

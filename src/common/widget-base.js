@@ -218,7 +218,7 @@ export class WidgetBase {
     // - options on the wrapper
     // - options compiled from all the bindable properties
     // - event handler options
-    return this.util.pruneOptions(Object.assign({}, this.viewModel.kOptions, options, eventOptions));
+    return this.util.pruneOptions(Object.assign({}, this.viewModel.kOptions || {}, options, eventOptions));
   }
 
 

@@ -10,7 +10,6 @@ import 'kendo.datepicker.min';
 @inject(Element, WidgetBase)
 export class DatePicker {
 
-  @bindable kOptions = {};
   @bindable kEnabled;
   @bindable kReadOnly;
 

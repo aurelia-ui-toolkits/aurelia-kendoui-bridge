@@ -10,7 +10,6 @@ import 'kendo.slider.min';
 @inject(Element, WidgetBase)
 export class RangeSlider {
 
-  @bindable kOptions = {};
   @bindable kEnabled;
 
   constructor(element, widgetBase) {

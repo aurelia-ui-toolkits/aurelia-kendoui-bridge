@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, bindable, children} from 'aurelia-templating';
+import {customElement, children} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -11,7 +11,6 @@ import 'kendo.toolbar.min';
 @inject(Element, WidgetBase, OptionsBuilder)
 export class Toolbar {
 
-  @bindable kOptions = {};
   @children(`${constants.elementPrefix}toolbar-item`) toolbarItems;
 
   constructor(element, widgetBase, optionsBuilder) {

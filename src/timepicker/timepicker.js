@@ -13,7 +13,6 @@ export class TimePicker {
   @bindable kDisableDates;
   @bindable kEnabled;
   @bindable kReadOnly;
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

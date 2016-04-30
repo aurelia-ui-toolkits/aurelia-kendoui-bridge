@@ -10,7 +10,6 @@ import 'kendo.numerictextbox.min';
 @inject(Element, WidgetBase)
 export class NumericTextBox {
 
-  @bindable kOptions = {};
   @bindable kEnabled;
   @bindable kReadOnly;
 

@@ -11,7 +11,6 @@ import 'kendo.virtuallist.min';
 @inject(Element, WidgetBase, ViewResources)
 export class DropDownList {
 
-  @bindable kOptions = {};
   @bindable kNoValueBinding = false;
   @bindable kEnabled;
   @bindable kReadOnly;
