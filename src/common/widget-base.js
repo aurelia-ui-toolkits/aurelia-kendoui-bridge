@@ -67,13 +67,13 @@ export class WidgetBase {
   }
 
   control(controlName) {
-    if (!controlName || !jQuery.fn[controlName]) {
+    if (!controlName || !kendo.jQuery.fn[controlName]) {
       throw new Error(`The name of control ${controlName} is invalid or not set`);
     }
 
     this.controlName = controlName;
 
-    let ctor = jQuery.fn[this.controlName];
+    let ctor = kendo.jQuery.fn[this.controlName];
     this.kendoOptions = ctor.widget.prototype.options;
     this.kendoEvents = ctor.widget.prototype.events;
 
@@ -203,7 +203,7 @@ export class WidgetBase {
 
 
   _createWidget(element, options, controlName) {
-    return jQuery(element)[controlName](options).data(controlName);
+    return kendo.jQuery(element)[controlName](options).data(controlName);
   }
 
 
