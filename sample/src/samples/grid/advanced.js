@@ -20,9 +20,3 @@ export class Advanced {
     console.log(obj);
   }
 }
-
-export class PrintObjValueConverter {
- toView(obj) {
-   return JSON.stringify(obj);
- }
-}
