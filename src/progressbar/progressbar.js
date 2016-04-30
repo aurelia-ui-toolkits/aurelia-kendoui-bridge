@@ -11,11 +11,13 @@ import 'kendo.progressbar.min';
 export class ProgressBar {
 
   @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoProgressBar')
+                        .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
 

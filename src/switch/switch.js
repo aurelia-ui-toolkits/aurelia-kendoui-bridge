@@ -11,13 +11,15 @@ import 'kendo.mobile.switch.min';
 export class Switch {
 
   @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMobileSwitch')
                         .linkViewModel(this)
-                        .useValueBinding('checked');
+                        .bindToKendo('kEnabled', 'enable')
+                        .useValueBinding('kChecked', 'check');
   }
 
   bind(ctx) {

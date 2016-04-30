@@ -11,11 +11,13 @@ import 'kendo.mobile.buttongroup.min';
 export class ButtonGroup {
 
   @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMobileButtonGroup')
+                        .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
 

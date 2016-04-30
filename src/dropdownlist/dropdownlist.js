@@ -13,6 +13,8 @@ export class DropDownList {
 
   @bindable kOptions = {};
   @bindable kNoValueBinding = false;
+  @bindable kEnabled;
+  @bindable kReadOnly;
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -20,8 +22,9 @@ export class DropDownList {
     this.widgetBase = widgetBase
                         .control('kendoDropDownList')
                         .linkViewModel(this)
-                        .useValueBinding()
-                        .useViewResources(viewResources);
+                        .useViewResources(viewResources)
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -29,11 +32,11 @@ export class DropDownList {
   }
 
   attached() {
-    this.recreate();
-
-    if (this.kNoValueBinding) {
-      this.widgetBase.withValueBinding = false;
+    if (!this.kNoValueBinding) {
+      this.widgetBase.useValueBinding();
     }
+
+    this.recreate();
   }
 
   recreate() {

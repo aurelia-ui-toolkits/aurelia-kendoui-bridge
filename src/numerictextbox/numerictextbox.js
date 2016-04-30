@@ -11,13 +11,17 @@ import 'kendo.numerictextbox.min';
 export class NumericTextBox {
 
   @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoNumericTextBox')
                         .linkViewModel(this)
-                        .useValueBinding();
+                        .useValueBinding()
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {

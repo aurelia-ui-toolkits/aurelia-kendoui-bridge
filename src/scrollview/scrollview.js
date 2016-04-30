@@ -18,7 +18,8 @@ export class Scrollview {
     this.widgetBase = widgetBase
                         .control('kendoMobileScrollView')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useViewResources(viewResources)
+                        .useValueBinding();
   }
 
   bind(ctx) {

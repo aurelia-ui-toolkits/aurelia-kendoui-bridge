@@ -49,10 +49,13 @@ export class WidgetBase {
   */
   viewModel: any;
 
+
   /**
-  * The constructor of a Kendo control
+  * A list of bindings for properties such as kEnable/kReadOnly/kValue
+  * whenever one of these properties changes an API function will be called on the Kendo control
+  * for example, a change of an 'kEnable' property will result in a .enable(true/false) call
   */
-  ctor: any;
+  bindingsToKendo: Array = [];
 
   constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
     this.taskQueue = taskQueue;
@@ -103,10 +106,28 @@ export class WidgetBase {
   * @param valueBindingProperty the property name of the kendo control (value/checked)
   * @param valueFunction the function on the kendo control that gets the value of the above property
   */
-  useValueBinding(valueBindingProperty = 'value', valueFunction = 'value') {
+  useValueBinding(valueBindingProperty = 'kValue', valueFunction = 'value') {
     this.valueBindingProperty = valueBindingProperty;
     this.valueFunction = valueFunction;
     this.withValueBinding = true;
+
+    this.bindToKendo(valueBindingProperty, valueFunction);
+
+    return this;
+  }
+
+  /**
+  * add binding to Kendo
+  * whenever a bindable property in a wrapper changes, and the propertyname is in this list
+  * then it will call an API function on the Kendo control to update the value
+  * @param propertyName the bindable property name in the wrapper (kValue, kChecked, kEnabled)
+  * @param valueFunction the API function on the kendo control that sets the value of the above property
+  */
+  bindToKendo(propertyName, functionName) {
+    this.bindingsToKendo.push({
+      propertyName: propertyName,
+      functionName: functionName
+    });
 
     return this;
   }
@@ -156,17 +177,22 @@ export class WidgetBase {
     widget._$resources = this.viewResources;
 
     if (this.withValueBinding) {
-      widget.first('change', (args) => this._handleChange(args.sender));
-      widget.first('dataBound', (args) => this._handleChange(args.sender));
+      widget.first('change', (args) => this._handleValueChange(args.sender));
+      widget.first('dataBound', (args) => this._handleValueChange(args.sender));
+    }
 
-      // sync kValue after initialization of the widget
-      // some widgets (such as dropdownlist) select first item
+    // use Kendo API functions to update all initial values in the wrapper
+    // kValue -> .value()
+    // kEnabled -> .enable()
+    this.bindingsToKendo.forEach(binding => {
+      let value = this.viewModel[binding.propertyName];
+
       // don't do this when the value of the widget is an empty string
       // as it indicates that the widget has not been databound yet
-      if (this.getValue(widget) !== '') {
-        this._handleChange(widget);
+      if (typeof(value) !== 'undefined' && value !== null && value !== '') {
+        widget[binding.functionName](value);
       }
-    }
+    });
 
     if (options.afterInitialize) {
       options.afterInitialize();
@@ -229,9 +255,8 @@ export class WidgetBase {
   }
 
 
-  _handleChange(widget) {
-    let propName = this.util.getBindablePropertyName(this.valueBindingProperty);
-    this.viewModel[propName] = this.getValue(widget);
+  _handleValueChange(widget) {
+    this.viewModel[this.valueBindingProperty] = this.getValue(widget);
   }
 
   getValue(widget) {
@@ -239,8 +264,9 @@ export class WidgetBase {
   }
 
   handlePropertyChanged(widget, property, newValue, oldValue) {
-    if (property === this.util.getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
-      widget[this.valueFunction](newValue);
+    let binding = this.bindingsToKendo.find(i => i.propertyName === property);
+    if (binding) {
+      widget[binding.functionName](newValue);
     }
   }
 

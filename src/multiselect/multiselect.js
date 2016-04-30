@@ -12,6 +12,8 @@ import 'kendo.virtuallist.min';
 export class Multiselect {
 
   @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
   @bindable kNoValueBinding = false;
   @children(`${constants.elementPrefix}template`) templates;
 
@@ -20,8 +22,9 @@ export class Multiselect {
     this.widgetBase = widgetBase
                         .control('kendoMultiSelect')
                         .linkViewModel(this)
-                        .useValueBinding()
-                        .useViewResources(viewResources);
+                        .useViewResources(viewResources)
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -29,11 +32,11 @@ export class Multiselect {
   }
 
   attached() {
-    this.recreate();
-
-    if (this.kNoValueBinding) {
-      this.widgetBase.withValueBinding = false;
+    if (!this.kNoValueBinding) {
+      this.widgetBase.useValueBinding();
     }
+
+    this.recreate();
   }
 
   recreate() {

@@ -11,6 +11,8 @@ import 'kendo.timepicker.min';
 export class TimePicker {
 
   @bindable kDisableDates;
+  @bindable kEnabled;
+  @bindable kReadOnly;
   @bindable kOptions = {};
 
   constructor(element, widgetBase) {
@@ -18,7 +20,9 @@ export class TimePicker {
     this.widgetBase = widgetBase
                         .control('kendoTimePicker')
                         .linkViewModel(this)
-                        .useValueBinding();
+                        .useValueBinding()
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {

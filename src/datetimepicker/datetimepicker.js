@@ -11,13 +11,17 @@ import 'kendo.datetimepicker.min';
 export class DateTimePicker {
 
   @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoDateTimePicker')
                         .linkViewModel(this)
-                        .useValueBinding();
+                        .useValueBinding()
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {

@@ -11,11 +11,13 @@ import 'kendo.button.min';
 export class Button {
 
   @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoButton')
+                        .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
 

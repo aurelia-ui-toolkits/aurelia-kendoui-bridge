@@ -12,6 +12,8 @@ import 'kendo.virtuallist.min';
 export class ComboBox {
 
   @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -20,7 +22,9 @@ export class ComboBox {
                         .control('kendoComboBox')
                         .linkViewModel(this)
                         .useValueBinding()
-                        .useViewResources(viewResources);
+                        .useViewResources(viewResources)
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {

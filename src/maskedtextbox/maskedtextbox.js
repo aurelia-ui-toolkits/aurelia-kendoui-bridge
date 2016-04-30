@@ -11,6 +11,8 @@ import 'kendo.maskedtextbox.min';
 export class MaskedTextBox {
 
   @bindable kDisableDates;
+  @bindable kEnabled;
+  @bindable kReadOnly;
   @bindable kOptions = {};
 
   constructor(element, widgetBase) {
@@ -18,7 +20,9 @@ export class MaskedTextBox {
     this.widgetBase = widgetBase
                         .control('kendoMaskedTextBox')
                         .linkViewModel(this)
-                        .useValueBinding();
+                        .useValueBinding()
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {

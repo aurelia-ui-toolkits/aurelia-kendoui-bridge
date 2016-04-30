@@ -11,12 +11,14 @@ import 'kendo.slider.min';
 export class Slider {
 
   @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoSlider')
                     .linkViewModel(this)
+                    .bindToKendo('kEnabled', 'enable')
                     .useValueBinding();
   }
 
