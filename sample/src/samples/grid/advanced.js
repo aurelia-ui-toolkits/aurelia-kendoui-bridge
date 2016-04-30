@@ -15,4 +15,14 @@ export class Advanced {
   showAlert(message) {
     alert(message);
   }
+
+  log(obj) {
+    console.log(obj);
+  }
+}
+
+export class PrintObjValueConverter {
+ toView(obj) {
+   return JSON.stringify(obj);
+ }
 }

@@ -30,5 +30,10 @@
         <button ak-button click.delegate="showAlert('Button clicked')">Test</button>
       </ak-template>
     </ak-col>
+    <ak-col>
+      <ak-template>
+        <button ak-button click.delegate="log($this)">Log $this</button>
+      </ak-template>
+    </ak-col>
   </ak-grid>
 </template>
