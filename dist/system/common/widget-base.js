@@ -31,6 +31,8 @@ System.register(['./util', './options-builder', './template-compiler', './templa
         function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
           _classCallCheck(this, _WidgetBase);
 
+          this.bindingsToKendo = [];
+
           this.taskQueue = taskQueue;
           this.optionsBuilder = optionsBuilder;
           this.util = util;
@@ -40,13 +42,13 @@ System.register(['./util', './options-builder', './template-compiler', './templa
         }
 
         WidgetBase.prototype.control = function control(controlName) {
-          if (!controlName || !jQuery.fn[controlName]) {
+          if (!controlName || !kendo.jQuery.fn[controlName]) {
             throw new Error('The name of control ' + controlName + ' is invalid or not set');
           }
 
           this.controlName = controlName;
 
-          var ctor = jQuery.fn[this.controlName];
+          var ctor = kendo.jQuery.fn[this.controlName];
           this.kendoOptions = ctor.widget.prototype.options;
           this.kendoEvents = ctor.widget.prototype.events;
 
@@ -74,12 +76,23 @@ System.register(['./util', './options-builder', './template-compiler', './templa
         };
 
         WidgetBase.prototype.useValueBinding = function useValueBinding() {
-          var valueBindingProperty = arguments.length <= 0 || arguments[0] === undefined ? 'value' : arguments[0];
+          var valueBindingProperty = arguments.length <= 0 || arguments[0] === undefined ? 'kValue' : arguments[0];
           var valueFunction = arguments.length <= 1 || arguments[1] === undefined ? 'value' : arguments[1];
 
           this.valueBindingProperty = valueBindingProperty;
           this.valueFunction = valueFunction;
           this.withValueBinding = true;
+
+          this.bindToKendo(valueBindingProperty, valueFunction);
+
+          return this;
+        };
+
+        WidgetBase.prototype.bindToKendo = function bindToKendo(propertyName, functionName) {
+          this.bindingsToKendo.push({
+            propertyName: propertyName,
+            functionName: functionName
+          });
 
           return this;
         };
@@ -93,6 +106,10 @@ System.register(['./util', './options-builder', './template-compiler', './templa
 
           if (!options.element) {
             throw new Error('element is not set');
+          }
+
+          if (this.viewModel && this.viewModel.kWidget) {
+            this.destroy(this.viewModel.kWidget);
           }
 
           var allOptions = this._getOptions(options.rootElement || options.element);
@@ -117,11 +134,20 @@ System.register(['./util', './options-builder', './template-compiler', './templa
 
           if (this.withValueBinding) {
             widget.first('change', function (args) {
-              return _this._handleChange(args.sender);
+              return _this._handleValueChange(args.sender);
             });
-
-            this._handleChange(widget);
+            widget.first('dataBound', function (args) {
+              return _this._handleValueChange(args.sender);
+            });
           }
+
+          this.bindingsToKendo.forEach(function (binding) {
+            var value = _this.viewModel[binding.propertyName];
+
+            if (typeof value !== 'undefined' && value !== null && value !== '') {
+              widget[binding.functionName](value);
+            }
+          });
 
           if (options.afterInitialize) {
             options.afterInitialize();
@@ -131,14 +157,14 @@ System.register(['./util', './options-builder', './template-compiler', './templa
         };
 
         WidgetBase.prototype._createWidget = function _createWidget(element, options, controlName) {
-          return jQuery(element)[controlName](options).data(controlName);
+          return kendo.jQuery(element)[controlName](options).data(controlName);
         };
 
         WidgetBase.prototype._getOptions = function _getOptions(element) {
           var options = this.optionsBuilder.getOptions(this.viewModel, this.controlName);
           var eventOptions = this.getEventOptions(element);
 
-          return this.util.pruneOptions(Object.assign({}, this.viewModel.kOptions, options, eventOptions));
+          return this.util.pruneOptions(Object.assign({}, this.viewModel.kOptions || {}, options, eventOptions));
         };
 
         WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
@@ -171,14 +197,20 @@ System.register(['./util', './options-builder', './template-compiler', './templa
           return options;
         };
 
-        WidgetBase.prototype._handleChange = function _handleChange(widget) {
-          var propName = this.util.getBindablePropertyName(this.valueBindingProperty);
-          this.viewModel[propName] = widget[this.valueFunction]();
+        WidgetBase.prototype._handleValueChange = function _handleValueChange(widget) {
+          this.viewModel[this.valueBindingProperty] = this.getValue(widget);
+        };
+
+        WidgetBase.prototype.getValue = function getValue(widget) {
+          return widget[this.valueFunction]();
         };
 
         WidgetBase.prototype.handlePropertyChanged = function handlePropertyChanged(widget, property, newValue, oldValue) {
-          if (property === this.util.getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
-            widget[this.valueFunction](newValue);
+          var binding = this.bindingsToKendo.find(function (i) {
+            return i.propertyName === property;
+          });
+          if (binding) {
+            widget[binding.functionName](newValue);
           }
         };
 

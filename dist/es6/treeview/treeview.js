@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customAttribute, bindable} from 'aurelia-templating';
+import {customAttribute} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -9,7 +9,6 @@ import 'kendo.treeview.min';
 @generateBindables('kendoTreeView')
 @inject(Element, WidgetBase)
 export class TreeView {
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

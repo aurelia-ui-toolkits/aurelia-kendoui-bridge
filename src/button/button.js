@@ -10,12 +10,13 @@ import 'kendo.button.min';
 @inject(Element, WidgetBase)
 export class Button {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoButton')
+                        .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
 
@@ -32,6 +33,10 @@ export class Button {
       element: this.element,
       parentCtx: this.$parent
     });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {

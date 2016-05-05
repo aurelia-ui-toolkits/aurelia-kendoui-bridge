@@ -27,21 +27,19 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(Slider, [{
-          key: 'kOptions',
+          key: 'kEnabled',
           decorators: [bindable],
-          initializer: function initializer() {
-            return {};
-          },
+          initializer: null,
           enumerable: true
         }], null, _instanceInitializers);
 
         function Slider(element, widgetBase) {
           _classCallCheck(this, _Slider);
 
-          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kEnabled', _instanceInitializers);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).useValueBinding();
+          this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding();
         }
 
         Slider.prototype.bind = function bind(ctx) {

@@ -6,7 +6,7 @@
           k-placeholder="Select country..."
           k-separator=", ">
           <ak-template>
-            <span innerhtml.bind="formatValue($$item, textbox)"></span>
+            <span innerhtml.bind="formatValue($this.dataItem, textbox)"></span>
           </ak-template>
         <input style="width: 100%;" ref="textbox">
       </ak-autocomplete>

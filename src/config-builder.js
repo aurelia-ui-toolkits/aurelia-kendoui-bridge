@@ -5,6 +5,7 @@ export class KendoConfigBuilder {
 
 	resources: string[] = [];
   debugMode = false;
+  registerRepeatStrategy = true;
 
   /**
   * Globally register all Kendo Core wrappers including templating support
@@ -95,6 +96,13 @@ export class KendoConfigBuilder {
   debug(): KendoConfigBuilder {
     this.debugMode = true;
     return this;
+  }
+
+  /**
+  * Don't register an array repeat strategy for kendo.data.ObservableArray
+  */
+  withoutRepeatStrategy() {
+    this.registerRepeatStrategy = false;
   }
 
   kendoAutoComplete(): KendoConfigBuilder {

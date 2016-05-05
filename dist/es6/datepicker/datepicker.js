@@ -10,13 +10,16 @@ import 'kendo.datepicker.min';
 @inject(Element, WidgetBase)
 export class DatePicker {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoDatePicker')
                         .linkViewModel(this)
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly')
                         .useValueBinding();
   }
 

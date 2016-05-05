@@ -13,11 +13,14 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _instanceInitializers = {};
 
     _createDecoratedClass(Multiselect, [{
-      key: 'kOptions',
+      key: 'kEnabled',
       decorators: [_aureliaTemplating.bindable],
-      initializer: function initializer() {
-        return {};
-      },
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'kReadOnly',
+      decorators: [_aureliaTemplating.bindable],
+      initializer: null,
       enumerable: true
     }, {
       key: 'kNoValueBinding',
@@ -36,14 +39,16 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     function Multiselect(element, widgetBase, viewResources) {
       _classCallCheck(this, _Multiselect);
 
-      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'kEnabled', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'kReadOnly', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'kNoValueBinding', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoMultiSelect').linkViewModel(this).useValueBinding().useViewResources(viewResources);
+      this.widgetBase = widgetBase.control('kendoMultiSelect').linkViewModel(this).useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
     }
 
     Multiselect.prototype.bind = function bind(ctx) {
@@ -51,11 +56,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Multiselect.prototype.attached = function attached() {
-      this.recreate();
-
-      if (this.kNoValueBinding) {
-        this.widgetBase.withValueBinding = false;
+      if (!this.kNoValueBinding) {
+        this.widgetBase.useValueBinding();
       }
+
+      this.recreate();
     };
 
     Multiselect.prototype.recreate = function recreate() {

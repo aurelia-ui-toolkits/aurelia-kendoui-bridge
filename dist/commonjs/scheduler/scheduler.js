@@ -36,13 +36,6 @@ var Scheduler = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(Scheduler, [{
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }, {
     key: 'templates',
     decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
     initializer: null,
@@ -51,8 +44,6 @@ var Scheduler = (function () {
 
   function Scheduler(element, widgetBase, viewResources) {
     _classCallCheck(this, _Scheduler);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 

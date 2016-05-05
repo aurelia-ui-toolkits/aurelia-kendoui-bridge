@@ -26,18 +26,21 @@ var DropDownList = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(DropDownList, [{
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }, {
     key: 'kNoValueBinding',
     decorators: [_aureliaTemplating.bindable],
     initializer: function initializer() {
       return false;
     },
+    enumerable: true
+  }, {
+    key: 'kEnabled',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'kReadOnly',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
     enumerable: true
   }, {
     key: 'templates',
@@ -49,14 +52,16 @@ var DropDownList = (function () {
   function DropDownList(element, widgetBase, viewResources) {
     _classCallCheck(this, _DropDownList);
 
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
-
     _defineDecoratedPropertyDescriptor(this, 'kNoValueBinding', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'kEnabled', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'kReadOnly', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useValueBinding().useViewResources(viewResources);
+    this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
   DropDownList.prototype.bind = function bind(ctx) {
@@ -64,11 +69,11 @@ var DropDownList = (function () {
   };
 
   DropDownList.prototype.attached = function attached() {
-    this.recreate();
-
-    if (this.kNoValueBinding) {
-      this.widgetBase.withValueBinding = false;
+    if (!this.kNoValueBinding) {
+      this.widgetBase.useValueBinding();
     }
+
+    this.recreate();
   };
 
   DropDownList.prototype.recreate = function recreate() {

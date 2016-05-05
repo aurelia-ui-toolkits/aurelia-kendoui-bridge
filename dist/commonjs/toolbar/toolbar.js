@@ -26,13 +26,6 @@ var Toolbar = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(Toolbar, [{
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }, {
     key: 'toolbarItems',
     decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'toolbar-item')],
     initializer: null,
@@ -41,8 +34,6 @@ var Toolbar = (function () {
 
   function Toolbar(element, widgetBase, optionsBuilder) {
     _classCallCheck(this, _Toolbar);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'toolbarItems', _instanceInitializers);
 

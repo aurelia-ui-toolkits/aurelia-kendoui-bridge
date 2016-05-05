@@ -127,5 +127,5 @@ export class BindingToSignalR {
     ],
     multiple: true,
     title: 'Attendees'
-  }]
+  }];
 }

@@ -1,7 +1,7 @@
-System.register(['aurelia-dependency-injection', 'aurelia-templating', './util'], function (_export) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-binding', './util'], function (_export) {
   'use strict';
 
-  var inject, TemplatingEngine, Util, TemplateCompiler;
+  var inject, TemplatingEngine, createOverrideContext, Util, TemplateCompiler;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -10,6 +10,8 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', './util']
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
       TemplatingEngine = _aureliaTemplating.TemplatingEngine;
+    }, function (_aureliaBinding) {
+      createOverrideContext = _aureliaBinding.createOverrideContext;
     }, function (_util) {
       Util = _util.Util;
     }],
@@ -77,12 +79,10 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', './util']
 
               if (!_this2.util.isObject(dataItem)) {
                 ctx = {
-                  dataItem: dataItem,
-                  $$item: dataItem
+                  dataItem: dataItem
                 };
               } else {
                 ctx = dataItem;
-                ctx.$$item = Object.assign({}, ctx);
               }
             }
 
@@ -106,17 +106,22 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', './util']
           if (element.querySelectorAll('.au-target').length === 0) {
             if (viewResources) {
               view = this.templatingEngine.enhance({
+                bindingContext: ctx,
+                overrideContext: createOverrideContext(ctx, $parent),
                 element: element,
                 resources: viewResources
               });
             } else {
-              view = this.templatingEngine.enhance(element);
+              view = this.templatingEngine.enhance({
+                bindingContext: ctx,
+                overrideContext: createOverrideContext(ctx, $parent),
+                element: element
+              });
             }
 
             $(element).data('viewInstance', view);
           }
 
-          view.bind(ctx, $parent);
           view.attached();
         };
 

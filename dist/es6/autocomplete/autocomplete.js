@@ -11,7 +11,8 @@ import 'kendo.virtuallist.min';
 @inject(Element, WidgetBase, ViewResources)
 export class AutoComplete {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -19,8 +20,10 @@ export class AutoComplete {
     this.widgetBase = widgetBase
                         .control('kendoAutoComplete')
                         .linkViewModel(this)
+                        .useViewResources(viewResources)
                         .useValueBinding()
-                        .useViewResources(viewResources);
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {

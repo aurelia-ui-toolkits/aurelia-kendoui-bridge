@@ -8,6 +8,8 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
 var _aureliaTemplating = require('aurelia-templating');
 
+var _aureliaBinding = require('aurelia-binding');
+
 var _util = require('./util');
 
 var TemplateCompiler = (function () {
@@ -73,12 +75,10 @@ var TemplateCompiler = (function () {
 
         if (!_this2.util.isObject(dataItem)) {
           ctx = {
-            dataItem: dataItem,
-            $$item: dataItem
+            dataItem: dataItem
           };
         } else {
           ctx = dataItem;
-          ctx.$$item = Object.assign({}, ctx);
         }
       }
 
@@ -102,17 +102,22 @@ var TemplateCompiler = (function () {
     if (element.querySelectorAll('.au-target').length === 0) {
       if (viewResources) {
         view = this.templatingEngine.enhance({
+          bindingContext: ctx,
+          overrideContext: _aureliaBinding.createOverrideContext(ctx, $parent),
           element: element,
           resources: viewResources
         });
       } else {
-        view = this.templatingEngine.enhance(element);
+        view = this.templatingEngine.enhance({
+          bindingContext: ctx,
+          overrideContext: _aureliaBinding.createOverrideContext(ctx, $parent),
+          element: element
+        });
       }
 
       $(element).data('viewInstance', view);
     }
 
-    view.bind(ctx, $parent);
     view.attached();
   };
 

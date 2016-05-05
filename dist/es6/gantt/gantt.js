@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, bindable, children, ViewResources} from 'aurelia-templating';
+import {customElement, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -14,7 +14,6 @@ export class Gantt  {
 
   @children(`${constants.elementPrefix}gantt-col`) columns;
   @children(`${constants.elementPrefix}template`) templates;
-  @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;

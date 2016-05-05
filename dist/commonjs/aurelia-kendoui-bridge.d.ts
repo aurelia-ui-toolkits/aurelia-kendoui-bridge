@@ -1,11 +1,13 @@
 declare module 'aurelia-kendoui-bridge' {
   import 'jquery';
   import * as LogManager from 'aurelia-logging';
+  import { RepeatStrategyLocator, ArrayRepeatStrategy }  from 'aurelia-templating-resources';
   import { inject, Container, transient }  from 'aurelia-dependency-injection';
   import { customElement, bindable, children, ViewResources, customAttribute, BindableProperty, HtmlBehaviorResource, TemplatingEngine, noView, processContent, TargetInstruction }  from 'aurelia-templating';
   import { metadata }  from 'aurelia-metadata';
-  import { bindingMode }  from 'aurelia-binding';
+  import { bindingMode, createOverrideContext }  from 'aurelia-binding';
   import { TaskQueue }  from 'aurelia-task-queue';
+  import 'kendo.data.min';
   import 'kendo.autocomplete.min';
   import 'kendo.virtuallist.min';
   import 'kendo.dataviz.barcode.min';
@@ -98,6 +100,10 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.upload.min';
   import 'kendo.validator.min';
   import 'kendo.window.min';
+  export interface BindingToKendo {
+    propertyName: string;
+    functionName: string;
+  }
   
   /**
   * Configure the Aurelia-KendoUI-bridge
@@ -105,6 +111,7 @@ declare module 'aurelia-kendoui-bridge' {
   export class KendoConfigBuilder {
     resources: string[];
     debugMode: any;
+    registerRepeatStrategy: any;
     
     /**
       * Globally register all Kendo Core wrappers including templating support
@@ -130,6 +137,11 @@ declare module 'aurelia-kendoui-bridge' {
       * Adds kendo templating support
       */
     debug(): KendoConfigBuilder;
+    
+    /**
+      * Don't register an array repeat strategy for kendo.data.ObservableArray
+      */
+    withoutRepeatStrategy(): any;
     kendoAutoComplete(): KendoConfigBuilder;
     kendoButton(): KendoConfigBuilder;
     kendoButtonGroup(): KendoConfigBuilder;
@@ -186,7 +198,8 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export function configure(aurelia: any, configCallback: any): any;
   export class AutoComplete {
-    kOptions: any;
+    kEnabled: any;
+    kReadOnly: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
@@ -196,7 +209,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Barcode {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -204,23 +216,24 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Button {
-    kOptions: any;
+    kEnabled: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
     recreate(): any;
+    propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
   export class ButtonGroup {
-    kOptions: any;
+    kEnabled: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
     recreate(): any;
+    propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
   export class Calendar {
-    kOptions: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
     attached(): any;
@@ -229,7 +242,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Chart {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -237,7 +249,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Sparkline {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -245,7 +256,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Stock {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -253,7 +263,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class TreeMap {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -261,7 +270,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class ColorPalette {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -270,7 +278,7 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class ColorPicker {
-    kOptions: any;
+    kEnabled: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -279,7 +287,8 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class ComboBox {
-    kOptions: any;
+    kEnabled: any;
+    kReadOnly: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
@@ -530,9 +539,11 @@ declare module 'aurelia-kendoui-bridge' {
     viewModel: any;
     
     /**
-      * The constructor of a Kendo control
+      * A list of bindings for properties such as kEnable/kReadOnly/kValue
+      * whenever one of these properties changes an API function will be called on the Kendo control
+      * for example, a change of an 'kEnable' property will result in a .enable(true/false) call
       */
-    ctor: any;
+    bindingsToKendo: Array<BindingToKendo>;
     constructor(taskQueue: any, templateCompiler: any, optionsBuilder: any, util: any, templateGatherer: any, configBuilder: any);
     control(controlName: any): any;
     linkViewModel(viewModel: any): any;
@@ -544,6 +555,15 @@ declare module 'aurelia-kendoui-bridge' {
       * @param valueFunction the function on the kendo control that gets the value of the above property
       */
     useValueBinding(valueBindingProperty?: any, valueFunction?: any): any;
+    
+    /**
+      * add binding to Kendo
+      * whenever a bindable property in a wrapper changes, and the propertyname is in this list
+      * then it will call an API function on the Kendo control to update the value
+      * @param propertyName the bindable property name in the wrapper (kValue, kChecked, kEnabled)
+      * @param valueFunction the API function on the kendo control that sets the value of the above property
+      */
+    bindToKendo(propertyName: any, functionName: any): any;
     
     /**
       * collects all options objects
@@ -558,6 +578,7 @@ declare module 'aurelia-kendoui-bridge' {
       * calls the fireKendoEvent function to raise a DOM event
       */
     getEventOptions(element: any): any;
+    getValue(widget: any): any;
     handlePropertyChanged(widget: any, property: any, newValue: any, oldValue: any): any;
     useTemplates(target: any, controlName: any, templates: any): any;
     
@@ -567,7 +588,6 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(widget: any): any;
   }
   export class ContextMenu {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -575,7 +595,8 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class DatePicker {
-    kOptions: any;
+    kEnabled: any;
+    kReadOnly: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -584,7 +605,8 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class DateTimePicker {
-    kOptions: any;
+    kEnabled: any;
+    kReadOnly: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -593,7 +615,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Diagram {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -601,7 +622,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Draggabke {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -610,7 +630,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class DropTargetArea {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -618,7 +637,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class DropTarget {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -626,8 +644,9 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class DropDownList {
-    kOptions: any;
     kNoValueBinding: any;
+    kEnabled: any;
+    kReadOnly: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
@@ -637,7 +656,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Editor {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -646,7 +664,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class FlatColorPicker {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -658,7 +675,6 @@ declare module 'aurelia-kendoui-bridge' {
   export class Gantt {
     columns: any;
     templates: any;
-    kOptions: any;
     constructor(element: any, widgetBase: any, viewResources: any, optionsBuilder: any);
     bind(ctx: any): any;
     attached(): any;
@@ -666,7 +682,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class LinearGauge {
-    kOptions: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
     attached(): any;
@@ -675,7 +690,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class RadialGauge {
-    kOptions: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
     attached(): any;
@@ -697,7 +711,6 @@ declare module 'aurelia-kendoui-bridge' {
     columns: any;
     templates: any;
     gridToolbars: any;
-    kOptions: any;
     constructor(element: any, widgetBase: any, viewResources: any, optionsBuilder: any, templateGatherer: any);
     bind(ctx: any): any;
     
@@ -708,7 +721,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class ListView {
-    kOptions: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
@@ -717,7 +729,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Map {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -727,7 +738,8 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class MaskedTextBox {
     kDisableDates: any;
-    kOptions: any;
+    kEnabled: any;
+    kReadOnly: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -736,7 +748,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Menu {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -744,7 +755,8 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Multiselect {
-    kOptions: any;
+    kEnabled: any;
+    kReadOnly: any;
     kNoValueBinding: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
@@ -760,7 +772,6 @@ declare module 'aurelia-kendoui-bridge' {
     constructor(targetInstruction: any);
   }
   export class Notification {
-    kOptions: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
@@ -770,7 +781,8 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class NumericTextBox {
-    kOptions: any;
+    kEnabled: any;
+    kReadOnly: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -779,7 +791,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class PanelBar {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -789,7 +800,6 @@ declare module 'aurelia-kendoui-bridge' {
   export class PDF {
   }
   export class PivotConfigurator {
-    kOptions: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
     attached(): any;
@@ -797,7 +807,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class PivotGrid {
-    kOptions: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
@@ -806,15 +815,15 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class ProgressBar {
-    kOptions: any;
+    kEnabled: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
     recreate(): any;
+    propertyChanged(property: any, newValue: any, oldValue: any): any;
     detached(): any;
   }
   export class QRCode {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -822,7 +831,7 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class RangeSlider {
-    kOptions: any;
+    kEnabled: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -831,7 +840,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class ResponsivePanel {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -839,7 +847,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Scheduler {
-    kOptions: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
@@ -848,7 +855,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Scrollview {
-    kOptions: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
@@ -857,7 +863,7 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Slider {
-    kOptions: any;
+    kEnabled: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -866,7 +872,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Sortable {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -874,7 +879,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Splitter {
-    options: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -882,7 +886,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Spreadsheet {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -890,7 +893,7 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Switch {
-    kOptions: any;
+    kEnabled: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -899,7 +902,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class TabStrip {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -908,7 +910,8 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class TimePicker {
     kDisableDates: any;
-    kOptions: any;
+    kEnabled: any;
+    kReadOnly: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -927,7 +930,6 @@ declare module 'aurelia-kendoui-bridge' {
     getOptions(): any;
   }
   export class Toolbar {
-    kOptions: any;
     toolbarItems: any;
     constructor(element: any, widgetBase: any, optionsBuilder: any);
     bind(ctx: any): any;
@@ -936,7 +938,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Tooltip {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -950,7 +951,6 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class TreeList {
     columns: any;
-    kOptions: any;
     constructor(element: any, widgetBase: any, viewResources: any, optionsBuilder: any);
     bind(ctx: any): any;
     
@@ -961,7 +961,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class TreeView {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -969,7 +968,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Upload {
-    kOptions: any;
     templates: any;
     constructor(element: any, widgetBase: any, viewResources: any);
     bind(ctx: any): any;
@@ -978,7 +976,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Validator {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;
@@ -1007,7 +1004,6 @@ declare module 'aurelia-kendoui-bridge' {
     toView(value: any, ...params: any[]): any;
   }
   export class Window {
-    kOptions: any;
     constructor(element: any, widgetBase: any);
     bind(ctx: any): any;
     attached(): any;

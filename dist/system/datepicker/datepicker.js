@@ -27,21 +27,26 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(DatePicker, [{
-          key: 'kOptions',
+          key: 'kEnabled',
           decorators: [bindable],
-          initializer: function initializer() {
-            return {};
-          },
+          initializer: null,
+          enumerable: true
+        }, {
+          key: 'kReadOnly',
+          decorators: [bindable],
+          initializer: null,
           enumerable: true
         }], null, _instanceInitializers);
 
         function DatePicker(element, widgetBase) {
           _classCallCheck(this, _DatePicker);
 
-          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kEnabled', _instanceInitializers);
+
+          _defineDecoratedPropertyDescriptor(this, 'kReadOnly', _instanceInitializers);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).useValueBinding();
+          this.widgetBase = widgetBase.control('kendoDatePicker').linkViewModel(this).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly').useValueBinding();
         }
 
         DatePicker.prototype.bind = function bind(ctx) {

@@ -13,11 +13,14 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _instanceInitializers = {};
 
     _createDecoratedClass(ComboBox, [{
-      key: 'kOptions',
+      key: 'kEnabled',
       decorators: [_aureliaTemplating.bindable],
-      initializer: function initializer() {
-        return {};
-      },
+      initializer: null,
+      enumerable: true
+    }, {
+      key: 'kReadOnly',
+      decorators: [_aureliaTemplating.bindable],
+      initializer: null,
       enumerable: true
     }, {
       key: 'templates',
@@ -29,12 +32,14 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     function ComboBox(element, widgetBase, viewResources) {
       _classCallCheck(this, _ComboBox);
 
-      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'kEnabled', _instanceInitializers);
+
+      _defineDecoratedPropertyDescriptor(this, 'kReadOnly', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useViewResources(viewResources);
+      this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
     }
 
     ComboBox.prototype.bind = function bind(ctx) {

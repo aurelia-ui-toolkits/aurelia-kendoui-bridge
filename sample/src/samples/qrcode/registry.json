@@ -10,6 +10,6 @@
     "api": {
       "gist": "https://gist.run/?id=c0b057ab951fb6b05431b627cef596ce",
       "files": ["html", "js", "css"]
-    },
+    }
   }
 }

@@ -2,33 +2,39 @@
   <div id="example">
     <div class="demo-section k-content wide">
       <ak-grid k-data-source.bind="{ data: months }">
-        <ak-col title="MONTH" field="name"></ak-col>
-        <ak-col title="MAX TEMP &deg;C">
-          <ak-sparkline k-data-source.bind="dataSource"
-                       k-series.bind="[{
-                         type: 'column',
-                         field: 'TMax',
-                         color: '\#ff0000',
-                         negativeColor: '\#0099ff'
-                       }]">
-          </ak-sparkline>
+        <ak-col k-title="MONTH" k-field="name"></ak-col>
+        <ak-col k-title="MAX TEMP &deg;C">
+          <ak-template>
+            <ak-sparkline k-data-source.bind="dataSource"
+                         k-series.bind="[{
+                           type: 'column',
+                           field: 'TMax',
+                           color: '\#ff0000',
+                           negativeColor: '\#0099ff'
+                         }]">
+            </ak-sparkline>
+          </ak-template>
         </ak-col>
-        <ak-col title="WIND SPEED KM/H">
-          <ak-sparkline k-data-source.bind="dataSource"
-                       k-series.bind="[{
-                         field: 'Wind',
-                         color: '\#5b8f00'
-                       }]">
-          </ak-sparkline>
+        <ak-col k-title="WIND SPEED KM/H">
+          <ak-template>
+            <ak-sparkline k-data-source.bind="dataSource"
+                         k-series.bind="[{
+                           field: 'Wind',
+                           color: '\#5b8f00'
+                         }]">
+            </ak-sparkline>
+          </ak-template>
         </ak-col>
-        <ak-col title="RAINFALL MM">
-          <ak-sparkline k-data-source.bind="dataSource"
-                       k-series.bind="[{
-                         type: 'area',
-                         field: 'Rain',
-                         color: '\#0099ff'
-                       }]">
-          </ak-sparkline>
+        <ak-col k-title="RAINFALL MM">
+          <ak-template>
+            <ak-sparkline k-data-source.bind="dataSource"
+                         k-series.bind="[{
+                           type: 'area',
+                           field: 'Rain',
+                           color: '\#0099ff'
+                         }]">
+            </ak-sparkline>
+          </ak-template>
         </ak-col>
       </ak-grid>
     </div>

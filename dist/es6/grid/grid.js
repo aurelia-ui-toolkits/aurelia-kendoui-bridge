@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, bindable, children, ViewResources} from 'aurelia-templating';
+import {customElement, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -18,7 +18,6 @@ export class Grid  {
   @children(`${constants.elementPrefix}col`) columns;
   @children(`${constants.elementPrefix}template`) templates;
   @children(`${constants.elementPrefix}grid-toolbar`) gridToolbars;
-  @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
     this.element = element;

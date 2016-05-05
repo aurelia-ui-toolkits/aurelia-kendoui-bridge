@@ -21,6 +21,7 @@ export function generateBindables(controlName: string, extraProperties = []) {
     let optionKeys = controlProperties.getProperties(controlName, extraProperties);
 
     optionKeys.push('widget');
+    optionKeys.push('options');
 
     for (let i = 0; i < optionKeys.length; i++) {
       let option = optionKeys[i];

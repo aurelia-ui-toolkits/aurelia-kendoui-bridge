@@ -27,21 +27,19 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(ProgressBar, [{
-          key: 'kOptions',
+          key: 'kEnabled',
           decorators: [bindable],
-          initializer: function initializer() {
-            return {};
-          },
+          initializer: null,
           enumerable: true
         }], null, _instanceInitializers);
 
         function ProgressBar(element, widgetBase) {
           _classCallCheck(this, _ProgressBar);
 
-          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kEnabled', _instanceInitializers);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoProgressBar').linkViewModel(this);
+          this.widgetBase = widgetBase.control('kendoProgressBar').bindToKendo('kEnabled', 'enable').linkViewModel(this);
         }
 
         ProgressBar.prototype.bind = function bind(ctx) {
@@ -57,6 +55,10 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
             element: this.element,
             parentCtx: this.$parent
           });
+        };
+
+        ProgressBar.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+          this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
         ProgressBar.prototype.detached = function detached() {

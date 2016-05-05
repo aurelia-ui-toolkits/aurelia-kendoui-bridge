@@ -47,6 +47,12 @@
     },
     "advanced": {
       "gist": "https://gist.run/?id=8acafaaca1c4e9c71a0927ea0dbc8fce"
+    },
+    "custom-grid-width": {
+      "gist": "https://gist.run/?id=9799147d08b0514575119520638be66e"
+    },
+    "multi-column-headers": {
+      "gist": "https://gist.run/?id=56ce58ae4496c77225d6cf54cee96d2c"
     }
   }
 }

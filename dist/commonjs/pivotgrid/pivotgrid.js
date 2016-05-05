@@ -28,13 +28,6 @@ var PivotGrid = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(PivotGrid, [{
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }, {
     key: 'templates',
     decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
     initializer: null,
@@ -43,8 +36,6 @@ var PivotGrid = (function () {
 
   function PivotGrid(element, widgetBase, viewResources) {
     _classCallCheck(this, _PivotGrid);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 

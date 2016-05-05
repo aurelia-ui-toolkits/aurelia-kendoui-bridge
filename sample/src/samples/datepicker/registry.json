@@ -44,7 +44,7 @@
                 "css"
             ]
         },
-        "value-binding": {
+        "binding": {
             "gist": "https://gist.run/?id=c526a0b86f03f8bf4567905a4b2d0e19"
         }
     }

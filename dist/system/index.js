@@ -1,7 +1,7 @@
-System.register(['./config-builder', 'jquery'], function (_export) {
+System.register(['./config-builder', 'aurelia-templating-resources', 'jquery', 'kendo.data.min'], function (_export) {
   'use strict';
 
-  var KendoConfigBuilder;
+  var KendoConfigBuilder, RepeatStrategyLocator, ArrayRepeatStrategy;
 
   _export('configure', configure);
 
@@ -17,12 +17,22 @@ System.register(['./config-builder', 'jquery'], function (_export) {
     if (resources.length > 0) {
       aurelia.globalResources(resources);
     }
+
+    if (builder.registerRepeatStrategy) {
+      var repeatStrategyLocator = aurelia.container.get(RepeatStrategyLocator);
+      repeatStrategyLocator.addStrategy(function (items) {
+        return items instanceof kendo.data.ObservableArray;
+      }, new ArrayRepeatStrategy());
+    }
   }
 
   return {
     setters: [function (_configBuilder) {
       KendoConfigBuilder = _configBuilder.KendoConfigBuilder;
-    }, function (_jquery) {}],
+    }, function (_aureliaTemplatingResources) {
+      RepeatStrategyLocator = _aureliaTemplatingResources.RepeatStrategyLocator;
+      ArrayRepeatStrategy = _aureliaTemplatingResources.ArrayRepeatStrategy;
+    }, function (_jquery) {}, function (_kendoDataMin) {}],
     execute: function () {}
   };
 });

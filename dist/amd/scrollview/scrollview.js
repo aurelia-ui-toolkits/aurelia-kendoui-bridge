@@ -13,13 +13,6 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _instanceInitializers = {};
 
     _createDecoratedClass(Scrollview, [{
-      key: 'kOptions',
-      decorators: [_aureliaTemplating.bindable],
-      initializer: function initializer() {
-        return {};
-      },
-      enumerable: true
-    }, {
       key: 'templates',
       decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
       initializer: null,
@@ -29,12 +22,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     function Scrollview(element, widgetBase, viewResources) {
       _classCallCheck(this, _Scrollview);
 
-      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
-
       _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoMobileScrollView').linkViewModel(this).useViewResources(viewResources);
+      this.widgetBase = widgetBase.control('kendoMobileScrollView').linkViewModel(this).useViewResources(viewResources).useValueBinding();
     }
 
     Scrollview.prototype.bind = function bind(ctx) {

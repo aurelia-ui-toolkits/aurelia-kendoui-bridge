@@ -20,6 +20,6 @@
     "templates": {
       "gist": "https://gist.run/?id=0bb35f592a702f1a54ad5d26a0e851da",
       "files": ["html", "js", "css"]
-    },
+    }
   }
 }

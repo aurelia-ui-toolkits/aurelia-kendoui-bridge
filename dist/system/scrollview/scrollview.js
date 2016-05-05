@@ -1,7 +1,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.mobile.scrollview.min'], function (_export) {
   'use strict';
 
-  var inject, customElement, bindable, children, ViewResources, WidgetBase, generateBindables, constants, Scrollview;
+  var inject, customElement, children, ViewResources, WidgetBase, generateBindables, constants, Scrollview;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -17,7 +17,6 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
-      bindable = _aureliaTemplating.bindable;
       children = _aureliaTemplating.children;
       ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
@@ -32,13 +31,6 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(Scrollview, [{
-          key: 'kOptions',
-          decorators: [bindable],
-          initializer: function initializer() {
-            return {};
-          },
-          enumerable: true
-        }, {
           key: 'templates',
           decorators: [children(constants.elementPrefix + 'template')],
           initializer: null,
@@ -48,12 +40,10 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         function Scrollview(element, widgetBase, viewResources) {
           _classCallCheck(this, _Scrollview);
 
-          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
-
           _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoMobileScrollView').linkViewModel(this).useViewResources(viewResources);
+          this.widgetBase = widgetBase.control('kendoMobileScrollView').linkViewModel(this).useViewResources(viewResources).useValueBinding();
         }
 
         Scrollview.prototype.bind = function bind(ctx) {

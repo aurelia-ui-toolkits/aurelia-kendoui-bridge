@@ -9,14 +9,15 @@
     },
     "api": {
       "files": ["html", "js", "css"],
-      "gist": "https://gist.run/?id=1005c21ac063a56e22549e2f876af643",
+      "gist": "https://gist.run/?id=1005c21ac063a56e22549e2f876af643"
     },
     "images": {
       "files": ["html", "js", "css"],
-      "gist": "https://gist.run/?id=c14c7cd4ab59c8d12d7f8ff6b6cc2947",
+      "gist": "https://gist.run/?id=c14c7cd4ab59c8d12d7f8ff6b6cc2947"
     },
     "events": {
       "gist": "https://gist.run/?id=631530f825587b7d8b6c05979d08e099"
-    }
+    },
+    "binding": {}
   }
 }

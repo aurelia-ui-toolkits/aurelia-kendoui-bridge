@@ -13,7 +13,7 @@
     },
     "polar-line": {
       "gist": "https://gist.run/?id=a9653e384ce13ca87f0f5a62dc56de47",
-      "route": ["", "polar-line"],
+      "route": ["", "polar-line"]
     },
     "polar-scatter": {
       "gist": "https://gist.run/?id=52595098d0cab7a51ac60617dad68665"

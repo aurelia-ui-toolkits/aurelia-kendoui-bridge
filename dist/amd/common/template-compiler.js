@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', './util'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _util) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', 'aurelia-binding', './util'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _aureliaBinding, _util) {
   'use strict';
 
   exports.__esModule = true;
@@ -68,12 +68,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', './util
 
           if (!_this2.util.isObject(dataItem)) {
             ctx = {
-              dataItem: dataItem,
-              $$item: dataItem
+              dataItem: dataItem
             };
           } else {
             ctx = dataItem;
-            ctx.$$item = Object.assign({}, ctx);
           }
         }
 
@@ -97,17 +95,22 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', './util
       if (element.querySelectorAll('.au-target').length === 0) {
         if (viewResources) {
           view = this.templatingEngine.enhance({
+            bindingContext: ctx,
+            overrideContext: _aureliaBinding.createOverrideContext(ctx, $parent),
             element: element,
             resources: viewResources
           });
         } else {
-          view = this.templatingEngine.enhance(element);
+          view = this.templatingEngine.enhance({
+            bindingContext: ctx,
+            overrideContext: _aureliaBinding.createOverrideContext(ctx, $parent),
+            element: element
+          });
         }
 
         $(element).data('viewInstance', view);
       }
 
-      view.bind(ctx, $parent);
       view.attached();
     };
 

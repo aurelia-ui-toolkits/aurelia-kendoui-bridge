@@ -1,4 +1,4 @@
-import {customElement, bindable} from 'aurelia-templating';
+import {customElement} from 'aurelia-templating';
 import {inject} from 'aurelia-dependency-injection';
 import {constants} from '../common/constants';
 import {WidgetBase} from '../common/widget-base';
@@ -9,8 +9,6 @@ import 'kendo.panelbar.min';
 @generateBindables('kendoPanelBar')
 @inject(Element, WidgetBase)
 export class PanelBar {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
