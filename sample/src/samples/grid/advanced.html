@@ -15,6 +15,11 @@
         ${ContactName | capitalize}
       </ak-template>
     </ak-col>
+    <ak-col k-title="Contact Name" k-field="ContactName">
+      <ak-template>
+        ${$this['ContactName'] | capitalize}
+      </ak-template>
+    </ak-col>
     <ak-col k-title="Phonenumbers">
       <ak-template>
         <ul>
