@@ -206,7 +206,7 @@ describe('WidgetBase', () => {
     .linkViewModel({})
     .useValueBinding();
 
-    let widget = sut.createWidget({
+    sut.createWidget({
       element: DOM.createElement('div'),
       parentCtx: {}
     });
@@ -230,7 +230,7 @@ describe('WidgetBase', () => {
 
     sut.control('kendoDropDownList')
     .linkViewModel(vm)
-    .bindToKendo('kValue', 'value')
+    .bindToKendo('kValue', 'value');
 
     sut.createWidget({
       element: DOM.createElement('div'),
