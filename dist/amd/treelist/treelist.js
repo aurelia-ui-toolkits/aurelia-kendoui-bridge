@@ -17,21 +17,12 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'tree-col')],
       initializer: null,
       enumerable: true
-    }, {
-      key: 'kOptions',
-      decorators: [_aureliaTemplating.bindable],
-      initializer: function initializer() {
-        return {};
-      },
-      enumerable: true
     }], null, _instanceInitializers);
 
     function TreeList(element, widgetBase, viewResources, optionsBuilder) {
       _classCallCheck(this, _TreeList);
 
       _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
       this.element = element;
       this.optionsBuilder = optionsBuilder;

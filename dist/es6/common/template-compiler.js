@@ -1,5 +1,6 @@
 import {inject} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
+import {createOverrideContext} from 'aurelia-binding';
 import {Util} from './util';
 
 /**
@@ -100,12 +101,10 @@ export class TemplateCompiler {
 
         if (!this.util.isObject(dataItem)) {
           ctx = {
-            dataItem: dataItem,
-            $$item: dataItem
+            dataItem: dataItem
           };
         } else {
           ctx = dataItem;
-          ctx.$$item = Object.assign({}, ctx);
         }
       }
 
@@ -130,11 +129,17 @@ export class TemplateCompiler {
     if (element.querySelectorAll('.au-target').length === 0) {
       if (viewResources) {
         view = this.templatingEngine.enhance({
+          bindingContext: ctx,
+          overrideContext: createOverrideContext(ctx, $parent),
           element: element,
           resources: viewResources
         });
       } else {
-        view = this.templatingEngine.enhance(element);
+        view = this.templatingEngine.enhance({
+          bindingContext: ctx,
+          overrideContext: createOverrideContext(ctx, $parent),
+          element: element
+        });
       }
 
       // when we do cleanup, we need to get the view instance
@@ -143,7 +148,6 @@ export class TemplateCompiler {
       $(element).data('viewInstance', view);
     }
 
-    view.bind(ctx, $parent); // call the bind() function on the view with the dataItem we got from Kendo
     view.attached(); // attach it to the DOM
   }
 

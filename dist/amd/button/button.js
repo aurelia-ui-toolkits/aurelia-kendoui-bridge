@@ -13,21 +13,19 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _instanceInitializers = {};
 
     _createDecoratedClass(Button, [{
-      key: 'kOptions',
+      key: 'kEnabled',
       decorators: [_aureliaTemplating.bindable],
-      initializer: function initializer() {
-        return {};
-      },
+      initializer: null,
       enumerable: true
     }], null, _instanceInitializers);
 
     function Button(element, widgetBase) {
       _classCallCheck(this, _Button);
 
-      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
+      _defineDecoratedPropertyDescriptor(this, 'kEnabled', _instanceInitializers);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoButton').linkViewModel(this);
+      this.widgetBase = widgetBase.control('kendoButton').bindToKendo('kEnabled', 'enable').linkViewModel(this);
     }
 
     Button.prototype.bind = function bind(ctx) {
@@ -43,6 +41,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
         element: this.element,
         parentCtx: this.$parent
       });
+    };
+
+    Button.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
+      this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
     Button.prototype.detached = function detached() {

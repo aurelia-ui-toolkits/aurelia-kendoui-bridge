@@ -10,13 +10,14 @@ import 'kendo.slider.min';
 @inject(Element, WidgetBase)
 export class RangeSlider {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoRangeSlider')
                     .linkViewModel(this)
+                    .bindToKendo('kEnabled', 'enable')
                     .useValueBinding();
   }
 

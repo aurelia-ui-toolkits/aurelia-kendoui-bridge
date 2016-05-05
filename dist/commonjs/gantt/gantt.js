@@ -37,13 +37,6 @@ var Gantt = (function () {
     decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
     initializer: null,
     enumerable: true
-  }, {
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
   }], null, _instanceInitializers);
 
   function Gantt(element, widgetBase, viewResources, optionsBuilder) {
@@ -52,8 +45,6 @@ var Gantt = (function () {
     _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.optionsBuilder = optionsBuilder;

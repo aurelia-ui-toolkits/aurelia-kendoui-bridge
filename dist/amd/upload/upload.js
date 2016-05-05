@@ -13,13 +13,6 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     var _instanceInitializers = {};
 
     _createDecoratedClass(Upload, [{
-      key: 'kOptions',
-      decorators: [_aureliaTemplating.bindable],
-      initializer: function initializer() {
-        return {};
-      },
-      enumerable: true
-    }, {
       key: 'templates',
       decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
       initializer: null,
@@ -28,8 +21,6 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     function Upload(element, widgetBase, viewResources) {
       _classCallCheck(this, _Upload);
-
-      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 

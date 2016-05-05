@@ -32,11 +32,14 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(ComboBox, [{
-          key: 'kOptions',
+          key: 'kEnabled',
           decorators: [bindable],
-          initializer: function initializer() {
-            return {};
-          },
+          initializer: null,
+          enumerable: true
+        }, {
+          key: 'kReadOnly',
+          decorators: [bindable],
+          initializer: null,
           enumerable: true
         }, {
           key: 'templates',
@@ -48,12 +51,14 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         function ComboBox(element, widgetBase, viewResources) {
           _classCallCheck(this, _ComboBox);
 
-          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kEnabled', _instanceInitializers);
+
+          _defineDecoratedPropertyDescriptor(this, 'kReadOnly', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useViewResources(viewResources);
+          this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
         }
 
         ComboBox.prototype.bind = function bind(ctx) {

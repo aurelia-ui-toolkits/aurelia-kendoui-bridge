@@ -1,7 +1,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../common/template-gatherer', '../pdf/pdf', 'kendo.data.signalr.min', 'kendo.filtercell.min', 'kendo.grid.min'], function (_export) {
   'use strict';
 
-  var inject, customElement, bindable, children, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, TemplateGatherer, PDF, Grid;
+  var inject, customElement, children, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, TemplateGatherer, PDF, Grid;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -21,7 +21,6 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
-      bindable = _aureliaTemplating.bindable;
       children = _aureliaTemplating.children;
       ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
@@ -56,13 +55,6 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           decorators: [children(constants.elementPrefix + 'grid-toolbar')],
           initializer: null,
           enumerable: true
-        }, {
-          key: 'kOptions',
-          decorators: [bindable],
-          initializer: function initializer() {
-            return {};
-          },
-          enumerable: true
         }], null, _instanceInitializers);
 
         function Grid(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
@@ -73,8 +65,6 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'gridToolbars', _instanceInitializers);
-
-          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
           this.element = element;
           this.templateGatherer = templateGatherer;

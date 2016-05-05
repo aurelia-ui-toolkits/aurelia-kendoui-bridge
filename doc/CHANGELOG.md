@@ -1,3 +1,27 @@
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.8.1...v0.9.0) (2016-05-05)
+
+
+### Bug Fixes
+
+* **all:** fix k-enable/k-readonly binding for button, buttongroup and progressbar ([d642266](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/d642266))
+* **recreate:** destroy widgets before creating them again ([47b40ec](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/47b40ec))
+* **widget-base:** use kendo.jQuery and not jQuery ([4a9391f](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/4a9391f))
+
+### Features
+
+* **all:** support k-enabled and k-read-only binding ([401b4ef](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/401b4ef))
+* **template-compiler:** support $this in templates ([9eb7908](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/9eb7908))
+
+
+### BREAKING CHANGES
+
+* template-compiler: $$item has been removed and $this should be used now
+
+closes https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/339
+
+
+
 <a name="0.8.1"></a>
 ## [0.8.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.8.0...v0.8.1) (2016-04-28)
 

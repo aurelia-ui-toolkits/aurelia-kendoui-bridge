@@ -29,11 +29,14 @@ var MaskedTextBox = (function () {
     initializer: null,
     enumerable: true
   }, {
-    key: 'kOptions',
+    key: 'kEnabled',
     decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
+    initializer: null,
+    enumerable: true
+  }, {
+    key: 'kReadOnly',
+    decorators: [_aureliaTemplating.bindable],
+    initializer: null,
     enumerable: true
   }], null, _instanceInitializers);
 
@@ -42,10 +45,12 @@ var MaskedTextBox = (function () {
 
     _defineDecoratedPropertyDescriptor(this, 'kDisableDates', _instanceInitializers);
 
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
+    _defineDecoratedPropertyDescriptor(this, 'kEnabled', _instanceInitializers);
+
+    _defineDecoratedPropertyDescriptor(this, 'kReadOnly', _instanceInitializers);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoMaskedTextBox').linkViewModel(this).useValueBinding();
+    this.widgetBase = widgetBase.control('kendoMaskedTextBox').linkViewModel(this).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
   MaskedTextBox.prototype.bind = function bind(ctx) {

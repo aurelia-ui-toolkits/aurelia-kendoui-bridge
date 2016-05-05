@@ -1,7 +1,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', 'kendo.toolbar.min'], function (_export) {
   'use strict';
 
-  var inject, customElement, bindable, children, WidgetBase, generateBindables, constants, OptionsBuilder, Toolbar;
+  var inject, customElement, children, WidgetBase, generateBindables, constants, OptionsBuilder, Toolbar;
 
   var _createDecoratedClass = (function () { function defineProperties(target, descriptors, initializers) { for (var i = 0; i < descriptors.length; i++) { var descriptor = descriptors[i]; var decorators = descriptor.decorators; var key = descriptor.key; delete descriptor.key; delete descriptor.decorators; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor || descriptor.initializer) descriptor.writable = true; if (decorators) { for (var f = 0; f < decorators.length; f++) { var decorator = decorators[f]; if (typeof decorator === 'function') { descriptor = decorator(target, key, descriptor) || descriptor; } else { throw new TypeError('The decorator for method ' + descriptor.key + ' is of the invalid type ' + typeof decorator); } } if (descriptor.initializer !== undefined) { initializers[key] = descriptor; continue; } } Object.defineProperty(target, key, descriptor); } } return function (Constructor, protoProps, staticProps, protoInitializers, staticInitializers) { if (protoProps) defineProperties(Constructor.prototype, protoProps, protoInitializers); if (staticProps) defineProperties(Constructor, staticProps, staticInitializers); return Constructor; }; })();
 
@@ -14,7 +14,6 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
-      bindable = _aureliaTemplating.bindable;
       children = _aureliaTemplating.children;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
@@ -30,13 +29,6 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(Toolbar, [{
-          key: 'kOptions',
-          decorators: [bindable],
-          initializer: function initializer() {
-            return {};
-          },
-          enumerable: true
-        }, {
           key: 'toolbarItems',
           decorators: [children(constants.elementPrefix + 'toolbar-item')],
           initializer: null,
@@ -45,8 +37,6 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
 
         function Toolbar(element, widgetBase, optionsBuilder) {
           _classCallCheck(this, _Toolbar);
-
-          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'toolbarItems', _instanceInitializers);
 

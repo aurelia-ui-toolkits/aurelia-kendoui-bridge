@@ -10,13 +10,14 @@ import 'kendo.colorpicker.min';
 @inject(Element, WidgetBase)
 export class ColorPicker {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoColorPicker')
                         .linkViewModel(this)
+                        .bindToKendo('kEnabled', 'enable')
                         .useValueBinding();
   }
 

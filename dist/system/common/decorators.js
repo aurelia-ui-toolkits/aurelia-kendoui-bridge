@@ -16,6 +16,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
       var optionKeys = controlProperties.getProperties(controlName, extraProperties);
 
       optionKeys.push('widget');
+      optionKeys.push('options');
 
       for (var i = 0; i < optionKeys.length; i++) {
         var option = optionKeys[i];

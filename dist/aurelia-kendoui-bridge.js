@@ -4,7 +4,7 @@ import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-reso
 import {inject,Container,transient} from 'aurelia-dependency-injection';
 import {customElement,bindable,children,ViewResources,customAttribute,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
-import {bindingMode} from 'aurelia-binding';
+import {bindingMode,createOverrideContext} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
 
 /**
@@ -422,7 +422,8 @@ import 'kendo.virtuallist.min';
 @inject(Element, WidgetBase, ViewResources)
 export class AutoComplete {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -430,8 +431,10 @@ export class AutoComplete {
     this.widgetBase = widgetBase
                         .control('kendoAutoComplete')
                         .linkViewModel(this)
+                        .useViewResources(viewResources)
                         .useValueBinding()
-                        .useViewResources(viewResources);
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -476,8 +479,6 @@ import 'kendo.dataviz.barcode.min';
 @inject(Element, WidgetBase)
 export class Barcode {
 
-  @bindable kOptions = {};
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -512,12 +513,13 @@ import 'kendo.button.min';
 @inject(Element, WidgetBase)
 export class Button {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoButton')
+                        .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
 
@@ -534,6 +536,10 @@ export class Button {
       element: this.element,
       parentCtx: this.$parent
     });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {
@@ -548,12 +554,13 @@ import 'kendo.mobile.buttongroup.min';
 @inject(Element, WidgetBase)
 export class ButtonGroup {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMobileButtonGroup')
+                        .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
 
@@ -572,6 +579,10 @@ export class ButtonGroup {
     });
   }
 
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
   detached() {
     this.widgetBase.destroy(this.kWidget);
   }
@@ -583,8 +594,6 @@ import 'kendo.calendar.min';
 @generateBindables('kendoCalendar')
 @inject(Element, WidgetBase)
 export class Calendar {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -628,8 +637,6 @@ import 'kendo.dataviz.chart.funnel.min';
 @inject(Element, WidgetBase)
 export class Chart {
 
-  @bindable kOptions = {};
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -664,8 +671,6 @@ import 'kendo.dataviz.sparkline.min';
 @generateBindables('kendoSparkline')
 @inject(Element, WidgetBase)
 export class Sparkline {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -702,8 +707,6 @@ import 'kendo.dataviz.stock.min';
 @inject(Element, WidgetBase)
 export class Stock {
 
-  @bindable kOptions = {};
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -739,8 +742,6 @@ import 'kendo.dataviz.treemap.min';
 @inject(Element, WidgetBase)
 export class TreeMap {
 
-  @bindable kOptions = {};
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -774,8 +775,6 @@ import 'kendo.colorpicker.min';
 @generateBindables('kendoColorPalette')
 @inject(Element, WidgetBase)
 export class ColorPalette {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -816,13 +815,14 @@ import 'kendo.colorpicker.min';
 @inject(Element, WidgetBase)
 export class ColorPicker {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoColorPicker')
                         .linkViewModel(this)
+                        .bindToKendo('kEnabled', 'enable')
                         .useValueBinding();
   }
 
@@ -858,7 +858,8 @@ import 'kendo.virtuallist.min';
 @inject(Element, WidgetBase, ViewResources)
 export class ComboBox {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -867,7 +868,9 @@ export class ComboBox {
                         .control('kendoComboBox')
                         .linkViewModel(this)
                         .useValueBinding()
-                        .useViewResources(viewResources);
+                        .useViewResources(viewResources)
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -1003,6 +1006,7 @@ export function generateBindables(controlName: string, extraProperties = []) {
     let optionKeys = controlProperties.getProperties(controlName, extraProperties);
 
     optionKeys.push('widget');
+    optionKeys.push('options');
 
     for (let i = 0; i < optionKeys.length; i++) {
       let option = optionKeys[i];
@@ -1152,12 +1156,10 @@ export class TemplateCompiler {
 
         if (!this.util.isObject(dataItem)) {
           ctx = {
-            dataItem: dataItem,
-            $$item: dataItem
+            dataItem: dataItem
           };
         } else {
           ctx = dataItem;
-          ctx.$$item = Object.assign({}, ctx);
         }
       }
 
@@ -1182,11 +1184,17 @@ export class TemplateCompiler {
     if (element.querySelectorAll('.au-target').length === 0) {
       if (viewResources) {
         view = this.templatingEngine.enhance({
+          bindingContext: ctx,
+          overrideContext: createOverrideContext(ctx, $parent),
           element: element,
           resources: viewResources
         });
       } else {
-        view = this.templatingEngine.enhance(element);
+        view = this.templatingEngine.enhance({
+          bindingContext: ctx,
+          overrideContext: createOverrideContext(ctx, $parent),
+          element: element
+        });
       }
 
       // when we do cleanup, we need to get the view instance
@@ -1195,7 +1203,6 @@ export class TemplateCompiler {
       $(element).data('viewInstance', view);
     }
 
-    view.bind(ctx, $parent); // call the bind() function on the view with the dataItem we got from Kendo
     view.attached(); // attach it to the DOM
   }
 
@@ -1474,10 +1481,13 @@ export class WidgetBase {
   */
   viewModel: any;
 
+
   /**
-  * The constructor of a Kendo control
+  * A list of bindings for properties such as kEnable/kReadOnly/kValue
+  * whenever one of these properties changes an API function will be called on the Kendo control
+  * for example, a change of an 'kEnable' property will result in a .enable(true/false) call
   */
-  ctor: any;
+  bindingsToKendo: Array<BindingToKendo> = [];
 
   constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
     this.taskQueue = taskQueue;
@@ -1489,13 +1499,13 @@ export class WidgetBase {
   }
 
   control(controlName) {
-    if (!controlName || !jQuery.fn[controlName]) {
+    if (!controlName || !kendo.jQuery.fn[controlName]) {
       throw new Error(`The name of control ${controlName} is invalid or not set`);
     }
 
     this.controlName = controlName;
 
-    let ctor = jQuery.fn[this.controlName];
+    let ctor = kendo.jQuery.fn[this.controlName];
     this.kendoOptions = ctor.widget.prototype.options;
     this.kendoEvents = ctor.widget.prototype.events;
 
@@ -1528,10 +1538,28 @@ export class WidgetBase {
   * @param valueBindingProperty the property name of the kendo control (value/checked)
   * @param valueFunction the function on the kendo control that gets the value of the above property
   */
-  useValueBinding(valueBindingProperty = 'value', valueFunction = 'value') {
+  useValueBinding(valueBindingProperty = 'kValue', valueFunction = 'value') {
     this.valueBindingProperty = valueBindingProperty;
     this.valueFunction = valueFunction;
     this.withValueBinding = true;
+
+    this.bindToKendo(valueBindingProperty, valueFunction);
+
+    return this;
+  }
+
+  /**
+  * add binding to Kendo
+  * whenever a bindable property in a wrapper changes, and the propertyname is in this list
+  * then it will call an API function on the Kendo control to update the value
+  * @param propertyName the bindable property name in the wrapper (kValue, kChecked, kEnabled)
+  * @param valueFunction the API function on the kendo control that sets the value of the above property
+  */
+  bindToKendo(propertyName, functionName) {
+    this.bindingsToKendo.push({
+      propertyName: propertyName,
+      functionName: functionName
+    });
 
     return this;
   }
@@ -1548,6 +1576,11 @@ export class WidgetBase {
 
     if (!options.element) {
       throw new Error('element is not set');
+    }
+
+    // destroy old widgets
+    if (this.viewModel && this.viewModel.kWidget) {
+      this.destroy(this.viewModel.kWidget);
     }
 
     // generate all options, including event handlers - use the rootElement if specified, otherwise fall back to the element
@@ -1581,17 +1614,22 @@ export class WidgetBase {
     widget._$resources = this.viewResources;
 
     if (this.withValueBinding) {
-      widget.first('change', (args) => this._handleChange(args.sender));
-      widget.first('dataBound', (args) => this._handleChange(args.sender));
+      widget.first('change', (args) => this._handleValueChange(args.sender));
+      widget.first('dataBound', (args) => this._handleValueChange(args.sender));
+    }
 
-      // sync kValue after initialization of the widget
-      // some widgets (such as dropdownlist) select first item
+    // use Kendo API functions to update all initial values in the wrapper
+    // kValue -> .value()
+    // kEnabled -> .enable()
+    this.bindingsToKendo.forEach(binding => {
+      let value = this.viewModel[binding.propertyName];
+
       // don't do this when the value of the widget is an empty string
       // as it indicates that the widget has not been databound yet
-      if (this.getValue(widget) !== '') {
-        this._handleChange(widget);
+      if (typeof(value) !== 'undefined' && value !== null && value !== '') {
+        widget[binding.functionName](value);
       }
-    }
+    });
 
     if (options.afterInitialize) {
       options.afterInitialize();
@@ -1602,7 +1640,7 @@ export class WidgetBase {
 
 
   _createWidget(element, options, controlName) {
-    return jQuery(element)[controlName](options).data(controlName);
+    return kendo.jQuery(element)[controlName](options).data(controlName);
   }
 
 
@@ -1617,7 +1655,7 @@ export class WidgetBase {
     // - options on the wrapper
     // - options compiled from all the bindable properties
     // - event handler options
-    return this.util.pruneOptions(Object.assign({}, this.viewModel.kOptions, options, eventOptions));
+    return this.util.pruneOptions(Object.assign({}, this.viewModel.kOptions || {}, options, eventOptions));
   }
 
 
@@ -1654,9 +1692,8 @@ export class WidgetBase {
   }
 
 
-  _handleChange(widget) {
-    let propName = this.util.getBindablePropertyName(this.valueBindingProperty);
-    this.viewModel[propName] = this.getValue(widget);
+  _handleValueChange(widget) {
+    this.viewModel[this.valueBindingProperty] = this.getValue(widget);
   }
 
   getValue(widget) {
@@ -1664,8 +1701,9 @@ export class WidgetBase {
   }
 
   handlePropertyChanged(widget, property, newValue, oldValue) {
-    if (property === this.util.getBindablePropertyName(this.valueBindingProperty) && this.withValueBinding) {
-      widget[this.valueFunction](newValue);
+    let binding = this.bindingsToKendo.find(i => i.propertyName === property);
+    if (binding) {
+      widget[binding.functionName](newValue);
     }
   }
 
@@ -1688,14 +1726,17 @@ export class WidgetBase {
   }
 }
 
+interface BindingToKendo {
+  propertyName: string;
+  functionName: string;
+}
+
 import 'kendo.menu.min';
 
 @customAttribute(`${constants.attributePrefix}contextmenu`)
 @generateBindables('kendoContextMenu')
 @inject(Element, WidgetBase)
 export class ContextMenu {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -1731,13 +1772,16 @@ import 'kendo.datepicker.min';
 @inject(Element, WidgetBase)
 export class DatePicker {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoDatePicker')
                         .linkViewModel(this)
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly')
                         .useValueBinding();
   }
 
@@ -1772,14 +1816,17 @@ import 'kendo.datetimepicker.min';
 @inject(Element, WidgetBase)
 export class DateTimePicker {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoDateTimePicker')
                         .linkViewModel(this)
-                        .useValueBinding();
+                        .useValueBinding()
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -1812,8 +1859,6 @@ import 'kendo.dataviz.diagram.min';
 @generateBindables('kendoDiagram')
 @inject(Element, WidgetBase)
 export class Diagram {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -1848,8 +1893,6 @@ import 'kendo.draganddrop.min';
 @generateBindables('kendoDraggable')
 @inject(Element, WidgetBase)
 export class Draggabke {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -1892,8 +1935,6 @@ import 'kendo.draganddrop.min';
 @inject(Element, WidgetBase)
 export class DropTargetArea {
 
-  @bindable kOptions = {};
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -1927,8 +1968,6 @@ import 'kendo.draganddrop.min';
 @generateBindables('kendoDropTarget')
 @inject(Element, WidgetBase)
 export class DropTarget {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -1965,8 +2004,9 @@ import 'kendo.virtuallist.min';
 @inject(Element, WidgetBase, ViewResources)
 export class DropDownList {
 
-  @bindable kOptions = {};
   @bindable kNoValueBinding = false;
+  @bindable kEnabled;
+  @bindable kReadOnly;
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -1974,8 +2014,9 @@ export class DropDownList {
     this.widgetBase = widgetBase
                         .control('kendoDropDownList')
                         .linkViewModel(this)
-                        .useValueBinding()
-                        .useViewResources(viewResources);
+                        .useViewResources(viewResources)
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -1983,11 +2024,11 @@ export class DropDownList {
   }
 
   attached() {
-    this.recreate();
-
-    if (this.kNoValueBinding) {
-      this.widgetBase.withValueBinding = false;
+    if (!this.kNoValueBinding) {
+      this.widgetBase.useValueBinding();
     }
+
+    this.recreate();
   }
 
   recreate() {
@@ -2020,8 +2061,6 @@ import 'kendo.editor.min';
 @generateBindables('kendoEditor')
 @inject(Element, WidgetBase)
 export class Editor {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -2061,8 +2100,6 @@ import 'kendo.colorpicker.min';
 @generateBindables('kendoFlatColorPicker')
 @inject(Element, WidgetBase)
 export class FlatColorPicker {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -2106,7 +2143,6 @@ export class Gantt  {
 
   @children(`${constants.elementPrefix}gantt-col`) columns;
   @children(`${constants.elementPrefix}template`) templates;
-  @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;
@@ -2171,8 +2207,6 @@ import 'kendo.dataviz.gauge.min';
 @inject(Element, WidgetBase)
 export class LinearGauge {
 
-  @bindable kOptions = {};
-
   constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -2211,8 +2245,6 @@ import 'kendo.dataviz.gauge.min';
 @generateBindables('kendoRadialGauge')
 @inject(Element, WidgetBase)
 export class RadialGauge {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -2289,7 +2321,6 @@ export class Grid  {
   @children(`${constants.elementPrefix}col`) columns;
   @children(`${constants.elementPrefix}template`) templates;
   @children(`${constants.elementPrefix}grid-toolbar`) gridToolbars;
-  @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
     this.element = element;
@@ -2377,7 +2408,6 @@ import 'kendo.listview.min';
 @inject(Element, WidgetBase, ViewResources)
 export class ListView  {
 
-  @bindable kOptions = {};
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -2418,8 +2448,6 @@ import 'kendo.dataviz.map.min';
 @inject(Element, WidgetBase)
 export class Map {
 
-  @bindable kOptions = {};
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -2459,14 +2487,17 @@ import 'kendo.maskedtextbox.min';
 export class MaskedTextBox {
 
   @bindable kDisableDates;
-  @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMaskedTextBox')
                         .linkViewModel(this)
-                        .useValueBinding();
+                        .useValueBinding()
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -2499,8 +2530,6 @@ import 'kendo.menu.min';
 @generateBindables('kendoMenu')
 @inject(Element, WidgetBase)
 export class Menu {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -2537,7 +2566,8 @@ import 'kendo.virtuallist.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Multiselect {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
   @bindable kNoValueBinding = false;
   @children(`${constants.elementPrefix}template`) templates;
 
@@ -2546,8 +2576,9 @@ export class Multiselect {
     this.widgetBase = widgetBase
                         .control('kendoMultiSelect')
                         .linkViewModel(this)
-                        .useValueBinding()
-                        .useViewResources(viewResources);
+                        .useViewResources(viewResources)
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -2555,11 +2586,11 @@ export class Multiselect {
   }
 
   attached() {
-    this.recreate();
-
-    if (this.kNoValueBinding) {
-      this.widgetBase.withValueBinding = false;
+    if (!this.kNoValueBinding) {
+      this.widgetBase.useValueBinding();
     }
+
+    this.recreate();
   }
 
   recreate() {
@@ -2612,7 +2643,6 @@ import 'kendo.notification.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Notification {
 
-  @bindable kOptions = {};
   @children(`${constants.elementPrefix}notification-template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -2662,14 +2692,17 @@ import 'kendo.numerictextbox.min';
 @inject(Element, WidgetBase)
 export class NumericTextBox {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoNumericTextBox')
                         .linkViewModel(this)
-                        .useValueBinding();
+                        .useValueBinding()
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -2702,8 +2735,6 @@ import 'kendo.panelbar.min';
 @generateBindables('kendoPanelBar')
 @inject(Element, WidgetBase)
 export class PanelBar {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -2768,8 +2799,6 @@ import 'kendo.pivot.configurator.min';
 @inject(Element, WidgetBase)
 export class PivotConfigurator {
 
-  @bindable kOptions = {};
-
   constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -2807,7 +2836,6 @@ import 'kendo.pivot.fieldmenu.min';
 @inject(Element, WidgetBase, ViewResources)
 export class PivotGrid {
 
-  @bindable kOptions = {};
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -2847,12 +2875,13 @@ import 'kendo.progressbar.min';
 @inject(Element, WidgetBase)
 export class ProgressBar {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoProgressBar')
+                        .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
 
@@ -2871,6 +2900,10 @@ export class ProgressBar {
     });
   }
 
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
   detached() {
     this.widgetBase.destroy(this.kWidget);
   }
@@ -2882,8 +2915,6 @@ import 'kendo.dataviz.qrcode.min';
 @generateBindables('kendoQRCode')
 @inject(Element, WidgetBase)
 export class QRCode {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -2919,13 +2950,14 @@ import 'kendo.slider.min';
 @inject(Element, WidgetBase)
 export class RangeSlider {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoRangeSlider')
                     .linkViewModel(this)
+                    .bindToKendo('kEnabled', 'enable')
                     .useValueBinding();
   }
 
@@ -2959,8 +2991,6 @@ import 'kendo.responsivepanel.min';
 @generateBindables('kendoResponsivePanel')
 @inject(Element, WidgetBase)
 export class ResponsivePanel {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -3002,7 +3032,6 @@ import 'kendo.scheduler.timelineview.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Scheduler {
 
-  @bindable kOptions = {};
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -3042,7 +3071,6 @@ import 'kendo.mobile.scrollview.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Scrollview {
 
-  @bindable kOptions = {};
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -3050,7 +3078,8 @@ export class Scrollview {
     this.widgetBase = widgetBase
                         .control('kendoMobileScrollView')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useViewResources(viewResources)
+                        .useValueBinding();
   }
 
   bind(ctx) {
@@ -3094,13 +3123,14 @@ import 'kendo.slider.min';
 @inject(Element, WidgetBase)
 export class Slider {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoSlider')
                     .linkViewModel(this)
+                    .bindToKendo('kEnabled', 'enable')
                     .useValueBinding();
   }
 
@@ -3134,8 +3164,6 @@ import 'kendo.sortable.min';
 @generateBindables('kendoSortable')
 @inject(Element, WidgetBase)
 export class Sortable {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -3171,8 +3199,6 @@ import 'kendo.splitter.min';
 @inject(Element, WidgetBase)
 export class Splitter {
 
-  @bindable options = {};
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -3206,8 +3232,6 @@ import 'kendo.spreadsheet.min';
 @generateBindables('kendoSpreadsheet')
 @inject(Element, WidgetBase)
 export class Spreadsheet {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -3243,14 +3267,15 @@ import 'kendo.mobile.switch.min';
 @inject(Element, WidgetBase)
 export class Switch {
 
-  @bindable kOptions = {};
+  @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMobileSwitch')
                         .linkViewModel(this)
-                        .useValueBinding('checked');
+                        .bindToKendo('kEnabled', 'enable')
+                        .useValueBinding('kChecked', 'check');
   }
 
   bind(ctx) {
@@ -3283,8 +3308,6 @@ import 'kendo.tabstrip.min';
 @generateBindables('kendoTabStrip')
 @inject(Element, WidgetBase)
 export class TabStrip {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -3321,14 +3344,17 @@ import 'kendo.timepicker.min';
 export class TimePicker {
 
   @bindable kDisableDates;
-  @bindable kOptions = {};
+  @bindable kEnabled;
+  @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTimePicker')
                         .linkViewModel(this)
-                        .useValueBinding();
+                        .useValueBinding()
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -3403,7 +3429,6 @@ import 'kendo.toolbar.min';
 @inject(Element, WidgetBase, OptionsBuilder)
 export class Toolbar {
 
-  @bindable kOptions = {};
   @children(`${constants.elementPrefix}toolbar-item`) toolbarItems;
 
   constructor(element, widgetBase, optionsBuilder) {
@@ -3451,8 +3476,6 @@ import 'kendo.tooltip.min';
 @generateBindables('kendoTooltip')
 @inject(Element, WidgetBase)
 export class Tooltip {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -3507,7 +3530,6 @@ import 'kendo.treelist.min';
 export class TreeList  {
 
   @children(`${constants.elementPrefix}tree-col`) columns;
-  @bindable kOptions = {};
 
   constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;
@@ -3560,7 +3582,6 @@ import 'kendo.treeview.min';
 @generateBindables('kendoTreeView')
 @inject(Element, WidgetBase)
 export class TreeView {
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -3596,7 +3617,6 @@ import 'kendo.upload.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Upload {
 
-  @bindable kOptions = {};
   @children(`${constants.elementPrefix}template`) templates;
 
   constructor(element, widgetBase, viewResources) {
@@ -3645,8 +3665,6 @@ import 'kendo.validator.min';
 @generateBindables('kendoValidator')
 @inject(Element, WidgetBase)
 export class Validator {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -3725,8 +3743,6 @@ import 'kendo.window.min';
 @generateBindables('kendoWindow')
 @inject(Element, WidgetBase)
 export class Window {
-
-  @bindable kOptions = {};
 
   constructor(element, widgetBase) {
     this.element = element;

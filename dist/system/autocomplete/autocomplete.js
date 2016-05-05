@@ -29,11 +29,14 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         var _instanceInitializers = {};
 
         _createDecoratedClass(AutoComplete, [{
-          key: 'kOptions',
+          key: 'kEnabled',
           decorators: [bindable],
-          initializer: function initializer() {
-            return {};
-          },
+          initializer: null,
+          enumerable: true
+        }, {
+          key: 'kReadOnly',
+          decorators: [bindable],
+          initializer: null,
           enumerable: true
         }, {
           key: 'templates',
@@ -45,12 +48,14 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         function AutoComplete(element, widgetBase, viewResources) {
           _classCallCheck(this, _AutoComplete);
 
-          _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
+          _defineDecoratedPropertyDescriptor(this, 'kEnabled', _instanceInitializers);
+
+          _defineDecoratedPropertyDescriptor(this, 'kReadOnly', _instanceInitializers);
 
           _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useValueBinding().useViewResources(viewResources);
+          this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useViewResources(viewResources).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
         }
 
         AutoComplete.prototype.bind = function bind(ctx) {

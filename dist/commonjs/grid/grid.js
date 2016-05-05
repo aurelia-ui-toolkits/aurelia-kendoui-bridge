@@ -48,13 +48,6 @@ var Grid = (function () {
     decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'grid-toolbar')],
     initializer: null,
     enumerable: true
-  }, {
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
   }], null, _instanceInitializers);
 
   function Grid(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
@@ -65,8 +58,6 @@ var Grid = (function () {
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'gridToolbars', _instanceInitializers);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     this.element = element;
     this.templateGatherer = templateGatherer;

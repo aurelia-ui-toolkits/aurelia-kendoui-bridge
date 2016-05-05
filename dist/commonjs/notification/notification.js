@@ -24,13 +24,6 @@ var Notification = (function () {
   var _instanceInitializers = {};
 
   _createDecoratedClass(Notification, [{
-    key: 'kOptions',
-    decorators: [_aureliaTemplating.bindable],
-    initializer: function initializer() {
-      return {};
-    },
-    enumerable: true
-  }, {
     key: 'templates',
     decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'notification-template')],
     initializer: null,
@@ -39,8 +32,6 @@ var Notification = (function () {
 
   function Notification(element, widgetBase, viewResources) {
     _classCallCheck(this, _Notification);
-
-    _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 

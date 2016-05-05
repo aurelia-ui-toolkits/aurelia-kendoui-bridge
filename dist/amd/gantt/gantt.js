@@ -22,13 +22,6 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
       initializer: null,
       enumerable: true
-    }, {
-      key: 'kOptions',
-      decorators: [_aureliaTemplating.bindable],
-      initializer: function initializer() {
-        return {};
-      },
-      enumerable: true
     }], null, _instanceInitializers);
 
     function Gantt(element, widgetBase, viewResources, optionsBuilder) {
@@ -37,8 +30,6 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
 
       _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
-
-      _defineDecoratedPropertyDescriptor(this, 'kOptions', _instanceInitializers);
 
       this.element = element;
       this.optionsBuilder = optionsBuilder;
