@@ -8,8 +8,11 @@ export class NotifyBindingBehavior {
     this.eventManager = eventManager;
   }
 
-  bind(binding, scope, observable, field) {
+  bind(binding, scope, target, fieldName) {
     if (!binding.updateSource) return;
+
+    var observable = target || binding.source.bindingContext;
+    var field = fieldName || binding.sourceExpression.expression.name;
 
     let targetObserver = binding.observerLocator.getObserver(binding.target, binding.targetProperty);
     binding.targetObserver = targetObserver;

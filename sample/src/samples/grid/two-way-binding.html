@@ -1,0 +1,25 @@
+<template>
+  <!-- note, you need to call .notifyBindingBehavior() in main.js -->
+  <ak-grid k-data-source.bind="datasource" k-widget.bind="grid" k-pageable.bind="true" k-toolbar.bind="['create']" k-editable.bind="true">
+    <ak-col k-field="ProductName"></ak-col>
+    <ak-col>
+      <ak-template>
+        <!-- when ProductName changes, tell Kendo that -->
+        <input type="text" value.bind="ProductName & notify"/>
+      </ak-template>
+    </ak-col>
+  </ak-grid>
+
+  <div repeat.for="item of data">
+    <p>${item.ProductName}
+      <!-- you can provide the object and property name explicitly -->
+      <!-- in this case, the object isn't picked up because it is in a repeat.for loop -->
+      <input type="text" value.bind="item.ProductName & notify:item:ProductName"/>
+    </p>
+  </div>
+
+  <button ak-button click.delegate="addNew()">add new</button>
+  <button ak-button click.delegate="updateItem()">change last item</button>
+  <button ak-button click.delegate="removeItem()">remove last item</button>
+  <button ak-button click.delegate="save()">save()</button>
+</template>
