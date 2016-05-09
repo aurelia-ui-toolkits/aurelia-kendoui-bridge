@@ -1,5 +1,5 @@
 import {EventManager} from 'aurelia-binding';
-import {inject} from 'aurelia-framework';
+import {inject} from 'aurelia-dependency-injection';
 
 @inject(EventManager)
 export class NotifyBindingBehavior {
@@ -11,19 +11,19 @@ export class NotifyBindingBehavior {
   bind(binding, scope, target, fieldName) {
     if (!binding.updateSource) return;
 
-    var observable = target || binding.source.bindingContext;
-    var field = fieldName || binding.sourceExpression.expression.name;
-
+    // update values on blur event
     let targetObserver = binding.observerLocator.getObserver(binding.target, binding.targetProperty);
     binding.targetObserver = targetObserver;
-
     targetObserver.originalHandler = binding.targetObserver.handler;
-
-    // replace the element subscribe function with one that uses the correct events.
     let handler = this.eventManager.createElementHandler(['blur']);
     targetObserver.handler = handler;
 
-    var intercept = binding.updateSource;
+    let observable = target || binding.source.bindingContext;
+    let field = fieldName || binding.sourceExpression.expression.name;
+    let intercept = binding.updateSource;
+
+    // intercept updateSource function
+    // to call .trigger('change', { field: field}) and set the dirty flag
     binding['intercepted-updateSource'] = intercept;
     binding.updateSource = function(value) {
       // handle change
