@@ -3,10 +3,12 @@ import {ControlProperties} from 'src/common/control-properties';
 import {TemplatingEngine} from 'aurelia-templating';
 import {initialize} from 'aurelia-pal-browser';
 import {Container} from 'aurelia-dependency-injection';
+import {KendoConfigBuilder} from 'src/config-builder';
 
 describe('TemplateGatherer', () => {
   let sut;
   let container;
+  let configBuilder;
   let templatingEngine;
   let controlProperties;
 
@@ -18,6 +20,8 @@ describe('TemplateGatherer', () => {
     };
 
     container = new Container();
+    configBuilder = new KendoConfigBuilder();
+    container.registerInstance(KendoConfigBuilder, configBuilder);
     container.registerInstance(ControlProperties, controlProperties);
     templatingEngine = container.get(TemplatingEngine);
     sut = templatingEngine.createViewModelForUnitTest(TemplateGatherer);
@@ -98,5 +102,22 @@ describe('TemplateGatherer', () => {
     sut.useTemplates(target, controlName, templates);
 
     expect(target.kTemplate).toBe('abcd');
+  });
+
+  it('support modification of template via callback provided by user', () => {
+    let callback = jasmine.createSpy();
+    configBuilder.withTemplateCallback(callback);
+
+    let templateProps = ['template'];
+    let templates = [{
+      for: 'template',
+      template: 'abcd'
+    }];
+    let target = {};
+    let controlName = 'kendoScheduler';
+    controlProperties.getTemplateProperties.and.returnValue(templateProps);
+    sut.useTemplates(target, controlName, templates);
+
+    expect(callback).toHaveBeenCalledWith(templates[0], templates[0].template);
   });
 });
