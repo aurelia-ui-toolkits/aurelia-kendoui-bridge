@@ -49,4 +49,14 @@ describe('OptionsBuilder', () => {
     expect(options.empty1).toBeUndefined();
     expect(options.empty2).toBeUndefined();
   });
+
+  it('calls afterOptionsBuild', () => {
+    controlProperties.getProperties = jasmine.createSpy().and.returnValue([]);
+    let spy = jasmine.createSpy();
+    let viewModel = {
+      afterOptionsBuild: spy
+    };
+    sut.getOptions(viewModel, 'kendoButton');
+    expect(spy).toHaveBeenCalled();
+  });
 });
