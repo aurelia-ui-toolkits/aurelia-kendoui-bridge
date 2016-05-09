@@ -52,7 +52,6 @@ System.config({
     "gka/chroma.js": "github:gka/chroma.js@1.1.1",
     "google/code-prettify": "github:google/code-prettify@master",
     "jquery": "npm:jquery@2.2.3",
-    "jquery.min": "github:components/jquery@2.2.1",
     "json": "github:systemjs/plugin-json@0.1.2",
     "prism": "github:PrismJS/prism@1.3.0",
     "showdown": "github:showdownjs/showdown@1.3.0",
