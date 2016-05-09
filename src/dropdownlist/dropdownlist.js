@@ -35,7 +35,9 @@ export class DropDownList {
       this.widgetBase.useValueBinding();
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {

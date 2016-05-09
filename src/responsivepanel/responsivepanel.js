@@ -22,7 +22,9 @@ export class ResponsivePanel {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
