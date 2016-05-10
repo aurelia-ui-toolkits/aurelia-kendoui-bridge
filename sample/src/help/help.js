@@ -17,7 +17,6 @@ export class Help {
     let tab = this.route.route;
 
     this.taskqueue.queueTask(() => {
-      console.log(tab);
       this.tabstrip.select(this[tab]);
     });
   }
