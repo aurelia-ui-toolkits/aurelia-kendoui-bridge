@@ -2,10 +2,10 @@
     <require from="./doc"></require>
     <section>
         <h4>Components Catalog Help</h4>
-        <div ak-tabstrip k-on-select.delegate="tabSelected($event.detail)">
+        <div ak-tabstrip="k-widget.bind: tabstrip" k-on-select.delegate="tabSelected($event.detail)">
           <ul>
-              <li class="k-state-active">Components Docs</li>
-              <li>Support</li>
+              <li ref="docs" class="k-state-active" data-tab="docs">Components Docs</li>
+              <li ref="support" data-tab="support">Support</li>
           </ul>
           <div style="height: 790px;">
             <doc></doc>
