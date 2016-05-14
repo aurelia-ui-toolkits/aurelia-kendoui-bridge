@@ -101,11 +101,16 @@ If you want to bundle Kendo, we recommend you to create a seperate bundle. You w
         "kendo-ui/**/*.js"
       ],
       "excludes": [
-        "kendo-ui/js/angular.min.js",
-        "kendo-ui/js/jquery.min.js",
-        "kendo-ui/js/kendo.angular.min.js",
-        "kendo-ui/js/kendo.angular2.min.js",
-        "kendo-ui/js/kendo.ui.core.min.js"
+        "[kendo-ui/js/angular.min.js]",
+        "[kendo-ui/js/jquery.min.js]",
+        "[kendo-ui/js/kendo.angular.min.js]",
+        "[kendo-ui/js/kendo.angular2.min.js]",
+        "[kendo-ui/js/kendo.spreadsheet.min.js]",
+        "[kendo-ui/js/kendo.all.min.js]",
+        "[kendo-ui/js/kendo.web.min.js]",
+        "[kendo-ui/js/kendo.dataviz.min.js]",
+        "[kendo-ui/js/kendo.dataviz.mobile.min.js]",
+        "[kendo-ui/js/kendo.mobile.min.js]"
       ]
     }
 <br>
@@ -124,16 +129,16 @@ A working configuration looks like this:
     "src/kendo-build": {
       "includes": ["kendo-ui/js/*.min.js"],
       "excludes": [
-        "kendo-ui/js/angular.min.js",
-        "kendo-ui/js/jquery.min.js",
-        "kendo-ui/js/kendo.angular.min.js",
-        "kendo-ui/js/kendo.angular2.min.js",
-        "kendo-ui/js/kendo.spreadsheet.min.js",
-        "kendo-ui/js/kendo.all.min.js",
-        "kendo-ui/js/kendo.web.min.js",
-        "kendo-ui/js/kendo.dataviz.min.js",
-        "kendo-ui/js/kendo.dataviz.mobile.min.js",
-        "kendo-ui/js/kendo.mobile.min.js"
+        "[kendo-ui/js/angular.min.js]",
+        "[kendo-ui/js/jquery.min.js]",
+        "[kendo-ui/js/kendo.angular.min.js]",
+        "[kendo-ui/js/kendo.angular2.min.js]",
+        "[kendo-ui/js/kendo.spreadsheet.min.js]",
+        "[kendo-ui/js/kendo.all.min.js]",
+        "[kendo-ui/js/kendo.web.min.js]",
+        "[kendo-ui/js/kendo.dataviz.min.js]",
+        "[kendo-ui/js/kendo.dataviz.mobile.min.js]",
+        "[kendo-ui/js/kendo.mobile.min.js]"
       ],
       "options": {
         "inject": true,
