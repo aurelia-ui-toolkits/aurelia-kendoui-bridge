@@ -35,7 +35,7 @@ export class TemplateGatherer {
           let template = c.template;
 
           if (this.config.templateCallback) {
-            template = this.config.templateCallback(c, c.template);
+            template = this.config.templateCallback(target, c, c.template);
           }
 
           target[this.util.getBindablePropertyName(c.for)] = c.kendoTemplate ? template : () => template;

@@ -118,6 +118,6 @@ describe('TemplateGatherer', () => {
     controlProperties.getTemplateProperties.and.returnValue(templateProps);
     sut.useTemplates(target, controlName, templates);
 
-    expect(callback).toHaveBeenCalledWith(templates[0], templates[0].template);
+    expect(callback).toHaveBeenCalledWith(target, templates[0], templates[0].template);
   });
 });
