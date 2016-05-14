@@ -13,13 +13,12 @@
       "github:*": "jspm_packages/github/*",
       "npm:*": "jspm_packages/npm/*",
       "kendo.*": "vendors/js/kendo.*.js",        <----
-      "kendo-ui/*": "vendors/*",                 <----
+      "kendo-ui/*": "vendors/*"                 <----
     },
     "map": {
       "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
       "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
-      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
-      "jquery": "github:components/jquery@2.1.4",             <----
+      "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2"
     }
     ```
 
@@ -27,7 +26,7 @@
   **Note:** old versions of Kendo require a jquery.min map that is the equivalent of the jquery map: "jquery.min": "github:components/jquery@2.1.4"
 
 5. Install the aurelia-kendoui-bridge and the css plugin
-`jspm install aurelia-kendoui-bridge`
+`jspm install jquery aurelia-kendoui-bridge`
 
 6. Register the aurelia-kendoui-bridge plugin
 Now we're going to register the plugin with Aurelia in your "main.js" or equivalent. The configuration function will be passed a builder object that you can use to configure which Kendo controls you wish to use. You can use all controls in Kendo UI Pro by calling the "pro()" method

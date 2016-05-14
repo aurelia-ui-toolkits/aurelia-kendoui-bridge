@@ -3,7 +3,7 @@
 ### KendoUI Core
 
 1. Install KendoUI Core and the aurelia-kendoui-bridge by issuing the command:
-`jspm install kendo-ui aurelia-kendoui-bridge`
+`jspm install jquery kendo-ui aurelia-kendoui-bridge`
 
 2. Open `config.js` and add a couple of path mappings:
 
@@ -17,8 +17,7 @@
   "map": {
     "aurelia-bootstrapper": "npm:aurelia-bootstrapper@1.0.0-beta.1",
     "aurelia-fetch-client": "npm:aurelia-fetch-client@1.0.0-beta.1",
-    "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2",
-    "jquery": "github:components/jquery@2.1.4",             <----
+    "aurelia-framework": "npm:aurelia-framework@1.0.0-beta.1.0.2"
   }
   ```
 
