@@ -29,7 +29,9 @@ var Barcode = (function () {
   };
 
   Barcode.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Barcode.prototype.recreate = function recreate() {

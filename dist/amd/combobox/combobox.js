@@ -47,7 +47,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     ComboBox.prototype.attached = function attached() {
-      this.recreate();
+      if (!this.kNoInit) {
+        this.recreate();
+      }
     };
 
     ComboBox.prototype.recreate = function recreate() {

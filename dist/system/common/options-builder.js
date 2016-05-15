@@ -35,6 +35,10 @@ System.register(['aurelia-dependency-injection', './control-properties', './util
             }
           }
 
+          if (viewModel.afterOptionsBuild) {
+            viewModel.afterOptionsBuild(options);
+          }
+
           return this.util.pruneOptions(options);
         };
 

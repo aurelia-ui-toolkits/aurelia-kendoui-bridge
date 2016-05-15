@@ -31,6 +31,10 @@ var OptionsBuilder = (function () {
       }
     }
 
+    if (viewModel.afterOptionsBuild) {
+      viewModel.afterOptionsBuild(options);
+    }
+
     return this.util.pruneOptions(options);
   };
 

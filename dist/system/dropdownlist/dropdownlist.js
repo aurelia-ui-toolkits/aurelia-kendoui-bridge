@@ -79,7 +79,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
             this.widgetBase.useValueBinding();
           }
 
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         DropDownList.prototype.recreate = function recreate() {

@@ -49,7 +49,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         ListView.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         ListView.prototype.recreate = function recreate() {

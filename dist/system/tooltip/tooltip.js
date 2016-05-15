@@ -31,7 +31,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Tooltip.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         Tooltip.prototype.recreate = function recreate() {

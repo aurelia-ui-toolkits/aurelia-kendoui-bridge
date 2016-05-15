@@ -29,7 +29,9 @@ var Map = (function () {
   };
 
   Map.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Map.prototype.recreate = function recreate() {

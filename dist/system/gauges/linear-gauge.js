@@ -31,7 +31,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         LinearGauge.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         LinearGauge.prototype.recreate = function recreate() {

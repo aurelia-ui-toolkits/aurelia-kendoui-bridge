@@ -1,7 +1,7 @@
-System.register(['./control-properties', './util', 'aurelia-dependency-injection'], function (_export) {
+System.register(['./control-properties', './util', 'aurelia-dependency-injection', '../config-builder'], function (_export) {
   'use strict';
 
-  var ControlProperties, Util, inject, TemplateGatherer;
+  var ControlProperties, Util, inject, KendoConfigBuilder, TemplateGatherer;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -12,13 +12,16 @@ System.register(['./control-properties', './util', 'aurelia-dependency-injection
       Util = _util.Util;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+    }, function (_configBuilder) {
+      KendoConfigBuilder = _configBuilder.KendoConfigBuilder;
     }],
     execute: function () {
       TemplateGatherer = (function () {
-        function TemplateGatherer(controlProperties, util) {
+        function TemplateGatherer(controlProperties, util, config) {
           _classCallCheck(this, _TemplateGatherer);
 
           this.controlProperties = controlProperties;
+          this.config = config;
           this.util = util;
         }
 
@@ -34,9 +37,17 @@ System.register(['./control-properties', './util', 'aurelia-dependency-injection
           templates.forEach(function (c) {
             if (templateProps.indexOf(c['for']) > -1) {
               if (_this.util.hasValue(c.template)) {
-                target[_this.util.getBindablePropertyName(c['for'])] = c.kendoTemplate ? c.template : function () {
-                  return c.template;
-                };
+                (function () {
+                  var template = c.template;
+
+                  if (_this.config.templateCallback) {
+                    template = _this.config.templateCallback(target, c, c.template);
+                  }
+
+                  target[_this.util.getBindablePropertyName(c['for'])] = c.kendoTemplate ? template : function () {
+                    return template;
+                  };
+                })();
               }
             } else {
               if (!c['for']) {
@@ -49,7 +60,7 @@ System.register(['./control-properties', './util', 'aurelia-dependency-injection
         };
 
         var _TemplateGatherer = TemplateGatherer;
-        TemplateGatherer = inject(ControlProperties, Util)(TemplateGatherer) || TemplateGatherer;
+        TemplateGatherer = inject(ControlProperties, Util, KendoConfigBuilder)(TemplateGatherer) || TemplateGatherer;
         return TemplateGatherer;
       })();
 

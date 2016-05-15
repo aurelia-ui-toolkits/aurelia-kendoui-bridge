@@ -33,7 +33,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Switch.prototype.attached = function attached() {
-      this.recreate();
+      if (!this.kNoInit) {
+        this.recreate();
+      }
     };
 
     Switch.prototype.recreate = function recreate() {

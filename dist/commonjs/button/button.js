@@ -44,7 +44,9 @@ var Button = (function () {
   };
 
   Button.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Button.prototype.recreate = function recreate() {

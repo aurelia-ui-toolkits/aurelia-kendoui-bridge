@@ -61,7 +61,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         MaskedTextBox.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         MaskedTextBox.prototype.recreate = function recreate() {

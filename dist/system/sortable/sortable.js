@@ -31,7 +31,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Sortable.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         Sortable.prototype.recreate = function recreate() {

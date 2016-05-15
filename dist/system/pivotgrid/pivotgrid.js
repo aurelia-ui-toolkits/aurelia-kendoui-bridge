@@ -50,7 +50,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         PivotGrid.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         PivotGrid.prototype.recreate = function recreate() {

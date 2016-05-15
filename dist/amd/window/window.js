@@ -18,7 +18,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Window.prototype.attached = function attached() {
-      this.recreate();
+      if (!this.kNoInit) {
+        this.recreate();
+      }
     };
 
     Window.prototype.recreate = function recreate() {

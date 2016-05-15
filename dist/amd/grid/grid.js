@@ -58,7 +58,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
         this.element.appendChild(this.target);
       }
 
-      this.recreate();
+      if (!this.kNoInit) {
+        this.recreate();
+      }
     };
 
     Grid.prototype.recreate = function recreate() {

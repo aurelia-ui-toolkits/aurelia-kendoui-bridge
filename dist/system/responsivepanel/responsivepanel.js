@@ -31,7 +31,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         ResponsivePanel.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         ResponsivePanel.prototype.recreate = function recreate() {

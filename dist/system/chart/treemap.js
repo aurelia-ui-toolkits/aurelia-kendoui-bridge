@@ -33,7 +33,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         TreeMap.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         TreeMap.prototype.recreate = function recreate() {

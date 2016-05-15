@@ -29,7 +29,9 @@ var DropTargetArea = (function () {
   };
 
   DropTargetArea.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   DropTargetArea.prototype.recreate = function recreate() {

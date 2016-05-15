@@ -30,6 +30,12 @@ export class OptionsBuilder {
       }
     }
 
+    // allows view-models to do some post processing
+    // used in ak-col to support nested columns
+    if (viewModel.afterOptionsBuild) {
+      viewModel.afterOptionsBuild(options);
+    }
+
     return this.util.pruneOptions(options);
   }
 }

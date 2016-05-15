@@ -33,7 +33,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Chart.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         Chart.prototype.recreate = function recreate() {

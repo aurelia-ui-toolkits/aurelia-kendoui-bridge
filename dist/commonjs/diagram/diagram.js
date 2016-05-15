@@ -29,7 +29,9 @@ var Diagram = (function () {
   };
 
   Diagram.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Diagram.prototype.recreate = function recreate() {

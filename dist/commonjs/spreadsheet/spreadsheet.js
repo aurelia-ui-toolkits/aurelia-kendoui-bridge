@@ -29,7 +29,9 @@ var Spreadsheet = (function () {
   };
 
   Spreadsheet.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Spreadsheet.prototype.recreate = function recreate() {

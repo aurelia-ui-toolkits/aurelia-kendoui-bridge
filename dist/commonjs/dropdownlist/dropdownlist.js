@@ -73,7 +73,9 @@ var DropDownList = (function () {
       this.widgetBase.useValueBinding();
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   DropDownList.prototype.recreate = function recreate() {

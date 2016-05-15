@@ -51,7 +51,9 @@ var Scrollview = (function () {
       this.element.appendChild(this.target);
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Scrollview.prototype.recreate = function recreate() {

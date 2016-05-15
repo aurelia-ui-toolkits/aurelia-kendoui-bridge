@@ -32,7 +32,9 @@ export class TreeList  {
   // initialization in bind() is giving issues in some scenarios
   // so, attached() is used for this control
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {

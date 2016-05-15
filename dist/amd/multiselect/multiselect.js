@@ -60,7 +60,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
         this.widgetBase.useValueBinding();
       }
 
-      this.recreate();
+      if (!this.kNoInit) {
+        this.recreate();
+      }
     };
 
     Multiselect.prototype.recreate = function recreate() {

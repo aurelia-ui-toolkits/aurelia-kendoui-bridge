@@ -18,7 +18,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Menu.prototype.attached = function attached() {
-      this.recreate();
+      if (!this.kNoInit) {
+        this.recreate();
+      }
     };
 
     Menu.prototype.recreate = function recreate() {

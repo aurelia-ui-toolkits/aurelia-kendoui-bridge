@@ -38,6 +38,16 @@ var KendoConfigBuilder = (function () {
     return this;
   };
 
+  KendoConfigBuilder.prototype.notifyBindingBehavior = function notifyBindingBehavior() {
+    this.resources.push('./common/notify-binding-behavior');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.withTemplateCallback = function withTemplateCallback(callback) {
+    this.templateCallback = callback;
+    return this;
+  };
+
   KendoConfigBuilder.prototype.withoutRepeatStrategy = function withoutRepeatStrategy() {
     this.registerRepeatStrategy = false;
   };

@@ -26,6 +26,10 @@ define(['exports', 'aurelia-dependency-injection', './control-properties', './ut
         }
       }
 
+      if (viewModel.afterOptionsBuild) {
+        viewModel.afterOptionsBuild(options);
+      }
+
       return this.util.pruneOptions(options);
     };
 

@@ -45,7 +45,9 @@ var ListView = (function () {
   };
 
   ListView.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ListView.prototype.recreate = function recreate() {

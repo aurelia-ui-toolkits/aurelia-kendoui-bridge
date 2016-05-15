@@ -5,7 +5,7 @@ declare module 'aurelia-kendoui-bridge' {
   import { inject, Container, transient }  from 'aurelia-dependency-injection';
   import { customElement, bindable, children, ViewResources, customAttribute, BindableProperty, HtmlBehaviorResource, TemplatingEngine, noView, processContent, TargetInstruction }  from 'aurelia-templating';
   import { metadata }  from 'aurelia-metadata';
-  import { bindingMode, createOverrideContext }  from 'aurelia-binding';
+  import { bindingMode, EventManager, createOverrideContext }  from 'aurelia-binding';
   import { TaskQueue }  from 'aurelia-task-queue';
   import 'kendo.data.min';
   import 'kendo.autocomplete.min';
@@ -137,6 +137,16 @@ declare module 'aurelia-kendoui-bridge' {
       * Adds kendo templating support
       */
     debug(): KendoConfigBuilder;
+    
+    /**
+      * Loads the notify binding behavior
+      */
+    notifyBindingBehavior(): KendoConfigBuilder;
+    
+    /**
+      * Custom callback for template modification
+      */
+    withTemplateCallback(callback: any): KendoConfigBuilder;
     
     /**
       * Don't register an array repeat strategy for kendo.data.ObservableArray
@@ -342,6 +352,12 @@ declare module 'aurelia-kendoui-bridge' {
   * @param controlName The Kendo control of which the options should be converted into bindable properties
   */
   export function generateBindables(controlName: string, extraProperties?: any): any;
+  export function delayed(targetFunction: any): any;
+  export class NotifyBindingBehavior {
+    constructor(eventManager: any);
+    bind(binding: any, scope: any, target: any, fieldName: any): any;
+    unbind(binding: any, scope: any): any;
+  }
   
   /***
   * Converts an object with bindable properties (with k- convention)
@@ -416,7 +432,7 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class TemplateGatherer {
     controlProperties: ControlProperties;
-    constructor(controlProperties: ControlProperties, util: Util);
+    constructor(controlProperties: ControlProperties, util: Util, config: KendoConfigBuilder);
     
     /***
       * parses array of ak-template view-models (@children)
@@ -699,8 +715,12 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class Col {
     templates: any;
-    constructor(templateGatherer: any);
+    columns: any;
+    constructor(templateGatherer: any, optionsBuilder: any);
     bind(): any;
+    
+    //  recursively get options of all nested columns that we can pass to Kendo
+    afterOptionsBuild(options: any): any;
   }
   export class GridToolbar {
     templates: any;

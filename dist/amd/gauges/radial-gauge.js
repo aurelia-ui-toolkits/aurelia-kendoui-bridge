@@ -18,7 +18,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     RadialGauge.prototype.attached = function attached() {
-      this.recreate();
+      if (!this.kNoInit) {
+        this.recreate();
+      }
     };
 
     RadialGauge.prototype.recreate = function recreate() {

@@ -50,7 +50,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Scheduler.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         Scheduler.prototype.recreate = function recreate() {

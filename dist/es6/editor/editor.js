@@ -23,7 +23,9 @@ export class Editor {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {

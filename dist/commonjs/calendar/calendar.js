@@ -29,7 +29,9 @@ var Calendar = (function () {
   };
 
   Calendar.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Calendar.prototype.recreate = function recreate() {

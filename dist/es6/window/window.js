@@ -22,7 +22,9 @@ export class Window {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {

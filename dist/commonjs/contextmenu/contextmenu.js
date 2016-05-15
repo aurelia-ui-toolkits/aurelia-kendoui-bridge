@@ -29,7 +29,9 @@ var ContextMenu = (function () {
   };
 
   ContextMenu.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ContextMenu.prototype.recreate = function recreate() {

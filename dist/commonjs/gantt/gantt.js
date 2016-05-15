@@ -63,7 +63,9 @@ var Gantt = (function () {
       this.element.appendChild(this.target);
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Gantt.prototype.recreate = function recreate() {

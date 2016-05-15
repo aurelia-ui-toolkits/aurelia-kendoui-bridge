@@ -44,7 +44,9 @@ var Notification = (function () {
   };
 
   Notification.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Notification.prototype.recreate = function recreate() {

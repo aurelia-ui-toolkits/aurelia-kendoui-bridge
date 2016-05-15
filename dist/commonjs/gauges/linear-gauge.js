@@ -29,7 +29,9 @@ var LinearGauge = (function () {
   };
 
   LinearGauge.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   LinearGauge.prototype.recreate = function recreate() {

@@ -29,7 +29,9 @@ var Window = (function () {
   };
 
   Window.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Window.prototype.recreate = function recreate() {

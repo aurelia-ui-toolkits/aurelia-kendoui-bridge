@@ -25,7 +25,9 @@ export class Notification {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {

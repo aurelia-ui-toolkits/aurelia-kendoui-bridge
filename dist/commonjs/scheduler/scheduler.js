@@ -56,7 +56,9 @@ var Scheduler = (function () {
   };
 
   Scheduler.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Scheduler.prototype.recreate = function recreate() {

@@ -1,4 +1,4 @@
-define(['exports', './control-properties', './util', 'aurelia-dependency-injection'], function (exports, _controlProperties, _util, _aureliaDependencyInjection) {
+define(['exports', './control-properties', './util', 'aurelia-dependency-injection', '../config-builder'], function (exports, _controlProperties, _util, _aureliaDependencyInjection, _configBuilder) {
   'use strict';
 
   exports.__esModule = true;
@@ -6,10 +6,11 @@ define(['exports', './control-properties', './util', 'aurelia-dependency-injecti
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
   var TemplateGatherer = (function () {
-    function TemplateGatherer(controlProperties, util) {
+    function TemplateGatherer(controlProperties, util, config) {
       _classCallCheck(this, _TemplateGatherer);
 
       this.controlProperties = controlProperties;
+      this.config = config;
       this.util = util;
     }
 
@@ -25,9 +26,17 @@ define(['exports', './control-properties', './util', 'aurelia-dependency-injecti
       templates.forEach(function (c) {
         if (templateProps.indexOf(c['for']) > -1) {
           if (_this.util.hasValue(c.template)) {
-            target[_this.util.getBindablePropertyName(c['for'])] = c.kendoTemplate ? c.template : function () {
-              return c.template;
-            };
+            (function () {
+              var template = c.template;
+
+              if (_this.config.templateCallback) {
+                template = _this.config.templateCallback(target, c, c.template);
+              }
+
+              target[_this.util.getBindablePropertyName(c['for'])] = c.kendoTemplate ? template : function () {
+                return template;
+              };
+            })();
           }
         } else {
           if (!c['for']) {
@@ -40,7 +49,7 @@ define(['exports', './control-properties', './util', 'aurelia-dependency-injecti
     };
 
     var _TemplateGatherer = TemplateGatherer;
-    TemplateGatherer = _aureliaDependencyInjection.inject(_controlProperties.ControlProperties, _util.Util)(TemplateGatherer) || TemplateGatherer;
+    TemplateGatherer = _aureliaDependencyInjection.inject(_controlProperties.ControlProperties, _util.Util, _configBuilder.KendoConfigBuilder)(TemplateGatherer) || TemplateGatherer;
     return TemplateGatherer;
   })();
 

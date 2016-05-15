@@ -29,7 +29,9 @@ var RadialGauge = (function () {
   };
 
   RadialGauge.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   RadialGauge.prototype.recreate = function recreate() {

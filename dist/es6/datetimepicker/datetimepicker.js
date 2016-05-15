@@ -28,7 +28,9 @@ export class DateTimePicker {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {

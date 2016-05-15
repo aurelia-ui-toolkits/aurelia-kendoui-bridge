@@ -29,7 +29,9 @@ var ResponsivePanel = (function () {
   };
 
   ResponsivePanel.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ResponsivePanel.prototype.recreate = function recreate() {

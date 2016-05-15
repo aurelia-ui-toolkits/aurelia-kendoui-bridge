@@ -53,7 +53,9 @@ var TreeList = (function () {
   };
 
   TreeList.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   TreeList.prototype.recreate = function recreate() {

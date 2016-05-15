@@ -2,6 +2,7 @@
 
 exports.__esModule = true;
 exports.generateBindables = generateBindables;
+exports.delayed = delayed;
 
 var _aureliaTemplating = require('aurelia-templating');
 
@@ -10,6 +11,8 @@ var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 var _aureliaMetadata = require('aurelia-metadata');
 
 var _aureliaBinding = require('aurelia-binding');
+
+var _aureliaTaskQueue = require('aurelia-task-queue');
 
 var _controlProperties = require('./control-properties');
 
@@ -27,6 +30,7 @@ function generateBindables(controlName) {
 
     optionKeys.push('widget');
     optionKeys.push('options');
+    optionKeys.push('noInit');
 
     for (var i = 0; i < optionKeys.length; i++) {
       var option = optionKeys[i];
@@ -42,5 +46,26 @@ function generateBindables(controlName) {
       var prop = new _aureliaTemplating.BindableProperty(nameOrConfigOrTarget);
       prop.registerWith(target, behaviorResource, descriptor);
     }
+  };
+}
+
+function delayed(targetFunction) {
+  return function (target, key, descriptor) {
+    var taskQueue = _aureliaDependencyInjection.Container.instance.get(_aureliaTaskQueue.TaskQueue);
+    var ptr = descriptor.value;
+
+    descriptor.value = function () {
+      var _this = this;
+
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      taskQueue.queueTask(function () {
+        return ptr.apply(_this, args);
+      });
+    };
+
+    return descriptor;
   };
 }

@@ -99,6 +99,22 @@ export class KendoConfigBuilder {
   }
 
   /**
+  * Loads the notify binding behavior
+  */
+  notifyBindingBehavior(): KendoConfigBuilder {
+    this.resources.push('./common/notify-binding-behavior');
+    return this;
+  }
+
+  /**
+  * Custom callback for template modification
+  */
+  withTemplateCallback(callback): KendoConfigBuilder {
+    this.templateCallback = callback;
+    return this;
+  }
+
+  /**
   * Don't register an array repeat strategy for kendo.data.ObservableArray
   */
   withoutRepeatStrategy() {

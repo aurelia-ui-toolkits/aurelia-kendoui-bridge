@@ -1,14 +1,16 @@
 import {ControlProperties} from './control-properties';
 import {Util} from './util';
 import {inject} from 'aurelia-dependency-injection';
+import {KendoConfigBuilder} from '../config-builder';
 
-@inject(ControlProperties, Util)
+@inject(ControlProperties, Util, KendoConfigBuilder)
 export class TemplateGatherer {
 
   controlProperties: ControlProperties;
 
-  constructor(controlProperties: ControlProperties, util: Util) {
+  constructor(controlProperties: ControlProperties, util: Util, config: KendoConfigBuilder) {
     this.controlProperties = controlProperties;
+    this.config = config;
     this.util = util;
   }
 
@@ -30,7 +32,13 @@ export class TemplateGatherer {
     templates.forEach(c => {
       if (templateProps.indexOf(c.for) > -1) {
         if (this.util.hasValue(c.template)) {
-          target[this.util.getBindablePropertyName(c.for)] = c.kendoTemplate ? c.template : () => c.template;
+          let template = c.template;
+
+          if (this.config.templateCallback) {
+            template = this.config.templateCallback(target, c, c.template);
+          }
+
+          target[this.util.getBindablePropertyName(c.for)] = c.kendoTemplate ? template : () => template;
         }
       } else {
         if (!c.for) {

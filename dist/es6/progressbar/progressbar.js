@@ -25,7 +25,9 @@ export class ProgressBar {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {

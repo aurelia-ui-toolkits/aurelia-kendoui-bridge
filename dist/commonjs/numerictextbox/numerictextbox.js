@@ -51,7 +51,9 @@ var NumericTextBox = (function () {
   };
 
   NumericTextBox.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   NumericTextBox.prototype.recreate = function recreate() {

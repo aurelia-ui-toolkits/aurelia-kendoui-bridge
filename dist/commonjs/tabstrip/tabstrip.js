@@ -29,7 +29,9 @@ var TabStrip = (function () {
   };
 
   TabStrip.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   TabStrip.prototype.recreate = function recreate() {

@@ -71,7 +71,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         AutoComplete.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         AutoComplete.prototype.recreate = function recreate() {

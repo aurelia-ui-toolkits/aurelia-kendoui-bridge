@@ -29,7 +29,9 @@ var PanelBar = (function () {
   };
 
   PanelBar.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   PanelBar.prototype.recreate = function recreate() {

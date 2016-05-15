@@ -4,7 +4,7 @@ import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-reso
 import {inject,Container,transient} from 'aurelia-dependency-injection';
 import {customElement,bindable,children,ViewResources,customAttribute,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
-import {bindingMode,createOverrideContext} from 'aurelia-binding';
+import {bindingMode,EventManager,createOverrideContext} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
 
 /**
@@ -104,6 +104,22 @@ export class KendoConfigBuilder {
   */
   debug(): KendoConfigBuilder {
     this.debugMode = true;
+    return this;
+  }
+
+  /**
+  * Loads the notify binding behavior
+  */
+  notifyBindingBehavior(): KendoConfigBuilder {
+    this.resources.push('./common/notify-binding-behavior');
+    return this;
+  }
+
+  /**
+  * Custom callback for template modification
+  */
+  withTemplateCallback(callback): KendoConfigBuilder {
+    this.templateCallback = callback;
     return this;
   }
 
@@ -450,7 +466,9 @@ export class AutoComplete {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -491,7 +509,9 @@ export class Barcode {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -528,7 +548,9 @@ export class Button {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -569,7 +591,9 @@ export class ButtonGroup {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -608,7 +632,9 @@ export class Calendar {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -649,7 +675,9 @@ export class Chart {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -684,7 +712,9 @@ export class Sparkline {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -719,7 +749,9 @@ export class Stock {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -754,7 +786,9 @@ export class TreeMap {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -789,7 +823,9 @@ export class ColorPalette {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -831,7 +867,9 @@ export class ColorPicker {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -878,7 +916,9 @@ export class ComboBox {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -1007,6 +1047,7 @@ export function generateBindables(controlName: string, extraProperties = []) {
 
     optionKeys.push('widget');
     optionKeys.push('options');
+    optionKeys.push('noInit');
 
     for (let i = 0; i < optionKeys.length; i++) {
       let option = optionKeys[i];
@@ -1024,6 +1065,71 @@ export function generateBindables(controlName: string, extraProperties = []) {
       prop.registerWith(target, behaviorResource, descriptor);
     }
   };
+}
+
+
+export function delayed(targetFunction) {
+  return function(target, key, descriptor) {
+    let taskQueue = Container.instance.get(TaskQueue);
+    let ptr = descriptor.value;
+
+    descriptor.value = function(...args) {
+      taskQueue.queueTask(() => ptr.apply(this, args));
+    };
+
+    return descriptor;
+  };
+}
+
+@inject(EventManager)
+export class NotifyBindingBehavior {
+
+  constructor(eventManager) {
+    this.eventManager = eventManager;
+  }
+
+  bind(binding, scope, target, fieldName) {
+    if (!binding.updateSource) return;
+
+    // update values on blur event
+    let targetObserver = binding.observerLocator.getObserver(binding.target, binding.targetProperty);
+    binding.targetObserver = targetObserver;
+    targetObserver.originalHandler = binding.targetObserver.handler;
+    let handler = this.eventManager.createElementHandler(['blur']);
+    targetObserver.handler = handler;
+
+    let observable = target || binding.source.bindingContext;
+    let field = fieldName || binding.sourceExpression.expression.name;
+    let intercept = binding.updateSource;
+
+    // intercept updateSource function
+    // to call .trigger('change', { field: field}) and set the dirty flag
+    binding['intercepted-updateSource'] = intercept;
+    binding.updateSource = function(value) {
+      // handle change
+      if (observable.set && observable.trigger) {
+        // kendo recompiles templates after a change event
+        // without this delay Aurelia's binding system gets confused as
+        // some views are destroyed
+        setTimeout(() =>
+          observable.trigger.call(observable, 'change', { field: field }),
+        100);
+
+        if (observable.dirty === false) {
+          observable.dirty = true;
+        }
+      }
+
+      return intercept.call(binding, value);
+    };
+  }
+
+  unbind(binding, scope) {
+    if (!binding['intercepted-updateSource']) return;
+
+    binding.updateSource = binding['intercepted-updateSource'];
+    binding['intercepted-updateSource'] = null;
+  }
 }
 
 /***
@@ -1052,6 +1158,12 @@ export class OptionsBuilder {
       if (this.util.hasValue(value)) {
         options[prop] = value;
       }
+    }
+
+    // allows view-models to do some post processing
+    // used in ak-col to support nested columns
+    if (viewModel.afterOptionsBuild) {
+      viewModel.afterOptionsBuild(options);
     }
 
     return this.util.pruneOptions(options);
@@ -1235,13 +1347,14 @@ export class TemplateCompiler {
   }
 }
 
-@inject(ControlProperties, Util)
+@inject(ControlProperties, Util, KendoConfigBuilder)
 export class TemplateGatherer {
 
   controlProperties: ControlProperties;
 
-  constructor(controlProperties: ControlProperties, util: Util) {
+  constructor(controlProperties: ControlProperties, util: Util, config: KendoConfigBuilder) {
     this.controlProperties = controlProperties;
+    this.config = config;
     this.util = util;
   }
 
@@ -1263,7 +1376,13 @@ export class TemplateGatherer {
     templates.forEach(c => {
       if (templateProps.indexOf(c.for) > -1) {
         if (this.util.hasValue(c.template)) {
-          target[this.util.getBindablePropertyName(c.for)] = c.kendoTemplate ? c.template : () => c.template;
+          let template = c.template;
+
+          if (this.config.templateCallback) {
+            template = this.config.templateCallback(target, c, c.template);
+          }
+
+          target[this.util.getBindablePropertyName(c.for)] = c.kendoTemplate ? template : () => template;
         }
       } else {
         if (!c.for) {
@@ -1750,7 +1869,9 @@ export class ContextMenu {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -1790,7 +1911,9 @@ export class DatePicker {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -1834,7 +1957,9 @@ export class DateTimePicker {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -1872,7 +1997,9 @@ export class Diagram {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -1906,7 +2033,9 @@ export class Draggabke {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -1947,7 +2076,9 @@ export class DropTargetArea {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -1981,7 +2112,9 @@ export class DropTarget {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2028,7 +2161,9 @@ export class DropDownList {
       this.widgetBase.useValueBinding();
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2075,7 +2210,9 @@ export class Editor {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2113,7 +2250,9 @@ export class FlatColorPicker {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2166,7 +2305,9 @@ export class Gantt  {
       this.element.appendChild(this.target);
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2220,7 +2361,9 @@ export class LinearGauge {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2259,7 +2402,9 @@ export class RadialGauge {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2280,16 +2425,29 @@ export class RadialGauge {
 
 @customElement(`${constants.elementPrefix}col`)
 @generateBindables('GridColumn')
-@inject(TemplateGatherer)
+@inject(TemplateGatherer, OptionsBuilder)
 export class Col {
   @children(`${constants.elementPrefix}template`) templates;
+  @children(`${constants.elementPrefix}col`) columns;
 
-  constructor(templateGatherer) {
+  constructor(templateGatherer, optionsBuilder) {
     this.templateGatherer = templateGatherer;
+    this.optionsBuilder = optionsBuilder;
   }
 
   bind() {
     this.templateGatherer.useTemplates(this, 'GridColumn', this.templates);
+  }
+
+  // recursively get options of all nested columns that we can pass to Kendo
+  afterOptionsBuild(options) {
+    if (this.columns && this.columns.length > 0) {
+      options.columns = [];
+
+      this.columns.forEach(col => {
+        options.columns.push(this.optionsBuilder.getOptions(col, 'GridColumn'));
+      });
+    }
   }
 }
 
@@ -2352,7 +2510,9 @@ export class Grid  {
       this.element.appendChild(this.target);
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2424,7 +2584,9 @@ export class ListView  {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2460,7 +2622,9 @@ export class Map {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2505,7 +2669,9 @@ export class MaskedTextBox {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2543,7 +2709,9 @@ export class Menu {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2590,7 +2758,9 @@ export class Multiselect {
       this.widgetBase.useValueBinding();
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2658,7 +2828,9 @@ export class Notification {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2710,7 +2882,9 @@ export class NumericTextBox {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2748,7 +2922,9 @@ export class PanelBar {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2811,7 +2987,9 @@ export class PivotConfigurator {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2851,7 +3029,9 @@ export class PivotGrid {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2890,7 +3070,9 @@ export class ProgressBar {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2928,7 +3110,9 @@ export class QRCode {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -2966,7 +3150,9 @@ export class RangeSlider {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3004,7 +3190,9 @@ export class ResponsivePanel {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3047,7 +3235,9 @@ export class Scheduler {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3094,7 +3284,9 @@ export class Scrollview {
       this.element.appendChild(this.target);
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3139,7 +3331,9 @@ export class Slider {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3177,7 +3371,9 @@ export class Sortable {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3211,7 +3407,9 @@ export class Splitter {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3245,7 +3443,9 @@ export class Spreadsheet {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3283,7 +3483,9 @@ export class Switch {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3321,7 +3523,9 @@ export class TabStrip {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3362,7 +3566,9 @@ export class TimePicker {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3444,7 +3650,9 @@ export class Toolbar {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3489,7 +3697,9 @@ export class Tooltip {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3547,7 +3757,9 @@ export class TreeList  {
   // initialization in bind() is giving issues in some scenarios
   // so, attached() is used for this control
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3595,7 +3807,9 @@ export class TreeView {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3632,7 +3846,9 @@ export class Upload {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3678,7 +3894,9 @@ export class Validator {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {
@@ -3756,7 +3974,9 @@ export class Window {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {

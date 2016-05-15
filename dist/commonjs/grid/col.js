@@ -18,6 +18,8 @@ var _commonDecorators = require('../common/decorators');
 
 var _commonTemplateGatherer = require('../common/template-gatherer');
 
+var _commonOptionsBuilder = require('../common/options-builder');
+
 var Col = (function () {
   var _instanceInitializers = {};
 
@@ -26,22 +28,42 @@ var Col = (function () {
     decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'template')],
     initializer: null,
     enumerable: true
+  }, {
+    key: 'columns',
+    decorators: [_aureliaTemplating.children(_commonConstants.constants.elementPrefix + 'col')],
+    initializer: null,
+    enumerable: true
   }], null, _instanceInitializers);
 
-  function Col(templateGatherer) {
+  function Col(templateGatherer, optionsBuilder) {
     _classCallCheck(this, _Col);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers);
 
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers);
+
     this.templateGatherer = templateGatherer;
+    this.optionsBuilder = optionsBuilder;
   }
 
   Col.prototype.bind = function bind() {
     this.templateGatherer.useTemplates(this, 'GridColumn', this.templates);
   };
 
+  Col.prototype.afterOptionsBuild = function afterOptionsBuild(options) {
+    var _this = this;
+
+    if (this.columns && this.columns.length > 0) {
+      options.columns = [];
+
+      this.columns.forEach(function (col) {
+        options.columns.push(_this.optionsBuilder.getOptions(col, 'GridColumn'));
+      });
+    }
+  };
+
   var _Col = Col;
-  Col = _aureliaDependencyInjection.inject(_commonTemplateGatherer.TemplateGatherer)(Col) || Col;
+  Col = _aureliaDependencyInjection.inject(_commonTemplateGatherer.TemplateGatherer, _commonOptionsBuilder.OptionsBuilder)(Col) || Col;
   Col = _commonDecorators.generateBindables('GridColumn')(Col) || Col;
   Col = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'col')(Col) || Col;
   return Col;

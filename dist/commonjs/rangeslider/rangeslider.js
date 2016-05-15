@@ -44,7 +44,9 @@ var RangeSlider = (function () {
   };
 
   RangeSlider.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   RangeSlider.prototype.recreate = function recreate() {

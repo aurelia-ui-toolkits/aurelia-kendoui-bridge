@@ -6,6 +6,7 @@ var _createDecoratedClass = (function () { function defineProperties(target, des
 
 exports.configure = configure;
 exports.generateBindables = generateBindables;
+exports.delayed = delayed;
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
@@ -212,6 +213,16 @@ var KendoConfigBuilder = (function () {
 
   KendoConfigBuilder.prototype.debug = function debug() {
     this.debugMode = true;
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.notifyBindingBehavior = function notifyBindingBehavior() {
+    this.resources.push('./common/notify-binding-behavior');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.withTemplateCallback = function withTemplateCallback(callback) {
+    this.templateCallback = callback;
     return this;
   };
 
@@ -568,7 +579,9 @@ var AutoComplete = (function () {
   };
 
   AutoComplete.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   AutoComplete.prototype.recreate = function recreate() {
@@ -611,7 +624,9 @@ var Barcode = (function () {
   };
 
   Barcode.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Barcode.prototype.recreate = function recreate() {
@@ -658,7 +673,9 @@ var Button = (function () {
   };
 
   Button.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Button.prototype.recreate = function recreate() {
@@ -709,7 +726,9 @@ var ButtonGroup = (function () {
   };
 
   ButtonGroup.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ButtonGroup.prototype.recreate = function recreate() {
@@ -749,7 +768,9 @@ var Calendar = (function () {
   };
 
   Calendar.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Calendar.prototype.recreate = function recreate() {
@@ -789,7 +810,9 @@ var Chart = (function () {
   };
 
   Chart.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Chart.prototype.recreate = function recreate() {
@@ -825,7 +848,9 @@ var Sparkline = (function () {
   };
 
   Sparkline.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Sparkline.prototype.recreate = function recreate() {
@@ -861,7 +886,9 @@ var Stock = (function () {
   };
 
   Stock.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Stock.prototype.recreate = function recreate() {
@@ -897,7 +924,9 @@ var TreeMap = (function () {
   };
 
   TreeMap.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   TreeMap.prototype.recreate = function recreate() {
@@ -933,7 +962,9 @@ var ColorPalette = (function () {
   };
 
   ColorPalette.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ColorPalette.prototype.recreate = function recreate() {
@@ -984,7 +1015,9 @@ var ColorPicker = (function () {
   };
 
   ColorPicker.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ColorPicker.prototype.recreate = function recreate() {
@@ -1049,7 +1082,9 @@ var ComboBox = (function () {
   };
 
   ComboBox.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ComboBox.prototype.recreate = function recreate() {
@@ -1174,6 +1209,7 @@ function generateBindables(controlName) {
 
     optionKeys.push('widget');
     optionKeys.push('options');
+    optionKeys.push('noInit');
 
     for (var i = 0; i < optionKeys.length; i++) {
       var option = optionKeys[i];
@@ -1191,6 +1227,77 @@ function generateBindables(controlName) {
     }
   };
 }
+
+function delayed(targetFunction) {
+  return function (target, key, descriptor) {
+    var taskQueue = _aureliaDependencyInjection.Container.instance.get(_aureliaTaskQueue.TaskQueue);
+    var ptr = descriptor.value;
+
+    descriptor.value = function () {
+      var _this3 = this;
+
+      for (var _len = arguments.length, args = Array(_len), _key2 = 0; _key2 < _len; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+
+      taskQueue.queueTask(function () {
+        return ptr.apply(_this3, args);
+      });
+    };
+
+    return descriptor;
+  };
+}
+
+var NotifyBindingBehavior = (function () {
+  function NotifyBindingBehavior(eventManager) {
+    _classCallCheck(this, _NotifyBindingBehavior);
+
+    this.eventManager = eventManager;
+  }
+
+  NotifyBindingBehavior.prototype.bind = function bind(binding, scope, target, fieldName) {
+    if (!binding.updateSource) return;
+
+    var targetObserver = binding.observerLocator.getObserver(binding.target, binding.targetProperty);
+    binding.targetObserver = targetObserver;
+    targetObserver.originalHandler = binding.targetObserver.handler;
+    var handler = this.eventManager.createElementHandler(['blur']);
+    targetObserver.handler = handler;
+
+    var observable = target || binding.source.bindingContext;
+    var field = fieldName || binding.sourceExpression.expression.name;
+    var intercept = binding.updateSource;
+
+    binding['intercepted-updateSource'] = intercept;
+    binding.updateSource = function (value) {
+      if (observable.set && observable.trigger) {
+        setTimeout(function () {
+          return observable.trigger.call(observable, 'change', { field: field });
+        }, 100);
+
+        if (observable.dirty === false) {
+          observable.dirty = true;
+        }
+      }
+
+      return intercept.call(binding, value);
+    };
+  };
+
+  NotifyBindingBehavior.prototype.unbind = function unbind(binding, scope) {
+    if (!binding['intercepted-updateSource']) return;
+
+    binding.updateSource = binding['intercepted-updateSource'];
+    binding['intercepted-updateSource'] = null;
+  };
+
+  var _NotifyBindingBehavior = NotifyBindingBehavior;
+  NotifyBindingBehavior = _aureliaDependencyInjection.inject(_aureliaBinding.EventManager)(NotifyBindingBehavior) || NotifyBindingBehavior;
+  return NotifyBindingBehavior;
+})();
+
+exports.NotifyBindingBehavior = NotifyBindingBehavior;
 
 var OptionsBuilder = (function () {
   function OptionsBuilder(controlProperties, util) {
@@ -1211,6 +1318,10 @@ var OptionsBuilder = (function () {
       if (this.util.hasValue(value)) {
         options[prop] = value;
       }
+    }
+
+    if (viewModel.afterOptionsBuild) {
+      viewModel.afterOptionsBuild(options);
     }
 
     return this.util.pruneOptions(options);
@@ -1274,7 +1385,7 @@ var TemplateCompiler = (function () {
   };
 
   TemplateCompiler.prototype.compile = function compile($parent, elements, data, viewResources) {
-    var _this3 = this;
+    var _this4 = this;
 
     var _loop = function (i) {
       var element = elements[i];
@@ -1284,7 +1395,7 @@ var TemplateCompiler = (function () {
         var _data = data[i];
         var dataItem = _data.dataItem || _data.aggregate || _data;
 
-        if (!_this3.util.isObject(dataItem)) {
+        if (!_this4.util.isObject(dataItem)) {
           ctx = {
             dataItem: dataItem
           };
@@ -1295,10 +1406,10 @@ var TemplateCompiler = (function () {
 
       if (element instanceof jQuery) {
         element.each(function (index, elem) {
-          return _this3.enhanceView($parent, elem, ctx, viewResources);
+          return _this4.enhanceView($parent, elem, ctx, viewResources);
         });
       } else {
-        _this3.enhanceView($parent, element, ctx, viewResources);
+        _this4.enhanceView($parent, element, ctx, viewResources);
       }
     };
 
@@ -1357,15 +1468,16 @@ var TemplateCompiler = (function () {
 exports.TemplateCompiler = TemplateCompiler;
 
 var TemplateGatherer = (function () {
-  function TemplateGatherer(controlProperties, util) {
+  function TemplateGatherer(controlProperties, util, config) {
     _classCallCheck(this, _TemplateGatherer);
 
     this.controlProperties = controlProperties;
+    this.config = config;
     this.util = util;
   }
 
   TemplateGatherer.prototype.useTemplates = function useTemplates(target, controlName, templates) {
-    var _this4 = this;
+    var _this5 = this;
 
     var templateProps = this.controlProperties.getTemplateProperties(controlName);
 
@@ -1375,10 +1487,18 @@ var TemplateGatherer = (function () {
 
     templates.forEach(function (c) {
       if (templateProps.indexOf(c['for']) > -1) {
-        if (_this4.util.hasValue(c.template)) {
-          target[_this4.util.getBindablePropertyName(c['for'])] = c.kendoTemplate ? c.template : function () {
-            return c.template;
-          };
+        if (_this5.util.hasValue(c.template)) {
+          (function () {
+            var template = c.template;
+
+            if (_this5.config.templateCallback) {
+              template = _this5.config.templateCallback(target, c, c.template);
+            }
+
+            target[_this5.util.getBindablePropertyName(c['for'])] = c.kendoTemplate ? template : function () {
+              return template;
+            };
+          })();
         }
       } else {
         if (!c['for']) {
@@ -1391,7 +1511,7 @@ var TemplateGatherer = (function () {
   };
 
   var _TemplateGatherer = TemplateGatherer;
-  TemplateGatherer = _aureliaDependencyInjection.inject(ControlProperties, Util)(TemplateGatherer) || TemplateGatherer;
+  TemplateGatherer = _aureliaDependencyInjection.inject(ControlProperties, Util, KendoConfigBuilder)(TemplateGatherer) || TemplateGatherer;
   return TemplateGatherer;
 })();
 
@@ -1623,7 +1743,7 @@ var WidgetBase = (function () {
   };
 
   WidgetBase.prototype.createWidget = function createWidget(options) {
-    var _this5 = this;
+    var _this6 = this;
 
     if (!options) {
       throw new Error('the createWidget() function needs to be called with an object');
@@ -1659,15 +1779,15 @@ var WidgetBase = (function () {
 
     if (this.withValueBinding) {
       widget.first('change', function (args) {
-        return _this5._handleValueChange(args.sender);
+        return _this6._handleValueChange(args.sender);
       });
       widget.first('dataBound', function (args) {
-        return _this5._handleValueChange(args.sender);
+        return _this6._handleValueChange(args.sender);
       });
     }
 
     this.bindingsToKendo.forEach(function (binding) {
-      var value = _this5.viewModel[binding.propertyName];
+      var value = _this6.viewModel[binding.propertyName];
 
       if (typeof value !== 'undefined' && value !== null && value !== '') {
         widget[binding.functionName](value);
@@ -1693,7 +1813,7 @@ var WidgetBase = (function () {
   };
 
   WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
-    var _this6 = this;
+    var _this7 = this;
 
     var options = {};
     var allowedEvents = this.kendoEvents;
@@ -1703,18 +1823,18 @@ var WidgetBase = (function () {
 
     events.forEach(function (event) {
       if (!allowedEvents.includes(event)) {
-        throw new Error(event + ' is not an event on the ' + _this6.controlName + ' control');
+        throw new Error(event + ' is not an event on the ' + _this7.controlName + ' control');
       }
 
       if (delayedExecution.includes(event)) {
         options[event] = function (e) {
-          _this6.taskQueue.queueMicroTask(function () {
-            return _this6.util.fireKendoEvent(element, _this6.util._hyphenate(event), e);
+          _this7.taskQueue.queueMicroTask(function () {
+            return _this7.util.fireKendoEvent(element, _this7.util._hyphenate(event), e);
           });
         };
       } else {
         options[event] = function (e) {
-          return _this6.util.fireKendoEvent(element, _this6.util._hyphenate(event), e);
+          return _this7.util.fireKendoEvent(element, _this7.util._hyphenate(event), e);
         };
       }
     });
@@ -1775,7 +1895,9 @@ var ContextMenu = (function () {
   };
 
   ContextMenu.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ContextMenu.prototype.recreate = function recreate() {
@@ -1829,7 +1951,9 @@ var DatePicker = (function () {
   };
 
   DatePicker.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   DatePicker.prototype.recreate = function recreate() {
@@ -1887,7 +2011,9 @@ var DateTimePicker = (function () {
   };
 
   DateTimePicker.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   DateTimePicker.prototype.recreate = function recreate() {
@@ -1927,7 +2053,9 @@ var Diagram = (function () {
   };
 
   Diagram.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Diagram.prototype.recreate = function recreate() {
@@ -1963,17 +2091,19 @@ var Draggabke = (function () {
   };
 
   Draggabke.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Draggabke.prototype.recreate = function recreate() {
-    var _this7 = this;
+    var _this8 = this;
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(options) {
-        return _this7.beforeInitialize(options);
+        return _this8.beforeInitialize(options);
       }
     });
   };
@@ -2010,7 +2140,9 @@ var DropTargetArea = (function () {
   };
 
   DropTargetArea.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   DropTargetArea.prototype.recreate = function recreate() {
@@ -2046,7 +2178,9 @@ var DropTarget = (function () {
   };
 
   DropTarget.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   DropTarget.prototype.recreate = function recreate() {
@@ -2120,7 +2254,9 @@ var DropDownList = (function () {
       this.widgetBase.useValueBinding();
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   DropDownList.prototype.recreate = function recreate() {
@@ -2168,7 +2304,9 @@ var Editor = (function () {
   };
 
   Editor.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Editor.prototype.recreate = function recreate() {
@@ -2208,7 +2346,9 @@ var FlatColorPicker = (function () {
   };
 
   FlatColorPicker.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   FlatColorPicker.prototype.recreate = function recreate() {
@@ -2284,11 +2424,13 @@ var Gantt = (function () {
       this.element.appendChild(this.target);
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Gantt.prototype.recreate = function recreate() {
-    var _this8 = this;
+    var _this9 = this;
 
     this.widgetBase.useTemplates(this, 'kendoGantt', this.templates);
 
@@ -2297,19 +2439,19 @@ var Gantt = (function () {
       rootElement: this.element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(o) {
-        return _this8._beforeInitialize(o);
+        return _this9._beforeInitialize(o);
       }
     });
   };
 
   Gantt.prototype._beforeInitialize = function _beforeInitialize(options) {
-    var _this9 = this;
+    var _this10 = this;
 
     if (this.columns && this.columns.length > 0) {
       options.columns = [];
 
       this.columns.forEach(function (column) {
-        options.columns.push(_this9.optionsBuilder.getOptions(column, 'GanttColumn'));
+        options.columns.push(_this10.optionsBuilder.getOptions(column, 'GanttColumn'));
       });
     }
   };
@@ -2344,7 +2486,9 @@ var LinearGauge = (function () {
   };
 
   LinearGauge.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   LinearGauge.prototype.recreate = function recreate() {
@@ -2384,7 +2528,9 @@ var RadialGauge = (function () {
   };
 
   RadialGauge.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   RadialGauge.prototype.recreate = function recreate() {
@@ -2419,22 +2565,42 @@ var Col = (function () {
     decorators: [_aureliaTemplating.children(constants.elementPrefix + 'template')],
     initializer: null,
     enumerable: true
+  }, {
+    key: 'columns',
+    decorators: [_aureliaTemplating.children(constants.elementPrefix + 'col')],
+    initializer: null,
+    enumerable: true
   }], null, _instanceInitializers11);
 
-  function Col(templateGatherer) {
+  function Col(templateGatherer, optionsBuilder) {
     _classCallCheck(this, _Col);
 
     _defineDecoratedPropertyDescriptor(this, 'templates', _instanceInitializers11);
 
+    _defineDecoratedPropertyDescriptor(this, 'columns', _instanceInitializers11);
+
     this.templateGatherer = templateGatherer;
+    this.optionsBuilder = optionsBuilder;
   }
 
   Col.prototype.bind = function bind() {
     this.templateGatherer.useTemplates(this, 'GridColumn', this.templates);
   };
 
+  Col.prototype.afterOptionsBuild = function afterOptionsBuild(options) {
+    var _this11 = this;
+
+    if (this.columns && this.columns.length > 0) {
+      options.columns = [];
+
+      this.columns.forEach(function (col) {
+        options.columns.push(_this11.optionsBuilder.getOptions(col, 'GridColumn'));
+      });
+    }
+  };
+
   var _Col = Col;
-  Col = _aureliaDependencyInjection.inject(TemplateGatherer)(Col) || Col;
+  Col = _aureliaDependencyInjection.inject(TemplateGatherer, OptionsBuilder)(Col) || Col;
   Col = generateBindables('GridColumn')(Col) || Col;
   Col = _aureliaTemplating.customElement(constants.elementPrefix + 'col')(Col) || Col;
   return Col;
@@ -2522,11 +2688,13 @@ var Grid = (function () {
       this.element.appendChild(this.target);
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Grid.prototype.recreate = function recreate() {
-    var _this10 = this;
+    var _this12 = this;
 
     this.templateGatherer.useTemplates(this, 'kendoGrid', this.templates);
 
@@ -2535,19 +2703,19 @@ var Grid = (function () {
       rootElement: this.element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(o) {
-        return _this10._beforeInitialize(o);
+        return _this12._beforeInitialize(o);
       }
     });
   };
 
   Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
-    var _this11 = this;
+    var _this13 = this;
 
     if (this.columns && this.columns.length > 0) {
       options.columns = [];
 
       this.columns.forEach(function (column) {
-        options.columns.push(_this11.optionsBuilder.getOptions(column, 'GridColumn'));
+        options.columns.push(_this13.optionsBuilder.getOptions(column, 'GridColumn'));
       });
     }
 
@@ -2555,7 +2723,7 @@ var Grid = (function () {
       options.toolbar = [];
 
       this.gridToolbars.forEach(function (toolbar) {
-        options.toolbar.push(_this11.optionsBuilder.getOptions(toolbar, 'GridToolbarItem'));
+        options.toolbar.push(_this13.optionsBuilder.getOptions(toolbar, 'GridToolbarItem'));
       });
     }
   };
@@ -2606,7 +2774,9 @@ var ListView = (function () {
   };
 
   ListView.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ListView.prototype.recreate = function recreate() {
@@ -2644,7 +2814,9 @@ var Map = (function () {
   };
 
   Map.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Map.prototype.recreate = function recreate() {
@@ -2709,7 +2881,9 @@ var MaskedTextBox = (function () {
   };
 
   MaskedTextBox.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   MaskedTextBox.prototype.recreate = function recreate() {
@@ -2749,7 +2923,9 @@ var Menu = (function () {
   };
 
   Menu.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Menu.prototype.recreate = function recreate() {
@@ -2823,7 +2999,9 @@ var Multiselect = (function () {
       this.widgetBase.useValueBinding();
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Multiselect.prototype.recreate = function recreate() {
@@ -2923,17 +3101,19 @@ var Notification = (function () {
   };
 
   Notification.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Notification.prototype.recreate = function recreate() {
-    var _this12 = this;
+    var _this14 = this;
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(e) {
-        return _this12.beforeInitialize(e);
+        return _this14.beforeInitialize(e);
       }
     });
   };
@@ -2997,7 +3177,9 @@ var NumericTextBox = (function () {
   };
 
   NumericTextBox.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   NumericTextBox.prototype.recreate = function recreate() {
@@ -3037,7 +3219,9 @@ var PanelBar = (function () {
   };
 
   PanelBar.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   PanelBar.prototype.recreate = function recreate() {
@@ -3099,7 +3283,9 @@ var PivotConfigurator = (function () {
   };
 
   PivotConfigurator.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   PivotConfigurator.prototype.recreate = function recreate() {
@@ -3146,7 +3332,9 @@ var PivotGrid = (function () {
   };
 
   PivotGrid.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   PivotGrid.prototype.recreate = function recreate() {
@@ -3195,7 +3383,9 @@ var ProgressBar = (function () {
   };
 
   ProgressBar.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ProgressBar.prototype.recreate = function recreate() {
@@ -3235,7 +3425,9 @@ var QRCode = (function () {
   };
 
   QRCode.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   QRCode.prototype.recreate = function recreate() {
@@ -3282,7 +3474,9 @@ var RangeSlider = (function () {
   };
 
   RangeSlider.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   RangeSlider.prototype.recreate = function recreate() {
@@ -3322,7 +3516,9 @@ var ResponsivePanel = (function () {
   };
 
   ResponsivePanel.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ResponsivePanel.prototype.recreate = function recreate() {
@@ -3369,7 +3565,9 @@ var Scheduler = (function () {
   };
 
   Scheduler.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Scheduler.prototype.recreate = function recreate() {
@@ -3425,7 +3623,9 @@ var Scrollview = (function () {
       this.element.appendChild(this.target);
     }
 
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Scrollview.prototype.recreate = function recreate() {
@@ -3479,7 +3679,9 @@ var Slider = (function () {
   };
 
   Slider.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Slider.prototype.recreate = function recreate() {
@@ -3519,7 +3721,9 @@ var Sortable = (function () {
   };
 
   Sortable.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Sortable.prototype.recreate = function recreate() {
@@ -3555,7 +3759,9 @@ var Splitter = (function () {
   };
 
   Splitter.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Splitter.prototype.recreate = function recreate() {
@@ -3591,7 +3797,9 @@ var Spreadsheet = (function () {
   };
 
   Spreadsheet.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Spreadsheet.prototype.recreate = function recreate() {
@@ -3638,7 +3846,9 @@ var Switch = (function () {
   };
 
   Switch.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Switch.prototype.recreate = function recreate() {
@@ -3678,7 +3888,9 @@ var TabStrip = (function () {
   };
 
   TabStrip.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   TabStrip.prototype.recreate = function recreate() {
@@ -3739,7 +3951,9 @@ var TimePicker = (function () {
   };
 
   TimePicker.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   TimePicker.prototype.recreate = function recreate() {
@@ -3813,7 +4027,7 @@ var ToolbarItem = (function () {
   }
 
   ToolbarItem.prototype.getOptions = function getOptions() {
-    var _this13 = this;
+    var _this15 = this;
 
     this.templateGatherer.useTemplates(this, 'ToolBarItem', this.templates);
 
@@ -3821,7 +4035,7 @@ var ToolbarItem = (function () {
       this.kButtons = [];
 
       this.buttons.forEach(function (item) {
-        _this13.kButtons.push(item.getOptions());
+        _this15.kButtons.push(item.getOptions());
       });
     }
 
@@ -3862,17 +4076,19 @@ var Toolbar = (function () {
   };
 
   Toolbar.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Toolbar.prototype.recreate = function recreate() {
-    var _this14 = this;
+    var _this16 = this;
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(o) {
-        return _this14._beforeInitialize(o);
+        return _this16._beforeInitialize(o);
       }
     });
   };
@@ -3913,7 +4129,9 @@ var Tooltip = (function () {
   };
 
   Tooltip.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Tooltip.prototype.recreate = function recreate() {
@@ -3992,11 +4210,13 @@ var TreeList = (function () {
   };
 
   TreeList.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   TreeList.prototype.recreate = function recreate() {
-    var _this15 = this;
+    var _this17 = this;
 
     var element = this.element;
 
@@ -4004,19 +4224,19 @@ var TreeList = (function () {
       element: element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(o) {
-        return _this15._beforeInitialize(o);
+        return _this17._beforeInitialize(o);
       }
     });
   };
 
   TreeList.prototype._beforeInitialize = function _beforeInitialize(options) {
-    var _this16 = this;
+    var _this18 = this;
 
     if (this.columns && this.columns.length > 0) {
       options.columns = [];
 
       this.columns.forEach(function (column) {
-        options.columns.push(_this16.optionsBuilder.getOptions(column, 'TreeListColumn'));
+        options.columns.push(_this18.optionsBuilder.getOptions(column, 'TreeListColumn'));
       });
     }
   };
@@ -4047,7 +4267,9 @@ var TreeView = (function () {
   };
 
   TreeView.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   TreeView.prototype.recreate = function recreate() {
@@ -4094,7 +4316,9 @@ var Upload = (function () {
   };
 
   Upload.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Upload.prototype.recreate = function recreate() {
@@ -4142,7 +4366,9 @@ var Validator = (function () {
   };
 
   Validator.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Validator.prototype.recreate = function recreate() {
@@ -4255,8 +4481,8 @@ var kendoFormatValueConverter = (function () {
   }
 
   kendoFormatValueConverter.prototype.toView = function toView(value) {
-    for (var _len = arguments.length, params = Array(_len > 1 ? _len - 1 : 0), _key2 = 1; _key2 < _len; _key2++) {
-      params[_key2 - 1] = arguments[_key2];
+    for (var _len2 = arguments.length, params = Array(_len2 > 1 ? _len2 - 1 : 0), _key3 = 1; _key3 < _len2; _key3++) {
+      params[_key3 - 1] = arguments[_key3];
     }
 
     params.unshift(value);
@@ -4282,7 +4508,9 @@ var Window = (function () {
   };
 
   Window.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Window.prototype.recreate = function recreate() {

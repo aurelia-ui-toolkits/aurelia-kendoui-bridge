@@ -29,7 +29,9 @@ export class MaskedTextBox {
   }
 
   attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   }
 
   recreate() {

@@ -29,7 +29,9 @@ var Draggabke = (function () {
   };
 
   Draggabke.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Draggabke.prototype.recreate = function recreate() {

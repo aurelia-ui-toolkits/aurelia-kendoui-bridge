@@ -29,7 +29,9 @@ var Splitter = (function () {
   };
 
   Splitter.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Splitter.prototype.recreate = function recreate() {

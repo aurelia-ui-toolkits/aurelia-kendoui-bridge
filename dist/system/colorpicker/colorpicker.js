@@ -47,7 +47,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         ColorPicker.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         ColorPicker.prototype.recreate = function recreate() {

@@ -35,7 +35,9 @@ var Chart = (function () {
   };
 
   Chart.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Chart.prototype.recreate = function recreate() {

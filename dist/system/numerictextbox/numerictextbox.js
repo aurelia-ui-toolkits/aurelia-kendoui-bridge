@@ -54,7 +54,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         NumericTextBox.prototype.attached = function attached() {
-          this.recreate();
+          if (!this.kNoInit) {
+            this.recreate();
+          }
         };
 
         NumericTextBox.prototype.recreate = function recreate() {

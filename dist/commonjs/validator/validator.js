@@ -29,7 +29,9 @@ var Validator = (function () {
   };
 
   Validator.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Validator.prototype.recreate = function recreate() {

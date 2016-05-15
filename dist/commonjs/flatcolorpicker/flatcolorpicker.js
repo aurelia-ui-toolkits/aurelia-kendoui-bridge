@@ -29,7 +29,9 @@ var FlatColorPicker = (function () {
   };
 
   FlatColorPicker.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   FlatColorPicker.prototype.recreate = function recreate() {

@@ -18,7 +18,9 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
     };
 
     PanelBar.prototype.attached = function attached() {
-      this.recreate();
+      if (!this.kNoInit) {
+        this.recreate();
+      }
     };
 
     PanelBar.prototype.recreate = function recreate() {

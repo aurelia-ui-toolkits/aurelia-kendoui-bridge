@@ -47,7 +47,9 @@ var Toolbar = (function () {
   };
 
   Toolbar.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Toolbar.prototype.recreate = function recreate() {

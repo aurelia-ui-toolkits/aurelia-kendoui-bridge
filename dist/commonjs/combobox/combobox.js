@@ -60,7 +60,9 @@ var ComboBox = (function () {
   };
 
   ComboBox.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   ComboBox.prototype.recreate = function recreate() {

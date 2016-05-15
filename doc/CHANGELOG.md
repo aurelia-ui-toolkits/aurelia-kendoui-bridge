@@ -1,3 +1,22 @@
+<a name="0.10.0"></a>
+# [0.10.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.9.0...v0.10.0) (2016-05-15)
+
+
+### Bug Fixes
+
+* **dependencies:** add plugin-css dependency ([9863677](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/9863677))
+* **dependencies:** remove jquery dependency ([35c1cb0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/35c1cb0))
+
+### Features
+
+* **all:** delayed decorator ([254d8ff](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/254d8ff))
+* **all:** disable automatic initialization option ([33188bf](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/33188bf))
+* **grid:** support multi column headers ([d970c34](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/d970c34))
+* **templates:** allow modification of templates via callback ([3b6d428](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/3b6d428))
+* **templating:** binding behavior that notifies kendo of a property change ([fb4fb83](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/fb4fb83))
+
+
+
 <a name="0.9.0"></a>
 # [0.9.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.8.1...v0.9.0) (2016-05-05)
 

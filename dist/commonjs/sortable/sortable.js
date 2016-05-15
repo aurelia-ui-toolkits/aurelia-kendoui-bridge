@@ -29,7 +29,9 @@ var Sortable = (function () {
   };
 
   Sortable.prototype.attached = function attached() {
-    this.recreate();
+    if (!this.kNoInit) {
+      this.recreate();
+    }
   };
 
   Sortable.prototype.recreate = function recreate() {
