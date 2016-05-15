@@ -5,7 +5,7 @@
         <h4>
           ${ router.title }
           <small if.bind="router.parent.currentInstruction.config.settings.pro">&nbsp;<a href="http://www.telerik.com/kendo-ui/comparison" target="_blank" class="text-danger">Requires Kendo UI Professional Licence</a></small>
-          <small if.bind="!router.parent.currentInstruction.config.settings.pro">&nbsp;<a href="http://www.telerik.com/kendo-ui/comparison" target="_blank" class="text-success">Free with Kendo UI Core Licence</a></small>
+          <small if.bind="router.parent.currentInstruction.config.settings.pro === false">&nbsp;<a href="http://www.telerik.com/kendo-ui/comparison" target="_blank" class="text-success">Free with Kendo UI Core Licence</a></small>
         </h4>
         <div class="row">
             <div class="col-md-2">

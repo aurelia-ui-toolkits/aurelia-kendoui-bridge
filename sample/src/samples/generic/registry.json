@@ -1,0 +1,11 @@
+{
+  "title": "Generic",
+  "samples": {
+    "use-widget-on-initialization": {
+      "route": ["", "use-widget-on-initialization"]
+    },
+    "without-auto-initialization": {
+      "route": "without-auto-initialization"
+    }
+  }
+}
