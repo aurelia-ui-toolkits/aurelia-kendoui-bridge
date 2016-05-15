@@ -1,3 +1,13 @@
+<a name="0.10.1"></a>
+## [0.10.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.10.0...v0.10.1) (2016-05-15)
+
+
+### Bug Fixes
+
+* **dependencies:** remove css plugin dependency as it must be installed manually ([111b01d](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/111b01d))
+
+
+
 <a name="0.10.0"></a>
 # [0.10.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.9.0...v0.10.0) (2016-05-15)
 
