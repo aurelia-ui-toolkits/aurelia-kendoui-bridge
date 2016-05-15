@@ -56,14 +56,15 @@ the `progressBar` variable is now a reference to the wrapper, **not the actual K
 <br><br>
 
 #### k-widget.two-way
-An easy way to get to the Kendo control instance would be to bind to the `k-widget`property:
-
-  <ak-autocomplete k-widget.two-way="autocomplete">
-    <input/>
-  </ak-autocomplete>
+An easy way to get to the Kendo control instance would be to bind to the `k-widget` property:
+```
+<ak-autocomplete k-widget.two-way="autocomplete">
+  <input/>
+</ak-autocomplete>
+```
 <br><br>
 
-You can then use the `autocomplete` variable to communicate with the original Kendo widget.
+You can then use the `autocomplete` variable to communicate with the Kendo Autocomplete widget instance.
 
 **IMPORTANT**: **the binding system has not finished in `attached()` causing the bound variable (`autocomplete` in the sample above) to be undefined. If you need to communicate with the widget from the `attached` callback, take a look at [this sample](#/samples/generic/use-widget-on-initialization)**
 <br><br>
