@@ -6,7 +6,7 @@ export class TwoWayBinding {
           options.success(this.data);
         },
         update: (options) => {
-          console.log('There were changes detected');
+          console.log('There were changes detected'); // eslint-disable-line no-console
           options.success();
         },
         create: (options) => {
