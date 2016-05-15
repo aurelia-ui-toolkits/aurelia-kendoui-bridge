@@ -2,6 +2,7 @@ import {BindableProperty, HtmlBehaviorResource} from 'aurelia-templating';
 import {Container} from 'aurelia-dependency-injection';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode} from 'aurelia-binding';
+import {TaskQueue} from 'aurelia-task-queue';
 import {ControlProperties} from './control-properties';
 import {Util} from './util';
 
@@ -39,5 +40,19 @@ export function generateBindables(controlName: string, extraProperties = []) {
       let prop = new BindableProperty(nameOrConfigOrTarget);
       prop.registerWith(target, behaviorResource, descriptor);
     }
+  };
+}
+
+
+export function delayed(targetFunction) {
+  return function(target, key, descriptor) {
+    let taskQueue = Container.instance.get(TaskQueue);
+    let ptr = descriptor.value;
+
+    descriptor.value = function(...args) {
+      taskQueue.queueTask(() => ptr.apply(this, args));
+    };
+
+    return descriptor;
   };
 }

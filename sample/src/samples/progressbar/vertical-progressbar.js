@@ -1,18 +1,12 @@
-import {TaskQueue, inject} from 'aurelia-framework';
+import {delayed} from 'aurelia-kendoui-bridge/common/decorators';
 
-@inject(TaskQueue)
 export class VerticalProgressbar {
 
   itemsToLoad = ['styles', 'scripts', 'images', 'fonts'];
 
-  constructor(taskQueue) {
-    this.taskQueue = taskQueue;
-  }
-
+  @delayed()
   attached() {
-    this.taskQueue.queueTask(() => {
-      this.load();
-    });
+    this.load();
   }
 
   onChange(e) {

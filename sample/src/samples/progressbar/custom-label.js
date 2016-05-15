@@ -1,15 +1,10 @@
-import {inject, TaskQueue} from 'aurelia-framework';
+import {delayed} from 'aurelia-kendoui-bridge/common/decorators';
 
-@inject(TaskQueue)
 export class CustomLabel {
-  constructor(taskQueue) {
-    this.taskQueue = taskQueue;
-  }
 
+  @delayed()
   attached() {
-    this.taskQueue.queueTask(() => {
-      this.pb.progressStatus.text('Empty');
-    });
+    this.pb.progressStatus.text('Empty');
   }
 
   onKeyUp() {

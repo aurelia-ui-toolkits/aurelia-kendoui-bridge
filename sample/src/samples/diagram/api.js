@@ -1,6 +1,5 @@
-import {TaskQueue, inject} from 'aurelia-framework';
+import {delayed} from 'aurelia-kendoui-bridge/common/decorators';
 
-@inject(TaskQueue)
 export class API {
   newShapeX = 0;
   newShapeY = 0;
@@ -11,16 +10,11 @@ export class API {
   panX = 0;
   panY = 0;
 
-  constructor(taskQueue) {
-    this.taskQueue = taskQueue;
-  }
-
+  @delayed()
   attached() {
-    this.taskQueue.queueTask(() => {
-      let shape1 = this.diagram.addShape({x: 100, y: 100});
-      let shape2 = this.diagram.addShape({ x: 300, y: 100 });
-      this.diagram.connect(shape1, shape2);
-    });
+    let shape1 = this.diagram.addShape({x: 100, y: 100});
+    let shape2 = this.diagram.addShape({ x: 300, y: 100 });
+    this.diagram.connect(shape1, shape2);
   }
 
   addShape() {

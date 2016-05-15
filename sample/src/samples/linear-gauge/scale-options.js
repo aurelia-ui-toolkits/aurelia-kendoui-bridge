@@ -1,17 +1,11 @@
 import {bindable} from 'aurelia-templating';
-import {inject} from 'aurelia-dependency-injection';
-import {TaskQueue} from 'aurelia-task-queue';
+import {delayed} from 'aurelia-kendoui-bridge/common/decorators';
 
-@inject(TaskQueue)
 export class ScaleOptions {
 
   @bindable showLabels = true;
   @bindable vertical = true;
   @bindable showRanges = true;
-
-  constructor(taskQueue) {
-    this.taskQueue = taskQueue;
-  }
 
   scale = {
     majorUnit: 20,
@@ -34,10 +28,9 @@ export class ScaleOptions {
     ]
   }
 
+  @delayed()
   attached() {
-    this.taskQueue.queueTask(() => {
-      this.configuredRanges = this.gauge.options.scale.ranges;
-    });
+    this.configuredRanges = this.gauge.options.scale.ranges;
   }
 
   propertyChanged() {
