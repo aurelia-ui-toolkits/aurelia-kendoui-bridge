@@ -8,6 +8,15 @@
         <input type="text" value.bind="ProductName & notify"/>
       </ak-template>
     </ak-col>
+    <ak-col k-field="Category"></ak-col>
+    <ak-col>
+      <ak-template>
+        <select value.bind="Category & notify">
+          <option value="Food">Food</option>
+          <option value="Tech">Tech</option>
+        </select>
+      </ak-template>
+    </ak-col>
   </ak-grid>
 
   <div repeat.for="item of data">

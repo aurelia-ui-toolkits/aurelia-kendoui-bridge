@@ -36,8 +36,8 @@ export class TwoWayBinding {
     // and it will not clone the array, but use this array directly
     // allowing you to push/pop to this array directly
     this.data = new kendo.data.ObservableArray([
-      {ProductName: 'foo', ProductID: 1},
-      {ProductName: 'bar', ProductID: 2}
+      {ProductName: 'foo', Category: 'Food', ProductID: 1},
+      {ProductName: 'bar', Category: 'Food', ProductID: 2}
     ]);
   }
 
