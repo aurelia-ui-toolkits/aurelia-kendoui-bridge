@@ -4,6 +4,9 @@
 <br>
 ### Introduction
 
+___Note: this article is written for bridge developers only. Creating and using gists for application developers that use the bridge is described [here](http:#/help/docs?category=troubleshooting&file=2._using_gists_and_gistrun)___
+<br><br>
+
 We recently added the feature to run each example of each Aurelia component in the **[Aurelia KendoUI bridge catalog](http://aurelia-ui-toolkits.github.io/demo-kendo/#/about/about)** app, using the Aurelia **[GistRun]()** tool:
 <br><br>
 
