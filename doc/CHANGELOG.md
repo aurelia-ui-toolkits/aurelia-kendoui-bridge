@@ -1,3 +1,13 @@
+<a name="0.10.2"></a>
+## [0.10.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.10.1...v0.10.2) (2016-05-16)
+
+
+### Bug Fixes
+
+* **all:** chore(all): export constants, decorators and events to d.ts on module level ([a66b7f333](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/a66b7f333e10eb65d0253b4058cd136d63abef7d))
+
+
+
 <a name="0.10.1"></a>
 ## [0.10.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.10.0...v0.10.1) (2016-05-15)
 

@@ -430,6 +430,8 @@ export function configure(aurelia, configCallback) {
   }
 }
 
+
+
 import 'kendo.autocomplete.min';
 import 'kendo.virtuallist.min';
 
