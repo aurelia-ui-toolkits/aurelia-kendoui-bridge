@@ -36,14 +36,6 @@ function configure(aurelia, configCallback) {
   }
 }
 
-var _commonConstants = require('./common/constants');
-
-_defaults(exports, _interopExportWildcard(_commonConstants, _defaults));
-
 var _commonDecorators = require('./common/decorators');
 
 _defaults(exports, _interopExportWildcard(_commonDecorators, _defaults));
-
-var _commonEvents = require('./common/events');
-
-_defaults(exports, _interopExportWildcard(_commonEvents, _defaults));

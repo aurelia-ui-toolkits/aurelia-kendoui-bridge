@@ -34,11 +34,11 @@ var _aureliaTaskQueue = require('aurelia-task-queue');
 
 require('kendo.data.min');
 
+require('kendo.dataviz.barcode.min');
+
 require('kendo.autocomplete.min');
 
 require('kendo.virtuallist.min');
-
-require('kendo.dataviz.barcode.min');
 
 require('kendo.button.min');
 
@@ -533,6 +533,44 @@ function configure(aurelia, configCallback) {
   }
 }
 
+var Barcode = (function () {
+  function Barcode(element, widgetBase) {
+    _classCallCheck(this, _Barcode);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoBarcode').linkViewModel(this);
+  }
+
+  Barcode.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  Barcode.prototype.attached = function attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  };
+
+  Barcode.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  Barcode.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Barcode = Barcode;
+  Barcode = _aureliaDependencyInjection.inject(Element, WidgetBase)(Barcode) || Barcode;
+  Barcode = generateBindables('kendoBarcode')(Barcode) || Barcode;
+  Barcode = _aureliaTemplating.customAttribute(constants.attributePrefix + 'barcode')(Barcode) || Barcode;
+  return Barcode;
+})();
+
+exports.Barcode = Barcode;
+
 var AutoComplete = (function () {
   var _instanceInitializers = {};
 
@@ -610,44 +648,6 @@ var AutoComplete = (function () {
 })();
 
 exports.AutoComplete = AutoComplete;
-
-var Barcode = (function () {
-  function Barcode(element, widgetBase) {
-    _classCallCheck(this, _Barcode);
-
-    this.element = element;
-    this.widgetBase = widgetBase.control('kendoBarcode').linkViewModel(this);
-  }
-
-  Barcode.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
-  };
-
-  Barcode.prototype.attached = function attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  };
-
-  Barcode.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  };
-
-  Barcode.prototype.detached = function detached() {
-    this.widgetBase.destroy(this.kWidget);
-  };
-
-  var _Barcode = Barcode;
-  Barcode = _aureliaDependencyInjection.inject(Element, WidgetBase)(Barcode) || Barcode;
-  Barcode = generateBindables('kendoBarcode')(Barcode) || Barcode;
-  Barcode = _aureliaTemplating.customAttribute(constants.attributePrefix + 'barcode')(Barcode) || Barcode;
-  return Barcode;
-})();
-
-exports.Barcode = Barcode;
 
 var Button = (function () {
   var _instanceInitializers2 = {};
@@ -1228,7 +1228,7 @@ function generateBindables(controlName) {
   };
 }
 
-function delayed(targetFunction) {
+function delayed() {
   return function (target, key, descriptor) {
     var taskQueue = _aureliaDependencyInjection.Container.instance.get(_aureliaTaskQueue.TaskQueue);
     var ptr = descriptor.value;

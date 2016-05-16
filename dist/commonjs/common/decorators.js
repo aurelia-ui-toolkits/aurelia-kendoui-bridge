@@ -49,7 +49,7 @@ function generateBindables(controlName) {
   };
 }
 
-function delayed(targetFunction) {
+function delayed() {
   return function (target, key, descriptor) {
     var taskQueue = _aureliaDependencyInjection.Container.instance.get(_aureliaTaskQueue.TaskQueue);
     var ptr = descriptor.value;

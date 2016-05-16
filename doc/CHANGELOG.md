@@ -1,3 +1,14 @@
+<a name="0.10.3"></a>
+## [0.10.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.10.1...v0.10.3) (2016-05-16)
+
+
+### Bug Fixes
+
+* **all:** fix typescript definition and missing events.js error ([54d3c9e](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/54d3c9e))
+* **dependencies:** remove css plugin dependency as it must be installed manually ([111b01d](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/111b01d))
+
+
+
 <a name="0.10.2"></a>
 ## [0.10.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.10.1...v0.10.2) (2016-05-16)
 

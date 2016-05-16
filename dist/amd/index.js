@@ -1,4 +1,4 @@
-define(['exports', './config-builder', 'aurelia-templating-resources', 'jquery', 'kendo.data.min', './common/constants', './common/decorators', './common/events'], function (exports, _configBuilder, _aureliaTemplatingResources, _jquery, _kendoDataMin, _commonConstants, _commonDecorators, _commonEvents) {
+define(['exports', './config-builder', 'aurelia-templating-resources', 'jquery', 'kendo.data.min', './common/decorators'], function (exports, _configBuilder, _aureliaTemplatingResources, _jquery, _kendoDataMin, _commonDecorators) {
   'use strict';
 
   exports.__esModule = true;
@@ -29,9 +29,5 @@ define(['exports', './config-builder', 'aurelia-templating-resources', 'jquery',
     }
   }
 
-  _defaults(exports, _interopExportWildcard(_commonConstants, _defaults));
-
   _defaults(exports, _interopExportWildcard(_commonDecorators, _defaults));
-
-  _defaults(exports, _interopExportWildcard(_commonEvents, _defaults));
 });

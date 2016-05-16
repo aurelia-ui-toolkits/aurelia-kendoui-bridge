@@ -3,14 +3,14 @@ declare module 'aurelia-kendoui-bridge' {
   import * as LogManager from 'aurelia-logging';
   import { RepeatStrategyLocator, ArrayRepeatStrategy }  from 'aurelia-templating-resources';
   import { inject, Container, transient }  from 'aurelia-dependency-injection';
-  import { customElement, bindable, children, ViewResources, customAttribute, BindableProperty, HtmlBehaviorResource, TemplatingEngine, noView, processContent, TargetInstruction }  from 'aurelia-templating';
+  import { customAttribute, customElement, bindable, children, ViewResources, BindableProperty, HtmlBehaviorResource, TemplatingEngine, noView, processContent, TargetInstruction }  from 'aurelia-templating';
   import { metadata }  from 'aurelia-metadata';
   import { bindingMode, EventManager, createOverrideContext }  from 'aurelia-binding';
   import { TaskQueue }  from 'aurelia-task-queue';
   import 'kendo.data.min';
+  import 'kendo.dataviz.barcode.min';
   import 'kendo.autocomplete.min';
   import 'kendo.virtuallist.min';
-  import 'kendo.dataviz.barcode.min';
   import 'kendo.button.min';
   import 'kendo.mobile.buttongroup.min';
   import 'kendo.calendar.min';
@@ -207,6 +207,13 @@ declare module 'aurelia-kendoui-bridge' {
     kendoWindow(): KendoConfigBuilder;
   }
   export function configure(aurelia: any, configCallback: any): any;
+  export class Barcode {
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
   export class AutoComplete {
     kEnabled: any;
     kReadOnly: any;
@@ -216,13 +223,6 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property: any, newValue: any, oldValue: any): any;
-    detached(): any;
-  }
-  export class Barcode {
-    constructor(element: any, widgetBase: any);
-    bind(ctx: any): any;
-    attached(): any;
-    recreate(): any;
     detached(): any;
   }
   export class Button {
@@ -352,7 +352,7 @@ declare module 'aurelia-kendoui-bridge' {
   * @param controlName The Kendo control of which the options should be converted into bindable properties
   */
   export function generateBindables(controlName: string, extraProperties?: any): any;
-  export function delayed(targetFunction: any): any;
+  export function delayed(): any;
   export class NotifyBindingBehavior {
     constructor(eventManager: any);
     bind(binding: any, scope: any, target: any, fieldName: any): any;

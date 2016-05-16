@@ -38,7 +38,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
     };
   }
 
-  function delayed(targetFunction) {
+  function delayed() {
     return function (target, key, descriptor) {
       var taskQueue = Container.instance.get(TaskQueue);
       var ptr = descriptor.value;
