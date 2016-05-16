@@ -24,7 +24,5 @@ export function configure(aurelia, configCallback) {
 }
 
 // build-index-remove start
-export * from './common/constants';
 export * from './common/decorators';
-export * from './common/events';
 // build-index-remove end
