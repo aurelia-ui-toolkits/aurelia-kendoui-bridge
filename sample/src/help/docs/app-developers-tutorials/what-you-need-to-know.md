@@ -14,10 +14,11 @@ For example, the [kendo API documentation](http://docs.telerik.com/kendo-ui/api/
 This translates into this HTML tag:
 
 `<input ak-button="k-enable.bind: true" k-on-click.delegate="btnClicked($event.detail)"/>`
+<br>
 
 Notice the `ak-` convention for the attribute and `k-` for the property.
 Events, like the `click` event shown above, use the `k-on-` convention.
-The $event's detail property contains the original event raised by the Kendo control. In order to pass this to the `myFunction` function directly, we use `$event.detail`.
+The `$event`'s detail property contains the original event raised by the Kendo control. In order to pass this to the `myFunction` function directly, we use `$event.detail`.
 <br>
 <br>
 #### Binding
