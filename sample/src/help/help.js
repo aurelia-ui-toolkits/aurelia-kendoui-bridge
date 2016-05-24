@@ -21,7 +21,7 @@ export class Help {
     });
   }
 
-  tabSelected(e) {
+  tabChanged(e) {
     this.router.navigateToRoute($(e.item).data('tab'));
   }
 }

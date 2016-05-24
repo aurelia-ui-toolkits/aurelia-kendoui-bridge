@@ -1,124 +1,115 @@
 <template>
-    <require from="./doc"></require>
     <section>
         <h4>Components Catalog Help</h4>
 
-        <div ak-tabstrip="k-widget.bind: tabstrip" k-on-select.delegate="tabSelected($event.detail)">
+        <div ak-tabstrip="k-animation.bind: false; k-widget.bind: tabstrip" k-on-select.delegate="tabSelected($event.detail)" ak-tabstrip.ref="tabstrip">
           <ul>
-              <li ref="docs" class="k-state-active" data-tab="docs">Components Docs</li>
-              <li data-tab="free-support">Free support options</li>
+              <li data-tab="free-support" class="k-state-active">Free support options</li>
               <li data-tab="support-exchange">Support Exchange</li>
           </ul>
 
-          <!-- Components Docs Tab content-->
-          <div style="height: 790px;">
-            <doc></doc>
-          </div>
+          <!-- Free support Tab -->
 
-          <!-- Support Tab content  -->
-          <div>
-            <div class="container" style="padding: 10px">
-              <div class="row">
-                <div class="col-md-6">
-                <div style="border-style: solid; border-width: 1px; border-color: gray; height: 140px; padding: 10px">
-                    <h4>Gitter</h4>
-                    <p>Do you need some immediate help? We can provide it in our Gitter room, for very basic questions that can be resolved without you having the more detailed context of your problem and assuming that someone from our team is logged in.</p>
-                    <a href="https://gitter.im/adriatic/Aurelia-KendoUI?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge" target="_blank">
-                      <img src="https://camo.githubusercontent.com/da2edb525cde1455a622c58c0effc3a90b9a181c/68747470733a2f2f6261646765732e6769747465722e696d2f4a6f696e253230436861742e737667" alt="Join the chat" data-canonical-src="https://badges.gitter.im/Join%20Chat.svg" style="max-width:100%;">
-                    </a>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div style="border-style: solid; border-width: 1px; border-color: gray; height: 140px; padding: 10px">
-                    <h4>Github</h4>
-                    We also monitor <b><a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues" target="_blank">issues</a></b> on Github and that is the recommended way to ask for help when you need to provide more context, including code sections, textual comments and screenshots.
-                    <br><br><br>
-
-                    See <b><a href="https://guides.github.com/features/issues/" target="_blank">this article</a></b> for more information in GitHub issues feature.
-                  </div>
+          <div class="container" style="padding: 10px">
+            <div class="row">
+              <div class="col-md-6">
+              <div style="border-style: solid; border-width: 1px; border-color: gray; height: 140px; padding: 10px">
+                  <h4>Gitter</h4>
+                  <p>Do you need some immediate help? We can provide it in our Gitter room, for very basic questions that can be resolved without you having the more detailed context of your problem and assuming that someone from our team is logged in.</p>
+                  <a href="https://gitter.im/adriatic/Aurelia-KendoUI?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge" target="_blank">
+                    <img src="https://camo.githubusercontent.com/da2edb525cde1455a622c58c0effc3a90b9a181c/68747470733a2f2f6261646765732e6769747465722e696d2f4a6f696e253230436861742e737667" alt="Join the chat" data-canonical-src="https://badges.gitter.im/Join%20Chat.svg" style="max-width:100%;">
+                  </a>
                 </div>
               </div>
-              <br>
+              <div class="col-md-6">
+                <div style="border-style: solid; border-width: 1px; border-color: gray; height: 140px; padding: 10px">
+                  <h4>Github</h4>
+                  We also monitor <b><a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues" target="_blank">issues</a></b> on Github and that is the recommended way to ask for help when you need to provide more context, including code sections, textual comments and screenshots.
+                  <br><br><br>
 
-              <div class="row">
-                <div class="col-md-12">
-                  <div style="border-style: solid; border-width: 1px; border-color: gray;  padding: 10px;">
-                    <h4>GistRun</h4>
-                    For any problems using this bridge that are not simple enough to be resolved in our Gitter room and you are willing to
-                    "substantiate" your problem report by adding a <b>gist</b> - check the <a href="http:#/help/docs?category=troubleshooting&file=2._using_gists_and_gistrun" target="_blank">Troubleshooting section - using GistRun to report problems</a> for details on this procedure. The information below is a summary of that article.
+                  See <b><a href="https://guides.github.com/features/issues/" target="_blank">this article</a></b> for more information in GitHub issues feature.
+                </div>
+              </div>
+            </div>
+            <br>
 
-                    <!-- GistRun left inner box -->
-                    <div style="padding-top: 20px; ">
-                     <div class="col-md-5">
-                        <div style="border-style: none; border-width: 1px; border-color: gray; padding-top: 20px; padding-left: 0; font-size: 1.3em">
+            <div class="row">
+              <div class="col-md-12">
+                <div style="border-style: solid; border-width: 1px; border-color: gray;  padding: 10px;">
+                  <h4>GistRun</h4>
+                  For any problems using this bridge that are not simple enough to be resolved in our Gitter room and you are willing to
+                  "substantiate" your problem report by adding a <b>gist</b> - check the <a href="http:#/help/docs?category=troubleshooting&file=2._using_gists_and_gistrun" target="_blank">Troubleshooting section - using GistRun to report problems</a> for details on this procedure. The information below is a summary of that article.
 
-                          <ol type="1">
-                            <li>
-                            Create a <b>new</b> problem report <b><a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues" target="_blank">here</a></b>.
-                            </li>
-                            <br>
+                  <!-- GistRun left inner box -->
+                  <div style="padding-top: 20px; ">
+                   <div class="col-md-5">
+                      <div style="border-style: none; border-width: 1px; border-color: gray; padding-top: 20px; padding-left: 0; font-size: 1.3em">
 
-                            <li>
-                            Open <a href="https://gist.run/?id=809bf843b45efdf8589179f88fd1e507" target="_blank">this gist</a> and click the Create Public Gist button in the top right corner:
-                            <img src="http://i.imgur.com/kE4patJ.png" />
-                            </li>
-                            <br>
+                        <ol type="1">
+                          <li>
+                          Create a <b>new</b> problem report <b><a href="https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues" target="_blank">here</a></b>.
+                          </li>
+                          <br>
 
-                            <li>
-                            Add your problem specific code to your gist (using GistRun editor).
-                            </li>
-                            <br>
+                          <li>
+                          Open <a href="https://gist.run/?id=809bf843b45efdf8589179f88fd1e507" target="_blank">this gist</a> and click the Create Public Gist button in the top right corner:
+                          <img src="http://i.imgur.com/kE4patJ.png" />
+                          </li>
+                          <br>
 
-                            <li>
-                            Run your gist to verify the problem is still present.
-                            </li>
-                            <br>
+                          <li>
+                          Add your problem specific code to your gist (using GistRun editor).
+                          </li>
+                          <br>
 
-                            <li>
-                            Click the "Update Gist" button in the top right corner:
-                            <img src="http://i.imgur.com/1vwWXjI.png" />
-                            </li>
-                            <br>
+                          <li>
+                          Run your gist to verify the problem is still present.
+                          </li>
+                          <br>
 
-                            <li>
-                            Copy the URL into your problem report.
-                            </li>
-                          </ul>
+                          <li>
+                          Click the "Update Gist" button in the top right corner:
+                          <img src="http://i.imgur.com/1vwWXjI.png" />
+                          </li>
+                          <br>
 
-                        </div>
+                          <li>
+                          Copy the URL into your problem report.
+                          </li>
+                        </ul>
+
                       </div>
-
-                      <!-- GistRun right inner box -->
-                      <div class="col-md-6" style="padding-left: 40px">
-                        <div style="border-style: none; border-width: 1px; border-color: gray; height: 300px; padding-top: 40px; padding-left: 20px">
-                          <img src="https://cloud.githubusercontent.com/assets/2712405/15270572/8e1ecbe8-19f2-11e6-9532-04e0078b15b5.png"
-                          style="border: 1px solid gray">
-                        </div>
-                      </div>
-
-                      <div style="clear: both"></div>
                     </div>
+
+                    <!-- GistRun right inner box -->
+                    <div class="col-md-6" style="padding-left: 40px">
+                      <div style="border-style: none; border-width: 1px; border-color: gray; height: 300px; padding-top: 40px; padding-left: 20px">
+                        <img src="https://cloud.githubusercontent.com/assets/2712405/15270572/8e1ecbe8-19f2-11e6-9532-04e0078b15b5.png"
+                        style="border: 1px solid gray">
+                      </div>
+                    </div>
+
+                    <div style="clear: both"></div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Suport Exchange Tab -->
-          <div>
-            <div class="container" style="padding: 10px">
-              <div class="row">
-                <div class="col-md-12">
-                  <div style="border-style: solid; border-width: 1px; border-color: gray; height: 340px; padding: 10px">
-                    <h4>Support Exchange</h4>
-                    <br><br>
-                    <div style="font-size: 1.3em; width: 96%">
-                      We are planning to offer the service exchange where all users of Aureila-UI-Toolkits bridges can register request for any type of help with their applications: find a bug, design and / or implement their application or simply provide a guidance in their projects. Such requests will matched with members of Aurelia Community that are interesting to provide help for a fee.
-                      <br><br>
-                      Please register your interest by answering to this <a href=" http://goo.gl/ZhCGZC" target="_blank">poll</a> and visit the Gitter
-                      <a href="https://gitter.im/aurelia-ui-toolkits/support-exchange" target="_blank">Support Exchange</a> chat room for more information
-                    </div>
 
+          <!-- Suport Exchange Tab -->
+
+          <div class="container" style="padding: 10px">
+            <div class="row">
+              <div class="col-md-12">
+                <div style="border-style: solid; border-width: 1px; border-color: gray; height: 340px; padding: 10px">
+                  <h4>Support Exchange</h4>
+                  <br><br>
+                  <div style="font-size: 1.3em; width: 96%">
+                    We are planning to offer the service exchange where all users of Aureila-UI-Toolkits bridges can register request for any type of help with their applications: find a bug, design and / or implement their application or simply provide a guidance in their projects. Such requests will matched with members of Aurelia Community that are interesting to provide help for a fee.
+                    <br><br>
+                    Please register your interest by answering to this <a href=" http://goo.gl/ZhCGZC" target="_blank">poll</a> and visit the Gitter
+                    <a href="https://gitter.im/aurelia-ui-toolkits/support-exchange" target="_blank">Support Exchange</a> chat room for more information
                   </div>
                 </div>
               </div>
