@@ -8,7 +8,7 @@ export class App {
       { name: 'documentation',    route: 'documentation',     moduleId: 'documentation/documentation', title: 'Documentation'},
       { name: 'help',             route: 'help',              moduleId: 'help/index',                  title: 'Help' },
       { name: 'home',             route: '',                  redirect: 'about/about' },
-      { name: 'installation',     route: 'installation',      moduleId: 'installation/index',          title: 'Installation' },
+      { name: 'installation',     route: 'installation',      moduleId: 'installation/installation',   title: 'Installation' },
       { name: 'samples',          route: 'samples',           moduleId: 'samples/index',               title: 'Samples' }
     ]);
 
