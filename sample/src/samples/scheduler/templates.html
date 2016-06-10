@@ -6,7 +6,6 @@
                    k-end-time.bind="endTime"
                    k-height.bind="600"
                    k-views.bind="['day', 'agenda']"
-                   k-editable.bind="false"
                    k-data-source.bind="dataSource">
         <ak-template for="eventTemplate">
           <div class="movie-template">
@@ -15,6 +14,9 @@
             <h3>${title}</h3>
             <a href="${imdb}">Movie in IMDB</a>
           </div>
+        </ak-template>
+        <ak-template for="editable.template">
+          <h3>Edit template</h3>
         </ak-template>
       </ak-scheduler>
   </div>

@@ -120,4 +120,17 @@ describe('TemplateGatherer', () => {
 
     expect(callback).toHaveBeenCalledWith(target, templates[0], templates[0].template);
   });
+
+  it('support templates in nested objects', () => {
+    let templateProps = ['template'];
+    let templates = [{
+      for: 'editable.template',
+      template: 'abcd'
+    }];
+    let target = {};
+    let controlName = 'kendoScheduler';
+    controlProperties.getTemplateProperties.and.returnValue(templateProps);
+    sut.useTemplates(target, controlName, templates);
+    expect(target.kEditable.template()).toBe('abcd');
+  });
 });
