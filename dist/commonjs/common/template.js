@@ -57,7 +57,7 @@ var Template = (function () {
     if (html !== '') {
       instruction.template = html;
     }
-    return true;
+    element.innerHTML = '';
   })(Template) || Template;
   Template = _aureliaTemplating.noView()(Template) || Template;
   Template = _aureliaTemplating.customElement(_commonConstants.constants.elementPrefix + 'template')(Template) || Template;

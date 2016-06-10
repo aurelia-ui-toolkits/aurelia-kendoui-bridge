@@ -3,14 +3,14 @@ declare module 'aurelia-kendoui-bridge' {
   import * as LogManager from 'aurelia-logging';
   import { RepeatStrategyLocator, ArrayRepeatStrategy }  from 'aurelia-templating-resources';
   import { inject, Container, transient }  from 'aurelia-dependency-injection';
-  import { customAttribute, customElement, bindable, children, ViewResources, BindableProperty, HtmlBehaviorResource, TemplatingEngine, noView, processContent, TargetInstruction }  from 'aurelia-templating';
+  import { customElement, bindable, children, ViewResources, customAttribute, BindableProperty, HtmlBehaviorResource, TemplatingEngine, noView, processContent, TargetInstruction }  from 'aurelia-templating';
   import { metadata }  from 'aurelia-metadata';
   import { bindingMode, EventManager, createOverrideContext }  from 'aurelia-binding';
   import { TaskQueue }  from 'aurelia-task-queue';
   import 'kendo.data.min';
-  import 'kendo.dataviz.barcode.min';
   import 'kendo.autocomplete.min';
   import 'kendo.virtuallist.min';
+  import 'kendo.dataviz.barcode.min';
   import 'kendo.button.min';
   import 'kendo.mobile.buttongroup.min';
   import 'kendo.calendar.min';
@@ -207,13 +207,6 @@ declare module 'aurelia-kendoui-bridge' {
     kendoWindow(): KendoConfigBuilder;
   }
   export function configure(aurelia: any, configCallback: any): any;
-  export class Barcode {
-    constructor(element: any, widgetBase: any);
-    bind(ctx: any): any;
-    attached(): any;
-    recreate(): any;
-    detached(): any;
-  }
   export class AutoComplete {
     kEnabled: any;
     kReadOnly: any;
@@ -223,6 +216,13 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property: any, newValue: any, oldValue: any): any;
+    detached(): any;
+  }
+  export class Barcode {
+    constructor(element: any, widgetBase: any);
+    bind(ctx: any): any;
+    attached(): any;
+    recreate(): any;
     detached(): any;
   }
   export class Button {
@@ -430,20 +430,9 @@ declare module 'aurelia-kendoui-bridge' {
       */
     cleanupView(element: any): any;
   }
-  export class TemplateGatherer {
-    controlProperties: ControlProperties;
-    constructor(controlProperties: ControlProperties, util: Util, config: KendoConfigBuilder);
-    
-    /***
-      * parses array of ak-template view-models (@children)
-      * <ak-template for='test'>
-      * this function sets the property 'test' on the viewmodel to the template
-      * @param target the viewModel with template properties
-      * @param kendoGrid or GridColumn, properties are retrieved from bindables.js
-      * @param templates array of ak-template view-models
-      */
-    useTemplates(target: any, controlName: any, templates: any): any;
-  }
+  
+  //  remove any HTML from `<ak-template>` because it has already been retrieved above
+  //  don't return true, so aurelia does not process the content of <ak-template>
   export class Template {
     template: any;
     for: any;

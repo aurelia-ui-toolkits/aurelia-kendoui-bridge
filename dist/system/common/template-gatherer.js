@@ -1,7 +1,7 @@
-System.register(['./control-properties', './util', 'aurelia-dependency-injection', '../config-builder'], function (_export) {
+System.register(['./control-properties', './util', 'aurelia-dependency-injection', '../config-builder', 'aurelia-binding'], function (_export) {
   'use strict';
 
-  var ControlProperties, Util, inject, KendoConfigBuilder, TemplateGatherer;
+  var ControlProperties, Util, inject, KendoConfigBuilder, Lexer, ParserImplementation, createOverrideContext, TemplateGatherer;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -14,6 +14,10 @@ System.register(['./control-properties', './util', 'aurelia-dependency-injection
       inject = _aureliaDependencyInjection.inject;
     }, function (_configBuilder) {
       KendoConfigBuilder = _configBuilder.KendoConfigBuilder;
+    }, function (_aureliaBinding) {
+      Lexer = _aureliaBinding.Lexer;
+      ParserImplementation = _aureliaBinding.ParserImplementation;
+      createOverrideContext = _aureliaBinding.createOverrideContext;
     }],
     execute: function () {
       TemplateGatherer = (function () {
@@ -35,26 +39,42 @@ System.register(['./control-properties', './util', 'aurelia-dependency-injection
           }
 
           templates.forEach(function (c) {
-            if (templateProps.indexOf(c['for']) > -1) {
-              if (_this.util.hasValue(c.template)) {
-                (function () {
-                  var template = c.template;
+            if (!c['for']) {
+              throw new Error('Templating support is not enabled. Call .kendoTemplateSupport() in main.js or import common/template via require');
+            }
 
-                  if (_this.config.templateCallback) {
-                    template = _this.config.templateCallback(target, c, c.template);
-                  }
-
-                  target[_this.util.getBindablePropertyName(c['for'])] = c.kendoTemplate ? template : function () {
-                    return template;
-                  };
-                })();
-              }
-            } else {
-              if (!c['for']) {
-                throw new Error('Templating support is not enabled. Call .kendoTemplateSupport() in main.js or import common/template via require');
-              } else {
+            if (templateProps.indexOf(c['for']) === -1) {
+              if (c['for'].indexOf('.') === -1) {
                 throw new Error('Invalid template property name: "' + c['for'] + '", valid values are: ' + templateProps.join(', '));
               }
+            }
+
+            if (_this.util.hasValue(c.template)) {
+              (function () {
+                var template = c.template;
+
+                if (_this.config.templateCallback) {
+                  template = _this.config.templateCallback(target, c, c.template);
+                }
+
+                var parser = new ParserImplementation(new Lexer(), c['for']);
+
+                var expression = parser.parseExpression();
+
+                var iterator = expression;
+                while (iterator) {
+                  if (!iterator.object) {
+                    iterator.name = _this.util.getBindablePropertyName(iterator.name);
+                  }
+                  iterator = iterator.object;
+                }
+
+                var scope = createOverrideContext(target, {});
+
+                expression.assign(scope, c.kendoTemplate ? template : function () {
+                  return template;
+                });
+              })();
             }
           });
         };

@@ -1,3 +1,20 @@
+<a name="0.10.4"></a>
+## [0.10.4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.10.3...v0.10.4) (2016-06-10)
+
+
+### Bug Fixes
+
+* **multiselect:** do not process value changes when user input is present ([652e929](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/652e929)), closes [#515](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/515) [#516](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/516)
+* **multiselect:** do not process value changes when user input is present ([5fd8b68](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/5fd8b68)), closes [#515](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/515) [#516](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/516)
+* **template:** clear innerHTML from ak-template ([8f0290c](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/8f0290c))
+
+### Features
+
+* **support:** add basic info on support exchange service ([3c16124](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/3c16124))
+* **template:** support templates on nested objects ([f1c63dd](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/f1c63dd))
+
+
+
 <a name="0.10.3"></a>
 ## [0.10.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.10.1...v0.10.3) (2016-05-16)
 

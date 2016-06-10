@@ -2,7 +2,7 @@ import 'jquery';
 import * as LogManager from 'aurelia-logging';
 import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customAttribute,customElement,bindable,children,ViewResources,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {customElement,bindable,children,ViewResources,customAttribute,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -432,42 +432,6 @@ export function configure(aurelia, configCallback) {
 
 
 
-import 'kendo.dataviz.barcode.min';
-
-@customAttribute(`${constants.attributePrefix}barcode`)
-@generateBindables('kendoBarcode')
-@inject(Element, WidgetBase)
-export class Barcode {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoBarcode')
-                        .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
 import 'kendo.autocomplete.min';
 import 'kendo.virtuallist.min';
 
@@ -521,6 +485,42 @@ export class AutoComplete {
 
   propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+import 'kendo.dataviz.barcode.min';
+
+@customAttribute(`${constants.attributePrefix}barcode`)
+@generateBindables('kendoBarcode')
+@inject(Element, WidgetBase)
+export class Barcode {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoBarcode')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
   detached() {
@@ -1349,54 +1349,6 @@ export class TemplateCompiler {
   }
 }
 
-@inject(ControlProperties, Util, KendoConfigBuilder)
-export class TemplateGatherer {
-
-  controlProperties: ControlProperties;
-
-  constructor(controlProperties: ControlProperties, util: Util, config: KendoConfigBuilder) {
-    this.controlProperties = controlProperties;
-    this.config = config;
-    this.util = util;
-  }
-
-  /***
-  * parses array of ak-template view-models (@children)
-  * <ak-template for='test'>
-  * this function sets the property 'test' on the viewmodel to the template
-  * @param target the viewModel with template properties
-  * @param kendoGrid or GridColumn, properties are retrieved from bindables.js
-  * @param templates array of ak-template view-models
-  */
-  useTemplates(target, controlName, templates) {
-    let templateProps = this.controlProperties.getTemplateProperties(controlName);
-
-    if (!templates) {
-      templates = [];
-    }
-
-    templates.forEach(c => {
-      if (templateProps.indexOf(c.for) > -1) {
-        if (this.util.hasValue(c.template)) {
-          let template = c.template;
-
-          if (this.config.templateCallback) {
-            template = this.config.templateCallback(target, c, c.template);
-          }
-
-          target[this.util.getBindablePropertyName(c.for)] = c.kendoTemplate ? template : () => template;
-        }
-      } else {
-        if (!c.for) {
-          throw new Error('Templating support is not enabled. Call .kendoTemplateSupport() in main.js or import common/template via require');
-        } else {
-          throw new Error('Invalid template property name: "' + c.for + '", valid values are: ' + templateProps.join(', '));
-        }
-      }
-    });
-  }
-}
-
 @customElement(`${constants.elementPrefix}template`)
 @noView()
 @processContent((compiler, resources, element, instruction) => {
@@ -1404,7 +1356,9 @@ export class TemplateGatherer {
   if (html !== '') {
     instruction.template = html;
   }
-  return true;
+  element.innerHTML = ''; // remove any HTML from `<ak-template>` because it has already been retrieved above
+
+  // don't return true, so aurelia does not process the content of <ak-template>
 })
 @inject(TargetInstruction)
 export class Template {
@@ -2777,7 +2731,10 @@ export class Multiselect {
   }
 
   propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+    // do not process value changes when user input is present
+    if (property !== 'kValue' || this.kWidget.input.val() === '') {
+      this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+    }
   }
 
   detached() {

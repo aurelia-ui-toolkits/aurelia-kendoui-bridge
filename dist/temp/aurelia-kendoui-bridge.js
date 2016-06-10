@@ -34,11 +34,11 @@ var _aureliaTaskQueue = require('aurelia-task-queue');
 
 require('kendo.data.min');
 
-require('kendo.dataviz.barcode.min');
-
 require('kendo.autocomplete.min');
 
 require('kendo.virtuallist.min');
+
+require('kendo.dataviz.barcode.min');
 
 require('kendo.button.min');
 
@@ -533,44 +533,6 @@ function configure(aurelia, configCallback) {
   }
 }
 
-var Barcode = (function () {
-  function Barcode(element, widgetBase) {
-    _classCallCheck(this, _Barcode);
-
-    this.element = element;
-    this.widgetBase = widgetBase.control('kendoBarcode').linkViewModel(this);
-  }
-
-  Barcode.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
-  };
-
-  Barcode.prototype.attached = function attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  };
-
-  Barcode.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  };
-
-  Barcode.prototype.detached = function detached() {
-    this.widgetBase.destroy(this.kWidget);
-  };
-
-  var _Barcode = Barcode;
-  Barcode = _aureliaDependencyInjection.inject(Element, WidgetBase)(Barcode) || Barcode;
-  Barcode = generateBindables('kendoBarcode')(Barcode) || Barcode;
-  Barcode = _aureliaTemplating.customAttribute(constants.attributePrefix + 'barcode')(Barcode) || Barcode;
-  return Barcode;
-})();
-
-exports.Barcode = Barcode;
-
 var AutoComplete = (function () {
   var _instanceInitializers = {};
 
@@ -648,6 +610,44 @@ var AutoComplete = (function () {
 })();
 
 exports.AutoComplete = AutoComplete;
+
+var Barcode = (function () {
+  function Barcode(element, widgetBase) {
+    _classCallCheck(this, _Barcode);
+
+    this.element = element;
+    this.widgetBase = widgetBase.control('kendoBarcode').linkViewModel(this);
+  }
+
+  Barcode.prototype.bind = function bind(ctx) {
+    this.$parent = ctx;
+  };
+
+  Barcode.prototype.attached = function attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  };
+
+  Barcode.prototype.recreate = function recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  };
+
+  Barcode.prototype.detached = function detached() {
+    this.widgetBase.destroy(this.kWidget);
+  };
+
+  var _Barcode = Barcode;
+  Barcode = _aureliaDependencyInjection.inject(Element, WidgetBase)(Barcode) || Barcode;
+  Barcode = generateBindables('kendoBarcode')(Barcode) || Barcode;
+  Barcode = _aureliaTemplating.customAttribute(constants.attributePrefix + 'barcode')(Barcode) || Barcode;
+  return Barcode;
+})();
+
+exports.Barcode = Barcode;
 
 var Button = (function () {
   var _instanceInitializers2 = {};
@@ -1467,56 +1467,6 @@ var TemplateCompiler = (function () {
 
 exports.TemplateCompiler = TemplateCompiler;
 
-var TemplateGatherer = (function () {
-  function TemplateGatherer(controlProperties, util, config) {
-    _classCallCheck(this, _TemplateGatherer);
-
-    this.controlProperties = controlProperties;
-    this.config = config;
-    this.util = util;
-  }
-
-  TemplateGatherer.prototype.useTemplates = function useTemplates(target, controlName, templates) {
-    var _this5 = this;
-
-    var templateProps = this.controlProperties.getTemplateProperties(controlName);
-
-    if (!templates) {
-      templates = [];
-    }
-
-    templates.forEach(function (c) {
-      if (templateProps.indexOf(c['for']) > -1) {
-        if (_this5.util.hasValue(c.template)) {
-          (function () {
-            var template = c.template;
-
-            if (_this5.config.templateCallback) {
-              template = _this5.config.templateCallback(target, c, c.template);
-            }
-
-            target[_this5.util.getBindablePropertyName(c['for'])] = c.kendoTemplate ? template : function () {
-              return template;
-            };
-          })();
-        }
-      } else {
-        if (!c['for']) {
-          throw new Error('Templating support is not enabled. Call .kendoTemplateSupport() in main.js or import common/template via require');
-        } else {
-          throw new Error('Invalid template property name: "' + c['for'] + '", valid values are: ' + templateProps.join(', '));
-        }
-      }
-    });
-  };
-
-  var _TemplateGatherer = TemplateGatherer;
-  TemplateGatherer = _aureliaDependencyInjection.inject(ControlProperties, Util, KendoConfigBuilder)(TemplateGatherer) || TemplateGatherer;
-  return TemplateGatherer;
-})();
-
-exports.TemplateGatherer = TemplateGatherer;
-
 var Template = (function () {
   var _instanceInitializers6 = {};
 
@@ -1560,7 +1510,7 @@ var Template = (function () {
     if (html !== '') {
       instruction.template = html;
     }
-    return true;
+    element.innerHTML = '';
   })(Template) || Template;
   Template = _aureliaTemplating.noView()(Template) || Template;
   Template = _aureliaTemplating.customElement(constants.elementPrefix + 'template')(Template) || Template;
@@ -1743,7 +1693,7 @@ var WidgetBase = (function () {
   };
 
   WidgetBase.prototype.createWidget = function createWidget(options) {
-    var _this6 = this;
+    var _this5 = this;
 
     if (!options) {
       throw new Error('the createWidget() function needs to be called with an object');
@@ -1779,15 +1729,15 @@ var WidgetBase = (function () {
 
     if (this.withValueBinding) {
       widget.first('change', function (args) {
-        return _this6._handleValueChange(args.sender);
+        return _this5._handleValueChange(args.sender);
       });
       widget.first('dataBound', function (args) {
-        return _this6._handleValueChange(args.sender);
+        return _this5._handleValueChange(args.sender);
       });
     }
 
     this.bindingsToKendo.forEach(function (binding) {
-      var value = _this6.viewModel[binding.propertyName];
+      var value = _this5.viewModel[binding.propertyName];
 
       if (typeof value !== 'undefined' && value !== null && value !== '') {
         widget[binding.functionName](value);
@@ -1813,7 +1763,7 @@ var WidgetBase = (function () {
   };
 
   WidgetBase.prototype.getEventOptions = function getEventOptions(element) {
-    var _this7 = this;
+    var _this6 = this;
 
     var options = {};
     var allowedEvents = this.kendoEvents;
@@ -1823,18 +1773,18 @@ var WidgetBase = (function () {
 
     events.forEach(function (event) {
       if (!allowedEvents.includes(event)) {
-        throw new Error(event + ' is not an event on the ' + _this7.controlName + ' control');
+        throw new Error(event + ' is not an event on the ' + _this6.controlName + ' control');
       }
 
       if (delayedExecution.includes(event)) {
         options[event] = function (e) {
-          _this7.taskQueue.queueMicroTask(function () {
-            return _this7.util.fireKendoEvent(element, _this7.util._hyphenate(event), e);
+          _this6.taskQueue.queueMicroTask(function () {
+            return _this6.util.fireKendoEvent(element, _this6.util._hyphenate(event), e);
           });
         };
       } else {
         options[event] = function (e) {
-          return _this7.util.fireKendoEvent(element, _this7.util._hyphenate(event), e);
+          return _this6.util.fireKendoEvent(element, _this6.util._hyphenate(event), e);
         };
       }
     });
@@ -2097,13 +2047,13 @@ var Draggabke = (function () {
   };
 
   Draggabke.prototype.recreate = function recreate() {
-    var _this8 = this;
+    var _this7 = this;
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(options) {
-        return _this8.beforeInitialize(options);
+        return _this7.beforeInitialize(options);
       }
     });
   };
@@ -2430,7 +2380,7 @@ var Gantt = (function () {
   };
 
   Gantt.prototype.recreate = function recreate() {
-    var _this9 = this;
+    var _this8 = this;
 
     this.widgetBase.useTemplates(this, 'kendoGantt', this.templates);
 
@@ -2439,19 +2389,19 @@ var Gantt = (function () {
       rootElement: this.element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(o) {
-        return _this9._beforeInitialize(o);
+        return _this8._beforeInitialize(o);
       }
     });
   };
 
   Gantt.prototype._beforeInitialize = function _beforeInitialize(options) {
-    var _this10 = this;
+    var _this9 = this;
 
     if (this.columns && this.columns.length > 0) {
       options.columns = [];
 
       this.columns.forEach(function (column) {
-        options.columns.push(_this10.optionsBuilder.getOptions(column, 'GanttColumn'));
+        options.columns.push(_this9.optionsBuilder.getOptions(column, 'GanttColumn'));
       });
     }
   };
@@ -2588,13 +2538,13 @@ var Col = (function () {
   };
 
   Col.prototype.afterOptionsBuild = function afterOptionsBuild(options) {
-    var _this11 = this;
+    var _this10 = this;
 
     if (this.columns && this.columns.length > 0) {
       options.columns = [];
 
       this.columns.forEach(function (col) {
-        options.columns.push(_this11.optionsBuilder.getOptions(col, 'GridColumn'));
+        options.columns.push(_this10.optionsBuilder.getOptions(col, 'GridColumn'));
       });
     }
   };
@@ -2694,7 +2644,7 @@ var Grid = (function () {
   };
 
   Grid.prototype.recreate = function recreate() {
-    var _this12 = this;
+    var _this11 = this;
 
     this.templateGatherer.useTemplates(this, 'kendoGrid', this.templates);
 
@@ -2703,19 +2653,19 @@ var Grid = (function () {
       rootElement: this.element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(o) {
-        return _this12._beforeInitialize(o);
+        return _this11._beforeInitialize(o);
       }
     });
   };
 
   Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
-    var _this13 = this;
+    var _this12 = this;
 
     if (this.columns && this.columns.length > 0) {
       options.columns = [];
 
       this.columns.forEach(function (column) {
-        options.columns.push(_this13.optionsBuilder.getOptions(column, 'GridColumn'));
+        options.columns.push(_this12.optionsBuilder.getOptions(column, 'GridColumn'));
       });
     }
 
@@ -2723,7 +2673,7 @@ var Grid = (function () {
       options.toolbar = [];
 
       this.gridToolbars.forEach(function (toolbar) {
-        options.toolbar.push(_this13.optionsBuilder.getOptions(toolbar, 'GridToolbarItem'));
+        options.toolbar.push(_this12.optionsBuilder.getOptions(toolbar, 'GridToolbarItem'));
       });
     }
   };
@@ -3016,7 +2966,9 @@ var Multiselect = (function () {
   };
 
   Multiselect.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+    if (property !== 'kValue' || this.kWidget.input.val() === '') {
+      this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+    }
   };
 
   Multiselect.prototype.detached = function detached() {
@@ -3107,13 +3059,13 @@ var Notification = (function () {
   };
 
   Notification.prototype.recreate = function recreate() {
-    var _this14 = this;
+    var _this13 = this;
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(e) {
-        return _this14.beforeInitialize(e);
+        return _this13.beforeInitialize(e);
       }
     });
   };
@@ -4027,7 +3979,7 @@ var ToolbarItem = (function () {
   }
 
   ToolbarItem.prototype.getOptions = function getOptions() {
-    var _this15 = this;
+    var _this14 = this;
 
     this.templateGatherer.useTemplates(this, 'ToolBarItem', this.templates);
 
@@ -4035,7 +3987,7 @@ var ToolbarItem = (function () {
       this.kButtons = [];
 
       this.buttons.forEach(function (item) {
-        _this15.kButtons.push(item.getOptions());
+        _this14.kButtons.push(item.getOptions());
       });
     }
 
@@ -4082,13 +4034,13 @@ var Toolbar = (function () {
   };
 
   Toolbar.prototype.recreate = function recreate() {
-    var _this16 = this;
+    var _this15 = this;
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(o) {
-        return _this16._beforeInitialize(o);
+        return _this15._beforeInitialize(o);
       }
     });
   };
@@ -4216,7 +4168,7 @@ var TreeList = (function () {
   };
 
   TreeList.prototype.recreate = function recreate() {
-    var _this17 = this;
+    var _this16 = this;
 
     var element = this.element;
 
@@ -4224,19 +4176,19 @@ var TreeList = (function () {
       element: element,
       parentCtx: this.$parent,
       beforeInitialize: function beforeInitialize(o) {
-        return _this17._beforeInitialize(o);
+        return _this16._beforeInitialize(o);
       }
     });
   };
 
   TreeList.prototype._beforeInitialize = function _beforeInitialize(options) {
-    var _this18 = this;
+    var _this17 = this;
 
     if (this.columns && this.columns.length > 0) {
       options.columns = [];
 
       this.columns.forEach(function (column) {
-        options.columns.push(_this18.optionsBuilder.getOptions(column, 'TreeListColumn'));
+        options.columns.push(_this17.optionsBuilder.getOptions(column, 'TreeListColumn'));
       });
     }
   };

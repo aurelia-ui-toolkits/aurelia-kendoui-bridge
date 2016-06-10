@@ -52,7 +52,10 @@ export class Multiselect {
   }
 
   propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+    // do not process value changes when user input is present
+    if (property !== 'kValue' || this.kWidget.input.val() === '') {
+      this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+    }
   }
 
   detached() {

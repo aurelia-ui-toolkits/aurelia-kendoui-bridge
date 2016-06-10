@@ -18,11 +18,13 @@ var jsName = paths.packageName + '.js';
 var startTag = '//\\s*build-index-remove start';
 var endTag = '//\\s*build-index-remove end';
 var removeRegExp = new RegExp(startTag + '[^]+?' + endTag, 'g');
+var gulpIgnore = require('gulp-ignore');
 
 gulp.task('build-index', function(){
   var importsToAdd = [];
 
   return gulp.src(paths.source)
+    .pipe(gulpIgnore.exclude('common/template-gatherer.js'))
     .pipe(through2.obj(function(file, enc, callback) {
       file.contents = new Buffer(tools.extractImports(file.contents.toString("utf8"), importsToAdd));
       this.push(file);

@@ -77,7 +77,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Multiselect.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
-      this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+      if (property !== 'kValue' || this.kWidget.input.val() === '') {
+        this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+      }
     };
 
     Multiselect.prototype.detached = function detached() {
