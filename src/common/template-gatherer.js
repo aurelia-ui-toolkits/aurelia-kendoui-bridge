@@ -2,7 +2,7 @@ import {ControlProperties} from './control-properties';
 import {Util} from './util';
 import {inject} from 'aurelia-dependency-injection';
 import {KendoConfigBuilder} from '../config-builder';
-import {Lexer, AccessMember, ParserImplementation, createOverrideContext} from 'aurelia-binding';
+import {Lexer, ParserImplementation, createOverrideContext} from 'aurelia-binding';
 
 @inject(ControlProperties, Util, KendoConfigBuilder)
 export class TemplateGatherer {
