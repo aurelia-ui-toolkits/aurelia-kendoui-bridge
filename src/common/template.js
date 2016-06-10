@@ -9,7 +9,9 @@ import {constants} from '../common/constants';
   if (html !== '') {
     instruction.template = html;
   }
-  return true;
+  element.innerHTML = ''; // remove any HTML from `<ak-template>` because it has already been retrieved above
+
+  // don't return true, so aurelia does not process the content of <ak-template>
 })
 @inject(TargetInstruction)
 export class Template {
