@@ -1,3 +1,13 @@
+<a name="0.10.5"></a>
+## [0.10.5](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.10.4...v0.10.5) (2016-06-11)
+
+
+### Bug Fixes
+
+* **grid:** there can only be one toolbar ([8654c04](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/8654c04))
+
+
+
 <a name="0.10.4"></a>
 ## [0.10.4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.10.3...v0.10.4) (2016-06-10)
 

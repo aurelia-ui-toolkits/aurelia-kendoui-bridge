@@ -111,11 +111,12 @@ var Grid = (function () {
     }
 
     if (this.gridToolbars && this.gridToolbars.length > 0) {
-      options.toolbar = [];
-
-      this.gridToolbars.forEach(function (toolbar) {
-        options.toolbar.push(_this2.optionsBuilder.getOptions(toolbar, 'GridToolbarItem'));
-      });
+      var toolbar = this.gridToolbars[0];
+      if (toolbar.kTemplate) {
+        options.toolbar = this.gridToolbars[0].kTemplate;
+      } else {
+        options.toolbar = this.optionsBuilder.getOptions(this.gridToolbars[0], 'GridToolbarItem');
+      }
     }
   };
 
