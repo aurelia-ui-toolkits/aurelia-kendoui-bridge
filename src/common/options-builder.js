@@ -21,6 +21,12 @@ export class OptionsBuilder {
     let options = {};
     let props = this.controlProperties.getProperties(className);
 
+    // allows view-models to do some pre processing
+    // for example, process all ak-templates
+    if (viewModel.beforeOptionsBuild) {
+      viewModel.beforeOptionsBuild(options);
+    }
+
     for (let i = 0; i < props.length; i++) {
       let prop = props[i];
       let value = viewModel[this.util.getBindablePropertyName(prop)];

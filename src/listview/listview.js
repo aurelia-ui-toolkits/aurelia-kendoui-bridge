@@ -22,7 +22,6 @@ export class ListView  {
 
   bind(ctx) {
     this.$parent = ctx;
-    this.widgetBase.useTemplates(this, 'kendoListView', this.templates);
   }
 
   attached() {

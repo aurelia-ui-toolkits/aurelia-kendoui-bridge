@@ -50,6 +50,7 @@ export class Grid  {
     }
 
     if (!this.kNoInit) {
+      // setTimeout(() => this.recreate(), 100);
       this.recreate();
     }
   }
@@ -77,10 +78,11 @@ export class Grid  {
 
     if (this.gridToolbars && this.gridToolbars.length > 0) {
       let toolbar = this.gridToolbars[0];
-      if (toolbar.kTemplate) {
-        options.toolbar = this.gridToolbars[0].kTemplate;
+      let o = this.optionsBuilder.getOptions(toolbar, 'GridToolbarItem');
+      if (o.template) {
+        options.toolbar = o.template;
       } else {
-        options.toolbar = this.optionsBuilder.getOptions(this.gridToolbars[0], 'GridToolbarItem');
+        options.toolbar = o;
       }
     }
   }

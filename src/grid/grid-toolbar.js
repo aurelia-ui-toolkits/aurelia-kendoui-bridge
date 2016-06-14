@@ -14,7 +14,7 @@ export class GridToolbar {
     this.templateGatherer = templateGatherer;
   }
 
-  bind() {
+  beforeOptionsBuild() {
     this.templateGatherer.useTemplates(this, 'GridToolbarItem', this.templates);
   }
 }

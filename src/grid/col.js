@@ -17,7 +17,7 @@ export class Col {
     this.optionsBuilder = optionsBuilder;
   }
 
-  bind() {
+  beforeOptionsBuild() {
     this.templateGatherer.useTemplates(this, 'GridColumn', this.templates);
   }
 

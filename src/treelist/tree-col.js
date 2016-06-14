@@ -14,7 +14,7 @@ export class TreeCol {
     this.templateGatherer = templateGatherer;
   }
 
-  bind() {
+  beforeOptionsBuild() {
     this.templateGatherer.useTemplates(this, 'TreeListColumn', this.templates);
   }
 }
