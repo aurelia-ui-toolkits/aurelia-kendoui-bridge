@@ -13,7 +13,7 @@ export class ComboBox {
 
   @bindable kEnabled;
   @bindable kReadOnly;
-  @children(`${constants.elementPrefix}template`) templates;
+  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;

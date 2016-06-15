@@ -15,9 +15,9 @@ import 'kendo.grid.min';
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder, TemplateGatherer)
 export class Grid  {
 
-  @children(`${constants.elementPrefix}col`) columns;
-  @children(`${constants.elementPrefix}template`) templates;
-  @children(`${constants.elementPrefix}grid-toolbar`) gridToolbars;
+  @children(`${constants.elementPrefix}col`) columns = [];
+  @children(`${constants.elementPrefix}template`) templates = [];
+  @children(`${constants.elementPrefix}grid-toolbar`) gridToolbars = [];
 
   constructor(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
     this.element = element;

@@ -9,8 +9,8 @@ import {OptionsBuilder} from '../common/options-builder';
 @generateBindables('GridColumn')
 @inject(TemplateGatherer, OptionsBuilder)
 export class Col {
-  @children(`${constants.elementPrefix}template`) templates;
-  @children(`${constants.elementPrefix}col`) columns;
+  @children(`${constants.elementPrefix}template`) templates = [];
+  @children(`${constants.elementPrefix}col`) columns = [];
 
   constructor(templateGatherer, optionsBuilder) {
     this.templateGatherer = templateGatherer;
