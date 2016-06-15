@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, bindable, children, ViewResources} from 'aurelia-templating';
+import {customElement, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -11,9 +11,7 @@ import 'kendo.virtuallist.min';
 @inject(Element, WidgetBase, ViewResources)
 export class AutoComplete {
 
-  @bindable kEnabled;
-  @bindable kReadOnly;
-  @children(`${constants.elementPrefix}template`) templates;
+  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -28,7 +26,9 @@ export class AutoComplete {
 
   bind(ctx) {
     this.$parent = ctx;
+  }
 
+  attached() {
     let inputs = this.element.querySelectorAll('input');
     if (inputs.length > 0) {
       this.target = inputs[0];
@@ -36,9 +36,7 @@ export class AutoComplete {
       this.target = document.createElement('input');
       this.element.appendChild(this.target);
     }
-  }
 
-  attached() {
     if (!this.kNoInit) {
       this.recreate();
     }

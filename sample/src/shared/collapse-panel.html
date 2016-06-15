@@ -4,10 +4,10 @@
             <div class="panel-heading">
                 <strong>${title}</strong>
 
-                <content select=".buttons"></content>
+                <slot name="buttons"></slot>
             </div>
             <div class="panel-body">
-                <content></content>
+                <slot></slot>
             </div>
         </div>
     </div>

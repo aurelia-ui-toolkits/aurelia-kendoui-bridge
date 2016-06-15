@@ -8,13 +8,13 @@ import {TemplateGatherer} from '../common/template-gatherer';
 @generateBindables('GridToolbarItem')
 @inject(TemplateGatherer)
 export class GridToolbar {
-  @children(`${constants.elementPrefix}template`) templates;
+  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(templateGatherer) {
     this.templateGatherer = templateGatherer;
   }
 
-  bind() {
+  beforeOptionsBuild() {
     this.templateGatherer.useTemplates(this, 'GridToolbarItem', this.templates);
   }
 }

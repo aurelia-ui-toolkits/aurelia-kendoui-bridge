@@ -14,7 +14,7 @@ import 'kendo.treelist.min';
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder)
 export class TreeList  {
 
-  @children(`${constants.elementPrefix}tree-col`) columns;
+  @children(`${constants.elementPrefix}tree-col`) columns = [];
 
   constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;

@@ -10,7 +10,7 @@ import 'kendo.notification.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Notification {
 
-  @children(`${constants.elementPrefix}notification-template`) templates;
+  @children(`${constants.elementPrefix}notification-template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;

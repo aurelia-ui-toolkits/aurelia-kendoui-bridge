@@ -15,9 +15,9 @@ import 'kendo.grid.min';
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder, TemplateGatherer)
 export class Grid  {
 
-  @children(`${constants.elementPrefix}col`) columns;
-  @children(`${constants.elementPrefix}template`) templates;
-  @children(`${constants.elementPrefix}grid-toolbar`) gridToolbars;
+  @children(`${constants.elementPrefix}col`) columns = [];
+  @children(`${constants.elementPrefix}template`) templates = [];
+  @children(`${constants.elementPrefix}grid-toolbar`) gridToolbars = [];
 
   constructor(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
     this.element = element;
@@ -50,6 +50,7 @@ export class Grid  {
     }
 
     if (!this.kNoInit) {
+      // setTimeout(() => this.recreate(), 100);
       this.recreate();
     }
   }
@@ -77,10 +78,11 @@ export class Grid  {
 
     if (this.gridToolbars && this.gridToolbars.length > 0) {
       let toolbar = this.gridToolbars[0];
-      if (toolbar.kTemplate) {
-        options.toolbar = this.gridToolbars[0].kTemplate;
+      let o = this.optionsBuilder.getOptions(toolbar, 'GridToolbarItem');
+      if (o.template) {
+        options.toolbar = o.template;
       } else {
-        options.toolbar = this.optionsBuilder.getOptions(this.gridToolbars[0], 'GridToolbarItem');
+        options.toolbar = o;
       }
     }
   }

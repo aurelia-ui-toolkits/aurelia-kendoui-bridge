@@ -1,7 +1,7 @@
 <template>
     <section>
         <collapse-panel title.bind="sample.title">
-          <div class="buttons">
+          <div slot="buttons" class="buttons">
             <a href.bind="sample.gist" show.bind="sample.gist" target="_blank" class="k-button">RUN</a>
             <a href.bind="sample.documentation" show.bind="sample.documentation" target="_blank" class="k-button">API</a>
           </div>
