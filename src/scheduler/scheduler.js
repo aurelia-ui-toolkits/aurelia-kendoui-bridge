@@ -16,7 +16,7 @@ import 'kendo.scheduler.timelineview.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Scheduler {
 
-  @children(`${constants.elementPrefix}template`) templates;
+  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;

@@ -14,7 +14,7 @@ export class Multiselect {
   @bindable kEnabled;
   @bindable kReadOnly;
   @bindable kNoValueBinding = false;
-  @children(`${constants.elementPrefix}template`) templates;
+  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;

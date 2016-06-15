@@ -9,8 +9,8 @@ import {OptionsBuilder} from '../common/options-builder';
 @generateBindables('ToolBarItem')
 @inject(TemplateGatherer, OptionsBuilder)
 export class ToolbarItem {
-  @children(`${constants.elementPrefix}template`) templates;
-  @children(`${constants.elementPrefix}toolbar-item-button`) buttons;
+  @children(`${constants.elementPrefix}template`) templates = [];
+  @children(`${constants.elementPrefix}toolbar-item-button`) buttons = [];
 
   constructor(templateGatherer, optionsBuilder) {
     this.templateGatherer = templateGatherer;

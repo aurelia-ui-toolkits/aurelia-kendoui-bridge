@@ -10,7 +10,7 @@ import 'kendo.listview.min';
 @inject(Element, WidgetBase, ViewResources)
 export class ListView  {
 
-  @children(`${constants.elementPrefix}template`) templates;
+  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;

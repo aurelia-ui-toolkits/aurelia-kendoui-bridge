@@ -14,7 +14,7 @@ export class DropDownList {
   @bindable kNoValueBinding = false;
   @bindable kEnabled;
   @bindable kReadOnly;
-  @children(`${constants.elementPrefix}template`) templates;
+  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;

@@ -12,8 +12,8 @@ import 'kendo.gantt.min';
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder)
 export class Gantt  {
 
-  @children(`${constants.elementPrefix}gantt-col`) columns;
-  @children(`${constants.elementPrefix}template`) templates;
+  @children(`${constants.elementPrefix}gantt-col`) columns = [];
+  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;
