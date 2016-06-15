@@ -50,7 +50,6 @@ export class Grid  {
     }
 
     if (!this.kNoInit) {
-      // setTimeout(() => this.recreate(), 100);
       this.recreate();
     }
   }
