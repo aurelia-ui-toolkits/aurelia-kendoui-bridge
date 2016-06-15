@@ -1,3 +1,13 @@
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.10.5...v0.11.0) (2016-06-15)
+
+
+### Bug Fixes
+
+* **all:** shadow dom 1 fixes ([7bd656a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/7bd656a))
+
+
+
 <a name="0.10.5"></a>
 ## [0.10.5](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.10.4...v0.10.5) (2016-06-11)
 

@@ -30,7 +30,7 @@ describe('Grid', () => {
       for: 'template',
       template: 'abcd'
     }];
-    col.bind();
+    col.beforeOptionsBuild();
 
     sut.columns = [col];
 
