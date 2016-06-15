@@ -1,10 +1,13 @@
 var path = require('path');
 var fs = require('fs');
 
+var emitter = require('events');
+emitter.defaultMaxListeners = 20;
+
 var appRoot = 'src/';
 var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 
-module.exports = {
+var paths = {
   root: appRoot,
   source: appRoot + '**/*.js',
   html: appRoot + '**/*.html',
@@ -21,4 +24,15 @@ module.exports = {
   e2eSpecsSrc: 'test/e2e/src/*.js',
   e2eSpecsDist: 'test/e2e/dist/',
   packageName: pkg.name,
+  ignore: [],
+  useTypeScriptForDTS: false,
+  importsToAdd: [],
+  sort: false
 };
+
+
+paths.files = [
+  "src/**/*.js"
+];
+
+module.exports = paths;
