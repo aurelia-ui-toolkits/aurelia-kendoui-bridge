@@ -430,9 +430,7 @@ export function configure(aurelia, configCallback) {
   }
 }
 
-// build-index-remove start
-export * from './common/decorators';
-// build-index-remove end
+
 
 import 'kendo.autocomplete.min';
 import 'kendo.virtuallist.min';
@@ -528,19 +526,19 @@ export class Barcode {
   }
 }
 
-import 'kendo.button.min';
+import 'kendo.mobile.buttongroup.min';
 
-@customAttribute(`${constants.attributePrefix}button`)
-@generateBindables('kendoButton')
+@customAttribute(`${constants.attributePrefix}buttongroup`)
+@generateBindables('kendoMobileButtonGroup')
 @inject(Element, WidgetBase)
-export class Button {
+export class ButtonGroup {
 
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoButton')
+                        .control('kendoMobileButtonGroup')
                         .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
@@ -571,19 +569,19 @@ export class Button {
   }
 }
 
-import 'kendo.mobile.buttongroup.min';
+import 'kendo.button.min';
 
-@customAttribute(`${constants.attributePrefix}buttongroup`)
-@generateBindables('kendoMobileButtonGroup')
+@customAttribute(`${constants.attributePrefix}button`)
+@generateBindables('kendoButton')
 @inject(Element, WidgetBase)
-export class ButtonGroup {
+export class Button {
 
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMobileButtonGroup')
+                        .control('kendoButton')
                         .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
@@ -3245,53 +3243,6 @@ export class ResponsivePanel {
   }
 }
 
-//eslint-disable-line no-unused-vars
-import 'kendo.scheduler.min';
-import 'kendo.scheduler.agendaview.min';
-import 'kendo.scheduler.dayview.min';
-import 'kendo.scheduler.monthview.min';
-import 'kendo.scheduler.recurrence.min';
-import 'kendo.scheduler.timelineview.min';
-
-@customElement(`${constants.elementPrefix}scheduler`)
-@generateBindables('kendoScheduler')
-@inject(Element, WidgetBase, ViewResources)
-export class Scheduler {
-
-  @children(`${constants.elementPrefix}template`) templates = [];
-
-  constructor(element, widgetBase, viewResources) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoScheduler')
-                        .linkViewModel(this)
-                        .useViewResources(viewResources);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
-
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
 import 'kendo.mobile.scrollview.min';
 
 @customElement(`${constants.elementPrefix}scrollview`)
@@ -3344,6 +3295,53 @@ export class Scrollview {
 
 function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
+}
+
+//eslint-disable-line no-unused-vars
+import 'kendo.scheduler.min';
+import 'kendo.scheduler.agendaview.min';
+import 'kendo.scheduler.dayview.min';
+import 'kendo.scheduler.monthview.min';
+import 'kendo.scheduler.recurrence.min';
+import 'kendo.scheduler.timelineview.min';
+
+@customElement(`${constants.elementPrefix}scheduler`)
+@generateBindables('kendoScheduler')
+@inject(Element, WidgetBase, ViewResources)
+export class Scheduler {
+
+  @children(`${constants.elementPrefix}template`) templates = [];
+
+  constructor(element, widgetBase, viewResources) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoScheduler')
+                        .linkViewModel(this)
+                        .useViewResources(viewResources);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
+
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
 }
 
 import 'kendo.slider.min';

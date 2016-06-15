@@ -3,141 +3,132 @@ var runSequence = require('run-sequence');
 var to5 = require('gulp-babel');
 var paths = require('../paths');
 var compilerOptions = require('../babel-options');
-var compilerTsOptions = require('../typescript-options');
 var assign = Object.assign || require('object.assign');
 var through2 = require('through2');
 var concat = require('gulp-concat');
 var insert = require('gulp-insert');
 var rename = require('gulp-rename');
 var tools = require('aurelia-tools');
-var ts = require('gulp-typescript');
-var gutil = require('gulp-util');
-var gulpIgnore = require('gulp-ignore');
-var merge = require('merge2');
+var del = require('del');
+var sourcemaps = require('gulp-sourcemaps');
+var vinylPaths = require('vinyl-paths');
+
 var jsName = paths.packageName + '.js';
-var compileToModules = ['es2015', 'commonjs', 'amd', 'system', 'native-modules'];
 
-function cleanGeneratedCode() {
-  return through2.obj(function(file, enc, callback) {
-    file.contents = new Buffer(tools.cleanGeneratedCode(file.contents.toString('utf8')));
-    this.push(file);
-    return callback();
-  });
-}
+// RegExp remove tags during insert.transform in build-index gulp task
+var startTag = '//\\s*build-index-remove start';
+var endTag = '//\\s*build-index-remove end';
+var removeRegExp = new RegExp(startTag + '[^]+?' + endTag, 'g');
 
-gulp.task('build-index', function() {
-  var importsToAdd = paths.importsToAdd.slice();
+gulp.task('build-index', function(){
+  var importsToAdd = [];
 
-  var src = gulp.src(paths.files);
-
-  if (paths.sort) {
-    src = src.pipe(tools.sortFiles());
-  }
-
-  if (paths.ignore) {
-    paths.ignore.forEach(function(filename){
-      src = src.pipe(gulpIgnore.exclude(filename));
-    });
-  }
-
-  return src.pipe(through2.obj(function(file, enc, callback) {
-      file.contents = new Buffer(tools.extractImports(file.contents.toString('utf8'), importsToAdd));
+  return gulp.src(paths.source)
+    .pipe(through2.obj(function(file, enc, callback) {
+      file.contents = new Buffer(tools.extractImports(file.contents.toString("utf8"), importsToAdd));
       this.push(file);
       return callback();
     }))
     .pipe(concat(jsName))
     .pipe(insert.transform(function(contents) {
-      return tools.createImportBlock(importsToAdd) + contents;
+      return tools.createImportBlock(importsToAdd) + contents.replace(removeRegExp, '');
     }))
     .pipe(gulp.dest(paths.output));
 });
 
-function gulpFileFromString(filename, string) {
-  var src = require('stream').Readable({ objectMode: true });
-  src._read = function() {
-    this.push(new gutil.File({ cwd: paths.appRoot, base: paths.output, path: filename, contents: new Buffer(string) }))
-    this.push(null)
-  }
-  return src;
-}
 
-function srcForBabel() {
-  return merge(
-    gulp.src(paths.output + jsName),
-    gulpFileFromString(paths.output + 'index.js', "export * from './" + paths.packageName + "';")
-  );
-}
-
-function srcForTypeScript() {
-  return gulp
-    .src(paths.output + paths.packageName + '.js')
-    .pipe(rename(function (path) {
-      if (path.extname == '.js') {
-        path.extname = '.ts';
-      }
-    }));
-}
-
-compileToModules.forEach(function(moduleType){
-  gulp.task('build-babel-' + moduleType, function () {
-    return srcForBabel()
-      .pipe(to5(assign({}, compilerOptions[moduleType]())))
-      .pipe(cleanGeneratedCode())
-      .pipe(gulp.dest(paths.output + moduleType));
-  });
-
-  if (moduleType === 'native-modules') return; // typescript doesn't support the combination of: es5 + native modules
-
-  gulp.task('build-ts-' + moduleType, function () {
-    var tsProject = ts.createProject(
-      compilerTsOptions({ module: moduleType, target: moduleType == 'es2015' ? 'es2015' : 'es5' }), ts.reporter.defaultReporter());
-    var tsResult = srcForTypeScript().pipe(ts(tsProject));
-    return tsResult.js
-      .pipe(gulp.dest(paths.output + moduleType));
-  });
+gulp.task('build-es6-temp', function () {
+    return gulp.src(paths.output + jsName)
+      // .pipe(to5(assign({}, compilerOptions, {modules:'common'})))
+      .pipe(to5(assign({}, compilerOptions.babelDtsGenerator())))
+      .pipe(gulp.dest(paths.output + 'temp'));
 });
 
-gulp.task('build-dts', function() {
-  var tsProject = ts.createProject(
-    compilerTsOptions({ removeComments: false, target: "es2015", module: "es2015" }), ts.reporter.defaultReporter());
-  var tsResult = srcForTypeScript().pipe(ts(tsProject));
-  return tsResult.dts
-    .pipe(gulp.dest(paths.output));
+gulp.task('build-es6', function () {
+  return gulp.src(paths.source)
+    .pipe(gulp.dest(paths.output + 'es6'));
 });
+
+gulp.task('build-commonjs', function () {
+  return gulp.src(paths.source)
+    // .pipe(to5(assign({}, compilerOptions, {modules:'common', plugins: []})))
+    .pipe(to5(assign({}, compilerOptions.commonjs())))
+    .pipe(gulp.dest(paths.output + 'commonjs'));
+});
+
+gulp.task('build-amd', function () {
+  return gulp.src(paths.source)
+    // .pipe(to5(assign({}, compilerOptions, {modules:'amd', plugins: []})))
+    .pipe(to5(assign({}, compilerOptions.amd())))
+    .pipe(gulp.dest(paths.output + 'amd'));
+});
+
+gulp.task('build-system', function () {
+  return gulp.src(paths.source)
+    // .pipe(to5(assign({}, compilerOptions, {modules:'system', plugins: []})))
+    .pipe(to5(assign({}, compilerOptions.system())))
+    .pipe(gulp.dest(paths.output + 'system'));
+});
+
+gulp.task('build-dev', function () {
+  return gulp.src(paths.source)
+    .pipe(sourcemaps.init({loadMaps: true}))
+    // .pipe(to5(assign({}, compilerOptions, {modules:'system', plugins: []})))
+    .pipe(to5(assign({}, compilerOptions.system())))
+    .pipe(sourcemaps.write(paths.output + 'dev'))
+    .pipe(gulp.dest(paths.output + 'dev'));
+});
+
+gulp.task('build-dts', function(){
+  return gulp.src(paths.output + paths.packageName + '.d.ts')
+      .pipe(rename(paths.packageName + '.d.ts'))
+      .pipe(gulp.dest(paths.output + 'es6'))
+      .pipe(gulp.dest(paths.output + 'commonjs'))
+      .pipe(gulp.dest(paths.output + 'amd'))
+      .pipe(gulp.dest(paths.output + 'dev'))
+      .pipe(gulp.dest(paths.output + 'system'));
+});
+
+gulp.task('copy-html', function() {
+ return gulp.src(paths.html)
+  .pipe(gulp.dest(paths.output + 'es6'))
+  .pipe(gulp.dest(paths.output + 'commonjs'))
+  .pipe(gulp.dest(paths.output + 'amd'))
+  .pipe(gulp.dest(paths.output + 'dev'))
+  .pipe(gulp.dest(paths.output + 'system'));
+
+});
+
+gulp.task('copy-css', function() {
+ return gulp.src(paths.style)
+  .pipe(gulp.dest(paths.output + 'es6'))
+  .pipe(gulp.dest(paths.output + 'commonjs'))
+  .pipe(gulp.dest(paths.output + 'amd'))
+  .pipe(gulp.dest(paths.output + 'dev'))
+  .pipe(gulp.dest(paths.output + 'system'));
+
+});
+
 
 gulp.task('build', function(callback) {
   return runSequence(
     'clean',
     'build-index',
-    compileToModules
-      .map(function(moduleType) { return 'build-babel-' + moduleType })
-      .concat(paths.useTypeScriptForDTS ? ['build-dts'] : []),
+    ['build-es6-temp', 'build-es6', 'build-commonjs', 'build-amd', 'build-system', 'build-dev'],
+    ['copy-html', 'copy-css'],
+    'build-dts',
     callback
   );
 });
 
 gulp.task('build-release', function(callback) {
   paths.output = paths.releaseOutput;
-  
   return runSequence(
     'clean',
     'build-index',
-    compileToModules
-      .map(function(moduleType) { return 'build-babel-' + moduleType })
-      .concat(paths.useTypeScriptForDTS ? ['build-dts'] : []),
-    callback
-  );
-});
-
-gulp.task('build-ts', function(callback) {
-  return runSequence(
-    'clean',
-    'build-index',
-    'build-babel-native-modules',
-    compileToModules
-      .filter(function(moduleType) { return moduleType !== 'native-modules' })
-      .map(function(moduleType) { return 'build-ts-' + moduleType })
-      .concat(paths.useTypeScriptForDTS ? ['build-dts'] : []),
+    ['build-es6-temp', 'build-es6', 'build-commonjs', 'build-amd', 'build-system', 'build-dev'],
+    ['copy-html', 'copy-css'],
+    'build-dts',
     callback
   );
 });
