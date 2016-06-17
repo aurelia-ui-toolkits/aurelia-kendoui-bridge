@@ -3,6 +3,7 @@ import {customElement, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
+import {delayed} from '../common/decorators';
 import 'kendo.mobile.scrollview.min';
 
 @customElement(`${constants.elementPrefix}scrollview`)
@@ -25,6 +26,7 @@ export class Scrollview {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (isInitFromDiv(this.element)) {
       this.target = this.element.querySelectorAll('div')[0];

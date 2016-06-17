@@ -41,23 +41,32 @@ describe('Grid', () => {
     expect(columns[0].template()).toBe('abcd');
   });
 
-  it('initializes on table', () => {
+  it('initializes on table', (d) => {
     let target = DOM.createElement('table');
     sut.element.appendChild(target);
     sut.attached();
-    expect(sut.target).toBe(target);
+    setTimeout(() => {
+      expect(sut.target).toBe(target);
+      d();
+    });
   });
 
-  it('initializes on div', () => {
+  it('initializes on div', (d) => {
     let target = DOM.createElement('div');
     sut.element.appendChild(target);
     sut.attached();
-    expect(sut.target).toBe(target);
+    setTimeout(() => {
+      expect(sut.target).toBe(target);
+      d();
+    });
   });
 
-  it('initializes on div if table or div does not exist', () => {
+  it('initializes on div if table or div does not exist', (d) => {
     sut.attached();
-    expect(sut.element.querySelectorAll('div').length).toBeGreaterThan(0);
-    expect(sut.target.nodeName).toBe('DIV');
+    setTimeout(() => {
+      expect(sut.element.querySelectorAll('div').length).toBeGreaterThan(0);
+      expect(sut.target.nodeName).toBe('DIV');
+      d();
+    });
   });
 });

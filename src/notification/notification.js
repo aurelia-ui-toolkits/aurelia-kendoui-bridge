@@ -3,6 +3,7 @@ import {customElement, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
+import {delayed} from '../common/decorators';
 import 'kendo.notification.min';
 
 @customElement(`${constants.elementPrefix}notification`)
@@ -24,6 +25,7 @@ export class Notification {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
