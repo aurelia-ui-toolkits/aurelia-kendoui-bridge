@@ -40,8 +40,8 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.autocomplete.min';
   import 'kendo.virtuallist.min';
   import 'kendo.dataviz.barcode.min';
-  import 'kendo.mobile.buttongroup.min';
   import 'kendo.button.min';
+  import 'kendo.mobile.buttongroup.min';
   import 'kendo.calendar.min';
   
   //eslint-disable-line no-unused-vars
@@ -102,7 +102,6 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.dataviz.qrcode.min';
   import 'kendo.slider.min';
   import 'kendo.responsivepanel.min';
-  import 'kendo.mobile.scrollview.min';
   
   //eslint-disable-line no-unused-vars
   import 'kendo.scheduler.min';
@@ -111,6 +110,7 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.scheduler.monthview.min';
   import 'kendo.scheduler.recurrence.min';
   import 'kendo.scheduler.timelineview.min';
+  import 'kendo.mobile.scrollview.min';
   import 'kendo.slider.min';
   import 'kendo.sortable.min';
   import 'kendo.splitter.min';
@@ -248,7 +248,7 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class ButtonGroup {
+  export class Button {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
@@ -257,7 +257,7 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     detached(): any;
   }
-  export class Button {
+  export class ButtonGroup {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
@@ -778,9 +778,6 @@ declare module 'aurelia-kendoui-bridge' {
     gridToolbars: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any, optionsBuilder?: any, templateGatherer?: any);
     bind(ctx?: any): any;
-    
-    // initialization in bind() is giving issues in some scenarios
-    // so, attached() is used for this control
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
@@ -913,7 +910,7 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class Scrollview {
+  export class Scheduler {
     templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
@@ -921,7 +918,7 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class Scheduler {
+  export class Scrollview {
     templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
@@ -1021,9 +1018,6 @@ declare module 'aurelia-kendoui-bridge' {
     columns: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any, optionsBuilder?: any);
     bind(ctx?: any): any;
-    
-    // initialization in bind() is giving issues in some scenarios
-    // so, attached() is used for this control
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;

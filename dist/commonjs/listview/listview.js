@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ListView = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor;
+var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor;
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
@@ -64,7 +64,7 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var ListView = exports.ListView = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'list-view'), _dec2 = (0, _decorators.generateBindables)('kendoListView'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec4 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'template'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+var ListView = exports.ListView = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'list-view'), _dec2 = (0, _decorators.generateBindables)('kendoListView'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec4 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'template'), _dec5 = (0, _decorators.delayed)(), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
   function ListView(element, widgetBase, viewResources) {
     _classCallCheck(this, ListView);
 
@@ -103,4 +103,4 @@ var ListView = exports.ListView = (_dec = (0, _aureliaTemplating.customElement)(
   initializer: function initializer() {
     return [];
   }
-})), _class2)) || _class) || _class) || _class);
+}), _applyDecoratedDescriptor(_class2.prototype, 'attached', [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'attached'), _class2.prototype)), _class2)) || _class) || _class) || _class);

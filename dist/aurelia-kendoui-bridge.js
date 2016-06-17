@@ -457,6 +457,7 @@ export class AutoComplete {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     let inputs = this.element.querySelectorAll('input');
     if (inputs.length > 0) {
@@ -526,19 +527,19 @@ export class Barcode {
   }
 }
 
-import 'kendo.mobile.buttongroup.min';
+import 'kendo.button.min';
 
-@customAttribute(`${constants.attributePrefix}buttongroup`)
-@generateBindables('kendoMobileButtonGroup')
+@customAttribute(`${constants.attributePrefix}button`)
+@generateBindables('kendoButton')
 @inject(Element, WidgetBase)
-export class ButtonGroup {
+export class Button {
 
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMobileButtonGroup')
+                        .control('kendoButton')
                         .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
@@ -569,19 +570,19 @@ export class ButtonGroup {
   }
 }
 
-import 'kendo.button.min';
+import 'kendo.mobile.buttongroup.min';
 
-@customAttribute(`${constants.attributePrefix}button`)
-@generateBindables('kendoButton')
+@customAttribute(`${constants.attributePrefix}buttongroup`)
+@generateBindables('kendoMobileButtonGroup')
 @inject(Element, WidgetBase)
-export class Button {
+export class ButtonGroup {
 
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoButton')
+                        .control('kendoMobileButtonGroup')
                         .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
@@ -915,6 +916,7 @@ export class ComboBox {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -1070,7 +1072,7 @@ export function generateBindables(controlName: string, extraProperties = []) {
 
 export function delayed() {
   return function(target, key, descriptor) {
-    let taskQueue = Container.instance.get(TaskQueue);
+    let taskQueue = (Container.instance || new Container()).get(TaskQueue);
     let ptr = descriptor.value;
 
     descriptor.value = function(...args) {
@@ -2187,6 +2189,7 @@ export class DropDownList {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (!this.kNoValueBinding) {
       this.widgetBase.useValueBinding();
@@ -2327,6 +2330,7 @@ export class Gantt  {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     // if <div> exists, initialize on that, else create div
     if (isInitFromDiv(this.element)) {
@@ -2525,8 +2529,7 @@ export class Grid  {
     this.$parent = ctx;
   }
 
-  // initialization in bind() is giving issues in some scenarios
-  // so, attached() is used for this control
+  @delayed()
   attached() {
     // if <table> exists, initialize on that
     // if <div> exists, initialize on that
@@ -2542,7 +2545,6 @@ export class Grid  {
     }
 
     if (!this.kNoInit) {
-      // setTimeout(() => this.recreate(), 100);
       this.recreate();
     }
   }
@@ -2616,6 +2618,7 @@ export class ListView  {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -2786,6 +2789,7 @@ export class Multiselect {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (!this.kNoValueBinding) {
       this.widgetBase.useValueBinding();
@@ -2863,6 +2867,7 @@ export class Notification {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -3064,6 +3069,7 @@ export class PivotGrid {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -3243,6 +3249,54 @@ export class ResponsivePanel {
   }
 }
 
+//eslint-disable-line no-unused-vars
+import 'kendo.scheduler.min';
+import 'kendo.scheduler.agendaview.min';
+import 'kendo.scheduler.dayview.min';
+import 'kendo.scheduler.monthview.min';
+import 'kendo.scheduler.recurrence.min';
+import 'kendo.scheduler.timelineview.min';
+
+@customElement(`${constants.elementPrefix}scheduler`)
+@generateBindables('kendoScheduler')
+@inject(Element, WidgetBase, ViewResources)
+export class Scheduler {
+
+  @children(`${constants.elementPrefix}template`) templates = [];
+
+  constructor(element, widgetBase, viewResources) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoScheduler')
+                        .linkViewModel(this)
+                        .useViewResources(viewResources);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  @delayed()
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
+
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
 import 'kendo.mobile.scrollview.min';
 
 @customElement(`${constants.elementPrefix}scrollview`)
@@ -3265,6 +3319,7 @@ export class Scrollview {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (isInitFromDiv(this.element)) {
       this.target = this.element.querySelectorAll('div')[0];
@@ -3295,53 +3350,6 @@ export class Scrollview {
 
 function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
-}
-
-//eslint-disable-line no-unused-vars
-import 'kendo.scheduler.min';
-import 'kendo.scheduler.agendaview.min';
-import 'kendo.scheduler.dayview.min';
-import 'kendo.scheduler.monthview.min';
-import 'kendo.scheduler.recurrence.min';
-import 'kendo.scheduler.timelineview.min';
-
-@customElement(`${constants.elementPrefix}scheduler`)
-@generateBindables('kendoScheduler')
-@inject(Element, WidgetBase, ViewResources)
-export class Scheduler {
-
-  @children(`${constants.elementPrefix}template`) templates = [];
-
-  constructor(element, widgetBase, viewResources) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoScheduler')
-                        .linkViewModel(this)
-                        .useViewResources(viewResources);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
-
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
 }
 
 import 'kendo.slider.min';
@@ -3685,6 +3693,7 @@ export class Toolbar {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -3790,8 +3799,8 @@ export class TreeList  {
     this.$parent = ctx;
   }
 
-  // initialization in bind() is giving issues in some scenarios
-  // so, attached() is used for this control
+
+  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -3881,6 +3890,7 @@ export class Upload {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();

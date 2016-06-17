@@ -3,6 +3,7 @@ import {customElement, children} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
+import {delayed} from '../common/decorators';
 import {OptionsBuilder} from '../common/options-builder';
 import 'kendo.toolbar.min';
 
@@ -25,6 +26,7 @@ export class Toolbar {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();

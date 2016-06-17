@@ -46,7 +46,7 @@ export function generateBindables(controlName: string, extraProperties = []) {
 
 export function delayed() {
   return function(target, key, descriptor) {
-    let taskQueue = Container.instance.get(TaskQueue);
+    let taskQueue = (Container.instance || new Container()).get(TaskQueue);
     let ptr = descriptor.value;
 
     descriptor.value = function(...args) {

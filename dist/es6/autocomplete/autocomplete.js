@@ -3,6 +3,7 @@ import {customElement, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
+import {delayed} from '../common/decorators';
 import 'kendo.autocomplete.min';
 import 'kendo.virtuallist.min';
 
@@ -28,6 +29,7 @@ export class AutoComplete {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     let inputs = this.element.querySelectorAll('input');
     if (inputs.length > 0) {

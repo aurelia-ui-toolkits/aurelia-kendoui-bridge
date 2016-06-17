@@ -3,7 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../common/template-gatherer', '../pdf/pdf', 'kendo.data.signalr.min', 'kendo.filtercell.min', 'kendo.grid.min'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, children, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, TemplateGatherer, PDF, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, Grid;
+  var inject, customElement, children, ViewResources, WidgetBase, generateBindables, constants, delayed, OptionsBuilder, TemplateGatherer, PDF, _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, Grid;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -72,6 +72,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
       generateBindables = _commonDecorators.generateBindables;
+      delayed = _commonDecorators.delayed;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
     }, function (_commonOptionsBuilder) {
@@ -82,7 +83,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       PDF = _pdfPdf.PDF;
     }, function (_kendoDataSignalrMin) {}, function (_kendoFiltercellMin) {}, function (_kendoGridMin) {}],
     execute: function () {
-      _export('Grid', Grid = (_dec = customElement(constants.elementPrefix + 'grid'), _dec2 = generateBindables('kendoGrid'), _dec3 = inject(Element, WidgetBase, ViewResources, OptionsBuilder, TemplateGatherer), _dec4 = children(constants.elementPrefix + 'col'), _dec5 = children(constants.elementPrefix + 'template'), _dec6 = children(constants.elementPrefix + 'grid-toolbar'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+      _export('Grid', Grid = (_dec = customElement(constants.elementPrefix + 'grid'), _dec2 = generateBindables('kendoGrid'), _dec3 = inject(Element, WidgetBase, ViewResources, OptionsBuilder, TemplateGatherer), _dec4 = children(constants.elementPrefix + 'col'), _dec5 = children(constants.elementPrefix + 'template'), _dec6 = children(constants.elementPrefix + 'grid-toolbar'), _dec7 = delayed(), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
         function Grid(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
           _classCallCheck(this, Grid);
 
@@ -174,7 +175,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         initializer: function initializer() {
           return [];
         }
-      })), _class2)) || _class) || _class) || _class));
+      }), _applyDecoratedDescriptor(_class2.prototype, 'attached', [_dec7], Object.getOwnPropertyDescriptor(_class2.prototype, 'attached'), _class2.prototype)), _class2)) || _class) || _class) || _class));
 
       _export('Grid', Grid);
     }

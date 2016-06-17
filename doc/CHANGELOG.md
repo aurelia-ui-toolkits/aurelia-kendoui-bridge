@@ -1,3 +1,13 @@
+<a name="0.11.2"></a>
+## [0.11.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.1...v0.11.2) (2016-06-17)
+
+
+### Bug Fixes
+
+* **all:** workaround timing issue of wrappers that use @children ([2125d32](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/2125d32))
+
+
+
 <a name="0.11.1"></a>
 ## [0.11.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.0...v0.11.1) (2016-06-15)
 

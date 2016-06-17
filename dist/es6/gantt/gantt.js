@@ -4,6 +4,7 @@ import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {OptionsBuilder} from '../common/options-builder';
+import {delayed} from '../common/decorators';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 import 'kendo.gantt.min';
 
@@ -28,6 +29,7 @@ export class Gantt  {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     // if <div> exists, initialize on that, else create div
     if (isInitFromDiv(this.element)) {

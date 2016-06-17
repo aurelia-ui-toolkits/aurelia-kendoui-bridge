@@ -3,6 +3,7 @@ import {customElement, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
+import {delayed} from '../common/decorators';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 import 'kendo.scheduler.min';
 import 'kendo.scheduler.agendaview.min';
@@ -30,6 +31,7 @@ export class Scheduler {
     this.$parent = ctx;
   }
 
+  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
