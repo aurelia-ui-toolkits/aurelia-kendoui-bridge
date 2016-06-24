@@ -55,9 +55,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor;
+  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor;
 
-  var Toolbar = exports.Toolbar = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'toolbar'), _dec2 = (0, _decorators.generateBindables)('kendoToolBar'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _optionsBuilder.OptionsBuilder), _dec4 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'toolbar-item'), _dec5 = (0, _decorators.delayed)(), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+  var Toolbar = exports.Toolbar = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'toolbar'), _dec2 = (0, _decorators.generateBindables)('kendoToolBar'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _optionsBuilder.OptionsBuilder), _dec4 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'toolbar-item'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
     function Toolbar(element, widgetBase, optionsBuilder) {
       _classCallCheck(this, Toolbar);
 
@@ -110,5 +110,5 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     initializer: function initializer() {
       return [];
     }
-  }), _applyDecoratedDescriptor(_class2.prototype, 'attached', [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'attached'), _class2.prototype)), _class2)) || _class) || _class) || _class);
+  })), _class2)) || _class) || _class) || _class);
 });

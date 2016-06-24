@@ -1,3 +1,13 @@
+<a name="0.11.3"></a>
+## [0.11.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.2...v0.11.3) (2016-06-24)
+
+
+### Bug Fixes
+
+* **all:** updated dependencies, removed @delayed workaround ([bf61043](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/bf61043))
+
+
+
 <a name="0.11.2"></a>
 ## [0.11.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.1...v0.11.2) (2016-06-17)
 

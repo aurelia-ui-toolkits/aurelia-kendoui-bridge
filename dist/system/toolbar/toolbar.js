@@ -3,7 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', 'kendo.toolbar.min'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, children, WidgetBase, generateBindables, constants, delayed, OptionsBuilder, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, Toolbar;
+  var inject, customElement, children, WidgetBase, generateBindables, constants, OptionsBuilder, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, Toolbar;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -64,14 +64,13 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
       generateBindables = _commonDecorators.generateBindables;
-      delayed = _commonDecorators.delayed;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
     }, function (_commonOptionsBuilder) {
       OptionsBuilder = _commonOptionsBuilder.OptionsBuilder;
     }, function (_kendoToolbarMin) {}],
     execute: function () {
-      _export('Toolbar', Toolbar = (_dec = customElement(constants.elementPrefix + 'toolbar'), _dec2 = generateBindables('kendoToolBar'), _dec3 = inject(Element, WidgetBase, OptionsBuilder), _dec4 = children(constants.elementPrefix + 'toolbar-item'), _dec5 = delayed(), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+      _export('Toolbar', Toolbar = (_dec = customElement(constants.elementPrefix + 'toolbar'), _dec2 = generateBindables('kendoToolBar'), _dec3 = inject(Element, WidgetBase, OptionsBuilder), _dec4 = children(constants.elementPrefix + 'toolbar-item'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
         function Toolbar(element, widgetBase, optionsBuilder) {
           _classCallCheck(this, Toolbar);
 
@@ -124,7 +123,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         initializer: function initializer() {
           return [];
         }
-      }), _applyDecoratedDescriptor(_class2.prototype, 'attached', [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'attached'), _class2.prototype)), _class2)) || _class) || _class) || _class));
+      })), _class2)) || _class) || _class) || _class));
 
       _export('Toolbar', Toolbar);
     }

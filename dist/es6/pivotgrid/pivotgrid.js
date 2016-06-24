@@ -4,7 +4,6 @@ import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-import {delayed} from '../common/decorators';
 import 'kendo.pivotgrid.min';
 import 'kendo.pivot.fieldmenu.min';
 
@@ -28,7 +27,6 @@ export class PivotGrid {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();

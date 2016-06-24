@@ -55,9 +55,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _dec7, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+  var _dec, _dec2, _dec3, _dec4, _dec5, _dec6, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
 
-  var Grid = exports.Grid = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'grid'), _dec2 = (0, _decorators.generateBindables)('kendoGrid'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources, _optionsBuilder.OptionsBuilder, _templateGatherer.TemplateGatherer), _dec4 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'col'), _dec5 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'template'), _dec6 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'grid-toolbar'), _dec7 = (0, _decorators.delayed)(), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+  var Grid = exports.Grid = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'grid'), _dec2 = (0, _decorators.generateBindables)('kendoGrid'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources, _optionsBuilder.OptionsBuilder, _templateGatherer.TemplateGatherer), _dec4 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'col'), _dec5 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'template'), _dec6 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'grid-toolbar'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
     function Grid(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
       _classCallCheck(this, Grid);
 
@@ -149,7 +149,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     initializer: function initializer() {
       return [];
     }
-  }), _applyDecoratedDescriptor(_class2.prototype, 'attached', [_dec7], Object.getOwnPropertyDescriptor(_class2.prototype, 'attached'), _class2.prototype)), _class2)) || _class) || _class) || _class);
+  })), _class2)) || _class) || _class) || _class);
 
   function isInitFromTable(element) {
     return element.children.length > 0 && element.children[0].nodeName === 'TABLE';

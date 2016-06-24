@@ -457,7 +457,6 @@ export class AutoComplete {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     let inputs = this.element.querySelectorAll('input');
     if (inputs.length > 0) {
@@ -916,7 +915,6 @@ export class ComboBox {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -2189,7 +2187,6 @@ export class DropDownList {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (!this.kNoValueBinding) {
       this.widgetBase.useValueBinding();
@@ -2330,7 +2327,6 @@ export class Gantt  {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     // if <div> exists, initialize on that, else create div
     if (isInitFromDiv(this.element)) {
@@ -2529,7 +2525,6 @@ export class Grid  {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     // if <table> exists, initialize on that
     // if <div> exists, initialize on that
@@ -2618,7 +2613,6 @@ export class ListView  {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -2789,7 +2783,6 @@ export class Multiselect {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (!this.kNoValueBinding) {
       this.widgetBase.useValueBinding();
@@ -2867,7 +2860,6 @@ export class Notification {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -3069,7 +3061,6 @@ export class PivotGrid {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -3276,7 +3267,6 @@ export class Scheduler {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -3319,7 +3309,6 @@ export class Scrollview {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (isInitFromDiv(this.element)) {
       this.target = this.element.querySelectorAll('div')[0];
@@ -3693,7 +3682,6 @@ export class Toolbar {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -3799,8 +3787,6 @@ export class TreeList  {
     this.$parent = ctx;
   }
 
-
-  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
@@ -3890,7 +3876,6 @@ export class Upload {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();

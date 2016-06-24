@@ -3,7 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../pdf/pdf', 'kendo.data.signalr.min', 'kendo.filtercell.min', 'kendo.treelist.min'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, children, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, delayed, PDF, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, TreeList;
+  var inject, customElement, children, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, PDF, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, TreeList;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -65,7 +65,6 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
       generateBindables = _commonDecorators.generateBindables;
-      delayed = _commonDecorators.delayed;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
     }, function (_commonOptionsBuilder) {
@@ -74,7 +73,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       PDF = _pdfPdf.PDF;
     }, function (_kendoDataSignalrMin) {}, function (_kendoFiltercellMin) {}, function (_kendoTreelistMin) {}],
     execute: function () {
-      _export('TreeList', TreeList = (_dec = customElement(constants.elementPrefix + 'tree-list'), _dec2 = generateBindables('kendoTreeList'), _dec3 = inject(Element, WidgetBase, ViewResources, OptionsBuilder), _dec4 = children(constants.elementPrefix + 'tree-col'), _dec5 = delayed(), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+      _export('TreeList', TreeList = (_dec = customElement(constants.elementPrefix + 'tree-list'), _dec2 = generateBindables('kendoTreeList'), _dec3 = inject(Element, WidgetBase, ViewResources, OptionsBuilder), _dec4 = children(constants.elementPrefix + 'tree-col'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
         function TreeList(element, widgetBase, viewResources, optionsBuilder) {
           _classCallCheck(this, TreeList);
 
@@ -131,7 +130,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         initializer: function initializer() {
           return [];
         }
-      }), _applyDecoratedDescriptor(_class2.prototype, 'attached', [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'attached'), _class2.prototype)), _class2)) || _class) || _class) || _class));
+      })), _class2)) || _class) || _class) || _class));
 
       _export('TreeList', TreeList);
     }

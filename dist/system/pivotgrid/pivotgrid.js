@@ -3,7 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo.pivotgrid.min', 'kendo.pivot.fieldmenu.min'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, children, ViewResources, WidgetBase, generateBindables, constants, PDF, delayed, _dec, _dec2, _dec3, _dec4, _dec5, _class, _desc, _value, _class2, _descriptor, PivotGrid;
+  var inject, customElement, children, ViewResources, WidgetBase, generateBindables, constants, PDF, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, PivotGrid;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -65,14 +65,13 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
       generateBindables = _commonDecorators.generateBindables;
-      delayed = _commonDecorators.delayed;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
     }, function (_pdfPdf) {
       PDF = _pdfPdf.PDF;
     }, function (_kendoPivotgridMin) {}, function (_kendoPivotFieldmenuMin) {}],
     execute: function () {
-      _export('PivotGrid', PivotGrid = (_dec = customElement(constants.elementPrefix + 'pivot-grid'), _dec2 = generateBindables('kendoPivotGrid'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec4 = children(constants.elementPrefix + 'template'), _dec5 = delayed(), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+      _export('PivotGrid', PivotGrid = (_dec = customElement(constants.elementPrefix + 'pivot-grid'), _dec2 = generateBindables('kendoPivotGrid'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec4 = children(constants.elementPrefix + 'template'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
         function PivotGrid(element, widgetBase, viewResources) {
           _classCallCheck(this, PivotGrid);
 
@@ -111,7 +110,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         initializer: function initializer() {
           return [];
         }
-      }), _applyDecoratedDescriptor(_class2.prototype, 'attached', [_dec5], Object.getOwnPropertyDescriptor(_class2.prototype, 'attached'), _class2.prototype)), _class2)) || _class) || _class) || _class));
+      })), _class2)) || _class) || _class) || _class));
 
       _export('PivotGrid', PivotGrid);
     }
