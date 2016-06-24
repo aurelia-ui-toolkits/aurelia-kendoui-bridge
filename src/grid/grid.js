@@ -3,7 +3,6 @@ import {customElement, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import {delayed} from '../common/decorators';
 import {OptionsBuilder} from '../common/options-builder';
 import {TemplateGatherer} from '../common/template-gatherer';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
@@ -34,7 +33,6 @@ export class Grid  {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     // if <table> exists, initialize on that
     // if <div> exists, initialize on that

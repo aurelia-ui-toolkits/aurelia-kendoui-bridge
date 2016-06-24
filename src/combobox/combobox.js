@@ -2,7 +2,6 @@ import {inject} from 'aurelia-dependency-injection';
 import {customElement, bindable, children, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import {delayed} from '../common/decorators';
 import {constants} from '../common/constants';
 import 'kendo.combobox.min';
 import 'kendo.virtuallist.min';
@@ -31,7 +30,6 @@ export class ComboBox {
     this.$parent = ctx;
   }
 
-  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();

@@ -4,7 +4,6 @@ import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {OptionsBuilder} from '../common/options-builder';
-import {delayed} from '../common/decorators';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 import 'kendo.data.signalr.min';
 import 'kendo.filtercell.min';
@@ -30,8 +29,6 @@ export class TreeList  {
     this.$parent = ctx;
   }
 
-
-  @delayed()
   attached() {
     if (!this.kNoInit) {
       this.recreate();
