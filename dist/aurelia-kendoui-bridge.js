@@ -1319,6 +1319,8 @@ export class TemplateCompiler {
       // so we can call detached/unbind
       // so we store this view instance in the DOM element using JQuery.data
       $(element).data('viewInstance', view);
+    } else {
+      view.bind(ctx, createOverrideContext(ctx, $parent));
     }
 
     view.attached(); // attach it to the DOM

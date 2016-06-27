@@ -121,6 +121,8 @@ var TemplateCompiler = exports.TemplateCompiler = (_dec = (0, _aureliaDependency
       }
 
       $(element).data('viewInstance', view);
+    } else {
+      view.bind(ctx, (0, _aureliaBinding.createOverrideContext)(ctx, $parent));
     }
 
     view.attached();

@@ -126,6 +126,8 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-
             }
 
             $(element).data('viewInstance', view);
+          } else {
+            view.bind(ctx, createOverrideContext(ctx, $parent));
           }
 
           view.attached();

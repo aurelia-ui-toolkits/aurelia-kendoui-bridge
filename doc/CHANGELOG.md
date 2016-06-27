@@ -1,3 +1,13 @@
+<a name="0.11.7"></a>
+## [0.11.7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.6...v0.11.7) (2016-06-27)
+
+
+### Bug Fixes
+
+* **template-compiler:** bind view even if .au-target is found ([928cc22](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/928cc22))
+
+
+
 <a name="0.11.6"></a>
 ## [0.11.6](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.5...v0.11.6) (2016-06-27)
 

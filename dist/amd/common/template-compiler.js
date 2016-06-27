@@ -118,6 +118,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', 'aureli
         }
 
         $(element).data('viewInstance', view);
+      } else {
+        view.bind(ctx, (0, _aureliaBinding.createOverrideContext)(ctx, $parent));
       }
 
       view.attached();
