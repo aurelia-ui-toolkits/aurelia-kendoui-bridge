@@ -55,17 +55,15 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2;
 
-  var ComboBox = exports.ComboBox = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'combobox'), _dec2 = (0, _decorators.generateBindables)('kendoComboBox'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec4 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'template'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+  var ComboBox = exports.ComboBox = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'combobox'), _dec2 = (0, _decorators.generateBindables)('kendoComboBox'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
     function ComboBox(element, widgetBase, viewResources) {
       _classCallCheck(this, ComboBox);
 
       _initDefineProp(this, 'kEnabled', _descriptor, this);
 
       _initDefineProp(this, 'kReadOnly', _descriptor2, this);
-
-      _initDefineProp(this, 'templates', _descriptor3, this);
 
       this.element = element;
       this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
@@ -83,7 +81,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     ComboBox.prototype.recreate = function recreate() {
       var selectNode = getSelectNode(this.element);
-      this.widgetBase.useTemplates(this, 'kendoComboBox', this.templates);
+      var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
+      this.widgetBase.useTemplates(this, 'kendoComboBox', templates);
 
       this.kWidget = this.widgetBase.createWidget({
         rootElement: this.element,
@@ -107,11 +106,6 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
   }), _descriptor2 = _applyDecoratedDescriptor(_class2.prototype, 'kReadOnly', [_aureliaTemplating.bindable], {
     enumerable: true,
     initializer: null
-  }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'templates', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return [];
-    }
   })), _class2)) || _class) || _class) || _class);
 
 

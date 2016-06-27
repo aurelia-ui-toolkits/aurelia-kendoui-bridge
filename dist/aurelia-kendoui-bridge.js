@@ -2,7 +2,7 @@ import 'jquery';
 import * as LogManager from 'aurelia-logging';
 import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customElement,children,ViewResources,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {customElement,ViewResources,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext,Lexer,ParserImplementation} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -440,8 +440,6 @@ import 'kendo.virtuallist.min';
 @inject(Element, WidgetBase, ViewResources)
 export class AutoComplete {
 
-  @children(`${constants.elementPrefix}template`) templates = [];
-
   constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -472,7 +470,8 @@ export class AutoComplete {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoAutoComplete', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,
@@ -898,7 +897,6 @@ export class ComboBox {
 
   @bindable kEnabled;
   @bindable kReadOnly;
-  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -923,7 +921,8 @@ export class ComboBox {
 
   recreate() {
     let selectNode = getSelectNode(this.element);
-    this.widgetBase.useTemplates(this, 'kendoComboBox', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoComboBox', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,
@@ -1589,6 +1588,15 @@ export class Util {
   isObject(obj) {
     return obj !== null && typeof(obj) === 'object';
   }
+
+  getChildrenVMs(element, cssSelector) {
+    let elements = $(element).children(cssSelector);
+    let viewModels = [];
+    elements.each((index, elem) => {
+      viewModels.push(elem.au.controller.viewModel);
+    });
+    return viewModels;
+  }
 }
 
 const logger = LogManager.getLogger('aurelia-kendoui-bridge');
@@ -2168,7 +2176,6 @@ export class DropDownList {
   @bindable kNoValueBinding = false;
   @bindable kEnabled;
   @bindable kReadOnly;
-  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -2196,7 +2203,8 @@ export class DropDownList {
 
   recreate() {
     let selectNode = getSelectNode(this.element);
-    this.widgetBase.useTemplates(this, 'kendoDropDownList', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoDropDownList', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,
@@ -2308,9 +2316,6 @@ import 'kendo.gantt.min';
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder)
 export class Gantt  {
 
-  @children(`${constants.elementPrefix}gantt-col`) columns = [];
-  @children(`${constants.elementPrefix}template`) templates = [];
-
   constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
@@ -2339,7 +2344,8 @@ export class Gantt  {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoGantt', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoGantt', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.target,
@@ -2350,11 +2356,12 @@ export class Gantt  {
   }
 
   _beforeInitialize(options) {
+    let columns = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}gantt-col`);
     // allow for both column definitions via HTML and via an array of columns
-    if (this.columns && this.columns.length > 0) {
+    if (columns && columns.length > 0) {
       options.columns = [];
 
-      this.columns.forEach(column => {
+      columns.forEach(column => {
         options.columns.push(this.optionsBuilder.getOptions(column, 'GanttColumn'));
       });
     }
@@ -2453,26 +2460,28 @@ export class RadialGauge {
 
 @customElement(`${constants.elementPrefix}col`)
 @generateBindables('GridColumn')
-@inject(TemplateGatherer, OptionsBuilder)
+@inject(TemplateGatherer, OptionsBuilder, Util, Element)
 export class Col {
-  @children(`${constants.elementPrefix}template`) templates = [];
-  @children(`${constants.elementPrefix}col`) columns = [];
 
-  constructor(templateGatherer, optionsBuilder) {
+  constructor(templateGatherer, optionsBuilder, util, element) {
     this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;
+    this.util = util;
+    this.element = element;
   }
 
   beforeOptionsBuild() {
-    this.templateGatherer.useTemplates(this, 'GridColumn', this.templates);
+    let templates = this.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.templateGatherer.useTemplates(this, 'GridColumn', templates);
   }
 
   // recursively get options of all nested columns that we can pass to Kendo
   afterOptionsBuild(options) {
-    if (this.columns && this.columns.length > 0) {
+    let columns = this.util.getChildrenVMs(this.element, `${constants.elementPrefix}col`);
+    if (columns && columns.length > 0) {
       options.columns = [];
 
-      this.columns.forEach(col => {
+      columns.forEach(col => {
         options.columns.push(this.optionsBuilder.getOptions(col, 'GridColumn'));
       });
     }
@@ -2481,16 +2490,17 @@ export class Col {
 
 @customElement(`${constants.elementPrefix}grid-toolbar`)
 @generateBindables('GridToolbarItem')
-@inject(TemplateGatherer)
+@inject(TemplateGatherer, Util, Element)
 export class GridToolbar {
-  @children(`${constants.elementPrefix}template`) templates = [];
-
-  constructor(templateGatherer) {
+  constructor(templateGatherer, util, element) {
     this.templateGatherer = templateGatherer;
+    this.util = util;
+    this.element = element;
   }
 
   beforeOptionsBuild() {
-    this.templateGatherer.useTemplates(this, 'GridToolbarItem', this.templates);
+    let templates = this.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.templateGatherer.useTemplates(this, 'GridToolbarItem', templates);
   }
 }
 
@@ -2503,10 +2513,6 @@ import 'kendo.grid.min';
 @generateBindables('kendoGrid')
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder, TemplateGatherer)
 export class Grid  {
-
-  @children(`${constants.elementPrefix}col`) columns = [];
-  @children(`${constants.elementPrefix}template`) templates = [];
-  @children(`${constants.elementPrefix}grid-toolbar`) gridToolbars = [];
 
   constructor(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
     this.element = element;
@@ -2542,7 +2548,8 @@ export class Grid  {
   }
 
   recreate() {
-    this.templateGatherer.useTemplates(this, 'kendoGrid', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.templateGatherer.useTemplates(this, 'kendoGrid', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.target,
@@ -2553,17 +2560,20 @@ export class Grid  {
   }
 
   _beforeInitialize(options) {
+    let columns = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}col`);
+    let gridToolbars = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}grid-toolbar`);
+
     // allow for both column definitions via HTML and via an array of columns
-    if (this.columns && this.columns.length > 0) {
+    if (columns && columns.length > 0) {
       options.columns = [];
 
-      this.columns.forEach(column => {
+      columns.forEach(column => {
         options.columns.push(this.optionsBuilder.getOptions(column, 'GridColumn'));
       });
     }
 
-    if (this.gridToolbars && this.gridToolbars.length > 0) {
-      let toolbar = this.gridToolbars[0];
+    if (gridToolbars && gridToolbars.length > 0) {
+      let toolbar = gridToolbars[0];
       let o = this.optionsBuilder.getOptions(toolbar, 'GridToolbarItem');
       if (o.template) {
         options.toolbar = o.template;
@@ -2596,8 +2606,6 @@ import 'kendo.listview.min';
 @inject(Element, WidgetBase, ViewResources)
 export class ListView  {
 
-  @children(`${constants.elementPrefix}template`) templates = [];
-
   constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -2617,7 +2625,8 @@ export class ListView  {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoListView', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoListView', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
@@ -2764,7 +2773,6 @@ export class Multiselect {
   @bindable kEnabled;
   @bindable kReadOnly;
   @bindable kNoValueBinding = false;
-  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -2792,7 +2800,8 @@ export class Multiselect {
 
   recreate() {
     let selectNode = getSelectNode(this.element);
-    this.widgetBase.useTemplates(this, 'kendoMultiSelect', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoMultiSelect', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,
@@ -2843,8 +2852,6 @@ import 'kendo.notification.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Notification {
 
-  @children(`${constants.elementPrefix}notification-template`) templates = [];
-
   constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -2872,10 +2879,11 @@ export class Notification {
   }
 
   beforeInitialize(options) {
-    if (this.templates && this.templates.length > 0) {
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}notification-template`);
+    if (templates && templates.length > 0) {
       options.templates = [];
 
-      this.templates.forEach(template => options.templates.push({
+      templates.forEach(template => options.templates.push({
         type: template.type,
         template: () => template.template
       }));
@@ -3044,8 +3052,6 @@ import 'kendo.pivot.fieldmenu.min';
 @inject(Element, WidgetBase, ViewResources)
 export class PivotGrid {
 
-  @children(`${constants.elementPrefix}template`) templates = [];
-
   constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -3065,7 +3071,8 @@ export class PivotGrid {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoPivotGrid', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoPivotGrid', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
@@ -3250,8 +3257,6 @@ import 'kendo.scheduler.timelineview.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Scheduler {
 
-  @children(`${constants.elementPrefix}template`) templates = [];
-
   constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -3271,7 +3276,8 @@ export class Scheduler {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoScheduler', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
@@ -3290,8 +3296,6 @@ import 'kendo.mobile.scrollview.min';
 @generateBindables('kendoMobileScrollView')
 @inject(Element, WidgetBase, ViewResources)
 export class Scrollview {
-
-  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -3320,7 +3324,8 @@ export class Scrollview {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoMobileScrollView', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoMobileScrollView', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.target,
@@ -3633,23 +3638,25 @@ export class ToolbarItemButton {
 
 @customElement(`${constants.elementPrefix}toolbar-item`)
 @generateBindables('ToolBarItem')
-@inject(TemplateGatherer, OptionsBuilder)
+@inject(TemplateGatherer, OptionsBuilder, Util, Element)
 export class ToolbarItem {
-  @children(`${constants.elementPrefix}template`) templates = [];
-  @children(`${constants.elementPrefix}toolbar-item-button`) buttons = [];
 
-  constructor(templateGatherer, optionsBuilder) {
+  constructor(templateGatherer, optionsBuilder, util, element) {
     this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;
+    this.util = util;
+    this.element = element;
   }
 
   getOptions() {
-    this.templateGatherer.useTemplates(this, 'ToolBarItem', this.templates);
+    let templates = this.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.templateGatherer.useTemplates(this, 'ToolBarItem', templates);
 
-    if (this.buttons && this.buttons.length > 0) {
+    let buttons = this.util.getChildrenVMs(this.element, `${constants.elementPrefix}toolbar-item-button`);
+    if (buttons && buttons.length > 0) {
       this.kButtons = [];
 
-      this.buttons.forEach(item => {
+      buttons.forEach(item => {
         this.kButtons.push(item.getOptions());
       });
     }
@@ -3664,8 +3671,6 @@ import 'kendo.toolbar.min';
 @generateBindables('kendoToolBar')
 @inject(Element, WidgetBase, OptionsBuilder)
 export class Toolbar {
-
-  @children(`${constants.elementPrefix}toolbar-item`) toolbarItems = [];
 
   constructor(element, widgetBase, optionsBuilder) {
     this.element = element;
@@ -3694,10 +3699,11 @@ export class Toolbar {
   }
 
   _beforeInitialize(options) {
-    if (this.toolbarItems && this.toolbarItems.length > 0) {
+    let toolbarItems = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}toolbar-item`);
+    if (toolbarItems && toolbarItems.length > 0) {
       options.items = [];
 
-      this.toolbarItems.forEach(item => {
+      toolbarItems.forEach(item => {
         options.items.push(item.getOptions());
       });
     }
@@ -3746,16 +3752,17 @@ export class Tooltip {
 
 @customElement(`${constants.elementPrefix}tree-col`)
 @generateBindables('TreeListColumn')
-@inject(TemplateGatherer)
+@inject(TemplateGatherer, Util, Element)
 export class TreeCol {
-  @children(`${constants.elementPrefix}template`) templates = [];
-
-  constructor(templateGatherer) {
+  constructor(templateGatherer, util, element) {
     this.templateGatherer = templateGatherer;
+    this.util = util;
+    this.element = element;
   }
 
   beforeOptionsBuild() {
-    this.templateGatherer.useTemplates(this, 'TreeListColumn', this.templates);
+    let templates = this.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.templateGatherer.useTemplates(this, 'TreeListColumn', templates);
   }
 }
 
@@ -3768,8 +3775,6 @@ import 'kendo.treelist.min';
 @generateBindables('kendoTreeList')
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder)
 export class TreeList  {
-
-  @children(`${constants.elementPrefix}tree-col`) columns = [];
 
   constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;
@@ -3801,11 +3806,12 @@ export class TreeList  {
   }
 
   _beforeInitialize(options) {
+    let columns = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}tree-col`);
     // allow for both column definitions via HTML and via an array of columns
-    if (this.columns && this.columns.length > 0) {
+    if (columns && columns.length > 0) {
       options.columns = [];
 
-      this.columns.forEach(column => {
+      columns.forEach(column => {
         options.columns.push(this.optionsBuilder.getOptions(column, 'TreeListColumn'));
       });
     }
@@ -3859,8 +3865,6 @@ import 'kendo.upload.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Upload {
 
-  @children(`${constants.elementPrefix}template`) templates = [];
-
   constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -3889,7 +3893,8 @@ export class Upload {
       this.element.appendChild(target);
     }
 
-    this.widgetBase.useTemplates(this, 'kendoUpload', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoUpload', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,

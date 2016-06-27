@@ -1,3 +1,13 @@
+<a name="0.11.8"></a>
+## [0.11.8](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.7...v0.11.8) (2016-06-27)
+
+
+### Bug Fixes
+
+* **children:** remove @children usage ([a3af1ae](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/a3af1ae))
+
+
+
 <a name="0.11.7"></a>
 ## [0.11.7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.6...v0.11.7) (2016-06-27)
 

@@ -55,9 +55,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
   }
 
-  var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+  var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
 
-  var DropDownList = exports.DropDownList = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'drop-down-list'), _dec2 = (0, _decorators.generateBindables)('kendoDropDownList'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec4 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'template'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+  var DropDownList = exports.DropDownList = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'drop-down-list'), _dec2 = (0, _decorators.generateBindables)('kendoDropDownList'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
     function DropDownList(element, widgetBase, viewResources) {
       _classCallCheck(this, DropDownList);
 
@@ -66,8 +66,6 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _initDefineProp(this, 'kEnabled', _descriptor2, this);
 
       _initDefineProp(this, 'kReadOnly', _descriptor3, this);
-
-      _initDefineProp(this, 'templates', _descriptor4, this);
 
       this.element = element;
       this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
@@ -89,7 +87,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     DropDownList.prototype.recreate = function recreate() {
       var selectNode = getSelectNode(this.element);
-      this.widgetBase.useTemplates(this, 'kendoDropDownList', this.templates);
+      var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
+      this.widgetBase.useTemplates(this, 'kendoDropDownList', templates);
 
       this.kWidget = this.widgetBase.createWidget({
         rootElement: this.element,
@@ -118,11 +117,6 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
   }), _descriptor3 = _applyDecoratedDescriptor(_class2.prototype, 'kReadOnly', [_aureliaTemplating.bindable], {
     enumerable: true,
     initializer: null
-  }), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'templates', [_dec4], {
-    enumerable: true,
-    initializer: function initializer() {
-      return [];
-    }
   })), _class2)) || _class) || _class) || _class);
 
 

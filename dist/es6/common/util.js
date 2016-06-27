@@ -141,4 +141,13 @@ export class Util {
   isObject(obj) {
     return obj !== null && typeof(obj) === 'object';
   }
+
+  getChildrenVMs(element, cssSelector) {
+    let elements = $(element).children(cssSelector);
+    let viewModels = [];
+    elements.each((index, elem) => {
+      viewModels.push(elem.au.controller.viewModel);
+    });
+    return viewModels;
+  }
 }

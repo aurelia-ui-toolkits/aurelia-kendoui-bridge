@@ -117,6 +117,15 @@ System.register(['./constants'], function (_export, _context) {
           return obj !== null && (typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) === 'object';
         };
 
+        Util.prototype.getChildrenVMs = function getChildrenVMs(element, cssSelector) {
+          var elements = $(element).children(cssSelector);
+          var viewModels = [];
+          elements.each(function (index, elem) {
+            viewModels.push(elem.au.controller.viewModel);
+          });
+          return viewModels;
+        };
+
         return Util;
       }());
 

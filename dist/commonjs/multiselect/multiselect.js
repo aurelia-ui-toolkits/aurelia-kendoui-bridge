@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Multiselect = undefined;
 
-var _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
@@ -66,7 +66,7 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'multiselect'), _dec2 = (0, _decorators.generateBindables)('kendoMultiSelect', ['template']), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec4 = (0, _aureliaTemplating.children)(_constants.constants.elementPrefix + 'template'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'multiselect'), _dec2 = (0, _decorators.generateBindables)('kendoMultiSelect', ['template']), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
   function Multiselect(element, widgetBase, viewResources) {
     _classCallCheck(this, Multiselect);
 
@@ -75,8 +75,6 @@ var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customEle
     _initDefineProp(this, 'kReadOnly', _descriptor2, this);
 
     _initDefineProp(this, 'kNoValueBinding', _descriptor3, this);
-
-    _initDefineProp(this, 'templates', _descriptor4, this);
 
     this.element = element;
     this.widgetBase = widgetBase.control('kendoMultiSelect').linkViewModel(this).useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
@@ -98,7 +96,8 @@ var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customEle
 
   Multiselect.prototype.recreate = function recreate() {
     var selectNode = getSelectNode(this.element);
-    this.widgetBase.useTemplates(this, 'kendoMultiSelect', this.templates);
+    var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
+    this.widgetBase.useTemplates(this, 'kendoMultiSelect', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,
@@ -128,11 +127,6 @@ var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customEle
   enumerable: true,
   initializer: function initializer() {
     return false;
-  }
-}), _descriptor4 = _applyDecoratedDescriptor(_class2.prototype, 'templates', [_dec4], {
-  enumerable: true,
-  initializer: function initializer() {
-    return [];
   }
 })), _class2)) || _class) || _class) || _class);
 

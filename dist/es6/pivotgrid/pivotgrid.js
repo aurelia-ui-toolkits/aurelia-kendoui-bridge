@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, children, ViewResources} from 'aurelia-templating';
+import {customElement, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -12,8 +12,6 @@ import 'kendo.pivot.fieldmenu.min';
 @generateBindables('kendoPivotGrid')
 @inject(Element, WidgetBase, ViewResources)
 export class PivotGrid {
-
-  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -34,7 +32,8 @@ export class PivotGrid {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoPivotGrid', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoPivotGrid', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,

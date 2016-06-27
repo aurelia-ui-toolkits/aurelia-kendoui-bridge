@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, children, ViewResources} from 'aurelia-templating';
+import {customElement, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -15,8 +15,6 @@ import 'kendo.scheduler.timelineview.min';
 @generateBindables('kendoScheduler')
 @inject(Element, WidgetBase, ViewResources)
 export class Scheduler {
-
-  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -37,7 +35,8 @@ export class Scheduler {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoScheduler', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,

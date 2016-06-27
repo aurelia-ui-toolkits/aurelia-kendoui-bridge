@@ -16,7 +16,6 @@ declare module 'aurelia-kendoui-bridge' {
   } from 'aurelia-dependency-injection';
   import {
     customElement,
-    children,
     ViewResources,
     customAttribute,
     bindable,
@@ -237,7 +236,6 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export function configure(aurelia?: any, configCallback?: any): any;
   export class AutoComplete {
-    templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -326,7 +324,6 @@ declare module 'aurelia-kendoui-bridge' {
   export class ComboBox {
     kEnabled: any;
     kReadOnly: any;
-    templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -554,6 +551,7 @@ declare module 'aurelia-kendoui-bridge' {
       * detection of objects
       */
     isObject(obj?: any): any;
+    getChildrenVMs(element?: any, cssSelector?: any): any;
   }
   
   /**
@@ -710,7 +708,6 @@ declare module 'aurelia-kendoui-bridge' {
     kNoValueBinding: any;
     kEnabled: any;
     kReadOnly: any;
-    templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -737,8 +734,6 @@ declare module 'aurelia-kendoui-bridge' {
   
   }
   export class Gantt {
-    columns: any;
-    templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any, optionsBuilder?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -763,23 +758,17 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Col {
-    templates: any;
-    columns: any;
-    constructor(templateGatherer?: any, optionsBuilder?: any);
+    constructor(templateGatherer?: any, optionsBuilder?: any, util?: any, element?: any);
     beforeOptionsBuild(): any;
     
     // recursively get options of all nested columns that we can pass to Kendo
     afterOptionsBuild(options?: any): any;
   }
   export class GridToolbar {
-    templates: any;
-    constructor(templateGatherer?: any);
+    constructor(templateGatherer?: any, util?: any, element?: any);
     beforeOptionsBuild(): any;
   }
   export class Grid {
-    columns: any;
-    templates: any;
-    gridToolbars: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any, optionsBuilder?: any, templateGatherer?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -788,7 +777,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class ListView {
-    templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -825,7 +813,6 @@ declare module 'aurelia-kendoui-bridge' {
     kEnabled: any;
     kReadOnly: any;
     kNoValueBinding: any;
-    templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -839,7 +826,6 @@ declare module 'aurelia-kendoui-bridge' {
     constructor(targetInstruction?: any);
   }
   export class Notification {
-    templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -875,7 +861,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class PivotGrid {
-    templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -915,7 +900,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Scheduler {
-    templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -923,7 +907,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Scrollview {
-    templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -992,13 +975,10 @@ declare module 'aurelia-kendoui-bridge' {
     getOptions(): any;
   }
   export class ToolbarItem {
-    templates: any;
-    buttons: any;
-    constructor(templateGatherer?: any, optionsBuilder?: any);
+    constructor(templateGatherer?: any, optionsBuilder?: any, util?: any, element?: any);
     getOptions(): any;
   }
   export class Toolbar {
-    toolbarItems: any;
     constructor(element?: any, widgetBase?: any, optionsBuilder?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -1014,12 +994,10 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class TreeCol {
-    templates: any;
-    constructor(templateGatherer?: any);
+    constructor(templateGatherer?: any, util?: any, element?: any);
     beforeOptionsBuild(): any;
   }
   export class TreeList {
-    columns: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any, optionsBuilder?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -1035,7 +1013,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Upload {
-    templates: any;
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;

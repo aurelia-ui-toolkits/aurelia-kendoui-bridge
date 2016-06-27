@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, bindable, children, ViewResources} from 'aurelia-templating';
+import {customElement, bindable, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -13,7 +13,6 @@ export class ComboBox {
 
   @bindable kEnabled;
   @bindable kReadOnly;
-  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -38,7 +37,8 @@ export class ComboBox {
 
   recreate() {
     let selectNode = getSelectNode(this.element);
-    this.widgetBase.useTemplates(this, 'kendoComboBox', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoComboBox', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,

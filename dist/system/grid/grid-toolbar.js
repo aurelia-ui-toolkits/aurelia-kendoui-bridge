@@ -1,19 +1,9 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/constants', '../common/decorators', '../common/template-gatherer'], function (_export, _context) {
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/constants', '../common/decorators', '../common/template-gatherer', '../common/util'], function (_export, _context) {
   "use strict";
 
-  var children, customElement, inject, constants, generateBindables, TemplateGatherer, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, GridToolbar;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
+  var customElement, inject, constants, generateBindables, TemplateGatherer, Util, _dec, _dec2, _dec3, _class, GridToolbar;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -21,42 +11,8 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
     }
   }
 
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
   return {
     setters: [function (_aureliaTemplating) {
-      children = _aureliaTemplating.children;
       customElement = _aureliaTemplating.customElement;
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
@@ -66,28 +22,26 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonTemplateGatherer) {
       TemplateGatherer = _commonTemplateGatherer.TemplateGatherer;
+    }, function (_commonUtil) {
+      Util = _commonUtil.Util;
     }],
     execute: function () {
-      _export('GridToolbar', GridToolbar = (_dec = customElement(constants.elementPrefix + 'grid-toolbar'), _dec2 = generateBindables('GridToolbarItem'), _dec3 = inject(TemplateGatherer), _dec4 = children(constants.elementPrefix + 'template'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
-        function GridToolbar(templateGatherer) {
+      _export('GridToolbar', GridToolbar = (_dec = customElement(constants.elementPrefix + 'grid-toolbar'), _dec2 = generateBindables('GridToolbarItem'), _dec3 = inject(TemplateGatherer, Util, Element), _dec(_class = _dec2(_class = _dec3(_class = function () {
+        function GridToolbar(templateGatherer, util, element) {
           _classCallCheck(this, GridToolbar);
 
-          _initDefineProp(this, 'templates', _descriptor, this);
-
           this.templateGatherer = templateGatherer;
+          this.util = util;
+          this.element = element;
         }
 
         GridToolbar.prototype.beforeOptionsBuild = function beforeOptionsBuild() {
-          this.templateGatherer.useTemplates(this, 'GridToolbarItem', this.templates);
+          var templates = this.util.getChildrenVMs(this.element, constants.elementPrefix + 'template');
+          this.templateGatherer.useTemplates(this, 'GridToolbarItem', templates);
         };
 
         return GridToolbar;
-      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'templates', [_dec4], {
-        enumerable: true,
-        initializer: function initializer() {
-          return [];
-        }
-      })), _class2)) || _class) || _class) || _class));
+      }()) || _class) || _class) || _class));
 
       _export('GridToolbar', GridToolbar);
     }

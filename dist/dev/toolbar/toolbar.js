@@ -3,17 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', 'kendo.toolbar.min'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, children, WidgetBase, generateBindables, constants, OptionsBuilder, _dec, _dec2, _dec3, _dec4, _class, _desc, _value, _class2, _descriptor, Toolbar;
-
-  function _initDefineProp(target, property, descriptor, context) {
-    if (!descriptor) return;
-    Object.defineProperty(target, property, {
-      enumerable: descriptor.enumerable,
-      configurable: descriptor.configurable,
-      writable: descriptor.writable,
-      value: descriptor.initializer ? descriptor.initializer.call(context) : void 0
-    });
-  }
+  var inject, customElement, WidgetBase, generateBindables, constants, OptionsBuilder, _dec, _dec2, _dec3, _class, Toolbar;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -21,45 +11,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
     }
   }
 
-  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-    var desc = {};
-    Object['ke' + 'ys'](descriptor).forEach(function (key) {
-      desc[key] = descriptor[key];
-    });
-    desc.enumerable = !!desc.enumerable;
-    desc.configurable = !!desc.configurable;
-
-    if ('value' in desc || desc.initializer) {
-      desc.writable = true;
-    }
-
-    desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-      return decorator(target, property, desc) || desc;
-    }, desc);
-
-    if (context && desc.initializer !== void 0) {
-      desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-      desc.initializer = undefined;
-    }
-
-    if (desc.initializer === void 0) {
-      Object['define' + 'Property'](target, property, desc);
-      desc = null;
-    }
-
-    return desc;
-  }
-
-  function _initializerWarningHelper(descriptor, context) {
-    throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
-  }
-
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
-      children = _aureliaTemplating.children;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -70,11 +26,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       OptionsBuilder = _commonOptionsBuilder.OptionsBuilder;
     }, function (_kendoToolbarMin) {}],
     execute: function () {
-      _export('Toolbar', Toolbar = (_dec = customElement(constants.elementPrefix + 'toolbar'), _dec2 = generateBindables('kendoToolBar'), _dec3 = inject(Element, WidgetBase, OptionsBuilder), _dec4 = children(constants.elementPrefix + 'toolbar-item'), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+      _export('Toolbar', Toolbar = (_dec = customElement(constants.elementPrefix + 'toolbar'), _dec2 = generateBindables('kendoToolBar'), _dec3 = inject(Element, WidgetBase, OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function Toolbar(element, widgetBase, optionsBuilder) {
           _classCallCheck(this, Toolbar);
-
-          _initDefineProp(this, 'toolbarItems', _descriptor, this);
 
           this.element = element;
           this.optionsBuilder = optionsBuilder;
@@ -104,10 +58,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Toolbar.prototype._beforeInitialize = function _beforeInitialize(options) {
-          if (this.toolbarItems && this.toolbarItems.length > 0) {
+          var toolbarItems = this.widgetBase.util.getChildrenVMs(this.element, constants.elementPrefix + 'toolbar-item');
+          if (toolbarItems && toolbarItems.length > 0) {
             options.items = [];
 
-            this.toolbarItems.forEach(function (item) {
+            toolbarItems.forEach(function (item) {
               options.items.push(item.getOptions());
             });
           }
@@ -118,12 +73,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         return Toolbar;
-      }(), (_descriptor = _applyDecoratedDescriptor(_class2.prototype, 'toolbarItems', [_dec4], {
-        enumerable: true,
-        initializer: function initializer() {
-          return [];
-        }
-      })), _class2)) || _class) || _class) || _class));
+      }()) || _class) || _class) || _class));
 
       _export('Toolbar', Toolbar);
     }

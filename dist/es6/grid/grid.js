@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, children, ViewResources} from 'aurelia-templating';
+import {customElement, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -14,10 +14,6 @@ import 'kendo.grid.min';
 @generateBindables('kendoGrid')
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder, TemplateGatherer)
 export class Grid  {
-
-  @children(`${constants.elementPrefix}col`) columns = [];
-  @children(`${constants.elementPrefix}template`) templates = [];
-  @children(`${constants.elementPrefix}grid-toolbar`) gridToolbars = [];
 
   constructor(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
     this.element = element;
@@ -53,7 +49,8 @@ export class Grid  {
   }
 
   recreate() {
-    this.templateGatherer.useTemplates(this, 'kendoGrid', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.templateGatherer.useTemplates(this, 'kendoGrid', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.target,
@@ -64,17 +61,20 @@ export class Grid  {
   }
 
   _beforeInitialize(options) {
+    let columns = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}col`);
+    let gridToolbars = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}grid-toolbar`);
+
     // allow for both column definitions via HTML and via an array of columns
-    if (this.columns && this.columns.length > 0) {
+    if (columns && columns.length > 0) {
       options.columns = [];
 
-      this.columns.forEach(column => {
+      columns.forEach(column => {
         options.columns.push(this.optionsBuilder.getOptions(column, 'GridColumn'));
       });
     }
 
-    if (this.gridToolbars && this.gridToolbars.length > 0) {
-      let toolbar = this.gridToolbars[0];
+    if (gridToolbars && gridToolbars.length > 0) {
+      let toolbar = gridToolbars[0];
       let o = this.optionsBuilder.getOptions(toolbar, 'GridToolbarItem');
       if (o.template) {
         options.toolbar = o.template;
