@@ -1,0 +1,4 @@
+{
+  "name": "aurelia-kendoui-bridge",
+  "main": "dist/amd/aurelia-kendoui-bridge.d.ts"
+}
