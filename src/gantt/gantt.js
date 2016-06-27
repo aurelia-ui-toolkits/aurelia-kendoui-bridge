@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, children, ViewResources} from 'aurelia-templating';
+import {customElement, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -11,9 +11,6 @@ import 'kendo.gantt.min';
 @generateBindables('kendoGantt')
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder)
 export class Gantt  {
-
-  @children(`${constants.elementPrefix}gantt-col`) columns = [];
-  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;
@@ -43,7 +40,8 @@ export class Gantt  {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoGantt', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoGantt', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.target,
@@ -54,11 +52,12 @@ export class Gantt  {
   }
 
   _beforeInitialize(options) {
+    let columns = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}gantt-col`);
     // allow for both column definitions via HTML and via an array of columns
-    if (this.columns && this.columns.length > 0) {
+    if (columns && columns.length > 0) {
       options.columns = [];
 
-      this.columns.forEach(column => {
+      columns.forEach(column => {
         options.columns.push(this.optionsBuilder.getOptions(column, 'GanttColumn'));
       });
     }

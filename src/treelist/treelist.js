@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, children, ViewResources} from 'aurelia-templating';
+import {customElement, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -13,8 +13,6 @@ import 'kendo.treelist.min';
 @generateBindables('kendoTreeList')
 @inject(Element, WidgetBase, ViewResources, OptionsBuilder)
 export class TreeList  {
-
-  @children(`${constants.elementPrefix}tree-col`) columns = [];
 
   constructor(element, widgetBase, viewResources, optionsBuilder) {
     this.element = element;
@@ -46,11 +44,12 @@ export class TreeList  {
   }
 
   _beforeInitialize(options) {
+    let columns = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}tree-col`);
     // allow for both column definitions via HTML and via an array of columns
-    if (this.columns && this.columns.length > 0) {
+    if (columns && columns.length > 0) {
       options.columns = [];
 
-      this.columns.forEach(column => {
+      columns.forEach(column => {
         options.columns.push(this.optionsBuilder.getOptions(column, 'TreeListColumn'));
       });
     }

@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, children} from 'aurelia-templating';
+import {customElement} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -10,8 +10,6 @@ import 'kendo.toolbar.min';
 @generateBindables('kendoToolBar')
 @inject(Element, WidgetBase, OptionsBuilder)
 export class Toolbar {
-
-  @children(`${constants.elementPrefix}toolbar-item`) toolbarItems = [];
 
   constructor(element, widgetBase, optionsBuilder) {
     this.element = element;
@@ -40,10 +38,11 @@ export class Toolbar {
   }
 
   _beforeInitialize(options) {
-    if (this.toolbarItems && this.toolbarItems.length > 0) {
+    let toolbarItems = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}toolbar-item`);
+    if (toolbarItems && toolbarItems.length > 0) {
       options.items = [];
 
-      this.toolbarItems.forEach(item => {
+      toolbarItems.forEach(item => {
         options.items.push(item.getOptions());
       });
     }

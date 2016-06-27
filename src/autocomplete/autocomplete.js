@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, children, ViewResources} from 'aurelia-templating';
+import {customElement, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -10,8 +10,6 @@ import 'kendo.virtuallist.min';
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, ViewResources)
 export class AutoComplete {
-
-  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -43,7 +41,8 @@ export class AutoComplete {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoAutoComplete', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       rootElement: this.element,

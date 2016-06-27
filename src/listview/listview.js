@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, children, ViewResources} from 'aurelia-templating';
+import {customElement, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -9,8 +9,6 @@ import 'kendo.listview.min';
 @generateBindables('kendoListView')
 @inject(Element, WidgetBase, ViewResources)
 export class ListView  {
-
-  @children(`${constants.elementPrefix}template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -31,7 +29,8 @@ export class ListView  {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoListView', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoListView', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,

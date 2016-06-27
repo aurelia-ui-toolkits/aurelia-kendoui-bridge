@@ -16,8 +16,6 @@ import 'kendo.scheduler.timelineview.min';
 @inject(Element, WidgetBase, ViewResources)
 export class Scheduler {
 
-  @children(`${constants.elementPrefix}template`) templates = [];
-
   constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -37,7 +35,8 @@ export class Scheduler {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoScheduler', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoScheduler', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,

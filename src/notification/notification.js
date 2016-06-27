@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement, children, ViewResources} from 'aurelia-templating';
+import {customElement, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -9,8 +9,6 @@ import 'kendo.notification.min';
 @generateBindables('kendoNotification')
 @inject(Element, WidgetBase, ViewResources)
 export class Notification {
-
-  @children(`${constants.elementPrefix}notification-template`) templates = [];
 
   constructor(element, widgetBase, viewResources) {
     this.element = element;
@@ -39,10 +37,11 @@ export class Notification {
   }
 
   beforeInitialize(options) {
-    if (this.templates && this.templates.length > 0) {
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}notification-template`);
+    if (templates && templates.length > 0) {
       options.templates = [];
 
-      this.templates.forEach(template => options.templates.push({
+      templates.forEach(template => options.templates.push({
         type: template.type,
         template: () => template.template
       }));

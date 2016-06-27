@@ -13,8 +13,6 @@ import 'kendo.pivot.fieldmenu.min';
 @inject(Element, WidgetBase, ViewResources)
 export class PivotGrid {
 
-  @children(`${constants.elementPrefix}template`) templates = [];
-
   constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
@@ -34,7 +32,8 @@ export class PivotGrid {
   }
 
   recreate() {
-    this.widgetBase.useTemplates(this, 'kendoPivotGrid', this.templates);
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoPivotGrid', templates);
 
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
