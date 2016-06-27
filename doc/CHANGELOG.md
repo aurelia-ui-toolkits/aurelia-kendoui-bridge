@@ -1,3 +1,13 @@
+<a name="0.11.5"></a>
+## [0.11.5](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.4...v0.11.5) (2016-06-27)
+
+
+### Bug Fixes
+
+* **dts:** added typings field to package.json ([2b18506](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/2b18506))
+
+
+
 <a name="0.11.4"></a>
 ## [0.11.4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.3...v0.11.4) (2016-06-27)
 
