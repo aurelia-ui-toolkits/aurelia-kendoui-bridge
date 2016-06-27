@@ -6,18 +6,26 @@ import {DOM} from 'aurelia-pal';
 import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 import {TemplateGatherer} from 'src/common/template-gatherer';
+import {OptionsBuilder} from 'src/common/options-builder';
+import {Util} from 'src/common/util';
 
 describe('Grid', () => {
   let element;
   let sut;
   let container;
   let templatingEngine;
+  let util;
+  let templateGatherer;
+  let optionsBuilder;
 
   beforeEach(() => {
     initialize();
     container = new Container();
     element = DOM.createElement('ak-grid');
     container.registerInstance(DOM.Element, element);
+    util = container.get(Util);
+    templateGatherer = container.get(TemplateGatherer);
+    optionsBuilder = container.get(OptionsBuilder);
     templatingEngine = container.get(TemplatingEngine);
     sut = templatingEngine.createViewModelForUnitTest(Widget, null, {});
   });
@@ -25,15 +33,17 @@ describe('Grid', () => {
   it('disables the Kendo templating system', () => {
     let options = {};
 
-    let col = new Col(container.get(TemplateGatherer));
-    col.templates = [{
-      for: 'template',
-      template: 'abcd'
-    }];
+    let col = new Col(templateGatherer, optionsBuilder, {
+      getChildrenVMs: () => [{
+        for: 'template',
+        template: 'abcd'
+      }]
+    });
     col.beforeOptionsBuild();
 
-    sut.columns = [col];
-
+    util.getChildrenVMs = (elem, selector) => {
+      if (selector === 'ak-col') return [col];
+    };
     sut._beforeInitialize(options);
 
     let columns = options.columns;
