@@ -81,6 +81,13 @@ gulp.task('build-dev', function () {
 
 gulp.task('build-dts', function(){
   return gulp.src(paths.output + paths.packageName + '.d.ts')
+  .pipe(insert.transform(function(contents, file) {
+  return 'declare module \'aurelia-binding\' {\r\n' +
+    'export class Lexer {}\r\n' +
+    'export class ParserImplementation {}\r\n' +
+    '}\r\n' + contents;
+}))
+      // .pipe(insert.prepend(insert.prepend()))
       .pipe(rename(paths.packageName + '.d.ts'))
       .pipe(gulp.dest(paths.output + 'es6'))
       .pipe(gulp.dest(paths.output + 'commonjs'))
