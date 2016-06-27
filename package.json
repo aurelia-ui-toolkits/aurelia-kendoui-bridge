@@ -17,6 +17,7 @@
   "license": "MIT",
   "author": "aurelia-ui-toolkits",
   "main": "dist/commonjs/index.js",
+  "typings": "dist/amd/aurelia-kendoui-bridge.d.ts",
   "directories": {
     "lib": "dist/system"
   },
