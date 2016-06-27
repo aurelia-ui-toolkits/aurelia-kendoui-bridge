@@ -70,10 +70,10 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.datetimepicker.min';
   import 'kendo.dataviz.diagram.min';
   import 'kendo.draganddrop.min';
+  import 'kendo.draganddrop.min';
+  import 'kendo.draganddrop.min';
   import 'kendo.dropdownlist.min';
   import 'kendo.virtuallist.min';
-  import 'kendo.draganddrop.min';
-  import 'kendo.draganddrop.min';
   import 'kendo.editor.min';
   import 'kendo.colorpicker.min';
   
@@ -692,18 +692,6 @@ declare module 'aurelia-kendoui-bridge' {
     beforeInitialize(options?: any): any;
     detached(): any;
   }
-  export class DropDownList {
-    kNoValueBinding: any;
-    kEnabled: any;
-    kReadOnly: any;
-    templates: any;
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
-  }
   export class DropTargetArea {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
@@ -716,6 +704,18 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
+    detached(): any;
+  }
+  export class DropDownList {
+    kNoValueBinding: any;
+    kEnabled: any;
+    kReadOnly: any;
+    templates: any;
+    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     detached(): any;
   }
   export class Editor {
