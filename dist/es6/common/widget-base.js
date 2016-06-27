@@ -55,7 +55,7 @@ export class WidgetBase {
   * whenever one of these properties changes an API function will be called on the Kendo control
   * for example, a change of an 'kEnable' property will result in a .enable(true/false) call
   */
-  bindingsToKendo: Array<BindingToKendo> = [];
+  bindingsToKendo = [];
 
   constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
     this.taskQueue = taskQueue;
@@ -292,9 +292,4 @@ export class WidgetBase {
       }
     }
   }
-}
-
-interface BindingToKendo {
-  propertyName: string;
-  functionName: string;
 }

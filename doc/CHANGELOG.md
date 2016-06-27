@@ -1,3 +1,13 @@
+<a name="0.11.4"></a>
+## [0.11.4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.3...v0.11.4) (2016-06-27)
+
+
+### Bug Fixes
+
+* **dts:** fix typescript definition ([45bc470](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/45bc470))
+
+
+
 <a name="0.11.3"></a>
 ## [0.11.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.2...v0.11.3) (2016-06-24)
 
