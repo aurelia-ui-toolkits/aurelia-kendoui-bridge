@@ -311,6 +311,7 @@ describe('TemplateCompiler', () => {
 
     sut.enhanceView($parent, element, {});
 
+    expect(view.bind).toHaveBeenCalled(); // https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/543
     expect(sut.templatingEngine.enhance).not.toHaveBeenCalled();
   });
 });
