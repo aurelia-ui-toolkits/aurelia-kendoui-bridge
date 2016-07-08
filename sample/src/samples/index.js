@@ -38,7 +38,7 @@ export class Index {
       { name: 'grid',             route: 'grid',                moduleId: './grid/index',                   title: 'Grid',              settings: { pro: true } },
       { name: 'line-charts',      route: 'line-charts',         moduleId: './chart/line-charts/index',      title: 'Line Charts',       settings: { pro: true } },
       { name: 'linear-gauge',     route: 'linear-gauge',        moduleId: './linear-gauge/index',           title: 'Linear gauge',      settings: { pro: true } },
-      { name: 'listview',         route: 'listview',            moduleId: './listview/index',               title: 'ListView',          settings: { pro: false } },
+      { name: 'listview',         route: 'listview',            moduleId: './listview/index',               title: 'ListView',          settings: { pro: true } },
       { name: 'map',              route: 'map',                 moduleId: './map/index',                    title: 'Map',               settings: { pro: true } },
       { name: 'menu',             route: 'menu',                moduleId: './menu/index',                   title: 'Menu',              settings: { pro: false } },
       { name: 'maskedtextbox',    route: 'maskedtextbox',       moduleId: './maskedtextbox/index',          title: 'MaskedTextBox',     settings: { pro: false } },
@@ -70,13 +70,13 @@ export class Index {
       { name: 'timepicker',       route: 'timepicker',          moduleId: './timepicker/index',             title: 'TimePicker',        settings: { pro: false } },
       { name: 'toolbar',          route: 'toolbar',             moduleId: './toolbar/index',                title: 'Toolbar',           settings: { pro: false } },
       { name: 'tooltip',          route: 'tooltip',             moduleId: './tooltip/index',                title: 'Tooltip',           settings: { pro: false } },
-      { name: 'treemap',          route: 'treemap',             moduleId: './chart/treemap/index',          title: 'Treemap',           settings: { pro: false } },
-      { name: 'treelist',         route: 'treelist',            moduleId: './treelist/index',               title: 'Treelist',          settings: { pro: false } },
-      { name: 'treeview',         route: 'treeview',            moduleId: './treeview/index',               title: 'Treeview',          settings: { pro: false } },
+      { name: 'treemap',          route: 'treemap',             moduleId: './chart/treemap/index',          title: 'Treemap',           settings: { pro: true } },
+      { name: 'treelist',         route: 'treelist',            moduleId: './treelist/index',               title: 'Treelist',          settings: { pro: true } },
+      { name: 'treeview',         route: 'treeview',            moduleId: './treeview/index',               title: 'Treeview',          settings: { pro: true } },
       { name: 'validator',        route: 'validator',           moduleId: './validator/index',              title: 'Validator',         settings: { pro: false } },
       { name: 'valueconverters',  route: 'valueconverters',     moduleId: './valueconverters/index',        title: 'ValueConverters',   settings: { pro: false } },
       { name: 'upload',           route: 'upload',              moduleId: './upload/index',                 title: 'Upload',            settings: { pro: true } },
-      { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts',  settings: { pro: false } },
+      { name: 'waterfall-charts', route: 'waterfall-charts',    moduleId: './chart/waterfall-charts/index', title: 'Waterfall Charts',  settings: { pro: true } },
       { name: 'window',           route: 'window',              moduleId: './window/index',                 title: 'Window',            settings: { pro: false } }
     ]);
 
