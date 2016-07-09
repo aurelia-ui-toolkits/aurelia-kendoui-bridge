@@ -4,9 +4,9 @@ import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-import 'kendo.dataviz.chart.min';
-import 'kendo.dataviz.chart.polar.min';
-import 'kendo.dataviz.chart.funnel.min';
+//import 'kendo.dataviz.chart.min';
+//import 'kendo.dataviz.chart.polar.min';
+//import 'kendo.dataviz.chart.funnel.min';
 
 @customElement(`${constants.elementPrefix}chart`)
 @generateBindables('kendoChart')

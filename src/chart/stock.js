@@ -4,7 +4,7 @@ import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-import 'kendo.dataviz.stock.min';
+//import 'kendo.dataviz.stock.min';
 
 @customElement(`${constants.elementPrefix}stock`)
 @generateBindables('kendoStockChart')

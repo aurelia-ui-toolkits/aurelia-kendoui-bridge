@@ -3,7 +3,7 @@ import {customAttribute} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.dataviz.barcode.min';
+//import 'kendo.dataviz.barcode.min';
 
 @customAttribute(`${constants.attributePrefix}barcode`)
 @generateBindables('kendoBarcode')

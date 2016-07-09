@@ -3,8 +3,8 @@ import {customElement, bindable, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.multiselect.min';
-import 'kendo.virtuallist.min';
+//import 'kendo.multiselect.min';
+//import 'kendo.virtuallist.min';
 
 @customElement(`${constants.elementPrefix}multiselect`)
 @generateBindables('kendoMultiSelect', ['template'])

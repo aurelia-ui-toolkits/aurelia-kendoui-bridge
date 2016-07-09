@@ -3,7 +3,7 @@ import {customElement} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.calendar.min';
+//import 'kendo.calendar.min';
 
 @customElement(`${constants.elementPrefix}calendar`)
 @generateBindables('kendoCalendar')

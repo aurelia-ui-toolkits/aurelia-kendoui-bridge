@@ -3,7 +3,7 @@ import {customAttribute} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.responsivepanel.min';
+//import 'kendo.responsivepanel.min';
 
 @customAttribute(`${constants.attributePrefix}responsivepanel`)
 @generateBindables('kendoResponsivePanel')

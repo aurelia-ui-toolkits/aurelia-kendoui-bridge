@@ -3,7 +3,7 @@ import {customAttribute} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.sortable.min';
+//import 'kendo.sortable.min';
 
 @customAttribute(`${constants.attributePrefix}sortable`)
 @generateBindables('kendoSortable')

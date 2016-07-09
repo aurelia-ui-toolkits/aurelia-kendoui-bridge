@@ -5,7 +5,7 @@ import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {OptionsBuilder} from '../common/options-builder';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-import 'kendo.gantt.min';
+//import 'kendo.gantt.min';
 
 @customElement(`${constants.elementPrefix}gantt`)
 @generateBindables('kendoGantt')
