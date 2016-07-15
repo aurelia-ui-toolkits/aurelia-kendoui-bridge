@@ -45,7 +45,7 @@ describe('TemplateCompiler', () => {
     let args = () => realArgs;
     let $parent = {};
     let viewResources = {};
-    let widget = {  _$parent: $parent, _$resources: viewResources };
+    let widget = { $angular: [{ _$parent: $parent, _$resources: viewResources }] };
 
     let compileSpy = spyOn(sut, 'compile');
     let cleanupSpy = spyOn(sut, 'cleanup');
@@ -70,7 +70,7 @@ describe('TemplateCompiler', () => {
     let args = () => realArgs;
     let $parent = {};
     let viewResources = {};
-    let widget = { options: { _$parent: [$parent], _$resources: [viewResources] }};
+    let widget = { options: { $angular: [{ _$parent: $parent, _$resources: viewResources }] }};
 
     let compileSpy = spyOn(sut, 'compile');
 

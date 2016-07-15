@@ -176,8 +176,8 @@ describe('WidgetBase', () => {
       parentCtx: { a: 'b'}
     });
 
-    expect(widget._$resources).toBe(viewResources);
-    expect(widget.options._$resources[0].a).toBe('b');
+    expect(widget.$angular[0]._$resources).toBe(viewResources);
+    expect(widget.options.$angular[0]._$resources.a).toBe('b');
   });
 
   it('createWidget looks at the rootElement for event attributes when a rootElement is supplied', () => {
