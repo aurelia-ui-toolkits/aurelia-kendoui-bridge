@@ -44,8 +44,14 @@ var TemplateCompiler = exports.TemplateCompiler = (_dec = (0, _aureliaDependency
   TemplateCompiler.prototype.handleTemplateEvents = function handleTemplateEvents(widget, _event, _args) {
     if (_event !== 'compile' && _event !== 'cleanup') return;
 
-    var $parent = widget._$parent || (widget.options._$parent ? widget.options._$parent[0] : undefined);
-    var viewResources = widget._$resources || (widget.options._$resources ? widget.options._$resources[0] : undefined);
+    var $parent = void 0;
+    var viewResources = void 0;
+    var $angular = widget.$angular || widget.options.$angular;
+
+    if ($angular) {
+      $parent = $angular[0]._$parent;
+      viewResources = $angular[0]._$resources;
+    }
 
     if (!$parent) return;
 
