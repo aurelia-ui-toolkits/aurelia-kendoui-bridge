@@ -157,8 +157,8 @@ describe('WidgetBase', () => {
       parentCtx: { a: 'b'}
     });
 
-    expect(widget._$parent.a).toBe('b');
-    expect(widget.options._$parent[0].a).toBe('b');
+    expect(widget.$angular[0]._$parent.a).toBe('b');
+    expect(widget.options.$angular[0]._$parent.a).toBe('b');
   });
 
 
