@@ -1,6 +1,6 @@
 import {inject, bindable} from 'aurelia-framework';
 import {DOM} from 'aurelia-pal';
-import 'kendo-ui/js/kendo.toolbar.min';
+import 'kendo-sdk/js/kendo.toolbar.min';
 import json from './menu.json!';
 
 @inject(Element)
@@ -29,7 +29,7 @@ export class Menu {
       buttons.push({ type: 'button', id: id, text: key, togglable: true, data: data[key], rowIndex: this.toolbars.length });
     });
 
-    let toolbar = jQuery(div).kendoToolBar({
+    let toolbar = kendo.jQuery(div).kendoToolBar({
       items: buttons
     }).data('kendoToolBar');
 

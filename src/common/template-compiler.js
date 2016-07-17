@@ -87,7 +87,7 @@ export class TemplateCompiler {
   /**
   * loops through each element, and find the matching dataitem
   * and calls enhanceView(element, dataItem) for each element there is
-  * @param elements an array of Elements or a jQuery selector
+  * @param elements an array of Elements or a kendo.jQuery selector
   * @param data optionally an array of dataitems
   */
   compile($parent, elements, data, viewResources) {
@@ -108,7 +108,7 @@ export class TemplateCompiler {
         }
       }
 
-      if (element instanceof jQuery) {
+      if (element instanceof kendo.jQuery) {
         element.each((index, elem) => this.enhanceView($parent, elem, ctx, viewResources));
       } else {
         this.enhanceView($parent, element, ctx, viewResources);
@@ -144,7 +144,7 @@ export class TemplateCompiler {
 
       // when we do cleanup, we need to get the view instance
       // so we can call detached/unbind
-      // so we store this view instance in the DOM element using JQuery.data
+      // so we store this view instance in the DOM element using kendo.jQuery.data
       $(element).data('viewInstance', view);
     } else {
       view.bind(ctx, createOverrideContext(ctx, $parent));

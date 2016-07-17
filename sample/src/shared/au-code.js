@@ -39,7 +39,7 @@ export class AuCode {
   }
 
   render() {
-    jQuery('pre', this.element).remove();
+    kendo.jQuery('pre', this.element).remove();
     let pre = document.createElement('pre');
     this.element.appendChild(pre);
     pre.innerHTML = prism.highlight(this.html, Prism.languages[this.language]);

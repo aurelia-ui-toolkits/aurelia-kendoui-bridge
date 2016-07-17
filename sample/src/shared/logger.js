@@ -39,8 +39,8 @@ export class Logger {
   }
 
   overrideStyles() {
-    jQuery.each(['backgroundColor', 'borderBottomColor', 'borderLeftColor', 'borderRightColor', 'borderTopColor', 'color', 'outlineColor'], function(i, attr) {
-      jQuery.fx.step[attr] = function(fx) {
+    kendo.jQuery.each(['backgroundColor', 'borderBottomColor', 'borderLeftColor', 'borderRightColor', 'borderTopColor', 'color', 'outlineColor'], function(i, attr) {
+      kendo.jQuery.fx.step[attr] = function(fx) {
         if (!fx.state || typeof fx.end === typeof '') {
           fx.start = getColor(fx.elem, attr);
           fx.end = getRGB(fx.end);
@@ -83,17 +83,17 @@ function getRGB(color) {
   }
 
   // Otherwise, we're most likely dealing with a named color
-  return jQuery.trim(color).toLowerCase();
+  return kendo.jQuery.trim(color).toLowerCase();
 }
 
 function getColor(elem, attr) {
   let color;
 
   do {
-    color = jQuery.css(elem, attr);
+    color = kendo.jQuery.css(elem, attr);
 
     // Keep going until we find an element that has color, or we hit the body
-    if (color && color !== 'transparent' || jQuery.nodeName(elem, 'body')) {
+    if (color && color !== 'transparent' || kendo.jQuery.nodeName(elem, 'body')) {
       break;
     }
 

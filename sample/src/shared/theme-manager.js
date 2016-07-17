@@ -71,7 +71,7 @@ export class ThemeManager {
   }
 
   removeOldThemes() {
-    jQuery('head > link').each(function() {
+    kendo.jQuery('head > link').each(function() {
       if (this.href.includes('styles/kendo.')) {
         DOM.removeNode(this);
       }

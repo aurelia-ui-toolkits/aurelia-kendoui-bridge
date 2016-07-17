@@ -12,6 +12,6 @@ export class VirtualizationOfRemoteData {
   }
 
   disablePageScroll() {
-    jQuery('.page-host').css('overflow-y', 'hidden');
+    kendo.jQuery('.page-host').css('overflow-y', 'hidden');
   }
 }

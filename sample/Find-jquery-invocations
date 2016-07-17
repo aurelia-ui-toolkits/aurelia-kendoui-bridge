@@ -1,0 +1,190 @@
+cd sampleSearching 1197 files for "jQuery"
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\sample\config.js:   XXXXXXXXXXXX
+   53      "gka/chroma.js": "github:gka/chroma.js@1.1.1",
+   54      "google/code-prettify": "github:google/code-prettify@master",
+   55:     "jquery": "npm:jquery@2.2.3",
+   56:     "jquery.min": "github:components/jquery@2.2.4",
+   57      "json": "github:systemjs/plugin-json@0.1.2",
+   58      "prism": "github:PrismJS/prism@1.3.0",
+   ..
+   82      },
+   83      "github:twbs/bootstrap@3.3.6": {
+   84:       "jquery": "npm:jquery@2.2.3"
+   85      },
+   86      "npm:assert@1.4.1": {
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\sample\index.html:    XXXXXXXXXXXX
+   20
+   21
+   22:     <script src="jspm_packages/github/components/jquery@2.2.4/jquery.min.js"></script>
+   23
+   24      <script src="http://kendo.cdn.telerik.com/2016.2.607/js/kendo.ui.core.min.js"></script>
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\sample\package.json:   XXXXXXXXXXXX
+   21        "gka/chroma.js": "github:gka/chroma.js@^1.1.1",
+   22        "google/code-prettify": "github:google/code-prettify@master",
+   23:       "jquery": "npm:jquery@2.2.3",
+   24:       "jquery.min": "github:components/jquery@^2.2.1",
+   25        "json": "github:systemjs/plugin-json@^0.1.0",
+   26        "prism": "github:PrismJS/prism@1.3.0",
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\sample\src\nav-bar.js:   XXXXXXXXXXXX
+    1  import {bindable, inject} from 'aurelia-framework';
+    2  import {EventAggregator} from 'aurelia-event-aggregator';
+    3: import 'jquery';
+    4
+    5  @inject(EventAggregator)
+    .
+   14
+   15    attached() {
+   16:     this.dialog = jQuery(this.themeSelector).kendoWindow({
+   17        width: '800px',
+   18        visible: false,
+   ..
+   26      }).data('kendoWindow');
+   27
+   28:     jQuery(this.themeSelector).parent().addClass('theme-window');
+   29
+   30:     jQuery(this.menu).kendoMenu({
+   31        select: (e) => {
+   32          $(this.menu).find('.k-state-selected').removeClass('k-state-selected');
+   ..
+   45
+   46      // check if any anchor's href is at the start of the fragment
+   47:     jQuery('a', this.menu).each((i, anchor) => {
+   48:       let href = jQuery(anchor).attr('href');
+   49
+   50        if (href !== '#' && fragment.startsWith(href)) {
+   51:         jQuery(anchor).addClass('k-state-selected');
+   52        }
+   53      });
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\sample\src\samples\menu.js:   XXXXXXXXXXXX
+   30      });
+   31
+   32:     let toolbar = jQuery(div).kendoToolBar({
+   33        items: buttons
+   34      }).data('kendoToolBar');
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\sample\src\samples\grid\virtualization-of-remote-data-without-button.js:   XXXXXXXXXXXX
+   13
+   14    disablePageScroll() {
+   15:     jQuery('.page-host').css('overflow-y', 'hidden');
+   16    }
+   17  }
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\sample\src\samples\grid\virtualization-of-remote-data.js:  XXXXXXXXXXXX
+   13
+   14    disablePageScroll() {
+   15:     jQuery('.page-host').css('overflow-y', 'hidden');
+   16    }
+   17  }
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\sample\src\shared\au-code.js:   XXXXXXXXXXXX
+   40
+   41    render() {
+   42:     jQuery('pre', this.element).remove();
+   43      let pre = document.createElement('pre');
+   44      this.element.appendChild(pre);
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\sample\src\shared\logger.js:   XXXXXXXXXXXX
+   40
+   41    overrideStyles() {
+   42:     jQuery.each(['backgroundColor', 'borderBottomColor', 'borderLeftColor', 'borderRightColor', 'borderTopColor', 'color', 'outlineColor'], function(i, attr) {
+   43:       jQuery.fx.step[attr] = function(fx) {
+   44          if (!fx.state || typeof fx.end === typeof '') {
+   45            fx.start = getColor(fx.elem, attr);
+   ..
+   60  // Color Conversion functions from highlightFade
+   61  // By Blair Mitchelmore
+   62: // http://jquery.offput.ca/highlightFade/
+   63
+   64  // Parse strings looking for color tuples [255,255,255]
+   ..
+   84
+   85    // Otherwise, we're most likely dealing with a named color
+   86:   return jQuery.trim(color).toLowerCase();
+   87  }
+   88
+   ..
+   91
+   92    do {
+   93:     color = jQuery.css(elem, attr);
+   94
+   95      // Keep going until we find an element that has color, or we hit the body
+   96:     if (color && color !== 'transparent' || jQuery.nodeName(elem, 'body')) {
+   97        break;
+   98      }
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\sample\src\shared\theme-manager.js: XXXXXXXXXXXX
+   72
+   73    removeOldThemes() {
+   74:     jQuery('head > link').each(function() {
+   75        if (this.href.includes('styles/kendo.')) {
+   76          DOM.removeNode(this);
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\sample\src\theme-selector\theme-selector.js:   XXXXXXXXXXXX
+   31
+   32    selectTheme(theme) {
+   33:     jQuery('body').fadeOut(400, () => {
+   34        this.settings.activeTheme = theme.value;
+   35        this.themeManager.loadTheme(theme.value)
+   36:       .then(() => jQuery('body').fadeIn());
+   37      });
+   38    }
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\src\index.js:   XXXXXXXXXXXX
+    1  import {KendoConfigBuilder} from './config-builder';
+    2  import {RepeatStrategyLocator, ArrayRepeatStrategy} from 'aurelia-templating-resources';
+    3: import 'jquery';
+    4  import 'kendo.data.min';
+    5
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\src\common\control-properties.js:   XXXXXXXXXXXX
+   60    */
+   61    getWidgetProperties(controlName: string): string[] {
+   62:     if (jQuery.fn[controlName]) {
+   63:       return Object.keys(jQuery.fn[controlName].widget.prototype.options);
+   64      }
+   65
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\src\common\template-compiler.js:   XXXXXXXXXXXX
+   88    * loops through each element, and find the matching dataitem
+   89    * and calls enhanceView(element, dataItem) for each element there is
+   90:   * @param elements an array of Elements or a jQuery selector
+   91    * @param data optionally an array of dataitems
+   92    */
+   ..
+  109        }
+  110
+  111:       if (element instanceof jQuery) {
+  112          element.each((index, elem) => this.enhanceView($parent, elem, ctx, viewResources));
+  113        } else {
+  ...
+  145        // when we do cleanup, we need to get the view instance
+  146        // so we can call detached/unbind
+  147:       // so we store this view instance in the DOM element using JQuery.data
+  148        $(element).data('viewInstance', view);
+  149      } else {
+
+C:\work\aurelia-ui-toolkits\KendoUI\test\search-for-jquery\src\common\widget-base.js:	XXXXXXXXXXXX
+   68
+   69    control(controlName) {
+   70:     if (!controlName || !kendo.jQuery.fn[controlName]) {
+   71        throw new Error(`The name of control ${controlName} is invalid or not set`);
+   72      }
+   ..
+   74      this.controlName = controlName;
+   75
+   76:     let ctor = kendo.jQuery.fn[this.controlName];
+   77      this.kendoOptions = ctor.widget.prototype.options;
+   78      this.kendoEvents = ctor.widget.prototype.events;
+   ..
+  209
+  210    _createWidget(element, options, controlName) {
+  211:     return kendo.jQuery(element)[controlName](options).data(controlName);
+  212    }
+  213
+
+41 matches across 15 files
