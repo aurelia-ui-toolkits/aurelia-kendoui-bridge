@@ -1,5 +1,3 @@
-import 'kendo-ui/js/kendo.pager.min';
-
 export class BindingToRemoteData {
 
   dataSource = new kendo.data.DataSource({

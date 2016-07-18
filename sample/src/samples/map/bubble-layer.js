@@ -1,5 +1,3 @@
-import 'kendo-ui/js/kendo.mobile.buttongroup.min';
-
 export class BubbleLayer {
   center = [45, 45];
 

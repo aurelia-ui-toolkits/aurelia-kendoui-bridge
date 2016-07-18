@@ -1,6 +1,5 @@
 import {inject, bindable} from 'aurelia-framework';
 import {DOM} from 'aurelia-pal';
-import 'kendo-sdk/js/kendo.toolbar.min';
 import json from './menu.json!';
 
 @inject(Element)

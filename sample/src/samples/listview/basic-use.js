@@ -1,4 +1,3 @@
-import 'kendo-ui/js/kendo.pager.min';
 import {products} from './resources/products';
 
 export class BasicUse {
