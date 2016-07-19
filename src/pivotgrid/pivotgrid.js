@@ -4,8 +4,7 @@ import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-//import 'kendo.pivotgrid.min';
-//import 'kendo.pivot.fieldmenu.min';
+
 
 
 @customElement(`${constants.elementPrefix}pivot-grid`)
