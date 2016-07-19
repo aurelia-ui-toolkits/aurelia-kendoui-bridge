@@ -37,7 +37,7 @@ export class Draggabke {
 
   beforeInitialize(options) {
     if (options.container) {
-      Object.assign(options, { container: $(options.container) });
+      Object.assign(options, { container: kendo.jQuery(options.container) });
     }
   }
 

@@ -123,7 +123,7 @@ export class TemplateCompiler {
   * @param ctx The dataitem (context) to compile the Element with
   */
   enhanceView($parent, element, ctx, viewResources) {
-    let view = $(element).data('viewInstance');
+    let view = kendo.jQuery(element).data('viewInstance');
 
     // check necessary due to https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/308
     if (element.querySelectorAll('.au-target').length === 0) {
@@ -145,7 +145,7 @@ export class TemplateCompiler {
       // when we do cleanup, we need to get the view instance
       // so we can call detached/unbind
       // so we store this view instance in the DOM element using kendo.jQuery.data
-      $(element).data('viewInstance', view);
+      kendo.jQuery(element).data('viewInstance', view);
     } else {
       view.bind(ctx, createOverrideContext(ctx, $parent));
     }
@@ -173,7 +173,7 @@ export class TemplateCompiler {
   cleanupView(element) {
     // extract Aurelia's View instance from the element
     // we stored this in the enhanceView function
-    let view = $(element).data('viewInstance');
+    let view = kendo.jQuery(element).data('viewInstance');
     if (!view) return;
 
     // unbind and detach the view
