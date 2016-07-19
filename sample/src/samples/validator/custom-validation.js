@@ -3,7 +3,7 @@ export class CustomValidation {
     greaterdate: (input) => {
       if (input.is('[data-greaterdate-msg]') && input.val() !== '') {
         let date = kendo.parseDate(input.val());
-        let otherDate = kendo.parseDate($('[name="' + input.data('greaterdateField') + '"]').val());
+        let otherDate = kendo.parseDate(kendo.jQuery('[name="' + input.data('greaterdateField') + '"]').val());
 
         return otherDate === null || otherDate.getTime() < date.getTime();
       }

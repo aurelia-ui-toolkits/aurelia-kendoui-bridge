@@ -21,7 +21,7 @@ export class EditingCustomEditor {
   });
 
   categoryDropDownEditor(container, options) {
-    $('<input required data-text-field="CategoryName" data-value-field="CategoryID" data-bind="value:' + options.field + '"/>')
+    kendo.jQuery('<input required data-text-field="CategoryName" data-value-field="CategoryID" data-bind="value:' + options.field + '"/>')
     .appendTo(container)
     .kendoDropDownList({
       autoBind: false,

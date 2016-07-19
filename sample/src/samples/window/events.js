@@ -4,11 +4,11 @@ export class Events {
 
   open() {
     this.window.open();
-    $(this.undo).fadeOut();
+    kendo.jQuery(this.undo).fadeOut();
   }
 
   onClose() {
-    $(this.undo).fadeIn();
+    kendo.jQuery(this.undo).fadeIn();
     this.logger.log('close');
   }
 }

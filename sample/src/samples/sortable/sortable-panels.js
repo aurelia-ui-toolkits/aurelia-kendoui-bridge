@@ -1,11 +1,11 @@
 export class SortablePanels {
   hint(e) {
-    return $(e).clone().addClass('sortable-panels-hint')
-                .height($(e).height())
-                .width($(e).width());
+    return kendo.jQuery(e).clone().addClass('sortable-panels-hint')
+                .height(kendo.jQuery(e).height())
+                .width(kendo.jQuery(e).width());
   }
 
   placeholder(e) {
-    return $(e).clone().addClass('sortable-panels-placeholder');
+    return kendo.jQuery(e).clone().addClass('sortable-panels-placeholder');
   }
 }

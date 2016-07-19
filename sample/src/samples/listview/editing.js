@@ -40,7 +40,7 @@ export class Editing {
   });
 
   attached() {
-    $(this.pager).kendoPager({
+    kendo.jQuery(this.pager).kendoPager({
       dataSource: this.dataSource
     });
   }

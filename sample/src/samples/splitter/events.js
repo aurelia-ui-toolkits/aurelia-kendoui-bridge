@@ -18,6 +18,6 @@ export class Events {
   }
 
   contentLoad(e) {
-    this.logger.log('Content loaded in <b>#' + e.pane.id + '</b> and starts with <b>' + $(this.splitter.pane).text().substr(0, 20) + '...</b>');
+    this.logger.log('Content loaded in <b>#' + e.pane.id + '</b> and starts with <b>' + kendo.jQuery(this.splitter.pane).text().substr(0, 20) + '...</b>');
   }
 }

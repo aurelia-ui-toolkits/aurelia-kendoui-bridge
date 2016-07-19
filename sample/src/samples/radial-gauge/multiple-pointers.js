@@ -24,7 +24,7 @@ export class MultiplePointers {
   setValues(values) {
     let split = values.split(',');
 
-    values = $.map(split, val => parseInt(val, 0));
+    values = kendo.jQuery.map(split, val => parseInt(val, 0));
 
     this.gauge.allValues(values);
   }

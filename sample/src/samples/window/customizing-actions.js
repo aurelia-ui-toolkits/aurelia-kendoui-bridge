@@ -20,10 +20,10 @@ export class CustomizingActions {
 
   open() {
     this.window.open();
-    $(this.undo).fadeOut();
+    kendo.jQuery(this.undo).fadeOut();
   }
 
   onClose() {
-    $(this.undo).fadeIn();
+    kendo.jQuery(this.undo).fadeIn();
   }
 }

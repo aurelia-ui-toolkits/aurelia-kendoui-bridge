@@ -26,13 +26,13 @@ export class CustomTools {
     // for this sample
     // {
     //     name: 'customTemplate',
-    //     template: $('#backgroundColor-template').html()
+    //     template: kendo.jQuery('#backgroundColor-template').html()
     // },
     {
       name: 'custom',
       tooltip: 'Insert a horizontal rule',
       exec: function(e) {
-        let editor = $(this).data('kendoEditor');
+        let editor = kendo.jQuery(this).data('kendoEditor');
         editor.exec('inserthtml', { value: '<hr />' });
       }
     }

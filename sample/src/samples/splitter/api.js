@@ -9,7 +9,7 @@ export class Api {
   getPane(index) {
     index = Number(index);
 
-    let panes = $(this.splitterElement).children('.k-pane');
+    let panes = kendo.jQuery(this.splitterElement).children('.k-pane');
 
     if (!isNaN(index) && index < panes.length) {
       return panes[index];
@@ -17,33 +17,33 @@ export class Api {
   }
 
   toggle() {
-    let pane = this.getPane($('#index').val());
+    let pane = this.getPane(kendo.jQuery('#index').val());
 
-    this.splitter.toggle(pane, $(pane).width() <= 0);
+    this.splitter.toggle(pane, kendo.jQuery(pane).width() <= 0);
   }
 
   setSize() {
-    let pane = this.getPane($('#index').val());
+    let pane = this.getPane(kendo.jQuery('#index').val());
 
     if (!pane) return;
 
-    this.splitter.size(pane, $('#size').val());
+    this.splitter.size(pane, kendo.jQuery('#size').val());
   }
 
   setMinSize() {
-    let pane = this.getPane($('#index').val());
+    let pane = this.getPane(kendo.jQuery('#index').val());
 
     if (!pane) return;
 
-    this.splitter.min(pane, $('#min').val());
+    this.splitter.min(pane, kendo.jQuery('#min').val());
   }
 
   setMaxSize() {
-    let pane = this.getPane($('#index').val());
+    let pane = this.getPane(kendo.jQuery('#index').val());
 
     if (!pane) return;
 
-    this.splitter.max(pane, $('#max').val());
+    this.splitter.max(pane, kendo.jQuery('#max').val());
   }
 
   appendPane() {
@@ -51,14 +51,14 @@ export class Api {
   }
 
   removePane() {
-    this.splitter.remove(this.splitter.element.children('.k-pane').eq($('#index').val()));
+    this.splitter.remove(this.splitter.element.children('.k-pane').eq(kendo.jQuery('#index').val()));
   }
 
   insertBefore() {
-    this.splitter.insertBefore({}, this.splitter.element.children('.k-pane').eq($('#index').val())).html('inserted before');
+    this.splitter.insertBefore({}, this.splitter.element.children('.k-pane').eq(kendo.jQuery('#index').val())).html('inserted before');
   }
 
   insertAfter() {
-    this.splitter.insertAfter({}, this.splitter.element.children('.k-pane').eq($('#index').val())).html('inserted after');
+    this.splitter.insertAfter({}, this.splitter.element.children('.k-pane').eq(kendo.jQuery('#index').val())).html('inserted after');
   }
 }

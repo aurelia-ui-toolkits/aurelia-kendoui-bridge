@@ -41,7 +41,7 @@ export class ScaleOptions {
     options.scale.vertical = this.vertical;
     options.scale.ranges = this.showRanges ? this.configuredRanges : [];
 
-    $(this.gaugeContainer).toggleClass('horizontal', !this.vertical);
+    kendo.jQuery(this.gaugeContainer).toggleClass('horizontal', !this.vertical);
 
     this.gauge.redraw();
   }

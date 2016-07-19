@@ -1,24 +1,24 @@
 export class ChunkProgressbar {
   attached() {
-    $(this.birthdayInput).kendoDatePicker();
+    kendo.jQuery(this.birthdayInput).kendoDatePicker();
 
-    $(this.birthdayInput).change(function() {
+    kendo.jQuery(this.birthdayInput).change(function() {
       let currentDate = kendo.parseDate(this.value);
       if (!currentDate) {
         this.value = '';
       }
     });
 
-    $('.forms input').change(() => {
+    kendo.jQuery('.forms input').change(() => {
       let completeness = 5;
-      $('.forms input').each((index, input) => {
+      kendo.jQuery('.forms input').each((index, input) => {
         if (input.value === '') {
           completeness--;
         }
       });
 
       this.pb.value(completeness);
-      $(this.completed).text((completeness * 20) + '%');
+      kendo.jQuery(this.completed).text((completeness * 20) + '%');
     });
   }
 }

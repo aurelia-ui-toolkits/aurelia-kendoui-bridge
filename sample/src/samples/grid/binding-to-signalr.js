@@ -3,7 +3,7 @@ import '../../shared/signalr';
 export class BindingToSignalr {
   constructor() {
     this.hubUrl = 'http://kendo.jeroenvinke.nl/signalr';
-    this.connection = $.hubConnection(this.hubUrl, { useDefaultPath: false});
+    this.connection = kendo.jQuery.hubConnection(this.hubUrl, { useDefaultPath: false});
     this.hub = this.connection.createHubProxy('productHub');
     this.hubStart = this.connection.start({ jsonp: true });
 
@@ -12,7 +12,7 @@ export class BindingToSignalr {
       autoSync: true,
       // Handle the push event to display notifications when push updates arrive
       push: (e) => {
-        let notification = $(this.notification).data('kendoNotification');
+        let notification = kendo.jQuery(this.notification).data('kendoNotification');
         notification.success(e.type);
       },
       schema: {
@@ -48,7 +48,7 @@ export class BindingToSignalr {
   }
 
   attached() {
-    $(this.notification).kendoNotification({
+    kendo.jQuery(this.notification).kendoNotification({
       width: '100%',
       position: {
         top: 0,

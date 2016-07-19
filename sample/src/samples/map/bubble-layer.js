@@ -30,7 +30,7 @@ export class BubbleLayer {
   }];
 
   attached() {
-    $(this.selectSymbol).kendoMobileButtonGroup({
+    kendo.jQuery(this.selectSymbol).kendoMobileButtonGroup({
       select: (e) => {
         let layer = this.map.layers[1];
         layer.options.symbol = e.index === 0 ? 'circle' : 'square';

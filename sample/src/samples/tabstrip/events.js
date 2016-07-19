@@ -6,19 +6,19 @@ export class Events {
   ];
 
   select(e) {
-    this.logger.log('Selected: ' + $(e.item).find('> .k-link').text());
+    this.logger.log('Selected: ' + kendo.jQuery(e.item).find('> .k-link').text());
   }
 
   show(e) {
-    this.logger.log('Shown: ' + $(e.item).find('> .k-link').text());
+    this.logger.log('Shown: ' + kendo.jQuery(e.item).find('> .k-link').text());
   }
 
   onActivate(e) {
-    this.logger.log('Activated: ' + $(e.item).find('> .k-link').text());
+    this.logger.log('Activated: ' + kendo.jQuery(e.item).find('> .k-link').text());
   }
 
   contentLoad(e) {
-    this.logger.log('Content loaded in <b>' + $(e.item).find('> .k-link').text() + '</b> and starts with <b>' + $(e.contentElement).text().substr(0, 20) + '...</b>');
+    this.logger.log('Content loaded in <b>' + kendo.jQuery(e.item).find('> .k-link').text() + '</b> and starts with <b>' + kendo.jQuery(e.contentElement).text().substr(0, 20) + '...</b>');
   }
 
   error(e) {

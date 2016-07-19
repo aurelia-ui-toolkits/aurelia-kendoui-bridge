@@ -1,5 +1,5 @@
 export class Container {
   hint() {
-    return $(this.draggable).clone();
+    return kendo.jQuery(this.draggable).clone();
   }
 }

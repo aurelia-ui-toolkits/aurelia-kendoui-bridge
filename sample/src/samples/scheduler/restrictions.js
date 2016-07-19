@@ -113,7 +113,7 @@ export class Restrictions {
       occurrences.splice(idx, 1);
     }
 
-    event = $.extend({}, event, resources);
+    event = kendo.jQuery.extend({}, event, resources);
 
     return this.filterByResource(occurrences, resourceFieldName, event[resourceFieldName]);
   }

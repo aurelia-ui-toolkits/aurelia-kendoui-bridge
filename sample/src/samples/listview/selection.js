@@ -11,7 +11,7 @@ export class Selection {
   });
 
   attached() {
-    $(this.pager).kendoPager({
+    kendo.jQuery(this.pager).kendoPager({
       dataSource: this.dataSource
     });
   }
@@ -22,7 +22,7 @@ export class Selection {
 
   change() {
     let data = this.listView.dataSource.view();
-    let selected = $.map(this.listView.select(), item => data[$(item).index()].ProductName );
+    let selected = kendo.jQuery.map(this.listView.select(), item => data[kendo.jQuery(item).index()].ProductName );
 
     this.logger.log(`Selected: ${selected.length} item(s), [${selected.join(' ')}]`);
   }

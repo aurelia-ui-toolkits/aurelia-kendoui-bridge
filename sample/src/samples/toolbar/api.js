@@ -3,39 +3,39 @@ export class Api {
   deleteId = '#delete';
 
   getSelected() {
-    $(this.selectedFromGroup).text(this.toolbar.getSelectedFromGroup('player').text());
+    kendo.jQuery(this.selectedFromGroup).text(this.toolbar.getSelectedFromGroup('player').text());
   }
 
   togglePlayerControls(e) {
-    let buttonGroup = $('#playerControls');
+    let buttonGroup = kendo.jQuery('#playerControls');
     let isVisible = buttonGroup.is(':visible');
 
     if (isVisible) {
       this.toolbar.hide(buttonGroup);
-      $(e.target).text('Show player controls');
+      kendo.jQuery(e.target).text('Show player controls');
     } else {
       this.toolbar.show(buttonGroup);
-      $(e.target).text('Hide player controls');
+      kendo.jQuery(e.target).text('Hide player controls');
     }
   }
 
   enableDisabledRepeat() {
-    let repeat = $('#repeat');
+    let repeat = kendo.jQuery('#repeat');
     let isDisabled = repeat.hasClass('k-state-disabled');
 
     this.toolbar.enable(repeat, isDisabled);
   }
 
   hideRepeat(e) {
-    let repeatButton = $('#repeat');
+    let repeatButton = kendo.jQuery('#repeat');
     let isVisible = repeatButton.is(':visible');
 
     if (isVisible) {
       this.toolbar.hide(repeatButton);
-      $(e.target).text('Show Repeat');
+      kendo.jQuery(e.target).text('Show Repeat');
     } else {
       this.toolbar.show(repeatButton);
-      $(e.target).text('Hide Repeat');
+      kendo.jQuery(e.target).text('Hide Repeat');
     }
   }
 

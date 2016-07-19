@@ -10,7 +10,7 @@ export class BasicUse {
 
   attached() {
     this.tq.queueTask(() => {
-      this.tooltip.show($(this.canton));
+      this.tooltip.show(kendo.jQuery(this.canton));
     });
   }
 }

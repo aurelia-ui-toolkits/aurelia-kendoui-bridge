@@ -15,11 +15,11 @@ export class BasicUse {
   submit(event) {
     event.preventDefault();
     if (this.validator.validate()) {
-      $(this.status).text('Hooray! Your tickets has been booked!')
+      kendo.jQuery(this.status).text('Hooray! Your tickets has been booked!')
       .removeClass('invalid')
       .addClass('valid');
     } else {
-      $(this.status).text('Oops! There is invalid data in the form.')
+      kendo.jQuery(this.status).text('Oops! There is invalid data in the form.')
       .removeClass('valid')
       .addClass('invalid');
     }

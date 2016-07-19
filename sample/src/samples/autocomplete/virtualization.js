@@ -25,7 +25,7 @@ export class Virtualization {
     this.virtual = {
       itemHeight: 26,
       valueMapper: (options) => {
-        $.ajax({
+        kendo.jQuery.ajax({
           url: '//demos.telerik.com/kendo-ui/service/Orders/ValueMapper',
           type: 'GET',
           dataType: 'jsonp',
@@ -41,7 +41,7 @@ export class Virtualization {
   convertValues(value) {
     let data = {};
 
-    value = $.isArray(value) ? value : [value];
+    value = kendo.jQuery.isArray(value) ? value : [value];
 
     for (let idx = 0; idx < value.length; idx++) {
       data['values[' + idx + ']'] = value[idx];

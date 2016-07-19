@@ -1,10 +1,10 @@
 export class Events {
   hint(e) {
-    return $(e).clone().addClass('sortable-events-hint');
+    return kendo.jQuery(e).clone().addClass('sortable-events-hint');
   }
 
   placeholder(e) {
-    return $(e).clone().addClass('sortable-events-placeholder');
+    return kendo.jQuery(e).clone().addClass('sortable-events-placeholder');
   }
 
   onStart(e) {

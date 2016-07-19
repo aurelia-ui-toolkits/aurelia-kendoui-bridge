@@ -14,6 +14,6 @@ export class Events {
   };
 
   attached() {
-    $('.options').bind('change', () => this.refresh());
+    kendo.jQuery('.options').bind('change', () => this.refresh());
   }
 }

@@ -22,6 +22,6 @@ export class Help {
   }
 
   tabChanged(e) {
-    this.router.navigateToRoute($(e.item).data('tab'));
+    this.router.navigateToRoute(kendo.jQuery(e.item).data('tab'));
   }
 }

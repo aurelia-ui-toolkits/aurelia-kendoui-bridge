@@ -6,14 +6,14 @@ export class BindingToSignalR {
 
   constructor() {
     this.hubUrl = 'http://kendo.jeroenvinke.nl/signalr';
-    this.connection = $.hubConnection(this.hubUrl, { useDefaultPath: false});
+    this.connection = kendo.jQuery.hubConnection(this.hubUrl, { useDefaultPath: false});
     this.hub = this.connection.createHubProxy('meetingHub');
     this.hubStart = this.connection.start({ jsonp: true });
 
     this.dataSource = new kendo.data.SchedulerDataSource({
       type: 'signalr',
       push: (e) => {
-        let notification = $(this.notification).data('kendoNotification');
+        let notification = kendo.jQuery(this.notification).data('kendoNotification');
         notification.success(e.type);
       },
       transport: {
@@ -100,7 +100,7 @@ export class BindingToSignalR {
 
 
   attached() {
-    $(this.notification).kendoNotification({
+    kendo.jQuery(this.notification).kendoNotification({
       width: '100%',
       position: {
         top: 0,

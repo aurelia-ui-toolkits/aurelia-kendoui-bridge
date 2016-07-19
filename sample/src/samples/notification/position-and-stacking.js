@@ -38,18 +38,18 @@ export class PositionAndStacking {
 
   onShow(e) {
     if (e.sender.getNotifications().length === 1) {
-      let element = $(e.element).parent();
+      let element = kendo.jQuery(e.element).parent();
       let eWidth = element.width();
       let eHeight = element.height();
-      let wWidth = $(window).width();
-      let wHeight = $(window).height();
+      let wWidth = kendo.jQuery(window).width();
+      let wHeight = kendo.jQuery(window).height();
       let newTop;
       let newLeft;
 
       newLeft = Math.floor(wWidth / 2 - eWidth / 2);
       newTop = Math.floor(wHeight / 2 - eHeight / 2);
 
-      $(e.element).parent().css({top: newTop, left: newLeft});
+      kendo.jQuery(e.element).parent().css({top: newTop, left: newLeft});
     }
   }
 }

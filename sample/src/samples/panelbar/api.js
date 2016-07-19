@@ -10,28 +10,28 @@ export class Api {
     }
     select(e) {
       if (e.type !== 'keypress' || kendo.keys.ENTER === e.keyCode) {
-        this.panelBar.select(this.getItem($('#selectIndex')));
+        this.panelBar.select(this.getItem(kendo.jQuery('#selectIndex')));
       }
     }
 
     append(e) {
       if (e.type !== 'keypress' || kendo.keys.ENTER === e.keyCode) {
         this.panelBar.append({
-          text: $('#appendText').val()
+          text: kendo.jQuery('#appendText').val()
         }, this.panelBar.select());
       }
     }
     before(e) {
       if (e.type !== 'keypress' || kendo.keys.ENTER === e.keyCode) {
         this.panelBar.insertBefore({
-          text: $('#beforeText').val()
+          text: kendo.jQuery('#beforeText').val()
         }, this.panelBar.select());
       }
     }
     after(e) {
       if (e.type !== 'keypress' || kendo.keys.ENTER === e.keyCode) {
         this.panelBar.insertAfter({
-          text: $('#afterText').val()
+          text: kendo.jQuery('#afterText').val()
         }, this.panelBar.select());
       }
     }

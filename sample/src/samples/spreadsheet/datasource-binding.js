@@ -25,7 +25,7 @@ export class DatasourceBinding {
     },
     batch: true,
     change: function() {
-      $('#cancel, #save').toggleClass('k-state-disabled', !this.hasChanges());
+      kendo.jQuery('#cancel, #save').toggleClass('k-state-disabled', !this.hasChanges());
     },
     schema: {
       model: {
@@ -86,13 +86,13 @@ export class DatasourceBinding {
   }
 
   save(e) {
-    if (!$(e.target).hasClass('k-state-disabled')) {
+    if (!kendo.jQuery(e.target).hasClass('k-state-disabled')) {
       this.dataSource.sync();
     }
   }
 
   cancel(e) {
-    if (!$(e.target).hasClass('k-state-disabled')) {
+    if (!kendo.jQuery(e.target).hasClass('k-state-disabled')) {
       this.dataSource.cancelChanges();
     }
   }

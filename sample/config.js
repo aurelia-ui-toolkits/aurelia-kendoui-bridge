@@ -12,9 +12,7 @@ System.config({
   paths: {
     "*": "src/*",
     "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*",
-    "kendo.*": "src/root/vendors/js/kendo.*.js",
-    "kendo-ui/*": "src/root/vendors/*"
+    "npm:*": "jspm_packages/npm/*"
   },
 
   meta: {

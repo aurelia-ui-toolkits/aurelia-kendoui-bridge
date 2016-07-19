@@ -20,7 +20,7 @@ export class AnimationEffects {
   }
 
   attached() {
-    $('input').change(() => {
+    kendo.jQuery('input').change(() => {
       this.tabstripVM.kAnimation = {
         open: {
           effects: this.getEffects()

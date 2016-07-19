@@ -23,13 +23,13 @@ export class ServerImportExport {
 
   attached() {
     this.taskQueue.queueTask(() => {
-      $.getJSON('https://demos.telerik.com/kendo-ui/content/web/spreadsheet/products.json')
+      kendo.jQuery.getJSON('https://demos.telerik.com/kendo-ui/content/web/spreadsheet/products.json')
       .done(sheets => this.spreadsheet.fromJSON({ sheets: sheets }));
     });
 
-    $('.download').click((e) => {
-      $('#download-data').val(JSON.stringify(this.spreadsheet.toJSON()));
-      $('#download-extension').val($(e.target).data('extension'));
+    kendo.jQuery('.download').click((e) => {
+      kendo.jQuery('#download-data').val(JSON.stringify(this.spreadsheet.toJSON()));
+      kendo.jQuery('#download-extension').val(kendo.jQuery(e.target).data('extension'));
     });
   }
 }

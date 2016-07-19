@@ -1,5 +1,5 @@
 export class Handlers {
   hint(e) {
-    return $(e).clone().addClass('sortable-handlers-hint');
+    return kendo.jQuery(e).clone().addClass('sortable-handlers-hint');
   }
 }

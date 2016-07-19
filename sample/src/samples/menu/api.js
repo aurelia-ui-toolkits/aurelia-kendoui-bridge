@@ -67,49 +67,49 @@ export class Api {
   }
 
   toggleItem() {
-    let item = this.getItem($('#toggleIndex'));
+    let item = this.getItem(kendo.jQuery('#toggleIndex'));
     this.menu.enable(item, item.hasClass('k-state-disabled'));
   }
 
   toggleTextItems() {
-    let items = $(this.menuDiv).find('.k-link:contains(Sub Item 3)').parent();
+    let items = kendo.jQuery(this.menuDiv).find('.k-link:contains(Sub Item 3)').parent();
     this.menu.enable(items, items.hasClass('k-state-disabled'));
   }
 
   toggleStrongItems() {
-    let items = $(this.menuDiv).find(':has(> strong)').parent();
+    let items = kendo.jQuery(this.menuDiv).find(':has(> strong)').parent();
     this.menu.enable(items, items.hasClass('k-state-disabled'));
   }
 
   toggleRedTextItems() {
-    let items = $(this.menuDiv).find('.redText');
+    let items = kendo.jQuery(this.menuDiv).find('.redText');
     this.menu.enable(items, items.hasClass('k-state-disabled'));
   }
 
   removeItem() {
-    this.menu.remove(this.getItem($('#removeIndex')));
+    this.menu.remove(this.getItem(kendo.jQuery('#removeIndex')));
   }
 
   appendItem() {
     this.menu.append({
-      text: $('#appendText').val()
-    }, this.getItem($('#appendIndex')));
+      text: kendo.jQuery('#appendText').val()
+    }, this.getItem(kendo.jQuery('#appendIndex')));
   }
 
   beforeItem() {
     this.menu.insertBefore({
-      text: $('#beforeText').val()
-    }, this.getItem($('#beforeIndex')));
+      text: kendo.jQuery('#beforeText').val()
+    }, this.getItem(kendo.jQuery('#beforeIndex')));
   }
 
   afterItem() {
     this.menu.insertAfter({
-      text: $('#afterText').val()
-    }, this.getItem($('#afterIndex')));
+      text: kendo.jQuery('#afterText').val()
+    }, this.getItem(kendo.jQuery('#afterIndex')));
   }
 
   triggerItem() {
-    let item = this.getItem($('#triggerIndex'));
+    let item = this.getItem(kendo.jQuery('#triggerIndex'));
     if (item.hasClass('k-state-active')) {
       this.menu.close(item);
     } else {

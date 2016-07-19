@@ -1,21 +1,21 @@
 export class Events {
   onOpen(e) {
-    this.logger.log('Opened: ' + ($(e.item).children('.k-link').text() || 'ContextMenu'));
+    this.logger.log('Opened: ' + (kendo.jQuery(e.item).children('.k-link').text() || 'ContextMenu'));
   }
 
   onClose(e) {
-    this.logger.log('Closed: ' + ($(e.item).children('.k-link').text() || 'ContextMenu'));
+    this.logger.log('Closed: ' + (kendo.jQuery(e.item).children('.k-link').text() || 'ContextMenu'));
   }
 
   onSelect(e) {
-    this.logger.log('Selected: ' + $(e.item).children('.k-link').text());
+    this.logger.log('Selected: ' + kendo.jQuery(e.item).children('.k-link').text());
   }
 
   onActivate(e) {
-    this.logger.log('Activated: ' + ($(e.item).children('.k-link').text() || 'ContextMenu'));
+    this.logger.log('Activated: ' + (kendo.jQuery(e.item).children('.k-link').text() || 'ContextMenu'));
   }
 
   onDeactivate(e) {
-    this.logger.log('Deactivated: ' + ($(e.item).children('.k-link').text() || 'ContextMenu'));
+    this.logger.log('Deactivated: ' + (kendo.jQuery(e.item).children('.k-link').text() || 'ContextMenu'));
   }
 }

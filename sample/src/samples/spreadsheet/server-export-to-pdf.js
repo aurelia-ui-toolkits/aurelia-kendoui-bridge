@@ -1,9 +1,9 @@
 export class ServerExportToPDF {
 
   attached() {
-    $('.pdf').click(() => {
-      $('#data').val(JSON.stringify(this.spreadsheet.toJSON()));
-      $('#active-sheet').val(this.spreadsheet.activeSheet().name());
+    kendo.jQuery('.pdf').click(() => {
+      kendo.jQuery('#data').val(JSON.stringify(this.spreadsheet.toJSON()));
+      kendo.jQuery('#active-sheet').val(this.spreadsheet.activeSheet().name());
     });
   }
 

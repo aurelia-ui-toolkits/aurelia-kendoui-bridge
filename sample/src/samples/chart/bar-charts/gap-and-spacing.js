@@ -31,19 +31,19 @@ export class GapAndSpacing {
   }
 
   attached() {
-    $(this.gap).kendoNumericTextBox();
-    $(this.spacing).kendoNumericTextBox();
+    kendo.jQuery(this.gap).kendoNumericTextBox();
+    kendo.jQuery(this.spacing).kendoNumericTextBox();
   }
 
   getSpacing() {
     let firstSeries = this.widget.options.series;
-    firstSeries[0].spacing = parseFloat($(this.spacing).val(), 10);
+    firstSeries[0].spacing = parseFloat(kendo.jQuery(this.spacing).val(), 10);
     this.widget.redraw();
   }
 
   getGap() {
     let firstSeries = this.widget.options.series;
-    firstSeries[0].gap = parseFloat($(this.gap).val(), 10);
+    firstSeries[0].gap = parseFloat(kendo.jQuery(this.gap).val(), 10);
     this.widget.redraw();
   }
 }

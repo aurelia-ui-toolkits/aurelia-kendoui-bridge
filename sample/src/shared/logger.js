@@ -5,7 +5,7 @@ export class Logger {
 
 
   log(message, isError, container) {
-    let lastContainer = $('.console div:first', container);
+    let lastContainer = kendo.jQuery('.console div:first', container);
     let counter = lastContainer.find('.count').detach();
     let lastMessage = lastContainer.text();
     let count = 1 * (counter.text() || 1);
@@ -13,13 +13,13 @@ export class Logger {
     lastContainer.append(counter);
 
     if (!lastContainer.length || message !== lastMessage) {
-      $('<div' + (isError ? ' class=\'error\'' : '') + '/>')
+      kendo.jQuery('<div' + (isError ? ' class=\'error\'' : '') + '/>')
       .css({
         marginTop: -24,
         backgroundColor: isError ? '#ffbbbb' : '#b2ebf2'
       })
       .html(message)
-      .prependTo($('.console', container))
+      .prependTo(kendo.jQuery('.console', container))
       .animate({ marginTop: 0 }, 300)
       .animate({ backgroundColor: isError ? '#ffdddd' : '#ffffff' }, 800);
     } else {

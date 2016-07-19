@@ -11,7 +11,7 @@ export class BindingToRemoteData {
   });
 
   attached() {
-    $(this.pager).kendoPager({
+    kendo.jQuery(this.pager).kendoPager({
       dataSource: this.dataSource
     });
   }

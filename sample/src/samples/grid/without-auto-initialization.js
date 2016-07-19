@@ -7,7 +7,7 @@ export class WithoutAutoInitialization {
       this.datasource.data(data);
       this.gridVM.recreate(); // initialize the grid
 
-      $(this.loading).hide();
+      kendo.jQuery(this.loading).hide();
     });
   }
 

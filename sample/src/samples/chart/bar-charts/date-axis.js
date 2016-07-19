@@ -33,8 +33,8 @@ export class DateAxis {
   };
 
   refresh() {
-    let baseUnitInputs = $('input:radio[name=baseUnit]');
-    let aggregateInputs = $('input:radio[name=aggregate]');
+    let baseUnitInputs = kendo.jQuery('input:radio[name=baseUnit]');
+    let aggregateInputs = kendo.jQuery('input:radio[name=aggregate]');
 
     for (let i = 0, length = this.chart.options.series.length; i < length; i++) {
       this.chart.options.series[i].aggregate = aggregateInputs.filter(':checked').val();
@@ -46,6 +46,6 @@ export class DateAxis {
   }
 
   attached() {
-    $('.box-col').bind('change', () => this.refresh());
+    kendo.jQuery('.box-col').bind('change', () => this.refresh());
   }
 }

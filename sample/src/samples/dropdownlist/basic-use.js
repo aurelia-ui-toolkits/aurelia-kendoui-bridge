@@ -13,7 +13,7 @@ export class BasicUse {
   capColor = '1';
 
   colorChanged() {
-    $(this.cap)
+    kendo.jQuery(this.cap)
     .toggleClass('black-cap', this.capColor === '1')
     .toggleClass('orange-cap', this.capColor === '2')
     .toggleClass('grey-cap', this.capColor === '3');

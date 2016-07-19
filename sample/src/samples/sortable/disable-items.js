@@ -1,9 +1,9 @@
 export class DisableItems {
   hint(e) {
-    return $(e).clone().addClass('sortable-basic-use-hint');
+    return kendo.jQuery(e).clone().addClass('sortable-basic-use-hint');
   }
 
   placeholder(e) {
-    return $(e).clone().addClass('sortable-basic-use-placeholder').text('drop here');
+    return kendo.jQuery(e).clone().addClass('sortable-basic-use-placeholder').text('drop here');
   }
 }
