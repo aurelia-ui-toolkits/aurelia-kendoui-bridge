@@ -14,7 +14,7 @@
       "Grid": "grid",
       "ListView": "listview",
       "TreeList": "treelist",
-      "PivotGrid": "pivotgrid",
+      "PivotGrid": "pivot-grid",
       "Scrollview": "scrollview",
       "Spreadsheet": "spreadsheet"
     },
@@ -79,7 +79,7 @@
     },
     "Barcodes": {
       "Barcode": "barcode",
-      "QR Code": "qrcode"
+      "QR Code": "qr-code"
     },
     "Gauges": {
       "Linear Gauge": "linear-gauge",
@@ -1131,7 +1131,7 @@
            ]
         },
         "datasource-read": {
-          "gist": "5e8191b47470e564689c063db05cf255"
+          "gist": "5e95513ef8cef2d07b2fc4c2cd422137"
         },
         "batch-editing": {
            "gist": "985fcf8ccc29cb20a77d24eadd97af66"

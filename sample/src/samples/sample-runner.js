@@ -25,42 +25,39 @@ export class SampleRunner {
     if (!sample) throw new Error('Route does not contain a \'sample\' property');
     if (!sample.gist) throw new Error('sample does not have a gist');
 
-    this.routes = [];
-
-    this.router.routes.forEach(r => {
-      if (r.category === category) {
-        this.routes.push(r);
-      }
-    });
+    this.routes = this.router.routes.filter(r => r.category === category);
 
     // app.js is the view-model of the gist
     // aurelia's <compose> automatically loads app.html
     sample.path = `${this.settings.gistProxy}file/${sample.gist}/app`;
 
+    this.sample = sample;
+    this.category = category;
+
+    this.unsubscribe = this.ea.subscribe('kendo:skinChange', () => this.restart());
+  }
+
+  attached() {
     // we need to get all files from the gist to show it in
     // the code preview
     new HttpClient()
     .configure(x => {
       x.withBaseUrl(this.settings.gistProxy);
     })
-    .get(`files/${sample.gist}`)
+    .get(`files/${this.sample.gist}`)
     .then(response => {
       let files = response.content;
       let keys = Object.keys(files);
       if (keys.indexOf('app.html') > -1) {
-        sample.html = files['app.html'].content;
+        this.sample.html = files['app.html'].content;
       }
       if (keys.indexOf('app.js') > -1) {
-        sample.js = files['app.js'].content;
+        this.sample.js = files['app.js'].content;
       }
       if (keys.indexOf('app.css') > -1) {
-        sample.css = files['app.css'].content;
+        this.sample.css = files['app.css'].content;
       }
     });
-
-    this.sample = sample;
-
-    this.unsubscribe = this.ea.subscribe('kendo:skinChange', () => this.restart());
   }
 
   restart() {

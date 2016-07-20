@@ -3,15 +3,15 @@
   <section>
   <br>
     <h4>
-      ${ router.title }
-      <small if.bind="router.parent.currentInstruction.config.settings.pro">&nbsp;<a href="http://www.telerik.com/kendo-ui/comparison" target="_blank" class="text-danger">Requires Kendo UI Professional Licence</a></small>
-      <small if.bind="router.parent.currentInstruction.config.settings.pro === false">&nbsp;<a href="http://www.telerik.com/kendo-ui/comparison" target="_blank" class="text-success">Free with Kendo UI Core Licence</a></small>
+      ${ category.title }
+      <small if.bind="category.pro">&nbsp;<a href="http://www.telerik.com/kendo-ui/comparison" target="_blank" class="text-danger">Requires Kendo UI Professional Licence</a></small>
+      <small if.bind="category.pro === false">&nbsp;<a href="http://www.telerik.com/kendo-ui/comparison" target="_blank" class="text-success">Free with Kendo UI Core Licence</a></small>
     </h4>
     <div class="row">
       <div class="col-md-2">
           <ul class="k-widget k-reset k-header k-panelbar k-panel">
               <li repeat.for="route of routes" class="k-item ${ $first ? 'k-first' : '' } ${ $last ? 'k-last' : ''} ">
-                  <span click.delegate="router.navigateToRoute(route.name)" mouseenter.trigger="route.isHovered = true" mouseleave.trigger="route.isHovered = false" class="k-link ${ route.isActive ? 'k-state-selected' : ''} ${ route.isHovered ? 'k-state-hover' : '' }">${route.title}</span>
+                  <span click.delegate="router.navigateToRoute(route.name)" mouseenter.trigger="route.isHovered = true" mouseleave.trigger="route.isHovered = false" class="k-link ${ route.navModel.isActive ? 'k-state-selected' : ''} ${ route.isHovered ? 'k-state-hover' : '' }">${route.title}</span>
               </li>
           </ul>
       </div>
@@ -20,11 +20,12 @@
           <collapse-panel title.bind="sample.title">
             <div slot="buttons" class="buttons">
               <a href="https://gist.run/?id=${sample.gist}" show.bind="sample.gist" target="_blank" class="k-button">RUN</a>
-              <a href.bind="sample.documentation" show.bind="sample.documentation" target="_blank" class="k-button">API</a>
+              <a href.bind="category.documentation" show.bind="category.documentation" target="_blank" class="k-button">API</a>
             </div>
             <div id="exampleWrap">
               <div id="${sample.route}">
                 <compose view-model.bind="sample.path"></compose>
+                <div if.bind="router.isNavigating">LOADING</div>
               </div>
             </div>
           </collapse-panel>
