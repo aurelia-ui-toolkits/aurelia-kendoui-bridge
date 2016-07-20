@@ -30,6 +30,14 @@
             "css"
          ]
       },
+      "grid-in-window": {
+         "gist": "b79b770e5d2f98b20ce1c2340bcdac78",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
       "events": {
          "gist": "2429e459773cd14192f62b8793716b9e",
          "files": [

@@ -6,6 +6,9 @@
     },
     "without-auto-initialization": {
       "route": "without-auto-initialization"
+    },
+    "two-way-binding-support": {
+      "gist": "0cbaf26be35fedc38c917961f4f78b84"
     }
   }
 }

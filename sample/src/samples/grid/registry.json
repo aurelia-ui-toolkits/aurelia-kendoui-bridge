@@ -11,6 +11,9 @@
             "css"
          ]
       },
+      "datasource-read": {
+        "gist": "5e8191b47470e564689c063db05cf255"
+      },
       "batch-editing": {
          "gist": "985fcf8ccc29cb20a77d24eadd97af66"
       },
@@ -65,6 +68,12 @@
       },
       "multi-column-headers": {
          "gist": "3e056bf0bb5372cbf02ccb6a7d99a4f8"
+      },
+      "colours": {
+         "gist": "264f34280bee2e0b5f74de48b392abc5"
+      },
+      "row-select": {
+         "gist": "ea47f99e2a278259f2409ba3a2bca189"
       },
       "two-way-binding": {},
       "without-auto-initialization": {},

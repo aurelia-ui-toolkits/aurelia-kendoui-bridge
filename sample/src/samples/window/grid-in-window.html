@@ -1,0 +1,12 @@
+<template>
+  <require from="./grid-in-window.css"></require>
+  <div id="window"
+       ak-window="k-width: 400px; k-visible.bind: false; k-widget.bind: window">
+    <ak-grid k-data-source.bind="datasource" k-pageable.bind="true" k-filterable.bind="true" k-sortable.bind="true">
+      <ak-col k-title="Ship Name" k-field="ShipName"></ak-col>
+    </ak-grid>
+  </div>
+
+  <div class="responsive-message"></div>
+  <div id="undo" ak-button click.delegate="window.open()">Click here to open the window.</div>
+</template>
