@@ -143,7 +143,7 @@ export class Util {
   }
 
   getChildrenVMs(element, cssSelector) {
-    let elements = $(element).children(cssSelector);
+    let elements = kendo.jQuery(element).children(cssSelector);
     let viewModels = [];
     elements.each((index, elem) => {
       viewModels.push(elem.au.controller.viewModel);

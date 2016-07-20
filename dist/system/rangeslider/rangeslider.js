@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.slider.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, bindable, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, RangeSlider;
@@ -66,7 +66,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }, function (_kendoSliderMin) {}],
+    }],
     execute: function () {
       _export('RangeSlider', RangeSlider = (_dec = customElement(constants.elementPrefix + 'range-slider'), _dec2 = generateBindables('kendoRangeSlider'), _dec3 = inject(Element, WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
         function RangeSlider(element, widgetBase) {

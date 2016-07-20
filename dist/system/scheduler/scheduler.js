@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo.scheduler.min', 'kendo.scheduler.agendaview.min', 'kendo.scheduler.dayview.min', 'kendo.scheduler.monthview.min', 'kendo.scheduler.recurrence.min', 'kendo.scheduler.timelineview.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, PDF, _dec, _dec2, _dec3, _class, Scheduler;
@@ -25,7 +25,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       constants = _commonConstants.constants;
     }, function (_pdfPdf) {
       PDF = _pdfPdf.PDF;
-    }, function (_kendoSchedulerMin) {}, function (_kendoSchedulerAgendaviewMin) {}, function (_kendoSchedulerDayviewMin) {}, function (_kendoSchedulerMonthviewMin) {}, function (_kendoSchedulerRecurrenceMin) {}, function (_kendoSchedulerTimelineviewMin) {}],
+    }],
     execute: function () {
       _export('Scheduler', Scheduler = (_dec = customElement(constants.elementPrefix + 'scheduler'), _dec2 = generateBindables('kendoScheduler'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function Scheduler(element, widgetBase, viewResources) {

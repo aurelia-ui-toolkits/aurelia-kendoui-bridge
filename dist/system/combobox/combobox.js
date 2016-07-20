@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.combobox.min', 'kendo.virtuallist.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, bindable, ViewResources, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, ComboBox;
@@ -70,7 +70,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }, function (_kendoComboboxMin) {}, function (_kendoVirtuallistMin) {}],
+    }],
     execute: function () {
       _export('ComboBox', ComboBox = (_dec = customElement(constants.elementPrefix + 'combobox'), _dec2 = generateBindables('kendoComboBox'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
         function ComboBox(element, widgetBase, viewResources) {

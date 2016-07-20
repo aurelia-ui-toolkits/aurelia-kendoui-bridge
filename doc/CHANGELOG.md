@@ -1,3 +1,13 @@
+<a name="1.0.0-beta.1.0.1"></a>
+# [1.0.0-beta.1.0.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.9...v1.0.0-beta.1.0.1) (2016-07-20)
+
+
+### Features
+
+* **all:** added .detect() as alternative to .core() and .pro() to automatically load wrapp ([a9133a7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/a9133a7))
+
+
+
 <a name="0.11.9"></a>
 ## [0.11.9](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.8...v0.11.9) (2016-07-15)
 

@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../pdf/pdf', 'kendo.data.signalr.min', 'kendo.filtercell.min', 'kendo.treelist.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../pdf/pdf'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, PDF, _dec, _dec2, _dec3, _class, TreeList;
@@ -27,7 +27,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       OptionsBuilder = _commonOptionsBuilder.OptionsBuilder;
     }, function (_pdfPdf) {
       PDF = _pdfPdf.PDF;
-    }, function (_kendoDataSignalrMin) {}, function (_kendoFiltercellMin) {}, function (_kendoTreelistMin) {}],
+    }],
     execute: function () {
       _export('TreeList', TreeList = (_dec = customElement(constants.elementPrefix + 'tree-list'), _dec2 = generateBindables('kendoTreeList'), _dec3 = inject(Element, WidgetBase, ViewResources, OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function TreeList(element, widgetBase, viewResources, optionsBuilder) {

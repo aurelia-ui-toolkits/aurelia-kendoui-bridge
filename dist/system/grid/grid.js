@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../common/template-gatherer', '../pdf/pdf', 'kendo.data.signalr.min', 'kendo.filtercell.min', 'kendo.grid.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../common/template-gatherer', '../pdf/pdf'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, TemplateGatherer, PDF, _dec, _dec2, _dec3, _class, Grid;
@@ -36,7 +36,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       TemplateGatherer = _commonTemplateGatherer.TemplateGatherer;
     }, function (_pdfPdf) {
       PDF = _pdfPdf.PDF;
-    }, function (_kendoDataSignalrMin) {}, function (_kendoFiltercellMin) {}, function (_kendoGridMin) {}],
+    }],
     execute: function () {
       _export('Grid', Grid = (_dec = customElement(constants.elementPrefix + 'grid'), _dec2 = generateBindables('kendoGrid'), _dec3 = inject(Element, WidgetBase, ViewResources, OptionsBuilder, TemplateGatherer), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function Grid(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {

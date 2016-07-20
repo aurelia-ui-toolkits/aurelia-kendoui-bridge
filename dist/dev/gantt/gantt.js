@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../pdf/pdf', 'kendo.gantt.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../pdf/pdf'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, PDF, _dec, _dec2, _dec3, _class, Gantt;
@@ -30,7 +30,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       OptionsBuilder = _commonOptionsBuilder.OptionsBuilder;
     }, function (_pdfPdf) {
       PDF = _pdfPdf.PDF;
-    }, function (_kendoGanttMin) {}],
+    }],
     execute: function () {
       _export('Gantt', Gantt = (_dec = customElement(constants.elementPrefix + 'gantt'), _dec2 = generateBindables('kendoGantt'), _dec3 = inject(Element, WidgetBase, ViewResources, OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function Gantt(element, widgetBase, viewResources, optionsBuilder) {

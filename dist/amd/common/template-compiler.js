@@ -90,7 +90,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', 'aureli
           }
         }
 
-        if (element instanceof jQuery) {
+        if (element instanceof kendo.jQuery) {
           element.each(function (index, elem) {
             return _this2.enhanceView($parent, elem, ctx, viewResources);
           });
@@ -105,7 +105,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', 'aureli
     };
 
     TemplateCompiler.prototype.enhanceView = function enhanceView($parent, element, ctx, viewResources) {
-      var view = $(element).data('viewInstance');
+      var view = kendo.jQuery(element).data('viewInstance');
 
       if (element.querySelectorAll('.au-target').length === 0) {
         if (viewResources) {
@@ -123,7 +123,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', 'aureli
           });
         }
 
-        $(element).data('viewInstance', view);
+        kendo.jQuery(element).data('viewInstance', view);
       } else {
         view.bind(ctx, (0, _aureliaBinding.createOverrideContext)(ctx, $parent));
       }
@@ -141,7 +141,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', 'aureli
     };
 
     TemplateCompiler.prototype.cleanupView = function cleanupView(element) {
-      var view = $(element).data('viewInstance');
+      var view = kendo.jQuery(element).data('viewInstance');
       if (!view) return;
 
       view.detached();

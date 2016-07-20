@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo.pivotgrid.min', 'kendo.pivot.fieldmenu.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, PDF, _dec, _dec2, _dec3, _class, PivotGrid;
@@ -25,7 +25,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       constants = _commonConstants.constants;
     }, function (_pdfPdf) {
       PDF = _pdfPdf.PDF;
-    }, function (_kendoPivotgridMin) {}, function (_kendoPivotFieldmenuMin) {}],
+    }],
     execute: function () {
       _export('PivotGrid', PivotGrid = (_dec = customElement(constants.elementPrefix + 'pivot-grid'), _dec2 = generateBindables('kendoPivotGrid'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function PivotGrid(element, widgetBase, viewResources) {

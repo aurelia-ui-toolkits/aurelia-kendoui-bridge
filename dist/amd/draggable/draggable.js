@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.draganddrop.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _widgetBase, _decorators, _constants) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _widgetBase, _decorators, _constants) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -46,7 +46,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     Draggabke.prototype.beforeInitialize = function beforeInitialize(options) {
       if (options.container) {
-        Object.assign(options, { container: $(options.container) });
+        Object.assign(options, { container: kendo.jQuery(options.container) });
       }
     };
 

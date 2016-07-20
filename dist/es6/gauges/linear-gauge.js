@@ -3,7 +3,6 @@ import {customElement} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.dataviz.gauge.min';
 
 @customElement(`${constants.elementPrefix}linear-gauge`)
 @generateBindables('kendoLinearGauge')

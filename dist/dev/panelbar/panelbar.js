@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/constants', '../common/widget-base', '../common/decorators', 'kendo.panelbar.min'], function (_export, _context) {
+System.register(['aurelia-templating', 'aurelia-dependency-injection', '../common/constants', '../common/widget-base', '../common/decorators'], function (_export, _context) {
   "use strict";
 
   var customElement, inject, constants, WidgetBase, generateBindables, _dec, _dec2, _dec3, _class, PanelBar;
@@ -25,7 +25,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
       generateBindables = _commonDecorators.generateBindables;
-    }, function (_kendoPanelbarMin) {}],
+    }],
     execute: function () {
       _export('PanelBar', PanelBar = (_dec = customElement(constants.elementPrefix + 'panel-bar'), _dec2 = generateBindables('kendoPanelBar'), _dec3 = inject(Element, WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function PanelBar(element, widgetBase) {

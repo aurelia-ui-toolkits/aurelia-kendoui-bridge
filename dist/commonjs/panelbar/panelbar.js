@@ -17,8 +17,6 @@ var _widgetBase = require('../common/widget-base');
 
 var _decorators = require('../common/decorators');
 
-require('kendo.panelbar.min');
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var PanelBar = exports.PanelBar = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'panel-bar'), _dec2 = (0, _decorators.generateBindables)('kendoPanelBar'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {

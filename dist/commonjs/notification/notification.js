@@ -17,8 +17,6 @@ var _decorators = require('../common/decorators');
 
 var _constants = require('../common/constants');
 
-require('kendo.notification.min');
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Notification = exports.Notification = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'notification'), _dec2 = (0, _decorators.generateBindables)('kendoNotification'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {

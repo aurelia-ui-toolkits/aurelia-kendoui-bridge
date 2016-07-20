@@ -23,12 +23,6 @@ var _templateGatherer = require('../common/template-gatherer');
 
 var _pdf = require('../pdf/pdf');
 
-require('kendo.data.signalr.min');
-
-require('kendo.filtercell.min');
-
-require('kendo.grid.min');
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Grid = exports.Grid = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'grid'), _dec2 = (0, _decorators.generateBindables)('kendoGrid'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources, _optionsBuilder.OptionsBuilder, _templateGatherer.TemplateGatherer), _dec(_class = _dec2(_class = _dec3(_class = function () {

@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', 'kendo.toolbar.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, WidgetBase, generateBindables, constants, OptionsBuilder, _dec, _dec2, _dec3, _class, Toolbar;
@@ -24,7 +24,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       constants = _commonConstants.constants;
     }, function (_commonOptionsBuilder) {
       OptionsBuilder = _commonOptionsBuilder.OptionsBuilder;
-    }, function (_kendoToolbarMin) {}],
+    }],
     execute: function () {
       _export('Toolbar', Toolbar = (_dec = customElement(constants.elementPrefix + 'toolbar'), _dec2 = generateBindables('kendoToolBar'), _dec3 = inject(Element, WidgetBase, OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function Toolbar(element, widgetBase, optionsBuilder) {

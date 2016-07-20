@@ -6,9 +6,6 @@ import {constants} from '../common/constants';
 import {OptionsBuilder} from '../common/options-builder';
 import {TemplateGatherer} from '../common/template-gatherer';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-import 'kendo.data.signalr.min';
-import 'kendo.filtercell.min';
-import 'kendo.grid.min';
 
 @customElement(`${constants.elementPrefix}grid`)
 @generateBindables('kendoGrid')

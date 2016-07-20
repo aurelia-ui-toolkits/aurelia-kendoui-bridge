@@ -3,7 +3,6 @@ import {customAttribute} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.draganddrop.min';
 
 @customAttribute(`${constants.attributePrefix}draggable`)
 @generateBindables('kendoDraggable')
@@ -37,7 +36,7 @@ export class Draggabke {
 
   beforeInitialize(options) {
     if (options.container) {
-      Object.assign(options, { container: $(options.container) });
+      Object.assign(options, { container: kendo.jQuery(options.container) });
     }
   }
 

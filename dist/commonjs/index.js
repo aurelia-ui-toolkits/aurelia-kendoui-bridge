@@ -21,12 +21,15 @@ var _configBuilder = require('./config-builder');
 
 var _aureliaTemplatingResources = require('aurelia-templating-resources');
 
-require('jquery');
+var _aureliaLogging = require('aurelia-logging');
 
-require('kendo.data.min');
+var LogManager = _interopRequireWildcard(_aureliaLogging);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function configure(aurelia, configCallback) {
   var builder = aurelia.container.get(_configBuilder.KendoConfigBuilder);
+  var logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
   if (configCallback !== undefined && typeof configCallback === 'function') {
     configCallback(builder);
@@ -36,6 +39,12 @@ function configure(aurelia, configCallback) {
 
   if (resources.length > 0) {
     aurelia.globalResources(resources);
+  }
+
+  logger.info('Loading ' + resources.length + ' wrappers', resources);
+
+  if (resources.length > 10) {
+    logger.warn('when using many wrappers, it is recommended not to use .core(), .pro() or .dynamic()' + ' but instead to load wrappers via <require></require>.' + 'this should significantly speed up load times of your application.');
   }
 
   if (builder.registerRepeatStrategy) {

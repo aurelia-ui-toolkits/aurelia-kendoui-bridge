@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.notification.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, Notification;
@@ -23,7 +23,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }, function (_kendoNotificationMin) {}],
+    }],
     execute: function () {
       _export('Notification', Notification = (_dec = customElement(constants.elementPrefix + 'notification'), _dec2 = generateBindables('kendoNotification'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function Notification(element, widgetBase, viewResources) {

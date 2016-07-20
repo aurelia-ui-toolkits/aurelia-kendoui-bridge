@@ -1,10 +1,9 @@
-define(['exports', 'kendo.pdf.min', 'kendo.excel.min'], function (exports) {
-  'use strict';
+define(["exports"], function (exports) {
+  "use strict";
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.PDF = undefined;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {

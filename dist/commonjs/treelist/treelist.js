@@ -21,12 +21,6 @@ var _optionsBuilder = require('../common/options-builder');
 
 var _pdf = require('../pdf/pdf');
 
-require('kendo.data.signalr.min');
-
-require('kendo.filtercell.min');
-
-require('kendo.treelist.min');
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var TreeList = exports.TreeList = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'tree-list'), _dec2 = (0, _decorators.generateBindables)('kendoTreeList'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources, _optionsBuilder.OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {

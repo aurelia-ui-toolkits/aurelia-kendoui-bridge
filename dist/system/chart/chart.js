@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf', 'kendo.dataviz.chart.min', 'kendo.dataviz.chart.polar.min', 'kendo.dataviz.chart.funnel.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, WidgetBase, generateBindables, constants, PDF, _dec, _dec2, _dec3, _class, Chart;
@@ -24,7 +24,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       constants = _commonConstants.constants;
     }, function (_pdfPdf) {
       PDF = _pdfPdf.PDF;
-    }, function (_kendoDatavizChartMin) {}, function (_kendoDatavizChartPolarMin) {}, function (_kendoDatavizChartFunnelMin) {}],
+    }],
     execute: function () {
       _export('Chart', Chart = (_dec = customElement(constants.elementPrefix + 'chart'), _dec2 = generateBindables('kendoChart'), _dec3 = inject(Element, WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function Chart(element, widgetBase) {

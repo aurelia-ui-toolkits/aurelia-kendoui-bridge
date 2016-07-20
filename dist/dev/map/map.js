@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.dataviz.map.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, Map;
@@ -22,7 +22,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }, function (_kendoDatavizMapMin) {}],
+    }],
     execute: function () {
       _export('Map', Map = (_dec = customElement(constants.elementPrefix + 'map'), _dec2 = generateBindables('kendoMap'), _dec3 = inject(Element, WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function Map(element, widgetBase) {

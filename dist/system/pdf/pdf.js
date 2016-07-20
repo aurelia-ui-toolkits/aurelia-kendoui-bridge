@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-System.register(['kendo.pdf.min', 'kendo.excel.min'], function (_export, _context) {
+System.register([], function (_export, _context) {
   "use strict";
 
   var PDF;
@@ -12,13 +12,13 @@ System.register(['kendo.pdf.min', 'kendo.excel.min'], function (_export, _contex
   }
 
   return {
-    setters: [function (_kendoPdfMin) {}, function (_kendoExcelMin) {}],
+    setters: [],
     execute: function () {
-      _export('PDF', PDF = function PDF() {
+      _export("PDF", PDF = function PDF() {
         _classCallCheck(this, PDF);
       });
 
-      _export('PDF', PDF);
+      _export("PDF", PDF);
     }
   };
 });

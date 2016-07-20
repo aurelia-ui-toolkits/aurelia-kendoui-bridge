@@ -1,4 +1,4 @@
-define(['exports', './common/decorators', './config-builder', 'aurelia-templating-resources', 'jquery', 'kendo.data.min'], function (exports, _decorators, _configBuilder, _aureliaTemplatingResources) {
+define(['exports', './common/decorators', './config-builder', 'aurelia-templating-resources', 'aurelia-logging'], function (exports, _decorators, _configBuilder, _aureliaTemplatingResources, _aureliaLogging) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -14,8 +14,29 @@ define(['exports', './common/decorators', './config-builder', 'aurelia-templatin
       }
     });
   });
+
+  var LogManager = _interopRequireWildcard(_aureliaLogging);
+
+  function _interopRequireWildcard(obj) {
+    if (obj && obj.__esModule) {
+      return obj;
+    } else {
+      var newObj = {};
+
+      if (obj != null) {
+        for (var key in obj) {
+          if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+        }
+      }
+
+      newObj.default = obj;
+      return newObj;
+    }
+  }
+
   function configure(aurelia, configCallback) {
     var builder = aurelia.container.get(_configBuilder.KendoConfigBuilder);
+    var logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
     if (configCallback !== undefined && typeof configCallback === 'function') {
       configCallback(builder);
@@ -25,6 +46,12 @@ define(['exports', './common/decorators', './config-builder', 'aurelia-templatin
 
     if (resources.length > 0) {
       aurelia.globalResources(resources);
+    }
+
+    logger.info('Loading ' + resources.length + ' wrappers', resources);
+
+    if (resources.length > 10) {
+      logger.warn('when using many wrappers, it is recommended not to use .core(), .pro() or .dynamic()' + ' but instead to load wrappers via <require></require>.' + 'this should significantly speed up load times of your application.');
     }
 
     if (builder.registerRepeatStrategy) {

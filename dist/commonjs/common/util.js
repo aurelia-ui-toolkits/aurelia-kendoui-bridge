@@ -108,7 +108,7 @@ var Util = exports.Util = function () {
   };
 
   Util.prototype.getChildrenVMs = function getChildrenVMs(element, cssSelector) {
-    var elements = $(element).children(cssSelector);
+    var elements = kendo.jQuery(element).children(cssSelector);
     var viewModels = [];
     elements.each(function (index, elem) {
       viewModels.push(elem.au.controller.viewModel);

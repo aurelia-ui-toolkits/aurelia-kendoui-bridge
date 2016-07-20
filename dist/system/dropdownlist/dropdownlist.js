@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.dropdownlist.min', 'kendo.virtuallist.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (_export, _context) {
   "use strict";
 
   var inject, customElement, bindable, ViewResources, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, DropDownList;
@@ -70,7 +70,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }, function (_kendoDropdownlistMin) {}, function (_kendoVirtuallistMin) {}],
+    }],
     execute: function () {
       _export('DropDownList', DropDownList = (_dec = customElement(constants.elementPrefix + 'drop-down-list'), _dec2 = generateBindables('kendoDropDownList'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
         function DropDownList(element, widgetBase, viewResources) {

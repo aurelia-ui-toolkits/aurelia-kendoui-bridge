@@ -17,10 +17,6 @@ var _decorators = require('../common/decorators');
 
 var _constants = require('../common/constants');
 
-require('kendo.multiselect.min');
-
-require('kendo.virtuallist.min');
-
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
   Object.defineProperty(target, property, {

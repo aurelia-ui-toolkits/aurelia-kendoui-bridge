@@ -15,13 +15,29 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
     this.registerRepeatStrategy = true;
   }
 
+  KendoConfigBuilder.prototype.detect = function detect() {
+    if (!kendo) return;
+
+    this.kendoTemplateSupport().useValueConverters();
+
+    var kendoControls = kendo.widgets.map(function (w) {
+      return w.name;
+    });
+    for (var i = 0; i < kendoControls.length; i++) {
+      if (this[kendoControls[i]]) {
+        this[kendoControls[i]]();
+      }
+    }
+  };
+
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoAutoComplete().kendoButton().kendoButtonGroup().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoCombobox().kendoContextMenu().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoDraggable().kendoDropTarget().kendoFlatColorPicker().kendoListView().kendoMaskedTextBox().kendoMenu().kendoMultiSelect().kendoNotification().kendoNumericTextBox().kendoPanelBar().kendoProgressBar().kendoRangeSlider().kendoResponsivePanel().kendoScrollView().kendoSortable().kendoSlider().kendoSplitter().kendoSwitch().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().kendoToolbar().kendoTooltip().kendoValidator().kendoWindow().useValueConverters();
+    this.kendoAutoComplete().kendoButton().kendoMobileButtonGroup().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoComboBox().kendoContextMenu().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoDraggable().kendoDropTarget().kendoFlatColorPicker().kendoListView().kendoMaskedTextBox().kendoMenu().kendoMultiSelect().kendoNotification().kendoNumericTextBox().kendoPanelBar().kendoProgressBar().kendoRangeSlider().kendoResponsivePanel().kendoMobileScrollView().kendoSortable().kendoSlider().kendoSplitter().kendoMobileSwitch().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().kendoToolBar().kendoTooltip().kendoValidator().kendoWindow().useValueConverters();
     return this;
   };
 
   KendoConfigBuilder.prototype.pro = function pro() {
     this.core().kendoBarcode().kendoChart().kendoDiagram().kendoEditor().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
+
     return this;
   };
 
@@ -64,7 +80,7 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
     return this;
   };
 
-  KendoConfigBuilder.prototype.kendoButtonGroup = function kendoButtonGroup() {
+  KendoConfigBuilder.prototype.kendoMobileButtonGroup = function kendoMobileButtonGroup() {
     this.resources.push('./buttongroup/buttongroup');
     return this;
   };
@@ -87,7 +103,7 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
     return this;
   };
 
-  KendoConfigBuilder.prototype.kendoCombobox = function kendoCombobox() {
+  KendoConfigBuilder.prototype.kendoComboBox = function kendoComboBox() {
     this.resources.push('./combobox/combobox');
     return this;
   };
@@ -233,7 +249,7 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
     return this;
   };
 
-  KendoConfigBuilder.prototype.kendoScrollView = function kendoScrollView() {
+  KendoConfigBuilder.prototype.kendoMobileScrollView = function kendoMobileScrollView() {
     this.resources.push('./scrollview/scrollview');
     return this;
   };
@@ -268,7 +284,7 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
     return this;
   };
 
-  KendoConfigBuilder.prototype.kendoSwitch = function kendoSwitch() {
+  KendoConfigBuilder.prototype.kendoMobileSwitch = function kendoMobileSwitch() {
     this.resources.push('./switch/switch');
     return this;
   };
@@ -299,7 +315,7 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
     return this;
   };
 
-  KendoConfigBuilder.prototype.kendoToolbar = function kendoToolbar() {
+  KendoConfigBuilder.prototype.kendoToolBar = function kendoToolBar() {
     this.resources.push('./toolbar/toolbar');
     this.resources.push('./toolbar/toolbar-item');
     this.resources.push('./toolbar/toolbar-item-button');
