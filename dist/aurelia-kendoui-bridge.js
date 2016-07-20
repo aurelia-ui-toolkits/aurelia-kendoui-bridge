@@ -1228,8 +1228,14 @@ export class TemplateCompiler {
     // in some cases, templates are compiled when a Kendo control's constructor is called
     // in these cases we get the parent context of the options instead of the
     // widget
-    let $parent = widget._$parent || (widget.options._$parent ? widget.options._$parent[0] : undefined);
-    let viewResources = widget._$resources || (widget.options._$resources ? widget.options._$resources[0] : undefined);
+    let $parent;
+    let viewResources;
+    let $angular = widget.$angular || widget.options.$angular;
+
+    if ($angular) {
+      $parent = $angular[0]._$parent;
+      viewResources = $angular[0]._$resources;
+    }
 
     if (!$parent) return;
 
@@ -1758,8 +1764,7 @@ export class WidgetBase {
     // deepExtend in kendo.core will fail with stack
     // overflow if we don't put it in an array :-\
     Object.assign(allOptions, {
-      _$parent: [options.parentCtx],
-      _$resources: [this.viewResources]
+      $angular: [{ _$parent: options.parentCtx, _$resources: this.viewResources }]
     });
 
 
@@ -1770,8 +1775,10 @@ export class WidgetBase {
     // instantiate the Kendo control
     let widget = this._createWidget(options.element, allOptions, this.controlName);
 
-    widget._$parent = options.parentCtx;
-    widget._$resources = this.viewResources;
+    widget.$angular = [{
+      _$parent: options.parentCtx,
+      _$resources: this.viewResources
+    }];
 
     if (this.withValueBinding) {
       widget.first('change', (args) => this._handleValueChange(args.sender));

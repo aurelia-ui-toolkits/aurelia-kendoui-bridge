@@ -56,8 +56,14 @@ export class TemplateCompiler {
     // in some cases, templates are compiled when a Kendo control's constructor is called
     // in these cases we get the parent context of the options instead of the
     // widget
-    let $parent = widget._$parent || (widget.options._$parent ? widget.options._$parent[0] : undefined);
-    let viewResources = widget._$resources || (widget.options._$resources ? widget.options._$resources[0] : undefined);
+    let $parent;
+    let viewResources;
+    let $angular = widget.$angular || widget.options.$angular;
+
+    if ($angular) {
+      $parent = $angular[0]._$parent;
+      viewResources = $angular[0]._$resources;
+    }
 
     if (!$parent) return;
 

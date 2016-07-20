@@ -127,8 +127,7 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
       }
 
       Object.assign(allOptions, {
-        _$parent: [options.parentCtx],
-        _$resources: [this.viewResources]
+        $angular: [{ _$parent: options.parentCtx, _$resources: this.viewResources }]
       });
 
       if (this.configBuilder.debugMode) {
@@ -137,8 +136,10 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
 
       var widget = this._createWidget(options.element, allOptions, this.controlName);
 
-      widget._$parent = options.parentCtx;
-      widget._$resources = this.viewResources;
+      widget.$angular = [{
+        _$parent: options.parentCtx,
+        _$resources: this.viewResources
+      }];
 
       if (this.withValueBinding) {
         widget.first('change', function (args) {

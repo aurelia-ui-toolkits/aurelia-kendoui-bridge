@@ -1,3 +1,13 @@
+<a name="0.11.9"></a>
+## [0.11.9](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.8...v0.11.9) (2016-07-15)
+
+
+### Bug Fixes
+
+* **templates:** pull parent context and resources of $angular property ([003f56f](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/003f56f))
+
+
+
 <a name="0.11.8"></a>
 ## [0.11.8](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.7...v0.11.8) (2016-06-27)
 

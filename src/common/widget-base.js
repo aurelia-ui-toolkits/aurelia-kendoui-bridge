@@ -166,8 +166,7 @@ export class WidgetBase {
     // deepExtend in kendo.core will fail with stack
     // overflow if we don't put it in an array :-\
     Object.assign(allOptions, {
-      _$parent: [options.parentCtx],
-      _$resources: [this.viewResources]
+      $angular: [{ _$parent: options.parentCtx, _$resources: this.viewResources }]
     });
 
 
@@ -178,8 +177,10 @@ export class WidgetBase {
     // instantiate the Kendo control
     let widget = this._createWidget(options.element, allOptions, this.controlName);
 
-    widget._$parent = options.parentCtx;
-    widget._$resources = this.viewResources;
+    widget.$angular = [{
+      _$parent: options.parentCtx,
+      _$resources: this.viewResources
+    }];
 
     if (this.withValueBinding) {
       widget.first('change', (args) => this._handleValueChange(args.sender));
