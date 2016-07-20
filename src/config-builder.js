@@ -7,17 +7,35 @@ export class KendoConfigBuilder {
   debugMode = false;
   registerRepeatStrategy = true;
 
+
+  /**
+  * Automatically detect which Kendo controls are loaded, and load matching wrappers
+  */
+  detect(): KendoConfigBuilder {
+    if (!kendo) return;
+
+    this.kendoTemplateSupport()
+        .useValueConverters();
+
+    let kendoControls = kendo.widgets.map(w => w.name);
+    for (let i = 0; i < kendoControls.length; i++) {
+      if (this[kendoControls[i]]) {
+        this[kendoControls[i]]();
+      }
+    }
+  }
+
   /**
   * Globally register all Kendo Core wrappers including templating support
   */
   core(): KendoConfigBuilder {
     this.kendoAutoComplete()
       .kendoButton()
-      .kendoButtonGroup()
+      .kendoMobileButtonGroup()
       .kendoCalendar()
       .kendoColorPicker()
       .kendoColorPalette()
-      .kendoCombobox()
+      .kendoComboBox()
       .kendoContextMenu()
       .kendoDropDownList()
       .kendoDateTimePicker()
@@ -35,15 +53,15 @@ export class KendoConfigBuilder {
       .kendoProgressBar()
       .kendoRangeSlider()
       .kendoResponsivePanel()
-      .kendoScrollView()
+      .kendoMobileScrollView()
       .kendoSortable()
       .kendoSlider()
       .kendoSplitter()
-      .kendoSwitch()
+      .kendoMobileSwitch()
       .kendoTabStrip()
       .kendoTemplateSupport()
       .kendoTimePicker()
-      .kendoToolbar()
+      .kendoToolBar()
       .kendoTooltip()
       .kendoValidator()
       .kendoWindow()
@@ -71,6 +89,7 @@ export class KendoConfigBuilder {
       .kendoTreeList()
       .kendoTreeView()
       .kendoUpload();
+
     return this;
   }
 
@@ -131,7 +150,7 @@ export class KendoConfigBuilder {
     return this;
   }
 
-  kendoButtonGroup(): KendoConfigBuilder {
+  kendoMobileButtonGroup(): KendoConfigBuilder {
     this.resources.push('./buttongroup/buttongroup');
     return this;
   }
@@ -154,7 +173,7 @@ export class KendoConfigBuilder {
     return this;
   }
 
-  kendoCombobox(): KendoConfigBuilder {
+  kendoComboBox(): KendoConfigBuilder {
     this.resources.push('./combobox/combobox');
     return this;
   }
@@ -300,7 +319,7 @@ export class KendoConfigBuilder {
     return this;
   }
 
-  kendoScrollView(): KendoConfigBuilder {
+  kendoMobileScrollView(): KendoConfigBuilder {
     this.resources.push('./scrollview/scrollview');
     return this;
   }
@@ -335,7 +354,7 @@ export class KendoConfigBuilder {
     return this;
   }
 
-  kendoSwitch(): KendoConfigBuilder {
+  kendoMobileSwitch(): KendoConfigBuilder {
     this.resources.push('./switch/switch');
     return this;
   }
@@ -366,7 +385,7 @@ export class KendoConfigBuilder {
     return this;
   }
 
-  kendoToolbar(): KendoConfigBuilder {
+  kendoToolBar(): KendoConfigBuilder {
     this.resources.push('./toolbar/toolbar');
     this.resources.push('./toolbar/toolbar-item');
     this.resources.push('./toolbar/toolbar-item-button');
