@@ -1,15 +1,26 @@
 {
-  "title": "Validator",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/validator",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=afc34d59c08c190b706c4f992a05dd50",
-      "files": ["html", "js", "css"]
-    },
-    "custom-validation": {
-      "gist": "https://gist.run/?id=9288bc4984177beeb8f795fc1bfc091f",
-      "files": ["html", "js", "css"]
-    }
-  }
+   "title": "Validator",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/validator",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "4ebce7443e1a6461a8a8d3b1c2c89bfe",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "custom-validation": {
+         "gist": "92695ec465c3338db846cacc6a5cce01",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

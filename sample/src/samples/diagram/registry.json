@@ -1,28 +1,31 @@
 {
-  "title": "Diagram",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/diagram",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=a4c39389ef7ef676b849b2bc8ff7c558"
-    },
-    "built-in-layouts": {
-      "gist": "https://gist.run/?id=71dc6028336b771faa13993a096582b5"
-    },
-    "editing": {
-      "gist": "https://gist.run/?id=da3a2e302ab11cf425cdf7bdecccacb1"
-    },
-    "pdf-export": {
-      "gist": "https://gist.run/?id=fcbf25779a0812166e5e41c58638a55b"
-    },
-    "advanced-export": {
-      "gist": "https://gist.run/?id=298a9e321e0c88484ca7fe0c6b243802"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=a26388350a9615d9439816ce2a81574d"
-    },
-    "api": {
-      "gist": "https://gist.run/?id=d29f930cdc0cff6e0b7e6cf2ca9184f7"
-    }
-  }
+   "title": "Diagram",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/diagram",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "bc01152ddc63bf3bdbcff6aaa341328f"
+      },
+      "built-in-layouts": {
+         "gist": "4cd011a055b1279b0aa5a31491b129df"
+      },
+      "editing": {
+         "gist": "c9e385a852d08f04d7b10c1fa5cdf1ca"
+      },
+      "pdf-export": {
+         "gist": "d191e89a30ed160d7f3ff0dffcb9c91a"
+      },
+      "advanced-export": {
+         "gist": "afb1810a7ca6a099bbff71e4fe31a396"
+      },
+      "events": {
+         "gist": "0c8ebef7d4c76c1c70a6a53ed8305103"
+      },
+      "api": {
+         "gist": "887307d318854f37ca16d13015f96c3a"
+      }
+   }
 }

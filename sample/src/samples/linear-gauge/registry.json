@@ -1,23 +1,42 @@
 {
-  "title": "Linear gauge",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/lineargauge",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=013d092fa8a415ac552737140ef26fc0",
-      "files": ["html", "js", "css"]
-    },
-    "scale-options": {
-      "gist": "https://gist.run/?id=543099a5b688f37be47d7b818be942fa",
-      "files": ["html", "js", "css"]
-    },
-    "multiple-pointers": {
-      "gist": "https://gist.run/?id=1b4feee996872fec8d89c74ee2032e34",
-      "files": ["html", "js", "css"]
-    },
-    "export": {
-      "gist": "https://gist.run/?id=cfaab2b6ba4d828055959b53b47b2aa0",
-      "files": ["html", "js", "css"]
-    }
-  }
+   "title": "Linear gauge",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/lineargauge",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "2b02abaea96bff7889c1e1cad0c7aa2b",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "scale-options": {
+         "gist": "d075f7fc789f52bb0fdd19525507dce7",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "multiple-pointers": {
+         "gist": "582533791b3ff226fe9e204f45fc54ec",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "export": {
+         "gist": "ed29d47aa25767fb5b8feac9c275cca7",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

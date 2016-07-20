@@ -1,38 +1,38 @@
 {
-    "title": "Numeric textbox",
-    "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/numerictextbox",
-    "samples": {
-        "basic-usage": {
-            "route": [
-                "",
-                "basic-usage"
-            ],
-            "gist": "https://gist.run/?id=436f8c28e58e820b4e4ffb2a463c30d2",
-            "files": [
-                "html",
-                "js",
-                "css"
-            ]
-        },
-        "events": {
-            "route": [
-                "events"
-            ],
-            "gist": "https://gist.run/?id=64ed28a7f2c4f6f30134bb247ed365ea",
-            "files": [
-                "html",
-                "js"
-            ]
-        },
-        "api": {
-            "route": [
-                "api"
-            ],
-            "gist": "https://gist.run/?id=a1f9412a990f22c4afd499b1ab50d2b2",
-            "files": [
-                "html",
-                "js"
-            ]
-        }
-    }
+   "title": "Numeric textbox",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/numerictextbox",
+   "samples": {
+      "basic-usage": {
+         "route": [
+            "",
+            "basic-usage"
+         ],
+         "gist": "f22b873321e4bf94c32b9ced555e3971",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "events": {
+         "route": [
+            "events"
+         ],
+         "gist": "769412be8660cddeefcaa1bb99df70af",
+         "files": [
+            "html",
+            "js"
+         ]
+      },
+      "api": {
+         "route": [
+            "api"
+         ],
+         "gist": "6fbeb6426db3559ee315b09374b1db3c",
+         "files": [
+            "html",
+            "js"
+         ]
+      }
+   }
 }

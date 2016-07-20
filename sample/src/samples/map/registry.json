@@ -1,32 +1,39 @@
 {
-  "title": "Map",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/map",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=27ab859f98eda4a50b69e62a8f7f476a"
-    },
-    "api": {
-      "gist": "https://gist.run/?id=7c3e86216571cd9072007a20e27c8955"
-    },
-    "binding-markers-to-remote-data": {
-      "gist": "https://gist.run/?id=c21ca7d41dd3863f11fab8015beb81f4"
-    },
-    "bing-tile-layer": {
-      "gist": "https://gist.run/?id=69612daf2b5fabb1c402d9ff45553394"
-    },
-    "bubble-layer": {
-      "gist": "https://gist.run/?id=51da5a17a99bd869725a908d2f4134d2",
-      "files": ["html", "js", "md"]
-    },
-    "binding-to-geojson": {
-      "gist": "https://gist.run/?id=9c4a057fcb9f38bfa3f4704094adf709"
-    },
-    "export": {
-      "gist": "https://gist.run/?id=4ae54547b837816c0d4180c5551a9bea"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=2f08f2b4f6cf7e1873c821daf06f0443"
-    }
-  }
+   "title": "Map",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/map",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "1435787ccfa311c3c5442aceff200d65"
+      },
+      "api": {
+         "gist": "7676f046b64ee8e7d4d6da14befdbf79"
+      },
+      "binding-markers-to-remote-data": {
+         "gist": "6c5d62de3281897848180a8da26d824c"
+      },
+      "bing-tile-layer": {
+         "gist": "ded5a645f7695174f2b08eae9b8865c2"
+      },
+      "bubble-layer": {
+         "gist": "d4582c2f8d34c57358e111cacd2f9157",
+         "files": [
+            "html",
+            "js",
+            "md"
+         ]
+      },
+      "binding-to-geojson": {
+         "gist": "9f8ab746a623a16b60d5612149f39951"
+      },
+      "export": {
+         "gist": "9842f5d28da69e4a968c7f63c4127a8f"
+      },
+      "events": {
+         "gist": "c42ca5e0aa6c52d0af65f164a644f7e2"
+      }
+   }
 }

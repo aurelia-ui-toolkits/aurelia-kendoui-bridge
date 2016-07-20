@@ -1,36 +1,67 @@
 {
-  "title": "Sortable",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/sortable",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=c488531cb470b1b285b89f96bd13a68e",
-      "files": ["html", "js", "css"]
-    },
-    "disable-items": {
-      "title": "Filter / Disable items",
-      "gist": "https://gist.run/?id=55074152e10d8fbcd92bb882ce51dada",
-      "files": ["html", "js", "css"]
-    },
-    "handlers": {
-      "gist": "https://gist.run/?id=03d459858bd34b95b532f5baa6995840",
-      "files": ["html", "js", "css"]
-    },
-    "axis-constraints": {
-      "gist": "https://gist.run/?id=1794d942998359efc745b64f4d0a8ba7",
-      "files": ["html", "js", "css"]
-    },
-    "linked-lists": {
-      "gist": "https://gist.run/?id=05ee7390bdfa0c5941bc9173f326ffd6",
-      "files": ["html", "js", "css"]
-    },
-    "events": {
-      "gist": "https://gist.run/?id=a28467c83d6f0e42cb680461b22d2998",
-      "files": ["html", "js", "css"]
-    },
-    "sortable-panels": {
-      "gist": "https://gist.run/?id=b2193b1518b0ebaa2b1867f563827dda",
-      "files": ["html", "js", "css"]
-    }
-  }
+   "title": "Sortable",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/sortable",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "90d5fefd37ee4a406e8078fd93650e02",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "disable-items": {
+         "title": "Filter / Disable items",
+         "gist": "e651119fab211f5c1bac06fa2ca39573",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "handlers": {
+         "gist": "f01c824da3ca27c356da2e558b7ea54e",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "axis-constraints": {
+         "gist": "34a3f122ee1c9f70055bcb2cf30812e4",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "linked-lists": {
+         "gist": "bfd9ff2983e540f2eb8214afbf8a25d5",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "events": {
+         "gist": "6321819c9a494ecafcc94e8b09778fd6",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "sortable-panels": {
+         "gist": "87140059bfc140a770e9b7c356508b88",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

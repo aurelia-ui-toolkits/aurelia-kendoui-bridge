@@ -1,19 +1,34 @@
 {
-  "title": "Slider",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/slider",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=09803c150a2c9b6cce9ef48aa7b0edd7",
-      "files": ["html", "js", "css"]
-    },
-    "events": {
-      "gist": "https://gist.run/?id=e303d2530bbf99063bc27dfb80ba1714",
-      "files": ["html", "js", "css"]
-    },
-    "api": {
-      "gist": "https://gist.run/?id=a3645bc701d1672372ffe3f9912a2e0a",
-      "files": ["html", "js", "css"]
-    }
-  }
+   "title": "Slider",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/slider",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "387c43948dc83acf59ea3497472bdfe9",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "events": {
+         "gist": "d5ff55833b1ffb94745802445c4a9487",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "api": {
+         "gist": "0bb0207877b5b27692d5e139e91f6bf8",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

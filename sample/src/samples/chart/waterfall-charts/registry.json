@@ -1,20 +1,27 @@
 {
-  "title": "Waterfall charts",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=37f7612660bd26de51e017b90db3b124"
-    },
-    "binding-to-local-data": {
-      "gist": "https://gist.run/?id=5539d3ed14d6a9e4948cb7fcd5276e6b",
-      "files": ["html", "js", "json"]
-    },
-    "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=93e78f02941a7b30588e4cc08daa425d"
+   "title": "Waterfall charts",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "b776d58c732e2ae0023446a8fd9d87ff"
       },
-    "horizontal-waterfall": {
-      "gist": "https://gist.run/?id=3684d116c0c820962b7350506c07fff8"
-    }
-  }
+      "binding-to-local-data": {
+         "gist": "d6166d32b0de5ff2c6a535d7a9f4df1e",
+         "files": [
+            "html",
+            "js",
+            "json"
+         ]
+      },
+      "binding-to-remote-data": {
+         "gist": "2714095a3106da42f9cbab4fe7798fc3"
+      },
+      "horizontal-waterfall": {
+         "gist": "e8c54329e09c97617f0cd5f1f1d67abe"
+      }
+   }
 }

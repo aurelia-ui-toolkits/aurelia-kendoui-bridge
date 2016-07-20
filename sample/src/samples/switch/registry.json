@@ -1,15 +1,26 @@
 {
-  "title": "Switch",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/mobile/ui/switch",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=473c7b748278d9a95e1a2f721fd5f8ee",
-      "files": ["html", "js", "css"]
-    },
-    "value-binding": {
-      "gist": "https://gist.run/?id=feef053f09dd15d1ec2a21de772a2dbc",
-      "files": ["html", "js", "css"]
-    }
-  }
+   "title": "Switch",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/mobile/ui/switch",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "0bf7f350645b621fdd03b034850bfb5d",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "value-binding": {
+         "gist": "4b02a8822a0c2847815eb166a242409c",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

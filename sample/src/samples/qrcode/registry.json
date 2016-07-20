@@ -1,15 +1,26 @@
 {
-  "title": "QR Code",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/qrcode",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=d0d51412edade0882e3969b0f5e742eb",
-      "files": ["html", "js", "css"]
-    },
-    "api": {
-      "gist": "https://gist.run/?id=c0b057ab951fb6b05431b627cef596ce",
-      "files": ["html", "js", "css"]
-    }
-  }
+   "title": "QR Code",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/qrcode",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "4228ea8ae2900dde0d161585f737a9f8",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "api": {
+         "gist": "c3244f0c4846b6f8815172f21a1af126",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

@@ -20,6 +20,10 @@ export class SampleRunner {
 
     this.sample = sample;
 
+    if (this.sample.gist) {
+      this.sample.gist = `https://gist.run/?id=${this.sample.gist}`;
+    }
+
     this.unsubscribe = this.ea.subscribe('kendo:skinChange', () => this.restart());
   }
 

@@ -1,16 +1,19 @@
 {
-  "title": "Donut charts",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=239f3a0b890a605b192fabf6ab48607f"
-    },
-    "binding-to-local-data": {
-      "gist": "https://gist.run/?id=40af391c678fc2c5eb78ed9e065d9319"
-    },
-    "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=2c3e1c7ecd471b484c58e9047284fe5c"
-    }
-  }
+   "title": "Donut charts",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "6539bb554f5d4bd29c8ec8d8f457b9d4"
+      },
+      "binding-to-local-data": {
+         "gist": "51083c854c97e4186698e360bbd365ea"
+      },
+      "binding-to-remote-data": {
+         "gist": "9186bff1dd24ca2ea193a809f02e96a1"
+      }
+   }
 }

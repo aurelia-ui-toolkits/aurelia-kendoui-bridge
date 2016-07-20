@@ -1,38 +1,38 @@
 {
-    "title": "DateTimePicker",
-    "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/datetimepicker",
-    "samples": {
-        "basic-usage": {
-            "route": [
-                "",
-                "basic-usage"
-            ],
-            "gist": "https://gist.run/?id=7c6ea3d34b2245dd89112e0f9da80375"
-        },
-        "range-selection": {
-            "gist": "https://gist.run/?id=cbefccaa09d274f190f2ee98e5f27dc7"
-        },
-        "customizing-templates": {
-            "gist": "https://gist.run/?id=6d32addbfc57aadf1b5ab60d3dec41a1",
-            "files": [
-                "html",
-                "js",
-                "css"
-            ]
-        },
-        "events": {
-            "gist": "https://gist.run/?id=83437c2a8caa10a6837d4c1dc3ccd05a"
-        },
-        "api": {
-            "gist": "https://gist.run/?id=fd9398e4a078a2186bdee40dc847fd8d",
-            "files": [
-                "html",
-                "js",
-                "css"
-            ]
-        },
-        "disable-dates": {
-            "gist": "https://gist.run/?id=b4d15c6e029d9132199c58ab2c634360"
-        }
-    }
+   "title": "DateTimePicker",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/datetimepicker",
+   "samples": {
+      "basic-usage": {
+         "route": [
+            "",
+            "basic-usage"
+         ],
+         "gist": "516ba5f537c7bc127745b837e5436fe2"
+      },
+      "range-selection": {
+         "gist": "b5fb73e8d3ea379df3c6dcb4b12cdb23"
+      },
+      "customizing-templates": {
+         "gist": "ffaf00ea31be44d5ffb362e50b6d7e61",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "events": {
+         "gist": "34bf2ff76c0d0a34bae6ff4bcdb2187a"
+      },
+      "api": {
+         "gist": "edfaa3a0f7e6228132c73402c5b787bc",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "disable-dates": {
+         "gist": "1f971bb5ebf8c3c844ad0bad88071a20"
+      }
+   }
 }

@@ -1,23 +1,30 @@
 {
-  "title": "Toolbar",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/tooltip",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=64554150080b00714a51153ae26d2f70"
-    },
-    "resize": {
-      "gist": "https://gist.run/?id=c4e0cd1ac841df50c4eca1f2c059a5ff"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=1d5ff9f9b881b192b1f57d382500fa3c"
-    },
-    "api": {
-      "gist": "https://gist.run/?id=d70e7b1821e1729e6492d5b1bb962e99"
-    },
-    "integration-with-editors": {
-      "gist": "https://gist.run/?id=e3e566d4d30e90dd9aabfb8b01e3c060",
-      "files": ["html", "js", "css"]
-    }
-  }
+   "title": "Toolbar",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/tooltip",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "fa40f5e95d562ded1a7afbd3ca2af4ef"
+      },
+      "resize": {
+         "gist": "e4fdb0ce971e435f535bfc224fe5970b"
+      },
+      "events": {
+         "gist": "1e6cc4a04a1ccb49e2263bfb9829768e"
+      },
+      "api": {
+         "gist": "1b3e340791fdbfa3499eb29c72ca70c7"
+      },
+      "integration-with-editors": {
+         "gist": "480d780896549dfa3823f3d81ca909a8",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

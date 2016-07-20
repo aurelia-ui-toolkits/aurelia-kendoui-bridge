@@ -1,18 +1,29 @@
 {
-  "title": "RangeSlider",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/rangeslider",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=4369fd378ea3599160d10800960984b1"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=4240b83bc225374bd3dd8aee06b63cc7",
-      "files": ["html", "js", "css"]
-    },
-    "api": {
-      "gist": "https://gist.run/?id=172b2f6b5bfdbdd7be9e21d9cd6ada25",
-      "files": ["html", "js", "css"]
-    }
-  }
+   "title": "RangeSlider",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/rangeslider",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "7b1e9faa95abc70758d238d06c254eb1"
+      },
+      "events": {
+         "gist": "1af0265763f8022469287faa8c0b6cd8",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "api": {
+         "gist": "8d6174d8c625ded9355d8992c71e9cb3",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

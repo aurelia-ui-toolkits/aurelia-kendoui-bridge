@@ -1,33 +1,39 @@
 {
-  "title": "ComboBox",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/combobox",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=95abaa46cdb41dcc1394a2f86636bbd6"
-    },
-    "api": {
-      "title": "API",
-      "gist": "https://gist.run/?id=30b332f7f22748609a8dba0cef45a593"
-    },
-    "cascading-combobox": {
-      "gist": "https://gist.run/?id=9874fbf5283d4f2c6c9c770295c4eca8"
-    },
-    "customizing-templates": {
-      "gist": "https://gist.run/?id=18348665770acaec9fd0d8c0337e4d68",
-      "files": ["html", "js", "css"]
-    },
-    "grouping": {
-      "gist": "https://gist.run/?id=63324e7cb00585679386a6e656512770"
-    },
-    "server-filtering": {
-      "gist": "https://gist.run/?id=2ba4aef2ff6b954878b8316efc454745"
-    },
-    "virtualization": {
-      "gist": "https://gist.run/?id=0163326527dfc2ce54c077103467c764"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=6d063b505ad91a6f98536fcbed13af6d"
-    }
-  }
+   "title": "ComboBox",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/combobox",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ]
+      },
+      "api": {
+         "title": "API",
+         "gist": "492bbae5065f4c41ea63a4ea30bbb130"
+      },
+      "cascading-combobox": {
+         "gist": "9684cd63be624b459aff9fa960b9a0a4"
+      },
+      "customizing-templates": {
+         "gist": "8e5ba644672f1f9e5343e20cba8521c3",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "grouping": {
+         "gist": "6eca8fe719a3ac01998fc2449b3e0376"
+      },
+      "server-filtering": {
+         "gist": "cccfced2d934b47428cfb66225f7ca69"
+      },
+      "virtualization": {
+         "gist": "19dc80f295a5c0a012988e679d938e86"
+      },
+      "events": {
+         "gist": "81feb1b3bc970ceb7755700f78d65eb9"
+      }
+   }
 }

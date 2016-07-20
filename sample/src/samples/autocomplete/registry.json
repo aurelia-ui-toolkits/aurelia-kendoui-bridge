@@ -1,37 +1,48 @@
 {
-  "title": "Autocomplete",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=fa0f189d809a9577661e861b27c5a15e"
-    },
-    "api": {
-      "title": "API",
-      "gist": "https://gist.run/?id=80e5b934a8c696934301ae86e7cc2070",
-      "files": ["html", "js", "css"]
-    },
-    "customizing-templates": {
-      "gist": "https://gist.run/?id=b926d8d58a7f38e6c00dae1a4ca626d7",
-      "files": ["html", "js", "css"]
-    },
-    "events": {
-      "gist": "https://gist.run/?id=d8965c0f8e7f2ac747fca9c7dc7189f6"
-    },
-    "server-filtering": {
-      "gist": "https://gist.run/?id=acd80c1a535217e1dbee32153942ace0"
-     },
-    "virtualization": {
-      "gist": "https://gist.run/?id=bbcb2cbf2a2db6edd7adab2054c3779a"
-     },
-    "grouping": {
-      "gist": "https://gist.run/?id=78f1e9f838e6b83a631dfa43776b526a"
-    },
-    "value-binding": {
-      "gist": "https://gist.run/?id=6e0824daeeaa3098c4829ec07119eb21"
-    },
-    "highlighting": {
-      "gist": "https://gist.run/?id=3802d4c3bccb13a7d9f8dda5060192e3"
-    }
-  }
+   "title": "Autocomplete",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/autocomplete",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "0ddb2e1d4ff26b988382c9150d4fc475"
+      },
+      "api": {
+         "title": "API",
+         "gist": "55999353554add4f866b26481f0ad555",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "customizing-templates": {
+         "gist": "f4755c3c68dab68260647851ff9e52a0",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "events": {
+         "gist": "625fc6a733b599fa9374d732ae5e696d"
+      },
+      "server-filtering": {
+         "gist": "65f25b1fb2e07ec4e2749d21136650e7"
+      },
+      "virtualization": {
+         "gist": "1abf5f5fbb4d3e1306385506bc676aff"
+      },
+      "grouping": {
+         "gist": "5da30e9c363cf37fe3e313476a65edb4"
+      },
+      "value-binding": {
+         "gist": "ba981cf9b774273a75bb6a4dedf21190"
+      },
+      "highlighting": {
+         "gist": "078dec4fe353ff9214ef6d5ee0e091a7"
+      }
+   }
 }

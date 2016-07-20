@@ -1,21 +1,31 @@
 {
-  "title": "Splitter",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/splitter",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=6bfb62ec43d3cd933ce366224e655e7c",
-      "files": ["html", "js", "css"]
-    },
-    "ajax": {
-      "gist": "https://gist.run/?id=055662d1928402b84bbdf6efc5f20ce5"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=c0162f69c1b0c4a9daf1726cd89f51fd"
-    },
-    "api": {
-      "gist": "https://gist.run/?id=26dadec1cf9f6f1e1ede3f4779803afa",
-      "files": ["html", "js"]
-    }
-  }
+   "title": "Splitter",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/splitter",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "0f1b37211ebeff0e9b9754239633ae32",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "ajax": {
+         "gist": "980dc69f6cc998880d4c4ee2357ac4a9"
+      },
+      "events": {
+         "gist": "4f25e0246d873c2525dae55db2184127"
+      },
+      "api": {
+         "gist": "0a2b41ef3b3c749a5b182f72360258ac",
+         "files": [
+            "html",
+            "js"
+         ]
+      }
+   }
 }

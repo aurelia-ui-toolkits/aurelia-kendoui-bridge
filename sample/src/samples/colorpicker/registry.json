@@ -1,26 +1,42 @@
 {
-  "title": "Color Picker",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/colorpicker",
-  "samples": {
-    "basic-use": {
-      "default": true,
-      "gist": "https://gist.run/?id=b6df3fa3d9e8547775707cd499b6f2a2",
-      "files": ["html", "js", "css"]
-    },
-    "flat": {
-      "title": "Flat color picker",
-      "gist": "https://gist.run/?id=489e117058a68a7607c3691b81cb2ee0",
-      "files": ["html", "js", "css"]
-    },
-    "standalone": {
-      "title": "Standalone Palette",
-      "gist": "https://gist.run/?id=3c74fb120502980cdafd2c525bd698e3",
-      "files": ["html", "js", "css"]
-    },
-    "api": {
-      "title": "API",
-      "gist": "https://gist.run/?id=a3ba206bdadcda9d67b94690daf5420d",
-      "files": ["html", "js", "css"]
-    }
-  }
+   "title": "Color Picker",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/colorpicker",
+   "samples": {
+      "basic-use": {
+         "default": true,
+         "gist": "a346680615fca14ec68b94b0c3a47e01",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "flat": {
+         "title": "Flat color picker",
+         "gist": "cae4c7b65d72a7afeee276895bea93e3",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "standalone": {
+         "title": "Standalone Palette",
+         "gist": "ad93cc5a267e9705b4c9c90da8702613",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "api": {
+         "title": "API",
+         "gist": "7209cb103dd9b943360c715a5812db3d",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

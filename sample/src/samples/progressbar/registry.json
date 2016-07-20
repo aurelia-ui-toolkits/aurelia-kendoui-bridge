@@ -1,28 +1,43 @@
 {
-  "title": "Progress Bar",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/progressbar",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=7fdeb79002a8fc2e4bea06f05f75bb96"
-    },
-    "chunk-progressbar": {
-      "gist": "https://gist.run/?id=b48600258276b21693c902ad5a1f7fb4",
-      "files": ["html", "js", "css"]
-    },
-    "vertical-progressbar": {
-      "gist": "https://gist.run/?id=7c5d50a177e3588cbd5b7a597f130232",
-      "files": ["html", "js", "css"]
-    },
-    "custom-label": {
-      "gist": "https://gist.run/?id=96b4f8944be6c893971470734b9a6fbc",
-      "files": ["html", "js", "css"]
-    },
-    "events": {
-      "gist": "https://gist.run/?id=dd132cf7d105dea66d1547d2d9afbb5d"
-    },
-    "api": {
-      "gist": "https://gist.run/?id=edbd305018f7a8177653203d034e2e81"
-    }
-  }
+   "title": "Progress Bar",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/progressbar",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "2294b53ecebadbe3ddb72ef787b5b2b0"
+      },
+      "chunk-progressbar": {
+         "gist": "34be04685e21ad9daf0347ac1b21c32b",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "vertical-progressbar": {
+         "gist": "25bf4ea0079009a030cf32c8c2cc2adc",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "custom-label": {
+         "gist": "df1c55ea36ef1b57aeb55c130301efca",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "events": {
+         "gist": "3095c073db09fc1b780f7d043fc5f516"
+      },
+      "api": {
+         "gist": "c21b49a2bb4a72289a3fe30776714484"
+      }
+   }
 }

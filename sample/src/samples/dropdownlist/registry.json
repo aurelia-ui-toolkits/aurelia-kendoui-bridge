@@ -1,38 +1,39 @@
 {
-  "title": "DropDownList",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/dropdownlist",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=1fdc29ef6e09b4c6e1d22c2f725909b1"
-    },
-    "api": {
-      "title": "API",
-      "gist": "https://gist.run/?id=ba1d5c88b1c08537f62f1f4d05aac6c3"
-    },
-    "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=d16a5eaa8711f7dc3156f4c6ade6ffcb"
-    },
-    "cascading-dropdownlist": {
-      "gist": "https://gist.run/?id=b80f560cab1293c474857e5c2ca694dc"
-    },
-    "customizing-templates": {
-      "gist": "https://gist.run/?id=4ce374162dbf3b57228e63f781ec6c61"
-    },
-    "grouping": {
-      "gist": "https://gist.run/?id=b528d223d96a1c63afb0100d9c3831b2"
-    },
-    "server-filtering": {
-      "gist": "https://gist.run/?id=bb07db0b850901a9b9a7e3e56d203632"
-    },
-    "virtualization": {
-      "gist": "https://gist.run/?id=3cef1d31000952022cac6bf76183dcea"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=6cf2426d5f0224b3a02dfedb21acc816"
-    },
-    "datasource": {
-      
-    }
-  }
+   "title": "DropDownList",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/dropdownlist",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "4fdf47666ebe68f91c4450147ea27db4"
+      },
+      "api": {
+         "title": "API",
+         "gist": "438d68bc6e699aa469bd64ba87445b9b"
+      },
+      "binding-to-remote-data": {
+         "gist": "e65e518c38113c9eb95c2680890effa6"
+      },
+      "cascading-dropdownlist": {
+         "gist": "58c07d12a001ddb35900e9a93029fa7b"
+      },
+      "customizing-templates": {
+         "gist": "b94d4f9c68e1ace4cbaf417ccd581f29"
+      },
+      "grouping": {
+         "gist": "0e26beac89215fbaf4e5081f625bb05b"
+      },
+      "server-filtering": {
+         "gist": "34ab660c471686afb8617123b328e2dc"
+      },
+      "virtualization": {
+         "gist": "4acd16e5c3767a79346f649ad86baf1c"
+      },
+      "events": {
+         "gist": "e6175d8db7adcbd7f7385a92434df6eb"
+      },
+      "datasource": {}
+   }
 }

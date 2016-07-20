@@ -1,36 +1,59 @@
 {
-  "title": "Menu",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/menu",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=09176e19cbf820af33aaa439c392daa8",
-      "files": ["html", "js", "css"]
-    },
-    "images": {
-      "gist": "https://gist.run/?id=326b30a5e035842c8c780aa487378888",
-      "files": ["html", "js", "css"]
-    },
-    "direction": {
-      "gist": "https://gist.run/?id=f1fd9861f470dcab75c908f53903b497"
-    },
-    "orientation": {
-      "gist": "https://gist.run/?id=c16c687b108612b8998855459d933e95"
-    },
-    "animation-effects": {
-      "gist": "https://gist.run/?id=f6d569643b780d080e444d191e4ea174"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=c3f4d3f5dbcd340184871c965e8f7324",
-      "files": ["html", "js", "css"]
-    },
-    "api": {
-      "gist": "https://gist.run/?id=af1ffe35ff1d155f7bdda8d2833e1e28",
-      "files": ["html", "js", "css"]
-    },
-    "context-menu": {
-      "gist": "https://gist.run/?id=dab3f56b4a1b072e207dd7bb8eb10b5e",
-      "files": ["html", "js", "css"]
-    }
-  }
+   "title": "Menu",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/menu",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "c411702f31dc03bf4ba17324d1b20cdb",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "images": {
+         "gist": "f3d4551ab3cda74ccb095a74e25edb8e",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "direction": {
+         "gist": "d4a0dc1f22e5bea9d7207da9e0e04b63"
+      },
+      "orientation": {
+         "gist": "4b5263ae26a1819668abd906ddb27477"
+      },
+      "animation-effects": {
+         "gist": "0864f364a041ec566d77fe740a0d7fb6"
+      },
+      "events": {
+         "gist": "fbb306bd43b15402fd1e808197029cab",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "api": {
+         "gist": "b263b228d69d6af197479ae3410fd98c",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "context-menu": {
+         "gist": "e09e3e4c04c59db383deb09a8a7e0fe7",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

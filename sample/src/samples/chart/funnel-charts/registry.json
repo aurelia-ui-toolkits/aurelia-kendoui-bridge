@@ -1,20 +1,27 @@
 {
-  "title": "Funnel charts",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=8dee55476663dde3777f3aaadc180efa",
-      "files": ["js", "html", "css"]
-    },
-    "funnel-labels": {
-      "gist": "https://gist.run/?id=c43caff4c16b5dae4a14efc8088cd092"
-    },
-    "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=9ed35bc9840a85ec1cabbc1f2f0188ba"
-    },
-    "binding-to-local-data": {
-      "gist": "https://gist.run/?id=70140b2b877aa75f19d40e20b51da320"
-    }
-  }
+   "title": "Funnel charts",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "4f64b4d5396df91f5d8b6c209357c868",
+         "files": [
+            "js",
+            "html",
+            "css"
+         ]
+      },
+      "funnel-labels": {
+         "gist": "7d44c56717d3cd5e07265ca7c2b69772"
+      },
+      "binding-to-remote-data": {
+         "gist": "9dab6cc0dc524464c39c231fa9ceca04"
+      },
+      "binding-to-local-data": {
+         "gist": "8549645736fbb111e7ffc18e00904351"
+      }
+   }
 }

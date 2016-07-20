@@ -1,36 +1,45 @@
 {
-  "title": "Editor",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/editor",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=79ac5fbd4619b7f09f54496de330be25",
-      "files": ["html", "js"]
-    },
-    "api": {
-      "gist": "https://gist.run/?id=93d2b44ac99bebcb80fac1bf78ca57ca",
-      "files": ["html", "js"]
-    },
-    "custom-tools": {
-      "gist": "https://gist.run/?id=acc7572977807fbed7779d4105dea703"
-    },
-    "file-and-image-browser": {
-      "gist": "https://gist.run/?id=a5f2877c89beea7ad7baca5d8641a7ec"
-    },
-    "all-tools": {
-      "gist": "https://gist.run/?id=164b2718d8d561c7e45ac26ef6b27cd6"
-    },
-    "snippets": {
-      "gist": "https://gist.run/?id=1ae081e5181e150d6f8794cd9eefe0b6"
-    },
-    "styles": {
-      "gist": "https://gist.run/?id=f8653080b065a2a4d0b106736a54d5b4"
-    },
-    "pdf-export": {
-      "gist": "https://gist.run/?id=083450b048abb2c519abf2f09691230d"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=69de0133668126d26b8d4a09a2b4aa62"
-    }
-  }
+   "title": "Editor",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/editor",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "79510f53f025ecd6994d783b0c4d8ad2",
+         "files": [
+            "html",
+            "js"
+         ]
+      },
+      "api": {
+         "gist": "03238b0c321bab00edd951ab569d27c9",
+         "files": [
+            "html",
+            "js"
+         ]
+      },
+      "custom-tools": {
+         "gist": "02a18e555bee18001337aa6f6c709845"
+      },
+      "file-and-image-browser": {
+         "gist": "0108bb40e8a786d0a316fb80f45f51cf"
+      },
+      "all-tools": {
+         "gist": "8b661da8c4d5e9297a48e2ffb2100410"
+      },
+      "snippets": {
+         "gist": "38a390751c156d8f05f2c1ed1783ceee"
+      },
+      "styles": {
+         "gist": "b07a96429d24acaca3c7fd9d0b8aed76"
+      },
+      "pdf-export": {
+         "gist": "52e661cfdcccec310fbd0a416c0f998b"
+      },
+      "events": {
+         "gist": "b211b41c2f5a3ee1b4c9f3f4364e3bf8"
+      }
+   }
 }

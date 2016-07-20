@@ -1,35 +1,54 @@
 {
-  "title": "Tabstrip",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/tabstrip",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=59f4cbf39323e9581de9d644d12258f4",
-      "files": ["html", "js", "css"]
-    },
-    "images": {
-      "gist": "https://gist.run/?id=887b6b87c95147b2d0b9d1be6ddbd4b3",
-      "files": ["html", "js", "css"]
-    },
-    "ajax": {
-      "gist": "https://gist.run/?id=2a08be59d7349e6b82938afb37967402",
-      "files": ["html", "js", "css"]
-    },
-    "animation-effects": {
-      "gist": "https://gist.run/?id=e9a11c8cfc19930a9513ecdd0cbf7cd4"
-    },
-    "tab-position": {
-      "gist": "https://gist.run/?id=213083bb4cd53c97bdd98999020a9fe4"
-    },
-    "scrollable-tabs": {
-      "gist": "https://gist.run/?id=c6afbdfc8ea2d20954cd616b2bfe110e"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=5aa34a94bc5591f5a3c676607559f28e",
-      "files": ["html", "js", "css"]
-    },
-    "api": {
-      "gist": "https://gist.run/?id=dbc27765015c120bee18cab55dafe90e"
-    }
-  }
+   "title": "Tabstrip",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/tabstrip",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "3b593204e96e3de1cc205f1f39a110f0",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "images": {
+         "gist": "cf625818c800a840670c5e5d7ed7ee43",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "ajax": {
+         "gist": "771745f94cfab7906a0a79d56bc811af",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "animation-effects": {
+         "gist": "9d9f8fb4f39857a792467f01f7309ca0"
+      },
+      "tab-position": {
+         "gist": "44305bac1309de4e2cfd3fb5b095db09"
+      },
+      "scrollable-tabs": {
+         "gist": "7c4cc79ffc31022306befadb93d01256"
+      },
+      "events": {
+         "gist": "f9a7d23255d92aa1c7934791776e3932",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "api": {
+         "gist": "6bd03e516104c53fd57e1f47e47cf183"
+      }
+   }
 }

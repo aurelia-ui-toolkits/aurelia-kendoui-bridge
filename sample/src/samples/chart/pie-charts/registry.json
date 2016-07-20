@@ -1,20 +1,27 @@
 {
-  "title": "Pie charts",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=865b4c67ebee175afae6cebf13c5e545"
-    },
-    "pie-labels": {
-      "gist": "https://gist.run/?id=39eed857799371aa61aa2c764cefae43"
-    },
-    "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=c80e92006779e789fac04e4590b6beb8",
-      "files": ["html", "js", "css"]
-    },
-    "binding-to-local-data": {
-      "gist": "https://gist.run/?id=304535e166674f76765b0ba98ba27d0a"
-    }
-  }
+   "title": "Pie charts",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "e23348dda7d4972798d9831aeb0e6800"
+      },
+      "pie-labels": {
+         "gist": "5379a2bf2384478063223b2474d1ac10"
+      },
+      "binding-to-remote-data": {
+         "gist": "e750c35511eb82de377b5a96536de877",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "binding-to-local-data": {
+         "gist": "37db556f603db39caa055d06eda691ca"
+      }
+   }
 }

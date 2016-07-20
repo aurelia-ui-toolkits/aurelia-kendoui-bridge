@@ -1,26 +1,33 @@
 {
-  "title": "Radar charts",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
-  "samples": {
-    "radar-line": {
-      "route": ["", "radar-line"],
-      "gist": "https://gist.run/?id=5acf41abd95e126f864a0721facc4d2c"
-    },
-    "binding-to-local-data": {
-      "gist": "https://gist.run/?id=a165f9f448474bb5eb897bac28bc7b8c",
-      "files": ["html", "js", "json"]
-    },
-    "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=20c036001e63b0df53878e8122561ca8"
-    },
-    "binding-to-grouped-data": {
-      "gist": "https://gist.run/?id=3a8e9586890e435ddeaf4f6bc354a0be"
-    },
-    "radar-area": {
-      "gist": "https://gist.run/?id=f15b13d37c70ad305ba0649a49df5403"
-    },
-    "smooth-radar-line": {
-      "gist": "https://gist.run/?id=07763d39fc5b8eb1c46f43a9e869161b"
-    }
-  }
+   "title": "Radar charts",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
+   "samples": {
+      "radar-line": {
+         "route": [
+            "",
+            "radar-line"
+         ],
+         "gist": "8fc2711dc42bc80153108510ebe75b64"
+      },
+      "binding-to-local-data": {
+         "gist": "83b82d2724a8a708de370c712e8149df",
+         "files": [
+            "html",
+            "js",
+            "json"
+         ]
+      },
+      "binding-to-remote-data": {
+         "gist": "51f56906397adebd1f2ff0e24245ba97"
+      },
+      "binding-to-grouped-data": {
+         "gist": "49a5bcc317dfc06ffe357a55431da200"
+      },
+      "radar-area": {
+         "gist": "34c7af10d93e8f567b8d4a2cb08e2535"
+      },
+      "smooth-radar-line": {
+         "gist": "f3e2c5797397d49cd1ed438c6dba34af"
+      }
+   }
 }

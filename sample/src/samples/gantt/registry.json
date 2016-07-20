@@ -1,29 +1,37 @@
 {
-  "title": "Gantt",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=32c876b9a797ee0c3d85a1cc13a44e47"
-    },
-    "column-resizing": {
-      "gist": "https://gist.run/?id=8549a2f098a0ca2fc29715d9c72abd7b"
-    },
-    "exporting-to-pdf": {
-      "gist": "https://gist.run/?id=10e6b3232a41023cb05f4a5f55e2a5a0"
-    },
-    "resources": {
-      "gist": "https://gist.run/?id=c0012982e1549e775b747c029b205823"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=ef6c3e961e9ea3ee8469a65e5e0f1701"
-    },
-    "api": {
-      "gist": "https://gist.run/?id=35e6008a4c8146530269b99ef6019e8d"
-    },
-    "task-template": {
-      "gist": "https://gist.run/?id=3a0b210397a0e102d28a14acbf4cef07",
-      "files": ["html", "js", "css", "md"]
-    }
-  }
+   "title": "Gantt",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/gantt",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "f7eaf5528c06fdbb5ebe6cbf4d6c21e5"
+      },
+      "column-resizing": {
+         "gist": "71f1b6ca77e282dc43f549be3cb79692"
+      },
+      "exporting-to-pdf": {
+         "gist": "c8a1a93ebfd08961d108bc77c491981f"
+      },
+      "resources": {
+         "gist": "6731b9a965df22f94f536a654a6162ac"
+      },
+      "events": {
+         "gist": "c0ec0e60b047077fd5dfd216fbd6c836"
+      },
+      "api": {
+         "gist": "fd1ea515c9bae370097b3306943486d4"
+      },
+      "task-template": {
+         "gist": "db74cce84384a9fb81084c24b6c32254",
+         "files": [
+            "html",
+            "js",
+            "css",
+            "md"
+         ]
+      }
+   }
 }

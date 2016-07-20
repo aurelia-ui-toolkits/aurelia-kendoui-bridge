@@ -1,9 +1,12 @@
 {
-  "title": "ValueConverters",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=ab9b1966f0d01ee90730c0022cc0f805"
-    }
-  }
+   "title": "ValueConverters",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "857165411925e01e9b407ab097d7e958"
+      }
+   }
 }

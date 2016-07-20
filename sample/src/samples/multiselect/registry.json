@@ -1,33 +1,44 @@
 {
-  "title": "Multiselect",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/multiselect",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=4143eb684d7fd4d7dfb0f86e833bf045",
-      "files": ["html", "js", "css"]
-    },
-    "server-filtering": {
-      "gist": "https://gist.run/?id=d804e873cbd7043b41edee7ecba0fb79"
-    },
-    "virtualization": {
-      "gist": "https://gist.run/?id=46704315f96dc429d9ae718c99313dac"
-    },
-    "grouping": {
-      "gist": "https://gist.run/?id=80741a5120460be192d63f1ccb11f93b"
-    },
-    "customizing-templates": {
-      "gist": "https://gist.run/?id=01b9dc9b41f8f1f42a4e6281f93c5473",
-      "files": ["html", "js", "css"]
-    },
-    "events": {
-      "gist": "https://gist.run/?id=48487d2d131ff95d0fcb5fa95b449bca"
-    },
-    "api": {
-      "gist": "https://gist.run/?id=0ab185be8db54cae263776f13ac2b495"
-    },
-    "tag-mode": {
-      "gist": "https://gist.run/?id=b73a68ea6c11ff965426b8076b835404"
-    }
-  }
+   "title": "Multiselect",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/multiselect",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "338b9ddfbdfe1bde3f47817818797d96",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "server-filtering": {
+         "gist": "adb02ab2b183885dcaccb1a31bc86cc0"
+      },
+      "virtualization": {
+         "gist": "c554a5d7cc6264fdb9022fcd274ed637"
+      },
+      "grouping": {
+         "gist": "4bebbf5040798ff6f54160f41e137c0f"
+      },
+      "customizing-templates": {
+         "gist": "858420aeb1e75d8be963882a48ba3147",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "events": {
+         "gist": "e800211f0afcfca69b6c73aeee20652d"
+      },
+      "api": {
+         "gist": "3294686ce01ca3de75d7a40ac61e9872"
+      },
+      "tag-mode": {
+         "gist": "f1e2e79cb08c5ea7e442aedb5b909250"
+      }
+   }
 }

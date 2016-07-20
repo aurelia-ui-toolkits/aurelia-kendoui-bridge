@@ -1,39 +1,46 @@
 {
-  "title": "Scheduler",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/scheduler",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=e3b9d0454bfe65ebeb810a90140448f8",
-      "files": ["html", "js", "css"]
-    },
-    "api": {
-      "gist": "https://gist.run/?id=19d2173694982bcde612238f0d0bb26f"
-    },
-    "events": {
-      "gist": "https://gist.run/?id=2545d2f2e49eaacde39ecbd044c386cc"
-    },
-    "export-to-pdf": {
-      "title": "Export to PDF",
-      "gist": "https://gist.run/?id=6a1b911864a5e56aab6e55eeccf12650"
-    },
-    "horizontal-grouping": {
-      "gist": "https://gist.run/?id=349638f60db4f600af80b24828c6607f"
-    },
-    "timeline-view": {
-      "gist": "https://gist.run/?id=6296a1bc586c1c9131b1b955a8510351"
-    },
-    "templates": {
-      "gist": "https://gist.run/?id=d699a9f6f7c61b518eaec779afa69146"
-    },
-    "restrictions": {
-      "gist": "https://gist.run/?id=98050864215aeee3fb3f72a6f8308674"
-    },
-    "event-move-and-resize": {
-      "gist": "https://gist.run/?id=3ec4451fbd0cd5feecdce23816feb2ef"
-    },
-    "binding-to-signalr": {
-      "gist": "https://gist.run/?id=2b9c4b33748c152110fc0f15ec071a4a"
-    }
-  }
+   "title": "Scheduler",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/scheduler",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "0e1011f393130ce281419b1fb85e268c",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "api": {
+         "gist": "810f392b86c83ed6ffa20ad12f3e64d9"
+      },
+      "events": {
+         "gist": "3635fcfb182b3971d6ea450f6f0be2db"
+      },
+      "export-to-pdf": {
+         "title": "Export to PDF",
+         "gist": "7998c3346699b054dfbca4596e0bc105"
+      },
+      "horizontal-grouping": {
+         "gist": "e21375f26ecd2c9317262d99e3db2931"
+      },
+      "timeline-view": {
+         "gist": "09a6d980a20ba3f4101a10e797f71c77"
+      },
+      "templates": {
+         "gist": "8b5f7c883ecf91648f769a1ac817a410"
+      },
+      "restrictions": {
+         "gist": "b9f4ec0a08915930dc15f561b65ce676"
+      },
+      "event-move-and-resize": {
+         "gist": "59d99124ac8756561337d2f7d83f87bd"
+      },
+      "binding-to-signalr": {
+         "gist": "5cbafc862cb6475445291f5798fd8110"
+      }
+   }
 }

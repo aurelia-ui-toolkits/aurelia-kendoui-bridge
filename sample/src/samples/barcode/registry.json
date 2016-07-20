@@ -1,15 +1,26 @@
 {
-  "title": "Barcode",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/barcode",
-  "samples": {
-    "basic-use": {
-      "route": ["", "basic-use"],
-      "gist": "https://gist.run/?id=c6492a671b1fd8aa8113c848b431ece4",
-      "files": ["html", "js", "css"]
-    },
-    "api": {
-      "gist": "https://gist.run/?id=519e51fd5d5dea57e639fa53963ad83d",
-      "files": ["html", "js", "css"]
-    }
-  }
+   "title": "Barcode",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/barcode",
+   "samples": {
+      "basic-use": {
+         "route": [
+            "",
+            "basic-use"
+         ],
+         "gist": "1174a9720369bfc0204a284bfd0a74da",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "api": {
+         "gist": "f6f6705d175859d98e50b01f79f9e630",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

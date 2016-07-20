@@ -1,29 +1,48 @@
 {
-    "title": "Panel Bar",
-    "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/panelbar",
-    "samples": {
-        "basic-use": {
-            "default": true,
-            "gist": "https://gist.run/?id=5641c3985adbaff8c3f707d802d832c8",
-            "files": ["html", "js", "css"]
-        },
-        "images": {
-            "gist": "https://gist.run/?id=159515db11e4d50ffc2378b35aa2db7d",
-            "files": ["html", "js", "css"]
-        },
-        "ajax": {
-            "title": "Loading with AJAX",
-            "gist": "https://gist.run/?id=918de5e83cc94055a90b94aca1460819",
-            "files": ["html", "js", "css"]
-        },
-        "events": {
-            "gist": "https://gist.run/?id=27ef4e0ec231f8618a5b3c0065cfb5b9",
-            "files": ["html", "js"]
-        },
-        "api": {
-            "title": "API",
-            "gist": "https://gist.run/?id=94ec8355c9008162e760d76e990fd0e9",
-            "files": ["html", "js", "css"]
-        }
-    }
+   "title": "Panel Bar",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/panelbar",
+   "samples": {
+      "basic-use": {
+         "default": true,
+         "gist": "9427297a4fe0d32ec6c1dd6d5e98de95",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "images": {
+         "gist": "4784590d152425454eb8cabfd746e234",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "ajax": {
+         "title": "Loading with AJAX",
+         "gist": "d3a77c869e1548545d4c71b9126531ec",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "events": {
+         "gist": "575ec7ad6303f0e773801880690642a3",
+         "files": [
+            "html",
+            "js"
+         ]
+      },
+      "api": {
+         "title": "API",
+         "gist": "3ca125a4949ecd5686b778c22464cfa0",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      }
+   }
 }

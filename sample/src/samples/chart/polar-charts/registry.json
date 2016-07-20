@@ -1,25 +1,28 @@
 {
-  "title": "Polar charts",
-  "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
-  "samples": {
-    "binding-to-local-data": {
-      "gist": "https://gist.run/?id=afecf9df77882394259264d02ca87910"
-    },
-    "binding-to-remote-data": {
-      "gist": "https://gist.run/?id=2978ae4208554d46892f4fa75fbb92fe"
-    },
-    "polar-area": {
-      "gist": "https://gist.run/?id=727d147075e211a034d6c44a7474d8f3"
-    },
-    "polar-line": {
-      "gist": "https://gist.run/?id=a9653e384ce13ca87f0f5a62dc56de47",
-      "route": ["", "polar-line"]
-    },
-    "polar-scatter": {
-      "gist": "https://gist.run/?id=52595098d0cab7a51ac60617dad68665"
-    },
-    "smooth-polar-line": {
-      "gist": "https://gist.run/?id=3cb491084600aa035d57a8fc62363f59"
-    }
-  }
+   "title": "Polar charts",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart",
+   "samples": {
+      "binding-to-local-data": {
+         "gist": "10ee70a457a0150fa63ad1719670ef77"
+      },
+      "binding-to-remote-data": {
+         "gist": "057112820ff62411669c2028580c39b3"
+      },
+      "polar-area": {
+         "gist": "b0b6bc45bdec0ea80a0d0f9062f63e7d"
+      },
+      "polar-line": {
+         "gist": "a626125692fe226d9992d9f700c871ba",
+         "route": [
+            "",
+            "polar-line"
+         ]
+      },
+      "polar-scatter": {
+         "gist": "012c729e732d94a050fb4b9ed27b23f4"
+      },
+      "smooth-polar-line": {
+         "gist": "0064e6a1d9ce8b9a5b4a7147a85753fe"
+      }
+   }
 }

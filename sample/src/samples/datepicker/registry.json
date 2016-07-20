@@ -1,51 +1,51 @@
 {
-    "title": "DatePicker",
-    "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/datepicker",
-    "samples": {
-        "basic-usage": {
-            "route": [
-                "",
-                "basic-usage"
-            ],
-            "gist": "https://gist.run/?id=2e80ac5cae68b8e432eeba9e0737172f",
-            "files": [
-                "html",
-                "js"
-            ]
-        },
-        "range-selection": {
-            "route": [
-                "range-selection"
-            ],
-            "gist": "https://gist.run/?id=681d9abc832d44ccbef2ed860c7bfee4",
-            "files": [
-                "html",
-                "js"
-            ]
-        },
-        "events": {
-            "route": [
-                "events"
-            ],
-            "gist": "https://gist.run/?id=597b56137c7aa7d27efd940cb874f1cc",
-            "files": [
-                "html",
-                "js"
-            ]
-        },
-        "api": {
-            "route": [
-                "api"
-            ],
-            "gist": "https://gist.run/?id=00b1998bff4b095ae9ace25deaf7a8bd",
-            "files": [
-                "html",
-                "js",
-                "css"
-            ]
-        },
-        "binding": {
-            "gist": "https://gist.run/?id=c526a0b86f03f8bf4567905a4b2d0e19"
-        }
-    }
+   "title": "DatePicker",
+   "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/datepicker",
+   "samples": {
+      "basic-usage": {
+         "route": [
+            "",
+            "basic-usage"
+         ],
+         "gist": "10ba464aa1fa03e85929f38c2d453976",
+         "files": [
+            "html",
+            "js"
+         ]
+      },
+      "range-selection": {
+         "route": [
+            "range-selection"
+         ],
+         "gist": "da7b4e7a68f8cde49861c3cfc7e5eb73",
+         "files": [
+            "html",
+            "js"
+         ]
+      },
+      "events": {
+         "route": [
+            "events"
+         ],
+         "gist": "9efa72eb9d3bbcc53216c0d2fbca762e",
+         "files": [
+            "html",
+            "js"
+         ]
+      },
+      "api": {
+         "route": [
+            "api"
+         ],
+         "gist": "107e952698bfca74afe371970c564fe0",
+         "files": [
+            "html",
+            "js",
+            "css"
+         ]
+      },
+      "binding": {
+         "gist": "0cbaf26be35fedc38c917961f4f78b84"
+      }
+   }
 }
