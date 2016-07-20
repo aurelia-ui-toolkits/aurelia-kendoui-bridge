@@ -75,8 +75,14 @@
       "row-select": {
          "gist": "ea47f99e2a278259f2409ba3a2bca189"
       },
-      "two-way-binding": {},
-      "without-auto-initialization": {},
-      "conditional-button": {}
+      "two-way-binding": {
+        "gist": "43c4485cd73fd35f17052b334ffe671e"
+      },
+      "without-auto-initialization": {
+        "gist": "025ec1b83149711ddfbcdcc13232c016"
+      },
+      "conditional-button": {
+        "gist": "f320b6c28ca572527b95a332889ad3bc"
+      }
    }
 }

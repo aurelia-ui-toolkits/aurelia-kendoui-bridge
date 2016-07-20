@@ -2,10 +2,11 @@
   "title": "Generic",
   "samples": {
     "use-widget-on-initialization": {
-      "route": ["", "use-widget-on-initialization"]
+      "route": ["", "use-widget-on-initialization"],
+      "gist": "b6a4f607d9f42a0e792e20779fe34213"
     },
     "without-auto-initialization": {
-      "route": "without-auto-initialization"
+      "gist": "8dcdecc6005a02a4c0d5770ea0aa954c"
     },
     "two-way-binding-support": {
       "gist": "0cbaf26be35fedc38c917961f4f78b84"

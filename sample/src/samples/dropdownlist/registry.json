@@ -34,6 +34,8 @@
       "events": {
          "gist": "e6175d8db7adcbd7f7385a92434df6eb"
       },
-      "datasource": {}
+      "datasource": {
+        "gist": "3a2752719d277371e472bbcec8463f74"
+      }
    }
 }

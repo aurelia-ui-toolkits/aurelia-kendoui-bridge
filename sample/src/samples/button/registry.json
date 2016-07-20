@@ -33,6 +33,8 @@
       "events": {
          "gist": "1c8810a1a712adbf51e6edcfb1b3806c"
       },
-      "binding": {}
+      "binding": {
+        "gist": "18b9f8b2c2e4216abe16bc970f5077f1"
+      }
    }
 }
