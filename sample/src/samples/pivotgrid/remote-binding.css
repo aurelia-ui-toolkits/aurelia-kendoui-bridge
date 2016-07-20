@@ -1,8 +1,0 @@
-#pivotgrid-remote-binding #pivotgrid {
-    width: 70%;
-}
-
-#pivotgrid-remote-binding .hidden-on-narrow {
-    display: inline-block;
-    vertical-align: top;
-}
