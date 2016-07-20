@@ -5,8 +5,6 @@ import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 
-
-
 @customElement(`${constants.elementPrefix}pivot-grid`)
 @generateBindables('kendoPivotGrid')
 @inject(Element, WidgetBase, ViewResources)
