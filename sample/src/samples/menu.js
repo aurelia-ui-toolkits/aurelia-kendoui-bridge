@@ -1,6 +1,6 @@
 import {inject, bindable} from 'aurelia-framework';
 import {DOM} from 'aurelia-pal';
-import json from './menu.json!';
+import samples from './samples.json!';
 
 @inject(Element)
 export class Menu {
@@ -13,7 +13,7 @@ export class Menu {
   }
 
   attached() {
-    this.generateRow(json);
+    this.generateRow(samples.menu);
   }
 
   generateRow(data) {

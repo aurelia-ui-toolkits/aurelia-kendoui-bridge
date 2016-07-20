@@ -2,8 +2,9 @@ import {inject, bindable} from 'aurelia-framework';
 import {activationStrategy} from 'aurelia-router';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {TaskQueue} from 'aurelia-framework';
+import {Container} from 'aurelia-dependency-injection';
 import {HttpClient} from 'aurelia-http-client';
-import {Settings} from './settings';
+import {Settings} from '../settings';
 
 @inject(EventAggregator, TaskQueue, Settings)
 export class SampleRunner {
@@ -18,9 +19,19 @@ export class SampleRunner {
 
   activate(params, route) {
     let sample = route.navModel.config.sample;
+    let category = route.navModel.config.category;
+    this.router = Container.instance.get('SampleRouter');
 
     if (!sample) throw new Error('Route does not contain a \'sample\' property');
     if (!sample.gist) throw new Error('sample does not have a gist');
+
+    this.routes = [];
+
+    this.router.routes.forEach(r => {
+      if (r.category === category) {
+        this.routes.push(r);
+      }
+    });
 
     // app.js is the view-model of the gist
     // aurelia's <compose> automatically loads app.html
