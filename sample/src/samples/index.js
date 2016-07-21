@@ -1,4 +1,3 @@
-import {inject} from 'aurelia-framework';
 import {Container} from 'aurelia-dependency-injection';
 import samples from './samples.json!';
 
@@ -26,7 +25,7 @@ export class Index {
           category: category
         });
 
-        if(sample.default) {
+        if (sample.default) {
           routes.push({
             name: category.dashed,
             route: category.dashed,
