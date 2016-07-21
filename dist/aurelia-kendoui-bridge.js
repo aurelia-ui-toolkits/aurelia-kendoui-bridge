@@ -20,7 +20,7 @@ export class KendoConfigBuilder {
   * Automatically detect which Kendo controls are loaded, and load matching wrappers
   */
   detect(): KendoConfigBuilder {
-    if (!kendo) return;
+    if (!kendo) return this;
 
     this.kendoTemplateSupport()
         .useValueConverters();
@@ -31,6 +31,8 @@ export class KendoConfigBuilder {
         this[kendoControls[i]]();
       }
     }
+
+    return this;
   }
 
   /**
@@ -849,8 +851,6 @@ export class ColorPalette {
   }
 }
 
-//import 'kendo.colorpicker.min';
-
 @customAttribute(`${constants.attributePrefix}color-picker`)
 @generateBindables('kendoColorPicker')
 @inject(Element, WidgetBase)
@@ -892,9 +892,6 @@ export class ColorPicker {
     this.widgetBase.destroy(this.kWidget);
   }
 }
-
-//import 'kendo.combobox.min';
-//import 'kendo.virtuallist.min';
 
 @customElement(`${constants.elementPrefix}combobox`)
 @generateBindables('kendoComboBox')
@@ -2457,6 +2454,10 @@ export class Col {
     this.element = element;
   }
 
+  bind($parent) {
+    this.$parent = $parent;
+  }
+
   beforeOptionsBuild() {
     let templates = this.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.templateGatherer.useTemplates(this, 'GridColumn', templates);
@@ -2471,6 +2472,10 @@ export class Col {
       columns.forEach(col => {
         options.columns.push(this.optionsBuilder.getOptions(col, 'GridColumn'));
       });
+    }
+
+    if (options.editor) {
+      options.editor = options.editor.bind(this.$parent);
     }
   }
 }

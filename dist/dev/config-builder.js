@@ -24,7 +24,7 @@ System.register([], function (_export, _context) {
         }
 
         KendoConfigBuilder.prototype.detect = function detect() {
-          if (!kendo) return;
+          if (!kendo) return this;
 
           this.kendoTemplateSupport().useValueConverters();
 
@@ -36,6 +36,8 @@ System.register([], function (_export, _context) {
               this[kendoControls[i]]();
             }
           }
+
+          return this;
         };
 
         KendoConfigBuilder.prototype.core = function core() {

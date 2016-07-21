@@ -38,6 +38,10 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           this.element = element;
         }
 
+        Col.prototype.bind = function bind($parent) {
+          this.$parent = $parent;
+        };
+
         Col.prototype.beforeOptionsBuild = function beforeOptionsBuild() {
           var templates = this.util.getChildrenVMs(this.element, constants.elementPrefix + 'template');
           this.templateGatherer.useTemplates(this, 'GridColumn', templates);
@@ -53,6 +57,10 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
             columns.forEach(function (col) {
               options.columns.push(_this.optionsBuilder.getOptions(col, 'GridColumn'));
             });
+          }
+
+          if (options.editor) {
+            options.editor = options.editor.bind(this.$parent);
           }
         };
 

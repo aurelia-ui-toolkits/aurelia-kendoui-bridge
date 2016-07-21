@@ -1,3 +1,13 @@
+<a name="1.0.0-beta.1.0.2"></a>
+# [1.0.0-beta.1.0.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.1...v1.0.0-beta.1.0.2) (2016-07-21)
+
+
+### Bug Fixes
+
+* **grid:** supply this ptr when custom column editor is used ([ae8d9ce](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ae8d9ce))
+
+
+
 <a name="1.0.0-beta.1.0.1"></a>
 # [1.0.0-beta.1.0.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.9...v1.0.0-beta.1.0.1) (2016-07-20)
 

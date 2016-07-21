@@ -16,7 +16,7 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
   }
 
   KendoConfigBuilder.prototype.detect = function detect() {
-    if (!kendo) return;
+    if (!kendo) return this;
 
     this.kendoTemplateSupport().useValueConverters();
 
@@ -28,6 +28,8 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
         this[kendoControls[i]]();
       }
     }
+
+    return this;
   };
 
   KendoConfigBuilder.prototype.core = function core() {

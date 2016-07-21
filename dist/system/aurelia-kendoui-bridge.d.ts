@@ -231,8 +231,6 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     detached(): any;
   }
-  
-  //import 'kendo.colorpicker.min';
   export class ColorPicker {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
@@ -242,9 +240,6 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     detached(): any;
   }
-  
-  //import 'kendo.combobox.min';
-  //import 'kendo.virtuallist.min';
   export class ComboBox {
     kEnabled: any;
     kReadOnly: any;
@@ -685,6 +680,7 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class Col {
     constructor(templateGatherer?: any, optionsBuilder?: any, util?: any, element?: any);
+    bind($parent?: any): any;
     beforeOptionsBuild(): any;
     
     // recursively get options of all nested columns that we can pass to Kendo
