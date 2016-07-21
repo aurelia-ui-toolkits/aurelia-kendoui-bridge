@@ -1,8 +1,6 @@
-import {Container} from 'aurelia-dependency-injection';
 import samples from './samples.json!';
 
 export class Index {
-
   configureRouter(config, router) {
     config.title = 'Samples';
 
@@ -35,8 +33,6 @@ export class Index {
       });
     });
 
-    Container.instance.registerInstance('SampleRouter', router);
-
     config.map(routes);
     this.router = router;
   }
@@ -55,6 +51,5 @@ export class Index {
     }
 
     sample.control = category.dashed;
-    sample.routeName = '' + Math.floor((Math.random() * 10000000) + 1);
   }
 }

@@ -20,7 +20,7 @@
     },
     "Editors": {
       "Autocomplete": "autocomplete",
-      "ColorPicker": "colorpicker",
+      "ColorPicker": "color-picker",
       "ComboBox": "combobox",
       "DatePicker": "datepicker",
       "DateTimePicker": "datetimepicker",

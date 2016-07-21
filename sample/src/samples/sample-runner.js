@@ -2,7 +2,6 @@ import {inject, bindable} from 'aurelia-framework';
 import {activationStrategy} from 'aurelia-router';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {TaskQueue} from 'aurelia-framework';
-import {Container} from 'aurelia-dependency-injection';
 import {HttpClient} from 'aurelia-http-client';
 import {Settings} from '../settings';
 
@@ -20,7 +19,7 @@ export class SampleRunner {
   activate(params, route) {
     let sample = route.navModel.config.sample;
     let category = route.navModel.config.category;
-    this.router = Container.instance.get('SampleRouter');
+    this.router = route.navModel.router;
 
     if (!sample) throw new Error('Route does not contain a \'sample\' property');
     if (!sample.gist) throw new Error('sample does not have a gist');
