@@ -12,7 +12,7 @@ export class Index {
       let keys = Object.keys(category.samples);
       keys.forEach(key => {
         let sample = category.samples[key];
-        this.normalizeSample(category, key, sample);
+        sample = this.normalizeSample(category, key, sample);
 
         routes.push({
           name: sample.route,
@@ -42,6 +42,12 @@ export class Index {
   }
 
   normalizeSample(category, name, sample) {
+    if (typeof sample !== 'object') {
+      sample = {
+        gist: sample
+      };
+    }
+
     if (!sample.route) {
       sample.route = `${category.dashed}-${name}`;
     }
@@ -51,5 +57,7 @@ export class Index {
     }
 
     sample.control = category.dashed;
+
+    return sample;
   }
 }
