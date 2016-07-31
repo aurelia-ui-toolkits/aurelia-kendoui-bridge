@@ -35,10 +35,10 @@ gulp.task('prepare-release', function(callback){
   paths.output = paths.releaseOutput;
 
   return runSequence(
-    'build-release',
     'lint',
     'bump-version',
     'version.js',
+    'build-release',
     // 'doc',
     'changelog',
     callback
