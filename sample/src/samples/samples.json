@@ -16,7 +16,8 @@
       "TreeList": "treelist",
       "PivotGrid": "pivot-grid",
       "Scrollview": "scrollview",
-      "Spreadsheet": "spreadsheet"
+      "Spreadsheet": "spreadsheet",
+      "FilterMenu": "filter-menu"
     },
     "Editors": {
       "Autocomplete": "autocomplete",
@@ -518,6 +519,17 @@
         "events": "34bf2ff76c0d0a34bae6ff4bcdb2187a",
         "api": "edfaa3a0f7e6228132c73402c5b787bc",
         "disable-dates": "1f971bb5ebf8c3c844ad0bad88071a20"
+     }
+  },
+  {
+     "title": "FilterMenu",
+     "pro": true,
+     "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/filtermenu",
+     "samples": {
+        "basic-use": {
+           "default": true,
+           "gist": "c85a983f00cb93abc7ee78423e729cd5"
+        }
      }
   },
   {

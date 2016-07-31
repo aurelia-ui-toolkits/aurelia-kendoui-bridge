@@ -80,6 +80,7 @@ export class KendoConfigBuilder {
       .kendoChart()
       .kendoDiagram()
       .kendoEditor()
+      .kendoFilterMenu()
       .kendoGantt()
       .kendoGrid()
       .kendoMap()
@@ -228,6 +229,11 @@ export class KendoConfigBuilder {
 
   kendoEditor(): KendoConfigBuilder {
     this.resources.push('./editor/editor');
+    return this;
+  }
+
+  kendoFilterMenu(): KendoConfigBuilder {
+    this.resources.push('./filter-menu/filter-menu');
     return this;
   }
 
