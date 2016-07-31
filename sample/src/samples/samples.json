@@ -522,7 +522,7 @@
      }
   },
   {
-     "title": "FilterMenu",
+     "title": "Filter Menu",
      "pro": true,
      "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/filtermenu",
      "samples": {
