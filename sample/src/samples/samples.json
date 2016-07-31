@@ -663,7 +663,8 @@
         "row-select": "ea47f99e2a278259f2409ba3a2bca189",
         "two-way-binding": "43c4485cd73fd35f17052b334ffe671e",
         "without-auto-initialization": "025ec1b83149711ddfbcdcc13232c016",
-        "conditional-button": "f320b6c28ca572527b95a332889ad3bc"
+        "conditional-button": "f320b6c28ca572527b95a332889ad3bc",
+        "row-template": "8875df839946569be00c7b99d36533ff"
      }
   },
   {
