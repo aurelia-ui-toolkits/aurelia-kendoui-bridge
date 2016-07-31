@@ -1,7 +1,6 @@
 node_modules
 jspm_packages
 bower_components
-kendo-sdk
 vendors
 .idea
 .DS_STORE
