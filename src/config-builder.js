@@ -52,6 +52,7 @@ export class KendoConfigBuilder {
       .kendoNotification()
       .kendoNumericTextBox()
       .kendoPanelBar()
+      .kendoPopup()
       .kendoProgressBar()
       .kendoRangeSlider()
       .kendoResponsivePanel()
@@ -304,6 +305,11 @@ export class KendoConfigBuilder {
   kendoPivotGrid(): KendoConfigBuilder {
     this.resources.push('./pivotgrid/pivotgrid');
     this.resources.push('./pivotgrid/pivotconfigurator');
+    return this;
+  }
+
+  kendoPopup(): KendoConfigBuilder {
+    this.resources.push('./popup/popup');
     return this;
   }
 

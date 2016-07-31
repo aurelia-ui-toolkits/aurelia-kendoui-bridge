@@ -96,7 +96,8 @@
     "Interactivity & UX": {
       "ProgressBar": "progressbar",
       "Drag and drop": "drag-and-drop",
-      "Sortable": "sortable"
+      "Sortable": "sortable",
+      "Popup": "popup"
     },
     "Tools": {
       "ValueConverters": "valueconverters"
@@ -823,6 +824,17 @@
         "templates": "13d861f06c32c74be6fd0fce360230ef",
         "export-to-excel": "cd1a022805c0dc68d0672cf56f97c7dc",
         "export-to-pdf": "a001494bb57d5a9bba114952b75a5684"
+     }
+  },
+  {
+     "title": "Popup",
+     "pro": false,
+     "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/popup",
+     "samples": {
+        "basic-use": {
+           "default": true,
+           "gist": "d8b8e6650ff3d2604d411273187a89a4"
+        }
      }
   },
   {
