@@ -222,7 +222,7 @@
         "custom-visuals": "3d03c29e13516179243ebeaa9daa2f2f",
         "date-axis": "dec064286e0713f2dc2db1c1e4ae52d7",
         "error-bars": "063c85dba726bbc23be0c1528bf232af",
-        "gap-and-spacing": "d37a0b4696ec4f4d9f22c7b138f21da1",
+        "gap-and-spacing": "bc417ef9d551bf85190efb8fd807f5ff",
         "logarithmic-axis": "470c732c324e4a8a3e1b21d20b94df44",
         "multi-axis": "3bbd4da640d51d95f058279b1a5ddc2f",
         "pan-and-zoom": "0a9da57fbd615bc47a384f2b23f7e4cf",
@@ -659,7 +659,7 @@
         "advanced": "8f6d1acee3f711337cf9416a2ca3c364",
         "custom-grid-width": "f596b919e7f956b85a16dfac3166354b",
         "multi-column-headers": "3e056bf0bb5372cbf02ccb6a7d99a4f8",
-        "colours": "264f34280bee2e0b5f74de48b392abc5",
+        "colours": "c5a1a96826d79e752696b82465f89c83",
         "row-select": "ea47f99e2a278259f2409ba3a2bca189",
         "two-way-binding": "43c4485cd73fd35f17052b334ffe671e",
         "without-auto-initialization": "025ec1b83149711ddfbcdcc13232c016",
@@ -777,7 +777,7 @@
      }
   },
   {
-     "title": "Numeric textbox",
+     "title": "Numerictextbox",
      "pro": false,
      "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/numerictextbox",
      "samples": {
