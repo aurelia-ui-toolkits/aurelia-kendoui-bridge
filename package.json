@@ -113,6 +113,23 @@
   },
   "aurelia": {
     "usedBy": [],
+    "build": {
+      "resources": [
+        "aurelia-kendoui-bridge/index",
+        "aurelia-kendoui-bridge/config-builder",
+        "aurelia-kendoui-bridge/common/bindables",
+        "aurelia-kendoui-bridge/common/constants",
+        "aurelia-kendoui-bridge/common/control-properties",
+        "aurelia-kendoui-bridge/common/decorators",
+        "aurelia-kendoui-bridge/common/notify-binding-behavior",
+        "aurelia-kendoui-bridge/common/options-builder",
+        "aurelia-kendoui-bridge/common/template-compiler",
+        "aurelia-kendoui-bridge/common/template-gatherer",
+        "aurelia-kendoui-bridge/common/template",
+        "aurelia-kendoui-bridge/common/util",
+        "aurelia-kendoui-bridge/common/widget-base"
+      ]
+    },
     "documentation": {
       "links": [
         {
