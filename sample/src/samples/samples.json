@@ -1086,14 +1086,14 @@
    "samples": {
       "basic-use": {
          "default": true,
-         "gist": "fa1527caaeed7173d85aae8943ce1d72"
+         "gist": "b997bfa412b068081df4e50eba7b6f8f"
       },
-      "drag-drop": "b23891da325b213ab8779bf6def9c910",
-      "images": "efd5ba2b0913de14e1e9f7e4e42bc527",
-      "checkboxes": "878916365d4abc252c7547cb47969702",
-      "binding-to-local-data": "081d40c3cd51699f2aff0d680368b5f2",
-      "binding-to-remote-data": "2bf6b0df29d8fe32027329b4dfe627a0",
-      "api": "062cf9f6eb665918d5da4ec10a2de056"
+      "drag-drop": "371a9863895a97818c7cf4e4ed22682f",
+      "images": "5f8163eec131372ac349e67ebf2cf5b1",
+      "checkboxes": "2bf6b0df29d8fe32027329b4dfe627a0",
+      "binding-to-local-data": "cef193f4540211c91ff95d344c67ab27",
+      "binding-to-remote-data": "0c803a020b4a1a6f5b3b342c886ad9f5",
+      "api": "89fefa6ce44a9b5b0b1e18341b8bab21"
    }
   },
   {
