@@ -7,7 +7,15 @@ import {constants} from '../common/constants';
 @processContent((compiler, resources, element, instruction) => {
   let html = element.innerHTML;
   if (html !== '') {
-    instruction.template = html;
+    // if there's a script tag in the template, take the innerHTML of the script tag
+    // https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/580
+    let script = $(element).children('script');
+    if (script.length > 0) {
+      instruction.template = $(script).html();
+    } else {
+      // no script tags? the template is the innerHTML
+      instruction.template = html;
+    }
   }
   element.innerHTML = ''; // remove any HTML from `<ak-template>` because it has already been retrieved above
 
