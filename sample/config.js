@@ -44,6 +44,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "core-js": "npm:core-js@1.2.6",
+    "jquery": "@empty",
     "css": "github:systemjs/plugin-css@0.1.23",
     "font-awesome": "npm:font-awesome@4.6.3",
     "gka/chroma.js": "github:gka/chroma.js@1.1.1",
@@ -73,9 +74,6 @@ System.config({
     },
     "github:jspm/nodelibs-vm@0.1.0": {
       "vm-browserify": "npm:vm-browserify@0.0.4"
-    },
-    "github:twbs/bootstrap@3.3.6": {
-      "jquery": "npm:jquery@2.2.4"
     },
     "npm:assert@1.4.1": {
       "assert": "github:jspm/nodelibs-assert@0.1.0",

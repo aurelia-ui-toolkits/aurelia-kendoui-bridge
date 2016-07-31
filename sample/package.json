@@ -15,7 +15,7 @@
       "aurelia-templating": "npm:aurelia-templating@^1.0.0-beta.2.0.1",
       "aurelia-templating-binding": "npm:aurelia-templating-binding@^1.0.0-beta.1.2.4",
       "aurelia-templating-resources": "npm:aurelia-templating-resources@^1.0.0-beta.1.2.1",
-      "bootstrap": "github:twbs/bootstrap@^3.3.6",
+      "bootstrap": "github:twbs/bootstrap@3.3.6",
       "css": "github:systemjs/plugin-css@^0.1.23",
       "font-awesome": "npm:font-awesome@^4.5.0",
       "gka/chroma.js": "github:gka/chroma.js@^1.1.1",
@@ -30,6 +30,11 @@
       "babel": "npm:babel-core@^5.8.24",
       "babel-runtime": "npm:babel-runtime@^5.8.24",
       "core-js": "npm:core-js@^1.1.4"
+    },
+    "overrides": {
+      "github:twbs/bootstrap@3.3.6": {
+        "dependencies": {}
+      }
     }
   },
   "devDependencies": {
