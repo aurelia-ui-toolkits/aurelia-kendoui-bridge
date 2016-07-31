@@ -38,7 +38,7 @@ export class Index {
   }
 
   normalizeCategory(category) {
-    category.dashed = category.title.toLowerCase().replace(' ', '-');
+    category.dashed = category.title.toLowerCase().replace(/ /g, '-');
   }
 
   normalizeSample(category, name, sample) {
