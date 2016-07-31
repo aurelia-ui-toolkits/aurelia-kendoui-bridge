@@ -31,6 +31,8 @@ export function configure(aurelia, configCallback) {
   }
 }
 
+export {version} from './version';
+
 // build-index-remove start
-export * from './common/decorators';
+export {generateBindables, delayed} from './common/decorators';
 // build-index-remove end
