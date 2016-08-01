@@ -46,17 +46,47 @@ export class SampleRunner {
     .get(`files/${this.sample.gist}`)
     .then(response => {
       let files = response.content;
-      let keys = Object.keys(files);
-      if (keys.indexOf('app.html') > -1) {
-        this.sample.html = files['app.html'].content;
-      }
-      if (keys.indexOf('app.js') > -1) {
-        this.sample.js = files['app.js'].content;
-      }
-      if (keys.indexOf('app.css') > -1) {
-        this.sample.css = files['app.css'].content;
-      }
+      this.sample.files = files;
+
+      this.updateTabstrip(files);
     });
+  }
+
+  updateTabstrip(files) {
+    this.tabstrip.remove(this.tabstrip.tabGroup.children());
+
+    let keys = Object.keys(files);
+    for (let i = 0; i < keys.length; i++) {
+      let fileName = keys[i];
+      let language;
+
+      // look up extension, and what language to pass to PrismJS
+      // for syntax highlighting
+      let split = fileName.split('.');
+      let ext = split[split.length - 1];
+      switch (ext) {
+      default:
+      case 'html':
+        language = 'html';
+        break;
+      case 'js':
+        language = 'javascript';
+        break;
+      case 'css':
+        language = 'css';
+        break;
+      case 'md':
+        language = 'markdown';
+        break;
+      }
+
+      this.tabstrip.append([{
+        text: keys[i],
+        content: '<au-code language="' + language + '" text.bind="sample.files[\'' + keys[i] + '\'].content"></au-code>'
+      }]);
+
+      this.tabstrip.select(0);
+    }
   }
 
   restart() {

@@ -30,34 +30,7 @@
             </div>
           </collapse-panel>
           <collapse-panel title="Code Preview">
-              <div ak-tabstrip="k-animation.bind: false" ak-tabstrip.ref="tabstrip">
-                  <ul>
-                      <li class="k-state-active" show.bind="sample.html">HTML</li>
-                      <li show.bind="sample.js">Javascript</li>
-                      <li show.bind="sample.css">CSS</li>
-                      <li show.bind="sample.json">JSON</li>
-                      <!-- <li show.bind="sample.md">Documentation</li> -->
-                  </ul>
-                  <div>
-                      <au-code language="markup" text.bind="sample.html">
-                      </au-code>
-                  </div>
-                  <div>
-                      <au-code language="javascript" text.bind="sample.js">
-                      </au-code>
-                  </div>
-                  <div>
-                      <au-code language="css" text.bind="sample.css">
-                      </au-code>
-                  </div>
-                  <div>
-                      <au-code language="javascript" text.bind="sample.json">
-                      </au-code>
-                  </div>
-                  <div>
-                      <!-- <au-markdown url.bind="sample.md">
-                      </au-markdown> -->
-                  </div>
+              <div ak-tabstrip="k-animation.bind: false; k-widget.bind: tabstrip">
               </div>
           </collapse-panel>
         </section>
