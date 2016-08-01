@@ -41,7 +41,7 @@
       "Charts 1": {
         "Area": "area-charts",
         "Bar Charts": "bar-charts",
-        "Box Plot Charts": "box-plot-charts",
+        "Box Plot Charts": "boxplot-charts",
         "Bubble Charts": "bubble-charts",
         "Bullet Charts": "bullet-charts",
         "Donut Charts": "donut-charts",
@@ -94,7 +94,7 @@
       "Responsive panel": "responsivepanel"
     },
     "Interactivity & UX": {
-      "ProgressBar": "progressbar",
+      "ProgressBar": "progress-bar",
       "Drag and drop": "drag-and-drop",
       "Sortable": "sortable",
       "Popup": "popup"
@@ -416,7 +416,7 @@
            "gist": "a09da4f3cc5a41c5f1ac14e9734f7ca2"
         },
         "aurelia": "02a15fa13371c6c9c74a8133e32dcfed",
-        "remote-data": "ad59df8299d586c9ad0b96178c6fd242"
+        "remote-data": "f48e87c1bbfea277a86b1d5f25734711"
      }
   },
   {
@@ -708,8 +708,8 @@
         "binding-markers-to-remote-data": "6c5d62de3281897848180a8da26d824c",
         "bing-tile-layer": "ded5a645f7695174f2b08eae9b8865c2",
         "bubble-layer": "d4582c2f8d34c57358e111cacd2f9157",
-        "binding-to-geojson": "9f8ab746a623a16b60d5612149f39951",
-        "export": "9842f5d28da69e4a968c7f63c4127a8f",
+        "binding-to-geojson": "70ae080fd0a9a07569d1adbbbfda4044",
+        "export": "efc0f62c59389a5e7fd164398d2135d5",
         "events": "c42ca5e0aa6c52d0af65f164a644f7e2"
      }
   },
@@ -773,7 +773,7 @@
         },
         "position-and-stacking": "877ca35ecd95b0f601072aebe44b9468",
         "templates": "46eda80ba7db36d5795c8a72792227ef",
-        "events": "8e3b1157f33d1ce48a38208b0fb00422"
+        "events": "0f99a16af84974f2e2fdbc1a14fa10d8"
      }
   },
   {
@@ -1124,6 +1124,32 @@
    }
   },
   {
+    "title": "Upload",
+    "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/upload",
+    "samples": {
+      "basic-use": {
+        "default": true,
+        "gist": "2b8ba24ba8d0c232e1dcd1f73ce68ea2"
+      },
+      "asynchronous-upload": "93747e2c11cb0a7cb3e7aab15e5d38c2",
+      "events": "88374a7fec0b98e7858270cef3482796",
+      "api": "ceffe7bfffe6633bc4e0d5aa990f71f5",
+      "templates": "f314d266b33bdd1879964213fc4f7f34",
+      "initial-files": "26806644e3cb05ced1b5059a65397e88"
+    }
+  },
+  {
+    "title": "Validator",
+    "documentation": "http://docs.telerik.com/kendo-ui/api/javascript/ui/validator",
+    "samples": {
+      "basic-use": {
+        "default": true,
+        "gist": "4ebce7443e1a6461a8a8d3b1c2c89bfe"
+      },
+      "custom-validation": "92695ec465c3338db846cacc6a5cce01"
+    }
+  },
+  {
    "title": "ValueConverters",
    "samples": {
       "basic-use": {
@@ -1142,7 +1168,7 @@
       },
       "customizing-actions": "e26d9beab9c88d98b2429deb304cc50f",
       "ajax": "22acce55dc013fc8a946da42533aa15b",
-      "grid-in-window": "b79b770e5d2f98b20ce1c2340bcdac78",
+      "grid-in-window": "13ad0a4b1cb9579542b690198791f0e8",
       "events": "2429e459773cd14192f62b8793716b9e",
       "api": "0699192fbb4036dde0503e73af3d2dfe"
    }
