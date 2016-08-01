@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['./config-builder', 'aurelia-templating-resources', 'aurelia-logging', './common/decorators'], function (_export, _context) {
+System.register(['./config-builder', 'aurelia-templating-resources', 'aurelia-logging', './version', './common/decorators'], function (_export, _context) {
   "use strict";
 
   var KendoConfigBuilder, RepeatStrategyLocator, ArrayRepeatStrategy, LogManager;
@@ -12,14 +12,17 @@ System.register(['./config-builder', 'aurelia-templating-resources', 'aurelia-lo
       ArrayRepeatStrategy = _aureliaTemplatingResources.ArrayRepeatStrategy;
     }, function (_aureliaLogging) {
       LogManager = _aureliaLogging;
-    }, function (_commonDecorators) {
+    }, function (_version) {
       var _exportObj = {};
-
-      for (var _key in _commonDecorators) {
-        if (_key !== "default") _exportObj[_key] = _commonDecorators[_key];
-      }
+      _exportObj.version = _version.version;
 
       _export(_exportObj);
+    }, function (_commonDecorators) {
+      var _exportObj2 = {};
+      _exportObj2.generateBindables = _commonDecorators.generateBindables;
+      _exportObj2.delayed = _commonDecorators.delayed;
+
+      _export(_exportObj2);
     }],
     execute: function () {
       function configure(aurelia, configCallback) {

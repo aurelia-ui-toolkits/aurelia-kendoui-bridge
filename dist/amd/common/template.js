@@ -60,7 +60,12 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
   var Template = exports.Template = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'template'), _dec2 = (0, _aureliaTemplating.noView)(), _dec3 = (0, _aureliaTemplating.processContent)(function (compiler, resources, element, instruction) {
     var html = element.innerHTML;
     if (html !== '') {
-      instruction.template = html;
+      var script = $(element).children('script');
+      if (script.length > 0) {
+        instruction.template = $(script).html();
+      } else {
+        instruction.template = html;
+      }
     }
     element.innerHTML = '';
   }), _dec4 = (0, _aureliaDependencyInjection.inject)(_aureliaTemplating.TargetInstruction), _dec(_class = _dec2(_class = _dec3(_class = _dec4(_class = (_class2 = function Template(targetInstruction) {

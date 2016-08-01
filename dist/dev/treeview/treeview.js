@@ -3,7 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (_export, _context) {
   "use strict";
 
-  var inject, customAttribute, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, TreeView;
+  var inject, customElement, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, TreeView;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -11,11 +11,14 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
     }
   }
 
+  function isInitFromUl(element) {
+    return element.querySelectorAll('ul').length > 0;
+  }
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
-      customAttribute = _aureliaTemplating.customAttribute;
+      customElement = _aureliaTemplating.customElement;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -24,7 +27,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       constants = _commonConstants.constants;
     }],
     execute: function () {
-      _export('TreeView', TreeView = (_dec = customAttribute(constants.attributePrefix + 'treeview'), _dec2 = generateBindables('kendoTreeView'), _dec3 = inject(Element, WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
+      _export('TreeView', TreeView = (_dec = customElement(constants.elementPrefix + 'treeview'), _dec2 = generateBindables('kendoTreeView'), _dec3 = inject(Element, WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function TreeView(element, widgetBase) {
           _classCallCheck(this, TreeView);
 
@@ -37,14 +40,25 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         TreeView.prototype.attached = function attached() {
+          if (isInitFromUl(this.element)) {
+            this.target = this.element.querySelectorAll('ul')[0];
+          } else {
+            this.target = document.createElement('div');
+            this.element.appendChild(this.target);
+          }
+
           if (!this.kNoInit) {
             this.recreate();
           }
         };
 
         TreeView.prototype.recreate = function recreate() {
+          var templates = this.widgetBase.util.getChildrenVMs(this.element, constants.elementPrefix + 'template');
+          this.widgetBase.useTemplates(this, 'kendoTreeView', templates);
+
           this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
+            element: this.target,
+            rootElement: this.element,
             parentCtx: this.$parent
           });
         };

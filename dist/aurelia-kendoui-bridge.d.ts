@@ -104,6 +104,7 @@ declare module 'aurelia-kendoui-bridge' {
     kendoDropDownList(): KendoConfigBuilder;
     kendoDropTarget(): KendoConfigBuilder;
     kendoEditor(): KendoConfigBuilder;
+    kendoFilterMenu(): KendoConfigBuilder;
     kendoFlatColorPicker(): KendoConfigBuilder;
     kendoGantt(): KendoConfigBuilder;
     kendoGrid(): KendoConfigBuilder;
@@ -117,6 +118,7 @@ declare module 'aurelia-kendoui-bridge' {
     kendoNumericTextBox(): KendoConfigBuilder;
     kendoPanelBar(): KendoConfigBuilder;
     kendoPivotGrid(): KendoConfigBuilder;
+    kendoPopup(): KendoConfigBuilder;
     kendoProgressBar(): KendoConfigBuilder;
     kendoQRCode(): KendoConfigBuilder;
     kendoRadialGauge(): KendoConfigBuilder;
@@ -142,6 +144,10 @@ declare module 'aurelia-kendoui-bridge' {
     kendoWindow(): KendoConfigBuilder;
   }
   export function configure(aurelia?: any, configCallback?: any): any;
+  export {
+    version
+  } from 'aurelia-kendoui-bridge/version';
+  export let version: any;
   export class AutoComplete {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
@@ -356,7 +362,6 @@ declare module 'aurelia-kendoui-bridge' {
       */
     enhanceView($parent?: any, element?: any, ctx?: any, viewResources?: any): any;
     
-    // attach it to the DOM
     /**
       * loops through each element kendo asks us to clean up
       * calls cleanupView() for each element
@@ -638,6 +643,13 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     detached(): any;
   }
+  export class FilterMenu {
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
   export class FlatColorPicker {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
@@ -784,6 +796,13 @@ declare module 'aurelia-kendoui-bridge' {
   //eslint-disable-line no-unused-vars
   export class PivotGrid {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
+  export class Popup {
+    constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -945,13 +964,6 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class Validator {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
-    detached(): any;
-  }
   export class kendoToStringValueConverter {
     toView(value?: any, format?: any, language?: any): any;
   }
@@ -972,6 +984,13 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class kendoFormatValueConverter {
     toView(value?: any, ...params: any[]): any;
+  }
+  export class Validator {
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
   }
   export class Window {
     constructor(element?: any, widgetBase?: any);

@@ -14,7 +14,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   var _dec, _dec2, _dec3, _class;
 
-  var TreeView = exports.TreeView = (_dec = (0, _aureliaTemplating.customAttribute)(_constants.constants.attributePrefix + 'treeview'), _dec2 = (0, _decorators.generateBindables)('kendoTreeView'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
+  var TreeView = exports.TreeView = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'treeview'), _dec2 = (0, _decorators.generateBindables)('kendoTreeView'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
     function TreeView(element, widgetBase) {
       _classCallCheck(this, TreeView);
 
@@ -27,14 +27,25 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     TreeView.prototype.attached = function attached() {
+      if (isInitFromUl(this.element)) {
+        this.target = this.element.querySelectorAll('ul')[0];
+      } else {
+        this.target = document.createElement('div');
+        this.element.appendChild(this.target);
+      }
+
       if (!this.kNoInit) {
         this.recreate();
       }
     };
 
     TreeView.prototype.recreate = function recreate() {
+      var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
+      this.widgetBase.useTemplates(this, 'kendoTreeView', templates);
+
       this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
+        element: this.target,
+        rootElement: this.element,
         parentCtx: this.$parent
       });
     };
@@ -45,4 +56,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     return TreeView;
   }()) || _class) || _class) || _class);
+
+
+  function isInitFromUl(element) {
+    return element.querySelectorAll('ul').length > 0;
+  }
 });

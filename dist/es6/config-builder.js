@@ -52,6 +52,7 @@ export class KendoConfigBuilder {
       .kendoNotification()
       .kendoNumericTextBox()
       .kendoPanelBar()
+      .kendoPopup()
       .kendoProgressBar()
       .kendoRangeSlider()
       .kendoResponsivePanel()
@@ -80,6 +81,7 @@ export class KendoConfigBuilder {
       .kendoChart()
       .kendoDiagram()
       .kendoEditor()
+      .kendoFilterMenu()
       .kendoGantt()
       .kendoGrid()
       .kendoMap()
@@ -231,6 +233,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoFilterMenu(): KendoConfigBuilder {
+    this.resources.push('./filter-menu/filter-menu');
+    return this;
+  }
+
   kendoFlatColorPicker(): KendoConfigBuilder {
     this.resources.push('./flatcolorpicker/flatcolorpicker');
     return this;
@@ -298,6 +305,11 @@ export class KendoConfigBuilder {
   kendoPivotGrid(): KendoConfigBuilder {
     this.resources.push('./pivotgrid/pivotgrid');
     this.resources.push('./pivotgrid/pivotconfigurator');
+    return this;
+  }
+
+  kendoPopup(): KendoConfigBuilder {
+    this.resources.push('./popup/popup');
     return this;
   }
 
