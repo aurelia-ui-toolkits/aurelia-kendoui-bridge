@@ -13,7 +13,7 @@ gulp.task('bump-version', function(){
 });
 
 gulp.task('version.js', function (cb) {
-  var pkg = require('../../package.json');
+  var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
   fs.writeFile('./src/version.js', `export let version = '${pkg.version}';`, cb);
 });
 
