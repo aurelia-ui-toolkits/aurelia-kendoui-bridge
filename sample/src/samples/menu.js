@@ -1,6 +1,6 @@
 import {inject, bindable} from 'aurelia-framework';
 import {DOM} from 'aurelia-pal';
-import samples from './samples.json!';
+import samples from 'samplesJSON/samples.json!';
 
 @inject(Element)
 export class Menu {

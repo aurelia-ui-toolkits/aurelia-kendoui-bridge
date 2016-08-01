@@ -1,4 +1,4 @@
-import samples from './samples.json!';
+import samples from 'samplesJSON/samples.json!';
 
 export class Index {
   configureRouter(config, router) {

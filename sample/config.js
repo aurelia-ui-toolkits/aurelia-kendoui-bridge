@@ -12,7 +12,8 @@ System.config({
   paths: {
     "*": "src/*",
     "github:*": "jspm_packages/github/*",
-    "npm:*": "jspm_packages/npm/*"
+    "npm:*": "jspm_packages/npm/*",
+    "samplesJSON/*": "https://aurelia-ui-toolkits.github.io/aurelia-kendoui-samples/*",
   },
 
   meta: {
