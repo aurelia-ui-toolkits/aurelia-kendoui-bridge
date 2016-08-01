@@ -26,6 +26,8 @@ Join our [Gitter](https://gitter.im/adriatic/Aurelia-KendoUI) room or open up an
 2. `jspm install`
 3. `karma start`
 
+## Samples
+The catalog is data-driven. It gets the samples from [this json file](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-samples/blob/gh-pages/samples.json)
 
 ## Contributing
 Do you want to help us develop the `aurelia-kendoui-bridge`? Great! We would love for you to send us pull requests. For more information, please check [contributing.md](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/CONTRIBUTING.md) - and if these instructions look "too terse" here is a **[great set set of lessons](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**
