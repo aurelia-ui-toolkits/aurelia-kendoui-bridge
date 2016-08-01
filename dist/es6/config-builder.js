@@ -1,3 +1,5 @@
+import * as LogManager from 'aurelia-logging';
+
 /**
 * Configure the Aurelia-KendoUI-bridge
 */
@@ -7,6 +9,9 @@ export class KendoConfigBuilder {
   debugMode = false;
   registerRepeatStrategy = true;
 
+  constructor() {
+    this.logger = LogManager.getLogger('aurelia-kendoui-bridge');
+  }
 
   /**
   * Automatically detect which Kendo controls are loaded, and load matching wrappers
@@ -429,5 +434,31 @@ export class KendoConfigBuilder {
   kendoWindow(): KendoConfigBuilder {
     this.resources.push('./window/window');
     return this;
+  }
+
+  // deprecated
+  kendoButtonGroup(): KendoConfigBuilder {
+    this.logger.warn('kendoButtonGroup is deprecated, use .kendoMobileButtonGroup() instead');
+    return this.kendoMobileButtonGroup();
+  }
+
+  kendoCombobox(): KendoConfigBuilder {
+    this.logger.warn('kendoCombobox is deprecated, use .kendoComboBox() instead');
+    return this.kendoComboBox();
+  }
+
+  kendoScrollView(): KendoConfigBuilder {
+    this.logger.warn('kendoScrollView is deprecated, use .kendoMobileScrollView() instead');
+    return this.kendoMobileScrollView();
+  }
+
+  kendoSwitch(): KendoConfigBuilder {
+    this.logger.warn('kendoSwitch is deprecated, use .kendoMobileSwitch() instead');
+    return this.kendoMobileSwitch();
+  }
+
+  kendoToolbar(): KendoConfigBuilder {
+    this.logger.warn('kendoToolbar is deprecated, use .kendoToolBar() instead');
+    return this.kendoToolBar();
   }
 }

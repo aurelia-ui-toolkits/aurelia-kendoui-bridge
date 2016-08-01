@@ -1,7 +1,7 @@
 import * as LogManager from 'aurelia-logging';
 import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customElement,ViewResources,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {customAttribute,bindable,customElement,ViewResources,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext,Lexer,ParserImplementation} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -15,6 +15,9 @@ export class KendoConfigBuilder {
   debugMode = false;
   registerRepeatStrategy = true;
 
+  constructor() {
+    this.logger = LogManager.getLogger('aurelia-kendoui-bridge');
+  }
 
   /**
   * Automatically detect which Kendo controls are loaded, and load matching wrappers
@@ -438,6 +441,32 @@ export class KendoConfigBuilder {
     this.resources.push('./window/window');
     return this;
   }
+
+  // deprecated
+  kendoButtonGroup(): KendoConfigBuilder {
+    this.logger.warn('kendoButtonGroup is deprecated, use .kendoMobileButtonGroup() instead');
+    return this.kendoMobileButtonGroup();
+  }
+
+  kendoCombobox(): KendoConfigBuilder {
+    this.logger.warn('kendoCombobox is deprecated, use .kendoComboBox() instead');
+    return this.kendoComboBox();
+  }
+
+  kendoScrollView(): KendoConfigBuilder {
+    this.logger.warn('kendoScrollView is deprecated, use .kendoMobileScrollView() instead');
+    return this.kendoMobileScrollView();
+  }
+
+  kendoSwitch(): KendoConfigBuilder {
+    this.logger.warn('kendoSwitch is deprecated, use .kendoMobileSwitch() instead');
+    return this.kendoMobileSwitch();
+  }
+
+  kendoToolbar(): KendoConfigBuilder {
+    this.logger.warn('kendoToolbar is deprecated, use .kendoToolBar() instead');
+    return this.kendoToolBar();
+  }
 }
 
 export function configure(aurelia, configCallback) {
@@ -473,21 +502,20 @@ export {version} from './version';
 
 
 
-export let version = '1.0.0-beta.1.0.2';
-@customElement(`${constants.elementPrefix}autocomplete`)
-@generateBindables('kendoAutoComplete')
-@inject(Element, WidgetBase, ViewResources)
-export class AutoComplete {
+export let version = '1.0.0-beta.1.0.4';
+@customAttribute(`${constants.attributePrefix}button`)
+@generateBindables('kendoButton')
+@inject(Element, WidgetBase)
+export class Button {
 
-  constructor(element, widgetBase, viewResources) {
+  @bindable kEnabled;
+
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoAutoComplete')
-                        .linkViewModel(this)
-                        .useViewResources(viewResources)
-                        .useValueBinding()
+                        .control('kendoButton')
                         .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -495,26 +523,14 @@ export class AutoComplete {
   }
 
   attached() {
-    let inputs = this.element.querySelectorAll('input');
-    if (inputs.length > 0) {
-      this.target = inputs[0];
-    } else {
-      this.target = document.createElement('input');
-      this.element.appendChild(this.target);
-    }
-
     if (!this.kNoInit) {
       this.recreate();
     }
   }
 
   recreate() {
-    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
-    this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
-
     this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: this.target,
+      element: this.element,
       parentCtx: this.$parent
     });
   }
@@ -562,19 +578,20 @@ export class Barcode {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}button`)
-@generateBindables('kendoButton')
-@inject(Element, WidgetBase)
-export class Button {
+@customElement(`${constants.elementPrefix}autocomplete`)
+@generateBindables('kendoAutoComplete')
+@inject(Element, WidgetBase, ViewResources)
+export class AutoComplete {
 
-  @bindable kEnabled;
-
-  constructor(element, widgetBase) {
+  constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoButton')
+                        .control('kendoAutoComplete')
+                        .linkViewModel(this)
+                        .useViewResources(viewResources)
+                        .useValueBinding()
                         .bindToKendo('kEnabled', 'enable')
-                        .linkViewModel(this);
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -582,14 +599,26 @@ export class Button {
   }
 
   attached() {
+    let inputs = this.element.querySelectorAll('input');
+    if (inputs.length > 0) {
+      this.target = inputs[0];
+    } else {
+      this.target = document.createElement('input');
+      this.element.appendChild(this.target);
+    }
+
     if (!this.kNoInit) {
       this.recreate();
     }
   }
 
   recreate() {
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
+
     this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
+      rootElement: this.element,
+      element: this.target,
       parentCtx: this.$parent
     });
   }
@@ -1692,7 +1721,7 @@ export class WidgetBase {
 
   control(controlName) {
     if (!controlName || !kendo.jQuery.fn[controlName]) {
-      throw new Error(`The name of control ${controlName} is invalid or not set`);
+      throw new Error(`The kendo control '${controlName}' is not available. Did you load this control?`);
     }
 
     this.controlName = controlName;
@@ -3936,6 +3965,40 @@ export class Upload {
   }
 }
 
+@customAttribute(`${constants.attributePrefix}validator`)
+@generateBindables('kendoValidator')
+@inject(Element, WidgetBase)
+export class Validator {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoValidator')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
 export class kendoToStringValueConverter {
   toView(value, format, language) {
     return kendo.toString(value, format, language);
@@ -3977,40 +4040,6 @@ export class kendoFormatValueConverter {
     params.unshift(value);
 
     return kendo.format.apply(this, params);
-  }
-}
-
-@customAttribute(`${constants.attributePrefix}validator`)
-@generateBindables('kendoValidator')
-@inject(Element, WidgetBase)
-export class Validator {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoValidator')
-                        .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
   }
 }
 

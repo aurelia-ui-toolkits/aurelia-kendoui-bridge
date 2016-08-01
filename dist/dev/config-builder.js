@@ -1,9 +1,9 @@
 'use strict';
 
-System.register([], function (_export, _context) {
+System.register(['aurelia-logging'], function (_export, _context) {
   "use strict";
 
-  var KendoConfigBuilder;
+  var LogManager, KendoConfigBuilder;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register([], function (_export, _context) {
   }
 
   return {
-    setters: [],
+    setters: [function (_aureliaLogging) {
+      LogManager = _aureliaLogging;
+    }],
     execute: function () {
       _export('KendoConfigBuilder', KendoConfigBuilder = function () {
         function KendoConfigBuilder() {
@@ -21,6 +23,8 @@ System.register([], function (_export, _context) {
           this.resources = [];
           this.debugMode = false;
           this.registerRepeatStrategy = true;
+
+          this.logger = LogManager.getLogger('aurelia-kendoui-bridge');
         }
 
         KendoConfigBuilder.prototype.detect = function detect() {
@@ -365,6 +369,31 @@ System.register([], function (_export, _context) {
         KendoConfigBuilder.prototype.kendoWindow = function kendoWindow() {
           this.resources.push('./window/window');
           return this;
+        };
+
+        KendoConfigBuilder.prototype.kendoButtonGroup = function kendoButtonGroup() {
+          this.logger.warn('kendoButtonGroup is deprecated, use .kendoMobileButtonGroup() instead');
+          return this.kendoMobileButtonGroup();
+        };
+
+        KendoConfigBuilder.prototype.kendoCombobox = function kendoCombobox() {
+          this.logger.warn('kendoCombobox is deprecated, use .kendoComboBox() instead');
+          return this.kendoComboBox();
+        };
+
+        KendoConfigBuilder.prototype.kendoScrollView = function kendoScrollView() {
+          this.logger.warn('kendoScrollView is deprecated, use .kendoMobileScrollView() instead');
+          return this.kendoMobileScrollView();
+        };
+
+        KendoConfigBuilder.prototype.kendoSwitch = function kendoSwitch() {
+          this.logger.warn('kendoSwitch is deprecated, use .kendoMobileSwitch() instead');
+          return this.kendoMobileSwitch();
+        };
+
+        KendoConfigBuilder.prototype.kendoToolbar = function kendoToolbar() {
+          this.logger.warn('kendoToolbar is deprecated, use .kendoToolBar() instead');
+          return this.kendoToolBar();
         };
 
         return KendoConfigBuilder;

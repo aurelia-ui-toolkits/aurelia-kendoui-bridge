@@ -1,3 +1,16 @@
+<a name="1.0.0-beta.1.0.4"></a>
+# [1.0.0-beta.1.0.4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.2...v1.0.0-beta.1.0.4) (2016-08-01)
+
+
+### Features
+
+* **filter-menu:** added filtermenu wrapper ([02e4755](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/02e4755))
+* **grid:** support rowTemplate ([c399bfb](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/c399bfb))
+* **popup:** added popup wrapper ([45dc3fa](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/45dc3fa))
+* **treeview:** converted to custom element ([eea8bf7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/eea8bf7))
+
+
+
 <a name="1.0.0-beta.1.0.3"></a>
 # [1.0.0-beta.1.0.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.2...v1.0.0-beta.1.0.3) (2016-08-01)
 

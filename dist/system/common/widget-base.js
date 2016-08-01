@@ -49,7 +49,7 @@ System.register(['./util', './options-builder', './template-compiler', './templa
 
         WidgetBase.prototype.control = function control(controlName) {
           if (!controlName || !kendo.jQuery.fn[controlName]) {
-            throw new Error('The name of control ' + controlName + ' is invalid or not set');
+            throw new Error('The kendo control \'' + controlName + '\' is not available. Did you load this control?');
           }
 
           this.controlName = controlName;
