@@ -21,6 +21,7 @@
             <div slot="buttons" class="buttons">
               <a href="https://gist.run/?id=${sample.gist}" show.bind="sample.gist" target="_blank" class="k-button">RUN</a>
               <a href.bind="category.documentation" show.bind="category.documentation" target="_blank" class="k-button">API</a>
+              <button class="k-button" click.delegate="showImports()">Imports</button>
             </div>
             <div id="exampleWrap">
               <div id="${sample.route}">
@@ -37,4 +38,20 @@
       </div>
     </div>
   </section>
+
+  <div id="window"
+       ak-window="k-width: 600px;
+                  k-title: Imports;
+                  k-visible.bind: false;
+                  k-widget.bind: importsWindow">
+    <label>Require statements for importing aurelia-kendoui-bridge custom element / attributes</label>
+    <au-code language="html" text.bind="requires"></au-code>
+
+    <label>Kendo files</label>
+    <ul>
+      <li repeat.for="file of category.kendoModules">
+        <au-code language="html" text.bind="file"></au-code>
+      </li>
+    </ul>
+  </div>
 </template>

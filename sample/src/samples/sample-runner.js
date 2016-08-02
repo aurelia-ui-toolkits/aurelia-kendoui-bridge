@@ -33,6 +33,13 @@ export class SampleRunner {
     this.sample = sample;
     this.category = category;
 
+    this.requires = '';
+    if (category.requires) {
+      category.requires.forEach(requireStatement => {
+        this.requires += `${this.requires !== '' ? '\r\n' : ''}<require from="${requireStatement}"></require>`;
+      });
+    }
+
     this.unsubscribe = this.ea.subscribe('kendo:skinChange', () => this.restart());
   }
 
@@ -99,6 +106,10 @@ export class SampleRunner {
 
   detached() {
     this.unsubscribe.dispose();
+  }
+
+  showImports() {
+    this.importsWindow.open().center();
   }
 
   determineActivationStrategy() {
