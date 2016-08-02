@@ -1,7 +1,7 @@
 import * as LogManager from 'aurelia-logging';
 import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customAttribute,bindable,customElement,ViewResources,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {customElement,ViewResources,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext,Lexer,ParserImplementation} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -498,24 +498,23 @@ export function configure(aurelia, configCallback) {
   }
 }
 
-export {version} from './version';
 
 
+export let version = '1.0.0-beta.1.0.5';
+@customElement(`${constants.elementPrefix}autocomplete`)
+@generateBindables('kendoAutoComplete')
+@inject(Element, WidgetBase, ViewResources)
+export class AutoComplete {
 
-export let version = '1.0.0-beta.1.0.4';
-@customAttribute(`${constants.attributePrefix}button`)
-@generateBindables('kendoButton')
-@inject(Element, WidgetBase)
-export class Button {
-
-  @bindable kEnabled;
-
-  constructor(element, widgetBase) {
+  constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoButton')
+                        .control('kendoAutoComplete')
+                        .linkViewModel(this)
+                        .useViewResources(viewResources)
+                        .useValueBinding()
                         .bindToKendo('kEnabled', 'enable')
-                        .linkViewModel(this);
+                        .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
@@ -523,14 +522,26 @@ export class Button {
   }
 
   attached() {
+    let inputs = this.element.querySelectorAll('input');
+    if (inputs.length > 0) {
+      this.target = inputs[0];
+    } else {
+      this.target = document.createElement('input');
+      this.element.appendChild(this.target);
+    }
+
     if (!this.kNoInit) {
       this.recreate();
     }
   }
 
   recreate() {
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
+
     this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
+      rootElement: this.element,
+      element: this.target,
       parentCtx: this.$parent
     });
   }
@@ -578,20 +589,19 @@ export class Barcode {
   }
 }
 
-@customElement(`${constants.elementPrefix}autocomplete`)
-@generateBindables('kendoAutoComplete')
-@inject(Element, WidgetBase, ViewResources)
-export class AutoComplete {
+@customAttribute(`${constants.attributePrefix}button`)
+@generateBindables('kendoButton')
+@inject(Element, WidgetBase)
+export class Button {
 
-  constructor(element, widgetBase, viewResources) {
+  @bindable kEnabled;
+
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoAutoComplete')
-                        .linkViewModel(this)
-                        .useViewResources(viewResources)
-                        .useValueBinding()
+                        .control('kendoButton')
                         .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -599,26 +609,14 @@ export class AutoComplete {
   }
 
   attached() {
-    let inputs = this.element.querySelectorAll('input');
-    if (inputs.length > 0) {
-      this.target = inputs[0];
-    } else {
-      this.target = document.createElement('input');
-      this.element.appendChild(this.target);
-    }
-
     if (!this.kNoInit) {
       this.recreate();
     }
   }
 
   recreate() {
-    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
-    this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
-
     this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: this.target,
+      element: this.element,
       parentCtx: this.$parent
     });
   }

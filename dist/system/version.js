@@ -7,7 +7,7 @@ System.register([], function (_export, _context) {
   return {
     setters: [],
     execute: function () {
-      _export('version', version = '1.0.0-beta.1.0.4');
+      _export('version', version = '1.0.0-beta.1.0.5');
 
       _export('version', version);
     }

@@ -10,10 +10,10 @@ declare module 'aurelia-kendoui-bridge' {
     transient
   } from 'aurelia-dependency-injection';
   import {
-    customAttribute,
-    bindable,
     customElement,
     ViewResources,
+    customAttribute,
+    bindable,
     BindableProperty,
     HtmlBehaviorResource,
     TemplatingEngine,
@@ -152,13 +152,9 @@ declare module 'aurelia-kendoui-bridge' {
     kendoToolbar(): KendoConfigBuilder;
   }
   export function configure(aurelia?: any, configCallback?: any): any;
-  export {
-    version
-  } from 'aurelia-kendoui-bridge/version';
   export let version: any;
-  export class Button {
-    kEnabled: any;
-    constructor(element?: any, widgetBase?: any);
+  export class AutoComplete {
+    constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -172,8 +168,9 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class AutoComplete {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+  export class Button {
+    kEnabled: any;
+    constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
