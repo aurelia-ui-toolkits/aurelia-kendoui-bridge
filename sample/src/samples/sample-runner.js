@@ -28,7 +28,9 @@ export class SampleRunner {
 
     // app.js is the view-model of the gist
     // aurelia's <compose> automatically loads app.html
-    sample.path = `${this.settings.gistProxy}file/${sample.gist}/app`;
+    // we cachebust so that css files can be removed from the <head>
+    let cacheBust = Math.floor((Math.random() * 100000) + 1);
+    sample.path = `${this.settings.gistProxy}file-cache-bust/${cacheBust}/${sample.gist}/app`;
 
     this.sample = sample;
     this.category = category;
@@ -105,7 +107,22 @@ export class SampleRunner {
   }
 
   detached() {
+    this.sample = undefined;
     this.unsubscribe.dispose();
+  }
+
+  deactivate() {
+    this.unloadSampleCSS();
+  }
+
+  unloadSampleCSS() {
+    let links = document.querySelectorAll('link');
+
+    links.forEach(link => {
+      if (link.href.startsWith('http://gist-serve.jeroenvinke.nl')) {
+        link.parentNode.removeChild(link);
+      }
+    });
   }
 
   showImports() {
