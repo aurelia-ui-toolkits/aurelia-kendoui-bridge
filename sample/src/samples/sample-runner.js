@@ -116,13 +116,14 @@ export class SampleRunner {
   }
 
   unloadSampleCSS() {
-    let links = document.querySelectorAll('link');
+    let links = Array.prototype.slice.call(document.querySelectorAll('link'));
 
-    links.forEach(link => {
+    for(let i = 0; i < links.length; i++) {
+      let link = links[i];
       if (link.href.startsWith('http://gist-serve.jeroenvinke.nl')) {
         link.parentNode.removeChild(link);
       }
-    });
+    }
   }
 
   showImports() {
