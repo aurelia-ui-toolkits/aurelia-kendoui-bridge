@@ -67,7 +67,7 @@ export class ThemeManager {
   }
 
   getNormalizedThemePath(theme) {
-    return System.normalizeSync(`/kendo-sdk/styles/kendo.${theme}.min.css!`);
+    return System.normalizeSync(`kendo-sdk/styles/kendo.${theme}.min.css!`);
   }
 
   removeOldThemes() {
