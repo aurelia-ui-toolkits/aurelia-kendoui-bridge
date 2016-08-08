@@ -1,5 +1,5 @@
 export class Settings {
   defaultTheme = 'default';
   activeTheme = 'default';
-  gistProxy = 'http://gist-serve.jeroenvinke.nl/';
+  gistProxy = 'https://gist-serve.jeroenvinke.nl/';
 }
