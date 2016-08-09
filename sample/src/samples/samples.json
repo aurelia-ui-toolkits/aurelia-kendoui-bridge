@@ -1586,7 +1586,7 @@
    "title": "Window",
    "pro": false,
    "requires": [
-      "aurelia-kendoui-bridge/"
+      "aurelia-kendoui-bridge/window/window"
    ],
    "kendoModules": [
      "kendo.window"
