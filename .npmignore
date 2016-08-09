@@ -7,3 +7,8 @@ vendors
 build/reports
 devbuild
 temp
+sample
+test
+doc
+build
+src
