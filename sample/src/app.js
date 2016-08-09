@@ -9,7 +9,8 @@ export class App {
       { name: 'help',             route: 'help',              moduleId: 'help/index',                  title: 'Help' },
       { name: 'home',             route: '',                  redirect: 'about/about' },
       { name: 'installation',     route: 'installation',      moduleId: 'installation/installation',   title: 'Installation' },
-      { name: 'samples',          route: 'samples',           moduleId: 'samples/index',               title: 'Samples' }
+      { name: 'samples',          route: 'samples',           moduleId: 'samples/index',               title: 'Samples' },
+      { name: 'gist-list',        route: 'gist-list',         moduleId: 'shared/gist-list',            title: 'Gist list' }
     ]);
 
     this.router = router;
