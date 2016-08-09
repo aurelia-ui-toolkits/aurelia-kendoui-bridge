@@ -854,7 +854,7 @@
      "samples": {
         "basic-use": {
            "default": true,
-           "gist": "023c72bbef47863e9d3b1c8ed9638279"
+           "gist": "b6a4f607d9f42a0e792e20779fe34213"
         },
         "datasource-read": "5e95513ef8cef2d07b2fc4c2cd422137",
         "batch-editing": "985fcf8ccc29cb20a77d24eadd97af66",
