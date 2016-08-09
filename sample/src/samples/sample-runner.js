@@ -136,7 +136,7 @@ export class SampleRunner {
 
     for (let i = 0; i < links.length; i++) {
       let link = links[i];
-      if (link.href.startsWith('http://gist-serve.jeroenvinke.nl')) {
+      if (link.href.startsWith(this.settings.gistProxy)) {
         link.parentNode.removeChild(link);
       }
     }
