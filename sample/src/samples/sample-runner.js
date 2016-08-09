@@ -70,10 +70,7 @@ export class SampleRunner {
     // sample-runner contains a spinner that we want to show
     this.sampleTarget.innerHTML = '<compose view-model.bind="sample.path" compose.ref="composeVM"></compose>';
     this.instruction = this.templatingEngine.enhance({element: this.sampleTarget, bindingContext: this, overrideContext: this, resources: this.viewResources});
-
-    console.log(this.instruction);
     this.instruction.attached();
-    console.log('attached');
 
     setTimeout(() => this.loading = false, 1500);
   }
