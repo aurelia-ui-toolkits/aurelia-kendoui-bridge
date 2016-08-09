@@ -7,7 +7,7 @@ import {constants} from '../common/constants';
 @customAttribute(`${constants.attributePrefix}draggable`)
 @generateBindables('kendoDraggable')
 @inject(Element, WidgetBase)
-export class Draggabke {
+export class Draggable {
 
   constructor(element, widgetBase) {
     this.element = element;

@@ -118,7 +118,7 @@ export class SampleRunner {
   unloadSampleCSS() {
     let links = Array.prototype.slice.call(document.querySelectorAll('link'));
 
-    for(let i = 0; i < links.length; i++) {
+    for (let i = 0; i < links.length; i++) {
       let link = links[i];
       if (link.href.startsWith('http://gist-serve.jeroenvinke.nl')) {
         link.parentNode.removeChild(link);

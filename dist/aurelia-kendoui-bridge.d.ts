@@ -607,7 +607,7 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class Draggabke {
+  export class Draggable {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;

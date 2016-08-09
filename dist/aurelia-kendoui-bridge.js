@@ -500,7 +500,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.0.0-beta.1.0.5';
+export let version = '1.0.0-beta.1.0.6';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, ViewResources)
@@ -1652,7 +1652,11 @@ export class Util {
     let elements = kendo.jQuery(element).children(cssSelector);
     let viewModels = [];
     elements.each((index, elem) => {
-      viewModels.push(elem.au.controller.viewModel);
+      if (elem.au && elem.au.controller) {
+        viewModels.push(elem.au.controller.viewModel);
+      } else {
+        throw new Error(`au property not found on element ${elem.tagName}. Did you load this custom element via <require> or via main.js?`);
+      }
     });
     return viewModels;
   }
@@ -2105,7 +2109,7 @@ export class Diagram {
 @customAttribute(`${constants.attributePrefix}draggable`)
 @generateBindables('kendoDraggable')
 @inject(Element, WidgetBase)
-export class Draggabke {
+export class Draggable {
 
   constructor(element, widgetBase) {
     this.element = element;

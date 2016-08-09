@@ -121,7 +121,11 @@ System.register(['./constants'], function (_export, _context) {
           var elements = kendo.jQuery(element).children(cssSelector);
           var viewModels = [];
           elements.each(function (index, elem) {
-            viewModels.push(elem.au.controller.viewModel);
+            if (elem.au && elem.au.controller) {
+              viewModels.push(elem.au.controller.viewModel);
+            } else {
+              throw new Error('au property not found on element ' + elem.tagName + '. Did you load this custom element via <require> or via main.js?');
+            }
           });
           return viewModels;
         };
