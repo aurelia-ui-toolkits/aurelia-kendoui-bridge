@@ -1,7 +1,4 @@
 import '../setup';
-import 'kendo-ui/js/kendo.button.min';
-import 'kendo-ui/js/kendo.dropdownlist.min';
-import 'kendo-ui/js/kendo.mobile.switch.min';
 import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 import {TemplateCompiler} from 'src/common/template-compiler';
@@ -58,7 +55,7 @@ describe('WidgetBase', () => {
 
   it('throws error when Kendo control does not exist', () => {
     let controlName = 'kendoNonExisting';
-    expect(() => sut.control(controlName)).toThrow(new Error('The name of control kendoNonExisting is invalid or not set'));
+    expect(() => sut.control(controlName)).toThrow(new Error('The kendo control \'kendoNonExisting\' is not available. Did you load this control?'));
   });
 
   it('stores viewmodel', () => {

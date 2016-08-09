@@ -4,8 +4,6 @@ import {TemplatingEngine} from 'aurelia-templating';
 import {initialize} from 'aurelia-pal-browser';
 import {DOM} from 'aurelia-pal';
 import {TemplateCompiler} from 'src/common/template-compiler';
-import 'jquery';
-import 'kendo-ui/js/kendo.grid.min';
 
 describe('TemplateCompiler', () => {
   let container;
@@ -147,11 +145,11 @@ describe('TemplateCompiler', () => {
 
   it('supports jQuery selector', () => {
     let spy = spyOn(sut, 'enhanceView');
-    let div1 = $('div');
-    let div2 = $('div');
+    let div1 = kendo.jQuery('div');
+    let div2 = kendo.jQuery('div');
     let $parent = {};
     let viewResources = {};
-    let selector = jQuery([div1, div2]);
+    let selector = kendo.jQuery([div1, div2]);
     let data = [{
       dataItem: {
         id: 1

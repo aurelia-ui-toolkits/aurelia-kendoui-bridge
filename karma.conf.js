@@ -14,13 +14,19 @@ module.exports = function(config) {
 
     jspm: {
       serveFiles: ['src/**/*.js'],
-      loadFiles: ['jspm_packages/github/components/jquery@*/jquery.min.js', 'test/unit/**/*.js']
+      loadFiles: ['test/unit/**/*.js']
     },
 
+    proxies: {
+      '/src/': '/base/src/',
+      '/test/': '/base/test/',
+      '/jspm_packages/': '/base/jspm_packages/'
+    },
 
     // list of files / patterns to load in the browser
     files: [
-      { pattern: 'vendors/**/*.js', watched: false, served: true, included: false }
+      'http://code.jquery.com/jquery-1.9.1.min.js',
+      'http://kendo.cdn.telerik.com/2016.2.714/js/kendo.all.min.js'
     ],
 
 
