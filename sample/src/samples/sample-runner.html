@@ -26,7 +26,9 @@
             </div>
             <div id="exampleWrap">
               <div id="${sample.route}">
-                <compose view-model.bind="sample.path"></compose>
+                <i class="fa fa-spinner fa-spin fa-2x" show.bind="loading"></i>
+
+                <div ref="sampleTarget" show.bind="!loading"></div>
               </div>
             </div>
           </collapse-panel>

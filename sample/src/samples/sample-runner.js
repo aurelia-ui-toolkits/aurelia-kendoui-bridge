@@ -1,19 +1,23 @@
 import {inject, bindable} from 'aurelia-framework';
+import {TemplatingEngine, ViewResources} from 'aurelia-templating';
 import {activationStrategy} from 'aurelia-router';
 import {EventAggregator} from 'aurelia-event-aggregator';
 import {TaskQueue} from 'aurelia-framework';
 import {HttpClient} from 'aurelia-http-client';
 import {Settings} from '../settings';
 
-@inject(EventAggregator, TaskQueue, Settings)
+@inject(EventAggregator, TaskQueue, Settings, TemplatingEngine, ViewResources)
 export class SampleRunner {
 
   @bindable router;
+  loading = true;
 
-  constructor(ea, taskQueue, settings) {
+  constructor(ea, taskQueue, settings, bindingEngine, viewResources) {
     this.taskQueue = taskQueue;
     this.settings = settings;
     this.ea = ea;
+    this.templatingEngine = bindingEngine;
+    this.viewResources = viewResources;
   }
 
   activate(params, route) {
@@ -46,8 +50,8 @@ export class SampleRunner {
   }
 
   attached() {
-    // we need to get all files from the gist to show it in
-    // the code preview
+    // // we need to get all files from the gist to show it in
+    // // the code preview
     new HttpClient()
     .configure(x => {
       x.withBaseUrl(this.settings.gistProxy);
@@ -59,6 +63,19 @@ export class SampleRunner {
 
       this.updateTabstrip(files);
     });
+
+
+    // we can probably improve this
+    // enhance is used here as without it, <compose> is blocking sample-runner from showing
+    // sample-runner contains a spinner that we want to show
+    this.sampleTarget.innerHTML = '<compose view-model.bind="sample.path" compose.ref="composeVM"></compose>';
+    this.instruction = this.templatingEngine.enhance({element: this.sampleTarget, bindingContext: this, overrideContext: this, resources: this.viewResources});
+
+    console.log(this.instruction);
+    this.instruction.attached();
+    console.log('attached');
+
+    setTimeout(() => this.loading = false, 1500);
   }
 
   updateTabstrip(files) {
@@ -107,6 +124,8 @@ export class SampleRunner {
   }
 
   detached() {
+    this.instruction.unbind();
+    this.instruction.detached();
     this.sample = undefined;
     this.unsubscribe.dispose();
   }
