@@ -14,7 +14,7 @@ System.config({
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
     "kendo-sdk/*": "kendo-sdk/*",
-    "samplesJSON/*": "https://aurelia-ui-toolkits.github.io/aurelia-kendoui-samples/*",
+    "samplesJSON/*": "https://aurelia-ui-toolkits.github.io/aurelia-kendoui-samples/*"
   },
 
   meta: {
@@ -46,11 +46,11 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
     "core-js": "npm:core-js@1.2.6",
-    "jquery": "@empty",
     "css": "github:systemjs/plugin-css@0.1.23",
     "font-awesome": "npm:font-awesome@4.6.3",
     "gka/chroma.js": "github:gka/chroma.js@1.1.1",
     "google/code-prettify": "github:google/code-prettify@master",
+    "jquery": "@empty",
     "json": "github:systemjs/plugin-json@0.1.2",
     "prism": "github:PrismJS/prism@1.3.0",
     "showdown": "github:showdownjs/showdown@1.3.0",
