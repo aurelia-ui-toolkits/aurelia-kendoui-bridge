@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['./config-builder', 'aurelia-templating-resources', 'jquery', 'kendo.data.min', './common/decorators'], function (_export, _context) {
+System.register(['./config-builder', 'aurelia-templating-resources', 'jquery', 'kendo.data.min', './version', './common/decorators'], function (_export, _context) {
   "use strict";
 
   var KendoConfigBuilder, RepeatStrategyLocator, ArrayRepeatStrategy;
@@ -10,14 +10,17 @@ System.register(['./config-builder', 'aurelia-templating-resources', 'jquery', '
     }, function (_aureliaTemplatingResources) {
       RepeatStrategyLocator = _aureliaTemplatingResources.RepeatStrategyLocator;
       ArrayRepeatStrategy = _aureliaTemplatingResources.ArrayRepeatStrategy;
-    }, function (_jquery) {}, function (_kendoDataMin) {}, function (_commonDecorators) {
+    }, function (_jquery) {}, function (_kendoDataMin) {}, function (_version) {
       var _exportObj = {};
-
-      for (var _key in _commonDecorators) {
-        if (_key !== "default") _exportObj[_key] = _commonDecorators[_key];
-      }
+      _exportObj.version = _version.version;
 
       _export(_exportObj);
+    }, function (_commonDecorators) {
+      var _exportObj2 = {};
+      _exportObj2.generateBindables = _commonDecorators.generateBindables;
+      _exportObj2.delayed = _commonDecorators.delayed;
+
+      _export(_exportObj2);
     }],
     execute: function () {
       function configure(aurelia, configCallback) {

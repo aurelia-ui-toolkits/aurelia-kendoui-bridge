@@ -23,13 +23,13 @@ require('kendo.toolbar.min');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Toolbar = exports.Toolbar = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'toolbar'), _dec2 = (0, _decorators.generateBindables)('kendoToolBar'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _optionsBuilder.OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
-  function Toolbar(element, widgetBase, optionsBuilder) {
+var Toolbar = exports.Toolbar = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'toolbar'), _dec2 = (0, _decorators.generateBindables)('kendoToolBar'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _optionsBuilder.OptionsBuilder, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
+  function Toolbar(element, widgetBase, optionsBuilder, viewResources) {
     _classCallCheck(this, Toolbar);
 
     this.element = element;
     this.optionsBuilder = optionsBuilder;
-    this.widgetBase = widgetBase.control('kendoToolBar').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoToolBar').linkViewModel(this).useViewResources(viewResources);
   }
 
   Toolbar.prototype.bind = function bind(ctx) {

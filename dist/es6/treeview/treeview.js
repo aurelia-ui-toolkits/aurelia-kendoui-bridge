@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customAttribute} from 'aurelia-templating';
+import {customAttribute, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -7,14 +7,15 @@ import 'kendo.treeview.min';
 
 @customAttribute(`${constants.attributePrefix}treeview`)
 @generateBindables('kendoTreeView')
-@inject(Element, WidgetBase)
+@inject(Element, WidgetBase, ViewResources)
 export class TreeView {
 
-  constructor(element, widgetBase) {
+  constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTreeView')
-                        .linkViewModel(this);
+                        .linkViewModel(this)
+                        .useViewResources(viewResources);
   }
 
   bind(ctx) {

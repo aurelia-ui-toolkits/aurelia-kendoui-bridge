@@ -568,49 +568,6 @@ export class Button {
   }
 }
 
-import 'kendo.mobile.buttongroup.min';
-
-@customAttribute(`${constants.attributePrefix}buttongroup`)
-@generateBindables('kendoMobileButtonGroup')
-@inject(Element, WidgetBase)
-export class ButtonGroup {
-
-  @bindable kEnabled;
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoMobileButtonGroup')
-                        .bindToKendo('kEnabled', 'enable')
-                        .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
 import 'kendo.calendar.min';
 
 @customElement(`${constants.elementPrefix}calendar`)
@@ -815,6 +772,49 @@ export class ColorPalette {
                         .control('kendoColorPalette')
                         .linkViewModel(this)
                         .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+import 'kendo.mobile.buttongroup.min';
+
+@customAttribute(`${constants.attributePrefix}buttongroup`)
+@generateBindables('kendoMobileButtonGroup')
+@inject(Element, WidgetBase)
+export class ButtonGroup {
+
+  @bindable kEnabled;
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoMobileButtonGroup')
+                        .bindToKendo('kEnabled', 'enable')
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
@@ -1436,7 +1436,15 @@ export class TemplateGatherer {
 @processContent((compiler, resources, element, instruction) => {
   let html = element.innerHTML;
   if (html !== '') {
-    instruction.template = html;
+    // if there's a script tag in the template, take the innerHTML of the script tag
+    // https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/580
+    let script = $(element).children('script');
+    if (script.length > 0) {
+      instruction.template = $(script).html();
+    } else {
+      // no script tags? the template is the innerHTML
+      instruction.template = html;
+    }
   }
   element.innerHTML = ''; // remove any HTML from `<ak-template>` because it has already been retrieved above
 
@@ -1599,7 +1607,11 @@ export class Util {
     let elements = $(element).children(cssSelector);
     let viewModels = [];
     elements.each((index, elem) => {
-      viewModels.push(elem.au.controller.viewModel);
+      if (elem.au && elem.au.controller) {
+        viewModels.push(elem.au.controller.viewModel);
+      } else {
+        throw new Error(`au property not found on element ${elem.tagName}. Did you load this custom element via <require> or via main.js?`);
+      }
     });
     return viewModels;
   }
@@ -2062,7 +2074,7 @@ import 'kendo.draganddrop.min';
 @customAttribute(`${constants.attributePrefix}draggable`)
 @generateBindables('kendoDraggable')
 @inject(Element, WidgetBase)
-export class Draggabke {
+export class Draggable {
 
   constructor(element, widgetBase) {
     this.element = element;
@@ -3676,15 +3688,16 @@ import 'kendo.toolbar.min';
 
 @customElement(`${constants.elementPrefix}toolbar`)
 @generateBindables('kendoToolBar')
-@inject(Element, WidgetBase, OptionsBuilder)
+@inject(Element, WidgetBase, OptionsBuilder, ViewResources)
 export class Toolbar {
 
-  constructor(element, widgetBase, optionsBuilder) {
+  constructor(element, widgetBase, optionsBuilder, viewResources) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoToolBar')
-                        .linkViewModel(this);
+                        .linkViewModel(this)
+                        .useViewResources(viewResources);
   }
 
   bind(ctx) {
@@ -3833,14 +3846,15 @@ import 'kendo.treeview.min';
 
 @customAttribute(`${constants.attributePrefix}treeview`)
 @generateBindables('kendoTreeView')
-@inject(Element, WidgetBase)
+@inject(Element, WidgetBase, ViewResources)
 export class TreeView {
 
-  constructor(element, widgetBase) {
+  constructor(element, widgetBase, viewResources) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTreeView')
-                        .linkViewModel(this);
+                        .linkViewModel(this)
+                        .useViewResources(viewResources);
   }
 
   bind(ctx) {

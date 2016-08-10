@@ -4,7 +4,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.Draggabke = undefined;
+  exports.Draggable = undefined;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -14,25 +14,25 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   var _dec, _dec2, _dec3, _class;
 
-  var Draggabke = exports.Draggabke = (_dec = (0, _aureliaTemplating.customAttribute)(_constants.constants.attributePrefix + 'draggable'), _dec2 = (0, _decorators.generateBindables)('kendoDraggable'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
-    function Draggabke(element, widgetBase) {
-      _classCallCheck(this, Draggabke);
+  var Draggable = exports.Draggable = (_dec = (0, _aureliaTemplating.customAttribute)(_constants.constants.attributePrefix + 'draggable'), _dec2 = (0, _decorators.generateBindables)('kendoDraggable'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
+    function Draggable(element, widgetBase) {
+      _classCallCheck(this, Draggable);
 
       this.element = element;
       this.widgetBase = widgetBase.control('kendoDraggable').linkViewModel(this);
     }
 
-    Draggabke.prototype.bind = function bind(ctx) {
+    Draggable.prototype.bind = function bind(ctx) {
       this.$parent = ctx;
     };
 
-    Draggabke.prototype.attached = function attached() {
+    Draggable.prototype.attached = function attached() {
       if (!this.kNoInit) {
         this.recreate();
       }
     };
 
-    Draggabke.prototype.recreate = function recreate() {
+    Draggable.prototype.recreate = function recreate() {
       var _this = this;
 
       this.kWidget = this.widgetBase.createWidget({
@@ -44,16 +44,16 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    Draggabke.prototype.beforeInitialize = function beforeInitialize(options) {
+    Draggable.prototype.beforeInitialize = function beforeInitialize(options) {
       if (options.container) {
         Object.assign(options, { container: $(options.container) });
       }
     };
 
-    Draggabke.prototype.detached = function detached() {
+    Draggable.prototype.detached = function detached() {
       this.widgetBase.destroy(this.kWidget);
     };
 
-    return Draggabke;
+    return Draggable;
   }()) || _class) || _class) || _class);
 });

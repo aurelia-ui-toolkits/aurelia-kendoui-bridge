@@ -1,3 +1,22 @@
+<a name="0.12.0"></a>
+# [0.12.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.6...v0.12.0) (2016-08-10)
+
+
+### Bug Fixes
+
+* **dependencies:** updated dependencies to 1.0.0 ([8390b4b](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/8390b4b))
+* **draggable:** fixed typo in class name ([11abd1b](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/11abd1b))
+* **dts:** resolved dts error ([6e02eff](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/6e02eff))
+* **toolbar:** support require statements ([7732406](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/7732406))
+* **treeview:** support require statements ([579075e](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/579075e))
+* **util:** throw error when au property is not foun on an element ([9c4cc7f](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/9c4cc7f))
+
+### Features
+
+* **grid:** support rowTemplate ([e53a2a8](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e53a2a8))
+
+
+
 <a name="0.11.9"></a>
 ## [0.11.9](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.8...v0.11.9) (2016-07-15)
 

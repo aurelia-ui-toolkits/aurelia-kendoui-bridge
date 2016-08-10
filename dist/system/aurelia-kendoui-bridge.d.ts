@@ -44,7 +44,6 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.virtuallist.min';
   import 'kendo.dataviz.barcode.min';
   import 'kendo.button.min';
-  import 'kendo.mobile.buttongroup.min';
   import 'kendo.calendar.min';
   
   //eslint-disable-line no-unused-vars
@@ -61,6 +60,7 @@ declare module 'aurelia-kendoui-bridge' {
   //eslint-disable-line no-unused-vars
   import 'kendo.dataviz.treemap.min';
   import 'kendo.colorpicker.min';
+  import 'kendo.mobile.buttongroup.min';
   import 'kendo.colorpicker.min';
   import 'kendo.combobox.min';
   import 'kendo.virtuallist.min';
@@ -259,15 +259,6 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     detached(): any;
   }
-  export class ButtonGroup {
-    kEnabled: any;
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
-  }
   export class Calendar {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
@@ -305,6 +296,15 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class ColorPalette {
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    detached(): any;
+  }
+  export class ButtonGroup {
+    kEnabled: any;
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -441,7 +441,6 @@ declare module 'aurelia-kendoui-bridge' {
       */
     enhanceView($parent?: any, element?: any, ctx?: any, viewResources?: any): any;
     
-    // attach it to the DOM
     /**
       * loops through each element kendo asks us to clean up
       * calls cleanupView() for each element
@@ -682,7 +681,7 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class Draggabke {
+  export class Draggable {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
@@ -979,7 +978,7 @@ declare module 'aurelia-kendoui-bridge' {
     getOptions(): any;
   }
   export class Toolbar {
-    constructor(element?: any, widgetBase?: any, optionsBuilder?: any);
+    constructor(element?: any, widgetBase?: any, optionsBuilder?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -1006,7 +1005,7 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class TreeView {
-    constructor(element?: any, widgetBase?: any);
+    constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;

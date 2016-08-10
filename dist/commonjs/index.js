@@ -3,18 +3,31 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.delayed = exports.generateBindables = exports.version = undefined;
 exports.configure = configure;
+
+var _version = require('./version');
+
+Object.defineProperty(exports, 'version', {
+  enumerable: true,
+  get: function get() {
+    return _version.version;
+  }
+});
 
 var _decorators = require('./common/decorators');
 
-Object.keys(_decorators).forEach(function (key) {
-  if (key === "default") return;
-  Object.defineProperty(exports, key, {
-    enumerable: true,
-    get: function get() {
-      return _decorators[key];
-    }
-  });
+Object.defineProperty(exports, 'generateBindables', {
+  enumerable: true,
+  get: function get() {
+    return _decorators.generateBindables;
+  }
+});
+Object.defineProperty(exports, 'delayed', {
+  enumerable: true,
+  get: function get() {
+    return _decorators.delayed;
+  }
 });
 
 var _configBuilder = require('./config-builder');
