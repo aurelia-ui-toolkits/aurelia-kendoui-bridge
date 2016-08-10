@@ -599,7 +599,9 @@
      "title": "Color Picker",
      "pro": false,
      "requires": [
-        "aurelia-kendoui-bridge/colorpicker/colorpicker"
+        "aurelia-kendoui-bridge/colorpicker/colorpicker",
+        "aurelia-kendoui-bridge/colorpalette/colorpalette",
+        "aurelia-kendoui-bridge/flatcolorpicker/flatcolorpicker"
      ],
      "kendoModules": [
        "kendo.colorpicker"
@@ -1056,7 +1058,7 @@
      }
   },
   {
-     "title": "Panel Bar",
+     "title": "PanelBar",
      "pro": false,
      "requires": [
         "aurelia-kendoui-bridge/panelbar/panelbar"
