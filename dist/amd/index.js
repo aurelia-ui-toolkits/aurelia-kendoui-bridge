@@ -1,17 +1,11 @@
-define(['exports', './version', './common/decorators', './config-builder', 'aurelia-templating-resources', 'jquery', 'kendo.data.min'], function (exports, _version, _decorators, _configBuilder, _aureliaTemplatingResources) {
+define(['exports', './common/decorators', './config-builder', 'aurelia-templating-resources', 'jquery', 'kendo.data.min'], function (exports, _decorators, _configBuilder, _aureliaTemplatingResources) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.delayed = exports.generateBindables = exports.version = undefined;
+  exports.delayed = exports.generateBindables = undefined;
   exports.configure = configure;
-  Object.defineProperty(exports, 'version', {
-    enumerable: true,
-    get: function () {
-      return _version.version;
-    }
-  });
   Object.defineProperty(exports, 'generateBindables', {
     enumerable: true,
     get: function () {

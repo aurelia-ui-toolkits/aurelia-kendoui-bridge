@@ -1,3 +1,13 @@
+<a name="0.12.1"></a>
+## [0.12.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.12.0...v0.12.1) (2016-08-10)
+
+
+### Bug Fixes
+
+* **index:** removed version export ([b0c8f31](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/b0c8f31))
+
+
+
 <a name="0.12.0"></a>
 # [0.12.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.6...v0.12.0) (2016-08-10)
 

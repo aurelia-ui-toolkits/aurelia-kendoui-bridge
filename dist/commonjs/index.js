@@ -3,17 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.delayed = exports.generateBindables = exports.version = undefined;
+exports.delayed = exports.generateBindables = undefined;
 exports.configure = configure;
-
-var _version = require('./version');
-
-Object.defineProperty(exports, 'version', {
-  enumerable: true,
-  get: function get() {
-    return _version.version;
-  }
-});
 
 var _decorators = require('./common/decorators');
 

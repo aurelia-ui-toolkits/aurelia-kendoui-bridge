@@ -44,6 +44,7 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.virtuallist.min';
   import 'kendo.dataviz.barcode.min';
   import 'kendo.button.min';
+  import 'kendo.mobile.buttongroup.min';
   import 'kendo.calendar.min';
   
   //eslint-disable-line no-unused-vars
@@ -60,7 +61,6 @@ declare module 'aurelia-kendoui-bridge' {
   //eslint-disable-line no-unused-vars
   import 'kendo.dataviz.treemap.min';
   import 'kendo.colorpicker.min';
-  import 'kendo.mobile.buttongroup.min';
   import 'kendo.colorpicker.min';
   import 'kendo.combobox.min';
   import 'kendo.virtuallist.min';
@@ -259,6 +259,15 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     detached(): any;
   }
+  export class ButtonGroup {
+    kEnabled: any;
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    detached(): any;
+  }
   export class Calendar {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
@@ -296,15 +305,6 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class ColorPalette {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
-  }
-  export class ButtonGroup {
-    kEnabled: any;
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
