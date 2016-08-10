@@ -9,7 +9,6 @@ export class GistList {
 
   constructor(container) {
     this.samples = samples;
-    console.log(samples);
 
     let repeatStrategyLocator = container.get(RepeatStrategyLocator);
     repeatStrategyLocator.addStrategy(items => typeof items[Symbol.iterator] === 'function', new IteratorStrategy());
@@ -18,7 +17,7 @@ export class GistList {
   switchGist(gist, category) {
     this.selectedGist = gist;
     this.selectedCategory = category;
-    if (gist.gist){
+    if (gist.gist) {
       this.currentGist = `https://gist.run/?id=${gist.gist}`;
     } else {
       this.currentGist = `https://gist.run/?id=${gist}`;
@@ -31,18 +30,18 @@ export class IterableValueConverter {
     let index = 0;
     let propKeys = Reflect.ownKeys(value);
     return {
-        [Symbol.iterator]() {
-            return this;
-        },
-        next() {
-            if (index < propKeys.length) {
-                let key = propKeys[index];
-                index++;
-                return { value: [key, value[key]] };
-            } else {
-                return { done: true };
-            }
+      [Symbol.iterator]() {
+        return this;
+      },
+      next() {
+        if (index < propKeys.length) {
+          let key = propKeys[index];
+          index++;
+          return { value: [key, value[key]] };
+        } else {
+          return { done: true };
         }
+      }
     };
   }
 }
@@ -59,7 +58,7 @@ export class IteratorStrategy {
 
   _standardProcessItems(repeat, items) {
     let index = 0;
-    for(let [key, value] of items) {
+    for (let [key, value] of items) {
       let overrideContext = createFullOverrideContext(repeat, value, index, undefined, key);
       let view = repeat.viewFactory.create();
       view.bind(overrideContext.bindingContext, overrideContext);
