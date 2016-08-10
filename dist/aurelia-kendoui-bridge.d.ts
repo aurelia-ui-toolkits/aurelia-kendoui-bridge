@@ -10,9 +10,9 @@ declare module 'aurelia-kendoui-bridge' {
     transient
   } from 'aurelia-dependency-injection';
   import {
+    customAttribute,
     customElement,
     ViewResources,
-    customAttribute,
     bindable,
     BindableProperty,
     HtmlBehaviorResource,
@@ -153,19 +153,19 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export function configure(aurelia?: any, configCallback?: any): any;
   export let version: any;
+  export class Barcode {
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
   export class AutoComplete {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
-  }
-  export class Barcode {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
     detached(): any;
   }
   export class Button {
@@ -861,15 +861,6 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class Slider {
-    kEnabled: any;
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
-  }
   export class Sortable {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
@@ -927,7 +918,7 @@ declare module 'aurelia-kendoui-bridge' {
     getOptions(): any;
   }
   export class Toolbar {
-    constructor(element?: any, widgetBase?: any, optionsBuilder?: any);
+    constructor(element?: any, widgetBase?: any, optionsBuilder?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -956,7 +947,7 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class TreeView {
-    constructor(element?: any, widgetBase?: any);
+    constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -974,6 +965,15 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
+    detached(): any;
+  }
+  export class Slider {
+    kEnabled: any;
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     detached(): any;
   }
   export class kendoToStringValueConverter {

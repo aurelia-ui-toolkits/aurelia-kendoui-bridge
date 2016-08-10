@@ -3,7 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, WidgetBase, generateBindables, constants, OptionsBuilder, _dec, _dec2, _dec3, _class, Toolbar;
+  var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, _dec, _dec2, _dec3, _class, Toolbar;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -16,6 +16,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
+      ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -26,13 +27,13 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       OptionsBuilder = _commonOptionsBuilder.OptionsBuilder;
     }],
     execute: function () {
-      _export('Toolbar', Toolbar = (_dec = customElement(constants.elementPrefix + 'toolbar'), _dec2 = generateBindables('kendoToolBar'), _dec3 = inject(Element, WidgetBase, OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
-        function Toolbar(element, widgetBase, optionsBuilder) {
+      _export('Toolbar', Toolbar = (_dec = customElement(constants.elementPrefix + 'toolbar'), _dec2 = generateBindables('kendoToolBar'), _dec3 = inject(Element, WidgetBase, OptionsBuilder, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
+        function Toolbar(element, widgetBase, optionsBuilder, viewResources) {
           _classCallCheck(this, Toolbar);
 
           this.element = element;
           this.optionsBuilder = optionsBuilder;
-          this.widgetBase = widgetBase.control('kendoToolBar').linkViewModel(this);
+          this.widgetBase = widgetBase.control('kendoToolBar').linkViewModel(this).useViewResources(viewResources);
         }
 
         Toolbar.prototype.bind = function bind(ctx) {

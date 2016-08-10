@@ -1,3 +1,17 @@
+<a name="1.0.0-beta.1.0.7"></a>
+# [1.0.0-beta.1.0.7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.5...v1.0.0-beta.1.0.7) (2016-08-10)
+
+
+### Bug Fixes
+
+* **all:** updated .npmignore to reduce size of the bridge ([eddfa64](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/eddfa64))
+* **draggable:** fixed typo in class name ([37ea863](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/37ea863))
+* **toolbar:** support require statements ([14a3797](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/14a3797))
+* **treeview:** support require statements ([0213de5](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/0213de5))
+* **util:** throw error when au property is not foun on an element ([6214a09](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/6214a09))
+
+
+
 <a name="1.0.0-beta.1.0.6"></a>
 # [1.0.0-beta.1.0.6](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.5...v1.0.0-beta.1.0.6) (2016-08-09)
 

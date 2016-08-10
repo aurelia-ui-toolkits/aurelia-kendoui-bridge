@@ -14,12 +14,12 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   var _dec, _dec2, _dec3, _class;
 
-  var TreeView = exports.TreeView = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'treeview'), _dec2 = (0, _decorators.generateBindables)('kendoTreeView'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
-    function TreeView(element, widgetBase) {
+  var TreeView = exports.TreeView = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'treeview'), _dec2 = (0, _decorators.generateBindables)('kendoTreeView'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
+    function TreeView(element, widgetBase, viewResources) {
       _classCallCheck(this, TreeView);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this);
+      this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this).useViewResources(viewResources);
     }
 
     TreeView.prototype.bind = function bind(ctx) {
