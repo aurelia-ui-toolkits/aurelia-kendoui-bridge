@@ -1,5 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
-import {customElement} from 'aurelia-templating';
+import {customElement, ViewResources} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
@@ -8,15 +8,16 @@ import 'kendo.toolbar.min';
 
 @customElement(`${constants.elementPrefix}toolbar`)
 @generateBindables('kendoToolBar')
-@inject(Element, WidgetBase, OptionsBuilder)
+@inject(Element, WidgetBase, OptionsBuilder, ViewResources)
 export class Toolbar {
 
-  constructor(element, widgetBase, optionsBuilder) {
+  constructor(element, widgetBase, optionsBuilder, viewResources) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoToolBar')
-                        .linkViewModel(this);
+                        .linkViewModel(this)
+                        .useViewResources(viewResources);
   }
 
   bind(ctx) {
