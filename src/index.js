@@ -1,5 +1,4 @@
 import {KendoConfigBuilder} from './config-builder';
-import {RepeatStrategyLocator, ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import * as LogManager from 'aurelia-logging';
 
 export function configure(aurelia, configCallback) {
@@ -23,15 +22,6 @@ export function configure(aurelia, configCallback) {
     logger.warn('when using many wrappers, it is recommended not to use .core(), .pro() or .dynamic()' +
       ' but instead to load wrappers via <require></require>.' +
       'this should significantly speed up load times of your application.');
-  }
-
-  if (builder.registerRepeatStrategy) {
-    if (!window.kendo) {
-      throw new Error('Kendo has not been loaded. Consider loading kendo.core from main.js');
-    }
-
-    let repeatStrategyLocator = aurelia.container.get(RepeatStrategyLocator);
-    repeatStrategyLocator.addStrategy(items => items instanceof kendo.data.ObservableArray, new ArrayRepeatStrategy());
   }
 }
 
