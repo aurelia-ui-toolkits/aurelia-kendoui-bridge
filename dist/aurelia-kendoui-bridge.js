@@ -1,7 +1,7 @@
 import * as LogManager from 'aurelia-logging';
 import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customAttribute,customElement,ViewResources,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {customElement,ViewResources,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext,Lexer,ParserImplementation} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -500,41 +500,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.0.0-beta.1.0.7';
-@customAttribute(`${constants.attributePrefix}barcode`)
-@generateBindables('kendoBarcode')
-@inject(Element, WidgetBase)
-export class Barcode {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoBarcode')
-                        .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
+export let version = '1.0.0-beta.1.0.8';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, ViewResources)
@@ -582,6 +548,40 @@ export class AutoComplete {
 
   propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+@customAttribute(`${constants.attributePrefix}barcode`)
+@generateBindables('kendoBarcode')
+@inject(Element, WidgetBase)
+export class Barcode {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoBarcode')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
   detached() {
@@ -1054,7 +1054,7 @@ export class ControlProperties {
   * @param controlName the name of the kendo control (kendoGrid, kendoButton)
   */
   getWidgetProperties(controlName: string): string[] {
-    if (kendo.jQuery.fn[controlName]) {
+    if (kendo && kendo.jQuery.fn[controlName]) {
       return Object.keys(kendo.jQuery.fn[controlName].widget.prototype.options);
     }
 
@@ -3412,6 +3412,48 @@ function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
 }
 
+@customAttribute(`${constants.attributePrefix}slider`)
+@generateBindables('kendoSlider')
+@inject(Element, WidgetBase)
+export class Slider {
+
+  @bindable kEnabled;
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                    .control('kendoSlider')
+                    .linkViewModel(this)
+                    .bindToKendo('kEnabled', 'enable')
+                    .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
 @customAttribute(`${constants.attributePrefix}sortable`)
 @generateBindables('kendoSortable')
 @inject(Element, WidgetBase)
@@ -3954,48 +3996,6 @@ export class Validator {
       element: this.element,
       parentCtx: this.$parent
     });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
-@customAttribute(`${constants.attributePrefix}slider`)
-@generateBindables('kendoSlider')
-@inject(Element, WidgetBase)
-export class Slider {
-
-  @bindable kEnabled;
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                    .control('kendoSlider')
-                    .linkViewModel(this)
-                    .bindToKendo('kEnabled', 'enable')
-                    .useValueBinding();
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   detached() {
