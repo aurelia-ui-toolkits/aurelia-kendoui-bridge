@@ -30,6 +30,8 @@ export class TemplateCompiler {
   initialize() {
     if (this.isInitialized) return;
 
+    if (!window.kendo) return;
+
     // all controls derive from kendo.ui.Widget
     // override the angular property on these objects, and point it towards handleTemplateEvents
     let _this = this;
