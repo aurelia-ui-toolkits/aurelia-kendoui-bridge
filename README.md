@@ -10,6 +10,9 @@ A set of [Aurelia](http://aurelia.io) wrappers for [Kendo UI](http://www.telerik
 [![ZenHub](https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png)](https://zenhub.io)
 [![Join the chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/adriatic/Aurelia-KendoUI?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+
+### [Component catalog (demos) for aurelia-kendo-ui beta](http://aurelia-ui-toolkits.github.io/demo-kendo-beta/)
+
 ### [Component catalog (demos)](http://aurelia-ui-toolkits.github.io/demo-kendo/)
 
 ### [Gist.run playground](https://gist.run/?id=809bf843b45efdf8589179f88fd1e507)
