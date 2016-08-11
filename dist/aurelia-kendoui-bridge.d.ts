@@ -838,13 +838,6 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     detached(): any;
   }
-  export class ResponsivePanel {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
-    detached(): any;
-  }
   
   //eslint-disable-line no-unused-vars
   export class Scheduler {
@@ -885,6 +878,13 @@ declare module 'aurelia-kendoui-bridge' {
     detached(): any;
   }
   export class Spreadsheet {
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    detached(): any;
+  }
+  export class ResponsivePanel {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;

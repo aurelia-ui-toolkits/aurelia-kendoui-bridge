@@ -1,3 +1,13 @@
+<a name="1.0.0-beta.1.0.9"></a>
+# [1.0.0-beta.1.0.9](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.8...v1.0.0-beta.1.0.9) (2016-08-11)
+
+
+### Bug Fixes
+
+* **control-properties:** get kendo global from window ([ed7df4a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ed7df4a))
+
+
+
 <a name="1.0.0-beta.1.0.8"></a>
 # [1.0.0-beta.1.0.8](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.7...v1.0.0-beta.1.0.8) (2016-08-11)
 

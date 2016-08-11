@@ -55,7 +55,7 @@ define(['exports', './bindables', 'aurelia-dependency-injection', './util'], fun
     };
 
     ControlProperties.prototype.getWidgetProperties = function getWidgetProperties(controlName) {
-      if (kendo && kendo.jQuery.fn[controlName]) {
+      if (window.kendo && kendo.jQuery.fn[controlName]) {
         return Object.keys(kendo.jQuery.fn[controlName].widget.prototype.options);
       }
 

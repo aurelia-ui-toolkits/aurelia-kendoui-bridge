@@ -500,7 +500,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.0.0-beta.1.0.8';
+export let version = '1.0.0-beta.1.0.9';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, ViewResources)
@@ -1054,7 +1054,7 @@ export class ControlProperties {
   * @param controlName the name of the kendo control (kendoGrid, kendoButton)
   */
   getWidgetProperties(controlName: string): string[] {
-    if (kendo && kendo.jQuery.fn[controlName]) {
+    if (window.kendo && kendo.jQuery.fn[controlName]) {
       return Object.keys(kendo.jQuery.fn[controlName].widget.prototype.options);
     }
 
@@ -3287,40 +3287,6 @@ export class RangeSlider {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}responsivepanel`)
-@generateBindables('kendoResponsivePanel')
-@inject(Element, WidgetBase)
-export class ResponsivePanel {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoResponsivePanel')
-                        .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
 //eslint-disable-line no-unused-vars
 
 @customElement(`${constants.elementPrefix}scheduler`)
@@ -3532,6 +3498,40 @@ export class Spreadsheet {
     this.widgetBase = widgetBase
                     .control('kendoSpreadsheet')
                     .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+@customAttribute(`${constants.attributePrefix}responsivepanel`)
+@generateBindables('kendoResponsivePanel')
+@inject(Element, WidgetBase)
+export class ResponsivePanel {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoResponsivePanel')
+                        .linkViewModel(this);
   }
 
   bind(ctx) {
