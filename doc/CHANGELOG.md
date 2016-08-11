@@ -1,3 +1,13 @@
+<a name="1.0.0-beta.1.0.11"></a>
+# [1.0.0-beta.1.0.11](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.10...v1.0.0-beta.1.0.11) (2016-08-11)
+
+
+### Bug Fixes
+
+* **all:** handle situation where kendo global is not available ([e4de6e4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e4de6e4))
+
+
+
 <a name="1.0.0-beta.1.0.10"></a>
 # [1.0.0-beta.1.0.10](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.8...v1.0.0-beta.1.0.10) (2016-08-11)
 

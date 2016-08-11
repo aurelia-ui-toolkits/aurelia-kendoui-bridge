@@ -1,7 +1,7 @@
 import * as LogManager from 'aurelia-logging';
 import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customAttribute,bindable,customElement,ViewResources,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {customElement,ViewResources,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext,Lexer,ParserImplementation} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -493,6 +493,10 @@ export function configure(aurelia, configCallback) {
   }
 
   if (builder.registerRepeatStrategy) {
+    if (!window.kendo) {
+      throw new Error('Kendo has not been loaded. Consider loading kendo.core from main.js')
+    }
+
     let repeatStrategyLocator = aurelia.container.get(RepeatStrategyLocator);
     repeatStrategyLocator.addStrategy(items => items instanceof kendo.data.ObservableArray, new ArrayRepeatStrategy());
   }
@@ -500,7 +504,61 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.0.0-beta.1.0.10';
+export let version = '1.0.0-beta.1.0.11';
+@customElement(`${constants.elementPrefix}autocomplete`)
+@generateBindables('kendoAutoComplete')
+@inject(Element, WidgetBase, ViewResources)
+export class AutoComplete {
+
+  constructor(element, widgetBase, viewResources) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoAutoComplete')
+                        .linkViewModel(this)
+                        .useViewResources(viewResources)
+                        .useValueBinding()
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    let inputs = this.element.querySelectorAll('input');
+    if (inputs.length > 0) {
+      this.target = inputs[0];
+    } else {
+      this.target = document.createElement('input');
+      this.element.appendChild(this.target);
+    }
+
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
+
+    this.kWidget = this.widgetBase.createWidget({
+      rootElement: this.element,
+      element: this.target,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
 @customAttribute(`${constants.attributePrefix}barcode`)
 @generateBindables('kendoBarcode')
 @inject(Element, WidgetBase)
@@ -563,60 +621,6 @@ export class Button {
   recreate() {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
-@customElement(`${constants.elementPrefix}autocomplete`)
-@generateBindables('kendoAutoComplete')
-@inject(Element, WidgetBase, ViewResources)
-export class AutoComplete {
-
-  constructor(element, widgetBase, viewResources) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoAutoComplete')
-                        .linkViewModel(this)
-                        .useViewResources(viewResources)
-                        .useValueBinding()
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    let inputs = this.element.querySelectorAll('input');
-    if (inputs.length > 0) {
-      this.target = inputs[0];
-    } else {
-      this.target = document.createElement('input');
-      this.element.appendChild(this.target);
-    }
-
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
-    this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
-
-    this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: this.target,
       parentCtx: this.$parent
     });
   }
@@ -1724,7 +1728,7 @@ export class WidgetBase {
   }
 
   control(controlName) {
-    if (!controlName || !kendo.jQuery.fn[controlName]) {
+    if (!controlName || !window.kendo || !kendo.jQuery.fn[controlName]) {
       throw new Error(`The kendo control '${controlName}' is not available. Did you load this control?`);
     }
 

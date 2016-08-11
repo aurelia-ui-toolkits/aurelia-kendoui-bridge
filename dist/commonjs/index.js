@@ -61,6 +61,10 @@ function configure(aurelia, configCallback) {
   }
 
   if (builder.registerRepeatStrategy) {
+    if (!window.kendo) {
+      throw new Error('Kendo has not been loaded. Consider loading kendo.core from main.js');
+    }
+
     var repeatStrategyLocator = aurelia.container.get(_aureliaTemplatingResources.RepeatStrategyLocator);
     repeatStrategyLocator.addStrategy(function (items) {
       return items instanceof kendo.data.ObservableArray;

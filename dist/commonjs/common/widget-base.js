@@ -46,7 +46,7 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
   }
 
   WidgetBase.prototype.control = function control(controlName) {
-    if (!controlName || !kendo.jQuery.fn[controlName]) {
+    if (!controlName || !window.kendo || !kendo.jQuery.fn[controlName]) {
       throw new Error('The kendo control \'' + controlName + '\' is not available. Did you load this control?');
     }
 

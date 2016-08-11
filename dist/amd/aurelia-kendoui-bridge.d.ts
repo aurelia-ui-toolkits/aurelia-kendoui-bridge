@@ -14,10 +14,10 @@ declare module 'aurelia-kendoui-bridge' {
     transient
   } from 'aurelia-dependency-injection';
   import {
-    customAttribute,
-    bindable,
     customElement,
     ViewResources,
+    customAttribute,
+    bindable,
     BindableProperty,
     HtmlBehaviorResource,
     TemplatingEngine,
@@ -157,6 +157,14 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export function configure(aurelia?: any, configCallback?: any): any;
   export let version: any;
+  export class AutoComplete {
+    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    detached(): any;
+  }
   export class Barcode {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
@@ -167,14 +175,6 @@ declare module 'aurelia-kendoui-bridge' {
   export class Button {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
-  }
-  export class AutoComplete {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
