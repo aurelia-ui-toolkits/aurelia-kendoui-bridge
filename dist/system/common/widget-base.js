@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['./util', './options-builder', './template-compiler', './template-gatherer', '../config-builder', 'aurelia-dependency-injection', 'aurelia-task-queue', 'aurelia-logging'], function (_export, _context) {
+System.register(['./util', './options-builder', './template-compiler', './template-gatherer', '../config-builder', 'aurelia-dependency-injection', 'aurelia-templating-resources', 'aurelia-task-queue', 'aurelia-logging'], function (_export, _context) {
   "use strict";
 
-  var Util, OptionsBuilder, TemplateCompiler, TemplateGatherer, KendoConfigBuilder, inject, transient, TaskQueue, LogManager, _dec, _dec2, _class, logger, WidgetBase;
+  var Util, OptionsBuilder, TemplateCompiler, TemplateGatherer, KendoConfigBuilder, inject, transient, RepeatStrategyLocator, ArrayRepeatStrategy, TaskQueue, LogManager, _dec, _dec2, _class, logger, WidgetBase;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -25,6 +25,9 @@ System.register(['./util', './options-builder', './template-compiler', './templa
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
       transient = _aureliaDependencyInjection.transient;
+    }, function (_aureliaTemplatingResources) {
+      RepeatStrategyLocator = _aureliaTemplatingResources.RepeatStrategyLocator;
+      ArrayRepeatStrategy = _aureliaTemplatingResources.ArrayRepeatStrategy;
     }, function (_aureliaTaskQueue) {
       TaskQueue = _aureliaTaskQueue.TaskQueue;
     }, function (_aureliaLogging) {
@@ -33,8 +36,8 @@ System.register(['./util', './options-builder', './template-compiler', './templa
     execute: function () {
       logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
-      _export('WidgetBase', WidgetBase = (_dec = transient(), _dec2 = inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder), _dec(_class = _dec2(_class = function () {
-        function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
+      _export('WidgetBase', WidgetBase = (_dec = transient(), _dec2 = inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder, RepeatStrategyLocator), _dec(_class = _dec2(_class = function () {
+        function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator) {
           _classCallCheck(this, WidgetBase);
 
           this.bindingsToKendo = [];
@@ -43,8 +46,10 @@ System.register(['./util', './options-builder', './template-compiler', './templa
           this.optionsBuilder = optionsBuilder;
           this.util = util;
           this.configBuilder = configBuilder;
+          this.repeatStratLocator = repeatStratLocator;
           this.templateGatherer = templateGatherer;
           templateCompiler.initialize();
+          this.registerRepeatStrategy();
         }
 
         WidgetBase.prototype.control = function control(controlName) {
@@ -223,6 +228,18 @@ System.register(['./util', './options-builder', './template-compiler', './templa
 
         WidgetBase.prototype.useTemplates = function useTemplates(target, controlName, templates) {
           return this.templateGatherer.useTemplates(target, controlName, templates);
+        };
+
+        WidgetBase.prototype.registerRepeatStrategy = function registerRepeatStrategy() {
+          if (this.configBuilder.registerRepeatStrategy) {
+            if (!window.kendo) {
+              logger.warn('Could not add RepeatStrategy for kendo.data.ObservableArray as kendo.data.ObservableArray has not been loaded');
+              return;
+            }
+            this.repeatStratLocator.addStrategy(function (items) {
+              return items instanceof kendo.data.ObservableArray;
+            }, new ArrayRepeatStrategy());
+          }
         };
 
         WidgetBase.prototype.destroy = function destroy(widget) {

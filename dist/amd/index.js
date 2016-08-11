@@ -1,4 +1,4 @@
-define(['exports', './version', './common/decorators', './config-builder', 'aurelia-templating-resources', 'aurelia-logging'], function (exports, _version, _decorators, _configBuilder, _aureliaTemplatingResources, _aureliaLogging) {
+define(['exports', './version', './common/decorators', './config-builder', 'aurelia-logging'], function (exports, _version, _decorators, _configBuilder, _aureliaLogging) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -62,17 +62,6 @@ define(['exports', './version', './common/decorators', './config-builder', 'aure
 
     if (resources.length > 10) {
       logger.warn('when using many wrappers, it is recommended not to use .core(), .pro() or .dynamic()' + ' but instead to load wrappers via <require></require>.' + 'this should significantly speed up load times of your application.');
-    }
-
-    if (builder.registerRepeatStrategy) {
-      if (!window.kendo) {
-        throw new Error('Kendo has not been loaded. Consider loading kendo.core from main.js');
-      }
-
-      var repeatStrategyLocator = aurelia.container.get(_aureliaTemplatingResources.RepeatStrategyLocator);
-      repeatStrategyLocator.addStrategy(function (items) {
-        return items instanceof kendo.data.ObservableArray;
-      }, new _aureliaTemplatingResources.ArrayRepeatStrategy());
     }
   }
 });

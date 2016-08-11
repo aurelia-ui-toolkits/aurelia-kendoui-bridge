@@ -1,15 +1,12 @@
 'use strict';
 
-System.register(['./config-builder', 'aurelia-templating-resources', 'aurelia-logging', './version', './common/decorators'], function (_export, _context) {
+System.register(['./config-builder', 'aurelia-logging', './version', './common/decorators'], function (_export, _context) {
   "use strict";
 
-  var KendoConfigBuilder, RepeatStrategyLocator, ArrayRepeatStrategy, LogManager;
+  var KendoConfigBuilder, LogManager;
   return {
     setters: [function (_configBuilder) {
       KendoConfigBuilder = _configBuilder.KendoConfigBuilder;
-    }, function (_aureliaTemplatingResources) {
-      RepeatStrategyLocator = _aureliaTemplatingResources.RepeatStrategyLocator;
-      ArrayRepeatStrategy = _aureliaTemplatingResources.ArrayRepeatStrategy;
     }, function (_aureliaLogging) {
       LogManager = _aureliaLogging;
     }, function (_version) {
@@ -43,17 +40,6 @@ System.register(['./config-builder', 'aurelia-templating-resources', 'aurelia-lo
 
         if (resources.length > 10) {
           logger.warn('when using many wrappers, it is recommended not to use .core(), .pro() or .dynamic()' + ' but instead to load wrappers via <require></require>.' + 'this should significantly speed up load times of your application.');
-        }
-
-        if (builder.registerRepeatStrategy) {
-          if (!window.kendo) {
-            throw new Error('Kendo has not been loaded. Consider loading kendo.core from main.js');
-          }
-
-          var repeatStrategyLocator = aurelia.container.get(RepeatStrategyLocator);
-          repeatStrategyLocator.addStrategy(function (items) {
-            return items instanceof kendo.data.ObservableArray;
-          }, new ArrayRepeatStrategy());
         }
       }
 

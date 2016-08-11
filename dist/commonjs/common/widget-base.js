@@ -19,6 +19,8 @@ var _configBuilder = require('../config-builder');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
+var _aureliaTemplatingResources = require('aurelia-templating-resources');
+
 var _aureliaTaskQueue = require('aurelia-task-queue');
 
 var _aureliaLogging = require('aurelia-logging');
@@ -31,8 +33,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
-var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.transient)(), _dec2 = (0, _aureliaDependencyInjection.inject)(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder, _util.Util, _templateGatherer.TemplateGatherer, _configBuilder.KendoConfigBuilder), _dec(_class = _dec2(_class = function () {
-  function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
+var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.transient)(), _dec2 = (0, _aureliaDependencyInjection.inject)(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder, _util.Util, _templateGatherer.TemplateGatherer, _configBuilder.KendoConfigBuilder, _aureliaTemplatingResources.RepeatStrategyLocator), _dec(_class = _dec2(_class = function () {
+  function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator) {
     _classCallCheck(this, WidgetBase);
 
     this.bindingsToKendo = [];
@@ -41,8 +43,10 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
     this.optionsBuilder = optionsBuilder;
     this.util = util;
     this.configBuilder = configBuilder;
+    this.repeatStratLocator = repeatStratLocator;
     this.templateGatherer = templateGatherer;
     templateCompiler.initialize();
+    this.registerRepeatStrategy();
   }
 
   WidgetBase.prototype.control = function control(controlName) {
@@ -221,6 +225,18 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
 
   WidgetBase.prototype.useTemplates = function useTemplates(target, controlName, templates) {
     return this.templateGatherer.useTemplates(target, controlName, templates);
+  };
+
+  WidgetBase.prototype.registerRepeatStrategy = function registerRepeatStrategy() {
+    if (this.configBuilder.registerRepeatStrategy) {
+      if (!window.kendo) {
+        logger.warn('Could not add RepeatStrategy for kendo.data.ObservableArray as kendo.data.ObservableArray has not been loaded');
+        return;
+      }
+      this.repeatStratLocator.addStrategy(function (items) {
+        return items instanceof kendo.data.ObservableArray;
+      }, new _aureliaTemplatingResources.ArrayRepeatStrategy());
+    }
   };
 
   WidgetBase.prototype.destroy = function destroy(widget) {

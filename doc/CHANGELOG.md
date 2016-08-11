@@ -1,3 +1,13 @@
+<a name="1.0.0-beta.1.0.12"></a>
+# [1.0.0-beta.1.0.12](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.11...v1.0.0-beta.1.0.12) (2016-08-11)
+
+
+### Bug Fixes
+
+* **index:** initialize repeatstrategy from widget-base, at which point the kendo global is t ([e9e16e1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e9e16e1))
+
+
+
 <a name="1.0.0-beta.1.0.11"></a>
 # [1.0.0-beta.1.0.11](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.10...v1.0.0-beta.1.0.11) (2016-08-11)
 

@@ -1,10 +1,6 @@
 declare module 'aurelia-kendoui-bridge' {
   import * as LogManager from 'aurelia-logging';
   import {
-    RepeatStrategyLocator,
-    ArrayRepeatStrategy
-  } from 'aurelia-templating-resources';
-  import {
     inject,
     Container,
     transient
@@ -34,6 +30,10 @@ declare module 'aurelia-kendoui-bridge' {
   import {
     TaskQueue
   } from 'aurelia-task-queue';
+  import {
+    RepeatStrategyLocator,
+    ArrayRepeatStrategy
+  } from 'aurelia-templating-resources';
   
   /**
   * Configure the Aurelia-KendoUI-bridge
@@ -523,7 +523,7 @@ declare module 'aurelia-kendoui-bridge' {
       * for example, a change of an 'kEnable' property will result in a .enable(true/false) call
       */
     bindingsToKendo: any;
-    constructor(taskQueue?: any, templateCompiler?: any, optionsBuilder?: any, util?: any, templateGatherer?: any, configBuilder?: any);
+    constructor(taskQueue?: any, templateCompiler?: any, optionsBuilder?: any, util?: any, templateGatherer?: any, configBuilder?: any, repeatStratLocator?: any);
     control(controlName?: any): any;
     linkViewModel(viewModel?: any): any;
     useViewResources(resources?: any): any;
@@ -567,6 +567,7 @@ declare module 'aurelia-kendoui-bridge' {
     getValue(widget?: any): any;
     handlePropertyChanged(widget?: any, property?: any, newValue?: any, oldValue?: any): any;
     useTemplates(target?: any, controlName?: any, templates?: any): any;
+    registerRepeatStrategy(): any;
     
     /**
       * destroys the widget

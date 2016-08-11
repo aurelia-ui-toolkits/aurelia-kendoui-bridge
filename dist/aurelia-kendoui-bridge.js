@@ -1,10 +1,10 @@
 import * as LogManager from 'aurelia-logging';
-import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
 import {customElement,ViewResources,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext,Lexer,ParserImplementation} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
+import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-resources';
 
 /**
 * Configure the Aurelia-KendoUI-bridge
@@ -491,20 +491,11 @@ export function configure(aurelia, configCallback) {
       ' but instead to load wrappers via <require></require>.' +
       'this should significantly speed up load times of your application.');
   }
-
-  if (builder.registerRepeatStrategy) {
-    if (!window.kendo) {
-      throw new Error('Kendo has not been loaded. Consider loading kendo.core from main.js')
-    }
-
-    let repeatStrategyLocator = aurelia.container.get(RepeatStrategyLocator);
-    repeatStrategyLocator.addStrategy(items => items instanceof kendo.data.ObservableArray, new ArrayRepeatStrategy());
-  }
 }
 
 
 
-export let version = '1.0.0-beta.1.0.11';
+export let version = '1.0.0-beta.1.0.12';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, ViewResources)
@@ -1674,7 +1665,7 @@ const logger = LogManager.getLogger('aurelia-kendoui-bridge');
 * Abstraction of commonly used code across wrappers
 */
 @transient()
-@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder)
+@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder, RepeatStrategyLocator)
 export class WidgetBase {
 
   /**
@@ -1718,13 +1709,15 @@ export class WidgetBase {
   */
   bindingsToKendo = [];
 
-  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
+  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator) {
     this.taskQueue = taskQueue;
     this.optionsBuilder = optionsBuilder;
     this.util = util;
     this.configBuilder = configBuilder;
+    this.repeatStratLocator = repeatStratLocator;
     this.templateGatherer = templateGatherer;
     templateCompiler.initialize();
+    this.registerRepeatStrategy();
   }
 
   control(controlName) {
@@ -1939,6 +1932,16 @@ export class WidgetBase {
 
   useTemplates(target, controlName, templates) {
     return this.templateGatherer.useTemplates(target, controlName, templates);
+  }
+
+  registerRepeatStrategy() {
+    if (this.configBuilder.registerRepeatStrategy) {
+      if (!window.kendo) {
+        logger.warn('Could not add RepeatStrategy for kendo.data.ObservableArray as kendo.data.ObservableArray has not been loaded');
+        return;
+      }
+      this.repeatStratLocator.addStrategy(items => items instanceof kendo.data.ObservableArray, new ArrayRepeatStrategy());
+    }
   }
 
   /**

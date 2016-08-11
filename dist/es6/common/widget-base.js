@@ -4,6 +4,7 @@ import {TemplateCompiler} from './template-compiler';
 import {TemplateGatherer} from './template-gatherer';
 import {KendoConfigBuilder} from '../config-builder';
 import {inject, transient} from 'aurelia-dependency-injection';
+import {RepeatStrategyLocator, ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {TaskQueue} from 'aurelia-task-queue';
 import * as LogManager from 'aurelia-logging';
 
@@ -13,7 +14,7 @@ const logger = LogManager.getLogger('aurelia-kendoui-bridge');
 * Abstraction of commonly used code across wrappers
 */
 @transient()
-@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder)
+@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder, RepeatStrategyLocator)
 export class WidgetBase {
 
   /**
@@ -57,13 +58,15 @@ export class WidgetBase {
   */
   bindingsToKendo = [];
 
-  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
+  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator) {
     this.taskQueue = taskQueue;
     this.optionsBuilder = optionsBuilder;
     this.util = util;
     this.configBuilder = configBuilder;
+    this.repeatStratLocator = repeatStratLocator;
     this.templateGatherer = templateGatherer;
     templateCompiler.initialize();
+    this.registerRepeatStrategy();
   }
 
   control(controlName) {
@@ -278,6 +281,16 @@ export class WidgetBase {
 
   useTemplates(target, controlName, templates) {
     return this.templateGatherer.useTemplates(target, controlName, templates);
+  }
+
+  registerRepeatStrategy() {
+    if (this.configBuilder.registerRepeatStrategy) {
+      if (!window.kendo) {
+        logger.warn('Could not add RepeatStrategy for kendo.data.ObservableArray as kendo.data.ObservableArray has not been loaded');
+        return;
+      }
+      this.repeatStratLocator.addStrategy(items => items instanceof kendo.data.ObservableArray, new ArrayRepeatStrategy());
+    }
   }
 
   /**
