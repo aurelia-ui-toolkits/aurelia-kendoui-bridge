@@ -27,6 +27,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', 'aureli
     TemplateCompiler.prototype.initialize = function initialize() {
       if (this.isInitialized) return;
 
+      if (!window.kendo) return;
+
       var _this = this;
       kendo.ui.Widget.prototype.angular = function (_event, _args) {
         _this.handleTemplateEvents(this, _event, _args);

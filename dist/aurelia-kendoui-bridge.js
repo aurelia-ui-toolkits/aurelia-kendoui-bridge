@@ -1,7 +1,7 @@
 import * as LogManager from 'aurelia-logging';
 import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customElement,ViewResources,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {customAttribute,bindable,customElement,ViewResources,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext,Lexer,ParserImplementation} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -23,7 +23,7 @@ export class KendoConfigBuilder {
   * Automatically detect which Kendo controls are loaded, and load matching wrappers
   */
   detect(): KendoConfigBuilder {
-    if (!kendo) return this;
+    if (!window.kendo) return this;
 
     this.kendoTemplateSupport()
         .useValueConverters();
@@ -500,61 +500,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.0.0-beta.1.0.9';
-@customElement(`${constants.elementPrefix}autocomplete`)
-@generateBindables('kendoAutoComplete')
-@inject(Element, WidgetBase, ViewResources)
-export class AutoComplete {
-
-  constructor(element, widgetBase, viewResources) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoAutoComplete')
-                        .linkViewModel(this)
-                        .useViewResources(viewResources)
-                        .useValueBinding()
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    let inputs = this.element.querySelectorAll('input');
-    if (inputs.length > 0) {
-      this.target = inputs[0];
-    } else {
-      this.target = document.createElement('input');
-      this.element.appendChild(this.target);
-    }
-
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
-    this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
-
-    this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: this.target,
-      parentCtx: this.$parent
-    });
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
+export let version = '1.0.0-beta.1.0.10';
 @customAttribute(`${constants.attributePrefix}barcode`)
 @generateBindables('kendoBarcode')
 @inject(Element, WidgetBase)
@@ -617,6 +563,60 @@ export class Button {
   recreate() {
     this.kWidget = this.widgetBase.createWidget({
       element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+@customElement(`${constants.elementPrefix}autocomplete`)
+@generateBindables('kendoAutoComplete')
+@inject(Element, WidgetBase, ViewResources)
+export class AutoComplete {
+
+  constructor(element, widgetBase, viewResources) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoAutoComplete')
+                        .linkViewModel(this)
+                        .useViewResources(viewResources)
+                        .useValueBinding()
+                        .bindToKendo('kEnabled', 'enable')
+                        .bindToKendo('kReadOnly', 'readonly');
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    let inputs = this.element.querySelectorAll('input');
+    if (inputs.length > 0) {
+      this.target = inputs[0];
+    } else {
+      this.target = document.createElement('input');
+      this.element.appendChild(this.target);
+    }
+
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
+
+    this.kWidget = this.widgetBase.createWidget({
+      rootElement: this.element,
+      element: this.target,
       parentCtx: this.$parent
     });
   }
@@ -1246,6 +1246,8 @@ export class TemplateCompiler {
   */
   initialize() {
     if (this.isInitialized) return;
+
+    if (!window.kendo) return;
 
     // all controls derive from kendo.ui.Widget
     // override the angular property on these objects, and point it towards handleTemplateEvents
@@ -3287,6 +3289,40 @@ export class RangeSlider {
   }
 }
 
+@customAttribute(`${constants.attributePrefix}responsivepanel`)
+@generateBindables('kendoResponsivePanel')
+@inject(Element, WidgetBase)
+export class ResponsivePanel {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoResponsivePanel')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  detached() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
 //eslint-disable-line no-unused-vars
 
 @customElement(`${constants.elementPrefix}scheduler`)
@@ -3498,40 +3534,6 @@ export class Spreadsheet {
     this.widgetBase = widgetBase
                     .control('kendoSpreadsheet')
                     .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
-@customAttribute(`${constants.attributePrefix}responsivepanel`)
-@generateBindables('kendoResponsivePanel')
-@inject(Element, WidgetBase)
-export class ResponsivePanel {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoResponsivePanel')
-                        .linkViewModel(this);
   }
 
   bind(ctx) {

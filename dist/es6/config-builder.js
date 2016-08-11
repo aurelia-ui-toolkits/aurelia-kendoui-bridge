@@ -17,7 +17,7 @@ export class KendoConfigBuilder {
   * Automatically detect which Kendo controls are loaded, and load matching wrappers
   */
   detect(): KendoConfigBuilder {
-    if (!kendo) return this;
+    if (!window.kendo) return this;
 
     this.kendoTemplateSupport()
         .useValueConverters();

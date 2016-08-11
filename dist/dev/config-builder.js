@@ -28,7 +28,7 @@ System.register(['aurelia-logging'], function (_export, _context) {
         }
 
         KendoConfigBuilder.prototype.detect = function detect() {
-          if (!kendo) return this;
+          if (!window.kendo) return this;
 
           this.kendoTemplateSupport().useValueConverters();
 

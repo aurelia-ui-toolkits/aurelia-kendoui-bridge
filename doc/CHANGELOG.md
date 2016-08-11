@@ -1,3 +1,14 @@
+<a name="1.0.0-beta.1.0.10"></a>
+# [1.0.0-beta.1.0.10](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.8...v1.0.0-beta.1.0.10) (2016-08-11)
+
+
+### Bug Fixes
+
+* **control-properties:** get kendo global from window ([ed7df4a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ed7df4a))
+* **template-compiler:** handle situation where kendo hasn't loaded ([e4959cf](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e4959cf))
+
+
+
 <a name="1.0.0-beta.1.0.9"></a>
 # [1.0.0-beta.1.0.9](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.8...v1.0.0-beta.1.0.9) (2016-08-11)
 
