@@ -1,7 +1,3 @@
-declare module 'aurelia-binding' {
-export class Lexer {}
-export class ParserImplementation {}
-}
 declare module 'aurelia-kendoui-bridge' {
   import 'jquery';
   import * as LogManager from 'aurelia-logging';
@@ -32,9 +28,7 @@ declare module 'aurelia-kendoui-bridge' {
   import {
     bindingMode,
     EventManager,
-    createOverrideContext,
-    Lexer,
-    ParserImplementation
+    createOverrideContext
   } from 'aurelia-binding';
   import {
     TaskQueue
@@ -117,8 +111,8 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.slider.min';
   import 'kendo.sortable.min';
   import 'kendo.splitter.min';
-  import 'kendo.spreadsheet.min';
   import 'kendo.mobile.switch.min';
+  import 'kendo.spreadsheet.min';
   import 'kendo.tabstrip.min';
   import 'kendo.timepicker.min';
   import 'kendo.toolbar.min';
@@ -452,20 +446,6 @@ declare module 'aurelia-kendoui-bridge' {
       * cleans up the view kendo has asked us to clean up
       */
     cleanupView(element?: any): any;
-  }
-  export class TemplateGatherer {
-    controlProperties: ControlProperties;
-    constructor(controlProperties: ControlProperties, util: Util, config: KendoConfigBuilder);
-    
-    /***
-      * parses array of ak-template view-models (@children)
-      * <ak-template for='test'>
-      * this function sets the property 'test' on the viewmodel to the template
-      * @param target the viewModel with template properties
-      * @param kendoGrid or GridColumn, properties are retrieved from bindables.js
-      * @param templates array of ak-template view-models
-      */
-    useTemplates(target?: any, controlName?: any, templates?: any): any;
   }
   export class Template {
     template: any;
@@ -935,13 +915,6 @@ declare module 'aurelia-kendoui-bridge' {
     recreate(): any;
     detached(): any;
   }
-  export class Spreadsheet {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
-    detached(): any;
-  }
   export class Switch {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
@@ -949,6 +922,13 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    detached(): any;
+  }
+  export class Spreadsheet {
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
     detached(): any;
   }
   export class TabStrip {

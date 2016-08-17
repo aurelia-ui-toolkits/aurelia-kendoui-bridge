@@ -1,3 +1,13 @@
+<a name="0.12.2"></a>
+## [0.12.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.12.1...v0.12.2) (2016-08-17)
+
+
+### Bug Fixes
+
+* **dts:** exclude template-gatherer from typescript definition ([25fedf2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/25fedf2))
+
+
+
 <a name="0.12.1"></a>
 ## [0.12.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.12.0...v0.12.1) (2016-08-10)
 
