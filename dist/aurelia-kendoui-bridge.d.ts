@@ -23,9 +23,7 @@ declare module 'aurelia-kendoui-bridge' {
   import {
     bindingMode,
     EventManager,
-    createOverrideContext,
-    Lexer,
-    ParserImplementation
+    createOverrideContext
   } from 'aurelia-binding';
   import {
     TaskQueue
@@ -378,20 +376,6 @@ declare module 'aurelia-kendoui-bridge' {
       * cleans up the view kendo has asked us to clean up
       */
     cleanupView(element?: any): any;
-  }
-  export class TemplateGatherer {
-    controlProperties: ControlProperties;
-    constructor(controlProperties: ControlProperties, util: Util, config: KendoConfigBuilder);
-    
-    /***
-      * parses array of ak-template view-models (@children)
-      * <ak-template for='test'>
-      * this function sets the property 'test' on the viewmodel to the template
-      * @param target the viewModel with template properties
-      * @param kendoGrid or GridColumn, properties are retrieved from bindables.js
-      * @param templates array of ak-template view-models
-      */
-    useTemplates(target?: any, controlName?: any, templates?: any): any;
   }
   export class Template {
     template: any;
