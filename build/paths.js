@@ -24,7 +24,7 @@ var paths = {
   e2eSpecsSrc: 'test/e2e/src/*.js',
   e2eSpecsDist: 'test/e2e/dist/',
   packageName: pkg.name,
-  ignore: [],
+  ignore: ['common/template-gatherer.js'],
   useTypeScriptForDTS: false,
   importsToAdd: [],
   sort: false
