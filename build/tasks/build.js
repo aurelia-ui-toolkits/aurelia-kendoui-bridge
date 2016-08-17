@@ -8,6 +8,7 @@ var through2 = require('through2');
 var concat = require('gulp-concat');
 var insert = require('gulp-insert');
 var rename = require('gulp-rename');
+var gulpIgnore = require('gulp-ignore');
 var tools = require('aurelia-tools');
 var del = require('del');
 var sourcemaps = require('gulp-sourcemaps');
@@ -23,7 +24,15 @@ var removeRegExp = new RegExp(startTag + '[^]+?' + endTag, 'g');
 gulp.task('build-index', function(){
   var importsToAdd = [];
 
-  return gulp.src(paths.source)
+  var src = gulp.src(paths.source);
+
+  if (paths.ignore) {
+    paths.ignore.forEach(function(filename){
+      src = src.pipe(gulpIgnore.exclude(filename));
+    });
+  }
+
+  return src
     .pipe(through2.obj(function(file, enc, callback) {
       file.contents = new Buffer(tools.extractImports(file.contents.toString("utf8"), importsToAdd));
       this.push(file);
@@ -81,13 +90,6 @@ gulp.task('build-dev', function () {
 
 gulp.task('build-dts', function(){
   return gulp.src(paths.output + paths.packageName + '.d.ts')
-  .pipe(insert.transform(function(contents, file) {
-  return 'declare module \'aurelia-binding\' {\r\n' +
-    'export class Lexer {}\r\n' +
-    'export class ParserImplementation {}\r\n' +
-    '}\r\n' + contents;
-}))
-      // .pipe(insert.prepend(insert.prepend()))
       .pipe(rename(paths.packageName + '.d.ts'))
       .pipe(gulp.dest(paths.output + 'es6'))
       .pipe(gulp.dest(paths.output + 'commonjs'))
