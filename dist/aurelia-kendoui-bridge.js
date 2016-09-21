@@ -495,7 +495,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.0.0-beta.1.0.13';
+export let version = '1.0.0-beta.1.0.14';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, ViewResources)
@@ -1854,7 +1854,11 @@ export class WidgetBase {
 
   handlePropertyChanged(widget, property, newValue, oldValue) {
     let binding = this.bindingsToKendo.find(i => i.propertyName === property);
-    if (binding) {
+    if (!binding) return;
+
+    if (typeof newValue === 'undefined') {
+      widget[binding.functionName](null);
+    } else {
       widget[binding.functionName](newValue);
     }
   }

@@ -221,7 +221,11 @@ System.register(['./util', './options-builder', './template-compiler', './templa
           var binding = this.bindingsToKendo.find(function (i) {
             return i.propertyName === property;
           });
-          if (binding) {
+          if (!binding) return;
+
+          if (typeof newValue === 'undefined') {
+            widget[binding.functionName](null);
+          } else {
             widget[binding.functionName](newValue);
           }
         };

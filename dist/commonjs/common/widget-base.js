@@ -218,7 +218,11 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
     var binding = this.bindingsToKendo.find(function (i) {
       return i.propertyName === property;
     });
-    if (binding) {
+    if (!binding) return;
+
+    if (typeof newValue === 'undefined') {
+      widget[binding.functionName](null);
+    } else {
       widget[binding.functionName](newValue);
     }
   };

@@ -1,3 +1,13 @@
+<a name="1.0.0-beta.1.0.14"></a>
+# [1.0.0-beta.1.0.14](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.13...v1.0.0-beta.1.0.14) (2016-09-21)
+
+
+### Bug Fixes
+
+* **binding:** undefined values should be passed as null to kendo ([4082cd4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/4082cd4))
+
+
+
 <a name="1.0.0-beta.1.0.13"></a>
 # [1.0.0-beta.1.0.13](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.12...v1.0.0-beta.1.0.13) (2016-08-17)
 

@@ -220,7 +220,11 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
       var binding = this.bindingsToKendo.find(function (i) {
         return i.propertyName === property;
       });
-      if (binding) {
+      if (!binding) return;
+
+      if (typeof newValue === 'undefined') {
+        widget[binding.functionName](null);
+      } else {
         widget[binding.functionName](newValue);
       }
     };
