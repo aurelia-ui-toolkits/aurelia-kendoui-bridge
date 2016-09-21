@@ -282,6 +282,25 @@ describe('WidgetBase', () => {
   });
 
 
+  it('value binding sets value to null when source property is undefined', () => {
+    sut.control('kendoMobileSwitch')
+    .linkViewModel({})
+    .bindToKendo('kValue', 'value');;
+
+    let widgetFake = new WidgetFake();
+    spyOn(sut, '_createWidget').and.returnValue(widgetFake);
+
+    let widget = sut.createWidget({
+      element: DOM.createElement('div'),
+      parentCtx: {}
+    });
+
+    sut.handlePropertyChanged(widget, 'kValue', undefined, 3);
+
+    expect(widget.value).toHaveBeenCalledWith(null);
+  });
+
+
   it('_handleValueChange takes valueBindingProperty and valueFunction into account', () => {
     let widget = new WidgetFake();
     widget.check.and.returnValue('foo');
