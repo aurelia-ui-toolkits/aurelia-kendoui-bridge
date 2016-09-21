@@ -285,7 +285,7 @@ describe('WidgetBase', () => {
   it('value binding sets value to null when source property is undefined', () => {
     sut.control('kendoMobileSwitch')
     .linkViewModel({})
-    .bindToKendo('kValue', 'value');;
+    .bindToKendo('kValue', 'value');
 
     let widgetFake = new WidgetFake();
     spyOn(sut, '_createWidget').and.returnValue(widgetFake);
