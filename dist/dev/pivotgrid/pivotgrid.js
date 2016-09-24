@@ -55,7 +55,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        PivotGrid.prototype.detached = function detached() {
+        PivotGrid.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

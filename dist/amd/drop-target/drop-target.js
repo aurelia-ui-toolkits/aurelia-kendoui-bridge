@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    DropTarget.prototype.detached = function detached() {
+    DropTarget.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

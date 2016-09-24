@@ -60,7 +60,7 @@ var PanelBar = exports.PanelBar = (_dec = (0, _aureliaTemplating.customElement)(
     });
   };
 
-  PanelBar.prototype.detached = function detached() {
+  PanelBar.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

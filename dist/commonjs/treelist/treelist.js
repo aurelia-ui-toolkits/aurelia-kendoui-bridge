@@ -70,7 +70,7 @@ var TreeList = exports.TreeList = (_dec = (0, _aureliaTemplating.customElement)(
     }
   };
 
-  TreeList.prototype.detached = function detached() {
+  TreeList.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

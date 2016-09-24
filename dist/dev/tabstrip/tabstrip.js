@@ -49,7 +49,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        TabStrip.prototype.detached = function detached() {
+        TabStrip.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

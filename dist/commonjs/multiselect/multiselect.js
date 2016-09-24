@@ -108,7 +108,7 @@ var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customEle
     }
   };
 
-  Multiselect.prototype.detached = function detached() {
+  Multiselect.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

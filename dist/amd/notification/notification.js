@@ -60,7 +60,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       }
     };
 
-    Notification.prototype.detached = function detached() {
+    Notification.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

@@ -49,7 +49,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        Spreadsheet.prototype.detached = function detached() {
+        Spreadsheet.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

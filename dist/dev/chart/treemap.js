@@ -51,7 +51,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        TreeMap.prototype.detached = function detached() {
+        TreeMap.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

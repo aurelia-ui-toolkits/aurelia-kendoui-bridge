@@ -44,7 +44,7 @@ var Window = exports.Window = (_dec = (0, _aureliaTemplating.customAttribute)(_c
     });
   };
 
-  Window.prototype.detached = function detached() {
+  Window.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

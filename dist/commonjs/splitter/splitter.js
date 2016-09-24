@@ -44,7 +44,7 @@ var Splitter = exports.Splitter = (_dec = (0, _aureliaTemplating.customAttribute
     });
   };
 
-  Splitter.prototype.detached = function detached() {
+  Splitter.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

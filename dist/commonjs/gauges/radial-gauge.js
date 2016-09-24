@@ -48,7 +48,7 @@ var RadialGauge = exports.RadialGauge = (_dec = (0, _aureliaTemplating.customEle
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  RadialGauge.prototype.detached = function detached() {
+  RadialGauge.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

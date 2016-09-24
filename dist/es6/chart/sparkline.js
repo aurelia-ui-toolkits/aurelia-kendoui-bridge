@@ -34,7 +34,7 @@ export class Sparkline {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

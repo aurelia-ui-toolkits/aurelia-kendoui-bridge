@@ -46,7 +46,7 @@ var Chart = exports.Chart = (_dec = (0, _aureliaTemplating.customElement)(_const
     });
   };
 
-  Chart.prototype.detached = function detached() {
+  Chart.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

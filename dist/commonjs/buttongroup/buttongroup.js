@@ -93,7 +93,7 @@ var ButtonGroup = exports.ButtonGroup = (_dec = (0, _aureliaTemplating.customAtt
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  ButtonGroup.prototype.detached = function detached() {
+  ButtonGroup.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

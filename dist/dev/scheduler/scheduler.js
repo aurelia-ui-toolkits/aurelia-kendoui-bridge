@@ -55,7 +55,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        Scheduler.prototype.detached = function detached() {
+        Scheduler.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

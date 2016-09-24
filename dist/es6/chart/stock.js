@@ -34,7 +34,7 @@ export class Stock {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

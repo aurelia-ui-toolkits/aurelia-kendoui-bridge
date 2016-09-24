@@ -81,7 +81,7 @@ export class Grid  {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

@@ -44,7 +44,7 @@ var Popup = exports.Popup = (_dec = (0, _aureliaTemplating.customAttribute)(_con
     });
   };
 
-  Popup.prototype.detached = function detached() {
+  Popup.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

@@ -55,7 +55,7 @@ var Draggable = exports.Draggable = (_dec = (0, _aureliaTemplating.customAttribu
     }
   };
 
-  Draggable.prototype.detached = function detached() {
+  Draggable.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

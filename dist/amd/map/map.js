@@ -43,7 +43,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    Map.prototype.detached = function detached() {
+    Map.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

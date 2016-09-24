@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    Sparkline.prototype.detached = function detached() {
+    Sparkline.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

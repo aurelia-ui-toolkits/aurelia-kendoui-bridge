@@ -48,7 +48,7 @@ var ColorPalette = exports.ColorPalette = (_dec = (0, _aureliaTemplating.customE
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  ColorPalette.prototype.detached = function detached() {
+  ColorPalette.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

@@ -44,7 +44,7 @@ var Menu = exports.Menu = (_dec = (0, _aureliaTemplating.customAttribute)(_const
     });
   };
 
-  Menu.prototype.detached = function detached() {
+  Menu.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

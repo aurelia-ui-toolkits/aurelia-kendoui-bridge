@@ -65,7 +65,7 @@ var Notification = exports.Notification = (_dec = (0, _aureliaTemplating.customE
     }
   };
 
-  Notification.prototype.detached = function detached() {
+  Notification.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

@@ -100,7 +100,7 @@ var ComboBox = exports.ComboBox = (_dec = (0, _aureliaTemplating.customElement)(
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  ComboBox.prototype.detached = function detached() {
+  ComboBox.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

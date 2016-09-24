@@ -57,7 +57,7 @@ var Upload = exports.Upload = (_dec = (0, _aureliaTemplating.customElement)(_con
     });
   };
 
-  Upload.prototype.detached = function detached() {
+  Upload.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

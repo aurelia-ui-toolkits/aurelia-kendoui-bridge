@@ -33,7 +33,7 @@ export class TabStrip {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

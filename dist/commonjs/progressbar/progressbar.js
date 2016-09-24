@@ -93,7 +93,7 @@ var ProgressBar = exports.ProgressBar = (_dec = (0, _aureliaTemplating.customAtt
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  ProgressBar.prototype.detached = function detached() {
+  ProgressBar.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

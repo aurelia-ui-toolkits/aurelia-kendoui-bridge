@@ -33,7 +33,7 @@ export class Splitter {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    QRCode.prototype.detached = function detached() {
+    QRCode.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

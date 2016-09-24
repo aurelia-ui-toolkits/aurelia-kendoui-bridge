@@ -44,7 +44,7 @@ var TabStrip = exports.TabStrip = (_dec = (0, _aureliaTemplating.customAttribute
     });
   };
 
-  TabStrip.prototype.detached = function detached() {
+  TabStrip.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

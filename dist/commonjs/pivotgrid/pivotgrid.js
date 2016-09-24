@@ -49,7 +49,7 @@ var PivotGrid = exports.PivotGrid = (_dec = (0, _aureliaTemplating.customElement
     });
   };
 
-  PivotGrid.prototype.detached = function detached() {
+  PivotGrid.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

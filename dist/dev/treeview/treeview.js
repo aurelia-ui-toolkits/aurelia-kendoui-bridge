@@ -64,7 +64,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        TreeView.prototype.detached = function detached() {
+        TreeView.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

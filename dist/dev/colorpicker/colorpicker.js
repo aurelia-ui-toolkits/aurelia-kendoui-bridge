@@ -99,7 +99,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        ColorPicker.prototype.detached = function detached() {
+        ColorPicker.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

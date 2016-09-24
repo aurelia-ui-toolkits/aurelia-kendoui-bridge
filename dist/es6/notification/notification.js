@@ -47,7 +47,7 @@ export class Notification {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

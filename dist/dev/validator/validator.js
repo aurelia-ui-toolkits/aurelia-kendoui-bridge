@@ -49,7 +49,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        Validator.prototype.detached = function detached() {
+        Validator.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

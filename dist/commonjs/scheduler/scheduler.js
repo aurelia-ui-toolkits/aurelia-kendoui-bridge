@@ -49,7 +49,7 @@ var Scheduler = exports.Scheduler = (_dec = (0, _aureliaTemplating.customElement
     });
   };
 
-  Scheduler.prototype.detached = function detached() {
+  Scheduler.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

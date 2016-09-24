@@ -90,7 +90,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    NumericTextBox.prototype.detached = function detached() {
+    NumericTextBox.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

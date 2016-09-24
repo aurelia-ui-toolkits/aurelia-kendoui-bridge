@@ -95,7 +95,7 @@ var DateTimePicker = exports.DateTimePicker = (_dec = (0, _aureliaTemplating.cus
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  DateTimePicker.prototype.detached = function detached() {
+  DateTimePicker.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

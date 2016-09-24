@@ -50,7 +50,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    Scrollview.prototype.detached = function detached() {
+    Scrollview.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

@@ -55,7 +55,7 @@ var TreeView = exports.TreeView = (_dec = (0, _aureliaTemplating.customElement)(
     });
   };
 
-  TreeView.prototype.detached = function detached() {
+  TreeView.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

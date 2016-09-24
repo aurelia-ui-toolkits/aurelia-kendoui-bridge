@@ -52,7 +52,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    Upload.prototype.detached = function detached() {
+    Upload.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

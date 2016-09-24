@@ -44,7 +44,7 @@ var DropTarget = exports.DropTarget = (_dec = (0, _aureliaTemplating.customAttri
     });
   };
 
-  DropTarget.prototype.detached = function detached() {
+  DropTarget.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

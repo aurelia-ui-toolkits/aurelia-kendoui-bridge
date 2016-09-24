@@ -50,7 +50,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       }
     };
 
-    Draggable.prototype.detached = function detached() {
+    Draggable.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

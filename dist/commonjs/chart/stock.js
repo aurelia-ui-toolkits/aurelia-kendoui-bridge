@@ -46,7 +46,7 @@ var Stock = exports.Stock = (_dec = (0, _aureliaTemplating.customElement)(_const
     });
   };
 
-  Stock.prototype.detached = function detached() {
+  Stock.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

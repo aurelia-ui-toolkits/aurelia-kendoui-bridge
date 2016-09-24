@@ -68,7 +68,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           });
         };
 
-        PanelBar.prototype.detached = function detached() {
+        PanelBar.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

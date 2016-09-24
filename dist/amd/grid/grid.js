@@ -84,7 +84,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       }
     };
 
-    Grid.prototype.detached = function detached() {
+    Grid.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

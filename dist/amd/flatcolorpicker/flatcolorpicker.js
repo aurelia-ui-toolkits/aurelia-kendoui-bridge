@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    FlatColorPicker.prototype.detached = function detached() {
+    FlatColorPicker.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

@@ -93,7 +93,7 @@ var RangeSlider = exports.RangeSlider = (_dec = (0, _aureliaTemplating.customEle
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  RangeSlider.prototype.detached = function detached() {
+  RangeSlider.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

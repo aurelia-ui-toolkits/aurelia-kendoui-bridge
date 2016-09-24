@@ -44,7 +44,7 @@ var Spreadsheet = exports.Spreadsheet = (_dec = (0, _aureliaTemplating.customEle
     });
   };
 
-  Spreadsheet.prototype.detached = function detached() {
+  Spreadsheet.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

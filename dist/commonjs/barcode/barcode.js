@@ -44,7 +44,7 @@ var Barcode = exports.Barcode = (_dec = (0, _aureliaTemplating.customAttribute)(
     });
   };
 
-  Barcode.prototype.detached = function detached() {
+  Barcode.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

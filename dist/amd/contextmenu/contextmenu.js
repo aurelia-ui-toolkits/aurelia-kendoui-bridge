@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    ContextMenu.prototype.detached = function detached() {
+    ContextMenu.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

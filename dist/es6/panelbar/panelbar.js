@@ -50,7 +50,7 @@ export class PanelBar {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

@@ -49,7 +49,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        Barcode.prototype.detached = function detached() {
+        Barcode.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

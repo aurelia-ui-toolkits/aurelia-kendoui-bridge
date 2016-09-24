@@ -51,7 +51,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        Chart.prototype.detached = function detached() {
+        Chart.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

@@ -53,7 +53,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        ListView.prototype.detached = function detached() {
+        ListView.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

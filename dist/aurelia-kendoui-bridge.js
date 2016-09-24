@@ -1,6 +1,6 @@
 import * as LogManager from 'aurelia-logging';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customElement,ViewResources,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {customAttribute,bindable,customElement,ViewResources,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -495,7 +495,82 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.0.0-beta.1.0.14';
+export let version = '1.0.0-beta.1.0.15';
+@customAttribute(`${constants.attributePrefix}barcode`)
+@generateBindables('kendoBarcode')
+@inject(Element, WidgetBase)
+export class Barcode {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoBarcode')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  unbind() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+@customAttribute(`${constants.attributePrefix}button`)
+@generateBindables('kendoButton')
+@inject(Element, WidgetBase)
+export class Button {
+
+  @bindable kEnabled;
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoButton')
+                        .bindToKendo('kEnabled', 'enable')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  unbind() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, ViewResources)
@@ -545,82 +620,7 @@ export class AutoComplete {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
-@customAttribute(`${constants.attributePrefix}barcode`)
-@generateBindables('kendoBarcode')
-@inject(Element, WidgetBase)
-export class Barcode {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoBarcode')
-                        .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
-@customAttribute(`${constants.attributePrefix}button`)
-@generateBindables('kendoButton')
-@inject(Element, WidgetBase)
-export class Button {
-
-  @bindable kEnabled;
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoButton')
-                        .bindToKendo('kEnabled', 'enable')
-                        .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -661,7 +661,7 @@ export class ButtonGroup {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -700,7 +700,7 @@ export class Calendar {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -736,7 +736,7 @@ export class Chart {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -772,7 +772,7 @@ export class Sparkline {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -808,7 +808,7 @@ export class Stock {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -844,7 +844,7 @@ export class TreeMap {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -883,7 +883,7 @@ export class ColorPalette {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -925,7 +925,7 @@ export class ColorPicker {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -975,7 +975,7 @@ export class ComboBox {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -1921,7 +1921,7 @@ export class ContextMenu {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -1965,7 +1965,7 @@ export class DatePicker {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2009,7 +2009,7 @@ export class DateTimePicker {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2043,7 +2043,7 @@ export class Diagram {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2084,7 +2084,7 @@ export class Draggable {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2118,7 +2118,7 @@ export class DropTargetArea {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2152,7 +2152,7 @@ export class DropTarget {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2206,7 +2206,7 @@ export class DropDownList {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2249,7 +2249,7 @@ export class Editor {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2283,7 +2283,7 @@ export class FilterMenu {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2317,7 +2317,7 @@ export class FlatColorPicker {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2385,7 +2385,7 @@ export class Gantt  {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2428,7 +2428,7 @@ export class LinearGauge {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2467,7 +2467,7 @@ export class RadialGauge {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2602,7 +2602,7 @@ export class Grid  {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2651,7 +2651,7 @@ export class ListView  {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2689,7 +2689,7 @@ export class Map {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2734,7 +2734,7 @@ export class MaskedTextBox {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2768,7 +2768,7 @@ export class Menu {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2825,7 +2825,7 @@ export class Multiselect {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2896,7 +2896,7 @@ export class Notification {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2940,7 +2940,7 @@ export class NumericTextBox {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2991,7 +2991,7 @@ export class PanelBar {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3033,7 +3033,7 @@ export class PivotConfigurator {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3073,7 +3073,7 @@ export class PivotGrid {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3107,7 +3107,7 @@ export class Popup {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3148,7 +3148,7 @@ export class ProgressBar {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3182,7 +3182,7 @@ export class QRCode {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3224,7 +3224,7 @@ export class RangeSlider {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3258,7 +3258,7 @@ export class ResponsivePanel {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3298,7 +3298,7 @@ export class Scheduler {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3345,7 +3345,7 @@ export class Scrollview {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3391,7 +3391,7 @@ export class Slider {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3425,7 +3425,7 @@ export class Sortable {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3459,7 +3459,7 @@ export class Splitter {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3493,7 +3493,7 @@ export class Spreadsheet {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3535,7 +3535,7 @@ export class Switch {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3569,7 +3569,7 @@ export class TabStrip {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3614,7 +3614,7 @@ export class TimePicker {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3705,7 +3705,7 @@ export class Toolbar {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3739,7 +3739,7 @@ export class Tooltip {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3808,7 +3808,7 @@ export class TreeList  {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3854,7 +3854,7 @@ export class TreeView {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3906,7 +3906,7 @@ export class Upload {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3940,7 +3940,7 @@ export class Validator {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -4018,7 +4018,7 @@ export class Window {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

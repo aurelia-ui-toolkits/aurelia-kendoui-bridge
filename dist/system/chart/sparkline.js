@@ -51,7 +51,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        Sparkline.prototype.detached = function detached() {
+        Sparkline.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 
