@@ -70,7 +70,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       }
     };
 
-    Gantt.prototype.detached = function detached() {
+    Gantt.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

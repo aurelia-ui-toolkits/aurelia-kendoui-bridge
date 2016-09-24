@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    Validator.prototype.detached = function detached() {
+    Validator.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

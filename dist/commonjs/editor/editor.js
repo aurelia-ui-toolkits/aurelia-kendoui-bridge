@@ -50,7 +50,7 @@ var Editor = exports.Editor = (_dec = (0, _aureliaTemplating.customAttribute)(_c
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  Editor.prototype.detached = function detached() {
+  Editor.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

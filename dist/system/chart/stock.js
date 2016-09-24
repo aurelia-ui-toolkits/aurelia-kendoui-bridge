@@ -51,7 +51,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        Stock.prototype.detached = function detached() {
+        Stock.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

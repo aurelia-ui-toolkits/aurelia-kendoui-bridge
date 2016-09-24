@@ -103,7 +103,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       }
     };
 
-    Multiselect.prototype.detached = function detached() {
+    Multiselect.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

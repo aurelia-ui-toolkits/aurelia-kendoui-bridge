@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    Tooltip.prototype.detached = function detached() {
+    Tooltip.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

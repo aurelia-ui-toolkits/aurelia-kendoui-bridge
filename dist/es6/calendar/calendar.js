@@ -39,7 +39,7 @@ export class Calendar {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

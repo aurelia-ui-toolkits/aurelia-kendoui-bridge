@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    Barcode.prototype.detached = function detached() {
+    Barcode.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

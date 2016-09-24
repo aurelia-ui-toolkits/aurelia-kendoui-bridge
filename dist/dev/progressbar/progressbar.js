@@ -99,7 +99,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        ProgressBar.prototype.detached = function detached() {
+        ProgressBar.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

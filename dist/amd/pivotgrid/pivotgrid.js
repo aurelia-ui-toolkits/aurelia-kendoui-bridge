@@ -42,7 +42,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    PivotGrid.prototype.detached = function detached() {
+    PivotGrid.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

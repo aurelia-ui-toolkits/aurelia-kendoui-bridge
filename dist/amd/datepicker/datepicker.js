@@ -90,7 +90,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    DatePicker.prototype.detached = function detached() {
+    DatePicker.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

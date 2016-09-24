@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    Diagram.prototype.detached = function detached() {
+    Diagram.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

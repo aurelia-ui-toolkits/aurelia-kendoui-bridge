@@ -48,7 +48,7 @@ var Sparkline = exports.Sparkline = (_dec = (0, _aureliaTemplating.customElement
     });
   };
 
-  Sparkline.prototype.detached = function detached() {
+  Sparkline.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

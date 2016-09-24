@@ -48,7 +48,7 @@ var TreeMap = exports.TreeMap = (_dec = (0, _aureliaTemplating.customElement)(_c
     });
   };
 
-  TreeMap.prototype.detached = function detached() {
+  TreeMap.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

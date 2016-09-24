@@ -46,7 +46,7 @@ var ContextMenu = exports.ContextMenu = (_dec = (0, _aureliaTemplating.customAtt
     });
   };
 
-  ContextMenu.prototype.detached = function detached() {
+  ContextMenu.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

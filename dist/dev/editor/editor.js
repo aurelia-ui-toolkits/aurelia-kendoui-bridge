@@ -53,7 +53,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        Editor.prototype.detached = function detached() {
+        Editor.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

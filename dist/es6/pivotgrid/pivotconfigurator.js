@@ -35,7 +35,7 @@ export class PivotConfigurator {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

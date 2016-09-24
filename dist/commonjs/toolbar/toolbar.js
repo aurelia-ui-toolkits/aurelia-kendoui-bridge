@@ -65,7 +65,7 @@ var Toolbar = exports.Toolbar = (_dec = (0, _aureliaTemplating.customElement)(_c
     }
   };
 
-  Toolbar.prototype.detached = function detached() {
+  Toolbar.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

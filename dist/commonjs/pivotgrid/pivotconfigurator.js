@@ -46,7 +46,7 @@ var PivotConfigurator = exports.PivotConfigurator = (_dec = (0, _aureliaTemplati
     });
   };
 
-  PivotConfigurator.prototype.detached = function detached() {
+  PivotConfigurator.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

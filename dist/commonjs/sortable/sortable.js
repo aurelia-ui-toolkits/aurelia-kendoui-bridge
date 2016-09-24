@@ -46,7 +46,7 @@ var Sortable = exports.Sortable = (_dec = (0, _aureliaTemplating.customAttribute
     });
   };
 
-  Sortable.prototype.detached = function detached() {
+  Sortable.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

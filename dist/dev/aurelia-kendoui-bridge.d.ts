@@ -111,8 +111,8 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.slider.min';
   import 'kendo.sortable.min';
   import 'kendo.splitter.min';
-  import 'kendo.mobile.switch.min';
   import 'kendo.spreadsheet.min';
+  import 'kendo.mobile.switch.min';
   import 'kendo.tabstrip.min';
   import 'kendo.timepicker.min';
   import 'kendo.toolbar.min';
@@ -235,14 +235,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Barcode {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Button {
     kEnabled: any;
@@ -251,7 +251,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class ButtonGroup {
     kEnabled: any;
@@ -260,7 +260,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Calendar {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
@@ -268,35 +268,35 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Chart {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Sparkline {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Stock {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class TreeMap {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class ColorPalette {
     constructor(element?: any, widgetBase?: any);
@@ -304,7 +304,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class ColorPicker {
     kEnabled: any;
@@ -313,7 +313,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class ComboBox {
     kEnabled: any;
@@ -323,7 +323,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export let bindables: any;
   export const constants: any;
@@ -632,7 +632,7 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class DatePicker {
     kEnabled: any;
@@ -642,7 +642,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class DateTimePicker {
     kEnabled: any;
@@ -652,14 +652,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Diagram {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Draggable {
     constructor(element?: any, widgetBase?: any);
@@ -667,21 +667,21 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     beforeInitialize(options?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class DropTargetArea {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class DropTarget {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class DropDownList {
     kNoValueBinding: any;
@@ -692,7 +692,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Editor {
     constructor(element?: any, widgetBase?: any);
@@ -700,14 +700,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class FlatColorPicker {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class GanttCol {
   
@@ -718,7 +718,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class LinearGauge {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
@@ -726,7 +726,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class RadialGauge {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
@@ -734,7 +734,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Col {
     constructor(templateGatherer?: any, optionsBuilder?: any, util?: any, element?: any);
@@ -753,14 +753,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class ListView {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Map {
     constructor(element?: any, widgetBase?: any);
@@ -768,7 +768,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class MaskedTextBox {
     kDisableDates: any;
@@ -779,14 +779,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Menu {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Multiselect {
     kEnabled: any;
@@ -797,7 +797,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class NotificationTemplate {
     template: any;
@@ -810,7 +810,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     beforeInitialize(options?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class NumericTextBox {
     kEnabled: any;
@@ -820,14 +820,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class PanelBar {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class PDF {
   
@@ -837,14 +837,14 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class PivotGrid {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class ProgressBar {
     kEnabled: any;
@@ -853,14 +853,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class QRCode {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class RangeSlider {
     kEnabled: any;
@@ -869,28 +869,28 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class ResponsivePanel {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Scheduler {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Scrollview {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Slider {
     kEnabled: any;
@@ -899,21 +899,28 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Sortable {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Splitter {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
+  }
+  export class Spreadsheet {
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    unbind(): any;
   }
   export class Switch {
     kEnabled: any;
@@ -922,21 +929,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
-  }
-  export class Spreadsheet {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class TabStrip {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class TimePicker {
     kDisableDates: any;
@@ -947,7 +947,7 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class ToolbarItemButton {
     constructor(optionsBuilder?: any);
@@ -963,14 +963,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Tooltip {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class TreeCol {
     constructor(templateGatherer?: any, util?: any, element?: any);
@@ -982,28 +982,28 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
-    detached(): any;
+    unbind(): any;
   }
   export class TreeView {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Upload {
     constructor(element?: any, widgetBase?: any, viewResources?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class Validator {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
   export class kendoToStringValueConverter {
     toView(value?: any, format?: any, language?: any): any;
@@ -1031,6 +1031,6 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    detached(): any;
+    unbind(): any;
   }
 }

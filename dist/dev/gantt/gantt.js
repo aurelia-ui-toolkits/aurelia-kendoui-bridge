@@ -88,7 +88,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           }
         };
 
-        Gantt.prototype.detached = function detached() {
+        Gantt.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

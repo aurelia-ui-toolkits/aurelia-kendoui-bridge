@@ -95,7 +95,7 @@ var Slider = exports.Slider = (_dec = (0, _aureliaTemplating.customAttribute)(_c
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  Slider.prototype.detached = function detached() {
+  Slider.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

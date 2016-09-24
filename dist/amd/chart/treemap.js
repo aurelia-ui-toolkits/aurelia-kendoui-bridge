@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    TreeMap.prototype.detached = function detached() {
+    TreeMap.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

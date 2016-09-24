@@ -41,7 +41,7 @@ export class Draggable {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

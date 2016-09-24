@@ -95,7 +95,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    ComboBox.prototype.detached = function detached() {
+    ComboBox.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

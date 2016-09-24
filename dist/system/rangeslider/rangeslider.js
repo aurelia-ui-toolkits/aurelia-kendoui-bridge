@@ -99,7 +99,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        RangeSlider.prototype.detached = function detached() {
+        RangeSlider.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

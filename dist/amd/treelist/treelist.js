@@ -61,7 +61,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       }
     };
 
-    TreeList.prototype.detached = function detached() {
+    TreeList.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

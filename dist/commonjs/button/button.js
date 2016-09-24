@@ -95,7 +95,7 @@ var Button = exports.Button = (_dec = (0, _aureliaTemplating.customAttribute)(_c
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  Button.prototype.detached = function detached() {
+  Button.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

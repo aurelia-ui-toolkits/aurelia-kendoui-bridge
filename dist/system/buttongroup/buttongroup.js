@@ -99,7 +99,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        ButtonGroup.prototype.detached = function detached() {
+        ButtonGroup.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

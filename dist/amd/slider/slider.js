@@ -88,7 +88,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    Slider.prototype.detached = function detached() {
+    Slider.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    ResponsivePanel.prototype.detached = function detached() {
+    ResponsivePanel.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

@@ -46,7 +46,7 @@ var Tooltip = exports.Tooltip = (_dec = (0, _aureliaTemplating.customAttribute)(
     });
   };
 
-  Tooltip.prototype.detached = function detached() {
+  Tooltip.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

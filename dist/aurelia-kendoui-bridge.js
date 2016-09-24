@@ -484,7 +484,7 @@ export class AutoComplete {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -520,7 +520,7 @@ export class Barcode {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -563,7 +563,7 @@ export class Button {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -606,7 +606,7 @@ export class ButtonGroup {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -647,7 +647,7 @@ export class Calendar {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -686,7 +686,7 @@ export class Chart {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -723,7 +723,7 @@ export class Sparkline {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -760,7 +760,7 @@ export class Stock {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -797,7 +797,7 @@ export class TreeMap {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -838,7 +838,7 @@ export class ColorPalette {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -882,7 +882,7 @@ export class ColorPicker {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -935,7 +935,7 @@ export class ComboBox {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -1865,7 +1865,7 @@ export class ContextMenu {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -1911,7 +1911,7 @@ export class DatePicker {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -1957,7 +1957,7 @@ export class DateTimePicker {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -1993,7 +1993,7 @@ export class Diagram {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2036,7 +2036,7 @@ export class Draggable {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2072,7 +2072,7 @@ export class DropTargetArea {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2108,7 +2108,7 @@ export class DropTarget {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2165,7 +2165,7 @@ export class DropDownList {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2210,7 +2210,7 @@ export class Editor {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2246,7 +2246,7 @@ export class FlatColorPicker {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2315,7 +2315,7 @@ export class Gantt  {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2360,7 +2360,7 @@ export class LinearGauge {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2401,7 +2401,7 @@ export class RadialGauge {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2531,7 +2531,7 @@ export class Grid  {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2582,7 +2582,7 @@ export class ListView  {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2622,7 +2622,7 @@ export class Map {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2669,7 +2669,7 @@ export class MaskedTextBox {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2705,7 +2705,7 @@ export class Menu {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2765,7 +2765,7 @@ export class Multiselect {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2838,7 +2838,7 @@ export class Notification {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2884,7 +2884,7 @@ export class NumericTextBox {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2937,7 +2937,7 @@ export class PanelBar {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -2985,7 +2985,7 @@ export class PivotConfigurator {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3028,7 +3028,7 @@ export class PivotGrid {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3071,7 +3071,7 @@ export class ProgressBar {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3107,7 +3107,7 @@ export class QRCode {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3151,7 +3151,7 @@ export class RangeSlider {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3187,7 +3187,7 @@ export class ResponsivePanel {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3233,7 +3233,7 @@ export class Scheduler {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3282,7 +3282,7 @@ export class Scrollview {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3330,7 +3330,7 @@ export class Slider {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3366,7 +3366,7 @@ export class Sortable {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3402,7 +3402,43 @@ export class Splitter {
     });
   }
 
-  detached() {
+  unbind() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+import 'kendo.spreadsheet.min';
+
+@customElement(`${constants.elementPrefix}spreadsheet`)
+@generateBindables('kendoSpreadsheet')
+@inject(Element, WidgetBase)
+export class Spreadsheet {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                    .control('kendoSpreadsheet')
+                    .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3446,43 +3482,7 @@ export class Switch {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
-import 'kendo.spreadsheet.min';
-
-@customElement(`${constants.elementPrefix}spreadsheet`)
-@generateBindables('kendoSpreadsheet')
-@inject(Element, WidgetBase)
-export class Spreadsheet {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                    .control('kendoSpreadsheet')
-                    .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3518,7 +3518,7 @@ export class TabStrip {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3565,7 +3565,7 @@ export class TimePicker {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3658,7 +3658,7 @@ export class Toolbar {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3694,7 +3694,7 @@ export class Tooltip {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3766,7 +3766,7 @@ export class TreeList  {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3803,7 +3803,7 @@ export class TreeView {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3853,7 +3853,7 @@ export class Upload {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3889,7 +3889,7 @@ export class Validator {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
@@ -3969,7 +3969,7 @@ export class Window {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

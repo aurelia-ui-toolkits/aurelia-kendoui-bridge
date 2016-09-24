@@ -46,7 +46,7 @@ var ResponsivePanel = exports.ResponsivePanel = (_dec = (0, _aureliaTemplating.c
     });
   };
 
-  ResponsivePanel.prototype.detached = function detached() {
+  ResponsivePanel.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

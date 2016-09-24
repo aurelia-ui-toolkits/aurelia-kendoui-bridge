@@ -46,7 +46,7 @@ var Diagram = exports.Diagram = (_dec = (0, _aureliaTemplating.customElement)(_c
     });
   };
 
-  Diagram.prototype.detached = function detached() {
+  Diagram.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

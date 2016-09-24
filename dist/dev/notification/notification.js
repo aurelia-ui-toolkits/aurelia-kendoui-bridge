@@ -71,7 +71,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           }
         };
 
-        Notification.prototype.detached = function detached() {
+        Notification.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

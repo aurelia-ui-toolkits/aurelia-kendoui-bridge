@@ -46,7 +46,7 @@ var QRCode = exports.QRCode = (_dec = (0, _aureliaTemplating.customAttribute)(_c
     });
   };
 
-  QRCode.prototype.detached = function detached() {
+  QRCode.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

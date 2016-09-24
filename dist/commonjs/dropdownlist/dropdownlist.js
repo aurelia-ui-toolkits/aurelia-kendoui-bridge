@@ -110,7 +110,7 @@ var DropDownList = exports.DropDownList = (_dec = (0, _aureliaTemplating.customE
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  DropDownList.prototype.detached = function detached() {
+  DropDownList.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

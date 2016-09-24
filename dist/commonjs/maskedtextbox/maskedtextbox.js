@@ -99,7 +99,7 @@ var MaskedTextBox = exports.MaskedTextBox = (_dec = (0, _aureliaTemplating.custo
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  MaskedTextBox.prototype.detached = function detached() {
+  MaskedTextBox.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

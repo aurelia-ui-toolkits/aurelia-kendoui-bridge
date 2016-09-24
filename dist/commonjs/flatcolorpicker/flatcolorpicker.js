@@ -46,7 +46,7 @@ var FlatColorPicker = exports.FlatColorPicker = (_dec = (0, _aureliaTemplating.c
     });
   };
 
-  FlatColorPicker.prototype.detached = function detached() {
+  FlatColorPicker.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

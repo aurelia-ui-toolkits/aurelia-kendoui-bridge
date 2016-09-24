@@ -101,7 +101,7 @@ var Grid = exports.Grid = (_dec = (0, _aureliaTemplating.customElement)(_constan
     }
   };
 
-  Grid.prototype.detached = function detached() {
+  Grid.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

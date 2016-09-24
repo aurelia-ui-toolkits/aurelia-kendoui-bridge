@@ -1,3 +1,13 @@
+<a name="0.12.3"></a>
+## [0.12.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.12.2...v0.12.3) (2016-09-24)
+
+
+### Bug Fixes
+
+* **all:** destroy widget from unbind() and not detached() ([5803108](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/5803108))
+
+
+
 <a name="0.12.2"></a>
 ## [0.12.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.12.1...v0.12.2) (2016-08-17)
 

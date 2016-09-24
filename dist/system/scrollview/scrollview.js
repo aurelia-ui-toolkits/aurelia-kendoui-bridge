@@ -64,7 +64,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        Scrollview.prototype.detached = function detached() {
+        Scrollview.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

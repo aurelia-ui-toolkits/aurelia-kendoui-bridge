@@ -42,7 +42,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    Scheduler.prototype.detached = function detached() {
+    Scheduler.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

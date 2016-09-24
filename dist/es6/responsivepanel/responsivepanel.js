@@ -34,7 +34,7 @@ export class ResponsivePanel {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

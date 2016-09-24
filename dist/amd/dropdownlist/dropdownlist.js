@@ -101,7 +101,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    DropDownList.prototype.detached = function detached() {
+    DropDownList.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

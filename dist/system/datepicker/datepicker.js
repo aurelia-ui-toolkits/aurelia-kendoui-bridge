@@ -101,7 +101,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        DatePicker.prototype.detached = function detached() {
+        DatePicker.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

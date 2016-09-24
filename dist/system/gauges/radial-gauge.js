@@ -53,7 +53,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        RadialGauge.prototype.detached = function detached() {
+        RadialGauge.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

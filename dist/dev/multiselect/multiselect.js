@@ -118,7 +118,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           }
         };
 
-        Multiselect.prototype.detached = function detached() {
+        Multiselect.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

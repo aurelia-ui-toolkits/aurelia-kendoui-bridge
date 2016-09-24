@@ -64,7 +64,7 @@ var AutoComplete = exports.AutoComplete = (_dec = (0, _aureliaTemplating.customE
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  AutoComplete.prototype.detached = function detached() {
+  AutoComplete.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

@@ -99,7 +99,7 @@ var TimePicker = exports.TimePicker = (_dec = (0, _aureliaTemplating.customAttri
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  TimePicker.prototype.detached = function detached() {
+  TimePicker.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

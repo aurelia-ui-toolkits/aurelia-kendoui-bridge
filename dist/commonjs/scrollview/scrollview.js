@@ -57,7 +57,7 @@ var Scrollview = exports.Scrollview = (_dec = (0, _aureliaTemplating.customEleme
     });
   };
 
-  Scrollview.prototype.detached = function detached() {
+  Scrollview.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

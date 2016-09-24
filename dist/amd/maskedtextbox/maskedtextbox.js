@@ -92,7 +92,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    MaskedTextBox.prototype.detached = function detached() {
+    MaskedTextBox.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

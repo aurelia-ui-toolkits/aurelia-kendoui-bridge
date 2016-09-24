@@ -60,7 +60,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           }
         };
 
-        Draggable.prototype.detached = function detached() {
+        Draggable.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

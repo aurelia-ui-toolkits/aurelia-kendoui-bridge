@@ -35,7 +35,7 @@ export class TreeMap {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

@@ -49,7 +49,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        FlatColorPicker.prototype.detached = function detached() {
+        FlatColorPicker.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

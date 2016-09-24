@@ -49,7 +49,7 @@ var ListView = exports.ListView = (_dec = (0, _aureliaTemplating.customElement)(
     });
   };
 
-  ListView.prototype.detached = function detached() {
+  ListView.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

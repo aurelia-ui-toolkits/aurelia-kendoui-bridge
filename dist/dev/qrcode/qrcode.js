@@ -49,7 +49,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        QRCode.prototype.detached = function detached() {
+        QRCode.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

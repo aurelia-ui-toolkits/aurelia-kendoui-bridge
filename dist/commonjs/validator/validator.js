@@ -46,7 +46,7 @@ var Validator = exports.Validator = (_dec = (0, _aureliaTemplating.customAttribu
     });
   };
 
-  Validator.prototype.detached = function detached() {
+  Validator.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

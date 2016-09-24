@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    TabStrip.prototype.detached = function detached() {
+    TabStrip.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

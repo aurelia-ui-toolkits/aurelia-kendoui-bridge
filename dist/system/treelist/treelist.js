@@ -76,7 +76,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           }
         };
 
-        TreeList.prototype.detached = function detached() {
+        TreeList.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

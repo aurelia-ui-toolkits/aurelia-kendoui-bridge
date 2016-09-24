@@ -81,7 +81,7 @@ var Gantt = exports.Gantt = (_dec = (0, _aureliaTemplating.customElement)(_const
     }
   };
 
-  Gantt.prototype.detached = function detached() {
+  Gantt.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

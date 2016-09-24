@@ -66,7 +66,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        AutoComplete.prototype.detached = function detached() {
+        AutoComplete.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

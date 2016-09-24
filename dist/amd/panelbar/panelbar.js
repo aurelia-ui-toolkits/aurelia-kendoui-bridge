@@ -55,7 +55,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       });
     };
 
-    PanelBar.prototype.detached = function detached() {
+    PanelBar.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

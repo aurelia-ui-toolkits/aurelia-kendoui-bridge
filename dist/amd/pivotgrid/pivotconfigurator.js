@@ -39,7 +39,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       });
     };
 
-    PivotConfigurator.prototype.detached = function detached() {
+    PivotConfigurator.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

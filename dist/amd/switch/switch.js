@@ -88,7 +88,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    Switch.prototype.detached = function detached() {
+    Switch.prototype.unbind = function unbind() {
       this.widgetBase.destroy(this.kWidget);
     };
 

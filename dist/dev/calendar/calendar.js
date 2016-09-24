@@ -53,7 +53,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        Calendar.prototype.detached = function detached() {
+        Calendar.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 

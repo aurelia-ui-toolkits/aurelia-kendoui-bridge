@@ -46,7 +46,7 @@ var DropTargetArea = exports.DropTargetArea = (_dec = (0, _aureliaTemplating.cus
     });
   };
 
-  DropTargetArea.prototype.detached = function detached() {
+  DropTargetArea.prototype.unbind = function unbind() {
     this.widgetBase.destroy(this.kWidget);
   };
 

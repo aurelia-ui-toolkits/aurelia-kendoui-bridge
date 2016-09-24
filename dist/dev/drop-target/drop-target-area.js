@@ -49,7 +49,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           });
         };
 
-        DropTargetArea.prototype.detached = function detached() {
+        DropTargetArea.prototype.unbind = function unbind() {
           this.widgetBase.destroy(this.kWidget);
         };
 
