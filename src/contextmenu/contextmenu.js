@@ -34,7 +34,7 @@ export class ContextMenu {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

@@ -63,7 +63,7 @@ export class Gantt  {
     }
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

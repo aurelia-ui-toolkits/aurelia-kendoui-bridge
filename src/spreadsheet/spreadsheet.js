@@ -34,7 +34,7 @@ export class Spreadsheet {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
