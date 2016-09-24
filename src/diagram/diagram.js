@@ -33,7 +33,7 @@ export class Diagram {
     });
   }
 
-  detached() {
+  unbind() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
