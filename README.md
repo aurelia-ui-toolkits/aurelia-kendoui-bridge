@@ -1,4 +1,4 @@
-# aurelia-kendoui-bridge
+# aurelia-kendoui-bridge 
 
 A set of [Aurelia](http://aurelia.io) wrappers for [Kendo UI](http://www.telerik.com/kendo-ui)
 
