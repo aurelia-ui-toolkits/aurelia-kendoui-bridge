@@ -1,3 +1,13 @@
+<a name="1.0.0-beta.1.0.16"></a>
+# [1.0.0-beta.1.0.16](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.15...v1.0.0-beta.1.0.16) (2016-10-04)
+
+
+### Bug Fixes
+
+* **widget-base:** change binding value only when needed ([ff6b462](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ff6b462))
+
+
+
 <a name="1.0.0-beta.1.0.15"></a>
 # [1.0.0-beta.1.0.15](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.14...v1.0.0-beta.1.0.15) (2016-09-24)
 
