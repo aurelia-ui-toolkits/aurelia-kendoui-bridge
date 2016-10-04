@@ -489,42 +489,6 @@ export class AutoComplete {
   }
 }
 
-import 'kendo.dataviz.barcode.min';
-
-@customAttribute(`${constants.attributePrefix}barcode`)
-@generateBindables('kendoBarcode')
-@inject(Element, WidgetBase)
-export class Barcode {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoBarcode')
-                        .linkViewModel(this);
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  unbind() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
 import 'kendo.button.min';
 
 @customAttribute(`${constants.attributePrefix}button`)
@@ -561,6 +525,42 @@ export class Button {
 
   propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  unbind() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+import 'kendo.dataviz.barcode.min';
+
+@customAttribute(`${constants.attributePrefix}barcode`)
+@generateBindables('kendoBarcode')
+@inject(Element, WidgetBase)
+export class Barcode {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoBarcode')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
   }
 
   unbind() {
@@ -1811,7 +1811,9 @@ export class WidgetBase {
   handlePropertyChanged(widget, property, newValue, oldValue) {
     let binding = this.bindingsToKendo.find(i => i.propertyName === property);
     if (binding) {
-      widget[binding.functionName](newValue);
+      if (widget && widget[binding.functionName]() !== newValue) {
+        widget[binding.functionName](newValue);
+      }
     }
   }
 
@@ -2324,88 +2326,6 @@ function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
 }
 
-import 'kendo.dataviz.gauge.min';
-
-@customElement(`${constants.elementPrefix}linear-gauge`)
-@generateBindables('kendoLinearGauge')
-@inject(Element, WidgetBase)
-export class LinearGauge {
-
-  constructor(element, widgetBase, viewResources) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                    .control('kendoLinearGauge')
-                    .linkViewModel(this)
-                    .useValueBinding();
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  unbind() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
-import 'kendo.dataviz.gauge.min';
-
-@customElement(`${constants.elementPrefix}radial-gauge`)
-@generateBindables('kendoRadialGauge')
-@inject(Element, WidgetBase)
-export class RadialGauge {
-
-  constructor(element, widgetBase, viewResources) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                    .control('kendoRadialGauge')
-                    .linkViewModel(this)
-                    .useValueBinding();
-  }
-
-  bind(ctx) {
-    this.$parent = ctx;
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  unbind() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-}
-
 @customElement(`${constants.elementPrefix}col`)
 @generateBindables('GridColumn')
 @inject(TemplateGatherer, OptionsBuilder, Util, Element)
@@ -2545,6 +2465,88 @@ function isInitFromTable(element) {
 
 function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
+}
+
+import 'kendo.dataviz.gauge.min';
+
+@customElement(`${constants.elementPrefix}linear-gauge`)
+@generateBindables('kendoLinearGauge')
+@inject(Element, WidgetBase)
+export class LinearGauge {
+
+  constructor(element, widgetBase, viewResources) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                    .control('kendoLinearGauge')
+                    .linkViewModel(this)
+                    .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  unbind() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+}
+
+import 'kendo.dataviz.gauge.min';
+
+@customElement(`${constants.elementPrefix}radial-gauge`)
+@generateBindables('kendoRadialGauge')
+@inject(Element, WidgetBase)
+export class RadialGauge {
+
+  constructor(element, widgetBase, viewResources) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                    .control('kendoRadialGauge')
+                    .linkViewModel(this)
+                    .useValueBinding();
+  }
+
+  bind(ctx) {
+    this.$parent = ctx;
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.createWidget({
+      element: this.element,
+      parentCtx: this.$parent
+    });
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  unbind() {
+    this.widgetBase.destroy(this.kWidget);
+  }
 }
 
 import 'kendo.listview.min';

@@ -1,3 +1,13 @@
+<a name="0.12.4"></a>
+## [0.12.4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.12.3...v0.12.4) (2016-10-04)
+
+
+### Bug Fixes
+
+* **widget-base:** change binding value only when needed ([299edc3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/299edc3))
+
+
+
 <a name="0.12.3"></a>
 ## [0.12.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.12.2...v0.12.3) (2016-09-24)
 

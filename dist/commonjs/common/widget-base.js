@@ -215,7 +215,9 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
       return i.propertyName === property;
     });
     if (binding) {
-      widget[binding.functionName](newValue);
+      if (widget && widget[binding.functionName]() !== newValue) {
+        widget[binding.functionName](newValue);
+      }
     }
   };
 

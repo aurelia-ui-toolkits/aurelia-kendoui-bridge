@@ -219,7 +219,9 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
         return i.propertyName === property;
       });
       if (binding) {
-        widget[binding.functionName](newValue);
+        if (widget && widget[binding.functionName]() !== newValue) {
+          widget[binding.functionName](newValue);
+        }
       }
     };
 

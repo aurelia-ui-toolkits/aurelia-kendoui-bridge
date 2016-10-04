@@ -272,9 +272,9 @@ export class WidgetBase {
   handlePropertyChanged(widget, property, newValue, oldValue) {
     let binding = this.bindingsToKendo.find(i => i.propertyName === property);
     if (binding) {
-        if (widget && widget[binding.functionName]() !== newValue) {
-          widget[binding.functionName](newValue);
-        }
+      if (widget && widget[binding.functionName]() !== newValue) {
+        widget[binding.functionName](newValue);
+      }
     }
   }
 
