@@ -279,7 +279,9 @@ export class WidgetBase {
     if (typeof newValue === 'undefined') {
       widget[binding.functionName](null);
     } else {
-      widget[binding.functionName](newValue);
+      if (widget && widget[binding.functionName]() !== newValue) {
+        widget[binding.functionName](newValue);
+      }
     }
   }
 
