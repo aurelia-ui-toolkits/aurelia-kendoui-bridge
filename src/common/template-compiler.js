@@ -1,5 +1,6 @@
 import {inject} from 'aurelia-dependency-injection';
-import {TemplatingEngine} from 'aurelia-templating';
+import {TemplatingEngine, ViewResources} from 'aurelia-templating';
+import {Router} from 'aurelia-router';
 import {createOverrideContext} from 'aurelia-binding';
 import {Util} from './util';
 
@@ -59,12 +60,12 @@ export class TemplateCompiler {
     // in these cases we get the parent context of the options instead of the
     // widget
     let $parent;
-    let viewResources;
+    let container;
     let $angular = widget.$angular || widget.options.$angular;
 
     if ($angular) {
       $parent = $angular[0]._$parent;
-      viewResources = $angular[0]._$resources;
+      container = $angular[0]._$container;
     }
 
     if (!$parent) return;
@@ -78,7 +79,7 @@ export class TemplateCompiler {
       // we need to pass elements and data to compile
       // so that Aurelia can enhance this elements with the correct
       // binding context
-      this.compile($parent, elements, data, viewResources);
+      this.compile($parent, elements, data, container);
       break;
 
     case 'cleanup':
@@ -98,7 +99,7 @@ export class TemplateCompiler {
   * @param elements an array of Elements or a kendo.jQuery selector
   * @param data optionally an array of dataitems
   */
-  compile($parent, elements, data, viewResources) {
+  compile($parent, elements, data, container) {
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
       let ctx = undefined;
@@ -117,9 +118,9 @@ export class TemplateCompiler {
       }
 
       if (element instanceof kendo.jQuery) {
-        element.each((index, elem) => this.enhanceView($parent, elem, ctx, viewResources));
+        element.each((index, elem) => this.enhanceView($parent, elem, ctx, container));
       } else {
-        this.enhanceView($parent, element, ctx, viewResources);
+        this.enhanceView($parent, element, ctx, container);
       }
     }
   }
@@ -130,17 +131,21 @@ export class TemplateCompiler {
   * @param element The Element to compile
   * @param ctx The dataitem (context) to compile the Element with
   */
-  enhanceView($parent, element, ctx, viewResources) {
+  enhanceView($parent, element, ctx, container) {
     let view = kendo.jQuery(element).data('viewInstance');
 
     // check necessary due to https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/308
     if (element.querySelectorAll('.au-target').length === 0) {
-      if (viewResources) {
+      if (container) {
+        let childContainer = container.createChild();
+        let resources = container.get(ViewResources);
+
         view = this.templatingEngine.enhance({
           bindingContext: ctx,
           overrideContext: createOverrideContext(ctx, $parent),
+          container: childContainer,
           element: element,
-          resources: viewResources
+          resources: resources
         });
       } else {
         view = this.templatingEngine.enhance({

@@ -1,20 +1,20 @@
-import {inject} from 'aurelia-dependency-injection';
-import {customElement, ViewResources} from 'aurelia-templating';
+import {inject, Container} from 'aurelia-dependency-injection';
+import {customElement} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 
 @customElement(`${constants.elementPrefix}treeview`)
 @generateBindables('kendoTreeView')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class TreeView {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTreeView')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {

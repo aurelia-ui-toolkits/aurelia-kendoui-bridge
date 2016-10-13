@@ -9,7 +9,7 @@ import {constants} from '../common/constants';
 @inject(Element, WidgetBase)
 export class Calendar {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoCalendar')

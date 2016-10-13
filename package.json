@@ -40,6 +40,7 @@
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0",
       "aurelia-logging": "npm:aurelia-logging@^1.0.0",
       "aurelia-metadata": "npm:aurelia-metadata@^1.0.0",
+      "aurelia-router": "npm:aurelia-router@^1.0.2",
       "aurelia-task-queue": "npm:aurelia-task-queue@^1.0.0",
       "aurelia-templating": "npm:aurelia-templating@^1.1.0",
       "aurelia-templating-resources": "npm:aurelia-templating-resources@^1.0.0"
