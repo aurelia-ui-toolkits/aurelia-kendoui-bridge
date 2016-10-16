@@ -1,6 +1,5 @@
 import {inject} from 'aurelia-dependency-injection';
 import {TemplatingEngine, ViewResources} from 'aurelia-templating';
-import {Router} from 'aurelia-router';
 import {createOverrideContext} from 'aurelia-binding';
 import {Util} from './util';
 

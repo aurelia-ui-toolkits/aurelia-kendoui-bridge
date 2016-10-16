@@ -160,20 +160,20 @@ describe('WidgetBase', () => {
 
 
   it('sets container on the widget', () => {
-    let container = {
+    let _container = {
       'a': 'b'
     };
 
     sut.control('kendoButton')
     .linkViewModel({})
-    .useContainer(container);
+    .useContainer(_container);
 
     let widget = sut.createWidget({
       element: DOM.createElement('div'),
       parentCtx: { a: 'b'}
     });
 
-    expect(widget.$angular[0]._$container).toBe(container);
+    expect(widget.$angular[0]._$container).toBe(_container);
     expect(widget.options.$angular[0]._$container.a).toBe('b');
   });
 
