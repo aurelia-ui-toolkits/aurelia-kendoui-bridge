@@ -76,12 +76,12 @@ System.register(['./util', './options-builder', './template-compiler', './templa
           return this;
         };
 
-        WidgetBase.prototype.useViewResources = function useViewResources(resources) {
-          if (!resources) {
-            throw new Error('resources is not set');
+        WidgetBase.prototype.useContainer = function useContainer(container) {
+          if (!container) {
+            throw new Error('container is not set');
           }
 
-          this.viewResources = resources;
+          this.container = container;
 
           return this;
         };
@@ -130,7 +130,7 @@ System.register(['./util', './options-builder', './template-compiler', './templa
           }
 
           Object.assign(allOptions, {
-            $angular: [{ _$parent: options.parentCtx, _$resources: this.viewResources }]
+            $angular: [{ _$parent: options.parentCtx, _$container: this.container }]
           });
 
           if (this.configBuilder.debugMode) {
@@ -141,7 +141,7 @@ System.register(['./util', './options-builder', './template-compiler', './templa
 
           widget.$angular = [{
             _$parent: options.parentCtx,
-            _$resources: this.viewResources
+            _$container: this.container
           }];
 
           if (this.withValueBinding) {

@@ -14,12 +14,12 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   var _dec, _dec2, _dec3, _class;
 
-  var AutoComplete = exports.AutoComplete = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'autocomplete'), _dec2 = (0, _decorators.generateBindables)('kendoAutoComplete'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
-    function AutoComplete(element, widgetBase, viewResources) {
+  var AutoComplete = exports.AutoComplete = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'autocomplete'), _dec2 = (0, _decorators.generateBindables)('kendoAutoComplete'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container), _dec(_class = _dec2(_class = _dec3(_class = function () {
+    function AutoComplete(element, widgetBase, container) {
       _classCallCheck(this, AutoComplete);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useViewResources(viewResources).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+      this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useContainer(container).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
     }
 
     AutoComplete.prototype.bind = function bind(ctx) {

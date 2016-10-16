@@ -3,7 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, TreeView;
+  var inject, Container, customElement, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, TreeView;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -17,9 +17,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+      Container = _aureliaDependencyInjection.Container;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
-      ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -28,12 +28,12 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       constants = _commonConstants.constants;
     }],
     execute: function () {
-      _export('TreeView', TreeView = (_dec = customElement(constants.elementPrefix + 'treeview'), _dec2 = generateBindables('kendoTreeView'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
-        function TreeView(element, widgetBase, viewResources) {
+      _export('TreeView', TreeView = (_dec = customElement(constants.elementPrefix + 'treeview'), _dec2 = generateBindables('kendoTreeView'), _dec3 = inject(Element, WidgetBase, Container), _dec(_class = _dec2(_class = _dec3(_class = function () {
+        function TreeView(element, widgetBase, container) {
           _classCallCheck(this, TreeView);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this).useViewResources(viewResources);
+          this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this).useContainer(container);
         }
 
         TreeView.prototype.bind = function bind(ctx) {

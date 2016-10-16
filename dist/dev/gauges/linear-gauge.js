@@ -25,7 +25,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
     }],
     execute: function () {
       _export('LinearGauge', LinearGauge = (_dec = customElement(constants.elementPrefix + 'linear-gauge'), _dec2 = generateBindables('kendoLinearGauge'), _dec3 = inject(Element, WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
-        function LinearGauge(element, widgetBase, viewResources) {
+        function LinearGauge(element, widgetBase) {
           _classCallCheck(this, LinearGauge);
 
           this.element = element;

@@ -3,7 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../pdf/pdf'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, PDF, _dec, _dec2, _dec3, _class, Scheduler;
+  var inject, Container, customElement, WidgetBase, generateBindables, constants, PDF, _dec, _dec2, _dec3, _class, Scheduler;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -14,9 +14,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+      Container = _aureliaDependencyInjection.Container;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
-      ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -27,12 +27,12 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       PDF = _pdfPdf.PDF;
     }],
     execute: function () {
-      _export('Scheduler', Scheduler = (_dec = customElement(constants.elementPrefix + 'scheduler'), _dec2 = generateBindables('kendoScheduler'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
-        function Scheduler(element, widgetBase, viewResources) {
+      _export('Scheduler', Scheduler = (_dec = customElement(constants.elementPrefix + 'scheduler'), _dec2 = generateBindables('kendoScheduler'), _dec3 = inject(Element, WidgetBase, Container), _dec(_class = _dec2(_class = _dec3(_class = function () {
+        function Scheduler(element, widgetBase, container) {
           _classCallCheck(this, Scheduler);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoScheduler').linkViewModel(this).useViewResources(viewResources);
+          this.widgetBase = widgetBase.control('kendoScheduler').linkViewModel(this).useContainer(container);
         }
 
         Scheduler.prototype.bind = function bind(ctx) {

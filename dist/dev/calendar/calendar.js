@@ -25,7 +25,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
     }],
     execute: function () {
       _export('Calendar', Calendar = (_dec = customElement(constants.elementPrefix + 'calendar'), _dec2 = generateBindables('kendoCalendar'), _dec3 = inject(Element, WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
-        function Calendar(element, widgetBase, viewResources) {
+        function Calendar(element, widgetBase) {
           _classCallCheck(this, Calendar);
 
           this.element = element;

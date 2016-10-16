@@ -1,3 +1,13 @@
+<a name="1.0.0-beta.1.0.17"></a>
+# [1.0.0-beta.1.0.17](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.16...v1.0.0-beta.1.0.17) (2016-10-16)
+
+
+### Bug Fixes
+
+* **template-compiler:** use childcontainer from custom element's container ([c4077ce](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/c4077ce))
+
+
+
 <a name="1.0.0-beta.1.0.16"></a>
 # [1.0.0-beta.1.0.16](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.15...v1.0.0-beta.1.0.16) (2016-10-04)
 

@@ -25,7 +25,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
     }],
     execute: function () {
       _export('PivotConfigurator', PivotConfigurator = (_dec = customElement(constants.elementPrefix + 'pivot-configurator'), _dec2 = generateBindables('kendoPivotConfigurator'), _dec3 = inject(Element, WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
-        function PivotConfigurator(element, widgetBase, viewResources) {
+        function PivotConfigurator(element, widgetBase) {
           _classCallCheck(this, PivotConfigurator);
 
           this.element = element;

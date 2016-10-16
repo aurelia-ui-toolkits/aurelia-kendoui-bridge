@@ -15,7 +15,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
   var _dec, _dec2, _dec3, _class;
 
   var Calendar = exports.Calendar = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'calendar'), _dec2 = (0, _decorators.generateBindables)('kendoCalendar'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
-    function Calendar(element, widgetBase, viewResources) {
+    function Calendar(element, widgetBase) {
       _classCallCheck(this, Calendar);
 
       this.element = element;

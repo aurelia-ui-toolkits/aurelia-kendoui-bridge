@@ -20,7 +20,7 @@ var _constants = require('../common/constants');
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var RadialGauge = exports.RadialGauge = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'radial-gauge'), _dec2 = (0, _decorators.generateBindables)('kendoRadialGauge'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
-  function RadialGauge(element, widgetBase, viewResources) {
+  function RadialGauge(element, widgetBase) {
     _classCallCheck(this, RadialGauge);
 
     this.element = element;

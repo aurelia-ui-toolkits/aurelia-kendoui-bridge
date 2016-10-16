@@ -93,12 +93,12 @@ export class WidgetBase {
     return this;
   }
 
-  useViewResources(resources) {
-    if (!resources) {
-      throw new Error('resources is not set');
+  useContainer(container) {
+    if (!container) {
+      throw new Error('container is not set');
     }
 
-    this.viewResources = resources;
+    this.container = container;
 
     return this;
   }
@@ -169,7 +169,7 @@ export class WidgetBase {
     // deepExtend in kendo.core will fail with stack
     // overflow if we don't put it in an array :-\
     Object.assign(allOptions, {
-      $angular: [{ _$parent: options.parentCtx, _$resources: this.viewResources }]
+      $angular: [{ _$parent: options.parentCtx, _$container: this.container }]
     });
 
 
@@ -182,7 +182,7 @@ export class WidgetBase {
 
     widget.$angular = [{
       _$parent: options.parentCtx,
-      _$resources: this.viewResources
+      _$container: this.container
     }];
 
     if (this.withValueBinding) {

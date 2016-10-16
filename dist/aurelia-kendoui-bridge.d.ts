@@ -7,12 +7,12 @@ declare module 'aurelia-kendoui-bridge' {
   } from 'aurelia-dependency-injection';
   import {
     customElement,
-    ViewResources,
     customAttribute,
     bindable,
     BindableProperty,
     HtmlBehaviorResource,
     TemplatingEngine,
+    ViewResources,
     noView,
     processContent,
     TargetInstruction
@@ -152,7 +152,7 @@ declare module 'aurelia-kendoui-bridge' {
   export function configure(aurelia?: any, configCallback?: any): any;
   export let version: any;
   export class AutoComplete {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -185,7 +185,7 @@ declare module 'aurelia-kendoui-bridge' {
     unbind(): any;
   }
   export class Calendar {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -248,7 +248,7 @@ declare module 'aurelia-kendoui-bridge' {
   export class ComboBox {
     kEnabled: any;
     kReadOnly: any;
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -355,7 +355,7 @@ declare module 'aurelia-kendoui-bridge' {
       * @param elements an array of Elements or a kendo.jQuery selector
       * @param data optionally an array of dataitems
       */
-    compile($parent?: any, elements?: any, data?: any, viewResources?: any): any;
+    compile($parent?: any, elements?: any, data?: any, container?: any): any;
     
     /**
       * uses the enhance function of Aurelia's TemplatingEngine
@@ -363,7 +363,7 @@ declare module 'aurelia-kendoui-bridge' {
       * @param element The Element to compile
       * @param ctx The dataitem (context) to compile the Element with
       */
-    enhanceView($parent?: any, element?: any, ctx?: any, viewResources?: any): any;
+    enhanceView($parent?: any, element?: any, ctx?: any, container?: any): any;
     
     /**
       * loops through each element kendo asks us to clean up
@@ -510,7 +510,7 @@ declare module 'aurelia-kendoui-bridge' {
     constructor(taskQueue?: any, templateCompiler?: any, optionsBuilder?: any, util?: any, templateGatherer?: any, configBuilder?: any, repeatStratLocator?: any);
     control(controlName?: any): any;
     linkViewModel(viewModel?: any): any;
-    useViewResources(resources?: any): any;
+    useContainer(container?: any): any;
     
     /**
       * adds two-way value binding
@@ -618,7 +618,7 @@ declare module 'aurelia-kendoui-bridge' {
     kNoValueBinding: any;
     kEnabled: any;
     kReadOnly: any;
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -653,7 +653,7 @@ declare module 'aurelia-kendoui-bridge' {
   
   //eslint-disable-line no-unused-vars
   export class Gantt {
-    constructor(element?: any, widgetBase?: any, viewResources?: any, optionsBuilder?: any);
+    constructor(element?: any, widgetBase?: any, container?: any, optionsBuilder?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -661,7 +661,7 @@ declare module 'aurelia-kendoui-bridge' {
     unbind(): any;
   }
   export class LinearGauge {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -669,7 +669,7 @@ declare module 'aurelia-kendoui-bridge' {
     unbind(): any;
   }
   export class RadialGauge {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -691,7 +691,7 @@ declare module 'aurelia-kendoui-bridge' {
   
   //eslint-disable-line no-unused-vars
   export class Grid {
-    constructor(element?: any, widgetBase?: any, viewResources?: any, optionsBuilder?: any, templateGatherer?: any);
+    constructor(element?: any, widgetBase?: any, container?: any, optionsBuilder?: any, templateGatherer?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -699,7 +699,7 @@ declare module 'aurelia-kendoui-bridge' {
     unbind(): any;
   }
   export class ListView {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -735,7 +735,7 @@ declare module 'aurelia-kendoui-bridge' {
     kEnabled: any;
     kReadOnly: any;
     kNoValueBinding: any;
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -748,7 +748,7 @@ declare module 'aurelia-kendoui-bridge' {
     constructor(targetInstruction?: any);
   }
   export class Notification {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -776,7 +776,7 @@ declare module 'aurelia-kendoui-bridge' {
   
   }
   export class PivotConfigurator {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -785,7 +785,7 @@ declare module 'aurelia-kendoui-bridge' {
   
   //eslint-disable-line no-unused-vars
   export class PivotGrid {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -833,14 +833,14 @@ declare module 'aurelia-kendoui-bridge' {
   
   //eslint-disable-line no-unused-vars
   export class Scheduler {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
     unbind(): any;
   }
   export class Scrollview {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -912,7 +912,7 @@ declare module 'aurelia-kendoui-bridge' {
     getOptions(): any;
   }
   export class Toolbar {
-    constructor(element?: any, widgetBase?: any, optionsBuilder?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, optionsBuilder?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -933,7 +933,7 @@ declare module 'aurelia-kendoui-bridge' {
   
   //eslint-disable-line no-unused-vars
   export class TreeList {
-    constructor(element?: any, widgetBase?: any, viewResources?: any, optionsBuilder?: any);
+    constructor(element?: any, widgetBase?: any, container?: any, optionsBuilder?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -941,14 +941,14 @@ declare module 'aurelia-kendoui-bridge' {
     unbind(): any;
   }
   export class TreeView {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
     unbind(): any;
   }
   export class Upload {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;

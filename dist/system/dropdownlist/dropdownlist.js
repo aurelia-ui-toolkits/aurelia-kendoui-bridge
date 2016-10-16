@@ -3,7 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, bindable, ViewResources, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, DropDownList;
+  var inject, Container, customElement, bindable, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3, DropDownList;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -60,10 +60,10 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+      Container = _aureliaDependencyInjection.Container;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
       bindable = _aureliaTemplating.bindable;
-      ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -72,8 +72,8 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       constants = _commonConstants.constants;
     }],
     execute: function () {
-      _export('DropDownList', DropDownList = (_dec = customElement(constants.elementPrefix + 'drop-down-list'), _dec2 = generateBindables('kendoDropDownList'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
-        function DropDownList(element, widgetBase, viewResources) {
+      _export('DropDownList', DropDownList = (_dec = customElement(constants.elementPrefix + 'drop-down-list'), _dec2 = generateBindables('kendoDropDownList'), _dec3 = inject(Element, WidgetBase, Container), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+        function DropDownList(element, widgetBase, container) {
           _classCallCheck(this, DropDownList);
 
           _initDefineProp(this, 'kNoValueBinding', _descriptor, this);
@@ -83,7 +83,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _initDefineProp(this, 'kReadOnly', _descriptor3, this);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+          this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
         }
 
         DropDownList.prototype.bind = function bind(ctx) {

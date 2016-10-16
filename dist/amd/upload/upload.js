@@ -14,12 +14,12 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   var _dec, _dec2, _dec3, _class;
 
-  var Upload = exports.Upload = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'upload'), _dec2 = (0, _decorators.generateBindables)('kendoUpload'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
-    function Upload(element, widgetBase, viewResources) {
+  var Upload = exports.Upload = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'upload'), _dec2 = (0, _decorators.generateBindables)('kendoUpload'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container), _dec(_class = _dec2(_class = _dec3(_class = function () {
+    function Upload(element, widgetBase, container) {
       _classCallCheck(this, Upload);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoUpload').linkViewModel(this).useViewResources(viewResources);
+      this.widgetBase = widgetBase.control('kendoUpload').linkViewModel(this).useContainer(container);
     }
 
     Upload.prototype.bind = function bind(ctx) {

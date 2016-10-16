@@ -62,8 +62,8 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var ComboBox = exports.ComboBox = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'combobox'), _dec2 = (0, _decorators.generateBindables)('kendoComboBox'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
-  function ComboBox(element, widgetBase, viewResources) {
+var ComboBox = exports.ComboBox = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'combobox'), _dec2 = (0, _decorators.generateBindables)('kendoComboBox'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+  function ComboBox(element, widgetBase, container) {
     _classCallCheck(this, ComboBox);
 
     _initDefineProp(this, 'kEnabled', _descriptor, this);
@@ -71,7 +71,7 @@ var ComboBox = exports.ComboBox = (_dec = (0, _aureliaTemplating.customElement)(
     _initDefineProp(this, 'kReadOnly', _descriptor2, this);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+    this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
   ComboBox.prototype.bind = function bind(ctx) {

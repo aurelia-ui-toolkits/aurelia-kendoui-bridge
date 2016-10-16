@@ -1,6 +1,6 @@
 import * as LogManager from 'aurelia-logging';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customElement,ViewResources,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {customElement,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,ViewResources,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -495,18 +495,18 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.0.0-beta.1.0.16';
+export let version = '1.0.0-beta.1.0.17';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class AutoComplete {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoAutoComplete')
                         .linkViewModel(this)
-                        .useViewResources(viewResources)
+                        .useContainer(container)
                         .useValueBinding()
                         .bindToKendo('kEnabled', 'enable')
                         .bindToKendo('kReadOnly', 'readonly');
@@ -671,7 +671,7 @@ export class ButtonGroup {
 @inject(Element, WidgetBase)
 export class Calendar {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoCalendar')
@@ -932,19 +932,19 @@ export class ColorPicker {
 
 @customElement(`${constants.elementPrefix}combobox`)
 @generateBindables('kendoComboBox')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class ComboBox {
 
   @bindable kEnabled;
   @bindable kReadOnly;
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoComboBox')
                         .linkViewModel(this)
                         .useValueBinding()
-                        .useViewResources(viewResources)
+                        .useContainer(container)
                         .bindToKendo('kEnabled', 'enable')
                         .bindToKendo('kReadOnly', 'readonly');
   }
@@ -1271,12 +1271,12 @@ export class TemplateCompiler {
     // in these cases we get the parent context of the options instead of the
     // widget
     let $parent;
-    let viewResources;
+    let container;
     let $angular = widget.$angular || widget.options.$angular;
 
     if ($angular) {
       $parent = $angular[0]._$parent;
-      viewResources = $angular[0]._$resources;
+      container = $angular[0]._$container;
     }
 
     if (!$parent) return;
@@ -1290,7 +1290,7 @@ export class TemplateCompiler {
       // we need to pass elements and data to compile
       // so that Aurelia can enhance this elements with the correct
       // binding context
-      this.compile($parent, elements, data, viewResources);
+      this.compile($parent, elements, data, container);
       break;
 
     case 'cleanup':
@@ -1310,7 +1310,7 @@ export class TemplateCompiler {
   * @param elements an array of Elements or a kendo.jQuery selector
   * @param data optionally an array of dataitems
   */
-  compile($parent, elements, data, viewResources) {
+  compile($parent, elements, data, container) {
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
       let ctx = undefined;
@@ -1329,9 +1329,9 @@ export class TemplateCompiler {
       }
 
       if (element instanceof kendo.jQuery) {
-        element.each((index, elem) => this.enhanceView($parent, elem, ctx, viewResources));
+        element.each((index, elem) => this.enhanceView($parent, elem, ctx, container));
       } else {
-        this.enhanceView($parent, element, ctx, viewResources);
+        this.enhanceView($parent, element, ctx, container);
       }
     }
   }
@@ -1342,17 +1342,21 @@ export class TemplateCompiler {
   * @param element The Element to compile
   * @param ctx The dataitem (context) to compile the Element with
   */
-  enhanceView($parent, element, ctx, viewResources) {
+  enhanceView($parent, element, ctx, container) {
     let view = kendo.jQuery(element).data('viewInstance');
 
     // check necessary due to https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/308
     if (element.querySelectorAll('.au-target').length === 0) {
-      if (viewResources) {
+      if (container) {
+        let childContainer = container.createChild();
+        let resources = container.get(ViewResources);
+
         view = this.templatingEngine.enhance({
           bindingContext: ctx,
           overrideContext: createOverrideContext(ctx, $parent),
+          container: childContainer,
           element: element,
-          resources: viewResources
+          resources: resources
         });
       } else {
         view = this.templatingEngine.enhance({
@@ -1673,12 +1677,12 @@ export class WidgetBase {
     return this;
   }
 
-  useViewResources(resources) {
-    if (!resources) {
-      throw new Error('resources is not set');
+  useContainer(container) {
+    if (!container) {
+      throw new Error('container is not set');
     }
 
-    this.viewResources = resources;
+    this.container = container;
 
     return this;
   }
@@ -1749,7 +1753,7 @@ export class WidgetBase {
     // deepExtend in kendo.core will fail with stack
     // overflow if we don't put it in an array :-\
     Object.assign(allOptions, {
-      $angular: [{ _$parent: options.parentCtx, _$resources: this.viewResources }]
+      $angular: [{ _$parent: options.parentCtx, _$container: this.container }]
     });
 
 
@@ -1762,7 +1766,7 @@ export class WidgetBase {
 
     widget.$angular = [{
       _$parent: options.parentCtx,
-      _$resources: this.viewResources
+      _$container: this.container
     }];
 
     if (this.withValueBinding) {
@@ -2161,19 +2165,19 @@ export class DropTarget {
 
 @customElement(`${constants.elementPrefix}drop-down-list`)
 @generateBindables('kendoDropDownList')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class DropDownList {
 
   @bindable kNoValueBinding = false;
   @bindable kEnabled;
   @bindable kReadOnly;
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoDropDownList')
                         .linkViewModel(this)
-                        .useViewResources(viewResources)
+                        .useContainer(container)
                         .bindToKendo('kEnabled', 'enable')
                         .bindToKendo('kReadOnly', 'readonly');
   }
@@ -2333,16 +2337,16 @@ export class GanttCol {}
 
 @customElement(`${constants.elementPrefix}gantt`)
 @generateBindables('kendoGantt')
-@inject(Element, WidgetBase, ViewResources, OptionsBuilder)
+@inject(Element, WidgetBase, Container, OptionsBuilder)
 export class Gantt  {
 
-  constructor(element, widgetBase, viewResources, optionsBuilder) {
+  constructor(element, widgetBase, container, optionsBuilder) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoGantt')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {
@@ -2401,7 +2405,7 @@ function isInitFromDiv(element) {
 @inject(Element, WidgetBase)
 export class LinearGauge {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoLinearGauge')
@@ -2440,7 +2444,7 @@ export class LinearGauge {
 @inject(Element, WidgetBase)
 export class RadialGauge {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoRadialGauge')
@@ -2532,17 +2536,17 @@ export class GridToolbar {
 
 @customElement(`${constants.elementPrefix}grid`)
 @generateBindables('kendoGrid')
-@inject(Element, WidgetBase, ViewResources, OptionsBuilder, TemplateGatherer)
+@inject(Element, WidgetBase, Container, OptionsBuilder, TemplateGatherer)
 export class Grid  {
 
-  constructor(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
+  constructor(element, widgetBase, container, optionsBuilder, templateGatherer) {
     this.element = element;
     this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoGrid')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {
@@ -2622,15 +2626,15 @@ function isInitFromDiv(element) {
 
 @customElement(`${constants.elementPrefix}list-view`)
 @generateBindables('kendoListView')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class ListView  {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoListView')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {
@@ -2777,19 +2781,19 @@ export class Menu {
 
 @customElement(`${constants.elementPrefix}multiselect`)
 @generateBindables('kendoMultiSelect', ['template'])
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class Multiselect {
 
   @bindable kEnabled;
   @bindable kReadOnly;
   @bindable kNoValueBinding = false;
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMultiSelect')
                         .linkViewModel(this)
-                        .useViewResources(viewResources)
+                        .useContainer(container)
                         .bindToKendo('kEnabled', 'enable')
                         .bindToKendo('kReadOnly', 'readonly');
   }
@@ -2857,15 +2861,15 @@ export class NotificationTemplate {
 
 @customElement(`${constants.elementPrefix}notification`)
 @generateBindables('kendoNotification')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class Notification {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoNotification')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {
@@ -3011,7 +3015,7 @@ export class PDF {}
 @inject(Element, WidgetBase)
 export class PivotConfigurator {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoPivotConfigurator')
@@ -3044,15 +3048,15 @@ export class PivotConfigurator {
 
 @customElement(`${constants.elementPrefix}pivot-grid`)
 @generateBindables('kendoPivotGrid')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class PivotGrid {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoPivotGrid')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {
@@ -3269,15 +3273,15 @@ export class ResponsivePanel {
 
 @customElement(`${constants.elementPrefix}scheduler`)
 @generateBindables('kendoScheduler')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class Scheduler {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoScheduler')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {
@@ -3307,15 +3311,15 @@ export class Scheduler {
 
 @customElement(`${constants.elementPrefix}scrollview`)
 @generateBindables('kendoMobileScrollView')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class Scrollview {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMobileScrollView')
                         .linkViewModel(this)
-                        .useViewResources(viewResources)
+                        .useContainer(container)
                         .useValueBinding();
   }
 
@@ -3666,16 +3670,16 @@ export class ToolbarItem {
 
 @customElement(`${constants.elementPrefix}toolbar`)
 @generateBindables('kendoToolBar')
-@inject(Element, WidgetBase, OptionsBuilder, ViewResources)
+@inject(Element, WidgetBase, OptionsBuilder, Container)
 export class Toolbar {
 
-  constructor(element, widgetBase, optionsBuilder, viewResources) {
+  constructor(element, widgetBase, optionsBuilder, container) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoToolBar')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {
@@ -3766,16 +3770,16 @@ export class TreeCol {
 
 @customElement(`${constants.elementPrefix}tree-list`)
 @generateBindables('kendoTreeList')
-@inject(Element, WidgetBase, ViewResources, OptionsBuilder)
+@inject(Element, WidgetBase, Container, OptionsBuilder)
 export class TreeList  {
 
-  constructor(element, widgetBase, viewResources, optionsBuilder) {
+  constructor(element, widgetBase, container, optionsBuilder) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoTreeList')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {
@@ -3817,15 +3821,15 @@ export class TreeList  {
 
 @customElement(`${constants.elementPrefix}treeview`)
 @generateBindables('kendoTreeView')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class TreeView {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTreeView')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {
@@ -3867,15 +3871,15 @@ function isInitFromUl(element) {
 
 @customElement(`${constants.elementPrefix}upload`)
 @generateBindables('kendoUpload')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class Upload {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoUpload')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {

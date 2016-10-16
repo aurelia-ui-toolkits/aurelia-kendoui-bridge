@@ -20,7 +20,7 @@ var _constants = require('../common/constants');
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var LinearGauge = exports.LinearGauge = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'linear-gauge'), _dec2 = (0, _decorators.generateBindables)('kendoLinearGauge'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
-  function LinearGauge(element, widgetBase, viewResources) {
+  function LinearGauge(element, widgetBase) {
     _classCallCheck(this, LinearGauge);
 
     this.element = element;

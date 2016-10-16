@@ -3,7 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../pdf/pdf'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, PDF, _dec, _dec2, _dec3, _class, Gantt;
+  var inject, Container, customElement, WidgetBase, generateBindables, constants, OptionsBuilder, PDF, _dec, _dec2, _dec3, _class, Gantt;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -17,9 +17,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+      Container = _aureliaDependencyInjection.Container;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
-      ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -32,13 +32,13 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       PDF = _pdfPdf.PDF;
     }],
     execute: function () {
-      _export('Gantt', Gantt = (_dec = customElement(constants.elementPrefix + 'gantt'), _dec2 = generateBindables('kendoGantt'), _dec3 = inject(Element, WidgetBase, ViewResources, OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
-        function Gantt(element, widgetBase, viewResources, optionsBuilder) {
+      _export('Gantt', Gantt = (_dec = customElement(constants.elementPrefix + 'gantt'), _dec2 = generateBindables('kendoGantt'), _dec3 = inject(Element, WidgetBase, Container, OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
+        function Gantt(element, widgetBase, container, optionsBuilder) {
           _classCallCheck(this, Gantt);
 
           this.element = element;
           this.optionsBuilder = optionsBuilder;
-          this.widgetBase = widgetBase.control('kendoGantt').linkViewModel(this).useViewResources(viewResources);
+          this.widgetBase = widgetBase.control('kendoGantt').linkViewModel(this).useContainer(container);
         }
 
         Gantt.prototype.bind = function bind(ctx) {

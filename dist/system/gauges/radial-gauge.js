@@ -25,7 +25,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
     }],
     execute: function () {
       _export('RadialGauge', RadialGauge = (_dec = customElement(constants.elementPrefix + 'radial-gauge'), _dec2 = generateBindables('kendoRadialGauge'), _dec3 = inject(Element, WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
-        function RadialGauge(element, widgetBase, viewResources) {
+        function RadialGauge(element, widgetBase) {
           _classCallCheck(this, RadialGauge);
 
           this.element = element;

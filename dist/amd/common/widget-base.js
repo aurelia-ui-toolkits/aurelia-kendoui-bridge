@@ -75,12 +75,12 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
       return this;
     };
 
-    WidgetBase.prototype.useViewResources = function useViewResources(resources) {
-      if (!resources) {
-        throw new Error('resources is not set');
+    WidgetBase.prototype.useContainer = function useContainer(container) {
+      if (!container) {
+        throw new Error('container is not set');
       }
 
-      this.viewResources = resources;
+      this.container = container;
 
       return this;
     };
@@ -129,7 +129,7 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
       }
 
       Object.assign(allOptions, {
-        $angular: [{ _$parent: options.parentCtx, _$resources: this.viewResources }]
+        $angular: [{ _$parent: options.parentCtx, _$container: this.container }]
       });
 
       if (this.configBuilder.debugMode) {
@@ -140,7 +140,7 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
 
       widget.$angular = [{
         _$parent: options.parentCtx,
-        _$resources: this.viewResources
+        _$container: this.container
       }];
 
       if (this.withValueBinding) {

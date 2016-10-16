@@ -62,8 +62,8 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var DropDownList = exports.DropDownList = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'drop-down-list'), _dec2 = (0, _decorators.generateBindables)('kendoDropDownList'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
-  function DropDownList(element, widgetBase, viewResources) {
+var DropDownList = exports.DropDownList = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'drop-down-list'), _dec2 = (0, _decorators.generateBindables)('kendoDropDownList'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+  function DropDownList(element, widgetBase, container) {
     _classCallCheck(this, DropDownList);
 
     _initDefineProp(this, 'kNoValueBinding', _descriptor, this);
@@ -73,7 +73,7 @@ var DropDownList = exports.DropDownList = (_dec = (0, _aureliaTemplating.customE
     _initDefineProp(this, 'kReadOnly', _descriptor3, this);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+    this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
   DropDownList.prototype.bind = function bind(ctx) {
