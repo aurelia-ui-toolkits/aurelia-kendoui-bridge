@@ -20,5 +20,5 @@ TemplatingEngine.prototype.createControllerForUnitTest = function(viewModelType,
   let viewModel = this._container.get(viewModelType);
   let instruction = BehaviorInstruction.unitTest(description, attributesFromHTML);
 
-  return new Controller(description.metadata, instruction, viewModel);
+  return new Controller(description.metadata, instruction, viewModel, this._container);
 };

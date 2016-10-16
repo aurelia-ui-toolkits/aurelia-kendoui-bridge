@@ -159,22 +159,22 @@ describe('WidgetBase', () => {
   });
 
 
-  it('sets viewResources on the widget', () => {
-    let viewResources = {
+  it('sets container on the widget', () => {
+    let container = {
       'a': 'b'
     };
 
     sut.control('kendoButton')
     .linkViewModel({})
-    .useViewResources(viewResources);
+    .useContainer(container);
 
     let widget = sut.createWidget({
       element: DOM.createElement('div'),
       parentCtx: { a: 'b'}
     });
 
-    expect(widget.$angular[0]._$resources).toBe(viewResources);
-    expect(widget.options.$angular[0]._$resources.a).toBe('b');
+    expect(widget.$angular[0]._$container).toBe(container);
+    expect(widget.options.$angular[0]._$container.a).toBe('b');
   });
 
   it('createWidget looks at the rootElement for event attributes when a rootElement is supplied', () => {
