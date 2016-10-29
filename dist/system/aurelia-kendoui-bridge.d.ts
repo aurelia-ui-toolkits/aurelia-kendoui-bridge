@@ -1,6 +1,6 @@
 declare module 'aurelia-kendoui-bridge' {
-  import 'jquery';
   import * as LogManager from 'aurelia-logging';
+  import 'jquery';
   import {
     RepeatStrategyLocator,
     ArrayRepeatStrategy
@@ -36,8 +36,8 @@ declare module 'aurelia-kendoui-bridge' {
   import 'kendo.data.min';
   import 'kendo.autocomplete.min';
   import 'kendo.virtuallist.min';
-  import 'kendo.button.min';
   import 'kendo.dataviz.barcode.min';
+  import 'kendo.button.min';
   import 'kendo.mobile.buttongroup.min';
   import 'kendo.calendar.min';
   
@@ -72,15 +72,15 @@ declare module 'aurelia-kendoui-bridge' {
   
   //eslint-disable-line no-unused-vars
   import 'kendo.gantt.min';
+  import 'kendo.dataviz.gauge.min';
+  import 'kendo.dataviz.gauge.min';
   
   //eslint-disable-line no-unused-vars
   import 'kendo.data.signalr.min';
   import 'kendo.filtercell.min';
   import 'kendo.grid.min';
-  import 'kendo.dataviz.gauge.min';
-  import 'kendo.dataviz.gauge.min';
-  import 'kendo.listview.min';
   import 'kendo.dataviz.map.min';
+  import 'kendo.listview.min';
   import 'kendo.maskedtextbox.min';
   import 'kendo.menu.min';
   import 'kendo.multiselect.min';
@@ -237,6 +237,13 @@ declare module 'aurelia-kendoui-bridge' {
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     unbind(): any;
   }
+  export class Barcode {
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    unbind(): any;
+  }
   export class Button {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
@@ -244,13 +251,6 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
-  }
-  export class Barcode {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
     unbind(): any;
   }
   export class ButtonGroup {
@@ -720,6 +720,22 @@ declare module 'aurelia-kendoui-bridge' {
     _beforeInitialize(options?: any): any;
     unbind(): any;
   }
+  export class LinearGauge {
+    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    unbind(): any;
+  }
+  export class RadialGauge {
+    constructor(element?: any, widgetBase?: any, viewResources?: any);
+    bind(ctx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    unbind(): any;
+  }
   export class Col {
     constructor(templateGatherer?: any, optionsBuilder?: any, util?: any, element?: any);
     beforeOptionsBuild(): any;
@@ -739,16 +755,8 @@ declare module 'aurelia-kendoui-bridge' {
     _beforeInitialize(options?: any): any;
     unbind(): any;
   }
-  export class LinearGauge {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
-  }
-  export class RadialGauge {
-    constructor(element?: any, widgetBase?: any, viewResources?: any);
+  export class Map {
+    constructor(element?: any, widgetBase?: any);
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
@@ -760,14 +768,6 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
-  }
-  export class Map {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     unbind(): any;
   }
   export class MaskedTextBox {

@@ -1,15 +1,18 @@
 'use strict';
 
-System.register(['./config-builder', 'aurelia-templating-resources', 'jquery', 'kendo.data.min', './common/decorators'], function (_export, _context) {
+System.register(['./config-builder', 'aurelia-templating-resources', 'aurelia-logging', 'jquery', 'kendo.data.min', './common/decorators'], function (_export, _context) {
   "use strict";
 
-  var KendoConfigBuilder, RepeatStrategyLocator, ArrayRepeatStrategy;
+  var KendoConfigBuilder, RepeatStrategyLocator, ArrayRepeatStrategy, LogManager;
   function configure(aurelia, configCallback) {
     var builder = aurelia.container.get(KendoConfigBuilder);
 
     if (configCallback !== undefined && typeof configCallback === 'function') {
       configCallback(builder);
     }
+
+    var logger = LogManager.getLogger('aurelia-kendoui-bridge');
+    logger.warn('This version of aurelia-kendoui-bridge has been deprecated. Please update to the 1.0.0 version or above');
 
     var resources = builder.resources;
 
@@ -33,6 +36,8 @@ System.register(['./config-builder', 'aurelia-templating-resources', 'jquery', '
     }, function (_aureliaTemplatingResources) {
       RepeatStrategyLocator = _aureliaTemplatingResources.RepeatStrategyLocator;
       ArrayRepeatStrategy = _aureliaTemplatingResources.ArrayRepeatStrategy;
+    }, function (_aureliaLogging) {
+      LogManager = _aureliaLogging;
     }, function (_jquery) {}, function (_kendoDataMin) {}, function (_commonDecorators) {
       var _exportObj = {};
       _exportObj.generateBindables = _commonDecorators.generateBindables;
