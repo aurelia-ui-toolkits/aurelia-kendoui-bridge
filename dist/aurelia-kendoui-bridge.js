@@ -495,7 +495,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.0.0';
+export let version = '1.0.1';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
