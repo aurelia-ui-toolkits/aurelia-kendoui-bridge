@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.dataviz.gauge.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _widgetBase, _decorators, _constants) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _widgetBase, _decorators, _constants) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -15,7 +15,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
   var _dec, _dec2, _dec3, _class;
 
   var RadialGauge = exports.RadialGauge = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'radial-gauge'), _dec2 = (0, _decorators.generateBindables)('kendoRadialGauge'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
-    function RadialGauge(element, widgetBase, viewResources) {
+    function RadialGauge(element, widgetBase) {
       _classCallCheck(this, RadialGauge);
 
       this.element = element;

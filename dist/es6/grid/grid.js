@@ -1,28 +1,25 @@
-import {inject} from 'aurelia-dependency-injection';
-import {customElement, ViewResources} from 'aurelia-templating';
+import {inject, Container} from 'aurelia-dependency-injection';
+import {customElement} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
 import {OptionsBuilder} from '../common/options-builder';
 import {TemplateGatherer} from '../common/template-gatherer';
 import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
-import 'kendo.data.signalr.min';
-import 'kendo.filtercell.min';
-import 'kendo.grid.min';
 
 @customElement(`${constants.elementPrefix}grid`)
 @generateBindables('kendoGrid')
-@inject(Element, WidgetBase, ViewResources, OptionsBuilder, TemplateGatherer)
+@inject(Element, WidgetBase, Container, OptionsBuilder, TemplateGatherer)
 export class Grid  {
 
-  constructor(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
+  constructor(element, widgetBase, container, optionsBuilder, templateGatherer) {
     this.element = element;
     this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoGrid')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {

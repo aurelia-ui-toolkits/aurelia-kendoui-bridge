@@ -1,5 +1,4 @@
 import '../setup';
-import 'kendo-ui/js/kendo.button.min';
 import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 import {initialize} from 'aurelia-pal-browser';

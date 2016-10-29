@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', 'kendo.toolbar.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, _dec, _dec2, _dec3, _class, Toolbar;
+  var inject, Container, customElement, WidgetBase, generateBindables, constants, OptionsBuilder, _dec, _dec2, _dec3, _class, Toolbar;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -14,9 +14,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+      Container = _aureliaDependencyInjection.Container;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
-      ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -25,15 +25,15 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       constants = _commonConstants.constants;
     }, function (_commonOptionsBuilder) {
       OptionsBuilder = _commonOptionsBuilder.OptionsBuilder;
-    }, function (_kendoToolbarMin) {}],
+    }],
     execute: function () {
-      _export('Toolbar', Toolbar = (_dec = customElement(constants.elementPrefix + 'toolbar'), _dec2 = generateBindables('kendoToolBar'), _dec3 = inject(Element, WidgetBase, OptionsBuilder, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
-        function Toolbar(element, widgetBase, optionsBuilder, viewResources) {
+      _export('Toolbar', Toolbar = (_dec = customElement(constants.elementPrefix + 'toolbar'), _dec2 = generateBindables('kendoToolBar'), _dec3 = inject(Element, WidgetBase, OptionsBuilder, Container), _dec(_class = _dec2(_class = _dec3(_class = function () {
+        function Toolbar(element, widgetBase, optionsBuilder, container) {
           _classCallCheck(this, Toolbar);
 
           this.element = element;
           this.optionsBuilder = optionsBuilder;
-          this.widgetBase = widgetBase.control('kendoToolBar').linkViewModel(this).useViewResources(viewResources);
+          this.widgetBase = widgetBase.control('kendoToolBar').linkViewModel(this).useContainer(container);
         }
 
         Toolbar.prototype.bind = function bind(ctx) {

@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../common/template-gatherer', '../pdf/pdf', 'kendo.data.signalr.min', 'kendo.filtercell.min', 'kendo.grid.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _widgetBase, _decorators, _constants, _optionsBuilder, _templateGatherer, _pdf) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../common/template-gatherer', '../pdf/pdf'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _widgetBase, _decorators, _constants, _optionsBuilder, _templateGatherer, _pdf) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -14,14 +14,14 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   var _dec, _dec2, _dec3, _class;
 
-  var Grid = exports.Grid = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'grid'), _dec2 = (0, _decorators.generateBindables)('kendoGrid'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources, _optionsBuilder.OptionsBuilder, _templateGatherer.TemplateGatherer), _dec(_class = _dec2(_class = _dec3(_class = function () {
-    function Grid(element, widgetBase, viewResources, optionsBuilder, templateGatherer) {
+  var Grid = exports.Grid = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'grid'), _dec2 = (0, _decorators.generateBindables)('kendoGrid'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container, _optionsBuilder.OptionsBuilder, _templateGatherer.TemplateGatherer), _dec(_class = _dec2(_class = _dec3(_class = function () {
+    function Grid(element, widgetBase, container, optionsBuilder, templateGatherer) {
       _classCallCheck(this, Grid);
 
       this.element = element;
       this.templateGatherer = templateGatherer;
       this.optionsBuilder = optionsBuilder;
-      this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).useViewResources(viewResources);
+      this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).useContainer(container);
     }
 
     Grid.prototype.bind = function bind(ctx) {

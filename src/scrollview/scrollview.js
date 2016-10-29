@@ -1,21 +1,20 @@
-import {inject} from 'aurelia-dependency-injection';
-import {customElement, ViewResources} from 'aurelia-templating';
+import {inject, Container} from 'aurelia-dependency-injection';
+import {customElement} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.mobile.scrollview.min';
 
 @customElement(`${constants.elementPrefix}scrollview`)
 @generateBindables('kendoMobileScrollView')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class Scrollview {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMobileScrollView')
                         .linkViewModel(this)
-                        .useViewResources(viewResources)
+                        .useContainer(container)
                         .useValueBinding();
   }
 

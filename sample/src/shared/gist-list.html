@@ -1,0 +1,22 @@
+<template>
+  <div class="col-md-2">
+    <div repeat.for="category of samples.categories">
+      <h3>${category.title}</h3>
+      <div class="list-group">
+        <button type="button" click.delegate='switchGist(value, category)' class="list-group-item" repeat.for="[key, value] of category.samples | iterable">${key}</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <button click.delegate="wind.open().center()" style=" position: fixed; top: 50px">Requires</button>
+    <div style="margin: 0px; padding: 0px; overflow: hidden;">
+      <iframe src.bind="currentGist" frameborder="0" style="overflow: hidden; height: 500px; width: 80%; position: fixed; top: 107px" height="500px" width="80%">
+
+      </iframe>
+    </div>
+  </div>
+
+  <div ak-window="k-widget.bind: wind; k-visible.bind: false">
+    <p repeat.for="req of selectedCategory.requires">&lt;require from="${req}"&gt;&lt;/require&gt;</p>
+  </div>
+</template>

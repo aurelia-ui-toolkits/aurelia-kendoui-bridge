@@ -17,16 +17,14 @@ var _decorators = require('../common/decorators');
 
 var _constants = require('../common/constants');
 
-require('kendo.mobile.scrollview.min');
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Scrollview = exports.Scrollview = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'scrollview'), _dec2 = (0, _decorators.generateBindables)('kendoMobileScrollView'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
-  function Scrollview(element, widgetBase, viewResources) {
+var Scrollview = exports.Scrollview = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'scrollview'), _dec2 = (0, _decorators.generateBindables)('kendoMobileScrollView'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container), _dec(_class = _dec2(_class = _dec3(_class = function () {
+  function Scrollview(element, widgetBase, container) {
     _classCallCheck(this, Scrollview);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoMobileScrollView').linkViewModel(this).useViewResources(viewResources).useValueBinding();
+    this.widgetBase = widgetBase.control('kendoMobileScrollView').linkViewModel(this).useContainer(container).useValueBinding();
   }
 
   Scrollview.prototype.bind = function bind(ctx) {

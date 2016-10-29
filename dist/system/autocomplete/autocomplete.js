@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.autocomplete.min', 'kendo.virtuallist.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, AutoComplete;
+  var inject, Container, customElement, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, AutoComplete;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -14,23 +14,23 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+      Container = _aureliaDependencyInjection.Container;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
-      ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }, function (_kendoAutocompleteMin) {}, function (_kendoVirtuallistMin) {}],
+    }],
     execute: function () {
-      _export('AutoComplete', AutoComplete = (_dec = customElement(constants.elementPrefix + 'autocomplete'), _dec2 = generateBindables('kendoAutoComplete'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
-        function AutoComplete(element, widgetBase, viewResources) {
+      _export('AutoComplete', AutoComplete = (_dec = customElement(constants.elementPrefix + 'autocomplete'), _dec2 = generateBindables('kendoAutoComplete'), _dec3 = inject(Element, WidgetBase, Container), _dec(_class = _dec2(_class = _dec3(_class = function () {
+        function AutoComplete(element, widgetBase, container) {
           _classCallCheck(this, AutoComplete);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useViewResources(viewResources).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+          this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useContainer(container).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
         }
 
         AutoComplete.prototype.bind = function bind(ctx) {

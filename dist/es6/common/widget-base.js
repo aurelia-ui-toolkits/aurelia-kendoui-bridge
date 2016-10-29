@@ -4,6 +4,7 @@ import {TemplateCompiler} from './template-compiler';
 import {TemplateGatherer} from './template-gatherer';
 import {KendoConfigBuilder} from '../config-builder';
 import {inject, transient} from 'aurelia-dependency-injection';
+import {RepeatStrategyLocator, ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {TaskQueue} from 'aurelia-task-queue';
 import * as LogManager from 'aurelia-logging';
 
@@ -13,7 +14,7 @@ const logger = LogManager.getLogger('aurelia-kendoui-bridge');
 * Abstraction of commonly used code across wrappers
 */
 @transient()
-@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder)
+@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder, RepeatStrategyLocator)
 export class WidgetBase {
 
   /**
@@ -57,18 +58,20 @@ export class WidgetBase {
   */
   bindingsToKendo = [];
 
-  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
+  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator) {
     this.taskQueue = taskQueue;
     this.optionsBuilder = optionsBuilder;
     this.util = util;
     this.configBuilder = configBuilder;
+    this.repeatStratLocator = repeatStratLocator;
     this.templateGatherer = templateGatherer;
     templateCompiler.initialize();
+    this.registerRepeatStrategy();
   }
 
   control(controlName) {
-    if (!controlName || !kendo.jQuery.fn[controlName]) {
-      throw new Error(`The name of control ${controlName} is invalid or not set`);
+    if (!controlName || !window.kendo || !kendo.jQuery.fn[controlName]) {
+      throw new Error(`The kendo control '${controlName}' is not available. Did you load this control?`);
     }
 
     this.controlName = controlName;
@@ -90,12 +93,12 @@ export class WidgetBase {
     return this;
   }
 
-  useViewResources(resources) {
-    if (!resources) {
-      throw new Error('resources is not set');
+  useContainer(container) {
+    if (!container) {
+      throw new Error('container is not set');
     }
 
-    this.viewResources = resources;
+    this.container = container;
 
     return this;
   }
@@ -166,7 +169,7 @@ export class WidgetBase {
     // deepExtend in kendo.core will fail with stack
     // overflow if we don't put it in an array :-\
     Object.assign(allOptions, {
-      $angular: [{ _$parent: options.parentCtx, _$resources: this.viewResources }]
+      $angular: [{ _$parent: options.parentCtx, _$container: this.container }]
     });
 
 
@@ -179,7 +182,7 @@ export class WidgetBase {
 
     widget.$angular = [{
       _$parent: options.parentCtx,
-      _$resources: this.viewResources
+      _$container: this.container
     }];
 
     if (this.withValueBinding) {
@@ -271,7 +274,11 @@ export class WidgetBase {
 
   handlePropertyChanged(widget, property, newValue, oldValue) {
     let binding = this.bindingsToKendo.find(i => i.propertyName === property);
-    if (binding) {
+    if (!binding) return;
+
+    if (typeof newValue === 'undefined') {
+      widget[binding.functionName](null);
+    } else {
       if (widget && widget[binding.functionName]() !== newValue) {
         widget[binding.functionName](newValue);
       }
@@ -280,6 +287,16 @@ export class WidgetBase {
 
   useTemplates(target, controlName, templates) {
     return this.templateGatherer.useTemplates(target, controlName, templates);
+  }
+
+  registerRepeatStrategy() {
+    if (this.configBuilder.registerRepeatStrategy) {
+      if (!window.kendo) {
+        logger.warn('Could not add RepeatStrategy for kendo.data.ObservableArray as kendo.data.ObservableArray has not been loaded');
+        return;
+      }
+      this.repeatStratLocator.addStrategy(items => items instanceof kendo.data.ObservableArray, new ArrayRepeatStrategy());
+    }
   }
 
   /**

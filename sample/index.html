@@ -3,6 +3,7 @@
   <head>
     <title>Aurelia Catalog</title>
     <link rel="stylesheet" href="jspm_packages/npm/font-awesome@4.6.3/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="styles/samples.css">
     <link rel="stylesheet" href="styles/styles.css">
 
@@ -16,11 +17,24 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.4.0/bluebird.min.js"></script>
-    <script src="http://kendo.cdn.telerik.com/2016.1.112/js/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/1.2.1/chroma.min.js"></script>
+    <script src="kendo-sdk/js/jquery.min.js"></script>
+    <script src="kendo-sdk/js/jszip.min.js"></script>
+    <script src="kendo-sdk/js/kendo.all.min.js"></script>
+
     <script src="jspm_packages/system.js"></script>
     <script src="config.js"></script>
     <script>
       System.import('aurelia-bootstrapper');
+
+      // in order to test changes we don't want to modify the "online"
+      // samples.json (https://raw.githubusercontent.com/aurelia-ui-toolkits/aurelia-kendoui-samples/gh-pages/samples.json)
+      // so we use a local samples.json file that we can modify without affecting the deployed catalog
+      System.config({
+        paths: Object.assign({}, System.paths, {
+          "samplesJSON/*": "src/samples/*"
+        })
+      });
 
       // Load the package.json from the root to get the package name
       System.import("root/package.json!").then(function(m) {

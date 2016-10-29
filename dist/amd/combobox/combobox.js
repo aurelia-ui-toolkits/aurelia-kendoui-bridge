@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.combobox.min', 'kendo.virtuallist.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _widgetBase, _decorators, _constants) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _widgetBase, _decorators, _constants) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -57,8 +57,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2;
 
-  var ComboBox = exports.ComboBox = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'combobox'), _dec2 = (0, _decorators.generateBindables)('kendoComboBox'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
-    function ComboBox(element, widgetBase, viewResources) {
+  var ComboBox = exports.ComboBox = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'combobox'), _dec2 = (0, _decorators.generateBindables)('kendoComboBox'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+    function ComboBox(element, widgetBase, container) {
       _classCallCheck(this, ComboBox);
 
       _initDefineProp(this, 'kEnabled', _descriptor, this);
@@ -66,7 +66,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _initDefineProp(this, 'kReadOnly', _descriptor2, this);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+      this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
     }
 
     ComboBox.prototype.bind = function bind(ctx) {

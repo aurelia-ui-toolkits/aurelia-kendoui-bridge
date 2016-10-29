@@ -1,3 +1,14 @@
+node_modules
 jspm_packages
 bower_components
+vendors
 .idea
+.DS_STORE
+build/reports
+devbuild
+temp
+sample
+test
+doc
+build
+src

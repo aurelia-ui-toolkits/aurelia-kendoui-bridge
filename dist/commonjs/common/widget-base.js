@@ -19,6 +19,8 @@ var _configBuilder = require('../config-builder');
 
 var _aureliaDependencyInjection = require('aurelia-dependency-injection');
 
+var _aureliaTemplatingResources = require('aurelia-templating-resources');
+
 var _aureliaTaskQueue = require('aurelia-task-queue');
 
 var _aureliaLogging = require('aurelia-logging');
@@ -31,8 +33,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
-var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.transient)(), _dec2 = (0, _aureliaDependencyInjection.inject)(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder, _util.Util, _templateGatherer.TemplateGatherer, _configBuilder.KendoConfigBuilder), _dec(_class = _dec2(_class = function () {
-  function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
+var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.transient)(), _dec2 = (0, _aureliaDependencyInjection.inject)(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder, _util.Util, _templateGatherer.TemplateGatherer, _configBuilder.KendoConfigBuilder, _aureliaTemplatingResources.RepeatStrategyLocator), _dec(_class = _dec2(_class = function () {
+  function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator) {
     _classCallCheck(this, WidgetBase);
 
     this.bindingsToKendo = [];
@@ -41,13 +43,15 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
     this.optionsBuilder = optionsBuilder;
     this.util = util;
     this.configBuilder = configBuilder;
+    this.repeatStratLocator = repeatStratLocator;
     this.templateGatherer = templateGatherer;
     templateCompiler.initialize();
+    this.registerRepeatStrategy();
   }
 
   WidgetBase.prototype.control = function control(controlName) {
-    if (!controlName || !kendo.jQuery.fn[controlName]) {
-      throw new Error('The name of control ' + controlName + ' is invalid or not set');
+    if (!controlName || !window.kendo || !kendo.jQuery.fn[controlName]) {
+      throw new Error('The kendo control \'' + controlName + '\' is not available. Did you load this control?');
     }
 
     this.controlName = controlName;
@@ -69,12 +73,12 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
     return this;
   };
 
-  WidgetBase.prototype.useViewResources = function useViewResources(resources) {
-    if (!resources) {
-      throw new Error('resources is not set');
+  WidgetBase.prototype.useContainer = function useContainer(container) {
+    if (!container) {
+      throw new Error('container is not set');
     }
 
-    this.viewResources = resources;
+    this.container = container;
 
     return this;
   };
@@ -123,7 +127,7 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
     }
 
     Object.assign(allOptions, {
-      $angular: [{ _$parent: options.parentCtx, _$resources: this.viewResources }]
+      $angular: [{ _$parent: options.parentCtx, _$container: this.container }]
     });
 
     if (this.configBuilder.debugMode) {
@@ -134,7 +138,7 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
 
     widget.$angular = [{
       _$parent: options.parentCtx,
-      _$resources: this.viewResources
+      _$container: this.container
     }];
 
     if (this.withValueBinding) {
@@ -214,7 +218,11 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
     var binding = this.bindingsToKendo.find(function (i) {
       return i.propertyName === property;
     });
-    if (binding) {
+    if (!binding) return;
+
+    if (typeof newValue === 'undefined') {
+      widget[binding.functionName](null);
+    } else {
       if (widget && widget[binding.functionName]() !== newValue) {
         widget[binding.functionName](newValue);
       }
@@ -223,6 +231,18 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
 
   WidgetBase.prototype.useTemplates = function useTemplates(target, controlName, templates) {
     return this.templateGatherer.useTemplates(target, controlName, templates);
+  };
+
+  WidgetBase.prototype.registerRepeatStrategy = function registerRepeatStrategy() {
+    if (this.configBuilder.registerRepeatStrategy) {
+      if (!window.kendo) {
+        logger.warn('Could not add RepeatStrategy for kendo.data.ObservableArray as kendo.data.ObservableArray has not been loaded');
+        return;
+      }
+      this.repeatStratLocator.addStrategy(function (items) {
+        return items instanceof kendo.data.ObservableArray;
+      }, new _aureliaTemplatingResources.ArrayRepeatStrategy());
+    }
   };
 
   WidgetBase.prototype.destroy = function destroy(widget) {

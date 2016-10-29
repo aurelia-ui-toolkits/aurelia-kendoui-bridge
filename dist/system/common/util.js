@@ -118,7 +118,7 @@ System.register(['./constants'], function (_export, _context) {
         };
 
         Util.prototype.getChildrenVMs = function getChildrenVMs(element, cssSelector) {
-          var elements = $(element).children(cssSelector);
+          var elements = kendo.jQuery(element).children(cssSelector);
           var viewModels = [];
           elements.each(function (index, elem) {
             if (elem.au && elem.au.controller) {

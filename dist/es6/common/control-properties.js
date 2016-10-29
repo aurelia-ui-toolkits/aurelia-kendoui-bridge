@@ -59,8 +59,8 @@ export class ControlProperties {
   * @param controlName the name of the kendo control (kendoGrid, kendoButton)
   */
   getWidgetProperties(controlName: string): string[] {
-    if (jQuery.fn[controlName]) {
-      return Object.keys(jQuery.fn[controlName].widget.prototype.options);
+    if (window.kendo && kendo.jQuery.fn[controlName]) {
+      return Object.keys(kendo.jQuery.fn[controlName].widget.prototype.options);
     }
 
     return [];

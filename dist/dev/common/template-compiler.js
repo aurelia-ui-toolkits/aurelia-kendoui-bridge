@@ -3,7 +3,7 @@
 System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-binding', './util'], function (_export, _context) {
   "use strict";
 
-  var inject, TemplatingEngine, createOverrideContext, Util, _dec, _class, TemplateCompiler;
+  var inject, TemplatingEngine, ViewResources, createOverrideContext, Util, _dec, _class, TemplateCompiler;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -16,6 +16,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-
       inject = _aureliaDependencyInjection.inject;
     }, function (_aureliaTemplating) {
       TemplatingEngine = _aureliaTemplating.TemplatingEngine;
+      ViewResources = _aureliaTemplating.ViewResources;
     }, function (_aureliaBinding) {
       createOverrideContext = _aureliaBinding.createOverrideContext;
     }, function (_util) {
@@ -35,6 +36,8 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-
         TemplateCompiler.prototype.initialize = function initialize() {
           if (this.isInitialized) return;
 
+          if (!window.kendo) return;
+
           var _this = this;
           kendo.ui.Widget.prototype.angular = function (_event, _args) {
             _this.handleTemplateEvents(this, _event, _args);
@@ -50,12 +53,12 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-
           if (_event !== 'compile' && _event !== 'cleanup') return;
 
           var $parent = void 0;
-          var viewResources = void 0;
+          var container = void 0;
           var $angular = widget.$angular || widget.options.$angular;
 
           if ($angular) {
             $parent = $angular[0]._$parent;
-            viewResources = $angular[0]._$resources;
+            container = $angular[0]._$container;
           }
 
           if (!$parent) return;
@@ -66,7 +69,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-
 
           switch (_event) {
             case 'compile':
-              this.compile($parent, elements, data, viewResources);
+              this.compile($parent, elements, data, container);
               break;
 
             case 'cleanup':
@@ -78,7 +81,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-
           }
         };
 
-        TemplateCompiler.prototype.compile = function compile($parent, elements, data, viewResources) {
+        TemplateCompiler.prototype.compile = function compile($parent, elements, data, container) {
           var _this2 = this;
 
           var _loop = function _loop(i) {
@@ -98,12 +101,12 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-
               }
             }
 
-            if (element instanceof jQuery) {
+            if (element instanceof kendo.jQuery) {
               element.each(function (index, elem) {
-                return _this2.enhanceView($parent, elem, ctx, viewResources);
+                return _this2.enhanceView($parent, elem, ctx, container);
               });
             } else {
-              _this2.enhanceView($parent, element, ctx, viewResources);
+              _this2.enhanceView($parent, element, ctx, container);
             }
           };
 
@@ -112,16 +115,20 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-
           }
         };
 
-        TemplateCompiler.prototype.enhanceView = function enhanceView($parent, element, ctx, viewResources) {
-          var view = $(element).data('viewInstance');
+        TemplateCompiler.prototype.enhanceView = function enhanceView($parent, element, ctx, container) {
+          var view = kendo.jQuery(element).data('viewInstance');
 
           if (element.querySelectorAll('.au-target').length === 0) {
-            if (viewResources) {
+            if (container) {
+              var childContainer = container.createChild();
+              var resources = container.get(ViewResources);
+
               view = this.templatingEngine.enhance({
                 bindingContext: ctx,
                 overrideContext: createOverrideContext(ctx, $parent),
+                container: childContainer,
                 element: element,
-                resources: viewResources
+                resources: resources
               });
             } else {
               view = this.templatingEngine.enhance({
@@ -131,7 +138,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-
               });
             }
 
-            $(element).data('viewInstance', view);
+            kendo.jQuery(element).data('viewInstance', view);
           } else {
             view.bind(ctx, createOverrideContext(ctx, $parent));
           }
@@ -149,7 +156,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', 'aurelia-
         };
 
         TemplateCompiler.prototype.cleanupView = function cleanupView(element) {
-          var view = $(element).data('viewInstance');
+          var view = kendo.jQuery(element).data('viewInstance');
           if (!view) return;
 
           view.detached();

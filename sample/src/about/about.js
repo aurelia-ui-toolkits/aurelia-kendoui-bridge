@@ -1,3 +1,5 @@
+import {version} from 'aurelia-kendoui-bridge';
+
 export class About {
   datasource = {
     type: 'odata',
@@ -6,4 +8,8 @@ export class About {
     },
     pageSize: 5
   };
+
+  constructor() {
+    this.version = version;
+  }
 }

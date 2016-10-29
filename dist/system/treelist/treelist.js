@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../pdf/pdf', 'kendo.data.signalr.min', 'kendo.filtercell.min', 'kendo.treelist.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', '../common/options-builder', '../pdf/pdf'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, ViewResources, WidgetBase, generateBindables, constants, OptionsBuilder, PDF, _dec, _dec2, _dec3, _class, TreeList;
+  var inject, Container, customElement, WidgetBase, generateBindables, constants, OptionsBuilder, PDF, _dec, _dec2, _dec3, _class, TreeList;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -14,9 +14,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+      Container = _aureliaDependencyInjection.Container;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
-      ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
@@ -27,15 +27,15 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       OptionsBuilder = _commonOptionsBuilder.OptionsBuilder;
     }, function (_pdfPdf) {
       PDF = _pdfPdf.PDF;
-    }, function (_kendoDataSignalrMin) {}, function (_kendoFiltercellMin) {}, function (_kendoTreelistMin) {}],
+    }],
     execute: function () {
-      _export('TreeList', TreeList = (_dec = customElement(constants.elementPrefix + 'tree-list'), _dec2 = generateBindables('kendoTreeList'), _dec3 = inject(Element, WidgetBase, ViewResources, OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
-        function TreeList(element, widgetBase, viewResources, optionsBuilder) {
+      _export('TreeList', TreeList = (_dec = customElement(constants.elementPrefix + 'tree-list'), _dec2 = generateBindables('kendoTreeList'), _dec3 = inject(Element, WidgetBase, Container, OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
+        function TreeList(element, widgetBase, container, optionsBuilder) {
           _classCallCheck(this, TreeList);
 
           this.element = element;
           this.optionsBuilder = optionsBuilder;
-          this.widgetBase = widgetBase.control('kendoTreeList').linkViewModel(this).useViewResources(viewResources);
+          this.widgetBase = widgetBase.control('kendoTreeList').linkViewModel(this).useContainer(container);
         }
 
         TreeList.prototype.bind = function bind(ctx) {

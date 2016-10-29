@@ -3,15 +3,13 @@ import {customElement} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.pivot.configurator.min';
-
 
 @customElement(`${constants.elementPrefix}pivot-configurator`)
 @generateBindables('kendoPivotConfigurator')
 @inject(Element, WidgetBase)
 export class PivotConfigurator {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoPivotConfigurator')

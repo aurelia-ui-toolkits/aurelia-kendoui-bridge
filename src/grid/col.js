@@ -18,6 +18,10 @@ export class Col {
     this.element = element;
   }
 
+  bind($parent) {
+    this.$parent = $parent;
+  }
+
   beforeOptionsBuild() {
     let templates = this.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.templateGatherer.useTemplates(this, 'GridColumn', templates);
@@ -32,6 +36,10 @@ export class Col {
       columns.forEach(col => {
         options.columns.push(this.optionsBuilder.getOptions(col, 'GridColumn'));
       });
+    }
+
+    if (options.editor) {
+      options.editor = options.editor.bind(this.$parent);
     }
   }
 }

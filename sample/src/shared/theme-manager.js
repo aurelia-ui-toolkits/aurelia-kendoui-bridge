@@ -67,11 +67,11 @@ export class ThemeManager {
   }
 
   getNormalizedThemePath(theme) {
-    return System.normalizeSync(`kendo-ui/styles/kendo.${theme}.min.css!`);
+    return System.normalizeSync(`kendo-sdk/styles/kendo.${theme}.min.css!`);
   }
 
   removeOldThemes() {
-    jQuery('head > link').each(function() {
+    kendo.jQuery('head > link').each(function() {
       if (this.href.includes('styles/kendo.')) {
         DOM.removeNode(this);
       }

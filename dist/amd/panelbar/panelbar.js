@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/constants', '../common/widget-base', '../common/decorators', 'kendo.panelbar.min'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _constants, _widgetBase, _decorators) {
+define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../common/constants', '../common/widget-base', '../common/decorators'], function (exports, _aureliaTemplating, _aureliaDependencyInjection, _constants, _widgetBase, _decorators) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {

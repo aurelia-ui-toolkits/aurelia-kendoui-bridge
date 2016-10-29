@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.combobox.min', 'kendo.virtuallist.min'], function (_export, _context) {
+System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (_export, _context) {
   "use strict";
 
-  var inject, customElement, bindable, ViewResources, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, ComboBox;
+  var inject, Container, customElement, bindable, WidgetBase, generateBindables, constants, _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, ComboBox;
 
   function _initDefineProp(target, property, descriptor, context) {
     if (!descriptor) return;
@@ -60,20 +60,20 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
+      Container = _aureliaDependencyInjection.Container;
     }, function (_aureliaTemplating) {
       customElement = _aureliaTemplating.customElement;
       bindable = _aureliaTemplating.bindable;
-      ViewResources = _aureliaTemplating.ViewResources;
     }, function (_commonWidgetBase) {
       WidgetBase = _commonWidgetBase.WidgetBase;
     }, function (_commonDecorators) {
       generateBindables = _commonDecorators.generateBindables;
     }, function (_commonConstants) {
       constants = _commonConstants.constants;
-    }, function (_kendoComboboxMin) {}, function (_kendoVirtuallistMin) {}],
+    }],
     execute: function () {
-      _export('ComboBox', ComboBox = (_dec = customElement(constants.elementPrefix + 'combobox'), _dec2 = generateBindables('kendoComboBox'), _dec3 = inject(Element, WidgetBase, ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
-        function ComboBox(element, widgetBase, viewResources) {
+      _export('ComboBox', ComboBox = (_dec = customElement(constants.elementPrefix + 'combobox'), _dec2 = generateBindables('kendoComboBox'), _dec3 = inject(Element, WidgetBase, Container), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+        function ComboBox(element, widgetBase, container) {
           _classCallCheck(this, ComboBox);
 
           _initDefineProp(this, 'kEnabled', _descriptor, this);
@@ -81,7 +81,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _initDefineProp(this, 'kReadOnly', _descriptor2, this);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+          this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
         }
 
         ComboBox.prototype.bind = function bind(ctx) {

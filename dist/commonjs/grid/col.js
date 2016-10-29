@@ -33,6 +33,10 @@ var Col = exports.Col = (_dec = (0, _aureliaTemplating.customElement)(_constants
     this.element = element;
   }
 
+  Col.prototype.bind = function bind($parent) {
+    this.$parent = $parent;
+  };
+
   Col.prototype.beforeOptionsBuild = function beforeOptionsBuild() {
     var templates = this.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
     this.templateGatherer.useTemplates(this, 'GridColumn', templates);
@@ -48,6 +52,10 @@ var Col = exports.Col = (_dec = (0, _aureliaTemplating.customElement)(_constants
       columns.forEach(function (col) {
         options.columns.push(_this.optionsBuilder.getOptions(col, 'GridColumn'));
       });
+    }
+
+    if (options.editor) {
+      options.editor = options.editor.bind(this.$parent);
     }
   };
 

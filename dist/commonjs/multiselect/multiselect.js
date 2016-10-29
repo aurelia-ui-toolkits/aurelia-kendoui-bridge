@@ -17,10 +17,6 @@ var _decorators = require('../common/decorators');
 
 var _constants = require('../common/constants');
 
-require('kendo.multiselect.min');
-
-require('kendo.virtuallist.min');
-
 function _initDefineProp(target, property, descriptor, context) {
   if (!descriptor) return;
   Object.defineProperty(target, property, {
@@ -66,8 +62,8 @@ function _initializerWarningHelper(descriptor, context) {
   throw new Error('Decorating class property failed. Please ensure that transform-class-properties is enabled.');
 }
 
-var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'multiselect'), _dec2 = (0, _decorators.generateBindables)('kendoMultiSelect', ['template']), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
-  function Multiselect(element, widgetBase, viewResources) {
+var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'multiselect'), _dec2 = (0, _decorators.generateBindables)('kendoMultiSelect', ['template']), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+  function Multiselect(element, widgetBase, container) {
     _classCallCheck(this, Multiselect);
 
     _initDefineProp(this, 'kEnabled', _descriptor, this);
@@ -77,7 +73,7 @@ var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customEle
     _initDefineProp(this, 'kNoValueBinding', _descriptor3, this);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoMultiSelect').linkViewModel(this).useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+    this.widgetBase = widgetBase.control('kendoMultiSelect').linkViewModel(this).useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
   Multiselect.prototype.bind = function bind(ctx) {

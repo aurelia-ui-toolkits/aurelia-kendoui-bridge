@@ -1,6 +1,5 @@
 import {bindable, inject} from 'aurelia-framework';
 import {EventAggregator} from 'aurelia-event-aggregator';
-import 'jquery';
 
 @inject(EventAggregator)
 export class NavBar {
@@ -13,7 +12,7 @@ export class NavBar {
   }
 
   attached() {
-    this.dialog = jQuery(this.themeSelector).kendoWindow({
+    this.dialog = kendo.jQuery(this.themeSelector).kendoWindow({
       width: '800px',
       visible: false,
       title: 'Themes',
@@ -25,18 +24,18 @@ export class NavBar {
       ]
     }).data('kendoWindow');
 
-    jQuery(this.themeSelector).parent().addClass('theme-window');
+    kendo.jQuery(this.themeSelector).parent().addClass('theme-window');
 
-    jQuery(this.menu).kendoMenu({
+    kendo.jQuery(this.menu).kendoMenu({
       select: (e) => {
-        $(this.menu).find('.k-state-selected').removeClass('k-state-selected');
-        $(e.item).addClass('k-state-selected');
+        kendo.jQuery(this.menu).find('.k-state-selected').removeClass('k-state-selected');
+        kendo.jQuery(e.item).addClass('k-state-selected');
       }
     });
   }
 
   routeChanged() {
-    $(this.menu).find('.k-state-selected').removeClass('k-state-selected');
+    kendo.jQuery(this.menu).find('.k-state-selected').removeClass('k-state-selected');
 
     let route = this.router.currentInstruction;
 
@@ -44,11 +43,11 @@ export class NavBar {
     let fragment = `#${route.fragment}`;
 
     // check if any anchor's href is at the start of the fragment
-    jQuery('a', this.menu).each((i, anchor) => {
-      let href = jQuery(anchor).attr('href');
+    kendo.jQuery('a', this.menu).each((i, anchor) => {
+      let href = kendo.jQuery(anchor).attr('href');
 
       if (href !== '#' && fragment.startsWith(href)) {
-        jQuery(anchor).addClass('k-state-selected');
+        kendo.jQuery(anchor).addClass('k-state-selected');
       }
     });
   }

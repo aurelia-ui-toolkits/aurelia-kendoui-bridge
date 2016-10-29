@@ -3,7 +3,6 @@ import {inject} from 'aurelia-dependency-injection';
 import {constants} from '../common/constants';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
-import 'kendo.panelbar.min';
 
 @customElement(`${constants.elementPrefix}panel-bar`)
 @generateBindables('kendoPanelBar')

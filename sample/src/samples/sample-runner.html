@@ -1,0 +1,59 @@
+<template>
+  <require from="aurelia-kendoui-bridge/tabstrip/tabstrip"></require>
+    <!-- Page is shared by all widgets and sets up the sub-navigation pane -->
+  <section>
+  <br>
+    <h4>
+      ${ category.title }
+      <small if.bind="category.pro">&nbsp;<a href="http://www.telerik.com/kendo-ui/comparison" target="_blank" class="text-danger">Requires Kendo UI Professional Licence</a></small>
+      <small if.bind="category.pro === false">&nbsp;<a href="http://www.telerik.com/kendo-ui/comparison" target="_blank" class="text-success">Free with Kendo UI Core Licence</a></small>
+    </h4>
+    <div class="row">
+      <div class="col-md-2">
+          <ul class="k-widget k-reset k-header k-panelbar k-panel">
+              <li repeat.for="route of routes" class="k-item ${ $first ? 'k-first' : '' } ${ $last ? 'k-last' : ''} ">
+                  <span click.delegate="router.navigateToRoute(route.name)" mouseenter.trigger="route.isHovered = true" mouseleave.trigger="route.isHovered = false" class="k-link ${ route.navModel.isActive ? 'k-state-selected' : ''} ${ route.isHovered ? 'k-state-hover' : '' }">${route.title}</span>
+              </li>
+          </ul>
+      </div>
+      <div class="col-md-10" style="padding: 0">
+        <section>
+          <collapse-panel title.bind="sample.title">
+            <div slot="buttons" class="buttons">
+              <a href="https://gist.run/?id=${sample.gist}" show.bind="sample.gist" target="_blank" class="k-button">RUN</a>
+              <a href.bind="category.documentation" show.bind="category.documentation" target="_blank" class="k-button">API</a>
+              <button class="k-button" click.delegate="showImports()">Imports</button>
+            </div>
+            <div id="exampleWrap">
+              <div id="${sample.route}">
+                <i class="fa fa-spinner fa-spin fa-2x" show.bind="loading"></i>
+
+                <div ref="sampleTarget" show.bind="!loading"></div>
+              </div>
+            </div>
+          </collapse-panel>
+          <collapse-panel title="Code Preview">
+              <div ak-tabstrip="k-animation.bind: false; k-widget.bind: tabstrip">
+              </div>
+          </collapse-panel>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <div id="window"
+       ak-window="k-width: 600px;
+                  k-title: Imports;
+                  k-visible.bind: false;
+                  k-widget.bind: importsWindow">
+    <label>Require statements for importing aurelia-kendoui-bridge custom element / attributes</label>
+    <au-code language="html" text.bind="requires"></au-code>
+
+    <label>Kendo files</label>
+    <ul>
+      <li repeat.for="file of category.kendoModules">
+        <au-code language="html" text.bind="file"></au-code>
+      </li>
+    </ul>
+  </div>
+</template>

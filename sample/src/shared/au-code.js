@@ -14,6 +14,7 @@ export class AuCode {
 
   @bindable language;
   @bindable url;
+  @bindable text;
 
   constructor(element, targetInstruction, loader) {
     this.element = element;
@@ -34,12 +35,19 @@ export class AuCode {
     }
   }
 
+  textChanged() {
+    if (this.text) {
+      this.html = this.text;
+      this.render();
+    }
+  }
+
   attached() {
     this.render();
   }
 
   render() {
-    jQuery('pre', this.element).remove();
+    kendo.jQuery('pre', this.element).remove();
     let pre = document.createElement('pre');
     this.element.appendChild(pre);
     pre.innerHTML = prism.highlight(this.html, Prism.languages[this.language]);

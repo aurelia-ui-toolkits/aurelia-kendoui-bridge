@@ -1,9 +1,0 @@
-<template>
-  <ak-chart  k-title.bind="{text: 'Closing stock prices'}"
-            k-data-source.bind="stocksDataSource"
-            k-series-defaults.bind="seriesDefaults"
-            k-series.bind="[{xField: 'date', yField: 'close'}]"
-            k-y-axis.bind="{labels: {format: '${0}', skip: 1}}"
-            k-tooltip.bind="tooltip">
-  </ak-chart>
-</template>

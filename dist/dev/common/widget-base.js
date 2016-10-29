@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['./util', './options-builder', './template-compiler', './template-gatherer', '../config-builder', 'aurelia-dependency-injection', 'aurelia-task-queue', 'aurelia-logging'], function (_export, _context) {
+System.register(['./util', './options-builder', './template-compiler', './template-gatherer', '../config-builder', 'aurelia-dependency-injection', 'aurelia-templating-resources', 'aurelia-task-queue', 'aurelia-logging'], function (_export, _context) {
   "use strict";
 
-  var Util, OptionsBuilder, TemplateCompiler, TemplateGatherer, KendoConfigBuilder, inject, transient, TaskQueue, LogManager, _dec, _dec2, _class, logger, WidgetBase;
+  var Util, OptionsBuilder, TemplateCompiler, TemplateGatherer, KendoConfigBuilder, inject, transient, RepeatStrategyLocator, ArrayRepeatStrategy, TaskQueue, LogManager, _dec, _dec2, _class, logger, WidgetBase;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -25,6 +25,9 @@ System.register(['./util', './options-builder', './template-compiler', './templa
     }, function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
       transient = _aureliaDependencyInjection.transient;
+    }, function (_aureliaTemplatingResources) {
+      RepeatStrategyLocator = _aureliaTemplatingResources.RepeatStrategyLocator;
+      ArrayRepeatStrategy = _aureliaTemplatingResources.ArrayRepeatStrategy;
     }, function (_aureliaTaskQueue) {
       TaskQueue = _aureliaTaskQueue.TaskQueue;
     }, function (_aureliaLogging) {
@@ -33,8 +36,8 @@ System.register(['./util', './options-builder', './template-compiler', './templa
     execute: function () {
       logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
-      _export('WidgetBase', WidgetBase = (_dec = transient(), _dec2 = inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder), _dec(_class = _dec2(_class = function () {
-        function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder) {
+      _export('WidgetBase', WidgetBase = (_dec = transient(), _dec2 = inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder, RepeatStrategyLocator), _dec(_class = _dec2(_class = function () {
+        function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator) {
           _classCallCheck(this, WidgetBase);
 
           this.bindingsToKendo = [];
@@ -43,13 +46,15 @@ System.register(['./util', './options-builder', './template-compiler', './templa
           this.optionsBuilder = optionsBuilder;
           this.util = util;
           this.configBuilder = configBuilder;
+          this.repeatStratLocator = repeatStratLocator;
           this.templateGatherer = templateGatherer;
           templateCompiler.initialize();
+          this.registerRepeatStrategy();
         }
 
         WidgetBase.prototype.control = function control(controlName) {
-          if (!controlName || !kendo.jQuery.fn[controlName]) {
-            throw new Error('The name of control ' + controlName + ' is invalid or not set');
+          if (!controlName || !window.kendo || !kendo.jQuery.fn[controlName]) {
+            throw new Error('The kendo control \'' + controlName + '\' is not available. Did you load this control?');
           }
 
           this.controlName = controlName;
@@ -71,12 +76,12 @@ System.register(['./util', './options-builder', './template-compiler', './templa
           return this;
         };
 
-        WidgetBase.prototype.useViewResources = function useViewResources(resources) {
-          if (!resources) {
-            throw new Error('resources is not set');
+        WidgetBase.prototype.useContainer = function useContainer(container) {
+          if (!container) {
+            throw new Error('container is not set');
           }
 
-          this.viewResources = resources;
+          this.container = container;
 
           return this;
         };
@@ -125,7 +130,7 @@ System.register(['./util', './options-builder', './template-compiler', './templa
           }
 
           Object.assign(allOptions, {
-            $angular: [{ _$parent: options.parentCtx, _$resources: this.viewResources }]
+            $angular: [{ _$parent: options.parentCtx, _$container: this.container }]
           });
 
           if (this.configBuilder.debugMode) {
@@ -136,7 +141,7 @@ System.register(['./util', './options-builder', './template-compiler', './templa
 
           widget.$angular = [{
             _$parent: options.parentCtx,
-            _$resources: this.viewResources
+            _$container: this.container
           }];
 
           if (this.withValueBinding) {
@@ -216,7 +221,11 @@ System.register(['./util', './options-builder', './template-compiler', './templa
           var binding = this.bindingsToKendo.find(function (i) {
             return i.propertyName === property;
           });
-          if (binding) {
+          if (!binding) return;
+
+          if (typeof newValue === 'undefined') {
+            widget[binding.functionName](null);
+          } else {
             if (widget && widget[binding.functionName]() !== newValue) {
               widget[binding.functionName](newValue);
             }
@@ -225,6 +234,18 @@ System.register(['./util', './options-builder', './template-compiler', './templa
 
         WidgetBase.prototype.useTemplates = function useTemplates(target, controlName, templates) {
           return this.templateGatherer.useTemplates(target, controlName, templates);
+        };
+
+        WidgetBase.prototype.registerRepeatStrategy = function registerRepeatStrategy() {
+          if (this.configBuilder.registerRepeatStrategy) {
+            if (!window.kendo) {
+              logger.warn('Could not add RepeatStrategy for kendo.data.ObservableArray as kendo.data.ObservableArray has not been loaded');
+              return;
+            }
+            this.repeatStratLocator.addStrategy(function (items) {
+              return items instanceof kendo.data.ObservableArray;
+            }, new ArrayRepeatStrategy());
+          }
         };
 
         WidgetBase.prototype.destroy = function destroy(widget) {

@@ -3,14 +3,13 @@ import {customElement} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.dataviz.gauge.min';
 
 @customElement(`${constants.elementPrefix}radial-gauge`)
 @generateBindables('kendoRadialGauge')
 @inject(Element, WidgetBase)
 export class RadialGauge {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoRadialGauge')

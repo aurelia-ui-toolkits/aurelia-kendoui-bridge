@@ -24,6 +24,10 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       this.element = element;
     }
 
+    Col.prototype.bind = function bind($parent) {
+      this.$parent = $parent;
+    };
+
     Col.prototype.beforeOptionsBuild = function beforeOptionsBuild() {
       var templates = this.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
       this.templateGatherer.useTemplates(this, 'GridColumn', templates);
@@ -39,6 +43,10 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
         columns.forEach(function (col) {
           options.columns.push(_this.optionsBuilder.getOptions(col, 'GridColumn'));
         });
+      }
+
+      if (options.editor) {
+        options.editor = options.editor.bind(this.$parent);
       }
     };
 

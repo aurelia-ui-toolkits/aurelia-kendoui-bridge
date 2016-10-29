@@ -1,7 +1,4 @@
 import '../setup';
-import 'kendo-ui/js/kendo.button.min';
-import 'kendo-ui/js/kendo.dropdownlist.min';
-import 'kendo-ui/js/kendo.mobile.switch.min';
 import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 import {TemplateCompiler} from 'src/common/template-compiler';
@@ -58,7 +55,7 @@ describe('WidgetBase', () => {
 
   it('throws error when Kendo control does not exist', () => {
     let controlName = 'kendoNonExisting';
-    expect(() => sut.control(controlName)).toThrow(new Error('The name of control kendoNonExisting is invalid or not set'));
+    expect(() => sut.control(controlName)).toThrow(new Error('The kendo control \'kendoNonExisting\' is not available. Did you load this control?'));
   });
 
   it('stores viewmodel', () => {
@@ -162,22 +159,22 @@ describe('WidgetBase', () => {
   });
 
 
-  it('sets viewResources on the widget', () => {
-    let viewResources = {
+  it('sets container on the widget', () => {
+    let _container = {
       'a': 'b'
     };
 
     sut.control('kendoButton')
     .linkViewModel({})
-    .useViewResources(viewResources);
+    .useContainer(_container);
 
     let widget = sut.createWidget({
       element: DOM.createElement('div'),
       parentCtx: { a: 'b'}
     });
 
-    expect(widget.$angular[0]._$resources).toBe(viewResources);
-    expect(widget.options.$angular[0]._$resources.a).toBe('b');
+    expect(widget.$angular[0]._$container).toBe(_container);
+    expect(widget.options.$angular[0]._$container.a).toBe('b');
   });
 
   it('createWidget looks at the rootElement for event attributes when a rootElement is supplied', () => {
@@ -282,6 +279,25 @@ describe('WidgetBase', () => {
     expect(widget.check).toHaveBeenCalledWith(2);
     expect(widget.value).toHaveBeenCalledWith(4);
     expect(widget.readonly).toHaveBeenCalledWith(true);
+  });
+
+
+  it('value binding sets value to null when source property is undefined', () => {
+    sut.control('kendoMobileSwitch')
+    .linkViewModel({})
+    .bindToKendo('kValue', 'value');
+
+    let widgetFake = new WidgetFake();
+    spyOn(sut, '_createWidget').and.returnValue(widgetFake);
+
+    let widget = sut.createWidget({
+      element: DOM.createElement('div'),
+      parentCtx: {}
+    });
+
+    sut.handlePropertyChanged(widget, 'kValue', undefined, 3);
+
+    expect(widget.value).toHaveBeenCalledWith(null);
   });
 
 

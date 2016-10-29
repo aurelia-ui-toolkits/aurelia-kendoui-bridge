@@ -3,14 +3,13 @@ import {customElement} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.calendar.min';
 
 @customElement(`${constants.elementPrefix}calendar`)
 @generateBindables('kendoCalendar')
 @inject(Element, WidgetBase)
 export class Calendar {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
                     .control('kendoCalendar')

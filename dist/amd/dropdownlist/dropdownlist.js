@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants', 'kendo.dropdownlist.min', 'kendo.virtuallist.min'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _widgetBase, _decorators, _constants) {
+define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (exports, _aureliaDependencyInjection, _aureliaTemplating, _widgetBase, _decorators, _constants) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -57,8 +57,8 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   var _dec, _dec2, _dec3, _class, _desc, _value, _class2, _descriptor, _descriptor2, _descriptor3;
 
-  var DropDownList = exports.DropDownList = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'drop-down-list'), _dec2 = (0, _decorators.generateBindables)('kendoDropDownList'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
-    function DropDownList(element, widgetBase, viewResources) {
+  var DropDownList = exports.DropDownList = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'drop-down-list'), _dec2 = (0, _decorators.generateBindables)('kendoDropDownList'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container), _dec(_class = _dec2(_class = _dec3(_class = (_class2 = function () {
+    function DropDownList(element, widgetBase, container) {
       _classCallCheck(this, DropDownList);
 
       _initDefineProp(this, 'kNoValueBinding', _descriptor, this);
@@ -68,7 +68,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _initDefineProp(this, 'kReadOnly', _descriptor3, this);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useViewResources(viewResources).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+      this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
     }
 
     DropDownList.prototype.bind = function bind(ctx) {

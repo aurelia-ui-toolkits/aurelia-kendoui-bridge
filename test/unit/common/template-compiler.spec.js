@@ -4,8 +4,6 @@ import {TemplatingEngine} from 'aurelia-templating';
 import {initialize} from 'aurelia-pal-browser';
 import {DOM} from 'aurelia-pal';
 import {TemplateCompiler} from 'src/common/template-compiler';
-import 'jquery';
-import 'kendo-ui/js/kendo.grid.min';
 
 describe('TemplateCompiler', () => {
   let container;
@@ -44,8 +42,8 @@ describe('TemplateCompiler', () => {
     };
     let args = () => realArgs;
     let $parent = {};
-    let viewResources = {};
-    let widget = { $angular: [{ _$parent: $parent, _$resources: viewResources }] };
+    let _container = {};
+    let widget = { $angular: [{ _$parent: $parent, _$container: _container }] };
 
     let compileSpy = spyOn(sut, 'compile');
     let cleanupSpy = spyOn(sut, 'cleanup');
@@ -53,7 +51,7 @@ describe('TemplateCompiler', () => {
     sut.handleTemplateEvents(widget, 'compile', args);
     sut.handleTemplateEvents(widget, 'cleanup', args);
 
-    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data, viewResources);
+    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data, _container);
     expect(cleanupSpy).toHaveBeenCalledWith(realArgs.elements);
   });
 
@@ -69,31 +67,31 @@ describe('TemplateCompiler', () => {
     };
     let args = () => realArgs;
     let $parent = {};
-    let viewResources = {};
-    let widget = { options: { $angular: [{ _$parent: $parent, _$resources: viewResources }] }};
+    let _container = {};
+    let widget = { options: { $angular: [{ _$parent: $parent, _$container: _container }] }};
 
     let compileSpy = spyOn(sut, 'compile');
 
     sut.handleTemplateEvents(widget, 'compile', args);
 
-    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data, viewResources);
+    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data, _container);
   });
 
   it('enhances every element', () => {
     let elements = [];
     let data = [];
     let $parent = {};
-    let viewResources = {};
+    let _container = {};
     let spy = spyOn(sut, 'enhanceView');
     for (let i = 10; i < 20; i++) {
       elements.push(DOM.createElement('div'));
       data.push({dataItem: { id: 1 }});
     }
 
-    sut.compile($parent, elements, data, viewResources);
+    sut.compile($parent, elements, data, _container);
 
     for (let i = 0; i < elements.length; i++) {
-      expect(spy).toHaveBeenCalledWith($parent, elements[i], data[i].dataItem, viewResources);
+      expect(spy).toHaveBeenCalledWith($parent, elements[i], data[i].dataItem, _container);
     }
   });
 
@@ -101,7 +99,7 @@ describe('TemplateCompiler', () => {
     let elements = [];
     let data = [];
     let $parent = {};
-    let viewResources = {};
+    let _container = {};
     let spy = spyOn(sut, 'enhanceView');
 
     elements.push(DOM.createElement('div'));
@@ -117,7 +115,7 @@ describe('TemplateCompiler', () => {
     elements.push(DOM.createElement('div'));
     data.push(undefined);
 
-    sut.compile($parent, elements, data, viewResources);
+    sut.compile($parent, elements, data, _container);
 
 
     expect(spy.calls.argsFor(0)[2].id).toBe(15);
@@ -130,7 +128,7 @@ describe('TemplateCompiler', () => {
     let elements = [];
     let data = [];
     let $parent = {};
-    let viewResources = {};
+    let _container = {};
     let spy = spyOn(sut, 'enhanceView');
 
     elements.push(DOM.createElement('div'));
@@ -139,7 +137,7 @@ describe('TemplateCompiler', () => {
     elements.push(DOM.createElement('div'));
     data.push({aggregate: 30});
 
-    sut.compile($parent, elements, data, viewResources);
+    sut.compile($parent, elements, data, _container);
 
     expect(spy.calls.argsFor(0)[2].dataItem).toBe(15);
     expect(spy.calls.argsFor(1)[2].dataItem).toBe(30);
@@ -147,24 +145,24 @@ describe('TemplateCompiler', () => {
 
   it('supports jQuery selector', () => {
     let spy = spyOn(sut, 'enhanceView');
-    let div1 = $('div');
-    let div2 = $('div');
+    let div1 = kendo.jQuery('div');
+    let div2 = kendo.jQuery('div');
     let $parent = {};
-    let viewResources = {};
-    let selector = jQuery([div1, div2]);
+    let _container = {};
+    let selector = kendo.jQuery([div1, div2]);
     let data = [{
       dataItem: {
         id: 1
       }
     }];
 
-    sut.compile($parent, [selector], data, viewResources);
+    sut.compile($parent, [selector], data, _container);
 
     // kendo can pass in a jQuery selector, with a single dataitem
     // but we have to compile each element in the jQuery selector with the single
     // dataitem that kendo passed in
-    expect(spy).toHaveBeenCalledWith($parent, div1, data[0].dataItem, viewResources);
-    expect(spy).toHaveBeenCalledWith($parent, div2, data[0].dataItem, viewResources);
+    expect(spy).toHaveBeenCalledWith($parent, div1, data[0].dataItem, _container);
+    expect(spy).toHaveBeenCalledWith($parent, div2, data[0].dataItem, _container);
   });
 
   it('enhances elements and calls lifecycle events', () => {
@@ -252,9 +250,13 @@ describe('TemplateCompiler', () => {
     expect(kendo.ui.Widget.prototype.angular).toBe('test');
   });
 
-  it('enhances view with viewResources if available', () => {
+  it('enhances view with container if container is available', () => {
     let $parent = {};
-    let viewResources = {};
+    let viewResources = { a: 'b' };
+    let _container = {
+      get: (key) => viewResources,
+      createChild: () => _container
+    };
     let ctx = {};
     let element = DOM.createElement('div');
     let enhanceSpy = jasmine.createSpy().and.returnValue({
@@ -265,10 +267,11 @@ describe('TemplateCompiler', () => {
       enhance: enhanceSpy
     };
 
-    sut.enhanceView($parent, element, ctx, viewResources);
+    sut.enhanceView($parent, element, ctx, _container);
 
     expect(enhanceSpy).toHaveBeenCalled();
     expect(enhanceSpy.calls.argsFor(0)[0].element).toBe(element);
+    expect(enhanceSpy.calls.argsFor(0)[0].container).toBe(_container);
     expect(enhanceSpy.calls.argsFor(0)[0].resources).toBe(viewResources);
     expect(enhanceSpy.calls.argsFor(0)[0].bindingContext).toBe(ctx);
   });

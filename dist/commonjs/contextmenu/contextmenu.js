@@ -17,8 +17,6 @@ var _decorators = require('../common/decorators');
 
 var _constants = require('../common/constants');
 
-require('kendo.menu.min');
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ContextMenu = exports.ContextMenu = (_dec = (0, _aureliaTemplating.customAttribute)(_constants.constants.attributePrefix + 'contextmenu'), _dec2 = (0, _decorators.generateBindables)('kendoContextMenu'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {

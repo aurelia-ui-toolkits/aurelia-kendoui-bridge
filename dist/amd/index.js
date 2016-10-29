@@ -1,11 +1,17 @@
-define(['exports', './common/decorators', './config-builder', 'aurelia-templating-resources', 'aurelia-logging', 'jquery', 'kendo.data.min'], function (exports, _decorators, _configBuilder, _aureliaTemplatingResources, _aureliaLogging) {
+define(['exports', './version', './common/decorators', './config-builder', 'aurelia-logging'], function (exports, _version, _decorators, _configBuilder, _aureliaLogging) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.delayed = exports.generateBindables = undefined;
+  exports.delayed = exports.generateBindables = exports.version = undefined;
   exports.configure = configure;
+  Object.defineProperty(exports, 'version', {
+    enumerable: true,
+    get: function () {
+      return _version.version;
+    }
+  });
   Object.defineProperty(exports, 'generateBindables', {
     enumerable: true,
     get: function () {
@@ -40,13 +46,11 @@ define(['exports', './common/decorators', './config-builder', 'aurelia-templatin
 
   function configure(aurelia, configCallback) {
     var builder = aurelia.container.get(_configBuilder.KendoConfigBuilder);
+    var logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
     if (configCallback !== undefined && typeof configCallback === 'function') {
       configCallback(builder);
     }
-
-    var logger = LogManager.getLogger('aurelia-kendoui-bridge');
-    logger.warn('This version of aurelia-kendoui-bridge has been deprecated. Please update to the 1.0.0 version or above');
 
     var resources = builder.resources;
 
@@ -54,11 +58,10 @@ define(['exports', './common/decorators', './config-builder', 'aurelia-templatin
       aurelia.globalResources(resources);
     }
 
-    if (builder.registerRepeatStrategy) {
-      var repeatStrategyLocator = aurelia.container.get(_aureliaTemplatingResources.RepeatStrategyLocator);
-      repeatStrategyLocator.addStrategy(function (items) {
-        return items instanceof kendo.data.ObservableArray;
-      }, new _aureliaTemplatingResources.ArrayRepeatStrategy());
+    logger.info('Loading ' + resources.length + ' wrappers', resources);
+
+    if (resources.length > 10) {
+      logger.warn('when using many wrappers, it is recommended not to use .core(), .pro() or .dynamic()' + ' but instead to load wrappers via <require></require>.' + 'this should significantly speed up load times of your application.');
     }
   }
 });

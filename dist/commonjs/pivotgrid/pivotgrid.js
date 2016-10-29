@@ -19,18 +19,14 @@ var _constants = require('../common/constants');
 
 var _pdf = require('../pdf/pdf');
 
-require('kendo.pivotgrid.min');
-
-require('kendo.pivot.fieldmenu.min');
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var PivotGrid = exports.PivotGrid = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'pivot-grid'), _dec2 = (0, _decorators.generateBindables)('kendoPivotGrid'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaTemplating.ViewResources), _dec(_class = _dec2(_class = _dec3(_class = function () {
-  function PivotGrid(element, widgetBase, viewResources) {
+var PivotGrid = exports.PivotGrid = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'pivot-grid'), _dec2 = (0, _decorators.generateBindables)('kendoPivotGrid'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container), _dec(_class = _dec2(_class = _dec3(_class = function () {
+  function PivotGrid(element, widgetBase, container) {
     _classCallCheck(this, PivotGrid);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoPivotGrid').linkViewModel(this).useViewResources(viewResources);
+    this.widgetBase = widgetBase.control('kendoPivotGrid').linkViewModel(this).useContainer(container);
   }
 
   PivotGrid.prototype.bind = function bind(ctx) {

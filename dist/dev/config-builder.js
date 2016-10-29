@@ -1,9 +1,9 @@
 'use strict';
 
-System.register([], function (_export, _context) {
+System.register(['aurelia-logging'], function (_export, _context) {
   "use strict";
 
-  var KendoConfigBuilder;
+  var LogManager, KendoConfigBuilder;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -12,7 +12,9 @@ System.register([], function (_export, _context) {
   }
 
   return {
-    setters: [],
+    setters: [function (_aureliaLogging) {
+      LogManager = _aureliaLogging;
+    }],
     execute: function () {
       _export('KendoConfigBuilder', KendoConfigBuilder = function () {
         function KendoConfigBuilder() {
@@ -21,15 +23,35 @@ System.register([], function (_export, _context) {
           this.resources = [];
           this.debugMode = false;
           this.registerRepeatStrategy = true;
+
+          this.logger = LogManager.getLogger('aurelia-kendoui-bridge');
         }
 
+        KendoConfigBuilder.prototype.detect = function detect() {
+          if (!window.kendo) return this;
+
+          this.kendoTemplateSupport().useValueConverters();
+
+          var kendoControls = kendo.widgets.map(function (w) {
+            return w.name;
+          });
+          for (var i = 0; i < kendoControls.length; i++) {
+            if (this[kendoControls[i]]) {
+              this[kendoControls[i]]();
+            }
+          }
+
+          return this;
+        };
+
         KendoConfigBuilder.prototype.core = function core() {
-          this.kendoAutoComplete().kendoButton().kendoButtonGroup().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoCombobox().kendoContextMenu().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoDraggable().kendoDropTarget().kendoFlatColorPicker().kendoListView().kendoMaskedTextBox().kendoMenu().kendoMultiSelect().kendoNotification().kendoNumericTextBox().kendoPanelBar().kendoProgressBar().kendoRangeSlider().kendoResponsivePanel().kendoScrollView().kendoSortable().kendoSlider().kendoSplitter().kendoSwitch().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().kendoToolbar().kendoTooltip().kendoValidator().kendoWindow().useValueConverters();
+          this.kendoAutoComplete().kendoButton().kendoMobileButtonGroup().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoComboBox().kendoContextMenu().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoDraggable().kendoDropTarget().kendoFlatColorPicker().kendoListView().kendoMaskedTextBox().kendoMenu().kendoMultiSelect().kendoNotification().kendoNumericTextBox().kendoPanelBar().kendoPopup().kendoProgressBar().kendoRangeSlider().kendoResponsivePanel().kendoMobileScrollView().kendoSortable().kendoSlider().kendoSplitter().kendoMobileSwitch().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().kendoToolBar().kendoTooltip().kendoValidator().kendoWindow().useValueConverters();
           return this;
         };
 
         KendoConfigBuilder.prototype.pro = function pro() {
-          this.core().kendoBarcode().kendoChart().kendoDiagram().kendoEditor().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
+          this.core().kendoBarcode().kendoChart().kendoDiagram().kendoEditor().kendoFilterMenu().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
+
           return this;
         };
 
@@ -72,7 +94,7 @@ System.register([], function (_export, _context) {
           return this;
         };
 
-        KendoConfigBuilder.prototype.kendoButtonGroup = function kendoButtonGroup() {
+        KendoConfigBuilder.prototype.kendoMobileButtonGroup = function kendoMobileButtonGroup() {
           this.resources.push('./buttongroup/buttongroup');
           return this;
         };
@@ -95,7 +117,7 @@ System.register([], function (_export, _context) {
           return this;
         };
 
-        KendoConfigBuilder.prototype.kendoCombobox = function kendoCombobox() {
+        KendoConfigBuilder.prototype.kendoComboBox = function kendoComboBox() {
           this.resources.push('./combobox/combobox');
           return this;
         };
@@ -148,6 +170,11 @@ System.register([], function (_export, _context) {
 
         KendoConfigBuilder.prototype.kendoEditor = function kendoEditor() {
           this.resources.push('./editor/editor');
+          return this;
+        };
+
+        KendoConfigBuilder.prototype.kendoFilterMenu = function kendoFilterMenu() {
+          this.resources.push('./filter-menu/filter-menu');
           return this;
         };
 
@@ -221,6 +248,11 @@ System.register([], function (_export, _context) {
           return this;
         };
 
+        KendoConfigBuilder.prototype.kendoPopup = function kendoPopup() {
+          this.resources.push('./popup/popup');
+          return this;
+        };
+
         KendoConfigBuilder.prototype.kendoProgressBar = function kendoProgressBar() {
           this.resources.push('./progressbar/progressbar');
           return this;
@@ -241,7 +273,7 @@ System.register([], function (_export, _context) {
           return this;
         };
 
-        KendoConfigBuilder.prototype.kendoScrollView = function kendoScrollView() {
+        KendoConfigBuilder.prototype.kendoMobileScrollView = function kendoMobileScrollView() {
           this.resources.push('./scrollview/scrollview');
           return this;
         };
@@ -276,7 +308,7 @@ System.register([], function (_export, _context) {
           return this;
         };
 
-        KendoConfigBuilder.prototype.kendoSwitch = function kendoSwitch() {
+        KendoConfigBuilder.prototype.kendoMobileSwitch = function kendoMobileSwitch() {
           this.resources.push('./switch/switch');
           return this;
         };
@@ -307,7 +339,7 @@ System.register([], function (_export, _context) {
           return this;
         };
 
-        KendoConfigBuilder.prototype.kendoToolbar = function kendoToolbar() {
+        KendoConfigBuilder.prototype.kendoToolBar = function kendoToolBar() {
           this.resources.push('./toolbar/toolbar');
           this.resources.push('./toolbar/toolbar-item');
           this.resources.push('./toolbar/toolbar-item-button');
@@ -337,6 +369,31 @@ System.register([], function (_export, _context) {
         KendoConfigBuilder.prototype.kendoWindow = function kendoWindow() {
           this.resources.push('./window/window');
           return this;
+        };
+
+        KendoConfigBuilder.prototype.kendoButtonGroup = function kendoButtonGroup() {
+          this.logger.warn('kendoButtonGroup is deprecated, use .kendoMobileButtonGroup() instead');
+          return this.kendoMobileButtonGroup();
+        };
+
+        KendoConfigBuilder.prototype.kendoCombobox = function kendoCombobox() {
+          this.logger.warn('kendoCombobox is deprecated, use .kendoComboBox() instead');
+          return this.kendoComboBox();
+        };
+
+        KendoConfigBuilder.prototype.kendoScrollView = function kendoScrollView() {
+          this.logger.warn('kendoScrollView is deprecated, use .kendoMobileScrollView() instead');
+          return this.kendoMobileScrollView();
+        };
+
+        KendoConfigBuilder.prototype.kendoSwitch = function kendoSwitch() {
+          this.logger.warn('kendoSwitch is deprecated, use .kendoMobileSwitch() instead');
+          return this.kendoMobileSwitch();
+        };
+
+        KendoConfigBuilder.prototype.kendoToolbar = function kendoToolbar() {
+          this.logger.warn('kendoToolbar is deprecated, use .kendoToolBar() instead');
+          return this.kendoToolBar();
         };
 
         return KendoConfigBuilder;

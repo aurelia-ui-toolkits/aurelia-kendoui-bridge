@@ -12,6 +12,11 @@ gulp.task('bump-version', function(){
     .pipe(gulp.dest('./'));
 });
 
+gulp.task('version.js', function (cb) {
+  var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+  fs.writeFile('./src/version.js', `export let version = '${pkg.version}';`, cb);
+});
+
 gulp.task('changelog', function() {
   var pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
   console.log(pkg.version);
@@ -30,9 +35,10 @@ gulp.task('prepare-release', function(callback){
   paths.output = paths.releaseOutput;
 
   return runSequence(
-    'build-release',
     'lint',
     'bump-version',
+    'version.js',
+    'build-release',
     // 'doc',
     'changelog',
     callback

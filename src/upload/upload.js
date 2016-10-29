@@ -1,21 +1,20 @@
-import {inject} from 'aurelia-dependency-injection';
-import {customElement, ViewResources} from 'aurelia-templating';
+import {inject, Container} from 'aurelia-dependency-injection';
+import {customElement} from 'aurelia-templating';
 import {WidgetBase} from '../common/widget-base';
 import {generateBindables} from '../common/decorators';
 import {constants} from '../common/constants';
-import 'kendo.upload.min';
 
 @customElement(`${constants.elementPrefix}upload`)
 @generateBindables('kendoUpload')
-@inject(Element, WidgetBase, ViewResources)
+@inject(Element, WidgetBase, Container)
 export class Upload {
 
-  constructor(element, widgetBase, viewResources) {
+  constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoUpload')
                         .linkViewModel(this)
-                        .useViewResources(viewResources);
+                        .useContainer(container);
   }
 
   bind(ctx) {

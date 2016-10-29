@@ -1,9 +1,0 @@
-<template>
-  <ak-chart  k-title.bind="{text: 'Budget report'}"
-            k-data-source.bind="dataSource"
-            k-series-defaults.bind="{type: 'radarLine', style: 'smooth'}"
-            k-series.bind="series"
-            k-category-axis.bind="{field: 'unit'}"
-            k-value-axis.bind="{labels: {template: '$#= value / 1000 #k'}}">
-  </ak-chart>
-</template>

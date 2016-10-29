@@ -56,8 +56,8 @@ var ControlProperties = exports.ControlProperties = (_dec = (0, _aureliaDependen
   };
 
   ControlProperties.prototype.getWidgetProperties = function getWidgetProperties(controlName) {
-    if (jQuery.fn[controlName]) {
-      return Object.keys(jQuery.fn[controlName].widget.prototype.options);
+    if (window.kendo && kendo.jQuery.fn[controlName]) {
+      return Object.keys(kendo.jQuery.fn[controlName].widget.prototype.options);
     }
 
     return [];
