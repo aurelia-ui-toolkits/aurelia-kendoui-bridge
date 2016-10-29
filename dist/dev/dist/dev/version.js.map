@@ -1,1 +1,1 @@
-{"version":3,"sources":["version.js"],"names":[],"mappings":";;;;;;;;;yBAAW,O,GAAU,mB","file":"version.js","sourceRoot":"/source/","sourcesContent":["export let version = '1.0.0-beta.1.0.17';"]}
+{"version":3,"sources":["version.js"],"names":[],"mappings":";;;;;;;;;yBAAW,O,GAAU,O","file":"version.js","sourceRoot":"/source/","sourcesContent":["export let version = '1.0.0';"]}

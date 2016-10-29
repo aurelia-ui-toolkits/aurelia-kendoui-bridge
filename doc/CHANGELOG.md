@@ -1,3 +1,160 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.12.15...v1.0.0) (2016-10-29)
+
+
+
+
+<a name="1.0.0-beta.1.0.17"></a>
+# [1.0.0-beta.1.0.17](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.16...1.0.0-beta.1.0.17) (2016-10-16)
+
+
+### Bug Fixes
+
+* **template-compiler:** use childcontainer from custom element's container ([c4077ce](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/c4077ce))
+
+
+
+<a name="1.0.0-beta.1.0.16"></a>
+# [1.0.0-beta.1.0.16](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.12.4...1.0.0-beta.1.0.16) (2016-10-04)
+
+
+### Bug Fixes
+
+* **widget-base:** change binding value only when needed ([ff6b462](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ff6b462))
+
+
+
+<a name="1.0.0-beta.1.0.15"></a>
+# [1.0.0-beta.1.0.15](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.14...1.0.0-beta.1.0.15) (2016-09-24)
+
+
+### Bug Fixes
+
+* **all:** destroy widget from unbind() and not detached() ([ac585db](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ac585db))
+
+
+
+<a name="1.0.0-beta.1.0.14"></a>
+# [1.0.0-beta.1.0.14](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.13...1.0.0-beta.1.0.14) (2016-09-21)
+
+
+### Bug Fixes
+
+* **binding:** undefined values should be passed as null to kendo ([4082cd4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/4082cd4))
+
+
+
+<a name="1.0.0-beta.1.0.13"></a>
+# [1.0.0-beta.1.0.13](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.12.2...1.0.0-beta.1.0.13) (2016-08-17)
+
+
+### Bug Fixes
+
+* **dts:** exclude template-gatherer from typescript definition ([016ff26](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/016ff26))
+
+
+
+<a name="1.0.0-beta.1.0.12"></a>
+# [1.0.0-beta.1.0.12](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.11...1.0.0-beta.1.0.12) (2016-08-11)
+
+
+### Bug Fixes
+
+* **index:** initialize repeatstrategy from widget-base, at which point the kendo global is t ([e9e16e1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e9e16e1))
+
+
+
+<a name="1.0.0-beta.1.0.11"></a>
+# [1.0.0-beta.1.0.11](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.10...1.0.0-beta.1.0.11) (2016-08-11)
+
+
+### Bug Fixes
+
+* **all:** handle situation where kendo global is not available ([e4de6e4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e4de6e4))
+
+
+
+<a name="1.0.0-beta.1.0.10"></a>
+# [1.0.0-beta.1.0.10](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.8...1.0.0-beta.1.0.10) (2016-08-11)
+
+
+### Bug Fixes
+
+* **control-properties:** get kendo global from window ([ed7df4a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ed7df4a))
+* **template-compiler:** handle situation where kendo hasn't loaded ([e4959cf](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e4959cf))
+
+
+
+<a name="1.0.0-beta.1.0.8"></a>
+# [1.0.0-beta.1.0.8](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.12.1...1.0.0-beta.1.0.8) (2016-08-11)
+
+
+### Bug Fixes
+
+* **control-properties:** handle situation where kendo global is not there ([2f806c1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/2f806c1))
+
+
+
+<a name="1.0.0-beta.1.0.7"></a>
+# [1.0.0-beta.1.0.7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.6...1.0.0-beta.1.0.7) (2016-08-10)
+
+
+### Bug Fixes
+
+* **toolbar:** support require statements ([14a3797](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/14a3797))
+* **treeview:** support require statements ([0213de5](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/0213de5))
+
+
+
+<a name="1.0.0-beta.1.0.6"></a>
+# [1.0.0-beta.1.0.6](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.5...1.0.0-beta.1.0.6) (2016-08-09)
+
+
+### Bug Fixes
+
+* **all:** updated .npmignore to reduce size of the bridge ([eddfa64](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/eddfa64))
+* **draggable:** fixed typo in class name ([37ea863](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/37ea863))
+* **util:** throw error when au property is not foun on an element ([6214a09](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/6214a09))
+
+
+
+<a name="1.0.0-beta.1.0.5"></a>
+# [1.0.0-beta.1.0.5](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.4...1.0.0-beta.1.0.5) (2016-08-02)
+
+
+### Bug Fixes
+
+* **dts:** resolved dts error ([1ed74b7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/1ed74b7))
+
+### Features
+
+* **filter-menu:** added filtermenu wrapper ([02e4755](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/02e4755))
+* **grid:** support rowTemplate ([c399bfb](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/c399bfb))
+* **popup:** added popup wrapper ([45dc3fa](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/45dc3fa))
+* **treeview:** converted to custom element ([eea8bf7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/eea8bf7))
+
+
+
+<a name="1.0.0-beta.1.0.2"></a>
+# [1.0.0-beta.1.0.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.1...1.0.0-beta.1.0.2) (2016-07-21)
+
+
+### Bug Fixes
+
+* **grid:** supply this ptr when custom column editor is used ([ae8d9ce](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ae8d9ce))
+
+
+
+<a name="1.0.0-beta.1.0.1"></a>
+# [1.0.0-beta.1.0.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/0.11.9...1.0.0-beta.1.0.1) (2016-07-20)
+
+
+### Features
+
+* **all:** added .detect() as alternative to .core() and .pro() to automatically load wrapp ([a9133a7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/a9133a7))
+
+
+
 <a name="1.0.0-beta.1.0.17"></a>
 # [1.0.0-beta.1.0.17](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0-beta.1.0.16...v1.0.0-beta.1.0.17) (2016-10-16)
 
