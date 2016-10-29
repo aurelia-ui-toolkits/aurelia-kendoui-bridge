@@ -1,5 +1,6 @@
 import {KendoConfigBuilder} from './config-builder';
 import {RepeatStrategyLocator, ArrayRepeatStrategy} from 'aurelia-templating-resources';
+import * as LogManager from 'aurelia-logging';
 import 'jquery';
 import 'kendo.data.min';
 
@@ -9,6 +10,9 @@ export function configure(aurelia, configCallback) {
   if (configCallback !== undefined && typeof(configCallback) === 'function') {
     configCallback(builder);
   }
+
+  const logger = LogManager.getLogger('aurelia-kendoui-bridge');
+  logger.warn('This version of aurelia-kendoui-bridge has been deprecated. Please update to the 1.0.0 version or above');
 
     // Pull the data off the builder
   let resources = builder.resources;
