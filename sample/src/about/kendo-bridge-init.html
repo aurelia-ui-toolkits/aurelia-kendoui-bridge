@@ -1,4 +1,8 @@
 <template>
+  <require from="aurelia-kendoui-bridge/grid/grid"></require>
+  <require from="aurelia-kendoui-bridge/grid/col"></require>
+  <require from="aurelia-kendoui-bridge/common/template"></require>
+
   <ak-grid k-data-source.bind="datasource"
           k-pageable.bind="{ refresh: true, pageSizes: true, buttonCount: 10 }"
           k-sortable.bind="true">
