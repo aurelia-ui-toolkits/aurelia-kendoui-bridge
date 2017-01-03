@@ -1,6 +1,5 @@
 /* eslint-disable no-var, no-shadow, dot-notation */
 
-var babel = require('babel');
 
 module.exports = function(wallaby) {
   return {
@@ -12,7 +11,8 @@ module.exports = function(wallaby) {
       {pattern: 'src/**/*.js', load: false},
       {pattern: 'test/**/*.spec.js', load: false, ignore: true},
       {pattern: 'test/**/*.js', load: false},
-      {pattern: 'jspm_packages/github/components/jquery@*/jquery.min.js', load: true}
+      {pattern: 'jspm_packages/github/components/jquery@*/jquery.min.js', load: true},
+      {pattern: 'vendors/kendo/js/kendo.all.min.js', load: true, instrument: false}
     ],
 
     tests: [
@@ -21,7 +21,6 @@ module.exports = function(wallaby) {
 
     compilers: {
       '**/*.js': wallaby.compilers.babel({
-        babel: babel,
         optional: [
           'runtime',
           'es7.decorators',
@@ -62,6 +61,6 @@ module.exports = function(wallaby) {
       });
     },
 
-    debug: false
+    debug: true
   };
 };
