@@ -145,6 +145,20 @@ describe('WidgetBase', () => {
     expect(afterSpy).toHaveBeenCalled();
   });
 
+  it('createWidget raises k-on-ready event', () => {
+    sut.control('kendoButton')
+    .linkViewModel({});
+
+    spyOn(sut.util, 'fireKendoEvent');
+
+    sut.createWidget({
+      element: DOM.createElement('div'),
+      parentCtx: {}
+    });
+
+    expect(sut.util.fireKendoEvent).toHaveBeenCalledWith(jasmine.anything(), 'ready', jasmine.anything());
+  });
+
   it('createWidget sets parent context on options and widget', () => {
     sut.control('kendoButton')
     .linkViewModel({});

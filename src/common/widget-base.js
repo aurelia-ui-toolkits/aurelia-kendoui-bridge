@@ -207,6 +207,8 @@ export class WidgetBase {
       options.afterInitialize();
     }
 
+    this.util.fireKendoEvent(options.rootElement || options.element, 'ready', widget);
+
     return widget;
   }
 
@@ -238,7 +240,7 @@ export class WidgetBase {
   */
   getEventOptions(element) {
     let options = {};
-    let allowedEvents = this.kendoEvents;
+    let allowedEvents = this.kendoEvents.concat(['ready']);
     let delayedExecution = ['change'];
 
     // iterate all attributes on the custom elements
