@@ -46,7 +46,7 @@ export class Scrollview {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

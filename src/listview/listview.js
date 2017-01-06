@@ -37,7 +37,7 @@ export class ListView  {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

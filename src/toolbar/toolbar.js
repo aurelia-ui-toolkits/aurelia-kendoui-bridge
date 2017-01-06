@@ -48,7 +48,7 @@ export class Toolbar {
     }
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

@@ -33,7 +33,7 @@ export class DropTarget {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

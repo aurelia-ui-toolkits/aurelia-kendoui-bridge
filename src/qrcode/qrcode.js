@@ -33,7 +33,7 @@ export class QRCode {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

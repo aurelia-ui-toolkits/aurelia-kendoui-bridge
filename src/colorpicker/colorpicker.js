@@ -41,7 +41,7 @@ export class ColorPicker {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

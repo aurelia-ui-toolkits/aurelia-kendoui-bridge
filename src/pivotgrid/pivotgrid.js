@@ -38,7 +38,7 @@ export class PivotGrid {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

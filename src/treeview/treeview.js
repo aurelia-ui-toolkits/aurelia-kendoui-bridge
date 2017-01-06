@@ -45,7 +45,7 @@ export class TreeView {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

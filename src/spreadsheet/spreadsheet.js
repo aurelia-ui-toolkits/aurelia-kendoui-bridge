@@ -33,7 +33,7 @@ export class Spreadsheet {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

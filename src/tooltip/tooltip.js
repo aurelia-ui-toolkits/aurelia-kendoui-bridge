@@ -33,7 +33,7 @@ export class Tooltip {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

@@ -52,7 +52,7 @@ export class TreeList  {
     }
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

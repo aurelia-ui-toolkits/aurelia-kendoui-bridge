@@ -56,7 +56,7 @@ export class Multiselect {
     }
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

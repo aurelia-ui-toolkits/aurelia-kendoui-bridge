@@ -38,7 +38,7 @@ export class Scheduler {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

@@ -33,7 +33,7 @@ export class Sortable {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

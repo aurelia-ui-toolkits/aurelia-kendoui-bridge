@@ -33,7 +33,7 @@ export class FlatColorPicker {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

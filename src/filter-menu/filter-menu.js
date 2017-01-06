@@ -33,7 +33,7 @@ export class FilterMenu {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }

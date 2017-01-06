@@ -33,7 +33,7 @@ export class Barcode {
     });
   }
 
-  unbind() {
+  detached() {
     this.widgetBase.destroy(this.kWidget);
   }
 }
