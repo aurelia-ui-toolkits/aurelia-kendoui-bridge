@@ -327,6 +327,17 @@ describe('WidgetBase', () => {
     expect(widget.check).toHaveBeenCalled();
     expect(sut.viewModel.kChecked).toBe('foo');
   });
+
+
+  it('does not throw error when binding value changes after detached', () => {
+    sut.control('kendoMobileSwitch')
+    .linkViewModel({})
+    .bindToKendo('kValue', 'value');
+
+    expect(() => sut.handlePropertyChanged(null, 'kValue', null, new Date())).not.toThrow();
+    expect(() => sut.handlePropertyChanged(null, 'kValue', undefined, new Date())).not.toThrow();
+    expect(() => sut.handlePropertyChanged(null, 'kValue', new Date(), null)).not.toThrow();
+  });
 });
 
 export class WidgetFake {
