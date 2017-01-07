@@ -7,7 +7,7 @@ export class NavBar {
 
   constructor(ea) {
     this.ea = ea;
-
+    this.development = location.hostname === 'localhost';
     this.subscription = this.ea.subscribe('router:navigation:complete', () => this.routeChanged());
   }
 

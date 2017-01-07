@@ -111,7 +111,8 @@ export class Util {
   fireEvent(element: Element, name: string, data = {}) {
     let event = new CustomEvent(name, {
       detail: data,
-      bubbles: true
+      bubbles: true,
+      cancelable: true
     });
     element.dispatchEvent(event);
 
