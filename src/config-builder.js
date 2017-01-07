@@ -257,6 +257,7 @@ export class KendoConfigBuilder {
     this.resources.push('./grid/grid');
     this.resources.push('./grid/col');
     this.resources.push('./grid/grid-toolbar');
+    this.resources.push('./grid/grid-command');
     return this;
   }
 

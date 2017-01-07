@@ -41,5 +41,20 @@ export class Col {
     if (options.editor) {
       options.editor = options.editor.bind(this.$parent);
     }
+
+    let commands = this.util.getChildrenVMs(this.element, `${constants.elementPrefix}grid-command`);
+    if (commands && commands.length > 0) {
+      options.command = [];
+
+      commands.forEach(command => {
+        let c = this.optionsBuilder.getOptions(command, 'GridColumnCommandItem');
+
+        if (c.click) {
+          c.click = c.click.bind(this.$parent);
+        }
+
+        options.command.push(c);
+      });
+    }
   }
 }

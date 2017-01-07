@@ -10,7 +10,7 @@ var source = require('vinyl-source-stream')
 
 
 gulp.task('bindables:download', function () {
-  return request('https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/master/kendo-ui/kendo-ui.d.ts')
+  return request('https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/master/kendo-ui/index.d.ts')
   .pipe(source('kendo-ui.d.ts'))
   .pipe(gulp.dest('./temp'));
 });
@@ -102,7 +102,7 @@ function extractOptions(jsObj, json) {
 
 
 function extractInterfaces(jsObj, json) {
-  var findInterfaces = ["GridColumn", "TreeListColumn", "ToolBarItem", "GanttColumn", "ToolBarItemButton", "GridToolbarItem"];
+  var findInterfaces = ["GridColumn", "TreeListColumn", "ToolBarItem", "GanttColumn", "ToolBarItemButton", "GridToolbarItem", "GridColumnCommandItem"];
 
   var kendo = json.children[0];
   var kendoModule = kendo.children.find(function(i) { return i.name === "kendo" && i.kindString === "Module" });
