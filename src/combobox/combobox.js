@@ -17,6 +17,7 @@ export class ComboBox {
     this.widgetBase = widgetBase
                         .control('kendoComboBox')
                         .linkViewModel(this)
+                        .useRootElement(this.element)
                         .useValueBinding()
                         .useContainer(container)
                         .bindToKendo('kEnabled', 'enable')
@@ -24,7 +25,7 @@ export class ComboBox {
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -34,15 +35,13 @@ export class ComboBox {
   }
 
   recreate() {
-    let selectNode = getSelectNode(this.element);
+    let selectNodes = getSelectNode(this.element)
+    this.widgetBase.useElement(selectNodes.length > 0 ? selectNodes[0] : this.element);
+
     let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.widgetBase.useTemplates(this, 'kendoComboBox', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: selectNode.length > 0 ? selectNode[0] : this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {

@@ -13,12 +13,13 @@ export class Upload {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoUpload')
+                        .useRootElement(this.element)
                         .linkViewModel(this)
                         .useContainer(container);
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -37,14 +38,12 @@ export class Upload {
       this.element.appendChild(target);
     }
 
+    this.widgetBase.useElement(target);
+
     let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.widgetBase.useTemplates(this, 'kendoUpload', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: target,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   destroy() {

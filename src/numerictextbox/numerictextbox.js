@@ -17,13 +17,14 @@ export class NumericTextBox {
     this.widgetBase = widgetBase
                         .control('kendoNumericTextBox')
                         .linkViewModel(this)
+                        .useElement(this.element)
                         .useValueBinding()
                         .bindToKendo('kEnabled', 'enable')
                         .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -33,10 +34,7 @@ export class NumericTextBox {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {

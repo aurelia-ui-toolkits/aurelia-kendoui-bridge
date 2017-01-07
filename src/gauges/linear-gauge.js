@@ -12,13 +12,14 @@ export class LinearGauge {
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                    .control('kendoLinearGauge')
-                    .linkViewModel(this)
-                    .useValueBinding();
+                        .control('kendoLinearGauge')
+                        .useElement(this.element)
+                        .linkViewModel(this)
+                        .useValueBinding();
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -28,10 +29,7 @@ export class LinearGauge {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {

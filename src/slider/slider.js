@@ -14,14 +14,15 @@ export class Slider {
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                    .control('kendoSlider')
-                    .linkViewModel(this)
-                    .bindToKendo('kEnabled', 'enable')
-                    .useValueBinding();
+                        .control('kendoSlider')
+                        .useElement(this.element)
+                        .linkViewModel(this)
+                        .bindToKendo('kEnabled', 'enable')
+                        .useValueBinding();
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -31,10 +32,7 @@ export class Slider {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {

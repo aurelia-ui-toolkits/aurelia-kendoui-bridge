@@ -17,6 +17,7 @@ export class TimePicker {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTimePicker')
+                        .useElement(this.element)
                         .linkViewModel(this)
                         .useValueBinding()
                         .bindToKendo('kEnabled', 'enable')
@@ -24,7 +25,7 @@ export class TimePicker {
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -34,10 +35,7 @@ export class TimePicker {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {

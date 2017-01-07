@@ -13,11 +13,12 @@ export class FilterMenu {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoFilterMenu')
+                        .useElement(this.element)
                         .linkViewModel(this);
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -27,10 +28,7 @@ export class FilterMenu {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   destroy() {

@@ -13,11 +13,12 @@ export class Window {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoWindow')
+                        .useElement(this.element)
                         .linkViewModel(this);
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -27,10 +28,7 @@ export class Window {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   destroy() {

@@ -14,25 +14,27 @@ export class RangeSlider {
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                    .control('kendoRangeSlider')
-                    .linkViewModel(this)
-                    .bindToKendo('kEnabled', 'enable')
-                    .useValueBinding();
+                        .control('kendoRangeSlider')
+                        .useElement(this.element)
+                        .linkViewModel(this)
+                        .bindToKendo('kEnabled', 'enable')
+                        .useValueBinding();
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
     let divs = this.element.querySelectorAll('div');
     if (divs.length > 0) {
-      this.target = divs[0];
+      this.target =  this.widgetBase.useElement(divs[0]);
     } else {
-      this.target = document.createElement('div');
-      this.target.appendChild(document.createElement('input'));
-      this.target.appendChild(document.createElement('input'));
-      this.element.appendChild(this.target);
+      let target = document.createElement('div');
+      target.appendChild(document.createElement('input'));
+      target.appendChild(document.createElement('input'));
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
     }
 
     if (!this.kNoInit) {
@@ -41,11 +43,7 @@ export class RangeSlider {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: this.target,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {

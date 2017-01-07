@@ -16,21 +16,24 @@ export class TreeList  {
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoTreeList')
+                        .useRootElement(this.element)
+                        .beforeInitialize(options => this._beforeInitialize(options))
                         .linkViewModel(this)
                         .useContainer(container);
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
     let targets = this.element.querySelectorAll('div');
     if (targets.length > 0) {
-      this.target = targets[0];
+      this.widgetBase.useElement(targets[0]);
     } else {
-      this.target = document.createElement('div');
-      this.element.appendChild(this.target);
+      let target = document.createElement('div');
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
     }
 
     if (!this.kNoInit) {
@@ -39,14 +42,7 @@ export class TreeList  {
   }
 
   recreate() {
-    let element = this.element;
-
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.target,
-      rootElement: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: (o) => this._beforeInitialize(o)
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   _beforeInitialize(options) {

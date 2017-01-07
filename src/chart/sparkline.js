@@ -14,11 +14,12 @@ export class Sparkline {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoSparkline')
+                        .useElement(this.element)
                         .linkViewModel(this);
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -28,10 +29,7 @@ export class Sparkline {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   destroy() {

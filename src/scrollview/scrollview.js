@@ -13,21 +13,23 @@ export class Scrollview {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMobileScrollView')
+                        .useRootElement(this.element)
                         .linkViewModel(this)
                         .useContainer(container)
                         .useValueBinding();
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
     if (isInitFromDiv(this.element)) {
-      this.target = this.element.querySelectorAll('div')[0];
+      this.widgetBase.useElement(this.element.querySelectorAll('div')[0]);
     } else {
-      this.target = document.createElement('div');
-      this.element.appendChild(this.target);
+      let target = document.createElement('div');
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
     }
 
     if (!this.kNoInit) {
@@ -39,11 +41,7 @@ export class Scrollview {
     let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.widgetBase.useTemplates(this, 'kendoMobileScrollView', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.target,
-      rootElement: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   destroy() {

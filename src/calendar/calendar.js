@@ -12,13 +12,14 @@ export class Calendar {
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                    .control('kendoCalendar')
-                    .linkViewModel(this)
-                    .useValueBinding();
+                        .control('kendoCalendar')
+                        .useElement(this.element)
+                        .linkViewModel(this)
+                        .useValueBinding();
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -28,10 +29,7 @@ export class Calendar {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {

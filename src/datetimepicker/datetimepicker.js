@@ -16,6 +16,7 @@ export class DateTimePicker {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoDateTimePicker')
+                        .useElement(this.element)
                         .linkViewModel(this)
                         .useValueBinding()
                         .bindToKendo('kEnabled', 'enable')
@@ -23,7 +24,7 @@ export class DateTimePicker {
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -33,10 +34,7 @@ export class DateTimePicker {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {

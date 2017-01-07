@@ -15,12 +15,13 @@ export class Button {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoButton')
+                        .useElement(this.element)
                         .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -30,10 +31,7 @@ export class Button {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {

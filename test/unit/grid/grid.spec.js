@@ -52,21 +52,23 @@ describe('Grid', () => {
   });
 
   it('initializes on table', (d) => {
+    spyOn(sut.widgetBase, 'useElement').and.callThrough();
     let target = DOM.createElement('table');
     sut.element.appendChild(target);
     sut.attached();
     setTimeout(() => {
-      expect(sut.target).toBe(target);
+      expect(sut.widgetBase.useElement).toHaveBeenCalledWith(target);
       d();
     });
   });
 
   it('initializes on div', (d) => {
+    spyOn(sut.widgetBase, 'useElement').and.callThrough();
     let target = DOM.createElement('div');
     sut.element.appendChild(target);
     sut.attached();
     setTimeout(() => {
-      expect(sut.target).toBe(target);
+      expect(sut.widgetBase.useElement).toHaveBeenCalledWith(target);
       d();
     });
   });

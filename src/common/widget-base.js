@@ -71,7 +71,7 @@ export class WidgetBase {
 
   control(controlName) {
     if (!controlName || !window.kendo || !kendo.jQuery.fn[controlName]) {
-      throw new Error(`The kendo control '${controlName}' is not available. Did you load this control?`);
+      throw new Error(`The kendo control '${controlName}' is not available. Did you load Kendo (in addition to the bridge)?`);
     }
 
     this.controlName = controlName;
@@ -100,6 +100,40 @@ export class WidgetBase {
 
     this.container = container;
 
+    return this;
+  }
+
+  useElement(element) {
+    this.element = element;
+
+    if (!this.rootElement) {
+      this.rootElement = element;
+    }
+
+    return this;
+  }
+
+  useRootElement(rootElement) {
+    this.rootElement = rootElement;
+
+    return this;
+  }
+
+  beforeInitialize(cb) {
+    this._beforeInitialize = cb;
+    
+    return this;
+  }
+
+  afterInitialize(cb) {
+    this._afterInitialize = cb;
+    
+    return this;
+  }
+
+  useParentCtx(ctx) {
+    this.parentCtx = ctx;
+    
     return this;
   }
 
@@ -140,13 +174,9 @@ export class WidgetBase {
   * calls all hooks
   * then initialized the Kendo control as "widget"
   */
-  createWidget(options) {
-    if (!options) {
-      throw new Error('the createWidget() function needs to be called with an object');
-    }
-
-    if (!options.element) {
-      throw new Error('element is not set');
+  recreate() {
+    if (!this.element) {
+      throw new Error('element is not set. Call .useElement(<target element>)');
     }
 
     // destroy old widgets
@@ -155,21 +185,21 @@ export class WidgetBase {
     }
 
     // generate all options, including event handlers - use the rootElement if specified, otherwise fall back to the element
-    // this allows a child element in a custom elements tempate to be the container for the kendo control
+    // this allows a child element in a custom elements template to be the container for the kendo control
     // but allows the plugin to correctly discover attributes on the root element to match against events
-    let allOptions = this._getOptions(options.rootElement || options.element);
+    let allOptions = this._getOptions(this.rootElement);
 
     // before initialization callback
     // allows you to modify/add/remove options before the control gets initialized
-    if (options.beforeInitialize) {
-      options.beforeInitialize(allOptions);
+    if (this._beforeInitialize) {
+      this._beforeInitialize(allOptions);
     }
 
     // add parent context to options
     // deepExtend in kendo.core will fail with stack
     // overflow if we don't put it in an array :-\
     Object.assign(allOptions, {
-      $angular: [{ _$parent: options.parentCtx, _$container: this.container }]
+      $angular: [{ _$parent: this.parentCtx, _$container: this.container }]
     });
 
 
@@ -177,12 +207,10 @@ export class WidgetBase {
       logger.debug(`initializing ${this.controlName} with the following config`, allOptions);
     }
 
-    this.clone = $.clone(options.element);
-    // instantiate the Kendo control
-    let widget = this._createWidget(options.element, allOptions, this.controlName);
+    let widget = this._createWidget(this.element, allOptions, this.controlName);
 
     widget.$angular = [{
-      _$parent: options.parentCtx,
+      _$parent: this.parentCtx,
       _$container: this.container
     }];
 
@@ -204,11 +232,11 @@ export class WidgetBase {
       }
     });
 
-    if (options.afterInitialize) {
-      options.afterInitialize();
+    if (this._afterInitialize) {
+      this._afterInitialize();
     }
 
-    this.util.fireKendoEvent(options.rootElement || options.element, 'ready', widget);
+    this.util.fireKendoEvent(this.rootElement, 'ready', widget);
 
     return widget;
   }

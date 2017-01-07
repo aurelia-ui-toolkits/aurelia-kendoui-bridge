@@ -13,11 +13,13 @@ export class Draggable {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoDraggable')
+                        .useElement(this.element)
+                        .beforeInitialize(options => this.beforeInitialize(options))
                         .linkViewModel(this);
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -27,11 +29,7 @@ export class Draggable {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: options => this.beforeInitialize(options)
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   beforeInitialize(options) {

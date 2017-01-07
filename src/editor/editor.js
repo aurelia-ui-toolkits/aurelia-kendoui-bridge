@@ -13,12 +13,13 @@ export class Editor {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoEditor')
+                        .useElement(this.element)
                         .linkViewModel(this)
                         .useValueBinding();
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -28,10 +29,7 @@ export class Editor {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {

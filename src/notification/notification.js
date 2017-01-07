@@ -13,12 +13,14 @@ export class Notification {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoNotification')
+                        .useElement(this.element)
+                        .beforeInitialize(options => this.beforeInitialize(options))
                         .linkViewModel(this)
                         .useContainer(container);
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -28,11 +30,7 @@ export class Notification {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: e => this.beforeInitialize(e)
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   beforeInitialize(options) {

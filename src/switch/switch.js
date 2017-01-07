@@ -15,13 +15,14 @@ export class Switch {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMobileSwitch')
+                        .useElement(this.element)
                         .linkViewModel(this)
                         .bindToKendo('kEnabled', 'enable')
                         .useValueBinding('kChecked', 'check');
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
@@ -31,10 +32,7 @@ export class Switch {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {

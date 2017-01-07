@@ -13,20 +13,22 @@ export class TreeView {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTreeView')
+                        .useRootElement(this.element)
                         .linkViewModel(this)
                         .useContainer(container);
   }
 
   bind(ctx) {
-    this.$parent = ctx;
+    this.widgetBase.useParentCtx(ctx);
   }
 
   attached() {
     if (isInitFromUl(this.element)) {
-      this.target = this.element.querySelectorAll('ul')[0];
+      this.widgetBase.useElement(this.element.querySelectorAll('ul')[0]);
     } else {
-      this.target = document.createElement('div');
-      this.element.appendChild(this.target);
+      let target = document.createElement('div');
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
     }
 
     if (!this.kNoInit) {
@@ -38,11 +40,7 @@ export class TreeView {
     let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.widgetBase.useTemplates(this, 'kendoTreeView', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.target,
-      rootElement: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   destroy() {
