@@ -177,6 +177,7 @@ export class WidgetBase {
       logger.debug(`initializing ${this.controlName} with the following config`, allOptions);
     }
 
+    this.clone = $.clone(options.element);
     // instantiate the Kendo control
     let widget = this._createWidget(options.element, allOptions, this.controlName);
 
@@ -305,8 +306,24 @@ export class WidgetBase {
   * destroys the widget
   */
   destroy(widget) {
-    if (widget) {
+    if (widget && widget.element.length > 0) {
+      if (widget.wrapper && (widget.wrapper !== widget.element)) {
+        widget.element.insertBefore(widget.wrapper);
+        widget.wrapper.remove();
+      }
+
+      // remove all class attributes from the element starting with k-
+      let classList = widget.element[0].classList;
+      for(let i = 0; i < classList.length; i++) {
+        let item = classList.item(i);
+        if (item.startsWith('k-')) {
+          classList.remove(item);
+        }
+      }
+
+      widget.element.empty();
       kendo.destroy(widget.element);
+      
       widget = null;
 
       if (this.viewModel.kWidget) {

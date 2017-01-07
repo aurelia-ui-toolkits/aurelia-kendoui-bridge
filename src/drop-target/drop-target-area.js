@@ -33,7 +33,11 @@ export class DropTargetArea {
     });
   }
 
-  detached() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }

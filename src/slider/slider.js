@@ -41,7 +41,11 @@ export class Slider {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }

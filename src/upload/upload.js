@@ -47,7 +47,11 @@ export class Upload {
     });
   }
 
-  detached() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }

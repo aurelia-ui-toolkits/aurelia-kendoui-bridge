@@ -33,7 +33,11 @@ export class PivotConfigurator {
     });
   }
 
-  detached() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }

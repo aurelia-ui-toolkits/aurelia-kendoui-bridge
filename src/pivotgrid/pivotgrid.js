@@ -23,6 +23,14 @@ export class PivotGrid {
   }
 
   attached() {
+    let targets = this.element.querySelectorAll('div');
+    if (targets.length > 0) {
+      this.target = targets[0];
+    } else {
+      this.target = document.createElement('div');
+      this.element.appendChild(this.target);
+    }
+
     if (!this.kNoInit) {
       this.recreate();
     }
@@ -33,12 +41,17 @@ export class PivotGrid {
     this.widgetBase.useTemplates(this, 'kendoPivotGrid', templates);
 
     this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
+      element: this.target,
+      rootElement: this.element,
       parentCtx: this.$parent
     });
   }
 
-  detached() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }

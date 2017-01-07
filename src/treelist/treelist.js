@@ -25,6 +25,14 @@ export class TreeList  {
   }
 
   attached() {
+    let targets = this.element.querySelectorAll('div');
+    if (targets.length > 0) {
+      this.target = targets[0];
+    } else {
+      this.target = document.createElement('div');
+      this.element.appendChild(this.target);
+    }
+
     if (!this.kNoInit) {
       this.recreate();
     }
@@ -34,7 +42,8 @@ export class TreeList  {
     let element = this.element;
 
     this.kWidget = this.widgetBase.createWidget({
-      element: element,
+      element: this.target,
+      rootElement: this.element,
       parentCtx: this.$parent,
       beforeInitialize: (o) => this._beforeInitialize(o)
     });
@@ -52,7 +61,11 @@ export class TreeList  {
     }
   }
 
-  detached() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }

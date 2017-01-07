@@ -25,6 +25,16 @@ export class RangeSlider {
   }
 
   attached() {
+    let divs = this.element.querySelectorAll('div');
+    if (divs.length > 0) {
+      this.target = divs[0];
+    } else {
+      this.target = document.createElement('div');
+      this.target.appendChild(document.createElement('input'));
+      this.target.appendChild(document.createElement('input'));
+      this.element.appendChild(this.target);
+    }
+
     if (!this.kNoInit) {
       this.recreate();
     }
@@ -32,7 +42,8 @@ export class RangeSlider {
 
   recreate() {
     this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
+      rootElement: this.element,
+      element: this.target,
       parentCtx: this.$parent
     });
   }
@@ -41,7 +52,11 @@ export class RangeSlider {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  detached() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }
