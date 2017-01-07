@@ -1,4 +1,4 @@
-import samples from 'samplesJSON/samples.json!';
+import samples from 'https://aurelia-ui-toolkits.github.io/aurelia-kendoui-samples/samples.json!';
 
 export class Index {
   configureRouter(config, router) {

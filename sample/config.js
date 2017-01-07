@@ -13,8 +13,7 @@ System.config({
     "*": "src/*",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*",
-    "kendo-sdk/*": "kendo-sdk/*",
-    "samplesJSON/*": "https://aurelia-ui-toolkits.github.io/aurelia-kendoui-samples/*"
+    "kendo-sdk/*": "kendo-sdk/*"
   },
 
   meta: {
