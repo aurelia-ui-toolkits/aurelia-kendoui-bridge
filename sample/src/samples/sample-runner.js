@@ -115,8 +115,13 @@ export class SampleRunner {
   restart() {
     let old = this.sample;
     this.sample = undefined;
+    this.loading = true;
     this.taskQueue.queueTask(() => {
+      let cacheBust = Math.floor((Math.random() * 100000) + 1);
+      old.path = `${this.settings.gistProxy}file-cache-bust/${cacheBust}/${old.gist}/app`;
+      
       this.sample = old;
+      setTimeout(() => this.loading = false, 1500);
     });
   }
 

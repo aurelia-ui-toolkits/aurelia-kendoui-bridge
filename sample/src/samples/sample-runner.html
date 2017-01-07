@@ -23,6 +23,7 @@
               <a href="https://gist.run/?id=${sample.gist}" show.bind="sample.gist" target="_blank" class="k-button">RUN</a>
               <a href.bind="category.documentation" show.bind="category.documentation" target="_blank" class="k-button">API</a>
               <button class="k-button" click.delegate="showImports()">Imports</button>
+              <button class="k-button" click.delegate="restart()"><i class="fa fa-refresh" aria-hidden="true"></i></button>
             </div>
             <div id="exampleWrap">
               <div id="${sample.route}">
