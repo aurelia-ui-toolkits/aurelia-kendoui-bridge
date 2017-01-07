@@ -26,23 +26,29 @@ export class RangeSlider {
   }
 
   attached() {
-    let divs = this.element.querySelectorAll('div');
-    if (divs.length > 0) {
-      this.target =  this.widgetBase.useElement(divs[0]);
-    } else {
-      let target = document.createElement('div');
-      target.appendChild(document.createElement('input'));
-      target.appendChild(document.createElement('input'));
-      this.element.appendChild(target);
-      this.widgetBase.useElement(target);
-    }
-
     if (!this.kNoInit) {
       this.recreate();
     }
   }
 
   recreate() {
+    this.destroy();
+
+    let divs = this.element.querySelectorAll('div');
+    if (divs.length === 0) {
+      let div = document.createElement('div');
+      this.element.appendChild(div);
+      divs = [div];
+    }
+    
+    let inputs = divs[0].querySelectorAll('input');
+    if (inputs.length === 0) {
+      divs[0].appendChild(document.createElement('input'));
+      divs[0].appendChild(document.createElement('input'));
+    }
+    
+    this.widgetBase.useElement(divs[0]);
+
     this.kWidget = this.widgetBase.recreate();
   }
 
