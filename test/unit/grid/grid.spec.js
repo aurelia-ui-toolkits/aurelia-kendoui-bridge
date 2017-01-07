@@ -74,10 +74,11 @@ describe('Grid', () => {
   });
 
   it('initializes on div if table or div does not exist', (d) => {
+    spyOn(sut.widgetBase, 'useElement').and.callThrough();
     sut.attached();
     setTimeout(() => {
       expect(sut.element.querySelectorAll('div').length).toBeGreaterThan(0);
-      expect(sut.target.nodeName).toBe('DIV');
+      expect(sut.widgetBase.useElement.calls.argsFor(0)[0].nodeName).toBe('DIV');
       d();
     });
   });
