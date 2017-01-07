@@ -202,10 +202,7 @@ export class WidgetBase {
       $angular: [{ _$parent: this.parentCtx, _$container: this.container }]
     });
 
-
-    if (this.configBuilder.debugMode) {
-      logger.debug(`initializing ${this.controlName} with the following config`, allOptions);
-    }
+    logger.debug(`initializing ${this.controlName} with the following config`, allOptions);
 
     let widget = this._createWidget(this.element, allOptions, this.controlName);
 
