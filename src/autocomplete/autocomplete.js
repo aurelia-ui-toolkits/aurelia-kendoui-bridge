@@ -21,8 +21,8 @@ export class AutoComplete {
                         .bindToKendo('kReadOnly', 'readonly');
   }
 
-  bind(ctx) {
-    this.widgetBase.useParentCtx(ctx);
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {

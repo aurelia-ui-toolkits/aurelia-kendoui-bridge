@@ -2,6 +2,7 @@ import '../setup';
 import {Container} from 'aurelia-dependency-injection';
 import {TemplatingEngine} from 'aurelia-templating';
 import {TemplateCompiler} from 'src/common/template-compiler';
+import {createOverrideContext} from 'aurelia-binding';
 import {initialize} from 'aurelia-pal-browser';
 import {TaskQueue} from 'aurelia-task-queue';
 import {DOM} from 'aurelia-pal';
@@ -125,7 +126,7 @@ describe('WidgetBase', () => {
 
     sut.control('kendoButton')
     .useElement(DOM.createElement('div'))
-    .useParentCtx({})
+    .useParentCtx(createOverrideContext({}))
     .beforeInitialize(beforeSpy)
     .linkViewModel({});
 
@@ -133,12 +134,34 @@ describe('WidgetBase', () => {
     expect(beforeSpy).toHaveBeenCalled();
   });
 
+  it('useParentCtx takes the last parent context', () => {
+    sut.control('kendoButton')
+    .useParentCtx(
+      createOverrideContext({}, 
+        createOverrideContext({}, 
+          createOverrideContext({}, {
+            a: 'b'
+          })
+        )
+      )
+    );
+
+    expect(sut.parentCtx.a).toBe('b');
+  });
+
+  it('useParentCtx uses bindingContext if there is no parentOverrideContext', () => {
+    sut.control('kendoButton')
+    .useParentCtx(createOverrideContext({ a: 'b' }));
+
+    expect(sut.parentCtx.a).toBe('b');
+  });
+
   it('createWidget calls afterInitialize', () => {
     let afterSpy = jasmine.createSpy();
 
     sut.control('kendoButton')
     .useElement(DOM.createElement('div'))
-    .useParentCtx({})
+    .useParentCtx(createOverrideContext({}))
     .afterInitialize(afterSpy)
     .linkViewModel({});
 
@@ -150,7 +173,7 @@ describe('WidgetBase', () => {
     sut.control('kendoButton')
     .linkViewModel({})
     .useElement(DOM.createElement('div'))
-    .useParentCtx({});
+    .useParentCtx(createOverrideContext({}));
 
     spyOn(sut.util, 'fireKendoEvent');
 
@@ -163,7 +186,7 @@ describe('WidgetBase', () => {
     sut.control('kendoButton')
     .linkViewModel({})
     .useElement(DOM.createElement('div'))
-    .useParentCtx({ a: 'b'});
+    .useParentCtx(createOverrideContext({ a: 'b'}));
 
     let widget = sut.recreate();
 
@@ -196,7 +219,7 @@ describe('WidgetBase', () => {
     sut.control('kendoButton')
     .useRootElement(rootElement)
     .useElement(DOM.createElement('div'))
-    .useParentCtx({})
+    .useParentCtx(createOverrideContext({}))
     .linkViewModel({ options: {} });
 
     let widget = sut.recreate();
@@ -212,7 +235,7 @@ describe('WidgetBase', () => {
     sut.control('kendoDropDownList')
     .linkViewModel({})
     .useElement(DOM.createElement('div'))
-    .useParentCtx({})
+    .useParentCtx(createOverrideContext({}))
     .useValueBinding();
 
     sut.recreate();
@@ -237,7 +260,7 @@ describe('WidgetBase', () => {
     sut.control('kendoDropDownList')
     .linkViewModel(vm)
     .useElement(DOM.createElement('div'))
-    .useParentCtx({})
+    .useParentCtx(createOverrideContext({}))
     .bindToKendo('kValue', 'value');
 
     sut.recreate();
@@ -255,7 +278,7 @@ describe('WidgetBase', () => {
 
     sut.control('kendoDropDownList')
     .useElement(DOM.createElement('div'))
-    .useParentCtx({})
+    .useParentCtx(createOverrideContext({}))
     .linkViewModel(vm);
 
     sut.recreate();
@@ -268,7 +291,7 @@ describe('WidgetBase', () => {
     sut.control('kendoMobileSwitch')
     .linkViewModel({})
     .useElement(DOM.createElement('div'))
-    .useParentCtx({})
+    .useParentCtx(createOverrideContext({}))
     .bindToKendo('kValue', 'value')
     .bindToKendo('kChecked', 'check')
     .bindToKendo('kReadOnly', 'readonly');
@@ -292,7 +315,7 @@ describe('WidgetBase', () => {
     sut.control('kendoMobileSwitch')
     .linkViewModel({})
     .useElement(DOM.createElement('div'))
-    .useParentCtx({})
+    .useParentCtx(createOverrideContext({}))
     .bindToKendo('kValue', 'value');
 
     let widgetFake = new WidgetFake();

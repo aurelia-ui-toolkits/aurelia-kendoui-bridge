@@ -131,8 +131,13 @@ export class WidgetBase {
     return this;
   }
 
-  useParentCtx(ctx) {
-    this.parentCtx = ctx;
+  useParentCtx(overrideContext) {
+    let oc = overrideContext;
+    while(oc.parentOverrideContext) {
+      oc = oc.parentOverrideContext;
+    }
+
+    this.parentCtx = oc.bindingContext ? oc.bindingContext : oc;
     
     return this;
   }

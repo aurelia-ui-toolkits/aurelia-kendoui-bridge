@@ -18,8 +18,8 @@ export class ListView  {
                         .useContainer(container);
   }
 
-  bind(ctx) {
-    this.widgetBase.useParentCtx(ctx);
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {

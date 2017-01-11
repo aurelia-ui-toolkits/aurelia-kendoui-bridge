@@ -18,8 +18,8 @@ export class Sparkline {
                         .linkViewModel(this);
   }
 
-  bind(ctx) {
-    this.widgetBase.useParentCtx(ctx);
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {
