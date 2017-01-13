@@ -134,28 +134,6 @@ describe('WidgetBase', () => {
     expect(beforeSpy).toHaveBeenCalled();
   });
 
-  it('useParentCtx takes the last parent context', () => {
-    sut.control('kendoButton')
-    .useParentCtx(
-      createOverrideContext({},
-        createOverrideContext({},
-          createOverrideContext({}, {
-            a: 'b'
-          })
-        )
-      )
-    );
-
-    expect(sut.parentCtx.a).toBe('b');
-  });
-
-  it('useParentCtx uses bindingContext if there is no parentOverrideContext', () => {
-    sut.control('kendoButton')
-    .useParentCtx(createOverrideContext({ a: 'b' }));
-
-    expect(sut.parentCtx.a).toBe('b');
-  });
-
   it('createWidget calls afterInitialize', () => {
     let afterSpy = jasmine.createSpy();
 
@@ -190,8 +168,8 @@ describe('WidgetBase', () => {
 
     let widget = sut.recreate();
 
-    expect(widget.$angular[0]._$parent.a).toBe('b');
-    expect(widget.options.$angular[0]._$parent.a).toBe('b');
+    expect(widget.$angular[0]._$parent.bindingContext.a).toBe('b');
+    expect(widget.options.$angular[0]._$parent.bindingContext.a).toBe('b');
   });
 
 
