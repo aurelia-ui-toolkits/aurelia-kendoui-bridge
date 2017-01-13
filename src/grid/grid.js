@@ -10,7 +10,7 @@ import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 @customElement(`${constants.elementPrefix}grid`)
 @generateBindables('kendoGrid')
 @inject(Element, WidgetBase, Container, OptionsBuilder, TemplateGatherer)
-export class Grid  {
+export class Grid {
 
   constructor(element, widgetBase, container, optionsBuilder, templateGatherer) {
     this.element = element;

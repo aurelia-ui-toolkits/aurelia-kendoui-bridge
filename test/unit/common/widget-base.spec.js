@@ -137,8 +137,8 @@ describe('WidgetBase', () => {
   it('useParentCtx takes the last parent context', () => {
     sut.control('kendoButton')
     .useParentCtx(
-      createOverrideContext({}, 
-        createOverrideContext({}, 
+      createOverrideContext({},
+        createOverrideContext({},
           createOverrideContext({}, {
             a: 'b'
           })

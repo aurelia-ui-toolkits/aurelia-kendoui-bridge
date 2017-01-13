@@ -121,24 +121,25 @@ export class WidgetBase {
 
   beforeInitialize(cb) {
     this._beforeInitialize = cb;
-    
+
     return this;
   }
 
   afterInitialize(cb) {
     this._afterInitialize = cb;
-    
+
     return this;
   }
 
   useParentCtx(overrideContext) {
     let oc = overrideContext;
-    while(oc.parentOverrideContext) {
+
+    while (oc.parentOverrideContext) {
       oc = oc.parentOverrideContext;
     }
 
     this.parentCtx = oc.bindingContext ? oc.bindingContext : oc;
-    
+
     return this;
   }
 
@@ -344,7 +345,7 @@ export class WidgetBase {
 
       // remove all class attributes from the element starting with k-
       let classList = widget.element[0].classList;
-      for(let i = 0; i < classList.length; i++) {
+      for (let i = 0; i < classList.length; i++) {
         let item = classList.item(i);
         if (item.startsWith('k-')) {
           classList.remove(item);
@@ -353,7 +354,7 @@ export class WidgetBase {
 
       widget.element.show().empty();
       kendo.destroy(widget.element);
-      
+
       widget = null;
 
       if (this.viewModel.kWidget) {

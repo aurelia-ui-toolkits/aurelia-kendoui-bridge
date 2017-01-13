@@ -35,7 +35,7 @@ export class ComboBox {
   }
 
   recreate() {
-    let selectNodes = getSelectNode(this.element)
+    let selectNodes = getSelectNode(this.element);
     this.widgetBase.useElement(selectNodes.length > 0 ? selectNodes[0] : this.element);
 
     let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);

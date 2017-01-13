@@ -40,13 +40,13 @@ export class RangeSlider {
       this.element.appendChild(div);
       divs = [div];
     }
-    
+
     let inputs = divs[0].querySelectorAll('input');
     if (inputs.length === 0) {
       divs[0].appendChild(document.createElement('input'));
       divs[0].appendChild(document.createElement('input'));
     }
-    
+
     this.widgetBase.useElement(divs[0]);
 
     this.kWidget = this.widgetBase.recreate();

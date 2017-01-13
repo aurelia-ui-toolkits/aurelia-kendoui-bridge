@@ -1,6 +1,6 @@
 export class Test {
   test(e) {
-    console.log('TEST');
+    // console.log('TEST');
     if (e) {
       e.stopImmediatePropagation();
     }
