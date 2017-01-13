@@ -1,3 +1,13 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.1.0...v1.1.1) (2017-01-13)
+
+
+### Bug Fixes
+
+* **widget-base:** use entire bindingOverrideContext for template compilation ([bb9d3ac](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/bb9d3ac))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.1...v1.1.0) (2017-01-13)
 

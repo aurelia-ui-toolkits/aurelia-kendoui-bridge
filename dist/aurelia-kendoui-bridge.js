@@ -495,7 +495,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.1.0';
+export let version = '1.1.1';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
@@ -1742,13 +1742,7 @@ export class WidgetBase {
   }
 
   useParentCtx(overrideContext) {
-    let oc = overrideContext;
-
-    while (oc.parentOverrideContext) {
-      oc = oc.parentOverrideContext;
-    }
-
-    this.parentCtx = oc.bindingContext ? oc.bindingContext : oc;
+    this.parentCtx = overrideContext;
 
     return this;
   }

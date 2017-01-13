@@ -4,5 +4,5 @@ define(['exports'], function (exports) {
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  var version = exports.version = '1.1.0';
+  var version = exports.version = '1.1.1';
 });

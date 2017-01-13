@@ -132,13 +132,7 @@ export class WidgetBase {
   }
 
   useParentCtx(overrideContext) {
-    let oc = overrideContext;
-
-    while (oc.parentOverrideContext) {
-      oc = oc.parentOverrideContext;
-    }
-
-    this.parentCtx = oc.bindingContext ? oc.bindingContext : oc;
+    this.parentCtx = overrideContext;
 
     return this;
   }

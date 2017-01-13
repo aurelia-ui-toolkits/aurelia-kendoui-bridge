@@ -112,13 +112,7 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
   };
 
   WidgetBase.prototype.useParentCtx = function useParentCtx(overrideContext) {
-    var oc = overrideContext;
-
-    while (oc.parentOverrideContext) {
-      oc = oc.parentOverrideContext;
-    }
-
-    this.parentCtx = oc.bindingContext ? oc.bindingContext : oc;
+    this.parentCtx = overrideContext;
 
     return this;
   };
