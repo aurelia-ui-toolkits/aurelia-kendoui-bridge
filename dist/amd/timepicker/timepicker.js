@@ -68,11 +68,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _initDefineProp(this, 'kReadOnly', _descriptor3, this);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoTimePicker').linkViewModel(this).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+      this.widgetBase = widgetBase.control('kendoTimePicker').useElement(this.element).linkViewModel(this).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
     }
 
-    TimePicker.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    TimePicker.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     TimePicker.prototype.attached = function attached() {
@@ -82,18 +82,19 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     TimePicker.prototype.recreate = function recreate() {
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
     TimePicker.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    TimePicker.prototype.unbind = function unbind() {
+    TimePicker.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    TimePicker.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return TimePicker;

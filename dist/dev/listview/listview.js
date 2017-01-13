@@ -30,11 +30,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _classCallCheck(this, ListView);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoListView').linkViewModel(this).useContainer(container);
+          this.widgetBase = widgetBase.control('kendoListView').useElement(this.element).linkViewModel(this).useContainer(container);
         }
 
-        ListView.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        ListView.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         ListView.prototype.attached = function attached() {
@@ -47,14 +47,15 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           var templates = this.widgetBase.util.getChildrenVMs(this.element, constants.elementPrefix + 'template');
           this.widgetBase.useTemplates(this, 'kendoListView', templates);
 
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
-        ListView.prototype.unbind = function unbind() {
+        ListView.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        ListView.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return ListView;

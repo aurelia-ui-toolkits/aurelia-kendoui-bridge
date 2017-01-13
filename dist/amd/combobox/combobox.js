@@ -66,11 +66,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _initDefineProp(this, 'kReadOnly', _descriptor2, this);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useValueBinding().useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+      this.widgetBase = widgetBase.control('kendoComboBox').linkViewModel(this).useRootElement(this.element).useValueBinding().useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
     }
 
-    ComboBox.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    ComboBox.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     ComboBox.prototype.attached = function attached() {
@@ -80,23 +80,25 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     ComboBox.prototype.recreate = function recreate() {
-      var selectNode = getSelectNode(this.element);
+      var selectNodes = getSelectNode(this.element);
+      this.widgetBase.useElement(selectNodes.length > 0 ? selectNodes[0] : this.element);
+
       var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
       this.widgetBase.useTemplates(this, 'kendoComboBox', templates);
 
-      this.kWidget = this.widgetBase.createWidget({
-        rootElement: this.element,
-        element: selectNode.length > 0 ? selectNode[0] : this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
     ComboBox.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    ComboBox.prototype.unbind = function unbind() {
+    ComboBox.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    ComboBox.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return ComboBox;

@@ -31,11 +31,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _classCallCheck(this, Chart);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoChart').linkViewModel(this);
+          this.widgetBase = widgetBase.control('kendoChart').useElement(this.element).linkViewModel(this);
         }
 
-        Chart.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        Chart.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         Chart.prototype.attached = function attached() {
@@ -45,14 +45,15 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Chart.prototype.recreate = function recreate() {
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
-        Chart.prototype.unbind = function unbind() {
+        Chart.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        Chart.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return Chart;

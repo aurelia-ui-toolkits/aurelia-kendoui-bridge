@@ -19,11 +19,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, Splitter);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoSplitter').linkViewModel(this);
+      this.widgetBase = widgetBase.control('kendoSplitter').useElement(this.element).linkViewModel(this);
     }
 
-    Splitter.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    Splitter.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     Splitter.prototype.attached = function attached() {
@@ -33,14 +33,15 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Splitter.prototype.recreate = function recreate() {
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
-    Splitter.prototype.unbind = function unbind() {
+    Splitter.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    Splitter.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return Splitter;

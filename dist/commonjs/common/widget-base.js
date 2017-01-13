@@ -51,7 +51,7 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
 
   WidgetBase.prototype.control = function control(controlName) {
     if (!controlName || !window.kendo || !kendo.jQuery.fn[controlName]) {
-      throw new Error('The kendo control \'' + controlName + '\' is not available. Did you load this control?');
+      throw new Error('The kendo control \'' + controlName + '\' is not available. Did you load Kendo (in addition to the bridge)?');
     }
 
     this.controlName = controlName;
@@ -83,6 +83,46 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
     return this;
   };
 
+  WidgetBase.prototype.useElement = function useElement(element) {
+    this.element = element;
+
+    if (!this.rootElement) {
+      this.rootElement = element;
+    }
+
+    return this;
+  };
+
+  WidgetBase.prototype.useRootElement = function useRootElement(rootElement) {
+    this.rootElement = rootElement;
+
+    return this;
+  };
+
+  WidgetBase.prototype.beforeInitialize = function beforeInitialize(cb) {
+    this._beforeInitialize = cb;
+
+    return this;
+  };
+
+  WidgetBase.prototype.afterInitialize = function afterInitialize(cb) {
+    this._afterInitialize = cb;
+
+    return this;
+  };
+
+  WidgetBase.prototype.useParentCtx = function useParentCtx(overrideContext) {
+    var oc = overrideContext;
+
+    while (oc.parentOverrideContext) {
+      oc = oc.parentOverrideContext;
+    }
+
+    this.parentCtx = oc.bindingContext ? oc.bindingContext : oc;
+
+    return this;
+  };
+
   WidgetBase.prototype.useValueBinding = function useValueBinding() {
     var valueBindingProperty = arguments.length <= 0 || arguments[0] === undefined ? 'kValue' : arguments[0];
     var valueFunction = arguments.length <= 1 || arguments[1] === undefined ? 'value' : arguments[1];
@@ -105,39 +145,33 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
     return this;
   };
 
-  WidgetBase.prototype.createWidget = function createWidget(options) {
+  WidgetBase.prototype.recreate = function recreate() {
     var _this = this;
 
-    if (!options) {
-      throw new Error('the createWidget() function needs to be called with an object');
-    }
-
-    if (!options.element) {
-      throw new Error('element is not set');
+    if (!this.element) {
+      throw new Error('element is not set. Call .useElement(<target element>)');
     }
 
     if (this.viewModel && this.viewModel.kWidget) {
       this.destroy(this.viewModel.kWidget);
     }
 
-    var allOptions = this._getOptions(options.rootElement || options.element);
+    var allOptions = this._getOptions(this.rootElement);
 
-    if (options.beforeInitialize) {
-      options.beforeInitialize(allOptions);
+    if (this._beforeInitialize) {
+      this._beforeInitialize(allOptions);
     }
 
     Object.assign(allOptions, {
-      $angular: [{ _$parent: options.parentCtx, _$container: this.container }]
+      $angular: [{ _$parent: this.parentCtx, _$container: this.container }]
     });
 
-    if (this.configBuilder.debugMode) {
-      logger.debug('initializing ' + this.controlName + ' with the following config', allOptions);
-    }
+    logger.debug('initializing ' + this.controlName + ' with the following config', allOptions);
 
-    var widget = this._createWidget(options.element, allOptions, this.controlName);
+    var widget = this._createWidget(this.element, allOptions, this.controlName);
 
     widget.$angular = [{
-      _$parent: options.parentCtx,
+      _$parent: this.parentCtx,
       _$container: this.container
     }];
 
@@ -158,9 +192,11 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
       }
     });
 
-    if (options.afterInitialize) {
-      options.afterInitialize();
+    if (this._afterInitialize) {
+      this._afterInitialize();
     }
+
+    this.util.fireKendoEvent(this.rootElement, 'ready', widget);
 
     return widget;
   };
@@ -180,7 +216,7 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
     var _this2 = this;
 
     var options = {};
-    var allowedEvents = this.kendoEvents;
+    var allowedEvents = this.kendoEvents.concat(['ready']);
     var delayedExecution = ['change'];
 
     var events = this.util.getEventsFromAttributes(element);
@@ -215,6 +251,8 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
   };
 
   WidgetBase.prototype.handlePropertyChanged = function handlePropertyChanged(widget, property, newValue, oldValue) {
+    if (!widget) return;
+
     var binding = this.bindingsToKendo.find(function (i) {
       return i.propertyName === property;
     });
@@ -222,10 +260,8 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
 
     if (typeof newValue === 'undefined') {
       widget[binding.functionName](null);
-    } else {
-      if (widget && widget[binding.functionName]() !== newValue) {
-        widget[binding.functionName](newValue);
-      }
+    } else if (widget[binding.functionName]() !== newValue) {
+      widget[binding.functionName](newValue);
     }
   };
 
@@ -246,8 +282,23 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
   };
 
   WidgetBase.prototype.destroy = function destroy(widget) {
-    if (widget) {
+    if (widget && widget.element.length > 0) {
+      if (widget.wrapper && widget.wrapper !== widget.element) {
+        widget.element.insertBefore(widget.wrapper);
+        widget.wrapper.remove();
+      }
+
+      var classList = widget.element[0].classList;
+      for (var i = 0; i < classList.length; i++) {
+        var item = classList.item(i);
+        if (item.startsWith('k-')) {
+          classList.remove(item);
+        }
+      }
+
+      widget.element.show().empty();
       kendo.destroy(widget.element);
+
       widget = null;
 
       if (this.viewModel.kWidget) {

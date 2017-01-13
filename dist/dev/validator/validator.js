@@ -29,11 +29,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _classCallCheck(this, Validator);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoValidator').linkViewModel(this);
+          this.widgetBase = widgetBase.control('kendoValidator').useElement(this.element).linkViewModel(this);
         }
 
-        Validator.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        Validator.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         Validator.prototype.attached = function attached() {
@@ -43,14 +43,15 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Validator.prototype.recreate = function recreate() {
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
-        Validator.prototype.unbind = function unbind() {
+        Validator.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        Validator.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return Validator;

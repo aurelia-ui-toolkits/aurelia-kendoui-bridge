@@ -24,11 +24,11 @@ var Calendar = exports.Calendar = (_dec = (0, _aureliaTemplating.customElement)(
     _classCallCheck(this, Calendar);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoCalendar').linkViewModel(this).useValueBinding();
+    this.widgetBase = widgetBase.control('kendoCalendar').useElement(this.element).linkViewModel(this).useValueBinding();
   }
 
-  Calendar.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  Calendar.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   Calendar.prototype.attached = function attached() {
@@ -38,18 +38,19 @@ var Calendar = exports.Calendar = (_dec = (0, _aureliaTemplating.customElement)(
   };
 
   Calendar.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
   Calendar.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  Calendar.prototype.unbind = function unbind() {
+  Calendar.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  Calendar.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return Calendar;

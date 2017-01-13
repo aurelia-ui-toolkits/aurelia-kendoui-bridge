@@ -19,11 +19,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, LinearGauge);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoLinearGauge').linkViewModel(this).useValueBinding();
+      this.widgetBase = widgetBase.control('kendoLinearGauge').useElement(this.element).linkViewModel(this).useValueBinding();
     }
 
-    LinearGauge.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    LinearGauge.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     LinearGauge.prototype.attached = function attached() {
@@ -33,18 +33,19 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     LinearGauge.prototype.recreate = function recreate() {
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
     LinearGauge.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    LinearGauge.prototype.unbind = function unbind() {
+    LinearGauge.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    LinearGauge.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return LinearGauge;

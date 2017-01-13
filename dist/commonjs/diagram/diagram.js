@@ -24,11 +24,11 @@ var Diagram = exports.Diagram = (_dec = (0, _aureliaTemplating.customElement)(_c
     _classCallCheck(this, Diagram);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDiagram').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoDiagram').useElement(this.element).linkViewModel(this);
   }
 
-  Diagram.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  Diagram.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   Diagram.prototype.attached = function attached() {
@@ -38,14 +38,15 @@ var Diagram = exports.Diagram = (_dec = (0, _aureliaTemplating.customElement)(_c
   };
 
   Diagram.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
-  Diagram.prototype.unbind = function unbind() {
+  Diagram.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  Diagram.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return Diagram;

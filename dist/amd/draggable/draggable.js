@@ -16,14 +16,18 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   var Draggable = exports.Draggable = (_dec = (0, _aureliaTemplating.customAttribute)(_constants.constants.attributePrefix + 'draggable'), _dec2 = (0, _decorators.generateBindables)('kendoDraggable'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase), _dec(_class = _dec2(_class = _dec3(_class = function () {
     function Draggable(element, widgetBase) {
+      var _this = this;
+
       _classCallCheck(this, Draggable);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoDraggable').linkViewModel(this);
+      this.widgetBase = widgetBase.control('kendoDraggable').useElement(this.element).beforeInitialize(function (options) {
+        return _this.beforeInitialize(options);
+      }).linkViewModel(this);
     }
 
-    Draggable.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    Draggable.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     Draggable.prototype.attached = function attached() {
@@ -33,15 +37,7 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Draggable.prototype.recreate = function recreate() {
-      var _this = this;
-
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent,
-        beforeInitialize: function beforeInitialize(options) {
-          return _this.beforeInitialize(options);
-        }
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
     Draggable.prototype.beforeInitialize = function beforeInitialize(options) {
@@ -50,8 +46,12 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       }
     };
 
-    Draggable.prototype.unbind = function unbind() {
+    Draggable.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    Draggable.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return Draggable;

@@ -75,11 +75,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _initDefineProp(this, 'kEnabled', _descriptor, this);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoColorPicker').linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding();
+          this.widgetBase = widgetBase.control('kendoColorPicker').useElement(this.element).linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding();
         }
 
-        ColorPicker.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        ColorPicker.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         ColorPicker.prototype.attached = function attached() {
@@ -89,18 +89,19 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         ColorPicker.prototype.recreate = function recreate() {
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
         ColorPicker.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        ColorPicker.prototype.unbind = function unbind() {
+        ColorPicker.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        ColorPicker.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return ColorPicker;

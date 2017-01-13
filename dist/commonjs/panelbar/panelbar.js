@@ -24,11 +24,11 @@ var PanelBar = exports.PanelBar = (_dec = (0, _aureliaTemplating.customElement)(
     _classCallCheck(this, PanelBar);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoPanelBar').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoPanelBar').useRootElement(this.element).linkViewModel(this);
   }
 
-  PanelBar.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  PanelBar.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   PanelBar.prototype.attached = function attached() {
@@ -53,15 +53,17 @@ var PanelBar = exports.PanelBar = (_dec = (0, _aureliaTemplating.customElement)(
       element = this.element.children[0];
     }
 
-    this.kWidget = this.widgetBase.createWidget({
-      element: element,
-      parentCtx: this.$parent,
-      rootElement: this.element
-    });
+    this.widgetBase.useElement(element);
+
+    this.kWidget = this.widgetBase.recreate();
   };
 
-  PanelBar.prototype.unbind = function unbind() {
+  PanelBar.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  PanelBar.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return PanelBar;

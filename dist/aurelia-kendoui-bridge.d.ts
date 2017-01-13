@@ -38,7 +38,6 @@ declare module 'aurelia-kendoui-bridge' {
   */
   export class KendoConfigBuilder {
     resources: string[];
-    debugMode: any;
     registerRepeatStrategy: any;
     constructor();
     
@@ -153,107 +152,119 @@ declare module 'aurelia-kendoui-bridge' {
   export let version: any;
   export class AutoComplete {
     constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Barcode {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Button {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class ButtonGroup {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Calendar {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   
   //eslint-disable-line no-unused-vars
   export class Chart {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   
   //eslint-disable-line no-unused-vars
   export class Sparkline {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   
   //eslint-disable-line no-unused-vars
   export class Stock {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   
   //eslint-disable-line no-unused-vars
   export class TreeMap {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class ColorPalette {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class ColorPicker {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class ComboBox {
     kEnabled: any;
     kReadOnly: any;
     constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export let bindables: any;
   export const constants: any;
@@ -511,6 +522,11 @@ declare module 'aurelia-kendoui-bridge' {
     control(controlName?: any): any;
     linkViewModel(viewModel?: any): any;
     useContainer(container?: any): any;
+    useElement(element?: any): any;
+    useRootElement(rootElement?: any): any;
+    beforeInitialize(cb?: any): any;
+    afterInitialize(cb?: any): any;
+    useParentCtx(overrideContext?: any): any;
     
     /**
       * adds two-way value binding
@@ -533,7 +549,7 @@ declare module 'aurelia-kendoui-bridge' {
       * calls all hooks
       * then initialized the Kendo control as "widget"
       */
-    createWidget(options?: any): any;
+    recreate(): any;
     _createWidget(element?: any, options?: any, controlName?: any): any;
     
     /**
@@ -560,92 +576,103 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class ContextMenu {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class DatePicker {
     kEnabled: any;
     kReadOnly: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class DateTimePicker {
     kEnabled: any;
     kReadOnly: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Diagram {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Draggable {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     beforeInitialize(options?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class DropTargetArea {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class DropTarget {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class DropDownList {
     kNoValueBinding: any;
     kEnabled: any;
     kReadOnly: any;
     constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Editor {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class FilterMenu {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class FlatColorPicker {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class GanttCol {
   
@@ -654,27 +681,30 @@ declare module 'aurelia-kendoui-bridge' {
   //eslint-disable-line no-unused-vars
   export class Gantt {
     constructor(element?: any, widgetBase?: any, container?: any, optionsBuilder?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class LinearGauge {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class RadialGauge {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Col {
     constructor(templateGatherer?: any, optionsBuilder?: any, util?: any, element?: any);
@@ -684,6 +714,9 @@ declare module 'aurelia-kendoui-bridge' {
     // recursively get options of all nested columns that we can pass to Kendo
     afterOptionsBuild(options?: any): any;
   }
+  export class GridCommand {
+  
+  }
   export class GridToolbar {
     constructor(templateGatherer?: any, util?: any, element?: any);
     beforeOptionsBuild(): any;
@@ -692,55 +725,61 @@ declare module 'aurelia-kendoui-bridge' {
   //eslint-disable-line no-unused-vars
   export class Grid {
     constructor(element?: any, widgetBase?: any, container?: any, optionsBuilder?: any, templateGatherer?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class ListView {
     constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Map {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class MaskedTextBox {
     kDisableDates: any;
     kEnabled: any;
     kReadOnly: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Menu {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Multiselect {
     kEnabled: any;
     kReadOnly: any;
     kNoValueBinding: any;
     constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class NotificationTemplate {
     template: any;
@@ -749,159 +788,178 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class Notification {
     constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     beforeInitialize(options?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class NumericTextBox {
     kEnabled: any;
     kReadOnly: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class PanelBar {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class PDF {
   
   }
   export class PivotConfigurator {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   
   //eslint-disable-line no-unused-vars
   export class PivotGrid {
     constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Popup {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class ProgressBar {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class QRCode {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class RangeSlider {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class ResponsivePanel {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   
   //eslint-disable-line no-unused-vars
   export class Scheduler {
     constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Scrollview {
     constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Slider {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Sortable {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Splitter {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Spreadsheet {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Switch {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class TabStrip {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class TimePicker {
     kDisableDates: any;
     kEnabled: any;
     kReadOnly: any;
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class ToolbarItemButton {
     constructor(optionsBuilder?: any);
@@ -913,18 +971,20 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class Toolbar {
     constructor(element?: any, widgetBase?: any, optionsBuilder?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Tooltip {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class TreeCol {
     constructor(templateGatherer?: any, util?: any, element?: any);
@@ -934,32 +994,36 @@ declare module 'aurelia-kendoui-bridge' {
   //eslint-disable-line no-unused-vars
   export class TreeList {
     constructor(element?: any, widgetBase?: any, container?: any, optionsBuilder?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class TreeView {
     constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Upload {
     constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class Validator {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
   export class kendoToStringValueConverter {
     toView(value?: any, format?: any, language?: any): any;
@@ -984,9 +1048,10 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class Window {
     constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    unbind(): any;
+    destroy(): any;
+    detached(): any;
   }
 }

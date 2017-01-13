@@ -24,11 +24,11 @@ var FlatColorPicker = exports.FlatColorPicker = (_dec = (0, _aureliaTemplating.c
     _classCallCheck(this, FlatColorPicker);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoFlatColorPicker').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoFlatColorPicker').useElement(this.element).linkViewModel(this);
   }
 
-  FlatColorPicker.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  FlatColorPicker.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   FlatColorPicker.prototype.attached = function attached() {
@@ -38,14 +38,15 @@ var FlatColorPicker = exports.FlatColorPicker = (_dec = (0, _aureliaTemplating.c
   };
 
   FlatColorPicker.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
-  FlatColorPicker.prototype.unbind = function unbind() {
+  FlatColorPicker.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  FlatColorPicker.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return FlatColorPicker;

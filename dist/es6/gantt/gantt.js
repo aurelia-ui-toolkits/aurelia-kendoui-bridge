@@ -16,21 +16,24 @@ export class Gantt  {
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoGantt')
+                        .useRootElement(this.element)
+                        .beforeInitialize(options => this._beforeInitialize(options))
                         .linkViewModel(this)
                         .useContainer(container);
   }
 
-  bind(ctx) {
-    this.$parent = ctx;
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {
     // if <div> exists, initialize on that, else create div
     if (isInitFromDiv(this.element)) {
-      this.target = this.element.querySelectorAll('div')[0];
+      this.widgetBase.useElement(this.element.querySelectorAll('div')[0]);
     } else {
-      this.target = document.createElement('div');
-      this.element.appendChild(this.target);
+      let target = document.createElement('div');
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
     }
 
     if (!this.kNoInit) {
@@ -42,12 +45,7 @@ export class Gantt  {
     let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.widgetBase.useTemplates(this, 'kendoGantt', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.target,
-      rootElement: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: (o) => this._beforeInitialize(o)
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   _beforeInitialize(options) {
@@ -62,8 +60,12 @@ export class Gantt  {
     }
   }
 
-  unbind() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }
 

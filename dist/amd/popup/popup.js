@@ -19,11 +19,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, Popup);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoPopup').linkViewModel(this);
+      this.widgetBase = widgetBase.control('kendoPopup').useElement(this.element).linkViewModel(this);
     }
 
-    Popup.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    Popup.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     Popup.prototype.attached = function attached() {
@@ -33,14 +33,15 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Popup.prototype.recreate = function recreate() {
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
-    Popup.prototype.unbind = function unbind() {
+    Popup.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    Popup.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return Popup;

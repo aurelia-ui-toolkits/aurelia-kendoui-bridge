@@ -19,11 +19,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, Upload);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoUpload').linkViewModel(this).useContainer(container);
+      this.widgetBase = widgetBase.control('kendoUpload').useRootElement(this.element).linkViewModel(this).useContainer(container);
     }
 
-    Upload.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    Upload.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     Upload.prototype.attached = function attached() {
@@ -42,18 +42,20 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
         this.element.appendChild(target);
       }
 
+      this.widgetBase.useElement(target);
+
       var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
       this.widgetBase.useTemplates(this, 'kendoUpload', templates);
 
-      this.kWidget = this.widgetBase.createWidget({
-        rootElement: this.element,
-        element: target,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
-    Upload.prototype.unbind = function unbind() {
+    Upload.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    Upload.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return Upload;

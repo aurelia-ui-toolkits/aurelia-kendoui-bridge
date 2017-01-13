@@ -21,7 +21,6 @@ System.register(['aurelia-logging'], function (_export, _context) {
           _classCallCheck(this, KendoConfigBuilder);
 
           this.resources = [];
-          this.debugMode = false;
           this.registerRepeatStrategy = true;
 
           this.logger = LogManager.getLogger('aurelia-kendoui-bridge');
@@ -66,7 +65,7 @@ System.register(['aurelia-logging'], function (_export, _context) {
         };
 
         KendoConfigBuilder.prototype.debug = function debug() {
-          this.debugMode = true;
+          logger.warn('.debug() is no longer needed and will be removed in the future.');
           return this;
         };
 
@@ -193,6 +192,7 @@ System.register(['aurelia-logging'], function (_export, _context) {
           this.resources.push('./grid/grid');
           this.resources.push('./grid/col');
           this.resources.push('./grid/grid-toolbar');
+          this.resources.push('./grid/grid-command');
           return this;
         };
 

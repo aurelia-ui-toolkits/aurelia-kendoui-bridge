@@ -13,12 +13,13 @@ export class ListView  {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoListView')
+                        .useElement(this.element)
                         .linkViewModel(this)
                         .useContainer(container);
   }
 
-  bind(ctx) {
-    this.$parent = ctx;
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {
@@ -31,13 +32,14 @@ export class ListView  {
     let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.widgetBase.useTemplates(this, 'kendoListView', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
-  unbind() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }

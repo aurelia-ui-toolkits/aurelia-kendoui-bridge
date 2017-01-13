@@ -62,6 +62,21 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', '../commo
           if (options.editor) {
             options.editor = options.editor.bind(this.$parent);
           }
+
+          var commands = this.util.getChildrenVMs(this.element, constants.elementPrefix + 'grid-command');
+          if (commands && commands.length > 0) {
+            options.command = [];
+
+            commands.forEach(function (command) {
+              var c = _this.optionsBuilder.getOptions(command, 'GridColumnCommandItem');
+
+              if (c.click) {
+                c.click = c.click.bind(_this.$parent);
+              }
+
+              options.command.push(c);
+            });
+          }
         };
 
         return Col;

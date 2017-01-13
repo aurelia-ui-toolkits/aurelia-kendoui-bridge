@@ -26,11 +26,11 @@ var TreeMap = exports.TreeMap = (_dec = (0, _aureliaTemplating.customElement)(_c
     _classCallCheck(this, TreeMap);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoTreeMap').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoTreeMap').useElement(this.element).linkViewModel(this);
   }
 
-  TreeMap.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  TreeMap.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   TreeMap.prototype.attached = function attached() {
@@ -40,14 +40,15 @@ var TreeMap = exports.TreeMap = (_dec = (0, _aureliaTemplating.customElement)(_c
   };
 
   TreeMap.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
-  TreeMap.prototype.unbind = function unbind() {
+  TreeMap.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  TreeMap.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return TreeMap;

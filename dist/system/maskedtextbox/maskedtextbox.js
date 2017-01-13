@@ -79,11 +79,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _initDefineProp(this, 'kReadOnly', _descriptor3, this);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoMaskedTextBox').linkViewModel(this).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+          this.widgetBase = widgetBase.control('kendoMaskedTextBox').useElement(this.element).linkViewModel(this).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
         }
 
-        MaskedTextBox.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        MaskedTextBox.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         MaskedTextBox.prototype.attached = function attached() {
@@ -93,18 +93,19 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         MaskedTextBox.prototype.recreate = function recreate() {
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
         MaskedTextBox.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        MaskedTextBox.prototype.unbind = function unbind() {
+        MaskedTextBox.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        MaskedTextBox.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return MaskedTextBox;

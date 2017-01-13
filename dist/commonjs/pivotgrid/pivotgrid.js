@@ -26,14 +26,23 @@ var PivotGrid = exports.PivotGrid = (_dec = (0, _aureliaTemplating.customElement
     _classCallCheck(this, PivotGrid);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoPivotGrid').linkViewModel(this).useContainer(container);
+    this.widgetBase = widgetBase.control('kendoPivotGrid').useRootElement(this.element).linkViewModel(this).useContainer(container);
   }
 
-  PivotGrid.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  PivotGrid.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   PivotGrid.prototype.attached = function attached() {
+    var targets = this.element.querySelectorAll('div');
+    if (targets.length > 0) {
+      this.widgetBase.useElement(targets[0]);
+    } else {
+      var target = document.createElement('div');
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
+    }
+
     if (!this.kNoInit) {
       this.recreate();
     }
@@ -43,14 +52,15 @@ var PivotGrid = exports.PivotGrid = (_dec = (0, _aureliaTemplating.customElement
     var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
     this.widgetBase.useTemplates(this, 'kendoPivotGrid', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
-  PivotGrid.prototype.unbind = function unbind() {
+  PivotGrid.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  PivotGrid.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return PivotGrid;

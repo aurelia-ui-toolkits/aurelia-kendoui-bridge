@@ -71,11 +71,11 @@ var NumericTextBox = exports.NumericTextBox = (_dec = (0, _aureliaTemplating.cus
     _initDefineProp(this, 'kReadOnly', _descriptor2, this);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+    this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this).useElement(this.element).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
-  NumericTextBox.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  NumericTextBox.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   NumericTextBox.prototype.attached = function attached() {
@@ -85,18 +85,19 @@ var NumericTextBox = exports.NumericTextBox = (_dec = (0, _aureliaTemplating.cus
   };
 
   NumericTextBox.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
   NumericTextBox.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  NumericTextBox.prototype.unbind = function unbind() {
+  NumericTextBox.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  NumericTextBox.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return NumericTextBox;

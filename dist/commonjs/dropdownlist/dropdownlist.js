@@ -73,11 +73,11 @@ var DropDownList = exports.DropDownList = (_dec = (0, _aureliaTemplating.customE
     _initDefineProp(this, 'kReadOnly', _descriptor3, this);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDropDownList').linkViewModel(this).useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+    this.widgetBase = widgetBase.control('kendoDropDownList').useRootElement(this.element).linkViewModel(this).useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
-  DropDownList.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  DropDownList.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   DropDownList.prototype.attached = function attached() {
@@ -91,23 +91,25 @@ var DropDownList = exports.DropDownList = (_dec = (0, _aureliaTemplating.customE
   };
 
   DropDownList.prototype.recreate = function recreate() {
-    var selectNode = getSelectNode(this.element);
+    var selectNodes = getSelectNode(this.element);
+    this.widgetBase.useElement(selectNodes.length > 0 ? selectNodes[0] : this.element);
+
     var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
     this.widgetBase.useTemplates(this, 'kendoDropDownList', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: selectNode.length > 0 ? selectNode[0] : this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
   DropDownList.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  DropDownList.prototype.unbind = function unbind() {
+  DropDownList.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  DropDownList.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return DropDownList;

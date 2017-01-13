@@ -27,26 +27,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var Grid = exports.Grid = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'grid'), _dec2 = (0, _decorators.generateBindables)('kendoGrid'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container, _optionsBuilder.OptionsBuilder, _templateGatherer.TemplateGatherer), _dec(_class = _dec2(_class = _dec3(_class = function () {
   function Grid(element, widgetBase, container, optionsBuilder, templateGatherer) {
+    var _this = this;
+
     _classCallCheck(this, Grid);
 
     this.element = element;
     this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;
-    this.widgetBase = widgetBase.control('kendoGrid').linkViewModel(this).useContainer(container);
+    this.widgetBase = widgetBase.control('kendoGrid').useRootElement(this.element).beforeInitialize(function (options) {
+      return _this._beforeInitialize(options);
+    }).linkViewModel(this).useContainer(container);
   }
 
-  Grid.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  Grid.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   Grid.prototype.attached = function attached() {
     if (isInitFromDiv(this.element)) {
-      this.target = this.element.querySelectorAll('div')[0];
+      this.widgetBase.useElement(this.element.querySelectorAll('div')[0]);
     } else if (isInitFromTable(this.element)) {
-      this.target = this.element.children[0];
+      this.widgetBase.useElement(this.element.children[0]);
     } else {
-      this.target = document.createElement('div');
-      this.element.appendChild(this.target);
+      var target = document.createElement('div');
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
     }
 
     if (!this.kNoInit) {
@@ -55,19 +60,10 @@ var Grid = exports.Grid = (_dec = (0, _aureliaTemplating.customElement)(_constan
   };
 
   Grid.prototype.recreate = function recreate() {
-    var _this = this;
-
     var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
     this.templateGatherer.useTemplates(this, 'kendoGrid', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.target,
-      rootElement: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: function beforeInitialize(o) {
-        return _this._beforeInitialize(o);
-      }
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
   Grid.prototype._beforeInitialize = function _beforeInitialize(options) {
@@ -95,8 +91,12 @@ var Grid = exports.Grid = (_dec = (0, _aureliaTemplating.customElement)(_constan
     }
   };
 
-  Grid.prototype.unbind = function unbind() {
+  Grid.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  Grid.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return Grid;

@@ -64,11 +64,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _initDefineProp(this, 'kEnabled', _descriptor, this);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoSlider').linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding();
+      this.widgetBase = widgetBase.control('kendoSlider').useElement(this.element).linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding();
     }
 
-    Slider.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    Slider.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     Slider.prototype.attached = function attached() {
@@ -78,18 +78,19 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Slider.prototype.recreate = function recreate() {
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
     Slider.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    Slider.prototype.unbind = function unbind() {
+    Slider.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    Slider.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return Slider;

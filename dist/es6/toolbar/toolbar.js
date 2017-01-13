@@ -15,12 +15,14 @@ export class Toolbar {
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoToolBar')
+                        .useElement(this.element)
+                        .beforeInitialize(options => this._beforeInitialize(options))
                         .linkViewModel(this)
                         .useContainer(container);
   }
 
-  bind(ctx) {
-    this.$parent = ctx;
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {
@@ -30,11 +32,7 @@ export class Toolbar {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: (o) => this._beforeInitialize(o)
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   _beforeInitialize(options) {
@@ -48,7 +46,11 @@ export class Toolbar {
     }
   }
 
-  unbind() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }

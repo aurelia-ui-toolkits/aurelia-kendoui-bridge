@@ -19,19 +19,20 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, Scrollview);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoMobileScrollView').linkViewModel(this).useContainer(container).useValueBinding();
+      this.widgetBase = widgetBase.control('kendoMobileScrollView').useRootElement(this.element).linkViewModel(this).useContainer(container).useValueBinding();
     }
 
-    Scrollview.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    Scrollview.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     Scrollview.prototype.attached = function attached() {
       if (isInitFromDiv(this.element)) {
-        this.target = this.element.querySelectorAll('div')[0];
+        this.widgetBase.useElement(this.element.querySelectorAll('div')[0]);
       } else {
-        this.target = document.createElement('div');
-        this.element.appendChild(this.target);
+        var target = document.createElement('div');
+        this.element.appendChild(target);
+        this.widgetBase.useElement(target);
       }
 
       if (!this.kNoInit) {
@@ -43,15 +44,15 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
       this.widgetBase.useTemplates(this, 'kendoMobileScrollView', templates);
 
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.target,
-        rootElement: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
-    Scrollview.prototype.unbind = function unbind() {
+    Scrollview.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    Scrollview.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return Scrollview;

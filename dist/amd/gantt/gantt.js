@@ -16,23 +16,28 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
   var Gantt = exports.Gantt = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'gantt'), _dec2 = (0, _decorators.generateBindables)('kendoGantt'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container, _optionsBuilder.OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
     function Gantt(element, widgetBase, container, optionsBuilder) {
+      var _this = this;
+
       _classCallCheck(this, Gantt);
 
       this.element = element;
       this.optionsBuilder = optionsBuilder;
-      this.widgetBase = widgetBase.control('kendoGantt').linkViewModel(this).useContainer(container);
+      this.widgetBase = widgetBase.control('kendoGantt').useRootElement(this.element).beforeInitialize(function (options) {
+        return _this._beforeInitialize(options);
+      }).linkViewModel(this).useContainer(container);
     }
 
-    Gantt.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    Gantt.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     Gantt.prototype.attached = function attached() {
       if (isInitFromDiv(this.element)) {
-        this.target = this.element.querySelectorAll('div')[0];
+        this.widgetBase.useElement(this.element.querySelectorAll('div')[0]);
       } else {
-        this.target = document.createElement('div');
-        this.element.appendChild(this.target);
+        var target = document.createElement('div');
+        this.element.appendChild(target);
+        this.widgetBase.useElement(target);
       }
 
       if (!this.kNoInit) {
@@ -41,19 +46,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Gantt.prototype.recreate = function recreate() {
-      var _this = this;
-
       var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
       this.widgetBase.useTemplates(this, 'kendoGantt', templates);
 
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.target,
-        rootElement: this.element,
-        parentCtx: this.$parent,
-        beforeInitialize: function beforeInitialize(o) {
-          return _this._beforeInitialize(o);
-        }
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
     Gantt.prototype._beforeInitialize = function _beforeInitialize(options) {
@@ -70,8 +66,12 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       }
     };
 
-    Gantt.prototype.unbind = function unbind() {
+    Gantt.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    Gantt.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return Gantt;

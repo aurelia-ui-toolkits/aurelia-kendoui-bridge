@@ -6,7 +6,6 @@ import * as LogManager from 'aurelia-logging';
 export class KendoConfigBuilder {
 
 	resources: string[] = [];
-  debugMode = false;
   registerRepeatStrategy = true;
 
   constructor() {
@@ -122,7 +121,7 @@ export class KendoConfigBuilder {
   * Adds kendo templating support
   */
   debug(): KendoConfigBuilder {
-    this.debugMode = true;
+    logger.warn('.debug() is no longer needed and will be removed in the future.');
     return this;
   }
 
@@ -258,6 +257,7 @@ export class KendoConfigBuilder {
     this.resources.push('./grid/grid');
     this.resources.push('./grid/col');
     this.resources.push('./grid/grid-toolbar');
+    this.resources.push('./grid/grid-command');
     return this;
   }
 

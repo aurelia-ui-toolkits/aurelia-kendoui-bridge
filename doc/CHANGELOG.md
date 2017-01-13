@@ -1,3 +1,23 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.1...v1.1.0) (2017-01-13)
+
+
+### Bug Fixes
+
+* **all:** destroy from detached ([eeaa86d](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/eeaa86d))
+* **all:** destroy more reliably ([a611aa7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/a611aa7))
+* **sample:** fixed progress bar link in catalog index ([7529c6a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/7529c6a))
+* **templating:** use last parentOverrideContext ([7c3c304](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/7c3c304))
+* **widget-base:** do not handle value change when destroyed ([6a0d602](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/6a0d602))
+
+### Features
+
+* **all:** added k-on-ready event ([049e189](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/049e189))
+* **debug:** always log messages to debug ([1ea2d85](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/1ea2d85))
+* **grid:** added ak-grid-command custom element ([57a25b0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/57a25b0))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.0.0...v1.0.1) (2016-10-29)
 

@@ -17,14 +17,15 @@ export class Multiselect {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMultiSelect')
+                        .useRootElement(this.element)
                         .linkViewModel(this)
                         .useContainer(container)
                         .bindToKendo('kEnabled', 'enable')
                         .bindToKendo('kReadOnly', 'readonly');
   }
 
-  bind(ctx) {
-    this.$parent = ctx;
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {
@@ -38,15 +39,13 @@ export class Multiselect {
   }
 
   recreate() {
-    let selectNode = getSelectNode(this.element);
+    let selectNodes = getSelectNode(this.element);
+    this.widgetBase.useElement(selectNodes.length > 0 ? selectNodes[0] : this.element);
+
     let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.widgetBase.useTemplates(this, 'kendoMultiSelect', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: selectNode.length > 0 ? selectNode[0] : this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {
@@ -56,8 +55,12 @@ export class Multiselect {
     }
   }
 
-  unbind() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }
 

@@ -32,14 +32,23 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _classCallCheck(this, Scheduler);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoScheduler').linkViewModel(this).useContainer(container);
+          this.widgetBase = widgetBase.control('kendoScheduler').useRootElement(this.element).linkViewModel(this).useContainer(container);
         }
 
-        Scheduler.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        Scheduler.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         Scheduler.prototype.attached = function attached() {
+          var targets = this.element.querySelectorAll('div');
+          if (targets.length > 0) {
+            this.widgetBase.useElement(targets[0]);
+          } else {
+            var target = document.createElement('div');
+            this.element.appendChild(target);
+            this.widgetBase.useElement(target);
+          }
+
           if (!this.kNoInit) {
             this.recreate();
           }
@@ -49,14 +58,15 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           var templates = this.widgetBase.util.getChildrenVMs(this.element, constants.elementPrefix + 'template');
           this.widgetBase.useTemplates(this, 'kendoScheduler', templates);
 
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
-        Scheduler.prototype.unbind = function unbind() {
+        Scheduler.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        Scheduler.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return Scheduler;

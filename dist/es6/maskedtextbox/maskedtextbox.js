@@ -17,14 +17,15 @@ export class MaskedTextBox {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoMaskedTextBox')
+                        .useElement(this.element)
                         .linkViewModel(this)
                         .useValueBinding()
                         .bindToKendo('kEnabled', 'enable')
                         .bindToKendo('kReadOnly', 'readonly');
   }
 
-  bind(ctx) {
-    this.$parent = ctx;
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {
@@ -34,17 +35,18 @@ export class MaskedTextBox {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  unbind() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }

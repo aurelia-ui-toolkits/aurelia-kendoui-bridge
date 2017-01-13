@@ -21,14 +21,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var Notification = exports.Notification = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'notification'), _dec2 = (0, _decorators.generateBindables)('kendoNotification'), _dec3 = (0, _aureliaDependencyInjection.inject)(Element, _widgetBase.WidgetBase, _aureliaDependencyInjection.Container), _dec(_class = _dec2(_class = _dec3(_class = function () {
   function Notification(element, widgetBase, container) {
+    var _this = this;
+
     _classCallCheck(this, Notification);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoNotification').linkViewModel(this).useContainer(container);
+    this.widgetBase = widgetBase.control('kendoNotification').useElement(this.element).beforeInitialize(function (options) {
+      return _this.beforeInitialize(options);
+    }).linkViewModel(this).useContainer(container);
   }
 
-  Notification.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  Notification.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   Notification.prototype.attached = function attached() {
@@ -38,15 +42,7 @@ var Notification = exports.Notification = (_dec = (0, _aureliaTemplating.customE
   };
 
   Notification.prototype.recreate = function recreate() {
-    var _this = this;
-
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: function beforeInitialize(e) {
-        return _this.beforeInitialize(e);
-      }
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
   Notification.prototype.beforeInitialize = function beforeInitialize(options) {
@@ -65,8 +61,12 @@ var Notification = exports.Notification = (_dec = (0, _aureliaTemplating.customE
     }
   };
 
-  Notification.prototype.unbind = function unbind() {
+  Notification.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  Notification.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return Notification;

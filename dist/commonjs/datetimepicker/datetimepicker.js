@@ -71,11 +71,11 @@ var DateTimePicker = exports.DateTimePicker = (_dec = (0, _aureliaTemplating.cus
     _initDefineProp(this, 'kReadOnly', _descriptor2, this);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDateTimePicker').linkViewModel(this).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+    this.widgetBase = widgetBase.control('kendoDateTimePicker').useElement(this.element).linkViewModel(this).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
-  DateTimePicker.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  DateTimePicker.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   DateTimePicker.prototype.attached = function attached() {
@@ -85,18 +85,19 @@ var DateTimePicker = exports.DateTimePicker = (_dec = (0, _aureliaTemplating.cus
   };
 
   DateTimePicker.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
   DateTimePicker.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  DateTimePicker.prototype.unbind = function unbind() {
+  DateTimePicker.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  DateTimePicker.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return DateTimePicker;

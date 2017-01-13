@@ -24,11 +24,11 @@ var FilterMenu = exports.FilterMenu = (_dec = (0, _aureliaTemplating.customAttri
     _classCallCheck(this, FilterMenu);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoFilterMenu').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoFilterMenu').useElement(this.element).linkViewModel(this);
   }
 
-  FilterMenu.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  FilterMenu.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   FilterMenu.prototype.attached = function attached() {
@@ -38,14 +38,15 @@ var FilterMenu = exports.FilterMenu = (_dec = (0, _aureliaTemplating.customAttri
   };
 
   FilterMenu.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
-  FilterMenu.prototype.unbind = function unbind() {
+  FilterMenu.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  FilterMenu.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return FilterMenu;

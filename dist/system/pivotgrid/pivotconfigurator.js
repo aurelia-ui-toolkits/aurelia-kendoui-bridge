@@ -29,11 +29,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _classCallCheck(this, PivotConfigurator);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoPivotConfigurator').linkViewModel(this);
+          this.widgetBase = widgetBase.control('kendoPivotConfigurator').useElement(this.element).linkViewModel(this);
         }
 
-        PivotConfigurator.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        PivotConfigurator.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         PivotConfigurator.prototype.attached = function attached() {
@@ -43,14 +43,15 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         PivotConfigurator.prototype.recreate = function recreate() {
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
-        PivotConfigurator.prototype.unbind = function unbind() {
+        PivotConfigurator.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        PivotConfigurator.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return PivotConfigurator;

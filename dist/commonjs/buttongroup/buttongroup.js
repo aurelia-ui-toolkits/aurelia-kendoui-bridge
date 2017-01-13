@@ -69,11 +69,11 @@ var ButtonGroup = exports.ButtonGroup = (_dec = (0, _aureliaTemplating.customAtt
     _initDefineProp(this, 'kEnabled', _descriptor, this);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoMobileButtonGroup').bindToKendo('kEnabled', 'enable').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoMobileButtonGroup').useElement(this.element).bindToKendo('kEnabled', 'enable').linkViewModel(this);
   }
 
-  ButtonGroup.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  ButtonGroup.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   ButtonGroup.prototype.attached = function attached() {
@@ -83,18 +83,19 @@ var ButtonGroup = exports.ButtonGroup = (_dec = (0, _aureliaTemplating.customAtt
   };
 
   ButtonGroup.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
   ButtonGroup.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  ButtonGroup.prototype.unbind = function unbind() {
+  ButtonGroup.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  ButtonGroup.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return ButtonGroup;

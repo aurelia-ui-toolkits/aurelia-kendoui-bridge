@@ -24,11 +24,11 @@ var DropTarget = exports.DropTarget = (_dec = (0, _aureliaTemplating.customAttri
     _classCallCheck(this, DropTarget);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoDropTarget').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoDropTarget').useElement(this.element).linkViewModel(this);
   }
 
-  DropTarget.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  DropTarget.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   DropTarget.prototype.attached = function attached() {
@@ -38,14 +38,15 @@ var DropTarget = exports.DropTarget = (_dec = (0, _aureliaTemplating.customAttri
   };
 
   DropTarget.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
-  DropTarget.prototype.unbind = function unbind() {
+  DropTarget.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  DropTarget.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return DropTarget;

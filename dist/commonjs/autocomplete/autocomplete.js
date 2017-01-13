@@ -24,20 +24,21 @@ var AutoComplete = exports.AutoComplete = (_dec = (0, _aureliaTemplating.customE
     _classCallCheck(this, AutoComplete);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoAutoComplete').linkViewModel(this).useContainer(container).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+    this.widgetBase = widgetBase.control('kendoAutoComplete').useRootElement(this.element).linkViewModel(this).useContainer(container).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
-  AutoComplete.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  AutoComplete.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   AutoComplete.prototype.attached = function attached() {
     var inputs = this.element.querySelectorAll('input');
     if (inputs.length > 0) {
-      this.target = inputs[0];
+      this.widgetBase.useElement(inputs[0]);
     } else {
-      this.target = document.createElement('input');
-      this.element.appendChild(this.target);
+      var target = document.createElement('input');
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
     }
 
     if (!this.kNoInit) {
@@ -49,19 +50,19 @@ var AutoComplete = exports.AutoComplete = (_dec = (0, _aureliaTemplating.customE
     var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
     this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: this.target,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
   AutoComplete.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  AutoComplete.prototype.unbind = function unbind() {
+  AutoComplete.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  AutoComplete.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return AutoComplete;

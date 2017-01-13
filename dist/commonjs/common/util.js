@@ -86,7 +86,8 @@ var Util = exports.Util = function () {
 
     var event = new CustomEvent(name, {
       detail: data,
-      bubbles: true
+      bubbles: true,
+      cancelable: true
     });
     element.dispatchEvent(event);
 

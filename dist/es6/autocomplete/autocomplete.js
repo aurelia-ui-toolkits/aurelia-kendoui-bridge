@@ -13,6 +13,7 @@ export class AutoComplete {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoAutoComplete')
+                        .useRootElement(this.element)
                         .linkViewModel(this)
                         .useContainer(container)
                         .useValueBinding()
@@ -20,17 +21,18 @@ export class AutoComplete {
                         .bindToKendo('kReadOnly', 'readonly');
   }
 
-  bind(ctx) {
-    this.$parent = ctx;
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {
     let inputs = this.element.querySelectorAll('input');
     if (inputs.length > 0) {
-      this.target = inputs[0];
+      this.widgetBase.useElement(inputs[0]);
     } else {
-      this.target = document.createElement('input');
-      this.element.appendChild(this.target);
+      let target = document.createElement('input');
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
     }
 
     if (!this.kNoInit) {
@@ -42,18 +44,18 @@ export class AutoComplete {
     let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.widgetBase.useTemplates(this, 'kendoAutoComplete', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: this.target,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
-  unbind() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }

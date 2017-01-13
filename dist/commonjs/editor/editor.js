@@ -24,11 +24,11 @@ var Editor = exports.Editor = (_dec = (0, _aureliaTemplating.customAttribute)(_c
     _classCallCheck(this, Editor);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoEditor').linkViewModel(this).useValueBinding();
+    this.widgetBase = widgetBase.control('kendoEditor').useElement(this.element).linkViewModel(this).useValueBinding();
   }
 
-  Editor.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  Editor.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   Editor.prototype.attached = function attached() {
@@ -38,18 +38,19 @@ var Editor = exports.Editor = (_dec = (0, _aureliaTemplating.customAttribute)(_c
   };
 
   Editor.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
   Editor.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  Editor.prototype.unbind = function unbind() {
+  Editor.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  Editor.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return Editor;

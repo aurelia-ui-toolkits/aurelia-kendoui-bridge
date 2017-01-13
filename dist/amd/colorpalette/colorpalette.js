@@ -19,11 +19,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, ColorPalette);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoColorPalette').linkViewModel(this).useValueBinding();
+      this.widgetBase = widgetBase.control('kendoColorPalette').useElement(this.element).linkViewModel(this).useValueBinding();
     }
 
-    ColorPalette.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    ColorPalette.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     ColorPalette.prototype.attached = function attached() {
@@ -33,18 +33,19 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     ColorPalette.prototype.recreate = function recreate() {
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
     ColorPalette.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    ColorPalette.prototype.unbind = function unbind() {
+    ColorPalette.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    ColorPalette.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return ColorPalette;

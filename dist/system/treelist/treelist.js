@@ -31,35 +31,38 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
     execute: function () {
       _export('TreeList', TreeList = (_dec = customElement(constants.elementPrefix + 'tree-list'), _dec2 = generateBindables('kendoTreeList'), _dec3 = inject(Element, WidgetBase, Container, OptionsBuilder), _dec(_class = _dec2(_class = _dec3(_class = function () {
         function TreeList(element, widgetBase, container, optionsBuilder) {
+          var _this = this;
+
           _classCallCheck(this, TreeList);
 
           this.element = element;
           this.optionsBuilder = optionsBuilder;
-          this.widgetBase = widgetBase.control('kendoTreeList').linkViewModel(this).useContainer(container);
+          this.widgetBase = widgetBase.control('kendoTreeList').useRootElement(this.element).beforeInitialize(function (options) {
+            return _this._beforeInitialize(options);
+          }).linkViewModel(this).useContainer(container);
         }
 
-        TreeList.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        TreeList.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         TreeList.prototype.attached = function attached() {
+          var targets = this.element.querySelectorAll('div');
+          if (targets.length > 0) {
+            this.widgetBase.useElement(targets[0]);
+          } else {
+            var target = document.createElement('div');
+            this.element.appendChild(target);
+            this.widgetBase.useElement(target);
+          }
+
           if (!this.kNoInit) {
             this.recreate();
           }
         };
 
         TreeList.prototype.recreate = function recreate() {
-          var _this = this;
-
-          var element = this.element;
-
-          this.kWidget = this.widgetBase.createWidget({
-            element: element,
-            parentCtx: this.$parent,
-            beforeInitialize: function beforeInitialize(o) {
-              return _this._beforeInitialize(o);
-            }
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
         TreeList.prototype._beforeInitialize = function _beforeInitialize(options) {
@@ -76,8 +79,12 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           }
         };
 
-        TreeList.prototype.unbind = function unbind() {
+        TreeList.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        TreeList.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return TreeList;

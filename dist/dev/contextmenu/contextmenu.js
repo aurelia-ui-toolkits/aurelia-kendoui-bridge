@@ -29,11 +29,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _classCallCheck(this, ContextMenu);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoContextMenu').linkViewModel(this);
+          this.widgetBase = widgetBase.control('kendoContextMenu').useElement(this.element).linkViewModel(this);
         }
 
-        ContextMenu.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        ContextMenu.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         ContextMenu.prototype.attached = function attached() {
@@ -43,14 +43,15 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         ContextMenu.prototype.recreate = function recreate() {
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
-        ContextMenu.prototype.unbind = function unbind() {
+        ContextMenu.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        ContextMenu.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return ContextMenu;

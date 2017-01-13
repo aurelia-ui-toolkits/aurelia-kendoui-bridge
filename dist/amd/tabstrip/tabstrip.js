@@ -19,11 +19,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, TabStrip);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoTabStrip').linkViewModel(this);
+      this.widgetBase = widgetBase.control('kendoTabStrip').useElement(this.element).linkViewModel(this);
     }
 
-    TabStrip.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    TabStrip.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     TabStrip.prototype.attached = function attached() {
@@ -33,14 +33,15 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     TabStrip.prototype.recreate = function recreate() {
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
-    TabStrip.prototype.unbind = function unbind() {
+    TabStrip.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    TabStrip.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return TabStrip;

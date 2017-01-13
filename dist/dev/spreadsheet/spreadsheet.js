@@ -29,11 +29,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _classCallCheck(this, Spreadsheet);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoSpreadsheet').linkViewModel(this);
+          this.widgetBase = widgetBase.control('kendoSpreadsheet').useElement(this.element).linkViewModel(this);
         }
 
-        Spreadsheet.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        Spreadsheet.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         Spreadsheet.prototype.attached = function attached() {
@@ -43,14 +43,15 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Spreadsheet.prototype.recreate = function recreate() {
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
-        Spreadsheet.prototype.unbind = function unbind() {
+        Spreadsheet.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        Spreadsheet.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return Spreadsheet;

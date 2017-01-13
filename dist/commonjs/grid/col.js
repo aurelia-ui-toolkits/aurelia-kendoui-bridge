@@ -57,6 +57,21 @@ var Col = exports.Col = (_dec = (0, _aureliaTemplating.customElement)(_constants
     if (options.editor) {
       options.editor = options.editor.bind(this.$parent);
     }
+
+    var commands = this.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'grid-command');
+    if (commands && commands.length > 0) {
+      options.command = [];
+
+      commands.forEach(function (command) {
+        var c = _this.optionsBuilder.getOptions(command, 'GridColumnCommandItem');
+
+        if (c.click) {
+          c.click = c.click.bind(_this.$parent);
+        }
+
+        options.command.push(c);
+      });
+    }
   };
 
   return Col;

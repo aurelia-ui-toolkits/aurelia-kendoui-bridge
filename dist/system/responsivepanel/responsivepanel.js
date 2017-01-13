@@ -29,11 +29,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _classCallCheck(this, ResponsivePanel);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoResponsivePanel').linkViewModel(this);
+          this.widgetBase = widgetBase.control('kendoResponsivePanel').useElement(this.element).linkViewModel(this);
         }
 
-        ResponsivePanel.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        ResponsivePanel.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         ResponsivePanel.prototype.attached = function attached() {
@@ -43,14 +43,15 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         ResponsivePanel.prototype.recreate = function recreate() {
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
-        ResponsivePanel.prototype.unbind = function unbind() {
+        ResponsivePanel.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        ResponsivePanel.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return ResponsivePanel;

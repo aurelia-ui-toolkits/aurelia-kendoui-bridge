@@ -24,11 +24,11 @@ var Barcode = exports.Barcode = (_dec = (0, _aureliaTemplating.customAttribute)(
     _classCallCheck(this, Barcode);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoBarcode').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoBarcode').useElement(this.element).linkViewModel(this);
   }
 
-  Barcode.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  Barcode.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   Barcode.prototype.attached = function attached() {
@@ -38,14 +38,15 @@ var Barcode = exports.Barcode = (_dec = (0, _aureliaTemplating.customAttribute)(
   };
 
   Barcode.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
-  Barcode.prototype.unbind = function unbind() {
+  Barcode.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  Barcode.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return Barcode;

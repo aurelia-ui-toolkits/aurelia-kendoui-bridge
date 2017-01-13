@@ -13,11 +13,12 @@ export class TabStrip {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTabStrip')
+                        .useElement(this.element)
                         .linkViewModel(this);
   }
 
-  bind(ctx) {
-    this.$parent = ctx;
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {
@@ -27,13 +28,14 @@ export class TabStrip {
   }
 
   recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
-  unbind() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }

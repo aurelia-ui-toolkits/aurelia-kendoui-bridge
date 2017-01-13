@@ -24,11 +24,11 @@ var Tooltip = exports.Tooltip = (_dec = (0, _aureliaTemplating.customAttribute)(
     _classCallCheck(this, Tooltip);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoTooltip').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoTooltip').useElement(this.element).linkViewModel(this);
   }
 
-  Tooltip.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  Tooltip.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   Tooltip.prototype.attached = function attached() {
@@ -38,14 +38,15 @@ var Tooltip = exports.Tooltip = (_dec = (0, _aureliaTemplating.customAttribute)(
   };
 
   Tooltip.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
-  Tooltip.prototype.unbind = function unbind() {
+  Tooltip.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  Tooltip.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return Tooltip;

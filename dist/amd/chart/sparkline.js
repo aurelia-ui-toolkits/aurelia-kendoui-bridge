@@ -19,11 +19,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, Sparkline);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoSparkline').linkViewModel(this);
+      this.widgetBase = widgetBase.control('kendoSparkline').useElement(this.element).linkViewModel(this);
     }
 
-    Sparkline.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    Sparkline.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     Sparkline.prototype.attached = function attached() {
@@ -33,14 +33,15 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Sparkline.prototype.recreate = function recreate() {
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
-    Sparkline.prototype.unbind = function unbind() {
+    Sparkline.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    Sparkline.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return Sparkline;

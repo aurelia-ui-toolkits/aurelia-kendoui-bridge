@@ -19,19 +19,20 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, TreeView);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoTreeView').linkViewModel(this).useContainer(container);
+      this.widgetBase = widgetBase.control('kendoTreeView').useRootElement(this.element).linkViewModel(this).useContainer(container);
     }
 
-    TreeView.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    TreeView.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     TreeView.prototype.attached = function attached() {
       if (isInitFromUl(this.element)) {
-        this.target = this.element.querySelectorAll('ul')[0];
+        this.widgetBase.useElement(this.element.querySelectorAll('ul')[0]);
       } else {
-        this.target = document.createElement('div');
-        this.element.appendChild(this.target);
+        var target = document.createElement('div');
+        this.element.appendChild(target);
+        this.widgetBase.useElement(target);
       }
 
       if (!this.kNoInit) {
@@ -43,15 +44,15 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
       this.widgetBase.useTemplates(this, 'kendoTreeView', templates);
 
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.target,
-        rootElement: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
-    TreeView.prototype.unbind = function unbind() {
+    TreeView.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    TreeView.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return TreeView;

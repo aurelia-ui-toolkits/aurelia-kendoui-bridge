@@ -93,7 +93,8 @@ define(['exports', './constants'], function (exports, _constants) {
 
       var event = new CustomEvent(name, {
         detail: data,
-        bubbles: true
+        bubbles: true,
+        cancelable: true
       });
       element.dispatchEvent(event);
 

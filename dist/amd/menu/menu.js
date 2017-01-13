@@ -19,11 +19,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, Menu);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoMenu').linkViewModel(this);
+      this.widgetBase = widgetBase.control('kendoMenu').useElement(this.element).linkViewModel(this);
     }
 
-    Menu.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    Menu.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     Menu.prototype.attached = function attached() {
@@ -33,14 +33,15 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Menu.prototype.recreate = function recreate() {
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
-    Menu.prototype.unbind = function unbind() {
+    Menu.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    Menu.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return Menu;

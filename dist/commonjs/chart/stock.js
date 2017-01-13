@@ -26,11 +26,11 @@ var Stock = exports.Stock = (_dec = (0, _aureliaTemplating.customElement)(_const
     _classCallCheck(this, Stock);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoStockChart').linkViewModel(this);
+    this.widgetBase = widgetBase.control('kendoStockChart').useElement(this.element).linkViewModel(this);
   }
 
-  Stock.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  Stock.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   Stock.prototype.attached = function attached() {
@@ -40,14 +40,15 @@ var Stock = exports.Stock = (_dec = (0, _aureliaTemplating.customElement)(_const
   };
 
   Stock.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
-  Stock.prototype.unbind = function unbind() {
+  Stock.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  Stock.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return Stock;

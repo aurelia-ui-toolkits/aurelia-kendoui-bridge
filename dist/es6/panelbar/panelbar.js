@@ -13,11 +13,12 @@ export class PanelBar {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoPanelBar')
+                        .useRootElement(this.element)
                         .linkViewModel(this);
   }
 
-  bind(ctx) {
-    this.$parent = ctx;
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {
@@ -43,15 +44,17 @@ export class PanelBar {
       element = this.element.children[0];
     }
 
-    this.kWidget = this.widgetBase.createWidget({
-      element: element,
-      parentCtx: this.$parent,
-      rootElement: this.element
-    });
+    this.widgetBase.useElement(element);
+
+    this.kWidget = this.widgetBase.recreate();
   }
 
-  unbind() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }
 

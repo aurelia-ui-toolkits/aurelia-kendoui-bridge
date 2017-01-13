@@ -64,11 +64,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _initDefineProp(this, 'kEnabled', _descriptor, this);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoMobileSwitch').linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding('kChecked', 'check');
+      this.widgetBase = widgetBase.control('kendoMobileSwitch').useElement(this.element).linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding('kChecked', 'check');
     }
 
-    Switch.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    Switch.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     Switch.prototype.attached = function attached() {
@@ -78,18 +78,19 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     Switch.prototype.recreate = function recreate() {
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
     Switch.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     };
 
-    Switch.prototype.unbind = function unbind() {
+    Switch.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    Switch.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return Switch;

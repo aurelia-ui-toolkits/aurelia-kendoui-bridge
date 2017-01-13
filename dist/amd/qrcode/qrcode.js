@@ -19,11 +19,11 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       _classCallCheck(this, QRCode);
 
       this.element = element;
-      this.widgetBase = widgetBase.control('kendoQRCode').linkViewModel(this);
+      this.widgetBase = widgetBase.control('kendoQRCode').useElement(this.element).linkViewModel(this);
     }
 
-    QRCode.prototype.bind = function bind(ctx) {
-      this.$parent = ctx;
+    QRCode.prototype.bind = function bind(ctx, overrideCtx) {
+      this.widgetBase.useParentCtx(overrideCtx);
     };
 
     QRCode.prototype.attached = function attached() {
@@ -33,14 +33,15 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     QRCode.prototype.recreate = function recreate() {
-      this.kWidget = this.widgetBase.createWidget({
-        element: this.element,
-        parentCtx: this.$parent
-      });
+      this.kWidget = this.widgetBase.recreate();
     };
 
-    QRCode.prototype.unbind = function unbind() {
+    QRCode.prototype.destroy = function destroy() {
       this.widgetBase.destroy(this.kWidget);
+    };
+
+    QRCode.prototype.detached = function detached() {
+      this.destroy();
     };
 
     return QRCode;

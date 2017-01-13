@@ -69,11 +69,11 @@ var RangeSlider = exports.RangeSlider = (_dec = (0, _aureliaTemplating.customEle
     _initDefineProp(this, 'kEnabled', _descriptor, this);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoRangeSlider').linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding();
+    this.widgetBase = widgetBase.control('kendoRangeSlider').useElement(this.element).linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding();
   }
 
-  RangeSlider.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  RangeSlider.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   RangeSlider.prototype.attached = function attached() {
@@ -83,18 +83,36 @@ var RangeSlider = exports.RangeSlider = (_dec = (0, _aureliaTemplating.customEle
   };
 
   RangeSlider.prototype.recreate = function recreate() {
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.element,
-      parentCtx: this.$parent
-    });
+    this.destroy();
+
+    var divs = this.element.querySelectorAll('div');
+    if (divs.length === 0) {
+      var div = document.createElement('div');
+      this.element.appendChild(div);
+      divs = [div];
+    }
+
+    var inputs = divs[0].querySelectorAll('input');
+    if (inputs.length === 0) {
+      divs[0].appendChild(document.createElement('input'));
+      divs[0].appendChild(document.createElement('input'));
+    }
+
+    this.widgetBase.useElement(divs[0]);
+
+    this.kWidget = this.widgetBase.recreate();
   };
 
   RangeSlider.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   };
 
-  RangeSlider.prototype.unbind = function unbind() {
+  RangeSlider.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  RangeSlider.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return RangeSlider;

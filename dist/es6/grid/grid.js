@@ -10,7 +10,7 @@ import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 @customElement(`${constants.elementPrefix}grid`)
 @generateBindables('kendoGrid')
 @inject(Element, WidgetBase, Container, OptionsBuilder, TemplateGatherer)
-export class Grid  {
+export class Grid {
 
   constructor(element, widgetBase, container, optionsBuilder, templateGatherer) {
     this.element = element;
@@ -18,12 +18,14 @@ export class Grid  {
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
                         .control('kendoGrid')
+                        .useRootElement(this.element)
+                        .beforeInitialize(options => this._beforeInitialize(options))
                         .linkViewModel(this)
                         .useContainer(container);
   }
 
-  bind(ctx) {
-    this.$parent = ctx;
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   }
 
   attached() {
@@ -32,12 +34,13 @@ export class Grid  {
     // if neither exists, create <div>
     // grid needs to be initialized on a div https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/358
     if (isInitFromDiv(this.element)) {
-      this.target = this.element.querySelectorAll('div')[0];
+      this.widgetBase.useElement(this.element.querySelectorAll('div')[0]);
     } else if (isInitFromTable(this.element)) {
-      this.target = this.element.children[0];
+      this.widgetBase.useElement(this.element.children[0]);
     } else {
-      this.target = document.createElement('div');
-      this.element.appendChild(this.target);
+      let target = document.createElement('div');
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
     }
 
     if (!this.kNoInit) {
@@ -49,12 +52,7 @@ export class Grid  {
     let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.templateGatherer.useTemplates(this, 'kendoGrid', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      element: this.target,
-      rootElement: this.element,
-      parentCtx: this.$parent,
-      beforeInitialize: (o) => this._beforeInitialize(o)
-    });
+    this.kWidget = this.widgetBase.recreate();
   }
 
   _beforeInitialize(options) {
@@ -81,8 +79,12 @@ export class Grid  {
     }
   }
 
-  unbind() {
+  destroy() {
     this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
   }
 }
 

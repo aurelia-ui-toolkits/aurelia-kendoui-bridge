@@ -29,11 +29,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _classCallCheck(this, Map);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoMap').linkViewModel(this);
+          this.widgetBase = widgetBase.control('kendoMap').useElement(this.element).linkViewModel(this);
         }
 
-        Map.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        Map.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         Map.prototype.attached = function attached() {
@@ -43,18 +43,19 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Map.prototype.recreate = function recreate() {
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
         Map.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
           this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
         };
 
-        Map.prototype.unbind = function unbind() {
+        Map.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        Map.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return Map;

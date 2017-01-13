@@ -96,7 +96,8 @@ System.register(['./constants'], function (_export, _context) {
 
           var event = new CustomEvent(name, {
             detail: data,
-            bubbles: true
+            bubbles: true,
+            cancelable: true
           });
           element.dispatchEvent(event);
 

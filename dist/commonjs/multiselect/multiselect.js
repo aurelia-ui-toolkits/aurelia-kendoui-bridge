@@ -73,11 +73,11 @@ var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customEle
     _initDefineProp(this, 'kNoValueBinding', _descriptor3, this);
 
     this.element = element;
-    this.widgetBase = widgetBase.control('kendoMultiSelect').linkViewModel(this).useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
+    this.widgetBase = widgetBase.control('kendoMultiSelect').useRootElement(this.element).linkViewModel(this).useContainer(container).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
-  Multiselect.prototype.bind = function bind(ctx) {
-    this.$parent = ctx;
+  Multiselect.prototype.bind = function bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
   };
 
   Multiselect.prototype.attached = function attached() {
@@ -91,15 +91,13 @@ var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customEle
   };
 
   Multiselect.prototype.recreate = function recreate() {
-    var selectNode = getSelectNode(this.element);
+    var selectNodes = getSelectNode(this.element);
+    this.widgetBase.useElement(selectNodes.length > 0 ? selectNodes[0] : this.element);
+
     var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
     this.widgetBase.useTemplates(this, 'kendoMultiSelect', templates);
 
-    this.kWidget = this.widgetBase.createWidget({
-      rootElement: this.element,
-      element: selectNode.length > 0 ? selectNode[0] : this.element,
-      parentCtx: this.$parent
-    });
+    this.kWidget = this.widgetBase.recreate();
   };
 
   Multiselect.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
@@ -108,8 +106,12 @@ var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customEle
     }
   };
 
-  Multiselect.prototype.unbind = function unbind() {
+  Multiselect.prototype.destroy = function destroy() {
     this.widgetBase.destroy(this.kWidget);
+  };
+
+  Multiselect.prototype.detached = function detached() {
+    this.destroy();
   };
 
   return Multiselect;

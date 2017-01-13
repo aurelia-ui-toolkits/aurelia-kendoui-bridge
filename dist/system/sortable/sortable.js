@@ -29,11 +29,11 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           _classCallCheck(this, Sortable);
 
           this.element = element;
-          this.widgetBase = widgetBase.control('kendoSortable').linkViewModel(this);
+          this.widgetBase = widgetBase.control('kendoSortable').useElement(this.element).linkViewModel(this);
         }
 
-        Sortable.prototype.bind = function bind(ctx) {
-          this.$parent = ctx;
+        Sortable.prototype.bind = function bind(ctx, overrideCtx) {
+          this.widgetBase.useParentCtx(overrideCtx);
         };
 
         Sortable.prototype.attached = function attached() {
@@ -43,14 +43,15 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Sortable.prototype.recreate = function recreate() {
-          this.kWidget = this.widgetBase.createWidget({
-            element: this.element,
-            parentCtx: this.$parent
-          });
+          this.kWidget = this.widgetBase.recreate();
         };
 
-        Sortable.prototype.unbind = function unbind() {
+        Sortable.prototype.destroy = function destroy() {
           this.widgetBase.destroy(this.kWidget);
+        };
+
+        Sortable.prototype.detached = function detached() {
+          this.destroy();
         };
 
         return Sortable;
