@@ -218,14 +218,15 @@ describe('WidgetBase', () => {
 
     sut.recreate();
 
-    // check if initial kValue is set
     // verify that the change event is registered to
     let args = widgetFake.first.calls.argsFor(0);
     expect(args[0]).toBe('change');
     expect(widgetFake.first).toHaveBeenCalled();
 
-    // for remote databinding listen to the dataBound event
-    expect(widgetFake.first.calls.argsFor(1)[0]).toBe('dataBound');
+    // listen for dataBound once, 
+    // so we can update kValue when the control is ready
+    expect(widgetFake.one).toHaveBeenCalled();
+    expect(widgetFake.one.calls.argsFor(0)[0]).toBe('dataBound');
   });
 
   it('uses Kendo API functions to set wrapper viewmodel properties', () => {
@@ -338,4 +339,5 @@ export class WidgetFake {
   check = jasmine.createSpy();
   readonly = jasmine.createSpy();
   destroy = jasmine.createSpy();
+  one = jasmine.createSpy();
 }
