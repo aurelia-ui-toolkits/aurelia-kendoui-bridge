@@ -11,8 +11,8 @@ module.exports = function(wallaby) {
       {pattern: 'src/**/*.js', load: false},
       {pattern: 'test/**/*.spec.js', load: false, ignore: true},
       {pattern: 'test/**/*.js', load: false},
-      {pattern: 'jspm_packages/github/components/jquery@*/jquery.min.js', load: true},
-      {pattern: 'vendors/kendo/js/kendo.all.min.js', load: true, instrument: false}
+      {pattern: 'sample/kendo-sdk/js/jquery.min.js', load: true, instrument: false},
+      {pattern: 'sample/kendo-sdk/js/kendo.all.min.js', load: true, instrument: false}
     ],
 
     tests: [
