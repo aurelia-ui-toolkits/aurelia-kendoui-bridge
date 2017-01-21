@@ -43,6 +43,7 @@ export class KendoConfigBuilder {
       .kendoColorPalette()
       .kendoComboBox()
       .kendoContextMenu()
+      .kendoDialog()
       .kendoDropDownList()
       .kendoDateTimePicker()
       .kendoDatePicker()
@@ -213,6 +214,11 @@ export class KendoConfigBuilder {
 
   kendoDiagram(): KendoConfigBuilder {
     this.resources.push('./diagram/diagram');
+    return this;
+  }
+
+  kendoDialog(): KendoConfigBuilder {
+    this.resources.push('./dialog/dialog');
     return this;
   }
 

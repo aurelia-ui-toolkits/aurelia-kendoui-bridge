@@ -1,1 +1,1 @@
-{"version":3,"sources":["pdf/pdf.js"],"names":[],"mappings":";;;;;;;;;;;;;;;;qBAAa,G","file":"pdf/pdf.js","sourceRoot":"/source/","sourcesContent":["export class PDF {}\r\n"]}
+{"version":3,"sources":["pdf/pdf.js"],"names":["PDF"],"mappings":";;;;;;;;;;;;;;;;qBAAaA,G","file":"pdf/pdf.js","sourceRoot":"/source/","sourcesContent":["export class PDF {}\r\n"]}

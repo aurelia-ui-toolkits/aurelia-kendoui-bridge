@@ -213,7 +213,7 @@ export class WidgetBase {
 
     if (this.withValueBinding) {
       widget.first('change', (args) => this._handleValueChange(args.sender));
-      widget.first('dataBound', (args) => this._handleValueChange(args.sender));
+      widget.one('dataBound', (args) => this._handleValueChange(args.sender));
     }
 
     // use Kendo API functions to update all initial values in the wrapper

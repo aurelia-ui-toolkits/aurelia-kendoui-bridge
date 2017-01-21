@@ -7,7 +7,7 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', 'aureli
   exports.generateBindables = generateBindables;
   exports.delayed = delayed;
   function generateBindables(controlName) {
-    var extraProperties = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
+    var extraProperties = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
     return function (target, key, descriptor) {
       var behaviorResource = _aureliaMetadata.metadata.getOrCreateOwn(_aureliaMetadata.metadata.resource, _aureliaTemplating.HtmlBehaviorResource, target);

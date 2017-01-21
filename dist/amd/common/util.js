@@ -9,7 +9,7 @@ define(['exports', './constants'], function (exports, _constants) {
   var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
     return typeof obj;
   } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
   };
 
   function _classCallCheck(instance, Constructor) {
@@ -89,7 +89,7 @@ define(['exports', './constants'], function (exports, _constants) {
     };
 
     Util.prototype.fireEvent = function fireEvent(element, name) {
-      var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+      var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
       var event = new CustomEvent(name, {
         detail: data,
@@ -102,7 +102,7 @@ define(['exports', './constants'], function (exports, _constants) {
     };
 
     Util.prototype.fireKendoEvent = function fireKendoEvent(element, name) {
-      var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+      var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
       return this.fireEvent(element, '' + _constants.constants.eventPrefix + name, data);
     };

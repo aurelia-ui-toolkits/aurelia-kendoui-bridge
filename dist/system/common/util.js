@@ -19,7 +19,7 @@ System.register(['./constants'], function (_export, _context) {
       _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
         return typeof obj;
       } : function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
       };
       capitalMatcher = /([A-Z])/g;
 
@@ -92,7 +92,7 @@ System.register(['./constants'], function (_export, _context) {
         };
 
         Util.prototype.fireEvent = function fireEvent(element, name) {
-          var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+          var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
           var event = new CustomEvent(name, {
             detail: data,
@@ -105,7 +105,7 @@ System.register(['./constants'], function (_export, _context) {
         };
 
         Util.prototype.fireKendoEvent = function fireKendoEvent(element, name) {
-          var data = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+          var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
           return this.fireEvent(element, '' + constants.eventPrefix + name, data);
         };

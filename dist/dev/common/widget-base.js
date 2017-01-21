@@ -121,8 +121,8 @@ System.register(['./util', './options-builder', './template-compiler', './templa
         };
 
         WidgetBase.prototype.useValueBinding = function useValueBinding() {
-          var valueBindingProperty = arguments.length <= 0 || arguments[0] === undefined ? 'kValue' : arguments[0];
-          var valueFunction = arguments.length <= 1 || arguments[1] === undefined ? 'value' : arguments[1];
+          var valueBindingProperty = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'kValue';
+          var valueFunction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'value';
 
           this.valueBindingProperty = valueBindingProperty;
           this.valueFunction = valueFunction;
@@ -176,7 +176,7 @@ System.register(['./util', './options-builder', './template-compiler', './templa
             widget.first('change', function (args) {
               return _this._handleValueChange(args.sender);
             });
-            widget.first('dataBound', function (args) {
+            widget.one('dataBound', function (args) {
               return _this._handleValueChange(args.sender);
             });
           }

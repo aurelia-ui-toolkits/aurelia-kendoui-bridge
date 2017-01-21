@@ -1,3 +1,17 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.1.1...v1.2.0) (2017-01-21)
+
+
+### Bug Fixes
+
+* **widget-base:** only subscribe to dataBound once ([a00f9e8](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/a00f9e8))
+
+### Features
+
+* **dialog:** added dialog wrapper ([0a15e29](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/0a15e29))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.1.0...v1.1.1) (2017-01-13)
 

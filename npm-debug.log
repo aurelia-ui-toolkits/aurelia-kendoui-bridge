@@ -1,0 +1,173 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish' ]
+2 info using npm@4.0.5
+3 info using node@v7.4.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: 'C:\\Development\\aurelia-kendoui-bridge',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\Jeroe\AppData\Roaming\npm-cache\aurelia-kendoui-bridge\1.2.0\package.tgz not in flight; packing
+9 verbose correctMkdir C:\Users\Jeroe\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+10 info lifecycle aurelia-kendoui-bridge@1.2.0~prepublish: aurelia-kendoui-bridge@1.2.0
+11 silly lifecycle aurelia-kendoui-bridge@1.2.0~prepublish: no script for prepublish, continuing
+12 info lifecycle aurelia-kendoui-bridge@1.2.0~prepare: aurelia-kendoui-bridge@1.2.0
+13 silly lifecycle aurelia-kendoui-bridge@1.2.0~prepare: no script for prepare, continuing
+14 verbose tar pack [ 'C:\\Users\\Jeroe\\AppData\\Roaming\\npm-cache\\aurelia-kendoui-bridge\\1.2.0\\package.tgz',
+14 verbose tar pack   'C:\\Development\\aurelia-kendoui-bridge' ]
+15 verbose tarball C:\Users\Jeroe\AppData\Roaming\npm-cache\aurelia-kendoui-bridge\1.2.0\package.tgz
+16 verbose folder C:\Development\aurelia-kendoui-bridge
+17 verbose addLocalTarball adding from inside cache C:\Users\Jeroe\AppData\Roaming\npm-cache\aurelia-kendoui-bridge\1.2.0\package.tgz
+18 verbose correctMkdir C:\Users\Jeroe\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+19 silly cache afterAdd aurelia-kendoui-bridge@1.2.0
+20 verbose afterAdd C:\Users\Jeroe\AppData\Roaming\npm-cache\aurelia-kendoui-bridge\1.2.0\package\package.json not in flight; writing
+21 verbose correctMkdir C:\Users\Jeroe\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+22 verbose afterAdd C:\Users\Jeroe\AppData\Roaming\npm-cache\aurelia-kendoui-bridge\1.2.0\package\package.json written
+23 silly publish { name: 'aurelia-kendoui-bridge',
+23 silly publish   version: '1.2.0',
+23 silly publish   registry: 'github',
+23 silly publish   description: 'A set of Telerik KendoUI wrappers for Aurelia allowing developers to easily use KendoUI components in their Aurelia application.',
+23 silly publish   keywords: [ 'aurelia', 'plugin', 'kendo', 'kendoui', 'telerik' ],
+23 silly publish   homepage: 'https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge',
+23 silly publish   bugs: { url: 'https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues' },
+23 silly publish   license: 'MIT',
+23 silly publish   author: { name: 'aurelia-ui-toolkits' },
+23 silly publish   main: 'dist/commonjs/index.js',
+23 silly publish   typings: 'dist/amd/aurelia-kendoui-bridge.d.ts',
+23 silly publish   directories: { lib: 'dist/system' },
+23 silly publish   scripts: { test: 'gulp test', ci: 'gulp ci' },
+23 silly publish   repository:
+23 silly publish    { type: 'git',
+23 silly publish      url: 'git+https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge.git' },
+23 silly publish   jspm:
+23 silly publish    { main: 'index',
+23 silly publish      format: 'amd',
+23 silly publish      directories: { lib: 'dist/amd' },
+23 silly publish      dependencies:
+23 silly publish       { 'aurelia-binding': 'npm:aurelia-binding@^1.0.4',
+23 silly publish         'aurelia-dependency-injection': 'npm:aurelia-dependency-injection@^1.0.0',
+23 silly publish         'aurelia-logging': 'npm:aurelia-logging@^1.0.0',
+23 silly publish         'aurelia-metadata': 'npm:aurelia-metadata@^1.0.0',
+23 silly publish         'aurelia-router': 'npm:aurelia-router@^1.0.2',
+23 silly publish         'aurelia-task-queue': 'npm:aurelia-task-queue@^1.0.0',
+23 silly publish         'aurelia-templating': 'npm:aurelia-templating@^1.1.0',
+23 silly publish         'aurelia-templating-resources': 'npm:aurelia-templating-resources@^1.0.0' },
+23 silly publish      devDependencies:
+23 silly publish       { 'aurelia-pal': 'npm:aurelia-pal@^1.0.0',
+23 silly publish         'aurelia-pal-browser': 'npm:aurelia-pal-browser@^1.0.0',
+23 silly publish         'aurelia-polyfills': 'npm:aurelia-polyfills@^1.1.1',
+23 silly publish         'aurelia-testing': 'npm:aurelia-testing@^0.4.0',
+23 silly publish         babel: 'npm:babel-core@^5.8.22',
+23 silly publish         'babel-runtime': 'npm:babel-runtime@^5.8.20',
+23 silly publish         'core-js': 'npm:core-js@^2.1.3',
+23 silly publish         'polymer/mutationobservers': '^0.4.2',
+23 silly publish         text: 'systemjs/plugin-text@^0.0.4',
+23 silly publish         traceur: 'jmcriffey/bower-traceur@0.0.91',
+23 silly publish         'traceur-runtime': 'jmcriffey/bower-traceur-runtime@0.0.91' } },
+23 silly publish   devDependencies:
+23 silly publish    { 'aurelia-tools': '^0.2.1',
+23 silly publish      'babel-plugin-syntax-flow': '^6.8.0',
+23 silly publish      'babel-plugin-transform-decorators-legacy': '^1.3.4',
+23 silly publish      'babel-plugin-transform-es2015-modules-amd': '^6.8.0',
+23 silly publish      'babel-plugin-transform-es2015-modules-commonjs': '^6.8.0',
+23 silly publish      'babel-plugin-transform-es2015-modules-systemjs': '^6.9.0',
+23 silly publish      'babel-plugin-transform-flow-strip-types': '^6.8.0',
+23 silly publish      'babel-preset-es2015': '^6.9.0',
+23 silly publish      'babel-preset-es2015-loose': '^7.0.0',
+23 silly publish      'babel-preset-es2015-loose-native-modules': '^1.0.0',
+23 silly publish      'babel-preset-stage-1': '^6.5.0',
+23 silly publish      'babel-dts-generator': '^0.5.1',
+23 silly publish      'babel-eslint': '^4.1.1',
+23 silly publish      'babel-runtime': '^5.8.20',
+23 silly publish      'browser-sync': '2.11.2',
+23 silly publish      'conventional-changelog': '^0.5.3',
+23 silly publish      del: '^1.1.0',
+23 silly publish      glob: '^7.0.0',
+23 silly publish      gulp: '^3.8.10',
+23 silly publish      'gulp-babel': '^6.1.2',
+23 silly publish      'gulp-bump': '^0.3.1',
+23 silly publish      'gulp-concat': '^2.6.0',
+23 silly publish      'gulp-conventional-changelog': '^0.7.0',
+23 silly publish      'gulp-eslint': '^1.0.0',
+23 silly publish      'gulp-ignore': '^2.0.1',
+23 silly publish      'gulp-insert': '^0.5.0',
+23 silly publish      'gulp-rename': '^1.2.2',
+23 silly publish      'gulp-typedoc': '^1.2.1',
+23 silly publish      'gulp-typedoc-extractor': '0.0.8',
+23 silly publish      'gulp-typescript': '^2.13.6',
+23 silly publish      'jasmine-core': '^2.1.3',
+23 silly publish      jspm: '0.16.15',
+23 silly publish      'jspm-git': '^0.4.2',
+23 silly publish      karma: '^0.13.15',
+23 silly publish      'karma-babel-preprocessor': '^5.2.1',
+23 silly publish      'karma-chrome-launcher': '^0.2.2',
+23 silly publish      'karma-jasmine': '^0.2.3',
+23 silly publish      'karma-jspm': '^2.0.2',
+23 silly publish      merge2: '^1.0.2',
+23 silly publish      mkpath: '^1.0.0',
+23 silly publish      'object.assign': '^1.0.3',
+23 silly publish      'phantomjs-polyfill': '0.0.1',
+23 silly publish      request: '^2.69.0',
+23 silly publish      'require-dir': '^0.1.0',
+23 silly publish      'run-sequence': '^1.0.2',
+23 silly publish      through2: '^2.0.0',
+23 silly publish      typescript: '^1.9.0-dev.20160613-1.0',
+23 silly publish      vinyl: '^1.1.0',
+23 silly publish      'vinyl-paths': '^1.0.0',
+23 silly publish      'vinyl-source-stream': '^1.1.0',
+23 silly publish      yargs: '^2.1.1' },
+23 silly publish   aurelia:
+23 silly publish    { usedBy: [],
+23 silly publish      build: { resources: [Object] },
+23 silly publish      documentation: { links: [Object] } },
+23 silly publish   readme: '# aurelia-kendoui-bridge \r\n\r\nA set of [Aurelia](http://aurelia.io) wrappers for [Kendo UI](http://www.telerik.com/kendo-ui)\r\n\r\n[![npm version](https://badge.fury.io/js/aurelia-kendoui-bridge.svg)](https://www.npmjs.com/package/aurelia-kendoui-bridge)\r\n[![Build](https://travis-ci.org/aurelia-ui-toolkits/aurelia-kendoui-bridge.svg)](https://travis-ci.org/aurelia-ui-toolkits/aurelia-kendoui-bridge)\r\n[![downloads](https://img.shields.io/npm/dt/aurelia-kendoui-bridge.svg)](http://npm-stat.com/charts.html?package=aurelia-kendoui-bridge)\r\n[![ZenHub](https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png)](https://zenhub.io)\r\n[![Join the chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/adriatic/Aurelia-KendoUI?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\r\n\r\n### [Component catalog (demos)](http://aurelia-ui-toolkits.github.io/demo-kendo/)\r\n\r\n### [Gist.run playground](https://gist.run/?id=809bf843b45efdf8589179f88fd1e507)\r\n\r\n## Installing the plugin\r\n[![Installation](http://dabuttonfactory.com/button.png?t=Installation+instructions&f=Calibri-Bold&ts=18&tc=fff&tshs=1&tshc=000&hp=20&vp=8&c=5&bgt=gradient&bgc=3d85c6&ebgc=073763)](http://aurelia-ui-toolkits.github.io/demo-kendo/#/installation)\r\n\r\n## Need help?\r\n\r\nJoin our [Gitter](https://gitter.im/adriatic/Aurelia-KendoUI) room or open up an [issue](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues)\r\n\r\n## Running tests\r\n1. `npm install`\r\n2. `jspm install`\r\n3. `karma start`\r\n\r\n## Samples\r\nThe catalog is data-driven. It gets the samples from [this json file](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-samples/blob/gh-pages/samples.json)\r\n\r\n## Contributing\r\nDo you want to help us develop the `aurelia-kendoui-bridge`? Great! We would love for you to send us pull requests. For more information, please check [contributing.md](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/blob/master/CONTRIBUTING.md) - and if these instructions look "too terse" here is a **[great set set of lessons](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)**\r\n',
+23 silly publish   readmeFilename: 'README.md',
+23 silly publish   gitHead: '5ad0fad13eab9a8acdbf870a13100913afcb89f9',
+23 silly publish   _id: 'aurelia-kendoui-bridge@1.2.0',
+23 silly publish   _shasum: 'd1326ea215ae1a7a4fefa4ffecb77a08c24b8795',
+23 silly publish   _from: '.' }
+24 info lifecycle aurelia-kendoui-bridge@1.2.0~prepublishOnly: aurelia-kendoui-bridge@1.2.0
+25 silly lifecycle aurelia-kendoui-bridge@1.2.0~prepublishOnly: no script for prepublishOnly, continuing
+26 verbose getPublishConfig undefined
+27 silly mapToRegistry name aurelia-kendoui-bridge
+28 silly mapToRegistry using default registry
+29 silly mapToRegistry registry https://registry.npmjs.org/
+30 silly mapToRegistry data Result {
+30 silly mapToRegistry   raw: 'aurelia-kendoui-bridge',
+30 silly mapToRegistry   scope: null,
+30 silly mapToRegistry   escapedName: 'aurelia-kendoui-bridge',
+30 silly mapToRegistry   name: 'aurelia-kendoui-bridge',
+30 silly mapToRegistry   rawSpec: '',
+30 silly mapToRegistry   spec: 'latest',
+30 silly mapToRegistry   type: 'tag' }
+31 silly mapToRegistry uri https://registry.npmjs.org/aurelia-kendoui-bridge
+32 verbose publish registryBase https://registry.npmjs.org/
+33 silly publish uploading C:\Users\Jeroe\AppData\Roaming\npm-cache\aurelia-kendoui-bridge\1.2.0\package.tgz
+34 verbose stack Error: auth required for publishing
+34 verbose stack     at CachingRegistryClient.publish (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\publish.js:30:14)
+34 verbose stack     at C:\Program Files\nodejs\node_modules\npm\lib\publish.js:137:14
+34 verbose stack     at mapToRegistry (C:\Program Files\nodejs\node_modules\npm\lib\utils\map-to-registry.js:62:3)
+34 verbose stack     at publish_ (C:\Program Files\nodejs\node_modules\npm\lib\publish.js:108:3)
+34 verbose stack     at Array.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\bind-actor.js:15:8)
+34 verbose stack     at LOOP (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:15:14)
+34 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:18:7
+34 verbose stack     at done (C:\Program Files\nodejs\node_modules\npm\lib\utils\lifecycle.js:132:5)
+34 verbose stack     at LOOP (C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:7:26)
+34 verbose stack     at C:\Program Files\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:18:7
+35 verbose cwd C:\Development\aurelia-kendoui-bridge
+36 error Windows_NT 10.0.10586
+37 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish"
+38 error node v7.4.0
+39 error npm  v4.0.5
+40 error code ENEEDAUTH
+41 error need auth auth required for publishing
+42 error need auth You need to authorize this machine using `npm adduser`
+43 verbose exit [ 1, true ]

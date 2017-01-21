@@ -30,7 +30,7 @@ System.register(['./bindables', 'aurelia-dependency-injection', './util'], funct
         }
 
         ControlProperties.prototype.getProperties = function getProperties(controlName) {
-          var extraProperties = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
+          var extraProperties = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
           if (this.cache[controlName]) {
             return this.cache[controlName];

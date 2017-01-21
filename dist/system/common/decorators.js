@@ -5,7 +5,7 @@ System.register(['aurelia-templating', 'aurelia-dependency-injection', 'aurelia-
 
   var BindableProperty, HtmlBehaviorResource, Container, metadata, bindingMode, TaskQueue, ControlProperties, Util;
   function generateBindables(controlName) {
-    var extraProperties = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
+    var extraProperties = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 
     return function (target, key, descriptor) {
       var behaviorResource = metadata.getOrCreateOwn(metadata.resource, HtmlBehaviorResource, target);
