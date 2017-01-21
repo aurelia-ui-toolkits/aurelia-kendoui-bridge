@@ -223,7 +223,7 @@ describe('WidgetBase', () => {
     expect(args[0]).toBe('change');
     expect(widgetFake.first).toHaveBeenCalled();
 
-    // listen for dataBound once, 
+    // listen for dataBound once,
     // so we can update kValue when the control is ready
     expect(widgetFake.one).toHaveBeenCalled();
     expect(widgetFake.one.calls.argsFor(0)[0]).toBe('dataBound');
