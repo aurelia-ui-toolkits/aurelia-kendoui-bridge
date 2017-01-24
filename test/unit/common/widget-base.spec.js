@@ -104,6 +104,50 @@ describe('WidgetBase', () => {
     expect(returnedOptions.finished).toBeUndefined();
   });
 
+  it('propagates prevention of default event actions', () => {
+    sut.control('kendoButton');
+    let element = DOM.createElement('div');
+    element.setAttributeNode(document.createAttribute('k-on-click'));
+
+    // return the event that the bridge raised
+    spyOn(sut.util, 'fireKendoEvent').and.returnValue({
+      defaultPrevented: true
+    });
+
+    let eventOptions = sut.getEventOptions(element);
+
+    // create fake original event of the kendo control
+    let originalEvent = {
+      preventDefault: jasmine.createSpy('preventDefault')
+    };
+    eventOptions.click(originalEvent);
+
+    // expect that preventDefault() has been called on the original event
+    expect(originalEvent.preventDefault).toHaveBeenCalled();
+  });
+
+  it('does not propagate preventDefault() when preventDefault() has not been called', () => {
+    sut.control('kendoButton');
+    let element = DOM.createElement('div');
+    element.setAttributeNode(document.createAttribute('k-on-click'));
+
+    // return the event that the bridge raised
+    spyOn(sut.util, 'fireKendoEvent').and.returnValue({
+      defaultPrevented: false
+    });
+
+    let eventOptions = sut.getEventOptions(element);
+
+    // create fake original event of the kendo control
+    let originalEvent = {
+      preventDefault: jasmine.createSpy('preventDefault')
+    };
+    eventOptions.click(originalEvent);
+
+    // expect that preventDefault() has been called on the original event
+    expect(originalEvent.preventDefault).not.toHaveBeenCalled();
+  });
+
   it('getEventOptions throws when kendo event does not exist', () => {
     let element = DOM.createElement('div');
     sut.control('kendoButton');
