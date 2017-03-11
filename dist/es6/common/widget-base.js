@@ -284,7 +284,13 @@ export class WidgetBase {
           this.taskQueue.queueMicroTask(() => this.util.fireKendoEvent(element, this.util._hyphenate(event), e));
         };
       } else {
-        options[event] = e => this.util.fireKendoEvent(element, this.util._hyphenate(event), e);
+        options[event] = e => {
+          let evt = this.util.fireKendoEvent(element, this.util._hyphenate(event), e);
+
+          if (evt.defaultPrevented) {
+            e.preventDefault();
+          }
+        };
       }
     });
 

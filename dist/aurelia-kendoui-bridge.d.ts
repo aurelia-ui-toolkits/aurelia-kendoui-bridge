@@ -6,9 +6,9 @@ declare module 'aurelia-kendoui-bridge' {
     transient
   } from 'aurelia-dependency-injection';
   import {
+    customElement,
     customAttribute,
     bindable,
-    customElement,
     BindableProperty,
     HtmlBehaviorResource,
     TemplatingEngine,
@@ -151,6 +151,23 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export function configure(aurelia?: any, configCallback?: any): any;
   export let version: any;
+  export class AutoComplete {
+    constructor(element?: any, widgetBase?: any, container?: any);
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class Barcode {
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    destroy(): any;
+    detached(): any;
+  }
   export class Button {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
@@ -161,8 +178,9 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class AutoComplete {
-    constructor(element?: any, widgetBase?: any, container?: any);
+  export class ButtonGroup {
+    kEnabled: any;
+    constructor(element?: any, widgetBase?: any);
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
@@ -170,8 +188,7 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class ButtonGroup {
-    kEnabled: any;
+  export class Calendar {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
@@ -213,23 +230,6 @@ declare module 'aurelia-kendoui-bridge' {
   
   //eslint-disable-line no-unused-vars
   export class TreeMap {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
-    destroy(): any;
-    detached(): any;
-  }
-  export class Calendar {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    destroy(): any;
-    detached(): any;
-  }
-  export class Barcode {
     constructor(element?: any, widgetBase?: any);
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
@@ -995,14 +995,6 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class TreeView {
-    constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
-    destroy(): any;
-    detached(): any;
-  }
   export class TreeCol {
     constructor(templateGatherer?: any, util?: any, element?: any);
     beforeOptionsBuild(): any;
@@ -1015,6 +1007,14 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class TreeView {
+    constructor(element?: any, widgetBase?: any, container?: any);
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
     destroy(): any;
     detached(): any;
   }

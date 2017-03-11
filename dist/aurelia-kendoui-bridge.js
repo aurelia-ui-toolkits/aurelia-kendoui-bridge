@@ -1,6 +1,6 @@
 import * as LogManager from 'aurelia-logging';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customAttribute,bindable,customElement,BindableProperty,HtmlBehaviorResource,TemplatingEngine,ViewResources,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {customElement,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,ViewResources,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -501,50 +501,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.2.0';
-@customAttribute(`${constants.attributePrefix}button`)
-@generateBindables('kendoButton')
-@inject(Element, WidgetBase)
-export class Button {
-
-  @bindable kEnabled;
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoButton')
-                        .useElement(this.element)
-                        .bindToKendo('kEnabled', 'enable')
-                        .linkViewModel(this);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
+export let version = '1.2.1';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
@@ -601,6 +558,85 @@ export class AutoComplete {
   }
 }
 
+@customAttribute(`${constants.attributePrefix}barcode`)
+@generateBindables('kendoBarcode')
+@inject(Element, WidgetBase)
+export class Barcode {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoBarcode')
+                        .useElement(this.element)
+                        .linkViewModel(this);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
+@customAttribute(`${constants.attributePrefix}button`)
+@generateBindables('kendoButton')
+@inject(Element, WidgetBase)
+export class Button {
+
+  @bindable kEnabled;
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoButton')
+                        .useElement(this.element)
+                        .bindToKendo('kEnabled', 'enable')
+                        .linkViewModel(this);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
 @customAttribute(`${constants.attributePrefix}buttongroup`)
 @generateBindables('kendoMobileButtonGroup')
 @inject(Element, WidgetBase)
@@ -615,6 +651,47 @@ export class ButtonGroup {
                         .useElement(this.element)
                         .bindToKendo('kEnabled', 'enable')
                         .linkViewModel(this);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
+@customElement(`${constants.elementPrefix}calendar`)
+@generateBindables('kendoCalendar')
+@inject(Element, WidgetBase)
+export class Calendar {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoCalendar')
+                        .useElement(this.element)
+                        .linkViewModel(this)
+                        .useValueBinding();
   }
 
   bind(ctx, overrideCtx) {
@@ -769,83 +846,6 @@ export class TreeMap {
     this.element = element;
     this.widgetBase = widgetBase
                         .control('kendoTreeMap')
-                        .useElement(this.element)
-                        .linkViewModel(this);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
-@customElement(`${constants.elementPrefix}calendar`)
-@generateBindables('kendoCalendar')
-@inject(Element, WidgetBase)
-export class Calendar {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoCalendar')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding();
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
-@customAttribute(`${constants.attributePrefix}barcode`)
-@generateBindables('kendoBarcode')
-@inject(Element, WidgetBase)
-export class Barcode {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoBarcode')
                         .useElement(this.element)
                         .linkViewModel(this);
   }
@@ -1900,7 +1900,13 @@ export class WidgetBase {
           this.taskQueue.queueMicroTask(() => this.util.fireKendoEvent(element, this.util._hyphenate(event), e));
         };
       } else {
-        options[event] = e => this.util.fireKendoEvent(element, this.util._hyphenate(event), e);
+        options[event] = e => {
+          let evt = this.util.fireKendoEvent(element, this.util._hyphenate(event), e);
+
+          if (evt.defaultPrevented) {
+            e.preventDefault();
+          }
+        };
       }
     });
 
@@ -4002,58 +4008,6 @@ export class Tooltip {
   }
 }
 
-@customElement(`${constants.elementPrefix}treeview`)
-@generateBindables('kendoTreeView')
-@inject(Element, WidgetBase, Container)
-export class TreeView {
-
-  constructor(element, widgetBase, container) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoTreeView')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (isInitFromUl(this.element)) {
-      this.widgetBase.useElement(this.element.querySelectorAll('ul')[0]);
-    } else {
-      let target = document.createElement('div');
-      this.element.appendChild(target);
-      this.widgetBase.useElement(target);
-    }
-
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
-    this.widgetBase.useTemplates(this, 'kendoTreeView', templates);
-
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
-function isInitFromUl(element) {
-  return element.querySelectorAll('ul').length > 0;
-}
-
 @customElement(`${constants.elementPrefix}tree-col`)
 @generateBindables('TreeListColumn')
 @inject(TemplateGatherer, Util, Element)
@@ -4130,6 +4084,58 @@ export class TreeList  {
   detached() {
     this.destroy();
   }
+}
+
+@customElement(`${constants.elementPrefix}treeview`)
+@generateBindables('kendoTreeView')
+@inject(Element, WidgetBase, Container)
+export class TreeView {
+
+  constructor(element, widgetBase, container) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoTreeView')
+                        .useRootElement(this.element)
+                        .linkViewModel(this)
+                        .useContainer(container);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (isInitFromUl(this.element)) {
+      this.widgetBase.useElement(this.element.querySelectorAll('ul')[0]);
+    } else {
+      let target = document.createElement('div');
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
+    }
+
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoTreeView', templates);
+
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
+function isInitFromUl(element) {
+  return element.querySelectorAll('ul').length > 0;
 }
 
 @customElement(`${constants.elementPrefix}upload`)

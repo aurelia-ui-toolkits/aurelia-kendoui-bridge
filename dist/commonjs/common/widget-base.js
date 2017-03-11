@@ -228,7 +228,11 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
         };
       } else {
         options[event] = function (e) {
-          return _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
+          var evt = _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
+
+          if (evt.defaultPrevented) {
+            e.preventDefault();
+          }
         };
       }
     });

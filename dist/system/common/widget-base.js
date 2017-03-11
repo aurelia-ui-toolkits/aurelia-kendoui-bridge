@@ -231,7 +231,11 @@ System.register(['./util', './options-builder', './template-compiler', './templa
               };
             } else {
               options[event] = function (e) {
-                return _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
+                var evt = _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
+
+                if (evt.defaultPrevented) {
+                  e.preventDefault();
+                }
               };
             }
           });

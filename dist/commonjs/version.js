@@ -3,4 +3,4 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var version = exports.version = '1.2.0';
+var version = exports.version = '1.2.1';

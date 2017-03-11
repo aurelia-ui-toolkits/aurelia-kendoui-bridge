@@ -230,7 +230,11 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
           };
         } else {
           options[event] = function (e) {
-            return _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
+            var evt = _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
+
+            if (evt.defaultPrevented) {
+              e.preventDefault();
+            }
           };
         }
       });

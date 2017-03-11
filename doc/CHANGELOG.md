@@ -1,3 +1,13 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.2.0...v1.2.1) (2017-03-11)
+
+
+### Bug Fixes
+
+* **widget-base:** propogate .preventDefault() back to Kendo ([39298e3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/39298e3))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.1.1...v1.2.0) (2017-01-21)
 
