@@ -72,13 +72,14 @@ export class TemplateCompiler {
     let args = _args();
     let elements = args.elements; // extract elements from the args
     let data = args.data; // extract the dataitems from the args
+    let scopeFrom = args.scopeFrom;
 
     switch (_event) {
     case 'compile':
       // we need to pass elements and data to compile
       // so that Aurelia can enhance this elements with the correct
       // binding context
-      this.compile($parent, elements, data, container);
+      this.compile($parent, elements, data, scopeFrom, container);
       break;
 
     case 'cleanup':
@@ -98,7 +99,7 @@ export class TemplateCompiler {
   * @param elements an array of Elements or a kendo.jQuery selector
   * @param data optionally an array of dataitems
   */
-  compile($parent, elements, data, container) {
+  compile($parent, elements, data, scopeFrom, container) {
     for (let i = 0; i < elements.length; i++) {
       let element = elements[i];
       let ctx = undefined;
@@ -114,6 +115,8 @@ export class TemplateCompiler {
         } else {
           ctx = dataItem;
         }
+      } else if (scopeFrom) {
+        ctx = scopeFrom;
       }
 
       if (element instanceof kendo.jQuery) {
@@ -132,6 +135,8 @@ export class TemplateCompiler {
   */
   enhanceView($parent, element, ctx, container) {
     let view = kendo.jQuery(element).data('viewInstance');
+
+    $(element).data('$$kendoScope', ctx);
 
     // check necessary due to https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/308
     if (element.querySelectorAll('.au-target').length === 0) {

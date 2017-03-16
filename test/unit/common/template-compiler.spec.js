@@ -51,7 +51,7 @@ describe('TemplateCompiler', () => {
     sut.handleTemplateEvents(widget, 'compile', args);
     sut.handleTemplateEvents(widget, 'cleanup', args);
 
-    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data, _container);
+    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data, undefined, _container);
     expect(cleanupSpy).toHaveBeenCalledWith(realArgs.elements);
   });
 
@@ -74,7 +74,7 @@ describe('TemplateCompiler', () => {
 
     sut.handleTemplateEvents(widget, 'compile', args);
 
-    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data, _container);
+    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, realArgs.data, undefined, _container);
   });
 
   it('enhances every element', () => {
@@ -88,7 +88,7 @@ describe('TemplateCompiler', () => {
       data.push({dataItem: { id: 1 }});
     }
 
-    sut.compile($parent, elements, data, _container);
+    sut.compile($parent, elements, data, undefined, _container);
 
     for (let i = 0; i < elements.length; i++) {
       expect(spy).toHaveBeenCalledWith($parent, elements[i], data[i].dataItem, _container);
@@ -115,13 +115,41 @@ describe('TemplateCompiler', () => {
     elements.push(DOM.createElement('div'));
     data.push(undefined);
 
-    sut.compile($parent, elements, data, _container);
+    sut.compile($parent, elements, data, undefined, _container);
 
 
     expect(spy.calls.argsFor(0)[2].id).toBe(15);
     expect(spy.calls.argsFor(1)[2].id).toBe(30);
     expect(spy.calls.argsFor(2)[2].something).toBe(45);
     expect(spy.calls.argsFor(3)[2]).toBe(undefined);
+  });
+
+  it('uses scopeFrom as ctx if available', () => {
+    let realArgs = {
+      data: undefined,
+      scopeFrom: { foo: 'bar' },
+      elements: [{}, {}]
+    };
+    let args = () => realArgs;
+    let $parent = {};
+    let _container = {};
+    let widget = { $angular: [{ _$parent: $parent, _$container: _container }] };
+
+    let compileSpy = spyOn(sut, 'compile');
+
+    sut.handleTemplateEvents(widget, 'compile', args);
+
+    expect(compileSpy).toHaveBeenCalledWith($parent, realArgs.elements, undefined, realArgs.scopeFrom, _container);
+  });
+
+  it('stores ctx on $$kendoScope', () => {
+    let parent = {};
+    let element = DOM.createElement();
+    let ctx = {foo: 'bar'};
+    let _container = null;
+    sut.enhanceView(parent, element, ctx, _container);
+
+    expect($(element).data('$$kendoScope')).toBe(ctx);
   });
 
   it('strings/integers as ctx should be put in an object', () => {
@@ -156,7 +184,7 @@ describe('TemplateCompiler', () => {
       }
     }];
 
-    sut.compile($parent, [selector], data, _container);
+    sut.compile($parent, [selector], data, undefined, _container);
 
     // kendo can pass in a jQuery selector, with a single dataitem
     // but we have to compile each element in the jQuery selector with the single
