@@ -337,7 +337,7 @@ export class WidgetBase {
   * destroys the widget
   */
   destroy(widget) {
-    if (widget && widget.element.length > 0) {
+    if (widget && widget.element && widget.element.length > 0) {
       if (widget.wrapper && (widget.wrapper !== widget.element)) {
         widget.element.insertBefore(widget.wrapper);
         widget.wrapper.remove();
