@@ -1,3 +1,14 @@
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.2.1...v1.2.2) (2017-03-21)
+
+
+### Bug Fixes
+
+* **template-compiler:** support scopeFrom property in template compilation ([f6c9b4f](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/f6c9b4f))
+* **widget-base:** destroy element before emptying it ([3d01e65](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/3d01e65))
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.2.0...v1.2.1) (2017-03-11)
 

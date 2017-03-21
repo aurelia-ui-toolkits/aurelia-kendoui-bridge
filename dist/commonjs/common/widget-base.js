@@ -280,7 +280,7 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
   };
 
   WidgetBase.prototype.destroy = function destroy(widget) {
-    if (widget && widget.element.length > 0) {
+    if (widget && widget.element && widget.element.length > 0) {
       if (widget.wrapper && widget.wrapper !== widget.element) {
         widget.element.insertBefore(widget.wrapper);
         widget.wrapper.remove();
@@ -294,8 +294,11 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
         }
       }
 
-      widget.element.show().empty();
       kendo.destroy(widget.element);
+
+      if (widget.element) {
+        widget.element.show().empty();
+      }
 
       widget = null;
 

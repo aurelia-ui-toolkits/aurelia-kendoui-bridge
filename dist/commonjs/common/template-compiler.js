@@ -60,10 +60,11 @@ var TemplateCompiler = exports.TemplateCompiler = (_dec = (0, _aureliaDependency
     var args = _args();
     var elements = args.elements;
     var data = args.data;
+    var scopeFrom = args.scopeFrom;
 
     switch (_event) {
       case 'compile':
-        this.compile($parent, elements, data, container);
+        this.compile($parent, elements, data, scopeFrom, container);
         break;
 
       case 'cleanup':
@@ -75,7 +76,7 @@ var TemplateCompiler = exports.TemplateCompiler = (_dec = (0, _aureliaDependency
     }
   };
 
-  TemplateCompiler.prototype.compile = function compile($parent, elements, data, container) {
+  TemplateCompiler.prototype.compile = function compile($parent, elements, data, scopeFrom, container) {
     var _this2 = this;
 
     var _loop = function _loop(i) {
@@ -93,6 +94,8 @@ var TemplateCompiler = exports.TemplateCompiler = (_dec = (0, _aureliaDependency
         } else {
           ctx = dataItem;
         }
+      } else if (scopeFrom) {
+        ctx = scopeFrom;
       }
 
       if (element instanceof kendo.jQuery) {
@@ -111,6 +114,8 @@ var TemplateCompiler = exports.TemplateCompiler = (_dec = (0, _aureliaDependency
 
   TemplateCompiler.prototype.enhanceView = function enhanceView($parent, element, ctx, container) {
     var view = kendo.jQuery(element).data('viewInstance');
+
+    $(element).data('$$kendoScope', ctx);
 
     if (element.querySelectorAll('.au-target').length === 0) {
       if (container) {

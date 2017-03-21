@@ -282,7 +282,7 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
     };
 
     WidgetBase.prototype.destroy = function destroy(widget) {
-      if (widget && widget.element.length > 0) {
+      if (widget && widget.element && widget.element.length > 0) {
         if (widget.wrapper && widget.wrapper !== widget.element) {
           widget.element.insertBefore(widget.wrapper);
           widget.wrapper.remove();
@@ -296,8 +296,11 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
           }
         }
 
-        widget.element.show().empty();
         kendo.destroy(widget.element);
+
+        if (widget.element) {
+          widget.element.show().empty();
+        }
 
         widget = null;
 

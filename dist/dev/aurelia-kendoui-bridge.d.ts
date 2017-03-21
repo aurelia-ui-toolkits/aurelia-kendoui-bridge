@@ -6,8 +6,8 @@ declare module 'aurelia-kendoui-bridge' {
     transient
   } from 'aurelia-dependency-injection';
   import {
-    customElement,
     customAttribute,
+    customElement,
     bindable,
     BindableProperty,
     HtmlBehaviorResource,
@@ -151,20 +151,20 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export function configure(aurelia?: any, configCallback?: any): any;
   export let version: any;
+  export class Barcode {
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    destroy(): any;
+    detached(): any;
+  }
   export class AutoComplete {
     constructor(element?: any, widgetBase?: any, container?: any);
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    destroy(): any;
-    detached(): any;
-  }
-  export class Barcode {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
     destroy(): any;
     detached(): any;
   }
@@ -367,7 +367,7 @@ declare module 'aurelia-kendoui-bridge' {
       * @param elements an array of Elements or a kendo.jQuery selector
       * @param data optionally an array of dataitems
       */
-    compile($parent?: any, elements?: any, data?: any, container?: any): any;
+    compile($parent?: any, elements?: any, data?: any, scopeFrom?: any, container?: any): any;
     
     /**
       * uses the enhance function of Aurelia's TemplatingEngine
@@ -995,6 +995,14 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
+  export class TreeView {
+    constructor(element?: any, widgetBase?: any, container?: any);
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    destroy(): any;
+    detached(): any;
+  }
   export class TreeCol {
     constructor(templateGatherer?: any, util?: any, element?: any);
     beforeOptionsBuild(): any;
@@ -1007,14 +1015,6 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
-    destroy(): any;
-    detached(): any;
-  }
-  export class TreeView {
-    constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
     destroy(): any;
     detached(): any;
   }
