@@ -352,8 +352,8 @@ export class WidgetBase {
         }
       }
 
-      widget.element.show().empty();
       kendo.destroy(widget.element);
+      widget.element.show().empty();
 
       widget = null;
 
