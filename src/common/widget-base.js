@@ -352,10 +352,12 @@ export class WidgetBase {
         }
       }
 
-      kendo.destroy(widget.element);
+      let element = widget.element;
 
-      if (widget.element) {
-        widget.element.show().empty();
+      kendo.destroy(element);
+
+      if (element) {
+        element.show().empty();
       }
 
       widget = null;
