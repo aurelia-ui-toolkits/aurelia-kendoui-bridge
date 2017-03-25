@@ -1,3 +1,13 @@
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.2.2...v1.2.3) (2017-03-25)
+
+
+### Bug Fixes
+
+* **widget-base:** ensure that elements are emptied on destroy ([e49d0de](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e49d0de))
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.2.1...v1.2.2) (2017-03-21)
 

@@ -294,10 +294,12 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
         }
       }
 
-      kendo.destroy(widget.element);
+      var element = widget.element;
 
-      if (widget.element) {
-        widget.element.show().empty();
+      kendo.destroy(element);
+
+      if (element) {
+        element.show().empty();
       }
 
       widget = null;

@@ -297,10 +297,12 @@ System.register(['./util', './options-builder', './template-compiler', './templa
               }
             }
 
-            kendo.destroy(widget.element);
+            var element = widget.element;
 
-            if (widget.element) {
-              widget.element.show().empty();
+            kendo.destroy(element);
+
+            if (element) {
+              element.show().empty();
             }
 
             widget = null;
