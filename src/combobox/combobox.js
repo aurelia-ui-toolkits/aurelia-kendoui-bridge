@@ -26,6 +26,9 @@ export class ComboBox {
 
   bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
+    if (this.kWidget) {
+      this.kWidget.value(this.value);
+    }
   }
 
   attached() {
