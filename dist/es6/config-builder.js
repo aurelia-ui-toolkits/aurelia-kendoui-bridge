@@ -374,11 +374,6 @@ export class KendoConfigBuilder {
     return this;
   }
 
-  kendoSlider(): KendoConfigBuilder {
-    this.resources.push('./slider/slider');
-    return this;
-  }
-
   kendoMobileSwitch(): KendoConfigBuilder {
     this.resources.push('./switch/switch');
     return this;

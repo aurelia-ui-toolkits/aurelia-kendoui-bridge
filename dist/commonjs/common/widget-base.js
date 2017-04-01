@@ -190,7 +190,9 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
       this._afterInitialize();
     }
 
-    this.util.fireKendoEvent(this.rootElement, 'ready', widget);
+    if (this.util.getEventsFromAttributes(this.rootElement).indexOf('ready') > -1) {
+      this.util.fireKendoEvent(this.rootElement, 'ready', widget);
+    }
 
     return widget;
   };
@@ -295,6 +297,10 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
       }
 
       var element = widget.element;
+
+      if (typeof widget.destroy === 'function') {
+        widget.destroy();
+      }
 
       kendo.destroy(element);
 

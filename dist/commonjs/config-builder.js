@@ -305,11 +305,6 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
     return this;
   };
 
-  KendoConfigBuilder.prototype.kendoSlider = function kendoSlider() {
-    this.resources.push('./slider/slider');
-    return this;
-  };
-
   KendoConfigBuilder.prototype.kendoMobileSwitch = function kendoMobileSwitch() {
     this.resources.push('./switch/switch');
     return this;

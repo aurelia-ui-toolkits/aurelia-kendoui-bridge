@@ -128,7 +128,6 @@ declare module 'aurelia-kendoui-bridge' {
     kendoSortable(): KendoConfigBuilder;
     kendoSpreadsheet(): KendoConfigBuilder;
     kendoSplitter(): KendoConfigBuilder;
-    kendoSlider(): KendoConfigBuilder;
     kendoMobileSwitch(): KendoConfigBuilder;
     kendoTabStrip(): KendoConfigBuilder;
     kendoTreeList(): KendoConfigBuilder;

@@ -192,7 +192,9 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
         this._afterInitialize();
       }
 
-      this.util.fireKendoEvent(this.rootElement, 'ready', widget);
+      if (this.util.getEventsFromAttributes(this.rootElement).indexOf('ready') > -1) {
+        this.util.fireKendoEvent(this.rootElement, 'ready', widget);
+      }
 
       return widget;
     };
@@ -297,6 +299,10 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
         }
 
         var element = widget.element;
+
+        if (typeof widget.destroy === 'function') {
+          widget.destroy();
+        }
 
         kendo.destroy(element);
 

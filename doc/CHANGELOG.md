@@ -1,3 +1,14 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.2.3...v1.3.0) (2017-04-01)
+
+
+### Bug Fixes
+
+* **widget-base:** raise k-on-ready only when necessary ([36b2a3c](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/36b2a3c))
+* **widget-base:** use destroy function of control in addition to kendo.destroy ([0826c72](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/0826c72))
+
+
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.2.2...v1.2.3) (2017-03-25)
 
