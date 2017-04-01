@@ -194,7 +194,7 @@ describe('WidgetBase', () => {
   it('createWidget raises k-on-ready event', () => {
     sut.control('kendoButton')
     .linkViewModel({})
-    .useElement(DOM.createElement('div'))
+    .useElement($('<div k-on-ready.delegate="something()"></div>')[0])
     .useParentCtx(createOverrideContext({}));
 
     spyOn(sut.util, 'fireKendoEvent');
@@ -202,6 +202,19 @@ describe('WidgetBase', () => {
     sut.recreate();
 
     expect(sut.util.fireKendoEvent).toHaveBeenCalledWith(jasmine.anything(), 'ready', jasmine.anything());
+  });
+
+  it('createWidget doesn\'t raise k-on-ready event when handler is not present', () => {
+    sut.control('kendoButton')
+    .linkViewModel({})
+    .useElement($('<div>')[0])
+    .useParentCtx(createOverrideContext({}));
+
+    spyOn(sut.util, 'fireKendoEvent');
+
+    sut.recreate();
+
+    expect(sut.util.fireKendoEvent).not.toHaveBeenCalledWith(jasmine.anything(), 'ready', jasmine.anything());
   });
 
   it('createWidget sets parent context on options and widget', () => {
