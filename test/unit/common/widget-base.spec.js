@@ -104,8 +104,10 @@ describe('WidgetBase', () => {
     expect(returnedOptions.finished).toBeUndefined();
   });
 
-  it('propagates prevention of default event actions', () => {
+  it('propagates prevention of default event actions, when propogatePreventDefault is true in config-builder', () => {
     sut.control('kendoButton');
+    sut.configBuilder._propogatePreventDefault = true;
+
     let element = DOM.createElement('div');
     element.setAttributeNode(document.createAttribute('k-on-click'));
 

@@ -7,6 +7,7 @@ export class KendoConfigBuilder {
 
 	resources: string[] = [];
   registerRepeatStrategy = true;
+  _propogatePreventDefault = false;
 
   constructor() {
     this.logger = LogManager.getLogger('aurelia-kendoui-bridge');
@@ -115,6 +116,14 @@ export class KendoConfigBuilder {
   */
   kendoTemplateSupport(): KendoConfigBuilder {
     this.resources.push('./common/template');
+    return this;
+  }
+
+  /**
+   * Propogates .preventDefault() to Kendo events
+   */
+  propogatePreventDefault(): KendoConfigBuilder {
+    this._propogatePreventDefault = true;
     return this;
   }
 
