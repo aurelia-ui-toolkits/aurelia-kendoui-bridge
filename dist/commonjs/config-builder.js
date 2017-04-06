@@ -19,6 +19,7 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
 
     this.resources = [];
     this.registerRepeatStrategy = true;
+    this._propogatePreventDefault = false;
 
     this.logger = LogManager.getLogger('aurelia-kendoui-bridge');
   }
@@ -58,6 +59,11 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
 
   KendoConfigBuilder.prototype.kendoTemplateSupport = function kendoTemplateSupport() {
     this.resources.push('./common/template');
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.propogatePreventDefault = function propogatePreventDefault() {
+    this._propogatePreventDefault = true;
     return this;
   };
 

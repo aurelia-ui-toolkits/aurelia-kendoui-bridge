@@ -289,7 +289,7 @@ export class WidgetBase {
         options[event] = e => {
           let evt = this.util.fireKendoEvent(element, this.util._hyphenate(event), e);
 
-          if (evt.defaultPrevented) {
+          if (this.configBuilder._propogatePreventDefault && evt.defaultPrevented) {
             e.preventDefault();
           }
         };

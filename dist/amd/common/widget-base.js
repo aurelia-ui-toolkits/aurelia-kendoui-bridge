@@ -234,7 +234,7 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
           options[event] = function (e) {
             var evt = _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
 
-            if (evt.defaultPrevented) {
+            if (_this2.configBuilder._propogatePreventDefault && evt.defaultPrevented) {
               e.preventDefault();
             }
           };

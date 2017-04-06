@@ -13,6 +13,7 @@ export class KendoConfigBuilder {
 
 	resources: string[] = [];
   registerRepeatStrategy = true;
+  _propogatePreventDefault = false;
 
   constructor() {
     this.logger = LogManager.getLogger('aurelia-kendoui-bridge');
@@ -121,6 +122,14 @@ export class KendoConfigBuilder {
   */
   kendoTemplateSupport(): KendoConfigBuilder {
     this.resources.push('./common/template');
+    return this;
+  }
+
+  /**
+   * Propogates .preventDefault() to Kendo events
+   */
+  propogatePreventDefault(): KendoConfigBuilder {
+    this._propogatePreventDefault = true;
     return this;
   }
 
@@ -496,7 +505,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.3.0';
+export let version = '1.4.0';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
@@ -1905,7 +1914,7 @@ export class WidgetBase {
         options[event] = e => {
           let evt = this.util.fireKendoEvent(element, this.util._hyphenate(event), e);
 
-          if (evt.defaultPrevented) {
+          if (this.configBuilder._propogatePreventDefault && evt.defaultPrevented) {
             e.preventDefault();
           }
         };
@@ -2636,6 +2645,46 @@ export class RadialGauge {
   }
 }
 
+@customElement(`${constants.elementPrefix}list-view`)
+@generateBindables('kendoListView')
+@inject(Element, WidgetBase, Container)
+export class ListView  {
+
+  constructor(element, widgetBase, container) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoListView')
+                        .useElement(this.element)
+                        .linkViewModel(this)
+                        .useContainer(container);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoListView', templates);
+
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
 @customElement(`${constants.elementPrefix}col`)
 @generateBindables('GridColumn')
 @inject(TemplateGatherer, OptionsBuilder, Util, Element)
@@ -2802,46 +2851,6 @@ function isInitFromTable(element) {
 
 function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
-}
-
-@customElement(`${constants.elementPrefix}list-view`)
-@generateBindables('kendoListView')
-@inject(Element, WidgetBase, Container)
-export class ListView  {
-
-  constructor(element, widgetBase, container) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoListView')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
-    this.widgetBase.useTemplates(this, 'kendoListView', templates);
-
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
 }
 
 @customElement(`${constants.elementPrefix}map`)

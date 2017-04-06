@@ -39,6 +39,7 @@ declare module 'aurelia-kendoui-bridge' {
   export class KendoConfigBuilder {
     resources: string[];
     registerRepeatStrategy: any;
+    _propogatePreventDefault: any;
     constructor();
     
     /**
@@ -65,6 +66,11 @@ declare module 'aurelia-kendoui-bridge' {
       * Adds kendo templating support
       */
     kendoTemplateSupport(): KendoConfigBuilder;
+    
+    /**
+       * Propogates .preventDefault() to Kendo events
+       */
+    propogatePreventDefault(): KendoConfigBuilder;
     
     /**
       * Adds kendo templating support
@@ -714,6 +720,14 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
+  export class ListView {
+    constructor(element?: any, widgetBase?: any, container?: any);
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    destroy(): any;
+    detached(): any;
+  }
   export class Col {
     constructor(templateGatherer?: any, optionsBuilder?: any, util?: any, element?: any);
     bind($parent?: any): any;
@@ -737,14 +751,6 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     _beforeInitialize(options?: any): any;
-    destroy(): any;
-    detached(): any;
-  }
-  export class ListView {
-    constructor(element?: any, widgetBase?: any, container?: any);
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
     destroy(): any;
     detached(): any;
   }

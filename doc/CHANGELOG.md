@@ -1,3 +1,13 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.3.0...v1.4.0) (2017-04-06)
+
+
+### Bug Fixes
+
+* **widget-base:** make preventDefault propogation optional ([9b2d572](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/9b2d572))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.2.3...v1.3.0) (2017-04-01)
 
