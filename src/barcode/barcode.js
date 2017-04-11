@@ -21,6 +21,10 @@ export class Barcode {
     this.widgetBase.useParentCtx(overrideCtx);
   }
 
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
   attached() {
     if (!this.kNoInit) {
       this.recreate();

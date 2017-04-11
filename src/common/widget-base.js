@@ -6,6 +6,7 @@ import {KendoConfigBuilder} from '../config-builder';
 import {inject, transient} from 'aurelia-dependency-injection';
 import {RepeatStrategyLocator, ArrayRepeatStrategy} from 'aurelia-templating-resources';
 import {TaskQueue} from 'aurelia-task-queue';
+import {Observer} from './observer';
 import * as LogManager from 'aurelia-logging';
 
 const logger = LogManager.getLogger('aurelia-kendoui-bridge');
@@ -14,7 +15,7 @@ const logger = LogManager.getLogger('aurelia-kendoui-bridge');
 * Abstraction of commonly used code across wrappers
 */
 @transient()
-@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder, RepeatStrategyLocator)
+@inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder, RepeatStrategyLocator, Observer)
 export class WidgetBase {
 
   /**
@@ -50,6 +51,11 @@ export class WidgetBase {
   */
   viewModel: any;
 
+  /**
+   * The observer for event callbacks
+   */
+  observer: any;
+
 
   /**
   * A list of bindings for properties such as kEnable/kReadOnly/kValue
@@ -58,13 +64,14 @@ export class WidgetBase {
   */
   bindingsToKendo = [];
 
-  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator) {
+  constructor(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator, observer) {
     this.taskQueue = taskQueue;
     this.optionsBuilder = optionsBuilder;
     this.util = util;
     this.configBuilder = configBuilder;
     this.repeatStratLocator = repeatStratLocator;
     this.templateGatherer = templateGatherer;
+    this.observer = observer;
     templateCompiler.initialize();
     this.registerRepeatStrategy();
   }
@@ -233,6 +240,8 @@ export class WidgetBase {
       this._afterInitialize();
     }
 
+    this.observer.notify('ready', widget);
+
     if (this.util.getEventsFromAttributes(this.rootElement).indexOf('ready') > -1) {
       this.util.fireKendoEvent(this.rootElement, 'ready', widget);
     }
@@ -283,10 +292,16 @@ export class WidgetBase {
 
       if (delayedExecution.includes(event)) {
         options[event] = e => {
-          this.taskQueue.queueMicroTask(() => this.util.fireKendoEvent(element, this.util._hyphenate(event), e));
+          this.taskQueue.queueMicroTask(() => {
+            this.observer.notify(event, e);
+
+            return this.util.fireKendoEvent(element, this.util._hyphenate(event), e);
+          });
         };
       } else {
         options[event] = e => {
+          this.observer.notify(event, e);
+
           let evt = this.util.fireKendoEvent(element, this.util._hyphenate(event), e);
 
           if (this.configBuilder._propogatePreventDefault && evt.defaultPrevented) {
@@ -333,6 +348,10 @@ export class WidgetBase {
       }
       this.repeatStratLocator.addStrategy(items => items instanceof kendo.data.ObservableArray, new ArrayRepeatStrategy());
     }
+  }
+
+  subscribe(event, callback) {
+    return this.observer.subscribe(event, callback);
   }
 
   /**
