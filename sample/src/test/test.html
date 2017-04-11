@@ -1,5 +1,5 @@
 <template>
-  <ak-grid k-data-source.bind="[{},{}]" repeat.for="a of b">
+  <ak-grid k-data-source.bind="[{},{}]" view-model.ref="myVM">
     <ak-col>
       <ak-template>
         <button click.delegate="hello()">Hello</button>

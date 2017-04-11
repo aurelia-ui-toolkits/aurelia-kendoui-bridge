@@ -1,7 +1,5 @@
 export class Test {
-  b = [{}, {}];
-
-  hello() {
-    alert('hello');
+  bind() {
+    console.log(this.myVM.subscribe('ready', () => console.log('called')));
   }
 }
