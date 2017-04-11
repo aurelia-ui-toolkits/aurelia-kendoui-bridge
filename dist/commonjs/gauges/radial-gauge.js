@@ -27,6 +27,10 @@ var RadialGauge = exports.RadialGauge = (_dec = (0, _aureliaTemplating.customEle
     this.widgetBase = widgetBase.control('kendoRadialGauge').useElement(this.element).linkViewModel(this).useValueBinding();
   }
 
+  RadialGauge.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   RadialGauge.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

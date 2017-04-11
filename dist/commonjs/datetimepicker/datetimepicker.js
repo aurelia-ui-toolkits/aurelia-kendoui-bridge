@@ -74,6 +74,10 @@ var DateTimePicker = exports.DateTimePicker = (_dec = (0, _aureliaTemplating.cus
     this.widgetBase = widgetBase.control('kendoDateTimePicker').useElement(this.element).linkViewModel(this).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
+  DateTimePicker.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   DateTimePicker.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

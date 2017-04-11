@@ -22,6 +22,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase = widgetBase.control('kendoDiagram').useElement(this.element).linkViewModel(this);
     }
 
+    Diagram.prototype.subscribe = function subscribe(event, callback) {
+      return this.widgetBase.subscribe(event, callback);
+    };
+
     Diagram.prototype.bind = function bind(ctx, overrideCtx) {
       this.widgetBase.useParentCtx(overrideCtx);
     };

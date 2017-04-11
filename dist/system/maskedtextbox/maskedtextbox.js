@@ -82,6 +82,10 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase = widgetBase.control('kendoMaskedTextBox').useElement(this.element).linkViewModel(this).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
         }
 
+        MaskedTextBox.prototype.subscribe = function subscribe(event, callback) {
+          return this.widgetBase.subscribe(event, callback);
+        };
+
         MaskedTextBox.prototype.bind = function bind(ctx, overrideCtx) {
           this.widgetBase.useParentCtx(overrideCtx);
         };

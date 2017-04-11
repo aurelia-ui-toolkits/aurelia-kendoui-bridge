@@ -21,6 +21,10 @@ export class RangeSlider {
                         .useValueBinding();
   }
 
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
   bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   }

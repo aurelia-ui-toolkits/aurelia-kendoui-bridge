@@ -1,3 +1,17 @@
+<a name="1.5.0"></a>
+# [1.5.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.4.0...v1.5.0) (2017-04-11)
+
+
+### Bug Fixes
+
+* **config-builder:** use PLATFORM.moduleName for webpack ([4769c7d](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/4769c7d))
+
+### Features
+
+* **all:** event observers ([e7d6e0c](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/e7d6e0c))
+
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.3.0...v1.4.0) (2017-04-06)
 

@@ -22,6 +22,10 @@ define(['exports', 'aurelia-templating', 'aurelia-dependency-injection', '../com
       this.widgetBase = widgetBase.control('kendoPanelBar').useRootElement(this.element).linkViewModel(this);
     }
 
+    PanelBar.prototype.subscribe = function subscribe(event, callback) {
+      return this.widgetBase.subscribe(event, callback);
+    };
+
     PanelBar.prototype.bind = function bind(ctx, overrideCtx) {
       this.widgetBase.useParentCtx(overrideCtx);
     };

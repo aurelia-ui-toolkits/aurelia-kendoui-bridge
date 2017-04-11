@@ -26,6 +26,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       }).linkViewModel(this).useContainer(container);
     }
 
+    Notification.prototype.subscribe = function subscribe(event, callback) {
+      return this.widgetBase.subscribe(event, callback);
+    };
+
     Notification.prototype.bind = function bind(ctx, overrideCtx) {
       this.widgetBase.useParentCtx(overrideCtx);
     };

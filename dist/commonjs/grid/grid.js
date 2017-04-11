@@ -39,6 +39,10 @@ var Grid = exports.Grid = (_dec = (0, _aureliaTemplating.customElement)(_constan
     }).linkViewModel(this).useContainer(container);
   }
 
+  Grid.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   Grid.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

@@ -74,6 +74,10 @@ var DatePicker = exports.DatePicker = (_dec = (0, _aureliaTemplating.customAttri
     this.widgetBase = widgetBase.control('kendoDatePicker').useElement(this.element).linkViewModel(this).bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly').useValueBinding();
   }
 
+  DatePicker.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   DatePicker.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

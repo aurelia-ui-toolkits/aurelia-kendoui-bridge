@@ -1,4 +1,4 @@
-define(['exports', './util', './options-builder', './template-compiler', './template-gatherer', '../config-builder', 'aurelia-dependency-injection', 'aurelia-templating-resources', 'aurelia-task-queue', 'aurelia-logging'], function (exports, _util, _optionsBuilder, _templateCompiler, _templateGatherer, _configBuilder, _aureliaDependencyInjection, _aureliaTemplatingResources, _aureliaTaskQueue, _aureliaLogging) {
+define(['exports', './util', './options-builder', './template-compiler', './template-gatherer', '../config-builder', 'aurelia-dependency-injection', 'aurelia-templating-resources', 'aurelia-task-queue', './observer', 'aurelia-logging'], function (exports, _util, _optionsBuilder, _templateCompiler, _templateGatherer, _configBuilder, _aureliaDependencyInjection, _aureliaTemplatingResources, _aureliaTaskQueue, _observer, _aureliaLogging) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -35,8 +35,8 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
 
   var logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
-  var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.transient)(), _dec2 = (0, _aureliaDependencyInjection.inject)(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder, _util.Util, _templateGatherer.TemplateGatherer, _configBuilder.KendoConfigBuilder, _aureliaTemplatingResources.RepeatStrategyLocator), _dec(_class = _dec2(_class = function () {
-    function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator) {
+  var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.transient)(), _dec2 = (0, _aureliaDependencyInjection.inject)(_aureliaTaskQueue.TaskQueue, _templateCompiler.TemplateCompiler, _optionsBuilder.OptionsBuilder, _util.Util, _templateGatherer.TemplateGatherer, _configBuilder.KendoConfigBuilder, _aureliaTemplatingResources.RepeatStrategyLocator, _observer.Observer), _dec(_class = _dec2(_class = function () {
+    function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator, observer) {
       _classCallCheck(this, WidgetBase);
 
       this.bindingsToKendo = [];
@@ -47,6 +47,7 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
       this.configBuilder = configBuilder;
       this.repeatStratLocator = repeatStratLocator;
       this.templateGatherer = templateGatherer;
+      this.observer = observer;
       templateCompiler.initialize();
       this.registerRepeatStrategy();
     }
@@ -192,6 +193,8 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
         this._afterInitialize();
       }
 
+      this.observer.notify('ready', widget);
+
       if (this.util.getEventsFromAttributes(this.rootElement).indexOf('ready') > -1) {
         this.util.fireKendoEvent(this.rootElement, 'ready', widget);
       }
@@ -227,11 +230,15 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
         if (delayedExecution.includes(event)) {
           options[event] = function (e) {
             _this2.taskQueue.queueMicroTask(function () {
+              _this2.observer.notify(event, e);
+
               return _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
             });
           };
         } else {
           options[event] = function (e) {
+            _this2.observer.notify(event, e);
+
             var evt = _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
 
             if (_this2.configBuilder._propogatePreventDefault && evt.defaultPrevented) {
@@ -281,6 +288,10 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
           return items instanceof kendo.data.ObservableArray;
         }, new _aureliaTemplatingResources.ArrayRepeatStrategy());
       }
+    };
+
+    WidgetBase.prototype.subscribe = function subscribe(event, callback) {
+      return this.observer.subscribe(event, callback);
     };
 
     WidgetBase.prototype.destroy = function destroy(widget) {

@@ -22,6 +22,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase = widgetBase.control('kendoFilterMenu').useElement(this.element).linkViewModel(this);
     }
 
+    FilterMenu.prototype.subscribe = function subscribe(event, callback) {
+      return this.widgetBase.subscribe(event, callback);
+    };
+
     FilterMenu.prototype.bind = function bind(ctx, overrideCtx) {
       this.widgetBase.useParentCtx(overrideCtx);
     };

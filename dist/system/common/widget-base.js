@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['./util', './options-builder', './template-compiler', './template-gatherer', '../config-builder', 'aurelia-dependency-injection', 'aurelia-templating-resources', 'aurelia-task-queue', 'aurelia-logging'], function (_export, _context) {
+System.register(['./util', './options-builder', './template-compiler', './template-gatherer', '../config-builder', 'aurelia-dependency-injection', 'aurelia-templating-resources', 'aurelia-task-queue', './observer', 'aurelia-logging'], function (_export, _context) {
   "use strict";
 
-  var Util, OptionsBuilder, TemplateCompiler, TemplateGatherer, KendoConfigBuilder, inject, transient, RepeatStrategyLocator, ArrayRepeatStrategy, TaskQueue, LogManager, _dec, _dec2, _class, logger, WidgetBase;
+  var Util, OptionsBuilder, TemplateCompiler, TemplateGatherer, KendoConfigBuilder, inject, transient, RepeatStrategyLocator, ArrayRepeatStrategy, TaskQueue, Observer, LogManager, _dec, _dec2, _class, logger, WidgetBase;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -30,14 +30,16 @@ System.register(['./util', './options-builder', './template-compiler', './templa
       ArrayRepeatStrategy = _aureliaTemplatingResources.ArrayRepeatStrategy;
     }, function (_aureliaTaskQueue) {
       TaskQueue = _aureliaTaskQueue.TaskQueue;
+    }, function (_observer) {
+      Observer = _observer.Observer;
     }, function (_aureliaLogging) {
       LogManager = _aureliaLogging;
     }],
     execute: function () {
       logger = LogManager.getLogger('aurelia-kendoui-bridge');
 
-      _export('WidgetBase', WidgetBase = (_dec = transient(), _dec2 = inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder, RepeatStrategyLocator), _dec(_class = _dec2(_class = function () {
-        function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator) {
+      _export('WidgetBase', WidgetBase = (_dec = transient(), _dec2 = inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder, RepeatStrategyLocator, Observer), _dec(_class = _dec2(_class = function () {
+        function WidgetBase(taskQueue, templateCompiler, optionsBuilder, util, templateGatherer, configBuilder, repeatStratLocator, observer) {
           _classCallCheck(this, WidgetBase);
 
           this.bindingsToKendo = [];
@@ -48,6 +50,7 @@ System.register(['./util', './options-builder', './template-compiler', './templa
           this.configBuilder = configBuilder;
           this.repeatStratLocator = repeatStratLocator;
           this.templateGatherer = templateGatherer;
+          this.observer = observer;
           templateCompiler.initialize();
           this.registerRepeatStrategy();
         }
@@ -193,6 +196,8 @@ System.register(['./util', './options-builder', './template-compiler', './templa
             this._afterInitialize();
           }
 
+          this.observer.notify('ready', widget);
+
           if (this.util.getEventsFromAttributes(this.rootElement).indexOf('ready') > -1) {
             this.util.fireKendoEvent(this.rootElement, 'ready', widget);
           }
@@ -228,11 +233,15 @@ System.register(['./util', './options-builder', './template-compiler', './templa
             if (delayedExecution.includes(event)) {
               options[event] = function (e) {
                 _this2.taskQueue.queueMicroTask(function () {
+                  _this2.observer.notify(event, e);
+
                   return _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
                 });
               };
             } else {
               options[event] = function (e) {
+                _this2.observer.notify(event, e);
+
                 var evt = _this2.util.fireKendoEvent(element, _this2.util._hyphenate(event), e);
 
                 if (_this2.configBuilder._propogatePreventDefault && evt.defaultPrevented) {
@@ -282,6 +291,10 @@ System.register(['./util', './options-builder', './template-compiler', './templa
               return items instanceof kendo.data.ObservableArray;
             }, new ArrayRepeatStrategy());
           }
+        };
+
+        WidgetBase.prototype.subscribe = function subscribe(event, callback) {
+          return this.observer.subscribe(event, callback);
         };
 
         WidgetBase.prototype.destroy = function destroy(widget) {

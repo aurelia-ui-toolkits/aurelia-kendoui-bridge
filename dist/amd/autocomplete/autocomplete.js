@@ -26,6 +26,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase.useParentCtx(overrideCtx);
     };
 
+    AutoComplete.prototype.subscribe = function subscribe(event, callback) {
+      return this.widgetBase.subscribe(event, callback);
+    };
+
     AutoComplete.prototype.attached = function attached() {
       var inputs = this.element.querySelectorAll('input');
       if (inputs.length > 0) {

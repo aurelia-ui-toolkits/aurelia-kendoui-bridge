@@ -27,6 +27,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       }).linkViewModel(this).useContainer(container);
     }
 
+    Gantt.prototype.subscribe = function subscribe(event, callback) {
+      return this.widgetBase.subscribe(event, callback);
+    };
+
     Gantt.prototype.bind = function bind(ctx, overrideCtx) {
       this.widgetBase.useParentCtx(overrideCtx);
     };

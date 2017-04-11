@@ -27,6 +27,10 @@ var LinearGauge = exports.LinearGauge = (_dec = (0, _aureliaTemplating.customEle
     this.widgetBase = widgetBase.control('kendoLinearGauge').useElement(this.element).linkViewModel(this).useValueBinding();
   }
 
+  LinearGauge.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   LinearGauge.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

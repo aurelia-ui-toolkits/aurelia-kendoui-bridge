@@ -72,6 +72,10 @@ var RangeSlider = exports.RangeSlider = (_dec = (0, _aureliaTemplating.customEle
     this.widgetBase = widgetBase.control('kendoRangeSlider').useElement(this.element).linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding();
   }
 
+  RangeSlider.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   RangeSlider.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

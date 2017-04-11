@@ -27,6 +27,10 @@ var ListView = exports.ListView = (_dec = (0, _aureliaTemplating.customElement)(
     this.widgetBase = widgetBase.control('kendoListView').useElement(this.element).linkViewModel(this).useContainer(container);
   }
 
+  ListView.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   ListView.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

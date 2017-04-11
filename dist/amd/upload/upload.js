@@ -22,6 +22,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase = widgetBase.control('kendoUpload').useRootElement(this.element).linkViewModel(this).useContainer(container);
     }
 
+    Upload.prototype.subscribe = function subscribe(event, callback) {
+      return this.widgetBase.subscribe(event, callback);
+    };
+
     Upload.prototype.bind = function bind(ctx, overrideCtx) {
       this.widgetBase.useParentCtx(overrideCtx);
     };

@@ -26,6 +26,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase.useParentCtx(overrideCtx);
     };
 
+    Barcode.prototype.subscribe = function subscribe(event, callback) {
+      return this.widgetBase.subscribe(event, callback);
+    };
+
     Barcode.prototype.attached = function attached() {
       if (!this.kNoInit) {
         this.recreate();

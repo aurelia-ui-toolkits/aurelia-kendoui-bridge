@@ -29,6 +29,10 @@ var Sparkline = exports.Sparkline = (_dec = (0, _aureliaTemplating.customElement
     this.widgetBase = widgetBase.control('kendoSparkline').useElement(this.element).linkViewModel(this);
   }
 
+  Sparkline.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   Sparkline.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

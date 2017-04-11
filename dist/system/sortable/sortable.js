@@ -32,6 +32,10 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase = widgetBase.control('kendoSortable').useElement(this.element).linkViewModel(this);
         }
 
+        Sortable.prototype.subscribe = function subscribe(event, callback) {
+          return this.widgetBase.subscribe(event, callback);
+        };
+
         Sortable.prototype.bind = function bind(ctx, overrideCtx) {
           this.widgetBase.useParentCtx(overrideCtx);
         };

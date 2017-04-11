@@ -67,6 +67,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       this.widgetBase = widgetBase.control('kendoMobileSwitch').useElement(this.element).linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding('kChecked', 'check');
     }
 
+    Switch.prototype.subscribe = function subscribe(event, callback) {
+      return this.widgetBase.subscribe(event, callback);
+    };
+
     Switch.prototype.bind = function bind(ctx, overrideCtx) {
       this.widgetBase.useParentCtx(overrideCtx);
     };

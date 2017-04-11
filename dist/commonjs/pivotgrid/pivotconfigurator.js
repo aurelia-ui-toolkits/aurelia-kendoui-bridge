@@ -27,6 +27,10 @@ var PivotConfigurator = exports.PivotConfigurator = (_dec = (0, _aureliaTemplati
     this.widgetBase = widgetBase.control('kendoPivotConfigurator').useElement(this.element).linkViewModel(this);
   }
 
+  PivotConfigurator.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   PivotConfigurator.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

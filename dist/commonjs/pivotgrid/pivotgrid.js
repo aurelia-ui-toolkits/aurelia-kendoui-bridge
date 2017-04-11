@@ -29,6 +29,10 @@ var PivotGrid = exports.PivotGrid = (_dec = (0, _aureliaTemplating.customElement
     this.widgetBase = widgetBase.control('kendoPivotGrid').useRootElement(this.element).linkViewModel(this).useContainer(container);
   }
 
+  PivotGrid.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   PivotGrid.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

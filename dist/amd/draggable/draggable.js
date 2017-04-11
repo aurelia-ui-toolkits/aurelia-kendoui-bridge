@@ -26,6 +26,10 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
       }).linkViewModel(this);
     }
 
+    Draggable.prototype.subscribe = function subscribe(event, callback) {
+      return this.widgetBase.subscribe(event, callback);
+    };
+
     Draggable.prototype.bind = function bind(ctx, overrideCtx) {
       this.widgetBase.useParentCtx(overrideCtx);
     };

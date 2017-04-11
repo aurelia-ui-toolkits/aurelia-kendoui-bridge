@@ -82,6 +82,10 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase = widgetBase.control('kendoTimePicker').useElement(this.element).linkViewModel(this).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
         }
 
+        TimePicker.prototype.subscribe = function subscribe(event, callback) {
+          return this.widgetBase.subscribe(event, callback);
+        };
+
         TimePicker.prototype.bind = function bind(ctx, overrideCtx) {
           this.widgetBase.useParentCtx(overrideCtx);
         };

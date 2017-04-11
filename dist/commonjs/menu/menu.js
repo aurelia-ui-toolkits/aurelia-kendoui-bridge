@@ -27,6 +27,10 @@ var Menu = exports.Menu = (_dec = (0, _aureliaTemplating.customAttribute)(_const
     this.widgetBase = widgetBase.control('kendoMenu').useElement(this.element).linkViewModel(this);
   }
 
+  Menu.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   Menu.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

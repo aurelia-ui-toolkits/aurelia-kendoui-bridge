@@ -27,6 +27,10 @@ var Map = exports.Map = (_dec = (0, _aureliaTemplating.customElement)(_constants
     this.widgetBase = widgetBase.control('kendoMap').useElement(this.element).linkViewModel(this);
   }
 
+  Map.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   Map.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

@@ -29,6 +29,10 @@ var Chart = exports.Chart = (_dec = (0, _aureliaTemplating.customElement)(_const
     this.widgetBase = widgetBase.control('kendoChart').useElement(this.element).linkViewModel(this);
   }
 
+  Chart.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   Chart.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

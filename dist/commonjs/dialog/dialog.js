@@ -27,6 +27,10 @@ var Dialog = exports.Dialog = (_dec = (0, _aureliaTemplating.customAttribute)(_c
     this.widgetBase = widgetBase.control('kendoDialog').useElement(this.element).linkViewModel(this);
   }
 
+  Dialog.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   Dialog.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

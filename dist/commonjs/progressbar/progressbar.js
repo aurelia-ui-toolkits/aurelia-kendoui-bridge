@@ -72,6 +72,10 @@ var ProgressBar = exports.ProgressBar = (_dec = (0, _aureliaTemplating.customAtt
     this.widgetBase = widgetBase.control('kendoProgressBar').useElement(this.element).bindToKendo('kEnabled', 'enable').linkViewModel(this);
   }
 
+  ProgressBar.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   ProgressBar.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

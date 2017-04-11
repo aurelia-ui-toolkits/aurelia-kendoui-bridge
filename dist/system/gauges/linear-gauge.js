@@ -32,6 +32,10 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase = widgetBase.control('kendoLinearGauge').useElement(this.element).linkViewModel(this).useValueBinding();
         }
 
+        LinearGauge.prototype.subscribe = function subscribe(event, callback) {
+          return this.widgetBase.subscribe(event, callback);
+        };
+
         LinearGauge.prototype.bind = function bind(ctx, overrideCtx) {
           this.widgetBase.useParentCtx(overrideCtx);
         };

@@ -72,6 +72,10 @@ var ColorPicker = exports.ColorPicker = (_dec = (0, _aureliaTemplating.customAtt
     this.widgetBase = widgetBase.control('kendoColorPicker').useElement(this.element).linkViewModel(this).bindToKendo('kEnabled', 'enable').useValueBinding();
   }
 
+  ColorPicker.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   ColorPicker.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

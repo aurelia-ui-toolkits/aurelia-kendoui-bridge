@@ -72,6 +72,10 @@ var Button = exports.Button = (_dec = (0, _aureliaTemplating.customAttribute)(_c
     this.widgetBase = widgetBase.control('kendoButton').useElement(this.element).bindToKendo('kEnabled', 'enable').linkViewModel(this);
   }
 
+  Button.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   Button.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

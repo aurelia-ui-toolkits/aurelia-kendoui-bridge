@@ -74,6 +74,10 @@ var NumericTextBox = exports.NumericTextBox = (_dec = (0, _aureliaTemplating.cus
     this.widgetBase = widgetBase.control('kendoNumericTextBox').linkViewModel(this).useElement(this.element).useValueBinding().bindToKendo('kEnabled', 'enable').bindToKendo('kReadOnly', 'readonly');
   }
 
+  NumericTextBox.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   NumericTextBox.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

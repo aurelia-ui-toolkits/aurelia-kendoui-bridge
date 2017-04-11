@@ -31,6 +31,10 @@ var Barcode = exports.Barcode = (_dec = (0, _aureliaTemplating.customAttribute)(
     this.widgetBase.useParentCtx(overrideCtx);
   };
 
+  Barcode.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   Barcode.prototype.attached = function attached() {
     if (!this.kNoInit) {
       this.recreate();

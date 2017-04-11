@@ -36,6 +36,10 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
           this.widgetBase.useParentCtx(overrideCtx);
         };
 
+        Barcode.prototype.subscribe = function subscribe(event, callback) {
+          return this.widgetBase.subscribe(event, callback);
+        };
+
         Barcode.prototype.attached = function attached() {
           if (!this.kNoInit) {
             this.recreate();

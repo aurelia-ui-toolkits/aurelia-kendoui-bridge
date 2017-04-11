@@ -27,6 +27,10 @@ var DropTargetArea = exports.DropTargetArea = (_dec = (0, _aureliaTemplating.cus
     this.widgetBase = widgetBase.control('kendoDropTargetArea').useElement(this.element).linkViewModel(this);
   }
 
+  DropTargetArea.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   DropTargetArea.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

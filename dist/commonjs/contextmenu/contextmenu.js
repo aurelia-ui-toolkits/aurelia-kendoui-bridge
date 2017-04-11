@@ -27,6 +27,10 @@ var ContextMenu = exports.ContextMenu = (_dec = (0, _aureliaTemplating.customAtt
     this.widgetBase = widgetBase.control('kendoContextMenu').useElement(this.element).linkViewModel(this);
   }
 
+  ContextMenu.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   ContextMenu.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

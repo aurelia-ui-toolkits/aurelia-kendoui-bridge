@@ -18,6 +18,10 @@ export class Stock {
                         .linkViewModel(this);
   }
 
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
   bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   }

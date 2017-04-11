@@ -29,6 +29,10 @@ var Scheduler = exports.Scheduler = (_dec = (0, _aureliaTemplating.customElement
     this.widgetBase = widgetBase.control('kendoScheduler').useRootElement(this.element).linkViewModel(this).useContainer(container);
   }
 
+  Scheduler.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   Scheduler.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

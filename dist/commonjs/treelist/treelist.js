@@ -36,6 +36,10 @@ var TreeList = exports.TreeList = (_dec = (0, _aureliaTemplating.customElement)(
     }).linkViewModel(this).useContainer(container);
   }
 
+  TreeList.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   TreeList.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

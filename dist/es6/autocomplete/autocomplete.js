@@ -25,6 +25,10 @@ export class AutoComplete {
     this.widgetBase.useParentCtx(overrideCtx);
   }
 
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
   attached() {
     let inputs = this.element.querySelectorAll('input');
     if (inputs.length > 0) {

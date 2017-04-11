@@ -1,9 +1,9 @@
 'use strict';
 
-System.register(['aurelia-logging'], function (_export, _context) {
+System.register(['aurelia-logging', 'aurelia-pal'], function (_export, _context) {
   "use strict";
 
-  var LogManager, KendoConfigBuilder;
+  var LogManager, PLATFORM, KendoConfigBuilder;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -14,6 +14,8 @@ System.register(['aurelia-logging'], function (_export, _context) {
   return {
     setters: [function (_aureliaLogging) {
       LogManager = _aureliaLogging;
+    }, function (_aureliaPal) {
+      PLATFORM = _aureliaPal.PLATFORM;
     }],
     execute: function () {
       _export('KendoConfigBuilder', KendoConfigBuilder = function () {
@@ -56,12 +58,12 @@ System.register(['aurelia-logging'], function (_export, _context) {
         };
 
         KendoConfigBuilder.prototype.useValueConverters = function useValueConverters() {
-          this.resources.push('./valueconverters/valueconverters');
+          this.resources.push(PLATFORM.moduleName('./valueconverters/valueconverters'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoTemplateSupport = function kendoTemplateSupport() {
-          this.resources.push('./common/template');
+          this.resources.push(PLATFORM.moduleName('./common/template'));
           return this;
         };
 
@@ -76,7 +78,7 @@ System.register(['aurelia-logging'], function (_export, _context) {
         };
 
         KendoConfigBuilder.prototype.notifyBindingBehavior = function notifyBindingBehavior() {
-          this.resources.push('./common/notify-binding-behavior');
+          this.resources.push(PLATFORM.moduleName('./common/notify-binding-behavior'));
           return this;
         };
 
@@ -90,290 +92,290 @@ System.register(['aurelia-logging'], function (_export, _context) {
         };
 
         KendoConfigBuilder.prototype.kendoAutoComplete = function kendoAutoComplete() {
-          this.resources.push('./autocomplete/autocomplete');
+          this.resources.push(PLATFORM.moduleName('./autocomplete/autocomplete'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoButton = function kendoButton() {
-          this.resources.push('./button/button');
+          this.resources.push(PLATFORM.moduleName('./button/button'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoMobileButtonGroup = function kendoMobileButtonGroup() {
-          this.resources.push('./buttongroup/buttongroup');
+          this.resources.push(PLATFORM.moduleName('./buttongroup/buttongroup'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoBarcode = function kendoBarcode() {
-          this.resources.push('./barcode/barcode');
+          this.resources.push(PLATFORM.moduleName('./barcode/barcode'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoCalendar = function kendoCalendar() {
-          this.resources.push('./calendar/calendar');
+          this.resources.push(PLATFORM.moduleName('./calendar/calendar'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoChart = function kendoChart() {
-          this.resources.push('./chart/chart');
-          this.resources.push('./chart/sparkline');
-          this.resources.push('./chart/stock');
-          this.resources.push('./chart/treemap');
+          this.resources.push(PLATFORM.moduleName('./chart/chart'));
+          this.resources.push(PLATFORM.moduleName('./chart/sparkline'));
+          this.resources.push(PLATFORM.moduleName('./chart/stock'));
+          this.resources.push(PLATFORM.moduleName('./chart/treemap'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoComboBox = function kendoComboBox() {
-          this.resources.push('./combobox/combobox');
+          this.resources.push(PLATFORM.moduleName('./combobox/combobox'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoContextMenu = function kendoContextMenu() {
-          this.resources.push('./contextmenu/contextmenu');
+          this.resources.push(PLATFORM.moduleName('./contextmenu/contextmenu'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoColorPicker = function kendoColorPicker() {
-          this.resources.push('./colorpicker/colorpicker');
+          this.resources.push(PLATFORM.moduleName('./colorpicker/colorpicker'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoColorPalette = function kendoColorPalette() {
-          this.resources.push('./colorpalette/colorpalette');
+          this.resources.push(PLATFORM.moduleName('./colorpalette/colorpalette'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoDatePicker = function kendoDatePicker() {
-          this.resources.push('./datepicker/datepicker');
+          this.resources.push(PLATFORM.moduleName('./datepicker/datepicker'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoDateTimePicker = function kendoDateTimePicker() {
-          this.resources.push('./datetimepicker/datetimepicker');
+          this.resources.push(PLATFORM.moduleName('./datetimepicker/datetimepicker'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoDiagram = function kendoDiagram() {
-          this.resources.push('./diagram/diagram');
+          this.resources.push(PLATFORM.moduleName('./diagram/diagram'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoDialog = function kendoDialog() {
-          this.resources.push('./dialog/dialog');
+          this.resources.push(PLATFORM.moduleName('./dialog/dialog'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoDraggable = function kendoDraggable() {
-          this.resources.push('./draggable/draggable');
+          this.resources.push(PLATFORM.moduleName('./draggable/draggable'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoDropDownList = function kendoDropDownList() {
-          this.resources.push('./dropdownlist/dropdownlist');
+          this.resources.push(PLATFORM.moduleName('./dropdownlist/dropdownlist'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoDropTarget = function kendoDropTarget() {
-          this.resources.push('./drop-target/drop-target');
-          this.resources.push('./drop-target/drop-target-area');
+          this.resources.push(PLATFORM.moduleName('./drop-target/drop-target'));
+          this.resources.push(PLATFORM.moduleName('./drop-target/drop-target-area'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoEditor = function kendoEditor() {
-          this.resources.push('./editor/editor');
+          this.resources.push(PLATFORM.moduleName('./editor/editor'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoFilterMenu = function kendoFilterMenu() {
-          this.resources.push('./filter-menu/filter-menu');
+          this.resources.push(PLATFORM.moduleName('./filter-menu/filter-menu'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoFlatColorPicker = function kendoFlatColorPicker() {
-          this.resources.push('./flatcolorpicker/flatcolorpicker');
+          this.resources.push(PLATFORM.moduleName('./flatcolorpicker/flatcolorpicker'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoGantt = function kendoGantt() {
-          this.resources.push('./gantt/gantt');
-          this.resources.push('./gantt/gantt-col');
+          this.resources.push(PLATFORM.moduleName('./gantt/gantt'));
+          this.resources.push(PLATFORM.moduleName('./gantt/gantt-col'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoGrid = function kendoGrid() {
-          this.resources.push('./grid/grid');
-          this.resources.push('./grid/col');
-          this.resources.push('./grid/grid-toolbar');
-          this.resources.push('./grid/grid-command');
+          this.resources.push(PLATFORM.moduleName('./grid/grid'));
+          this.resources.push(PLATFORM.moduleName('./grid/col'));
+          this.resources.push(PLATFORM.moduleName('./grid/grid-toolbar'));
+          this.resources.push(PLATFORM.moduleName('./grid/grid-command'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoLinearGauge = function kendoLinearGauge() {
-          this.resources.push('./gauges/linear-gauge');
+          this.resources.push(PLATFORM.moduleName('./gauges/linear-gauge'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoListView = function kendoListView() {
-          this.resources.push('./listview/listview');
+          this.resources.push(PLATFORM.moduleName('./listview/listview'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoNotification = function kendoNotification() {
-          this.resources.push('./notification/notification');
-          this.resources.push('./notification/notification-template');
+          this.resources.push(PLATFORM.moduleName('./notification/notification'));
+          this.resources.push(PLATFORM.moduleName('./notification/notification-template'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoMap = function kendoMap() {
-          this.resources.push('./map/map');
+          this.resources.push(PLATFORM.moduleName('./map/map'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoMenu = function kendoMenu() {
-          this.resources.push('./menu/menu');
+          this.resources.push(PLATFORM.moduleName('./menu/menu'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoMaskedTextBox = function kendoMaskedTextBox() {
-          this.resources.push('./maskedtextbox/maskedtextbox');
+          this.resources.push(PLATFORM.moduleName('./maskedtextbox/maskedtextbox'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoMultiSelect = function kendoMultiSelect() {
-          this.resources.push('./multiselect/multiselect');
+          this.resources.push(PLATFORM.moduleName('./multiselect/multiselect'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoNumericTextBox = function kendoNumericTextBox() {
-          this.resources.push('./numerictextbox/numerictextbox');
+          this.resources.push(PLATFORM.moduleName('./numerictextbox/numerictextbox'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoPanelBar = function kendoPanelBar() {
-          this.resources.push('./panelbar/panelbar');
+          this.resources.push(PLATFORM.moduleName('./panelbar/panelbar'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoPivotGrid = function kendoPivotGrid() {
-          this.resources.push('./pivotgrid/pivotgrid');
-          this.resources.push('./pivotgrid/pivotconfigurator');
+          this.resources.push(PLATFORM.moduleName('./pivotgrid/pivotgrid'));
+          this.resources.push(PLATFORM.moduleName('./pivotgrid/pivotconfigurator'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoPopup = function kendoPopup() {
-          this.resources.push('./popup/popup');
+          this.resources.push(PLATFORM.moduleName('./popup/popup'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoProgressBar = function kendoProgressBar() {
-          this.resources.push('./progressbar/progressbar');
+          this.resources.push(PLATFORM.moduleName('./progressbar/progressbar'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoQRCode = function kendoQRCode() {
-          this.resources.push('./qrcode/qrcode');
+          this.resources.push(PLATFORM.moduleName('./qrcode/qrcode'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoRadialGauge = function kendoRadialGauge() {
-          this.resources.push('./gauges/radial-gauge');
+          this.resources.push(PLATFORM.moduleName('./gauges/radial-gauge'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoResponsivePanel = function kendoResponsivePanel() {
-          this.resources.push('./responsivepanel/responsivepanel');
+          this.resources.push(PLATFORM.moduleName('./responsivepanel/responsivepanel'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoMobileScrollView = function kendoMobileScrollView() {
-          this.resources.push('./scrollview/scrollview');
+          this.resources.push(PLATFORM.moduleName('./scrollview/scrollview'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoScheduler = function kendoScheduler() {
-          this.resources.push('./scheduler/scheduler');
+          this.resources.push(PLATFORM.moduleName('./scheduler/scheduler'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoSlider = function kendoSlider() {
-          this.resources.push('./slider/slider');
+          this.resources.push(PLATFORM.moduleName('./slider/slider'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoSortable = function kendoSortable() {
-          this.resources.push('./sortable/sortable');
+          this.resources.push(PLATFORM.moduleName('./sortable/sortable'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoSpreadsheet = function kendoSpreadsheet() {
-          this.resources.push('./spreadsheet/spreadsheet');
+          this.resources.push(PLATFORM.moduleName('./spreadsheet/spreadsheet'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoSplitter = function kendoSplitter() {
-          this.resources.push('./splitter/splitter');
+          this.resources.push(PLATFORM.moduleName('./splitter/splitter'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoMobileSwitch = function kendoMobileSwitch() {
-          this.resources.push('./switch/switch');
+          this.resources.push(PLATFORM.moduleName('./switch/switch'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoTabStrip = function kendoTabStrip() {
-          this.resources.push('./tabstrip/tabstrip');
+          this.resources.push(PLATFORM.moduleName('./tabstrip/tabstrip'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoTreeList = function kendoTreeList() {
-          this.resources.push('./treelist/treelist');
-          this.resources.push('./treelist/tree-col');
+          this.resources.push(PLATFORM.moduleName('./treelist/treelist'));
+          this.resources.push(PLATFORM.moduleName('./treelist/tree-col'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoToolbar = function kendoToolbar() {
-          this.resources.push('./toolbar/toolbar');
+          this.resources.push(PLATFORM.moduleName('./toolbar/toolbar'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoTreeView = function kendoTreeView() {
-          this.resources.push('./treeview/treeview');
+          this.resources.push(PLATFORM.moduleName('./treeview/treeview'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoTimePicker = function kendoTimePicker() {
-          this.resources.push('./timepicker/timepicker');
+          this.resources.push(PLATFORM.moduleName('./timepicker/timepicker'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoToolBar = function kendoToolBar() {
-          this.resources.push('./toolbar/toolbar');
-          this.resources.push('./toolbar/toolbar-item');
-          this.resources.push('./toolbar/toolbar-item-button');
+          this.resources.push(PLATFORM.moduleName('./toolbar/toolbar'));
+          this.resources.push(PLATFORM.moduleName('./toolbar/toolbar-item'));
+          this.resources.push(PLATFORM.moduleName('./toolbar/toolbar-item-button'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoTooltip = function kendoTooltip() {
-          this.resources.push('./tooltip/tooltip');
+          this.resources.push(PLATFORM.moduleName('./tooltip/tooltip'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoRangeSlider = function kendoRangeSlider() {
-          this.resources.push('./rangeslider/rangeslider');
+          this.resources.push(PLATFORM.moduleName('./rangeslider/rangeslider'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoUpload = function kendoUpload() {
-          this.resources.push('./upload/upload');
+          this.resources.push(PLATFORM.moduleName('./upload/upload'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoValidator = function kendoValidator() {
-          this.resources.push('./validator/validator');
+          this.resources.push(PLATFORM.moduleName('./validator/validator'));
           return this;
         };
 
         KendoConfigBuilder.prototype.kendoWindow = function kendoWindow() {
-          this.resources.push('./window/window');
+          this.resources.push(PLATFORM.moduleName('./window/window'));
           return this;
         };
 

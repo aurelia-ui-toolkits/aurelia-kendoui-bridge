@@ -27,6 +27,10 @@ var TreeView = exports.TreeView = (_dec = (0, _aureliaTemplating.customElement)(
     this.widgetBase = widgetBase.control('kendoTreeView').useRootElement(this.element).linkViewModel(this).useContainer(container);
   }
 
+  TreeView.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   TreeView.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };

@@ -27,6 +27,10 @@ var Validator = exports.Validator = (_dec = (0, _aureliaTemplating.customAttribu
     this.widgetBase = widgetBase.control('kendoValidator').useElement(this.element).linkViewModel(this);
   }
 
+  Validator.prototype.subscribe = function subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  };
+
   Validator.prototype.bind = function bind(ctx, overrideCtx) {
     this.widgetBase.useParentCtx(overrideCtx);
   };
