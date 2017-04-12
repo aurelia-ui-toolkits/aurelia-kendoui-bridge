@@ -1,3 +1,13 @@
+<a name="1.5.1"></a>
+## [1.5.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.5.0...v1.5.1) (2017-04-12)
+
+
+### Bug Fixes
+
+* **package.json:** fixed dependencies section ([c92bd86](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/c92bd86))
+
+
+
 <a name="1.5.0"></a>
 # [1.5.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.4.0...v1.5.0) (2017-04-11)
 

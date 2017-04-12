@@ -1,7 +1,7 @@
 import * as LogManager from 'aurelia-logging';
 import {PLATFORM} from 'aurelia-pal';
 import {inject,Container,transient} from 'aurelia-dependency-injection';
-import {customAttribute,customElement,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,ViewResources,noView,processContent,TargetInstruction} from 'aurelia-templating';
+import {customElement,customAttribute,bindable,BindableProperty,HtmlBehaviorResource,TemplatingEngine,ViewResources,noView,processContent,TargetInstruction} from 'aurelia-templating';
 import {metadata} from 'aurelia-metadata';
 import {bindingMode,EventManager,createOverrideContext} from 'aurelia-binding';
 import {TaskQueue} from 'aurelia-task-queue';
@@ -506,47 +506,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.5.0';
-@customAttribute(`${constants.attributePrefix}barcode`)
-@generateBindables('kendoBarcode')
-@inject(Element, WidgetBase)
-export class Barcode {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoBarcode')
-                        .useElement(this.element)
-                        .linkViewModel(this);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  subscribe(event, callback) {
-    return this.widgetBase.subscribe(event, callback);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
+export let version = '1.5.1';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
@@ -2097,6 +2057,46 @@ export class WidgetBase {
   }
 }
 
+@customAttribute(`${constants.attributePrefix}barcode`)
+@generateBindables('kendoBarcode')
+@inject(Element, WidgetBase)
+export class Barcode {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoBarcode')
+                        .useElement(this.element)
+                        .linkViewModel(this);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
 @customAttribute(`${constants.attributePrefix}contextmenu`)
 @generateBindables('kendoContextMenu')
 @inject(Element, WidgetBase)
@@ -2187,46 +2187,6 @@ export class DatePicker {
   }
 }
 
-@customElement(`${constants.elementPrefix}diagram`)
-@generateBindables('kendoDiagram')
-@inject(Element, WidgetBase)
-export class Diagram {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoDiagram')
-                        .useElement(this.element)
-                        .linkViewModel(this);
-  }
-
-  subscribe(event, callback) {
-    return this.widgetBase.subscribe(event, callback);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
 @customAttribute(`${constants.attributePrefix}datetimepicker`)
 @generateBindables('kendoDateTimePicker')
 @inject(Element, WidgetBase)
@@ -2266,6 +2226,46 @@ export class DateTimePicker {
 
   propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
+@customElement(`${constants.elementPrefix}diagram`)
+@generateBindables('kendoDiagram')
+@inject(Element, WidgetBase)
+export class Diagram {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoDiagram')
+                        .useElement(this.element)
+                        .linkViewModel(this);
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
   }
 
   destroy() {
@@ -2444,51 +2444,6 @@ export class DropTarget {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}rich-editor`)
-@generateBindables('kendoEditor')
-@inject(Element, WidgetBase)
-export class Editor {
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoEditor')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding();
-  }
-
-  subscribe(event, callback) {
-    return this.widgetBase.subscribe(event, callback);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
 @customElement(`${constants.elementPrefix}drop-down-list`)
 @generateBindables('kendoDropDownList')
 @inject(Element, WidgetBase, Container)
@@ -2552,6 +2507,51 @@ export class DropDownList {
 
 function getSelectNode(element) {
   return element.querySelectorAll('select');
+}
+
+@customAttribute(`${constants.attributePrefix}rich-editor`)
+@generateBindables('kendoEditor')
+@inject(Element, WidgetBase)
+export class Editor {
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoEditor')
+                        .useElement(this.element)
+                        .linkViewModel(this)
+                        .useValueBinding();
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
 }
 
 @customAttribute(`${constants.attributePrefix}filter-menu`)
@@ -3737,61 +3737,6 @@ export class ResponsivePanel {
   }
 }
 
-//eslint-disable-line no-unused-vars
-
-@customElement(`${constants.elementPrefix}scheduler`)
-@generateBindables('kendoScheduler')
-@inject(Element, WidgetBase, Container)
-export class Scheduler {
-
-  constructor(element, widgetBase, container) {
-    this.element = element;
-    this.widgetBase = widgetBase
-                        .control('kendoScheduler')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
-  }
-
-  subscribe(event, callback) {
-    return this.widgetBase.subscribe(event, callback);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    let targets = this.element.querySelectorAll('div');
-    if (targets.length > 0) {
-      this.widgetBase.useElement(targets[0]);
-    } else {
-      let target = document.createElement('div');
-      this.element.appendChild(target);
-      this.widgetBase.useElement(target);
-    }
-
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
-    this.widgetBase.useTemplates(this, 'kendoScheduler', templates);
-
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
 @customElement(`${constants.elementPrefix}scrollview`)
 @generateBindables('kendoMobileScrollView')
 @inject(Element, WidgetBase, Container)
@@ -3847,6 +3792,61 @@ export class Scrollview {
 
 function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
+}
+
+//eslint-disable-line no-unused-vars
+
+@customElement(`${constants.elementPrefix}scheduler`)
+@generateBindables('kendoScheduler')
+@inject(Element, WidgetBase, Container)
+export class Scheduler {
+
+  constructor(element, widgetBase, container) {
+    this.element = element;
+    this.widgetBase = widgetBase
+                        .control('kendoScheduler')
+                        .useRootElement(this.element)
+                        .linkViewModel(this)
+                        .useContainer(container);
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    let targets = this.element.querySelectorAll('div');
+    if (targets.length > 0) {
+      this.widgetBase.useElement(targets[0]);
+    } else {
+      let target = document.createElement('div');
+      this.element.appendChild(target);
+      this.widgetBase.useElement(target);
+    }
+
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoScheduler', templates);
+
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
 }
 
 @customAttribute(`${constants.attributePrefix}slider`)
