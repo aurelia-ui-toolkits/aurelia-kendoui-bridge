@@ -10,7 +10,7 @@ var source = require('vinyl-source-stream')
 
 
 gulp.task('bindables:download', function () {
-  return request('https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/master/kendo-ui/index.d.ts')
+  return request('https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/master/types/kendo-ui/index.d.ts')
   .pipe(source('kendo-ui.d.ts'))
   .pipe(gulp.dest('./temp'));
 });
