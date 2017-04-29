@@ -1,9 +1,25 @@
 <template>
-  <ak-grid k-data-source.bind="[{},{}]" view-model.ref="myVM">
-    <ak-col>
-      <ak-template>
-        <button click.delegate="hello()">Hello</button>
-      </ak-template>
-    </ak-col>
-  </ak-grid>
+    <div id="example">
+        <div id="cap-view" class="demo-section k-content">
+
+            <ak-combobox k-data-text-field="text"
+                    					k-data-value-field="value"
+                              k-data-source.bind="data"
+                              k-value.two-way="fabric"
+                              k-filter="contains"
+                              k-auto-width.bind="true"
+                              k-suggest.bind="true"
+                              k-on-ready.delegate='onReady($event.detail)'
+                              >
+              <!-- k-auto-width.bind='true' -->
+              <ak-template>
+                <span class='k-state-default' >${desc}/${text}</span>
+              </ak-template>
+            </ak-combobox>
+
+          
+        </div>
+    </div>
+    <style>
+    </style>
 </template>

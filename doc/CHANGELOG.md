@@ -1,3 +1,13 @@
+<a name="1.5.2"></a>
+## [1.5.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.5.1...v1.5.2) (2017-04-29)
+
+
+### Bug Fixes
+
+* **bindables:** updated bindables list ([574f251](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/574f251))
+
+
+
 <a name="1.5.1"></a>
 ## [1.5.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.5.0...v1.5.1) (2017-04-12)
 

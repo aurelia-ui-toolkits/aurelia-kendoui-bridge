@@ -169,6 +169,15 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
+  export class Barcode {
+    constructor(element?: any, widgetBase?: any);
+    bind(ctx?: any, overrideCtx?: any): any;
+    subscribe(event?: any, callback?: any): any;
+    attached(): any;
+    recreate(): any;
+    destroy(): any;
+    detached(): any;
+  }
   export class Button {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
@@ -598,15 +607,6 @@ declare module 'aurelia-kendoui-bridge' {
       */
     destroy(widget?: any): any;
   }
-  export class Barcode {
-    constructor(element?: any, widgetBase?: any);
-    bind(ctx?: any, overrideCtx?: any): any;
-    subscribe(event?: any, callback?: any): any;
-    attached(): any;
-    recreate(): any;
-    destroy(): any;
-    detached(): any;
-  }
   export class ContextMenu {
     constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
@@ -951,7 +951,9 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class Scrollview {
+  
+  //eslint-disable-line no-unused-vars
+  export class Scheduler {
     constructor(element?: any, widgetBase?: any, container?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
@@ -960,9 +962,7 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  
-  //eslint-disable-line no-unused-vars
-  export class Scheduler {
+  export class Scrollview {
     constructor(element?: any, widgetBase?: any, container?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
