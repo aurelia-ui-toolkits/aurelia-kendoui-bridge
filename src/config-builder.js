@@ -53,6 +53,7 @@ export class KendoConfigBuilder {
       .kendoDropTarget()
       .kendoFlatColorPicker()
       .kendoListView()
+      .kendoListBox()
       .kendoMaskedTextBox()
       .kendoMenu()
       .kendoMultiSelect()
@@ -284,6 +285,11 @@ export class KendoConfigBuilder {
 
   kendoListView(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./listview/listview'));
+    return this;
+  }
+
+  kendoListBox(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./listbox/listbox'));
     return this;
   }
 
