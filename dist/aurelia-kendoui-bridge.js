@@ -2078,10 +2078,6 @@ export class WidgetBase {
 
       let element = widget.element;
 
-      if (typeof widget.destroy === 'function') {
-        widget.destroy();
-      }
-
       kendo.destroy(element);
 
       if (element) {

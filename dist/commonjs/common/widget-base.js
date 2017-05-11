@@ -311,10 +311,6 @@ var WidgetBase = exports.WidgetBase = (_dec = (0, _aureliaDependencyInjection.tr
 
       var element = widget.element;
 
-      if (typeof widget.destroy === 'function') {
-        widget.destroy();
-      }
-
       kendo.destroy(element);
 
       if (element) {

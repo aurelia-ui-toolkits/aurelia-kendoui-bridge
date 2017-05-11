@@ -314,10 +314,6 @@ System.register(['./util', './options-builder', './template-compiler', './templa
 
             var element = widget.element;
 
-            if (typeof widget.destroy === 'function') {
-              widget.destroy();
-            }
-
             kendo.destroy(element);
 
             if (element) {
