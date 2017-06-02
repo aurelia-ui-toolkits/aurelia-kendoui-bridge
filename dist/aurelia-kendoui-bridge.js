@@ -506,7 +506,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.5.2';
+export let version = '1.5.3';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
@@ -2077,10 +2077,6 @@ export class WidgetBase {
       }
 
       let element = widget.element;
-
-      if (typeof widget.destroy === 'function') {
-        widget.destroy();
-      }
 
       kendo.destroy(element);
 

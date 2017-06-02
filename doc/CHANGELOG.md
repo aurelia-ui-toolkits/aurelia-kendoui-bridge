@@ -1,3 +1,13 @@
+<a name="1.5.3"></a>
+## [1.5.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.5.2...v1.5.3) (2017-06-02)
+
+
+### Bug Fixes
+
+* **widget-base:** only use kendo.destroy ([6500f07](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/6500f07))
+
+
+
 <a name="1.5.2"></a>
 ## [1.5.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.5.1...v1.5.2) (2017-04-29)
 

@@ -311,10 +311,6 @@ define(['exports', './util', './options-builder', './template-compiler', './temp
 
         var element = widget.element;
 
-        if (typeof widget.destroy === 'function') {
-          widget.destroy();
-        }
-
         kendo.destroy(element);
 
         if (element) {
