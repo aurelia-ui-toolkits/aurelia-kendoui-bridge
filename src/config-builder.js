@@ -212,6 +212,10 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoDateInput(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./dateinput/dateinput'));
+  }
+
   kendoDateTimePicker(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./datetimepicker/datetimepicker'));
     return this;
