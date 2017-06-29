@@ -1,25 +1,4 @@
 <template>
-    <div id="example">
-        <div id="cap-view" class="demo-section k-content">
-
-            <ak-combobox k-data-text-field="text"
-                    					k-data-value-field="value"
-                              k-data-source.bind="data"
-                              k-value.two-way="fabric"
-                              k-filter="contains"
-                              k-auto-width.bind="true"
-                              k-suggest.bind="true"
-                              k-on-ready.delegate='onReady($event.detail)'
-                              >
-              <!-- k-auto-width.bind='true' -->
-              <ak-template>
-                <span class='k-state-default' >${desc}/${text}</span>
-              </ak-template>
-            </ak-combobox>
-
-          
-        </div>
-    </div>
-    <style>
-    </style>
+    <require from="aurelia-kendoui-bridge/dateinput/dateinput"></require>
+    <input ak-date-input="format: yyyy/MM/dd">
 </template>
