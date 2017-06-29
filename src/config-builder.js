@@ -53,7 +53,6 @@ export class KendoConfigBuilder {
       .kendoDropTarget()
       .kendoFlatColorPicker()
       .kendoListView()
-      .kendoListBox()
       .kendoMaskedTextBox()
       .kendoMenu()
       .kendoMultiSelect()
