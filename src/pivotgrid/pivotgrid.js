@@ -9,14 +9,13 @@ import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 @generateBindables('kendoPivotGrid')
 @inject(Element, WidgetBase, Container)
 export class PivotGrid {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoPivotGrid')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoPivotGrid')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {

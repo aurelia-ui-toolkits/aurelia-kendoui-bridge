@@ -8,14 +8,13 @@ import {constants} from '../common/constants';
 @generateBindables('kendoUpload')
 @inject(Element, WidgetBase, Container)
 export class Upload {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoUpload')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoUpload')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {

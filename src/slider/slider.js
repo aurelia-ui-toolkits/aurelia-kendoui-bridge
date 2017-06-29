@@ -8,17 +8,16 @@ import {constants} from '../common/constants';
 @generateBindables('kendoSlider')
 @inject(Element, WidgetBase)
 export class Slider {
-
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoSlider')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .bindToKendo('kEnabled', 'enable')
-                        .useValueBinding();
+      .control('kendoSlider')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .bindToKendo('kEnabled', 'enable')
+      .useValueBinding();
   }
 
   subscribe(event, callback) {

@@ -8,14 +8,13 @@ import {constants} from '../common/constants';
 @generateBindables('kendoCalendar')
 @inject(Element, WidgetBase)
 export class Calendar {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoCalendar')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding();
+      .control('kendoCalendar')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding();
   }
 
   subscribe(event, callback) {

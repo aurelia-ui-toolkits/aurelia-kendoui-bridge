@@ -9,14 +9,13 @@ import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 @generateBindables('kendoScheduler')
 @inject(Element, WidgetBase, Container)
 export class Scheduler {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoScheduler')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoScheduler')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {

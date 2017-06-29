@@ -8,7 +8,6 @@ import {constants} from '../common/constants';
 @generateBindables('kendoDropDownList')
 @inject(Element, WidgetBase, Container)
 export class DropDownList {
-
   @bindable kNoValueBinding = false;
   @bindable kEnabled;
   @bindable kReadOnly;
@@ -16,12 +15,12 @@ export class DropDownList {
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDropDownList')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container)
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoDropDownList')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container)
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {

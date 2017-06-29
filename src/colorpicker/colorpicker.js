@@ -8,17 +8,16 @@ import {constants} from '../common/constants';
 @generateBindables('kendoColorPicker')
 @inject(Element, WidgetBase)
 export class ColorPicker {
-
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoColorPicker')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .bindToKendo('kEnabled', 'enable')
-                        .useValueBinding();
+      .control('kendoColorPicker')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .bindToKendo('kEnabled', 'enable')
+      .useValueBinding();
   }
 
   subscribe(event, callback) {

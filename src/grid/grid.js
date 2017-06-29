@@ -11,17 +11,16 @@ import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 @generateBindables('kendoGrid')
 @inject(Element, WidgetBase, Container, OptionsBuilder, TemplateGatherer)
 export class Grid {
-
   constructor(element, widgetBase, container, optionsBuilder, templateGatherer) {
     this.element = element;
     this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
-                        .control('kendoGrid')
-                        .useRootElement(this.element)
-                        .beforeInitialize(options => this._beforeInitialize(options))
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoGrid')
+      .useRootElement(this.element)
+      .beforeInitialize(options => this._beforeInitialize(options))
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {

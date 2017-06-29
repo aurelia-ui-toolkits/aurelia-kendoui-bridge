@@ -8,15 +8,14 @@ import {constants} from '../common/constants';
 @generateBindables('kendoMobileScrollView')
 @inject(Element, WidgetBase, Container)
 export class Scrollview {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMobileScrollView')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container)
-                        .useValueBinding();
+      .control('kendoMobileScrollView')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container)
+      .useValueBinding();
   }
 
   subscribe(event, callback) {

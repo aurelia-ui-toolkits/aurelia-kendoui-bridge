@@ -8,17 +8,16 @@ import {constants} from '../common/constants';
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
 export class AutoComplete {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoAutoComplete')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container)
-                        .useValueBinding()
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoAutoComplete')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container)
+      .useValueBinding()
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx, overrideCtx) {

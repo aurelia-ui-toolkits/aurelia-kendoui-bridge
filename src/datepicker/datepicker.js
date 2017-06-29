@@ -8,19 +8,18 @@ import {constants} from '../common/constants';
 @generateBindables('kendoDatePicker')
 @inject(Element, WidgetBase)
 export class DatePicker {
-
   @bindable kEnabled;
   @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDatePicker')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly')
-                        .useValueBinding();
+      .control('kendoDatePicker')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly')
+      .useValueBinding();
   }
 
   subscribe(event, callback) {

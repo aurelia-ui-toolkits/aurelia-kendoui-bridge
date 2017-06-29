@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoResponsivePanel')
 @inject(Element, WidgetBase)
 export class ResponsivePanel {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoResponsivePanel')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoResponsivePanel')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

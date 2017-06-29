@@ -9,13 +9,12 @@ import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 @generateBindables('kendoTreeMap')
 @inject(Element, WidgetBase)
 export class TreeMap {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoTreeMap')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoTreeMap')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

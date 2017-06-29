@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoPopup')
 @inject(Element, WidgetBase)
 export class Popup {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoPopup')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoPopup')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

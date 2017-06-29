@@ -24,7 +24,7 @@ describe('ControlProperties', () => {
   });
 
   it('getGeneratedProperties throws error when controlName not in bindables.js', () => {
-    expect(() => sut.getGeneratedProperties('kendoUnknownControl')).toThrow(new Error(`kendoUnknownControl not found in generated bindables.js`));
+    expect(() => sut.getGeneratedProperties('kendoUnknownControl')).toThrow(new Error('kendoUnknownControl not found in generated bindables.js'));
   });
 
   it('getGeneratedProperties returns array of properties in bindables.js', () => {

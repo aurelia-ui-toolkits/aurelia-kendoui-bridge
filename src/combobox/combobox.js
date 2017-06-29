@@ -8,20 +8,19 @@ import {constants} from '../common/constants';
 @generateBindables('kendoComboBox')
 @inject(Element, WidgetBase, Container)
 export class ComboBox {
-
   @bindable kEnabled;
   @bindable kReadOnly;
 
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoComboBox')
-                        .linkViewModel(this)
-                        .useRootElement(this.element)
-                        .useValueBinding()
-                        .useContainer(container)
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoComboBox')
+      .linkViewModel(this)
+      .useRootElement(this.element)
+      .useValueBinding()
+      .useContainer(container)
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {

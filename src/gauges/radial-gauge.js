@@ -8,14 +8,13 @@ import {constants} from '../common/constants';
 @generateBindables('kendoRadialGauge')
 @inject(Element, WidgetBase)
 export class RadialGauge {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoRadialGauge')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding();
+      .control('kendoRadialGauge')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding();
   }
 
   subscribe(event, callback) {

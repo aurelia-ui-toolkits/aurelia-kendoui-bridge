@@ -8,14 +8,13 @@ import {constants} from '../common/constants';
 @generateBindables('kendoEditor')
 @inject(Element, WidgetBase)
 export class Editor {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoEditor')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding();
+      .control('kendoEditor')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding();
   }
 
   subscribe(event, callback) {

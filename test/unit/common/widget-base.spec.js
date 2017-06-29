@@ -171,10 +171,10 @@ describe('WidgetBase', () => {
     let beforeSpy = jasmine.createSpy();
 
     sut.control('kendoButton')
-    .useElement(DOM.createElement('div'))
-    .useParentCtx(createOverrideContext({}))
-    .beforeInitialize(beforeSpy)
-    .linkViewModel({});
+      .useElement(DOM.createElement('div'))
+      .useParentCtx(createOverrideContext({}))
+      .beforeInitialize(beforeSpy)
+      .linkViewModel({});
 
     sut.recreate();
     expect(beforeSpy).toHaveBeenCalled();
@@ -184,10 +184,10 @@ describe('WidgetBase', () => {
     let afterSpy = jasmine.createSpy();
 
     sut.control('kendoButton')
-    .useElement(DOM.createElement('div'))
-    .useParentCtx(createOverrideContext({}))
-    .afterInitialize(afterSpy)
-    .linkViewModel({});
+      .useElement(DOM.createElement('div'))
+      .useParentCtx(createOverrideContext({}))
+      .afterInitialize(afterSpy)
+      .linkViewModel({});
 
     sut.recreate();
     expect(afterSpy).toHaveBeenCalled();
@@ -195,9 +195,9 @@ describe('WidgetBase', () => {
 
   it('createWidget raises k-on-ready event', () => {
     sut.control('kendoButton')
-    .linkViewModel({})
-    .useElement($('<div k-on-ready.delegate="something()"></div>')[0])
-    .useParentCtx(createOverrideContext({}));
+      .linkViewModel({})
+      .useElement($('<div k-on-ready.delegate="something()"></div>')[0])
+      .useParentCtx(createOverrideContext({}));
 
     spyOn(sut.util, 'fireKendoEvent');
 
@@ -208,9 +208,9 @@ describe('WidgetBase', () => {
 
   it('createWidget doesn\'t raise k-on-ready event when handler is not present', () => {
     sut.control('kendoButton')
-    .linkViewModel({})
-    .useElement($('<div>')[0])
-    .useParentCtx(createOverrideContext({}));
+      .linkViewModel({})
+      .useElement($('<div>')[0])
+      .useParentCtx(createOverrideContext({}));
 
     spyOn(sut.util, 'fireKendoEvent');
 
@@ -221,9 +221,9 @@ describe('WidgetBase', () => {
 
   it('createWidget sets parent context on options and widget', () => {
     sut.control('kendoButton')
-    .linkViewModel({})
-    .useElement(DOM.createElement('div'))
-    .useParentCtx(createOverrideContext({ a: 'b'}));
+      .linkViewModel({})
+      .useElement(DOM.createElement('div'))
+      .useParentCtx(createOverrideContext({ a: 'b'}));
 
     let widget = sut.recreate();
 
@@ -238,10 +238,10 @@ describe('WidgetBase', () => {
     };
 
     sut.control('kendoButton')
-    .linkViewModel({})
-    .useElement(DOM.createElement('div'))
-    .useParentCtx({ a: 'b'})
-    .useContainer(_container);
+      .linkViewModel({})
+      .useElement(DOM.createElement('div'))
+      .useParentCtx({ a: 'b'})
+      .useContainer(_container);
 
     let widget = sut.recreate();
 
@@ -254,10 +254,10 @@ describe('WidgetBase', () => {
     rootElement.setAttribute('k-on-click', 'click');
 
     sut.control('kendoButton')
-    .useRootElement(rootElement)
-    .useElement(DOM.createElement('div'))
-    .useParentCtx(createOverrideContext({}))
-    .linkViewModel({ options: {} });
+      .useRootElement(rootElement)
+      .useElement(DOM.createElement('div'))
+      .useParentCtx(createOverrideContext({}))
+      .linkViewModel({ options: {} });
 
     let widget = sut.recreate();
 
@@ -270,10 +270,10 @@ describe('WidgetBase', () => {
     spyOn(sut, '_createWidget').and.returnValue(widgetFake);
 
     sut.control('kendoDropDownList')
-    .linkViewModel({})
-    .useElement(DOM.createElement('div'))
-    .useParentCtx(createOverrideContext({}))
-    .useValueBinding();
+      .linkViewModel({})
+      .useElement(DOM.createElement('div'))
+      .useParentCtx(createOverrideContext({}))
+      .useValueBinding();
 
     sut.recreate();
 
@@ -296,10 +296,10 @@ describe('WidgetBase', () => {
     spyOn(sut, '_createWidget').and.returnValue(widgetFake);
 
     sut.control('kendoDropDownList')
-    .linkViewModel(vm)
-    .useElement(DOM.createElement('div'))
-    .useParentCtx(createOverrideContext({}))
-    .bindToKendo('kValue', 'value');
+      .linkViewModel(vm)
+      .useElement(DOM.createElement('div'))
+      .useParentCtx(createOverrideContext({}))
+      .bindToKendo('kValue', 'value');
 
     sut.recreate();
 
@@ -315,9 +315,9 @@ describe('WidgetBase', () => {
     widgetFake.value.calls.reset();
 
     sut.control('kendoDropDownList')
-    .useElement(DOM.createElement('div'))
-    .useParentCtx(createOverrideContext({}))
-    .linkViewModel(vm);
+      .useElement(DOM.createElement('div'))
+      .useParentCtx(createOverrideContext({}))
+      .linkViewModel(vm);
 
     sut.recreate();
 
@@ -327,12 +327,12 @@ describe('WidgetBase', () => {
 
   it('supports property binding to Kendo API functions', () => {
     sut.control('kendoMobileSwitch')
-    .linkViewModel({})
-    .useElement(DOM.createElement('div'))
-    .useParentCtx(createOverrideContext({}))
-    .bindToKendo('kValue', 'value')
-    .bindToKendo('kChecked', 'check')
-    .bindToKendo('kReadOnly', 'readonly');
+      .linkViewModel({})
+      .useElement(DOM.createElement('div'))
+      .useParentCtx(createOverrideContext({}))
+      .bindToKendo('kValue', 'value')
+      .bindToKendo('kChecked', 'check')
+      .bindToKendo('kReadOnly', 'readonly');
 
     let widgetFake = new WidgetFake();
     spyOn(sut, '_createWidget').and.returnValue(widgetFake);
@@ -351,10 +351,10 @@ describe('WidgetBase', () => {
 
   it('value binding sets value to null when source property is undefined', () => {
     sut.control('kendoMobileSwitch')
-    .linkViewModel({})
-    .useElement(DOM.createElement('div'))
-    .useParentCtx(createOverrideContext({}))
-    .bindToKendo('kValue', 'value');
+      .linkViewModel({})
+      .useElement(DOM.createElement('div'))
+      .useParentCtx(createOverrideContext({}))
+      .bindToKendo('kValue', 'value');
 
     let widgetFake = new WidgetFake();
     spyOn(sut, '_createWidget').and.returnValue(widgetFake);
@@ -372,7 +372,7 @@ describe('WidgetBase', () => {
     widget.check.and.returnValue('foo');
 
     sut.linkViewModel({})
-    .useValueBinding('kChecked', 'check');
+      .useValueBinding('kChecked', 'check');
 
     sut._handleValueChange(widget);
 
@@ -383,8 +383,8 @@ describe('WidgetBase', () => {
 
   it('does not throw error when binding value changes after detached', () => {
     sut.control('kendoMobileSwitch')
-    .linkViewModel({})
-    .bindToKendo('kValue', 'value');
+      .linkViewModel({})
+      .bindToKendo('kValue', 'value');
 
     expect(() => sut.handlePropertyChanged(null, 'kValue', null, new Date())).not.toThrow();
     expect(() => sut.handlePropertyChanged(null, 'kValue', undefined, new Date())).not.toThrow();

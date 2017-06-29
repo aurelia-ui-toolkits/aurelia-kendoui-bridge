@@ -8,16 +8,15 @@ import {constants} from '../common/constants';
 @generateBindables('kendoProgressBar')
 @inject(Element, WidgetBase)
 export class ProgressBar {
-
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoProgressBar')
-                        .useElement(this.element)
-                        .bindToKendo('kEnabled', 'enable')
-                        .linkViewModel(this);
+      .control('kendoProgressBar')
+      .useElement(this.element)
+      .bindToKendo('kEnabled', 'enable')
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

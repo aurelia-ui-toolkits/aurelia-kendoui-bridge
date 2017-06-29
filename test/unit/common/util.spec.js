@@ -60,7 +60,7 @@ describe('Util', () => {
   });
 
   it('getBindablePropertyName() applies prefix', () => {
-    expect(sut.getBindablePropertyName('test').toLowerCase()).toBe(`ktest`);
+    expect(sut.getBindablePropertyName('test').toLowerCase()).toBe('ktest');
   });
 
   it('getBindablePropertyName() lowercases first letter', () => {
@@ -154,7 +154,7 @@ describe('Util', () => {
     let elem = DOM.createElement('div');
     let event = sut.fireKendoEvent(elem, 'test');
 
-    expect(event.type).toBe(`k-on-test`);
+    expect(event.type).toBe('k-on-test');
   });
 
   it('finds templates by conventions', () => {

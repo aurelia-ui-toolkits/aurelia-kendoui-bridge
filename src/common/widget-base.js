@@ -17,7 +17,6 @@ const logger = LogManager.getLogger('aurelia-kendoui-bridge');
 @transient()
 @inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder, RepeatStrategyLocator, Observer)
 export class WidgetBase {
-
   /**
   * The element of the custom element, or the element on which a custom attribute
   * is placed. DOM events will be raised on this element

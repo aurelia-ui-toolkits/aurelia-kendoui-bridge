@@ -8,7 +8,6 @@ import {Util} from './util';
 */
 @inject(ControlProperties, Util)
 export class OptionsBuilder {
-
   constructor(controlProperties: ControlProperties, util: Util) {
     this.controlProperties = controlProperties;
     this.util = util;

@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoMediaPlayer')
 @inject(Element, WidgetBase)
 export class MediaPlayer {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-    .control('kendoMediaPlayer')
-    .useElement(this.element)
-    .linkViewModel(this);
+      .control('kendoMediaPlayer')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

@@ -8,7 +8,6 @@ import {constants} from '../common/constants';
 @generateBindables('kendoMultiSelect', ['template'])
 @inject(Element, WidgetBase, Container)
 export class Multiselect {
-
   @bindable kEnabled;
   @bindable kReadOnly;
   @bindable kNoValueBinding = false;
@@ -16,12 +15,12 @@ export class Multiselect {
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMultiSelect')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container)
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoMultiSelect')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container)
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {

@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoTabStrip')
 @inject(Element, WidgetBase)
 export class TabStrip {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoTabStrip')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoTabStrip')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

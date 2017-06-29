@@ -9,13 +9,12 @@ import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 @generateBindables('kendoSparkline')
 @inject(Element, WidgetBase)
 export class Sparkline {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoSparkline')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoSparkline')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

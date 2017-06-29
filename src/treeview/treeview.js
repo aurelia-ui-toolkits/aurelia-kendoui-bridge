@@ -8,14 +8,13 @@ import {constants} from '../common/constants';
 @generateBindables('kendoTreeView')
 @inject(Element, WidgetBase, Container)
 export class TreeView {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoTreeView')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoTreeView')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {

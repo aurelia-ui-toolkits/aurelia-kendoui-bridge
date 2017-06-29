@@ -8,14 +8,13 @@ import {constants} from '../common/constants';
 @generateBindables('kendoColorPalette')
 @inject(Element, WidgetBase)
 export class ColorPalette {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoColorPalette')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding();
+      .control('kendoColorPalette')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding();
   }
 
   subscribe(event, callback) {

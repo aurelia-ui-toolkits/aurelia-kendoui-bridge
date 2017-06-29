@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoValidator')
 @inject(Element, WidgetBase)
 export class Validator {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoValidator')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoValidator')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

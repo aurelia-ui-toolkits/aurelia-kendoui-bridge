@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoTooltip')
 @inject(Element, WidgetBase)
 export class Tooltip {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoTooltip')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoTooltip')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

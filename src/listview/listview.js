@@ -8,14 +8,13 @@ import {constants} from '../common/constants';
 @generateBindables('kendoListView')
 @inject(Element, WidgetBase, Container)
 export class ListView  {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoListView')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoListView')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {

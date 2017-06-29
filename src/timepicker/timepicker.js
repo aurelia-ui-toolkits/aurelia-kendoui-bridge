@@ -8,7 +8,6 @@ import {constants} from '../common/constants';
 @generateBindables('kendoTimePicker')
 @inject(Element, WidgetBase)
 export class TimePicker {
-
   @bindable kDisableDates;
   @bindable kEnabled;
   @bindable kReadOnly;
@@ -16,12 +15,12 @@ export class TimePicker {
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoTimePicker')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding()
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoTimePicker')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding()
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {

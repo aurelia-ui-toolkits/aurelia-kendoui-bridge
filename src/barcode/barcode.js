@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoBarcode')
 @inject(Element, WidgetBase)
 export class Barcode {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoBarcode')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoBarcode')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   bind(ctx, overrideCtx) {

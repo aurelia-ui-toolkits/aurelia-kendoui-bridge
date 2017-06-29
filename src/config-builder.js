@@ -5,8 +5,7 @@ import {PLATFORM} from 'aurelia-pal';
 * Configure the Aurelia-KendoUI-bridge
 */
 export class KendoConfigBuilder {
-
-	resources: string[] = [];
+ resources: string[] = [];
   registerRepeatStrategy = true;
   _propogatePreventDefault = false;
 
@@ -21,7 +20,7 @@ export class KendoConfigBuilder {
     if (!window.kendo) return this;
 
     this.kendoTemplateSupport()
-        .useValueConverters();
+      .useValueConverters();
 
     let kendoControls = kendo.widgets.map(w => w.name);
     for (let i = 0; i < kendoControls.length; i++) {

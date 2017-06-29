@@ -10,16 +10,15 @@ import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 @generateBindables('kendoGantt')
 @inject(Element, WidgetBase, Container, OptionsBuilder)
 export class Gantt  {
-
   constructor(element, widgetBase, container, optionsBuilder) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
-                        .control('kendoGantt')
-                        .useRootElement(this.element)
-                        .beforeInitialize(options => this._beforeInitialize(options))
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoGantt')
+      .useRootElement(this.element)
+      .beforeInitialize(options => this._beforeInitialize(options))
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {
