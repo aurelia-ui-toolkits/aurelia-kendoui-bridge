@@ -169,11 +169,6 @@ export class KendoConfigBuilder {
     return this;
   }
 
-  kendoMobileButtonGroup(): KendoConfigBuilder {
-    this.resources.push(PLATFORM.moduleName('./buttongroup/buttongroup'));
-    return this;
-  }
-
   kendoBarcode(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./barcode/barcode'));
     return this;
@@ -310,6 +305,11 @@ export class KendoConfigBuilder {
 
   kendoMaskedTextBox(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./maskedtextbox/maskedtextbox'));
+    return this;
+  }
+
+  kendoMobileButtonGroup(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./buttongroup/buttongroup'));
     return this;
   }
 
