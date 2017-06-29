@@ -26,7 +26,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'http://code.jquery.com/jquery-1.9.1.min.js',
-      'http://kendo.cdn.telerik.com/2016.2.714/js/kendo.all.min.js'
+      'sample/kendo-sdk/js/kendo.all.min.js'
     ],
 
 
