@@ -354,6 +354,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoMediaPlayer(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./mediaplayer/mediaplayer'));
+    return this;
+  }
+
   kendoMobileScrollView(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./scrollview/scrollview'));
     return this;
