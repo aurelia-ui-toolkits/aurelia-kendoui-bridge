@@ -1,3 +1,13 @@
+<a name="1.6.1"></a>
+## [1.6.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.6.0...1.6.1) (2017-06-29)
+
+
+### Bug Fixes
+
+* **listbox:** use select element as target ([5f6de5c](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/5f6de5c))
+
+
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.5.3...1.6.0) (2017-06-29)
 

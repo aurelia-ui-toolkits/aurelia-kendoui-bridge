@@ -37,6 +37,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
     };
 
     ListBox.prototype.recreate = function recreate() {
+      var selectNodes = getSelectNode(this.element);
+      this.widgetBase.useElement(selectNodes.length > 0 ? selectNodes[0] : this.element);
+
       var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
       this.widgetBase.useTemplates(this, 'kendoListBox', templates);
 
@@ -53,4 +56,9 @@ define(['exports', 'aurelia-dependency-injection', 'aurelia-templating', '../com
 
     return ListBox;
   }()) || _class) || _class) || _class);
+
+
+  function getSelectNode(element) {
+    return element.querySelectorAll('select');
+  }
 });

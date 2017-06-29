@@ -11,6 +11,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
     }
   }
 
+  function getSelectNode(element) {
+    return element.querySelectorAll('select');
+  }
   return {
     setters: [function (_aureliaDependencyInjection) {
       inject = _aureliaDependencyInjection.inject;
@@ -48,6 +51,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         ListBox.prototype.recreate = function recreate() {
+          var selectNodes = getSelectNode(this.element);
+          this.widgetBase.useElement(selectNodes.length > 0 ? selectNodes[0] : this.element);
+
           var templates = this.widgetBase.util.getChildrenVMs(this.element, constants.elementPrefix + 'template');
           this.widgetBase.useTemplates(this, 'kendoListBox', templates);
 

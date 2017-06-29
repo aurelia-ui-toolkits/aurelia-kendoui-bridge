@@ -32,6 +32,9 @@ export class ListBox  {
   }
 
   recreate() {
+    let selectNodes = getSelectNode(this.element);
+    this.widgetBase.useElement(selectNodes.length > 0 ? selectNodes[0] : this.element);
+
     let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
     this.widgetBase.useTemplates(this, 'kendoListBox', templates);
 
@@ -45,4 +48,8 @@ export class ListBox  {
   detached() {
     this.destroy();
   }
+}
+
+function getSelectNode(element) {
+  return element.querySelectorAll('select');
 }

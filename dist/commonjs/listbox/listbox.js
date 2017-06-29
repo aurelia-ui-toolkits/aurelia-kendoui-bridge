@@ -42,6 +42,9 @@ var ListBox = exports.ListBox = (_dec = (0, _aureliaTemplating.customElement)(_c
   };
 
   ListBox.prototype.recreate = function recreate() {
+    var selectNodes = getSelectNode(this.element);
+    this.widgetBase.useElement(selectNodes.length > 0 ? selectNodes[0] : this.element);
+
     var templates = this.widgetBase.util.getChildrenVMs(this.element, _constants.constants.elementPrefix + 'template');
     this.widgetBase.useTemplates(this, 'kendoListBox', templates);
 
@@ -58,3 +61,8 @@ var ListBox = exports.ListBox = (_dec = (0, _aureliaTemplating.customElement)(_c
 
   return ListBox;
 }()) || _class) || _class) || _class);
+
+
+function getSelectNode(element) {
+  return element.querySelectorAll('select');
+}

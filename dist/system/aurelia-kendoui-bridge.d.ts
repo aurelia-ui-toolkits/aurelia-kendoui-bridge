@@ -180,7 +180,7 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class ButtonGroup {
+  export class Button {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
@@ -191,7 +191,7 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class Button {
+  export class ButtonGroup {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
