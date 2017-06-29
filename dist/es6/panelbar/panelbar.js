@@ -8,13 +8,12 @@ import {generateBindables} from '../common/decorators';
 @generateBindables('kendoPanelBar')
 @inject(Element, WidgetBase)
 export class PanelBar {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoPanelBar')
-                        .useRootElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoPanelBar')
+      .useRootElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

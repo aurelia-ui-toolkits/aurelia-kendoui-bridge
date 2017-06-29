@@ -114,11 +114,6 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
       return this;
     };
 
-    KendoConfigBuilder.prototype.kendoMobileButtonGroup = function kendoMobileButtonGroup() {
-      this.resources.push(_aureliaPal.PLATFORM.moduleName('./buttongroup/buttongroup'));
-      return this;
-    };
-
     KendoConfigBuilder.prototype.kendoBarcode = function kendoBarcode() {
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./barcode/barcode'));
       return this;
@@ -160,6 +155,10 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
     KendoConfigBuilder.prototype.kendoDatePicker = function kendoDatePicker() {
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./datepicker/datepicker'));
       return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoDateInput = function kendoDateInput() {
+      this.resources.push(_aureliaPal.PLATFORM.moduleName('./dateinput/dateinput'));
     };
 
     KendoConfigBuilder.prototype.kendoDateTimePicker = function kendoDateTimePicker() {
@@ -232,6 +231,11 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
       return this;
     };
 
+    KendoConfigBuilder.prototype.kendoListBox = function kendoListBox() {
+      this.resources.push(_aureliaPal.PLATFORM.moduleName('./listbox/listbox'));
+      return this;
+    };
+
     KendoConfigBuilder.prototype.kendoNotification = function kendoNotification() {
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./notification/notification'));
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./notification/notification-template'));
@@ -250,6 +254,11 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
 
     KendoConfigBuilder.prototype.kendoMaskedTextBox = function kendoMaskedTextBox() {
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./maskedtextbox/maskedtextbox'));
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoMobileButtonGroup = function kendoMobileButtonGroup() {
+      this.resources.push(_aureliaPal.PLATFORM.moduleName('./buttongroup/buttongroup'));
       return this;
     };
 
@@ -296,6 +305,11 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
 
     KendoConfigBuilder.prototype.kendoResponsivePanel = function kendoResponsivePanel() {
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./responsivepanel/responsivepanel'));
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoMediaPlayer = function kendoMediaPlayer() {
+      this.resources.push(_aureliaPal.PLATFORM.moduleName('./mediaplayer/mediaplayer'));
       return this;
     };
 

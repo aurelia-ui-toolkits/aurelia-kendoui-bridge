@@ -8,7 +8,6 @@ import {constants} from '../common/constants';
 @generateBindables('kendoMaskedTextBox')
 @inject(Element, WidgetBase)
 export class MaskedTextBox {
-
   @bindable kDisableDates;
   @bindable kEnabled;
   @bindable kReadOnly;
@@ -16,12 +15,12 @@ export class MaskedTextBox {
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMaskedTextBox')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding()
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoMaskedTextBox')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding()
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {

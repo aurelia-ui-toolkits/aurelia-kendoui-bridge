@@ -8,14 +8,13 @@ import {constants} from '../common/constants';
 @generateBindables('kendoDraggable')
 @inject(Element, WidgetBase)
 export class Draggable {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDraggable')
-                        .useElement(this.element)
-                        .beforeInitialize(options => this.beforeInitialize(options))
-                        .linkViewModel(this);
+      .control('kendoDraggable')
+      .useElement(this.element)
+      .beforeInitialize(options => this.beforeInitialize(options))
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

@@ -5,8 +5,7 @@ import {PLATFORM} from 'aurelia-pal';
 * Configure the Aurelia-KendoUI-bridge
 */
 export class KendoConfigBuilder {
-
-	resources: string[] = [];
+ resources: string[] = [];
   registerRepeatStrategy = true;
   _propogatePreventDefault = false;
 
@@ -21,7 +20,7 @@ export class KendoConfigBuilder {
     if (!window.kendo) return this;
 
     this.kendoTemplateSupport()
-        .useValueConverters();
+      .useValueConverters();
 
     let kendoControls = kendo.widgets.map(w => w.name);
     for (let i = 0; i < kendoControls.length; i++) {
@@ -169,11 +168,6 @@ export class KendoConfigBuilder {
     return this;
   }
 
-  kendoMobileButtonGroup(): KendoConfigBuilder {
-    this.resources.push(PLATFORM.moduleName('./buttongroup/buttongroup'));
-    return this;
-  }
-
   kendoBarcode(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./barcode/barcode'));
     return this;
@@ -215,6 +209,10 @@ export class KendoConfigBuilder {
   kendoDatePicker(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./datepicker/datepicker'));
     return this;
+  }
+
+  kendoDateInput(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./dateinput/dateinput'));
   }
 
   kendoDateTimePicker(): KendoConfigBuilder {
@@ -287,6 +285,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoListBox(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./listbox/listbox'));
+    return this;
+  }
+
   kendoNotification(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./notification/notification'));
     this.resources.push(PLATFORM.moduleName('./notification/notification-template'));
@@ -305,6 +308,11 @@ export class KendoConfigBuilder {
 
   kendoMaskedTextBox(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./maskedtextbox/maskedtextbox'));
+    return this;
+  }
+
+  kendoMobileButtonGroup(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./buttongroup/buttongroup'));
     return this;
   }
 
@@ -351,6 +359,11 @@ export class KendoConfigBuilder {
 
   kendoResponsivePanel(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./responsivepanel/responsivepanel'));
+    return this;
+  }
+
+  kendoMediaPlayer(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./mediaplayer/mediaplayer'));
     return this;
   }
 

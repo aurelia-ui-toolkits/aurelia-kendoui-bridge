@@ -42,7 +42,6 @@ declare module 'aurelia-kendoui-bridge' {
   export class KendoConfigBuilder {
     resources: string[];
     registerRepeatStrategy: any;
-    _propogatePreventDefault: any;
     constructor();
     
     /**
@@ -96,7 +95,6 @@ declare module 'aurelia-kendoui-bridge' {
     withoutRepeatStrategy(): any;
     kendoAutoComplete(): KendoConfigBuilder;
     kendoButton(): KendoConfigBuilder;
-    kendoMobileButtonGroup(): KendoConfigBuilder;
     kendoBarcode(): KendoConfigBuilder;
     kendoCalendar(): KendoConfigBuilder;
     kendoChart(): KendoConfigBuilder;
@@ -105,6 +103,7 @@ declare module 'aurelia-kendoui-bridge' {
     kendoColorPicker(): KendoConfigBuilder;
     kendoColorPalette(): KendoConfigBuilder;
     kendoDatePicker(): KendoConfigBuilder;
+    kendoDateInput(): KendoConfigBuilder;
     kendoDateTimePicker(): KendoConfigBuilder;
     kendoDiagram(): KendoConfigBuilder;
     kendoDialog(): KendoConfigBuilder;
@@ -118,10 +117,12 @@ declare module 'aurelia-kendoui-bridge' {
     kendoGrid(): KendoConfigBuilder;
     kendoLinearGauge(): KendoConfigBuilder;
     kendoListView(): KendoConfigBuilder;
+    kendoListBox(): KendoConfigBuilder;
     kendoNotification(): KendoConfigBuilder;
     kendoMap(): KendoConfigBuilder;
     kendoMenu(): KendoConfigBuilder;
     kendoMaskedTextBox(): KendoConfigBuilder;
+    kendoMobileButtonGroup(): KendoConfigBuilder;
     kendoMultiSelect(): KendoConfigBuilder;
     kendoNumericTextBox(): KendoConfigBuilder;
     kendoPanelBar(): KendoConfigBuilder;
@@ -131,6 +132,7 @@ declare module 'aurelia-kendoui-bridge' {
     kendoQRCode(): KendoConfigBuilder;
     kendoRadialGauge(): KendoConfigBuilder;
     kendoResponsivePanel(): KendoConfigBuilder;
+    kendoMediaPlayer(): KendoConfigBuilder;
     kendoMobileScrollView(): KendoConfigBuilder;
     kendoScheduler(): KendoConfigBuilder;
     kendoSlider(): KendoConfigBuilder;
@@ -178,7 +180,7 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class Button {
+  export class ButtonGroup {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
@@ -189,7 +191,7 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class ButtonGroup {
+  export class Button {
     kEnabled: any;
     constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
@@ -434,19 +436,6 @@ declare module 'aurelia-kendoui-bridge' {
     addHyphenAndLower(char: string): string;
     
     /**
-      * hyphenates a string
-      * kTest -> k-test
-      * @param name the string to hyphenate
-      */
-    _hyphenate(name: string): string;
-    
-    /**
-      * unhyphenate's a string
-      * k-test -> kTest
-      */
-    _unhyphenate(name: string): string;
-    
-    /**
       * prepends prefix and unhyphenates the resulting string
       * test -> kTest
       */
@@ -582,12 +571,6 @@ declare module 'aurelia-kendoui-bridge' {
       * then initialized the Kendo control as "widget"
       */
     recreate(): any;
-    _createWidget(element?: any, options?: any, controlName?: any): any;
-    
-    /**
-      * combines all options objects and properties into a single options object
-      */
-    _getOptions(element?: any): any;
     
     /**
       * convert attributes into a list of events a user wants to subscribe to.
@@ -595,7 +578,6 @@ declare module 'aurelia-kendoui-bridge' {
       * calls the fireKendoEvent function to raise a DOM event
       */
     getEventOptions(element?: any): any;
-    _handleValueChange(widget?: any): any;
     getValue(widget?: any): any;
     handlePropertyChanged(widget?: any, property?: any, newValue?: any, oldValue?: any): any;
     useTemplates(target?: any, controlName?: any, templates?: any): any;
@@ -613,6 +595,18 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class DateInput {
+    kEnabled: any;
+    kReadOnly: any;
+    constructor(element?: any, widgetBase?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     destroy(): any;
     detached(): any;
   }
@@ -738,7 +732,6 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    _beforeInitialize(options?: any): any;
     destroy(): any;
     detached(): any;
   }
@@ -785,7 +778,15 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    _beforeInitialize(options?: any): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class ListBox {
+    constructor(element?: any, widgetBase?: any, container?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
     destroy(): any;
     detached(): any;
   }
@@ -818,6 +819,15 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class MediaPlayer {
+    constructor(element?: any, widgetBase?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
     destroy(): any;
     detached(): any;
   }
@@ -1056,7 +1066,6 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    _beforeInitialize(options?: any): any;
     destroy(): any;
     detached(): any;
   }
@@ -1081,7 +1090,6 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
-    _beforeInitialize(options?: any): any;
     destroy(): any;
     detached(): any;
   }

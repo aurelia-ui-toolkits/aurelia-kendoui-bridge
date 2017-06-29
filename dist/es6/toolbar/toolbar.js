@@ -9,16 +9,15 @@ import {OptionsBuilder} from '../common/options-builder';
 @generateBindables('kendoToolBar')
 @inject(Element, WidgetBase, OptionsBuilder, Container)
 export class Toolbar {
-
   constructor(element, widgetBase, optionsBuilder, container) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
-                        .control('kendoToolBar')
-                        .useElement(this.element)
-                        .beforeInitialize(options => this._beforeInitialize(options))
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoToolBar')
+      .useElement(this.element)
+      .beforeInitialize(options => this._beforeInitialize(options))
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {

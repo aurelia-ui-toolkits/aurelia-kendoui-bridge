@@ -56,31 +56,29 @@ System.register(['./control-properties', './util', 'aurelia-dependency-injection
             }
 
             if (_this.util.hasValue(c.template)) {
-              (function () {
-                var template = c.template;
+              var template = c.template;
 
-                if (_this.config.templateCallback) {
-                  template = _this.config.templateCallback(target, c, c.template);
+              if (_this.config.templateCallback) {
+                template = _this.config.templateCallback(target, c, c.template);
+              }
+
+              var parser = new ParserImplementation(new Lexer(), c.for);
+
+              var expression = parser.parseExpression();
+
+              var iterator = expression;
+              while (iterator) {
+                if (!iterator.object) {
+                  iterator.name = _this.util.getBindablePropertyName(iterator.name);
                 }
+                iterator = iterator.object;
+              }
 
-                var parser = new ParserImplementation(new Lexer(), c.for);
+              var scope = createOverrideContext(target, {});
 
-                var expression = parser.parseExpression();
-
-                var iterator = expression;
-                while (iterator) {
-                  if (!iterator.object) {
-                    iterator.name = _this.util.getBindablePropertyName(iterator.name);
-                  }
-                  iterator = iterator.object;
-                }
-
-                var scope = createOverrideContext(target, {});
-
-                expression.assign(scope, c.kendoTemplate ? template : function () {
-                  return template;
-                });
-              })();
+              expression.assign(scope, c.kendoTemplate ? template : function () {
+                return template;
+              });
             }
           });
         };

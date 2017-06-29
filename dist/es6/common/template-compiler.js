@@ -9,7 +9,6 @@ import {Util} from './util';
 */
 @inject(TemplatingEngine, Util)
 export class TemplateCompiler {
-
   /**
   * We don't need to initialize the TemplateCompiler every time a Kendo controls
   * is initialized

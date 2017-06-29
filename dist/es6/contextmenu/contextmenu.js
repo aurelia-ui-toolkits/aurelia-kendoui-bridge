@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoContextMenu')
 @inject(Element, WidgetBase)
 export class ContextMenu {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoContextMenu')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoContextMenu')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

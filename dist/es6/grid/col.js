@@ -10,7 +10,6 @@ import {Util} from '../common/util';
 @generateBindables('GridColumn')
 @inject(TemplateGatherer, OptionsBuilder, Util, Element)
 export class Col {
-
   constructor(templateGatherer, optionsBuilder, util, element) {
     this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;

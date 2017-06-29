@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoPivotConfigurator')
 @inject(Element, WidgetBase)
 export class PivotConfigurator {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoPivotConfigurator')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoPivotConfigurator')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

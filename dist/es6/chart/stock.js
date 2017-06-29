@@ -9,13 +9,12 @@ import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 @generateBindables('kendoStockChart')
 @inject(Element, WidgetBase)
 export class Stock {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoStockChart')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoStockChart')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

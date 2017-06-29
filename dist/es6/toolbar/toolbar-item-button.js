@@ -8,7 +8,6 @@ import {OptionsBuilder} from '../common/options-builder';
 @generateBindables('ToolBarItemButton')
 @inject(OptionsBuilder)
 export class ToolbarItemButton {
-
   constructor(optionsBuilder) {
     this.optionsBuilder = optionsBuilder;
   }

@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoQRCode')
 @inject(Element, WidgetBase)
 export class QRCode {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoQRCode')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoQRCode')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

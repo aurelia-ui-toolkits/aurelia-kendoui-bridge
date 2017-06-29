@@ -3,7 +3,6 @@ import {inject} from 'aurelia-dependency-injection';
 
 @inject(EventManager)
 export class NotifyBindingBehavior {
-
   constructor(eventManager) {
     this.eventManager = eventManager;
   }

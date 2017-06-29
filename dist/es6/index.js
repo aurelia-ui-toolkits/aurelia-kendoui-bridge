@@ -9,7 +9,7 @@ export function configure(aurelia, configCallback) {
     configCallback(builder);
   }
 
-    // Pull the data off the builder
+  // Pull the data off the builder
   let resources = builder.resources;
 
   if (resources.length > 0) {

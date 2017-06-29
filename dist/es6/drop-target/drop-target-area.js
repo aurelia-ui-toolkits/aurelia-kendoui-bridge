@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoDropTargetArea')
 @inject(Element, WidgetBase)
 export class DropTargetArea {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDropTargetArea')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoDropTargetArea')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

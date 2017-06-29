@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoSpreadsheet')
 @inject(Element, WidgetBase)
 export class Spreadsheet {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoSpreadsheet')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoSpreadsheet')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

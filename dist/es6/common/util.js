@@ -5,7 +5,6 @@ import {constants} from './constants';
 * Collection of useful functions used in multiple parts of the plugin
 */
 export class Util {
-
   /**
   * prepends hyphen and lowercases the input char
   * @param char the char to add an hyphen in front for

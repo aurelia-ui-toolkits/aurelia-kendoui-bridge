@@ -8,19 +8,18 @@ import {constants} from '../common/constants';
 @generateBindables('kendoNumericTextBox')
 @inject(Element, WidgetBase)
 export class NumericTextBox {
-
   @bindable kEnabled;
   @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoNumericTextBox')
-                        .linkViewModel(this)
-                        .useElement(this.element)
-                        .useValueBinding()
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoNumericTextBox')
+      .linkViewModel(this)
+      .useElement(this.element)
+      .useValueBinding()
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {

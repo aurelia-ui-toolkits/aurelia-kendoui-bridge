@@ -10,7 +10,6 @@ import {Util} from '../common/util';
 @generateBindables('ToolBarItem')
 @inject(TemplateGatherer, OptionsBuilder, Util, Element)
 export class ToolbarItem {
-
   constructor(templateGatherer, optionsBuilder, util, element) {
     this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;

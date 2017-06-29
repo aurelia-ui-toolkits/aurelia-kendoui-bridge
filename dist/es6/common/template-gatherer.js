@@ -6,7 +6,6 @@ import {Lexer, ParserImplementation, createOverrideContext} from 'aurelia-bindin
 
 @inject(ControlProperties, Util, KendoConfigBuilder)
 export class TemplateGatherer {
-
   controlProperties: ControlProperties;
 
   constructor(controlProperties: ControlProperties, util: Util, config: KendoConfigBuilder) {

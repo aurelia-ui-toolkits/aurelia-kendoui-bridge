@@ -1,3 +1,15 @@
+<a name="1.6.0"></a>
+# [1.6.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.5.3...1.6.0) (2017-06-29)
+
+
+### Features
+
+* **dateinput:** add dateinput wrapper ([10d3a88](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/10d3a88))
+* **listbox:** add listbox wrapper ([09420d0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/09420d0))
+* **mediaplayer:** add Kendo mediaplayer wrapper ([43b4da4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/43b4da4))
+
+
+
 <a name="1.5.3"></a>
 ## [1.5.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.5.2...v1.5.3) (2017-06-02)
 

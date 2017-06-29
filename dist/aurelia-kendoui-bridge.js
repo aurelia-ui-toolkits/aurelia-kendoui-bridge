@@ -11,8 +11,7 @@ import {RepeatStrategyLocator,ArrayRepeatStrategy} from 'aurelia-templating-reso
 * Configure the Aurelia-KendoUI-bridge
 */
 export class KendoConfigBuilder {
-
-	resources: string[] = [];
+ resources: string[] = [];
   registerRepeatStrategy = true;
   _propogatePreventDefault = false;
 
@@ -27,7 +26,7 @@ export class KendoConfigBuilder {
     if (!window.kendo) return this;
 
     this.kendoTemplateSupport()
-        .useValueConverters();
+      .useValueConverters();
 
     let kendoControls = kendo.widgets.map(w => w.name);
     for (let i = 0; i < kendoControls.length; i++) {
@@ -175,11 +174,6 @@ export class KendoConfigBuilder {
     return this;
   }
 
-  kendoMobileButtonGroup(): KendoConfigBuilder {
-    this.resources.push(PLATFORM.moduleName('./buttongroup/buttongroup'));
-    return this;
-  }
-
   kendoBarcode(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./barcode/barcode'));
     return this;
@@ -221,6 +215,10 @@ export class KendoConfigBuilder {
   kendoDatePicker(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./datepicker/datepicker'));
     return this;
+  }
+
+  kendoDateInput(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./dateinput/dateinput'));
   }
 
   kendoDateTimePicker(): KendoConfigBuilder {
@@ -293,6 +291,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoListBox(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./listbox/listbox'));
+    return this;
+  }
+
   kendoNotification(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./notification/notification'));
     this.resources.push(PLATFORM.moduleName('./notification/notification-template'));
@@ -311,6 +314,11 @@ export class KendoConfigBuilder {
 
   kendoMaskedTextBox(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./maskedtextbox/maskedtextbox'));
+    return this;
+  }
+
+  kendoMobileButtonGroup(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./buttongroup/buttongroup'));
     return this;
   }
 
@@ -357,6 +365,11 @@ export class KendoConfigBuilder {
 
   kendoResponsivePanel(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./responsivepanel/responsivepanel'));
+    return this;
+  }
+
+  kendoMediaPlayer(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./mediaplayer/mediaplayer'));
     return this;
   }
 
@@ -488,7 +501,7 @@ export function configure(aurelia, configCallback) {
     configCallback(builder);
   }
 
-    // Pull the data off the builder
+  // Pull the data off the builder
   let resources = builder.resources;
 
   if (resources.length > 0) {
@@ -506,22 +519,21 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.5.3';
+export let version = '1.6.0';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
 export class AutoComplete {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoAutoComplete')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container)
-                        .useValueBinding()
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoAutoComplete')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container)
+      .useValueBinding()
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   bind(ctx, overrideCtx) {
@@ -571,13 +583,12 @@ export class AutoComplete {
 @generateBindables('kendoBarcode')
 @inject(Element, WidgetBase)
 export class Barcode {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoBarcode')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoBarcode')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   bind(ctx, overrideCtx) {
@@ -607,20 +618,19 @@ export class Barcode {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}button`)
-@generateBindables('kendoButton')
+@customAttribute(`${constants.attributePrefix}buttongroup`)
+@generateBindables('kendoMobileButtonGroup')
 @inject(Element, WidgetBase)
-export class Button {
-
+export class ButtonGroup {
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoButton')
-                        .useElement(this.element)
-                        .bindToKendo('kEnabled', 'enable')
-                        .linkViewModel(this);
+      .control('kendoMobileButtonGroup')
+      .useElement(this.element)
+      .bindToKendo('kEnabled', 'enable')
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -654,20 +664,19 @@ export class Button {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}buttongroup`)
-@generateBindables('kendoMobileButtonGroup')
+@customAttribute(`${constants.attributePrefix}button`)
+@generateBindables('kendoButton')
 @inject(Element, WidgetBase)
-export class ButtonGroup {
-
+export class Button {
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMobileButtonGroup')
-                        .useElement(this.element)
-                        .bindToKendo('kEnabled', 'enable')
-                        .linkViewModel(this);
+      .control('kendoButton')
+      .useElement(this.element)
+      .bindToKendo('kEnabled', 'enable')
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -705,14 +714,13 @@ export class ButtonGroup {
 @generateBindables('kendoCalendar')
 @inject(Element, WidgetBase)
 export class Calendar {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoCalendar')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding();
+      .control('kendoCalendar')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding();
   }
 
   subscribe(event, callback) {
@@ -752,13 +760,12 @@ export class Calendar {
 @generateBindables('kendoChart')
 @inject(Element, WidgetBase)
 export class Chart {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoChart')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoChart')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -794,13 +801,12 @@ export class Chart {
 @generateBindables('kendoSparkline')
 @inject(Element, WidgetBase)
 export class Sparkline {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoSparkline')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoSparkline')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -836,13 +842,12 @@ export class Sparkline {
 @generateBindables('kendoStockChart')
 @inject(Element, WidgetBase)
 export class Stock {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoStockChart')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoStockChart')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -878,13 +883,12 @@ export class Stock {
 @generateBindables('kendoTreeMap')
 @inject(Element, WidgetBase)
 export class TreeMap {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoTreeMap')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoTreeMap')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -918,14 +922,13 @@ export class TreeMap {
 @generateBindables('kendoColorPalette')
 @inject(Element, WidgetBase)
 export class ColorPalette {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoColorPalette')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding();
+      .control('kendoColorPalette')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding();
   }
 
   subscribe(event, callback) {
@@ -963,17 +966,16 @@ export class ColorPalette {
 @generateBindables('kendoColorPicker')
 @inject(Element, WidgetBase)
 export class ColorPicker {
-
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoColorPicker')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .bindToKendo('kEnabled', 'enable')
-                        .useValueBinding();
+      .control('kendoColorPicker')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .bindToKendo('kEnabled', 'enable')
+      .useValueBinding();
   }
 
   subscribe(event, callback) {
@@ -1011,20 +1013,19 @@ export class ColorPicker {
 @generateBindables('kendoComboBox')
 @inject(Element, WidgetBase, Container)
 export class ComboBox {
-
   @bindable kEnabled;
   @bindable kReadOnly;
 
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoComboBox')
-                        .linkViewModel(this)
-                        .useRootElement(this.element)
-                        .useValueBinding()
-                        .useContainer(container)
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoComboBox')
+      .linkViewModel(this)
+      .useRootElement(this.element)
+      .useValueBinding()
+      .useContainer(container)
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {
@@ -1068,7 +1069,7 @@ function getSelectNode(element) {
   return element.querySelectorAll('select');
 }
 
-export let bindables = {"kendoAlert":["messages","name"],"kendoAutoComplete":["animation","autoWidth","clearButton","dataSource","dataTextField","delay","enable","enforceMinLength","filter","fixedGroupTemplate","footerTemplate","groupTemplate","headerTemplate","height","highlightFirst","ignoreCase","minLength","name","noDataTemplate","placeholder","popup","separator","suggest","template","value","valuePrimitive","virtual"],"kendoBarcode":["background","border","checksum","color","height","name","padding","renderAs","text","type","value","width"],"kendoButton":["enable","icon","imageUrl","name","spriteCssClass"],"kendoCalendar":["culture","dates","depth","disableDates","footer","format","max","min","month","name","start","value","weekNumber"],"kendoChart":["autoBind","axisDefaults","categoryAxis","chartArea","dataSource","legend","name","panes","pannable","pdf","plotArea","renderAs","series","seriesColors","seriesDefaults","theme","title","tooltip","transitions","valueAxis","xAxis","yAxis","zoomable"],"kendoColorPalette":["columns","name","palette","tileSize","value"],"kendoColorPicker":["buttons","clearButton","columns","messages","name","opacity","palette","preview","tileSize","toolIcon","value"],"kendoComboBox":["animation","autoBind","autoWidth","cascadeFrom","cascadeFromField","clearButton","dataSource","dataTextField","dataValueField","delay","enable","enforceMinLength","filter","fixedGroupTemplate","footerTemplate","groupTemplate","headerTemplate","height","highlightFirst","ignoreCase","index","minLength","name","noDataTemplate","placeholder","popup","suggest","syncValueAndText","template","text","value","valuePrimitive","virtual"],"kendoConfirm":["messages","name"],"kendoContextMenu":["alignToAnchor","animation","appendTo","closeOnClick","dataSource","direction","filter","hoverDelay","name","orientation","popupCollision","showOn","target"],"kendoDatePicker":["ARIATemplate","animation","culture","dates","depth","disableDates","footer","format","max","min","month","name","parseFormats","start","value","weekNumber"],"kendoDateTimePicker":["ARIATemplate","animation","culture","dates","depth","disableDates","footer","format","interval","max","min","month","name","parseFormats","start","timeFormat","value","weekNumber"],"kendoDiagram":["autoBind","connectionDefaults","connections","connectionsDataSource","dataSource","editable","layout","name","pannable","pdf","selectable","shapeDefaults","shapes","template","zoom","zoomMax","zoomMin","zoomRate"],"kendoDialog":["actions","animation","buttonLayout","closable","content","height","maxHeight","maxWidth","messages","minHeight","minWidth","modal","name","title","visible","width"],"kendoDraggable":["autoScroll","axis","container","cursorOffset","distance","filter","group","hint","holdToDrag","ignore"],"kendoDropDownList":["animation","autoBind","autoWidth","cascadeFrom","cascadeFromField","dataSource","dataTextField","dataValueField","delay","enable","enforceMinLength","filter","fixedGroupTemplate","footerTemplate","groupTemplate","headerTemplate","height","ignoreCase","index","minLength","name","noDataTemplate","optionLabel","optionLabelTemplate","popup","template","text","value","valuePrimitive","valueTemplate","virtual"],"kendoDropTarget":["group"],"kendoDropTargetArea":["filter","group"],"kendoEditor":["deserialization","domain","encoded","fileBrowser","imageBrowser","immutables","messages","name","pasteCleanup","pdf","resizable","serialization","stylesheets","tools"],"kendoFilterMenu":["dataSource","extra","field","messages","name","operators"],"kendoFlatColorPicker":["autoupdate","buttons","messages","name","opacity","preview","value"],"kendoGantt":["assignments","autoBind","columnResizeHandleWidth","columns","currentTimeMarker","dataSource","date","dependencies","editable","height","hourSpan","listWidth","messages","name","navigatable","pdf","range","resizable","resources","rowHeight","selectable","showWorkDays","showWorkHours","snap","taskTemplate","toolbar","tooltip","views","workDayEnd","workDayStart","workWeekEnd","workWeekStart"],"kendoGrid":["allowCopy","altRowTemplate","autoBind","columnMenu","columnResizeHandleWidth","columns","dataSource","detailTemplate","editable","excel","filterable","groupable","height","messages","mobile","name","navigatable","noRecords","pageable","pdf","reorderable","resizable","rowTemplate","scrollable","selectable","sortable","toolbar"],"kendoLinearGauge":["gaugeArea","name","pointer","renderAs","scale","transitions"],"kendoListView":["altTemplate","autoBind","dataSource","editTemplate","name","navigatable","selectable","template"],"kendoMap":["center","controls","layerDefaults","layers","markerDefaults","markers","maxZoom","minSize","minZoom","name","pannable","wraparound","zoom","zoomable"],"kendoMaskedTextBox":["clearPromptChar","culture","mask","name","promptChar","rules","unmaskOnPost","value"],"kendoMediaPlayer":["autoPlay","autoRepeat","forwardSeek","fullScreen","media","messages","mute","name","navigatable","volume"],"kendoMenu":["animation","closeOnClick","dataSource","direction","hoverDelay","name","openOnClick","orientation","popupCollision"],"kendoMobileActionSheet":["cancel","name","popup","type"],"kendoMobileBackButton":["name"],"kendoMobileButton":["badge","clickOn","enable","icon","name"],"kendoMobileButtonGroup":["enable","index","name","selectOn"],"kendoMobileCollapsible":["animation","collapsed","expandIcon","iconPosition","inset","name"],"kendoMobileDetailButton":["name"],"kendoMobileDrawer":["container","name","position","swipeToOpen","swipeToOpenViews","title","views"],"kendoMobileLayout":["id","name","platform"],"kendoMobileListView":["appendOnRefresh","autoBind","dataSource","endlessScroll","filterable","fixedHeaders","headerTemplate","loadMore","messages","name","pullParameters","pullToRefresh","style","template","type","virtualViewSize"],"kendoMobileLoader":["name"],"kendoMobileModalView":["height","modal","name","width"],"kendoMobileNavBar":["name"],"kendoMobilePane":["collapsible","initial","layout","loading","name","portraitWidth","transition"],"kendoMobilePopOver":["name","pane","popup"],"kendoMobileScrollView":["autoBind","bounceVelocityThreshold","contentHeight","dataSource","duration","emptyTemplate","enablePager","itemsPerPage","name","page","pageSize","template","velocityThreshold"],"kendoMobileScroller":["elastic","messages","name","pullOffset","pullToRefresh","useNative","visibleScrollHints","zoom"],"kendoMobileSplitView":["name","style"],"kendoMobileSwitch":["checked","enable","name","offLabel","onLabel"],"kendoMobileTabStrip":["name","selectedIndex"],"kendoMobileView":["model","name","reload","scroller","stretch","title","useNativeScrolling","zoom"],"kendoMultiSelect":["animation","autoBind","autoClose","autoWidth","clearButton","dataSource","dataTextField","dataValueField","delay","enable","enforceMinLength","filter","fixedGroupTemplate","footerTemplate","groupTemplate","headerTemplate","height","highlightFirst","ignoreCase","itemTemplate","maxSelectedItems","minLength","name","noDataTemplate","placeholder","popup","tagMode","tagTemplate","value","valuePrimitive","virtual"],"kendoNotification":["allowHideAfter","animation","appendTo","autoHideAfter","button","height","hideOnClick","name","position","stacking","templates","width"],"kendoNumericTextBox":["culture","decimals","downArrowText","format","max","min","name","placeholder","restrictDecimals","round","spinners","step","upArrowText","value"],"kendoPager":["autoBind","buttonCount","dataSource","info","input","linkTemplate","messages","name","numeric","pageSizes","previousNext","refresh","selectTemplate"],"kendoPanelBar":["animation","autoBind","contentUrls","dataImageUrlField","dataSource","dataSpriteCssClassField","dataTextField","dataUrlField","expandMode","loadOnDemand","messages","name","template"],"kendoPivotConfigurator":["dataSource","filterable","height","messages","name","sortable"],"kendoPivotGrid":["autoBind","columnHeaderTemplate","columnWidth","dataCellTemplate","dataSource","excel","filterable","height","kpiStatusTemplate","kpiTrendTemplate","messages","name","pdf","reorderable","rowHeaderTemplate","sortable"],"kendoPopup":["adjustSize","anchor","animation","appendTo","collision","name","origin","position"],"kendoProgressBar":["animation","chunkCount","enable","max","min","name","orientation","reverse","showStatus","type","value"],"kendoPrompt":["messages","name"],"kendoQRCode":["background","border","color","encoding","errorCorrection","name","padding","renderAs","size","value"],"kendoRadialGauge":["gaugeArea","name","pointer","renderAs","scale","transitions"],"kendoRangeSlider":["largeStep","leftDragHandleTitle","max","min","name","orientation","rightDragHandleTitle","selectionEnd","selectionStart","smallStep","tickPlacement","tooltip"],"kendoResponsivePanel":["autoClose","breakpoint","name","orientation","toggleButton"],"kendoScheduler":["allDayEventTemplate","allDaySlot","autoBind","currentTimeMarker","dataSource","date","dateHeaderTemplate","editable","endTime","eventTemplate","footer","group","groupHeaderTemplate","height","majorTick","majorTimeHeaderTemplate","max","messages","min","minorTickCount","minorTimeHeaderTemplate","mobile","name","pdf","resources","selectable","showWorkHours","snap","startTime","timezone","toolbar","views","width","workDayEnd","workDayStart","workWeekEnd","workWeekStart"],"kendoSlider":["decreaseButtonTitle","dragHandleTitle","increaseButtonTitle","largeStep","max","min","name","orientation","showButtons","smallStep","tickPlacement","tooltip","value"],"kendoSortable":["autoScroll","axis","connectWith","container","cursor","cursorOffset","disabled","filter","handler","hint","holdToDrag","ignore","name","placeholder"],"kendoSparkline":["autoBind","axisDefaults","categoryAxis","chartArea","data","dataSource","name","plotArea","pointWidth","renderAs","series","seriesColors","seriesDefaults","theme","tooltip","transitions","type","valueAxis"],"kendoSplitter":["name","orientation","panes"],"kendoSpreadsheet":["activeSheet","columnWidth","columns","defaultCellStyle","excel","headerHeight","headerWidth","name","pdf","rowHeight","rows","sheets","sheetsbar","toolbar"],"kendoStockChart":["autoBind","axisDefaults","categoryAxis","chartArea","dataSource","dateField","legend","name","navigator","panes","pdf","plotArea","renderAs","series","seriesColors","seriesDefaults","theme","title","tooltip","transitions","valueAxis"],"kendoTabStrip":["animation","collapsible","contentUrls","dataContentField","dataContentUrlField","dataImageUrlField","dataSource","dataSpriteCssClass","dataTextField","dataUrlField","name","navigatable","scrollable","tabPosition","value"],"kendoTimePicker":["animation","culture","dates","format","interval","max","min","name","parseFormats","value"],"kendoToolBar":["items","name","resizable"],"kendoTooltip":["animation","autoHide","callout","content","filter","height","iframe","name","position","showAfter","showOn","width"],"kendoTouch":["doubleTapTimeout","enableSwipe","filter","maxDuration","maxYDelta","minHold","minXDelta","multiTouch","name","surface"],"kendoTreeList":["autoBind","columnMenu","columns","dataSource","editable","excel","filterable","height","messages","name","pdf","reorderable","resizable","scrollable","selectable","sortable","toolbar"],"kendoTreeMap":["autoBind","colorField","colors","dataSource","name","template","textField","theme","type","valueField"],"kendoTreeView":["animation","autoBind","autoScroll","checkboxes","dataImageUrlField","dataSource","dataSpriteCssClassField","dataTextField","dataUrlField","dragAndDrop","loadOnDemand","messages","name","template"],"kendoUpload":["async","dropZone","enabled","files","localization","multiple","name","showFileList","template","validation"],"kendoValidator":["errorTemplate","messages","name","rules","validateOnBlur"],"kendoWindow":["actions","animation","appendTo","autoFocus","content","draggable","height","iframe","maxHeight","maxWidth","minHeight","minWidth","modal","name","pinned","position","resizable","scrollable","title","visible","width"],"GanttColumn":["editable","field","format","sortable","title","width"],"GridColumn":["aggregates","attributes","columns","command","editable","encoded","field","filterable","footerAttributes","footerTemplate","format","groupFooterTemplate","groupHeaderTemplate","groupable","headerAttributes","headerTemplate","hidden","lockable","locked","menu","minResizableWidth","minScreenWidth","sortable","template","title","type","values","width","editor"],"GridColumnCommandItem":["className","click","name","template","text","visible"],"GridToolbarItem":["name","template","text"],"ToolBarItem":["attributes","buttons","click","enable","group","hidden","icon","id","imageUrl","menuButtons","overflow","overflowTemplate","primary","selected","showIcon","showText","spriteCssClass","template","text","togglable","toggle","type","url"],"ToolBarItemButton":["attributes","click","enable","group","hidden","icon","id","imageUrl","selected","showIcon","showText","spriteCssClass","text","togglable","toggle","url"],"TreeListColumn":["attributes","command","encoded","expandable","field","filterable","footerTemplate","format","headerAttributes","headerTemplate","hidden","lockable","locked","menu","minScreenWidth","sortable","template","title","width","editor"]}
+export let bindables = {"kendoAlert":["messages","name"],"kendoAutoComplete":["animation","autoWidth","clearButton","dataSource","dataTextField","delay","enable","enforceMinLength","filter","fixedGroupTemplate","footerTemplate","groupTemplate","headerTemplate","height","highlightFirst","ignoreCase","minLength","name","noDataTemplate","placeholder","popup","separator","suggest","template","value","valuePrimitive","virtual"],"kendoBarcode":["background","border","checksum","color","height","name","padding","renderAs","text","type","value","width"],"kendoButton":["enable","icon","imageUrl","name","spriteCssClass"],"kendoCalendar":["culture","dates","depth","disableDates","footer","format","max","messages","min","month","name","start","value","weekNumber"],"kendoChart":["autoBind","axisDefaults","categoryAxis","chartArea","dataSource","legend","name","panes","pannable","pdf","plotArea","renderAs","series","seriesColors","seriesDefaults","theme","title","tooltip","transitions","valueAxis","xAxis","yAxis","zoomable"],"kendoColorPalette":["columns","name","palette","tileSize","value"],"kendoColorPicker":["buttons","clearButton","columns","messages","name","opacity","palette","preview","tileSize","toolIcon","value"],"kendoComboBox":["animation","autoBind","autoWidth","cascadeFrom","cascadeFromField","clearButton","dataSource","dataTextField","dataValueField","delay","enable","enforceMinLength","filter","fixedGroupTemplate","footerTemplate","groupTemplate","headerTemplate","height","highlightFirst","ignoreCase","index","minLength","name","noDataTemplate","placeholder","popup","suggest","syncValueAndText","template","text","value","valuePrimitive","virtual"],"kendoConfirm":["messages","name"],"kendoContextMenu":["alignToAnchor","animation","appendTo","closeOnClick","copyAnchorStyles","dataSource","direction","filter","hoverDelay","name","orientation","popupCollision","showOn","target"],"kendoDateInput":["format","max","messages","min","name","value"],"kendoDatePicker":["ARIATemplate","animation","culture","dateInput","dates","depth","disableDates","footer","format","max","min","month","name","parseFormats","start","value","weekNumber"],"kendoDateTimePicker":["ARIATemplate","animation","culture","dateInput","dates","depth","disableDates","footer","format","interval","max","min","month","name","parseFormats","start","timeFormat","value","weekNumber"],"kendoDiagram":["autoBind","connectionDefaults","connections","connectionsDataSource","dataSource","editable","layout","name","pannable","pdf","selectable","shapeDefaults","shapes","template","theme","zoom","zoomMax","zoomMin","zoomRate"],"kendoDialog":["actions","animation","buttonLayout","closable","content","height","maxHeight","maxWidth","messages","minHeight","minWidth","modal","name","title","visible","width"],"kendoDraggable":["autoScroll","axis","container","cursorOffset","distance","filter","group","hint","holdToDrag","ignore"],"kendoDropDownList":["animation","autoBind","autoWidth","cascadeFrom","cascadeFromField","dataSource","dataTextField","dataValueField","delay","enable","enforceMinLength","filter","fixedGroupTemplate","footerTemplate","groupTemplate","headerTemplate","height","ignoreCase","index","minLength","name","noDataTemplate","optionLabel","optionLabelTemplate","popup","template","text","value","valuePrimitive","valueTemplate","virtual"],"kendoDropTarget":["group"],"kendoDropTargetArea":["filter","group"],"kendoEditor":["deserialization","domain","encoded","fileBrowser","imageBrowser","immutables","messages","name","pasteCleanup","pdf","resizable","serialization","stylesheets","tools"],"kendoFilterMenu":["dataSource","extra","field","messages","name","operators"],"kendoFlatColorPicker":["autoupdate","buttons","messages","name","opacity","preview","value"],"kendoGantt":["assignments","autoBind","columnResizeHandleWidth","columns","currentTimeMarker","dataSource","date","dependencies","editable","height","hourSpan","listWidth","messages","name","navigatable","pdf","range","resizable","resources","rowHeight","selectable","showWorkDays","showWorkHours","snap","taskTemplate","toolbar","tooltip","views","workDayEnd","workDayStart","workWeekEnd","workWeekStart"],"kendoGrid":["allowCopy","altRowTemplate","autoBind","columnMenu","columnResizeHandleWidth","columns","dataSource","detailTemplate","editable","excel","filterable","groupable","height","messages","mobile","name","navigatable","noRecords","pageable","pdf","persistSelection","reorderable","resizable","rowTemplate","scrollable","selectable","sortable","toolbar"],"kendoLinearGauge":["gaugeArea","name","pointer","renderAs","scale","transitions"],"kendoListBox":["autoBind","connectWith","dataSource","dataTextField","dataValueField","draggable","dropSources","messages","name","navigatable","selectable","template","toolbar"],"kendoListView":["altTemplate","autoBind","dataSource","editTemplate","name","navigatable","selectable","template"],"kendoMap":["center","controls","layerDefaults","layers","markerDefaults","markers","maxZoom","minSize","minZoom","name","pannable","wraparound","zoom","zoomable"],"kendoMaskedTextBox":["clearPromptChar","culture","mask","name","promptChar","rules","unmaskOnPost","value"],"kendoMediaPlayer":["autoPlay","autoRepeat","forwardSeek","fullScreen","media","messages","mute","name","navigatable","volume"],"kendoMenu":["animation","closeOnClick","dataSource","direction","hoverDelay","name","openOnClick","orientation","popupCollision","scrollable"],"kendoMobileActionSheet":["cancel","name","popup","type"],"kendoMobileBackButton":["name"],"kendoMobileButton":["badge","clickOn","enable","icon","name"],"kendoMobileButtonGroup":["enable","index","name","selectOn"],"kendoMobileCollapsible":["animation","collapsed","expandIcon","iconPosition","inset","name"],"kendoMobileDetailButton":["name"],"kendoMobileDrawer":["container","name","position","swipeToOpen","swipeToOpenViews","title","views"],"kendoMobileLayout":["id","name","platform"],"kendoMobileListView":["appendOnRefresh","autoBind","dataSource","endlessScroll","filterable","fixedHeaders","headerTemplate","loadMore","messages","name","pullParameters","pullToRefresh","style","template","type","virtualViewSize"],"kendoMobileLoader":["name"],"kendoMobileModalView":["height","modal","name","width"],"kendoMobileNavBar":["name"],"kendoMobilePane":["collapsible","initial","layout","loading","name","portraitWidth","transition"],"kendoMobilePopOver":["name","pane","popup"],"kendoMobileScrollView":["autoBind","bounceVelocityThreshold","contentHeight","dataSource","duration","emptyTemplate","enablePager","itemsPerPage","name","page","pageSize","template","velocityThreshold"],"kendoMobileScroller":["elastic","messages","name","pullOffset","pullToRefresh","useNative","visibleScrollHints","zoom"],"kendoMobileSplitView":["name","style"],"kendoMobileSwitch":["checked","enable","name","offLabel","onLabel"],"kendoMobileTabStrip":["name","selectedIndex"],"kendoMobileView":["model","name","reload","scroller","stretch","title","useNativeScrolling","zoom"],"kendoMultiSelect":["animation","autoBind","autoClose","autoWidth","clearButton","dataSource","dataTextField","dataValueField","delay","enable","enforceMinLength","filter","fixedGroupTemplate","footerTemplate","groupTemplate","headerTemplate","height","highlightFirst","ignoreCase","itemTemplate","maxSelectedItems","minLength","name","noDataTemplate","placeholder","popup","tagMode","tagTemplate","value","valuePrimitive","virtual"],"kendoNotification":["allowHideAfter","animation","appendTo","autoHideAfter","button","height","hideOnClick","name","position","stacking","templates","width"],"kendoNumericTextBox":["culture","decimals","downArrowText","factor","format","max","min","name","placeholder","restrictDecimals","round","spinners","step","upArrowText","value"],"kendoPager":["autoBind","buttonCount","dataSource","info","input","linkTemplate","messages","name","numeric","pageSizes","previousNext","refresh","selectTemplate"],"kendoPanelBar":["animation","autoBind","contentUrls","dataImageUrlField","dataSource","dataSpriteCssClassField","dataTextField","dataUrlField","expandMode","loadOnDemand","messages","name","template"],"kendoPivotConfigurator":["dataSource","filterable","height","messages","name","sortable"],"kendoPivotGrid":["autoBind","columnHeaderTemplate","columnWidth","dataCellTemplate","dataSource","excel","filterable","height","kpiStatusTemplate","kpiTrendTemplate","messages","name","pdf","reorderable","rowHeaderTemplate","sortable"],"kendoPopup":["adjustSize","anchor","animation","appendTo","collision","name","origin","position"],"kendoProgressBar":["animation","chunkCount","enable","max","min","name","orientation","reverse","showStatus","type","value"],"kendoPrompt":["messages","name"],"kendoQRCode":["background","border","color","encoding","errorCorrection","name","padding","renderAs","size","value"],"kendoRadialGauge":["gaugeArea","name","pointer","renderAs","scale","transitions"],"kendoRangeSlider":["largeStep","leftDragHandleTitle","max","min","name","orientation","rightDragHandleTitle","selectionEnd","selectionStart","smallStep","tickPlacement","tooltip"],"kendoResponsivePanel":["autoClose","breakpoint","name","orientation","toggleButton"],"kendoScheduler":["allDayEventTemplate","allDaySlot","autoBind","currentTimeMarker","dataSource","date","dateHeaderTemplate","editable","endTime","eventTemplate","footer","group","groupHeaderTemplate","height","majorTick","majorTimeHeaderTemplate","max","messages","min","minorTickCount","minorTimeHeaderTemplate","mobile","name","pdf","resources","selectable","showWorkHours","snap","startTime","timezone","toolbar","views","width","workDayEnd","workDayStart","workWeekEnd","workWeekStart"],"kendoSlider":["decreaseButtonTitle","dragHandleTitle","increaseButtonTitle","largeStep","max","min","name","orientation","showButtons","smallStep","tickPlacement","tooltip","value"],"kendoSortable":["autoScroll","axis","connectWith","container","cursor","cursorOffset","disabled","filter","handler","hint","holdToDrag","ignore","name","placeholder"],"kendoSparkline":["autoBind","axisDefaults","categoryAxis","chartArea","data","dataSource","name","plotArea","pointWidth","renderAs","series","seriesColors","seriesDefaults","theme","tooltip","transitions","type","valueAxis"],"kendoSplitter":["name","orientation","panes"],"kendoSpreadsheet":["activeSheet","columnWidth","columns","defaultCellStyle","excel","headerHeight","headerWidth","name","pdf","rowHeight","rows","sheets","sheetsbar","toolbar"],"kendoStockChart":["autoBind","axisDefaults","categoryAxis","chartArea","dataSource","dateField","legend","name","navigator","panes","pdf","plotArea","renderAs","series","seriesColors","seriesDefaults","theme","title","tooltip","transitions","valueAxis"],"kendoTabStrip":["animation","collapsible","contentUrls","dataContentField","dataContentUrlField","dataImageUrlField","dataSource","dataSpriteCssClass","dataTextField","dataUrlField","name","navigatable","scrollable","tabPosition","value"],"kendoTimePicker":["animation","culture","dateInput","dates","format","interval","max","min","name","parseFormats","value"],"kendoToolBar":["items","name","resizable"],"kendoTooltip":["animation","autoHide","callout","content","filter","height","iframe","name","position","showAfter","showOn","width"],"kendoTouch":["doubleTapTimeout","enableSwipe","filter","maxDuration","maxYDelta","minHold","minXDelta","multiTouch","name","surface"],"kendoTreeList":["autoBind","columnMenu","columns","dataSource","editable","excel","filterable","height","messages","name","pdf","reorderable","resizable","scrollable","selectable","sortable","toolbar"],"kendoTreeMap":["autoBind","colorField","colors","dataSource","name","template","textField","theme","type","valueField"],"kendoTreeView":["animation","autoBind","autoScroll","checkboxes","dataImageUrlField","dataSource","dataSpriteCssClassField","dataTextField","dataUrlField","dragAndDrop","loadOnDemand","messages","name","template"],"kendoUpload":["async","directory","directoryDrop","dropZone","enabled","files","localization","multiple","name","showFileList","template","validation"],"kendoValidator":["errorTemplate","messages","name","rules","validateOnBlur"],"kendoWindow":["actions","animation","appendTo","autoFocus","content","draggable","height","iframe","maxHeight","maxWidth","minHeight","minWidth","modal","name","pinned","position","resizable","scrollable","title","visible","width"],"GanttColumn":["editable","field","format","sortable","title","width"],"GridColumn":["aggregates","attributes","columns","command","editable","encoded","field","filterable","footerAttributes","footerTemplate","format","groupFooterTemplate","groupHeaderTemplate","groupable","headerAttributes","headerTemplate","hidden","lockable","locked","menu","minResizableWidth","minScreenWidth","selectable","sortable","template","title","values","width","editor"],"GridColumnCommandItem":["className","click","name","text","visible"],"GridToolbarItem":["name","template","text"],"ToolBarItem":["attributes","buttons","click","enable","group","hidden","icon","id","imageUrl","menuButtons","overflow","overflowTemplate","primary","selected","showIcon","showText","spriteCssClass","template","text","togglable","toggle","type","url"],"ToolBarItemButton":["attributes","click","enable","group","hidden","icon","id","imageUrl","selected","showIcon","showText","spriteCssClass","text","togglable","toggle","url"],"TreeListColumn":["attributes","command","encoded","expandable","field","filterable","footerTemplate","format","headerAttributes","headerTemplate","hidden","lockable","locked","menu","minScreenWidth","sortable","template","title","width","editor"]}
 export const constants = {
   eventPrefix: 'k-on-',
   bindablePrefix: 'k-',
@@ -1082,7 +1083,6 @@ export const constants = {
 */
 @inject(Util)
 export class ControlProperties {
-
   cache = {};
 
   constructor(util: Util) {
@@ -1206,7 +1206,6 @@ export function delayed() {
 
 @inject(EventManager)
 export class NotifyBindingBehavior {
-
   constructor(eventManager) {
     this.eventManager = eventManager;
   }
@@ -1291,7 +1290,6 @@ export class Observer {
 */
 @inject(ControlProperties, Util)
 export class OptionsBuilder {
-
   constructor(controlProperties: ControlProperties, util: Util) {
     this.controlProperties = controlProperties;
     this.util = util;
@@ -1335,7 +1333,6 @@ export class OptionsBuilder {
 */
 @inject(TemplatingEngine, Util)
 export class TemplateCompiler {
-
   /**
   * We don't need to initialize the TemplateCompiler every time a Kendo controls
   * is initialized
@@ -1560,7 +1557,6 @@ const capitalMatcher = /([A-Z])/g;
 * Collection of useful functions used in multiple parts of the plugin
 */
 export class Util {
-
   /**
   * prepends hyphen and lowercases the input char
   * @param char the char to add an hyphen in front for
@@ -1720,7 +1716,6 @@ const logger = LogManager.getLogger('aurelia-kendoui-bridge');
 @transient()
 @inject(TaskQueue, TemplateCompiler, OptionsBuilder, Util, TemplateGatherer, KendoConfigBuilder, RepeatStrategyLocator, Observer)
 export class WidgetBase {
-
   /**
   * The element of the custom element, or the element on which a custom attribute
   * is placed. DOM events will be raised on this element
@@ -2097,13 +2092,12 @@ export class WidgetBase {
 @generateBindables('kendoContextMenu')
 @inject(Element, WidgetBase)
 export class ContextMenu {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoContextMenu')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoContextMenu')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -2133,23 +2127,71 @@ export class ContextMenu {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}datepicker`)
-@generateBindables('kendoDatePicker')
+@customAttribute(`${constants.attributePrefix}date-input`)
+@generateBindables('kendoDateInput')
 @inject(Element, WidgetBase)
-export class DatePicker {
-
+export class DateInput {
   @bindable kEnabled;
   @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDatePicker')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly')
-                        .useValueBinding();
+      .control('kendoDateInput')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly')
+      .useValueBinding();
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
+@customAttribute(`${constants.attributePrefix}datepicker`)
+@generateBindables('kendoDatePicker')
+@inject(Element, WidgetBase)
+export class DatePicker {
+  @bindable kEnabled;
+  @bindable kReadOnly;
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoDatePicker')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly')
+      .useValueBinding();
   }
 
   subscribe(event, callback) {
@@ -2187,19 +2229,18 @@ export class DatePicker {
 @generateBindables('kendoDateTimePicker')
 @inject(Element, WidgetBase)
 export class DateTimePicker {
-
   @bindable kEnabled;
   @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDateTimePicker')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding()
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoDateTimePicker')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding()
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {
@@ -2237,13 +2278,12 @@ export class DateTimePicker {
 @generateBindables('kendoDiagram')
 @inject(Element, WidgetBase)
 export class Diagram {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDiagram')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoDiagram')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -2277,13 +2317,12 @@ export class Diagram {
 @generateBindables('kendoDialog')
 @inject(Element, WidgetBase)
 export class Dialog {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDialog')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoDialog')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -2317,14 +2356,13 @@ export class Dialog {
 @generateBindables('kendoDraggable')
 @inject(Element, WidgetBase)
 export class Draggable {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDraggable')
-                        .useElement(this.element)
-                        .beforeInitialize(options => this.beforeInitialize(options))
-                        .linkViewModel(this);
+      .control('kendoDraggable')
+      .useElement(this.element)
+      .beforeInitialize(options => this.beforeInitialize(options))
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -2364,13 +2402,12 @@ export class Draggable {
 @generateBindables('kendoDropTargetArea')
 @inject(Element, WidgetBase)
 export class DropTargetArea {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDropTargetArea')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoDropTargetArea')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -2404,13 +2441,12 @@ export class DropTargetArea {
 @generateBindables('kendoDropTarget')
 @inject(Element, WidgetBase)
 export class DropTarget {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDropTarget')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoDropTarget')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -2444,7 +2480,6 @@ export class DropTarget {
 @generateBindables('kendoDropDownList')
 @inject(Element, WidgetBase, Container)
 export class DropDownList {
-
   @bindable kNoValueBinding = false;
   @bindable kEnabled;
   @bindable kReadOnly;
@@ -2452,12 +2487,12 @@ export class DropDownList {
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoDropDownList')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container)
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoDropDownList')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container)
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {
@@ -2509,14 +2544,13 @@ function getSelectNode(element) {
 @generateBindables('kendoEditor')
 @inject(Element, WidgetBase)
 export class Editor {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoEditor')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding();
+      .control('kendoEditor')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding();
   }
 
   subscribe(event, callback) {
@@ -2554,13 +2588,12 @@ export class Editor {
 @generateBindables('kendoFilterMenu')
 @inject(Element, WidgetBase)
 export class FilterMenu {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoFilterMenu')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoFilterMenu')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -2594,13 +2627,12 @@ export class FilterMenu {
 @generateBindables('kendoFlatColorPicker')
 @inject(Element, WidgetBase)
 export class FlatColorPicker {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoFlatColorPicker')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoFlatColorPicker')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -2641,16 +2673,15 @@ export class GanttCol {}
 @generateBindables('kendoGantt')
 @inject(Element, WidgetBase, Container, OptionsBuilder)
 export class Gantt  {
-
   constructor(element, widgetBase, container, optionsBuilder) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
-                        .control('kendoGantt')
-                        .useRootElement(this.element)
-                        .beforeInitialize(options => this._beforeInitialize(options))
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoGantt')
+      .useRootElement(this.element)
+      .beforeInitialize(options => this._beforeInitialize(options))
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {
@@ -2712,14 +2743,13 @@ function isInitFromDiv(element) {
 @generateBindables('kendoLinearGauge')
 @inject(Element, WidgetBase)
 export class LinearGauge {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoLinearGauge')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding();
+      .control('kendoLinearGauge')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding();
   }
 
   subscribe(event, callback) {
@@ -2757,14 +2787,13 @@ export class LinearGauge {
 @generateBindables('kendoRadialGauge')
 @inject(Element, WidgetBase)
 export class RadialGauge {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoRadialGauge')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding();
+      .control('kendoRadialGauge')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding();
   }
 
   subscribe(event, callback) {
@@ -2802,7 +2831,6 @@ export class RadialGauge {
 @generateBindables('GridColumn')
 @inject(TemplateGatherer, OptionsBuilder, Util, Element)
 export class Col {
-
   constructor(templateGatherer, optionsBuilder, util, element) {
     this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;
@@ -2878,17 +2906,16 @@ export class GridToolbar {
 @generateBindables('kendoGrid')
 @inject(Element, WidgetBase, Container, OptionsBuilder, TemplateGatherer)
 export class Grid {
-
   constructor(element, widgetBase, container, optionsBuilder, templateGatherer) {
     this.element = element;
     this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
-                        .control('kendoGrid')
-                        .useRootElement(this.element)
-                        .beforeInitialize(options => this._beforeInitialize(options))
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoGrid')
+      .useRootElement(this.element)
+      .beforeInitialize(options => this._beforeInitialize(options))
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {
@@ -2970,18 +2997,60 @@ function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
 }
 
+@customElement(`${constants.elementPrefix}list-box`)
+@generateBindables('kendoListBox')
+@inject(Element, WidgetBase, Container)
+export class ListBox  {
+  constructor(element, widgetBase, container) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoListBox')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container);
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    let templates = this.widgetBase.util.getChildrenVMs(this.element, `${constants.elementPrefix}template`);
+    this.widgetBase.useTemplates(this, 'kendoListBox', templates);
+
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
 @customElement(`${constants.elementPrefix}list-view`)
 @generateBindables('kendoListView')
 @inject(Element, WidgetBase, Container)
 export class ListView  {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoListView')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoListView')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {
@@ -3018,13 +3087,12 @@ export class ListView  {
 @generateBindables('kendoMap')
 @inject(Element, WidgetBase)
 export class Map {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMap')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoMap')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -3062,7 +3130,6 @@ export class Map {
 @generateBindables('kendoMaskedTextBox')
 @inject(Element, WidgetBase)
 export class MaskedTextBox {
-
   @bindable kDisableDates;
   @bindable kEnabled;
   @bindable kReadOnly;
@@ -3070,12 +3137,12 @@ export class MaskedTextBox {
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMaskedTextBox')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding()
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoMaskedTextBox')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding()
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {
@@ -3109,17 +3176,54 @@ export class MaskedTextBox {
   }
 }
 
+@customAttribute(`${constants.attributePrefix}mediaplayer`)
+@generateBindables('kendoMediaPlayer')
+@inject(Element, WidgetBase)
+export class MediaPlayer {
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoMediaPlayer')
+      .useElement(this.element)
+      .linkViewModel(this);
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
 @customAttribute(`${constants.attributePrefix}menu`)
 @generateBindables('kendoMenu')
 @inject(Element, WidgetBase)
 export class Menu {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMenu')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoMenu')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -3153,7 +3257,6 @@ export class Menu {
 @generateBindables('kendoMultiSelect', ['template'])
 @inject(Element, WidgetBase, Container)
 export class Multiselect {
-
   @bindable kEnabled;
   @bindable kReadOnly;
   @bindable kNoValueBinding = false;
@@ -3161,12 +3264,12 @@ export class Multiselect {
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMultiSelect')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container)
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoMultiSelect')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container)
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {
@@ -3240,15 +3343,14 @@ export class NotificationTemplate {
 @generateBindables('kendoNotification')
 @inject(Element, WidgetBase, Container)
 export class Notification {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoNotification')
-                        .useElement(this.element)
-                        .beforeInitialize(options => this.beforeInitialize(options))
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoNotification')
+      .useElement(this.element)
+      .beforeInitialize(options => this.beforeInitialize(options))
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {
@@ -3294,19 +3396,18 @@ export class Notification {
 @generateBindables('kendoNumericTextBox')
 @inject(Element, WidgetBase)
 export class NumericTextBox {
-
   @bindable kEnabled;
   @bindable kReadOnly;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoNumericTextBox')
-                        .linkViewModel(this)
-                        .useElement(this.element)
-                        .useValueBinding()
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoNumericTextBox')
+      .linkViewModel(this)
+      .useElement(this.element)
+      .useValueBinding()
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {
@@ -3344,13 +3445,12 @@ export class NumericTextBox {
 @generateBindables('kendoPanelBar')
 @inject(Element, WidgetBase)
 export class PanelBar {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoPanelBar')
-                        .useRootElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoPanelBar')
+      .useRootElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -3410,13 +3510,12 @@ export class PDF {}
 @generateBindables('kendoPivotConfigurator')
 @inject(Element, WidgetBase)
 export class PivotConfigurator {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoPivotConfigurator')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoPivotConfigurator')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -3452,14 +3551,13 @@ export class PivotConfigurator {
 @generateBindables('kendoPivotGrid')
 @inject(Element, WidgetBase, Container)
 export class PivotGrid {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoPivotGrid')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoPivotGrid')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {
@@ -3505,13 +3603,12 @@ export class PivotGrid {
 @generateBindables('kendoPopup')
 @inject(Element, WidgetBase)
 export class Popup {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoPopup')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoPopup')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -3545,16 +3642,15 @@ export class Popup {
 @generateBindables('kendoProgressBar')
 @inject(Element, WidgetBase)
 export class ProgressBar {
-
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoProgressBar')
-                        .useElement(this.element)
-                        .bindToKendo('kEnabled', 'enable')
-                        .linkViewModel(this);
+      .control('kendoProgressBar')
+      .useElement(this.element)
+      .bindToKendo('kEnabled', 'enable')
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -3592,13 +3688,12 @@ export class ProgressBar {
 @generateBindables('kendoQRCode')
 @inject(Element, WidgetBase)
 export class QRCode {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoQRCode')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoQRCode')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -3632,17 +3727,16 @@ export class QRCode {
 @generateBindables('kendoRangeSlider')
 @inject(Element, WidgetBase)
 export class RangeSlider {
-
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoRangeSlider')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .bindToKendo('kEnabled', 'enable')
-                        .useValueBinding();
+      .control('kendoRangeSlider')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .bindToKendo('kEnabled', 'enable')
+      .useValueBinding();
   }
 
   subscribe(event, callback) {
@@ -3697,13 +3791,12 @@ export class RangeSlider {
 @generateBindables('kendoResponsivePanel')
 @inject(Element, WidgetBase)
 export class ResponsivePanel {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoResponsivePanel')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoResponsivePanel')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -3739,14 +3832,13 @@ export class ResponsivePanel {
 @generateBindables('kendoScheduler')
 @inject(Element, WidgetBase, Container)
 export class Scheduler {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoScheduler')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoScheduler')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {
@@ -3792,15 +3884,14 @@ export class Scheduler {
 @generateBindables('kendoMobileScrollView')
 @inject(Element, WidgetBase, Container)
 export class Scrollview {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMobileScrollView')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container)
-                        .useValueBinding();
+      .control('kendoMobileScrollView')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container)
+      .useValueBinding();
   }
 
   subscribe(event, callback) {
@@ -3849,17 +3940,16 @@ function isInitFromDiv(element) {
 @generateBindables('kendoSlider')
 @inject(Element, WidgetBase)
 export class Slider {
-
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoSlider')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .bindToKendo('kEnabled', 'enable')
-                        .useValueBinding();
+      .control('kendoSlider')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .bindToKendo('kEnabled', 'enable')
+      .useValueBinding();
   }
 
   subscribe(event, callback) {
@@ -3897,13 +3987,12 @@ export class Slider {
 @generateBindables('kendoSortable')
 @inject(Element, WidgetBase)
 export class Sortable {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoSortable')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoSortable')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -3937,13 +4026,12 @@ export class Sortable {
 @generateBindables('kendoSplitter')
 @inject(Element, WidgetBase)
 export class Splitter {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoSplitter')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoSplitter')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -3977,13 +4065,12 @@ export class Splitter {
 @generateBindables('kendoSpreadsheet')
 @inject(Element, WidgetBase)
 export class Spreadsheet {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoSpreadsheet')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoSpreadsheet')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -4017,17 +4104,16 @@ export class Spreadsheet {
 @generateBindables('kendoMobileSwitch')
 @inject(Element, WidgetBase)
 export class Switch {
-
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMobileSwitch')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .bindToKendo('kEnabled', 'enable')
-                        .useValueBinding('kChecked', 'check');
+      .control('kendoMobileSwitch')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .bindToKendo('kEnabled', 'enable')
+      .useValueBinding('kChecked', 'check');
   }
 
   subscribe(event, callback) {
@@ -4065,13 +4151,12 @@ export class Switch {
 @generateBindables('kendoTabStrip')
 @inject(Element, WidgetBase)
 export class TabStrip {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoTabStrip')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoTabStrip')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -4105,7 +4190,6 @@ export class TabStrip {
 @generateBindables('kendoTimePicker')
 @inject(Element, WidgetBase)
 export class TimePicker {
-
   @bindable kDisableDates;
   @bindable kEnabled;
   @bindable kReadOnly;
@@ -4113,12 +4197,12 @@ export class TimePicker {
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoTimePicker')
-                        .useElement(this.element)
-                        .linkViewModel(this)
-                        .useValueBinding()
-                        .bindToKendo('kEnabled', 'enable')
-                        .bindToKendo('kReadOnly', 'readonly');
+      .control('kendoTimePicker')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding()
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
   }
 
   subscribe(event, callback) {
@@ -4156,7 +4240,6 @@ export class TimePicker {
 @generateBindables('ToolBarItemButton')
 @inject(OptionsBuilder)
 export class ToolbarItemButton {
-
   constructor(optionsBuilder) {
     this.optionsBuilder = optionsBuilder;
   }
@@ -4170,7 +4253,6 @@ export class ToolbarItemButton {
 @generateBindables('ToolBarItem')
 @inject(TemplateGatherer, OptionsBuilder, Util, Element)
 export class ToolbarItem {
-
   constructor(templateGatherer, optionsBuilder, util, element) {
     this.templateGatherer = templateGatherer;
     this.optionsBuilder = optionsBuilder;
@@ -4199,16 +4281,15 @@ export class ToolbarItem {
 @generateBindables('kendoToolBar')
 @inject(Element, WidgetBase, OptionsBuilder, Container)
 export class Toolbar {
-
   constructor(element, widgetBase, optionsBuilder, container) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
-                        .control('kendoToolBar')
-                        .useElement(this.element)
-                        .beforeInitialize(options => this._beforeInitialize(options))
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoToolBar')
+      .useElement(this.element)
+      .beforeInitialize(options => this._beforeInitialize(options))
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {
@@ -4253,13 +4334,12 @@ export class Toolbar {
 @generateBindables('kendoTooltip')
 @inject(Element, WidgetBase)
 export class Tooltip {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoTooltip')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoTooltip')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -4311,16 +4391,15 @@ export class TreeCol {
 @generateBindables('kendoTreeList')
 @inject(Element, WidgetBase, Container, OptionsBuilder)
 export class TreeList  {
-
   constructor(element, widgetBase, container, optionsBuilder) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
-                        .control('kendoTreeList')
-                        .useRootElement(this.element)
-                        .beforeInitialize(options => this._beforeInitialize(options))
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoTreeList')
+      .useRootElement(this.element)
+      .beforeInitialize(options => this._beforeInitialize(options))
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {
@@ -4375,14 +4454,13 @@ export class TreeList  {
 @generateBindables('kendoTreeView')
 @inject(Element, WidgetBase, Container)
 export class TreeView {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoTreeView')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoTreeView')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {
@@ -4431,14 +4509,13 @@ function isInitFromUl(element) {
 @generateBindables('kendoUpload')
 @inject(Element, WidgetBase, Container)
 export class Upload {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoUpload')
-                        .useRootElement(this.element)
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoUpload')
+      .useRootElement(this.element)
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {
@@ -4486,13 +4563,12 @@ export class Upload {
 @generateBindables('kendoValidator')
 @inject(Element, WidgetBase)
 export class Validator {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoValidator')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoValidator')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
@@ -4570,13 +4646,12 @@ export class kendoFormatValueConverter {
 @generateBindables('kendoWindow')
 @inject(Element, WidgetBase)
 export class Window {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoWindow')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoWindow')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

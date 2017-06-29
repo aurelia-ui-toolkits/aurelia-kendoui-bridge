@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoFlatColorPicker')
 @inject(Element, WidgetBase)
 export class FlatColorPicker {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoFlatColorPicker')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoFlatColorPicker')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

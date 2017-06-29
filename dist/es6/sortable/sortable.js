@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoSortable')
 @inject(Element, WidgetBase)
 export class Sortable {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoSortable')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoSortable')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

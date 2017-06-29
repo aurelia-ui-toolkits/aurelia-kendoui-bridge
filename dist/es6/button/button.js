@@ -8,16 +8,15 @@ import {constants} from '../common/constants';
 @generateBindables('kendoButton')
 @inject(Element, WidgetBase)
 export class Button {
-
   @bindable kEnabled;
 
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoButton')
-                        .useElement(this.element)
-                        .bindToKendo('kEnabled', 'enable')
-                        .linkViewModel(this);
+      .control('kendoButton')
+      .useElement(this.element)
+      .bindToKendo('kEnabled', 'enable')
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

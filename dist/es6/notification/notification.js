@@ -8,15 +8,14 @@ import {constants} from '../common/constants';
 @generateBindables('kendoNotification')
 @inject(Element, WidgetBase, Container)
 export class Notification {
-
   constructor(element, widgetBase, container) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoNotification')
-                        .useElement(this.element)
-                        .beforeInitialize(options => this.beforeInitialize(options))
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoNotification')
+      .useElement(this.element)
+      .beforeInitialize(options => this.beforeInitialize(options))
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {

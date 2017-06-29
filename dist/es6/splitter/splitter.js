@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoSplitter')
 @inject(Element, WidgetBase)
 export class Splitter {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoSplitter')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoSplitter')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {

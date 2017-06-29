@@ -8,7 +8,6 @@ import {Util} from './util';
 */
 @inject(Util)
 export class ControlProperties {
-
   cache = {};
 
   constructor(util: Util) {

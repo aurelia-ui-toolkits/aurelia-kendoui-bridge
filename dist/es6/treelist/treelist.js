@@ -10,16 +10,15 @@ import {PDF} from '../pdf/pdf'; //eslint-disable-line no-unused-vars
 @generateBindables('kendoTreeList')
 @inject(Element, WidgetBase, Container, OptionsBuilder)
 export class TreeList  {
-
   constructor(element, widgetBase, container, optionsBuilder) {
     this.element = element;
     this.optionsBuilder = optionsBuilder;
     this.widgetBase = widgetBase
-                        .control('kendoTreeList')
-                        .useRootElement(this.element)
-                        .beforeInitialize(options => this._beforeInitialize(options))
-                        .linkViewModel(this)
-                        .useContainer(container);
+      .control('kendoTreeList')
+      .useRootElement(this.element)
+      .beforeInitialize(options => this._beforeInitialize(options))
+      .linkViewModel(this)
+      .useContainer(container);
   }
 
   subscribe(event, callback) {

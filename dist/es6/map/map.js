@@ -8,13 +8,12 @@ import {constants} from '../common/constants';
 @generateBindables('kendoMap')
 @inject(Element, WidgetBase)
 export class Map {
-
   constructor(element, widgetBase) {
     this.element = element;
     this.widgetBase = widgetBase
-                        .control('kendoMap')
-                        .useElement(this.element)
-                        .linkViewModel(this);
+      .control('kendoMap')
+      .useElement(this.element)
+      .linkViewModel(this);
   }
 
   subscribe(event, callback) {
