@@ -1,3 +1,13 @@
+<a name="1.6.3"></a>
+## [1.6.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.6.2...1.6.3) (2017-06-30)
+
+
+### Bug Fixes
+
+* **webpack:** add resources for new wrappers ([2ac5bd2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/2ac5bd2))
+
+
+
 <a name="1.6.2"></a>
 ## [1.6.2](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.6.1...1.6.2) (2017-06-29)
 
