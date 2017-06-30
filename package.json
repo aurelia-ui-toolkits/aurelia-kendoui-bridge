@@ -209,7 +209,10 @@
         "aurelia-kendoui-bridge/treelist/treelist",
         "aurelia-kendoui-bridge/treelist/tree-col",
         "aurelia-kendoui-bridge/treeview/treeview",
-        "aurelia-kendoui-bridge/upload/upload"
+        "aurelia-kendoui-bridge/upload/upload",
+        "aurelia-kendoui-bridge/dateinput/dateinput",
+        "aurelia-kendoui-bridge/listbox/listbox",
+        "aurelia-kendoui-bridge/mediaplayer/mediaplayer"
       ]
     },
     "documentation": {
