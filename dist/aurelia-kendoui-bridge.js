@@ -519,7 +519,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.6.3';
+export let version = '1.6.4';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
@@ -3309,7 +3309,7 @@ export class Multiselect {
 
   propertyChanged(property, newValue, oldValue) {
     // do not process value changes when user input is present
-    if (property !== 'kValue' || this.kWidget.input.val() === '') {
+    if (property !== 'kValue' || this.kWidget.input.val() === '' || this.kWidget.input.val() === this.kWidget.options.placeholder) {
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     }
   }
@@ -3325,55 +3325,6 @@ export class Multiselect {
 
 function getSelectNode(element) {
   return element.querySelectorAll('select');
-}
-
-@customAttribute(`${constants.attributePrefix}numerictextbox`)
-@generateBindables('kendoNumericTextBox')
-@inject(Element, WidgetBase)
-export class NumericTextBox {
-  @bindable kEnabled;
-  @bindable kReadOnly;
-
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-      .control('kendoNumericTextBox')
-      .linkViewModel(this)
-      .useElement(this.element)
-      .useValueBinding()
-      .bindToKendo('kEnabled', 'enable')
-      .bindToKendo('kReadOnly', 'readonly');
-  }
-
-  subscribe(event, callback) {
-    return this.widgetBase.subscribe(event, callback);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
 }
 
 @customElement(`${constants.elementPrefix}notification-template`)
@@ -3437,6 +3388,55 @@ export class Notification {
         template: () => template.template
       }));
     }
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
+@customAttribute(`${constants.attributePrefix}numerictextbox`)
+@generateBindables('kendoNumericTextBox')
+@inject(Element, WidgetBase)
+export class NumericTextBox {
+  @bindable kEnabled;
+  @bindable kReadOnly;
+
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoNumericTextBox')
+      .linkViewModel(this)
+      .useElement(this.element)
+      .useValueBinding()
+      .bindToKendo('kEnabled', 'enable')
+      .bindToKendo('kReadOnly', 'readonly');
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
   }
 
   destroy() {

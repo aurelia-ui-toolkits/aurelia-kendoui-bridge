@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['./config-builder', 'aurelia-logging', './version', './common/decorators'], function (_export, _context) {
   "use strict";
 

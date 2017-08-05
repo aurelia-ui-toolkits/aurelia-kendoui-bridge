@@ -1,5 +1,3 @@
-'use strict';
-
 System.register([], function (_export, _context) {
   "use strict";
 
@@ -7,7 +5,7 @@ System.register([], function (_export, _context) {
   return {
     setters: [],
     execute: function () {
-      _export('version', version = '1.6.3');
+      _export('version', version = '1.6.4');
 
       _export('version', version);
     }

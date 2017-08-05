@@ -105,7 +105,7 @@ var Multiselect = exports.Multiselect = (_dec = (0, _aureliaTemplating.customEle
   };
 
   Multiselect.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
-    if (property !== 'kValue' || this.kWidget.input.val() === '') {
+    if (property !== 'kValue' || this.kWidget.input.val() === '' || this.kWidget.input.val() === this.kWidget.options.placeholder) {
       this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
     }
   };

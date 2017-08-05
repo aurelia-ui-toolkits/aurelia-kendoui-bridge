@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['./bindables', 'aurelia-dependency-injection', './util'], function (_export, _context) {
   "use strict";
 

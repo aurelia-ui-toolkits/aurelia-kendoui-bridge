@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-dependency-injection', 'aurelia-templating', '../common/widget-base', '../common/decorators', '../common/constants'], function (_export, _context) {
   "use strict";
 
@@ -115,7 +113,7 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
         };
 
         Multiselect.prototype.propertyChanged = function propertyChanged(property, newValue, oldValue) {
-          if (property !== 'kValue' || this.kWidget.input.val() === '') {
+          if (property !== 'kValue' || this.kWidget.input.val() === '' || this.kWidget.input.val() === this.kWidget.options.placeholder) {
             this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
           }
         };

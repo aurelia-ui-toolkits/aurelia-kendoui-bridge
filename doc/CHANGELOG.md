@@ -1,3 +1,8 @@
+<a name="1.6.4"></a>
+## [1.6.4](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.6.3...1.6.4) (2017-08-05)
+
+fix(multiselect): broken value binding multiselect when empty
+
 <a name="1.6.3"></a>
 ## [1.6.3](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.6.2...1.6.3) (2017-06-30)
 

@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['./util', './options-builder', './template-compiler', './template-gatherer', '../config-builder', 'aurelia-dependency-injection', 'aurelia-templating-resources', 'aurelia-task-queue', './observer', 'aurelia-logging'], function (_export, _context) {
   "use strict";
 

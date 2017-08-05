@@ -853,18 +853,6 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class NumericTextBox {
-    kEnabled: any;
-    kReadOnly: any;
-    constructor(element?: any, widgetBase?: any);
-    subscribe(event?: any, callback?: any): any;
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    destroy(): any;
-    detached(): any;
-  }
   export class NotificationTemplate {
     template: any;
     type: any;
@@ -877,6 +865,18 @@ declare module 'aurelia-kendoui-bridge' {
     attached(): any;
     recreate(): any;
     beforeInitialize(options?: any): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class NumericTextBox {
+    kEnabled: any;
+    kReadOnly: any;
+    constructor(element?: any, widgetBase?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     destroy(): any;
     detached(): any;
   }

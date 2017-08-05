@@ -1,5 +1,3 @@
-'use strict';
-
 System.register(['aurelia-logging', 'aurelia-pal'], function (_export, _context) {
   "use strict";
 
