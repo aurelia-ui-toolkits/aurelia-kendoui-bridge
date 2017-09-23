@@ -1,6 +1,10 @@
 // Type definitions for Kendo UI Professional v2017.2.621
 // Project: http://www.telerik.com/kendo-ui
-// Definitions by: Telerik <https://github.com/telerik/>
+// Definitions by: Telerik <https://github.com/telerik>
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
+// TypeScript Version: 2.3
+
+/// <reference types="jquery" />
 
 declare namespace kendo {
     function culture(): {
@@ -873,12 +877,12 @@ declare namespace kendo.data {
     }
 
     interface DataSourceTransport {
-        create?: DataSourceTransportCreate;
-        destroy?: DataSourceTransportDestroy;
+        create?: DataSourceTransportCreate | ((options: DataSourceTransportOptions) => void);
+        destroy?: DataSourceTransportDestroy | ((options: DataSourceTransportOptions) => void);
         push?: Function;
-        read?: DataSourceTransportRead;
-        signalr?: DataSourceTransportSignalr;
-        update?: DataSourceTransportUpdate;
+        read?: DataSourceTransportRead | ((options: DataSourceTransportOptions) => void);
+        signalr?: DataSourceTransportSignalr | ((options: DataSourceTransportOptions) => void);
+        update?: DataSourceTransportUpdate | ((options: DataSourceTransportOptions) => void);
 
         parameterMap?(data: DataSourceTransportParameterMapData, type: string): any;
     }
@@ -1559,11 +1563,11 @@ declare namespace kendo.ui {
 
     }
 
-    interface AlertMessages {
+    interface AlertMessages extends DialogMessages {
         okText?: string;
     }
 
-    interface AlertOptions {
+    interface AlertOptions extends DialogOptions {
         name?: string;
         messages?: AlertMessages;
     }
@@ -2077,12 +2081,12 @@ declare namespace kendo.ui {
 
     }
 
-    interface ConfirmMessages {
+    interface ConfirmMessages extends DialogMessages {
         okText?: string;
         cancel?: string;
     }
 
-    interface ConfirmOptions {
+    interface ConfirmOptions extends DialogOptions {
         name?: string;
         messages?: ConfirmMessages;
     }
@@ -5475,12 +5479,12 @@ declare namespace kendo.ui {
 
     }
 
-    interface PromptMessages {
+    interface PromptMessages extends DialogMessages {
         okText?: string;
         cancel?: string;
     }
 
-    interface PromptOptions {
+    interface PromptOptions extends DialogOptions {
         name?: string;
         messages?: PromptMessages;
     }
@@ -7021,7 +7025,7 @@ declare namespace kendo.ui {
         name?: string;
         autoHide?: boolean;
         animation?: boolean|TooltipAnimation;
-        content?: TooltipContent;
+        content?: string | TooltipContent | ((e: any) => string);
         callout?: boolean;
         filter?: string;
         iframe?: boolean;
