@@ -1039,19 +1039,6 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class TimePicker {
-    kDisableDates: any;
-    kEnabled: any;
-    kReadOnly: any;
-    constructor(element?: any, widgetBase?: any);
-    subscribe(event?: any, callback?: any): any;
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    destroy(): any;
-    detached(): any;
-  }
   export class ToolbarItemButton {
     constructor(optionsBuilder?: any);
     getOptions(): any;
@@ -1069,12 +1056,16 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class Tooltip {
+  export class TimePicker {
+    kDisableDates: any;
+    kEnabled: any;
+    kReadOnly: any;
     constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     destroy(): any;
     detached(): any;
   }
@@ -1086,6 +1077,15 @@ declare module 'aurelia-kendoui-bridge' {
   //eslint-disable-line no-unused-vars
   export class TreeList {
     constructor(element?: any, widgetBase?: any, container?: any, optionsBuilder?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class Tooltip {
+    constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
