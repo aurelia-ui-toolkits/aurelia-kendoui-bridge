@@ -45,5 +45,8 @@
   "devDependencies": {
     "jspm": "0.16.15",
     "babel-eslint": "^4.1.1"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
   }
 }
