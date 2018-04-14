@@ -325,11 +325,11 @@ export class KendoConfigBuilder {
   kendoNumericTextBox(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./numerictextbox/numerictextbox'));
     return this;
-	}
-	
+  }
+
   kendoPager(): KendoConfigBuilder {
-	this.resources.push(PLATFORM.moduleName("./pager/pager"));
-	return this;
+    this.resources.push(PLATFORM.moduleName('./pager/pager'));
+    return this;
   }
 
   kendoPanelBar(): KendoConfigBuilder {

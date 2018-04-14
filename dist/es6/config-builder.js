@@ -91,7 +91,8 @@ export class KendoConfigBuilder {
       .kendoGantt()
       .kendoGrid()
       .kendoMap()
-      .kendoLinearGauge()
+	  .kendoLinearGauge()
+	  .kendoPager()
       .kendoPivotGrid()
       .kendoQRCode()
       .kendoRadialGauge()
@@ -323,6 +324,11 @@ export class KendoConfigBuilder {
 
   kendoNumericTextBox(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./numerictextbox/numerictextbox'));
+    return this;
+  }
+
+  kendoPager(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./pager/pager'));
     return this;
   }
 

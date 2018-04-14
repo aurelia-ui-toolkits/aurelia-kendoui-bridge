@@ -1,3 +1,8 @@
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.6.5...1.7.0) (2018-04-14)
+
+
+
 <a name="1.6.5"></a>
 ## [1.6.5](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.6.4...1.6.5) (2017-09-23)
 

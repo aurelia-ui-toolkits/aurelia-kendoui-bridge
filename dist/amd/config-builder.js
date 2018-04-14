@@ -65,7 +65,7 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
     };
 
     KendoConfigBuilder.prototype.pro = function pro() {
-      this.core().kendoBarcode().kendoChart().kendoDiagram().kendoEditor().kendoFilterMenu().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
+      this.core().kendoBarcode().kendoChart().kendoDiagram().kendoEditor().kendoFilterMenu().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPager().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
 
       return this;
     };
@@ -269,6 +269,11 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
 
     KendoConfigBuilder.prototype.kendoNumericTextBox = function kendoNumericTextBox() {
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./numerictextbox/numerictextbox'));
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoPager = function kendoPager() {
+      this.resources.push(_aureliaPal.PLATFORM.moduleName('./pager/pager'));
       return this;
     };
 
