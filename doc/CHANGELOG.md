@@ -2,6 +2,11 @@
 # [1.7.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.6.5...1.7.0) (2018-04-14)
 
 
+### Features
+
+* **pager:** add pager wrapper ([26606a7](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/26606a7))
+
+
 
 <a name="1.6.5"></a>
 ## [1.6.5](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.6.4...1.6.5) (2017-09-23)
