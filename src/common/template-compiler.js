@@ -135,7 +135,7 @@ export class TemplateCompiler {
   enhanceView($parent, element, ctx, container) {
     let view = kendo.jQuery(element).data('viewInstance');
 
-    $(element).data('$$kendoScope', ctx);
+    kendo.jQuery(element).data('$$kendoScope', ctx);
 
     // check necessary due to https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/308
     if (element.querySelectorAll('.au-target').length === 0) {

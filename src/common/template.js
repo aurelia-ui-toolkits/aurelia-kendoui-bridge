@@ -9,9 +9,9 @@ import {constants} from '../common/constants';
   if (html !== '') {
     // if there's a script tag in the template, take the innerHTML of the script tag
     // https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/issues/580
-    let script = $(element).children('script');
+    let script = kendo.jQuery(element).children('script');
     if (script.length > 0) {
-      instruction.template = $(script).html();
+      instruction.template = kendo.jQuery(script).html();
     } else {
       // no script tags? the template is the innerHTML
       instruction.template = html;
