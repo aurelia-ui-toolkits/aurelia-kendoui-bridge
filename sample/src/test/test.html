@@ -1,119 +1,148 @@
 <template>
-  <require from="aurelia-kendoui-bridge/listbox/listbox"></require>
+	<require from="aurelia-kendoui-bridge/listbox/listbox"></require>
+	<require from="aurelia-kendoui-bridge/dropdowntree/dropdowntree">
+	</require>
 
-  <div id="example" role="application">
-    <div class="demo-section k-content wide">
-      <ak-list-box k-data-text-field="ContactName"
-                  k-data-value-field="CustomerID"
-                  k-data-source.bind="datasource"
-                  k-draggable.bind="draggable"
-                  k-drop-sources.bind="['selected']"
-                  k-connect-with="selected"
-                  k-toolbar.bind="toolbar">
-        <select id="optional" title="Optional">
-        </select>
+	<div id="example"
+	     role="application">
+		<div class="demo-section k-content wide">
+			<ak-list-box k-data-text-field="ContactName"
+			             k-data-value-field="CustomerID"
+			             k-data-source.bind="datasource"
+			             k-draggable.bind="draggable"
+			             k-drop-sources.bind="['selected']"
+			             k-connect-with="selected"
+			             k-toolbar.bind="toolbar">
+				<select id="optional"
+				        title="Optional">
+				</select>
 
-        <!-- unfortunately Aurelia's templating syntax is not supported here -->
-        <ak-template kendo-template.bind="true">
-          <span class="k-state-default" style="background-image: url('https://demos.telerik.com/kendo-ui/content/web/Customers/#:data.CustomerID#.jpg')"></span>
-          <span class="k-state-default">
-            <h3>#: data.ContactName #</h3>
-            <p>#: data.CompanyName #</p>
-          </span>
-        </ak-template>
-      </ak-list-box>
+				<!-- unfortunately Aurelia's templating syntax is not supported here -->
+				<ak-template kendo-template.bind="true">
+					<span class="k-state-default"
+					      style="background-image: url('https://demos.telerik.com/kendo-ui/content/web/Customers/#:data.CustomerID#.jpg')"></span>
+					<span class="k-state-default">
+						<h3>#: data.ContactName #</h3>
+						<p>#: data.CompanyName #</p>
+					</span>
+				</ak-template>
+			</ak-list-box>
 
-      <ak-list-box k-data-text-field="ContactName"
-                  k-data-value-field="CustomerID"
-                  k-draggable.bind="draggable"
-                  k-drop-sources.bind="['optional']"
-                  k-connect-with="optional">
-        <select id="selected" title="Selected"></select>
+			<ak-list-box k-data-text-field="ContactName"
+			             k-data-value-field="CustomerID"
+			             k-draggable.bind="draggable"
+			             k-drop-sources.bind="['optional']"
+			             k-connect-with="optional">
+				<select id="selected"
+				        title="Selected"></select>
 
-        <!-- unfortunately Aurelia's templating syntax is not supported here -->
-        <ak-template kendo-template.bind="true">
-          <span class="k-state-default" style="background-image: url('https://demos.telerik.com/kendo-ui/content/web/Customers/#:data.CustomerID#.jpg')"></span>
-          <span class="k-state-default">
-            <h3>#: data.ContactName #</h3>
-            <p>#: data.CompanyName #</p>
-          </span>
-        </ak-template>
-      </ak-list-box>
-    </div>
-  </div>
+				<!-- unfortunately Aurelia's templating syntax is not supported here -->
+				<ak-template kendo-template.bind="true">
+					<span class="k-state-default"
+					      style="background-image: url('https://demos.telerik.com/kendo-ui/content/web/Customers/#:data.CustomerID#.jpg')"></span>
+					<span class="k-state-default">
+						<h3>#: data.ContactName #</h3>
+						<p>#: data.CompanyName #</p>
+					</span>
+				</ak-template>
+			</ak-list-box>
 
-    <style>
-      #example .demo-section {
-          max-width: none;
-          width: 695px;
-      }
+			<ak-drop-down-tree k-placeholder="select..."
+			                   k-checkboxes.bind="true"
+			                   k-value.two-way="chacked"
+			                   k-check-all.bind="true"
+			                   k-data-source.bind="[
+                    {
+                        text: 'Furniture', expanded: false, items: [
+                            { text: 'Tables & Chairs' },
+                            { text: 'Sofas' },
+                            { text: 'Occasional Furniture' }
+                        ]
+                    },
+                    {
+                        text: 'Decor', items: [
+                            { text: 'Bed Linen' },
+                            { text: 'Curtains & Blinds' },
+                            { text: 'Carpets' }
+                        ]
+                    }
+				]"></ak-drop-down-tree>
+			<div>${chacked}</div>
+		</div>
+	</div>
 
-      #example .k-listbox {
-          width: 326px;
-          height: 310px;
-      }
+	<style>
+		#example .demo-section {
+			max-width: none;
+			width: 695px;
+		}
 
-          #example .k-listbox:first-child {
-              width: 360px;
-              margin-right: 1px;
-          }
+		#example .k-listbox {
+			width: 326px;
+			height: 310px;
+		}
 
-      .k-ghost {
-          display:none!important;
-      }
+		#example .k-listbox:first-child {
+			width: 360px;
+			margin-right: 1px;
+		}
 
-      .custom-placeholder {
-          opacity: 0.4;
-      }
+		.k-ghost {
+			display: none !important;
+		}
 
-      #example .k-item {
-          line-height: 1em;
-      }
+		.custom-placeholder {
+			opacity: 0.4;
+		}
 
-      /* Material Theme padding adjustment*/
+		#example .k-item {
+			line-height: 1em;
+		}
 
-      .k-material #example .k-item,
-      .k-material #example .k-item.k-state-hover,
-      .k-materialblack #example .k-item,
-      .k-materialblack #examplel .k-item.k-state-hover {
-          padding-left: 5px;
-          border-left: 0;
-      }
+		/* Material Theme padding adjustment*/
 
-      .k-item > span {
-          -webkit-box-sizing: border-box;
-          -moz-box-sizing: border-box;
-          box-sizing: border-box;
-          display: inline-block;
-          vertical-align: top;
-          margin: 20px 10px 10px 5px;
-      }
+		.k-material #example .k-item,
+		.k-material #example .k-item.k-state-hover,
+		.k-materialblack #example .k-item,
+		.k-materialblack #examplel .k-item.k-state-hover {
+			padding-left: 5px;
+			border-left: 0;
+		}
 
-      #example .k-item > span:first-child,
-      .k-item.k-drag-clue > span:first-child {
-          -moz-box-shadow: inset 0 0 30px rgba(0,0,0,.3);
-          -webkit-box-shadow: inset 0 0 30px rgba(0,0,0,.3);
-          box-shadow: inset 0 0 30px rgba(0,0,0,.3);
-          margin: 10px;
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          background-size: 100%;
-          background-repeat: no-repeat;
-      }
+		.k-item>span {
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			display: inline-block;
+			vertical-align: top;
+			margin: 20px 10px 10px 5px;
+		}
 
-      #example h3,
-      .k-item.k-drag-clue h3 {
-          font-size: 1.2em;
-          font-weight: normal;
-          margin: 0 0 1px 0;
-          padding: 0;
-      }
+		#example .k-item>span:first-child,
+		.k-item.k-drag-clue>span:first-child {
+			-moz-box-shadow: inset 0 0 30px rgba(0, 0, 0, .3);
+			-webkit-box-shadow: inset 0 0 30px rgba(0, 0, 0, .3);
+			box-shadow: inset 0 0 30px rgba(0, 0, 0, .3);
+			margin: 10px;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			background-size: 100%;
+			background-repeat: no-repeat;
+		}
 
-      #example p {
-          margin: 0;
-          padding: 0;
-          font-size: .8em;
-      }
-  </style>
+		#example h3,
+		.k-item.k-drag-clue h3 {
+			font-size: 1.2em;
+			font-weight: normal;
+			margin: 0 0 1px 0;
+			padding: 0;
+		}
+
+		#example p {
+			margin: 0;
+			padding: 0;
+			font-size: .8em;
+		}
+	</style>
 </template>

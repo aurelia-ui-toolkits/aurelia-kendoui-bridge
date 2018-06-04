@@ -54,7 +54,7 @@
       "babel": "npm:babel-core@^5.8.22",
       "babel-runtime": "npm:babel-runtime@^5.8.20",
       "core-js": "npm:core-js@^2.1.3",
-      "polymer/mutationobservers": "^0.4.2",
+      "polymer/mutationobservers": "googlearchive/MutationObservers@^0.4.2",
       "text": "systemjs/plugin-text@^0.0.4",
       "traceur": "jmcriffey/bower-traceur@0.0.91",
       "traceur-runtime": "jmcriffey/bower-traceur-runtime@0.0.91"
@@ -119,7 +119,7 @@
     "require-dir": "^0.3.2",
     "run-sequence": "^1.0.2",
     "through2": "^2.0.0",
-    "typedoc": "^0.4.4",
+    "typedoc": "^0.11.1",
     "typescript": "^2.4.1",
     "vinyl": "^2.0.2",
     "vinyl-paths": "^2.1.0",

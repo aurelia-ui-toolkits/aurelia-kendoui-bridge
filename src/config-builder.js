@@ -46,6 +46,7 @@ export class KendoConfigBuilder {
       .kendoContextMenu()
       .kendoDialog()
       .kendoDropDownList()
+	  .kendoDropdownTree()
       .kendoDateTimePicker()
       .kendoDatePicker()
       .kendoDraggable()
@@ -85,7 +86,7 @@ export class KendoConfigBuilder {
     this.core()
       .kendoBarcode()
       .kendoChart()
-      .kendoDiagram()
+	  .kendoDiagram()
       .kendoEditor()
       .kendoFilterMenu()
       .kendoGantt()
@@ -238,6 +239,11 @@ export class KendoConfigBuilder {
 
   kendoDropDownList(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./dropdownlist/dropdownlist'));
+    return this;
+  }
+
+  kendoDropDownTree(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./dropdowntree/dropdowntree'));
     return this;
   }
 

@@ -18,7 +18,7 @@ gulp.task('bindables:download', function () {
 gulp.task('bindables:typedoc', function(){
     console.log("NOTE: The 'jquery.d.ts' not found error is expected");
 
-    return gulp.src(['./build/tasks/kendo-ui.d.ts'])
+    return gulp.src(['./temp/kendo-ui.d.ts'])
     .pipe(typedoc({
       target: 'es6',
       includeDeclarations: true,
