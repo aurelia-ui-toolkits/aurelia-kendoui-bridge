@@ -1,6 +1,7 @@
 <template>
 	<require from="aurelia-kendoui-bridge/listbox/listbox"></require>
 	<require from="aurelia-kendoui-bridge/dropdowntree/dropdowntree">
+	</require><require from="aurelia-kendoui-bridge/chat/chat">
 	</require>
 
 	<div id="example"
@@ -67,6 +68,8 @@
                         ]
                     }
 				]"></ak-drop-down-tree>
+
+				<div ak-chat k-on-ready.delegate="chatReady($event.detail)" k-on-post.delegate="agent.postMessage($event.detail.text)"></div>
 			<div>${chacked}</div>
 		</div>
 	</div>

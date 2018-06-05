@@ -85,7 +85,8 @@ export class KendoConfigBuilder {
   pro(): KendoConfigBuilder {
     this.core()
       .kendoBarcode()
-      .kendoChart()
+	  .kendoChart()
+	  .kendoChat()
 	  .kendoDiagram()
       .kendoEditor()
       .kendoFilterMenu()
@@ -185,6 +186,11 @@ export class KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./chart/sparkline'));
     this.resources.push(PLATFORM.moduleName('./chart/stock'));
     this.resources.push(PLATFORM.moduleName('./chart/treemap'));
+    return this;
+  }
+  
+  kendoChat(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./chat/chat'));
     return this;
   }
 
