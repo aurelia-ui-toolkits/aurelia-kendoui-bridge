@@ -46,7 +46,6 @@ export class KendoConfigBuilder {
       .kendoContextMenu()
       .kendoDialog()
       .kendoDropDownList()
-	  .kendoDropdownTree()
       .kendoDateTimePicker()
       .kendoDatePicker()
       .kendoDraggable()
@@ -88,6 +87,7 @@ export class KendoConfigBuilder {
 	  .kendoChart()
 	  .kendoChat()
 	  .kendoDiagram()
+	  .kendoDropdownTree()
       .kendoEditor()
       .kendoFilterMenu()
       .kendoGantt()
@@ -188,7 +188,7 @@ export class KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./chart/treemap'));
     return this;
   }
-  
+
   kendoChat(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./chat/chat'));
     return this;
