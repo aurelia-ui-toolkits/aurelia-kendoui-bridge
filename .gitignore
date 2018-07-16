@@ -8,3 +8,4 @@ vendors
 build/reports
 devbuild
 temp
+package-lock.json
