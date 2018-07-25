@@ -2,7 +2,7 @@ import {ControlProperties} from './control-properties';
 import {Util} from './util';
 import {inject} from 'aurelia-dependency-injection';
 import {KendoConfigBuilder} from '../config-builder';
-import {Lexer, ParserImplementation, createOverrideContext} from 'aurelia-binding';
+import {createOverrideContext, Parser} from 'aurelia-binding';
 
 @inject(ControlProperties, Util, KendoConfigBuilder)
 export class TemplateGatherer {
@@ -50,9 +50,9 @@ export class TemplateGatherer {
         // now we must parse the expression inside for="" on the ak-template
         // and set the template on the wrapper object
         // get a ParserImplementation for the expression inside for="editable.template"
-        let parser = new ParserImplementation(new Lexer(), c.for);
+        let parser = new Parser();
         // get the expression (generates a tree of AccessMembers)
-        let expression = parser.parseExpression();
+        let expression = parser.parse(c.for);
         // when the user uses "editable.template" it must be set as "kEditable.template"
         // so here we iterate through the tree until we get to the last object (the first part of the expression)
         let iterator = expression;
