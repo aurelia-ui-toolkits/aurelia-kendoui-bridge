@@ -65,7 +65,7 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
     };
 
     KendoConfigBuilder.prototype.pro = function pro() {
-      this.core().kendoBarcode().kendoChart().kendoDiagram().kendoEditor().kendoFilterMenu().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPager().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
+      this.core().kendoBarcode().kendoChart().kendoChat().kendoDiagram().kendoDropdownTree().kendoEditor().kendoFilterMenu().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPager().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
 
       return this;
     };
@@ -132,6 +132,11 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
       return this;
     };
 
+    KendoConfigBuilder.prototype.kendoChat = function kendoChat() {
+      this.resources.push(_aureliaPal.PLATFORM.moduleName('./chat/chat'));
+      return this;
+    };
+
     KendoConfigBuilder.prototype.kendoComboBox = function kendoComboBox() {
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./combobox/combobox'));
       return this;
@@ -183,6 +188,11 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
 
     KendoConfigBuilder.prototype.kendoDropDownList = function kendoDropDownList() {
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./dropdownlist/dropdownlist'));
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoDropDownTree = function kendoDropDownTree() {
+      this.resources.push(_aureliaPal.PLATFORM.moduleName('./dropdowntree/dropdowntree'));
       return this;
     };
 

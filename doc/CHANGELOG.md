@@ -1,3 +1,19 @@
+<a name="1.8.0"></a>
+# [1.8.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.7.0...1.8.0) (2018-07-25)
+
+
+### Bug Fixes
+
+* **dropdowntree:** dropdowntree is part of the pro version, not the free version ([73f4356](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/73f4356))
+
+
+### Features
+
+* **chat:** add chat wrapper ([ac9d13a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/ac9d13a))
+* **dropdowntree:** add dropdowntree wrapper ([6e17a41](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/6e17a41))
+
+
+
 <a name="1.7.0"></a>
 # [1.7.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.6.5...1.7.0) (2018-04-14)
 

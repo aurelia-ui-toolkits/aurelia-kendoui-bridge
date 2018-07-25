@@ -84,8 +84,10 @@ export class KendoConfigBuilder {
   pro(): KendoConfigBuilder {
     this.core()
       .kendoBarcode()
-      .kendoChart()
-      .kendoDiagram()
+	  .kendoChart()
+	  .kendoChat()
+	  .kendoDiagram()
+	  .kendoDropdownTree()
       .kendoEditor()
       .kendoFilterMenu()
       .kendoGantt()
@@ -187,6 +189,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoChat(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./chat/chat'));
+    return this;
+  }
+
   kendoComboBox(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./combobox/combobox'));
     return this;
@@ -238,6 +245,11 @@ export class KendoConfigBuilder {
 
   kendoDropDownList(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./dropdownlist/dropdownlist'));
+    return this;
+  }
+
+  kendoDropDownTree(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./dropdowntree/dropdowntree'));
     return this;
   }
 

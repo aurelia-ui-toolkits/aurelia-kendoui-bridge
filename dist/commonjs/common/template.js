@@ -61,9 +61,9 @@ function _initializerWarningHelper(descriptor, context) {
 var Template = exports.Template = (_dec = (0, _aureliaTemplating.customElement)(_constants.constants.elementPrefix + 'template'), _dec2 = (0, _aureliaTemplating.noView)(), _dec3 = (0, _aureliaTemplating.processContent)(function (compiler, resources, element, instruction) {
   var html = element.innerHTML;
   if (html !== '') {
-    var script = $(element).children('script');
+    var script = kendo.jQuery(element).children('script');
     if (script.length > 0) {
-      instruction.template = $(script).html();
+      instruction.template = kendo.jQuery(script).html();
     } else {
       instruction.template = html;
     }

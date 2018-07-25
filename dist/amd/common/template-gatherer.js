@@ -50,9 +50,9 @@ define(['exports', './control-properties', './util', 'aurelia-dependency-injecti
             template = _this.config.templateCallback(target, c, c.template);
           }
 
-          var parser = new _aureliaBinding.ParserImplementation(new _aureliaBinding.Lexer(), c.for);
+          var parser = new _aureliaBinding.Parser();
 
-          var expression = parser.parseExpression();
+          var expression = parser.parse(c.for);
 
           var iterator = expression;
           while (iterator) {

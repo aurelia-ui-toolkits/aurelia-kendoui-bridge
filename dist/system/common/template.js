@@ -68,9 +68,9 @@ System.register(['aurelia-dependency-injection', 'aurelia-templating', '../commo
       _export('Template', Template = (_dec = customElement(constants.elementPrefix + 'template'), _dec2 = noView(), _dec3 = processContent(function (compiler, resources, element, instruction) {
         var html = element.innerHTML;
         if (html !== '') {
-          var script = $(element).children('script');
+          var script = kendo.jQuery(element).children('script');
           if (script.length > 0) {
-            instruction.template = $(script).html();
+            instruction.template = kendo.jQuery(script).html();
           } else {
             instruction.template = html;
           }

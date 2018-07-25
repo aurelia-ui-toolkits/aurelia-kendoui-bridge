@@ -1,7 +1,7 @@
 System.register(['./control-properties', './util', 'aurelia-dependency-injection', '../config-builder', 'aurelia-binding'], function (_export, _context) {
   "use strict";
 
-  var ControlProperties, Util, inject, KendoConfigBuilder, Lexer, ParserImplementation, createOverrideContext, _dec, _class, TemplateGatherer;
+  var ControlProperties, Util, inject, KendoConfigBuilder, createOverrideContext, Parser, _dec, _class, TemplateGatherer;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -19,9 +19,8 @@ System.register(['./control-properties', './util', 'aurelia-dependency-injection
     }, function (_configBuilder) {
       KendoConfigBuilder = _configBuilder.KendoConfigBuilder;
     }, function (_aureliaBinding) {
-      Lexer = _aureliaBinding.Lexer;
-      ParserImplementation = _aureliaBinding.ParserImplementation;
       createOverrideContext = _aureliaBinding.createOverrideContext;
+      Parser = _aureliaBinding.Parser;
     }],
     execute: function () {
       _export('TemplateGatherer', TemplateGatherer = (_dec = inject(ControlProperties, Util, KendoConfigBuilder), _dec(_class = function () {
@@ -60,9 +59,9 @@ System.register(['./control-properties', './util', 'aurelia-dependency-injection
                 template = _this.config.templateCallback(target, c, c.template);
               }
 
-              var parser = new ParserImplementation(new Lexer(), c.for);
+              var parser = new Parser();
 
-              var expression = parser.parseExpression();
+              var expression = parser.parse(c.for);
 
               var iterator = expression;
               while (iterator) {

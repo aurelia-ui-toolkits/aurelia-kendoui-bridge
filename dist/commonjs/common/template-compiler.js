@@ -115,7 +115,7 @@ var TemplateCompiler = exports.TemplateCompiler = (_dec = (0, _aureliaDependency
   TemplateCompiler.prototype.enhanceView = function enhanceView($parent, element, ctx, container) {
     var view = kendo.jQuery(element).data('viewInstance');
 
-    $(element).data('$$kendoScope', ctx);
+    kendo.jQuery(element).data('$$kendoScope', ctx);
 
     if (element.querySelectorAll('.au-target').length === 0) {
       if (container) {
