@@ -36,7 +36,7 @@
       "lib": "dist/amd"
     },
     "dependencies": {
-      "aurelia-binding": "npm:aurelia-binding@2.1.1",
+      "aurelia-binding": "npm:aurelia-binding@^2.1.1",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@^1.0.0",
       "aurelia-logging": "npm:aurelia-logging@^1.0.0",
       "aurelia-metadata": "npm:aurelia-metadata@^1.0.0",
