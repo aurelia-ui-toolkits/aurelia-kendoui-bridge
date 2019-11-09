@@ -43,11 +43,12 @@
     }
   },
   "devDependencies": {
-    "jspm": "0.16.15",
-    "babel-eslint": "^4.1.1"
+    "babel-eslint": "^4.1.1",
+    "graceful-fs": "^4.2.3",
+    "gulp": "^4.0.0",
+    "jspm": "0.16.50"
   },
   "dependencies": {
-    "aurelia-binding": "^2.1.1",
-    "gulp": "^3.9.1"
+    "aurelia-binding": "^2.1.1"
   }
 }
