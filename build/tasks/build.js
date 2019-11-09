@@ -162,17 +162,16 @@ gulp.task('build', gulp.series(
   'build-dts'
 ));
 
-gulp.task('build-release', function(callback) {
-  paths.output = paths.releaseOutput;
-  return runSequence(
-    'clean',
-    'build-index',
-    ['build-es6-temp', 'build-es6', 'build-commonjs', 'build-amd', 'build-system', 'build-dev'],
-    ['copy-html', 'copy-css'],
-    'build-dts',
-    callback
-  );
-});
+gulp.task('build-release', gulp.series(function(callback) {
+    paths.output = paths.releaseOutput;
+    callback();
+  },
+  'clean',
+  'build-index',
+  gulp.parallel('build-es6-temp', 'build-es6', 'build-commonjs', 'build-amd', 'build-system', 'build-dev'),
+  gulp.parallel('copy-html', 'copy-css'),
+  'build-dts'
+));
 
 
 gulp.task('doc-generate', function(){
@@ -384,7 +383,7 @@ gulp.task('default', function(callback) {
 gulp.task('ci', gulp.series('default'));
 
 gulp.task('bump-version', function(){
-  return gulp.src(['./package.json', './bower.json'])
+  return gulp.src(['./package.json', './bower.json'], { allowEmpty : true })
     .pipe(bump({type:args.bump })) //major|minor|patch|prerelease
     .pipe(gulp.dest('./'));
 });
@@ -408,25 +407,23 @@ gulp.task('changelog', function() {
   .pipe(gulp.dest(paths.doc));
 });
 
-gulp.task('prepare-release', function(callback){
-  paths.output = paths.releaseOutput;
-
-  return runSequence(
-    'lint',
-    'bump-version',
-    'version.js',
-    'build-release',
-    // 'doc',
-    'changelog',
-    callback
-  );
-});
+gulp.task('prepare-release', gulp.series(function(done){
+    paths.output = paths.releaseOutput;
+    done();
+  },
+  'lint',
+  'bump-version',
+  'version.js',
+  'build-release',
+  // 'doc',
+  'changelog'
+));
 
 // this task utilizes the browsersync plugin
 // to create a dev server instance
 // at http://localhost:9000
 gulp.task('serve', gulp.series(
-  // 'build',
+  'build',
   function(done) {
   var bs = browserSync.create('Sample server');
 
