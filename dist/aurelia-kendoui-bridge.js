@@ -93,7 +93,7 @@ export class KendoConfigBuilder {
 	  .kendoChart()
 	  .kendoChat()
 	  .kendoDiagram()
-	  .kendoDropdownTree()
+	  .kendoDropDownTree()
       .kendoEditor()
       .kendoFilterMenu()
       .kendoGantt()

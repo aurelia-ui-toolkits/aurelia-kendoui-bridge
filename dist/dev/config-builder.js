@@ -50,7 +50,7 @@ System.register(['aurelia-logging', 'aurelia-pal'], function (_export, _context)
         };
 
         KendoConfigBuilder.prototype.pro = function pro() {
-          this.core().kendoBarcode().kendoChart().kendoChat().kendoDiagram().kendoDropdownTree().kendoEditor().kendoFilterMenu().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPager().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
+          this.core().kendoBarcode().kendoChart().kendoChat().kendoDiagram().kendoDropDownTree().kendoEditor().kendoFilterMenu().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPager().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
 
           return this;
         };
