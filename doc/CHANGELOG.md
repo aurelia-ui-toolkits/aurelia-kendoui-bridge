@@ -1,3 +1,11 @@
+<a name="1.9.0"></a>
+# [1.9.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.8.1...1.9.0) (2020-01-15)
+
+
+### Features
+
+* **daterangepicker:** added daterangepicker wrapper ([28f8c43](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/28f8c43))
+
 <a name="1.8.1"></a>
 # [1.8.1](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.8.0...1.8.1) (2019-11-09)
 

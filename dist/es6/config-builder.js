@@ -48,6 +48,7 @@ export class KendoConfigBuilder {
       .kendoDropDownList()
       .kendoDateTimePicker()
       .kendoDatePicker()
+      .kendoDateRangePicker()
       .kendoDraggable()
       .kendoDropTarget()
       .kendoFlatColorPicker()
@@ -87,7 +88,7 @@ export class KendoConfigBuilder {
 	  .kendoChart()
 	  .kendoChat()
 	  .kendoDiagram()
-	  .kendoDropdownTree()
+	  .kendoDropDownTree()
       .kendoEditor()
       .kendoFilterMenu()
       .kendoGantt()
@@ -225,6 +226,11 @@ export class KendoConfigBuilder {
 
   kendoDateTimePicker(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./datetimepicker/datetimepicker'));
+    return this;
+  }
+
+  kendoDateRangePicker(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./daterangepicker/daterangepicker'));
     return this;
   }
 

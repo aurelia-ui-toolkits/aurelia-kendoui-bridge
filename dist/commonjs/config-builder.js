@@ -44,12 +44,12 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
   };
 
   KendoConfigBuilder.prototype.core = function core() {
-    this.kendoAutoComplete().kendoButton().kendoMobileButtonGroup().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoComboBox().kendoContextMenu().kendoDialog().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoDraggable().kendoDropTarget().kendoFlatColorPicker().kendoListView().kendoMaskedTextBox().kendoMenu().kendoMultiSelect().kendoNotification().kendoNumericTextBox().kendoPanelBar().kendoPopup().kendoProgressBar().kendoRangeSlider().kendoResponsivePanel().kendoMobileScrollView().kendoSortable().kendoSlider().kendoSplitter().kendoMobileSwitch().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().kendoToolBar().kendoTooltip().kendoValidator().kendoWindow().useValueConverters();
+    this.kendoAutoComplete().kendoButton().kendoMobileButtonGroup().kendoCalendar().kendoColorPicker().kendoColorPalette().kendoComboBox().kendoContextMenu().kendoDialog().kendoDropDownList().kendoDateTimePicker().kendoDatePicker().kendoDateRangePicker().kendoDraggable().kendoDropTarget().kendoFlatColorPicker().kendoListView().kendoMaskedTextBox().kendoMenu().kendoMultiSelect().kendoNotification().kendoNumericTextBox().kendoPanelBar().kendoPopup().kendoProgressBar().kendoRangeSlider().kendoResponsivePanel().kendoMobileScrollView().kendoSortable().kendoSlider().kendoSplitter().kendoMobileSwitch().kendoTabStrip().kendoTemplateSupport().kendoTimePicker().kendoToolBar().kendoTooltip().kendoValidator().kendoWindow().useValueConverters();
     return this;
   };
 
   KendoConfigBuilder.prototype.pro = function pro() {
-    this.core().kendoBarcode().kendoChart().kendoChat().kendoDiagram().kendoDropdownTree().kendoEditor().kendoFilterMenu().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPager().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
+    this.core().kendoBarcode().kendoChart().kendoChat().kendoDiagram().kendoDropDownTree().kendoEditor().kendoFilterMenu().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPager().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
 
     return this;
   };
@@ -152,6 +152,11 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
 
   KendoConfigBuilder.prototype.kendoDateTimePicker = function kendoDateTimePicker() {
     this.resources.push(_aureliaPal.PLATFORM.moduleName('./datetimepicker/datetimepicker'));
+    return this;
+  };
+
+  KendoConfigBuilder.prototype.kendoDateRangePicker = function kendoDateRangePicker() {
+    this.resources.push(_aureliaPal.PLATFORM.moduleName('./daterangepicker/daterangepicker'));
     return this;
   };
 
