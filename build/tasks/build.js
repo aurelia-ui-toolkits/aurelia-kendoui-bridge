@@ -219,7 +219,7 @@ gulp.task('doc', function(callback){
 
 
 gulp.task('bindables:download', function () {
-  return request('https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/master/types/kendo-ui/index.d.ts')
+  return request('https://raw.githubusercontent.com/telerik/kendo-ui-core/master/typescript/kendo.all.d.ts')
   .pipe(source('kendo-ui.d.ts'))
   .pipe(gulp.dest('./temp'));
 });
@@ -363,24 +363,11 @@ function iterativeOptionsLookup(_class, optionClasses) {
    }
 }
 
-gulp.task('bindables', function (cb) {
-  return runSequence(
+gulp.task('bindables', gulp.series(
     // 'bindables:download',
     'bindables:typedoc',
-    'bindables:extract',
-    cb);
-});
-
-gulp.task('default', function(callback) {
-  return runSequence(
-    'lint',
-    'build',
-    'test',
-    callback
-  );
-});
-
-gulp.task('ci', gulp.series('default'));
+    'bindables:extract')
+);
 
 gulp.task('bump-version', function(){
   return gulp.src(['./package.json', './bower.json'], { allowEmpty : true })
@@ -487,3 +474,13 @@ gulp.task('watch', gulp.series(
     gulp.watch(paths.sample + '/src/**/*', { interval: 500 }, gulp.series(bs.reload)).on('change', reportChange)
   }
 ));
+
+
+gulp.task('default', gulp.series(
+  'lint',
+  'build',
+  'test'
+)
+);
+
+gulp.task('ci', gulp.series('default'));
