@@ -1,4 +1,19 @@
 export class Test {
+  colors = [{
+      to: 25,
+      color: '#0058e9'
+  }, {
+      from: 25,
+      to: 50,
+      color: '#37b400'
+  }, {
+      from: 50,
+      to: 75,
+      color: '#ffc000'
+  }, {                    
+      from: 75,
+      color: '#f31700'
+  }];
 
 	constructor() {
 		window.DialogFlowAgent = kendo.Class.extend({

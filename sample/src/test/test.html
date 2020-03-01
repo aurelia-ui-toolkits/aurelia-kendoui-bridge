@@ -1,76 +1,12 @@
 <template>
-	<require from="aurelia-kendoui-bridge/listbox/listbox"></require>
-	<require from="aurelia-kendoui-bridge/dropdowntree/dropdowntree">
-	</require><require from="aurelia-kendoui-bridge/chat/chat">
-	</require>
+	<require from="aurelia-kendoui-bridge/slider/slider"></require>
+	<require from="aurelia-kendoui-bridge/gauges/arc-gauge"></require>
 
 	<div id="example"
 	     role="application">
 		<div class="demo-section k-content wide">
-			<ak-list-box k-data-text-field="ContactName"
-			             k-data-value-field="CustomerID"
-			             k-data-source.bind="datasource"
-			             k-draggable.bind="draggable"
-			             k-drop-sources.bind="['selected']"
-			             k-connect-with="selected"
-			             k-toolbar.bind="toolbar">
-				<select id="optional"
-				        title="Optional">
-				</select>
-
-				<!-- unfortunately Aurelia's templating syntax is not supported here -->
-				<ak-template kendo-template.bind="true">
-					<span class="k-state-default"
-					      style="background-image: url('https://demos.telerik.com/kendo-ui/content/web/Customers/#:data.CustomerID#.jpg')"></span>
-					<span class="k-state-default">
-						<h3>#: data.ContactName #</h3>
-						<p>#: data.CompanyName #</p>
-					</span>
-				</ak-template>
-			</ak-list-box>
-
-			<ak-list-box k-data-text-field="ContactName"
-			             k-data-value-field="CustomerID"
-			             k-draggable.bind="draggable"
-			             k-drop-sources.bind="['optional']"
-			             k-connect-with="optional">
-				<select id="selected"
-				        title="Selected"></select>
-
-				<!-- unfortunately Aurelia's templating syntax is not supported here -->
-				<ak-template kendo-template.bind="true">
-					<span class="k-state-default"
-					      style="background-image: url('https://demos.telerik.com/kendo-ui/content/web/Customers/#:data.CustomerID#.jpg')"></span>
-					<span class="k-state-default">
-						<h3>#: data.ContactName #</h3>
-						<p>#: data.CompanyName #</p>
-					</span>
-				</ak-template>
-			</ak-list-box>
-
-			<ak-drop-down-tree k-placeholder="select..."
-			                   k-checkboxes.bind="true"
-			                   k-value.two-way="chacked"
-			                   k-check-all.bind="true"
-			                   k-data-source.bind="[
-                    {
-                        text: 'Furniture', expanded: false, items: [
-                            { text: 'Tables & Chairs' },
-                            { text: 'Sofas' },
-                            { text: 'Occasional Furniture' }
-                        ]
-                    },
-                    {
-                        text: 'Decor', items: [
-                            { text: 'Bed Linen' },
-                            { text: 'Curtains & Blinds' },
-                            { text: 'Carpets' }
-                        ]
-                    }
-				]"></ak-drop-down-tree>
-
-				<div ak-chat k-on-ready.delegate="chatReady($event.detail)" k-on-post.delegate="agent.postMessage($event.detail.text)"></div>
-			<div>${chacked}</div>
+      <ak-arc-gauge k-value.two-way="val" k-colors.bind="colors" center-template="<span style='color: #: color #;'>#: value #%</span>"></ak-arc-gauge>
+      <input ak-slider="k-value.two-way: val; k-min.bind: 0; k-max.bind: 100"/>
 		</div>
 	</div>
 
