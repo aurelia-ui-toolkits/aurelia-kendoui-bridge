@@ -119,6 +119,7 @@ declare module 'aurelia-kendoui-bridge' {
     kendoGantt(): KendoConfigBuilder;
     kendoGrid(): KendoConfigBuilder;
     kendoLinearGauge(): KendoConfigBuilder;
+    kendoArcGauge(): KendoConfigBuilder;
     kendoListView(): KendoConfigBuilder;
     kendoListBox(): KendoConfigBuilder;
     kendoNotification(): KendoConfigBuilder;
@@ -708,16 +709,6 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class Editor {
-    constructor(element?: any, widgetBase?: any);
-    subscribe(event?: any, callback?: any): any;
-    bind(ctx?: any, overrideCtx?: any): any;
-    attached(): any;
-    recreate(): any;
-    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
-    destroy(): any;
-    detached(): any;
-  }
   export class DropDownList {
     kNoValueBinding: any;
     kEnabled: any;
@@ -736,6 +727,16 @@ declare module 'aurelia-kendoui-bridge' {
     kEnabled: any;
     kReadOnly: any;
     constructor(element?: any, widgetBase?: any, container?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class Editor {
+    constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
@@ -773,6 +774,16 @@ declare module 'aurelia-kendoui-bridge' {
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
     recreate(): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class ArcGauge {
+    constructor(element?: any, widgetBase?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
     destroy(): any;
     detached(): any;
   }
@@ -921,8 +932,9 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class PanelBar {
-    constructor(element?: any, widgetBase?: any);
+  export class Pager {
+    kEnabled: any;
+    constructor(element?: any, widgetBase?: any, container?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;
@@ -930,9 +942,8 @@ declare module 'aurelia-kendoui-bridge' {
     destroy(): any;
     detached(): any;
   }
-  export class Pager {
-    kEnabled: any;
-    constructor(element?: any, widgetBase?: any, container?: any);
+  export class PanelBar {
+    constructor(element?: any, widgetBase?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;

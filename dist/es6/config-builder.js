@@ -299,6 +299,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoArcGauge(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./gauges/arc-gauge'));
+    return this;
+  }
+
   kendoListView(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./listview/listview'));
     return this;

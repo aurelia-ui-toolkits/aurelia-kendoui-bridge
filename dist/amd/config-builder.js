@@ -241,6 +241,11 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
       return this;
     };
 
+    KendoConfigBuilder.prototype.kendoArcGauge = function kendoArcGauge() {
+      this.resources.push(_aureliaPal.PLATFORM.moduleName('./gauges/arc-gauge'));
+      return this;
+    };
+
     KendoConfigBuilder.prototype.kendoListView = function kendoListView() {
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./listview/listview'));
       return this;

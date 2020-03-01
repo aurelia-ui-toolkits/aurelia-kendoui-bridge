@@ -1,3 +1,11 @@
+<a name="1.10.0"></a>
+# [1.10.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.9.9...1.10.0) (2020-03-01)
+
+
+### Features
+
+* **arc-gauge:** added arc-gauge ([5078813](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/5078813))
+
 <a name="1.9.0"></a>
 # [1.9.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.8.1...1.9.0) (2020-01-15)
 

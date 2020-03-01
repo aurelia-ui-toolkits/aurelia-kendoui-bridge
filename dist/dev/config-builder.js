@@ -226,6 +226,11 @@ System.register(['aurelia-logging', 'aurelia-pal'], function (_export, _context)
           return this;
         };
 
+        KendoConfigBuilder.prototype.kendoArcGauge = function kendoArcGauge() {
+          this.resources.push(PLATFORM.moduleName('./gauges/arc-gauge'));
+          return this;
+        };
+
         KendoConfigBuilder.prototype.kendoListView = function kendoListView() {
           this.resources.push(PLATFORM.moduleName('./listview/listview'));
           return this;

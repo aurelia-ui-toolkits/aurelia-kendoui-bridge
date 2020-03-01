@@ -305,6 +305,11 @@ export class KendoConfigBuilder {
     return this;
   }
 
+  kendoArcGauge(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./gauges/arc-gauge'));
+    return this;
+  }
+
   kendoListView(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./listview/listview'));
     return this;
@@ -543,7 +548,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.9.0';
+export let version = '1.10.0';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
@@ -2596,50 +2601,6 @@ export class DropTarget {
   }
 }
 
-@customAttribute(`${constants.attributePrefix}rich-editor`)
-@generateBindables('kendoEditor')
-@inject(Element, WidgetBase)
-export class Editor {
-  constructor(element, widgetBase) {
-    this.element = element;
-    this.widgetBase = widgetBase
-      .control('kendoEditor')
-      .useElement(this.element)
-      .linkViewModel(this)
-      .useValueBinding();
-  }
-
-  subscribe(event, callback) {
-    return this.widgetBase.subscribe(event, callback);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  propertyChanged(property, newValue, oldValue) {
-    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
-}
-
 @customElement(`${constants.elementPrefix}drop-down-list`)
 @generateBindables('kendoDropDownList')
 @inject(Element, WidgetBase, Container)
@@ -2766,6 +2727,50 @@ export class DropDownTree {
 
 function getSelectNode(element) {
   return element.querySelectorAll('select');
+}
+
+@customAttribute(`${constants.attributePrefix}rich-editor`)
+@generateBindables('kendoEditor')
+@inject(Element, WidgetBase)
+export class Editor {
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoEditor')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding();
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
 }
 
 @customAttribute(`${constants.attributePrefix}filter-menu`)
@@ -2921,6 +2926,50 @@ export class Gantt  {
 
 function isInitFromDiv(element) {
   return element.querySelectorAll('div').length > 0;
+}
+
+@customElement(`${constants.elementPrefix}arc-gauge`)
+@generateBindables('kendoArcGauge')
+@inject(Element, WidgetBase)
+export class ArcGauge {
+  constructor(element, widgetBase) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoArcGauge')
+      .useElement(this.element)
+      .linkViewModel(this)
+      .useValueBinding();
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
 }
 
 @customElement(`${constants.elementPrefix}linear-gauge`)
@@ -3632,6 +3681,54 @@ export class NumericTextBox {
   }
 }
 
+@customElement(`${constants.elementPrefix}pager`)
+@generateBindables('kendoPager')
+@inject(Element, WidgetBase, Container)
+export class Pager {
+  @bindable kEnabled;
+
+  constructor(element, widgetBase, container) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoPager')
+      .linkViewModel(this)
+      .useElement(this.element)
+      .useContainer(container);
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    let templates = this.widgetBase.util.getChildrenVMs(
+      this.element,
+      `${constants.elementPrefix}template`
+    );
+    this.widgetBase.useTemplates(this, 'kendoPager', templates);
+
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
 @customElement(`${constants.elementPrefix}panel-bar`)
 @generateBindables('kendoPanelBar')
 @inject(Element, WidgetBase)
@@ -3693,54 +3790,6 @@ export class PanelBar {
 // if the first child is not a UL/OL then create one to use as the target, otherwise the panelbar can look a bit mangled
 function hasListChildNode(element) {
   return element.children.length > 0 && (element.children[0].nodeName === 'UL' || element.children[0].nodeName === 'OL');
-}
-
-@customElement(`${constants.elementPrefix}pager`)
-@generateBindables('kendoPager')
-@inject(Element, WidgetBase, Container)
-export class Pager {
-  @bindable kEnabled;
-
-  constructor(element, widgetBase, container) {
-    this.element = element;
-    this.widgetBase = widgetBase
-      .control('kendoPager')
-      .linkViewModel(this)
-      .useElement(this.element)
-      .useContainer(container);
-  }
-
-  subscribe(event, callback) {
-    return this.widgetBase.subscribe(event, callback);
-  }
-
-  bind(ctx, overrideCtx) {
-    this.widgetBase.useParentCtx(overrideCtx);
-  }
-
-  attached() {
-    if (!this.kNoInit) {
-      this.recreate();
-    }
-  }
-
-  recreate() {
-    let templates = this.widgetBase.util.getChildrenVMs(
-      this.element,
-      `${constants.elementPrefix}template`
-    );
-    this.widgetBase.useTemplates(this, 'kendoPager', templates);
-
-    this.kWidget = this.widgetBase.recreate();
-  }
-
-  destroy() {
-    this.widgetBase.destroy(this.kWidget);
-  }
-
-  detached() {
-    this.destroy();
-  }
 }
 
 export class PDF {}

@@ -225,6 +225,11 @@ var KendoConfigBuilder = exports.KendoConfigBuilder = function () {
     return this;
   };
 
+  KendoConfigBuilder.prototype.kendoArcGauge = function kendoArcGauge() {
+    this.resources.push(_aureliaPal.PLATFORM.moduleName('./gauges/arc-gauge'));
+    return this;
+  };
+
   KendoConfigBuilder.prototype.kendoListView = function kendoListView() {
     this.resources.push(_aureliaPal.PLATFORM.moduleName('./listview/listview'));
     return this;
