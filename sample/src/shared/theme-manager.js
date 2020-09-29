@@ -67,7 +67,7 @@ export class ThemeManager {
   }
 
   getNormalizedThemePath(theme) {
-    return System.normalizeSync(`http://kendo.cdn.telerik.com/2020.1.114/styles/kendo.${theme}.min.css!`);
+    return System.normalizeSync(`http://kendo.cdn.telerik.com/2020.3.915/styles/kendo.${theme}.min.css!`);
   }
 
   removeOldThemes() {

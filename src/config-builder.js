@@ -100,6 +100,7 @@ export class KendoConfigBuilder {
       .kendoQRCode()
       .kendoRadialGauge()
       .kendoScheduler()
+      .kendoStepper()
       .kendoTreeList()
       .kendoTreeView()
       .kendoUpload();
@@ -423,6 +424,12 @@ export class KendoConfigBuilder {
 
   kendoSplitter(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./splitter/splitter'));
+    return this;
+  }
+
+  kendoStepper(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./stepper/stepper'));
+    this.resources.push(PLATFORM.moduleName('./stepper/step'));
     return this;
   }
 
