@@ -114,6 +114,7 @@ declare module 'aurelia-kendoui-bridge' {
     kendoDropDownTree(): KendoConfigBuilder;
     kendoDropTarget(): KendoConfigBuilder;
     kendoEditor(): KendoConfigBuilder;
+    kendoFilter(): KendoConfigBuilder;
     kendoFilterMenu(): KendoConfigBuilder;
     kendoFlatColorPicker(): KendoConfigBuilder;
     kendoGantt(): KendoConfigBuilder;
@@ -737,6 +738,17 @@ declare module 'aurelia-kendoui-bridge' {
   }
   export class Editor {
     constructor(element?: any, widgetBase?: any);
+    subscribe(event?: any, callback?: any): any;
+    bind(ctx?: any, overrideCtx?: any): any;
+    attached(): any;
+    recreate(): any;
+    propertyChanged(property?: any, newValue?: any, oldValue?: any): any;
+    destroy(): any;
+    detached(): any;
+  }
+  export class Filter {
+    kEnabled: any;
+    constructor(element?: any, widgetBase?: any, container?: any);
     subscribe(event?: any, callback?: any): any;
     bind(ctx?: any, overrideCtx?: any): any;
     attached(): any;

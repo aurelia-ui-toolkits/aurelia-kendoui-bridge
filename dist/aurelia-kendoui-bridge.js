@@ -96,6 +96,7 @@ export class KendoConfigBuilder {
 	  .kendoDiagram()
 	  .kendoDropDownTree()
       .kendoEditor()
+	  .kendoFilter()
       .kendoFilterMenu()
       .kendoGantt()
       .kendoGrid()
@@ -273,6 +274,11 @@ export class KendoConfigBuilder {
 
   kendoEditor(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./editor/editor'));
+    return this;
+  }
+
+  kendoFilter(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./filter/filter'));
     return this;
   }
 
@@ -548,7 +554,7 @@ export function configure(aurelia, configCallback) {
 
 
 
-export let version = '1.10.0';
+export let version = '1.11.0';
 @customElement(`${constants.elementPrefix}autocomplete`)
 @generateBindables('kendoAutoComplete')
 @inject(Element, WidgetBase, Container)
@@ -2762,6 +2768,57 @@ export class Editor {
 
   propertyChanged(property, newValue, oldValue) {
     this.widgetBase.handlePropertyChanged(this.kWidget, property, newValue, oldValue);
+  }
+
+  destroy() {
+    this.widgetBase.destroy(this.kWidget);
+  }
+
+  detached() {
+    this.destroy();
+  }
+}
+
+@customElement(`${constants.elementPrefix}filter`)
+@generateBindables('kendoFilter')
+@inject(Element, WidgetBase, Container)
+export class Filter {
+  @bindable kEnabled;
+
+  constructor(element, widgetBase, container) {
+    this.element = element;
+    this.widgetBase = widgetBase
+      .control('kendoFilter')
+      .linkViewModel(this)
+      .useElement(this.element)
+      .useContainer(container);
+  }
+
+  subscribe(event, callback) {
+    return this.widgetBase.subscribe(event, callback);
+  }
+
+  bind(ctx, overrideCtx) {
+    this.widgetBase.useParentCtx(overrideCtx);
+  }
+
+  attached() {
+    if (!this.kNoInit) {
+      this.recreate();
+    }
+  }
+
+  recreate() {
+    this.kWidget = this.widgetBase.recreate();
+  }
+
+  propertyChanged(property, newValue, oldValue) {
+    this.widgetBase.handlePropertyChanged(
+      this.kWidget,
+      property,
+      newValue,
+      oldValue
+    );
   }
 
   destroy() {

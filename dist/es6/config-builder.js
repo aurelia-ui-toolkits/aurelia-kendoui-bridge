@@ -90,6 +90,7 @@ export class KendoConfigBuilder {
 	  .kendoDiagram()
 	  .kendoDropDownTree()
       .kendoEditor()
+	  .kendoFilter()
       .kendoFilterMenu()
       .kendoGantt()
       .kendoGrid()
@@ -267,6 +268,11 @@ export class KendoConfigBuilder {
 
   kendoEditor(): KendoConfigBuilder {
     this.resources.push(PLATFORM.moduleName('./editor/editor'));
+    return this;
+  }
+
+  kendoFilter(): KendoConfigBuilder {
+    this.resources.push(PLATFORM.moduleName('./filter/filter'));
     return this;
   }
 

@@ -65,7 +65,7 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
     };
 
     KendoConfigBuilder.prototype.pro = function pro() {
-      this.core().kendoBarcode().kendoChart().kendoChat().kendoDiagram().kendoDropDownTree().kendoEditor().kendoFilterMenu().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPager().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
+      this.core().kendoBarcode().kendoChart().kendoChat().kendoDiagram().kendoDropDownTree().kendoEditor().kendoFilter().kendoFilterMenu().kendoGantt().kendoGrid().kendoMap().kendoLinearGauge().kendoPager().kendoPivotGrid().kendoQRCode().kendoRadialGauge().kendoScheduler().kendoTreeList().kendoTreeView().kendoUpload();
 
       return this;
     };
@@ -209,6 +209,11 @@ define(['exports', 'aurelia-logging', 'aurelia-pal'], function (exports, _aureli
 
     KendoConfigBuilder.prototype.kendoEditor = function kendoEditor() {
       this.resources.push(_aureliaPal.PLATFORM.moduleName('./editor/editor'));
+      return this;
+    };
+
+    KendoConfigBuilder.prototype.kendoFilter = function kendoFilter() {
+      this.resources.push(_aureliaPal.PLATFORM.moduleName('./filter/filter'));
       return this;
     };
 

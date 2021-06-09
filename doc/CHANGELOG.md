@@ -1,3 +1,11 @@
+<a name="1.11.0"></a>
+# [1.11.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.10.0...1.11.0) (2021-06-09)
+
+
+### Features
+
+* **filter:** added filter ([5f8380a](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/commit/5f8380a))
+
 <a name="1.10.0"></a>
 # [1.10.0](https://github.com/aurelia-ui-toolkits/aurelia-kendoui-bridge/compare/1.9.9...1.10.0) (2020-03-01)
 
