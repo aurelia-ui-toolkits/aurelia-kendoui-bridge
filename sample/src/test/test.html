@@ -1,13 +1,20 @@
 <template>
 	<require from="aurelia-kendoui-bridge/slider/slider"></require>
 	<require from="aurelia-kendoui-bridge/gauges/arc-gauge"></require>
+	<require from="aurelia-kendoui-bridge/common/template"></require>
 
-	<div id="example"
-	     role="application">
+	<div id="example" role="application">
 		<div class="demo-section k-content wide">
-      <ak-arc-gauge k-value.two-way="val" k-colors.bind="colors" center-template="<span style='color: #: color #;'>#: value #%</span>"></ak-arc-gauge>
-      <input ak-slider="k-value.two-way: val; k-min.bind: 0; k-max.bind: 100"/>
-		</div>
+			<ak-stepper k-widget.bind="stepper">
+				<ak-step k-label="label 1" k-icon="home"></ak-step>
+				<ak-step k-label="label 2" k-success-icon="plus"></ak-step>
+				<ak-step k-label="label 3">
+					<ak-template for="iconTemplate" kendo-template.bind="true">
+						<strong>${label}</strong>
+					</ak-template>
+				</ak-step>
+			</ak-stepper>
+    	</div>
 	</div>
 
 	<style>
